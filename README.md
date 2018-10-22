@@ -24,3 +24,6 @@ yarn run test
 ```
 yarn run lint
 ```
+
+- Base folder should be included first in every project.
+-

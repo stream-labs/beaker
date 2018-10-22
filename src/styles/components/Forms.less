@@ -1,0 +1,37 @@
+form,
+.form {
+  .form-group:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.form-group {
+  .margin-bottom(2);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 16px;
+  grid-row-gap: @spacing;
+}
+
+.form-group label:first-child {
+  grid-column: 1/13;
+}
+
+.form-group * {
+  grid-column: 1/13;
+}
+
+@media(min-width: 980px) {
+  .form-group label:first-child  {
+    grid-column: 1/4;
+  }
+
+  .form-group * {
+    grid-column: 4/13;
+  }
+}
+
+.form-group__help-text {
+  color: @label;
+  font-size: 13px;
+}
