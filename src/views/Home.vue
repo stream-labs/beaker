@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img class="logo" alt="Vue logo" src="../assets/imgs/kevin-standard.svg">
+    <img class="logo" alt="Vue logo" src="../assets/imgs/beaker-round.svg">
     <HelloWorld msg="Welcome to Beaker. A Design System for Streamlabs related products."/>
   </div>
 </template>

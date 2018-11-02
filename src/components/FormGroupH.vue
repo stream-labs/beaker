@@ -41,7 +41,7 @@ export default class FormGroupH extends Vue {
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Base";
+@import "./../styles/Imports";
 
 .form-group-h {
   .margin-bottom(2);
@@ -72,5 +72,6 @@ export default class FormGroupH extends Vue {
 .form-group-h__help-text {
   color: @label;
   font-size: 13px;
+  .margin-top();
 }
 </style>

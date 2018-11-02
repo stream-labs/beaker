@@ -1,0 +1,118 @@
+// TABLES
+
+table {
+  margin-bottom: 0;
+  color: @day-paragraph;
+  font-size: 14px;
+  width: 100%;
+  border-collapse: collapse;
+
+  .button {
+    height: 20px;
+  }
+}
+
+th {
+  .text-transform(@capitalize);
+  .weight(@medium);
+  font-size: 12px;
+  color: @label;
+  text-align: left;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+tbody {
+  .radius();
+
+  tr {
+    &:nth-child(odd) {
+      background-color: @light-2;
+    }
+
+    &:nth-child(even) {
+      background-color: @light-1;
+    }
+  }
+}
+
+td {
+  img {
+    max-width: 40px;
+    width: 100%;
+  }
+
+  .img--sm {
+    width: 20px;
+    height: 20px;
+    .margin-right();
+  }
+}
+
+th,
+td {
+  .padding();
+}
+
+.table__header {
+  display: inline-block;
+  width: 100%;
+  .margin-bottom(3);
+
+  h4 {
+    display: inline-block;
+  }
+}
+
+.table__donation {
+  color: @teal;
+}
+
+.table__merch {
+  .table__donation;
+  white-space: normal;
+}
+
+.table__bits {
+  color: @bits;
+}
+
+.table__name {
+  white-space: nowrap;
+}
+
+.table__message {
+  word-break: break-all;
+}
+
+.night {
+  // Tables
+  table {
+    color: @night-paragraph;
+
+    tbody {
+      tr {
+        &:nth-child(odd) {
+          background-color: @dark-4;
+
+          td {
+            border: 0;
+          }
+        }
+
+        &:nth-child(even) {
+          background-color: transparent;
+        }
+
+        td {
+          a {
+            color: @white;
+          }
+        }
+      }
+    }
+  }
+}

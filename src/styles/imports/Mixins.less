@@ -1,0 +1,131 @@
+// Margins
+
+.margin(@spacing: 1) {
+	margin: (@spacing * 8px);
+}
+
+.margin-h-sides(@spacing: 1) {
+	margin-right: (@spacing * 8px);
+	margin-left: (@spacing * 8px);
+}
+
+.margin-v-sides(@spacing: 1) {
+	margin-top: (@spacing * 8px);
+	margin-bottom: (@spacing * 8px);
+}
+
+.margin-top(@spacing: 1) {
+	margin-top: (@spacing * 8px);
+}
+
+.margin-right (@spacing: 1) {
+	margin-right: (@spacing * 8px);
+}
+
+.margin-bottom (@spacing: 1) {
+	margin-bottom: (@spacing * 8px);
+}
+
+.margin-left (@spacing: 1) {
+	margin-left: (@spacing * 8px);
+}
+
+// Paddings
+
+.padding(@spacing: 1) {
+	padding: (@spacing * 8px);
+}
+
+.padding-h-sides(@spacing: 1) {
+	padding-right: (@spacing * 8px);
+	padding-left: (@spacing * 8px);
+}
+
+.padding-v-sides(@spacing: 1) {
+	padding-top: (@spacing * 8px);
+	padding-bottom: (@spacing * 8px);
+}
+
+.padding-top (@spacing: 1) {
+	padding-top: (@spacing * 8px);
+}
+
+.padding-right (@spacing: 1) {
+	padding-right: (@spacing * 8px);
+}
+
+.padding-bottom (@spacing: 1) {
+	padding-bottom: (@spacing * 8px);
+}
+
+.padding-left (@spacing: 1) {
+	padding-left: (@spacing * 8px);
+}
+
+// Positioning
+.absolute (@top: auto, @right: auto, @bottom: auto, @left: auto) {
+  display: block;
+  position: absolute;
+  top: @top;
+  right: @right;
+  bottom: @bottom;
+  left: @left;
+}
+
+// Radius
+.radius(@radius: 1) {
+	border-radius: (@radius * 4px);
+}
+
+.radius-bottom() {
+	border-radius: 0 0 @radius @radius;
+}
+
+// Shadows
+.day-shadow() {
+  box-shadow: 0 8px 16px @day-shadow;
+}
+
+.night-shadow() {
+  box-shadow: 0 8px 16px @night-shadow;
+}
+
+// Transitions
+.transition() {
+  transition: all 275ms;
+}
+
+.spin() {
+	animation: spin 1s infinite;
+}
+
+@-webkit-keyframes spin {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(359deg);
+		transform: rotate(359deg);
+	}
+}
+
+@keyframes spin {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(359deg);
+		transform: rotate(359deg);
+	}
+}
+
+// Typography
+.text-transform(@capitalize: @capitalize) {
+ text-transform: @capitalize;
+}
+
+.weight(@normal: @normal) {
+  font-weight: @normal;
+}

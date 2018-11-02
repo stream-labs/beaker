@@ -1,5 +1,13 @@
 <template>
-  <v-select v-model="selected" :options="['foo','bar']" />
+  <v-select
+    :value="value"
+    :options="options"
+    :disabled="disabled"
+    :clearable="false"
+    :searchable="searchable"
+    :multiple="multiple"
+    :placeholder="placeholder"
+    ></v-select>
 </template>
 
 <script lang="ts">
@@ -7,21 +15,24 @@ import { Component, Vue } from "vue-property-decorator";
 import vSelect from "vue-select";
 Vue.component("v-select", vSelect);
 
-@Component({
+export default {
+  name: "Selector",
+  extends: vSelect,
+
   components: {
     vSelect
   }
-})
-export default class Selector extends Vue {
-  selected = "foo";
-}
+};
 </script>
 
 <style lang="less">
-@import "./../styles/App";
+@import "./../styles/Imports";
 
 .v-select {
   font-family: "Roboto";
+  background-color: @day-dropdown-bg;
+  border-color: @day-dropdown-border;
+  .radius();
 
   &.open {
     .open-indicator:before {
@@ -30,7 +41,7 @@ export default class Selector extends Vue {
   }
 
   .dropdown-toggle {
-    border-color: @day-input-border;
+    border: 0;
     .padding-h-sides();
     .padding-v-sides(@0);
     height: 32px;
@@ -44,6 +55,10 @@ export default class Selector extends Vue {
     color: @icon;
     height: auto;
     width: auto;
+  }
+
+  .form-control {
+    padding: 0;
   }
 
   .vs__selected-options {
@@ -65,10 +80,94 @@ export default class Selector extends Vue {
     .margin(@0);
     font-size: 14px;
     font-family: "Roboto";
+    .padding-h-sides(0);
   }
 
   .dropdown-menu {
     .padding(0);
+    background-color: @day-dropdown-bg;
+    border-color: @day-dropdown-border;
+    .day-shadow();
+
+    li {
+      line-height: 32px;
+
+      a {
+        color: @day-paragraph;
+        .padding-h-sides();
+        .padding-v-sides(0);
+        text-decoration: none;
+
+        &:hover,
+        &.active,
+        &.highlight {
+          background-color: @light-3;
+          color: @day-title;
+        }
+      }
+    }
+
+    .active {
+      a {
+        background-color: @light-3;
+      }
+    }
+
+    .highlight {
+      a {
+        background-color: @light-3;
+        color: @day-title;
+      }
+    }
+  }
+}
+
+.night,
+.night-theme {
+  .v-select {
+    font-family: "Roboto";
+    background-color: @night-dropdown-bg;
+    border-color: @night-dropdown-border;
+
+    .selected-tag {
+      color: @night-paragraph;
+    }
+
+    .dropdown-menu {
+      background-color: @night-dropdown-bg;
+      border-color: @night-dropdown-border;
+      .night-shadow();
+
+      li {
+        line-height: 32px;
+
+        a {
+          color: @night-paragraph;
+          .padding-h-sides();
+          .padding-v-sides(0);
+
+          &:hover,
+          &.active,
+          &.highlight {
+            background-color: @night-hover;
+            color: @night-title;
+          }
+        }
+      }
+
+      .active {
+        a {
+          background-color: @night-hover;
+        }
+      }
+
+      .highlight {
+        a {
+          background-color: @night-hover;
+          color: @night-title;
+        }
+      }
+    }
   }
 }
 </style>
