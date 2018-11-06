@@ -44,13 +44,4 @@ const components = [
 // }
 
 // Finally export as default
-export default {
-  Accordion,
-  Button,
-  FormGroupH,
-  FormGroupV,
-  ProgressBadge,
-  Selector,
-  Slider,
-  Tabs
-};
+export default components;
