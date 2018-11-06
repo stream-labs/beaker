@@ -44,4 +44,26 @@ if (typeof window !== "undefined" && window.Vue) {
 }
 
 // Finally export as default
-export default components;
+export {
+  Accordion,
+  Button,
+  FormGroupH,
+  FormGroupV,
+  HelloWorld,
+  ProgressBadge,
+  Selector,
+  Slider,
+  Tabs
+};
+
+export default {
+  Accordion,
+  Button,
+  FormGroupH,
+  FormGroupV,
+  HelloWorld,
+  ProgressBadge,
+  Selector,
+  Slider,
+  Tabs
+};
