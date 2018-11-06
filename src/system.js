@@ -12,6 +12,7 @@ import Accordion from "@/components/Accordion";
 import Button from "@/components/Button";
 import FormGroupH from "@/components/FormGroupH";
 import FormGroupV from "@/components/FormGroupV";
+import HelloWorld from "@/components/HelloWorld";
 import ProgressBadge from "@/components/ProgressBadge";
 import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
@@ -23,6 +24,7 @@ const components = [
   Button,
   FormGroupH,
   FormGroupV,
+  HelloWorld,
   ProgressBadge,
   Selector,
   Slider,
