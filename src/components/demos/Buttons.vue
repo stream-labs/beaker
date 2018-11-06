@@ -31,7 +31,7 @@
           </Button>
         </div>
 
-        <accordion
+        <Accordion
           :openedTitle="'Hide Code'"
           :closedTitle="'Show Code'">
           <div slot="content">
@@ -62,7 +62,7 @@
   &lt;/Button&gt;
 &lt;/div&gt;</code></pre>
           </div>
-        </accordion>
+        </Accordion>
       </div>
       <div class="section">
         <h3>Disabled</h3>
@@ -91,7 +91,7 @@
             <i class="icon-settings"></i> with icon
           </Button>
         </div>
-        <accordion
+        <Accordion
           :openedTitle="'Hide Code'"
           :closedTitle="'Show Code'">
           <div slot="content">
@@ -126,7 +126,7 @@
   &lt;/Button&gt;
 &lt;/div&gt;</code></pre>
           </div>
-        </accordion>
+        </Accordion>
       </div>
       <div class="section">
         <h3>Loading</h3>
@@ -163,7 +163,7 @@
           <i class="icon-settings"></i>With Icon
         </Button>
       </div>
-      <accordion
+      <Accordion
         :openedTitle="'Hide Code'"
         :closedTitle="'Show Code'">
         <div slot="content">
@@ -198,7 +198,7 @@
   &lt;/Button&gt;
 &lt;/div&gt;</code></pre>
         </div>
-      </accordion>
+      </Accordion>
     </div>
     <div class="section">
       <h2>Large Buttons</h2>
