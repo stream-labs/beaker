@@ -5,6 +5,7 @@
     <div class="content">
       <accordions v-if="activeSection === 'accordions'"/>
       <badges v-if="activeSection === 'badges'"/>
+      <callouts v-if="activeSection === 'callouts'"/>
       <buttons-demo v-if="activeSection === 'buttons'"/>
       <forms v-if="activeSection === 'forms'"/>
       <inputs v-if="activeSection === 'inputs'"/>
@@ -21,6 +22,7 @@ import LeftNavigation from "@/components/LeftNavigation.vue"; // @ is an alias t
 import Accordions from "@/components/demos/Accordions.vue";
 import Badges from "@/components/demos/Badges.vue";
 import ButtonsDemo from "@/components/demos/Buttons.vue";
+import Callouts from "@/components/demos/Callouts.vue";
 import Forms from "@/components/demos/Forms.vue";
 import Inputs from "@/components/demos/Inputs.vue";
 import Sliders from "@/components/demos/Sliders.vue";
@@ -33,6 +35,7 @@ import Tabs from "@/components/demos/Tabs.vue";
     Accordions,
     Badges,
     ButtonsDemo,
+    Callouts,
     Forms,
     Inputs,
     Sliders,

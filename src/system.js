@@ -10,6 +10,7 @@ const contexts = require.context("@/components/", true, /\.vue$/);
 
 import Accordion from "@/components/Accordion";
 import Button from "@/components/Button";
+import Callout from "@/components/Callout";
 import FormGroupH from "@/components/FormGroupH";
 import FormGroupV from "@/components/FormGroupV";
 import HelloWorld from "@/components/HelloWorld";
@@ -22,6 +23,7 @@ import Tabs from "@/components/Tabs";
 const components = [
   Accordion,
   Button,
+  Callout,
   FormGroupH,
   FormGroupV,
   HelloWorld,
