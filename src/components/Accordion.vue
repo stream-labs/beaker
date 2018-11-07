@@ -1,3 +1,9 @@
+<style>
+.accordion {
+  background-color: yellow;
+}
+</style>
+
 <template>
   <div
     class="accordion"
@@ -61,11 +67,7 @@ export default class Accordion extends Vue {
 }
 </script>
 
-<style>
-.accordion {
-  background-color: yellow;
-}
-</style>
+
 
 <style lang="less" scoped>
 @import "./../styles/Imports";
