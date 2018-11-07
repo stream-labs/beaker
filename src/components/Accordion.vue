@@ -1,3 +1,9 @@
+<style>
+.accordion {
+  background-color: yellow;
+}
+</style>
+
 <template>
   <div
     class="accordion"
@@ -61,6 +67,8 @@ export default class Accordion extends Vue {
 }
 </script>
 
+
+
 <style lang="less" scoped>
 @import "./../styles/Imports";
 
@@ -76,7 +84,7 @@ export default class Accordion extends Vue {
 
 .accordion {
   .radius();
-  background-color: transparent;
+  // background-color: transparent;
   border: 1px solid @day-input-border;
   .margin-bottom(3);
   user-select: none;

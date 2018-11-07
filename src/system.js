@@ -40,10 +40,31 @@ const components = [
 //   }
 // };
 
-// Automatic installation if Vue has been added to the global scope
 // if (typeof window !== "undefined" && window.Vue) {
 //   window.Vue.use(System);
 // }
 
 // Finally export as default
-export default components;
+export {
+  Accordion,
+  Button,
+  FormGroupH,
+  FormGroupV,
+  HelloWorld,
+  ProgressBadge,
+  Selector,
+  Slider,
+  Tabs
+};
+
+export default {
+  Accordion,
+  Button,
+  FormGroupH,
+  FormGroupV,
+  HelloWorld,
+  ProgressBadge,
+  Selector,
+  Slider,
+  Tabs
+};

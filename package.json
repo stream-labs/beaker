@@ -1,13 +1,12 @@
 {
   "name": "streamlabs-beaker",
-  "version": "0.1.6",
+  "version": "0.2.4",
   "main": "./dist/beaker.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name beaker ./src/system.js",
     "lint": "vue-cli-service lint",
     "build-bundle": "vue-cli-service build --target lib --name beaker ./src/system.js",
-    "build-accordion": "vue-cli-service build --target lib --name beaker ./src/components/Accordion.vue",
     "prepare": "vue-cli-service build --target lib --name beaker ./src/system.js"
   },
   "files": [
