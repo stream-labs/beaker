@@ -48,13 +48,16 @@ export default class Accordion extends Vue {
   }
 
   toggleAccordion(event: any) {
-    let menu: any = event.target.nextElementSibling;
+    let menu: any = event.target.nextElementSibling,
+        menuContent = menu.firstChild.firstChild;
+        console.log(typeof menuContent)
+
     this.defaultOpen = !this.defaultOpen;
 
     if (!this.defaultOpen) {
       menu.style.maxHeight = 0;
     } else {
-      menu.style.maxHeight = `${menu.firstChild.firstChild.scrollHeight + 16}px`;
+      menu.style.maxHeight = `calc(${menuContent.scrollHeight}px + 16px`;
     }
   }
 
