@@ -48,10 +48,15 @@ export default class Accordion extends Vue {
   }
 
   toggleAccordion(event: any) {
-    let menu: any = event.target.nextElementSibling,
-        menuContent = menu.firstChild.firstChild;
-        console.log(typeof menuContent)
+    let menu = event.target.nextElementSibling,
+        menuContent;
 
+    // Check if accordion was toggled by title
+    if (event.target.nodeName === "SPAN") {
+      menu = event.target.parentElement.nextElementSibling;
+    }
+
+    menuContent = menu.firstChild;
     this.defaultOpen = !this.defaultOpen;
 
     if (!this.defaultOpen) {
