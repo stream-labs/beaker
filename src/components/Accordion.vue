@@ -47,8 +47,15 @@ export default class Accordion extends Vue {
     this.defaultBorder = this.noBorder;
   }
 
-  toggleAccordion() {
+  toggleAccordion(event: any) {
+    let menu: any = event.target.nextElementSibling;
     this.defaultOpen = !this.defaultOpen;
+
+    if (!this.defaultOpen) {
+      menu.style.maxHeight = 0;
+    } else {
+      menu.style.maxHeight = `${menu.firstChild.firstChild.scrollHeight + 16}px`;
+    }
   }
 
   get accordionClasses() {
@@ -78,6 +85,10 @@ export default class Accordion extends Vue {
 
     &:last-child {
       .margin-bottom(@0);
+    }
+
+    .accordion__menu {
+      .transition();
     }
   }
 }
