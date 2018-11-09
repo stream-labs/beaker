@@ -1,12 +1,12 @@
 <template>
   <div
     class="callout"
-    :class="[ calloutClass ]">
+    :class="[ calloutClass, calloutClosed ]">
     <i
       v-if="icon"
       :class="[calloutIcon]"></i>
-    <slot/>
-    <i v-if="closeable" class="fas fa-times callout__close"></i>
+    <span><slot/></span>
+    <i v-if="closeable" class="icon-close callout__close-button" @click="closeCallout()"></i>
   </div>
 </template>
 
@@ -24,6 +24,12 @@ export default class Callout extends Vue {
   @Prop({ default: false })
   closeable!: boolean;
 
+  closed: boolean = false;
+
+  closeCallout() {
+    this.closed = true;
+  }
+
   get calloutClass() {
     return `callout--${this.variation}`;
   }
@@ -40,6 +46,10 @@ export default class Callout extends Vue {
         return "icon-information";
     }
   }
+
+  get calloutClosed() {
+    if (this.closed) return "callout--closed";
+  }
 }
 </script>
 
@@ -48,10 +58,18 @@ export default class Callout extends Vue {
 
 .callout {
   position: relative;
+  display: flex;
+  align-items: center;
   .margin-bottom(3);
   .padding();
-  border: none;
   .radius();
+  .transition();
+
+  [class^="icon-"] {
+    &:first-child {
+      .margin-right();
+    }
+  }
 
   a {
     font-weight: normal;
@@ -59,19 +77,12 @@ export default class Callout extends Vue {
     color: inherit;
   }
 
-  [class^="icon-"] {
-    font-size: 18px;
-    vertical-align: text-bottom;
-    margin-right: 6px;
-  }
-
-  .callout__close {
-    font-size: 12px;
-    color: inherit;
-    top: 12px;
-    right: 10px;
-    opacity: .5;
+  &__close-button {
     position: absolute;
+    top: 10px;
+    right: 8px;
+    color: inherit;
+    opacity: .5;
     .transition();
     cursor: pointer;
 
@@ -80,57 +91,42 @@ export default class Callout extends Vue {
     }
   }
 
-  .inline-button {
-    .weight(@medium);
-    margin-left: 0;
-    text-decoration: none;
-  }
-
-  .button {
-    margin-top: 10px;
-  }
-
-  .close-button {
-    opacity: .6;
-    .transition();
-
-    &:hover {
-      opacity: 1;
-    }
-  }
-}
-
-.callout--success {
-  background: @teal;
-  color: @white;
-
-  a,
-  .button--default {
+  &--success {
+    background-color: @teal;
     color: @white;
   }
-}
 
-.callout--success-alt {
-  background: rgba(50, 195, 162, 0.16);
-  color: @teal;
-}
+  &--success-alt {
+    background-color: fade(@teal, 16%);
+    color: @teal;
+  }
 
-.callout--warning {
-  background: @warning;
-  color: @white;
-}
+  &--warning {
+    background-color: @warning;
+    color: @white;
+  }
 
-.callout--warning-alt {
-  color: @warning;
-  background: @red-semi;
-}
+  &--warning-alt {
+    background-color: fade(@warning, 8%);
+    color: @warning;
+  }
 
-.callout--info {
-  background: #FEF9E7;
-  color: #C49E34;
+  &--info {
+    background-color: @info-light;
+    color: @info-dark;
+  }
 
-  a {
-    color: #C49E34;
+  &.callout--closed {
+    animation: callout-fade .275s ease-in-out forwards;
+  }
+
+  @keyframes callout-fade {
+    100% {
+      height: 0;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+    }
   }
 }
 </style>
