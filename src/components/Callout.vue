@@ -4,7 +4,6 @@
     :class="[ calloutClass ]">
     <i
       v-if="icon"
-      class="fas"
       :class="[calloutIcon]"></i>
     <slot/>
     <i v-if="closeable" class="fas fa-times callout__close"></i>
@@ -33,12 +32,12 @@ export default class Callout extends Vue {
     switch (this.variation) {
       case "success":
       case "success-alt":
-        return "fa-check-circle";
+        return "icon-check";
       case "warning":
       case "warning-alt":
-        return "fa-times-circle";
+        return "icon-delete";
       case "info":
-        return "fa-info-circle";
+        return "icon-information";
     }
   }
 }
@@ -60,11 +59,9 @@ export default class Callout extends Vue {
     color: inherit;
   }
 
-  .fab,
-  .far,
-  .fas {
+  [class^="icon-"] {
     font-size: 18px;
-    vertical-align: text-top;
+    vertical-align: text-bottom;
     margin-right: 6px;
   }
 
