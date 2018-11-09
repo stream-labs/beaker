@@ -1,7 +1,9 @@
 <template>
   <div
+    v-if="!closed"
     class="callout"
-    :class="[ calloutClass, calloutClosed ]">
+    :class="[ calloutClass, calloutClosedClass ]"
+    @transitionend.self="closed = true">
     <i
       v-if="icon"
       :class="[calloutIcon]"></i>
@@ -25,9 +27,10 @@ export default class Callout extends Vue {
   closeable!: boolean;
 
   closed: boolean = false;
+  calloutClosedClass: string = "";
 
   closeCallout() {
-    this.closed = true;
+    this.calloutClosedClass = "callout--closed";
   }
 
   get calloutClass() {
@@ -45,10 +48,6 @@ export default class Callout extends Vue {
       case "info":
         return "icon-information";
     }
-  }
-
-  get calloutClosed() {
-    if (this.closed) return "callout--closed";
   }
 }
 </script>
@@ -117,16 +116,10 @@ export default class Callout extends Vue {
   }
 
   &.callout--closed {
-    animation: callout-fade .275s ease-in-out forwards;
-  }
-
-  @keyframes callout-fade {
-    100% {
-      height: 0;
-      margin: 0;
-      padding: 0;
-      opacity: 0;
-    }
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
   }
 }
 </style>
