@@ -6,7 +6,7 @@
  */
 
 // Define contexts to require
-const contexts = require.context("@/components/", true, /\.vue$/);
+// const contexts = require.context("@/components/", true, /\.vue$/);
 
 import Accordion from "@/components/Accordion";
 import Button from "@/components/Button";

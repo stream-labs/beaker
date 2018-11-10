@@ -35,8 +35,5 @@
   ],
   "exclude": [
     "node_modules"
-  ],
-  "css": {
-    "extract": false,
-  }
+  ]
 }
