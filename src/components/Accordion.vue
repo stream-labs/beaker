@@ -1,9 +1,3 @@
-<style>
-.accordion {
-  background-color: yellow;
-}
-</style>
-
 <template>
   <div
     class="accordion"
