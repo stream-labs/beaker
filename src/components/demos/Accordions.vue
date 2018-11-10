@@ -21,5 +21,5 @@ import Accordion from "./../Accordion.vue";
     Accordion
   }
 })
-export default class Forms extends Vue {}
+export default class Accordions extends Vue {}
 </script>
