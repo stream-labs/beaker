@@ -1,9 +1,6 @@
 <template>
   <div>
-    <accordion>
-      <div slot="toggle">
-        Accordion Title
-      </div>
+    <accordion :opened-title="'Hide Content'" :closed-title="'Show Content'">
       <div slot="content">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, architecto, explicabo perferendis nostrum, maxime impedit atque odit sunt pariatur illo obcaecati soluta molestias iure facere dolorum adipisci eum? Saepe, itaque.
       </div>
@@ -21,5 +18,5 @@ import Accordion from "./../Accordion.vue";
     Accordion
   }
 })
-export default class Forms extends Vue {}
+export default class Accordions extends Vue {}
 </script>
