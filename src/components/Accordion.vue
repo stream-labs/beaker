@@ -42,13 +42,21 @@ export default class Accordion extends Vue {
   }
 
   toggleAccordion(event: any) {
-    let menu: any = event.target.nextElementSibling;
+    let menu = event.target.nextElementSibling,
+        menuContent;
+
+    // Check if accordion was toggled by title
+    if (event.target.nodeName === "SPAN") {
+      menu = event.target.parentElement.nextElementSibling;
+    }
+
+    menuContent = menu.firstChild;
     this.defaultOpen = !this.defaultOpen;
 
     if (!this.defaultOpen) {
       menu.style.maxHeight = 0;
     } else {
-      menu.style.maxHeight = `${menu.firstChild.firstChild.scrollHeight + 16}px`;
+      menu.style.maxHeight = `calc(${menuContent.scrollHeight}px + 16px`;
     }
   }
 
