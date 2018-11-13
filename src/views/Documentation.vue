@@ -8,11 +8,12 @@
       <callouts v-if="activeSection === 'callouts'"/>
       <buttons-demo v-if="activeSection === 'buttons'"/>
       <forms v-if="activeSection === 'forms'"/>
+      <icons v-if="activeSection === 'icons'"/>
       <inputs v-if="activeSection === 'inputs'"/>
       <sliders v-if="activeSection === 'sliders'"/>
       <tables v-if="activeSection === 'tables'"/>
       <tabs v-if="activeSection === 'tabs'"/>
-      <toggles v-if="activeSection === 'toggles'"/>
+      <!-- <toggles v-if="activeSection === 'toggles'"/> -->
     </div>
   </div>
 </template>
@@ -20,16 +21,17 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import LeftNavigation from "@/components/LeftNavigation.vue"; // @ is an alias to /src
-import Accordions from "@/components/demos/Accordions.vue";
-import Badges from "@/components/demos/Badges.vue";
-import ButtonsDemo from "@/components/demos/Buttons.vue";
-import Callouts from "@/components/demos/Callouts.vue";
-import Forms from "@/components/demos/Forms.vue";
-import Inputs from "@/components/demos/Inputs.vue";
-import Sliders from "@/components/demos/Sliders.vue";
-import Tables from "@/components/demos/Tables.vue";
-import Tabs from "@/components/demos/Tabs.vue";
-import Toggles from "@/components/demos/Toggles.vue";
+import Accordions from "@/demos/Accordions.vue";
+import Badges from "@/demos/Badges.vue";
+import ButtonsDemo from "@/demos/Buttons.vue";
+import Callouts from "@/demos/Callouts.vue";
+import Forms from "@/demos/Forms.vue";
+import Icons from "@/demos/Icons.vue";
+import Inputs from "@/demos/Inputs.vue";
+import Sliders from "@/demos/Sliders.vue";
+import Tables from "@/demos/Tables.vue";
+import Tabs from "@/demos/Tabs.vue";
+// import Toggles from "@/demos/Toggles.vue";
 
 @Component({
   components: {
@@ -39,11 +41,12 @@ import Toggles from "@/components/demos/Toggles.vue";
     ButtonsDemo,
     Callouts,
     Forms,
+    Icons,
     Inputs,
     Sliders,
     Tables,
-    Tabs,
-    Toggles
+    Tabs
+    // Toggles
   }
 })
 export default class Documentation extends Vue {
@@ -55,11 +58,27 @@ export default class Documentation extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
 .documentation {
   display: grid;
   grid-template-columns: 260px auto;
+}
+
+.docs-table {
+  font-family: "Courier New", Courier, monospace;
+
+  th {
+    font-family: "Roboto";
+  }
+
+  tr {
+    td {
+      &:last-child {
+        font-family: "Roboto";
+      }
+    }
+  }
 }
 </style>

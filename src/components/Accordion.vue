@@ -21,17 +21,13 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Accordion extends Vue {
-  @Prop()
-  isOpen!: boolean;
+  @Prop() isOpen!: boolean;
 
-  @Prop()
-  noBorder!: boolean;
+  @Prop() noBorder!: boolean;
 
-  @Prop()
-  openedTitle!: string;
+  @Prop() openedTitle!: string;
 
-  @Prop()
-  closedTitle!: string;
+  @Prop() closedTitle!: string;
 
   defaultOpen = false;
   defaultBorder = false;
@@ -43,7 +39,7 @@ export default class Accordion extends Vue {
 
   toggleAccordion(event: any) {
     let menu = event.target.nextElementSibling,
-        menuContent;
+      menuContent;
 
     // Check if accordion was toggled by title
     if (event.target.nodeName === "SPAN") {
@@ -76,15 +72,11 @@ export default class Accordion extends Vue {
 }
 </script>
 
-
-
 <style lang="less" scoped>
 @import "./../styles/Imports";
 
 .accordions {
   .accordion {
-    .margin-bottom(3);
-
     &:last-child {
       .margin-bottom(@0);
     }
@@ -97,10 +89,11 @@ export default class Accordion extends Vue {
 
 .accordion {
   .radius();
-  // background-color: transparent;
+  background-color: @day-bg;
   border: 1px solid @day-input-border;
   .margin-bottom(3);
   user-select: none;
+  text-align: left;
 
   &.is-closed {
     .accordion__menu {
@@ -118,6 +111,7 @@ export default class Accordion extends Vue {
 
 .accordion--no-border {
   border: 0;
+  background-color: transparent;
 
   .accordion__toggle {
     .padding(@0);
@@ -185,6 +179,11 @@ export default class Accordion extends Vue {
 .night {
   .accordion {
     border-color: @night-input-border;
+    background-color: @night-bg;
+  }
+
+  .accordion--no-border {
+    background-color: transparent;
   }
 
   .accordion__toggle {

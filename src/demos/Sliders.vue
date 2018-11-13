@@ -12,18 +12,22 @@
 <code>&lt;slider
   :min=&quot;0&quot;
   :max=&quot;100&quot;
-  :interval=&quot;5&quot;
+  :interval=&quot;1&quot;
   :value=&quot;50&quot;&gt;
 &lt;/slider&gt;</code></pre>
         </div>
       </accordion>
-      <slider
-        :min="0"
-        :max="100"
-        :interval="5"
-        :value="50">
-      </slider>
-      <table>
+
+      <div class="row">
+        <slider
+          :min="0"
+          :max="100"
+          :interval="1"
+          :value="50">
+        </slider>
+      </div>
+
+      <table class="docs-table">
         <thead>
           <tr>
             <th>Props</th>
@@ -66,8 +70,8 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 
-import Slider from "./../Slider.vue";
-import Accordion from "./../Accordion.vue";
+import Slider from "./../components/Slider.vue";
+import Accordion from "./../components/Accordion.vue";
 
 @Component({
   components: {

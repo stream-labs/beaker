@@ -55,8 +55,8 @@ export default {
         position: absolute;
         top: 0px;
         color: @light-3;
-        font-size: 12px;
-        line-height: 17px;
+        font-size: 11px;
+        line-height: 15px;
         content: "\e996";
         display: inline-block;
       }

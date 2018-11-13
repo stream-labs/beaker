@@ -106,7 +106,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 
-import Selector from "./../Selector.vue";
+import Selector from "./../components/Selector.vue";
 
 @Component({
   components: {

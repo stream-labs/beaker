@@ -3,7 +3,11 @@
     <div class="section">
       <h1>Badges</h1>
       <p>By default, our badges are designed to be on the right side of elements with 8px of margin on the left. If you would like to use a badge on the left side of an element, add <code>.badge--left</code> and it will switch the margin to be on the right side.</p>
-      <pre>
+      <Accordion
+        :openedTitle="'Hide Code'"
+        :closedTitle="'Show Code'">
+        <div slot="content">
+          <pre>
 <code>&lt;div class=&quot;badge badge--left badge--success&quot;&gt;Success&lt;/div&gt;
 &lt;div class=&quot;badge badge--left badge--tag&quot;&gt;Tag&lt;/div&gt;
 &lt;div class=&quot;badge badge--left badge--new&quot;&gt;New&lt;/div&gt;
@@ -16,7 +20,8 @@
   :total=&quot;25&quot;
   :suffix=&quot;'Sold'&quot;&gt;
 &lt;/progress-badge&gt;</code></pre>
-
+        </div>
+      </Accordion>
       <div class="badge badge--left badge--success">Success</div>
       <div class="badge badge--left badge--tag">Tag</div>
       <div class="badge badge--left badge--new">New</div>
@@ -36,10 +41,12 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 
-import ProgressBadge from "./../ProgressBadge.vue";
+import Accordion from "./../components/Accordion.vue";
+import ProgressBadge from "./../components/ProgressBadge.vue";
 
 @Component({
   components: {
+    Accordion,
     ProgressBadge
   }
 })

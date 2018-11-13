@@ -65,8 +65,8 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Accordion from "./../Accordion.vue";
-import Callout from "./../Callout.vue";
+import Accordion from "./../components/Accordion.vue";
+import Callout from "./../components/Callout.vue";
 
 @Component({
   components: {

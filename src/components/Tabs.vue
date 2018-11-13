@@ -32,14 +32,11 @@ export default class Tabs extends Vue {
     }
   ];
 
-  @Prop()
-  value!: string;
+  @Prop() value!: string;
 
-  @Prop()
-  className!: string;
+  @Prop() className!: string;
 
-  @Prop()
-  hideContent!: boolean;
+  @Prop() hideContent!: boolean;
 
   showTab(tab: string) {
     this.$emit("input", tab);
@@ -75,9 +72,11 @@ export default class Tabs extends Vue {
 .tab {
   color: @day-paragraph;
   .padding-bottom(2);
-  border-bottom: 1px solid transparent;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
   .margin-right(2);
   cursor: default;
+  .transition();
 
   &.is-active {
     .weight(@medium);
@@ -95,6 +94,15 @@ export default class Tabs extends Vue {
 .night-theme {
   .tabs {
     border-color: @night-border;
+  }
+
+  .tab {
+    color: @night-paragraph;
+
+    &.is-active {
+      color: @night-title;
+      border-color: @light-1;
+    }
   }
 }
 </style>
