@@ -58,8 +58,8 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 
-import Accordion from "./../Accordion.vue";
-import Toggle from "./../Toggle.vue";
+import Accordion from "./../components/Accordion.vue";
+import Toggle from "./../components/Toggle.vue";
 
 @Component({
   components: {
