@@ -5,6 +5,7 @@
     <div class="content">
       <accordions v-if="activeSection === 'accordions'"/>
       <badges v-if="activeSection === 'badges'"/>
+      <banners v-if="activeSection === 'banners'"/>
       <callouts v-if="activeSection === 'callouts'"/>
       <buttons-demo v-if="activeSection === 'buttons'"/>
       <forms v-if="activeSection === 'forms'"/>
@@ -23,6 +24,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import LeftNavigation from "@/components/LeftNavigation.vue"; // @ is an alias to /src
 import Accordions from "@/demos/Accordions.vue";
 import Badges from "@/demos/Badges.vue";
+import Banners from "@/demos/Banners.vue";
 import ButtonsDemo from "@/demos/Buttons.vue";
 import Callouts from "@/demos/Callouts.vue";
 import Forms from "@/demos/Forms.vue";
@@ -38,6 +40,7 @@ import Tabs from "@/demos/Tabs.vue";
     LeftNavigation,
     Accordions,
     Badges,
+    Banners,
     ButtonsDemo,
     Callouts,
     Forms,
