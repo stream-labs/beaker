@@ -92,7 +92,6 @@ export default class Accordion extends Vue {
   background-color: @day-bg;
   border: 1px solid @day-input-border;
   .margin-bottom(3);
-  user-select: none;
   text-align: left;
 
   &.is-closed {
@@ -141,6 +140,7 @@ export default class Accordion extends Vue {
   .padding(2);
   .padding-left(5);
   cursor: default;
+  user-select: none;
 
   &:before {
     content: "\e958";

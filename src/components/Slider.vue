@@ -10,7 +10,7 @@
     :interval="interval"
     :value="value"
     :suffix="suffix"
-    :formatter="value + suffix">
+    :formatter="'{value}' + suffix">
   </vue-slider-component>
 </template>
 
