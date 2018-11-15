@@ -40,22 +40,34 @@
         </thead>
         <tbody>
           <tr>
+            <td>interval</td>
+            <td>Number</td>
+            <td>1</td>
+            <td>The steps between the values</td>
+          </tr>
+          <tr>
             <td>max</td>
-            <td>number</td>
+            <td>Number</td>
             <td>null</td>
             <td>The maximum numerical value that can be selected</td>
           </tr>
           <tr>
             <td>min</td>
-            <td>number</td>
+            <td>Number</td>
             <td>null</td>
             <td>The minimum numerical value that can be selected</td>
           </tr>
           <tr>
-            <td>interval</td>
-            <td>number</td>
-            <td>1</td>
-            <td>The steps between the values</td>
+            <td>suffix</td>
+            <td>String</td>
+            <td>px</td>
+            <td>Suffix label that will be displayed next to the value in the tooltip</td>
+          </tr>
+          <tr>
+            <td>tooltip</td>
+            <td>String</td>
+            <td>always</td>
+            <td>Show the tooltip or not. Options are 'always' or 'false'</td>
           </tr>
           <tr>
             <td>value</td>
