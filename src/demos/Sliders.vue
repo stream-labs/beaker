@@ -23,7 +23,9 @@
           :min="0"
           :max="100"
           :interval="1"
-          :value="50">
+          :value="50"
+          :suffix="'%'"
+          :tooltip="'always'">
         </slider>
       </div>
 

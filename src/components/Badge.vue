@@ -46,17 +46,14 @@ export default class Badge extends Vue {
   @Prop({ default: "#ffffff" })
   textColor!: string;
 
-  @Prop()
-  current!: number;
+  @Prop() current!: number;
 
-  @Prop()
-  total!: number;
+  @Prop() total!: number;
 
   @Prop({ default: "/" })
   separator!: string;
 
-  @Prop()
-  suffix!: string;
+  @Prop() suffix!: string;
 
   get badgeClasses() {
     let classes = [];
@@ -68,7 +65,7 @@ export default class Badge extends Vue {
     }
 
     if (this.noMargin) {
-      classes.push('badge--no-margin')
+      classes.push("badge--no-margin");
     }
 
     return classes;
