@@ -1,6 +1,12 @@
 <template>
   <div id="app" :class="[ nightTheme ? nightClasses : '', appClass ]">
     <div id="nav">
+      <toggle
+        :values="toggleOptions"
+        :selected.sync="toggleSelected"
+        :default="'visible'">
+      </toggle>
+
       <div class="theme-toggle">
         <button @click="toggleDayTheme()" class="button">
           <i class="fas fa-sun"></i>
@@ -18,13 +24,20 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import Toggle from "./components/Toggle.vue";
 
-@Component({})
+@Component({
+  components: {
+    Toggle
+  }
+})
 export default class App extends Vue {
   appClass = "app-wrapper";
   nightClasses = ["night", "night-theme"];
   dayTheme = true;
   nightTheme = false;
+
+  toggleOptions = {};
 
   toggleDayTheme() {
     this.dayTheme = true;
