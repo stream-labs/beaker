@@ -54,7 +54,8 @@ export default class Toggle extends Vue {
   }
 }
 
-.night {
+.night,
+.night-theme {
   .toggle {
     &__option {
       background-color: @dark-4;
