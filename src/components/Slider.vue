@@ -40,7 +40,7 @@ export default {
 @import "./../styles/Imports";
 
 .vue-slider-component {
-  padding: 4px 12px 28px !important;
+  padding: 4px 0px 28px !important;
 
   .vue-slider {
     background-color: @light-3;
