@@ -16,19 +16,19 @@
           <div class="banner__label">{{ label }}</div>
           <i @click="toggleBanner()" class="icon-down"></i>
         </div>
-  
+
         <div class="banner__wrapper">
           <div class="banner__title">
             <div class="banner__icon">
               <i :class="`icon-${icon}`"></i>
             </div>
-  
+
             <div class="banner__details">
               <h2 class="banner__name">{{ title }}</h2>
               <p class="banner__desc">{{ desc }}</p>
             </div>
           </div>
-  
+
           <div @click.stop="" class="banner__download-wrapper">
             <i @click="toggleBanner()" class="icon-down"></i>
             <slot name="link"></slot>
@@ -36,19 +36,19 @@
           </div>
         </div>
       </div>
-  
+
       <div v-else class="banner__body--closed" key="banner-closed">
         <div class="banner__wrapper">
           <div class="banner__title">
             <div class="banner__icon">
               <i :class="`icon-${icon}`"></i>
             </div>
-  
+
             <div class="banner__details">
               <h2 class="banner__name">{{ title }}</h2>
             </div>
           </div>
-  
+
           <div @click.stop="" class="banner__download-wrapper">
             <i @click="toggleBanner()" class="icon-down"></i>
             <slot name="link"></slot>
@@ -113,7 +113,6 @@ export default class BannerMarketing extends Vue {
     //   console.log(banner.style.maxHeight)
     // }
 
-
     // LocalForage.setItem('slobsAd', this.infoBannerClosed);
   }
   // mounted() {
@@ -129,7 +128,6 @@ export default class BannerMarketing extends Vue {
   //     }
   //   });
   // },
-
 }
 </script>
 
@@ -205,10 +203,8 @@ export default class BannerMarketing extends Vue {
   display: flex;
 }
 
-
-
 .banner__label {
-  background: rgba(0,0,0,.16);
+  background: rgba(0, 0, 0, 0.16);
   padding: 2px 8px;
   .radius();
   .weight(@medium);
@@ -373,7 +369,7 @@ export default class BannerMarketing extends Vue {
   }
 
   .banner__label {
-    background: rgba(255,255,255,.26);
+    background: rgba(255, 255, 255, 0.26);
   }
 
   .banner__bg--night {
@@ -385,4 +381,3 @@ export default class BannerMarketing extends Vue {
   }
 }
 </style>
-
