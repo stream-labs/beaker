@@ -14,7 +14,7 @@
     <a class="left-navigation__link" @click="changeSection('sliders')">Sliders</a>
     <a class="left-navigation__link" @click="changeSection('tables')">Tables</a>
     <a class="left-navigation__link" @click="changeSection('tabs')">Tabs</a>
-    <!-- <a class="left-navigation__link" @click="changeSection('toggles')">Toggles</a> -->
+    <a class="left-navigation__link" @click="changeSection('toggles')">Toggles</a>
     <!-- <a class="left-navigation__link" @click="changeSection('typography')">Typography</a> -->
   </div>
 </template>

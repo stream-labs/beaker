@@ -176,7 +176,8 @@ export default class Accordion extends Vue {
   }
 }
 
-.night {
+.night,
+.night-theme {
   .accordion {
     border-color: @night-input-border;
     background-color: @night-bg;

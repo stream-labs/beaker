@@ -3,11 +3,14 @@
     :height="8"
     :dotHeight="16"
     :dotWidth="24"
-    :tooltip="false"
+    :tooltip="tooltip"
+    :tooltip-dir="'bottom'"
     :min="min"
     :max="max"
     :interval="interval"
-    :value="value">
+    :value="value"
+    :suffix="suffix"
+    :formatter="value + suffix">
   </vue-slider-component>
 </template>
 
@@ -22,6 +25,13 @@ export default {
 
   components: {
     VueSliderComponent
+  },
+
+  props: {
+    suffix: {
+      type: String,
+      default: "px"
+    }
   }
 };
 </script>
@@ -30,7 +40,7 @@ export default {
 @import "./../styles/Imports";
 
 .vue-slider-component {
-  padding: 5px 12px !important;
+  padding: 4px 12px 28px !important;
 
   .vue-slider {
     background-color: @light-3;
@@ -72,6 +82,17 @@ export default {
       }
     }
   }
+
+  .vue-slider-tooltip {
+    background-color: transparent;
+    border: 0;
+    color: @day-title;
+    padding: 0;
+
+    &:before {
+      border: 0 !important;
+    }
+  }
 }
 
 .night,
@@ -90,6 +111,10 @@ export default {
           color: @dark-5;
         }
       }
+    }
+
+    .vue-slider-tooltip {
+      color: @night-title;
     }
   }
 }

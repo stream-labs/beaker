@@ -14,7 +14,7 @@
       <sliders v-if="activeSection === 'sliders'"/>
       <tables v-if="activeSection === 'tables'"/>
       <tabs v-if="activeSection === 'tabs'"/>
-      <!-- <toggles v-if="activeSection === 'toggles'"/> -->
+      <toggles v-if="activeSection === 'toggles'"/>
     </div>
   </div>
 </template>
@@ -33,7 +33,7 @@ import Inputs from "@/demos/Inputs.vue";
 import Sliders from "@/demos/Sliders.vue";
 import Tables from "@/demos/Tables.vue";
 import Tabs from "@/demos/Tabs.vue";
-// import Toggles from "@/demos/Toggles.vue";
+import Toggles from "@/demos/Toggles.vue";
 
 @Component({
   components: {
@@ -48,8 +48,8 @@ import Tabs from "@/demos/Tabs.vue";
     Inputs,
     Sliders,
     Tables,
-    Tabs
-    // Toggles
+    Tabs,
+    Toggles
   }
 })
 export default class Documentation extends Vue {
