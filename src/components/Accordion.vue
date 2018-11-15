@@ -39,7 +39,7 @@ export default class Accordion extends Vue {
 
   toggleAccordion(event: any) {
     let menu = event.target.nextElementSibling,
-      menuContent;
+        menuContent;
 
     // Check if accordion was toggled by title
     if (event.target.nodeName === "SPAN") {
