@@ -66,7 +66,7 @@
       <table class="docs-table">
         <thead>
           <tr>
-            <th>Props</th>
+            <th>Prop</th>
             <th>Type</th>
             <th>Default</th>
             <th>Description</th>
