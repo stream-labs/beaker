@@ -29,6 +29,15 @@
         :icon="'overview'">
       </Button>
     </banner-marketing>
+
+    <Accordion
+      :openedTitle="'Hide Code'"
+      :closedTitle="'Show Code'">
+      <div slot="content">
+        <pre>
+<code></code></pre>
+      </div>
+    </Accordion>
   </div>
 </template>
 

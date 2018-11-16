@@ -21,13 +21,17 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Accordion extends Vue {
-  @Prop() isOpen!: boolean;
+  @Prop()
+  isOpen!: boolean;
 
-  @Prop() noBorder!: boolean;
+  @Prop()
+  noBorder!: boolean;
 
-  @Prop() openedTitle!: string;
+  @Prop()
+  openedTitle!: string;
 
-  @Prop() closedTitle!: string;
+  @Prop()
+  closedTitle!: string;
 
   defaultOpen = false;
   defaultBorder = false;
@@ -39,7 +43,7 @@ export default class Accordion extends Vue {
 
   toggleAccordion(event: any) {
     let menu = event.target.nextElementSibling,
-        menuContent;
+      menuContent;
 
     // Check if accordion was toggled by title
     if (event.target.nodeName === "SPAN") {

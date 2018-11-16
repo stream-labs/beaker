@@ -1,6 +1,7 @@
 <template>
   <div
-    class="banner">
+    class="banner"
+    ref="banner">
     <div
       class="banner__bg banner__bg--day"
       :style="{ 'background-image': `url('${dayBg}')`}">
@@ -10,53 +11,31 @@
       :style="{ 'background-image': `url('${nightBg}')`}">
     </div>
 
-    <transition mode="out-in" name="fade">
-      <div v-if="!closed" class="banner__body" key="banner-open">
-        <div class="banner__wrapper">
-          <div class="banner__label">{{ label }}</div>
+    <div class="banner__body" :class="{'banner__body--closed': closed}" key="banner-open">
+      <div class="banner__wrapper">
+        <div class="banner__label">{{ label }}</div>
+        <i @click="toggleBanner()" class="icon-down"></i>
+      </div>
+
+      <div class="banner__wrapper" ref="bottomWrapper">
+        <div class="banner__title">
+          <div class="banner__icon">
+            <i :class="`icon-${icon}`"></i>
+          </div>
+
+          <div class="banner__details">
+            <h2 class="banner__name">{{ title }}</h2>
+            <p class="banner__desc">{{ desc }}</p>
+          </div>
+        </div>
+
+        <div @click.stop="" class="banner__download-wrapper">
           <i @click="toggleBanner()" class="icon-down"></i>
-        </div>
-
-        <div class="banner__wrapper">
-          <div class="banner__title">
-            <div class="banner__icon">
-              <i :class="`icon-${icon}`"></i>
-            </div>
-
-            <div class="banner__details">
-              <h2 class="banner__name">{{ title }}</h2>
-              <p class="banner__desc">{{ desc }}</p>
-            </div>
-          </div>
-
-          <div @click.stop="" class="banner__download-wrapper">
-            <i @click="toggleBanner()" class="icon-down"></i>
-            <slot name="link"></slot>
-            <div class="banner__link-desc">{{ linkDesc }}</div>
-          </div>
+          <slot name="link"></slot>
+          <div class="banner__link-desc">{{ linkDesc }}</div>
         </div>
       </div>
-
-      <div v-else class="banner__body--closed" key="banner-closed">
-        <div class="banner__wrapper">
-          <div class="banner__title">
-            <div class="banner__icon">
-              <i :class="`icon-${icon}`"></i>
-            </div>
-
-            <div class="banner__details">
-              <h2 class="banner__name">{{ title }}</h2>
-            </div>
-          </div>
-
-          <div @click.stop="" class="banner__download-wrapper">
-            <i @click="toggleBanner()" class="icon-down"></i>
-            <slot name="link"></slot>
-            <div class="banner__link-desc">{{ linkDesc }}</div>
-          </div>
-        </div>
-      </div>
-    </transition>
+    </div>
   </div>
 </template>
 
@@ -94,26 +73,27 @@ export default class BannerMarketing extends Vue {
 
   mounted() {
     this.closed = this.bannerClosed;
+    this.updateBannerHeight();
   }
 
   toggleBanner() {
     this.closed = !this.closed;
-
-    // let banner: any = document.querySelector('.banner');
-    // let bannerBody: any = document.querySelector('.banner__body');
-    // let bannerBodyClosed: any = document.querySelector('.banner__body--closed');
-
-    // if (!this.closed) {
-    //   banner.style.maxHeight = '240px';
-    //   bannerBody.style.height = '100%';
-    //   console.log(banner.style.maxHeight)
-    // } else {
-    //   // bannerBody.style.height = 'auto';
-    //   setTimeout(() => banner.style.maxHeight = `${bannerBodyClosed.scrollHeight + 32}px `, 10);
-    //   console.log(banner.style.maxHeight)
-    // }
+    this.updateBannerHeight();
 
     // LocalForage.setItem('slobsAd', this.infoBannerClosed);
+  }
+
+  updateBannerHeight() {
+    let banner: any = this.$refs.banner;
+    let bannerWrapper: any = this.$refs.bottomWrapper;
+
+    if (!this.closed) {
+      banner.style.maxHeight = "240px";
+    } else {
+      setTimeout(() => {
+        banner.style.maxHeight = `${bannerWrapper.scrollHeight + 32}px`;
+      }, 1);
+    }
   }
   // mounted() {
   //   LocalForage.getItem('slobsAd', (err, value) => {
@@ -136,7 +116,6 @@ export default class BannerMarketing extends Vue {
 
 .banner {
   position: relative;
-  height: 240px;
   .margin-bottom(3);
   .padding(2);
   .radius();
@@ -164,7 +143,7 @@ export default class BannerMarketing extends Vue {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
+  height: 208px;
 }
 
 .banner__wrapper {
@@ -173,7 +152,11 @@ export default class BannerMarketing extends Vue {
   justify-content: space-between;
 
   &:first-child {
-    align-items: flex-start;
+    align-items: center;
+
+    .icon-down {
+      transform: rotate(180deg);
+    }
   }
 
   &:last-child {
@@ -186,21 +169,8 @@ export default class BannerMarketing extends Vue {
 
   .icon-down {
     font-size: 10px;
-    height: 36px;
-    margin-top: -10px;
-    padding-top: 10px;
+    line-height: 32px;
   }
-}
-
-.banner__details {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-around;
-}
-
-.banner__title {
-  display: flex;
 }
 
 .banner__label {
@@ -230,9 +200,15 @@ export default class BannerMarketing extends Vue {
   }
 }
 
-.banner__name-wrapper {
+.banner__title {
   display: flex;
-  align-items: baseline;
+}
+
+.banner__details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
 }
 
 .banner__name {
@@ -260,7 +236,7 @@ export default class BannerMarketing extends Vue {
   align-items: center;
 }
 
-.banner--closed {
+.banner__body--closed {
   .banner__wrapper {
     &:first-child {
       display: none;
@@ -298,48 +274,6 @@ export default class BannerMarketing extends Vue {
     i {
       font-size: 18px;
     }
-  }
-
-  .banner__download-label {
-    margin-top: 0px;
-    .margin-right(2);
-  }
-
-  .banner__link-desc {
-    margin-top: 0px;
-    .margin-right();
-  }
-}
-
-.banner__body--closed {
-  position: relative;
-
-  .banner__wrapper {
-    align-items: center;
-
-    .icon-down,
-    .fa-chevron-up {
-      .margin-left(2);
-      align-items: center;
-      display: flex;
-    }
-  }
-
-  .banner__icon {
-    width: 32px;
-    height: 32px;
-
-    img {
-      width: 26px;
-    }
-
-    i {
-      font-size: 18px;
-    }
-  }
-
-  .banner__download-wrapper {
-    flex-direction: row-reverse;
   }
 
   .banner__download-label {
