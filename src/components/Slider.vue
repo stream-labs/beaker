@@ -41,6 +41,8 @@ export default {
 
 .vue-slider-component {
   padding: 4px 0px 28px !important;
+  width: 80% !important;
+  display: inline-block;
 
   .vue-slider {
     background-color: @light-3;
