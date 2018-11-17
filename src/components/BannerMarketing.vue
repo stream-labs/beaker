@@ -46,22 +46,40 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 @Component({})
 export default class BannerMarketing extends Vue {
   @Prop()
-  dayBg!: string;
+  dayBg!: {
+    type: string;
+    required: true;
+  };
 
   @Prop()
-  nightBg!: string;
+  nightBg!: {
+    type: string;
+    required: true;
+  };
 
   @Prop()
-  label!: string;
+  label!: {
+    type: string;
+    required: true;
+  };
 
   @Prop()
-  icon!: string;
+  icon!: {
+    type: string;
+    required: true;
+  };
 
   @Prop()
-  title!: string;
+  title!: {
+    type: string;
+    required: true;
+  };
 
   @Prop()
-  desc!: string;
+  desc!: {
+    type: string;
+    required: false;
+  };
 
   @Prop()
   linkDesc!: string;
@@ -116,7 +134,6 @@ export default class BannerMarketing extends Vue {
 
 .banner {
   position: relative;
-  .margin-bottom(3);
   .padding(2);
   .radius();
   overflow: hidden;
@@ -169,7 +186,7 @@ export default class BannerMarketing extends Vue {
 
   .icon-down {
     font-size: 10px;
-    line-height: 32px;
+    line-height: 22px;
   }
 }
 
@@ -251,11 +268,19 @@ export default class BannerMarketing extends Vue {
         align-items: center;
         display: flex;
       }
+
+      .icon-down {
+        height: 32px;
+      }
     }
   }
 
   .banner__download-wrapper {
     flex-direction: row-reverse;
+  }
+
+  .banner__title {
+    align-items: center;
   }
 
   .banner__desc,
@@ -304,6 +329,7 @@ export default class BannerMarketing extends Vue {
 
   .banner__label {
     background: rgba(255, 255, 255, 0.26);
+    color: @white;
   }
 
   .banner__bg--night {

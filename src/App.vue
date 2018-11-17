@@ -38,6 +38,7 @@ export default class App extends Vue {
   nightTheme = false;
 
   toggleOptions = {};
+  toggleSelected = "";
 
   toggleDayTheme() {
     this.dayTheme = true;

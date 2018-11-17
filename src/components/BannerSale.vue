@@ -1,14 +1,118 @@
 <template>
-  
+  <div
+    class="banner-sale"
+    :style="{
+      'background-color': backgroundColor,
+      'border-color': borderColor
+    }">
+    <div class="banner-sale__wrapper header">
+      <h1>{{ title }}</h1>
+      <p>{{ desc }}</p>
+    </div>
+    <div class="banner-sale__wrapper header">
+      <h1 class="banner-sale__time">
+        <span :class="{'banner-sale__time--done': daysDone}">{{ `${ days }d` }}</span>
+        <span :class="{'banner-sale__time--done': hoursDone}">{{ `${ hours }h` }}</span>
+        <span :class="{'banner-sale__time--done': minutesDone}">{{ `${ minutes }m` }}</span>
+        <span :class="{'banner-sale__time--done': secondsDone}">{{ `${ seconds }s` }}</span>
+      </h1>
+      <p>{{ timeDesc }}</p>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
-  
-})
+import { Component, Prop, Vue } from "vue-property-decorator";
+
+@Component({})
+export default class BannerSale extends Vue {
+  @Prop({ required: true })
+  title!: string;
+
+  @Prop({ required: true })
+  desc!: string;
+
+  @Prop({ default: "00", required: true })
+  days!: string;
+
+  @Prop({ default: "00", required: true })
+  hours!: string;
+
+  @Prop({ default: "00", required: true })
+  minutes!: string;
+
+  @Prop({ default: "00", required: true })
+  seconds!: string;
+
+  @Prop()
+  timeDesc!: string;
+
+  @Prop({ default: "rgba(248, 86, 64, 0.33)" })
+  borderColor!: string;
+
+  @Prop({ default: "rgba(248, 86, 64, 0.08)" })
+  backgroundColor!: string;
+
+  get daysDone() {
+    return this.days === "00";
+  }
+
+  get hoursDone() {
+    return this.daysDone && this.hours === "00";
+  }
+
+  get minutesDone() {
+    return this.hoursDone && this.minutes === "00";
+  }
+
+  get secondsDone() {
+    return this.minutesDone && this.seconds === "00";
+  }
+}
 </script>
 
 <style lang="less" scoped>
+@import "./../styles/Imports";
 
+.banner-sale {
+  display: flex;
+  justify-content: space-between;
+  .padding(2);
+  border-width: 1px;
+  border-style: solid;
+  .radius();
+
+  h1,
+  p {
+    margin-bottom: 0;
+  }
+
+  p {
+    .margin-top();
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__time {
+    text-align: right;
+    color: @warning;
+
+    &--done {
+      opacity: 0.4;
+    }
+
+    span {
+      .margin-right();
+      .transition();
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
 </style>
