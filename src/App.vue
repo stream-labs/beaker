@@ -2,19 +2,11 @@
   <div id="app" :class="[ nightTheme ? nightClasses : '', appClass ]">
     <div id="nav">
       <toggle
-        :values="toggleOptions"
-        :selected.sync="toggleSelected"
-        :default="'day'">
+        :values="themes"
+        :selected.sync="theme"
+        :default="'day'"
+        @click.native="toggleTheme()">
       </toggle>
-
-      <!-- <div class="theme-toggle">
-        <button @click="toggleDayTheme()" class="button">
-          <i class="fas fa-sun"></i>
-        </button>
-        <button @click="toggleNightTheme()" class="button">
-          <i class="fas fa-moon"></i>
-        </button>
-      </div> -->
       <router-link to="/">Home</router-link> |
       <router-link to="/documentation">Documentation</router-link>
     </div>
@@ -34,26 +26,20 @@ import Toggle from "./components/Toggle.vue";
 export default class App extends Vue {
   appClass = "app-wrapper";
   nightClasses = ["night", "night-theme"];
-  dayTheme = true;
   nightTheme = false;
+  theme = "";
 
-  toggleOptions = {
+  themes = {
     day: "<i class='icon-view'></i>",
     night: "<i class='icon-hide'></i>"
   };
 
-  toggleDayTheme() {
-    this.dayTheme = true;
-    this.nightTheme = false;
-  }
-
-  toggleNightTheme() {
-    this.dayTheme = false;
-    this.nightTheme = true;
-  }
-
-  toggleSelected() {
-    this.nightTheme = !this.nightTheme;
+  toggleTheme() {
+    if (this.theme === "night") {
+      this.nightTheme = true;
+    } else {
+      this.nightTheme = false;
+    }
   }
 }
 </script>
