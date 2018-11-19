@@ -134,6 +134,7 @@ export default class BannerMarketing extends Vue {
 
 .banner {
   position: relative;
+  .margin-bottom(3);
   .padding(2);
   .radius();
   overflow: hidden;
@@ -271,6 +272,7 @@ export default class BannerMarketing extends Vue {
 
       .icon-down {
         height: 32px;
+        line-height: 32px;
       }
     }
   }

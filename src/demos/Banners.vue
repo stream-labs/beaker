@@ -152,8 +152,6 @@
           :time-desc="'Until flash sale ends. Hurry!'">
         </banner-sale>
 
-        <br>
-
         <table class="docs-table">
           <thead>
             <tr>

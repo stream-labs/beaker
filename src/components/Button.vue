@@ -30,68 +30,68 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 export default class Button extends Vue {
   @Prop()
   icon!: {
-    type: string;
+    type: String;
     default: null;
   };
 
   @Prop()
   title!: {
-    type: string;
+    type: String;
     default: null;
   };
 
   @Prop()
   price!: {
-    type: string;
+    type: String;
     default: null;
   };
 
   @Prop()
   description!: {
-    type: string;
+    type: String;
     default: null;
   };
 
   @Prop()
   href!: {
-    type: string;
+    type: String;
     default: null;
   };
 
   // standard, medium, large, square
   @Prop()
   size!: {
-    type: string;
+    type: String;
     size: null;
   };
 
   // hover, focus, loading, disabled
   @Prop()
   state!: {
-    type: string;
+    type: String;
     default: null;
   };
 
   // set buttons type to "submit"
   @Prop()
   submit!: {
-    type: string;
+    type: String;
     default: null;
   };
 
   @Prop()
   to!: {
-    type: string;
+    type: String;
     default: null;
   };
 
   // button, a, router-link
   @Prop({ default: "button" })
-  type!: string;
+  type!: String;
 
   @Prop()
   variation!: {
-    type: string;
+    type: String;
     default: "default";
   };
 
@@ -201,6 +201,18 @@ export default class Button extends Vue {
   }
 }
 
+.button--medium {
+  height: 40px;
+  padding: 0px 8px;
+  line-height: 40px;
+
+  .fas,
+  .far,
+  .fab {
+    .margin-right();
+  }
+}
+
 .button--large {
   height: 64px;
   padding: 0px 64px;
@@ -211,7 +223,7 @@ export default class Button extends Vue {
   .fas,
   .far,
   .fab {
-    margin-right: 10px;
+    .margin-right();
   }
 }
 
@@ -384,7 +396,6 @@ export default class Button extends Vue {
   height: auto;
   line-height: 24px;
   height: 24px;
-  .margin-bottom(3);
 
   &:hover {
     background: darken(@day-section, 8%);

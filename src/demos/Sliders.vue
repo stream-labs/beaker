@@ -73,7 +73,7 @@
             <td>value</td>
             <td>Number, String, Array, Object</td>
             <td>1</td>
-            <td>Initial value</td>
+            <td>Initial value of the slider.</td>
           </tr>
         </tbody>
       </table>

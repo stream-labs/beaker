@@ -77,6 +77,7 @@ export default class BannerSale extends Vue {
 .banner-sale {
   display: flex;
   justify-content: space-between;
+  .margin-bottom(3);
   .padding(2);
   border-width: 1px;
   border-style: solid;
