@@ -64,6 +64,22 @@ export default class Documentation extends Vue {
 .documentation {
   display: grid;
   grid-template-columns: 260px auto;
+
+  code {
+    background-color: #e3e8eb;
+    color: #09161d;
+    padding: 0 4px;
+    margin: 0 2px;
+  }
+
+  pre {
+    code {
+      background-color: transparent;
+      color: inherit;
+      padding: 0;
+      margin: 0;
+    }
+  }
 }
 
 .docs-table {

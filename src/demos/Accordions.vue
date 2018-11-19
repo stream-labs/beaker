@@ -11,7 +11,7 @@
           <pre>
 <code>&lt;Accordion :opened-title=&quot;'Close Accordion'&quot; :closed-title=&quot;'Open Accordion'&quot;&gt;
   &lt;div slot=&quot;content&quot;&gt;
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, architecto, explicabo perferendis nostrum, maxime impedit atque odit sunt pariatur illo obcaecati soluta molestias iure facere dolorum adipisci eum? Saepe, itaque.
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
   &lt;/div&gt;
 &lt;/Accordion&gt;</code></pre>
         </div>
@@ -19,7 +19,7 @@
 
       <Accordion :opened-title="'Close Accordion'" :closed-title="'Open Accordion'">
         <div slot="content">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, architecto, explicabo perferendis nostrum, maxime impedit atque odit sunt pariatur illo obcaecati soluta molestias iure facere dolorum adipisci eum? Saepe, itaque.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </div>
       </Accordion>
 
@@ -32,14 +32,14 @@
           <pre>
 <code>&lt;Accordion :opened-title=&quot;'Hide Content'&quot; :closed-title=&quot;'Show Content'&quot; :isOpen=&quot;true&quot;&gt;
   &lt;div slot=&quot;content&quot;&gt;
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, architecto, explicabo perferendis nostrum, maxime impedit atque odit sunt pariatur illo obcaecati soluta molestias iure facere dolorum adipisci eum? Saepe, itaque.
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
   &lt;/div&gt;
 &lt;/Accordion&gt;</code></pre>
         </div>
       </Accordion>
       <Accordion :opened-title="'Hide Content'" :closed-title="'Show Content'" :isOpen="true">
         <div slot="content">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, architecto, explicabo perferendis nostrum, maxime impedit atque odit sunt pariatur illo obcaecati soluta molestias iure facere dolorum adipisci eum? Saepe, itaque.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </div>
       </Accordion>
 
@@ -52,14 +52,14 @@
           <pre>
 <code>&lt;Accordion :opened-title=&quot;'Hide Content'&quot; :closed-title=&quot;'Show Content'&quot; :no-border=&quot;true&quot;&gt;
   &lt;div slot=&quot;content&quot;&gt;
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, architecto, explicabo perferendis nostrum, maxime impedit atque odit sunt pariatur illo obcaecati soluta molestias iure facere dolorum adipisci eum? Saepe, itaque.
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
   &lt;/div&gt;
 &lt;/Accordion&gt;</code></pre>
         </div>
       </Accordion>
       <Accordion :opened-title="'Hide Content'" :closed-title="'Show Content'" :no-border="true">
         <div slot="content">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, architecto, explicabo perferendis nostrum, maxime impedit atque odit sunt pariatur illo obcaecati soluta molestias iure facere dolorum adipisci eum? Saepe, itaque.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </div>
       </Accordion>
 

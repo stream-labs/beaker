@@ -4,17 +4,17 @@
       <toggle
         :values="toggleOptions"
         :selected.sync="toggleSelected"
-        :default="'visible'">
+        :default="'day'">
       </toggle>
 
-      <div class="theme-toggle">
+      <!-- <div class="theme-toggle">
         <button @click="toggleDayTheme()" class="button">
           <i class="fas fa-sun"></i>
         </button>
         <button @click="toggleNightTheme()" class="button">
           <i class="fas fa-moon"></i>
         </button>
-      </div>
+      </div> -->
       <router-link to="/">Home</router-link> |
       <router-link to="/documentation">Documentation</router-link>
     </div>
@@ -37,7 +37,10 @@ export default class App extends Vue {
   dayTheme = true;
   nightTheme = false;
 
-  toggleOptions = {};
+  toggleOptions = {
+    day: "<i class='icon-view'></i>",
+    night: "<i class='icon-hide'></i>"
+  };
 
   toggleDayTheme() {
     this.dayTheme = true;
@@ -47,6 +50,10 @@ export default class App extends Vue {
   toggleNightTheme() {
     this.dayTheme = false;
     this.nightTheme = true;
+  }
+
+  toggleSelected() {
+    this.nightTheme = !this.nightTheme;
   }
 }
 </script>
