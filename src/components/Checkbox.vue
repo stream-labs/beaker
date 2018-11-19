@@ -1,7 +1,6 @@
 <template>
   <div
-    class="checkbox"
-    :class="{ radio: type === 'radio' }">
+    class="checkbox">
     <input
       type="checkbox"
       :checked="value"

@@ -36,7 +36,7 @@
         <h3>Single Checkbox</h3>
         <checkbox
           :label="'Checkbox label'"
-          v-model="checkboxValue"></checkbox>
+          v-model="checkboxValue0"></checkbox>
       </div>
 
       <div class="section">
@@ -44,13 +44,13 @@
         <div class="checkbox-group">
           <checkbox
             :label="'Checkbox label'"
-            v-model="checkboxValue"></checkbox>
+            v-model="checkboxValue1"></checkbox>
           <checkbox
             :label="'Checkbox label'"
-            v-model="checkboxValue"></checkbox>
+            v-model="checkboxValue2"></checkbox>
           <checkbox
             :label="'Checkbox label'"
-            v-model="checkboxValue"></checkbox>
+            v-model="checkboxValue3"></checkbox>
         </div>
       </div>
     </div>
@@ -75,6 +75,9 @@ import Checkbox from "./../components/Checkbox.vue";
   }
 })
 export default class Inputs extends Vue {
-  checkboxValue = true;
+  checkboxValue0 = true;
+  checkboxValue1 = false;
+  checkboxValue2 = true;
+  checkboxValue3 = false;
 }
 </script>
