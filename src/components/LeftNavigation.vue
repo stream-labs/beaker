@@ -4,6 +4,7 @@
     <a class="left-navigation__link" @click="changeSection('badges')">Badges</a>
     <a class="left-navigation__link" @click="changeSection('buttons')">Buttons</a>
     <a class="left-navigation__link" @click="changeSection('callouts')">Callouts</a>
+    <a class="left-navigation__link" @click="changeSection('dropdowns')">Dropdowns</a>
     <!-- <a class="left-navigation__link" @click="changeSection('colors')">Colors</a> -->
     <!-- <a class="left-navigation__link" @click="changeSection('dropdowns')">Dropdowns</a> -->
     <a class="left-navigation__link" @click="changeSection('forms')">Forms</a>
@@ -23,7 +24,8 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class LeftNavigation extends Vue {
-  @Prop() activeSection!: string;
+  @Prop()
+  activeSection!: string;
 
   changeSection(activeSection: string) {
     this.$emit("update-section", activeSection);

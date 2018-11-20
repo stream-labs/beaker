@@ -15,9 +15,14 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Toggle extends Vue {
-  @Prop() values!: object;
-  @Prop() selected!: string;
-  @Prop() default!: string;
+  @Prop()
+  values!: object;
+
+  @Prop()
+  selected!: string;
+
+  @Prop()
+  default!: string;
 
   created() {
     this.$emit("update:selected", this.default);

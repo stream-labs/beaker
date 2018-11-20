@@ -21,13 +21,17 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Accordion extends Vue {
-  @Prop() isOpen!: boolean;
+  @Prop()
+  isOpen!: boolean;
 
-  @Prop() noBorder!: boolean;
+  @Prop()
+  noBorder!: boolean;
 
-  @Prop() openedTitle!: string;
+  @Prop()
+  openedTitle!: string;
 
-  @Prop() closedTitle!: string;
+  @Prop()
+  closedTitle!: string;
 
   defaultOpen = false;
   defaultBorder = false;
