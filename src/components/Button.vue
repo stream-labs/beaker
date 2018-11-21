@@ -158,6 +158,7 @@ export default class Button extends Vue {
   border: 1px solid transparent;
   text-decoration: none;
   position: relative;
+  outline: transparent dotted 2px;
 
   i {
     .margin-right();
@@ -166,8 +167,8 @@ export default class Button extends Vue {
 
   &:focus,
   &.is-focused {
-    outline: rgba(255, 255, 255, 0.4) dotted 2px;
-    outline: rgba(9, 22, 29, 0.4) dotted 2px;
+    outline-color: rgba(255, 255, 255, 0.4);
+    outline-color: rgba(9, 22, 29, 0.4);
   }
 
   &:hover,
