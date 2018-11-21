@@ -9,8 +9,10 @@
     :max="max"
     :interval="interval"
     :value="value"
+    :prefix="prefix"
     :suffix="suffix"
-    :formatter="'{value}' + suffix">
+    :formatter="prefix + '{value}' + suffix"
+    :data="data">
   </vue-slider-component>
 </template>
 
@@ -28,9 +30,21 @@ export default {
   },
 
   props: {
+    value: {
+      type: [String, Number],
+      defualt: 0
+    },
+    prefix: {
+      type: String,
+      default: ""
+    },
     suffix: {
       type: String,
-      default: "px"
+      default: ""
+    },
+    data: {
+      type: String,
+      default: null
     }
   }
 };
