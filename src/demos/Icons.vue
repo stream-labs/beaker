@@ -2984,7 +2984,7 @@
 import { Component, Vue } from "vue-property-decorator";
 
 @Component({})
-export default class Badges extends Vue {}
+export default class Icons extends Vue {}
 </script>
 
 <style lang="less" scoped>

@@ -32,11 +32,14 @@ export default class Tabs extends Vue {
     }
   ];
 
-  @Prop() value!: string;
+  @Prop()
+  value!: string;
 
-  @Prop() className!: string;
+  @Prop()
+  className!: string;
 
-  @Prop() hideContent!: boolean;
+  @Prop()
+  hideContent!: boolean;
 
   showTab(tab: string) {
     this.$emit("input", tab);
