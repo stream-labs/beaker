@@ -54,6 +54,14 @@ export default class TabsDemo extends Vue {
     {
       name: "Advanced",
       value: "advanced"
+    },
+    {
+      name: "Account",
+      value: "Account"
+    },
+    {
+      name: "Integrations",
+      value: "integrations"
     }
   ];
 

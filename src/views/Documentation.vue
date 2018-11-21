@@ -25,6 +25,7 @@ import Accordions from "@/demos/Accordions.vue";
 import Badges from "@/demos/Badges.vue";
 import ButtonsDemo from "@/demos/Buttons.vue";
 import Callouts from "@/demos/Callouts.vue";
+import ColorPickers from "@/demos/ColorPickers.vue";
 import Forms from "@/demos/Forms.vue";
 import Icons from "@/demos/Icons.vue";
 import Inputs from "@/demos/Inputs.vue";
@@ -40,6 +41,7 @@ import Toggles from "@/demos/Toggles.vue";
     Badges,
     ButtonsDemo,
     Callouts,
+    ColorPickers,
     Forms,
     Icons,
     Inputs,
