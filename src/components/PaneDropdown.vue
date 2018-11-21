@@ -82,88 +82,99 @@ export default class PaneDropdown extends Vue {
   &__slot-list {
     display: none;
   }
-}
 
-.pane-dropdown--left {
-  .pane-dropdown__menu {
-    left: 0;
-    right: auto;
-  }
-}
+  &__menu {
+    position: absolute;
+    top: 25px;
+    right: -4px;
+    z-index: 100;
+    width: auto;
+    max-height: 300px;
+    margin: 0;
+    padding: 0;
+    .radius();
+    text-align: left;
+    list-style-type: none;
+    background-color: @white;
+    box-shadow: 0 6px 14px rgba(55, 71, 79, 0.1);
+    overflow-y: auto;
 
-.pane-dropdown__menu {
-  position: absolute;
-  top: 25px;
-  right: -4px;
-  z-index: 100;
-  width: auto;
-  max-height: 300px;
-  margin: 0;
-  padding: 0;
-  .radius();
-  text-align: left;
-  list-style-type: none;
-  background-color: @white;
-  box-shadow: 0 6px 14px rgba(55, 71, 79, 0.1);
-  overflow-y: auto;
+    li {
+      .margin-bottom();
 
-  &.active {
-    display: block;
-  }
-
-  li {
-    margin-bottom: 8px;
-
-    &:last-child {
-      margin-bottom: 0;
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 
-  .pane-dropdown__link {
+  &__link {
     width: 100%;
-    white-space: nowrap;
     margin-left: 0;
-    color: @day-paragraph;
     text-decoration: none;
+    white-space: nowrap;
+    color: @day-paragraph;
 
     &:hover {
       color: @day-title;
     }
   }
+
+  &__list {
+    .margin();
+    padding: 0;
+    list-style-type: none;
+  }
+
+  &__toggle {
+    .transition();
+    text-decoration: none;
+    cursor: pointer;
+
+    span {
+      display: flex;
+      align-items: center;
+    }
+
+    i {
+      font-size: 16px;
+      color: @icon;
+      margin-left: 4px;
+    }
+  }
+
+  &__toggle--active {
+    color: @dark-2;
+  }
 }
 
-// .panel-dropdown--button-toggle {
+// .pane-dropdown--left {
 //   .pane-dropdown__menu {
-//     top: 34px;
-//     right: 0;
-//     min-width: 100%;
+//     left: 0;
+//     right: auto;
 //   }
 // }
 
-.pane-dropdown__list {
-  .margin();
-  padding: 0;
-  list-style-type: none;
-}
+.night {
+  .pane-dropdown {
+    &__toggle {
+      &:hover {
+        color: @white;
+      }
+    }
 
-.pane-dropdown__toggle {
-  .transition();
-  text-decoration: none;
-  cursor: pointer;
+    &__menu {
+      background-color: @dark-4;
+    }
 
-  span {
-    display: flex;
-    align-items: center;
+    &__link,
+    a {
+      color: @night-paragraph;
+
+      &:hover {
+        color: @night-title;
+      }
+    }
   }
-
-  i {
-    font-size: 16px;
-    color: @icon;
-    margin-left: 4px;
-  }
-}
-
-.pane-dropdown__toggle--active {
-  color: @dark-2;
 }
 </style>
