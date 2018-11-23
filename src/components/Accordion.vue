@@ -33,12 +33,19 @@ export default class Accordion extends Vue {
   @Prop()
   closedTitle!: string;
 
+  @Prop()
+  title!: string;
+
   defaultOpen = false;
   defaultBorder = false;
 
   created() {
     this.defaultOpen = this.isOpen;
     this.defaultBorder = this.noBorder;
+
+    if (this.title) {
+      this.openedTitle = this.closedTitle = this.title;
+    }
   }
 
   toggleAccordion(event: any) {
