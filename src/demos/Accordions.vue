@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="section">
-      <h2>Accordions</h2>
+      <h1>Accordions</h1>
       <h3>Default settings</h3>
       <Accordion
         :openedTitle="'Hide Code'"

@@ -2,40 +2,7 @@
   <div>
     <div class="section">
       <h1>Toggles</h1>
-      <p>Toggle between two custom options such as visible and hidden. </p>
-      <toggle :values="toggleOption" :selected.sync="selectedOption" :default="'visible'"></toggle>
-
-      <accordion
-        :openedTitle="'Hide Code'"
-        :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre><code>&lt;toggle
-  :values=&quot;toggleOptions&quot;
-  :selected.sync=&quot;toggleSelected&quot;
-  :default=&quot;'visible'&quot;&gt;
-&lt;/toggle&gt;</code></pre>
-        </div>
-      </accordion>
-    </div>
-
-    <div class="section">
-      <h2>Props</h2>
-      <h3>values - Required</h3>
-      <p>Use the <strong>values</strong> prop to hold your toggle options. It accepts an object with strings for the keys and HTML for the values.</p>
-
-      <h3>selected.sync - Required</h3>
-      <p>Use the <strong>selected.sync</strong> prop as a bind to the currently selected toggle option.</p>
-
-      <h3>default - Required</h3>
-      <p>Set the <strong>default</strong> prop in order for the component to have an selected toggle option when created.</p>
-
-      <toggle
-        :values="{
-          'show': '<strong>Show</strong>',
-          'hide': '<strong>hide</strong>'
-        }"
-        :selected.sync="selectedTextOption"
-        :default="'show'"></toggle>
+      <p>Toggle between two custom options such as show and hide.</p>
 
       <accordion
         :openedTitle="'Hide Code'"
@@ -43,15 +10,54 @@
         <div slot="content">
           <pre><code>&lt;toggle
   :values=&quot;{
-    'visible': '&lt;strong&gt;Visible&lt;/strong&gt;',
-    'hidden': '&lt;strong&gt;Hidden&lt;/strong&gt;'
+    'show': `&lt;i class='icon-view'&gt;&lt;/i&gt;`,
+    'hide': `&lt;i class='icon-hide'&gt;&lt;/i&gt;`
   }&quot;
   :selected.sync=&quot;selectedOption&quot;
   :default=&quot;'visible'&quot;&gt;
 &lt;/toggle&gt;</code></pre>
         </div>
       </accordion>
+
+      <toggle
+        :values="{
+          'show': `<i class='icon-view'></i>`,
+          'hide': `<i class='icon-hide'></i>`
+        }"
+        :selected.sync="selectedTextOption"
+        :default="'show'"></toggle>
     </div>
+
+    <table class="docs-table">
+      <thead>
+        <tr>
+          <th>Prop</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>values</td>
+          <td>object</td>
+          <td>null</td>
+          <td>Set toggle options with strings for the keys and HTML for the values. Keys will also be displayed as toggle title attributes.</td>
+        </tr>
+        <tr>
+          <td>selected.sync</td>
+          <td>string</td>
+          <td>null</td>
+          <td>Use as a bind to the currently selected toggle option.</td>
+        </tr>
+        <tr>
+          <td>default</td>
+          <td>string</td>
+          <td>null</td>
+          <td>Set to have a preselected toggle option when created.</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -68,11 +74,6 @@ import Toggle from "./../components/Toggle.vue";
   }
 })
 export default class Toggles extends Vue {
-  toggleOption = {
-    visible: "<i class='icon-view'></i>",
-    hidden: "<i class='icon-hide'></i>"
-  };
-
   selectedOption = "";
   selectedTextOption = "";
 }
