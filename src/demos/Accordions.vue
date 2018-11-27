@@ -63,6 +63,59 @@
         </div>
       </Accordion>
 
+      <h3>Accordion within Accordion</h3>
+      <Accordion
+        :openedTitle="'Hide Code'"
+        :closedTitle="'Show Code'"
+        class="docs-code">
+        <div slot="content">
+          <pre>
+<code>&lt;Accordion :opened-title=&quot;'Hide Inner Accordion'&quot; :closed-title=&quot;'Show Inner Accordion'&quot;&gt;
+  &lt;div slot=&quot;content&quot;&gt;
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    &lt;Accordion :opened-title=&quot;'Hide Content'&quot; :closed-title=&quot;'Show Content'&quot;&gt;
+      &lt;div slot=&quot;content&quot;&gt;
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      &lt;/div&gt;
+    &lt;/Accordion&gt;
+  &lt;/div&gt;
+&lt;/Accordion&gt;</code></pre>
+        </div>
+      </Accordion>
+      <Accordion :opened-title="'Hide Inner Accordion'" :closed-title="'Show Inner Accordion'">
+        <div slot="content">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <Accordion :opened-title="'Hide Content'" :closed-title="'Show Content'">
+            <div slot="content">
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
+          </Accordion>
+        </div>
+      </Accordion>
+
+      <h3>Alternative toggle slot</h3>
+      <Accordion
+        :openedTitle="'Hide Code'"
+        :closedTitle="'Show Code'"
+        class="docs-code">
+        <div slot="content">
+          <pre>
+<code>&lt;Accordion :opened-title=&quot;'Hide Content'&quot; :closed-title=&quot;'Show Content'&quot; :no-border=&quot;true&quot;&gt;
+  &lt;div slot=&quot;content&quot;&gt;
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+  &lt;/div&gt;
+&lt;/Accordion&gt;</code></pre>
+        </div>
+      </Accordion>
+      <Accordion>
+        <div slot="toggle">
+          <img class="logo" alt="Vue logo" src="../assets/imgs/beaker-round.svg">
+        </div>
+        <div slot="content">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </div>
+      </Accordion>
+
       <table class="docs-table">
         <thead>
           <tr>
@@ -77,13 +130,19 @@
             <td>openedTitle</td>
             <td>string</td>
             <td>null</td>
-            <td>The maximum numerical value that can be selected</td>
+            <td>Title to display when accordion is open</td>
           </tr>
           <tr>
             <td>closedTitle</td>
             <td>string</td>
             <td>null</td>
-            <td>The minimum numerical value that can be selected</td>
+            <td>Title to display when accordion is closed</td>
+          </tr>
+          <tr>
+            <td>title</td>
+            <td>string</td>
+            <td>null</td>
+            <td>(Optional) Overrides both open and closed titles</td>
           </tr>
           <tr>
             <td>isOpened</td>
