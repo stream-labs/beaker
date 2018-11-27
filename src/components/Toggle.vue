@@ -3,6 +3,7 @@
     <button type="button"
       v-for="(val, key) in values"
       :key="val.id"
+      :title="key | capitalize"
       @click="$emit('update:selected', key)"
       :class="['toggle__option', { 'toggle__option--active': selected === key }]"
       v-html="val"
@@ -13,7 +14,15 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 
-@Component({})
+@Component({
+  filters: {
+    capitalize(value: string) {
+      if (!value) return "";
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    }
+  }
+})
 export default class Toggle extends Vue {
   @Prop()
   values!: object;

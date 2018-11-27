@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h2>Banners</h2>
+    <h1>Banners</h1>
     <Tabs
       :tabs="tabs"
       :value="selectedTab"
       @input="onSelectTabHandler">
       <div slot="marketing">
-        <h3>Marketing Banner</h3>
+        <h2>Marketing Banner</h2>
         <Accordion
           :openedTitle="'Hide Code'"
           :closedTitle="'Show Code'">
@@ -124,7 +124,7 @@
       </div>
 
       <div slot="sale">
-        <h3>Sale Banner</h3>
+        <h2>Sale Banner</h2>
         <Accordion
           :openedTitle="'Hide Code'"
           :closedTitle="'Show Code'">

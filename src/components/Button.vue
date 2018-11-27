@@ -18,7 +18,7 @@
       </span>
       <span v-if="description" class="button__description">{{ description }}</span>
     </span>
-    <i v-if="variation === 'slobs-download'" class="fab fa-windows"></i>
+    <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
     <span v-if="price">{{ price }}</span>
   </component>
 </template>
@@ -158,6 +158,7 @@ export default class Button extends Vue {
   border: 1px solid transparent;
   text-decoration: none;
   position: relative;
+  outline: transparent dotted 2px;
 
   i {
     .margin-right();
@@ -166,8 +167,8 @@ export default class Button extends Vue {
 
   &:focus,
   &.is-focused {
-    outline: rgba(255, 255, 255, 0.4) dotted 2px;
-    outline: rgba(9, 22, 29, 0.4) dotted 2px;
+    outline-color: rgba(255, 255, 255, 0.4);
+    outline-color: rgba(9, 22, 29, 0.4);
   }
 
   &:hover,
@@ -349,7 +350,7 @@ export default class Button extends Vue {
     align-items: flex-start;
   }
 
-  .fab {
+  .icon-windows {
     font-size: 16px;
     color: @white;
     margin-left: 40px;

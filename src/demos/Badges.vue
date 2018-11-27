@@ -2,7 +2,7 @@
   <div>
     <div class="section">
       <h1>Badges</h1>
-      <p>By default, our badges are designed to be on the right side of elements with 8px of margin on the left. If you would like to use a badge on the left side of an element, add <code>.badge--left</code> and it will switch the margin to be on the right side.</p>
+      <p>By default, our badges are designed to be on the right side of elements with 8px of margin on the left. If you would like to use a badge on the left side of an element, set prop <code>align-left="true"</code> and it will switch the margin to be on the right side.</p>
       <Accordion
         :openedTitle="'Hide Code'"
         :closedTitle="'Show Code'">
@@ -44,12 +44,13 @@
   Pro
 &lt;/badge&gt;
 
-&lt;progress-badge
+&lt;badge
+  :variant=&quot;'progress'&quot;
   :bar-color=&quot;'#8736e0'&quot;
   :current=&quot;17&quot;
   :total=&quot;25&quot;
   :suffix=&quot;'Sold'&quot;&gt;
-&lt;/progress-badge&gt;</code></pre>
+&lt;/badge&gt;</code></pre>
         </div>
       </Accordion>
 
@@ -106,7 +107,7 @@
           <td>variant</td>
           <td>string</td>
           <td>"success"</td>
-          <td>How the badge will look or funciton. Variant options: success, tag, new, beta, warning, pro, and progress.</td>
+          <td>How the badge will look or funciton. Variants: <code>success</code>, <code>tag</code>, <code>new</code>, <code>beta</code>, <code>warning</code>, <code>pro</code>, and <code>progress</code>.</td>
         </tr>
         <tr>
           <td>alignLeft</td>
@@ -124,37 +125,37 @@
           <td>barColor</td>
           <td>string</td>
           <td>"#31c3a2"</td>
-          <td>Background color of progress bar. Variant must be set to "progress".</td>
+          <td>Background color of progress bar. <code>variant</code> prop must be set to <code>progress</code>.</td>
         </tr>
         <tr>
           <td>textColor</td>
           <td>string</td>
           <td>"#ffffff"</td>
-          <td>Text color of progress bar. Variant must be set to "progress".</td>
+          <td>Text color of progress bar. <code>variant</code> prop must be set to <code>progress</code>.</td>
         </tr>
         <tr>
           <td>current</td>
           <td>number</td>
           <td>null</td>
-          <td>Current progress amount. Variant must be set to "progress".</td>
+          <td>Current progress amount. <code>variant</code> prop must be set to <code>progress</code>.</td>
         </tr>
         <tr>
           <td>total</td>
           <td>number</td>
           <td>null</td>
-          <td>Total progross amount. Variant must be set to "progress".</td>
+          <td>Total progross amount. <code>variant</code> prop must be set to <code>progress</code>.</td>
         </tr>
         <tr>
           <td>separator</td>
           <td>string</td>
           <td>"/"</td>
-          <td>Separator between current and total amounts is displayed. Variant must be set to "progress".</td>
+          <td>Separator between current and total amounts is displayed. <code>variant</code> prop must be set to <code>progress</code>.</td>
         </tr>
         <tr>
           <td>suffix</td>
           <td>string</td>
           <td>null</td>
-          <td>String to the right of the total amount. Variant must be set to "progress".</td>
+          <td>String to the right of the total amount. <code>variant</code> prop must be set to <code>progress</code>.</td>
         </tr>
       </tbody>
     </table>
