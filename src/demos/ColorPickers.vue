@@ -1,7 +1,7 @@
 <template>
   <div class="section">
     <h2>Color Picker</h2>
-    <color-picker/>
+    <color-picker></color-picker>
   </div>
 </template>
 

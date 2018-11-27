@@ -1,27 +1,25 @@
 <template>
-  <sketch-picker v-model="colors">
-  </sketch-picker>
+  <color-picker v-model="colors">
+  </color-picker>
 </template>
 
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-// import { Sketch } from "vue-color";
-// const Sketch = require({ Sketch } from "vue-color");
-
+import VueColor from "vue-color";
 
 export default {
   name: "ColorPicker",
-  // extends: Sketch,
+  extends: VueColor.Sketch,
 
   components: {
-    // "sketch-picker": Sketch
+    ColorPicker: VueColor.Sketch
   },
 
   data() {
     return {
       colors: "#194d33"
-    }
+    };
   },
 
   props: {
@@ -35,5 +33,4 @@ export default {
 
 <style lang="less">
 @import "./../styles/Imports";
-
 </style>
