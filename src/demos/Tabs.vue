@@ -31,17 +31,21 @@
         Advanced slot content
       </div>
     </Tabs>
+
+    <!-- <scroll-nav></scroll-nav> -->
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import Accordion from "./../components/Accordion.vue";
+import ScrollNav from "./../components/ScrollNav.vue";
 import Tabs from "./../components/Tabs.vue";
 
 @Component({
   components: {
     Accordion,
+    ScrollNav,
     Tabs
   }
 })
@@ -54,6 +58,14 @@ export default class TabsDemo extends Vue {
     {
       name: "Advanced",
       value: "advanced"
+    },
+    {
+      name: "Account",
+      value: "Account"
+    },
+    {
+      name: "Integrations",
+      value: "integrations"
     }
   ];
 
