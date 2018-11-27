@@ -1,13 +1,38 @@
 <template>
 <div class="tabs-wrapper">
-  <div class="tabs" :class="className">
+  <div class="tabs-nav-container" :class="className">
     <div
-      v-for="tab in tabs"
-      :key="tab.value"
-      class="tab"
-      :class="{ 'is-active': tab.value === value }"
-      @click="showTab(tab.value)">
-      {{ tab.name }}
+      v-if="hasPrev"
+      @click="scrollLeft"
+      class="apps-nav-control flex has-prev">
+      <i class="icon-down icon-left"></i>
+      <span>...</span>
+    </div>
+
+    <div
+      ref="scrollable_tabs"
+      @scroll="calculateScrolls"
+      class="tabs"
+      :class="{
+        'has-next': hasNext,
+        'has-prev': hasPrev
+      }">
+      <span
+        v-for="tab in tabs"
+        :key="tab.value"
+        class="tab"
+        :class="{ 'is-active': tab.value === value }"
+        @click="showTab(tab.value)">
+        {{ tab.name }}
+      </span>
+    </div>
+
+    <div
+      v-if="hasNext"
+      @click="scrollRight"
+      class="apps-nav-control flex has-next">
+      <span>...</span>
+      <i class="icon-down icon-right"></i>
     </div>
   </div>
   <div class="tab-content" v-if="!hideContent">
@@ -24,6 +49,17 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Tabs extends Vue {
+  $refs!: {
+    scrollable_tabs: HTMLDivElement;
+  };
+
+  isMounted = false;
+  tabsContainer!: HTMLDivElement;
+  canScroll = false;
+  hasNext = false;
+  hasPrev = false;
+  private scrollIncrement = 100;
+
   @Prop()
   tabs!: [
     {
@@ -32,21 +68,53 @@ export default class Tabs extends Vue {
     }
   ];
 
-  @Prop()
-  value!: string;
+  @Prop() value!: string;
 
-  @Prop()
-  className!: string;
+  @Prop() className!: string;
 
-  @Prop()
-  hideContent!: boolean;
+  @Prop() hideContent!: boolean;
 
-  showTab(tab: string) {
-    this.$emit("input", tab);
+  created() {
+    window.addEventListener("resize", this.calculateScrolls);
+  }
+
+  destroyed() {
+    window.removeEventListener("resize", this.calculateScrolls);
   }
 
   mounted() {
     if (!this.value) this.showTab(this.tabs[0].value);
+    this.isMounted = true;
+    this.tabsContainer = this.$refs.scrollable_tabs;
+    this.calculateScrolls();
+  }
+
+  scrollLeft() {
+    this.tabsContainer.scrollLeft =
+      this.tabsContainer.scrollLeft - this.scrollIncrement;
+  }
+
+  scrollRight() {
+    this.tabsContainer.scrollLeft =
+      this.tabsContainer.scrollLeft + this.scrollIncrement;
+  }
+
+  calculateScrolls() {
+    if (!this.isMounted) return false;
+    this.canScroll =
+      this.tabsContainer.scrollWidth > this.tabsContainer.clientWidth;
+    this.hasPrev = this.tabsContainer.scrollLeft > 0;
+    let scrollRight =
+      this.tabsContainer.scrollWidth -
+      (this.tabsContainer.scrollLeft + this.tabsContainer.clientWidth);
+
+    this.hasNext = scrollRight > 0;
+    console.log(this.tabsContainer.clientWidth);
+    console.log(this.tabsContainer.scrollWidth);
+  }
+
+  showTab(tab: string) {
+    this.$emit("input", tab);
   }
 }
 </script>
@@ -58,18 +126,33 @@ export default class Tabs extends Vue {
   height: 100%;
 }
 
-.tabs {
+.tabs-nav-container {
   display: flex;
   align-items: flex-end;
+  flex-direction: row;
   justify-content: flex-start;
   background: transparent;
   box-sizing: border-box;
   position: relative;
-  width: 100%;
-  border: 0;
+  max-width: none;
   border-bottom: 1px solid @day-border;
   background: transparent;
-  padding: 0;
+}
+
+.tabs {
+  display: inline-block;
+  overflow-x: auto;
+  white-space: nowrap;
+  overflow-y: hidden;
+  .padding-bottom(2);
+
+  &.has-prev {
+    margin-left: 15px;
+  }
+
+  &.has-next {
+    margin-right: 15px;
+  }
 }
 
 .tab {

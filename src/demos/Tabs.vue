@@ -31,8 +31,6 @@
         Advanced slot content
       </div>
     </Tabs>
-
-    <!-- <scroll-nav></scroll-nav> -->
   </div>
 </template>
 
@@ -66,6 +64,22 @@ export default class TabsDemo extends Vue {
     {
       name: "Integrations",
       value: "integrations"
+    },
+    {
+      name: "Payments",
+      value: "payments"
+    },
+    {
+      name: "Donations",
+      value: "donations"
+    },
+    {
+      name: "Subscriptions",
+      value: "subscriptions"
+    },
+    {
+      name: "Preferences",
+      value: "preferences"
     }
   ];
 
