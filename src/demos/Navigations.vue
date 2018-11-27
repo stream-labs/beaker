@@ -76,8 +76,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-
-import Slider from "./../components/Slider.vue";
+import Accordion from "./../components/Accordion.vue";
 import ScrollNav from "./../components/ScrollNav.vue";
 
 @Component({

@@ -18,22 +18,12 @@
       }"
     >
       <span
-        v-for="(app, index) in topNavApps"
-        :key="index"
-        @click="navigateApp(app.id)"
+        v-for="item in items"
+        :key="item.value"
+        @click="navigateItem(item.value)"
         class="app-tab"
-        :class="{ 'is-active': isSelectedApp(app.id) }">
-        <span> {{ app.manifest.name }} </span>
-        <span v-if="isSelectedApp(app.id)">
-          <i
-            v-if="app.unpacked"
-            @click="refreshApp(app.id)"
-            class="app-tab-icon icon-repeat"></i>
-          <i
-            v-if="isPopOutAllowed(app)"
-            @click="popOut(app.id)"
-            class="app-tab-icon icon-pop-out-1"></i>
-        </span>
+        :class="{ 'is-active': item.value === value }">
+        <span> {{ item.name }} </span>
       </span>
     </div>
     <div
@@ -48,6 +38,60 @@
 </template>
 
 <script lang="ts">
+import Vue from "vue";
+import { Component, Prop } from "vue-property-decorator";
+
+@Component({})
+export default class AppsNav extends Vue {
+  $refs!: {
+    app_tabs: HTMLDivElement;
+  };
+
+  isMounted = false;
+
+  appTabsContainer!: HTMLDivElement;
+  canScroll = false;
+  hasNext = false;
+  hasPrev = false;
+
+  private scrollIncrement = 100;
+
+  created() {
+    window.addEventListener("resize", this.calculateScrolls);
+  }
+
+  destroyed() {
+    window.removeEventListener("resize", this.calculateScrolls);
+  }
+
+  mounted() {
+    this.isMounted = true;
+    this.appTabsContainer = this.$refs.app_tabs;
+    this.calculateScrolls();
+  }
+
+  scrollLeft() {
+    this.appTabsContainer.scrollLeft =
+      this.appTabsContainer.scrollLeft - this.scrollIncrement;
+  }
+
+  scrollRight() {
+    this.appTabsContainer.scrollLeft =
+      this.appTabsContainer.scrollLeft + this.scrollIncrement;
+  }
+
+  calculateScrolls() {
+    if (!this.isMounted) return false;
+    this.canScroll =
+      this.appTabsContainer.scrollWidth > this.appTabsContainer.clientWidth;
+    this.hasPrev = this.appTabsContainer.scrollLeft > 0;
+    let scrollRight =
+      this.appTabsContainer.scrollWidth -
+      (this.appTabsContainer.scrollLeft + this.appTabsContainer.clientWidth);
+
+    this.hasNext = scrollRight > 0;
+  }
+}
 </script>
 
 <style lang="less" scoped>
@@ -60,7 +104,7 @@
   .padding-h-sides();
   position: relative;
   max-width: none;
-  background-color: @day-secondary;
+  background-color: @day-section;
   border-bottom: 1px solid @day-border;
   flex: 0 0 35px;
   height: 35px;
@@ -122,7 +166,7 @@
 
 .night-theme {
   .apps-nav {
-    background-color: @night-primary;
+    background-color: @night-bg;
     border-color: @night-border;
   }
   .app-tab {

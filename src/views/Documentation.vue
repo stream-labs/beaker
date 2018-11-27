@@ -33,6 +33,7 @@ import Dropdowns from "@/demos/Dropdowns.vue";
 import Forms from "@/demos/Forms.vue";
 import Icons from "@/demos/Icons.vue";
 import Inputs from "@/demos/Inputs.vue";
+import Navigations from "@/demos/Navigations.vue";
 import Sliders from "@/demos/Sliders.vue";
 import Tables from "@/demos/Tables.vue";
 import Tabs from "@/demos/Tabs.vue";
@@ -46,14 +47,12 @@ import Toggles from "@/demos/Toggles.vue";
     Banners,
     ButtonsDemo,
     Callouts,
-<<<<<<< HEAD
     ColorPickers,
-=======
     Dropdowns,
->>>>>>> ac38d0b77add6293089e87283055ce26892e7e12
     Forms,
     Icons,
     Inputs,
+    Navigations,
     Sliders,
     Tables,
     Tabs,
