@@ -10,7 +10,8 @@
     :type="submit"
     class="button"
     :class="buttonClasses"
-    :disabled="state === 'disabled'">
+    :disabled="state === 'disabled'"
+  >
     <span>
       <span>
         <i v-if="iconClass" :class="iconClass"></i>
@@ -165,9 +166,13 @@ export default class Button extends Vue {
     color: inherit;
   }
 
+  span {
+    opacity: 1;
+    .transition();
+  }
+
   &:focus,
   &.is-focused {
-    outline-color: rgba(255, 255, 255, 0.4);
     outline-color: rgba(9, 22, 29, 0.4);
   }
 
@@ -188,7 +193,7 @@ export default class Button extends Vue {
       content: "\f1ce";
       font-family: "Font Awesome 5 Free";
       font-weight: 900;
-      .spin();
+      animation: fade-in 0.275s ease, spin 1s ease infinite;
     }
 
     span {
@@ -567,7 +572,8 @@ export default class Button extends Vue {
 
 .night {
   .button {
-    &:focus {
+    &:focus,
+    &.is-focused {
       outline-color: rgba(255, 255, 255, 0.4);
     }
   }
@@ -663,6 +669,26 @@ export default class Button extends Vue {
 
   .inline-button {
     color: @white;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
   }
 }
 </style>
