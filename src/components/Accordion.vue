@@ -1,9 +1,3 @@
-<style>
-.accordion {
-  background-color: yellow;
-}
-</style>
-
 <template>
   <div
     class="accordion"
@@ -39,22 +33,37 @@ export default class Accordion extends Vue {
   @Prop()
   closedTitle!: string;
 
+  @Prop()
+  title!: string;
+
   defaultOpen = false;
   defaultBorder = false;
 
   created() {
     this.defaultOpen = this.isOpen;
     this.defaultBorder = this.noBorder;
+
+    if (this.title) {
+      this.openedTitle = this.closedTitle = this.title;
+    }
   }
 
   toggleAccordion(event: any) {
-    let menu: any = event.target.nextElementSibling;
+    let menu = event.target.nextElementSibling,
+      menuContent;
+
+    // Check if accordion was toggled by title
+    if (event.target.nodeName === "SPAN") {
+      menu = event.target.parentElement.nextElementSibling;
+    }
+
+    menuContent = menu.firstChild;
     this.defaultOpen = !this.defaultOpen;
 
     if (!this.defaultOpen) {
       menu.style.maxHeight = 0;
     } else {
-      menu.style.maxHeight = `${menu.firstChild.firstChild.scrollHeight + 16}px`;
+      menu.style.maxHeight = `calc(${menuContent.scrollHeight}px + 16px`;
     }
   }
 
@@ -74,15 +83,11 @@ export default class Accordion extends Vue {
 }
 </script>
 
-
-
 <style lang="less" scoped>
 @import "./../styles/Imports";
 
 .accordions {
   .accordion {
-    .margin-bottom(3);
-
     &:last-child {
       .margin-bottom(@0);
     }
@@ -95,10 +100,10 @@ export default class Accordion extends Vue {
 
 .accordion {
   .radius();
-  // background-color: transparent;
+  background-color: @day-bg;
   border: 1px solid @day-input-border;
   .margin-bottom(3);
-  user-select: none;
+  text-align: left;
 
   &.is-closed {
     .accordion__menu {
@@ -116,6 +121,7 @@ export default class Accordion extends Vue {
 
 .accordion--no-border {
   border: 0;
+  background-color: transparent;
 
   .accordion__toggle {
     .padding(@0);
@@ -145,6 +151,7 @@ export default class Accordion extends Vue {
   .padding(2);
   .padding-left(5);
   cursor: default;
+  user-select: none;
 
   &:before {
     content: "\e958";
@@ -180,9 +187,15 @@ export default class Accordion extends Vue {
   }
 }
 
-.night {
+.night,
+.night-theme {
   .accordion {
     border-color: @night-input-border;
+    background-color: @night-bg;
+  }
+
+  .accordion--no-border {
+    background-color: transparent;
   }
 
   .accordion__toggle {

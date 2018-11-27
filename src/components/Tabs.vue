@@ -18,7 +18,6 @@
 
 <script lang="ts">
   import { Component, Prop, Watch, Vue } from "vue-property-decorator";
-  
   @Component({})
   export default class Tabs extends Vue {
     @Prop()
@@ -43,13 +42,11 @@
   
     @Prop()
     direction!: number;
-  
-
     tabFrom:number = null;
     tabTo:number = null;
     document: HTMLDocument;
     
-  @Watch('value')
+    @Watch('value')
     onPropertyChanged(value: string, oldValue: string) {
       document.getElementById('underline').style.width = this.underLineWidth + 2 + 'px';
       document.getElementById('underline').style.transform = 'translateX(' + this.underLineX + 'px)';
@@ -57,15 +54,8 @@
       this.tabFrom = this.tabs.indexOf(oldTab);
       let newTab = this.tabs.find((tab) => tab.value === value);
       this.tabTo = this.tabs.indexOf(newTab);
-      
-
- 
-      
-      
     }
-  
-
-  
+   
     get underLineWidth() {
       let el  = document.getElementById(this.value);
       let underLineWidth = el.offsetWidth;
@@ -81,24 +71,14 @@
     get tabDirection() {
       let from = this.tabFrom;
       let to = this.tabTo;
-      
       if(to > from) { return 'right'; };
       if(from > to) { return 'left'; };
-      
     }
 
-      
-      
-
-  
-
-  
     showTab(tab: string, id: number) {
       this.$emit("input", tab);
       this.tabTo = id;
     }
-
-  
 
     mounted() {
       if (!this.value) this.showTab(this.tabs[0].value);
@@ -170,8 +150,6 @@
     transform: translateX(-25%);
   }
   
-  
-
   .tabs-wrapper {
     height: 100%;
   }
@@ -188,7 +166,6 @@
     display: flex;
     transform-origin: top left;
     .padding-v-sides(3);
-
   }
 
   .tabs {
@@ -211,6 +188,15 @@
   .night-theme {
     .tabs {
       border-color: @night-border;
+    }
+  }
+
+  .tab {
+    color: @night-paragraph;
+
+    &.is-active {
+      color: @night-title;
+      border-color: @light-1;
     }
   }
 </style>

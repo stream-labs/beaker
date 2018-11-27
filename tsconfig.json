@@ -24,6 +24,10 @@
       "dom",
       "dom.iterable",
       "scripthost"
+    ],
+    "typeRoots": [
+      "typings",
+      "node_modules/@types"
     ]
   },
   "include": [
@@ -34,9 +38,7 @@
     "tests/**/*.tsx"
   ],
   "exclude": [
-    "node_modules"
-  ],
-  "css": {
-    "extract": false,
-  }
+    "node_modules",
+    "typings"
+  ]
 }

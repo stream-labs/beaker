@@ -1,14 +1,12 @@
 <template>
   <div id="app" :class="[ nightTheme ? nightClasses : '', appClass ]">
     <div id="nav">
-      <div class="theme-toggle">
-        <button @click="toggleDayTheme()" class="button">
-          <i class="fas fa-sun"></i>
-        </button>
-        <button @click="toggleNightTheme()" class="button">
-          <i class="fas fa-moon"></i>
-        </button>
-      </div>
+      <toggle
+        :values="themes"
+        :selected.sync="theme"
+        :default="'day'"
+        @click.native="toggleTheme()">
+      </toggle>
       <router-link to="/">Home</router-link> |
       <router-link to="/documentation">Documentation</router-link>
     </div>
@@ -18,22 +16,30 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import Toggle from "./components/Toggle.vue";
 
-@Component({})
+@Component({
+  components: {
+    Toggle
+  }
+})
 export default class App extends Vue {
   appClass = "app-wrapper";
   nightClasses = ["night", "night-theme"];
-  dayTheme = true;
   nightTheme = false;
+  theme = "";
 
-  toggleDayTheme() {
-    this.dayTheme = true;
-    this.nightTheme = false;
-  }
+  themes = {
+    day: "<i class='icon-view'></i>",
+    night: "<i class='icon-hide'></i>"
+  };
 
-  toggleNightTheme() {
-    this.dayTheme = false;
-    this.nightTheme = true;
+  toggleTheme() {
+    if (this.theme === "night") {
+      this.nightTheme = true;
+    } else {
+      this.nightTheme = false;
+    }
   }
 }
 </script>

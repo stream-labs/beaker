@@ -25,8 +25,8 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 
-import FormGroupH from "./../FormGroupH.vue";
-import FormGroupV from "./../FormGroupV.vue";
+import FormGroupH from "./../components/FormGroupH.vue";
+import FormGroupV from "./../components/FormGroupV.vue";
 
 @Component({
   components: {

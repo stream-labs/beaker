@@ -6,7 +6,7 @@
  */
 
 // Define contexts to require
-const contexts = require.context("@/components/", true, /\.vue$/);
+// const contexts = require.context("@/components/", true, /\.vue$/);
 
 import Accordion from "@/components/Accordion";
 import Button from "@/components/Button";
@@ -14,7 +14,7 @@ import Callout from "@/components/Callout";
 import FormGroupH from "@/components/FormGroupH";
 import FormGroupV from "@/components/FormGroupV";
 import HelloWorld from "@/components/HelloWorld";
-import ProgressBadge from "@/components/ProgressBadge";
+import Badge from "@/components/Badge";
 import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
 import Tabs from "@/components/Tabs";
@@ -27,7 +27,7 @@ const components = [
   FormGroupH,
   FormGroupV,
   HelloWorld,
-  ProgressBadge,
+  Badge,
   Selector,
   Slider,
   Tabs
@@ -51,7 +51,7 @@ export {
   FormGroupH,
   FormGroupV,
   HelloWorld,
-  ProgressBadge,
+  Badge,
   Selector,
   Slider,
   Tabs
@@ -63,7 +63,7 @@ export default {
   FormGroupH,
   FormGroupV,
   HelloWorld,
-  ProgressBadge,
+  Badge,
   Selector,
   Slider,
   Tabs

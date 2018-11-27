@@ -3,11 +3,16 @@
     :height="8"
     :dotHeight="16"
     :dotWidth="24"
-    :tooltip="false"
+    :tooltip="tooltip"
+    :tooltip-dir="'bottom'"
     :min="min"
     :max="max"
     :interval="interval"
-    :value="value">
+    :value="value"
+    :prefix="prefix"
+    :suffix="suffix"
+    :formatter="prefix + '{value}' + suffix"
+    :data="data">
   </vue-slider-component>
 </template>
 
@@ -22,6 +27,25 @@ export default {
 
   components: {
     VueSliderComponent
+  },
+
+  props: {
+    value: {
+      type: [String, Number],
+      defualt: 0
+    },
+    prefix: {
+      type: String,
+      default: ""
+    },
+    suffix: {
+      type: String,
+      default: ""
+    },
+    data: {
+      type: String,
+      default: null
+    }
   }
 };
 </script>
@@ -30,7 +54,9 @@ export default {
 @import "./../styles/Imports";
 
 .vue-slider-component {
-  padding: 5px 12px !important;
+  padding: 4px 0px 28px !important;
+  width: 80% !important;
+  display: inline-block;
 
   .vue-slider {
     background-color: @light-3;
@@ -55,8 +81,8 @@ export default {
         position: absolute;
         top: 0px;
         color: @light-3;
-        font-size: 12px;
-        line-height: 17px;
+        font-size: 11px;
+        line-height: 15px;
         content: "\e996";
         display: inline-block;
       }
@@ -70,6 +96,17 @@ export default {
         transform: rotate(-90deg);
         right: 2px;
       }
+    }
+  }
+
+  .vue-slider-tooltip {
+    background-color: transparent;
+    border: 0;
+    color: @day-title;
+    padding: 0;
+
+    &:before {
+      border: 0 !important;
     }
   }
 }
@@ -90,6 +127,10 @@ export default {
           color: @dark-5;
         }
       }
+    }
+
+    .vue-slider-tooltip {
+      color: @night-title;
     }
   }
 }
