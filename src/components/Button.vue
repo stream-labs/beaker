@@ -168,7 +168,7 @@ export default class Button extends Vue {
 
   span {
     opacity: 1;
-    .transition();
+    transition: opacity 275ms ease;
   }
 
   &:focus,
@@ -193,7 +193,7 @@ export default class Button extends Vue {
       content: "\f1ce";
       font-family: "Font Awesome 5 Free";
       font-weight: 900;
-      animation: fade-in 0.275s ease, spin 1s ease infinite;
+      animation: fade-in 275ms ease, spin 1s ease infinite;
     }
 
     span {
