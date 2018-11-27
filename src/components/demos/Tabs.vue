@@ -10,6 +10,9 @@
       <div slot="advanced">
         Advanced slot content
       </div>
+      <div slot="extra">
+        Extra slot content
+      </div>
     </Tabs>
   </div>
 </template>
@@ -32,6 +35,10 @@ export default class TabsDemo extends Vue {
     {
       name: "Advanced",
       value: "advanced"
+    },
+    {
+      name: "Extra",
+      value: "extra"
     }
   ];
 
