@@ -5,12 +5,14 @@
 
     <div
       class="accordion__toggle"
-      @click="toggleAccordion">
-      <span v-show="defaultOpen">{{ openedTitle }}</span>
-      <span v-show="!defaultOpen">{{ closedTitle }}</span>
+      @click.capture="toggleAccordion">
+      <slot name="toggle">
+        <span v-show="defaultOpen">{{ openedTitle }}</span>
+        <span v-show="!defaultOpen">{{ closedTitle }}</span>
+      </slot>
     </div>
 
-    <div class="accordion__menu">
+    <div class="accordion__menu" ref="menu">
       <slot name="content"></slot>
     </div>
   </div>
@@ -49,22 +51,22 @@ export default class Accordion extends Vue {
   }
 
   toggleAccordion(event: any) {
-    let menu = event.target.nextElementSibling,
-      menuContent;
-
-    // Check if accordion was toggled by title
-    if (event.target.nodeName === "SPAN") {
-      menu = event.target.parentElement.nextElementSibling;
-    }
-
-    menuContent = menu.firstChild;
     this.defaultOpen = !this.defaultOpen;
 
-    if (!this.defaultOpen) {
-      menu.style.maxHeight = 0;
-    } else {
-      menu.style.maxHeight = `calc(${menuContent.scrollHeight}px + 16px`;
+    this.calculateHeight();
+
+    if (this.$parent.calculateHeight) {
+      this.$parent.calculateHeight();
     }
+  }
+
+  calculateHeight() {
+    if (!this.defaultOpen) {
+      this.$refs.menu.style.maxHeight = 0;
+    } else {
+      this.$refs.menu.style.maxHeight = `calc(${this.$refs.menu.children[0].scrollHeight}px + 16px`;
+    }
+    console.log(this.$refs.menu.children[0].scrollHeight);
   }
 
   get accordionClasses() {
