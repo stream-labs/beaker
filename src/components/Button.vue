@@ -12,9 +12,7 @@
     :type="submit"
     class="button"
     :class="buttonClasses"
-    :disabled="state === 'disabled'"
-    :key="type">
-  <div class="ripple"></div>
+    :disabled="state === 'disabled'">
     <span>
       <span>
         <i v-if="iconClass" :class="iconClass"></i>
@@ -266,9 +264,13 @@
     color: inherit;
   }
 
+  span {
+    opacity: 1;
+    transition: opacity 275ms ease;
+  }
+
   &:focus,
   &.is-focused {
-    outline-color: rgba(255, 255, 255, 0.4);
     outline-color: rgba(9, 22, 29, 0.4);
   }
 
@@ -289,7 +291,7 @@
       content: "\f1ce";
       font-family: "Font Awesome 5 Free";
       font-weight: 900;
-      .spin();
+      animation: fade-in 275ms ease, spin 1s ease infinite;
     }
 
     span {
@@ -668,7 +670,8 @@
 
 .night {
   .button {
-    &:focus {
+    &:focus,
+    &.is-focused {
       outline-color: rgba(255, 255, 255, 0.4);
     }
   }
@@ -764,6 +767,26 @@
 
   .inline-button {
     color: @white;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
   }
 }
 </style>
