@@ -8,18 +8,19 @@
     :min="min"
     :max="max"
     :interval="interval"
-    :value="value"
+    :v-model="initialValue"
     :prefix="prefix"
     :suffix="suffix"
     :formatter="prefix + '{value}' + suffix"
-    :data="data">
+    :data="data"
+    ref="slider">
   </vue-slider-component>
 </template>
 
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-const VueSliderComponent = require("vue-slider-component");
+import VueSliderComponent from "vue-slider-component";
 
 export default {
   name: "Slider",
@@ -30,10 +31,6 @@ export default {
   },
 
   props: {
-    value: {
-      type: [String, Number],
-      defualt: 0
-    },
     prefix: {
       type: String,
       default: ""
