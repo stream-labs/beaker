@@ -8,12 +8,11 @@
     :min="min"
     :max="max"
     :interval="interval"
-    :v-model="initialValue"
+    :value="value"
     :prefix="prefix"
     :suffix="suffix"
     :formatter="prefix + '{value}' + suffix"
-    :data="data"
-    ref="slider">
+    :data="data">
   </vue-slider-component>
 </template>
 
@@ -31,6 +30,10 @@ export default {
   },
 
   props: {
+    value: {
+      type: [String, Number],
+      defualt: 0
+    },
     prefix: {
       type: String,
       default: ""
