@@ -4,7 +4,7 @@
     <div
       v-if="hasPrev"
       @click="scrollLeft"
-      class="apps-nav-control flex has-prev">
+      class="tabs-nav-container__control has-prev">
       <i class="icon-down icon-left"></i>
       <span>...</span>
     </div>
@@ -30,11 +30,12 @@
     <div
       v-if="hasNext"
       @click="scrollRight"
-      class="apps-nav-control flex has-next">
+      class="tabs-nav-container__control has-next">
       <span>...</span>
       <i class="icon-down icon-right"></i>
     </div>
   </div>
+
   <div class="tab-content" v-if="!hideContent">
     <slot
       v-for="tab in tabs"
@@ -54,7 +55,7 @@ export default class Tabs extends Vue {
   };
 
   isMounted = false;
-  tabsContainer!: HTMLDivElement;
+  tabsContainer: HTMLDivElement = null as any;
   canScroll = false;
   hasNext = false;
   hasPrev = false;
@@ -83,10 +84,10 @@ export default class Tabs extends Vue {
   }
 
   mounted() {
-    if (!this.value) this.showTab(this.tabs[0].value);
     this.isMounted = true;
     this.tabsContainer = this.$refs.scrollable_tabs;
     this.calculateScrolls();
+    if (!this.value) this.showTab(this.tabs[0].value);
   }
 
   scrollLeft() {
@@ -137,21 +138,40 @@ export default class Tabs extends Vue {
   max-width: none;
   border-bottom: 1px solid @day-border;
   background: transparent;
+  width: 600px;
+}
+
+.tabs-nav-container__control {
+  height: calc(~"2 * " @spacing);
+  display: flex;
+  align-items: flex-end;
+
+  &.has-next {
+    i {
+      .margin-left();
+    }
+  }
+
+  &.has-prev {
+    i {
+      .margin-right();
+    }
+  }
 }
 
 .tabs {
   display: inline-block;
-  overflow-x: auto;
+  overflow-x: hidden;
   white-space: nowrap;
   overflow-y: hidden;
   .padding-bottom(2);
 
   &.has-prev {
-    margin-left: 15px;
+    .margin-left(2);
   }
 
   &.has-next {
-    margin-right: 15px;
+    .margin-right(2);
   }
 }
 

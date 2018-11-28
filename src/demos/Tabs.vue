@@ -20,6 +20,7 @@
 &lt;/Tabs&gt;</code></pre>
       </div>
     </Accordion>
+
     <Tabs
       :tabs="tabs"
       :value="selectedTab"
@@ -80,6 +81,14 @@ export default class TabsDemo extends Vue {
     {
       name: "Preferences",
       value: "preferences"
+    },
+    {
+      name: "Apps",
+      value: "apps"
+    },
+    {
+      name: "Merch",
+      value: "merch"
     }
   ];
 
