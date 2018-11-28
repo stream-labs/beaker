@@ -26,7 +26,8 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class LeftNavigation extends Vue {
-  @Prop() activeSection!: string;
+  @Prop()
+  activeSection!: string;
 
   changeSection(activeSection: string) {
     this.$emit("update-section", activeSection);
