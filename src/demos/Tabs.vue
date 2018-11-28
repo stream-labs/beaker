@@ -89,6 +89,18 @@ export default class TabsDemo extends Vue {
     {
       name: "Merch",
       value: "merch"
+    },
+    {
+      name: "API",
+      value: "api"
+    },
+    {
+      name: "Moderators",
+      value: "moderators"
+    },
+    {
+      name: "Themes",
+      value: "themes"
     }
   ];
 

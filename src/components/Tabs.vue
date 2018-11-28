@@ -1,38 +1,39 @@
 <template>
 <div class="tabs-wrapper">
-  <div class="tabs-nav-container" :class="className">
-    <div
-      v-if="hasPrev"
-      @click="scrollLeft"
-      class="tabs-nav-container__control has-prev">
-      <i class="icon-down icon-left"></i>
-      <span>...</span>
-    </div>
+  <div class="tabs-nav-wrapper">
+    <div class="tabs-nav" :class="className">
+      <div
+        v-if="hasPrev"
+        @click="scrollLeft"
+        class="tabs-nav__control has-prev">
+        <i class="icon-down icon-left"></i>
+      </div>
 
-    <div
-      ref="scrollable_tabs"
-      @scroll="calculateScrolls"
-      class="tabs"
-      :class="{
-        'has-next': hasNext,
-        'has-prev': hasPrev
-      }">
-      <span
-        v-for="tab in tabs"
-        :key="tab.value"
-        class="tab"
-        :class="{ 'is-active': tab.value === value }"
-        @click="showTab(tab.value)">
-        {{ tab.name }}
-      </span>
-    </div>
+      <div
+        ref="scrollable_tabs"
+        @scroll="calculateScrolls"
+        class="tabs"
+        :class="{
+          'has-next': hasNext,
+          'has-prev': hasPrev
+        }">
 
-    <div
-      v-if="hasNext"
-      @click="scrollRight"
-      class="tabs-nav-container__control has-next">
-      <span>...</span>
-      <i class="icon-down icon-right"></i>
+        <span
+          v-for="tab in tabs"
+          :key="tab.value"
+          class="tab"
+          :class="{ 'is-active': tab.value === value }"
+          @click="showTab(tab.value)">
+          {{ tab.name }}
+        </span>
+      </div>
+
+      <div
+        v-if="hasNext"
+        @click="scrollRight"
+        class="tabs-nav__control has-next">
+        <i class="icon-down icon-right"></i>
+      </div>
     </div>
   </div>
 
@@ -127,7 +128,12 @@ export default class Tabs extends Vue {
   height: 100%;
 }
 
-.tabs-nav-container {
+.tabs-nav-wrapper {
+  position: relative;
+  height: 34px;
+}
+
+.tabs-nav {
   display: flex;
   align-items: flex-end;
   flex-direction: row;
@@ -138,13 +144,19 @@ export default class Tabs extends Vue {
   max-width: none;
   border-bottom: 1px solid @day-border;
   background: transparent;
-  width: 600px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
-.tabs-nav-container__control {
+.tabs-nav__control {
   height: calc(~"2 * " @spacing);
   display: flex;
   align-items: flex-end;
+  .margin-bottom(2);
 
   &.has-next {
     i {
@@ -165,6 +177,7 @@ export default class Tabs extends Vue {
   white-space: nowrap;
   overflow-y: hidden;
   .padding-bottom(2);
+  width: 100%;
 
   &.has-prev {
     .margin-left(2);
