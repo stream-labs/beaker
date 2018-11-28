@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-const VueSliderComponent = require("vue-slider-component");
+import VueSliderComponent from "vue-slider-component";
 
 export default {
   name: "Slider",
