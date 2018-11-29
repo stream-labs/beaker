@@ -111,8 +111,6 @@ export default class Tabs extends Vue {
       (this.tabsContainer.scrollLeft + this.tabsContainer.clientWidth);
 
     this.hasNext = scrollRight > 0;
-    console.log(this.tabsContainer.clientWidth);
-    console.log(this.tabsContainer.scrollWidth);
   }
 
   showTab(tab: string) {
@@ -157,16 +155,57 @@ export default class Tabs extends Vue {
   display: flex;
   align-items: flex-end;
   .margin-bottom(2);
+  position: relative;
+
+  &.has-next,
+  &.has-prev {
+    &:before {
+      content: "";
+      width: 40px;
+      height: 16px;
+      position: absolute;
+    }
+  }
 
   &.has-next {
-    i {
-      .margin-left();
+    &:before {
+      right: 16px;
+      background: -moz-linear-gradient(
+        left,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 1) 100%
+      ); /* FF3.6-15 */
+      background: -webkit-linear-gradient(
+        left,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 1) 100%
+      ); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 1) 100%
+      ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     }
   }
 
   &.has-prev {
-    i {
-      .margin-right();
+    &:before {
+      left: 16px;
+      background: -moz-linear-gradient(
+        left,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0) 100%
+      ); /* FF3.6-15 */
+      background: -webkit-linear-gradient(
+        left,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0) 100%
+      ); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0) 100%
+      ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     }
   }
 }
@@ -211,7 +250,7 @@ export default class Tabs extends Vue {
 }
 
 .night-theme {
-  .tabs {
+  .tabs-nav {
     border-color: @night-border;
   }
 
@@ -221,6 +260,48 @@ export default class Tabs extends Vue {
     &.is-active {
       color: @night-title;
       border-color: @light-1;
+    }
+  }
+
+  .tabs-nav__control {
+    &.has-next {
+      &:before {
+        background: -moz-linear-gradient(
+          left,
+          rgba(23, 36, 45, 0) 0%,
+          rgba(23, 36, 45, 1) 100%
+        ); /* FF3.6-15 */
+        background: -webkit-linear-gradient(
+          left,
+          rgba(23, 36, 45, 0) 0%,
+          rgba(23, 36, 45, 1) 100%
+        ); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(
+          to right,
+          rgba(23, 36, 45, 0) 0%,
+          rgba(23, 36, 45, 1) 100%
+        ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      }
+    }
+
+    &.has-prev {
+      &:before {
+        background: -moz-linear-gradient(
+          left,
+          rgba(23, 36, 45, 1) 0%,
+          rgba(23, 36, 45, 0) 100%
+        ); /* FF3.6-15 */
+        background: -webkit-linear-gradient(
+          left,
+          rgba(23, 36, 45, 1) 0%,
+          rgba(23, 36, 45, 0) 100%
+        ); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(
+          to right,
+          rgba(23, 36, 45, 1) 0%,
+          rgba(23, 36, 45, 0) 100%
+        ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      }
     }
   }
 }
