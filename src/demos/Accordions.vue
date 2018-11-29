@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="section">
+    <!-- <div class="section">
       <h1>Accordions</h1>
       <h3>Default settings</h3>
       <Accordion
@@ -81,19 +81,20 @@
   &lt;/div&gt;
 &lt;/Accordion&gt;</code></pre>
         </div>
-      </Accordion>
-      <Accordion :opened-title="'Hide Inner Accordion'" :closed-title="'Show Inner Accordion'">
-        <div slot="content">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          <Accordion :opened-title="'Hide Content'" :closed-title="'Show Content'">
-            <div slot="content">
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
-          </Accordion>
-        </div>
-      </Accordion>
+    </Accordion>-->
+    <Accordion :opened-title="'Hide Inner Accordion'" :closed-title="'Show Inner Accordion'">
+      <div
+        slot="content"
+      >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        <Accordion :opened-title="'Hide Content'" :closed-title="'Show Content'">
+          <div
+            slot="content"
+          >Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum distinctio architecto unde, iste adipisci earum odit saepe incidunt possimus. Autem modi et enim veritatis qui impedit perferendis architecto iure sapiente. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil soluta assumenda optio consequuntur necessitatibus, eum qui placeat praesentium itaque ipsum dolorum. Rem nobis blanditiis id, eligendi rerum quisquam non ipsum. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias et nesciunt ratione! Nihil eum rem ex consectetur amet, tempore natus laborum ad quod provident autem voluptatibus distinctio earum magni facere?</div>
+        </Accordion>
+      </div>
+    </Accordion>
 
-      <h3>Alternative toggle slot</h3>
+    <!-- <h3>Alternative toggle slot</h3>
       <Accordion
         :openedTitle="'Hide Code'"
         :closedTitle="'Show Code'"
@@ -114,51 +115,50 @@
         <div slot="content">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </div>
-      </Accordion>
-
-      <table class="docs-table">
-        <thead>
-          <tr>
-            <th>Prop</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>openedTitle</td>
-            <td>string</td>
-            <td>null</td>
-            <td>Title to display when accordion is open</td>
-          </tr>
-          <tr>
-            <td>closedTitle</td>
-            <td>string</td>
-            <td>null</td>
-            <td>Title to display when accordion is closed</td>
-          </tr>
-          <tr>
-            <td>title</td>
-            <td>string</td>
-            <td>null</td>
-            <td>(Optional) Overrides both open and closed titles</td>
-          </tr>
-          <tr>
-            <td>isOpened</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>Have the accordion open by default</td>
-          </tr>
-          <tr>
-            <td>noBorder</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>Alternative style with no border or padding</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    </Accordion>-->
+    <table class="docs-table">
+      <thead>
+        <tr>
+          <th>Prop</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>openedTitle</td>
+          <td>string</td>
+          <td>null</td>
+          <td>Title to display when accordion is open</td>
+        </tr>
+        <tr>
+          <td>closedTitle</td>
+          <td>string</td>
+          <td>null</td>
+          <td>Title to display when accordion is closed</td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>string</td>
+          <td>null</td>
+          <td>(Optional) Overrides both open and closed titles</td>
+        </tr>
+        <tr>
+          <td>isOpened</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>Have the accordion open by default</td>
+        </tr>
+        <tr>
+          <td>noBorder</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>Alternative style with no border or padding</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- </div> -->
   </div>
 </template>
 

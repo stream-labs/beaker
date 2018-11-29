@@ -1,11 +1,6 @@
 <template>
-  <div
-    class="accordion"
-    :class="[ accordionClasses ]">
-
-    <div
-      class="accordion__toggle"
-      @click.capture="toggleAccordion">
+  <div class="accordion" :class="[ accordionClasses ]">
+    <div class="accordion__toggle" @click.capture="toggleAccordion">
       <slot name="toggle">
         <span v-show="defaultOpen">{{ openedTitle }}</span>
         <span v-show="!defaultOpen">{{ closedTitle }}</span>
@@ -23,6 +18,10 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Accordion extends Vue {
+  $refs!: {
+    menu: HTMLDivElement;
+  };
+
   @Prop()
   isOpen!: boolean;
 
@@ -53,20 +52,37 @@ export default class Accordion extends Vue {
   toggleAccordion(event: any) {
     this.defaultOpen = !this.defaultOpen;
 
-    this.calculateHeight();
+    let parent: any = this.$parent;
+    let parentMenu: any = this.$parent.$refs.menu;
 
-    if (this.$parent.calculateHeight) {
-      this.$parent.calculateHeight();
+    if (
+      parent.$el === document.querySelector(".accordion") &&
+      parent.defaultOpen === true
+    ) {
+      parentMenu.style.maxHeight = "none";
     }
+
+    if (
+      this.$refs.menu.style.maxHeight === "none" &&
+      this.defaultOpen === false
+    ) {
+      this.$refs.menu.style.maxHeight = `${this.$refs.menu.children[0]
+        .scrollHeight + 16}px`;
+      this.$refs.menu.style.maxHeight = this.calculateHeight(this.$refs.menu);
+      return;
+    }
+
+    this.$refs.menu.style.maxHeight = this.calculateHeight(this.$refs.menu);
   }
 
-  calculateHeight() {
+  calculateHeight(element: any) {
+    let newHeight = element.children[0].scrollHeight;
+
     if (!this.defaultOpen) {
-      this.$refs.menu.style.maxHeight = 0;
+      return "0";
     } else {
-      this.$refs.menu.style.maxHeight = `calc(${this.$refs.menu.children[0].scrollHeight}px + 16px`;
+      return `${newHeight + 32}px`;
     }
-    console.log(this.$refs.menu.children[0].scrollHeight);
   }
 
   get accordionClasses() {
@@ -104,7 +120,7 @@ export default class Accordion extends Vue {
   .radius();
   background-color: @day-bg;
   border: 1px solid @day-input-border;
-  .margin-bottom(3);
+  // .margin-bottom(3);
   text-align: left;
 
   &.is-closed {
@@ -113,7 +129,7 @@ export default class Accordion extends Vue {
       .padding-v-sides(@0);
     }
 
-    .accordion__toggle {
+    & > .accordion__toggle {
       &:before {
         content: "\e957";
       }
