@@ -9,7 +9,7 @@
       <span>...</span>
     </div>
     <div
-      ref="app_tabs"
+      ref="scrollable_nav"
       @scroll="calculateScrolls"
       class="apps-tab__container"
       :class="{
@@ -44,11 +44,20 @@ import { Component, Prop } from "vue-property-decorator";
 @Component({})
 export default class AppsNav extends Vue {
   $refs!: {
-    app_tabs: HTMLDivElement;
+    scrollable_nav: HTMLDivElement;
   };
 
-  isMounted = false;
+  @Prop()
+  items!: [
+    {
+      name: string;
+      value: string;
+    }
+  ];
 
+  @Prop() value!: string;
+
+  isMounted = false;
   appTabsContainer!: HTMLDivElement;
   canScroll = false;
   hasNext = false;
@@ -66,7 +75,7 @@ export default class AppsNav extends Vue {
 
   mounted() {
     this.isMounted = true;
-    this.appTabsContainer = this.$refs.app_tabs;
+    this.appTabsContainer = this.$refs.scrollable_nav;
     this.calculateScrolls();
   }
 
@@ -90,6 +99,10 @@ export default class AppsNav extends Vue {
       (this.appTabsContainer.scrollLeft + this.appTabsContainer.clientWidth);
 
     this.hasNext = scrollRight > 0;
+  }
+
+  navigateItem(item: string) {
+    this.$emit("input", item);
   }
 }
 </script>
@@ -116,13 +129,12 @@ export default class AppsNav extends Vue {
   overflow-x: auto;
   white-space: nowrap;
   overflow-y: hidden;
-  // margin-bottom: -4px;
 
   &.has-prev {
-    margin-left: 15px;
+    .margin-left(2);
   }
   &.has-next {
-    margin-right: 15px;
+    .margin-right(2);
   }
 }
 

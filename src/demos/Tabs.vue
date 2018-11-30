@@ -20,6 +20,7 @@
 &lt;/Tabs&gt;</code></pre>
       </div>
     </Accordion>
+
     <Tabs
       :tabs="tabs"
       :value="selectedTab"
@@ -31,8 +32,6 @@
         Advanced slot content
       </div>
     </Tabs>
-
-    <!-- <scroll-nav></scroll-nav> -->
   </div>
 </template>
 
@@ -66,6 +65,42 @@ export default class TabsDemo extends Vue {
     {
       name: "Integrations",
       value: "integrations"
+    },
+    {
+      name: "Payments",
+      value: "payments"
+    },
+    {
+      name: "Donations",
+      value: "donations"
+    },
+    {
+      name: "Subscriptions",
+      value: "subscriptions"
+    },
+    {
+      name: "Preferences",
+      value: "preferences"
+    },
+    {
+      name: "Apps",
+      value: "apps"
+    },
+    {
+      name: "Merch",
+      value: "merch"
+    },
+    {
+      name: "API",
+      value: "api"
+    },
+    {
+      name: "Moderators",
+      value: "moderators"
+    },
+    {
+      name: "Themes",
+      value: "themes"
     }
   ];
 
