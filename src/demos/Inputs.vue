@@ -59,6 +59,11 @@
       <h2>Radio Buttons</h2>
     </div> -->
 
+    <div class="section">
+      <h2>Layout Picker</h2>
+      <layout-picker @input="value => emitInput(value)"></layout-picker>
+    </div>
+
   </div>
 </template>
 
@@ -67,11 +72,13 @@ import { Component, Vue } from "vue-property-decorator";
 
 import Selector from "./../components/Selector.vue";
 import Checkbox from "./../components/Checkbox.vue";
+import LayoutPicker from "./../components/LayoutPicker.vue";
 
 @Component({
   components: {
     Selector,
-    Checkbox
+    Checkbox,
+    LayoutPicker
   }
 })
 export default class Inputs extends Vue {
