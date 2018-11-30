@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
+    "noImplicitAny": true,
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
@@ -24,10 +25,6 @@
       "dom",
       "dom.iterable",
       "scripthost"
-    ],
-    "typeRoots": [
-      "typings",
-      "node_modules/@types"
     ]
   },
   "include": [
@@ -35,10 +32,10 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "tests/**/*.tsx",
+    "./index.d.ts"
   ],
   "exclude": [
-    "node_modules",
-    "typings"
+    "node_modules"
   ]
 }

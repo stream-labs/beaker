@@ -8,6 +8,7 @@
       <banners v-if="activeSection === 'banners'"/>
       <buttons-demo v-if="activeSection === 'buttons'"/>
       <callouts v-if="activeSection === 'callouts'"/>
+      <color-pickers v-if="activeSection === 'color-pickers'"/>
       <dropdowns v-if="activeSection === 'dropdowns'"/>
       <forms v-if="activeSection === 'forms'"/>
       <icons v-if="activeSection === 'icons'"/>

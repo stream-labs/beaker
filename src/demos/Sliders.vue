@@ -2,11 +2,14 @@
   <div>
     <div class="section">
       <h2>Default Slider</h2>
-      <p>Our slider component is extended from <a target="_blank" href="https://github.com/NightCatSama/vue-slider-component">Vue Slider Component</a>
+      <p>
+        Our slider component is extended from
+        <a
+          target="_blank"
+          href="https://github.com/NightCatSama/vue-slider-component"
+        >Vue Slider Component</a>
       </p>
-      <accordion
-        :openedTitle="'Hide Code'"
-        :closedTitle="'Show Code'">
+      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre>
 <code>&lt;slider
@@ -19,14 +22,7 @@
       </accordion>
 
       <div class="row">
-        <slider
-          :min="0"
-          :max="100"
-          :interval="1"
-          :value="50"
-          :suffix="'%'"
-          :tooltip="'always'">
-        </slider>
+        <slider :min="0" :max="100" :interval="1" :value="50" :suffix="'%'" :tooltip="'always'"></slider>
       </div>
 
       <table class="docs-table">

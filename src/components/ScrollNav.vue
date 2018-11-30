@@ -1,40 +1,35 @@
 <template>
-<div>
-  <div class="apps-nav">
-    <div
-      v-if="hasPrev"
-      @click="scrollLeft"
-      class="apps-nav-control flex has-prev">
-      <i class="icon-down icon-left"></i>
-      <span>...</span>
-    </div>
-    <div
-      ref="app_tabs"
-      @scroll="calculateScrolls"
-      class="apps-tab__container"
-      :class="{
+  <div>
+    <div class="apps-nav">
+      <div v-if="hasPrev" @click="scrollLeft" class="apps-nav-control flex has-prev">
+        <i class="icon-down icon-left"></i>
+        <span>...</span>
+      </div>
+      <div
+        ref="scrollable_nav"
+        @scroll="calculateScrolls"
+        class="apps-tab__container"
+        :class="{
         'has-next': hasNext,
         'has-prev': hasPrev
       }"
-    >
-      <span
-        v-for="item in items"
-        :key="item.value"
-        @click="navigateItem(item.value)"
-        class="app-tab"
-        :class="{ 'is-active': item.value === value }">
-        <span> {{ item.name }} </span>
-      </span>
-    </div>
-    <div
-      v-if="hasNext"
-      @click="scrollRight"
-      class="apps-nav-control flex has-next">
-      <span>...</span>
-      <i class="icon-down icon-right"></i>
+      >
+        <span
+          v-for="item in items"
+          :key="item.value"
+          @click="navigateItem(item.value)"
+          class="app-tab"
+          :class="{ 'is-active': item.value === value }"
+        >
+          <span>{{ item.name }}</span>
+        </span>
+      </div>
+      <div v-if="hasNext" @click="scrollRight" class="apps-nav-control flex has-next">
+        <span>...</span>
+        <i class="icon-down icon-right"></i>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script lang="ts">
@@ -44,11 +39,21 @@ import { Component, Prop } from "vue-property-decorator";
 @Component({})
 export default class AppsNav extends Vue {
   $refs!: {
-    app_tabs: HTMLDivElement;
+    scrollable_nav: HTMLDivElement;
   };
 
-  isMounted = false;
+  @Prop()
+  items!: [
+    {
+      name: string;
+      value: string;
+    }
+  ];
 
+  @Prop()
+  value!: string;
+
+  isMounted = false;
   appTabsContainer!: HTMLDivElement;
   canScroll = false;
   hasNext = false;
@@ -66,7 +71,7 @@ export default class AppsNav extends Vue {
 
   mounted() {
     this.isMounted = true;
-    this.appTabsContainer = this.$refs.app_tabs;
+    this.appTabsContainer = this.$refs.scrollable_nav;
     this.calculateScrolls();
   }
 
@@ -90,6 +95,10 @@ export default class AppsNav extends Vue {
       (this.appTabsContainer.scrollLeft + this.appTabsContainer.clientWidth);
 
     this.hasNext = scrollRight > 0;
+  }
+
+  navigateItem(item: string) {
+    this.$emit("input", item);
   }
 }
 </script>
@@ -116,13 +125,12 @@ export default class AppsNav extends Vue {
   overflow-x: auto;
   white-space: nowrap;
   overflow-y: hidden;
-  // margin-bottom: -4px;
 
   &.has-prev {
-    margin-left: 15px;
+    .margin-left(2);
   }
   &.has-next {
-    margin-right: 15px;
+    .margin-right(2);
   }
 }
 

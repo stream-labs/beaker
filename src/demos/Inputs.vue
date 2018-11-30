@@ -3,20 +3,20 @@
     <h1>Inputs</h1>
     <div class="section">
       <h2>Text Input</h2>
-      <input type="text" placeholder="Text Input" />
+      <input type="text" placeholder="Text Input">
     </div>
 
     <div class="section">
       <h2>Text Input with Search</h2>
       <div class="input-wrapper--search">
         <i class="icon-search"></i>
-        <input class="input--search" type="text" placeholder="Text Input" />
+        <input class="input--search" type="text" placeholder="Text Input">
       </div>
     </div>
 
     <div class="section">
       <h2>Email Input</h2>
-      <input type="email" placeholder="morgan@streamlabs.com" />
+      <input type="email" placeholder="morgan@streamlabs.com">
     </div>
 
     <div class="section">
@@ -34,31 +34,28 @@
 
       <div class="section">
         <h3>Single Checkbox</h3>
-        <checkbox
-          :label="'Checkbox label'"
-          v-model="checkboxValue0"></checkbox>
+        <checkbox :label="'Checkbox label'" v-model="checkboxValue0"></checkbox>
       </div>
 
       <div class="section">
         <h3>Checkbox Group</h3>
         <div class="checkbox-group">
-          <checkbox
-            :label="'Checkbox label'"
-            v-model="checkboxValue1"></checkbox>
-          <checkbox
-            :label="'Checkbox label'"
-            v-model="checkboxValue2"></checkbox>
-          <checkbox
-            :label="'Checkbox label'"
-            v-model="checkboxValue3"></checkbox>
+          <checkbox :label="'Checkbox label'" v-model="checkboxValue1"></checkbox>
+          <checkbox :label="'Checkbox label'" v-model="checkboxValue2"></checkbox>
+          <checkbox :label="'Checkbox label'" v-model="checkboxValue3"></checkbox>
         </div>
       </div>
     </div>
 
-    <!-- <div class="section">
-      <h2>Radio Buttons</h2>
-    </div> -->
-
+    <div class="section">
+      <h2>Radios</h2>
+      <div class="section">
+        <div class="checkbox-group">
+          <radio :label="'Enable'" :name="'radio-group'" v-model="radioValue1"></radio>
+          <radio :label="'Disable'" :name="'radio-group'" v-model="radioValue2"></radio>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -67,11 +64,13 @@ import { Component, Vue } from "vue-property-decorator";
 
 import Selector from "./../components/Selector.vue";
 import Checkbox from "./../components/Checkbox.vue";
+import Radio from "./../components/Radio.vue";
 
 @Component({
   components: {
     Selector,
-    Checkbox
+    Checkbox,
+    Radio
   }
 })
 export default class Inputs extends Vue {
@@ -79,5 +78,7 @@ export default class Inputs extends Vue {
   checkboxValue1 = false;
   checkboxValue2 = true;
   checkboxValue3 = false;
+  radioValue1 = true;
+  radioValue2 = false;
 }
 </script>
