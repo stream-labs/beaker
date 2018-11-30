@@ -74,18 +74,6 @@
               slot="content"
             >Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum distinctio architecto unde, iste adipisci earum odit saepe incidunt possimus. Autem modi et enim veritatis qui impedit perferendis architecto iure sapiente. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil soluta assumenda optio consequuntur necessitatibus, eum qui placeat praesentium itaque ipsum dolorum. Rem nobis blanditiis id, eligendi rerum quisquam non ipsum. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias et nesciunt ratione! Nihil eum rem ex consectetur amet, tempore natus laborum ad quod provident autem voluptatibus distinctio earum magni facere?</div>
           </Accordion>
-
-          <Accordion :opened-title="'Hide Content'" :closed-title="'Show Content'">
-            <div
-              slot="content"
-            >Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum distinctio architecto unde, iste adipisci earum odit saepe incidunt possimus. Autem modi et enim veritatis qui impedit perferendis architecto iure sapiente. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil soluta assumenda optio consequuntur necessitatibus, eum qui placeat praesentium itaque ipsum dolorum. Rem nobis blanditiis id, eligendi rerum quisquam non ipsum. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias et nesciunt ratione! Nihil eum rem ex consectetur amet, tempore natus laborum ad quod provident autem voluptatibus distinctio earum magni facere?</div>
-          </Accordion>
-
-          <Accordion :opened-title="'Hide Content'" :closed-title="'Show Content'">
-            <div
-              slot="content"
-            >Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum distinctio architecto unde, iste adipisci earum odit saepe incidunt possimus. Autem modi et enim veritatis qui impedit perferendis architecto iure sapiente. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil soluta assumenda optio consequuntur necessitatibus, eum qui placeat praesentium itaque ipsum dolorum. Rem nobis blanditiis id, eligendi rerum quisquam non ipsum. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias et nesciunt ratione! Nihil eum rem ex consectetur amet, tempore natus laborum ad quod provident autem voluptatibus distinctio earum magni facere?</div>
-          </Accordion>
         </div>
       </Accordion>
 
