@@ -20,15 +20,12 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import VueSliderComponent from "vue-slider-component";
-
 export default {
   name: "Slider",
   extends: VueSliderComponent,
-
   components: {
     VueSliderComponent
   },
-
   props: {
     value: {
       type: [String, Number],
@@ -52,7 +49,6 @@ export default {
 
 <style lang="less">
 @import "./../styles/Imports";
-
 .vue-slider-component {
   padding: 4px 0px 28px !important;
   width: 80% !important;
