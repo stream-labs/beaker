@@ -52,36 +52,30 @@ export default class Accordion extends Vue {
   toggleAccordion(event: any) {
     this.defaultOpen = !this.defaultOpen;
 
-    let parent: any = this.$parent;
-    let parentMenu: any = this.$parent.$refs.menu;
+    let parent: any = this.$parent,
+      parentMenu: any = this.$parent.$refs.menu,
+      menu = this.$refs.menu;
 
-    if (
-      parent.$el === document.querySelector(".accordion") &&
-      parent.defaultOpen === true
-    ) {
+    if (parent.$el.classList.contains("accordion") && parent.defaultOpen) {
       parentMenu.style.maxHeight = "none";
     }
 
-    if (
-      this.$refs.menu.style.maxHeight === "none" &&
-      this.defaultOpen === false
-    ) {
-      this.$refs.menu.style.maxHeight = `${this.$refs.menu.children[0]
-        .scrollHeight + 16}px`;
-      this.$refs.menu.style.maxHeight = this.calculateHeight(this.$refs.menu);
-      return;
+    if (menu.style.maxHeight === "none" && !this.defaultOpen) {
+      menu.style.maxHeight = `${menu.children[0].scrollHeight + 16}px`;
     }
 
-    this.$refs.menu.style.maxHeight = this.calculateHeight(this.$refs.menu);
+    menu.style.maxHeight = this.calculateHeight(menu);
   }
 
-  calculateHeight(element: any) {
+  calculateHeight(element: Element) {
     let newHeight = element.children[0].scrollHeight;
+    let padding =
+      (this.$refs.menu.querySelectorAll(".accordion").length + 1) * 16;
 
     if (!this.defaultOpen) {
       return "0";
     } else {
-      return `${newHeight + 32}px`;
+      return `${newHeight + padding}px`;
     }
   }
 
@@ -120,8 +114,12 @@ export default class Accordion extends Vue {
   .radius();
   background-color: @day-bg;
   border: 1px solid @day-input-border;
-  // .margin-bottom(3);
+  .margin-bottom(3);
   text-align: left;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   &.is-closed {
     .accordion__menu {
