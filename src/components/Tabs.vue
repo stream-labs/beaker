@@ -1,49 +1,39 @@
 <template>
-<div class="tabs-wrapper">
-  <div class="tabs-nav-wrapper">
-    <div class="tabs-nav" :class="className">
-      <div
-        v-if="hasPrev"
-        @click="scrollLeft"
-        class="tabs-nav__control has-prev">
-        <i class="icon-down icon-left"></i>
-      </div>
+  <div class="tabs-wrapper">
+    <div class="tabs-nav-wrapper">
+      <div class="tabs-nav" :class="className">
+        <div v-if="hasPrev" @click="scrollLeft" class="tabs-nav__control has-prev">
+          <i class="icon-down icon-left"></i>
+        </div>
 
-      <div
-        ref="scrollable_tabs"
-        @scroll="calculateScrolls"
-        class="tabs"
-        :class="{
+        <div
+          ref="scrollable_tabs"
+          @scroll="calculateScrolls"
+          class="tabs"
+          :class="{
           'has-next': hasNext,
           'has-prev': hasPrev
-        }">
+        }"
+        >
+          <span
+            v-for="tab in tabs"
+            :key="tab.value"
+            class="tab"
+            :class="{ 'is-active': tab.value === value }"
+            @click="showTab(tab.value)"
+          >{{ tab.name }}</span>
+        </div>
 
-        <span
-          v-for="tab in tabs"
-          :key="tab.value"
-          class="tab"
-          :class="{ 'is-active': tab.value === value }"
-          @click="showTab(tab.value)">
-          {{ tab.name }}
-        </span>
-      </div>
-
-      <div
-        v-if="hasNext"
-        @click="scrollRight"
-        class="tabs-nav__control has-next">
-        <i class="icon-down icon-right"></i>
+        <div v-if="hasNext" @click="scrollRight" class="tabs-nav__control has-next">
+          <i class="icon-down icon-right"></i>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="tab-content" v-if="!hideContent">
-    <slot
-      v-for="tab in tabs"
-      :name="tab.value"
-      v-if="tab.value === value"/>
+    <div class="tab-content" v-if="!hideContent">
+      <slot v-for="tab in tabs" :name="tab.value" v-if="tab.value === value"/>
+    </div>
   </div>
-</div>
 </template>
 
 <script lang="ts">
@@ -70,11 +60,14 @@ export default class Tabs extends Vue {
     }
   ];
 
-  @Prop() value!: string;
+  @Prop()
+  value!: string;
 
-  @Prop() className!: string;
+  @Prop()
+  className!: string;
 
-  @Prop() hideContent!: boolean;
+  @Prop()
+  hideContent!: boolean;
 
   created() {
     window.addEventListener("resize", this.calculateScrolls);

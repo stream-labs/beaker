@@ -3,11 +3,12 @@
     v-if="!closed"
     class="callout"
     :class="[ calloutClass, calloutClosedClass ]"
-    @transitionend.self="closed = true">
-    <i
-      v-if="icon"
-      :class="[calloutIcon]"></i>
-    <span><slot/></span>
+    @transitionend.self="closed = true"
+  >
+    <i v-if="icon" :class="[calloutIcon]"></i>
+    <span>
+      <slot/>
+    </span>
     <i v-if="closeable" class="icon-close callout__close-button" @click="closeCallout()"></i>
   </div>
 </template>
@@ -81,7 +82,7 @@ export default class Callout extends Vue {
     top: 10px;
     right: 8px;
     color: inherit;
-    opacity: .5;
+    opacity: 0.5;
     .transition();
     cursor: pointer;
 
