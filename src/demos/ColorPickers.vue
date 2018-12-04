@@ -1,7 +1,7 @@
 <template>
   <div class="section">
     <h2>Color Picker</h2>
-    <color-picker name="colors" :value="colors" v-model="colors" ></color-picker>
+    <color-picker name="colors" :value="colors" v-model="colors"></color-picker>
   </div>
 </template>
 
