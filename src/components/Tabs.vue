@@ -261,6 +261,7 @@ export default class Tabs extends Vue {
   height: 34px;
 }
 
+// hi
 .tabs-nav {
   display: flex;
   align-items: flex-end;
