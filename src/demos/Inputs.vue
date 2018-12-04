@@ -26,7 +26,7 @@
 
     <div class="section">
       <h2>Selector</h2>
-      <selector :options="['Option A', 'Option B', 'Option C']"></selector>
+      <selector v-model="selected" :options="['Option A', 'Option B', 'Option C']"></selector>
     </div>
 
     <div class="section">
@@ -78,6 +78,7 @@ export default class Inputs extends Vue {
   checkboxValue1 = false;
   checkboxValue2 = true;
   checkboxValue3 = false;
+  selected = "Option A";
   radioValue1 = true;
   radioValue2 = false;
 }
