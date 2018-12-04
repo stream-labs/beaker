@@ -59,7 +59,7 @@
 
     <div class="section">
       <h2>Image Input Picker</h2>
-      <image-input-picker v-model="value"></image-input-picker>
+      <image-picker-input v-model="value"></image-picker-input>
     </div>
 
   </div>
@@ -70,14 +70,14 @@ import { Component, Vue } from "vue-property-decorator";
 
 import Selector from "./../components/Selector.vue";
 import Checkbox from "./../components/Checkbox.vue";
-import ImageInputPicker from "./../components/ImageInputPicker.vue";
+import ImagePickerInput from "./../components/ImagePickerInput.vue";
 import Radio from "./../components/Radio.vue";
 
 @Component({
   components: {
     Selector,
     Checkbox,
-    ImageInputPicker,
+    ImagePickerInput,
     Radio
   }
 })
