@@ -7,10 +7,11 @@
     :searchable="searchable"
     :multiple="multiple"
     :placeholder="placeholder"
-    ></v-select>
+    @input="val => emitInput(val)"
+  ></v-select>
 </template>
 
-<script lang="ts">
+<script>
 import { Component, Vue } from "vue-property-decorator";
 import vSelect from "vue-select";
 Vue.component("v-select", vSelect);
@@ -21,6 +22,24 @@ export default {
 
   components: {
     vSelect
+  },
+
+  created() {
+    this.$on("input", setValue);
+  },
+
+  destroyed() {
+    this.$off("input", setValue);
+  },
+
+  methods: {
+    emitInput(val) {
+      this.$emit("input", val);
+    },
+
+    setValue(val) {
+      this.mutableValue = val;
+    }
   }
 };
 </script>
