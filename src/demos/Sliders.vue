@@ -2,7 +2,8 @@
   <div>
     <div class="section">
       <h2>Default Slider</h2>
-      <p>Our slider component is extended from
+      <p>
+        Our slider component is extended from
         <a
           target="_blank"
           href="https://github.com/NightCatSama/vue-slider-component"

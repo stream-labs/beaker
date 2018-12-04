@@ -47,24 +47,15 @@
       </div>
     </div>
 
-    <!-- <div class="section">
+    <div class="section">
       <h2>Radios</h2>
       <div class="section">
-        <h3>Single Radio</h3>
-        <radio :label="'Radio label'" v-model="radioValue1"></radio>
-      </div>
-      <div class="section">
-        <h3>Radio Group</h3>
         <div class="checkbox-group">
-          <radio :label="'Radio label'" :name="'radio-group'" checked></radio>
-          <radio :label="'Radio label'" :name="'radio-group'"></radio>
-          <radio :label="'Radio label'" :name="'radio-group'"></radio>
+          <radio :label="'Enable'" :name="'radio-group'" v-model="radioValue1"></radio>
+          <radio :label="'Disable'" :name="'radio-group'" v-model="radioValue2"></radio>
         </div>
       </div>
-    </div>-->
-    <!-- <div class="section">
-      <h2>Radio Buttons</h2>
-    </div>-->
+    </div>
   </div>
 </template>
 
@@ -73,13 +64,13 @@ import { Component, Vue } from "vue-property-decorator";
 
 import Selector from "./../components/Selector.vue";
 import Checkbox from "./../components/Checkbox.vue";
-// import Radio from "./../components/Radio.vue";
+import Radio from "./../components/Radio.vue";
 
 @Component({
   components: {
     Selector,
-    Checkbox
-    // Radio
+    Checkbox,
+    Radio
   }
 })
 export default class Inputs extends Vue {
@@ -87,5 +78,7 @@ export default class Inputs extends Vue {
   checkboxValue1 = false;
   checkboxValue2 = true;
   checkboxValue3 = false;
+  radioValue1 = true;
+  radioValue2 = false;
 }
 </script>
