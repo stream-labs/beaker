@@ -58,8 +58,8 @@
     </div>
 
     <div class="section">
-      <h2>Layout Picker</h2>
-      <layout-picker @input="value => emitInput(value)"></layout-picker>
+      <h2>Image Input Picker</h2>
+      <image-input-picker v-model="value"></image-input-picker>
     </div>
 
   </div>
@@ -70,14 +70,14 @@ import { Component, Vue } from "vue-property-decorator";
 
 import Selector from "./../components/Selector.vue";
 import Checkbox from "./../components/Checkbox.vue";
-import LayoutPicker from "./../components/LayoutPicker.vue";
+import ImageInputPicker from "./../components/ImageInputPicker.vue";
 import Radio from "./../components/Radio.vue";
 
 @Component({
   components: {
     Selector,
     Checkbox,
-    LayoutPicker,
+    ImageInputPicker,
     Radio
   }
 })
@@ -89,5 +89,6 @@ export default class Inputs extends Vue {
   selected = "Option A";
   radioValue1 = true;
   radioValue2 = false;
+  value = "above";
 }
 </script>

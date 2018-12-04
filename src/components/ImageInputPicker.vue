@@ -6,9 +6,11 @@
     :image="option.image"
     v-for="option in options"
     :key="option.value"
+    :ref="imageOption"
     class="widget-layout-picker__option"
     :class="[value === option.value ? 'active' : '']"
-    @click="emitInput(option.value)"
+    @change="$emit('input', $event.target.selected)"
+    @click="onLabelClick()"
   >
     <img :src="option.image" >
   </div>
@@ -44,8 +46,9 @@ export default class ImagePickerInput extends Vue {
     }
   };
 
-  emitInput(eventData: String, event?: any) {
-    this.$emit("input", eventData, event);
+  onLabelClick() {
+    let input: any = this.$refs[`${this.imageOption}`];
+    input.selected = true;
   }
 }
 </script>
