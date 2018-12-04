@@ -1,40 +1,35 @@
 <template>
-<div>
-  <div class="apps-nav">
-    <div
-      v-if="hasPrev"
-      @click="scrollLeft"
-      class="apps-nav-control flex has-prev">
-      <i class="icon-down icon-left"></i>
-      <span>...</span>
-    </div>
-    <div
-      ref="scrollable_nav"
-      @scroll="calculateScrolls"
-      class="apps-tab__container"
-      :class="{
+  <div>
+    <div class="apps-nav">
+      <div v-if="hasPrev" @click="scrollLeft" class="apps-nav-control flex has-prev">
+        <i class="icon-down icon-left"></i>
+        <span>...</span>
+      </div>
+      <div
+        ref="scrollable_nav"
+        @scroll="calculateScrolls"
+        class="apps-tab__container"
+        :class="{
         'has-next': hasNext,
         'has-prev': hasPrev
       }"
-    >
-      <span
-        v-for="item in items"
-        :key="item.value"
-        @click="navigateItem(item.value)"
-        class="app-tab"
-        :class="{ 'is-active': item.value === value }">
-        <span> {{ item.name }} </span>
-      </span>
-    </div>
-    <div
-      v-if="hasNext"
-      @click="scrollRight"
-      class="apps-nav-control flex has-next">
-      <span>...</span>
-      <i class="icon-down icon-right"></i>
+      >
+        <span
+          v-for="item in items"
+          :key="item.value"
+          @click="navigateItem(item.value)"
+          class="app-tab"
+          :class="{ 'is-active': item.value === value }"
+        >
+          <span>{{ item.name }}</span>
+        </span>
+      </div>
+      <div v-if="hasNext" @click="scrollRight" class="apps-nav-control flex has-next">
+        <span>...</span>
+        <i class="icon-down icon-right"></i>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script lang="ts">
@@ -55,7 +50,8 @@ export default class AppsNav extends Vue {
     }
   ];
 
-  @Prop() value!: string;
+  @Prop()
+  value!: string;
 
   isMounted = false;
   appTabsContainer!: HTMLDivElement;

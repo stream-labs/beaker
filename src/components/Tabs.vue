@@ -12,11 +12,12 @@
           :class="{
           'has-next': hasNext,
           'has-prev': hasPrev}"
-        >
+         >
           <span
             v-for="tab in tabs"
             :key="tab.value"
             class="tab"
+
             :class="{'is-active': tab.value === value}"
             @click="handleClick($event, tab.value)"
           >{{ tab.name }}</span>
@@ -27,7 +28,6 @@
         </div>
       </div>
     </div>
-
     <transition-group
       v-if="!hideContent"
       tag="div"
@@ -44,6 +44,7 @@
         <slot :name="tab.value"/>
       </div>
     </transition-group>
+
   </div>
 </template>
 
@@ -75,11 +76,14 @@ export default class Tabs extends Vue {
     }
   ];
 
-  @Prop() value!: string;
+  @Prop()
+  value!: string;
 
-  @Prop() className!: string;
+  @Prop()
+  className!: string;
 
-  @Prop() hideContent!: boolean;
+  @Prop()
+  hideContent!: boolean;
 
   @Prop() direction!: number;
 
