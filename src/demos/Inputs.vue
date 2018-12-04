@@ -47,7 +47,7 @@
       </div>
     </div>
 
-    <!-- <div class="section">
+    <div class="section">
       <h2>Radios</h2>
       <div class="section">
         <h3>Single Radio</h3>
@@ -61,7 +61,8 @@
           <radio :label="'Radio label'" :name="'radio-group'"></radio>
         </div>
       </div>
-    </div>-->
+    </div>
+
     <!-- <div class="section">
       <h2>Radio Buttons</h2>
     </div>-->
@@ -73,13 +74,13 @@ import { Component, Vue } from "vue-property-decorator";
 
 import Selector from "./../components/Selector.vue";
 import Checkbox from "./../components/Checkbox.vue";
-// import Radio from "./../components/Radio.vue";
+import Radio from "./../components/Radio.vue";
 
 @Component({
   components: {
     Selector,
-    Checkbox
-    // Radio
+    Checkbox,
+    Radio
   }
 })
 export default class Inputs extends Vue {
