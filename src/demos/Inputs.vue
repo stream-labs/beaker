@@ -69,7 +69,7 @@ import Radio from "./../components/Radio.vue";
 @Component({
   components: {
     Selector,
-    Checkbox
+    Checkbox,
     Radio
   }
 })
