@@ -12,8 +12,8 @@
     :prefix="prefix"
     :suffix="suffix"
     :formatter="prefix + '{value}' + suffix"
-    :data="data">
-  </vue-slider-component>
+    :data="data"
+  ></vue-slider-component>
 </template>
 
 
