@@ -22,7 +22,7 @@
       </accordion>
 
       <div class="row">
-        <slider :min="0" :max="100" :interval="1" :value="50" :suffix="'%'" :tooltip="'always'"></slider>
+        <slider :min="0" :max="100" :interval="1" v-model="value" :suffix="'%'" :tooltip="'always'"></slider>
       </div>
 
       <table class="docs-table">
@@ -89,5 +89,7 @@ import Accordion from "./../components/Accordion.vue";
     Accordion
   }
 })
-export default class Sliders extends Vue {}
+export default class Sliders extends Vue {
+  value = 50;
+}
 </script>
