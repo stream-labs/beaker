@@ -1,62 +1,67 @@
 <template>
-<div class="tabs-wrapper">
-  <div class="tabs-nav-wrapper">
-    <div class="tabs-nav" :class="className">
-      <div
-        v-if="hasPrev"
-        @click="scrollLeft"
-        class="tabs-nav__control has-prev">
-        <i class="icon-down icon-left"></i>
-      </div>
-
-      <div
-        ref="scrollable_tabs"
-        @scroll="calculateScrolls"
-        class="tabs"
-        :class="{
+  <div class="tabs-wrapper">
+    <div class="tabs-nav-wrapper">
+      <div class="tabs-nav" :class="className">
+        <div v-show="hasPrev" @click="scrollLeft" class="tabs-nav__control has-prev">
+          <i class="icon-down icon-left"></i>
+        </div>
+        <div
+          ref="scrollable_tabs"
+          class="tabs"
+          @scroll="calculateScrolls"
+          :class="{
           'has-next': hasNext,
-          'has-prev': hasPrev
-        }">
-
-        <span
-          v-for="tab in tabs"
-          :key="tab.value"
-          class="tab"
-          :class="{ 'is-active': tab.value === value }"
-          @click="showTab(tab.value)">
-          {{ tab.name }}
-        </span>
-      </div>
-
-      <div
-        v-if="hasNext"
-        @click="scrollRight"
-        class="tabs-nav__control has-next">
-        <i class="icon-down icon-right"></i>
+          'has-prev': hasPrev}"
+        >
+          <span
+            v-for="tab in tabs"
+            :key="tab.value"
+            class="tab"
+            :class="{'is-active': tab.value === value}"
+            @click="handleClick($event, tab.value)"
+          >{{ tab.name }}</span>
+          <div ref="underline_tabs" class="underline"></div>
+        </div>
+        <div v-show="hasNext" @click="scrollRight" class="tabs-nav__control has-next">
+          <i class="icon-down icon-right"></i>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="tab-content" v-if="!hideContent">
-    <slot
-      v-for="tab in tabs"
-      :name="tab.value"
-      v-if="tab.value === value"/>
+    <transition-group
+      v-if="!hideContent"
+      tag="div"
+      class="tab-content-wrapper"
+      :name="tabDirection"
+    >
+      <div
+        id="tab-content-id"
+        v-if="tab.value === value"
+        v-for="(tab, id) in tabs"
+        :key="id"
+        class="tab-content"
+      >
+        <slot :name="tab.value"/>
+      </div>
+    </transition-group>
   </div>
-</div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 
 @Component({})
 export default class Tabs extends Vue {
   $refs!: {
     scrollable_tabs: HTMLDivElement;
+    underline_tabs: HTMLDivElement;
   };
 
   isMounted = false;
   tabsContainer: HTMLDivElement = null as any;
+  tabsUnderline: HTMLDivElement = null as any;
+  tabFrom: number = 0;
+  tabTo: number = 0;
   canScroll = false;
   hasNext = false;
   hasPrev = false;
@@ -76,18 +81,35 @@ export default class Tabs extends Vue {
 
   @Prop() hideContent!: boolean;
 
+  @Prop() direction!: number;
+
+  @Watch("value")
+  onPropertyChanged(value: string, oldValue: string) {
+    let oldTab: any = this.tabs.find(tab => tab.value === oldValue);
+    this.tabFrom = this.tabs.indexOf(oldTab);
+    let newTab: any = this.tabs.find(tab => tab.value === value);
+    this.tabTo = this.tabs.indexOf(newTab);
+  }
+
   created() {
     window.addEventListener("resize", this.calculateScrolls);
+    window.addEventListener("resize", this.calculateUnderline);
   }
 
   destroyed() {
     window.removeEventListener("resize", this.calculateScrolls);
+    window.removeEventListener("resize", this.calculateUnderline);
   }
 
   mounted() {
     this.isMounted = true;
     this.tabsContainer = this.$refs.scrollable_tabs;
+    this.tabsUnderline = this.$refs.underline_tabs;
     this.calculateScrolls();
+    this.tabsUnderline.style.width =
+      ((<HTMLElement>this.tabsContainer.childNodes[0]) as any).offsetWidth +
+      "px";
+
     if (!this.value) this.showTab(this.tabs[0].value);
   }
 
@@ -103,9 +125,12 @@ export default class Tabs extends Vue {
 
   calculateScrolls() {
     if (!this.isMounted) return false;
+
     this.canScroll =
       this.tabsContainer.scrollWidth > this.tabsContainer.clientWidth;
+
     this.hasPrev = this.tabsContainer.scrollLeft > 0;
+
     let scrollRight =
       this.tabsContainer.scrollWidth -
       (this.tabsContainer.scrollLeft + this.tabsContainer.clientWidth);
@@ -113,14 +138,119 @@ export default class Tabs extends Vue {
     this.hasNext = scrollRight > 0;
   }
 
+  get tabDirection() {
+    let from = this.tabFrom;
+    let to = this.tabTo;
+    if (to > from) {
+      return "right";
+    }
+    if (from > to) {
+      return "left";
+    }
+  }
+
+  calculateUnderline(event: any) {
+    if (!this.isMounted) return false;
+
+    let p: boolean;
+    let n: boolean;
+
+    if (this.tabsContainer.classList.contains("has-prev")) {
+      p = true;
+    } else {
+      p = false;
+    }
+    if (this.tabsContainer.classList.contains("has-next")) {
+      n = true;
+    } else {
+      n = false;
+    }
+
+    if ((!p && n) || (!p && !n)) {
+      this.tabsUnderline.style.width = event.target.offsetWidth + 2 + "px";
+      this.tabsUnderline.style.transform =
+        "translateX(" + event.target.offsetLeft + "px)";
+    }
+
+    if (p && !n) {
+      this.tabsUnderline.style.width = event.target.offsetWidth + 2 + "px";
+      this.tabsUnderline.style.transform =
+        "translateX(" + (event.target.offsetLeft - 30) + "px)";
+    }
+
+    if (p && n) {
+      this.tabsUnderline.style.width = event.target.offsetWidth + 2 + "px";
+      this.tabsUnderline.style.transform =
+        "translateX(" + (event.target.offsetLeft - 30) + "px)";
+    }
+  }
+
   showTab(tab: string) {
     this.$emit("input", tab);
+  }
+
+  handleClick(event: any, tab: string) {
+    this.showTab(tab);
+    this.calculateUnderline(event);
   }
 }
 </script>
 
 <style lang="less" scoped>
 @import "./../styles/Imports";
+
+.right-enter-active {
+  transition: all 0.25s 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.right-leave-active {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.right-enter {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+.right-leave {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.right-leave-to {
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+.left-enter-active {
+  transition: all 0.25s 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.left-leave-active {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.left-enter {
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+.left-leave {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.left-leave-to {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+.underline {
+  height: 1px;
+  width: 0;
+  background-color: @night-border;
+  transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 .tabs-wrapper {
   height: 100%;
@@ -215,9 +345,9 @@ export default class Tabs extends Vue {
   overflow-x: hidden;
   white-space: nowrap;
   overflow-y: hidden;
-  .padding-bottom(2);
   width: 100%;
-
+  scroll-behavior: smooth;
+  transition: all 0.15s cubic-bezier(0.215, 0.61, 0.355, 1);
   &.has-prev {
     .margin-left(2);
   }
@@ -230,7 +360,6 @@ export default class Tabs extends Vue {
 .tab {
   color: @day-paragraph;
   .padding-bottom(2);
-  border-bottom: 2px solid transparent;
   margin-bottom: -1px;
   .margin-right(2);
   cursor: default;
@@ -239,7 +368,6 @@ export default class Tabs extends Vue {
   &.is-active {
     .weight(@medium);
     color: @day-title;
-    border-color: @dark-2;
   }
 }
 
@@ -250,6 +378,10 @@ export default class Tabs extends Vue {
 }
 
 .night-theme {
+  .underline {
+    background-color: @light-1;
+  }
+
   .tabs-nav {
     border-color: @night-border;
   }
@@ -259,7 +391,6 @@ export default class Tabs extends Vue {
 
     &.is-active {
       color: @night-title;
-      border-color: @light-1;
     }
   }
 
