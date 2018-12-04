@@ -129,6 +129,7 @@ export default class Button extends Vue {
 <style lang="less">
 .button-container {
   display: flex;
+  flex-wrap: wrap;
 }
 </style>
 
