@@ -1,16 +1,13 @@
 <template>
-  <div
-    class="accordion"
-    :class="[ accordionClasses ]">
-
-    <div
-      class="accordion__toggle"
-      @click="toggleAccordion">
-      <span v-show="defaultOpen">{{ openedTitle }}</span>
-      <span v-show="!defaultOpen">{{ closedTitle }}</span>
+  <div class="accordion" :class="[ accordionClasses ]">
+    <div class="accordion__toggle" @click.capture="toggleAccordion">
+      <slot name="toggle">
+        <span v-show="defaultOpen">{{ openedTitle }}</span>
+        <span v-show="!defaultOpen">{{ closedTitle }}</span>
+      </slot>
     </div>
 
-    <div class="accordion__menu">
+    <div class="accordion__menu" ref="menu">
       <slot name="content"></slot>
     </div>
   </div>
@@ -21,6 +18,10 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Accordion extends Vue {
+  $refs!: {
+    menu: HTMLDivElement;
+  };
+
   @Prop()
   isOpen!: boolean;
 
@@ -49,21 +50,32 @@ export default class Accordion extends Vue {
   }
 
   toggleAccordion(event: any) {
-    let menu = event.target.nextElementSibling,
-      menuContent;
-
-    // Check if accordion was toggled by title
-    if (event.target.nodeName === "SPAN") {
-      menu = event.target.parentElement.nextElementSibling;
-    }
-
-    menuContent = menu.firstChild;
     this.defaultOpen = !this.defaultOpen;
 
+    let parent: any = this.$parent,
+      parentMenu: any = this.$parent.$refs.menu,
+      menu = this.$refs.menu;
+
+    if (parent.$el.classList.contains("accordion") && parent.defaultOpen) {
+      parentMenu.style.maxHeight = "none";
+    }
+
+    if (menu.style.maxHeight === "none" && !this.defaultOpen) {
+      menu.style.maxHeight = `${menu.children[0].scrollHeight + 16}px`;
+    }
+
+    menu.style.maxHeight = this.calculateHeight(menu);
+  }
+
+  calculateHeight(element: Element) {
+    let newHeight = element.children[0].scrollHeight;
+    let padding =
+      (this.$refs.menu.querySelectorAll(".accordion").length + 1) * 16;
+
     if (!this.defaultOpen) {
-      menu.style.maxHeight = 0;
+      return "0";
     } else {
-      menu.style.maxHeight = `calc(${menuContent.scrollHeight}px + 16px`;
+      return `${newHeight + padding}px`;
     }
   }
 
@@ -105,13 +117,17 @@ export default class Accordion extends Vue {
   .margin-bottom(3);
   text-align: left;
 
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   &.is-closed {
     .accordion__menu {
       max-height: 0;
       .padding-v-sides(@0);
     }
 
-    .accordion__toggle {
+    & > .accordion__toggle {
       &:before {
         content: "\e957";
       }
