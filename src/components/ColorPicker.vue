@@ -1,15 +1,8 @@
 <template>
   <div class="colorpicker-container" ref="colorpicker">
-    <input
-      type="text"
-      @focus="showPicker()"
-      :value="value"
-      @input="updateFromInput" />
+    <input type="text" @focus="showPicker()" :value="value" @input="updateFromInput">
 
-    <div
-      class="colorpicker__preview"
-      :style="{ backgroundColor: value }"
-      @click="showPicker()"></div>
+    <div class="colorpicker__preview" :style="{ backgroundColor: value }" @click="showPicker()"></div>
 
     <picker
       class="colorpicker"
@@ -17,7 +10,8 @@
       v-if="displayPicker"
       :disable-alpha="true"
       :disable-fields="true"
-      @input="updateFromPicker"></picker>
+      @input="updateFromPicker"
+    ></picker>
   </div>
 </template>
 
