@@ -25,11 +25,11 @@ export default {
   },
 
   created() {
-    this.$on("input", setValue);
+    this.$on("input", this.setValue);
   },
 
   destroyed() {
-    this.$off("input", setValue);
+    this.$off("input", this.setValue);
   },
 
   methods: {

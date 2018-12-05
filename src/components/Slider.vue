@@ -47,11 +47,11 @@ export default {
   },
 
   created() {
-    this.$on("input", setValue);
+    this.$on("input", this.setValue);
   },
 
   destroyed() {
-    this.$off("input", setValue);
+    this.$off("input", this.setValue);
   },
 
   methods: {
@@ -68,6 +68,7 @@ export default {
 
 <style lang="less">
 @import "./../styles/Imports";
+
 .vue-slider-component {
   padding: 4px 0px 28px !important;
   width: 80% !important;
