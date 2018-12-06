@@ -13,11 +13,12 @@
     :suffix="suffix"
     :formatter="prefix + '{value}' + suffix"
     :data="data"
+    @callback="value => emitInput(value)"
   ></vue-slider-component>
 </template>
 
 
-<script lang="ts">
+<script>
 import { Component, Vue } from "vue-property-decorator";
 import VueSliderComponent from "vue-slider-component";
 export default {
@@ -43,12 +44,31 @@ export default {
       type: String,
       default: null
     }
+  },
+
+  created() {
+    this.$on("input", this.setValue);
+  },
+
+  destroyed() {
+    this.$off("input", this.setValue);
+  },
+
+  methods: {
+    emitInput(val) {
+      this.$emit("input", val);
+    },
+
+    setValue(val) {
+      this.currentValue = val;
+    }
   }
 };
 </script>
 
 <style lang="less">
 @import "./../styles/Imports";
+
 .vue-slider-component {
   padding: 4px 0px 28px !important;
   width: 80% !important;
