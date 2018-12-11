@@ -59,6 +59,10 @@ export default {
     }
   }
 
+  .open-indicator {
+    font-style: normal;
+  }
+
   .dropdown-toggle {
     border: 0;
     .padding-h-sides();
