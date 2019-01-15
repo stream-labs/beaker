@@ -1,7 +1,8 @@
 <template>
-  <div class="checkbox">
+  <div class="radio checkbox">
     <input
-      type="checkbox"
+      type="radio"
+      :name="name"
       :checked="value"
       :ref="label"
       @change="$emit('input', $event.target.checked)"
@@ -14,16 +15,19 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
-export default class Checkbox extends Vue {
+export default class Radio extends Vue {
   @Prop()
   label!: String;
 
   @Prop()
+  name!: String;
+
+  @Prop()
   value!: Boolean;
 
-  onLabelClick() {
+  onLabelClick(): void {
     let input: any = this.$refs[`${this.label}`];
-    input.checked = !input.checked;
+    input.checked = true;
   }
 }
 </script>
