@@ -60,6 +60,13 @@
     </div>
 
     <div class="section">
+      <h2>Status Switch</h2>
+      <div class="section">
+        <status-switch v-model="statusValue" :label="'Status Label'"></status-switch>
+      </div>
+    </div>
+
+    <div class="section">
       <h2>Image Input Picker</h2>
       <div class="section">
         <h3>Default</h3>
@@ -88,13 +95,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Watch, Vue } from "vue-property-decorator";
 
 import Accordion from "./../components/Accordion.vue";
 import Selector from "./../components/Selector.vue";
 import Checkbox from "./../components/Checkbox.vue";
 import ImagePickerInput from "./../components/ImagePickerInput.vue";
 import Radio from "./../components/Radio.vue";
+import StatusSwitch from "./../components/StatusSwitch.vue";
 
 @Component({
   components: {
@@ -102,7 +110,8 @@ import Radio from "./../components/Radio.vue";
     Selector,
     Checkbox,
     ImagePickerInput,
-    Radio
+    Radio,
+    StatusSwitch
   }
 })
 export default class Inputs extends Vue {
@@ -113,6 +122,7 @@ export default class Inputs extends Vue {
   selected = "Option A";
   radioValue1 = true;
   radioValue2 = false;
+  statusValue = true;
 
   layoutValue = "above";
   jarValue = "glass-pint";

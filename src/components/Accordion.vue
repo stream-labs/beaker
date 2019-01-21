@@ -2,8 +2,8 @@
   <div class="accordion" :class="[ accordionClasses ]">
     <div class="accordion__toggle" @click.capture="toggleAccordion">
       <slot name="toggle">
-        <span v-show="defaultOpen">{{ openedTitle }}</span>
-        <span v-show="!defaultOpen">{{ closedTitle }}</span>
+        <span v-show="defaultOpen">{{ title || openedTitle }}</span>
+        <span v-show="!defaultOpen">{{ title || closedTitle }}</span>
       </slot>
     </div>
 
@@ -43,10 +43,6 @@ export default class Accordion extends Vue {
   created() {
     this.defaultOpen = this.isOpen;
     this.defaultBorder = this.noBorder;
-
-    if (this.title) {
-      this.openedTitle = this.closedTitle = this.title;
-    }
   }
 
   toggleAccordion(event: any) {
