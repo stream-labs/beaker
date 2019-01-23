@@ -70,6 +70,10 @@ export default class Pagination extends Vue {
       text-decoration: none;
       outline: none;
       .transition();
+
+      &:hover {
+        color: @dark-2;
+      }
     }
   }
 
@@ -86,6 +90,10 @@ export default class Pagination extends Vue {
 
     &-link {
       color: @light-4;
+
+      &:hover {
+        color: @light-4;
+      }
     }
   }
 
@@ -140,11 +148,21 @@ export default class Pagination extends Vue {
 
       &-link {
         color: @light-1;
+
+        &:hover {
+          background-color: lighten(@dark-4, 5%);
+        }
       }
     }
 
     &__break {
       background-color: transparent;
+
+      &-link {
+        &:hover {
+          background-color: transparent;
+        }
+      }
     }
 
     &__prev,
@@ -157,6 +175,12 @@ export default class Pagination extends Vue {
 
     &__active {
       background-color: @dark-2;
+
+      .pagination__page-link {
+        &:hover {
+          background-color: @dark-2;
+        }
+      }
     }
 
     &__disabled {
