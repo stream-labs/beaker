@@ -18,6 +18,7 @@ import Badge from "@/components/Badge";
 import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
 import Tabs from "@/components/Tabs";
+import Pagination from "@/components/Pagination";
 
 // Define components
 const components = [
@@ -30,7 +31,8 @@ const components = [
   Badge,
   Selector,
   Slider,
-  Tabs
+  Tabs,
+  Pagination
 ];
 
 // Install the above defined components

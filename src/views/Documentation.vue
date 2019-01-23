@@ -13,6 +13,7 @@
       <forms v-if="activeSection === 'forms'"/>
       <icons v-if="activeSection === 'icons'"/>
       <inputs v-if="activeSection === 'inputs'"/>
+      <paginations v-if="activeSection === 'paginations'"/>
       <sliders v-if="activeSection === 'sliders'"/>
       <tables v-if="activeSection === 'tables'"/>
       <tabs v-if="activeSection === 'tabs'"/>
@@ -35,6 +36,7 @@ import Forms from "@/demos/Forms.vue";
 import Icons from "@/demos/Icons.vue";
 import Inputs from "@/demos/Inputs.vue";
 import Navigations from "@/demos/Navigations.vue";
+import Paginations from "@/demos/Paginations.vue";
 import Sliders from "@/demos/Sliders.vue";
 import Tables from "@/demos/Tables.vue";
 import Tabs from "@/demos/Tabs.vue";
@@ -54,6 +56,7 @@ import Toggles from "@/demos/Toggles.vue";
     Icons,
     Inputs,
     Navigations,
+    Paginations,
     Sliders,
     Tables,
     Tabs,
