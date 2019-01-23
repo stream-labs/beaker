@@ -1,21 +1,24 @@
 <template>
-  <vue-paginate-component
-    :page-count="pageCount"
-    :click-handler="selectPage"
-    :prev-text="'Prev'"
-    :next-text="'Next'"
-    :container-class="'pagination'"
-    :page-class="'pagination__page'"
-    :page-link-class="'pagination__page-link'"
-    :prev-class="'pagination__prev'"
-    :prev-link-class="'pagination__prev-link'"
-    :next-class="'pagination__next'"
-    :next-link-class="'pagination__next-link'"
-    :break-view-class="'pagination__break'"
-    :break-view-link-class="'pagination__break-link'"
-    :active-class="'pagination__active'"
-    :disabled-class="'pagination__disabled'"
-  ></vue-paginate-component>
+  <div class="pagination__container">
+    <vue-paginate-component
+      :class="{ 'pagination--bg': nightBg }"
+      :page-count="pageCount"
+      :click-handler="selectPage"
+      :prev-text="'Prev'"
+      :next-text="'Next'"
+      :container-class="'pagination'"
+      :page-class="'pagination__page'"
+      :page-link-class="'pagination__page-link'"
+      :prev-class="'pagination__prev'"
+      :prev-link-class="'pagination__prev-link'"
+      :next-class="'pagination__next'"
+      :next-link-class="'pagination__next-link'"
+      :break-view-class="'pagination__break'"
+      :break-view-link-class="'pagination__break-link'"
+      :active-class="'pagination__active'"
+      :disabled-class="'pagination__disabled'"
+    ></vue-paginate-component>
+  </div>
 </template>
 
 <script lang="ts">
@@ -29,6 +32,9 @@ import VuePaginateComponent from "vuejs-paginate";
 })
 export default class Pagination extends Vue {
   @Prop()
+  nightBg!: boolean;
+
+  @Prop()
   itemsPerPage!: number;
 
   @Prop()
@@ -40,7 +46,7 @@ export default class Pagination extends Vue {
   }
 
   selectPage(page: number) {
-    console.log(page)
+    this.$emit('page-selected', page);
   }
 }
 </script>
@@ -53,6 +59,10 @@ export default class Pagination extends Vue {
   align-items: center;
   padding: 0;
   list-style: none;
+
+  &__container {
+    display: inline-block;
+  }
 
   &__page,
   &__prev,
@@ -73,6 +83,7 @@ export default class Pagination extends Vue {
 
       &:hover {
         color: @dark-2;
+        text-decoration: none;
       }
     }
   }
@@ -143,6 +154,12 @@ export default class Pagination extends Vue {
 
 .night {
   .pagination {
+    &--bg {
+      .padding();
+      .radius(2);
+      background-color: @dark-3;
+    }
+
     &__page {
       background-color: @dark-4;
 
