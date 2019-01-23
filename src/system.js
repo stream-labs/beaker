@@ -56,7 +56,8 @@ export {
   Badge,
   Selector,
   Slider,
-  Tabs
+  Tabs,
+  Pagination
 };
 
 export default {
@@ -68,5 +69,6 @@ export default {
   Badge,
   Selector,
   Slider,
-  Tabs
+  Tabs,
+  Pagination
 };
