@@ -49,11 +49,12 @@ const components = [
 // Finally export as default
 export {
   Accordion,
+  Badge,
   Button,
+  Callout,
   FormGroupH,
   FormGroupV,
   HelloWorld,
-  Badge,
   Selector,
   Slider,
   Tabs,
