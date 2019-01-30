@@ -47,28 +47,28 @@ const components = [
 // }
 
 // Finally export as default
-// export {
-//   Accordion,
-//   Button,
-//   FormGroupH,
-//   FormGroupV,
-//   HelloWorld,
-//   Badge,
-//   Selector,
-//   Slider,
-//   Tabs,
-//   Pagination
-// };
-
-export default {
+export {
   Accordion,
-  Badge,
   Button,
   FormGroupH,
   FormGroupV,
   HelloWorld,
+  Badge,
   Selector,
   Slider,
   Tabs,
   Pagination
 };
+
+// export default {
+//   Accordion,
+//   Badge,
+//   Button,
+//   FormGroupH,
+//   FormGroupV,
+//   HelloWorld,
+//   Selector,
+//   Slider,
+//   Tabs,
+//   Pagination
+// };
