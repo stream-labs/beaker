@@ -9,12 +9,12 @@
 // const contexts = require.context("@/components/", true, /\.vue$/);
 
 import Accordion from "@/components/Accordion";
+import Badge from "@/components/Badge";
 import Button from "@/components/Button";
 import Callout from "@/components/Callout";
 import FormGroupH from "@/components/FormGroupH";
 import FormGroupV from "@/components/FormGroupV";
 import HelloWorld from "@/components/HelloWorld";
-import Badge from "@/components/Badge";
 import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
 import Tabs from "@/components/Tabs";
@@ -23,12 +23,12 @@ import Pagination from "@/components/Pagination";
 // Define components
 const components = [
   Accordion,
+  Badge,
   Button,
   Callout,
   FormGroupH,
   FormGroupV,
   HelloWorld,
-  Badge,
   Selector,
   Slider,
   Tabs,
@@ -47,26 +47,26 @@ const components = [
 // }
 
 // Finally export as default
-export {
-  Accordion,
-  Button,
-  FormGroupH,
-  FormGroupV,
-  HelloWorld,
-  Badge,
-  Selector,
-  Slider,
-  Tabs,
-  Pagination
-};
+// export {
+//   Accordion,
+//   Button,
+//   FormGroupH,
+//   FormGroupV,
+//   HelloWorld,
+//   Badge,
+//   Selector,
+//   Slider,
+//   Tabs,
+//   Pagination
+// };
 
 export default {
   Accordion,
+  Badge,
   Button,
   FormGroupH,
   FormGroupV,
   HelloWorld,
-  Badge,
   Selector,
   Slider,
   Tabs,
