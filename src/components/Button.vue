@@ -397,7 +397,7 @@ export default class Button extends Vue {
 }
 
 .button--fixed-width {
-  width: 100px;
+  width: 96px;
 }
 
 .button--navigation {

@@ -618,7 +618,7 @@
             <td>size</td>
             <td>String</td>
             <td>standard</td>
-            <td>Size of the button. Options are <code>small</code>, <code>large</code>, <code>square</code>, and <code>full-width</code></td>
+            <td>Size of the button. Options are <code>small</code>, <code>large</code>, <code>square</code>,<code>fixed-width</code>, and <code>full-width</code></td>
           </tr>
           <tr>
             <td>state</td>
