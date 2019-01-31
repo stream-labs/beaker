@@ -168,6 +168,7 @@ export default class Button extends Vue {
 
   span {
     display: flex;
+    justify-content: center;
     align-items: center;
     margin-top: -1px;
     margin-bottom: -1px;

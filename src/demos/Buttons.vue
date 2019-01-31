@@ -401,6 +401,77 @@
       </div>
     </div>
     <div class="section">
+      <h2>Fixed Width Buttons</h2>
+      <p>Used throughout website Dashboard. Width is fixed at 96px.</p>
+      <Accordion
+        :openedTitle="'Hide Code'"
+        :closedTitle="'Show Code'">
+        <div slot="content">
+          <pre>
+<code>&lt;div class=&quot;button-container button-container--left&quot;&gt;
+  &lt;Button
+    :type=&quot;'button'&quot;
+    :size=&quot;'fixed-width'&quot;
+    :variation=&quot;'default'&quot;
+    :title=&quot;'Default'&quot;&gt;
+  &lt;/Button&gt;
+
+  &lt;Button
+    :type=&quot;'button'&quot;
+    :size=&quot;'fixed-width'&quot;
+    :variation=&quot;'action'&quot;
+    :title=&quot;'Action'&quot;&gt;
+  &lt;/Button&gt;
+
+  &lt;Button
+    :type=&quot;'button'&quot;
+    :size=&quot;'fixed-width'&quot;
+    :variation=&quot;'warning'&quot;
+    :title=&quot;'Warning'&quot;&gt;
+  &lt;/Button&gt;
+
+  &lt;Button
+    :type=&quot;'button'&quot;
+    :size=&quot;'fixed-width'&quot;
+    :variation=&quot;'default'&quot;
+    :title=&quot;'With Icon'&quot;
+    :icon=&quot;'image'&quot;&gt;
+  &lt;/Button&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </Accordion>
+      <div class="button-container button-container--left">
+        <Button
+          :type="'button'"
+          :size="'fixed-width'"
+          :variation="'default'"
+          :title="'Default'">
+        </Button>
+
+        <Button
+          :type="'button'"
+          :size="'fixed-width'"
+          :variation="'action'"
+          :title="'Action'">
+        </Button>
+
+        <Button
+          :type="'button'"
+          :size="'fixed-width'"
+          :variation="'warning'"
+          :title="'Warning'">
+        </Button>
+
+        <Button
+          :type="'button'"
+          :size="'fixed-width'"
+          :variation="'default'"
+          :title="'With Icon'"
+          :icon="'image'">
+        </Button>
+      </div>
+    </div>
+    <div class="section">
       <h2>Full-Width Buttons</h2>
       <div class="section">
         <h3>Default</h3>
