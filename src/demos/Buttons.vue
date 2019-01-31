@@ -6,7 +6,7 @@
     </div>
     <div class="section">
       <h2>Standard Buttons</h2>
-      <p>Used throughout website Dashboard and Streamlabs OBS.</p>
+      <p>Used throughout website Dashboard.</p>
       <div class="section">
         <h3>Active</h3>
         <Accordion
@@ -259,8 +259,8 @@
       </div>
     </div>
     <div class="section">
-      <h2>Medium Buttons</h2>
-      <p>Medium is the size used on the App Store and the Tip page. It is slightly larger than our standard button.</p>
+      <h2>Small Buttons</h2>
+      <p>Small is the size used on Streamlabs OBS. It is slightly smaller than our standard button.</p>
       <Accordion
         :openedTitle="'Hide Code'"
         :closedTitle="'Show Code'">
@@ -269,28 +269,28 @@
 <code>&lt;div class=&quot;button-container button-container--left&quot;&gt;
   &lt;Button
     :type=&quot;'button'&quot;
-    :size=&quot;'medium'&quot;
+    :size=&quot;'small'&quot;
     :variation=&quot;'default'&quot;
     :title=&quot;'Default'&quot;&gt;
   &lt;/Button&gt;
 
   &lt;Button
     :type=&quot;'button'&quot;
-    :size=&quot;'medium'&quot;
+    :size=&quot;'small'&quot;
     :variation=&quot;'action'&quot;
     :title=&quot;'Action'&quot;&gt;
   &lt;/Button&gt;
 
   &lt;Button
     :type=&quot;'button'&quot;
-    :size=&quot;'medium'&quot;
+    :size=&quot;'small'&quot;
     :variation=&quot;'warning'&quot;
     :title=&quot;'Warning'&quot;&gt;
   &lt;/Button&gt;
 
   &lt;Button
     :type=&quot;'button'&quot;
-    :size=&quot;'medium'&quot;
+    :size=&quot;'small'&quot;
     :variation=&quot;'default'&quot;
     :title=&quot;'With Icon'&quot;
     :icon=&quot;'image'&quot;&gt;
@@ -301,28 +301,28 @@
       <div class="button-container button-container--left">
         <Button
           :type="'button'"
-          :size="'medium'"
+          :size="'small'"
           :variation="'default'"
           :title="'Default'">
         </Button>
 
         <Button
           :type="'button'"
-          :size="'medium'"
+          :size="'small'"
           :variation="'action'"
           :title="'Action'">
         </Button>
 
         <Button
           :type="'button'"
-          :size="'medium'"
+          :size="'small'"
           :variation="'warning'"
           :title="'Warning'">
         </Button>
 
         <Button
           :type="'button'"
-          :size="'medium'"
+          :size="'small'"
           :variation="'default'"
           :title="'With Icon'"
           :icon="'image'">
@@ -618,7 +618,7 @@
             <td>size</td>
             <td>String</td>
             <td>standard</td>
-            <td>Size of the button. Options are <code>standard</code>, <code>medium</code>, <code>large</code>, <code>square</code>, and <code>full-width</code></td>
+            <td>Size of the button. Options are <code>small</code>, <code>large</code>, <code>square</code>, and <code>full-width</code></td>
           </tr>
           <tr>
             <td>state</td>

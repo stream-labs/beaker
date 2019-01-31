@@ -14,8 +14,7 @@
   >
     <span>
       <span>
-        <i v-if="iconClass" :class="iconClass"></i>
-        {{ title }}
+        <i v-if="iconClass" :class="iconClass"></i>{{ title }}
       </span>
       <span v-if="description" class="button__description">{{ description }}</span>
     </span>
@@ -138,7 +137,7 @@ export default class Button extends Vue {
 
 .button {
   .padding-v-sides(@0);
-  .padding-h-sides();
+  .padding-h-sides(2);
   font-size: 14px;
   text-transform: capitalize;
   background: @day-button;
@@ -151,8 +150,8 @@ export default class Button extends Vue {
   overflow: hidden;
   margin: 0;
   display: inline-block;
-  height: 32px;
-  line-height: 32px;
+  height: 40px;
+  line-height: 40px;
   .transition();
   .weight(@medium);
   .radius();
@@ -168,6 +167,10 @@ export default class Button extends Vue {
   }
 
   span {
+    display: flex;
+    align-items: center;
+    margin-top: -1px;
+    margin-bottom: -1px;
     opacity: 1;
     transition: opacity 275ms ease;
   }
@@ -208,10 +211,10 @@ export default class Button extends Vue {
   }
 }
 
-.button--medium {
-  height: 40px;
+.button--small {
+  height: 32px;
   padding: 0px 8px;
-  line-height: 40px;
+  line-height: 32px;
 
   .fas,
   .far,
