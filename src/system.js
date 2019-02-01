@@ -26,38 +26,6 @@ import Toggle from "@/components/Toggle";
 import Pagination from "@/components/Pagination";
 
 // Define components
-<<<<<<< HEAD
-// const components = [
-//   Accordion,
-//   Button,
-//   Callout,
-//   Checkbox,
-//   ColorPicker,
-//   CreditCardForm,
-//   FormGroupH,
-//   FormGroupV,
-//   HelloWorld,
-//   Badge,
-//   Selector,
-//   Slider,
-//   Tabs,
-//   Pagination
-// ];
-=======
-const components = [
-  Accordion,
-  Badge,
-  Button,
-  Callout,
-  FormGroupH,
-  FormGroupV,
-  HelloWorld,
-  Selector,
-  Slider,
-  Tabs,
-  Pagination
-];
->>>>>>> a413767c41d3d6090beb315d3f1e925f71b8b3e1
 
 // Install the above defined components
 // const System = {
@@ -71,34 +39,16 @@ const components = [
 // }
 
 // Finally export as default
-<<<<<<< HEAD
-// export {
-//   Accordion,
-//   Button,
-//   FormGroupH,
-//   FormGroupV,
-//   HelloWorld,
-//   Badge,
-//   Selector,
-//   Slider,
-//   Tabs,
-//   Pagination
-// };
+
 
 export default {
-=======
-export {
->>>>>>> a413767c41d3d6090beb315d3f1e925f71b8b3e1
   Accordion,
   Badge,
   Button,
   Callout,
-<<<<<<< HEAD
   Checkbox,
   ColorPicker,
   CreditCardForm,
-=======
->>>>>>> a413767c41d3d6090beb315d3f1e925f71b8b3e1
   FormGroupH,
   FormGroupV,
   HelloWorld,
@@ -109,16 +59,3 @@ export {
   Toggle,
   Pagination
 };
-
-// export default {
-//   Accordion,
-//   Badge,
-//   Button,
-//   FormGroupH,
-//   FormGroupV,
-//   HelloWorld,
-//   Selector,
-//   Slider,
-//   Tabs,
-//   Pagination
-// };
