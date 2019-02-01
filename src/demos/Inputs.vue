@@ -8,6 +8,13 @@
     </div>
 
     <div class="section">
+      <h2>Text Inputs</h2>
+      <text-input :type="textInputType" :placeholder="textInputPlaceholder"></text-input>
+      <text-input :type="emailInputType" :placeholder="emailInputPlaceholder"></text-input>
+      <text-input :type="passwordInputType" :placeholder="passwordInputPlaceholder"></text-input>
+    </div>
+
+    <div class="section">
       <h2>Text Input with Search</h2>
 
       <div class="input-wrapper--search">
@@ -103,6 +110,7 @@ import Checkbox from "./../components/Checkbox.vue";
 import ImagePickerInput from "./../components/ImagePickerInput.vue";
 import Radio from "./../components/Radio.vue";
 import StatusSwitch from "./../components/StatusSwitch.vue";
+import TextInput from "./../components/TextInput.vue";
 
 @Component({
   components: {
@@ -111,7 +119,8 @@ import StatusSwitch from "./../components/StatusSwitch.vue";
     Checkbox,
     ImagePickerInput,
     Radio,
-    StatusSwitch
+    StatusSwitch,
+    TextInput
   }
 })
 export default class Inputs extends Vue {
@@ -126,6 +135,16 @@ export default class Inputs extends Vue {
 
   layoutValue = "above";
   jarValue = "glass-pint";
+
+  // Text inputs
+  textInputPlaceholder = "Text input placeholder";
+  textInputType = "text";
+
+  emailInputPlaceholder = "morgan@streamlabs.com";
+  emailInputType = "email";
+
+  passwordInputPlaceholder = "Password";
+  passwordInputType = "password";
 
   options = [
     {
