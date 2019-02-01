@@ -9,6 +9,7 @@
 // const contexts = require.context("@/components/", true, /\.vue$/);
 
 import Accordion from "@/components/Accordion";
+import Badge from "@/components/Badge";
 import Button from "@/components/Button";
 import Callout from "@/components/Callout";
 import Checkbox from "@/components/Checkbox";
@@ -17,7 +18,6 @@ import CreditCardForm from "@/components/CreditCardForm";
 import FormGroupH from "@/components/FormGroupH";
 import FormGroupV from "@/components/FormGroupV";
 import HelloWorld from "@/components/HelloWorld";
-import Badge from "@/components/Badge";
 import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
 import Tabs from "@/components/Tabs";
@@ -26,6 +26,7 @@ import Toggle from "@/components/Toggle";
 import Pagination from "@/components/Pagination";
 
 // Define components
+<<<<<<< HEAD
 // const components = [
 //   Accordion,
 //   Button,
@@ -42,6 +43,21 @@ import Pagination from "@/components/Pagination";
 //   Tabs,
 //   Pagination
 // ];
+=======
+const components = [
+  Accordion,
+  Badge,
+  Button,
+  Callout,
+  FormGroupH,
+  FormGroupV,
+  HelloWorld,
+  Selector,
+  Slider,
+  Tabs,
+  Pagination
+];
+>>>>>>> a413767c41d3d6090beb315d3f1e925f71b8b3e1
 
 // Install the above defined components
 // const System = {
@@ -55,6 +71,7 @@ import Pagination from "@/components/Pagination";
 // }
 
 // Finally export as default
+<<<<<<< HEAD
 // export {
 //   Accordion,
 //   Button,
@@ -69,13 +86,19 @@ import Pagination from "@/components/Pagination";
 // };
 
 export default {
+=======
+export {
+>>>>>>> a413767c41d3d6090beb315d3f1e925f71b8b3e1
   Accordion,
   Badge,
   Button,
   Callout,
+<<<<<<< HEAD
   Checkbox,
   ColorPicker,
   CreditCardForm,
+=======
+>>>>>>> a413767c41d3d6090beb315d3f1e925f71b8b3e1
   FormGroupH,
   FormGroupV,
   HelloWorld,
@@ -86,3 +109,16 @@ export default {
   Toggle,
   Pagination
 };
+
+// export default {
+//   Accordion,
+//   Badge,
+//   Button,
+//   FormGroupH,
+//   FormGroupV,
+//   HelloWorld,
+//   Selector,
+//   Slider,
+//   Tabs,
+//   Pagination
+// };
