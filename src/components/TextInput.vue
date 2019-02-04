@@ -32,11 +32,4 @@ export default class TextInput extends Vue {
 <style lang="less" scoped>
 @import "./../styles/Imports";
 
-.text-input {
-  .margin-bottom(2);
-
-  &:last-child {
-    .margin-bottom(2);
-  }
-}
 </style>

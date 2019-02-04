@@ -18,18 +18,22 @@
         slot="input"
         type="text"
         placeholder="Text Input Placeholder" />
-      </form-group-v>
+    </form-group-v>
+
+    <payment-form></payment-form>
   </div>
+
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-
+import PaymentForm from "./../components/PaymentForm.vue";
 import FormGroupH from "./../components/FormGroupH.vue";
 import FormGroupV from "./../components/FormGroupV.vue";
 
 @Component({
   components: {
+    PaymentForm,
     FormGroupH,
     FormGroupV
   }

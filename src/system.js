@@ -14,10 +14,10 @@ import Button from "@/components/Button";
 import Callout from "@/components/Callout";
 import Checkbox from "@/components/Checkbox";
 import ColorPicker from "@/components/ColorPicker";
-import CreditCardForm from "@/components/CreditCardForm";
 import FormGroupH from "@/components/FormGroupH";
 import FormGroupV from "@/components/FormGroupV";
 import HelloWorld from "@/components/HelloWorld";
+import PaymentForm from "@/components/PaymentForm";
 import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
 import Tabs from "@/components/Tabs";
@@ -48,10 +48,10 @@ export default {
   Callout,
   Checkbox,
   ColorPicker,
-  CreditCardForm,
   FormGroupH,
   FormGroupV,
   HelloWorld,
+  PaymentForm,
   Selector,
   Slider,
   Tabs,
