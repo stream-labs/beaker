@@ -11,7 +11,7 @@
     class="button"
     :class="buttonClasses"
     :disabled="state === 'disabled'"
-    @click="onClick()"
+    @click="$emit('click')"
   >
     <span>
       <span>
@@ -183,10 +183,7 @@ export default class Button extends Vue {
   }
 
   &:focus,
-  &.is-focused {
-    outline-color: rgba(9, 22, 29, 0.4);
-  }
-
+  &.is-focused,
   &:hover,
   &.is-hovered {
     background-color: darken(@day-button, 8%);
