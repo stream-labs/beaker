@@ -18,6 +18,7 @@
   &lt;Button
     :variation=&quot;'default'&quot;
     :title=&quot;'Default'&quot;&gt;
+    :onClick=&quot;'buttonClick'&quot;&gt;
   &lt;/Button&gt;
 
   &lt;Button
@@ -41,7 +42,8 @@
         <div class="button-container button-container--left">
           <Button
             :variation="'default'"
-            :title="'Default'">
+            :title="'Default'"
+            :onClick="buttonClick">
           </Button>
 
           <Button
@@ -656,6 +658,12 @@
         </thead>
         <tbody>
           <tr>
+            <td>onClick</td>
+            <td>Function</td>
+            <td>null</td>
+            <td>Add a click function to the button.</td>
+          </tr>
+          <tr>
             <td>icon</td>
             <td>String</td>
             <td>null</td>
@@ -741,5 +749,9 @@ import Button from "./../components/Button.vue";
 export default class Forms extends Vue {
   isLoading = true;
   isLoadingExample = false;
+
+  buttonClick() {
+    alert("Button clicked");
+  }
 }
 </script>
