@@ -43,12 +43,13 @@
           <Button
             :variation="'default'"
             :title="'Default'"
-            :onClick="buttonClick">
+            @click="buttonClick">
           </Button>
 
           <Button
             :variation="'action'"
-            :title="'Action'">
+            :title="'Action'"
+            @click="buttonActionClick">
           </Button>
 
           <Button
@@ -752,6 +753,10 @@ export default class Forms extends Vue {
 
   buttonClick() {
     alert("Button clicked");
+  }
+
+  buttonActionClick() {
+    console.log("hello");
   }
 }
 </script>
