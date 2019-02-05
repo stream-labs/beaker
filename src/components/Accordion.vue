@@ -81,10 +81,15 @@ export default class Accordion extends Vue {
   mounted() {
     const menu = this.$refs.menu;
     const ro = new ResizeObserver((entries, observer) => {
-        menu.style.maxHeight = this.calculateHeight(menu);
+      menu.style.maxHeight = this.calculateHeight(menu);
     });
 
     ro.observe(menu);
+  }
+
+  updated() {
+    const menu = this.$refs.menu;
+    menu.style.maxHeight = this.calculateHeight(menu);
   }
 
   get accordionClasses() {
