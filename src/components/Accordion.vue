@@ -88,8 +88,10 @@ export default class Accordion extends Vue {
   }
 
   updated() {
-    const menu = this.$refs.menu;
-    menu.style.maxHeight = this.calculateHeight(menu);
+    this.$nextTick(() => {
+      const menu = this.$refs.menu;
+      menu.style.maxHeight = this.calculateHeight(menu);
+    });
   }
 
   get accordionClasses() {
