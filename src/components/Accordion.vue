@@ -121,12 +121,20 @@ export default class Accordion extends Vue {
     .accordion__menu {
       max-height: 0;
       .padding-v-sides(@0);
+      opacity: 0;
     }
 
     & > .accordion__toggle {
       &:before {
         content: "\e957";
       }
+    }
+  }
+
+  &:not(.is-closed) {
+    & > .accordion__menu {
+      overflow: visible;
+      opacity: 1;
     }
   }
 }
@@ -173,11 +181,11 @@ export default class Accordion extends Vue {
     left: 16px;
     height: 15px;
     width: 15px;
-    line-height: 15px;
+    line-height: 16px;
     background-color: @light-3;
     border-radius: 2px;
     text-align: center;
-    top: 17px;
+    top: 18px;
     font-size: 10px;
     font-family: "icomoon";
     font-weight: 900;
