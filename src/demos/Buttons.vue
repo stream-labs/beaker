@@ -659,10 +659,10 @@
         </thead>
         <tbody>
           <tr>
-            <td>onClick</td>
+            <td>@click</td>
             <td>Function</td>
             <td>null</td>
-            <td>Add a click function to the button.</td>
+            <td>Emits a click function. If you are using an event modifier such as <code>prevent</code>, use <code>native</code>. For example <code>@click.native.prevent</code>.</td>
           </tr>
           <tr>
             <td>icon</td>
@@ -707,10 +707,10 @@
             <td>State of the button. Options are <code>hover</code>, <code>focus</code>, <code>loading</code> and <code>disabled</code>.</td>
           </tr>
           <tr>
-            <td>submit</td>
+            <td>type</td>
             <td>String</td>
             <td>null</td>
-            <td>Set the button type to submit.</td>
+            <td>Set to string 'submit'.</td>
           </tr>
           <tr>
             <td>to</td>
@@ -719,7 +719,7 @@
             <td>Used if the the <code>type</code> is a <code>router-link</code>. Define the path.</td>
           </tr>
           <tr>
-            <td>type</td>
+            <td>tag</td>
             <td>String</td>
             <td>button</td>
             <td>What type of element the component is. Options are <code>button</code>, <code>a</code>, <code>router-link</code></td>
