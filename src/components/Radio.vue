@@ -25,7 +25,7 @@ export default class Radio extends Vue {
   @Prop()
   value!: Boolean;
 
-  onLabelClick() {
+  onLabelClick(): void {
     let input: any = this.$refs[`${this.label}`];
     input.checked = true;
   }

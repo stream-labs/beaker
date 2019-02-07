@@ -6,7 +6,7 @@
     </div>
     <div class="section">
       <h2>Standard Buttons</h2>
-      <p>Used throughout website Dashboard and Streamlabs OBS.</p>
+      <p>Used throughout website Dashboard.</p>
       <div class="section">
         <h3>Active</h3>
         <Accordion
@@ -18,6 +18,7 @@
   &lt;Button
     :variation=&quot;'default'&quot;
     :title=&quot;'Default'&quot;&gt;
+    :onClick=&quot;'buttonClick'&quot;&gt;
   &lt;/Button&gt;
 
   &lt;Button
@@ -41,12 +42,14 @@
         <div class="button-container button-container--left">
           <Button
             :variation="'default'"
-            :title="'Default'">
+            :title="'Default'"
+            @click="buttonClick">
           </Button>
 
           <Button
             :variation="'action'"
-            :title="'Action'">
+            :title="'Action'"
+            @click="buttonActionClick">
           </Button>
 
           <Button
@@ -259,8 +262,8 @@
       </div>
     </div>
     <div class="section">
-      <h2>Medium Buttons</h2>
-      <p>Medium is the size used on the App Store and the Tip page. It is slightly larger than our standard button.</p>
+      <h2>Small Buttons</h2>
+      <p>Small is the size used on Streamlabs OBS. It is slightly smaller than our standard button.</p>
       <Accordion
         :openedTitle="'Hide Code'"
         :closedTitle="'Show Code'">
@@ -269,28 +272,28 @@
 <code>&lt;div class=&quot;button-container button-container--left&quot;&gt;
   &lt;Button
     :type=&quot;'button'&quot;
-    :size=&quot;'medium'&quot;
+    :size=&quot;'small'&quot;
     :variation=&quot;'default'&quot;
     :title=&quot;'Default'&quot;&gt;
   &lt;/Button&gt;
 
   &lt;Button
     :type=&quot;'button'&quot;
-    :size=&quot;'medium'&quot;
+    :size=&quot;'small'&quot;
     :variation=&quot;'action'&quot;
     :title=&quot;'Action'&quot;&gt;
   &lt;/Button&gt;
 
   &lt;Button
     :type=&quot;'button'&quot;
-    :size=&quot;'medium'&quot;
+    :size=&quot;'small'&quot;
     :variation=&quot;'warning'&quot;
     :title=&quot;'Warning'&quot;&gt;
   &lt;/Button&gt;
 
   &lt;Button
     :type=&quot;'button'&quot;
-    :size=&quot;'medium'&quot;
+    :size=&quot;'small'&quot;
     :variation=&quot;'default'&quot;
     :title=&quot;'With Icon'&quot;
     :icon=&quot;'image'&quot;&gt;
@@ -301,28 +304,28 @@
       <div class="button-container button-container--left">
         <Button
           :type="'button'"
-          :size="'medium'"
+          :size="'small'"
           :variation="'default'"
           :title="'Default'">
         </Button>
 
         <Button
           :type="'button'"
-          :size="'medium'"
+          :size="'small'"
           :variation="'action'"
           :title="'Action'">
         </Button>
 
         <Button
           :type="'button'"
-          :size="'medium'"
+          :size="'small'"
           :variation="'warning'"
           :title="'Warning'">
         </Button>
 
         <Button
           :type="'button'"
-          :size="'medium'"
+          :size="'small'"
           :variation="'default'"
           :title="'With Icon'"
           :icon="'image'">
@@ -394,6 +397,77 @@
         <Button
           :type="'button'"
           :size="'large'"
+          :variation="'default'"
+          :title="'With Icon'"
+          :icon="'image'">
+        </Button>
+      </div>
+    </div>
+    <div class="section">
+      <h2>Fixed Width Buttons</h2>
+      <p>Used throughout website Dashboard. Width is fixed at 96px.</p>
+      <Accordion
+        :openedTitle="'Hide Code'"
+        :closedTitle="'Show Code'">
+        <div slot="content">
+          <pre>
+<code>&lt;div class=&quot;button-container button-container--left&quot;&gt;
+  &lt;Button
+    :type=&quot;'button'&quot;
+    :size=&quot;'fixed-width'&quot;
+    :variation=&quot;'default'&quot;
+    :title=&quot;'Default'&quot;&gt;
+  &lt;/Button&gt;
+
+  &lt;Button
+    :type=&quot;'button'&quot;
+    :size=&quot;'fixed-width'&quot;
+    :variation=&quot;'action'&quot;
+    :title=&quot;'Action'&quot;&gt;
+  &lt;/Button&gt;
+
+  &lt;Button
+    :type=&quot;'button'&quot;
+    :size=&quot;'fixed-width'&quot;
+    :variation=&quot;'warning'&quot;
+    :title=&quot;'Warning'&quot;&gt;
+  &lt;/Button&gt;
+
+  &lt;Button
+    :type=&quot;'button'&quot;
+    :size=&quot;'fixed-width'&quot;
+    :variation=&quot;'default'&quot;
+    :title=&quot;'With Icon'&quot;
+    :icon=&quot;'image'&quot;&gt;
+  &lt;/Button&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </Accordion>
+      <div class="button-container button-container--left">
+        <Button
+          :type="'button'"
+          :size="'fixed-width'"
+          :variation="'default'"
+          :title="'Default'">
+        </Button>
+
+        <Button
+          :type="'button'"
+          :size="'fixed-width'"
+          :variation="'action'"
+          :title="'Action'">
+        </Button>
+
+        <Button
+          :type="'button'"
+          :size="'fixed-width'"
+          :variation="'warning'"
+          :title="'Warning'">
+        </Button>
+
+        <Button
+          :type="'button'"
+          :size="'fixed-width'"
           :variation="'default'"
           :title="'With Icon'"
           :icon="'image'">
@@ -585,6 +659,12 @@
         </thead>
         <tbody>
           <tr>
+            <td>@click</td>
+            <td>Function</td>
+            <td>null</td>
+            <td>Emits a click function. If you are using an event modifier such as <code>prevent</code>, use <code>native</code>. For example <code>@click.native.prevent</code>.</td>
+          </tr>
+          <tr>
             <td>icon</td>
             <td>String</td>
             <td>null</td>
@@ -618,7 +698,7 @@
             <td>size</td>
             <td>String</td>
             <td>standard</td>
-            <td>Size of the button. Options are <code>standard</code>, <code>medium</code>, <code>large</code>, <code>square</code>, and <code>full-width</code></td>
+            <td>Size of the button. Options are <code>small</code>, <code>large</code>, <code>square</code>,<code>fixed-width</code>, and <code>full-width</code></td>
           </tr>
           <tr>
             <td>state</td>
@@ -627,10 +707,10 @@
             <td>State of the button. Options are <code>hover</code>, <code>focus</code>, <code>loading</code> and <code>disabled</code>.</td>
           </tr>
           <tr>
-            <td>submit</td>
+            <td>type</td>
             <td>String</td>
             <td>null</td>
-            <td>Set the button type to submit.</td>
+            <td>Set to string 'submit'.</td>
           </tr>
           <tr>
             <td>to</td>
@@ -639,7 +719,7 @@
             <td>Used if the the <code>type</code> is a <code>router-link</code>. Define the path.</td>
           </tr>
           <tr>
-            <td>type</td>
+            <td>tag</td>
             <td>String</td>
             <td>button</td>
             <td>What type of element the component is. Options are <code>button</code>, <code>a</code>, <code>router-link</code></td>
@@ -670,5 +750,13 @@ import Button from "./../components/Button.vue";
 export default class Forms extends Vue {
   isLoading = true;
   isLoadingExample = false;
+
+  buttonClick() {
+    alert("Button clicked");
+  }
+
+  buttonActionClick() {
+    console.log("hello");
+  }
 }
 </script>

@@ -15,6 +15,7 @@
       <image-pickers v-if="activeSection === 'image-pickers'"/>
       <inputs v-if="activeSection === 'inputs'"/>
       <progress-bars v-if="activeSection === 'progress-bars'"/>
+      <paginations v-if="activeSection === 'paginations'"/>
       <sliders v-if="activeSection === 'sliders'"/>
       <tables v-if="activeSection === 'tables'"/>
       <tabs v-if="activeSection === 'tabs'"/>
@@ -39,6 +40,7 @@ import ImagePickers from "@/demos/ImagePickers.vue";
 import Inputs from "@/demos/Inputs.vue";
 import Navigations from "@/demos/Navigations.vue";
 import ProgressBars from "@/demos/ProgressBars.vue";
+import Paginations from "@/demos/Paginations.vue";
 import Sliders from "@/demos/Sliders.vue";
 import Tables from "@/demos/Tables.vue";
 import Tabs from "@/demos/Tabs.vue";
@@ -60,6 +62,7 @@ import Toggles from "@/demos/Toggles.vue";
     Inputs,
     Navigations,
     ProgressBars,
+    Paginations,
     Sliders,
     Tables,
     Tabs,

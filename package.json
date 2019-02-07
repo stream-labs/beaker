@@ -1,6 +1,6 @@
 {
   "name": "streamlabs-beaker",
-  "version": "0.2.13",
+  "version": "0.2.26",
   "main": "./dist/beaker.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -28,7 +28,8 @@
     "vue-property-decorator": "^7.0.0",
     "vue-router": "^3.0.1",
     "vue-select": "^2.5.1",
-    "vue-slider-component": "^2.8.0"
+    "vue-slider-component": "^2.8.0",
+    "vuejs-paginate": "^2.1.0"
   },
   "devDependencies": {
     "@types/node": "^10.12.2",
@@ -41,6 +42,7 @@
     "@vue/eslint-config-typescript": "^3.0.5",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
+    "resize-observer-polyfill": "^1.5.1",
     "typescript": "^3.0.0",
     "vue-template-compiler": "^2.5.17"
   },
