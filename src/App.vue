@@ -7,8 +7,8 @@
         :default="'day'"
         @click.native="toggleTheme()">
       </toggle>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/documentation">Documentation</router-link>
+      <!-- <router-link to="/">Home</router-link> | -->
+      <!-- <router-link to="/documentation">Documentation</router-link> -->
     </div>
     <router-view/>
   </div>
@@ -30,8 +30,8 @@ export default class App extends Vue {
   theme = "";
 
   themes = {
-    day: "<i class='icon-view'></i>",
-    night: "<i class='icon-hide'></i>"
+    day: "Day",
+    night: "Night"
   };
 
   toggleTheme() {

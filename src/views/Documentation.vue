@@ -80,8 +80,8 @@ export default class Documentation extends Vue {
   grid-template-columns: 260px auto;
 
   code {
-    background-color: #e3e8eb;
-    color: #09161d;
+    background-color: @light-3;
+    color: @dark-2;
     padding: 0 4px;
     margin: 0 2px;
   }
@@ -109,6 +109,14 @@ export default class Documentation extends Vue {
         font-family: "Roboto";
       }
     }
+  }
+}
+
+.night,
+.night-theme {
+  code {
+    background-color: @dark-5;
+    color: @light-1;
   }
 }
 </style>
