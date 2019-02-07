@@ -12,7 +12,9 @@
       <dropdowns v-if="activeSection === 'dropdowns'"/>
       <forms v-if="activeSection === 'forms'"/>
       <icons v-if="activeSection === 'icons'"/>
+      <image-pickers v-if="activeSection === 'image-pickers'"/>
       <inputs v-if="activeSection === 'inputs'"/>
+      <progress-bars v-if="activeSection === 'progress-bars'"/>
       <sliders v-if="activeSection === 'sliders'"/>
       <tables v-if="activeSection === 'tables'"/>
       <tabs v-if="activeSection === 'tabs'"/>
@@ -33,8 +35,10 @@ import ColorPickers from "@/demos/ColorPickers.vue";
 import Dropdowns from "@/demos/Dropdowns.vue";
 import Forms from "@/demos/Forms.vue";
 import Icons from "@/demos/Icons.vue";
+import ImagePickers from "@/demos/ImagePickers.vue";
 import Inputs from "@/demos/Inputs.vue";
 import Navigations from "@/demos/Navigations.vue";
+import ProgressBars from "@/demos/ProgressBars.vue";
 import Sliders from "@/demos/Sliders.vue";
 import Tables from "@/demos/Tables.vue";
 import Tabs from "@/demos/Tabs.vue";
@@ -52,8 +56,10 @@ import Toggles from "@/demos/Toggles.vue";
     Dropdowns,
     Forms,
     Icons,
+    ImagePickers,
     Inputs,
     Navigations,
+    ProgressBars,
     Sliders,
     Tables,
     Tabs,

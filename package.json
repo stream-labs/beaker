@@ -17,7 +17,10 @@
     "*.js"
   ],
   "dependencies": {
+    "@types/lodash": "^4.14.119",
     "@types/vue-color": "^2.4.1",
+    "axios": "^0.18.0",
+    "lodash": "^4.17.11",
     "v-tooltip": "^2.0.0-rc.33",
     "vue": "^2.5.17",
     "vue-class-component": "^6.0.0",
