@@ -19,6 +19,7 @@
       <a class="left-navigation__link" @click="changeSection('icons')">Icons</a>
       <a class="left-navigation__link" @click="changeSection('inputs')">Inputs</a>
       <a class="left-navigation__link" @click="changeSection('paginations')">Paginations</a>
+      <a class="left-navigation__link" @click="changeSection('progress-bars')">Progress Bars</a>
       <!-- <a class="left-navigation__link" @click="changeSection('merch')">Merch</a> -->
       <a class="left-navigation__link" @click="changeSection('sliders')">Sliders</a>
       <a class="left-navigation__link" @click="changeSection('tables')">Tables</a>

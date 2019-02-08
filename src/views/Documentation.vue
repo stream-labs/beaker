@@ -14,6 +14,7 @@
       <forms v-if="activeSection === 'forms'"/>
       <icons v-if="activeSection === 'icons'"/>
       <inputs v-if="activeSection === 'inputs'"/>
+      <progress-bars v-if="activeSection === 'progress-bars'"/>
       <paginations v-if="activeSection === 'paginations'"/>
       <sliders v-if="activeSection === 'sliders'"/>
       <tables v-if="activeSection === 'tables'"/>
@@ -38,6 +39,7 @@ import Forms from "@/demos/Forms.vue";
 import Icons from "@/demos/Icons.vue";
 import Inputs from "@/demos/Inputs.vue";
 import Navigations from "@/demos/Navigations.vue";
+import ProgressBars from "@/demos/ProgressBars.vue";
 import Paginations from "@/demos/Paginations.vue";
 import Sliders from "@/demos/Sliders.vue";
 import Tables from "@/demos/Tables.vue";
@@ -59,6 +61,7 @@ import Toggles from "@/demos/Toggles.vue";
     Icons,
     Inputs,
     Navigations,
+    ProgressBars,
     Paginations,
     Sliders,
     Tables,
