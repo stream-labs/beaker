@@ -70,7 +70,7 @@ import Toggles from "@/demos/Toggles.vue";
   }
 })
 export default class Documentation extends Vue {
-  activeSection = "buttons";
+  activeSection = "installation";
 
   changeSection(activeSection: string) {
     this.activeSection = activeSection;
