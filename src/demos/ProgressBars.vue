@@ -2,27 +2,40 @@
   <div>
     <div class="section">
       <h2>Default Progress Bar</h2>
-      <p>
-        Our progress bar component is extended from
-        <a
-          target="_blank"
-          href="https://github.com/dzwillia/vue-simple-progress"
-        >Vue Simple Progress</a>
-      </p>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre>
-<code>&lt;progress-bar
-  :progressComplete=&quot;%&quot;&gt;
-&lt;/progress-bar&gt;</code></pre>
+            <code>
+              &lt;progress-bar
+              :progressComplete=&quot;%&quot;&gt;
+              &lt;/progress-bar&gt;
+            </code>
+          </pre>
         </div>
       </accordion>
-
       <div class="row">
         <progress-bar :progressComplete="50"/>
       </div>
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Props</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>progressComplete</td>
+            <td>Number</td>
+            <td>null</td>
+            <td>Progress complete in percentage</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -35,7 +48,7 @@ import Accordion from "./../components/Accordion.vue";
     Accordion
   }
 })
-export default class Sliders extends Vue {
+export default class ProgressBars extends Vue {
   value = 50;
 }
 </script>
