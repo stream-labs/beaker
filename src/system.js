@@ -19,6 +19,7 @@ import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
 import Tabs from "@/components/Tabs";
 import Pagination from "@/components/Pagination";
+import ProgressBar from "@/components/ProgressBar";
 
 // Define components
 const components = [
@@ -32,7 +33,8 @@ const components = [
   Selector,
   Slider,
   Tabs,
-  Pagination
+  Pagination,
+  ProgressBar
 ];
 
 // Install the above defined components
@@ -58,18 +60,6 @@ export {
   Selector,
   Slider,
   Tabs,
-  Pagination
+  Pagination,
+  ProgressBar
 };
-
-// export default {
-//   Accordion,
-//   Badge,
-//   Button,
-//   FormGroupH,
-//   FormGroupV,
-//   HelloWorld,
-//   Selector,
-//   Slider,
-//   Tabs,
-//   Pagination
-// };
