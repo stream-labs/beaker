@@ -48,7 +48,7 @@ export default class LeftNavigation extends Vue {
 .left-navigation {
   display: flex;
   flex-direction: column;
-  .margin-top(3);
+  .margin-top(7);
 }
 
 .left-navigation-section {
