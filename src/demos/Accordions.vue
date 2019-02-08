@@ -2,6 +2,7 @@
   <div>
     <div class="section">
       <h1>Accordions</h1>
+      <pre><code>import { Accordion } from 'streamlabs-beaker';</code></pre>
       <h3>Default settings</h3>
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
         <div slot="content">
