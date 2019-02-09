@@ -9,6 +9,7 @@
       <banners v-if="activeSection === 'banners'"/>
       <buttons-demo v-if="activeSection === 'buttons'"/>
       <callouts v-if="activeSection === 'callouts'"/>
+      <call-to-actions v-if="activeSection === 'call-to-actions'"/>
       <color-pickers v-if="activeSection === 'color-pickers'"/>
       <dropdowns v-if="activeSection === 'dropdowns'"/>
       <forms v-if="activeSection === 'forms'"/>
@@ -32,6 +33,7 @@ import Accordions from "@/demos/Accordions.vue";
 import Badges from "@/demos/Badges.vue";
 import Banners from "@/demos/Banners.vue";
 import ButtonsDemo from "@/demos/Buttons.vue";
+import CallToActions from "@/demos/CallToActions.vue";
 import Callouts from "@/demos/Callouts.vue";
 import ColorPickers from "@/demos/ColorPickers.vue";
 import Dropdowns from "@/demos/Dropdowns.vue";
@@ -55,6 +57,7 @@ import Toggles from "@/demos/Toggles.vue";
     Banners,
     ButtonsDemo,
     Callouts,
+    CallToActions,
     ColorPickers,
     Dropdowns,
     Forms,
