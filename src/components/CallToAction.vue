@@ -27,6 +27,7 @@ import Button from "./../components/Button.vue";
     Button
   }
 })
+
 export default class CallToAction extends Vue {
   @Prop({ default: require('./../assets/imgs/kevin-standard.svg')})
   thumbnail!: String;
@@ -49,11 +50,8 @@ export default class CallToAction extends Vue {
 
 </script>
 
-
-
 <style lang="less" scoped>
 @import "./../styles/Imports";
-
 
 .call-to-action {
   display: flex;
@@ -65,14 +63,13 @@ export default class CallToAction extends Vue {
   .padding(3);
   .radius(2);
   .day-shadow();
-
 }
 
 .call-to-action--thumb {
   display: inline-flex;
   flex-grow: 0;
-  height: 72px;
-  width: 72px;
+  height: 92px;
+  width: 92px;
   background-color: @teal;
   .radius(3);
   .margin-right(3);
@@ -104,26 +101,10 @@ export default class CallToAction extends Vue {
   color: @day-title;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .night,
 .night-theme {
   .call-to-action {
-    background-color: @night-section;
+    background-color: @night-section-alt;
     .night-shadow();
   }
   .title,
@@ -131,4 +112,5 @@ export default class CallToAction extends Vue {
     color: @night-title;
   }
 }
+
 </style>
