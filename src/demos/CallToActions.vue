@@ -8,7 +8,7 @@
       <h2>Custom Call to Action</h2>
       <div class="row">
         <call-to-action
-        :thumbnail="require('./../assets/imgs/kevin-standard.svg')"
+        :thumbnail="require('./../assets/imgs/logo.svg')"
         :title="'This is a Custom Call To Action'"
         :description="'A Custom Description'"
         :buttonVariation="'action'"
