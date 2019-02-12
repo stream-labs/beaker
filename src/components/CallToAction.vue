@@ -1,9 +1,9 @@
 <template>
   <div class="call-to-action">
-    <div class="call-to-action--thumb">
+    <div class="call-to-action__thumb">
       <img :src="thumbnail">
     </div>
-    <div class="call-to-action--description">
+    <div class="call-to-action__description">
       <div class="title">{{ title }}</div>
       <div class="subtitle">{{ description }}</div>
     </div>
@@ -65,7 +65,7 @@ export default class CallToAction extends Vue {
   .day-shadow();
 }
 
-.call-to-action--thumb {
+.call-to-action__thumb {
   display: inline-flex;
   flex-grow: 0;
   height: 92px;
@@ -81,7 +81,7 @@ export default class CallToAction extends Vue {
   }
 }
 
-.call-to-action--description {
+.call-to-action__description {
   display: inline-flex;
   flex-direction: column;
   flex-grow: 3;
