@@ -7,7 +7,7 @@
       <div class="title">{{ title }}</div>
       <div class="subtitle">{{ description }}</div>
     </div>
-    <div class="button-container button-container--left">
+    <div class="button-container button-container--right">
       <Button
         :variation="buttonVariation"
         :size="'large'"
@@ -67,6 +67,7 @@ export default class CallToAction extends Vue {
 .call-to-action__thumb {
   display: inline-flex;
   flex-grow: 0;
+  flex-shrink: 0;
   height: 80px;
   width: 80px;
   background-color: @teal;
@@ -86,18 +87,22 @@ export default class CallToAction extends Vue {
   flex-grow: 3;
 }
 
+.title,
+.subtitle {
+  color: @day-title;
+  line-height: 130%;
+}
+
 .title {
-  font-family: 'Roboto';
   font-size: 22px;
   font-weight: 700;
-  color: @day-title;
   .margin-bottom(2);
 }
 
 .subtitle {
   font-size: 18px;
   font-weight: medium;
-  color: @day-title;
+
 }
 
 .night,
