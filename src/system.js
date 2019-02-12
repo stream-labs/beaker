@@ -11,6 +11,7 @@
 import Accordion from "@/components/Accordion";
 import Badge from "@/components/Badge";
 import Button from "@/components/Button";
+import CallToAction from "@/components/CallToAction";
 import Callout from "@/components/Callout";
 import FormGroupH from "@/components/FormGroupH";
 import FormGroupV from "@/components/FormGroupV";
@@ -26,6 +27,7 @@ const components = [
   Accordion,
   Badge,
   Button,
+  CallToAction,
   Callout,
   FormGroupH,
   FormGroupV,
@@ -53,6 +55,7 @@ export {
   Accordion,
   Badge,
   Button,
+  CallToAction,
   Callout,
   FormGroupH,
   FormGroupV,
