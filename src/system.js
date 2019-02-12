@@ -15,6 +15,7 @@ import Callout from "@/components/Callout";
 import FormGroupH from "@/components/FormGroupH";
 import FormGroupV from "@/components/FormGroupV";
 import HelloWorld from "@/components/HelloWorld";
+import ImagePicker from "@/components/ImagePicker"
 import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
 import Tabs from "@/components/Tabs";
@@ -30,6 +31,7 @@ const components = [
   FormGroupH,
   FormGroupV,
   HelloWorld,
+  ImagePicker,
   Selector,
   Slider,
   Tabs,
@@ -57,6 +59,7 @@ export {
   FormGroupH,
   FormGroupV,
   HelloWorld,
+  ImagePicker,
   Selector,
   Slider,
   Tabs,

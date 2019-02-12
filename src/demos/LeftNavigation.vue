@@ -17,6 +17,7 @@
       <!-- <a class="left-navigation__link" @click="changeSection('dropdowns')">Dropdowns</a> -->
       <a class="left-navigation__link" @click="changeSection('forms')">Forms</a>
       <a class="left-navigation__link" @click="changeSection('icons')">Icons</a>
+      <a class="left-navigation__link" @click="changeSection('image-pickers')">Image Pickers</a>
       <a class="left-navigation__link" @click="changeSection('inputs')">Inputs</a>
       <a class="left-navigation__link" @click="changeSection('paginations')">Paginations</a>
       <a class="left-navigation__link" @click="changeSection('progress-bars')">Progress Bars</a>
