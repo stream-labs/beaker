@@ -4,6 +4,8 @@
 
     <div class="content">
       <installation v-if="activeSection === 'installation'"/>
+      <assets v-if="activeSection === 'assets'"/>
+
       <accordions v-if="activeSection === 'accordions'"/>
       <badges v-if="activeSection === 'badges'"/>
       <banners v-if="activeSection === 'banners'"/>
@@ -28,7 +30,10 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import LeftNavigation from "@/demos/LeftNavigation.vue"; // @ is an alias to /src
-import Installation from "@/demos/Installation.vue"; // @ is an alias to /src
+import Installation from "@/demos/Installation.vue";
+import Assets from "@/demos/Assets.vue";
+import Colors from "@/demos/Colors.vue";
+import Typography from "@/demos/Typography.vue";
 import Accordions from "@/demos/Accordions.vue";
 import Badges from "@/demos/Badges.vue";
 import Banners from "@/demos/Banners.vue";
@@ -52,6 +57,9 @@ import Toggles from "@/demos/Toggles.vue";
   components: {
     LeftNavigation,
     Installation,
+    Assets,
+    Colors,
+    Typography,
     Accordions,
     Badges,
     Banners,
