@@ -62,14 +62,13 @@ export default class CallToAction extends Vue {
   background-color: @day-section;
   .padding(3);
   .radius(2);
-  .day-shadow();
 }
 
 .call-to-action__thumb {
   display: inline-flex;
   flex-grow: 0;
-  height: 92px;
-  width: 92px;
+  height: 80px;
+  width: 80px;
   background-color: @teal;
   .radius(3);
   .margin-right(3);
@@ -88,9 +87,9 @@ export default class CallToAction extends Vue {
 }
 
 .title {
-  font-family: 'Muli';
+  font-family: 'Roboto';
   font-size: 22px;
-  font-weight: 900;
+  font-weight: 700;
   color: @day-title;
   .margin-bottom(2);
 }
@@ -105,7 +104,6 @@ export default class CallToAction extends Vue {
 .night-theme {
   .call-to-action {
     background-color: @night-section-alt;
-    .night-shadow();
   }
   .title,
   .subtitle {
