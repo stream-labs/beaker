@@ -18,6 +18,7 @@
   &lt;Button
     :variation=&quot;'default'&quot;
     :title=&quot;'Default'&quot;&gt;
+    :onClick=&quot;'buttonClick'&quot;&gt;
   &lt;/Button&gt;
 
   &lt;Button
@@ -41,12 +42,14 @@
         <div class="button-container button-container--left">
           <Button
             :variation="'default'"
-            :title="'Default'">
+            :title="'Default'"
+            @click="buttonClick">
           </Button>
 
           <Button
             :variation="'action'"
-            :title="'Action'">
+            :title="'Action'"
+            @click="buttonActionClick">
           </Button>
 
           <Button
@@ -680,6 +683,12 @@
         </thead>
         <tbody>
           <tr>
+            <td>@click</td>
+            <td>Function</td>
+            <td>null</td>
+            <td>Emits a click function. If you are using an event modifier such as <code>prevent</code>, use <code>native</code>. For example <code>@click.native.prevent</code>.</td>
+          </tr>
+          <tr>
             <td>icon</td>
             <td>String</td>
             <td>null</td>
@@ -722,10 +731,10 @@
             <td>State of the button. Options are <code>hover</code>, <code>focus</code>, <code>loading</code> and <code>disabled</code>.</td>
           </tr>
           <tr>
-            <td>submit</td>
+            <td>type</td>
             <td>String</td>
             <td>null</td>
-            <td>Set the button type to submit.</td>
+            <td>Set to string 'submit'.</td>
           </tr>
           <tr>
             <td>to</td>
@@ -734,7 +743,7 @@
             <td>Used if the the <code>type</code> is a <code>router-link</code>. Define the path.</td>
           </tr>
           <tr>
-            <td>type</td>
+            <td>tag</td>
             <td>String</td>
             <td>button</td>
             <td>What type of element the component is. Options are <code>button</code>, <code>a</code>, <code>router-link</code></td>
@@ -765,5 +774,13 @@ import Button from "./../components/Button.vue";
 export default class Forms extends Vue {
   isLoading = true;
   isLoadingExample = false;
+
+  buttonClick() {
+    alert("Button clicked");
+  }
+
+  buttonActionClick() {
+    console.log("hello");
+  }
 }
 </script>

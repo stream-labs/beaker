@@ -11,6 +11,7 @@
 import Accordion from "@/components/Accordion";
 import Badge from "@/components/Badge";
 import Button from "@/components/Button";
+import CallToAction from "@/components/CallToAction";
 import Callout from "@/components/Callout";
 import Checkbox from "@/components/Checkbox";
 import ColorPicker from "@/components/ColorPicker";
@@ -24,8 +25,25 @@ import Tabs from "@/components/Tabs";
 import TextInput from "@/components/TextInput";
 import Toggle from "@/components/Toggle";
 import Pagination from "@/components/Pagination";
+import ProgressBar from "@/components/ProgressBar";
 
 // Define components
+const components = [
+  Accordion,
+  Badge,
+  Button,
+  CallToAction,
+  Callout,
+  FormGroupH,
+  FormGroupV,
+  HelloWorld,
+  Selector,
+  Slider,
+  Tabs,
+  TextInput,
+  Pagination,
+  ProgressBar
+];
 
 // Install the above defined components
 // const System = {
@@ -45,6 +63,7 @@ export default {
   Accordion,
   Badge,
   Button,
+  CallToAction,
   Callout,
   Checkbox,
   ColorPicker,
@@ -56,6 +75,6 @@ export default {
   Slider,
   Tabs,
   TextInput,
-  Toggle,
-  Pagination
+  Pagination,
+  ProgressBar
 };

@@ -24,14 +24,11 @@ import { Component, Prop, Vue } from "vue-property-decorator";
   }
 })
 export default class Toggle extends Vue {
-  @Prop()
-  values!: object;
+  @Prop() values!: object;
 
-  @Prop()
-  selected!: string;
+  @Prop() selected!: string;
 
-  @Prop()
-  default!: string;
+  @Prop() default!: string;
 
   created() {
     this.$emit("update:selected", this.default);
@@ -47,6 +44,7 @@ export default class Toggle extends Vue {
   .radius();
   .transition();
   overflow: hidden;
+  .weight(@medium);
 
   &__option {
     .padding();

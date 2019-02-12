@@ -1,14 +1,18 @@
 <template>
   <div id="app" :class="[ nightTheme ? nightClasses : '', appClass ]">
     <div id="nav">
+      <div class="logo">
+        <img v-if="nightTheme" src="./assets/imgs/beaker-full-night.svg">
+        <img v-else src="./assets/imgs/beaker-full.svg">
+      </div>
       <toggle
         :values="themes"
         :selected.sync="theme"
         :default="'day'"
         @click.native="toggleTheme()">
       </toggle>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/documentation">Documentation</router-link>
+      <!-- <router-link to="/">Home</router-link> | -->
+      <!-- <router-link to="/documentation">Documentation</router-link> -->
     </div>
     <router-view/>
   </div>
@@ -30,8 +34,8 @@ export default class App extends Vue {
   theme = "";
 
   themes = {
-    day: "<i class='icon-view'></i>",
-    night: "<i class='icon-hide'></i>"
+    day: "Day",
+    night: "Night"
   };
 
   toggleTheme() {
@@ -48,6 +52,11 @@ export default class App extends Vue {
 @import "./styles/App";
 
 #nav {
+  border-bottom: 1px solid @day-border;
+  .margin-bottom(3);
+  position: relative;
+  .padding-bottom();
+
   a {
     .weight(@medium);
     color: @day-paragraph;
@@ -55,6 +64,12 @@ export default class App extends Vue {
     &.router-link-exact-active {
       color: @teal;
     }
+  }
+
+  .toggle {
+    position: absolute;
+    left: 0;
+    bottom: -54px;
   }
 }
 
@@ -65,6 +80,13 @@ export default class App extends Vue {
 }
 
 .logo {
-  width: 180px;
+  width: 120px;
+}
+
+.night,
+.night-theme {
+  #nav {
+    border-bottom-color: @night-border;
+  }
 }
 </style>

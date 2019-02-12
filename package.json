@@ -1,10 +1,10 @@
 {
   "name": "streamlabs-beaker",
-  "version": "0.2.24",
+  "version": "0.2.30",
   "main": "./dist/beaker.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name beaker ./src/system.js",
+    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "build-bundle": "vue-cli-service build --target lib --name beaker ./src/system.js",
     "prepare": "vue-cli-service build --target lib --name beaker ./src/system.js"
@@ -34,11 +34,12 @@
     "@vue/cli-plugin-babel": "^3.0.5",
     "@vue/cli-plugin-eslint": "^3.0.5",
     "@vue/cli-plugin-typescript": "^3.0.5",
-    "@vue/cli-service": "^3.0.5",
+    "@vue/cli-service": "^3.3.1",
     "@vue/eslint-config-prettier": "^3.0.5",
     "@vue/eslint-config-typescript": "^3.0.5",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
+    "resize-observer-polyfill": "^1.5.1",
     "typescript": "^3.0.0",
     "vue-template-compiler": "^2.5.17"
   },

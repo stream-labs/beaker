@@ -15,6 +15,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import ResizeObserver from "resize-observer-polyfill";
 
 @Component({})
 export default class Accordion extends Vue {
@@ -46,11 +47,13 @@ export default class Accordion extends Vue {
   }
 
   toggleAccordion(event: any) {
-    this.defaultOpen = !this.defaultOpen;
-
     let parent: any = this.$parent,
       parentMenu: any = this.$parent.$refs.menu,
       menu = this.$refs.menu;
+
+    this.defaultOpen = !this.defaultOpen;
+    menu.style.transition = "all .275s";
+
 
     if (parent.$el.classList.contains("accordion") && parent.defaultOpen) {
       parentMenu.style.maxHeight = "none";
@@ -73,6 +76,22 @@ export default class Accordion extends Vue {
     } else {
       return `${newHeight + padding}px`;
     }
+  }
+
+  mounted() {
+    const menu = this.$refs.menu;
+    const ro = new ResizeObserver((entries, observer) => {
+      menu.style.maxHeight = this.calculateHeight(menu);
+    });
+
+    ro.observe(menu);
+  }
+
+  updated() {
+    this.$nextTick(() => {
+      const menu = this.$refs.menu;
+      menu.style.maxHeight = this.calculateHeight(menu);
+    });
   }
 
   get accordionClasses() {
@@ -121,12 +140,20 @@ export default class Accordion extends Vue {
     .accordion__menu {
       max-height: 0;
       .padding-v-sides(@0);
+      opacity: 0;
     }
 
     & > .accordion__toggle {
       &:before {
         content: "\e957";
       }
+    }
+  }
+
+  &:not(.is-closed) {
+    & > .accordion__menu {
+      overflow: visible;
+      opacity: 1;
     }
   }
 }
