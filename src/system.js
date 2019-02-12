@@ -11,6 +11,7 @@
 import Accordion from "@/components/Accordion";
 import Badge from "@/components/Badge";
 import Button from "@/components/Button";
+import CallToAction from "@/components/CallToAction";
 import Callout from "@/components/Callout";
 import FormGroupH from "@/components/FormGroupH";
 import FormGroupV from "@/components/FormGroupV";
@@ -19,12 +20,14 @@ import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
 import Tabs from "@/components/Tabs";
 import Pagination from "@/components/Pagination";
+import ProgressBar from "@/components/ProgressBar";
 
 // Define components
 const components = [
   Accordion,
   Badge,
   Button,
+  CallToAction,
   Callout,
   FormGroupH,
   FormGroupV,
@@ -32,7 +35,8 @@ const components = [
   Selector,
   Slider,
   Tabs,
-  Pagination
+  Pagination,
+  ProgressBar
 ];
 
 // Install the above defined components
@@ -51,6 +55,7 @@ export {
   Accordion,
   Badge,
   Button,
+  CallToAction,
   Callout,
   FormGroupH,
   FormGroupV,
@@ -58,18 +63,6 @@ export {
   Selector,
   Slider,
   Tabs,
-  Pagination
+  Pagination,
+  ProgressBar
 };
-
-// export default {
-//   Accordion,
-//   Badge,
-//   Button,
-//   FormGroupH,
-//   FormGroupV,
-//   HelloWorld,
-//   Selector,
-//   Slider,
-//   Tabs,
-//   Pagination
-// };
