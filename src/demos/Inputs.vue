@@ -3,34 +3,11 @@
     <h1>Inputs</h1>
 
     <div class="section">
-      <h2>Text Input</h2>
-      <input type="text" placeholder="Text Input">
-    </div>
-
-    <div class="section">
       <h2>Text Inputs</h2>
+      <text-input :label="'With label'" v-model="testingInput" :type="textInputType" :placeholder="textInputPlaceholder"></text-input>
       <text-input :type="textInputType" :placeholder="textInputPlaceholder"></text-input>
       <text-input :type="emailInputType" :placeholder="emailInputPlaceholder"></text-input>
       <text-input :type="passwordInputType" :placeholder="passwordInputPlaceholder"></text-input>
-    </div>
-
-    <div class="section">
-      <h2>Text Input with Search</h2>
-
-      <div class="input-wrapper--search">
-        <i class="icon-search"></i>
-        <input class="input--search" type="text" placeholder="Text Input">
-      </div>
-    </div>
-
-    <div class="section">
-      <h2>Email Input</h2>
-      <input type="email" placeholder="morgan@streamlabs.com">
-    </div>
-
-    <div class="section">
-      <h2>Textarea</h2>
-      <textarea rows="3"></textarea>
     </div>
 
     <div class="section">
@@ -132,6 +109,7 @@ export default class Inputs extends Vue {
   radioValue1 = true;
   radioValue2 = false;
   statusValue = true;
+  testingInput = null;
 
   layoutValue = "above";
   jarValue = "glass-pint";
