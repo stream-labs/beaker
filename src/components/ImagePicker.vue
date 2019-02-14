@@ -32,7 +32,7 @@
 <script lang="ts">
 import { Component, Prop, Vue, Emit } from "vue-property-decorator";
 import Button from "./../components/Button.vue";
-// hi
+
 @Component({
   components: {
     Button
