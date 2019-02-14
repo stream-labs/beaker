@@ -2,7 +2,11 @@
   <div>
     <div class="section">
       <h1>Accordions</h1>
-      <pre><code>import { Accordion } from 'streamlabs-beaker';</code></pre>
+      <pre><code>import { Accordion } from 'streamlabs-beaker';
+
+components: {
+  Accordion
+}</code></pre>
       <h3>Default settings</h3>
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
         <div slot="content">
@@ -35,13 +39,6 @@
       </Accordion>
 
       <h3>Alternative no border style</h3>
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <div><color-picker name="colors" :value="colors" v-model="colors"></color-picker></div>
-          <div><color-picker name="colors2" :value="colors2" v-model="colors2"></color-picker></div>
-        </div>
-      </Accordion>
-
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
         <div slot="content">
           <pre>
@@ -158,7 +155,7 @@ import ColorPicker from "./../components/ColorPicker.vue";
 @Component({
   components: {
     Accordion,
-    ColorPicker,
+    ColorPicker
   }
 })
 export default class Accordions extends Vue {

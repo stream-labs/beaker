@@ -67,7 +67,7 @@ export default {
     border: 0;
     .padding-h-sides();
     .padding-v-sides(@0);
-    height: 32px;
+    height: 40px;
   }
 
   .open-indicator:before {
@@ -93,7 +93,7 @@ export default {
     .margin-right();
     color: @day-paragraph;
     .padding(@0);
-    line-height: 32px;
+    line-height: 40px;
     border: 0;
     font-family: "Roboto";
   }
@@ -113,7 +113,7 @@ export default {
     .day-shadow();
 
     li {
-      line-height: 32px;
+      line-height: 40px;
 
       a {
         color: @day-paragraph;
@@ -148,7 +148,6 @@ export default {
 .night,
 .night-theme {
   .v-select {
-    font-family: "Roboto";
     background-color: @night-dropdown-bg;
     border-color: @night-dropdown-border;
 
@@ -162,12 +161,9 @@ export default {
       .night-shadow();
 
       li {
-        line-height: 32px;
 
         a {
           color: @night-paragraph;
-          .padding-h-sides();
-          .padding-v-sides(0);
 
           &:hover,
           &.active,

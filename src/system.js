@@ -11,14 +11,20 @@
 import Accordion from "@/components/Accordion";
 import Badge from "@/components/Badge";
 import Button from "@/components/Button";
+import CallToAction from "@/components/CallToAction";
 import Callout from "@/components/Callout";
+import Checkbox from "@/components/Checkbox";
+import ColorPicker from "@/components/ColorPicker";
 import FormGroupH from "@/components/FormGroupH";
 import FormGroupV from "@/components/FormGroupV";
 import HelloWorld from "@/components/HelloWorld";
 import ImagePicker from "@/components/ImagePicker"
+import PaymentForm from "@/components/PaymentForm";
 import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
 import Tabs from "@/components/Tabs";
+import TextInput from "@/components/TextInput";
+import Toggle from "@/components/Toggle";
 import Pagination from "@/components/Pagination";
 import ProgressBar from "@/components/ProgressBar";
 
@@ -27,6 +33,7 @@ const components = [
   Accordion,
   Badge,
   Button,
+  CallToAction,
   Callout,
   FormGroupH,
   FormGroupV,
@@ -35,6 +42,7 @@ const components = [
   Selector,
   Slider,
   Tabs,
+  TextInput,
   Pagination,
   ProgressBar
 ];
@@ -51,18 +59,25 @@ const components = [
 // }
 
 // Finally export as default
-export {
+
+
+export default {
   Accordion,
   Badge,
   Button,
+  CallToAction,
   Callout,
+  Checkbox,
+  ColorPicker,
   FormGroupH,
   FormGroupV,
   HelloWorld,
   ImagePicker,
+  PaymentForm,
   Selector,
   Slider,
   Tabs,
+  TextInput,
   Pagination,
   ProgressBar
 };

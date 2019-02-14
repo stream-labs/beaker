@@ -10,13 +10,14 @@ select {
   .radius();
   border: 1px solid @day-input-border;
   box-shadow: none;
-  height: 32px;
+  height: 40px;
   font-size: 14px;
-  .padding-h-sides();
+  .padding--input();
   background: @day-input-bg;
   font-family: 'Roboto';
-  color: @day-paragraph;
+  color: @day-title;
   width: 100%;
+  transition: all 0.275s ease-in-out;
 
   &:active,
   &:focus {
@@ -136,7 +137,7 @@ textarea {
   background: @day-input-bg;
   margin-bottom: 0px;
   vertical-align: middle;
-  color: @day-paragraph;
+  color: @day-title;
   width: 100%;
   resize: vertical;
   .padding();
@@ -595,14 +596,13 @@ input[type=text].input-good {
   select,
   textarea {
     border-color: @night-input-border;
-    box-shadow: none;
     background: @night-input-bg;
-    color: @night-paragraph;
+    color: @night-title;
 
     &:active,
     &:focus {
       box-shadow: none;
-      border-color: @night-input-border;
+      border-color: @teal;
       background: @night-input-bg;
     }
   }
