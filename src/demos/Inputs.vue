@@ -3,27 +3,111 @@
     <h1>Inputs</h1>
 
     <div class="section">
-      <h2>Text Input</h2>
-      <input type="text" placeholder="Text Input">
-    </div>
+      <h2>Text Inputs</h2>
+      <p>These 4 fields below are wrapped in a <code>FormGroup</code> component.</p> This will put 16px of margin between form fields and 24px margin between form groups.</p>
+      <FormGroup>
+        <text-input
+          label="Text input"
+          type="text"
+          :placeholder="textInputPlaceholder"
+          v-model="textInputValue"
+          name="textExample"
+          slot="input">
+        </text-input>
 
-    <div class="section">
-      <h2>Text Input with Search</h2>
+        <text-input
+          label="Email input"
+          type="email"
+          :placeholder="emailInputPlaceholder"
+          v-model="emailInputValue"
+          name="emailExample"
+          slot="input">
+        </text-input>
 
-      <div class="input-wrapper--search">
-        <i class="icon-search"></i>
-        <input class="input--search" type="text" placeholder="Text Input">
-      </div>
-    </div>
+        <text-input
+          label="Password input"
+          type="password"
+          :placeholder="passwordInputPlaceholder"
+          v-model="passwordInputValue"
+          name="passwordExample"
+          slot="input">
+        </text-input>
 
-    <div class="section">
-      <h2>Email Input</h2>
-      <input type="email" placeholder="morgan@streamlabs.com">
-    </div>
+        <text-input
+          label="With error"
+          type="text"
+          :placeholder="textInputPlaceholder"
+          v-model="textInputValue"
+          name="textExample"
+          slot="input"
+          :error="'Hello, I am an error message'">
+        </text-input>
 
-    <div class="section">
-      <h2>Textarea</h2>
-      <textarea rows="3"></textarea>
+        <text-input
+          label="With error"
+          type="text"
+          :placeholder="textInputPlaceholder"
+          v-model="textInputValue"
+          name="textExample"
+          slot="input"
+          :help-text="'Hello, I am help text'">
+        </text-input>
+      </FormGroup>
+
+       <table class="docs-table">
+      <thead>
+        <tr>
+          <th>Prop</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>disabled</td>
+          <td>boolean</td>
+          <td>null</td>
+          <td>Puts a disabled class on the form field and disables the input.</td>
+        </tr>
+        <tr>
+          <td>error</td>
+          <td>string</td>
+          <td>null</td>
+          <td>If there is error text, error classes will go on the input - we plan to add better validation handling.</td>
+        </tr>
+        <tr>
+          <td>label</td>
+          <td>string</td>
+          <td>null</td>
+          <td>Optional label for the input.</td>
+        </tr>
+        <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>null</td>
+          <td>Input name attribute.</td>
+        </tr>
+        <tr>
+          <td>placeholder</td>
+          <td>string</td>
+          <td>null</td>
+          <td>Input placeholder text.</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td>string</td>
+          <td>text</td>
+          <td>Input type: <code>text</code>, <code>email</code>, <code>password</code>.</td>
+        </tr>
+        <tr>
+          <td>value</td>
+          <td>string</td>
+          <td>null</td>
+          <td>Input value using v-model.</td>
+        </tr>
+      </tbody>
+    </table>
     </div>
 
     <div class="section">
@@ -103,6 +187,8 @@ import Checkbox from "./../components/Checkbox.vue";
 import ImagePickerInput from "./../components/ImagePickerInput.vue";
 import Radio from "./../components/Radio.vue";
 import StatusSwitch from "./../components/StatusSwitch.vue";
+import TextInput from "./../components/TextInput.vue";
+import FormGroup from "./../components/FormGroup.vue";
 
 @Component({
   components: {
@@ -111,7 +197,9 @@ import StatusSwitch from "./../components/StatusSwitch.vue";
     Checkbox,
     ImagePickerInput,
     Radio,
-    StatusSwitch
+    StatusSwitch,
+    TextInput,
+    FormGroup
   }
 })
 export default class Inputs extends Vue {
@@ -123,9 +211,19 @@ export default class Inputs extends Vue {
   radioValue1 = true;
   radioValue2 = false;
   statusValue = true;
+  testingInput = null;
 
   layoutValue = "above";
   jarValue = "glass-pint";
+
+  // Text inputs
+  textInputValue = "";
+  emailInputValue = "";
+  passwordInputValue = "";
+
+  textInputPlaceholder = "Placeholder";
+  emailInputPlaceholder = "Placeholder";
+  passwordInputPlaceholder = "Placeholder";
 
   options = [
     {
