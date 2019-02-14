@@ -5,7 +5,7 @@
       <p>A basic image picker</p>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-<pre><code>&lt;image-picker&gt;&lt;/image-picker&gt;</code></pre>
+          <pre><code>&lt;image-picker&gt;&lt;/image-picker&gt;</code></pre>
         </div>
       </accordion>
       <div class="row">
@@ -46,6 +46,6 @@ import Accordion from "./../components/Accordion.vue";
   }
 })
 export default class ImagePickers extends Vue {
-  msg = 'Hi!';
+  msg = "Hi!";
 }
 </script>
