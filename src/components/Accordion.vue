@@ -47,13 +47,17 @@ export default class Accordion extends Vue {
   }
 
   toggleAccordion(event: any) {
+    const blockedNodes = ["INPUT", "BUTTON", "LABEL"];
+    if (blockedNodes.indexOf(event.target.nodeName) !== -1) {
+      return;
+    }
+
     let parent: any = this.$parent,
       parentMenu: any = this.$parent.$refs.menu,
       menu = this.$refs.menu;
 
     this.defaultOpen = !this.defaultOpen;
     menu.style.transition = "all .275s";
-
 
     if (parent.$el.classList.contains("accordion") && parent.defaultOpen) {
       parentMenu.style.maxHeight = "none";
