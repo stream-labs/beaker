@@ -1,24 +1,22 @@
 <template>
-  <div class="image-picker" @click="chooseImage">
-
-      <div class="image-picker__thumb">
-        <img :src="thumbnail">
+  <div class="image-picker" >
+      <div class="image-picker__thumb" @click="chooseImage">
+        <img :src="this.imageThumb" v-if="imageSelected">
+        <div class="upload-icon" v-if="!imageSelected">
+        <i class="icon-upload-image"></i>
+        </div>
       </div>
       <div class="image-picker__filename">
-        <input ref="fileInput"
-          class="file-input"
-          type="file"
-          @input="onSelectFile"/>
-         {{ this.imageData }}
+        <input ref="fileInput" class="file-input" type="file" accept=".jpg,.jpeg,.png,.gif,.svg" @input="onSelectFile"/>
+        {{ this.imageFileName }}
       </div>
-
-    <div class="image-picker__button">
-      <Button :variation="'warning'" :title="'Delete'"/>
+    <div class="button-container button-container--right">
+      <Button v-if="!imageSelected" :variation="'default'" :title="'Select Image'" @click="chooseImage"/>
+      <Button v-if="imageSelected" :variation="'action'" :title="'Upload'"/>
+      <Button v-if="imageSelected" :variation="'warning'" :title="'Delete'" @click="deleteImage"/>
     </div>
   </div>
 </template>
-
-
 
 <script lang="ts">
 import { Component, Prop, Vue, Emit } from "vue-property-decorator";
@@ -32,31 +30,43 @@ import Button from "./../components/Button.vue";
 
 export default class ImagePicker extends Vue {
 
-/*
+  $refs!: {
+    fileInput: HTMLElement
+  }
 
-@Prop ()
-imageData!: any
+  private imageData: any = null;
+  private imageFileName: any = 'Click here to add image...';
+  private imageThumb: any = null;
+  private imageSelected: Boolean = false;
 
-chooseImage () {
-  this.$refs.fileInput.click();
-}
+  chooseImage () {
+    if(!this.imageSelected) {
 
-onSelectFile () {
-      const input = this.$refs.fileInput
-      const files = input.files
-      if (files && files[0]) {
-        const reader = new FileReader
-        reader.onload = e => {
-          this.imageData = e.target.result
-        }
-        reader.readAsDataURL(files[0])
-        this.$emit('input', files[0])
-      }
-}
+      this.$refs.fileInput.click();
+    }
+  }
 
+  deleteImage () {
+    this.imageFileName = 'Click here to add image...';
+    this.imageThumb = null;
+    this.imageSelected = false;
+  }
 
-*/
+  uploadImage () {
+    this.$emit('upload', this.imageData);
+  }
 
+  onSelectFile (event:any) {
+    var files = event.target.files;
+    var output:any = [];
+    for (var i = 0, f; f = files[i]; i++) {
+      output.push(f.name, f.size);
+    }
+    this.imageFileName = output[0];
+    this.imageData = event.target.files[0];
+    this.imageThumb = URL.createObjectURL(files[0]);
+    this.imageSelected = true;
+  }
 }
 
 </script>
@@ -81,15 +91,24 @@ onSelectFile () {
   position: absolute;
 }
 
+.upload-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: @light-4;
+  width: 40px;
+  height: 40px;
+  i {
+    font-size: 24px;
+  }
+}
+
 .image-picker__thumb {
-
   display: inline-flex;
-
   flex-grow: 0;
-
   height: 40px;
   width: 40px;
-  background-color: @teal;
+  background-color: @light-4;
   overflow: hidden;
   border-bottom-left-radius: @radius;
   border-top-left-radius: @radius;
@@ -110,46 +129,23 @@ onSelectFile () {
   font-style: normal;
   font-weight: normal;
   line-height: normal;
+  color: @day-paragraph;
   font-size: 14px;
   background-color: @day-section;
   border-bottom-right-radius: @radius;
   border-top-right-radius: @radius;
-
   .padding-left(2);
-  .margin-right(2);
-}
-
-
-
-.call-to-action__description {
-  display: inline-flex;
-  flex-direction: column;
-  flex-grow: 3;
-}
-
-.title {
-  font-family: 'Muli';
-  font-size: 22px;
-  font-weight: 900;
-  color: @day-title;
-  .margin-bottom(2);
-}
-
-.subtitle {
-  font-size: 18px;
-  font-weight: medium;
-  color: @day-title;
 }
 
 .night,
 .night-theme {
-  .call-to-action {
-    background-color: @night-section-alt;
-    .night-shadow();
+  .upload-icon,
+  .image-picker__thumb {
+    background-color: @dark-4;
   }
-  .title,
-  .subtitle {
-    color: @night-title;
+  .image-picker__filename {
+    background-color: @night-section;
+    color: @night-paragraph
   }
 }
 

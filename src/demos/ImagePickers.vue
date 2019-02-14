@@ -1,19 +1,17 @@
 <template>
   <div>
     <div class="section">
-      <h2>Image Picker</h2>
+      <h1>Image Picker</h1>
+      <p>A basic image picker</p>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
 <pre><code>&lt;image-picker&gt;&lt;/image-picker&gt;</code></pre>
         </div>
       </accordion>
-
-      
       <div class="row">
         <image-picker/>
       </div>
-
-
+      <!--
       <table class="docs-table">
         <thead>
           <tr>
@@ -32,6 +30,7 @@
           </tr>
         </tbody>
       </table>
+      -->
     </div>
   </div>
 </template>
