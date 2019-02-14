@@ -7,11 +7,9 @@
 
     <div class="section">
       <h2>Callout Variations</h2>
-      <p>There are 5 callout variations: success, success-alt, warning, warning-alt, and info.</p>
+      <p>There are 3 callout variations: success, warning, and info.</p>
       <callout :variation="'success'">Success callout. <a href="#0">Link</a></callout>
-      <callout :variation="'success-alt'">Success-alt callout. <a href="#0">Link</a></callout>
       <callout :variation="'warning'">Warning callout. <a href="#0">Link</a></callout>
-      <callout :variation="'warning-alt'">Warning-alt callout. <a href="#0">Link</a></callout>
       <callout :variation="'info'">Info callout. <a href="#0">Link</a></callout>
 
       <accordion

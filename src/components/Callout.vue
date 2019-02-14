@@ -62,8 +62,10 @@ export default class Callout extends Vue {
   align-items: center;
   .margin-bottom(3);
   .padding();
+  height: 40px;
   .radius();
   .transition();
+  justify-content: center;
 
   [class^="icon-"] {
     &:first-child {

@@ -94,7 +94,8 @@ export default class Documentation extends Vue {
 
 .documentation {
   display: grid;
-  grid-template-columns: 260px auto;
+  grid-template-columns: 180px auto;
+  grid-gap: 80px;
 
   code {
     background-color: @light-3;
@@ -110,6 +111,12 @@ export default class Documentation extends Vue {
       padding: 0;
       margin: 0;
     }
+  }
+}
+
+.accordion {
+  pre {
+    .margin-bottom(@0);
   }
 }
 
