@@ -36,9 +36,9 @@ export default class TextInput extends Vue {
 
   @Prop()
   type!: {
-    type: String,
-    default: "text",
-  }
+    type: String;
+    default: "text";
+  };
 
   @Prop() placeholder!: String;
 
@@ -48,8 +48,8 @@ export default class TextInput extends Vue {
 
   content: String = this.value;
 
-  handleInput (e: String) {
-    this.$emit('input', this.content)
+  handleInput(e: String) {
+    this.$emit("input", this.content);
   }
 }
 </script>
@@ -66,6 +66,7 @@ export default class TextInput extends Vue {
   color: @dark-5;
   left: 8px;
   top: 12px;
+  .radius();
 }
 
 .form-field__label--error,
@@ -73,7 +74,8 @@ export default class TextInput extends Vue {
   color: @red;
 }
 
-.form-field__error-text {
+.form-field__error-text,
+.form-field__help-text {
   .small-type();
   .margin-bottom(0);
   .margin-top();
@@ -105,31 +107,72 @@ export default class TextInput extends Vue {
     color: @day-paragraph;
   }
 
-  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  ::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
     color: transparent;
   }
-  ::-moz-placeholder { /* Firefox 19+ */
+  ::-moz-placeholder {
+    /* Firefox 19+ */
     color: transparent;
   }
-  :-ms-input-placeholder { /* IE 10+ */
+  :-ms-input-placeholder {
+    /* IE 10+ */
     color: transparent;
   }
-  :-moz-placeholder { /* Firefox 18- */
+  :-moz-placeholder {
+    /* Firefox 18- */
     color: transparent;
   }
 }
 
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
   color: @dark-5;
 }
-::-moz-placeholder { /* Firefox 19+ */
+::-moz-placeholder {
+  /* Firefox 19+ */
   color: @dark-5;
 }
-:-ms-input-placeholder { /* IE 10+ */
+:-ms-input-placeholder {
+  /* IE 10+ */
   color: @dark-5;
 }
-:-moz-placeholder { /* Firefox 18- */
+:-moz-placeholder {
+  /* Firefox 18- */
   color: @dark-5;
 }
 
+.night,
+.night-theme {
+  .form-field--with-label {
+    position: relative;
+
+    input:focus + label {
+      color: @teal;
+    }
+  }
+
+  .form-field__input--error {
+    border-color: @red;
+
+    &:focus,
+    &:active {
+      border-color: @red;
+    }
+
+    &:focus + .form-field__label {
+      color: @red;
+    }
+  }
+
+  .form-field__label {
+    background-color: @night-bg;
+    color: @night-paragraph;
+  }
+
+  .form-field__label--error,
+  .form-field__error-text {
+    color: @red;
+  }
+}
 </style>

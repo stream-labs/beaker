@@ -42,6 +42,16 @@
           slot="input"
           :error="'Hello, I am an error message'">
         </text-input>
+
+        <text-input
+          label="With error"
+          type="text"
+          :placeholder="textInputPlaceholder"
+          v-model="textInputValue"
+          name="textExample"
+          slot="input"
+          :help-text="'Hello, I am help text'">
+        </text-input>
       </FormGroup>
 
        <table class="docs-table">
