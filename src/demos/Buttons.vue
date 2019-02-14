@@ -316,6 +316,30 @@
           :title="'Action'">
         </Button>
 
+
+        <Button
+          :type="'button'"
+          :size="'fixed-width'"
+          :variation="'action'"
+          :title="'Action'">
+        </Button>
+
+
+        <Button
+          :type="'button'"
+          :size="'fixed-width'"
+          :variation="'action'"
+          :title="'Action'">
+        </Button>
+
+
+        <Button
+          :type="'button'"
+          :size="'fixed-width'"
+          :variation="'action'"
+          :title="'Action'">
+        </Button>
+
         <Button
           :type="'button'"
           :size="'small'"
