@@ -4,10 +4,44 @@
 
     <div class="section">
       <h2>Text Inputs</h2>
-      <text-input :label="'With label'" v-model="testingInput" :type="textInputType" :placeholder="textInputPlaceholder"></text-input>
-      <text-input :type="textInputType" :placeholder="textInputPlaceholder"></text-input>
-      <text-input :type="emailInputType" :placeholder="emailInputPlaceholder"></text-input>
-      <text-input :type="passwordInputType" :placeholder="passwordInputPlaceholder"></text-input>
+      <FormGroup>
+        <text-input
+          label="Text input"
+          type="text"
+          :placeholder="textInputPlaceholder"
+          v-model="textInputValue"
+          name="textExample"
+          slot="input">
+        </text-input>
+
+        <text-input
+          label="Email input"
+          type="email"
+          :placeholder="emailInputPlaceholder"
+          v-model="emailInputValue"
+          name="emailExample"
+          slot="input">
+        </text-input>
+
+        <text-input
+          label="Password input"
+          type="password"
+          :placeholder="passwordInputPlaceholder"
+          v-model="passwordInputValue"
+          name="passwordExample"
+          slot="input">
+        </text-input>
+
+        <text-input
+          label="With error"
+          type="text"
+          :placeholder="textInputPlaceholder"
+          v-model="textInputValue"
+          name="textExample"
+          slot="input"
+          :error="'Hello, I am an error message'">
+        </text-input>
+      </FormGroup>
     </div>
 
     <div class="section">
@@ -88,6 +122,7 @@ import ImagePickerInput from "./../components/ImagePickerInput.vue";
 import Radio from "./../components/Radio.vue";
 import StatusSwitch from "./../components/StatusSwitch.vue";
 import TextInput from "./../components/TextInput.vue";
+import FormGroup from "./../components/FormGroup.vue";
 
 @Component({
   components: {
@@ -97,7 +132,8 @@ import TextInput from "./../components/TextInput.vue";
     ImagePickerInput,
     Radio,
     StatusSwitch,
-    TextInput
+    TextInput,
+    FormGroup
   }
 })
 export default class Inputs extends Vue {
@@ -115,14 +151,13 @@ export default class Inputs extends Vue {
   jarValue = "glass-pint";
 
   // Text inputs
-  textInputPlaceholder = "Text input placeholder";
-  textInputType = "text";
+  textInputValue = "";
+  emailInputValue = "";
+  passwordInputValue = "";
 
-  emailInputPlaceholder = "morgan@streamlabs.com";
-  emailInputType = "email";
-
-  passwordInputPlaceholder = "Password";
-  passwordInputType = "password";
+  textInputPlaceholder = "Placeholder";
+  emailInputPlaceholder = "Placeholder";
+  passwordInputPlaceholder = "Placeholder";
 
   options = [
     {

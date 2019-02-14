@@ -1,22 +1,28 @@
 <template>
-  <div class="text-input-wrapper" :class="{ 'text-input-wrapper--with-label': label }">
+  <div class="form-field" :class="{ 'form-field--with-label': label }">
     <input
       class="text-input"
       :type="type"
       :placeholder="placeholder"
-      v-model="value"
-      @input="emitInput($event.target.value)"
+      @input="handleInput"
       :name="name"
       :disabled="disabled"
+      @blur="$emit('blur')"
+      v-model="content"
+      :class="{ 'form-field__input': true, 'form-field__input--error': !!error }"
     />
-    <label :class="{ 'text-input-label--top': value !== '' }" class="text-input-label" v-if="label">{{ label }}</label>
+    <label :class="{ 'form-field__label--top': value !== '', 'form-field__label--error': !!error }" class="form-field__label" v-if="label">{{ label }}</label>
+
+    <transition name="slide">
+      <p v-show="error" class="form-field__error-text">{{ error }}</p>
+    </transition>
+
+    <p v-show="helpText" class="form-field__help-text">{{ helpText }}</p>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-
-// text, password, email
 
 @Component({})
 export default class TextInput extends Vue {
@@ -24,7 +30,15 @@ export default class TextInput extends Vue {
 
   @Prop() value!: String;
 
-  @Prop() type!: String;
+  @Prop() error!: String;
+
+  @Prop() helpText!: String;
+
+  @Prop()
+  type!: {
+    type: String,
+    default: "text",
+  }
 
   @Prop() placeholder!: String;
 
@@ -32,9 +46,10 @@ export default class TextInput extends Vue {
 
   @Prop() label!: String;
 
+  content: String = this.value;
 
-  emitInput() {
-    this.$emit("input");
+  handleInput (e: String) {
+    this.$emit('input', this.content)
   }
 }
 </script>
@@ -42,32 +57,34 @@ export default class TextInput extends Vue {
 <style lang="less" scoped>
 @import "./../styles/Imports";
 
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: #91979A;
-}
-::-moz-placeholder { /* Firefox 19+ */
-  color: #91979A;
-}
-:-ms-input-placeholder { /* IE 10+ */
-  color: #91979A;
-}
-:-moz-placeholder { /* Firefox 18- */
-  color: #91979A;
+.form-field__input--error {
+  border-color: @red;
 }
 
-.text-input-label {
+.form-field__label {
   position: absolute;
-  color: #91979A;
+  color: @dark-5;
   left: 8px;
   top: 12px;
 }
 
-.text-input-wrapper--with-label {
+.form-field__label--error,
+.form-field__error-text {
+  color: @red;
+}
+
+.form-field__error-text {
+  .small-type();
+  .margin-bottom(0);
+  .margin-top();
+}
+
+.form-field--with-label {
   position: relative;
 
   label {
     order: -1;
-    transition: all 0.3s ease-in;
+    transition: all 0.275s ease-in-out;
     transform: translateY(0px);
     pointer-events: none;
     background-color: @white;
@@ -75,7 +92,7 @@ export default class TextInput extends Vue {
   }
 
   input:focus + label,
-  .text-input-label--top {
+  .form-field__label--top {
     transform: translateY(-20px);
     font-size: 12px;
   }
@@ -84,7 +101,7 @@ export default class TextInput extends Vue {
     color: @teal;
   }
 
-  .text-input-label--top {
+  .form-field--top {
     color: @day-paragraph;
   }
 
@@ -101,4 +118,18 @@ export default class TextInput extends Vue {
     color: transparent;
   }
 }
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: @dark-5;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: @dark-5;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: @dark-5;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: @dark-5;
+}
+
 </style>
