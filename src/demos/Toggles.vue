@@ -4,6 +4,12 @@
       <h1>Toggles</h1>
       <p>Toggle between two custom options such as show and hide.</p>
 
+  <pre><code>import { Toggle } from 'streamlabs-beaker';
+
+components: {
+  Toggle
+}</code></pre>
+
       <accordion
         :openedTitle="'Hide Code'"
         :closedTitle="'Show Code'">

@@ -21,8 +21,8 @@ export default class Callout extends Vue {
   @Prop({ default: "success" })
   variation!: string;
 
-  @Prop({ default: true })
-  icon!: boolean;
+  @Prop()
+  icon!: String;
 
   @Prop({ default: false })
   closeable!: boolean;
@@ -74,17 +74,15 @@ export default class Callout extends Vue {
   }
 
   a {
-    font-weight: normal;
-    text-decoration: underline;
     color: inherit;
   }
 
   &__close-button {
     position: absolute;
-    top: 10px;
+    top: 13px;
     right: 8px;
     color: inherit;
-    opacity: 0.5;
+    opacity: 0.6;
     .transition();
     cursor: pointer;
 
@@ -94,27 +92,19 @@ export default class Callout extends Vue {
   }
 
   &--success {
-    background-color: @teal;
-    color: @white;
-  }
-
-  &--success-alt {
-    background-color: fade(@teal, 16%);
+    background-color: @teal-semi;
     color: @teal;
   }
 
+
   &--warning {
-    background-color: @warning;
-    color: @white;
+    background-color: @red-semi;
+    color: @red;
   }
 
-  &--warning-alt {
-    background-color: fade(@warning, 8%);
-    color: @warning;
-  }
 
   &--info {
-    background-color: @info-light;
+    background-color: @yellow-dark-semi;
     color: @info-dark;
   }
 

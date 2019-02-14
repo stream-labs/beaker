@@ -1,6 +1,13 @@
 <template>
   <div>
-    <h2>Tabs</h2>
+    <h1>Tabs</h1>
+
+    <pre><code>import { Tabs } from 'streamlabs-beaker';
+
+components: {
+  Tabs
+}</code></pre>
+
     <h3>Standard</h3>
     <Accordion
       :openedTitle="'Hide Code'"
