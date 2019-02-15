@@ -14,7 +14,7 @@
       <call-to-actions v-if="activeSection === 'call-to-actions'"/>
       <color-pickers v-if="activeSection === 'color-pickers'"/>
       <dropdowns v-if="activeSection === 'dropdowns'"/>
-      <face-masks v-if="activeSection === 'face-masks'"/>
+      <virtual-items v-if="activeSection === 'virtual-items'"/>
       <forms v-if="activeSection === 'forms'"/>
       <icons v-if="activeSection === 'icons'"/>
       <image-pickers v-if="activeSection === 'image-pickers'"/>
@@ -44,7 +44,6 @@ import CallToActions from "@/demos/CallToActions.vue";
 import Callouts from "@/demos/Callouts.vue";
 import ColorPickers from "@/demos/ColorPickers.vue";
 import Dropdowns from "@/demos/Dropdowns.vue";
-import FaceMasks from "@/demos/FaceMasks.vue";
 import Forms from "@/demos/Forms.vue";
 import Icons from "@/demos/Icons.vue";
 import ImagePickers from "@/demos/ImagePickers.vue"
@@ -56,6 +55,7 @@ import Sliders from "@/demos/Sliders.vue";
 import Tables from "@/demos/Tables.vue";
 import Tabs from "@/demos/Tabs.vue";
 import Toggles from "@/demos/Toggles.vue";
+import VirtualItems from "@/demos/VirtualItems.vue";
 
 @Component({
   components: {
@@ -72,7 +72,6 @@ import Toggles from "@/demos/Toggles.vue";
     CallToActions,
     ColorPickers,
     Dropdowns,
-    FaceMasks,
     Forms,
     Icons,
     ImagePickers,
@@ -83,7 +82,8 @@ import Toggles from "@/demos/Toggles.vue";
     Sliders,
     Tables,
     Tabs,
-    Toggles
+    Toggles,
+    VirtualItems
   }
 })
 export default class Documentation extends Vue {

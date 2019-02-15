@@ -18,21 +18,18 @@
       <a class="left-navigation__link" @click="changeSection('call-to-actions')">Call To Actions</a>
       <a class="left-navigation__link" @click="changeSection('color-pickers')">Color Picker</a>
       <a class="left-navigation__link" @click="changeSection('dropdowns')">Dropdowns</a>
-      <!-- <a class="left-navigation__link" @click="changeSection('colors')">Colors</a> -->
-      <!-- <a class="left-navigation__link" @click="changeSection('dropdowns')">Dropdowns</a> -->
-      <a class="left-navigation__link" @click="changeSection('face-masks')">Face Masks</a>
       <a class="left-navigation__link" @click="changeSection('forms')">Forms</a>
       <a class="left-navigation__link" @click="changeSection('icons')">Icons</a>
       <a class="left-navigation__link" @click="changeSection('image-pickers')">Image Pickers</a>
       <a class="left-navigation__link" @click="changeSection('inputs')">Inputs</a>
+      <!-- <a class="left-navigation__link" @click="changeSection('merch')">Merch</a> -->
       <a class="left-navigation__link" @click="changeSection('paginations')">Paginations</a>
       <a class="left-navigation__link" @click="changeSection('progress-bars')">Progress Bars</a>
-      <!-- <a class="left-navigation__link" @click="changeSection('merch')">Merch</a> -->
       <a class="left-navigation__link" @click="changeSection('sliders')">Sliders</a>
       <a class="left-navigation__link" @click="changeSection('tables')">Tables</a>
       <a class="left-navigation__link" @click="changeSection('tabs')">Tabs</a>
       <a class="left-navigation__link" @click="changeSection('toggles')">Toggles</a>
-      <!-- <a class="left-navigation__link" @click="changeSection('typography')">Typography</a> -->
+      <a class="left-navigation__link" @click="changeSection('face-masks')">Face Masks</a>
     </div>
   </div>
 </template>
@@ -42,7 +39,8 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class LeftNavigation extends Vue {
-  @Prop() activeSection!: string;
+  @Prop()
+  activeSection!: string;
 
   changeSection(activeSection: string) {
     this.$emit("update-section", activeSection);

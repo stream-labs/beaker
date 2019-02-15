@@ -4,7 +4,7 @@
       <h1>Face Masks</h1>
       <p>UI for face masks items and grid.</p>
       <ItemGrid>
-        <FaceMaskItem :preview="preview" :rarity="rarity" :name="name" :selectionCount="selectionCount"></FaceMaskItem>
+        <VirtualItem :preview="preview" :rarity="rarity" :name="name" :selectionCount="selectionCount"></VirtualItem>
       </ItemGrid>
     </div>
   </div>
@@ -13,13 +13,13 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import Accordion from "./../components/Accordion.vue";
-import FaceMaskItem from "./../components/FaceMaskItem.vue";
+import VirtualItem from "./../components/VirtualItem.vue";
 import ItemGrid from "./../components/ItemGrid.vue";
 
 @Component({
   components: {
     Accordion,
-    FaceMaskItem,
+    VirtualItem,
     ItemGrid
   }
 })
