@@ -27,7 +27,7 @@ export default class ColorPicker extends Vue {
     colorpicker: HTMLElement;
   };
 
-  @Prop({default: '#31c3ac'})
+  @Prop({ default: "#31c3ac" })
   defaultColor!: any;
 
   private displayPicker: Boolean = false;
@@ -40,13 +40,11 @@ export default class ColorPicker extends Vue {
   updateFromPicker(value: any) {
     this.color = value.hex;
     this.$emit("input", this.color);
-    console.log(this.color);
   }
 
   updateFromInput(event: any) {
     this.color = event.target.value;
     this.$emit("input", this.color);
-    console.log(this.color);
   }
 
   hidePicker() {
@@ -88,7 +86,7 @@ export default class ColorPicker extends Vue {
   position: absolute;
   top: 10px;
   right: 8px;
-  border: 1px solid rgba(9, 22, 29, 0.12);
+  border: 1px solid fade(@day-input-border, 12%);
 }
 
 .colorpicker-container {
