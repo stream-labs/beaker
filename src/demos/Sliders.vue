@@ -9,6 +9,12 @@
           href="https://github.com/NightCatSama/vue-slider-component"
         >Vue Slider Component</a>
       </p>
+      <pre><code>import { Slider } from 'streamlabs-beaker';
+
+components: {
+  Slider
+}</code></pre>
+
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre>
