@@ -29,7 +29,7 @@
       <a class="left-navigation__link" @click="changeSection('tables')">Tables</a>
       <a class="left-navigation__link" @click="changeSection('tabs')">Tabs</a>
       <a class="left-navigation__link" @click="changeSection('toggles')">Toggles</a>
-      <a class="left-navigation__link" @click="changeSection('face-masks')">Face Masks</a>
+      <a class="left-navigation__link" @click="changeSection('virtual-items')">Virtual Items</a>
     </div>
   </div>
 </template>

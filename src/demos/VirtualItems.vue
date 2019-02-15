@@ -3,8 +3,8 @@
     <div class="section">
       <h1>Face Masks</h1>
       <p>UI for face masks items and grid.</p>
-      <ItemGrid>
-        <VirtualItem :preview="preview" :rarity="rarity" :name="name" :selectionCount="selectionCount"></VirtualItem>
+      <ItemGrid :items="masks">
+        <VirtualItem v-for="(mask, id) in masks" :key="mask.id" :preview="mask.preview" :rarity="mask.rarity" :name="mask.name" :selectionCount="mask.selectionCount" :selected="mask.selected"></VirtualItem>
       </ItemGrid>
     </div>
   </div>
@@ -23,11 +23,55 @@ import ItemGrid from "./../components/ItemGrid.vue";
     ItemGrid
   }
 })
-export default class Callouts extends Vue {
-  preview = "https://streamlabs.com/imgs/facemasks/robot-mask.png";
-  name = "Robot";
-  rarity = "Common";
-  selectionCount = "2";
+export default class VirtualItems extends Vue {
+  masks = [
+    {
+      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
+      name: "Robot",
+      rarity: "Common",
+      selectionCount: "1",
+      selected: true
+    },
+    {
+      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
+      name: "Robot",
+      rarity: "Common",
+      selectionCount: "2",
+      selected: true
+    },
+    {
+      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
+      name: "Robot",
+      rarity: "Common",
+      selectionCount: "3",
+      selected: true
+    },
+    {
+      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
+      name: "Robot",
+      rarity: "Common",
+    },
+    {
+      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
+      name: "Robot",
+      rarity: "Common",
+    },
+    {
+      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
+      name: "Robot",
+      rarity: "Common"
+    },
+    {
+      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
+      name: "Robot",
+      rarity: "Common",
+    },
+    {
+      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
+      name: "Robot",
+      rarity: "Common"
+    },
+  ]
 }
 </script>
 

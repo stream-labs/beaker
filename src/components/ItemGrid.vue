@@ -8,8 +8,9 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
-export default class FormGroup extends Vue {
-
+export default class ItemGrid extends Vue {
+@Prop()
+items!: Object[]
 }
 </script>
 
@@ -18,7 +19,7 @@ export default class FormGroup extends Vue {
 
 .item-grid {
   display: grid;
-  grid-template-rows: 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   grid-gap: 16px;
 }
 

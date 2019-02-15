@@ -14,7 +14,6 @@
       <call-to-actions v-if="activeSection === 'call-to-actions'"/>
       <color-pickers v-if="activeSection === 'color-pickers'"/>
       <dropdowns v-if="activeSection === 'dropdowns'"/>
-      <virtual-items v-if="activeSection === 'virtual-items'"/>
       <forms v-if="activeSection === 'forms'"/>
       <icons v-if="activeSection === 'icons'"/>
       <image-pickers v-if="activeSection === 'image-pickers'"/>
@@ -25,6 +24,7 @@
       <tables v-if="activeSection === 'tables'"/>
       <tabs v-if="activeSection === 'tabs'"/>
       <toggles v-if="activeSection === 'toggles'"/>
+      <virtual-items v-if="activeSection === 'virtual-items'"/>
     </div>
   </div>
 </template>
