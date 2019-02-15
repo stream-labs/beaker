@@ -1,10 +1,10 @@
 <template>
   <div class="colorpicker-container" ref="colorpicker">
-    <input type="text" @click="showPicker()" :value="value.hex" @change="updateFromInput">
-    <div class="colorpicker__preview" :style="{ backgroundColor: value.hex }" @click="showPicker()"></div>
+    <input type="text" @click="showPicker()" :value="color" @change="updateFromInput">
+    <div class="colorpicker__preview" :style="{ backgroundColor: color }" @click="showPicker()"></div>
     <picker
       class="colorpicker"
-      :value="colors"
+      :value="color"
       v-if="displayPicker"
       :disable-alpha="true"
       :disable-fields="true"
@@ -19,62 +19,54 @@ import { Chrome } from "vue-color";
 
 @Component({
   components: {
-    'picker': Chrome
+    picker: Chrome
   }
 })
 export default class ColorPicker extends Vue {
+  $refs!: {
+    colorpicker: HTMLElement;
+  };
 
-$refs!: {
-  colorpicker: HTMLElement;
-}
+  @Prop()
+  defaultColor!: any;
 
-private displayPicker: Boolean = false;
-private backgroundColor: String = '';
-private colors: any[] = [];
+  private displayPicker: Boolean = false;
+  private backgroundColor: String = "";
+  private color: String = this.defaultColor;
 
-@Prop()
-value!: String;
+  @Prop()
+  value!: any;
 
-
-
-
-
-updateFromPicker(value: any) {
-  this.colors = value;
-  this.$emit("input", value.hex);
-}
-
-updateFromInput(event: any) {
-  this.colors = event.target.value;
-  this.$emit("input", event.target.value);
-}
-
-stopProp(event: any) {
-  event.stopPropagation();
-}
-
-hidePicker() {
-  document.removeEventListener("click", this.documentClick);
-  this.displayPicker = false;
-}
-
-showPicker() {
-  document.addEventListener("click", this.documentClick);
-  this.displayPicker = true;
-}
-
-documentClick(e:any) {
-  let el = this.$refs.colorpicker;
-  let target = e.target;
-  if (el !== target && !el.contains(target)) {
-    this.hidePicker();
-  }
+  updateFromPicker(value: any) {
+    this.color = value.hex;
+    this.$emit("input", this.color);
+    console.log(this.color);
   }
 
+  updateFromInput(event: any) {
+    this.color = event.target.value;
+    this.$emit("input", this.color);
+    console.log(this.color);
   }
 
+  hidePicker() {
+    document.removeEventListener("click", this.documentClick);
+    this.displayPicker = false;
+  }
 
+  showPicker() {
+    document.addEventListener("click", this.documentClick);
+    this.displayPicker = true;
+  }
 
+  documentClick(e: any) {
+    let el = this.$refs.colorpicker;
+    let target = e.target;
+    if (el !== target && !el.contains(target)) {
+      this.hidePicker();
+    }
+  }
+}
 </script>
 
 <style lang="less" scoped>
@@ -104,5 +96,4 @@ documentClick(e:any) {
   width: 176px;
   display: inline-block;
 }
-
 </style>
