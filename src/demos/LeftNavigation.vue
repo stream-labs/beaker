@@ -3,6 +3,10 @@
     <div class="left-navigation-section">
       <h4>Essentials</h4>
       <a class="left-navigation__link" @click="changeSection('installation')">Installation</a>
+      <a class="left-navigation__link" @click="changeSection('assets')">Assets</a>
+      <a class="left-navigation__link" @click="changeSection('colors')">Colors</a>
+      <a class="left-navigation__link" @click="changeSection('typography')">Typography</a>
+
     </div>
     <div class="left-navigation-section">
       <h4>Components</h4>
@@ -19,6 +23,7 @@
       <a class="left-navigation__link" @click="changeSection('face-masks')">Face Masks</a>
       <a class="left-navigation__link" @click="changeSection('forms')">Forms</a>
       <a class="left-navigation__link" @click="changeSection('icons')">Icons</a>
+      <a class="left-navigation__link" @click="changeSection('image-pickers')">Image Pickers</a>
       <a class="left-navigation__link" @click="changeSection('inputs')">Inputs</a>
       <a class="left-navigation__link" @click="changeSection('paginations')">Paginations</a>
       <a class="left-navigation__link" @click="changeSection('progress-bars')">Progress Bars</a>

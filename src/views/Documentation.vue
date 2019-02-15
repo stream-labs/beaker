@@ -4,6 +4,8 @@
 
     <div class="content">
       <installation v-if="activeSection === 'installation'"/>
+      <assets v-if="activeSection === 'assets'"/>
+
       <accordions v-if="activeSection === 'accordions'"/>
       <badges v-if="activeSection === 'badges'"/>
       <banners v-if="activeSection === 'banners'"/>
@@ -15,6 +17,7 @@
       <face-masks v-if="activeSection === 'face-masks'"/>
       <forms v-if="activeSection === 'forms'"/>
       <icons v-if="activeSection === 'icons'"/>
+      <image-pickers v-if="activeSection === 'image-pickers'"/>
       <inputs v-if="activeSection === 'inputs'"/>
       <progress-bars v-if="activeSection === 'progress-bars'"/>
       <paginations v-if="activeSection === 'paginations'"/>
@@ -29,7 +32,10 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import LeftNavigation from "@/demos/LeftNavigation.vue"; // @ is an alias to /src
-import Installation from "@/demos/Installation.vue"; // @ is an alias to /src
+import Installation from "@/demos/Installation.vue";
+import Assets from "@/demos/Assets.vue";
+import Colors from "@/demos/Colors.vue";
+import Typography from "@/demos/Typography.vue";
 import Accordions from "@/demos/Accordions.vue";
 import Badges from "@/demos/Badges.vue";
 import Banners from "@/demos/Banners.vue";
@@ -41,6 +47,7 @@ import Dropdowns from "@/demos/Dropdowns.vue";
 import FaceMasks from "@/demos/FaceMasks.vue";
 import Forms from "@/demos/Forms.vue";
 import Icons from "@/demos/Icons.vue";
+import ImagePickers from "@/demos/ImagePickers.vue"
 import Inputs from "@/demos/Inputs.vue";
 import Navigations from "@/demos/Navigations.vue";
 import ProgressBars from "@/demos/ProgressBars.vue";
@@ -54,6 +61,9 @@ import Toggles from "@/demos/Toggles.vue";
   components: {
     LeftNavigation,
     Installation,
+    Assets,
+    Colors,
+    Typography,
     Accordions,
     Badges,
     Banners,
@@ -65,6 +75,7 @@ import Toggles from "@/demos/Toggles.vue";
     FaceMasks,
     Forms,
     Icons,
+    ImagePickers,
     Inputs,
     Navigations,
     ProgressBars,
