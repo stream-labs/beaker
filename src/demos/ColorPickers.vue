@@ -1,6 +1,13 @@
 <template>
   <div class="section">
-    <h2>Color Picker</h2>
+    <h1>Color Picker</h1>
+
+    <pre><code>import { ColorPicker } from 'streamlabs-beaker';
+
+components: {
+  ColorPicker
+}</code></pre>
+
     <color-picker name="colors" :value="colors" v-model="colors"></color-picker>
   </div>
 </template>
