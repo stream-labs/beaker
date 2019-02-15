@@ -24,6 +24,7 @@
       <tables v-if="activeSection === 'tables'"/>
       <tabs v-if="activeSection === 'tabs'"/>
       <toggles v-if="activeSection === 'toggles'"/>
+      <virtual-items v-if="activeSection === 'virtual-items'"/>
     </div>
   </div>
 </template>
@@ -54,6 +55,7 @@ import Sliders from "@/demos/Sliders.vue";
 import Tables from "@/demos/Tables.vue";
 import Tabs from "@/demos/Tabs.vue";
 import Toggles from "@/demos/Toggles.vue";
+import VirtualItems from "@/demos/VirtualItems.vue";
 
 @Component({
   components: {
@@ -80,7 +82,8 @@ import Toggles from "@/demos/Toggles.vue";
     Sliders,
     Tables,
     Tabs,
-    Toggles
+    Toggles,
+    VirtualItems
   }
 })
 export default class Documentation extends Vue {
