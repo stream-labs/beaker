@@ -18,6 +18,7 @@ import ColorPicker from "@/components/ColorPicker";
 import FormGroupH from "@/components/FormGroupH";
 import FormGroupV from "@/components/FormGroupV";
 import HelloWorld from "@/components/HelloWorld";
+import ImagePicker from "@/components/ImagePicker"
 import PaymentForm from "@/components/PaymentForm";
 import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
@@ -37,6 +38,7 @@ const components = [
   FormGroupH,
   FormGroupV,
   HelloWorld,
+  ImagePicker,
   Selector,
   Slider,
   Tabs,
@@ -70,6 +72,7 @@ export default {
   FormGroupH,
   FormGroupV,
   HelloWorld,
+  ImagePicker,
   PaymentForm,
   Selector,
   Slider,
