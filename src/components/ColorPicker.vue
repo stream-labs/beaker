@@ -27,7 +27,7 @@ export default class ColorPicker extends Vue {
     colorpicker: HTMLElement;
   };
 
-  @Prop()
+  @Prop({default: '#31c3ac'})
   defaultColor!: any;
 
   private displayPicker: Boolean = false;
