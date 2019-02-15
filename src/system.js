@@ -37,6 +37,7 @@ const components = [
   Button,
   CallToAction,
   Callout,
+  ColorPicker,
   FormGroupH,
   FormGroupV,
   HelloWorld,
