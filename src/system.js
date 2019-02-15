@@ -62,7 +62,7 @@ const components = [
 // Finally export as default
 
 
-export default {
+export {
   Accordion,
   Badge,
   Button,
