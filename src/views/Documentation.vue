@@ -12,6 +12,7 @@
       <call-to-actions v-if="activeSection === 'call-to-actions'"/>
       <color-pickers v-if="activeSection === 'color-pickers'"/>
       <dropdowns v-if="activeSection === 'dropdowns'"/>
+      <face-masks v-if="activeSection === 'face-masks'"/>
       <forms v-if="activeSection === 'forms'"/>
       <icons v-if="activeSection === 'icons'"/>
       <inputs v-if="activeSection === 'inputs'"/>
@@ -37,6 +38,7 @@ import CallToActions from "@/demos/CallToActions.vue";
 import Callouts from "@/demos/Callouts.vue";
 import ColorPickers from "@/demos/ColorPickers.vue";
 import Dropdowns from "@/demos/Dropdowns.vue";
+import FaceMasks from "@/demos/FaceMasks.vue";
 import Forms from "@/demos/Forms.vue";
 import Icons from "@/demos/Icons.vue";
 import Inputs from "@/demos/Inputs.vue";
@@ -60,6 +62,7 @@ import Toggles from "@/demos/Toggles.vue";
     CallToActions,
     ColorPickers,
     Dropdowns,
+    FaceMasks,
     Forms,
     Icons,
     Inputs,
