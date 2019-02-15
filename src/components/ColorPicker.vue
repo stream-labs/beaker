@@ -1,9 +1,7 @@
 <template>
   <div class="colorpicker-container" ref="colorpicker">
-    <input type="text" @focus="showPicker()" :value="value" @input="updateFromInput">
-
-    <div class="colorpicker__preview" :style="{ backgroundColor: value }" @click="showPicker()"></div>
-
+    <input type="text" @click="showPicker()" :value="value.hex" @change="updateFromInput">
+    <div class="colorpicker__preview" :style="{ backgroundColor: value.hex }" @click="showPicker()"></div>
     <picker
       class="colorpicker"
       :value="colors"
@@ -15,61 +13,68 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Prop, Vue } from "vue-property-decorator";
 import { Chrome } from "vue-color";
 
-export default {
-  name: "ColorPicker",
-  // props: ["value"],
-  extends: Chrome,
-
-  data() {
-    return {
-      displayPicker: false
-    };
-  },
-
+@Component({
   components: {
-    picker: Chrome
-  },
-
-  mounted() {
-    this.backgroundColor = this.value;
-  },
-
-  methods: {
-    updateFromPicker(value) {
-      this.colors = value;
-      this.$emit("input", value.hex);
-    },
-
-    updateFromInput(event) {
-      this.$emit("input", event.target.value);
-    },
-
-    stopProp(event) {
-      event.stopPropagation();
-    },
-
-    hidePicker() {
-      document.removeEventListener("click", this.documentClick);
-      this.displayPicker = false;
-    },
-
-    showPicker() {
-      document.addEventListener("click", this.documentClick);
-      this.displayPicker = true;
-    },
-
-    documentClick(e) {
-      var el = this.$refs.colorpicker,
-        target = e.target;
-      if (el !== target && !el.contains(target)) {
-        this.hidePicker();
-      }
-    }
+    'picker': Chrome
   }
-};
+})
+export default class ColorPicker extends Vue {
+
+$refs!: {
+  colorpicker: HTMLElement;
+}
+
+private displayPicker: Boolean = false;
+private backgroundColor: String = '';
+private colors: any[] = [];
+
+@Prop()
+value!: String;
+
+
+
+
+
+updateFromPicker(value: any) {
+  this.colors = value;
+  this.$emit("input", value.hex);
+}
+
+updateFromInput(event: any) {
+  this.colors = event.target.value;
+  this.$emit("input", event.target.value);
+}
+
+stopProp(event: any) {
+  event.stopPropagation();
+}
+
+hidePicker() {
+  document.removeEventListener("click", this.documentClick);
+  this.displayPicker = false;
+}
+
+showPicker() {
+  document.addEventListener("click", this.documentClick);
+  this.displayPicker = true;
+}
+
+documentClick(e:any) {
+  let el = this.$refs.colorpicker;
+  let target = e.target;
+  if (el !== target && !el.contains(target)) {
+    this.hidePicker();
+  }
+  }
+
+  }
+
+
+
 </script>
 
 <style lang="less" scoped>
@@ -89,31 +94,15 @@ export default {
   .radius();
   box-sizing: border-box;
   position: absolute;
-  top: 7px;
+  top: 10px;
   right: 8px;
-  border: 1px solid @day-input-border;
+  border: 1px solid rgba(9, 22, 29, 0.12);
 }
 
 .colorpicker-container {
   position: relative;
-  width: 160px;
+  width: 176px;
   display: inline-block;
 }
 
-.vc-chrome {
-  margin: 0px;
-  display: inline-block !important;
-  position: absolute;
-  z-index: 1000000;
-}
-
-.vc-chrome-active-color {
-  .radius !important;
-}
-
-.vc-chrome-body {
-  border-radius: 0 0 @radius @radius;
-  border: 1px solid @day-dropdown-border;
-  background-color: @day-dropdown-bg!important;
-}
 </style>
