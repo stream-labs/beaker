@@ -3,6 +3,12 @@
     <div class="section">
       <h1>Call To Action</h1>
       <p>You can use our callout component if you need to display an important message.</p>
+
+            <pre><code>import { CallToAction } from 'streamlabs-beaker';
+
+components: {
+  CallToAction
+}</code></pre>
     </div>
     <div class="section">
       <h2>Default Call to Action</h2>

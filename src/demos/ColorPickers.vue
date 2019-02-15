@@ -20,25 +20,25 @@
         <color-picker></color-picker>
       </div>
       <table class="docs-table">
-          <thead>
-            <tr>
-              <th>Props</th>
-              <th>Type</th>
-              <th>Default</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>defaultColor</td>
-              <td>String</td>
-              <td>#31c3a2</td>
-              <td>Color to show up on a fresh color picker</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        <thead>
+          <tr>
+            <th>Props</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>defaultColor</td>
+            <td>String</td>
+            <td>#31c3a2</td>
+            <td>Color to show up on a fresh color picker</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
 </template>
 
 <script lang="ts">

@@ -3,6 +3,10 @@
     <div class="left-navigation-section">
       <h4>Essentials</h4>
       <a class="left-navigation__link" @click="changeSection('installation')">Installation</a>
+      <a class="left-navigation__link" @click="changeSection('assets')">Assets</a>
+      <a class="left-navigation__link" @click="changeSection('colors')">Colors</a>
+      <a class="left-navigation__link" @click="changeSection('typography')">Typography</a>
+
     </div>
     <div class="left-navigation-section">
       <h4>Components</h4>
