@@ -11,10 +11,13 @@
         :default="'day'"
         @click.native="toggleTheme()">
       </toggle>
-      <!-- <router-link to="/">Home</router-link> | -->
-      <!-- <router-link to="/documentation">Documentation</router-link> -->
     </div>
     <router-view/>
+
+    <div class="floating-links">
+      <a class="floating-link" target="_blank" href="https://github.com/mbiemiller/beaker"><img src="./assets/imgs/github.png"></a>
+      <a class="floating-link" target="_blank" href="https://www.npmjs.com/package/streamlabs-beaker"><img src="./assets/imgs/npm.svg"></a>
+    </div>
   </div>
 </template>
 
@@ -81,6 +84,24 @@ export default class App extends Vue {
 
 .logo {
   width: 120px;
+}
+
+.floating-links {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+}
+
+.floating-link {
+  width: 48px;
+  height: 48px;
+  .radius(10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: @dark-2;
+  .padding();
+  .margin-top();
 }
 
 .night,

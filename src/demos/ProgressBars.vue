@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="section">
+      <h1>Progress Bars</h1>
       <h2>Default Progress Bar</h2>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">

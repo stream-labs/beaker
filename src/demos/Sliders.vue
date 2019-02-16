@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="section">
+      <h1>Sliders</h1>
       <h2>Default Slider</h2>
       <p>
         Our slider component is extended from
