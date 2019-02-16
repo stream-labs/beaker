@@ -7,12 +7,10 @@
     <pre><code>npm install streamlabs-beaker --save</code></pre>
     <br>
     <h4>To use a component, add:</h4>
-    <pre><code>import { Accordion, Button, ProgressBar } from 'streamlabs-beaker';
+    <pre><code>import { Accordion } from 'streamlabs-beaker';
 
 components: {
-  Accordion,
-  Button,
-  ProgressBar
+  Accordion
 }</code></pre>
   </div>
 </template>
@@ -21,7 +19,5 @@ components: {
 import { Component, Vue } from "vue-property-decorator";
 
 @Component({})
-export default class Installation extends Vue {
-
-}
+export default class Colors extends Vue {}
 </script>

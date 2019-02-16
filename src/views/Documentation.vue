@@ -4,6 +4,8 @@
 
     <div class="content">
       <installation v-if="activeSection === 'installation'"/>
+      <assets v-if="activeSection === 'assets'"/>
+
       <accordions v-if="activeSection === 'accordions'"/>
       <badges v-if="activeSection === 'badges'"/>
       <banners v-if="activeSection === 'banners'"/>
@@ -14,6 +16,7 @@
       <dropdowns v-if="activeSection === 'dropdowns'"/>
       <forms v-if="activeSection === 'forms'"/>
       <icons v-if="activeSection === 'icons'"/>
+      <image-pickers v-if="activeSection === 'image-pickers'"/>
       <inputs v-if="activeSection === 'inputs'"/>
       <progress-bars v-if="activeSection === 'progress-bars'"/>
       <paginations v-if="activeSection === 'paginations'"/>
@@ -21,6 +24,7 @@
       <tables v-if="activeSection === 'tables'"/>
       <tabs v-if="activeSection === 'tabs'"/>
       <toggles v-if="activeSection === 'toggles'"/>
+      <virtual-items v-if="activeSection === 'virtual-items'"/>
     </div>
   </div>
 </template>
@@ -28,7 +32,10 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import LeftNavigation from "@/demos/LeftNavigation.vue"; // @ is an alias to /src
-import Installation from "@/demos/Installation.vue"; // @ is an alias to /src
+import Installation from "@/demos/Installation.vue";
+import Assets from "@/demos/Assets.vue";
+import Colors from "@/demos/Colors.vue";
+import Typography from "@/demos/Typography.vue";
 import Accordions from "@/demos/Accordions.vue";
 import Badges from "@/demos/Badges.vue";
 import Banners from "@/demos/Banners.vue";
@@ -39,6 +46,7 @@ import ColorPickers from "@/demos/ColorPickers.vue";
 import Dropdowns from "@/demos/Dropdowns.vue";
 import Forms from "@/demos/Forms.vue";
 import Icons from "@/demos/Icons.vue";
+import ImagePickers from "@/demos/ImagePickers.vue"
 import Inputs from "@/demos/Inputs.vue";
 import Navigations from "@/demos/Navigations.vue";
 import ProgressBars from "@/demos/ProgressBars.vue";
@@ -47,11 +55,15 @@ import Sliders from "@/demos/Sliders.vue";
 import Tables from "@/demos/Tables.vue";
 import Tabs from "@/demos/Tabs.vue";
 import Toggles from "@/demos/Toggles.vue";
+import VirtualItems from "@/demos/VirtualItems.vue";
 
 @Component({
   components: {
     LeftNavigation,
     Installation,
+    Assets,
+    Colors,
+    Typography,
     Accordions,
     Badges,
     Banners,
@@ -62,6 +74,7 @@ import Toggles from "@/demos/Toggles.vue";
     Dropdowns,
     Forms,
     Icons,
+    ImagePickers,
     Inputs,
     Navigations,
     ProgressBars,
@@ -69,7 +82,8 @@ import Toggles from "@/demos/Toggles.vue";
     Sliders,
     Tables,
     Tabs,
-    Toggles
+    Toggles,
+    VirtualItems
   }
 })
 export default class Documentation extends Vue {
@@ -86,7 +100,8 @@ export default class Documentation extends Vue {
 
 .documentation {
   display: grid;
-  grid-template-columns: 260px auto;
+  grid-template-columns: 180px auto;
+  grid-gap: 80px;
 
   code {
     background-color: @light-3;
@@ -102,6 +117,12 @@ export default class Documentation extends Vue {
       padding: 0;
       margin: 0;
     }
+  }
+}
+
+.accordion {
+  pre {
+    .margin-bottom(@0);
   }
 }
 

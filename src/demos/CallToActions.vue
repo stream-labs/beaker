@@ -1,6 +1,16 @@
 <template>
   <div>
     <div class="section">
+      <h1>Call To Action</h1>
+      <p>You can use our callout component if you need to display an important message.</p>
+
+            <pre><code>import { CallToAction } from 'streamlabs-beaker';
+
+components: {
+  CallToAction
+}</code></pre>
+    </div>
+    <div class="section">
       <h2>Default Call to Action</h2>
         <accordion
         :openedTitle="'Hide Code'"
@@ -63,12 +73,6 @@
             <td>String</td>
             <td>slobs-download</td>
             <td>Takes any button variation, but 'action' is recomended</td>
-          </tr>
-          <tr>
-            <td>n/a</td>
-            <td>String</td>
-            <td>large</td>
-            <td>Button size defaults to large, this is not a prop setting</td>
           </tr>
           <tr>
             <td>buttonTitle</td>

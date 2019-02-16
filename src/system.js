@@ -13,14 +13,22 @@ import Badge from "@/components/Badge";
 import Button from "@/components/Button";
 import CallToAction from "@/components/CallToAction";
 import Callout from "@/components/Callout";
+import Checkbox from "@/components/Checkbox";
+import ColorPicker from "@/components/ColorPicker";
 import FormGroupH from "@/components/FormGroupH";
 import FormGroupV from "@/components/FormGroupV";
 import HelloWorld from "@/components/HelloWorld";
+import ImagePicker from "@/components/ImagePicker"
+import ItemGrid from "@/components/ItemGrid";
+import PaymentForm from "@/components/PaymentForm";
 import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
 import Tabs from "@/components/Tabs";
+import TextInput from "@/components/TextInput";
+import Toggle from "@/components/Toggle";
 import Pagination from "@/components/Pagination";
 import ProgressBar from "@/components/ProgressBar";
+import VirtualItem from "@/components/VirtualItem";
 
 // Define components
 const components = [
@@ -29,14 +37,19 @@ const components = [
   Button,
   CallToAction,
   Callout,
+  ColorPicker,
   FormGroupH,
   FormGroupV,
   HelloWorld,
+  ImagePicker,
+  ItemGrid,
   Selector,
   Slider,
   Tabs,
+  TextInput,
   Pagination,
-  ProgressBar
+  ProgressBar,
+  VirtualItem
 ];
 
 // Install the above defined components
@@ -51,18 +64,27 @@ const components = [
 // }
 
 // Finally export as default
+
+
 export {
   Accordion,
   Badge,
   Button,
   CallToAction,
   Callout,
+  Checkbox,
+  ColorPicker,
   FormGroupH,
   FormGroupV,
   HelloWorld,
+  ImagePicker,
+  ItemGrid,
+  PaymentForm,
   Selector,
   Slider,
   Tabs,
+  TextInput,
   Pagination,
-  ProgressBar
+  ProgressBar,
+  VirtualItem
 };
