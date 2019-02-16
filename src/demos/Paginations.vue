@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="section">
-      <h2>Pagination</h2>
+      <h1>Pagination</h1>
 
       <pagination
         :night-bg="true"

@@ -1,24 +1,20 @@
 <template>
   <div class="section">
+    <h1>Assets</h1>
     <div class="logo-demos logo-demos--icons">
       <div class="logo-demo">
         <a href="/img/kevin-standard.svg" download>
           <img src="./../assets/imgs/kevin-standard.svg">
         </a>
       </div>
-      <div class="logo-demo logo-demo--day">
-        <a href="/img/kevin-day.svg" download>
-          <img src="./../assets/imgs/kevin-day.svg">
-        </a>
-      </div>
-      <div class="logo-demo logo-demo--night">
-        <a href="/img/kevin-night.svg" download>
-          <img src="./../assets/imgs/kevin-night.svg">
-        </a>
-      </div>
     </div>
     <div class="logo-demos">
       <div class="logo-demo logo-demo--day">
+
+        <a href="/img/kevin-day.svg" download>
+          <img src="./../assets/imgs/kevin-day.svg">
+        </a>
+
         <a href="/img/logo.svg" download>
           <img src="./../assets/imgs/logo.svg">
         </a>
@@ -36,6 +32,9 @@
         </a>
       </div>
       <div class="logo-demo logo-demo--night">
+        <a href="/img/kevin-night.svg" download>
+          <img src="./../assets/imgs/kevin-night.svg">
+        </a>
         <a href="/img/logo-night.svg" download>
           <img src="./../assets/imgs/logo-night.svg">
         </a>
@@ -69,7 +68,7 @@ export default class Assets extends Vue {}
 
 .logo-demos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-row: repeat(auto-fit, minmax(400px, 1fr));
   grid-gap: 24px;
 }
 
@@ -79,8 +78,8 @@ export default class Assets extends Vue {}
 
   .logo-demo {
     img {
+      width: 200px;
       height: auto;
-      width: 100%;
     }
   }
 }
