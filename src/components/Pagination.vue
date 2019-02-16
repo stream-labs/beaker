@@ -1,8 +1,9 @@
 <template>
-  <div class="pagination__container">
+  <div ref="pagination" class="pagination__container">
     <vue-paginate-component
       :class="{ 'pagination--bg': nightBg }"
       :page-count="pageCount"
+      :page-range="pageRange"
       :click-handler="selectPage"
       :prev-text="'Prev'"
       :next-text="'Next'"
@@ -23,6 +24,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import ResizeObserver from 'resize-observer-polyfill';
 import VuePaginateComponent from "vuejs-paginate";
 
 @Component({
@@ -30,8 +32,15 @@ import VuePaginateComponent from "vuejs-paginate";
     VuePaginateComponent,
   }
 })
+
 export default class Pagination extends Vue {
-  @Prop()
+  pageRange: number = 3;
+
+  $refs!: {
+    pagination: HTMLDivElement;
+  };
+
+  @Prop({ default: false })
   nightBg!: boolean;
 
   @Prop()
@@ -40,7 +49,28 @@ export default class Pagination extends Vue {
   @Prop()
   totalItemCount!: number;
 
+  @Prop({ default: 0 })
+  totalPageCount!: number;
+
+  mounted() {
+    const ro = new ResizeObserver((entries, observer) => {
+      for (const entry of entries) {
+        const {left, top, width, height} = entry.contentRect;
+
+        if (width < 456) this.pageRange = 1;
+
+        console.log('Element:', entry.target);
+        console.log(`Element's size: ${ width }px x ${ height }px`);
+        console.log(`Element's paddings: ${ top }px ; ${ left }px`);
+      }
+    });
+
+    ro.observe(this.$refs.pagination);
+  }
+
   get pageCount() {
+    if (this.totalPageCount && this.totalPageCount > 0) return this.totalPageCount;
+
     let remainder = (this.totalItemCount % this.itemsPerPage > 0) ? 1 : 0;
     return Math.floor(this.totalItemCount / this.itemsPerPage) + remainder;
   }
@@ -62,6 +92,8 @@ export default class Pagination extends Vue {
 
   &__container {
     display: inline-block;
+    width: 100%;
+    max-width: 456px;
   }
 
   &__page,
@@ -89,7 +121,7 @@ export default class Pagination extends Vue {
   }
 
   &__page {
-    width: 32px;
+    width: auto;
     height: 32px;
     margin: 0 4px;
     background-color: @light-2;
