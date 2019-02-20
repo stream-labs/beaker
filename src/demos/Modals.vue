@@ -34,24 +34,6 @@
         slot="text"
         class="text"
       >Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.</p>
-      <div
-        slot="button-box"
-        class="button-box"
-      >
-        <Button
-          :variation="'default'"
-          :title="'Default'"
-        >
-        </Button>
-
-        <Button
-          :variation="'action'"
-          :title="'Action'"
-        >
-        </Button>
-
-      </div>
-
     </Modal>
     <Modal
       v-if="showModal2"
@@ -105,7 +87,6 @@
           :variation="'default'"
           :title="'Default'"
         >
-          :onClick="'buttonClick'">
         </Button>
 
         <Button
@@ -141,17 +122,14 @@ export default class Modals extends Vue {
 
 <style lang="less" scoped>
 @import './../styles/Imports';
-.title {
-  .weight(@bold);
-}
-.sub-title {
-  .weight(@bold);
-}
-.text {
-  font-size: 14px;
-  line-height: 21px;
-}
-.button-box {
-  background: @light-2;
-}
+// .title {
+//   .weight(@bold);
+// }
+// .sub-title {
+//   .weight(@bold);
+// }
+// .text {
+//   font-size: 14px;
+//   line-height: 21px;
+// }
 </style>

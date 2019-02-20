@@ -6,12 +6,21 @@
           <div class="modal-container">
 
             <div class="modal-body">
-              <slot name="title">
+              <slot
+                name="title"
+                class="title"
+              >
                 <slot name="mode"></slot>
               </slot>
-              <slot name="sub-title">
+              <slot
+                name="sub-title"
+                :class="sub-title"
+              >
               </slot>
-              <slot name="text">
+              <slot
+                name="text"
+                class="text"
+              >
               </slot>
               <slot name="donate-done">
               </slot>
@@ -21,15 +30,18 @@
             </div>
 
             <div class="modal-footer">
-              <div class="modal-footer-inner">
-                <button
-                  class="modal-default-button"
+              <div class="modal-footer-inner button-container">
+                <Button
+                  :variation="'default'"
+                  :title="'Close'"
                   @click="$emit('close')"
                 >
-                  OK
-                </button>
-                <slot name="button-box">
-                </slot>
+                </Button>
+                <Button
+                  :variation="'action'"
+                  :title="'Confirm'"
+                >
+                </Button>
               </div>
             </div>
           </div>
@@ -41,8 +53,13 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
+import Button from './../components/Button.vue'
 
-@Component({})
+@Component({
+  components: {
+    Button,
+  },
+})
 export default class Modal extends Vue {
   @Prop()
   price!: {
@@ -90,6 +107,9 @@ export default class Modal extends Vue {
 .modal-footer {
   background: @light-2;
   border-radius: 0 0 8px 8px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .modal-footer-inner {
@@ -99,5 +119,16 @@ export default class Modal extends Vue {
 
 .modal-default-button {
   float: right;
+}
+
+.title {
+  .weight(@bold);
+}
+.sub-title {
+  .weight(@bold);
+}
+.text {
+  font-size: 14px;
+  line-height: 21px;
 }
 </style>
