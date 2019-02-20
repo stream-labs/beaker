@@ -32,10 +32,10 @@
         </thead>
         <tbody>
           <tr>
-            <td>type</td>
+            <td>Variation</td>
             <td>String</td>
-            <td>bars</td>
-            <td>Type of spinner to be shown</td>
+            <td>'bars'</td>
+            <td>Use the bars loader</td>
           </tr>
         </tbody>
       </table>
