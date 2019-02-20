@@ -15,122 +15,131 @@
   >
     <span>
       <span>
-        <i v-if="iconClass" :class="iconClass"></i>{{ title }}
+        <i
+          v-if="iconClass"
+          :class="iconClass"
+        ></i>{{ title }}
       </span>
-      <span v-if="description" class="button__description">{{ description }}</span>
+      <span
+        v-if="description"
+        class="button__description"
+      >{{ description }}</span>
     </span>
-    <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
+    <i
+      v-if="variation === 'slobs-download'"
+      class="icon-windows"
+    ></i>
     <span v-if="price">{{ price }}</span>
   </component>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class Button extends Vue {
   @Prop()
   onClick!: {
-    type: Function;
-  };
+    type: Function
+  }
 
   @Prop()
   icon!: {
-    type: String;
-    default: null;
-  };
+    type: String
+    default: null
+  }
 
   @Prop()
   title!: {
-    type: String;
-    default: null;
-  };
+    type: String
+    default: null
+  }
 
   @Prop()
   price!: {
-    type: String;
-    default: null;
-  };
+    type: String
+    default: null
+  }
 
   @Prop()
   description!: {
-    type: String;
-    default: null;
-  };
+    type: String
+    default: null
+  }
 
   @Prop()
   href!: {
-    type: String;
-    default: null;
-  };
+    type: String
+    default: null
+  }
 
   // standard, medium, large, square
   @Prop()
   size!: {
-    type: String;
-    size: null;
-  };
+    type: String
+    size: null
+  }
 
   // hover, focus, loading, disabled
   @Prop()
   state!: {
-    type: String;
-    default: null;
-  };
+    type: String
+    default: null
+  }
 
   // set buttons type to "submit"
   @Prop()
   type!: {
-    type: String;
-    default: null;
-  };
+    type: String
+    default: null
+  }
 
   @Prop()
   to!: {
-    type: String;
-    default: null;
-  };
+    type: String
+    default: null
+  }
 
   // button, a, router-link
-  @Prop({ default: "button" })
-  tag!: String;
+  @Prop({ default: 'button' })
+  tag!: String
 
   @Prop()
   variation!: {
-    type: String;
-    default: "default";
-  };
+    type: String
+    default: 'default'
+  }
 
   get buttonClasses() {
-    let classes = [];
+    let classes = []
 
     if (this.variation) {
-      classes.push(`button--${this.variation}`);
+      classes.push(`button--${this.variation}`)
     }
 
     if (this.variation) {
-      classes.push(`button--${this.variation}`);
+      classes.push(`button--${this.variation}`)
     }
 
     if (this.size) {
-      classes.push(`button--${this.size}`);
+      classes.push(`button--${this.size}`)
     }
 
     if (this.state) {
-      classes.push(`is-${this.state}`);
+      classes.push(`is-${this.state}`)
     }
 
-    return classes.join(" ");
+    return classes.join(' ')
   }
 
   get iconClass() {
-    let classes = [];
+    let classes = []
 
     if (this.icon) {
-      classes.push(`icon-${this.icon}`);
+      classes.push(`icon-${this.icon}`)
     }
 
-    return classes.join(" ");
+    return classes.join(' ')
   }
 }
 </script>
@@ -143,7 +152,7 @@ export default class Button extends Vue {
 </style>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
 .button {
   .padding-v-sides(@0);
@@ -165,7 +174,7 @@ export default class Button extends Vue {
   .transition();
   .weight(@medium);
   .radius();
-  font-family: "Roboto";
+  font-family: 'Roboto';
   border: 1px solid transparent;
   text-decoration: none;
   position: relative;
@@ -202,8 +211,8 @@ export default class Button extends Vue {
   &.is-loading {
     &:before {
       display: block;
-      content: "\f1ce";
-      font-family: "Font Awesome 5 Free";
+      content: '\f1ce';
+      font-family: 'Font Awesome 5 Free';
       font-weight: 900;
       animation: fade-in 275ms ease, spin 1s ease infinite;
     }

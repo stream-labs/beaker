@@ -25,6 +25,7 @@
       <tabs v-if="activeSection === 'tabs'"/>
       <toggles v-if="activeSection === 'toggles'"/>
       <virtual-items v-if="activeSection === 'virtual-items'"/>
+      <modals v-if="activeSection === 'modals'"/>
     </div>
   </div>
 </template>
@@ -56,6 +57,7 @@ import Tables from "@/demos/Tables.vue";
 import Tabs from "@/demos/Tabs.vue";
 import Toggles from "@/demos/Toggles.vue";
 import VirtualItems from "@/demos/VirtualItems.vue";
+import Modals from "@/demos/Modals.vue";
 
 @Component({
   components: {
@@ -83,7 +85,8 @@ import VirtualItems from "@/demos/VirtualItems.vue";
     Tables,
     Tabs,
     Toggles,
-    VirtualItems
+    VirtualItems,
+    Modals
   }
 })
 export default class Documentation extends Vue {
