@@ -1,7 +1,6 @@
 <template>
   <div
-    class="sp-simulator"
-    :class="[ calloutClass, calloutClosedClass ]">
+    class="sp-simulator">
 
     <div class="sp-simulator__heading">
       <img class="sp-simulator__icon" :src="icon">
@@ -9,7 +8,19 @@
     </div>
 
     <div class="sp-simulator__section">
-      <TextInput></TextInput>
+      <div class="sp-simulator__video"></div>
+    </div>
+
+    <div class="sp-simulator__section">
+      <TextInput :title="'Username'"></TextInput>
+    </div>
+
+    <div class="sp-simulator__section">
+
+    </div>
+
+    <div class="sp-simulator__section">
+
     </div>
   </div>
 </template>
@@ -37,6 +48,8 @@ export default class SPProSimulator extends Vue {
   background-color: @night-bg;
   .radius(2);
   .padding(3);
+  display: grid;
+  grid-template: 1fr 1fr;
 }
 
 .sp-simulator__heading {
@@ -48,6 +61,13 @@ export default class SPProSimulator extends Vue {
   height: 56px;
   border-radius: 100%;
   .margin-right(2);
+}
+
+.sp-simulator__section {
+  .padding(2);
+  .radius(2);
+  min-height: 300px;
+  background-color: pink;
 }
 
 .night,

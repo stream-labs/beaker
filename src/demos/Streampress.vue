@@ -9,9 +9,7 @@ components: {
   SPProSimulator
 }</code></pre>
 
-      <sp-pro-simulator :username="username" :icon="icon">
-
-      </sp-pro-simulator>
+      <sp-pro-simulator :username="username" :icon="icon"></sp-pro-simulator>
     </div>
 
     <table class="docs-table">
