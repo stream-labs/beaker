@@ -549,6 +549,27 @@ components: {
         </Button>
       </div>
       <div class="section">
+        <h3>Paypal</h3>
+        <p>Used on the Tip Page for Subscribing to Pro.</p>
+        <Accordion
+          :openedTitle="'Hide Code'"
+          :closedTitle="'Show Code'">
+          <div slot="content">
+            <pre>
+<code>&lt;Button
+  :variation=&quot;'paypal'&quot;
+  :title=&quot;'Subscribe with PayPal'&quot;
+  :price=&quot;'$4.99'&quot;&gt;
+&lt;/Button&gt;</code></pre>
+          </div>
+        </Accordion>
+        <Button
+          :variation="'paypal'"
+          :title="'Subscribe with PayPal'"
+          :price="'$4.99'">
+        </Button>
+      </div>
+      <div class="section">
         <h3>Download</h3>
         <p>Used for Download Streamlabs OBS buttons.</p>
         <Accordion
@@ -758,7 +779,7 @@ components: {
             <td>variation</td>
             <td>String</td>
             <td>default</td>
-            <td>The variation style of a button. Primary options are <code>default</code>, <code>action</code> and  <code>warning</code>. Other options are <code>subscribe</code>, <code>download</code> and <code>navigation</code>. Platform options are <code>facebook</code>, <code>mixer</code>, <code>twitch</code>, <code>yt</code>, <code>periscope</code> and <code>picarto</code>.</td>
+            <td>The variation style of a button. Primary options are <code>default</code>, <code>action</code> and  <code>warning</code>. Other options are <code>subscribe</code>, <code>paypal</code>, <code>download</code> and <code>navigation</code>. Platform options are <code>facebook</code>, <code>mixer</code>, <code>twitch</code>, <code>yt</code>, <code>periscope</code> and <code>picarto</code>.</td>
           </tr>
         </tbody>
       </table>

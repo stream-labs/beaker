@@ -12,6 +12,7 @@
           :name="mask.name"
           :selectionCount="mask.selectionCount"
           :selected="mask.selected"
+          @click="clickEvent"
         ></VirtualItem>
       </ItemGrid>
     </div>
@@ -80,6 +81,10 @@ export default class VirtualItems extends Vue {
       rarity: 'Common',
     },
   ]
+
+  clickEvent() {
+    console.log('Hey you clicked me!')
+  }
 }
 </script>
 
