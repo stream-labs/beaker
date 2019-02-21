@@ -26,6 +26,7 @@
       <a class="left-navigation__link" @click="changeSection('paginations')">Paginations</a>
       <a class="left-navigation__link" @click="changeSection('progress-bars')">Progress Bars</a>
       <a class="left-navigation__link" @click="changeSection('sliders')">Sliders</a>
+      <a class="left-navigation__link" @click="changeSection('streampress')">Streampress</a>
       <a class="left-navigation__link" @click="changeSection('tables')">Tables</a>
       <a class="left-navigation__link" @click="changeSection('tabs')">Tabs</a>
       <a class="left-navigation__link" @click="changeSection('toggles')">Toggles</a>
@@ -39,8 +40,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class LeftNavigation extends Vue {
-  @Prop()
-  activeSection!: string;
+  @Prop() activeSection!: string;
 
   changeSection(activeSection: string) {
     this.$emit("update-section", activeSection);

@@ -21,6 +21,7 @@
       <progress-bars v-if="activeSection === 'progress-bars'"/>
       <paginations v-if="activeSection === 'paginations'"/>
       <sliders v-if="activeSection === 'sliders'"/>
+      <streampress v-if="activeSection === 'streampress'"/>
       <tables v-if="activeSection === 'tables'"/>
       <tabs v-if="activeSection === 'tabs'"/>
       <toggles v-if="activeSection === 'toggles'"/>
@@ -46,12 +47,13 @@ import ColorPickers from "@/demos/ColorPickers.vue";
 import Dropdowns from "@/demos/Dropdowns.vue";
 import Forms from "@/demos/Forms.vue";
 import Icons from "@/demos/Icons.vue";
-import ImagePickers from "@/demos/ImagePickers.vue"
+import ImagePickers from "@/demos/ImagePickers.vue";
 import Inputs from "@/demos/Inputs.vue";
 import Navigations from "@/demos/Navigations.vue";
 import ProgressBars from "@/demos/ProgressBars.vue";
 import Paginations from "@/demos/Paginations.vue";
 import Sliders from "@/demos/Sliders.vue";
+import Streampress from "@/demos/Streampress.vue";
 import Tables from "@/demos/Tables.vue";
 import Tabs from "@/demos/Tabs.vue";
 import Toggles from "@/demos/Toggles.vue";
@@ -80,6 +82,7 @@ import VirtualItems from "@/demos/VirtualItems.vue";
     ProgressBars,
     Paginations,
     Sliders,
+    Streampress,
     Tables,
     Tabs,
     Toggles,
