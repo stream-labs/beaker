@@ -1,54 +1,58 @@
 <template>
-  <div>
-    <transition name="modal">
-      <div class="modal-mask">
-        <div class="modal-wrapper">
-          <div class="modal-container">
-            <div v-if="modalType==='modal'">
-              <div class="modal-body">
-                <slot name="normal-upper"></slot>
-              </div>
-              <div class="modal-footer">
-                <div class="modal-footer-inner button-container">
-                  <Button
-                    :variation="'default'"
-                    :title="'Close'"
-                    @click="$emit('close')"
-                  >
-                  </Button>
-                  <Button
-                    :variation="'action'"
-                    :title="'Confirm'"
-                  >
-                  </Button>
-                </div>
+  <transition name="fade">
+    <div class="modal-mask">
+      <div class="modal-wrapper">
+        <div class="modal-container">
+          <div
+            v-if="modalType==='modal'"
+            class="modal-component"
+          >
+            <div class="modal-body">
+              <div class="normal-upper">
+                <slot name="title"></slot>
+                <slot name="sub-title"> </slot>
+                <slot name="text"> </slot>
               </div>
             </div>
-
-            <div v-if="modalType==='donate'">
-              <div class="donate-icon-box">
-                <i
-                  class="icon-close"
+            <div class="modal-footer">
+              <div class="modal-footer-inner button-container">
+                <Button
+                  :variation="'default'"
+                  :title="'Close'"
                   @click="$emit('close')"
-                ></i>
-              </div>
-              <div class="donate-upper">
-                <slot name="donate-upper"> </slot>
-              </div>
-              <div class="donate-bottom">
-                <slot name="donate-bottom"></slot>
+                >
+                </Button>
+                <Button
+                  :variation="'action'"
+                  :title="'Confirm'"
+                >
+                </Button>
               </div>
             </div>
+          </div>
 
-            <div v-if="modalType==='redirect'">
-              <slot name="redirect"> </slot>
+          <div v-if="modalType==='donate'">
+            <div class="donate-icon-box">
+              <i
+                class="icon-close"
+                @click="$emit('close')"
+              ></i>
             </div>
+            <div class="donate-upper">
+              <slot name="donate-upper"> </slot>
+            </div>
+            <div class="donate-bottom">
+              <slot name="donate-bottom"></slot>
+            </div>
+          </div>
+
+          <div v-if="modalType==='redirect'">
+            <slot name="redirect"> </slot>
           </div>
         </div>
       </div>
-    </transition>
-
-  </div>
+    </div>
+  </transition>
 </template>
 
 <script lang="ts">
@@ -79,10 +83,35 @@ export default class Modal extends Vue {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(79, 94, 94, 0.4);
   display: table;
-  transition: opacity 0.3s ease;
 }
+
+.modal-component {
+  .transition();
+  // .spin();
+}
+
+// .fade-enter-active {
+//   transition: all 0.25s 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+//   opacity: 1;
+// }
+
+// .fade-leave-active {
+//   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+//   opacity: 0;
+// }
+
+// .fade-enter {
+//   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+//   opacity: 0;
+// }
+
+// .fade-leave-to {
+//   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+//   opacity: 0;
+// }
 
 .modal-wrapper {
   display: table-cell;
@@ -90,6 +119,7 @@ export default class Modal extends Vue {
 }
 
 .modal-container {
+  z-index: 999;
   width: 600px;
   margin: 0px auto;
   background-color: #fff;
@@ -134,6 +164,69 @@ export default class Modal extends Vue {
   overflow: hidden;
   .icon-close {
     float: right;
+  }
+}
+
+.night,
+.night-theme {
+  .modal-container {
+    background: @dark-3;
+    box-shadow: 0px 4px 8px rgba(9, 22, 29, 0.24);
+  }
+
+  .modal-footer {
+    background: @dark-2;
+  }
+}
+</style>
+
+<style lang="less">
+@import './../styles/Imports';
+
+.modal-title {
+  color: @dark-2;
+  .weight(@bold);
+  .plan {
+    color: @teal;
+    font-size: 14px;
+    background: #ffffff;
+    .margin-left();
+  }
+}
+.modal-sub-title {
+  .weight(500);
+}
+.modal-text {
+  font-size: 14px;
+  line-height: 21px;
+}
+.donate-title-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 12px;
+  .modal-title {
+    margin: 0;
+    margin-right: 8px;
+  }
+}
+.button-subscribe {
+  .margin-top(@spacing: 3);
+}
+.modal-notes {
+  text-align: center;
+  color: @light-5;
+  .small-type();
+  .padding-v-sides(@spacing: 2);
+}
+.redirect {
+  text-align: center;
+  .padding(@spacing: 3);
+}
+.night,
+.night-theme {
+  .title {
+    color: @white;
   }
 }
 </style>
