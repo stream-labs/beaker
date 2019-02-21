@@ -1,15 +1,5 @@
 <template>
   <div>
-    <div class="section">
-      <h1>Buttons</h1>
-      <p>Our button component is super flexible. It can act as type <code>button</code>, <code>a</code> tag or <code>router-link</code>. Please note that you may need to use 'ButtonInput' rather than 'Button' to avoid issues.</p>
-
-      <pre><code>import { Button } from 'streamlabs-beaker';
-
-components: {
-  Button
-}</code></pre>
-    </div>
     <div class="button-container--left">
       <Button
         :variation="'default'"
@@ -32,7 +22,7 @@ components: {
     </div>
     <Modal
       v-if="modal"
-      :modalType="'normal'"
+      :modalType="'modal'"
       @close="modal = false"
     >
       <div slot="normal-upper">
@@ -47,26 +37,30 @@ components: {
       :modalType="'donate'"
       @close="modalDonate = false"
     >
-      <div slot="donate">
-        <h1 class="title">Streamlabs<span class="plan">Pro</span>
-        </h1>
-        <h2 class="sub-title">Never pay for GIFs and effects again!</h2>
-        <div class="donate-box">
-          <p class="donate-amount ">galazy83 donated $50.00!</p>
-          <p class="donate-message">Thanks for the stream. Go CivRyan!</p>
+      <div slot="donate-upper">
+        <div class="donate-title-box">
+          <h1 class="title">Streamlabs</h1>
+          <badge :align-left="true">
+            Pro
+          </badge>
         </div>
+        <h2 class="sub-title">Never pay for GIFs and effects again!</h2>
+      </div>
+
+      <div slot="donate-bottom">
         <p class="text">Get unlimited free GIFs and effects that will show up on all alerts on all channels! You’ll also get a fancy ‘Pro’ badge next to your username on your donations.</p>
         <Button
           :variation="'subscribe'"
           :title="'Subscribe with PayPal'"
           :icon="'unitpay'"
           :price="'$5.99/mo'"
+          class="button-subscribe"
         >
         </Button>
         <p class="notes">You may cancel your subscription at any time.</p>
       </div>
-
     </Modal>
+
     <Modal
       v-if="modalRedirect"
       :modalType="'redirect'"
@@ -88,11 +82,13 @@ components: {
 import { Component, Vue } from 'vue-property-decorator'
 import Modal from './../components/Modal.vue'
 import Button from './../components/Button.vue'
+import Badge from './../components/Badge.vue'
 
 @Component({
   components: {
     Modal,
     Button,
+    Badge,
   },
 })
 export default class Modals extends Vue {
@@ -125,6 +121,7 @@ export default class Modals extends Vue {
 
 <style lang="less" scoped>
 @import './../styles/Imports';
+
 .title {
   color: @dark-2;
   .weight(@bold);
@@ -142,9 +139,18 @@ export default class Modals extends Vue {
   font-size: 14px;
   line-height: 21px;
 }
-.donate-box {
-  text-align: center;
-  background: #efefef;
+.donate-title-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 12px;
+  .title {
+    margin: 0;
+    margin-right: 8px;
+  }
+}
+.button-subscribe {
+  .margin-top(@spacing: 3);
 }
 .notes {
   text-align: center;

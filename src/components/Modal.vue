@@ -4,33 +4,44 @@
       <div class="modal-mask">
         <div class="modal-wrapper">
           <div class="modal-container">
-            <div class="modal-body">
-              <i
-                v-show="modalType==='donate'"
-                class="icon-close"
-                @click="$emit('close')"
-              ></i>
-              <slot name="normal-upper"></slot>
-              <slot name="donate"> </slot>
-              <slot name="redirect"> </slot>
-            </div>
-            <div class="modal-footer">
-              <div
-                v-show="modalType==='normal'"
-                class="modal-footer-inner button-container"
-              >
-                <Button
-                  :variation="'default'"
-                  :title="'Close'"
-                  @click="$emit('close')"
-                >
-                </Button>
-                <Button
-                  :variation="'action'"
-                  :title="'Confirm'"
-                >
-                </Button>
+            <div v-if="modalType==='modal'">
+              <div class="modal-body">
+                <slot name="normal-upper"></slot>
               </div>
+              <div class="modal-footer">
+                <div class="modal-footer-inner button-container">
+                  <Button
+                    :variation="'default'"
+                    :title="'Close'"
+                    @click="$emit('close')"
+                  >
+                  </Button>
+                  <Button
+                    :variation="'action'"
+                    :title="'Confirm'"
+                  >
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            <div v-if="modalType==='donate'">
+              <div class="donate-icon-box">
+                <i
+                  class="icon-close"
+                  @click="$emit('close')"
+                ></i>
+              </div>
+              <div class="donate-upper">
+                <slot name="donate-upper"> </slot>
+              </div>
+              <div class="donate-bottom">
+                <slot name="donate-bottom"></slot>
+              </div>
+            </div>
+
+            <div v-if="modalType==='redirect'">
+              <slot name="redirect"> </slot>
             </div>
           </div>
         </div>
@@ -110,14 +121,19 @@ export default class Modal extends Vue {
   float: right;
 }
 
-.title {
-  .weight(@bold);
+.donate-upper,
+.donate-bottom {
+  .padding-v-sides(@spacing: 2);
+  .padding-h-sides(@spacing: 4);
 }
-.sub-title {
-  .weight(@bold);
-}
-.text {
-  font-size: 14px;
-  line-height: 21px;
+
+.donate-icon-box {
+  .padding-v-sides(@spacing: 3);
+  .padding-h-sides(@spacing: 3);
+  .padding-bottom(@spacing: 0);
+  overflow: hidden;
+  .icon-close {
+    float: right;
+  }
 }
 </style>
