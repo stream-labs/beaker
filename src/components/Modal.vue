@@ -213,6 +213,9 @@ export default class Modal extends Vue {
 .button-subscribe {
   .margin-top(@spacing: 3);
 }
+.modal-text-donate {
+  .margin-bottom(@spacing: 3);
+}
 .modal-notes {
   text-align: center;
   color: @light-5;

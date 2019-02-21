@@ -1,5 +1,10 @@
 <template>
   <div>
+    <div class="section">
+      <h1>Modal</h1>
+      <p>Modal</p>
+    </div>
+
     <div class="button-container--left">
       <Button
         :variation="'default'"
@@ -55,7 +60,7 @@
       </div>
 
       <div slot="donate-bottom">
-        <p class="modal-text">Get unlimited free GIFs and effects that will show up on all alerts on all channels! You’ll also get a fancy ‘Pro’ badge next to your username on your donations.</p>
+        <p class="modal-text modal-text-donate">Get unlimited free GIFs and effects that will show up on all alerts on all channels! You’ll also get a fancy ‘Pro’ badge next to your username on your donations.</p>
         <Button
           :variation="'subscribe'"
           :title="'Subscribe with PayPal'"
@@ -70,7 +75,6 @@
     <Modal
       v-if="modalRedirect"
       :modalType="'redirect'"
-      @close="modalRedirect = false"
     >
       <div
         slot="redirect"
@@ -98,7 +102,7 @@ import Badge from './../components/Badge.vue'
   },
 })
 export default class Modals extends Vue {
-  modal: Boolean = true
+  modal: Boolean = false
   modalDonate: Boolean = false
   modalRedirect: Boolean = false
   modalType: string = ''
@@ -109,22 +113,20 @@ export default class Modals extends Vue {
     this.modalDonate = true
   }
   showModalRedirect() {
-    let count = 0
-    let countup = () => {
-      count++
-      this.modalRedirect = true
-      let id = setTimeout(countup, 1000)
-      if (count > 4) {
-        this.modalRedirect = false
-        clearTimeout(id)
-      }
-    }
-    countup()
+    this.modalRedirect = true
   }
+  // showModalRedirect() {
+  //   let count = 0
+  //   let countup = () => {
+  //     count++
+  //     this.modalRedirect = true
+  //     let id = setTimeout(countup, 1000)
+  //     if (count > 4) {
+  //       this.modalRedirect = false
+  //       clearTimeout(id)
+  //     }
+  //   }
+  //   countup()
+  // }
 }
 </script>
-
-
-<style lang="less" scoped>
-@import './../styles/Imports';
-</style>
