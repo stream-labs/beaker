@@ -754,13 +754,6 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.9.tgz#a07bfa74331471e1dc22a47eb72026843f7b95c8"
   integrity sha512-eajkMXG812/w3w4a1OcBlaTwsFPO5F7fJ/amy+tieQxEMWBlbV1JGSjkFM+zkHNf81Cad+dfIRA+IBkvmvdAeA==
 
-"@types/vue-color@^2.4.1":
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/@types/vue-color/-/vue-color-2.4.1.tgz#36892314b278ed3d348e035ea96df5df449fa86b"
-  integrity sha512-jv8X0SyYICdBRqLdC+r0wv12hyfN7EKJLe9yfxhR+5XVl96CW3EsF90/Rg3Xc8goLX0f3Sb4iZ7kFPv8HMk3lQ==
-  dependencies:
-    vue ">=2.0.0"
-
 "@types/vue-select@^2.4.0":
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@types/vue-select/-/vue-select-2.4.0.tgz#dfbd990de38ae718ff56c2fa061df788e5bcb14b"
