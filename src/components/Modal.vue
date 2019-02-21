@@ -10,7 +10,8 @@
             <div class="modal-body">
               <div class="normal-upper">
                 <slot name="title"></slot>
-                <slot name="sub-title"> </slot>
+                <slot name="
+                  sub-title"> </slot>
                 <slot name="text"> </slot>
               </div>
             </div>
@@ -183,16 +184,16 @@ export default class Modal extends Vue {
 <style lang="less">
 @import './../styles/Imports';
 
-.modal-title {
-  color: @dark-2;
-  .weight(@bold);
-  .plan {
-    color: @teal;
-    font-size: 14px;
-    background: #ffffff;
-    .margin-left();
-  }
-}
+// .modal-title {
+//   color: @dark-2;
+//   .weight(@bold);
+//   .plan {
+//     color: @teal;
+//     font-size: 14px;
+//     background: #ffffff;
+//     .margin-left();
+//   }
+// }
 .modal-sub-title {
   .weight(500);
 }
