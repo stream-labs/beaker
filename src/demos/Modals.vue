@@ -1,27 +1,39 @@
 <template>
   <div>
-    <Button
-      :variation="'default'"
-      :title="'modal'"
-      @click="showModal = true"
-    >
-    </Button>
-    <Button
-      :variation="'default'"
-      :title="'modal donate'"
-      @click="showModal2 = true"
-    >
-    </Button>
-    <Button
-      :variation="'default'"
-      :title="'modal redirect'"
-      @click="showModal3 = true"
-    >
-    </Button>
+    <div class="section">
+      <h1>Buttons</h1>
+      <p>Our button component is super flexible. It can act as type <code>button</code>, <code>a</code> tag or <code>router-link</code>. Please note that you may need to use 'ButtonInput' rather than 'Button' to avoid issues.</p>
+
+      <pre><code>import { Button } from 'streamlabs-beaker';
+
+components: {
+  Button
+}</code></pre>
+    </div>
+    <div class="button-container--left">
+      <Button
+        :variation="'default'"
+        :title="'modal'"
+        @click="showModalNormal"
+      >
+      </Button>
+      <Button
+        :variation="'default'"
+        :title="'modal donate'"
+        @click="showModalDonate"
+      >
+      </Button>
+      <Button
+        :variation="'default'"
+        :title="'modal redirect'"
+        @click="showModalRedirect"
+      >
+      </Button>
+    </div>
     <Modal
-      v-if="showModal"
+      v-if="modal"
       :modalType="'normal'"
-      @close="showModal = false"
+      @close="modal = false"
     >
       <div slot="normal-upper">
         <h1 class="title">UI Modal</h1>
@@ -31,9 +43,9 @@
     </Modal>
 
     <Modal
-      v-if="showModal2"
+      v-if="modalDonate"
       :modalType="'donate'"
-      @close="showModal2 = false"
+      @close="modalDonate = false"
     >
       <div slot="donate">
         <h1 class="title">Streamlabs<span class="plan">Pro</span>
@@ -56,9 +68,9 @@
 
     </Modal>
     <Modal
-      v-if="showModal3"
+      v-if="modalRedirect"
       :modalType="'redirect'"
-      @close="showModal3 = false"
+      @close="modalRedirect = false"
     >
       <div
         slot="redirect"
@@ -84,10 +96,29 @@ import Button from './../components/Button.vue'
   },
 })
 export default class Modals extends Vue {
-  showModal: Boolean = false
-  showModal2: Boolean = true
-  showModal3: Boolean = false
+  modal: Boolean = false
+  modalDonate: Boolean = false
+  modalRedirect: Boolean = false
   modalType: string = ''
+  showModalNormal() {
+    this.modal = true
+  }
+  showModalDonate() {
+    this.modalDonate = true
+  }
+  showModalRedirect() {
+    let count = 0
+    let countup = () => {
+      count++
+      this.modalRedirect = true
+      let id = setTimeout(countup, 1000)
+      if (count > 4) {
+        this.modalRedirect = false
+        clearTimeout(id)
+      }
+    }
+    countup()
+  }
 }
 </script>
 

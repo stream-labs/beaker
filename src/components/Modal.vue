@@ -7,7 +7,7 @@
             <div class="modal-body">
               <i
                 v-show="modalType==='donate'"
-                class="icon-delete"
+                class="icon-close"
                 @click="$emit('close')"
               ></i>
               <slot name="normal-upper"></slot>
