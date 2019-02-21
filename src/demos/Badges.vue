@@ -3,6 +3,13 @@
     <div class="section">
       <h1>Badges</h1>
       <p>By default, our badges are designed to be on the right side of elements with 8px of margin on the left. If you would like to use a badge on the left side of an element, set prop <code>align-left="true"</code> and it will switch the margin to be on the right side.</p>
+
+      <pre><code>import { Badge } from 'streamlabs-beaker';
+
+components: {
+  Badge
+}</code></pre>
+
       <Accordion
         :openedTitle="'Hide Code'"
         :closedTitle="'Show Code'">

@@ -3,6 +3,12 @@
     <div class="section">
       <h1>Buttons</h1>
       <p>Our button component is super flexible. It can act as type <code>button</code>, <code>a</code> tag or <code>router-link</code>. Please note that you may need to use 'ButtonInput' rather than 'Button' to avoid issues.</p>
+
+            <pre><code>import { Button } from 'streamlabs-beaker';
+
+components: {
+  Button
+}</code></pre>
     </div>
     <div class="section">
       <h2>Standard Buttons</h2>
@@ -312,6 +318,30 @@
         <Button
           :type="'button'"
           :size="'small'"
+          :variation="'action'"
+          :title="'Action'">
+        </Button>
+
+
+        <Button
+          :type="'button'"
+          :size="'fixed-width'"
+          :variation="'action'"
+          :title="'Action'">
+        </Button>
+
+
+        <Button
+          :type="'button'"
+          :size="'fixed-width'"
+          :variation="'action'"
+          :title="'Action'">
+        </Button>
+
+
+        <Button
+          :type="'button'"
+          :size="'fixed-width'"
           :variation="'action'"
           :title="'Action'">
         </Button>

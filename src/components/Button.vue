@@ -108,6 +108,10 @@ export default class Button extends Vue {
       classes.push(`button--${this.variation}`);
     }
 
+    if (this.variation) {
+      classes.push(`button--${this.variation}`);
+    }
+
     if (this.size) {
       classes.push(`button--${this.size}`);
     }
@@ -186,7 +190,7 @@ export default class Button extends Vue {
   &.is-focused,
   &:hover,
   &.is-hovered {
-    background-color: darken(@day-button, 8%);
+    background-color: darken(@day-button, 4%);
   }
 
   &[disabled],
@@ -263,7 +267,7 @@ export default class Button extends Vue {
   &:focus,
   &.is-focused,
   &:hover {
-    background-color: darken(@day-button, 8%);
+    background-color: darken(@day-button, 4%);
     color: @day-title;
   }
 }
@@ -275,7 +279,7 @@ export default class Button extends Vue {
   &:focus,
   &.is-focused,
   &:hover {
-    background-color: darken(@teal, 8%);
+    background-color: darken(@teal, 4%);
   }
 }
 
@@ -285,7 +289,7 @@ export default class Button extends Vue {
   &:focus,
   &.is-focused,
   &:hover {
-    background-color: darken(@dark-2, 8%);
+    background-color: darken(@dark-2, 4%);
   }
 }
 
@@ -296,7 +300,7 @@ export default class Button extends Vue {
   &:focus,
   &.is-focused,
   &:hover {
-    background-color: darken(@twitch, 8%);
+    background-color: darken(@twitch, 4%);
   }
 }
 
@@ -307,7 +311,7 @@ export default class Button extends Vue {
   &:focus,
   &.is-focused,
   &:hover {
-    background-color: darken(@youtube, 8%);
+    background-color: darken(@youtube, 4%);
   }
 }
 
@@ -318,7 +322,7 @@ export default class Button extends Vue {
   &:focus,
   &.is-focused,
   &:hover {
-    background-color: darken(@mixer, 8%);
+    background-color: darken(@mixer, 4%);
   }
 }
 
@@ -329,7 +333,7 @@ export default class Button extends Vue {
   &:focus,
   &.is-focused,
   &:hover {
-    background-color: darken(@facebook, 8%);
+    background-color: darken(@facebook, 4%);
   }
 }
 
@@ -340,7 +344,7 @@ export default class Button extends Vue {
   &:focus,
   &.is-focused,
   &:hover {
-    background-color: darken(@periscope, 8%);
+    background-color: darken(@periscope, 4%);
   }
 }
 
@@ -351,7 +355,7 @@ export default class Button extends Vue {
   &:focus,
   &.is-focused,
   &:hover {
-    background-color: darken(@picarto, 8%);
+    background-color: darken(@picarto, 4%);
   }
 }
 
@@ -432,7 +436,7 @@ export default class Button extends Vue {
   height: 24px;
 
   &:hover {
-    background: darken(@day-section, 8%);
+    background: darken(@day-section, 4%);
     color: @day-title;
   }
 
@@ -604,7 +608,7 @@ export default class Button extends Vue {
   .button {
     &:focus,
     &.is-focused {
-      background: lighten(@night-button, 8%);
+      background: lighten(@night-button, 4%);
     }
   }
 
@@ -616,7 +620,7 @@ export default class Button extends Vue {
     &:focus,
     &.is-focused,
     &:hover {
-      background: lighten(@night-button, 8%);
+      background: lighten(@night-button, 4%);
     }
   }
 
@@ -624,7 +628,7 @@ export default class Button extends Vue {
     &:focus,
     &.is-focused,
     &:hover {
-      background: lighten(@teal, 8%);
+      background: lighten(@teal, 4%);
     }
   }
 
@@ -643,7 +647,7 @@ export default class Button extends Vue {
     &:focus,
     &.is-focused,
     &:hover {
-      background: lighten(@night-button, 8%);
+      background: lighten(@night-button, 4%);
       color: @night-title;
     }
   }
@@ -670,7 +674,7 @@ export default class Button extends Vue {
     &:focus,
     &.is-focused,
     &:hover {
-      background-color: lighten(@twitch, 8%);
+      background-color: lighten(@twitch, 4%);
     }
   }
 
@@ -681,7 +685,7 @@ export default class Button extends Vue {
     &:focus,
     &.is-focused,
     &:hover {
-      background-color: lighten(@youtube, 8%);
+      background-color: lighten(@youtube, 4%);
     }
   }
 
@@ -692,7 +696,7 @@ export default class Button extends Vue {
     &:focus,
     &.is-focused,
     &:hover {
-      background-color: lighten(@mixer, 8%);
+      background-color: lighten(@mixer, 4%);
     }
   }
 
@@ -703,7 +707,7 @@ export default class Button extends Vue {
     &:focus,
     &.is-focused,
     &:hover {
-      background-color: lighten(@facebook, 8%);
+      background-color: lighten(@facebook, 4%);
     }
   }
 
@@ -714,7 +718,7 @@ export default class Button extends Vue {
     &:focus,
     &.is-focused,
     &:hover {
-      background-color: lighten(@periscope, 8%);
+      background-color: lighten(@periscope, 4%);
     }
   }
 
@@ -725,7 +729,7 @@ export default class Button extends Vue {
     &:focus,
     &.is-focused,
     &:hover {
-      background-color: lighten(@picarto, 8%);
+      background-color: lighten(@picarto, 4%);
     }
   }
 

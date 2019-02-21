@@ -1,16 +1,17 @@
 <template>
   <div>
     <div class="section">
-      <h1>Progress Bars</h1>
-      <h2>Default Progress Bar</h2>
+      <h1>Image Picker</h1>
+      <p>A basic image picker</p>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-<pre><code>&lt;progress-bar :progressComplete=&quot;50&quot;&gt;&lt;/progress-bar&gt;</code></pre>
+          <pre><code>&lt;image-picker&gt;&lt;/image-picker&gt;</code></pre>
         </div>
       </accordion>
       <div class="row">
-        <progress-bar :progressComplete="50"/>
+        <image-picker/>
       </div>
+      <!--
       <table class="docs-table">
         <thead>
           <tr>
@@ -22,28 +23,29 @@
         </thead>
         <tbody>
           <tr>
-            <td>progressComplete</td>
-            <td>Number</td>
-            <td>null</td>
-            <td>Progress complete in percentage</td>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
           </tr>
         </tbody>
       </table>
+      -->
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import ProgressBar from "./../components/ProgressBar.vue";
+import ImagePicker from "./../components/ImagePicker.vue";
 import Accordion from "./../components/Accordion.vue";
 @Component({
   components: {
-    ProgressBar,
+    ImagePicker,
     Accordion
   }
 })
-export default class ProgressBars extends Vue {
-  value = 50;
+export default class ImagePickers extends Vue {
+  msg = "Hi!";
 }
 </script>

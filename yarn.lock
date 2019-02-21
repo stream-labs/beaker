@@ -754,13 +754,6 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.9.tgz#a07bfa74331471e1dc22a47eb72026843f7b95c8"
   integrity sha512-eajkMXG812/w3w4a1OcBlaTwsFPO5F7fJ/amy+tieQxEMWBlbV1JGSjkFM+zkHNf81Cad+dfIRA+IBkvmvdAeA==
 
-"@types/vue-color@^2.4.1":
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/@types/vue-color/-/vue-color-2.4.1.tgz#36892314b278ed3d348e035ea96df5df449fa86b"
-  integrity sha512-jv8X0SyYICdBRqLdC+r0wv12hyfN7EKJLe9yfxhR+5XVl96CW3EsF90/Rg3Xc8goLX0f3Sb4iZ7kFPv8HMk3lQ==
-  dependencies:
-    vue ">=2.0.0"
-
 "@types/vue-select@^2.4.0":
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@types/vue-select/-/vue-select-2.4.0.tgz#dfbd990de38ae718ff56c2fa061df788e5bcb14b"
@@ -8024,6 +8017,11 @@ vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
+
+vee-validate@^2.1.7:
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/vee-validate/-/vee-validate-2.1.7.tgz#33984454d8a633cdc4825a2cf5857747d91bae67"
+  integrity sha512-IyPDTTvIRY6o9y14jXlgfY76Qv+hmvYDwNaMn9JY5KbQN8a1tJAu7H/+a/+EdHg1w8Zl9tsdG8lndGqY1lyMzQ==
 
 vendors@^1.0.0:
   version "1.0.2"

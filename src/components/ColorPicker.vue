@@ -1,12 +1,10 @@
 <template>
   <div class="colorpicker-container" ref="colorpicker">
-    <input type="text" @focus="showPicker()" :value="value" @input="updateFromInput">
-
-    <div class="colorpicker__preview" :style="{ backgroundColor: value }" @click="showPicker()"></div>
-
+    <input type="text" @click="showPicker()" :value="color" @change="updateFromInput">
+    <div class="colorpicker__preview" :style="{ backgroundColor: color }" @click="showPicker()"></div>
     <picker
       class="colorpicker"
-      :value="colors"
+      :value="color"
       v-if="displayPicker"
       :disable-alpha="true"
       :disable-fields="true"
@@ -15,61 +13,58 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Prop, Vue } from "vue-property-decorator";
 import { Chrome } from "vue-color";
 
-export default {
-  name: "ColorPicker",
-  // props: ["value"],
-  extends: Chrome,
-
-  data() {
-    return {
-      displayPicker: false
-    };
-  },
-
+@Component({
   components: {
     picker: Chrome
-  },
+  }
+})
+export default class ColorPicker extends Vue {
+  $refs!: {
+    colorpicker: HTMLElement;
+  };
 
-  mounted() {
-    this.backgroundColor = this.value;
-  },
+  @Prop({ default: "#31c3ac" })
+  defaultColor!: any;
 
-  methods: {
-    updateFromPicker(value) {
-      this.colors = value;
-      this.$emit("input", value.hex);
-    },
+  private displayPicker: Boolean = false;
+  private backgroundColor: String = "";
+  private color: String = this.defaultColor;
 
-    updateFromInput(event) {
-      this.$emit("input", event.target.value);
-    },
+  @Prop()
+  value!: any;
 
-    stopProp(event) {
-      event.stopPropagation();
-    },
+  updateFromPicker(value: any) {
+    this.color = value.hex;
+    this.$emit("input", this.color);
+  }
 
-    hidePicker() {
-      document.removeEventListener("click", this.documentClick);
-      this.displayPicker = false;
-    },
+  updateFromInput(event: any) {
+    this.color = event.target.value;
+    this.$emit("input", this.color);
+  }
 
-    showPicker() {
-      document.addEventListener("click", this.documentClick);
-      this.displayPicker = true;
-    },
+  hidePicker() {
+    document.removeEventListener("click", this.documentClick);
+    this.displayPicker = false;
+  }
 
-    documentClick(e) {
-      var el = this.$refs.colorpicker,
-        target = e.target;
-      if (el !== target && !el.contains(target)) {
-        this.hidePicker();
-      }
+  showPicker() {
+    document.addEventListener("click", this.documentClick);
+    this.displayPicker = true;
+  }
+
+  documentClick(e: any) {
+    let el = this.$refs.colorpicker;
+    let target = e.target;
+    if (el !== target && !el.contains(target)) {
+      this.hidePicker();
     }
   }
-};
+}
 </script>
 
 <style lang="less" scoped>
@@ -89,31 +84,14 @@ export default {
   .radius();
   box-sizing: border-box;
   position: absolute;
-  top: 7px;
+  top: 10px;
   right: 8px;
-  border: 1px solid @day-input-border;
+  border: 1px solid fade(@day-input-border, 12%);
 }
 
 .colorpicker-container {
   position: relative;
-  width: 160px;
+  width: 176px;
   display: inline-block;
-}
-
-.vc-chrome {
-  margin: 0px;
-  display: inline-block !important;
-  position: absolute;
-  z-index: 1000000;
-}
-
-.vc-chrome-active-color {
-  .radius !important;
-}
-
-.vc-chrome-body {
-  border-radius: 0 0 @radius @radius;
-  border: 1px solid @day-dropdown-border;
-  background-color: @day-dropdown-bg!important;
 }
 </style>

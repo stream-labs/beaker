@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="section">
+      <h1>Sliders</h1>
       <h2>Default Slider</h2>
       <p>
         Our slider component is extended from
@@ -9,6 +10,12 @@
           href="https://github.com/NightCatSama/vue-slider-component"
         >Vue Slider Component</a>
       </p>
+      <pre><code>import { Slider } from 'streamlabs-beaker';
+
+components: {
+  Slider
+}</code></pre>
+
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre>
