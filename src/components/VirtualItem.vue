@@ -5,7 +5,8 @@
     :rarity="rarity"
     :selected="selected"
     :quantity="quantity"
-    :value="value">
+    :value="value"
+    @click="$emit('click')">
     <span v-if="selectionCount" class="virtual-item__selection-count">{{ selectionCount }}</span>
     <span v-if="type" class="virtual-item__label">{{ type }}</span>
     <span v-if="quantity" class="virtual-item__label">{{ quantity }}</span>

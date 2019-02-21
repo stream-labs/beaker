@@ -4,7 +4,15 @@
       <h1>Face Masks</h1>
       <p>UI for face masks items and grid.</p>
       <ItemGrid :items="masks">
-        <VirtualItem v-for="(mask, id) in masks" :key="mask.id" :preview="mask.preview" :rarity="mask.rarity" :name="mask.name" :selectionCount="mask.selectionCount" :selected="mask.selected"></VirtualItem>
+        <VirtualItem
+          v-for="(mask, id) in masks"
+          :key="mask.id"
+          :preview="mask.preview"
+          :rarity="mask.rarity"
+          :name="mask.name"
+          :selectionCount="mask.selectionCount"
+          :selected="mask.selected"
+          @click="clickEvent"></VirtualItem>
       </ItemGrid>
     </div>
   </div>
@@ -49,12 +57,7 @@ export default class VirtualItems extends Vue {
     {
       preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
       name: "Robot",
-      rarity: "Common",
-    },
-    {
-      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
-      name: "Robot",
-      rarity: "Common",
+      rarity: "Common"
     },
     {
       preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
@@ -64,14 +67,23 @@ export default class VirtualItems extends Vue {
     {
       preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
       name: "Robot",
-      rarity: "Common",
+      rarity: "Common"
     },
     {
       preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
       name: "Robot",
       rarity: "Common"
     },
-  ]
+    {
+      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
+      name: "Robot",
+      rarity: "Common"
+    }
+  ];
+
+  clickEvent() {
+    console.log("Hey you clicked me!");
+  }
 }
 </script>
 
