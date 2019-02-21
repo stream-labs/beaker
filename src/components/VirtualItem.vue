@@ -6,7 +6,7 @@
     :selected="selected"
     :quantity="quantity"
     :value="value"
-    @click="emitInput(value)">
+    @click="$emit('click')">
     <span v-if="selectionCount" class="virtual-item__selection-count">{{ selectionCount }}</span>
     <span v-if="type" class="virtual-item__label">{{ type }}</span>
     <span v-if="quantity" class="virtual-item__label">{{ quantity }}</span>
@@ -21,43 +21,32 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class VitualItem extends Vue {
-  @Prop()
-  name!: String;
+  @Prop() name!: String;
 
-  @Prop()
-  value!: String;
+  @Prop() value!: String;
 
-  @Prop()
-  preview!: String;
+  @Prop() preview!: String;
 
-  @Prop()
-  quantity!: Number;
+  @Prop() quantity!: Number;
 
-  @Prop()
-  rarity!: String;
+  @Prop() rarity!: String;
 
   @Prop({ default: false })
   selected!: Boolean;
 
-  @Prop()
-  selectionCount!: String;
+  @Prop() selectionCount!: String;
 
-  @Prop()
-  type!: String;
-
-  emitInput(val: string) {
-    this.$emit("input", val);
-  }
+  @Prop() type!: String;
 
   get virtualItemClasses() {
-    let classes = []
+    let classes = [];
 
     if (this.rarity) {
       classes.push(`virtual-item--${this.rarity}`);
     }
 
     if (this.selected) {
-      classes.push('is-selected');
+      classes.push("is-selected");
     }
 
     return classes.join(" ");
@@ -82,6 +71,10 @@ export default class VitualItem extends Vue {
 
   &.is-selected {
     background-color: @selected;
+  }
+
+  &:hover {
+    cursor: pointer;
   }
 }
 
@@ -130,5 +123,4 @@ export default class VitualItem extends Vue {
     }
   }
 }
-
 </style>

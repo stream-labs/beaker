@@ -423,7 +423,8 @@ export default class Button extends Vue {
   width: 100%;
 }
 
-.button--subscribe {
+.button--subscribe,
+.button--paypal {
   display: flex;
   justify-content: space-between;
   text-transform: unset;
@@ -431,6 +432,36 @@ export default class Button extends Vue {
   .button--full-width;
   .button--action;
   .padding-h-sides(4);
+}
+
+.button--paypal {
+  background-color: @paypal-yellow;
+
+  &:before {
+    content: "\f1ed";
+    position: absolute;
+    font-family: "Font Awesome 5 Brands";
+    font-size: 24px;
+    color: @white;
+  }
+
+  &:focus,
+  &.is-focused,
+  &:hover {
+    background-color: darken(@paypal-yellow, 5%);
+  }
+
+  & > span {
+    &:first-child {
+      margin-top: 0;
+
+      span {
+        &:first-child {
+          margin-left: 30px;
+        }
+      }
+    }
+  }
 }
 
 .button--fixed-width {
@@ -601,16 +632,6 @@ export default class Button extends Vue {
 .button--reset-variations {
   margin-top: -36px;
   float: right;
-}
-
-.button--paypal {
-  background-color: @paypal;
-
-  &:focus,
-  &.is-focused,
-  &:hover {
-    background-color: darken(@paypal, 5%);
-  }
 }
 
 .night {
