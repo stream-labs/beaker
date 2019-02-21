@@ -2,59 +2,48 @@
   <div>
     <Button
       :variation="'default'"
-      :title="'Default'"
+      :title="'modal'"
       @click="showModal = true"
     >
     </Button>
     <Button
       :variation="'default'"
-      :title="'Default'"
+      :title="'modal donate'"
       @click="showModal2 = true"
     >
     </Button>
     <Button
       :variation="'default'"
-      :title="'Default'"
+      :title="'modal redirect'"
       @click="showModal3 = true"
     >
     </Button>
     <Modal
       v-if="showModal"
+      :modalType="'normal'"
       @close="showModal = false"
     >
-      <h3
-        slot="title"
-        class="title"
-      >UI Modal</h3>
-      <h4
-        slot="sub-title"
-        class="sub-title"
-      >Subtitle</h4>
-      <p
-        slot="text"
-        class="text"
-      >Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.</p>
+      <div slot="normal-upper">
+        <h1 class="title">UI Modal</h1>
+        <h2 class="sub-title">Subtitle</h2>
+        <p class="text">Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.</p>
+      </div>
     </Modal>
+
     <Modal
       v-if="showModal2"
+      :modalType="'donate'"
       @close="showModal2 = false"
     >
-      <h3
-        slot="title"
-        class="title"
-      >Streamlabs<p slot="mode">Pro</p>
-      </h3>
-      <h4
-        slot="sub-title"
-        class="sub-title"
-      >Never pay for GIFs and effects again!</h4>
-      <div slot=donate-done>
-        <p>galazy83 donated $50.00!</p>
-        <p>Thanks for the stream. Go CivRyan!</p>
-      </div>
-      <p slot="text">Get unlimited free GIFs and effects that will show up on all alerts on all channels! You’ll also get a fancy ‘Pro’ badge next to your username on your donations.</p>
-
-      <div slot="button-subscribe">
+      <div slot="donate">
+        <h1 class="title">Streamlabs<span class="plan">Pro</span>
+        </h1>
+        <h2 class="sub-title">Never pay for GIFs and effects again!</h2>
+        <div class="donate-box">
+          <p class="donate-amount ">galazy83 donated $50.00!</p>
+          <p class="donate-message">Thanks for the stream. Go CivRyan!</p>
+        </div>
+        <p class="text">Get unlimited free GIFs and effects that will show up on all alerts on all channels! You’ll also get a fancy ‘Pro’ badge next to your username on your donations.</p>
         <Button
           :variation="'subscribe'"
           :title="'Subscribe with PayPal'"
@@ -62,41 +51,23 @@
           :price="'$5.99/mo'"
         >
         </Button>
+        <p class="notes">You may cancel your subscription at any time.</p>
       </div>
-      <p slot="notes">You may cancel your subscription at any time.</p>
 
     </Modal>
     <Modal
       v-if="showModal3"
+      :modalType="'redirect'"
       @close="showModal3 = false"
     >
-      <h3
-        slot="title"
-        class="title"
-      >3</h3>
-      <h4
-        slot="sub-title"
-        class="sub-title"
-      >Subtitle</h4>
-      <p
-        slot="text"
-        class="text"
-      >Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.</p>
-      <div>
-        <Button
-          :variation="'default'"
-          :title="'Default'"
-        >
-        </Button>
-
-        <Button
-          :variation="'action'"
-          :title="'Action'"
-        >
-        </Button>
-
+      <div
+        slot="redirect"
+        class="redirect"
+      >
+        <h1 class="title">Redirecting ...</h1>
+        <p class="text">Redirecting you to PayPal to update your method of payment.
+          Click here if you have been waiting longer than 5 seconds.</p>
       </div>
-
     </Modal>
   </div>
 </template>
@@ -113,23 +84,48 @@ import Button from './../components/Button.vue'
   },
 })
 export default class Modals extends Vue {
-  showModal = true
-  showModal2 = false
-  showModal3 = false
+  showModal: Boolean = false
+  showModal2: Boolean = true
+  showModal3: Boolean = false
+  modalType: string = ''
 }
 </script>
 
 
 <style lang="less" scoped>
 @import './../styles/Imports';
-// .title {
-//   .weight(@bold);
-// }
-// .sub-title {
-//   .weight(@bold);
-// }
-// .text {
-//   font-size: 14px;
-//   line-height: 21px;
-// }
+.title {
+  color: @dark-2;
+  .weight(@bold);
+  .plan {
+    color: @teal;
+    font-size: 14px;
+    background: #ffffff;
+    .margin-left();
+  }
+}
+.sub-title {
+  .weight(500);
+}
+.text {
+  font-size: 14px;
+  line-height: 21px;
+}
+.donate-box {
+  text-align: center;
+  background: #efefef;
+}
+.notes {
+  text-align: center;
+  color: @light-5;
+  .small-type();
+  .padding-v-sides(@spacing: 2);
+}
+.redirect {
+  text-align: center;
+  .padding(@spacing: 3);
+}
+.night,
+.night-theme {
+}
 </style>

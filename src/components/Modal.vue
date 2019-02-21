@@ -4,33 +4,21 @@
       <div class="modal-mask">
         <div class="modal-wrapper">
           <div class="modal-container">
-
             <div class="modal-body">
-              <slot
-                name="title"
-                class="title"
-              >
-                <slot name="mode"></slot>
-              </slot>
-              <slot
-                name="sub-title"
-                :class="sub-title"
-              >
-              </slot>
-              <slot
-                name="text"
-                class="text"
-              >
-              </slot>
-              <slot name="donate-done">
-              </slot>
-              <slot name="button-subscribe">
-              </slot>
-              <slot name="notes"></slot>
+              <i
+                v-show="modalType==='donate'"
+                class="icon-delete"
+                @click="$emit('close')"
+              ></i>
+              <slot name="normal-upper"></slot>
+              <slot name="donate"> </slot>
+              <slot name="redirect"> </slot>
             </div>
-
             <div class="modal-footer">
-              <div class="modal-footer-inner button-container">
+              <div
+                v-show="modalType==='normal'"
+                class="modal-footer-inner button-container"
+              >
                 <Button
                   :variation="'default'"
                   :title="'Close'"
@@ -48,6 +36,7 @@
         </div>
       </div>
     </transition>
+
   </div>
 </template>
 
@@ -62,7 +51,7 @@ import Button from './../components/Button.vue'
 })
 export default class Modal extends Vue {
   @Prop()
-  price!: {
+  modalType!: {
     type: String
     default: null
   }
