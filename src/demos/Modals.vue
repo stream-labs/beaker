@@ -14,8 +14,8 @@
       </Button>
       <Button
         :variation="'default'"
-        :title="'modal donate'"
-        @click="showModalDonate"
+        :title="'modal subscribing'"
+        @click="showModalSubscribing"
       >
       </Button>
       <Button
@@ -30,62 +30,43 @@
       :modalType="'modal'"
       @close="modal = false"
     >
-      <h1
-        slot="title"
-        class="modal-title"
-      >UI Modal</h1>
-      <h2
-        slot="sub-title"
-        class="modal-sub-title"
-      >Subtitle</h2>
-      <p
-        slot="text"
-        class="modal-text"
-      >Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.</p>
+      <template slot="title">UI Modal</template>
+      <template slot="sub-title">Subtitle</template>
+      <template slot="text">Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.</template>
     </Modal>
 
     <Modal
-      v-if="modalDonate"
-      :modalType="'donate'"
-      @close="modalDonate = false"
+      v-if="modalSubscribing"
+      :modalType="'subscribing'"
+      @close="modalSubscribing = false"
     >
-      <div slot="donate-upper">
-        <div class="donate-title-box">
-          <h1 class="modal-title">Streamlabs</h1>
-          <badge :align-left="true">
-            Pro
-          </badge>
-        </div>
-        <h2 class="modal-sub-title">Never pay for GIFs and effects again!</h2>
-      </div>
-
-      <div slot="donate-bottom">
-        <p class="modal-text modal-text-donate">Get unlimited free GIFs and effects that will show up on all alerts on all channels! You’ll also get a fancy ‘Pro’ badge next to your username on your donations.</p>
+      <template slot="title">Streamlabs</template>
+      <template slot="badge">
+        <badge :align-left="true">
+          Pro
+        </badge>
+      </template>
+      <template slot="sub-title">Never pay for GIFs and effects again!</template>
+      <template slot="text">Get unlimited free GIFs and effects that will show up on all alerts on all channels! You’ll also get a fancy ‘Pro’ badge next to your username on your donations.</template>
+      <template slot="button-subscribe">
         <Button
           :variation="'subscribe'"
           :title="'Subscribe with PayPal'"
           :price="'$5.99/mo'"
-          class="button-subscribe"
         >
         </Button>
-        <p class="modal-notes">You may cancel your subscription at any time.</p>
-      </div>
+      </template>
+      <template slot="notes">You may cancel your subscription at any time.</template>
     </Modal>
 
     <Modal
       v-if="modalRedirect"
       :modalType="'redirect'"
     >
-      <div
-        slot="redirect"
-        class="redirect"
-      >
-        <h1 class="modal-title">Redirecting ...</h1>
-        <p class="modal-text">Redirecting you to PayPal to update your method of payment.
-          <a href="#">Click here</a> if you have been waiting longer than 5 seconds.</p>
-      </div>
+      <template slot="title">Redirecting ...
+      </template>
+      <template slot="text">Redirecting you to PayPal to update your method of payment.<a href="#">Click here</a> if you have been waiting longer than 5 seconds.</template>
     </Modal>
-
   </div>
 </template>
 
@@ -104,30 +85,17 @@ import Badge from './../components/Badge.vue'
 })
 export default class Modals extends Vue {
   modal: Boolean = false
-  modalDonate: Boolean = false
+  modalSubscribing: Boolean = true
   modalRedirect: Boolean = false
   modalType: string = ''
   showModalNormal() {
     this.modal = true
   }
-  showModalDonate() {
-    this.modalDonate = true
+  showModalSubscribing() {
+    this.modalSubscribing = true
   }
   showModalRedirect() {
     this.modalRedirect = true
   }
-  // showModalRedirect() {
-  //   let count = 0
-  //   let countup = () => {
-  //     count++
-  //     this.modalRedirect = true
-  //     let id = setTimeout(countup, 1000)
-  //     if (count > 4) {
-  //       this.modalRedirect = false
-  //       clearTimeout(id)
-  //     }
-  //   }
-  //   countup()
-  // }
 }
 </script>

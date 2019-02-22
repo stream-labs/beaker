@@ -9,9 +9,15 @@
           >
             <div class="modal-body">
               <div class="normal-upper">
-                <slot name="title"></slot>
-                <slot name="sub-title"> </slot>
-                <slot name="text"> </slot>
+                <h1 class="modal-title">
+                  <slot name="title"></slot>
+                </h1>
+                <h2 class="modal-sub-title">
+                  <slot name="sub-title"> </slot>
+                </h2>
+                <p class="modal-text">
+                  <slot name="text"> </slot>
+                </p>
               </div>
             </div>
             <div class="modal-footer">
@@ -31,23 +37,48 @@
             </div>
           </div>
 
-          <div v-if="modalType==='donate'">
-            <div class="donate-icon-box">
+          <div v-if="modalType==='subscribing'">
+            <div class="subscribing-icon-box">
               <i
                 class="icon-close"
                 @click="$emit('close')"
               ></i>
             </div>
-            <div class="donate-upper">
-              <slot name="donate-upper"> </slot>
+            <div class="subscribing-upper">
+              <div class="subscribing-title-box">
+                <h1 class="modal-title">
+                  <slot name="title"></slot>
+                </h1>
+                <div>
+                  <slot name="badge"></slot>
+                </div>
+              </div>
+              <h2 class="modal-sub-title">
+                <slot name="sub-title"></slot>
+              </h2>
             </div>
-            <div class="donate-bottom">
-              <slot name="donate-bottom"></slot>
+            <div class="subscribing-bottom">
+              <p class="modal-text modal-text-subscribing">
+                <slot name="text"></slot>
+              </p>
+              <div class="button-subscribe">
+                <slot name="button-subscribe"></slot>
+              </div>
+              <p class="modal-notes">
+                <slot name="notes"></slot>
+              </p>
             </div>
           </div>
 
           <div v-if="modalType==='redirect'">
-            <slot name="redirect"> </slot>
+            <div class="redirect">
+              <h1 class="modal-title">
+                <slot name="title"></slot>
+              </h1>
+              <p class="modal-text">
+                <slot name="text"></slot>
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -78,40 +109,17 @@ export default class Modal extends Vue {
 
 .modal-mask {
   position: fixed;
-  z-index: 9998;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(79, 94, 94, 0.4);
+  background-color: @day-modal-mask;
   display: table;
 }
 
 .modal-component {
   .transition();
-  // .spin();
 }
-
-// .fade-enter-active {
-//   transition: all 0.25s 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-//   opacity: 1;
-// }
-
-// .fade-leave-active {
-//   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-//   opacity: 0;
-// }
-
-// .fade-enter {
-//   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-
-//   opacity: 0;
-// }
-
-// .fade-leave-to {
-//   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-//   opacity: 0;
-// }
 
 .modal-wrapper {
   display: table-cell;
@@ -119,117 +127,96 @@ export default class Modal extends Vue {
 }
 
 .modal-container {
-  z-index: 999;
   width: 600px;
   margin: 0px auto;
-  background-color: #fff;
-  border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-  transition: all 0.3s ease;
-  font-family: Helvetica, Arial, sans-serif;
-  border-radius: 8px;
+  background-color: @white;
+  box-shadow: 0 4px 8px @day-shadow;
+  .radius (2);
 }
 
 .modal-body {
-  .padding(@spacing: 3);
+  .padding(3);
+  .radius(2);
 }
 
 .modal-footer {
   background: @light-2;
-  border-radius: 0 0 8px 8px;
+  .radius(2);
+  .radius-bottom();
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
 .modal-footer-inner {
-  .padding-v-sides(@spacing: 2);
-  .padding-h-sides(@spacing: 3);
+  .padding-v-sides(2);
+  .padding-h-sides(3);
 }
 
 .modal-default-button {
   float: right;
 }
 
-.donate-upper,
-.donate-bottom {
-  .padding-v-sides(@spacing: 2);
-  .padding-h-sides(@spacing: 4);
+.subscribing-upper,
+.subscribing-bottom {
+  .padding-v-sides(2);
+  .padding-h-sides(4);
 }
 
-.donate-icon-box {
-  .padding-v-sides(@spacing: 3);
-  .padding-h-sides(@spacing: 3);
-  .padding-bottom(@spacing: 0);
+.subscribing-icon-box {
+  .padding-v-sides(3);
+  .padding-h-sides(3);
+  .padding-bottom(0);
   overflow: hidden;
   .icon-close {
     float: right;
   }
 }
 
-.night,
-.night-theme {
-  .modal-container {
-    background: @dark-3;
-    box-shadow: 0px 4px 8px rgba(9, 22, 29, 0.24);
-  }
-
-  .modal-footer {
-    background: @dark-2;
-  }
-}
-</style>
-
-<style lang="less">
-@import './../styles/Imports';
-
-// .modal-title {
-//   color: @dark-2;
-//   .weight(@bold);
-//   .plan {
-//     color: @teal;
-//     font-size: 14px;
-//     background: #ffffff;
-//     .margin-left();
-//   }
-// }
-.modal-sub-title {
-  .weight(500);
-}
-.modal-text {
-  font-size: 14px;
-  line-height: 21px;
-}
-.donate-title-box {
+.subscribing-title-box {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 12px;
+  .margin-bottom(1.5);
   .modal-title {
     margin: 0;
-    margin-right: 8px;
+    .margin-right(1);
   }
 }
+
 .button-subscribe {
-  .margin-top(@spacing: 3);
+  .margin-top(3);
 }
-.modal-text-donate {
-  .margin-bottom(@spacing: 3);
+
+.modal-text-subscribing {
+  .margin-bottom(3);
 }
+
 .modal-notes {
   text-align: center;
   color: @light-5;
   .small-type();
-  .padding-v-sides(@spacing: 2);
+  .padding-v-sides(2);
 }
+
 .redirect {
   text-align: center;
-  .padding(@spacing: 3);
+  .padding(3);
 }
+
 .night,
 .night-theme {
-  .title {
-    color: @white;
+  .modal-mask {
+    background-color: @night-modal-mask;
+  }
+
+  .modal-container {
+    background: @dark-3;
+    box-shadow: 0px 4px 8px @night-shadow;
+  }
+
+  .modal-footer {
+    background: @dark-2;
   }
 }
 </style>
