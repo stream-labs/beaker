@@ -19,7 +19,7 @@
   "dependencies": {
     "v-tooltip": "^2.0.0-rc.33",
     "vee-validate": "^2.1.7",
-    "vue": "^2.5.17",
+    "vue": "2.6.6",
     "vue-class-component": "^6.0.0",
     "vue-color": "^2.7.0",
     "vue-property-decorator": "^7.0.0",
@@ -41,7 +41,7 @@
     "less-loader": "^4.1.0",
     "resize-observer-polyfill": "^1.5.1",
     "typescript": "^3.0.0",
-    "vue-template-compiler": "^2.5.17"
+    "vue-template-compiler": "2.6.6"
   },
   "types": "./index.d.ts"
 }

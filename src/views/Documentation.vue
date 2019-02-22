@@ -53,7 +53,7 @@ import Navigations from "@/demos/Navigations.vue";
 import ProgressBars from "@/demos/ProgressBars.vue";
 import Paginations from "@/demos/Paginations.vue";
 import Sliders from "@/demos/Sliders.vue";
-import Spinners from "@/demos/Spinners.vue"
+import Spinners from "@/demos/Spinners.vue";
 import Tables from "@/demos/Tables.vue";
 import Tabs from "@/demos/Tabs.vue";
 import Toggles from "@/demos/Toggles.vue";
