@@ -24,6 +24,12 @@
         @click="showModalRedirect"
       >
       </Button>
+      <Button
+        :variation="'warning'"
+        :title="'modal delete'"
+        @click="showModalDelete"
+      >
+      </Button>
     </div>
     <Modal
       v-if="modal"
@@ -67,6 +73,18 @@
       </template>
       <template slot="text">Redirecting you to PayPal to update your method of payment.<a href="#">Click here</a> if you have been waiting longer than 5 seconds.</template>
     </Modal>
+
+    <Modal
+      v-if="modalDelete"
+      :modalType="'delete'"
+      @close="modalDelete = false"
+    >
+      <template slot="sub-title">Delete ‘Streamlabs Pillow’
+      </template>
+      <template slot="text">
+        Are you sure you want to delete the merch item ‘Streamlabs Pillow’? This action cannot be undone.
+      </template>
+    </Modal>
   </div>
 </template>
 
@@ -85,8 +103,9 @@ import Badge from './../components/Badge.vue'
 })
 export default class Modals extends Vue {
   modal: Boolean = false
-  modalSubscribing: Boolean = true
+  modalSubscribing: Boolean = false
   modalRedirect: Boolean = false
+  modalDelete: Boolean = false
   modalType: string = ''
   showModalNormal() {
     this.modal = true
@@ -96,6 +115,9 @@ export default class Modals extends Vue {
   }
   showModalRedirect() {
     this.modalRedirect = true
+  }
+  showModalDelete() {
+    this.modalDelete = true
   }
 }
 </script>

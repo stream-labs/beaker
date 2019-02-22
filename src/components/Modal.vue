@@ -2,42 +2,44 @@
   <transition name="fade">
     <div class="modal-mask">
       <div class="modal-wrapper">
-        <div class="modal-container">
-          <div
-            v-if="modalType==='modal'"
-            class="modal-component"
-          >
-            <div class="modal-body">
-              <div class="normal-upper">
-                <h1 class="modal-title">
-                  <slot name="title"></slot>
-                </h1>
-                <h2 class="modal-sub-title">
-                  <slot name="sub-title"> </slot>
-                </h2>
-                <p class="modal-text">
-                  <slot name="text"> </slot>
-                </p>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <div class="modal-footer-inner button-container">
-                <Button
-                  :variation="'default'"
-                  :title="'Close'"
-                  @click="$emit('close')"
-                >
-                </Button>
-                <Button
-                  :variation="'action'"
-                  :title="'Confirm'"
-                >
-                </Button>
-              </div>
+        <div
+          v-if="modalType==='modal'"
+          class="modal-container"
+        >
+          <div class="modal-body">
+            <div class="normal-upper">
+              <h1 class="modal-title">
+                <slot name="title"></slot>
+              </h1>
+              <h2 class="modal-sub-title">
+                <slot name="sub-title"> </slot>
+              </h2>
+              <p class="modal-text">
+                <slot name="text"> </slot>
+              </p>
             </div>
           </div>
+          <div class="modal-footer">
+            <div class="modal-footer-inner button-container">
+              <Button
+                :variation="'default'"
+                :title="'Close'"
+                :size="'fixed-width'"
+                @click="$emit('close')"
+              >
+              </Button>
+              <Button
+                :variation="'action'"
+                :title="'Confirm'"
+                :size="'fixed-width'"
+              >
+              </Button>
+            </div>
+          </div>
+        </div>
 
-          <div v-if="modalType==='subscribing'">
+        <div v-if="modalType==='subscribing'">
+          <div class="modal-container">
             <div class="subscribing-icon-box">
               <i
                 class="icon-close"
@@ -69,8 +71,10 @@
               </p>
             </div>
           </div>
+        </div>
 
-          <div v-if="modalType==='redirect'">
+        <div v-if="modalType==='redirect'">
+          <div class="modal-container">
             <div class="redirect">
               <h1 class="modal-title">
                 <slot name="title"></slot>
@@ -78,6 +82,34 @@
               <p class="modal-text">
                 <slot name="text"></slot>
               </p>
+            </div>
+          </div>
+        </div>
+
+        <div v-if="modalType==='delete'">
+          <div class="modal-container modal-container-small">
+            <div class="delete">
+              <h2 class="modal-sub-title">
+                <slot name="sub-title"></slot>
+              </h2>
+              <p class="modal-text">
+                <slot name="text"></slot>
+              </p>
+              <div class="button-container">
+                <Button
+                  :variation="'default'"
+                  :title="'Cancel'"
+                  :size="'fixed-width'"
+                  @click="$emit('close')"
+                >
+                </Button>
+                <Button
+                  :variation="'warning'"
+                  :title="'Delete'"
+                  :size="'fixed-width'"
+                >
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -117,10 +149,6 @@ export default class Modal extends Vue {
   display: table;
 }
 
-.modal-component {
-  .transition();
-}
-
 .modal-wrapper {
   display: table-cell;
   vertical-align: middle;
@@ -134,15 +162,9 @@ export default class Modal extends Vue {
   .radius (2);
 }
 
-.modal-body {
-  .padding(3);
-  .radius(2);
-}
-
 .modal-footer {
   background: @light-2;
-  .radius(2);
-  .radius-bottom();
+  .radius-bottom(2, 2);
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -151,6 +173,19 @@ export default class Modal extends Vue {
 .modal-footer-inner {
   .padding-v-sides(2);
   .padding-h-sides(3);
+}
+
+.modal-container-small {
+  width: 400px;
+  .button-container {
+    display: block;
+    .padding-top (1);
+  }
+}
+
+.modal-body {
+  .padding(3);
+  .radius(2);
 }
 
 .modal-default-button {
@@ -200,6 +235,11 @@ export default class Modal extends Vue {
 }
 
 .redirect {
+  text-align: center;
+  .padding(3);
+}
+
+.delete {
   text-align: center;
   .padding(3);
 }
