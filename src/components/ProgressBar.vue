@@ -11,7 +11,7 @@ export default class ProgressBar extends Vue {
   @Prop()
   progressComplete!: Number
   get getProgress() {
-    return 'width:' + this.progressComplete + '%'
+    return "width:" + this.progressComplete + "%";
   }
 }
 </script>

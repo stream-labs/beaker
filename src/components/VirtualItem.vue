@@ -6,10 +6,20 @@
     :selected="selected"
     :quantity="quantity"
     :value="value"
-    @click="$emit('click')">
-    <span v-if="selectionCount" class="virtual-item__selection-count">{{ selectionCount }}</span>
-    <span v-if="type" class="virtual-item__label">{{ type }}</span>
-    <span v-if="quantity" class="virtual-item__label">{{ quantity }}</span>
+    @click="$emit('click')"
+  >
+    <span
+      v-if="selectionCount"
+      class="virtual-item__selection-count"
+    >{{ selectionCount }}</span>
+    <span
+      v-if="type"
+      class="virtual-item__label"
+    >{{ type }}</span>
+    <span
+      v-if="quantity"
+      class="virtual-item__label"
+    >{{ quantity }}</span>
     <div class="virtual-item__img"><img :src="preview" /></div>
     <h3 class="virtual-item__name">{{ name }}</h3>
     <span class="virtual-item__rarity">{{ rarity }}</span>
