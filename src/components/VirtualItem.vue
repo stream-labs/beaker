@@ -17,45 +17,52 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class VitualItem extends Vue {
-  @Prop() name!: String;
+  @Prop()
+  name!: String
 
-  @Prop() value!: String;
+  @Prop()
+  value!: String
 
-  @Prop() preview!: String;
+  @Prop()
+  preview!: String
 
-  @Prop() quantity!: Number;
+  @Prop()
+  quantity!: Number
 
-  @Prop() rarity!: String;
+  @Prop()
+  rarity!: String
 
   @Prop({ default: false })
-  selected!: Boolean;
+  selected!: Boolean
 
-  @Prop() selectionCount!: String;
+  @Prop()
+  selectionCount!: String
 
-  @Prop() type!: String;
+  @Prop()
+  type!: String
 
   get virtualItemClasses() {
-    let classes = [];
+    let classes = []
 
     if (this.rarity) {
-      classes.push(`virtual-item--${this.rarity}`);
+      classes.push(`virtual-item--${this.rarity}`)
     }
 
     if (this.selected) {
-      classes.push("is-selected");
+      classes.push('is-selected')
     }
 
-    return classes.join(" ");
+    return classes.join(' ')
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
 .virtual-item {
   background-color: @day-section;

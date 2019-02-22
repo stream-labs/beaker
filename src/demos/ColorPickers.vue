@@ -40,17 +40,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import Accordion from "./../components/Accordion.vue";
-import ColorPicker from "./../components/ColorPicker.vue";
+import { Component, Vue } from 'vue-property-decorator'
+import Accordion from './../components/Accordion.vue'
+import ColorPicker from './../components/ColorPicker.vue'
 
 @Component({
   components: {
     Accordion,
-    ColorPicker
-  }
+    ColorPicker,
+  },
 })
 export default class ColorPickers extends Vue {
-  msg = "hi"!;
+  msg = 'hi'!
 }
 </script>

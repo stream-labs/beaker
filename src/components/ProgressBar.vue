@@ -5,19 +5,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 @Component({})
 export default class ProgressBar extends Vue {
   @Prop()
-  progressComplete!: Number;
+  progressComplete!: Number
   get getProgress() {
-    return 'width:' + this.progressComplete + '%';
+    return 'width:' + this.progressComplete + '%'
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 .progress {
   display: inline-block;
   height: 8px;

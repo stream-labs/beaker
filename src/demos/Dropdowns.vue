@@ -78,17 +78,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import Accordion from "./../components/Accordion.vue";
-import PaneDropdown from "./../components/PaneDropdown.vue";
-import Tabs from "./../components/Tabs.vue";
+import { Component, Vue } from 'vue-property-decorator'
+import Accordion from './../components/Accordion.vue'
+import PaneDropdown from './../components/PaneDropdown.vue'
+import Tabs from './../components/Tabs.vue'
 
 @Component({
   components: {
     Accordion,
     PaneDropdown,
-    Tabs
-  }
+    Tabs,
+  },
 })
 export default class Dropdowns extends Vue {}
 </script>

@@ -12,26 +12,26 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class Radio extends Vue {
   @Prop()
-  label!: String;
+  label!: String
 
   @Prop()
-  name!: String;
+  name!: String
 
   @Prop()
-  value!: Boolean;
+  value!: Boolean
 
   onLabelClick(): void {
-    let input: any = this.$refs[`${this.label}`];
-    input.checked = true;
+    let input: any = this.$refs[`${this.label}`]
+    input.checked = true
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 </style>

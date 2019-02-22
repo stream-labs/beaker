@@ -70,22 +70,22 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue } from 'vue-property-decorator'
 
-import Pagination from "./../components/Pagination.vue";
-import Accordion from "./../components/Accordion.vue";
+import Pagination from './../components/Pagination.vue'
+import Accordion from './../components/Accordion.vue'
 
 @Component({
   components: {
     Pagination,
-    Accordion
-  }
+    Accordion,
+  },
 })
 export default class Paginations extends Vue {
   consolePage(page: number) {
-    let groupStart = page * 4 - 4;
+    let groupStart = page * 4 - 4
 
-    console.log(`${groupStart}, 4`);
+    console.log(`${groupStart}, 4`)
   }
 }
 </script>

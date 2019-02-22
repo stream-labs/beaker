@@ -41,76 +41,76 @@
 
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class BannerMarketing extends Vue {
   @Prop()
   dayBg!: {
-    type: string;
-    required: true;
-  };
+    type: string
+    required: true
+  }
 
   @Prop()
   nightBg!: {
-    type: string;
-    required: true;
-  };
+    type: string
+    required: true
+  }
 
   @Prop()
   label!: {
-    type: string;
-    required: true;
-  };
+    type: string
+    required: true
+  }
 
   @Prop()
   icon!: {
-    type: string;
-    required: true;
-  };
+    type: string
+    required: true
+  }
 
   @Prop()
   title!: {
-    type: string;
-    required: true;
-  };
+    type: string
+    required: true
+  }
 
   @Prop()
   desc!: {
-    type: string;
-    required: false;
-  };
+    type: string
+    required: false
+  }
 
   @Prop()
-  linkDesc!: string;
+  linkDesc!: string
 
   @Prop({ default: false })
-  bannerClosed!: boolean;
+  bannerClosed!: boolean
 
-  closed: boolean = false;
+  closed: boolean = false
 
   mounted() {
-    this.closed = this.bannerClosed;
-    this.updateBannerHeight();
+    this.closed = this.bannerClosed
+    this.updateBannerHeight()
   }
 
   toggleBanner() {
-    this.closed = !this.closed;
-    this.updateBannerHeight();
+    this.closed = !this.closed
+    this.updateBannerHeight()
 
     // LocalForage.setItem('slobsAd', this.infoBannerClosed);
   }
 
   updateBannerHeight() {
-    let banner: any = this.$refs.banner;
-    let bannerWrapper: any = this.$refs.bottomWrapper;
+    let banner: any = this.$refs.banner
+    let bannerWrapper: any = this.$refs.bottomWrapper
 
     if (!this.closed) {
-      banner.style.maxHeight = "240px";
+      banner.style.maxHeight = '240px'
     } else {
       setTimeout(() => {
-        banner.style.maxHeight = `${bannerWrapper.scrollHeight + 32}px`;
-      }, 1);
+        banner.style.maxHeight = `${bannerWrapper.scrollHeight + 32}px`
+      }, 1)
     }
   }
   // mounted() {
@@ -130,7 +130,7 @@ export default class BannerMarketing extends Vue {
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
 .banner {
   position: relative;

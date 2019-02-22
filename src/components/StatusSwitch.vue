@@ -6,32 +6,32 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class StatusSwitch extends Vue {
   $refs!: {
-    switchInput: HTMLInputElement;
-  };
+    switchInput: HTMLInputElement
+  }
 
   @Prop()
-  label!: string;
+  label!: string
 
   @Prop()
-  value!: boolean;
+  value!: boolean
 
-  current = this.value;
+  current = this.value
 
   onLabelClick(): void {
-    this.$refs.switchInput.checked = !this.$refs.switchInput.checked;
-    this.current = this.$refs.switchInput.checked;
-    this.$emit("input", this.current);
+    this.$refs.switchInput.checked = !this.$refs.switchInput.checked
+    this.current = this.$refs.switchInput.checked
+    this.$emit('input', this.current)
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
 .status-switch {
   position: relative;
@@ -51,7 +51,7 @@ export default class StatusSwitch extends Vue {
     .transition();
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       display: block;
@@ -64,7 +64,7 @@ export default class StatusSwitch extends Vue {
     }
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 2px;
       left: 2px;
