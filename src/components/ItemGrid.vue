@@ -9,8 +9,8 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class ItemGrid extends Vue {
-@Prop()
-items!: Object[]
+  @Prop()
+  items!: Object[];
 }
 </script>
 
@@ -22,5 +22,4 @@ items!: Object[]
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   grid-gap: 16px;
 }
-
 </style>

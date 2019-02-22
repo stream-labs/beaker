@@ -18,7 +18,7 @@ import ColorPicker from "@/components/ColorPicker";
 import FormGroupH from "@/components/FormGroupH";
 import FormGroupV from "@/components/FormGroupV";
 import HelloWorld from "@/components/HelloWorld";
-import ImagePicker from "@/components/ImagePicker"
+import ImagePicker from "@/components/ImagePicker";
 import ItemGrid from "@/components/ItemGrid";
 import PaymentForm from "@/components/PaymentForm";
 import Slider from "@/components/Slider";
@@ -64,7 +64,6 @@ const components = [
 // }
 
 // Finally export as default
-
 
 export {
   Accordion,

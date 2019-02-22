@@ -26,13 +26,17 @@ import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 
 @Component({})
 export default class TextInput extends Vue {
-  @Prop() name!: String;
+  @Prop()
+  name!: String;
 
-  @Prop() value!: String;
+  @Prop()
+  value!: String;
 
-  @Prop() error!: String;
+  @Prop()
+  error!: String;
 
-  @Prop() helpText!: String;
+  @Prop()
+  helpText!: String;
 
   @Prop()
   type!: {
@@ -40,11 +44,14 @@ export default class TextInput extends Vue {
     default: "text";
   };
 
-  @Prop() placeholder!: String;
+  @Prop()
+  placeholder!: String;
 
-  @Prop() disabled!: Boolean;
+  @Prop()
+  disabled!: Boolean;
 
-  @Prop() label!: String;
+  @Prop()
+  label!: String;
 
   content: String = this.value;
 

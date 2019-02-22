@@ -46,7 +46,7 @@ import ColorPickers from "@/demos/ColorPickers.vue";
 import Dropdowns from "@/demos/Dropdowns.vue";
 import Forms from "@/demos/Forms.vue";
 import Icons from "@/demos/Icons.vue";
-import ImagePickers from "@/demos/ImagePickers.vue"
+import ImagePickers from "@/demos/ImagePickers.vue";
 import Inputs from "@/demos/Inputs.vue";
 import Navigations from "@/demos/Navigations.vue";
 import ProgressBars from "@/demos/ProgressBars.vue";
