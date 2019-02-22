@@ -150,16 +150,17 @@ export default class Spinner extends Vue {
   justify-content: center;
 }
 
-.spinner__bar, .spinner__circle {
+.spinner__bar,
+.spinner__circle {
   opacity: 0.24;
   fill: @dark-2;
 }
 
 .night,
 .night-theme {
-  .spinner__bar, .spinner__circle {
+  .spinner__bar,
+  .spinner__circle {
     fill: @light-2;
   }
 }
-
 </style>
