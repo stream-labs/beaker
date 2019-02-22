@@ -84,8 +84,6 @@ import Accordion from "./../components/Accordion.vue";
 export default class Paginations extends Vue {
   consolePage(page: number) {
     let groupStart = page * 4 - 4;
-
-    console.log(`${groupStart}, 4`);
   }
 }
 </script>
