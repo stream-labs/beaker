@@ -3,7 +3,7 @@
     <div class="section">
       <h1>Face Masks</h1>
       <p>UI for face masks items and grid.</p>
-      <ItemGrid :items="masks">
+      <ItemGrid>
         <VirtualItem
           v-for="(mask, id) in masks"
           :key="mask.id"
@@ -12,7 +12,7 @@
           :name="mask.name"
           :selectionCount="mask.selectionCount"
           :selected="mask.selected"
-          @click="clickEvent"></VirtualItem>
+          @click="clickEvent(mask)"></VirtualItem>
       </ItemGrid>
     </div>
   </div>
@@ -81,8 +81,9 @@ export default class VirtualItems extends Vue {
     }
   ];
 
-  clickEvent() {
+  clickEvent(mask: object) {
     console.log("Hey you clicked me!");
+    mask.selected = !mask.selected;
   }
 }
 </script>
