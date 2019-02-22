@@ -29,6 +29,4 @@ export default class FormGroup extends Vue {
   grid-template-rows: 1fr;
   grid-gap: 16px;
 }
-
-
 </style>

@@ -21,22 +21,29 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class VitualItem extends Vue {
-  @Prop() name!: String;
+  @Prop()
+  name!: String;
 
-  @Prop() value!: String;
+  @Prop()
+  value!: String;
 
-  @Prop() preview!: String;
+  @Prop()
+  preview!: String;
 
-  @Prop() quantity!: Number;
+  @Prop()
+  quantity!: Number;
 
-  @Prop() rarity!: String;
+  @Prop()
+  rarity!: String;
 
   @Prop({ default: false })
   selected!: Boolean;
 
-  @Prop() selectionCount!: String;
+  @Prop()
+  selectionCount!: String;
 
-  @Prop() type!: String;
+  @Prop()
+  type!: String;
 
   get virtualItemClasses() {
     let classes = [];

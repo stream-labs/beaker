@@ -24,15 +24,14 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import ResizeObserver from 'resize-observer-polyfill';
+import ResizeObserver from "resize-observer-polyfill";
 import VuePaginateComponent from "vuejs-paginate";
 
 @Component({
   components: {
-    VuePaginateComponent,
+    VuePaginateComponent
   }
 })
-
 export default class Pagination extends Vue {
   pageRange: number = 3;
 
@@ -55,13 +54,13 @@ export default class Pagination extends Vue {
   mounted() {
     const ro = new ResizeObserver((entries, observer) => {
       for (const entry of entries) {
-        const {left, top, width, height} = entry.contentRect;
+        const { left, top, width, height } = entry.contentRect;
 
         if (width < 456) this.pageRange = 1;
 
-        console.log('Element:', entry.target);
-        console.log(`Element's size: ${ width }px x ${ height }px`);
-        console.log(`Element's paddings: ${ top }px ; ${ left }px`);
+        console.log("Element:", entry.target);
+        console.log(`Element's size: ${width}px x ${height}px`);
+        console.log(`Element's paddings: ${top}px ; ${left}px`);
       }
     });
 
@@ -69,14 +68,15 @@ export default class Pagination extends Vue {
   }
 
   get pageCount() {
-    if (this.totalPageCount && this.totalPageCount > 0) return this.totalPageCount;
+    if (this.totalPageCount && this.totalPageCount > 0)
+      return this.totalPageCount;
 
-    let remainder = (this.totalItemCount % this.itemsPerPage > 0) ? 1 : 0;
+    let remainder = this.totalItemCount % this.itemsPerPage > 0 ? 1 : 0;
     return Math.floor(this.totalItemCount / this.itemsPerPage) + remainder;
   }
 
   selectPage(page: number) {
-    this.$emit('page-selected', page);
+    this.$emit("page-selected", page);
   }
 }
 </script>
