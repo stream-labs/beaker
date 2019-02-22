@@ -23,6 +23,7 @@ import ItemGrid from "@/components/ItemGrid";
 import PaymentForm from "@/components/PaymentForm";
 import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
+import Spinner from "@/components/Spinner";
 import Tabs from "@/components/Tabs";
 import TextInput from "@/components/TextInput";
 import Toggle from "@/components/Toggle";
@@ -45,6 +46,7 @@ const components = [
   ItemGrid,
   Selector,
   Slider,
+  Spinner,
   Tabs,
   TextInput,
   Pagination,
@@ -81,6 +83,7 @@ export {
   PaymentForm,
   Selector,
   Slider,
+  Spinner,
   Tabs,
   TextInput,
   Pagination,
