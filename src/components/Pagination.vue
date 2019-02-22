@@ -60,10 +60,6 @@ export default class Pagination extends Vue {
         const { left, top, width, height } = entry.contentRect
 
         if (width < 456) this.pageRange = 1
-
-        console.log('Element:', entry.target)
-        console.log(`Element's size: ${width}px x ${height}px`)
-        console.log(`Element's paddings: ${top}px ; ${left}px`)
       }
     })
 
