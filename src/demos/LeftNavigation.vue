@@ -83,6 +83,10 @@
       >Sliders</a>
       <a
         class="left-navigation__link"
+        @click="changeSection('spinners')"
+      >Spinners</a>
+      <a
+        class="left-navigation__link"
         @click="changeSection('tables')"
       >Tables</a>
       <a

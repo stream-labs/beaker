@@ -1,13 +1,14 @@
 <template>
   <div class="toggle">
-    <button type="button"
+    <button
+      type="button"
       v-for="(val, key) in values"
       :key="val.id"
       :title="key | capitalize"
       @click="$emit('update:selected', key)"
       :class="['toggle__option', { 'toggle__option--active': selected === key }]"
       v-html="val"
-      >{{ val }}</button>
+    >{{ val }}</button>
   </div>
 </template>
 
