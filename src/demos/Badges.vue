@@ -17,39 +17,33 @@ components: {
           <pre>
 <code>&lt;badge
   :variant=&quot;success&quot;
-  :align-left=&quot;true&quot;&gt;
-  Success
-&lt;/badge&gt;
+  :align-left=&quot;true&quot;
+&gt;Success&lt;/badge&gt;
 
 &lt;badge
   :variant=&quot;tag&quot;
-  :align-left=&quot;true&quot;&gt;
-  Tag
-&lt;/badge&gt;
+  :align-left=&quot;true&quot;
+&gt;Tag&lt;/badge&gt;
 
 &lt;badge
   :variant=&quot;new&quot;
-  :align-left=&quot;true&quot;&gt;
-  New
-&lt;/badge&gt;
+  :align-left=&quot;true&quot;
+&gt;New&lt;/badge&gt;
 
 &lt;badge
   :variant=&quot;beta&quot;
-  :align-left=&quot;true&quot;&gt;
-  Beta
-&lt;/badge&gt;
+  :align-left=&quot;true&quot;
+&gt;Beta&lt;/badge&gt;
 
 &lt;badge
   :variant=&quot;warning&quot;
-  :align-left=&quot;true&quot;&gt;
-  Warn
-&lt;/badge&gt;
+  :align-left=&quot;true&quot;
+&gt;Warn&lt;/badge&gt;
 
 &lt;badge
   :variant=&quot;pro&quot;
-  :align-left=&quot;true&quot;&gt;
-  Pro
-&lt;/badge&gt;
+  :align-left=&quot;true&quot;
+&gt;Pro&lt;/badge&gt;
 
 &lt;badge
   :variant=&quot;'progress'&quot;
@@ -57,47 +51,63 @@ components: {
   :current=&quot;17&quot;
   :total=&quot;25&quot;
   :suffix=&quot;'Sold'&quot;&gt;
-&lt;/badge&gt;</code></pre>
+&lt;/badge&gt;
+
+&lt;badge
+  :variant=&quot;mod&quot;
+&gt;/mod Streamlabs&lt;/badge&gt;
+
+&lt;badge
+  :variant=&quot;count&quot;
+&gt;3&lt;/badge&gt;</code></pre>
         </div>
       </Accordion>
 
-      <badge
-        :variant="'success'"
-        :align-left="true">
-        Success
-      </badge>
-      <badge
-        :variant="'tag'"
-        :align-left="true">
-        Tag
-      </badge>
-      <badge
-        :variant="'new'"
-        :align-left="true">
-        New
-      </badge>
-      <badge
-        :variant="'beta'"
-        :align-left="true">
-        Beta
-      </badge>
-      <badge
-        :variant="'warning'"
-        :align-left="true">
-        Warning
-      </badge>
-      <badge
-        :variant="'pro'"
-        :align-left="true">
-        Pro
-      </badge>
-      <badge
-        :variant="'progress'"
-        :bar-color="'#8736e0'"
-        :current="17"
-        :total="25"
-        :suffix="'Sold'">
-      </badge>
+      <div class="section section__components">
+        <badge
+          :variant="'success'"
+          :align-left="true">
+          Success
+        </badge>
+        <badge
+          :variant="'tag'"
+          :align-left="true">
+          Tag
+        </badge>
+        <badge
+          :variant="'new'"
+          :align-left="true">
+          New
+        </badge>
+        <badge
+          :variant="'beta'"
+          :align-left="true">
+          Beta
+        </badge>
+        <badge
+          :variant="'warning'"
+          :align-left="true">
+          Warning
+        </badge>
+        <badge
+          :variant="'pro'"
+          :align-left="true">
+          Pro
+        </badge>
+        <badge
+          :variant="'progress'"
+          :bar-color="'#8736e0'"
+          :current="17"
+          :total="25"
+          :suffix="'Sold'">
+        </badge>
+        <badge
+          :variant="'mod'"
+        >/mod Streamlabs</badge>
+        <badge
+          :variant="'count'"
+        >3</badge>
+      </div>
     </div>
 
     <table class="docs-table">
@@ -114,7 +124,7 @@ components: {
           <td>variant</td>
           <td>string</td>
           <td>"success"</td>
-          <td>How the badge will look or funciton. Variants: <code>success</code>, <code>tag</code>, <code>new</code>, <code>beta</code>, <code>warning</code>, <code>pro</code>, and <code>progress</code>.</td>
+          <td>How the badge will look or funciton. Variants: <code>success</code>, <code>tag</code>, <code>new</code>, <code>beta</code>, <code>warning</code>, <code>pro</code>, <code>progress</code>, <code>mod</code>, and <code>count</code>.</td>
         </tr>
         <tr>
           <td>alignLeft</td>
@@ -183,3 +193,10 @@ import Badge from "./../components/Badge.vue";
 })
 export default class Badges extends Vue {}
 </script>
+
+<style lang="less" scoped>
+.section__components {
+  display: flex;
+  align-items: center;
+}
+</style>
