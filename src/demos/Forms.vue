@@ -20,25 +20,25 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import PaymentForm from "./../components/PaymentForm.vue";
-import FormGroupH from "./../components/FormGroupH.vue";
-import FormGroupV from "./../components/FormGroupV.vue";
-import TextInput from "./../components/TextInput.vue";
+import { Component, Vue } from 'vue-property-decorator'
+import PaymentForm from './../components/PaymentForm.vue'
+import FormGroupH from './../components/FormGroupH.vue'
+import FormGroupV from './../components/FormGroupV.vue'
+import TextInput from './../components/TextInput.vue'
 
 @Component({
   components: {
     PaymentForm,
     FormGroupH,
     FormGroupV,
-    TextInput
-  }
+    TextInput,
+  },
 })
 export default class Forms extends Vue {
-  title = "Text Input";
-  tooltip = "Input tooltip message.";
-  helpText = "This is help text";
-  textInputPlaceholder = "Text input placeholder";
-  textInputType = "text";
+  title = 'Text Input'
+  tooltip = 'Input tooltip message.'
+  helpText = 'This is help text'
+  textInputPlaceholder = 'Text input placeholder'
+  textInputType = 'text'
 }
 </script>

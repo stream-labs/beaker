@@ -10,8 +10,7 @@
             <div class="modal-body">
               <div class="normal-upper">
                 <slot name="title"></slot>
-                <slot name="
-                  sub-title"> </slot>
+                <slot name="sub-title"> </slot>
                 <slot name="text"> </slot>
               </div>
             </div>

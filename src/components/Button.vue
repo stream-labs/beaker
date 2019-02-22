@@ -438,9 +438,9 @@ export default class Button extends Vue {
   background-color: @paypal-yellow;
 
   &:before {
-    content: "\f1ed";
+    content: '\f1ed';
     position: absolute;
-    font-family: "Font Awesome 5 Brands";
+    font-family: 'Font Awesome 5 Brands';
     font-size: 24px;
     color: @white;
   }

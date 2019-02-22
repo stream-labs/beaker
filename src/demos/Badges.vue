@@ -12,7 +12,8 @@ components: {
 
       <Accordion
         :openedTitle="'Hide Code'"
-        :closedTitle="'Show Code'">
+        :closedTitle="'Show Code'"
+      >
         <div slot="content">
           <pre>
 <code>&lt;badge
@@ -63,32 +64,38 @@ components: {
 
       <badge
         :variant="'success'"
-        :align-left="true">
+        :align-left="true"
+      >
         Success
       </badge>
       <badge
         :variant="'tag'"
-        :align-left="true">
+        :align-left="true"
+      >
         Tag
       </badge>
       <badge
         :variant="'new'"
-        :align-left="true">
+        :align-left="true"
+      >
         New
       </badge>
       <badge
         :variant="'beta'"
-        :align-left="true">
+        :align-left="true"
+      >
         Beta
       </badge>
       <badge
         :variant="'warning'"
-        :align-left="true">
+        :align-left="true"
+      >
         Warning
       </badge>
       <badge
         :variant="'pro'"
-        :align-left="true">
+        :align-left="true"
+      >
         Pro
       </badge>
       <badge
@@ -96,7 +103,8 @@ components: {
         :bar-color="'#8736e0'"
         :current="17"
         :total="25"
-        :suffix="'Sold'">
+        :suffix="'Sold'"
+      >
       </badge>
     </div>
 
@@ -170,16 +178,16 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
-import Accordion from "./../components/Accordion.vue";
-import Badge from "./../components/Badge.vue";
+import Accordion from './../components/Accordion.vue'
+import Badge from './../components/Badge.vue'
 
 @Component({
   components: {
     Accordion,
-    Badge
-  }
+    Badge,
+  },
 })
 export default class Badges extends Vue {}
 </script>

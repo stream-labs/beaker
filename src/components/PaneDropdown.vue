@@ -30,50 +30,50 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class PaneDropdown extends Vue {
   @Prop({ default: true })
-  dropdownIcon!: boolean;
+  dropdownIcon!: boolean
 
-  paneMenuOpen = false;
-  paneList = null;
+  paneMenuOpen = false
+  paneList = null
 
   created() {
-    document.addEventListener("click", this.documentClick);
+    document.addEventListener('click', this.documentClick)
   }
 
   destroyed() {
-    document.removeEventListener("click", this.documentClick);
+    document.removeEventListener('click', this.documentClick)
   }
 
   mounted() {
-    let links: any = this.$refs.panelinks;
-    let [...list] = links.children;
-    this.paneList = list;
+    let links: any = this.$refs.panelinks
+    let [...list] = links.children
+    this.paneList = list
   }
 
   documentClick(e: Event) {
-    let el: any = this.$refs.paneMenu;
-    let target = e.target;
+    let el: any = this.$refs.paneMenu
+    let target = e.target
     if (el !== target && !el.contains(target)) {
-      this.paneMenuOpen = false;
+      this.paneMenuOpen = false
     }
   }
 
   hide() {
-    this.paneMenuOpen = false;
+    this.paneMenuOpen = false
   }
 
   show() {
-    this.paneMenuOpen = true;
+    this.paneMenuOpen = true
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
 .pane-dropdown {
   position: relative;

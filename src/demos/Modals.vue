@@ -85,6 +85,7 @@
           <a href="#">Click here</a> if you have been waiting longer than 5 seconds.</p>
       </div>
     </Modal>
+
   </div>
 </template>
 

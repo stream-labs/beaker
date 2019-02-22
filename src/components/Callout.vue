@@ -14,47 +14,47 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class Callout extends Vue {
-  @Prop({ default: "success" })
-  variation!: string;
+  @Prop({ default: 'success' })
+  variation!: string
 
   @Prop()
-  icon!: String;
+  icon!: String
 
   @Prop({ default: false })
-  closeable!: boolean;
+  closeable!: boolean
 
-  closed: boolean = false;
-  calloutClosedClass: string = "";
+  closed: boolean = false
+  calloutClosedClass: string = ''
 
   closeCallout() {
-    this.calloutClosedClass = "callout--closed";
+    this.calloutClosedClass = 'callout--closed'
   }
 
   get calloutClass() {
-    return `callout--${this.variation}`;
+    return `callout--${this.variation}`
   }
 
   get calloutIcon() {
     switch (this.variation) {
-      case "success":
-      case "success-alt":
-        return "icon-check";
-      case "warning":
-      case "warning-alt":
-        return "icon-delete";
-      case "info":
-        return "icon-information";
+      case 'success':
+      case 'success-alt':
+        return 'icon-check'
+      case 'warning':
+      case 'warning-alt':
+        return 'icon-delete'
+      case 'info':
+        return 'icon-information'
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
 .callout {
   position: relative;
@@ -67,7 +67,7 @@ export default class Callout extends Vue {
   .transition();
   justify-content: center;
 
-  [class^="icon-"] {
+  [class^='icon-'] {
     &:first-child {
       .margin-right();
     }
@@ -96,12 +96,10 @@ export default class Callout extends Vue {
     color: @teal;
   }
 
-
   &--warning {
     background-color: @red-semi;
     color: @red;
   }
-
 
   &--info {
     background-color: @yellow-dark-semi;

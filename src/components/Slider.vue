@@ -19,55 +19,55 @@
 
 
 <script>
-import { Component, Vue } from "vue-property-decorator";
-import VueSliderComponent from "vue-slider-component";
+import { Component, Vue } from 'vue-property-decorator'
+import VueSliderComponent from 'vue-slider-component'
 export default {
-  name: "Slider",
+  name: 'Slider',
   extends: VueSliderComponent,
   components: {
-    VueSliderComponent
+    VueSliderComponent,
   },
   props: {
     value: {
       type: [String, Number],
-      defualt: 0
+      defualt: 0,
     },
     prefix: {
       type: String,
-      default: ""
+      default: '',
     },
     suffix: {
       type: String,
-      default: ""
+      default: '',
     },
     data: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
 
   created() {
-    this.$on("input", this.setValue);
+    this.$on('input', this.setValue)
   },
 
   destroyed() {
-    this.$off("input", this.setValue);
+    this.$off('input', this.setValue)
   },
 
   methods: {
     emitInput(val) {
-      this.$emit("input", val);
+      this.$emit('input', val)
     },
 
     setValue(val) {
-      this.currentValue = val;
-    }
-  }
-};
+      this.currentValue = val
+    },
+  },
+}
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
 .vue-slider-component {
   padding: 4px 0px 28px !important;
@@ -92,14 +92,14 @@ export default {
       &:before,
       &:after {
         border: none;
-        font-family: "icomoon";
+        font-family: 'icomoon';
         font-weight: 900;
         position: absolute;
         top: 0px;
         color: @light-3;
         font-size: 11px;
         line-height: 15px;
-        content: "\e996";
+        content: '\e996';
         display: inline-block;
       }
 

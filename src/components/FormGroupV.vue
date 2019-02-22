@@ -25,23 +25,23 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class FormGroupV extends Vue {
   @Prop()
-  helpText!: string;
+  helpText!: string
 
   @Prop()
-  tooltip!: string;
+  tooltip!: string
 
   @Prop()
-  title!: string;
+  title!: string
 }
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
 .form-group-v {
   .margin-bottom(2);

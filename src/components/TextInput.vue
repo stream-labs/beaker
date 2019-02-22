@@ -22,40 +22,47 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from "vue-property-decorator";
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 
 @Component({})
 export default class TextInput extends Vue {
-  @Prop() name!: String;
+  @Prop()
+  name!: String
 
-  @Prop() value!: String;
+  @Prop()
+  value!: String
 
-  @Prop() error!: String;
+  @Prop()
+  error!: String
 
-  @Prop() helpText!: String;
+  @Prop()
+  helpText!: String
 
   @Prop()
   type!: {
-    type: String;
-    default: "text";
-  };
+    type: String
+    default: 'text'
+  }
 
-  @Prop() placeholder!: String;
+  @Prop()
+  placeholder!: String
 
-  @Prop() disabled!: Boolean;
+  @Prop()
+  disabled!: Boolean
 
-  @Prop() label!: String;
+  @Prop()
+  label!: String
 
-  content: String = this.value;
+  content: String = this.value
 
   handleInput(e: String) {
-    this.$emit("input", this.content);
+    this.$emit('input', this.content)
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
 .form-field__input--error {
   border-color: @red;

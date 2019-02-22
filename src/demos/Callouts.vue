@@ -51,15 +51,15 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import Accordion from "./../components/Accordion.vue";
-import Callout from "./../components/Callout.vue";
+import { Component, Vue } from 'vue-property-decorator'
+import Accordion from './../components/Accordion.vue'
+import Callout from './../components/Callout.vue'
 
 @Component({
   components: {
     Accordion,
-    Callout
-  }
+    Callout,
+  },
 })
 export default class Callouts extends Vue {}
 </script>
