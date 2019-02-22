@@ -161,7 +161,6 @@ export default {
       .night-shadow();
 
       li {
-
         a {
           color: @night-paragraph;
 

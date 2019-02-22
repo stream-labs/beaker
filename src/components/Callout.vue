@@ -96,12 +96,10 @@ export default class Callout extends Vue {
     color: @teal;
   }
 
-
   &--warning {
     background-color: @red-semi;
     color: @red;
   }
-
 
   &--info {
     background-color: @yellow-dark-semi;
