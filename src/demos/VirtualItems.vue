@@ -6,7 +6,7 @@
       <ItemGrid>
         <VirtualItem
           v-for="(mask, id) in masks"
-          :key="mask.id"
+          :key="id"
           :preview="mask.preview"
           :rarity="mask.rarity"
           :name="mask.name"

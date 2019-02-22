@@ -18,11 +18,12 @@ import ColorPicker from "@/components/ColorPicker";
 import FormGroupH from "@/components/FormGroupH";
 import FormGroupV from "@/components/FormGroupV";
 import HelloWorld from "@/components/HelloWorld";
-import ImagePicker from "@/components/ImagePicker"
+import ImagePicker from "@/components/ImagePicker";
 import ItemGrid from "@/components/ItemGrid";
 import PaymentForm from "@/components/PaymentForm";
 import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
+import Spinner from "@/components/Spinner";
 import Tabs from "@/components/Tabs";
 import TextInput from "@/components/TextInput";
 import Toggle from "@/components/Toggle";
@@ -45,6 +46,7 @@ const components = [
   ItemGrid,
   Selector,
   Slider,
+  Spinner,
   Tabs,
   TextInput,
   Pagination,
@@ -65,7 +67,6 @@ const components = [
 
 // Finally export as default
 
-
 export {
   Accordion,
   Badge,
@@ -82,6 +83,7 @@ export {
   PaymentForm,
   Selector,
   Slider,
+  Spinner,
   Tabs,
   TextInput,
   Pagination,
