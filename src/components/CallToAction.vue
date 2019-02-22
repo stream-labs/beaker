@@ -27,27 +27,28 @@ import Button from "./../components/Button.vue";
     Button
   }
 })
-
 export default class CallToAction extends Vue {
-  @Prop({ default: require('./../assets/imgs/kevin-standard.svg')})
+  @Prop({ default: require("./../assets/imgs/kevin-standard.svg") })
   thumbnail!: String;
 
-  @Prop({ default: "Get started by downloading Streamlabs OBS"})
+  @Prop({ default: "Get started by downloading Streamlabs OBS" })
   title!: String;
 
-  @Prop({ default: "Over 800k creators use Streamlabs OBS daily, delivering entertainment."})
+  @Prop({
+    default:
+      "Over 800k creators use Streamlabs OBS daily, delivering entertainment."
+  })
   description!: String;
 
-  @Prop({ default: 'slobs-download' })
+  @Prop({ default: "slobs-download" })
   buttonVariation!: String;
 
-  @Prop({ default: 'Download Streamlabs OBS' })
+  @Prop({ default: "Download Streamlabs OBS" })
   buttonTitle!: String;
 
-  @Prop({ default: 'Windows 7+ 245.8MB' })
+  @Prop({ default: "Windows 7+ 245.8MB" })
   buttonDescription!: String;
 }
-
 </script>
 
 <style lang="less" scoped>
@@ -102,7 +103,6 @@ export default class CallToAction extends Vue {
 .subtitle {
   font-size: 18px;
   font-weight: medium;
-
 }
 
 .night,
@@ -115,5 +115,4 @@ export default class CallToAction extends Vue {
     color: @night-title;
   }
 }
-
 </style>
