@@ -88,7 +88,6 @@ export default class Badge extends Vue {
   .radius();
   font-size: 13px;
   .weight(@medium);
-  // text-transform: capitalize;
   color: @white;
   vertical-align: text-bottom;
   line-height: 16px;
