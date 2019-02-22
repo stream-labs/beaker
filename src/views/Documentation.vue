@@ -21,11 +21,8 @@
       <progress-bars v-if="activeSection === 'progress-bars'"/>
       <paginations v-if="activeSection === 'paginations'"/>
       <sliders v-if="activeSection === 'sliders'"/>
-<<<<<<< HEAD
       <streampress v-if="activeSection === 'streampress'"/>
-=======
       <spinners v-if="activeSection === 'spinners'"/>
->>>>>>> d9d115342908d53196be486936e67f48c53b73d8
       <tables v-if="activeSection === 'tables'"/>
       <tabs v-if="activeSection === 'tabs'"/>
       <toggles v-if="activeSection === 'toggles'"/>

@@ -49,9 +49,11 @@ import TextInput from "./TextInput.vue";
   }
 })
 export default class SPProSimulator extends Vue {
-  @Prop() username!: string;
+  @Prop()
+  username!: string;
 
-  @Prop() icon!: String;
+  @Prop()
+  icon!: String;
 
   themeClasses = ["teal", "orange", "electric-blue", "red", "lime"];
   themeClass = "";

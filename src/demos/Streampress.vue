@@ -59,6 +59,7 @@ import SPProSimulator from "./../components/SPProSimulator.vue";
 })
 export default class Toggles extends Vue {
   username = "morganleee";
-  icon = "https://static-cdn.jtvnw.net/jtv_user_pictures/9dfce03d-25cc-4737-96d2-2ecf6924bebe-profile_image-70x70.jpg";
+  icon =
+    "https://static-cdn.jtvnw.net/jtv_user_pictures/9dfce03d-25cc-4737-96d2-2ecf6924bebe-profile_image-70x70.jpg";
 }
 </script>
