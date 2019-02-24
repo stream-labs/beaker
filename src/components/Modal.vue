@@ -86,9 +86,9 @@
           </div>
         </div>
 
-        <div v-if="modalType==='delete'">
+        <div v-if="modalType==='confirmation'">
           <div class="modal-container modal-container-small">
-            <div class="delete">
+            <div class="confirmation">
               <h2 class="modal-sub-title">
                 <slot name="sub-title"></slot>
               </h2>
@@ -239,7 +239,7 @@ export default class Modal extends Vue {
   .padding(3);
 }
 
-.delete {
+.confirmation {
   text-align: center;
   .padding(3);
 }

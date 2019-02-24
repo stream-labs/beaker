@@ -26,8 +26,8 @@
       </Button>
       <Button
         :variation="'warning'"
-        :title="'modal delete'"
-        @click="showModalDelete"
+        :title="'modal confirmation'"
+        @click="showModalConfirmation"
       >
       </Button>
     </div>
@@ -75,9 +75,9 @@
     </Modal>
 
     <Modal
-      v-if="modalDelete"
-      :modalType="'delete'"
-      @close="modalDelete = false"
+      v-if="modalConfirmation"
+      :modalType="'confirmation'"
+      @close="modalConfirmation = false"
     >
       <template slot="sub-title">Delete ‘Streamlabs Pillow’
       </template>
@@ -105,7 +105,7 @@ export default class Modals extends Vue {
   modal: Boolean = false
   modalSubscribing: Boolean = false
   modalRedirect: Boolean = false
-  modalDelete: Boolean = false
+  modalConfirmation: Boolean = false
   modalType: string = ''
   showModalNormal() {
     this.modal = true
@@ -116,8 +116,8 @@ export default class Modals extends Vue {
   showModalRedirect() {
     this.modalRedirect = true
   }
-  showModalDelete() {
-    this.modalDelete = true
+  showModalConfirmation() {
+    this.modalConfirmation = true
   }
 }
 </script>
