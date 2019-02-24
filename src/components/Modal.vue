@@ -76,6 +76,9 @@
         <div v-if="modalType==='redirect'">
           <div class="modal-container">
             <div class="redirect">
+              <div class="spinner">
+              <Spinner :variation="'bars'"/>
+              </div>
               <h1 class="modal-title">
                 <slot name="title"></slot>
               </h1>
@@ -121,10 +124,12 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import Button from './../components/Button.vue'
+import Spinner from './../components/Spinner.vue'
 
 @Component({
   components: {
     Button,
+    Spinner,
   },
 })
 export default class Modal extends Vue {
@@ -237,6 +242,13 @@ export default class Modal extends Vue {
 .redirect {
   text-align: center;
   .padding(3);
+  .modal-text {
+    .padding-h-sides(8);
+  }
+}
+
+.spinner {
+  .padding-bottom(1.8);
 }
 
 .confirmation {

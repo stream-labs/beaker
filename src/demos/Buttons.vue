@@ -807,7 +807,7 @@ export default class Forms extends Vue {
   }
 
   buttonActionClick() {
-    alert("Button clicked");
+    alert('Button clicked')
   }
 }
 </script>

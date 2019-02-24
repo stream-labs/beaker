@@ -71,7 +71,7 @@
     >
       <template slot="title">Redirecting ...
       </template>
-      <template slot="text">Redirecting you to PayPal to update your method of payment.<a href="#">Click here</a> if you have been waiting longer than 5 seconds.</template>
+      <template slot="text">Redirecting you to PayPal to update your method of payment.<br><a href="#">Click here</a> if you have been waiting longer than 5 seconds.</template>
     </Modal>
 
     <Modal
