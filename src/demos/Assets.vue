@@ -58,8 +58,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 
-@Component({
-})
+@Component({})
 export default class Assets extends Vue {}
 </script>
 
