@@ -12,7 +12,7 @@
         class="file-input"
         type="file"
         accept=".jpg, .jpeg, .png, .gif, .svg"
-        @input="onSelectFile"
+        @change="onSelectFile"
       >
       {{ this.imageFileName }}
     </div>

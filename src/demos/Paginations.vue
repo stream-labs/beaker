@@ -4,7 +4,11 @@
       <h1>Pagination</h1>
       <p>You can pass how many items you would like per page and total items for a dynamic page count or manually enter how many pages you want.</p>
 
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
+      <Accordion
+        :openedTitle="'Hide Code'"
+        :closedTitle="'Show Code'"
+        class="docs-code"
+      >
         <div slot="content">
           <pre>
 <code>&lt;pagination
@@ -23,7 +27,7 @@
         @page-selected="consolePage"
       ></pagination>
 
-       <table class="docs-table">
+      <table class="docs-table">
         <thead>
           <tr>
             <th>Props</th>

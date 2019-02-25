@@ -1,5 +1,8 @@
 <template>
-  <div class="form-field" :class="{ 'form-field--with-label': label }">
+  <div
+    class="form-field"
+    :class="{ 'form-field--with-label': label }"
+  >
     <input
       class="text-input"
       :type="type"
@@ -11,13 +14,23 @@
       v-model="content"
       :class="{ 'form-field__input': true, 'form-field__input--error': !!error }"
     />
-    <label :class="{ 'form-field__label--top': value !== '', 'form-field__label--error': !!error }" class="form-field__label" v-if="label">{{ label }}</label>
+    <label
+      :class="{ 'form-field__label--top': value !== '', 'form-field__label--error': !!error }"
+      class="form-field__label"
+      v-if="label"
+    >{{ label }}</label>
 
     <transition name="slide">
-      <p v-show="error" class="form-field__error-text">{{ error }}</p>
+      <p
+        v-show="error"
+        class="form-field__error-text"
+      >{{ error }}</p>
     </transition>
 
-    <p v-show="helpText" class="form-field__help-text">{{ helpText }}</p>
+    <p
+      v-show="helpText"
+      class="form-field__help-text"
+    >{{ helpText }}</p>
   </div>
 </template>
 
