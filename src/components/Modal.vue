@@ -135,7 +135,7 @@ import Spinner from './../components/Spinner.vue'
 export default class Modal extends Vue {
   @Prop()
   modalType!: {
-    type: String
+    type: string,
     default: null
   }
 }
