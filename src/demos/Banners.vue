@@ -1,15 +1,10 @@
 <template>
   <div>
     <h1>Banners</h1>
-    <Tabs
-      :tabs="tabs"
-      :value="selectedTab"
-      @input="onSelectTabHandler">
+    <Tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler">
       <div slot="marketing">
         <h2>Marketing Banner</h2>
-        <Accordion
-          :openedTitle="'Hide Code'"
-          :closedTitle="'Show Code'">
+        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
           <div slot="content">
             <pre>
 <code>&lt;banner-marketing
@@ -40,7 +35,8 @@
           :icon="'themes'"
           :title="'Largest library of free themes in the world.'"
           :desc="'To access over 700+ themes for free, download Streamlabs OBS.'"
-          :link-desc="'Win 7+  245.8 MB'">
+          :link-desc="'Win 7+  245.8 MB'"
+        >
           <Button
             slot="link"
             :type="'a'"
@@ -48,8 +44,8 @@
             :size="'standard'"
             :href="'#'"
             :title="'Download'"
-            :icon="'overview'">
-          </Button>
+            :icon="'overview'"
+          ></Button>
         </banner-marketing>
 
         <table class="docs-table">
@@ -125,9 +121,7 @@
 
       <div slot="sale">
         <h2>Sale Banner</h2>
-        <Accordion
-          :openedTitle="'Hide Code'"
-          :closedTitle="'Show Code'">
+        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
           <div slot="content">
             <pre>
 <code>&lt;banner-sale
@@ -149,8 +143,8 @@
           :hours="'00'"
           :minutes="'00'"
           :seconds="secs"
-          :time-desc="'Until flash sale ends. Hurry!'">
-        </banner-sale>
+          :time-desc="'Until flash sale ends. Hurry!'"
+        ></banner-sale>
 
         <table class="docs-table">
           <thead>
@@ -230,11 +224,9 @@
         </table>
       </div>
 
-   <div slot="notice">
+      <div slot="notice">
         <h2>Marketing Banner</h2>
-        <Accordion
-          :openedTitle="'Hide Code'"
-          :closedTitle="'Show Code'">
+        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
           <div slot="content">
             <pre>
 <code>&lt;banner-marketing
@@ -258,34 +250,34 @@
           </div>
         </Accordion>
 
-          <notice
-            :bg="'information'"
-        :title = "'Join affiliates and earn $1 for each Streamlabs OBS referral'"
-        :desc = "'Share your unique referral link with friends and get paid directly into your PayPal each month.'"
-        :icon = "'information'"
-        >
-       <Button
-      slot="button"
-    :type="'button'"
-    :size="'fixed-width'"
-    :variation="'action'"
-    :title="'Join'">
-  </Button>
-        </notice>
-
-             <notice
-            :bg="'@warning'"
-        :title = "'Your donation link has expired'"
-        :desc = "'Copy your new donation link and replace all instances containing twitchalerts.com.'"
-        :icon = "'information'"
+        <notice
+          :bg="'information'"
+          :title="'Join affiliates and earn $1 for each Streamlabs OBS referral'"
+          :desc="'Share your unique referral link with friends and get paid directly into your PayPal each month.'"
+          :icon="'information'"
         >
           <Button
-                slot="button"
-    :type="'button'"
-    :size="'fixed-width'"
-    :variation="'default'"
-    :title="'Copy Link'">
-  </Button>
+            slot="button"
+            :type="'button'"
+            :size="'fixed-width'"
+            :variation="'action'"
+            :title="'Join'"
+          ></Button>
+        </notice>
+
+        <notice
+          :bg="'warning'"
+          :title="'Your donation link has expired'"
+          :desc="'Copy your new donation link and replace all instances containing twitchalerts.com.'"
+          :icon="'information'"
+        >
+          <Button
+            slot="button"
+            :type="'button'"
+            :size="'fixed-width'"
+            :variation="'default'"
+            :title="'Copy Link'"
+          ></Button>
         </notice>
 
         <table class="docs-table">
@@ -358,7 +350,6 @@
           </tbody>
         </table>
       </div>
-
     </Tabs>
   </div>
 </template>

@@ -1,17 +1,18 @@
 <template>
-  <div
-    class="notice">
-    <div class="notice__wrapper" :style="{ background: `${bg}` }">
-        <div class="notice__body">
-          <div class="notice__icon"><i class="icon" :class="`icon-${icon}`"></i></div>
-          <div class="notice__detail">
+  <div class="notice">
+    <div class="notice__wrapper" :style="styleObject">
+      <div class="notice__body">
+        <div class="notice__icon">
+          <i class="icon" :class="`icon-${icon}`"></i>
+        </div>
+        <div class="notice__detail">
           <h2 class="notice__title">{{title}}</h2>
           <p class="notice__desc">{{desc}}</p>
-          </div>
         </div>
-        <div class="notice__button">
-          <slot name="button"></slot>
-        </div>
+      </div>
+      <div class="notice__button">
+        <slot name="button"></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -34,14 +35,14 @@ export default class Notice extends Vue {
     required: true
   }
 
-@Prop()
-   desc!: {
+  @Prop()
+  desc!: {
     type: string
     required: true
   }
 
-@Prop()
-   icon!: {
+  @Prop()
+  icon!: {
     type: string
     required: true
   }
@@ -57,15 +58,15 @@ export default class Notice extends Vue {
 @import './../styles/Imports';
 
 .notice {
-   .margin-bottom(3);
+  .margin-bottom(3);
 }
 
-.notice__wrapper　{
+.notice__wrapper　 {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: @light-2;
-    .padding(3);
+  .padding(3);
 }
 
 .notice__body　 {
@@ -73,7 +74,7 @@ export default class Notice extends Vue {
   justify-content: space-between;
   align-items: flex-start;
   .notice__detail {
-    .padding-h-sides(2) 
+    .padding-h-sides(2);
   }
 }
 
@@ -88,5 +89,4 @@ export default class Notice extends Vue {
 //   left: 10px;
 //   content: "\f005";
 // }
-
 </style>
