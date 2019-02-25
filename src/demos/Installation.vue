@@ -5,7 +5,7 @@
     <h3>To install Beaker, run:</h3>
     <pre><code>yarn add streamlabs-beaker</code></pre>
     <p>or</p>
-    <pre><code>npm install streamlabs-beaker --save</code></pre>
+    <pre><code>yarn add streamlabs-beaker@{version}</code></pre>
     <br>
     <h3>To use a component, add:</h3>
     <pre><code>import { Accordion, Button, ProgressBar } from 'streamlabs-beaker';

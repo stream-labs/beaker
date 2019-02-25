@@ -1,7 +1,8 @@
 <template>
   <div
     class="badge"
-    :class="badgeClasses">
+    :class="badgeClasses"
+  >
     <div
       v-if="variant === 'progress'"
       :style="{
@@ -11,10 +12,11 @@
           rgba(0,0,0,0) 0%
         )`,
         'color': textColor
-      }">
+      }"
+    >
       {{ `${current}${separator}${total} ${suffix}` }}
     </div>
-    <slot v-else/>
+    <slot v-else />
   </div>
 </template>
 

@@ -15,11 +15,20 @@
   >
     <span>
       <span>
-        <i v-if="iconClass" :class="iconClass"></i>{{ title }}
+        <i
+          v-if="iconClass"
+          :class="iconClass"
+        ></i>{{ title }}
       </span>
-      <span v-if="description" class="button__description">{{ description }}</span>
+      <span
+        v-if="description"
+        class="button__description"
+      >{{ description }}</span>
     </span>
-    <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
+    <i
+      v-if="variation === 'slobs-download'"
+      class="icon-windows"
+    ></i>
     <span v-if="price">{{ price }}</span>
   </component>
 </template>

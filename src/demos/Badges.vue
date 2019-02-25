@@ -12,7 +12,8 @@ components: {
 
       <Accordion
         :openedTitle="'Hide Code'"
-        :closedTitle="'Show Code'">
+        :closedTitle="'Show Code'"
+      >
         <div slot="content">
           <pre>
 <code>&lt;badge

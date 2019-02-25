@@ -1,5 +1,8 @@
 <template>
-  <div ref="pagination" class="pagination__container">
+  <div
+    ref="pagination"
+    class="pagination__container"
+  >
     <vue-paginate-component
       :class="{ 'pagination--bg': nightBg }"
       :page-count="pageCount"
