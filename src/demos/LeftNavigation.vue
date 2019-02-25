@@ -87,6 +87,10 @@
       >Spinners</a>
       <a
         class="left-navigation__link"
+        @click="changeSection('streamer-sites')"
+      >Streamer Sites</a>
+      <a
+        class="left-navigation__link"
         @click="changeSection('tables')"
       >Tables</a>
       <a

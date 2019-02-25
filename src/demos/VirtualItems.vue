@@ -82,9 +82,8 @@ export default class VirtualItems extends Vue {
     }
   ];
 
-  clickEvent(mask: object) {
+  clickEvent() {
     console.log("Hey you clicked me!");
-    mask.selected = !mask.selected;
   }
 }
 </script>

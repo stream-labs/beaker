@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="section">
-      <h1>Streampress Components</h1>
+      <h1>Streamer Sites Components</h1>
 
   <pre><code>import { SPProSimulator } from 'streamlabs-beaker';
 
@@ -9,7 +9,32 @@ components: {
   SPProSimulator
 }</code></pre>
 
-      <sp-pro-simulator :username="username" :icon="icon"></sp-pro-simulator>
+      <ss-pro-simulator :username="username" :icon="icon"></ss-pro-simulator>
+
+      <Button
+        :variation="'default'"
+        :title="'modal subscribing'"
+        @click="showModalSubscribing"
+      ></Button>
+
+      <Modal
+        v-if="modalSubscribing"
+        :modalType="'subscribing'"
+        @close="modalSubscribing = false"
+      >
+        <template slot="title">Streamlabs</template>
+        <template slot="sub-title">Never pay for GIFs and effects again!</template>
+        <template slot="text">Get unlimited free GIFs and effects that will show up on all alerts on all channels! You’ll also get a fancy ‘Pro’ badge next to your username on your donations.</template>
+        <template slot="button-subscribe">
+          <Button
+            :variation="'subscribe'"
+            :title="'Subscribe with PayPal'"
+            :price="'$5.99/mo'"
+          >
+          </Button>
+        </template>
+        <template slot="notes">You may cancel your subscription at any time.</template>
+      </Modal>
     </div>
 
     <table class="docs-table">
@@ -49,17 +74,26 @@ components: {
 import { Component, Vue } from "vue-property-decorator";
 
 import Accordion from "./../components/Accordion.vue";
-import SPProSimulator from "./../components/SPProSimulator.vue";
+import SSProSimulator from "./../components/SSProSimulator.vue";
+import Modal from "./../components/Modal.vue";
+import Button from "./../components/Button.vue";
 
 @Component({
   components: {
     Accordion,
-    "sp-pro-simulator": SPProSimulator
+    "ss-pro-simulator": SSProSimulator,
+    Modal,
+    Button
   }
 })
 export default class Toggles extends Vue {
   username = "morganleee";
   icon =
     "https://static-cdn.jtvnw.net/jtv_user_pictures/9dfce03d-25cc-4737-96d2-2ecf6924bebe-profile_image-70x70.jpg";
+  modalSubscribing = false;
+
+  showModalSubscribing() {
+    this.modalSubscribing = true;
+  }
 }
 </script>

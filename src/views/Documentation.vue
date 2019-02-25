@@ -26,6 +26,7 @@
       <paginations v-if="activeSection === 'paginations'" />
       <sliders v-if="activeSection === 'sliders'" />
       <spinners v-if="activeSection === 'spinners'" />
+      <streamer-sites v-if="activeSection === 'streamer-sites'" />
       <tables v-if="activeSection === 'tables'" />
       <tabs v-if="activeSection === 'tabs'" />
       <toggles v-if="activeSection === 'toggles'" />
@@ -59,6 +60,7 @@ import ProgressBars from "@/demos/ProgressBars.vue";
 import Paginations from "@/demos/Paginations.vue";
 import Sliders from "@/demos/Sliders.vue";
 import Spinners from "@/demos/Spinners.vue";
+import StreamerSites from "@/demos/StreamerSites.vue";
 import Tables from "@/demos/Tables.vue";
 import Tabs from "@/demos/Tabs.vue";
 import Toggles from "@/demos/Toggles.vue";
@@ -89,6 +91,7 @@ import VirtualItems from "@/demos/VirtualItems.vue";
     Paginations,
     Sliders,
     Spinners,
+    StreamerSites,
     Tables,
     Tabs,
     Toggles,
