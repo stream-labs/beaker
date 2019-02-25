@@ -234,12 +234,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import Accordion from './../components/Accordion.vue'
-import BannerMarketing from './../components/BannerMarketing.vue'
-import BannerSale from './../components/BannerSale.vue'
-import Button from './../components/Button.vue'
-import Tabs from './../components/Tabs.vue'
+import { Component, Vue } from "vue-property-decorator";
+import Accordion from "./../components/Accordion.vue";
+import BannerMarketing from "./../components/BannerMarketing.vue";
+import BannerSale from "./../components/BannerSale.vue";
+import Button from "./../components/Button.vue";
+import Tabs from "./../components/Tabs.vue";
 
 @Component({
   components: {
@@ -247,41 +247,41 @@ import Tabs from './../components/Tabs.vue'
     BannerMarketing,
     BannerSale,
     Button,
-    Tabs,
-  },
+    Tabs
+  }
 })
 export default class Banners extends Vue {
   tabs = [
     {
-      name: 'Marketing',
-      value: 'marketing',
+      name: "Marketing",
+      value: "marketing"
     },
     {
-      name: 'Sale',
-      value: 'sale',
-    },
-  ]
+      name: "Sale",
+      value: "sale"
+    }
+  ];
 
-  selectedTab = 'marketing'
-  remainingSecs = 10
+  selectedTab = "marketing";
+  remainingSecs = 10;
 
   mounted() {
     setInterval(() => {
-      this.remainingSecs--
+      this.remainingSecs--;
       if (this.remainingSecs < 0) {
-        this.remainingSecs = 10
+        this.remainingSecs = 10;
       }
-    }, 1000)
+    }, 1000);
   }
 
   onSelectTabHandler(tab: string) {
-    this.selectedTab = tab
+    this.selectedTab = tab;
   }
 
   get secs() {
     return this.remainingSecs < 10
       ? `0${this.remainingSecs}`
-      : `${this.remainingSecs}`
+      : `${this.remainingSecs}`;
   }
 }
 </script>

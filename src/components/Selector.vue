@@ -12,43 +12,43 @@
 </template>
 
 <script>
-import { Component, Vue } from 'vue-property-decorator'
-import vSelect from 'vue-select'
-Vue.component('v-select', vSelect)
+import { Component, Vue } from "vue-property-decorator";
+import vSelect from "vue-select";
+Vue.component("v-select", vSelect);
 
 export default {
-  name: 'Selector',
+  name: "Selector",
   extends: vSelect,
 
   components: {
-    vSelect,
+    vSelect
   },
 
   created() {
-    this.$on('input', this.setValue)
+    this.$on("input", this.setValue);
   },
 
   destroyed() {
-    this.$off('input', this.setValue)
+    this.$off("input", this.setValue);
   },
 
   methods: {
     emitInput(val) {
-      this.$emit('input', val)
+      this.$emit("input", val);
     },
 
     setValue(val) {
-      this.mutableValue = val
-    },
-  },
-}
+      this.mutableValue = val;
+    }
+  }
+};
 </script>
 
 <style lang="less">
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 .v-select {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   background-color: @day-dropdown-bg;
   border-color: @day-dropdown-border;
   .radius();
@@ -73,8 +73,8 @@ export default {
   .open-indicator:before {
     border: 0;
     transform: none;
-    content: '\e996';
-    font-family: 'icomoon';
+    content: "\e996";
+    font-family: "icomoon";
     color: @icon;
     height: auto;
     width: auto;
@@ -95,14 +95,14 @@ export default {
     .padding(@0);
     line-height: 40px;
     border: 0;
-    font-family: 'Roboto';
+    font-family: "Roboto";
   }
 
-  input[type='search'],
-  input[type='search']:focus {
+  input[type="search"],
+  input[type="search"]:focus {
     .margin(@0);
     font-size: 14px;
-    font-family: 'Roboto';
+    font-family: "Roboto";
     .padding-h-sides(0);
   }
 

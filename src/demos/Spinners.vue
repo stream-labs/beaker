@@ -44,16 +44,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import Spinner from './../components/Spinner.vue'
-import Accordion from './../components/Accordion.vue'
+import { Component, Vue } from "vue-property-decorator";
+import Spinner from "./../components/Spinner.vue";
+import Accordion from "./../components/Accordion.vue";
 @Component({
   components: {
     Spinner,
-    Accordion,
-  },
+    Accordion
+  }
 })
 export default class Spinners extends Vue {
-  msg = 'hi!'
+  msg = "hi!";
 }
 </script>

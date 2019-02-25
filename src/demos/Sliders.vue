@@ -85,18 +85,18 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue } from "vue-property-decorator";
 
-import Slider from './../components/Slider.vue'
-import Accordion from './../components/Accordion.vue'
+import Slider from "./../components/Slider.vue";
+import Accordion from "./../components/Accordion.vue";
 
 @Component({
   components: {
     Slider,
-    Accordion,
-  },
+    Accordion
+  }
 })
 export default class Sliders extends Vue {
-  value = 50
+  value = 50;
 }
 </script>

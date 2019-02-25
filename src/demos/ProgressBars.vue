@@ -34,16 +34,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import ProgressBar from './../components/ProgressBar.vue'
-import Accordion from './../components/Accordion.vue'
+import { Component, Vue } from "vue-property-decorator";
+import ProgressBar from "./../components/ProgressBar.vue";
+import Accordion from "./../components/Accordion.vue";
 @Component({
   components: {
     ProgressBar,
-    Accordion,
-  },
+    Accordion
+  }
 })
 export default class ProgressBars extends Vue {
-  value = 50
+  value = 50;
 }
 </script>

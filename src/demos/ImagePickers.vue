@@ -36,16 +36,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import ImagePicker from './../components/ImagePicker.vue'
-import Accordion from './../components/Accordion.vue'
+import { Component, Vue } from "vue-property-decorator";
+import ImagePicker from "./../components/ImagePicker.vue";
+import Accordion from "./../components/Accordion.vue";
 @Component({
   components: {
     ImagePicker,
-    Accordion,
-  },
+    Accordion
+  }
 })
 export default class ImagePickers extends Vue {
-  msg = 'Hi!'
+  msg = "Hi!";
 }
 </script>

@@ -122,27 +122,27 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import Button from './../components/Button.vue'
-import Spinner from './../components/Spinner.vue'
+import { Component, Prop, Vue } from "vue-property-decorator";
+import Button from "./../components/Button.vue";
+import Spinner from "./../components/Spinner.vue";
 
 @Component({
   components: {
     Button,
-    Spinner,
-  },
+    Spinner
+  }
 })
 export default class Modal extends Vue {
   @Prop()
   modalType!: {
-    type: String
-    default: null
-  }
+    type: String;
+    default: null;
+  };
 }
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 .modal-mask {
   position: fixed;
