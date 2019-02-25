@@ -1,32 +1,35 @@
 <template>
   <div class="documentation">
-    <left-navigation @update-section="changeSection" :active-section="activeSection"></left-navigation>
+    <left-navigation
+      @update-section="changeSection"
+      :active-section="activeSection"
+    ></left-navigation>
 
     <div class="content">
-      <installation v-if="activeSection === 'installation'"/>
-      <assets v-if="activeSection === 'assets'"/>
+      <installation v-if="activeSection === 'installation'" />
+      <assets v-if="activeSection === 'assets'" />
 
-      <accordions v-if="activeSection === 'accordions'"/>
-      <badges v-if="activeSection === 'badges'"/>
-      <banners v-if="activeSection === 'banners'"/>
-      <buttons-demo v-if="activeSection === 'buttons'"/>
-      <callouts v-if="activeSection === 'callouts'"/>
-      <call-to-actions v-if="activeSection === 'call-to-actions'"/>
-      <color-pickers v-if="activeSection === 'color-pickers'"/>
-      <dropdowns v-if="activeSection === 'dropdowns'"/>
-      <forms v-if="activeSection === 'forms'"/>
-      <icons v-if="activeSection === 'icons'"/>
-      <image-pickers v-if="activeSection === 'image-pickers'"/>
-      <inputs v-if="activeSection === 'inputs'"/>
-      <progress-bars v-if="activeSection === 'progress-bars'"/>
-      <paginations v-if="activeSection === 'paginations'"/>
-      <sliders v-if="activeSection === 'sliders'"/>
-      <streampress v-if="activeSection === 'streampress'"/>
-      <spinners v-if="activeSection === 'spinners'"/>
-      <tables v-if="activeSection === 'tables'"/>
-      <tabs v-if="activeSection === 'tabs'"/>
-      <toggles v-if="activeSection === 'toggles'"/>
-      <virtual-items v-if="activeSection === 'virtual-items'"/>
+      <accordions v-if="activeSection === 'accordions'" />
+      <badges v-if="activeSection === 'badges'" />
+      <banners v-if="activeSection === 'banners'" />
+      <buttons-demo v-if="activeSection === 'buttons'" />
+      <callouts v-if="activeSection === 'callouts'" />
+      <call-to-actions v-if="activeSection === 'call-to-actions'" />
+      <color-pickers v-if="activeSection === 'color-pickers'" />
+      <dropdowns v-if="activeSection === 'dropdowns'" />
+      <forms v-if="activeSection === 'forms'" />
+      <icons v-if="activeSection === 'icons'" />
+      <image-pickers v-if="activeSection === 'image-pickers'" />
+      <inputs v-if="activeSection === 'inputs'" />
+      <modals v-if="activeSection === 'modals'" />
+      <progress-bars v-if="activeSection === 'progress-bars'" />
+      <paginations v-if="activeSection === 'paginations'" />
+      <sliders v-if="activeSection === 'sliders'" />
+      <spinners v-if="activeSection === 'spinners'" />
+      <tables v-if="activeSection === 'tables'" />
+      <tabs v-if="activeSection === 'tabs'" />
+      <toggles v-if="activeSection === 'toggles'" />
+      <virtual-items v-if="activeSection === 'virtual-items'" />
     </div>
   </div>
 </template>
@@ -50,11 +53,11 @@ import Forms from "@/demos/Forms.vue";
 import Icons from "@/demos/Icons.vue";
 import ImagePickers from "@/demos/ImagePickers.vue";
 import Inputs from "@/demos/Inputs.vue";
+import Modals from "@/demos/Modals.vue";
 import Navigations from "@/demos/Navigations.vue";
 import ProgressBars from "@/demos/ProgressBars.vue";
 import Paginations from "@/demos/Paginations.vue";
 import Sliders from "@/demos/Sliders.vue";
-import Streampress from "@/demos/Streampress.vue";
 import Spinners from "@/demos/Spinners.vue";
 import Tables from "@/demos/Tables.vue";
 import Tabs from "@/demos/Tabs.vue";
@@ -80,6 +83,7 @@ import VirtualItems from "@/demos/VirtualItems.vue";
     Icons,
     ImagePickers,
     Inputs,
+    Modals,
     Navigations,
     ProgressBars,
     Paginations,

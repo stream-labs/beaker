@@ -12,7 +12,8 @@
           :name="mask.name"
           :selectionCount="mask.selectionCount"
           :selected="mask.selected"
-          @click="clickEvent(mask)"></VirtualItem>
+          @click="clickEvent"
+        ></VirtualItem>
       </ItemGrid>
     </div>
   </div>
