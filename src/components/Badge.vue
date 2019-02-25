@@ -90,7 +90,6 @@ export default class Badge extends Vue {
   .radius();
   font-size: 13px;
   .weight(@medium);
-  text-transform: capitalize;
   color: @white;
   vertical-align: text-bottom;
   line-height: 16px;
@@ -133,9 +132,17 @@ export default class Badge extends Vue {
   }
 
   &--count {
-    padding: 2px 8px;
-    border-radius: 10px;
+    padding: 1px 2.5px 0;
+    border-radius: 16px;
     font-size: 10px;
+    .weight(@medium);
+    line-height: 1;
+    background-color: @red;
+  }
+
+  &--mod {
+    color: @yellow-dark;
+    background-color: @white;
   }
 
   &--progress {
@@ -185,6 +192,10 @@ export default class Badge extends Vue {
     &--success {
       background-color: @teal;
       color: @white;
+    }
+
+    &--mod {
+      background-color: @dark-3;
     }
 
     &--progress {
