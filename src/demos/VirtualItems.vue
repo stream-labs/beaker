@@ -20,70 +20,70 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import Accordion from './../components/Accordion.vue'
-import VirtualItem from './../components/VirtualItem.vue'
-import ItemGrid from './../components/ItemGrid.vue'
+import { Component, Vue } from "vue-property-decorator";
+import Accordion from "./../components/Accordion.vue";
+import VirtualItem from "./../components/VirtualItem.vue";
+import ItemGrid from "./../components/ItemGrid.vue";
 
 @Component({
   components: {
     Accordion,
     VirtualItem,
-    ItemGrid,
-  },
+    ItemGrid
+  }
 })
 export default class VirtualItems extends Vue {
   masks = [
     {
-      preview: 'https://streamlabs.com/imgs/facemasks/robot-mask.png',
-      name: 'Robot',
-      rarity: 'Common',
-      selectionCount: '1',
-      selected: true,
+      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
+      name: "Robot",
+      rarity: "Common",
+      selectionCount: "1",
+      selected: true
     },
     {
-      preview: 'https://streamlabs.com/imgs/facemasks/robot-mask.png',
-      name: 'Robot',
-      rarity: 'Common',
-      selectionCount: '2',
-      selected: true,
+      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
+      name: "Robot",
+      rarity: "Common",
+      selectionCount: "2",
+      selected: true
     },
     {
-      preview: 'https://streamlabs.com/imgs/facemasks/robot-mask.png',
-      name: 'Robot',
-      rarity: 'Common',
-      selectionCount: '3',
-      selected: true,
+      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
+      name: "Robot",
+      rarity: "Common",
+      selectionCount: "3",
+      selected: true
     },
     {
-      preview: 'https://streamlabs.com/imgs/facemasks/robot-mask.png',
-      name: 'Robot',
-      rarity: 'Common',
+      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
+      name: "Robot",
+      rarity: "Common"
     },
     {
-      preview: 'https://streamlabs.com/imgs/facemasks/robot-mask.png',
-      name: 'Robot',
-      rarity: 'Common',
+      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
+      name: "Robot",
+      rarity: "Common"
     },
     {
-      preview: 'https://streamlabs.com/imgs/facemasks/robot-mask.png',
-      name: 'Robot',
-      rarity: 'Common',
+      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
+      name: "Robot",
+      rarity: "Common"
     },
     {
-      preview: 'https://streamlabs.com/imgs/facemasks/robot-mask.png',
-      name: 'Robot',
-      rarity: 'Common',
+      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
+      name: "Robot",
+      rarity: "Common"
     },
     {
-      preview: 'https://streamlabs.com/imgs/facemasks/robot-mask.png',
-      name: 'Robot',
-      rarity: 'Common',
-    },
-  ]
+      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
+      name: "Robot",
+      rarity: "Common"
+    }
+  ];
 
   clickEvent() {
-    console.log('Hey you clicked me!')
+    console.log("Hey you clicked me!");
   }
 }
 </script>

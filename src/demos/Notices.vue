@@ -14,9 +14,16 @@
           </code></pre>
         </div>
       </accordion>
+
       <div class="row">
-        <color-picker></color-picker>
+        <TooltipNotice
+          v-if="showTooltipNotice"
+          @handle-tooltip="closeTooltip"
+          :title="'Widgets have moved'"
+          :desc="'All your favorite widgets, just with a new view.'">
+        </TooltipNotice>
       </div>
+
       <table class="docs-table">
         <thead>
           <tr>
@@ -42,15 +49,19 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import Accordion from "./../components/Accordion.vue";
-import ColorPicker from "./../components/ColorPicker.vue";
+import TooltipNotice from "./../components/TooltipNotice.vue";
 
 @Component({
   components: {
     Accordion,
-    ColorPicker
+    TooltipNotice
   }
 })
-export default class ColorPickers extends Vue {
-  msg = "hi"!;
+export default class Notices extends Vue {
+  showTooltipNotice = true;
+
+  closeTooltip() {
+    this.showTooltipNotice = false;
+  }
 }
 </script>

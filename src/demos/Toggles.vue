@@ -70,19 +70,19 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue } from "vue-property-decorator";
 
-import Accordion from './../components/Accordion.vue'
-import Toggle from './../components/Toggle.vue'
+import Accordion from "./../components/Accordion.vue";
+import Toggle from "./../components/Toggle.vue";
 
 @Component({
   components: {
     Accordion,
-    Toggle,
-  },
+    Toggle
+  }
 })
 export default class Toggles extends Vue {
-  selectedOption = ''
-  selectedTextOption = ''
+  selectedOption = "";
+  selectedTextOption = "";
 }
 </script>

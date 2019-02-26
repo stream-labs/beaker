@@ -89,35 +89,35 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import Modal from './../components/Modal.vue'
-import Button from './../components/Button.vue'
-import Badge from './../components/Badge.vue'
+import { Component, Vue } from "vue-property-decorator";
+import Modal from "./../components/Modal.vue";
+import Button from "./../components/Button.vue";
+import Badge from "./../components/Badge.vue";
 
 @Component({
   components: {
     Modal,
     Button,
-    Badge,
-  },
+    Badge
+  }
 })
 export default class Modals extends Vue {
-  modal: Boolean = false
-  modalSubscribing: Boolean = false
-  modalRedirect: Boolean = false
-  modalConfirmation: Boolean = false
-  modalType: string = ''
+  modal: Boolean = false;
+  modalSubscribing: Boolean = false;
+  modalRedirect: Boolean = false;
+  modalConfirmation: Boolean = false;
+  modalType: string = "";
   showModalNormal() {
-    this.modal = true
+    this.modal = true;
   }
   showModalSubscribing() {
-    this.modalSubscribing = true
+    this.modalSubscribing = true;
   }
   showModalRedirect() {
-    this.modalRedirect = true
+    this.modalRedirect = true;
   }
   showModalConfirmation() {
-    this.modalConfirmation = true
+    this.modalConfirmation = true;
   }
 }
 </script>

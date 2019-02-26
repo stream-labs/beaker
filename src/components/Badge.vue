@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Badge extends Vue {
@@ -33,53 +33,53 @@ export default class Badge extends Vue {
     separator: STRING - whatever you want to separate the current and total e.g. 'out of' in '5 out of 10.' Could be '/', 'of', etc. Default is '/'
     suffix: STRING - whatever you want to include at the end of the progress string. e.g. 'sold' in '5 out of 10 sold.'
   */
-  @Prop({ default: 'success' })
-  variant!: string
+  @Prop({ default: "success" })
+  variant!: string;
 
   @Prop({ default: false })
-  alignLeft!: boolean
+  alignLeft!: boolean;
 
   @Prop({ default: false })
-  noMargin!: boolean
+  noMargin!: boolean;
 
-  @Prop({ default: '#31c3a2' })
-  barColor!: string
+  @Prop({ default: "#31c3a2" })
+  barColor!: string;
 
-  @Prop({ default: '#ffffff' })
-  textColor!: string
-
-  @Prop()
-  current!: number
+  @Prop({ default: "#ffffff" })
+  textColor!: string;
 
   @Prop()
-  total!: number
-
-  @Prop({ default: '/' })
-  separator!: string
+  current!: number;
 
   @Prop()
-  suffix!: string
+  total!: number;
+
+  @Prop({ default: "/" })
+  separator!: string;
+
+  @Prop()
+  suffix!: string;
 
   get badgeClasses() {
-    let classes = []
+    let classes = [];
 
-    classes.push(`badge--${this.variant}`)
+    classes.push(`badge--${this.variant}`);
 
     if (this.alignLeft) {
-      classes.push(`badge--left`)
+      classes.push(`badge--left`);
     }
 
     if (this.noMargin) {
-      classes.push('badge--no-margin')
+      classes.push("badge--no-margin");
     }
 
-    return classes
+    return classes;
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 // Standout labels, used for 'New', 'Beta', 'Pro', etc
 .badge {
@@ -90,7 +90,6 @@ export default class Badge extends Vue {
   .radius();
   font-size: 13px;
   .weight(@medium);
-  text-transform: capitalize;
   color: @white;
   vertical-align: text-bottom;
   line-height: 16px;
@@ -133,9 +132,17 @@ export default class Badge extends Vue {
   }
 
   &--count {
-    padding: 2px 8px;
-    border-radius: 10px;
+    padding: 1px 2.5px 0;
+    border-radius: 16px;
     font-size: 10px;
+    .weight(@medium);
+    line-height: 1;
+    background-color: @red;
+  }
+
+  &--mod {
+    color: @yellow-dark;
+    background-color: @white;
   }
 
   &--progress {
@@ -185,6 +192,10 @@ export default class Badge extends Vue {
     &--success {
       background-color: @teal;
       color: @white;
+    }
+
+    &--mod {
+      background-color: @dark-3;
     }
 
     &--progress {

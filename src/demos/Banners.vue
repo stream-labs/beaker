@@ -377,8 +377,8 @@ import Notice from './../components/Notice.vue'
 export default class Banners extends Vue {
   tabs = [
     {
-      name: 'Marketing',
-      value: 'marketing',
+      name: "Marketing",
+      value: "marketing"
     },
     {
       name: 'Sale',
@@ -390,26 +390,26 @@ export default class Banners extends Vue {
     },
   ]
 
-  selectedTab = 'notice'
-  remainingSecs = 10
+  selectedTab = "marketing";
+  remainingSecs = 10;
 
   mounted() {
     setInterval(() => {
-      this.remainingSecs--
+      this.remainingSecs--;
       if (this.remainingSecs < 0) {
-        this.remainingSecs = 10
+        this.remainingSecs = 10;
       }
-    }, 1000)
+    }, 1000);
   }
 
   onSelectTabHandler(tab: string) {
-    this.selectedTab = tab
+    this.selectedTab = tab;
   }
 
   get secs() {
     return this.remainingSecs < 10
       ? `0${this.remainingSecs}`
-      : `${this.remainingSecs}`
+      : `${this.remainingSecs}`;
   }
 }
 </script>

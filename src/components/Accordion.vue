@@ -14,108 +14,108 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import ResizeObserver from 'resize-observer-polyfill'
+import { Component, Prop, Vue } from "vue-property-decorator";
+import ResizeObserver from "resize-observer-polyfill";
 
 @Component({})
 export default class Accordion extends Vue {
   $refs!: {
-    menu: HTMLDivElement
-  }
+    menu: HTMLDivElement;
+  };
 
   @Prop()
-  isOpen!: boolean
+  isOpen!: boolean;
 
   @Prop()
-  noBorder!: boolean
+  noBorder!: boolean;
 
   @Prop()
-  openedTitle!: string
+  openedTitle!: string;
 
   @Prop()
-  closedTitle!: string
+  closedTitle!: string;
 
   @Prop()
-  title!: string
+  title!: string;
 
-  defaultOpen = false
-  defaultBorder = false
+  defaultOpen = false;
+  defaultBorder = false;
 
   created() {
-    this.defaultOpen = this.isOpen
-    this.defaultBorder = this.noBorder
+    this.defaultOpen = this.isOpen;
+    this.defaultBorder = this.noBorder;
   }
 
   toggleAccordion(event: any) {
-    const blockedNodes = ['INPUT', 'BUTTON', 'LABEL']
+    const blockedNodes = ["INPUT", "BUTTON", "LABEL"];
     if (blockedNodes.indexOf(event.target.nodeName) !== -1) {
-      return
+      return;
     }
 
     let parent: any = this.$parent,
       parentMenu: any = this.$parent.$refs.menu,
-      menu = this.$refs.menu
+      menu = this.$refs.menu;
 
-    this.defaultOpen = !this.defaultOpen
-    menu.style.transition = 'all .275s'
+    this.defaultOpen = !this.defaultOpen;
+    menu.style.transition = "all .275s";
 
-    if (parent.$el.classList.contains('accordion') && parent.defaultOpen) {
-      parentMenu.style.maxHeight = 'none'
+    if (parent.$el.classList.contains("accordion") && parent.defaultOpen) {
+      parentMenu.style.maxHeight = "none";
     }
 
-    if (menu.style.maxHeight === 'none' && !this.defaultOpen) {
-      menu.style.maxHeight = `${menu.children[0].scrollHeight + 16}px`
+    if (menu.style.maxHeight === "none" && !this.defaultOpen) {
+      menu.style.maxHeight = `${menu.children[0].scrollHeight + 16}px`;
     }
 
-    menu.style.maxHeight = this.calculateHeight(menu)
+    menu.style.maxHeight = this.calculateHeight(menu);
   }
 
   calculateHeight(element: Element) {
-    let newHeight = element.children[0].scrollHeight
+    let newHeight = element.children[0].scrollHeight;
     let padding =
-      (this.$refs.menu.querySelectorAll('.accordion').length + 1) * 16
+      (this.$refs.menu.querySelectorAll(".accordion").length + 1) * 16;
 
     if (!this.defaultOpen) {
-      return '0'
+      return "0";
     } else {
-      return `${newHeight + padding}px`
+      return `${newHeight + padding}px`;
     }
   }
 
   mounted() {
-    const menu = this.$refs.menu
+    const menu = this.$refs.menu;
     const ro = new ResizeObserver((entries, observer) => {
-      menu.style.maxHeight = this.calculateHeight(menu)
-    })
+      menu.style.maxHeight = this.calculateHeight(menu);
+    });
 
-    ro.observe(menu)
+    ro.observe(menu);
   }
 
   updated() {
     this.$nextTick(() => {
-      const menu = this.$refs.menu
-      menu.style.maxHeight = this.calculateHeight(menu)
-    })
+      const menu = this.$refs.menu;
+      menu.style.maxHeight = this.calculateHeight(menu);
+    });
   }
 
   get accordionClasses() {
-    let classes = []
+    let classes = [];
 
     if (this.defaultBorder) {
-      classes.push('accordion--no-border')
+      classes.push("accordion--no-border");
     }
 
     if (!this.defaultOpen) {
-      classes.push('is-closed')
+      classes.push("is-closed");
     }
 
-    return classes.join(' ')
+    return classes.join(" ");
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 .accordions {
   .accordion {
@@ -149,7 +149,7 @@ export default class Accordion extends Vue {
 
     & > .accordion__toggle {
       &:before {
-        content: '\e957';
+        content: "\e957";
       }
     }
   }
@@ -197,7 +197,7 @@ export default class Accordion extends Vue {
   user-select: none;
 
   &:before {
-    content: '\e958';
+    content: "\e958";
     color: @icon;
     border: none;
     position: absolute;
@@ -210,7 +210,7 @@ export default class Accordion extends Vue {
     text-align: center;
     top: 18px;
     font-size: 10px;
-    font-family: 'icomoon';
+    font-family: "icomoon";
     font-weight: 900;
   }
 }
