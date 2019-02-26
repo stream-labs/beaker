@@ -3,7 +3,7 @@
     <div class="section">
       <h1>Face Masks</h1>
       <p>UI for face masks items and grid.</p>
-      <ItemGrid :items="masks">
+      <ItemGrid>
         <VirtualItem
           v-for="(mask, id) in masks"
           :key="id"
