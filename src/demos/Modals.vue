@@ -6,10 +6,14 @@
     </div>
 
     <div class="button-container--left">
-      <Button :variation="'default'" :title="'modal'" @click="showModalNormal"></Button>
-      <Button :variation="'default'" :title="'modal subscribing'" @click="showModalSubscribing"></Button>
-      <Button :variation="'default'" :title="'modal redirect'" @click="showModalRedirect"></Button>
-      <Button :variation="'warning'" :title="'modal confirmation'" @click="showModalConfirmation"></Button>
+      <Button :variation="'default'" :title="'modal'" @click="modal = true"></Button>
+      <Button :variation="'default'" :title="'modal subscribe'" @click=" modalsubscribe = true"></Button>
+      <Button :variation="'default'" :title="'modal redirect'" @click="modalRedirect = true"></Button>
+      <Button
+        :variation="'warning'"
+        :title="'modal confirmation'"
+        @click="modalConfirmation = true"
+      ></Button>
     </div>
     <Modal v-if="modal" :modalType="'modal'" @close="modal = false">
       <template slot="title">UI Modal</template>
@@ -19,12 +23,17 @@
       >Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.</template>
     </Modal>
 
-    <Modal v-if="modalSubscribing" :modalType="'subscribing'" @close="modalSubscribing = false">
+    <Modal v-if="modalsubscribe" :modalType="'subscribe'" @close="modalsubscribe = false">
       <template slot="title">Streamlabs</template>
       <template slot="badge">
         <badge :align-left="true">Pro</badge>
       </template>
       <template slot="sub-title">Never pay for GIFs and effects again!</template>
+      <template slot="subscribe-text">galazy83 donated $50.00!</template>
+      <template slot="subscribe-message">Thanks for the stream. Go CivRyan!</template>
+      <template slot="subscribe-icon">
+        <img src="../assets/imgs/girl.svg">
+      </template>
       <template
         slot="text"
       >Get unlimited free GIFs and effects that will show up on all alerts on all channels! You’ll also get a fancy ‘Pro’ badge next to your username on your donations.</template>
@@ -65,22 +74,10 @@ import Badge from './../components/Badge.vue'
   },
 })
 export default class Modals extends Vue {
-  modal: Boolean = false
-  modalSubscribing: Boolean = false
-  modalRedirect: Boolean = false
-  modalConfirmation: Boolean = false
+  modal: boolean = false
+  modalsubscribe: boolean = true
+  modalRedirect: boolean = false
+  modalConfirmation: boolean = false
   modalType: string = ''
-  showModalNormal() {
-    this.modal = true
-  }
-  showModalSubscribing() {
-    this.modalSubscribing = true
-  }
-  showModalRedirect() {
-    this.modalRedirect = true
-  }
-  showModalConfirmation() {
-    this.modalConfirmation = true
-  }
 }
 </script>
