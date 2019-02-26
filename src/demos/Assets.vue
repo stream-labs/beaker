@@ -55,14 +55,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Assets extends Vue {}
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 .logo-demos {
   display: grid;

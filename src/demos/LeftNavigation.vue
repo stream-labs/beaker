@@ -71,6 +71,10 @@
       <!-- <a class="left-navigation__link" @click="changeSection('merch')">Merch</a> -->
       <a
         class="left-navigation__link"
+        @click="changeSection('notices')"
+      >Notices</a>
+      <a
+        class="left-navigation__link"
         @click="changeSection('paginations')"
       >Paginations</a>
       <a
@@ -106,21 +110,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class LeftNavigation extends Vue {
   @Prop()
-  activeSection!: string
+  activeSection!: string;
 
   changeSection(activeSection: string) {
-    this.$emit('update-section', activeSection)
+    this.$emit("update-section", activeSection);
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 .left-navigation {
   display: flex;

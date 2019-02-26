@@ -11,23 +11,23 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Checkbox extends Vue {
   @Prop()
-  label!: String
+  label!: String;
 
   @Prop()
-  value!: Boolean
+  value!: Boolean;
 
   onLabelClick() {
-    let input: any = this.$refs[`${this.label}`]
-    input.checked = !input.checked
+    let input: any = this.$refs[`${this.label}`];
+    input.checked = !input.checked;
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 </style>

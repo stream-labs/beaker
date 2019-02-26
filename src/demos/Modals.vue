@@ -61,23 +61,23 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import Modal from './../components/Modal.vue'
-import Button from './../components/Button.vue'
-import Badge from './../components/Badge.vue'
+import { Component, Vue } from "vue-property-decorator";
+import Modal from "./../components/Modal.vue";
+import Button from "./../components/Button.vue";
+import Badge from "./../components/Badge.vue";
 
 @Component({
   components: {
     Modal,
     Button,
-    Badge,
-  },
+    Badge
+  }
 })
 export default class Modals extends Vue {
   modal: boolean = false
   modalsubscribe: boolean = true
   modalRedirect: boolean = false
   modalConfirmation: boolean = false
-  modalType: string = ''
+  modalType: string = "";
 }
 </script>
