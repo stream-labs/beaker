@@ -251,7 +251,7 @@
         </Accordion>
 
         <notice
-          :bg="'information'"
+          :bgColor="'default'"
           :title="'Join affiliates and earn $1 for each Streamlabs OBS referral'"
           :desc="'Share your unique referral link with friends and get paid directly into your PayPal each month.'"
           :icon="'information'"
@@ -266,10 +266,11 @@
         </notice>
 
         <notice
-          :bg="'warning'"
+          :bgColor="'warning'"
           :title="'Your donation link has expired'"
+          :titleColor="'warning'"
           :desc="'Copy your new donation link and replace all instances containing twitchalerts.com.'"
-          :icon="'information'"
+          :icon="'error'"
         >
           <Button
             slot="button"

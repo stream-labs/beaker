@@ -1,12 +1,12 @@
 <template>
-  <div class="notice">
-    <div class="notice__wrapper" :style="styleObject">
+  <div class="notice" :class="`bg-${bgColor}`">
+    <div class="notice__wrapper" :class="`bg-image__${bgColor}`">
       <div class="notice__body">
         <div class="notice__icon">
           <i class="icon" :class="`icon-${icon}`"></i>
         </div>
         <div class="notice__detail">
-          <h2 class="notice__title">{{title}}</h2>
+          <h2 class="notice__title" :class="`notice__title--${titleColor}`">{{title}}</h2>
           <p class="notice__desc">{{desc}}</p>
         </div>
       </div>
@@ -24,13 +24,25 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 @Component({})
 export default class Notice extends Vue {
   @Prop()
-  bg!: {
+  bgColor!: {
+    type: string
+    required: true
+  }
+
+  @Prop()
+  bgIcon!: {
     type: string
     required: true
   }
 
   @Prop()
   title!: {
+    type: string
+    required: true
+  }
+
+  @Prop()
+  titleColor!: {
     type: string
     required: true
   }
@@ -46,11 +58,6 @@ export default class Notice extends Vue {
     type: string
     required: true
   }
-
-  // mounted() {
-  //   this.closed = this.bannerClosed
-  //   this.updateBannerHeight()
-  // }
 }
 </script>
 
@@ -65,7 +72,6 @@ export default class Notice extends Vue {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: @light-2;
   .padding(3);
 }
 
@@ -75,18 +81,44 @@ export default class Notice extends Vue {
   align-items: flex-start;
   .notice__detail {
     .padding-h-sides(2);
+    .notice__title--warning {
+      color: @warning;
+    }
   }
 }
 
-// .btn {
-//   padding-left: 32px;
-//   position: relative;
-// }
-// .btn:before {
-//   position: absolute;
-//   font-family: 'FontAwesome';
-//   top: 0;
-//   left: 10px;
-//   content: "\f005";
-// }
+.bg-default {
+  background: @light-2;
+}
+
+.bg-warning {
+  background: @notice-bg-warning;
+}
+
+.bg-image__default {
+  background: url('../assets/imgs/icon-information-default.svg') no-repeat;
+  background-position: center left;
+  background-size: contain;
+}
+
+.bg-image__warning {
+  background: url('../assets/imgs/icon-information-default.svg') no-repeat;
+  background-position: center left;
+  background-size: contain;
+}
+
+.icon-information {
+  color: @light-5;
+}
+
+.icon-error {
+  color: @warning;
+}
+
+.night,
+.night-theme {
+  .bg-default {
+    background: @dark-4;
+  }
+}
 </style>
