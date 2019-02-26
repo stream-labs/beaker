@@ -1,15 +1,10 @@
 <template>
   <div>
     <h1>Banners</h1>
-    <Tabs
-      :tabs="tabs"
-      :value="selectedTab"
-      @input="onSelectTabHandler">
+    <Tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler">
       <div slot="marketing">
         <h2>Marketing Banner</h2>
-        <Accordion
-          :openedTitle="'Hide Code'"
-          :closedTitle="'Show Code'">
+        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
           <div slot="content">
             <pre>
 <code>&lt;banner-marketing
@@ -40,7 +35,8 @@
           :icon="'themes'"
           :title="'Largest library of free themes in the world.'"
           :desc="'To access over 700+ themes for free, download Streamlabs OBS.'"
-          :link-desc="'Win 7+  245.8 MB'">
+          :link-desc="'Win 7+  245.8 MB'"
+        >
           <Button
             slot="link"
             :type="'a'"
@@ -48,8 +44,8 @@
             :size="'standard'"
             :href="'#'"
             :title="'Download'"
-            :icon="'overview'">
-          </Button>
+            :icon="'overview'"
+          ></Button>
         </banner-marketing>
 
         <table class="docs-table">
@@ -125,9 +121,7 @@
 
       <div slot="sale">
         <h2>Sale Banner</h2>
-        <Accordion
-          :openedTitle="'Hide Code'"
-          :closedTitle="'Show Code'">
+        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
           <div slot="content">
             <pre>
 <code>&lt;banner-sale
@@ -149,8 +143,8 @@
           :hours="'00'"
           :minutes="'00'"
           :seconds="secs"
-          :time-desc="'Until flash sale ends. Hurry!'">
-        </banner-sale>
+          :time-desc="'Until flash sale ends. Hurry!'"
+        ></banner-sale>
 
         <table class="docs-table">
           <thead>

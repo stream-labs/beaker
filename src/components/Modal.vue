@@ -29,13 +29,13 @@
           </div>
         </div>
 
-        <div v-if="modalType==='subscribe'">
+        <div v-if="modalType==='subscribing'">
           <div class="modal-container">
-            <div class="subscribe-icon-box">
+            <div class="subscribing-icon-box">
               <i class="icon-close" @click="$emit('close')"></i>
             </div>
-            <div class="subscribe-upper">
-              <div class="subscribe-title-box">
+            <div class="subscribing-upper">
+              <div class="subscribing-title-box">
                 <h1 class="modal-title">
                   <slot name="title"></slot>
                 </h1>
@@ -47,21 +47,8 @@
                 <slot name="sub-title"></slot>
               </h2>
             </div>
-            <div class="subscribe-image">
-              <div class="subscribe-box">
-                <p class="subscribe-amount">
-                  <slot name="subscribe-amount"></slot>
-                </p>
-                <p class="subscribe-text">
-                  <slot name="subscribe-text"></slot>
-                </p>
-                <span class="subscribe-icon">
-                  <slot name="subscribe-icon"></slot>
-                </span>
-              </div>
-            </div>
-            <div class="subscribe-bottom">
-              <p class="modal-text modal-text-subscribe">
+            <div class="subscribing-bottom">
+              <p class="modal-text modal-text-subscribing">
                 <slot name="text"></slot>
               </p>
               <div class="button-subscribe">
@@ -192,13 +179,13 @@ export default class Modal extends Vue {
   float: right;
 }
 
-.subscribe-upper,
-.subscribe-bottom {
-  .padding-v-sides(1);
+.subscribing-upper,
+.subscribing-bottom {
+  .padding-v-sides(2);
   .padding-h-sides(4);
 }
 
-.subscribe-icon-box {
+.subscribing-icon-box {
   .padding-v-sides(3);
   .padding-h-sides(3);
   .padding-bottom(0);
@@ -208,7 +195,7 @@ export default class Modal extends Vue {
   }
 }
 
-.subscribe-title-box {
+.subscribing-title-box {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -219,43 +206,11 @@ export default class Modal extends Vue {
   }
 }
 
-.subscribe-image {
-  background: #efefef;
-  width: 100%;
-  height: 146px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  .subscribe-box {
-    text-align: center;
-    .subscribe-amount {
-      color: @dark-2;
-      font-size: 16px;
-      font-weight: @medium;
-      .margin-v-sides(0);
-    }
-    .subscribe-text {
-      font-size: 16px;
-      display: inline-block;
-      .margin-v-sides(0);
-      .margin-right(1);
-    }
-    .subscribe-icon {
-      display: inline-block;
-      vertical-align: middle;
-    }
-    .subscribe-icon img {
-      width: 28px;
-      height: 28px;
-    }
-  }
-}
-
 .button-subscribe {
   .margin-top(3);
 }
 
-.modal-text-subscribe {
+.modal-text-subscribing {
   .margin-bottom(3);
 }
 
@@ -296,17 +251,6 @@ export default class Modal extends Vue {
 
   .modal-footer {
     background: @dark-2;
-  }
-
-  .subscribe-image {
-    .subscribe-box {
-      .subscribe-amount {
-        color: @white;
-      }
-      .subscribe-text {
-        color: @light-4;
-      }
-    }
   }
 }
 </style>
