@@ -48,7 +48,7 @@
               </h2>
             </div>
 
-            <div class="subscribe-body">
+            <div class="subscribe-body" :class="{ 'subscribe-body--pro': streamlabsPro }" v-if="streamlabsPro">
               <div class="subscribe-box">
                 <p class="subscribe-text">
                   <slot name="subscribe-text"></slot>
@@ -60,6 +60,10 @@
                   </span>
                 </p>
               </div>
+            </div>
+
+            <div class="subscribe-body" v-else>
+              <slot name="subscribe-body"></slot>
             </div>
 
             <div class="subscribe-bottom">
@@ -132,9 +136,15 @@ import Spinner from "./../components/Spinner.vue";
 export default class Modal extends Vue {
   @Prop()
   modalType!: {
-    type: string
-    default: null
-  }
+    type: string;
+    default: null;
+  };
+
+  @Prop()
+  streamlabsPro!: {
+    type: Boolean;
+    default: false;
+  };
 }
 </script>
 
@@ -249,24 +259,31 @@ export default class Modal extends Vue {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.subscribe-body--pro {
   background: #efefef;
   height: 146px;
+
   .subscribe-box {
     text-align: center;
+
     .subscribe-text {
       font-size: 16px;
       font-weight: @medium;
       .margin-v-sides(0);
     }
+
     .subscribe-message {
       font-size: 16px;
       display: inline-block;
       .margin-v-sides(0);
-      .subscribe-icon {
-        display: inline-block;
-        vertical-align: middle;
-        .padding-left(1);
-      }
+    }
+
+    .subscribe-icon {
+      display: inline-block;
+      vertical-align: middle;
+      .padding-left(1);
     }
   }
 }
@@ -309,6 +326,10 @@ export default class Modal extends Vue {
   .modal-title,
   .modal-sub-title {
     color: @night-title;
+  }
+
+  .subscribe-body {
+    background-color: @dark-4;
   }
 
   .modal-footer {

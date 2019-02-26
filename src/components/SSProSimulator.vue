@@ -122,6 +122,7 @@ export default class SSProSimulator extends Vue {
   height: 24px;
   width: 248px;
   background-color: @white;
+  color: @day-paragraph;
   text-align: center;
   .radius();
   position: absolute;
@@ -129,6 +130,9 @@ export default class SSProSimulator extends Vue {
   left: 0%;
   margin: 0 auto;
   top: 8px;
+  line-height: 24px;
+  text-transform: lowercase;
+  .weight(@medium);
 }
 
 .sp-simulator__web-page {
@@ -209,7 +213,7 @@ export default class SSProSimulator extends Vue {
 .ss-simulator__fake-input {
   height: 30px;
   .radius();
-  border: 1px solid rgba(255,255,255,0.24);
+  border: 1px solid rgba(255, 255, 255, 0.24);
   .margin-bottom(2);
   line-height: 30px;
   .padding-h-sides();
@@ -233,11 +237,11 @@ export default class SSProSimulator extends Vue {
   color: #303030;
 
   .ss-simulator__fake-input {
-    border-color: rgba(0,0,0,0.24);
+    border-color: rgba(0, 0, 0, 0.24);
   }
 
   .ss-simulator__fake-button {
-    background-color: rgba(0,0,0,.40);
+    background-color: rgba(0, 0, 0, 0.4);
   }
 
   .sp-simulator__section {
@@ -282,7 +286,7 @@ export default class SSProSimulator extends Vue {
   }
 
   .sp-simulator__fake-input {
-    border-color: rgba(0,0,0,0.24);
+    border-color: rgba(0, 0, 0, 0.24);
   }
 
   .sp-simulator__section {
@@ -314,7 +318,7 @@ export default class SSProSimulator extends Vue {
   }
 
   .ss-simulator__fake-input {
-    border-color: rgba(0,0,0,0.24);
+    border-color: rgba(0, 0, 0, 0.24);
   }
 
   .sp-simulator__section {
@@ -333,7 +337,6 @@ export default class SSProSimulator extends Vue {
   }
 
   .sp-simulator__web-bar-dot {
-
     background-color: @dark-4;
   }
 

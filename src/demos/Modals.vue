@@ -7,7 +7,8 @@
 
     <div class="button-container--left">
       <Button :variation="'default'" :title="'modal'" @click="modal = true"></Button>
-      <Button :variation="'default'" :title="'modal subscribe'" @click=" modalsubscribe = true"></Button>
+      <Button :variation="'default'" :title="'modal subscribe'" @click="modalsubscribe = true"></Button>
+      <Button :variation="'default'" :title="'modal subscribe pro'" @click="modalsubscribePro = true"></Button>
       <Button :variation="'default'" :title="'modal redirect'" @click="modalRedirect = true"></Button>
       <Button
         :variation="'warning'"
@@ -24,6 +25,24 @@
     </Modal>
 
     <Modal v-if="modalsubscribe" :modalType="'subscribe'" @close="modalsubscribe = false">
+      <template slot="title">Streamer</template>
+      <template slot="badge">
+        <badge :align-left="true">Pro</badge>
+      </template>
+      <template slot="sub-title">Never pay for GIFs and effects again!</template>
+      <template slot="subscribe-body">
+        <SSProSimulator :username="'Pokimane'" :icon="'https://static-cdn.jtvnw.net/jtv_user_pictures/6faa5a7174a604bf-profile_image-70x70.png'"></SSProSimulator>
+      </template>
+      <template
+        slot="text"
+      >Get unlimited free GIFs and effects that will show up on all alerts on all channels! You’ll also get a fancy ‘Pro’ badge next to your username on your donations.</template>
+      <template slot="button-subscribe">
+        <Button :variation="'subscribe'" :title="'Subscribe with PayPal'" :price="'$5.99/mo'"></Button>
+      </template>
+      <template slot="notes">You may cancel your subscription at any time.</template>
+    </Modal>
+
+    <Modal v-if="modalsubscribePro" :streamlabsPro="true" :modalType="'subscribe'" @close="modalsubscribePro = false">
       <template slot="title">Streamlabs</template>
       <template slot="badge">
         <badge :align-left="true">Pro</badge>
@@ -65,19 +84,28 @@ import { Component, Vue } from "vue-property-decorator";
 import Modal from "./../components/Modal.vue";
 import Button from "./../components/Button.vue";
 import Badge from "./../components/Badge.vue";
+import SSProSimulator from "./../components/SSProSimulator.vue";
 
 @Component({
   components: {
     Modal,
     Button,
-    Badge
+    Badge,
+    SSProSimulator
   }
 })
 export default class Modals extends Vue {
-  modal: boolean = false
-  modalsubscribe: boolean = true
-  modalRedirect: boolean = false
-  modalConfirmation: boolean = false
+  modal: boolean = false;
+  modalsubscribe: boolean = false;
+  modalRedirect: boolean = false;
+  modalConfirmation: boolean = false;
   modalType: string = "";
+  modalsubscribePro = true;
 }
 </script>
+
+<style lang="less">
+.subscribe-body {
+  padding: 0 40px;
+}
+</style>
