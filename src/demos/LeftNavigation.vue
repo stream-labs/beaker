@@ -71,6 +71,10 @@
       <!-- <a class="left-navigation__link" @click="changeSection('merch')">Merch</a> -->
       <a
         class="left-navigation__link"
+        @click="changeSection('notices')"
+      >Notices</a>
+      <a
+        class="left-navigation__link"
         @click="changeSection('paginations')"
       >Paginations</a>
       <a

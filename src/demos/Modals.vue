@@ -6,84 +6,56 @@
     </div>
 
     <div class="button-container--left">
-      <Button
-        :variation="'default'"
-        :title="'modal'"
-        @click="showModalNormal"
-      >
-      </Button>
-      <Button
-        :variation="'default'"
-        :title="'modal subscribing'"
-        @click="showModalSubscribing"
-      >
-      </Button>
-      <Button
-        :variation="'default'"
-        :title="'modal redirect'"
-        @click="showModalRedirect"
-      >
-      </Button>
+      <Button :variation="'default'" :title="'modal'" @click="modal = true"></Button>
+      <Button :variation="'default'" :title="'modal subscribe'" @click=" modalsubscribe = true"></Button>
+      <Button :variation="'default'" :title="'modal redirect'" @click="modalRedirect = true"></Button>
       <Button
         :variation="'warning'"
         :title="'modal confirmation'"
-        @click="showModalConfirmation"
-      >
-      </Button>
+        @click="modalConfirmation = true"
+      ></Button>
     </div>
-    <Modal
-      v-if="modal"
-      :modalType="'modal'"
-      @close="modal = false"
-    >
+    <Modal v-if="modal" :modalType="'modal'" @close="modal = false">
       <template slot="title">UI Modal</template>
       <template slot="sub-title">Subtitle</template>
-      <template slot="text">Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.</template>
+      <template
+        slot="text"
+      >Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.</template>
     </Modal>
 
-    <Modal
-      v-if="modalSubscribing"
-      :modalType="'subscribing'"
-      @close="modalSubscribing = false"
-    >
+    <Modal v-if="modalsubscribe" :modalType="'subscribe'" @close="modalsubscribe = false">
       <template slot="title">Streamlabs</template>
       <template slot="badge">
-        <badge :align-left="true">
-          Pro
-        </badge>
+        <badge :align-left="true">Pro</badge>
       </template>
       <template slot="sub-title">Never pay for GIFs and effects again!</template>
-      <template slot="text">Get unlimited free GIFs and effects that will show up on all alerts on all channels! You’ll also get a fancy ‘Pro’ badge next to your username on your donations.</template>
+      <template slot="subscribe-text">galazy83 donated $50.00!</template>
+      <template slot="subscribe-message">Thanks for the stream. Go CivRyan!</template>
+      <template slot="subscribe-icon">
+        <img src="../assets/imgs/girl.svg">
+      </template>
+      <template
+        slot="text"
+      >Get unlimited free GIFs and effects that will show up on all alerts on all channels! You’ll also get a fancy ‘Pro’ badge next to your username on your donations.</template>
       <template slot="button-subscribe">
-        <Button
-          :variation="'subscribe'"
-          :title="'Subscribe with PayPal'"
-          :price="'$5.99/mo'"
-        >
-        </Button>
+        <Button :variation="'subscribe'" :title="'Subscribe with PayPal'" :price="'$5.99/mo'"></Button>
       </template>
       <template slot="notes">You may cancel your subscription at any time.</template>
     </Modal>
 
-    <Modal
-      v-if="modalRedirect"
-      :modalType="'redirect'"
-    >
-      <template slot="title">Redirecting ...
+    <Modal v-if="modalRedirect" :modalType="'redirect'">
+      <template slot="title">Redirecting ...</template>
+      <template slot="text">Redirecting you to PayPal to update your method of payment.
+        <br>
+        <a href="#">Click here</a> if you have been waiting longer than 5 seconds.
       </template>
-      <template slot="text">Redirecting you to PayPal to update your method of payment.<br><a href="#">Click here</a> if you have been waiting longer than 5 seconds.</template>
     </Modal>
 
-    <Modal
-      v-if="modalConfirmation"
-      :modalType="'confirmation'"
-      @close="modalConfirmation = false"
-    >
-      <template slot="sub-title">Delete ‘Streamlabs Pillow’
-      </template>
-      <template slot="text">
-        Are you sure you want to delete the merch item ‘Streamlabs Pillow’? This action cannot be undone.
-      </template>
+    <Modal v-if="modalConfirmation" :modalType="'confirmation'" @close="modalConfirmation = false">
+      <template slot="sub-title">Delete ‘Streamlabs Pillow’</template>
+      <template
+        slot="text"
+      >Are you sure you want to delete the merch item ‘Streamlabs Pillow’? This action cannot be undone.</template>
     </Modal>
   </div>
 </template>
@@ -102,22 +74,10 @@ import Badge from "./../components/Badge.vue";
   }
 })
 export default class Modals extends Vue {
-  modal: Boolean = false;
-  modalSubscribing: Boolean = false;
-  modalRedirect: Boolean = false;
-  modalConfirmation: Boolean = false;
+  modal: boolean = false
+  modalsubscribe: boolean = true
+  modalRedirect: boolean = false
+  modalConfirmation: boolean = false
   modalType: string = "";
-  showModalNormal() {
-    this.modal = true;
-  }
-  showModalSubscribing() {
-    this.modalSubscribing = true;
-  }
-  showModalRedirect() {
-    this.modalRedirect = true;
-  }
-  showModalConfirmation() {
-    this.modalConfirmation = true;
-  }
 }
 </script>

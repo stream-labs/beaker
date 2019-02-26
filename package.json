@@ -1,6 +1,6 @@
 {
   "name": "streamlabs-beaker",
-  "version": "0.2.41",
+  "version": "0.2.43",
   "main": "./dist/beaker.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
