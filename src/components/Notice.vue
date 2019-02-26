@@ -68,14 +68,14 @@ export default class Notice extends Vue {
   .margin-bottom(3);
 }
 
-.notice__wrapper　 {
+.notice__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   .padding(3);
 }
 
-.notice__body　 {
+.notice__body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;

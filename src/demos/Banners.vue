@@ -225,7 +225,7 @@
       </div>
 
       <div slot="notice">
-        <h2>Marketing Banner</h2>
+        <h2>Notice Banner</h2>
         <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
           <div slot="content">
             <pre>
@@ -281,7 +281,7 @@
           ></Button>
         </notice>
 
-        <table class="docs-table">
+        <!-- <table class="docs-table">
           <thead>
             <tr>
               <th>Prop</th>
@@ -349,7 +349,7 @@
               <td>Default state once the banner is.</td>
             </tr>
           </tbody>
-        </table>
+        </table>-->
       </div>
     </Tabs>
   </div>
