@@ -152,6 +152,7 @@ export default class Modal extends Vue {
   height: 100%;
   background-color: @day-modal-mask;
   display: table;
+  z-index: 10000;
 }
 
 .modal-wrapper {
@@ -165,6 +166,21 @@ export default class Modal extends Vue {
   background-color: @white;
   box-shadow: 0 4px 8px @day-shadow;
   .radius (2);
+}
+
+.modal-title,
+.modal-sub-title {
+  color: @day-title;
+  .margin-bottom(3);
+}
+
+.modal-title {
+  .margin-bottom(3);
+}
+
+.modal-sub-title {
+  .margin-bottom(2);
+  .weight(@medium);
 }
 
 .modal-footer {
@@ -265,6 +281,11 @@ export default class Modal extends Vue {
   .modal-container {
     background: @dark-3;
     box-shadow: 0px 4px 8px @night-shadow;
+  }
+
+  .modal-title,
+  .modal-sub-title {
+    color: @night-title;
   }
 
   .modal-footer {
