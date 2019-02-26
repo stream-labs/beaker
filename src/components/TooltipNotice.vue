@@ -52,6 +52,13 @@ export default class TooltipNotice extends Vue {
   .button {
     .margin-top();
   }
+
+  h3 {
+    font-size: 16px;
+    .margin-bottom();
+    .weight(@medium);
+    color: @day-title;
+  }
 }
 
 .tooltip-notice-content {
@@ -71,6 +78,10 @@ export default class TooltipNotice extends Vue {
 .night-theme {
   .tooltip-notice {
     background-color: @night-section-alt;
+
+    h3 {
+      color: @night-title;
+    }
   }
 
   .tooltip-notice__arrow {
