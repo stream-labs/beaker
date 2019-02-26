@@ -29,13 +29,8 @@
       </div>
 
       <div class="sp-simulator__section"></div>
-
       <div class="sp-simulator__section"></div>
-
       <div class="sp-simulator__section"></div>
-
-      <div class="sp-simulator__section"></div>
-
       <div class="sp-simulator__section"></div>
     </div>
   </div>
@@ -51,13 +46,11 @@ import TextInput from "./../components/TextInput.vue";
   }
 })
 export default class SSProSimulator extends Vue {
-  @Prop()
-  username!: string;
+  @Prop() username!: string;
 
-  @Prop()
-  icon!: String;
+  @Prop() icon!: String;
 
-  themeClasses = ["teal", "orange", "electric-blue", "red", "lime"];
+  themeClasses = ["teal", "orange", "purple", "electric-blue", "red", "lime"];
   themeClass = "";
 
   rotateClasses() {
@@ -67,12 +60,11 @@ export default class SSProSimulator extends Vue {
       const next = it.next(); // next value
       if (!next.done) {
         // done = true when the end of array reached
-        this.themeClass = "sp-simulator--" + next.value; // concatenate word to the string
+        this.themeClass = "sp-simulator__web-page--" + next.value; // concatenate word to the string
       } else {
-        clearInterval(int); // when done - clear interval
-        this.themeClass = "sp-simulator--" + next.value;
+        clearInterval(int);
       }
-    }, 3000); // interval duration
+    }, 2000); // interval duration
   }
 
   mounted() {
@@ -137,14 +129,14 @@ export default class SSProSimulator extends Vue {
 
 .sp-simulator__web-page {
   background-color: @night-bg;
-  .padding(3);
+  .padding(2);
   display: grid;
   grid-template-areas:
     "header header header header"
     "video video video tip"
-    "merch merch merch merch";
+    "merch social countdown lb";
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 24px;
+  grid-gap: 16px;
 
   .sp-simulator__section {
     &:nth-child(2) {
@@ -158,6 +150,18 @@ export default class SSProSimulator extends Vue {
     &:nth-child(4) {
       grid-area: merch;
     }
+
+    &:nth-child(5) {
+      grid-area: social;
+    }
+
+    &:nth-child(6) {
+      grid-area: lb;
+    }
+
+    &:nth-child(7) {
+      grid-area: countdown;
+    }
   }
 }
 
@@ -169,6 +173,8 @@ export default class SSProSimulator extends Vue {
   h1 {
     color: @white;
     .margin-bottom();
+    font-size: 16px;
+    font-weight: inherit;
   }
 }
 
@@ -197,8 +203,8 @@ export default class SSProSimulator extends Vue {
 }
 
 .sp-simulator__icon {
-  width: 56px;
-  height: 56px;
+  width: 40px;
+  height: 40px;
   border-radius: 100%;
   .margin-right(2);
 }
@@ -211,11 +217,10 @@ export default class SSProSimulator extends Vue {
 }
 
 .ss-simulator__fake-input {
-  height: 30px;
+  height: 24px;
   .radius();
   border: 1px solid rgba(255, 255, 255, 0.24);
-  .margin-bottom(2);
-  line-height: 30px;
+  .margin-bottom();
   .padding-h-sides();
 }
 
@@ -231,17 +236,29 @@ export default class SSProSimulator extends Vue {
 }
 
 // Themes
-.sp-simulator--teal {
+.sp-simulator__web-page--teal {
   background-color: @teal;
   .custom-font--bubble;
   color: #303030;
+  grid-template-areas:
+    "header header header header"
+    "tip video video video"
+    "merch merch social social";
 
-  .ss-simulator__fake-input {
-    border-color: rgba(0, 0, 0, 0.24);
+  .sp-simulator__section {
+    &:nth-child(6),
+    &:nth-child(7) {
+      display: none;
+    }
   }
 
+  .sp-simulator__desc,
   .ss-simulator__fake-button {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: lighten(@teal, 8%);
+  }
+
+  .sp-simulator__video i {
+    color: darken(@teal, 16%);
   }
 
   .sp-simulator__section {
@@ -249,10 +266,13 @@ export default class SSProSimulator extends Vue {
   }
 }
 
-.sp-simulator--orange {
+.sp-simulator__web-page--orange {
   background-color: #d84e24;
   .custom-font--knock;
-
+  grid-template-areas:
+    "header header header header"
+    "tip video video video"
+    "merch social lb countdown";
   .sp-simulator__desc,
   .ss-simulator__fake-button {
     background-color: lighten(#d84e24, 4%);
@@ -267,13 +287,23 @@ export default class SSProSimulator extends Vue {
   }
 }
 
-.sp-simulator--electric-blue {
+.sp-simulator__web-page--electric-blue {
   background-color: #0f83c6;
-  .custom-font--killshot;
+  .custom-font--smooth-talker();
   color: #202020;
+  grid-template-areas:
+    "header header header header"
+    "tip video video video"
+    "merch merch social lb";
+
+  .sp-simulator__section {
+    &:nth-child(7) {
+      display: none;
+    }
+  }
 
   h1 {
-    color: black;
+    color: rgb(25, 32, 43);
   }
 
   .sp-simulator__video i {
@@ -294,13 +324,52 @@ export default class SSProSimulator extends Vue {
   }
 }
 
-.sp-simulator--red {
+.sp-simulator__web-page--purple {
+  background-color: @purple;
+  .custom-font--bubble;
+  color: #303030;
+
+  .sp-simulator__desc,
+  .ss-simulator__fake-button {
+    background-color: lighten(@purple, 8%);
+  }
+
+  .sp-simulator__video i {
+    color: darken(@purple, 16%);
+  }
+
+  .sp-simulator__section {
+    background-color: darken(@purple, 8%);
+  }
+}
+
+.sp-simulator__web-page--red {
   background-color: #af1108;
   .custom-font--straight-facts;
   color: #808080;
+  grid-template-areas:
+    "header header header header"
+    "video video video tip"
+    "merch merch merch social";
+
+  .sp-simulator__section {
+    &:nth-child(6),
+    &:nth-child(7) {
+      display: none;
+    }
+  }
 
   h1 {
     color: @white;
+  }
+
+  .sp-simulator__video i {
+    color: lighten(#af1108, 4%);
+  }
+
+  .sp-simulator__desc,
+  .ss-simulator__fake-button {
+    background-color: lighten(#af1108, 4%);
   }
 
   .sp-simulator__section {
@@ -308,17 +377,34 @@ export default class SSProSimulator extends Vue {
   }
 }
 
-.sp-simulator--lime {
+.sp-simulator__web-page--lime {
   background-color: #78e236;
   .custom-font--listen-up;
   color: #63695d;
+  grid-template-areas:
+    "header header header header"
+    "video video video tip"
+    "merch merch merch merch";
 
-  h1 {
-    color: black;
+  .sp-simulator__section {
+    &:nth-child(5),
+    &:nth-child(6),
+    &:nth-child(7) {
+      display: none;
+    }
   }
 
-  .ss-simulator__fake-input {
-    border-color: rgba(0, 0, 0, 0.24);
+  .sp-simulator__desc,
+  .ss-simulator__fake-button {
+    background-color: lighten(#78e236, 8%);
+  }
+
+  .sp-simulator__video i {
+    color: darken(#78e236, 16%);
+  }
+
+  h1 {
+    color: #1e4804;
   }
 
   .sp-simulator__section {
