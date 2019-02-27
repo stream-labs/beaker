@@ -58,7 +58,6 @@ export default class SSProSimulator extends Vue {
         this.themeClass = "sp-simulator__web-page--" + next.value;
       } else {
         this.rotateClasses();
-        // clearInterval(this.myInt);
       }
     }, 2000);
   }
