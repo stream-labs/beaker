@@ -9,9 +9,7 @@ components: {
 }</code></pre>
 
     <h3>Standard</h3>
-    <Accordion
-      :openedTitle="'Hide Code'"
-      :closedTitle="'Show Code'">
+    <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
       <div slot="content">
         <pre>
 <code>&lt;Tabs
@@ -28,16 +26,9 @@ components: {
       </div>
     </Accordion>
 
-    <Tabs
-      :tabs="tabs"
-      :value="selectedTab"
-      @input="onSelectTabHandler">
-      <div slot="general">
-        General slot content
-      </div>
-      <div slot="advanced">
-        Advanced slot content
-      </div>
+    <Tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler">
+      <div slot="general">General slot content</div>
+      <div slot="advanced">Advanced slot content</div>
     </Tabs>
   </div>
 </template>
