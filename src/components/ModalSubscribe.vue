@@ -20,17 +20,7 @@
         <h2 class="modal-sub-title">{{subTitle}}</h2>
       </div>
 
-      <div class="subscribe-body">
-        <div class="subscribe-box">
-          <p class="subscribe-text">{{subscribeText}}</p>
-          <p class="subscribe-message">
-            {{subscribeMessage}}
-            <span class="subscribe-icon">
-              <img src="../assets/imgs/girl.svg">
-            </span>
-          </p>
-        </div>
-      </div>
+      <div class="subscribe-body"><slot name="body"></slot></div>
 
       <div class="subscribe-bottom">
         <p class="modal-text modal-text-subscribe">{{text}}</p>
@@ -85,12 +75,6 @@ export default class ModalSubscribe extends Vue {
   text!: string;
 
   @Prop({ default: null })
-  subscribeText!: string;
-
-  @Prop({ default: null })
-  subscribeMessage!: string;
-
-  @Prop({ default: null })
   notes!: string;
 }
 </script>
@@ -140,26 +124,7 @@ export default class ModalSubscribe extends Vue {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #efefef;
-  height: 146px;
-  .subscribe-box {
-    text-align: center;
-    .subscribe-text {
-      font-size: 16px;
-      font-weight: @medium;
-      .margin-v-sides(0);
-    }
-    .subscribe-message {
-      font-size: 16px;
-      display: inline-block;
-      .margin-v-sides(0);
-      .subscribe-icon {
-        display: inline-block;
-        vertical-align: middle;
-        .padding-left(1);
-      }
-    }
-  }
+  min-height: 136px;
 }
 
 .modal-notes {
@@ -167,16 +132,5 @@ export default class ModalSubscribe extends Vue {
   color: @light-5;
   .small-type();
   .padding-v-sides(2);
-}
-
-.night,
-.night-theme {
-  .subscribe-text {
-    color: @white;
-  }
-
-  .subscribe-message {
-    color: @light-4;
-  }
 }
 </style>

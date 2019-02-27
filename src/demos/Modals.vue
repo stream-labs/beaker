@@ -15,10 +15,10 @@
       :title="'Streamlabs'"
       :sub-title="'Never pay for GIFs and effects again!'"
       :text="'Get unlimited free GIFs and effects that will show up on all alerts on all channels! You’ll also get a fancy ‘Pro’ badge next to your username on your donations.'"
-      :subscribe-text="'galazy83 donated $50.00!'"
-      :subscribe-message="'Thanks for the stream. Go CivRyan!'"
       :notes="'You may cancel your subscription at any time.'"
-    ></ModalSubscribe>
+    >
+    <FakeAlert slot="body"></FakeAlert>
+    </ModalSubscribe>
 
     <ModalRedirect
       :title="'Redirecting ...'"
@@ -59,6 +59,7 @@ import ModalSubscribe from "./../components/ModalSubscribe.vue";
 import ModalRedirect from "./../components/ModalRedirect.vue";
 import ModalConfirmation from "./../components/ModalConfirmation.vue";
 import Button from "./../components/Button.vue";
+import FakeAlert from "./../components/FakeAlert.vue";
 
 @Component({
   components: {
@@ -66,7 +67,8 @@ import Button from "./../components/Button.vue";
     ModalSubscribe,
     ModalRedirect,
     ModalConfirmation,
-    Button
+    Button,
+    FakeAlert
   }
 })
 export default class Modals extends Vue {}
