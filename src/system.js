@@ -21,6 +21,10 @@ import HelloWorld from "@/components/HelloWorld";
 import ImagePicker from "@/components/ImagePicker";
 import ItemGrid from "@/components/ItemGrid";
 import Modal from "@/components/Modal";
+import ModalBasic from "@/components/ModalBasic";
+import ModalConfirmation from "@/components/ModalConfirmation";
+import ModalSubscribe from "@/components/ModalSubscribe";
+import ModalRedirect from "@/components/ModalRedirect";
 import PaymentForm from "@/components/PaymentForm";
 import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
@@ -28,8 +32,8 @@ import Spinner from "@/components/Spinner";
 import SSProSimulator from "@/components/SSProSimulator";
 import Tabs from "@/components/Tabs";
 import TextInput from "@/components/TextInput";
-import Toggle from "@/components/Toggle";
 import TooltipNotice from "@/components/TooltipNotice";
+import Toggle from "@/components/Toggle";
 import Pagination from "@/components/Pagination";
 import ProgressBar from "@/components/ProgressBar";
 import VirtualItem from "@/components/VirtualItem";
@@ -48,6 +52,10 @@ const components = [
   ImagePicker,
   ItemGrid,
   Modal,
+  ModalBasic,
+  ModalConfirmation,
+  ModalSubscribe,
+  ModalRedirect,
   Selector,
   Slider,
   Spinner,
@@ -87,6 +95,10 @@ export {
   ImagePicker,
   ItemGrid,
   Modal,
+  ModalBasic,
+  ModalConfirmation,
+  ModalSubscribe,
+  ModalRedirect,
   PaymentForm,
   Selector,
   Slider,
