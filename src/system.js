@@ -25,6 +25,7 @@ import PaymentForm from "@/components/PaymentForm";
 import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
 import Spinner from "@/components/Spinner";
+import SSProSimulator from "@/components/SSProSimulator";
 import Tabs from "@/components/Tabs";
 import TextInput from "@/components/TextInput";
 import Toggle from "@/components/Toggle";
@@ -49,6 +50,7 @@ const components = [
   Selector,
   Slider,
   Spinner,
+  SSProSimulator,
   Tabs,
   TextInput,
   TooltipNotice,
@@ -88,6 +90,7 @@ export {
   Selector,
   Slider,
   Spinner,
+  SSProSimulator,
   Tabs,
   TextInput,
   TooltipNotice,
