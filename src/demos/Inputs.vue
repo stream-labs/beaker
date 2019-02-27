@@ -179,16 +179,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Watch, Vue } from 'vue-property-decorator'
+import { Component, Watch, Vue } from "vue-property-decorator";
 
-import Accordion from './../components/Accordion.vue'
-import Selector from './../components/Selector.vue'
-import Checkbox from './../components/Checkbox.vue'
-import ImagePickerInput from './../components/ImagePickerInput.vue'
-import Radio from './../components/Radio.vue'
-import StatusSwitch from './../components/StatusSwitch.vue'
-import TextInput from './../components/TextInput.vue'
-import FormGroup from './../components/FormGroup.vue'
+import Accordion from "./../components/Accordion.vue";
+import Selector from "./../components/Selector.vue";
+import Checkbox from "./../components/Checkbox.vue";
+import ImagePickerInput from "./../components/ImagePickerInput.vue";
+import Radio from "./../components/Radio.vue";
+import StatusSwitch from "./../components/StatusSwitch.vue";
+import TextInput from "./../components/TextInput.vue";
+import FormGroup from "./../components/FormGroup.vue";
 
 @Component({
   components: {
@@ -199,116 +199,115 @@ import FormGroup from './../components/FormGroup.vue'
     Radio,
     StatusSwitch,
     TextInput,
-    FormGroup,
-  },
+    FormGroup
+  }
 })
 export default class Inputs extends Vue {
-  checkboxValue0 = true
-  checkboxValue1 = false
-  checkboxValue2 = true
-  checkboxValue3 = false
-  selected = 'Option A'
-  radioValue1 = true
-  radioValue2 = false
-  statusValue = true
-  testingInput = null
+  checkboxValue0 = true;
+  checkboxValue1 = false;
+  checkboxValue2 = true;
+  checkboxValue3 = false;
+  selected = "Option A";
+  radioValue1 = true;
+  radioValue2 = false;
+  statusValue = true;
+  testingInput = null;
 
-  layoutValue = 'above'
-  jarValue = 'glass-pint'
+  layoutValue = "above";
+  jarValue = "glass-pint";
 
   // Text inputs
-  textInputValue = ''
-  emailInputValue = ''
-  passwordInputValue = ''
+  textInputValue = "";
+  emailInputValue = "";
+  passwordInputValue = "";
 
-  textInputPlaceholder = 'Placeholder'
-  emailInputPlaceholder = 'Placeholder'
-  passwordInputPlaceholder = 'Placeholder'
+  textInputPlaceholder = "Placeholder";
+  emailInputPlaceholder = "Placeholder";
+  passwordInputPlaceholder = "Placeholder";
 
   options = [
     {
-      value: 'glass-pint',
-      title: 'Glass Pint',
-      image: 'https://cdn.streamlabs.com/static/tip-jar/jars/glass-pint.png',
+      value: "glass-pint",
+      title: "Glass Pint",
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-pint.png"
     },
     {
-      value: 'glass-beer',
-      title: 'Glass Beer',
-      image: 'https://cdn.streamlabs.com/static/tip-jar/jars/glass-beer.png',
+      value: "glass-beer",
+      title: "Glass Beer",
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-beer.png"
     },
     {
-      value: 'glass-beer-2',
-      title: 'Glass Beer 2',
-      image: 'https://cdn.streamlabs.com/static/tip-jar/jars/glass-beer2.png',
+      value: "glass-beer-2",
+      title: "Glass Beer 2",
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-beer2.png"
     },
     {
-      value: 'glass-coffee',
-      title: 'Glass Coffee',
-      image: 'https://cdn.streamlabs.com/static/tip-jar/jars/glass-coffee.png',
+      value: "glass-coffee",
+      title: "Glass Coffee",
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-coffee.png"
     },
     {
-      value: 'glass-fancy',
-      title: 'Glass Fancy',
-      image: 'https://cdn.streamlabs.com/static/tip-jar/jars/glass-fancy.png',
+      value: "glass-fancy",
+      title: "Glass Fancy",
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-fancy.png"
     },
     {
-      value: 'glass-whiskey',
-      title: 'Glass Whiskey',
-      image: 'https://cdn.streamlabs.com/static/tip-jar/jars/glass-whiskey.png',
+      value: "glass-whiskey",
+      title: "Glass Whiskey",
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-whiskey.png"
     },
     {
-      value: 'glass-burbon',
-      title: 'Glass Burbon',
-      image: 'https://cdn.streamlabs.com/static/tip-jar/jars/glass-burbon.png',
+      value: "glass-burbon",
+      title: "Glass Burbon",
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-burbon.png"
     },
     {
-      value: 'glass-martini',
-      title: 'Glass Martini',
-      image: 'https://cdn.streamlabs.com/static/tip-jar/jars/glass-martini.png',
+      value: "glass-martini",
+      title: "Glass Martini",
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-martini.png"
     },
     {
-      value: 'glass-beer-3',
-      title: 'Glass Beer 3',
-      image: 'https://cdn.streamlabs.com/static/tip-jar/jars/glass-beer3.png',
+      value: "glass-beer-3",
+      title: "Glass Beer 3",
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-beer3.png"
     },
     {
-      value: 'glass-wine',
-      title: 'Glass Wine',
-      image: 'https://cdn.streamlabs.com/static/tip-jar/jars/glass-wine.png',
+      value: "glass-wine",
+      title: "Glass Wine",
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-wine.png"
     },
     {
-      value: 'glass-baileys',
-      title: 'Glass Baileys',
-      image: 'https://cdn.streamlabs.com/static/tip-jar/jars/glass-baileys.png',
+      value: "glass-baileys",
+      title: "Glass Baileys",
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-baileys.png"
     },
     {
-      value: 'glass-champagne',
-      title: 'Glass Champagne',
+      value: "glass-champagne",
+      title: "Glass Champagne",
       image:
-        'https://cdn.streamlabs.com/static/tip-jar/jars/glass-champagne.png',
+        "https://cdn.streamlabs.com/static/tip-jar/jars/glass-champagne.png"
     },
     {
-      value: 'glass-coffee-no-handle',
-      title: 'Glass Coffee No Handle',
+      value: "glass-coffee-no-handle",
+      title: "Glass Coffee No Handle",
       image:
-        'https://cdn.streamlabs.com/static/tip-jar/jars/glass-coffee-no-handle.png',
+        "https://cdn.streamlabs.com/static/tip-jar/jars/glass-coffee-no-handle.png"
     },
     {
-      value: 'glass-plinko',
-      title: 'Glass Plinko',
-      image: 'https://cdn.streamlabs.com/static/tip-jar/jars/glass-plinko.png',
+      value: "glass-plinko",
+      title: "Glass Plinko",
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-plinko.png"
     },
     {
-      value: 'glass-stocking',
-      title: 'Glass Stocking',
-      image:
-        'https://cdn.streamlabs.com/static/tip-jar/jars/glass-stocking.png',
+      value: "glass-stocking",
+      title: "Glass Stocking",
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-stocking.png"
     },
     {
-      value: 'glass-snowman',
-      title: 'Glass Snowman',
-      image: 'https://cdn.streamlabs.com/static/tip-jar/jars/glass-snowman.png',
-    },
-  ]
+      value: "glass-snowman",
+      title: "Glass Snowman",
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-snowman.png"
+    }
+  ];
 }
 </script>

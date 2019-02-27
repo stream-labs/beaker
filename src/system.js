@@ -65,8 +65,8 @@ const components = [
   TooltipNotice,
   Pagination,
   ProgressBar,
-  VirtualItem,
-]
+  VirtualItem
+];
 
 // Install the above defined components
 // const System = {
@@ -109,5 +109,5 @@ export {
   TooltipNotice,
   Pagination,
   ProgressBar,
-  VirtualItem,
-}
+  VirtualItem
+};

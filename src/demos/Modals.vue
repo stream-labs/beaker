@@ -53,12 +53,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import ModalBasic from './../components/ModalBasic.vue'
-import ModalSubscribe from './../components/ModalSubscribe.vue'
-import ModalRedirect from './../components/ModalRedirect.vue'
-import ModalConfirmation from './../components/ModalConfirmation.vue'
-import Button from './../components/Button.vue'
+import { Component, Vue } from "vue-property-decorator";
+import ModalBasic from "./../components/ModalBasic.vue";
+import ModalSubscribe from "./../components/ModalSubscribe.vue";
+import ModalRedirect from "./../components/ModalRedirect.vue";
+import ModalConfirmation from "./../components/ModalConfirmation.vue";
+import Button from "./../components/Button.vue";
 
 @Component({
   components: {
@@ -66,9 +66,8 @@ import Button from './../components/Button.vue'
     ModalSubscribe,
     ModalRedirect,
     ModalConfirmation,
-    Button,
-  },
+    Button
+  }
 })
 export default class Modals extends Vue {}
 </script>
-

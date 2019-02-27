@@ -44,61 +44,61 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import Button from './../components/Button.vue'
-import Badge from './../components/Badge.vue'
+import { Component, Prop, Vue } from "vue-property-decorator";
+import Button from "./../components/Button.vue";
+import Badge from "./../components/Badge.vue";
 
 @Component({
   components: {
     Button,
-    Badge,
-  },
+    Badge
+  }
 })
 export default class ModalSubscribe extends Vue {
   @Prop({ default: 600 })
-  width!: number
+  width!: number;
 
-  modalWidth: number = this.width
+  modalWidth: number = this.width;
 
   @Prop({ default: 600 })
-  minWidth!: number
+  minWidth!: number;
 
-  modalMinWidth: number = this.minWidth
+  modalMinWidth: number = this.minWidth;
 
-  @Prop({ default: 'auto' })
-  height!: number
+  @Prop({ default: "auto" })
+  height!: number;
 
-  modalHeight: number = this.height
-
-  @Prop({ default: null })
-  minHeight!: number
-
-  modalMinHeight: number = this.minHeight
+  modalHeight: number = this.height;
 
   @Prop({ default: null })
-  title!: string
+  minHeight!: number;
+
+  modalMinHeight: number = this.minHeight;
 
   @Prop({ default: null })
-  subTitle!: string
+  title!: string;
 
   @Prop({ default: null })
-  text!: string
+  subTitle!: string;
 
   @Prop({ default: null })
-  subscribeText!: string
+  text!: string;
 
   @Prop({ default: null })
-  subscribeMessage!: string
+  subscribeText!: string;
 
   @Prop({ default: null })
-  notes!: string
+  subscribeMessage!: string;
+
+  @Prop({ default: null })
+  notes!: string;
 }
 </script>
 
 
 <style lang="less" scoped>
-@import './../styles/Imports';
-@import './../styles/components/Modals';
+@import "./../styles/Imports";
+@import "./../styles/components/Modals";
 
 .subscribe-upper,
 .subscribe-bottom {

@@ -93,16 +93,16 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import CallToAction from './../components/CallToAction.vue'
-import Accordion from './../components/Accordion.vue'
+import { Component, Vue } from "vue-property-decorator";
+import CallToAction from "./../components/CallToAction.vue";
+import Accordion from "./../components/Accordion.vue";
 @Component({
   components: {
     CallToAction,
-    Accordion,
-  },
+    Accordion
+  }
 })
 export default class CallToActions extends Vue {
-  value = 50
+  value = 50;
 }
 </script>

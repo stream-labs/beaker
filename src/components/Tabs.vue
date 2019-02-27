@@ -37,83 +37,83 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Tabs extends Vue {
   $refs!: {
-    scrollable_tabs: HTMLDivElement
-  }
+    scrollable_tabs: HTMLDivElement;
+  };
 
-  isMounted = false
-  tabsContainer: HTMLDivElement = null as any
-  canScroll = false
-  hasNext = false
-  hasPrev = false
-  private scrollIncrement = 100
+  isMounted = false;
+  tabsContainer: HTMLDivElement = null as any;
+  canScroll = false;
+  hasNext = false;
+  hasPrev = false;
+  private scrollIncrement = 100;
 
   @Prop()
   tabs!: [
     {
-      name: string
-      value: string
+      name: string;
+      value: string;
     }
-  ]
+  ];
 
   @Prop()
-  value!: string
+  value!: string;
 
   @Prop()
-  className!: string
+  className!: string;
 
   @Prop()
-  hideContent!: boolean
+  hideContent!: boolean;
 
   created() {
-    window.addEventListener('resize', this.calculateScrolls)
+    window.addEventListener("resize", this.calculateScrolls);
   }
 
   destroyed() {
-    window.removeEventListener('resize', this.calculateScrolls)
+    window.removeEventListener("resize", this.calculateScrolls);
   }
 
   mounted() {
-    this.isMounted = true
-    this.tabsContainer = this.$refs.scrollable_tabs
-    this.calculateScrolls()
-    if (!this.value) this.showTab(this.tabs[0].value)
+    this.isMounted = true;
+    this.tabsContainer = this.$refs.scrollable_tabs;
+    this.calculateScrolls();
+    if (!this.value) this.showTab(this.tabs[0].value);
   }
 
   scrollLeft() {
     this.tabsContainer.scrollLeft =
-      this.tabsContainer.scrollLeft - this.scrollIncrement
+      this.tabsContainer.scrollLeft - this.scrollIncrement;
   }
 
   scrollRight() {
     this.tabsContainer.scrollLeft =
-      this.tabsContainer.scrollLeft + this.scrollIncrement
+      this.tabsContainer.scrollLeft + this.scrollIncrement;
   }
 
   calculateScrolls() {
-    if (!this.isMounted) return false
+    if (!this.isMounted) return false;
     this.canScroll =
-      this.tabsContainer.scrollWidth > this.tabsContainer.clientWidth
-    this.hasPrev = this.tabsContainer.scrollLeft > 0
+      this.tabsContainer.scrollWidth > this.tabsContainer.clientWidth;
+    this.hasPrev = this.tabsContainer.scrollLeft > 0;
     let scrollRight =
       this.tabsContainer.scrollWidth -
-      (this.tabsContainer.scrollLeft + this.tabsContainer.clientWidth)
+      (this.tabsContainer.scrollLeft + this.tabsContainer.clientWidth);
 
-    this.hasNext = scrollRight > 0
+    this.hasNext = scrollRight > 0;
   }
 
   showTab(tab: string) {
-    this.$emit('input', tab)
+    this.$emit("input", tab);
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 .tabs-wrapper {
   height: 100%;
@@ -144,7 +144,7 @@ export default class Tabs extends Vue {
 }
 
 .tabs-nav__control {
-  height: calc(~'2 * ' @spacing);
+  height: calc(~"2 * " @spacing);
   display: flex;
   align-items: flex-end;
   .margin-bottom(2);
@@ -153,7 +153,7 @@ export default class Tabs extends Vue {
   &.has-next,
   &.has-prev {
     &:before {
-      content: '';
+      content: "";
       width: 40px;
       height: 16px;
       position: absolute;
