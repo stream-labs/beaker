@@ -136,7 +136,6 @@ export default class SSProSimulator extends Vue {
     "merch social countdown lb";
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 16px;
-  .transition();
 
   .sp-simulator__section {
     &:nth-child(2) {
