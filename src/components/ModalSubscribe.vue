@@ -1,11 +1,12 @@
 <template>
   <modal
-    :width="modalWidth"
-    :minWidth="modalMinWidth"
-    :minHeight="modalMinHeight"
-    height="auto"
-    :adaptive="true"
     name="modal-subscribe"
+    :classes="'modal-wrapper'"
+    :maxWidth="modalWidth"
+    :minWidth="modalMinWidth"
+    :height="modalHeight"
+    :minHeight="modalMinHeight"
+    :adaptive="true"
   >
     <div class="modal-container">
       <div class="subscribe-icon-box">
@@ -53,7 +54,7 @@ import Badge from './../components/Badge.vue'
     Badge,
   },
 })
-export default class ModalBasic extends Vue {
+export default class ModalSubscribe extends Vue {
   @Prop({ default: 600 })
   width!: number
 
@@ -63,6 +64,11 @@ export default class ModalBasic extends Vue {
   minWidth!: number
 
   modalMinWidth: number = this.minWidth
+
+  @Prop({ default: 'auto' })
+  height!: number
+
+  modalHeight: number = this.height
 
   @Prop({ default: null })
   minHeight!: number
@@ -92,25 +98,11 @@ export default class ModalBasic extends Vue {
 
 <style lang="less" scoped>
 @import './../styles/Imports';
-
-.modal-title,
-.modal-sub-title {
-  color: @day-title;
-  .margin-bottom(3);
-}
-
-.modal-title {
-  .margin-bottom(3);
-}
-
-.modal-sub-title {
-  .margin-bottom(2);
-  .weight(@medium);
-}
+@import './../styles/components/Modals';
 
 .subscribe-upper,
 .subscribe-bottom {
-  .padding-v-sides(2);
+  .padding-v-sides(1);
   .padding-h-sides(4);
 }
 
@@ -121,6 +113,7 @@ export default class ModalBasic extends Vue {
   overflow: hidden;
   .icon-close {
     float: right;
+    cursor: pointer;
   }
 }
 
@@ -178,20 +171,6 @@ export default class ModalBasic extends Vue {
 
 .night,
 .night-theme {
-  .v--modal-overlay {
-    background-color: @night-modal-mask;
-  }
-
-  .modal-container {
-    background: @dark-3;
-    box-shadow: 0px 4px 8px @night-shadow;
-  }
-
-  .modal-title,
-  .modal-sub-title {
-    color: @night-title;
-  }
-
   .subscribe-text {
     color: @white;
   }

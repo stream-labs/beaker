@@ -1,11 +1,12 @@
 <template>
   <modal
-    :width="modalWidth"
-    :minWidth="modalMinWidth"
-    :minHeight="modalMinHeight"
-    height="auto"
-   :adaptive="true"
     name="modal-confirmation"
+    :classes="'modal-wrapper'"
+    :maxWidth="modalWidth"
+    :minWidth="modalMinWidth"
+    :height="modalHeight"
+    :minHeight="modalMinHeight"
+    :adaptive="true"
   >
     <div class="modal-container">
       <div class="confirmation">
@@ -34,7 +35,7 @@ import Button from './../components/Button.vue'
     Button,
   },
 })
-export default class ModalBasic extends Vue {
+export default class ModalConfirmation extends Vue {
   @Prop({ default: 600 })
   width!: number
 
@@ -44,6 +45,11 @@ export default class ModalBasic extends Vue {
   minWidth!: number
 
   modalMinWidth: number = this.minWidth
+
+  @Prop({ default: 'auto' })
+  height!: number
+
+  modalHeight: number = this.height
 
   @Prop({ default: null })
   minHeight!: number
@@ -61,41 +67,19 @@ export default class ModalBasic extends Vue {
 
 <style lang="less" scoped>
 @import './../styles/Imports';
+@import './../styles/components/Modals';
 
-.confirmation {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.modal-title {
-  color: @day-title;
-  .margin-bottom(3);
+.modal-container {
+  .padding(3);
+  .confirmation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 }
 
 .modal-default-button {
   float: right;
-}
-
-.confirmation {
-  text-align: center;
-  .padding(3);
-}
-
-.night,
-.night-theme {
-  .v--modal-overlay {
-    background-color: @night-modal-mask;
-  }
-
-  .modal-container {
-    background: @dark-3;
-    box-shadow: 0px 4px 8px @night-shadow;
-  }
-
-  .modal-sub-title {
-    color: @night-title;
-  }
 }
 </style>

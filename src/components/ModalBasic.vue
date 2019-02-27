@@ -1,12 +1,12 @@
 <template>
   <modal
-    :width="modalWidth"
-    :minWidth="modalMinWidth"
-    :minHeight="modalMinHeight"
-    height="auto"
-    :adaptive="true"
     name="modal-basic"
     :classes="'modal-wrapper'"
+    :maxWidth="modalWidth"
+    :minWidth="modalMinWidth"
+    :height="modalHeight"
+    :minHeight="modalMinHeight"
+    :adaptive="true"
   >
     <div class="modal-container">
       <div class="modal-body">
@@ -51,6 +51,11 @@ export default class ModalBasic extends Vue {
 
   modalMinWidth: number = this.minWidth
 
+  @Prop({ default: 'auto' })
+  height!: number
+
+  modalHeight: number = this.height
+
   @Prop({ default: null })
   minHeight!: number
 
@@ -69,20 +74,10 @@ export default class ModalBasic extends Vue {
 
 <style lang="less" scoped>
 @import './../styles/Imports';
+@import './../styles/components/Modals';
 
-.modal-title,
-.modal-sub-title {
-  color: @day-title;
-  .margin-bottom(3);
-}
-
-.modal-title {
-  .margin-bottom(3);
-}
-
-.modal-sub-title {
-  .margin-bottom(2);
-  .weight(@medium);
+.modal-body {
+  border-radius: 8px 8px 0 0;
 }
 
 .modal-footer {
@@ -98,42 +93,10 @@ export default class ModalBasic extends Vue {
   .padding-h-sides(3);
 }
 
-.modal-container-small {
-  width: 400px;
-  .button-container {
-    display: block;
-    .padding-top(1);
-  }
-}
-
-.modal-body {
-  background: @white;
-  .padding(3);
-  border-radius: 8px 8px 0 0;
-}
-
-.modal-default-button {
-  float: right;
-}
-
 .night,
 .night-theme {
-  .v--modal-overlay {
-    background-color: @night-modal-mask;
-  }
-
-  .modal-container {
-    background: @dark-3;
-    box-shadow: 0px 4px 8px @night-shadow;
-  }
-
   .modal-body {
     background: @night-shadow;
-  }
-
-  .modal-title,
-  .modal-sub-title {
-    color: @night-title;
   }
 
   .modal-footer {
