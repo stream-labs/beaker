@@ -41,9 +41,11 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class SSProSimulator extends Vue {
-  @Prop() username!: string;
+  @Prop()
+  username!: string;
 
-  @Prop() icon!: String;
+  @Prop()
+  icon!: String;
 
   themeClasses = ["teal", "orange", "purple", "electric-blue", "red", "lime"];
   themeClass = "";

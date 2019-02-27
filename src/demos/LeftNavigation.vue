@@ -50,6 +50,10 @@
       >Dropdowns</a>
       <a
         class="left-navigation__link"
+        @click="changeSection('extras')"
+      >Extras</a>
+      <a
+        class="left-navigation__link"
         @click="changeSection('forms')"
       >Forms</a>
       <a
