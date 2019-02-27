@@ -30,56 +30,56 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Emit } from "vue-property-decorator";
-import Button from "./../components/Button.vue";
+import { Component, Prop, Vue, Emit } from 'vue-property-decorator'
+import Button from './../components/Button.vue'
 
 @Component({
   components: {
-    Button
-  }
+    Button,
+  },
 })
 export default class ImagePicker extends Vue {
   $refs!: {
-    fileInput: HTMLElement;
-  };
+    fileInput: HTMLElement
+  }
 
-  private imageData: any = null;
-  private imageFileName: any = "Click here to add image...";
-  private imageThumb: any = null;
-  private imageSelected: Boolean = false;
+  private imageData: any = null
+  private imageFileName: any = 'Click here to add image...'
+  private imageThumb: any = null
+  private imageSelected: Boolean = false
 
   chooseImage() {
     if (!this.imageSelected) {
-      this.$refs.fileInput.click();
+      this.$refs.fileInput.click()
     }
   }
 
   deleteImage() {
-    this.imageFileName = "Click here to add image...";
-    this.imageThumb = null;
-    this.imageSelected = false;
+    this.imageFileName = 'Click here to add image...'
+    this.imageThumb = null
+    this.imageSelected = false
   }
 
   uploadImage() {
-    this.$emit("upload", this.imageData);
+    this.$emit('upload', this.imageData)
   }
 
   onSelectFile(event: any) {
-    var files = event.target.files;
-    var output: any = [];
+    var files = event.target.files
+    var output: any = []
     for (var i = 0, f; (f = files[i]); i++) {
-      output.push(f.name, f.size);
+      output.push(f.name, f.size)
     }
-    this.imageFileName = output[0];
-    this.imageData = event.target.files[0];
-    this.imageThumb = URL.createObjectURL(files[0]);
-    this.imageSelected = true;
+    this.imageFileName = output[0]
+    this.imageData = event.target.files[0]
+    this.imageThumb = URL.createObjectURL(files[0])
+    this.imageSelected = true
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
 .image-picker {
   display: flex;

@@ -1,5 +1,12 @@
 <template>
-  <modal name="modal-confirmation" height="auto" :scrollable="true">
+  <modal
+    :width="modalWidth"
+    :minWidth="modalMinWidth"
+    :minHeight="modalMinHeight"
+    height="auto"
+   :adaptive="true"
+    name="modal-confirmation"
+  >
     <div class="modal-container">
       <div class="confirmation">
         <h2 class="modal-sub-title">{{subTitle}}</h2>
@@ -28,58 +35,26 @@ import Button from './../components/Button.vue'
   },
 })
 export default class ModalBasic extends Vue {
-  @Prop()
-  subTitle!: {
-    type: string
-    default: null
-  }
+  @Prop({ default: 600 })
+  width!: number
 
-  @Prop()
-  text!: {
-    type: string
-    default: null
-  }
+  modalWidth: number = this.width
 
-  @Prop()
-  width!: {
-    type: number
-    default: 30000
-  }
+  @Prop({ default: 600 })
+  minWidth!: number
 
-  @Prop()
-  minWidth!: {
-    type: number
-    default: 600
-  }
+  modalMinWidth: number = this.minWidth
 
-  @Prop()
-  height!: {
-    type: number
-    default: null
-  }
+  @Prop({ default: null })
+  minHeight!: number
 
-  @Prop()
-  minHeight!: {
-    type: number
-    default: null
-  }
+  modalMinHeight: number = this.minHeight
 
-  opened(e: any) {
-    // e.ref should not be undefined here
-    console.log('opened', e)
-    console.log('ref', e.ref)
-  }
+  @Prop({ default: null })
+  subTitle!: string
 
-  closed(e: any) {
-    console.log('closed', e)
-  }
-
-  test(e: any) {
-    if (e && e.params) {
-      this.text = e.params.text
-      console.log(e.params.text)
-    }
-  }
+  @Prop({ default: null })
+  text!: string
 }
 </script>
 
@@ -110,7 +85,7 @@ export default class ModalBasic extends Vue {
 
 .night,
 .night-theme {
-  .modal-mask {
+  .v--modal-overlay {
     background-color: @night-modal-mask;
   }
 
@@ -124,4 +99,3 @@ export default class ModalBasic extends Vue {
   }
 }
 </style>
-

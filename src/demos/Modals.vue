@@ -9,7 +9,6 @@
       :title="'UI Modal'"
       :sub-title="'Subtitle'"
       :text="'Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.'"
-      :width="600"
     ></ModalBasic>
 
     <ModalSubscribe
@@ -27,6 +26,7 @@
     ></ModalRedirect>
 
     <ModalConfirmation
+      :width="400"
       :sub-title="'Delete ‘Streamlabs Pillow’'"
       :text="'Are you sure you want to delete the merch item ‘Streamlabs Pillow’? This action cannot be undone.'"
     ></ModalConfirmation>
@@ -82,4 +82,3 @@ export default class Modals extends Vue {
   // }
 }
 </script>
-

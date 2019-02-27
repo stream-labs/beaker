@@ -22,37 +22,37 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import Toggle from "./components/Toggle.vue";
+import { Component, Vue } from 'vue-property-decorator'
+import Toggle from './components/Toggle.vue'
 
 @Component({
   components: {
-    Toggle
-  }
+    Toggle,
+  },
 })
 export default class App extends Vue {
-  appClass = "app-wrapper";
-  nightClasses = ["night", "night-theme"];
-  nightTheme = false;
-  theme = "";
+  appClass = 'app-wrapper'
+  nightClasses = ['night', 'night-theme']
+  nightTheme = false
+  theme = ''
 
   themes = {
-    day: "Day",
-    night: "Night"
-  };
+    day: 'Day',
+    night: 'Night',
+  }
 
   toggleTheme() {
-    if (this.theme === "night") {
-      this.nightTheme = true;
+    if (this.theme === 'night') {
+      this.nightTheme = true
     } else {
-      this.nightTheme = false;
+      this.nightTheme = false
     }
   }
 }
 </script>
 
 <style lang="less">
-@import "./styles/App";
+@import './styles/App';
 
 #nav {
   border-bottom: 1px solid @day-border;

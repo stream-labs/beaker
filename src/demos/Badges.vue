@@ -181,16 +181,16 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
-import Accordion from "./../components/Accordion.vue";
-import Badge from "./../components/Badge.vue";
+import Accordion from './../components/Accordion.vue'
+import Badge from './../components/Badge.vue'
 
 @Component({
   components: {
     Accordion,
-    Badge
-  }
+    Badge,
+  },
 })
 export default class Badges extends Vue {}
 </script>

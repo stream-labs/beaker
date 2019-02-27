@@ -1,5 +1,12 @@
 <template>
-  <modal name="modal-subscribe" height="auto" :scrollable="true">
+  <modal
+    :width="modalWidth"
+    :minWidth="modalMinWidth"
+    :minHeight="modalMinHeight"
+    height="auto"
+    :adaptive="true"
+    name="modal-subscribe"
+  >
     <div class="modal-container">
       <div class="subscribe-icon-box">
         <i class="icon-close" @click="$modal.hide('modal-subscribe')"></i>
@@ -7,9 +14,7 @@
       <div class="subscribe-upper">
         <div class="subscribe-title-box">
           <h1 class="modal-title">{{title}}</h1>
-          <!-- <div> -->
           <badge :align-left="true">Pro</badge>
-          <!-- </div> -->
         </div>
         <h2 class="modal-sub-title">{{subTitle}}</h2>
       </div>
@@ -49,58 +54,38 @@ import Badge from './../components/Badge.vue'
   },
 })
 export default class ModalBasic extends Vue {
-  @Prop()
-  title!: {
-    type: string
-    default: null
-  }
+  @Prop({ default: 600 })
+  width!: number
 
-  @Prop()
-  subTitle!: {
-    type: string
-    default: null
-  }
+  modalWidth: number = this.width
 
-  @Prop()
-  text!: {
-    type: string
-    default: null
-  }
+  @Prop({ default: 600 })
+  minWidth!: number
 
-  @Prop()
-  subscribeText!: {
-    type: string
-    default: null
-  }
+  modalMinWidth: number = this.minWidth
 
-  @Prop()
-  subscribeMessage!: {
-    type: string
-    default: null
-  }
+  @Prop({ default: null })
+  minHeight!: number
 
-  @Prop()
-  notes!: {
-    type: string
-    default: null
-  }
+  modalMinHeight: number = this.minHeight
 
-  opened(e: any) {
-    // e.ref should not be undefined here
-    console.log('opened', e)
-    console.log('ref', e.ref)
-  }
+  @Prop({ default: null })
+  title!: string
 
-  closed(e: any) {
-    console.log('closed', e)
-  }
+  @Prop({ default: null })
+  subTitle!: string
 
-  test(e: any) {
-    if (e && e.params) {
-      this.text = e.params.text
-      console.log(e.params.text)
-    }
-  }
+  @Prop({ default: null })
+  text!: string
+
+  @Prop({ default: null })
+  subscribeText!: string
+
+  @Prop({ default: null })
+  subscribeMessage!: string
+
+  @Prop({ default: null })
+  notes!: string
 }
 </script>
 
@@ -121,36 +106,6 @@ export default class ModalBasic extends Vue {
 .modal-sub-title {
   .margin-bottom(2);
   .weight(@medium);
-}
-
-.modal-footer {
-  background: @light-2;
-  .radius-bottom(2, 2);
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.modal-footer-inner {
-  .padding-v-sides(2);
-  .padding-h-sides(3);
-}
-
-.modal-container-small {
-  width: 400px;
-  .button-container {
-    display: block;
-    .padding-top(1);
-  }
-}
-
-.modal-body {
-  .padding(3);
-  .radius(2);
-}
-
-.modal-default-button {
-  float: right;
 }
 
 .subscribe-upper,
@@ -221,26 +176,9 @@ export default class ModalBasic extends Vue {
   .padding-v-sides(2);
 }
 
-.redirect {
-  text-align: center;
-  .padding(3);
-  .modal-text {
-    .padding-h-sides(8);
-  }
-}
-
-.spinner {
-  .padding-bottom(1.8);
-}
-
-.confirmation {
-  text-align: center;
-  .padding(3);
-}
-
 .night,
 .night-theme {
-  .modal-mask {
+  .v--modal-overlay {
     background-color: @night-modal-mask;
   }
 
@@ -254,10 +192,6 @@ export default class ModalBasic extends Vue {
     color: @night-title;
   }
 
-  .modal-footer {
-    background: @dark-2;
-  }
-
   .subscribe-text {
     color: @white;
   }
@@ -267,4 +201,3 @@ export default class ModalBasic extends Vue {
   }
 }
 </style>
-

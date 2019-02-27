@@ -1,5 +1,13 @@
 <template>
-  <modal name="modal-basic" height="auto" :scrollable="true" :classes="'modal-wrapper'">
+  <modal
+    :width="modalWidth"
+    :minWidth="modalMinWidth"
+    :minHeight="modalMinHeight"
+    height="auto"
+    :adaptive="true"
+    name="modal-basic"
+    :classes="'modal-wrapper'"
+  >
     <div class="modal-container">
       <div class="modal-body">
         <div class="normal-upper">
@@ -33,43 +41,31 @@ import Button from './../components/Button.vue'
   },
 })
 export default class ModalBasic extends Vue {
-  @Prop()
-  title!: {
-    type: string
-    default: null
-  }
+  @Prop({ default: 600 })
+  width!: number
 
-  @Prop()
-  subTitle!: {
-    type: string
-    default: null
-  }
+  modalWidth: number = this.width
 
-  @Prop()
-  text!: {
-    type: string
-    default: null
-  }
+  @Prop({ default: 600 })
+  minWidth!: number
 
-  opened(e: any) {
-    // e.ref should not be undefined here
-    console.log('opened', e)
-    console.log('ref', e.ref)
-  }
+  modalMinWidth: number = this.minWidth
 
-  closed(e: any) {
-    console.log('closed', e)
-  }
+  @Prop({ default: null })
+  minHeight!: number
 
-  test(e: any) {
-    if (e && e.params) {
-      this.text = e.params.text
-      console.log(e.params.text)
-    }
-  }
+  modalMinHeight: number = this.minHeight
+
+  @Prop({ default: null })
+  title!: string
+
+  @Prop({ default: null })
+  subTitle!: string
+
+  @Prop({ default: null })
+  text!: string
 }
 </script>
-
 
 <style lang="less" scoped>
 @import './../styles/Imports';
@@ -145,4 +141,3 @@ export default class ModalBasic extends Vue {
   }
 }
 </style>
-
