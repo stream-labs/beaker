@@ -50,14 +50,14 @@ export default class SSProSimulator extends Vue {
   myInt!: number;
 
   rotateClasses() {
-    const it = this.themeClasses[Symbol.iterator]();
+    let it = this.themeClasses[Symbol.iterator]();
     this.myInt = setInterval(() => {
       // time interval
       const next = it.next();
       if (!next.done) {
         this.themeClass = "sp-simulator__web-page--" + next.value;
       } else {
-        clearInterval(this.myInt);
+        it = this.themeClasses[Symbol.iterator]();
       }
     }, 2000);
   }
