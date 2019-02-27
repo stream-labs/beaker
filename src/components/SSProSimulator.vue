@@ -38,13 +38,8 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import TextInput from "./../components/TextInput.vue";
 
-@Component({
-  components: {
-    TextInput
-  }
-})
+@Component({})
 export default class SSProSimulator extends Vue {
   @Prop() username!: string;
 
@@ -52,19 +47,23 @@ export default class SSProSimulator extends Vue {
 
   themeClasses = ["teal", "orange", "purple", "electric-blue", "red", "lime"];
   themeClass = "";
+  myInt!: number;
 
   rotateClasses() {
-    const it = this.themeClasses[Symbol.iterator](); // convenient for yeilding values
-    const int = setInterval(() => {
+    const it = this.themeClasses[Symbol.iterator]();
+    this.myInt = setInterval(() => {
       // time interval
-      const next = it.next(); // next value
+      const next = it.next();
       if (!next.done) {
-        // done = true when the end of array reached
-        this.themeClass = "sp-simulator__web-page--" + next.value; // concatenate word to the string
+        this.themeClass = "sp-simulator__web-page--" + next.value;
       } else {
-        clearInterval(int);
+        clearInterval(this.myInt);
       }
-    }, 2000); // interval duration
+    }, 2000);
+  }
+
+  beforeDestroy() {
+    clearInterval(this.myInt);
   }
 
   mounted() {
