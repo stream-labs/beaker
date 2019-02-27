@@ -57,7 +57,8 @@ export default class SSProSimulator extends Vue {
       if (!next.done) {
         this.themeClass = "sp-simulator__web-page--" + next.value;
       } else {
-        clearInterval(this.myInt);
+        this.rotateClasses();
+        // clearInterval(this.myInt);
       }
     }, 2000);
   }
@@ -136,8 +137,10 @@ export default class SSProSimulator extends Vue {
     "merch social countdown lb";
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 16px;
+  .transition();
 
   .sp-simulator__section {
+    .transition();
     &:nth-child(2) {
       grid-area: video;
     }
@@ -185,11 +188,13 @@ export default class SSProSimulator extends Vue {
   .margin(@0);
   width: 100%;
   height: @spacing;
+  .transition();
   .radius(2);
   background-color: lighten(@night-bg, 4%);
 }
 
 .sp-simulator__video {
+  .transition();
   display: flex;
   align-items: center;
   justify-content: center;
@@ -202,6 +207,7 @@ export default class SSProSimulator extends Vue {
 }
 
 .sp-simulator__icon {
+  .transition();
   width: 40px;
   height: 40px;
   border-radius: 100%;
@@ -209,6 +215,7 @@ export default class SSProSimulator extends Vue {
 }
 
 .sp-simulator__section {
+  .transition();
   .padding(2);
   .radius(2);
   min-height: 100px;
@@ -216,6 +223,7 @@ export default class SSProSimulator extends Vue {
 }
 
 .ss-simulator__fake-input {
+  .transition();
   height: 24px;
   .radius();
   border: 1px solid rgba(255, 255, 255, 0.24);
@@ -224,6 +232,7 @@ export default class SSProSimulator extends Vue {
 }
 
 .ss-simulator__fake-button {
+  .transition();
   height: 40px;
   .radius();
   background-color: lighten(@night-bg, 16%);
