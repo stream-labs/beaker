@@ -841,26 +841,26 @@ components: {
 
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import Accordion from './../components/Accordion.vue'
-import Button from './../components/Button.vue'
+import { Component, Vue } from "vue-property-decorator";
+import Accordion from "./../components/Accordion.vue";
+import Button from "./../components/Button.vue";
 
 @Component({
   components: {
     Accordion,
-    Button,
-  },
+    Button
+  }
 })
 export default class Forms extends Vue {
-  isLoading = true
-  isLoadingExample = false
+  isLoading = true;
+  isLoadingExample = false;
 
   buttonClick() {
-    alert('Button clicked')
+    alert("Button clicked");
   }
 
   buttonActionClick() {
-    alert('Button clicked')
+    alert("Button clicked");
   }
 }
 </script>

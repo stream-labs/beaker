@@ -4,8 +4,7 @@
     :classes="'modal-wrapper'"
     :maxWidth="modalWidth"
     :minWidth="modalMinWidth"
-    :height="modalHeight"
-    :minHeight="modalMinHeight"
+    height="auto"
     :adaptive="true"
   >
     <div class="modal-container">
@@ -65,33 +64,23 @@ export default class ModalSubscribe extends Vue {
 
   modalMinWidth: number = this.minWidth
 
-  @Prop({ default: 'auto' })
-  height!: number
-
-  modalHeight: number = this.height
-
-  @Prop({ default: null })
-  minHeight!: number
-
-  modalMinHeight: number = this.minHeight
-
-  @Prop({ default: null })
+  @Prop()
   title!: string
 
-  @Prop({ default: null })
+  @Prop()
   subTitle!: string
 
-  @Prop({ default: null })
+  @Prop()
   text!: string
 
-  @Prop({ default: null })
+  @Prop()
+  notes!: string
+
+  @Prop()
   subscribeText!: string
 
-  @Prop({ default: null })
+  @Prop()
   subscribeMessage!: string
-
-  @Prop({ default: null })
-  notes!: string
 }
 </script>
 
@@ -102,7 +91,7 @@ export default class ModalSubscribe extends Vue {
 
 .subscribe-upper,
 .subscribe-bottom {
-  .padding-v-sides(1);
+  .padding-v-sides();
   .padding-h-sides(4);
 }
 
@@ -111,10 +100,11 @@ export default class ModalSubscribe extends Vue {
   .padding-h-sides(3);
   .padding-bottom(0);
   overflow: hidden;
-  .icon-close {
-    float: right;
-    cursor: pointer;
-  }
+}
+
+.icon-close {
+  float: right;
+  cursor: pointer;
 }
 
 .subscribe-title-box {
@@ -122,10 +112,11 @@ export default class ModalSubscribe extends Vue {
   justify-content: flex-start;
   align-items: center;
   .margin-bottom(1.5);
-  .modal-title {
-    margin: 0;
-    .margin-right(1);
-  }
+}
+
+.modal-title {
+  .margin(0);
+  .margin-right();
 }
 
 .button-subscribe {
@@ -140,26 +131,29 @@ export default class ModalSubscribe extends Vue {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #efefef;
-  height: 146px;
-  .subscribe-box {
-    text-align: center;
-    .subscribe-text {
-      font-size: 16px;
-      font-weight: @medium;
-      .margin-v-sides(0);
-    }
-    .subscribe-message {
-      font-size: 16px;
-      display: inline-block;
-      .margin-v-sides(0);
-      .subscribe-icon {
-        display: inline-block;
-        vertical-align: middle;
-        .padding-left(1);
-      }
-    }
-  }
+  min-height: 136px;
+}
+
+.subscribe-box {
+  text-align: center;
+}
+
+.subscribe-text {
+  font-size: 16px;
+  .weight(@medium);
+  .margin-v-sides(0);
+}
+
+.subscribe-message {
+  font-size: 16px;
+  display: inline-block;
+  .margin-v-sides(0);
+}
+
+.subscribe-icon {
+  display: inline-block;
+  vertical-align: middle;
+  .padding-left();
 }
 
 .modal-notes {
@@ -167,16 +161,5 @@ export default class ModalSubscribe extends Vue {
   color: @light-5;
   .small-type();
   .padding-v-sides(2);
-}
-
-.night,
-.night-theme {
-  .subscribe-text {
-    color: @white;
-  }
-
-  .subscribe-message {
-    color: @light-4;
-  }
 }
 </style>

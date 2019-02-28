@@ -34,78 +34,78 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import Accordion from './../components/Accordion.vue'
-import ScrollNav from './../components/ScrollNav.vue'
-import Tabs from './../components/Tabs.vue'
+import { Component, Vue } from "vue-property-decorator";
+import Accordion from "./../components/Accordion.vue";
+import ScrollNav from "./../components/ScrollNav.vue";
+import Tabs from "./../components/Tabs.vue";
 
 @Component({
   components: {
     Accordion,
     ScrollNav,
-    Tabs,
-  },
+    Tabs
+  }
 })
 export default class TabsDemo extends Vue {
   tabs = [
     {
-      name: 'General',
-      value: 'general',
+      name: "General",
+      value: "general"
     },
     {
-      name: 'Advanced',
-      value: 'advanced',
+      name: "Advanced",
+      value: "advanced"
     },
     {
-      name: 'Account',
-      value: 'Account',
+      name: "Account",
+      value: "Account"
     },
     {
-      name: 'Integrations',
-      value: 'integrations',
+      name: "Integrations",
+      value: "integrations"
     },
     {
-      name: 'Payments',
-      value: 'payments',
+      name: "Payments",
+      value: "payments"
     },
     {
-      name: 'Donations',
-      value: 'donations',
+      name: "Donations",
+      value: "donations"
     },
     {
-      name: 'Subscriptions',
-      value: 'subscriptions',
+      name: "Subscriptions",
+      value: "subscriptions"
     },
     {
-      name: 'Preferences',
-      value: 'preferences',
+      name: "Preferences",
+      value: "preferences"
     },
     {
-      name: 'Apps',
-      value: 'apps',
+      name: "Apps",
+      value: "apps"
     },
     {
-      name: 'Merch',
-      value: 'merch',
+      name: "Merch",
+      value: "merch"
     },
     {
-      name: 'API',
-      value: 'api',
+      name: "API",
+      value: "api"
     },
     {
-      name: 'Moderators',
-      value: 'moderators',
+      name: "Moderators",
+      value: "moderators"
     },
     {
-      name: 'Themes',
-      value: 'themes',
-    },
-  ]
+      name: "Themes",
+      value: "themes"
+    }
+  ];
 
-  selectedTab = 'general'
+  selectedTab = "general";
 
   onSelectTabHandler(tab: string) {
-    this.selectedTab = tab
+    this.selectedTab = tab;
   }
 }
 </script>

@@ -16,29 +16,29 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import Button from './Button.vue'
+import { Component, Prop, Vue } from "vue-property-decorator";
+import Button from "./Button.vue";
 
 @Component({
   components: {
-    Button,
-  },
+    Button
+  }
 })
 export default class TooltipNotice extends Vue {
   @Prop({ required: true })
-  title!: string
+  title!: string;
 
   @Prop({ required: true })
-  desc!: string
+  desc!: string;
 
   clickHandler() {
-    this.$emit('handle-tooltip')
+    this.$emit("handle-tooltip");
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 .tooltip-notice {
   .day-shadow();

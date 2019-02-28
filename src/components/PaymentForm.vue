@@ -26,27 +26,27 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import Checkbox from './Checkbox.vue'
-import Radio from './Radio.vue'
-import Selector from './Selector.vue'
-import TextInput from './TextInput.vue'
+import { Component, Prop, Vue } from "vue-property-decorator";
+import Checkbox from "./Checkbox.vue";
+import Radio from "./Radio.vue";
+import Selector from "./Selector.vue";
+import TextInput from "./TextInput.vue";
 
 @Component({
   components: {
     Checkbox,
     Radio,
     Selector,
-    TextInput,
-  },
+    TextInput
+  }
 })
 export default class PaymentForm extends Vue {
-  savePaymentMethod = true
+  savePaymentMethod = true;
 }
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 .credit-card-form {
   background-color: @day-section;
@@ -65,9 +65,9 @@ export default class PaymentForm extends Vue {
   grid-template-columns: repeat(4, 1fr);
 
   grid-template-areas:
-    'cc-name cc-name cc-name cc-name'
-    'cc-number cc-number cc-exp cc-cvc'
-    'cc-zip cc-zip cc-country cc-country';
+    "cc-name cc-name cc-name cc-name"
+    "cc-number cc-number cc-exp cc-cvc"
+    "cc-zip cc-zip cc-country cc-country";
 }
 
 .credit-card-form__cc-number {

@@ -4,8 +4,7 @@
     :classes="'modal-wrapper'"
     :maxWidth="modalWidth"
     :minWidth="modalMinWidth"
-    :height="modalHeight"
-    :minHeight="modalMinHeight"
+    height="auto"
     :adaptive="true"
   >
     <div class="modal-container">
@@ -46,20 +45,10 @@ export default class ModalConfirmation extends Vue {
 
   modalMinWidth: number = this.minWidth
 
-  @Prop({ default: 'auto' })
-  height!: number
-
-  modalHeight: number = this.height
-
-  @Prop({ default: null })
-  minHeight!: number
-
-  modalMinHeight: number = this.minHeight
-
-  @Prop({ default: null })
+  @Prop()
   subTitle!: string
 
-  @Prop({ default: null })
+  @Prop()
   text!: string
 }
 </script>
@@ -71,12 +60,13 @@ export default class ModalConfirmation extends Vue {
 
 .modal-container {
   .padding(3);
-  .confirmation {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
+}
+
+.confirmation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .modal-default-button {

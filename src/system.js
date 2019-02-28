@@ -20,11 +20,11 @@ import FormGroupV from "@/components/FormGroupV";
 import HelloWorld from "@/components/HelloWorld";
 import ImagePicker from "@/components/ImagePicker";
 import ItemGrid from "@/components/ItemGrid";
-import Modal from "@/components/Modal";
 import ModalBasic from "@/components/ModalBasic";
+import ModalComp from "@/components/ModalComp";
 import ModalConfirmation from "@/components/ModalConfirmation";
-import ModalSubscribe from "@/components/ModalSubscribe";
 import ModalRedirect from "@/components/ModalRedirect";
+import ModalSubscribe from "@/components/ModalSubscribe";
 import PaymentForm from "@/components/PaymentForm";
 import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
@@ -51,11 +51,11 @@ const components = [
   HelloWorld,
   ImagePicker,
   ItemGrid,
-  Modal,
   ModalBasic,
+  ModalComp,
   ModalConfirmation,
-  ModalSubscribe,
   ModalRedirect,
+  ModalSubscribe,
   Selector,
   Slider,
   Spinner,
@@ -65,8 +65,8 @@ const components = [
   TooltipNotice,
   Pagination,
   ProgressBar,
-  VirtualItem,
-]
+  VirtualItem
+];
 
 // Install the above defined components
 // const System = {
@@ -94,11 +94,11 @@ export {
   HelloWorld,
   ImagePicker,
   ItemGrid,
-  Modal,
   ModalBasic,
+  ModalComp,
   ModalConfirmation,
-  ModalSubscribe,
   ModalRedirect,
+  ModalSubscribe,
   PaymentForm,
   Selector,
   Slider,
@@ -109,5 +109,5 @@ export {
   TooltipNotice,
   Pagination,
   ProgressBar,
-  VirtualItem,
-}
+  VirtualItem
+};
