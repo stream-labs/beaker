@@ -50,6 +50,10 @@
       >Dropdowns</a>
       <a
         class="left-navigation__link"
+        @click="changeSection('extras')"
+      >Extras</a>
+      <a
+        class="left-navigation__link"
         @click="changeSection('forms')"
       >Forms</a>
       <a
@@ -89,6 +93,10 @@
         class="left-navigation__link"
         @click="changeSection('spinners')"
       >Spinners</a>
+      <a
+        class="left-navigation__link"
+        @click="changeSection('streamer-sites')"
+      >Streamer Sites</a>
       <a
         class="left-navigation__link"
         @click="changeSection('tables')"

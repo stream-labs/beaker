@@ -2,20 +2,17 @@
   <transition name="fade">
     <div class="modal-mask">
       <div class="modal-wrapper">
-        <div
-          v-if="modalType==='modal'"
-          class="modal-container"
-        >
+        <div v-if="modalType==='modal'" class="modal-container">
           <div class="modal-body">
             <div class="normal-upper">
               <h1 class="modal-title">
                 <slot name="title"></slot>
               </h1>
               <h2 class="modal-sub-title">
-                <slot name="sub-title"> </slot>
+                <slot name="sub-title"></slot>
               </h2>
               <p class="modal-text">
-                <slot name="text"> </slot>
+                <slot name="text"></slot>
               </p>
             </div>
           </div>
@@ -26,28 +23,19 @@
                 :title="'Close'"
                 :size="'fixed-width'"
                 @click="$emit('close')"
-              >
-              </Button>
-              <Button
-                :variation="'action'"
-                :title="'Confirm'"
-                :size="'fixed-width'"
-              >
-              </Button>
+              ></Button>
+              <Button :variation="'action'" :title="'Confirm'" :size="'fixed-width'"></Button>
             </div>
           </div>
         </div>
 
-        <div v-if="modalType==='subscribing'">
+        <div v-if="modalType==='subscribe'">
           <div class="modal-container">
-            <div class="subscribing-icon-box">
-              <i
-                class="icon-close"
-                @click="$emit('close')"
-              ></i>
+            <div class="subscribe-icon-box">
+              <i class="icon-close" @click="$emit('close')"></i>
             </div>
-            <div class="subscribing-upper">
-              <div class="subscribing-title-box">
+            <div class="subscribe-upper">
+              <div class="subscribe-title-box">
                 <h1 class="modal-title">
                   <slot name="title"></slot>
                 </h1>
@@ -59,8 +47,27 @@
                 <slot name="sub-title"></slot>
               </h2>
             </div>
-            <div class="subscribing-bottom">
-              <p class="modal-text modal-text-subscribing">
+
+            <div class="subscribe-body" :class="{ 'subscribe-body--pro': streamlabsPro }" v-if="streamlabsPro">
+              <div class="subscribe-box">
+                <p class="subscribe-text">
+                  <slot name="subscribe-text"></slot>
+                </p>
+                <p class="subscribe-message">
+                  <slot name="subscribe-message"></slot>
+                  <span class="subscribe-icon">
+                    <slot name="subscribe-icon"></slot>
+                  </span>
+                </p>
+              </div>
+            </div>
+
+            <div class="subscribe-body" v-else>
+              <slot name="subscribe-body"></slot>
+            </div>
+
+            <div class="subscribe-bottom">
+              <p class="modal-text modal-text-subscribe">
                 <slot name="text"></slot>
               </p>
               <div class="button-subscribe">
@@ -77,7 +84,7 @@
           <div class="modal-container">
             <div class="redirect">
               <div class="spinner">
-              <Spinner :variation="'bars'"/>
+                <Spinner :variation="'bars'"/>
               </div>
               <h1 class="modal-title">
                 <slot name="title"></slot>
@@ -104,14 +111,8 @@
                   :title="'Cancel'"
                   :size="'fixed-width'"
                   @click="$emit('close')"
-                >
-                </Button>
-                <Button
-                  :variation="'warning'"
-                  :title="'Delete'"
-                  :size="'fixed-width'"
-                >
-                </Button>
+                ></Button>
+                <Button :variation="'warning'" :title="'Delete'" :size="'fixed-width'"></Button>
               </div>
             </div>
           </div>
@@ -135,9 +136,15 @@ import Spinner from "./../components/Spinner.vue";
 export default class Modal extends Vue {
   @Prop()
   modalType!: {
-    type: string
-    default: null
-  }
+    type: string;
+    default: null;
+  };
+
+  @Prop()
+  streamlabsPro!: {
+    type: boolean;
+    default: false;
+  };
 }
 </script>
 
@@ -213,13 +220,13 @@ export default class Modal extends Vue {
   float: right;
 }
 
-.subscribing-upper,
-.subscribing-bottom {
+.subscribe-upper,
+.subscribe-bottom {
   .padding-v-sides(2);
   .padding-h-sides(4);
 }
 
-.subscribing-icon-box {
+.subscribe-icon-box {
   .padding-v-sides(3);
   .padding-h-sides(3);
   .padding-bottom(0);
@@ -229,7 +236,7 @@ export default class Modal extends Vue {
   }
 }
 
-.subscribing-title-box {
+.subscribe-title-box {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -244,8 +251,41 @@ export default class Modal extends Vue {
   .margin-top(3);
 }
 
-.modal-text-subscribing {
+.modal-text-subscribe {
   .margin-bottom(3);
+}
+
+.subscribe-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.subscribe-body--pro {
+  background: #efefef;
+  height: 146px;
+
+  .subscribe-box {
+    text-align: center;
+
+    .subscribe-text {
+      font-size: 16px;
+      font-weight: @medium;
+      .margin-v-sides(0);
+    }
+
+    .subscribe-message {
+      font-size: 16px;
+      display: inline-block;
+      .margin-v-sides(0);
+    }
+
+    .subscribe-icon {
+      display: inline-block;
+      vertical-align: middle;
+      .padding-left(1);
+    }
+  }
 }
 
 .modal-notes {
@@ -288,8 +328,20 @@ export default class Modal extends Vue {
     color: @night-title;
   }
 
+  .subscribe-body {
+    background-color: @dark-4;
+  }
+
   .modal-footer {
     background: @dark-2;
+  }
+
+  .subscribe-text {
+    color: @white;
+  }
+
+  .subscribe-message {
+    color: @light-4;
   }
 }
 </style>

@@ -5,119 +5,71 @@
       <p>Modal</p>
     </div>
 
+    <ModalBasic
+      :title="'UI Modal'"
+      :sub-title="'Subtitle'"
+      :text="'Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.'"
+    ></ModalBasic>
+
+    <ModalSubscribe
+      :title="'Streamlabs'"
+      :sub-title="'Never pay for GIFs and effects again!'"
+      :text="'Get unlimited free GIFs and effects that will show up on all alerts on all channels! You’ll also get a fancy ‘Pro’ badge next to your username on your donations.'"
+      :notes="'You may cancel your subscription at any time.'"
+    >
+    <FakeAlert slot="body"></FakeAlert>
+    </ModalSubscribe>
+
+    <ModalRedirect
+      :title="'Redirecting ...'"
+      :text="'Redirecting you to PayPal to update your method of payment. Click here if you have been waiting longer than 5 seconds.'"
+    ></ModalRedirect>
+
+    <ModalConfirmation
+      :width="400"
+      :sub-title="'Delete ‘Streamlabs Pillow’'"
+      :text="'Are you sure you want to delete the merch item ‘Streamlabs Pillow’? This action cannot be undone.'"
+    ></ModalConfirmation>
+
     <div class="button-container--left">
+      <Button :variation="'default'" :title="'modal'" @click="$modal.show('modal-basic')"></Button>
       <Button
         :variation="'default'"
-        :title="'modal'"
-        @click="showModalNormal"
-      >
-      </Button>
-      <Button
-        :variation="'default'"
-        :title="'modal subscribing'"
-        @click="showModalSubscribing"
-      >
-      </Button>
+        :title="'modal subscribe'"
+        @click="$modal.show('modal-subscribe')"
+      ></Button>
       <Button
         :variation="'default'"
         :title="'modal redirect'"
-        @click="showModalRedirect"
-      >
-      </Button>
+        @click="$modal.show('modal-redirect')"
+      ></Button>
       <Button
         :variation="'warning'"
         :title="'modal confirmation'"
-        @click="showModalConfirmation"
-      >
-      </Button>
+        @click="$modal.show('modal-confirmation')"
+      ></Button>
     </div>
-    <Modal
-      v-if="modal"
-      :modalType="'modal'"
-      @close="modal = false"
-    >
-      <template slot="title">UI Modal</template>
-      <template slot="sub-title">Subtitle</template>
-      <template slot="text">Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.</template>
-    </Modal>
-
-    <Modal
-      v-if="modalSubscribing"
-      :modalType="'subscribing'"
-      @close="modalSubscribing = false"
-    >
-      <template slot="title">Streamlabs</template>
-      <template slot="badge">
-        <badge :align-left="true">
-          Pro
-        </badge>
-      </template>
-      <template slot="sub-title">Never pay for GIFs and effects again!</template>
-      <template slot="text">Get unlimited free GIFs and effects that will show up on all alerts on all channels! You’ll also get a fancy ‘Pro’ badge next to your username on your donations.</template>
-      <template slot="button-subscribe">
-        <Button
-          :variation="'subscribe'"
-          :title="'Subscribe with PayPal'"
-          :price="'$5.99/mo'"
-        >
-        </Button>
-      </template>
-      <template slot="notes">You may cancel your subscription at any time.</template>
-    </Modal>
-
-    <Modal
-      v-if="modalRedirect"
-      :modalType="'redirect'"
-    >
-      <template slot="title">Redirecting ...
-      </template>
-      <template slot="text">Redirecting you to PayPal to update your method of payment.<br><a href="#">Click here</a> if you have been waiting longer than 5 seconds.</template>
-    </Modal>
-
-    <Modal
-      v-if="modalConfirmation"
-      :modalType="'confirmation'"
-      @close="modalConfirmation = false"
-    >
-      <template slot="sub-title">Delete ‘Streamlabs Pillow’
-      </template>
-      <template slot="text">
-        Are you sure you want to delete the merch item ‘Streamlabs Pillow’? This action cannot be undone.
-      </template>
-    </Modal>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Modal from "./../components/Modal.vue";
+import ModalBasic from "./../components/ModalBasic.vue";
+import ModalSubscribe from "./../components/ModalSubscribe.vue";
+import ModalRedirect from "./../components/ModalRedirect.vue";
+import ModalConfirmation from "./../components/ModalConfirmation.vue";
 import Button from "./../components/Button.vue";
-import Badge from "./../components/Badge.vue";
+import FakeAlert from "./../components/FakeAlert.vue";
 
 @Component({
   components: {
-    Modal,
+    ModalBasic,
+    ModalSubscribe,
+    ModalRedirect,
+    ModalConfirmation,
     Button,
-    Badge
+    FakeAlert
   }
 })
-export default class Modals extends Vue {
-  modal: Boolean = false;
-  modalSubscribing: Boolean = false;
-  modalRedirect: Boolean = false;
-  modalConfirmation: Boolean = false;
-  modalType: string = "";
-  showModalNormal() {
-    this.modal = true;
-  }
-  showModalSubscribing() {
-    this.modalSubscribing = true;
-  }
-  showModalRedirect() {
-    this.modalRedirect = true;
-  }
-  showModalConfirmation() {
-    this.modalConfirmation = true;
-  }
-}
+export default class Modals extends Vue {}
 </script>

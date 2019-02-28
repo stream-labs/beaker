@@ -10,11 +10,10 @@
     </div>
     <div class="logo-demos">
       <div class="logo-demo logo-demo--day">
-
         <a href="/img/kevin-day.svg" download>
           <img src="./../assets/imgs/kevin-day.svg">
         </a>
-
+        
         <a href="/img/logo.svg" download>
           <img src="./../assets/imgs/logo.svg">
         </a>
