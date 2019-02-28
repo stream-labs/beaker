@@ -32,7 +32,7 @@
       ></ModalRedirect>
     </div>
 
-    <div v-if="modalType === 'confirm'">
+    <div v-if="modalType === 'confirmation'">
       <ModalConfirmation
         :subTitle="modalsubTitle"
         :text="modalText"
