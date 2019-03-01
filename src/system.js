@@ -25,6 +25,7 @@ import ModalComp from "@/components/ModalComp";
 import ModalConfirmation from "@/components/ModalConfirmation";
 import ModalRedirect from "@/components/ModalRedirect";
 import ModalSubscribe from "@/components/ModalSubscribe";
+import NewFeatureOverlay from "@/components/NewFeatureOverlay";
 import PaymentForm from "@/components/PaymentForm";
 import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
@@ -56,6 +57,7 @@ const components = [
   ModalConfirmation,
   ModalRedirect,
   ModalSubscribe,
+  NewFeatureOverlay,
   Selector,
   Slider,
   Spinner,
@@ -99,6 +101,7 @@ export {
   ModalConfirmation,
   ModalRedirect,
   ModalSubscribe,
+  NewFeatureOverlay,
   PaymentForm,
   Selector,
   Slider,
