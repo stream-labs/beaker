@@ -98,7 +98,6 @@ export default class ModalBasic extends Vue {
 }
 
 .overlay__title {
-  font-family: 'Muli';
   font-size: 36px;
   font-weight: 900;
 }
