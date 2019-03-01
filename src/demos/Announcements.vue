@@ -1,4 +1,4 @@
-<template>
+  <template>
   <div>
     <div class="section">
       <h1>New Feature Overlay</h1>

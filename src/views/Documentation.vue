@@ -19,6 +19,7 @@
       <icons v-if="activeSection === 'icons'"/>
       <image-pickers v-if="activeSection === 'image-pickers'"/>
       <inputs v-if="activeSection === 'inputs'"/>
+      <layouts v-if="activeSection === 'layouts'"/>
       <modals v-if="activeSection === 'modals'"/>
       <notices v-if="activeSection === 'notices'"/>
       <progress-bars v-if="activeSection === 'progress-bars'"/>
@@ -55,6 +56,7 @@ import Forms from '@/demos/Forms.vue'
 import Icons from '@/demos/Icons.vue'
 import ImagePickers from '@/demos/ImagePickers.vue'
 import Inputs from '@/demos/Inputs.vue'
+import Layouts from '@/demos/Layouts.vue'
 import Modals from '@/demos/Modals.vue'
 import Navigations from '@/demos/Navigations.vue'
 import Notices from '@/demos/Notices.vue'
@@ -89,6 +91,7 @@ import VirtualItems from '@/demos/VirtualItems.vue'
     Icons,
     ImagePickers,
     Inputs,
+    Layouts,
     Modals,
     Navigations,
     Notices,

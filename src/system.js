@@ -15,6 +15,7 @@ import CallToAction from "@/components/CallToAction";
 import Callout from "@/components/Callout";
 import Checkbox from "@/components/Checkbox";
 import ColorPicker from "@/components/ColorPicker";
+import ContentRow from "@/components/ContentRow";
 import FormGroupH from "@/components/FormGroupH";
 import FormGroupV from "@/components/FormGroupV";
 import HelloWorld from "@/components/HelloWorld";
@@ -47,6 +48,7 @@ const components = [
   CallToAction,
   Callout,
   ColorPicker,
+  ContentRow,
   FormGroupH,
   FormGroupV,
   HelloWorld,
@@ -91,6 +93,7 @@ export {
   Callout,
   Checkbox,
   ColorPicker,
+  ContentRows,
   FormGroupH,
   FormGroupV,
   HelloWorld,

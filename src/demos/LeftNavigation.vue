@@ -23,6 +23,7 @@
       <a class="left-navigation__link" @click="changeSection('icons')">Icons</a>
       <a class="left-navigation__link" @click="changeSection('image-pickers')">Image Pickers</a>
       <a class="left-navigation__link" @click="changeSection('inputs')">Inputs</a>
+      <a class="left-navigation__link" @click="changeSection('layouts')">Layouts</a>
       <a class="left-navigation__link" @click="changeSection('modals')">Modals</a>
       <!-- <a class="left-navigation__link" @click="changeSection('merch')">Merch</a> -->
       <a class="left-navigation__link" @click="changeSection('notices')">Notices</a>
