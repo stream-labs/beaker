@@ -142,7 +142,7 @@ export default class Modal extends Vue {
 
   @Prop()
   streamlabsPro!: {
-    type: Boolean;
+    type: boolean;
     default: false;
   };
 }
