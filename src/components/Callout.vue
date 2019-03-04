@@ -91,6 +91,10 @@ export default class Callout extends Vue {
     }
   }
 
+  &.strong {
+    color: @white;
+  }
+
   &--success {
     background-color: @teal-semi;
     color: @teal;
@@ -104,6 +108,18 @@ export default class Callout extends Vue {
   &--info {
     background-color: @yellow-dark-semi;
     color: @info-dark;
+  }
+
+  &--success.strong {
+    background-color: @teal;
+  }
+
+  &--info.strong {
+    background-color: @info-dark;
+  }
+
+  &--warning.strong {
+    background-color: @warning;
   }
 
   &.callout--closed {

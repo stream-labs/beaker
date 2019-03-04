@@ -133,7 +133,6 @@ export default class Tabs extends Vue {
   box-sizing: border-box;
   position: relative;
   max-width: none;
-  border-bottom: 1px solid @day-border;
   background: transparent;
   width: 100%;
   position: absolute;
@@ -208,7 +207,6 @@ export default class Tabs extends Vue {
   overflow-x: hidden;
   white-space: nowrap;
   overflow-y: hidden;
-  .padding-bottom(2);
   width: 100%;
 
   &.has-prev {
@@ -218,19 +216,31 @@ export default class Tabs extends Vue {
   &.has-next {
     .margin-right(2);
   }
+
+  &:before {
+    content: "";
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: @day-border;
+  }
 }
 
 .tab {
   color: @day-paragraph;
   .padding-bottom(2);
   border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
   .margin-right(2);
   cursor: default;
   .transition();
+  display: inline-block;
+  position: relative;
+  .weight(@medium);
 
   &.is-active {
-    .weight(@medium);
     color: @day-title;
     border-color: @dark-2;
   }
@@ -243,8 +253,10 @@ export default class Tabs extends Vue {
 }
 
 .night-theme {
-  .tabs-nav {
-    border-color: @night-border;
+  .tabs {
+    &:before {
+      background-color: @night-border;
+    }
   }
 
   .tab {

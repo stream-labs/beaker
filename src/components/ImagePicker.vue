@@ -102,9 +102,11 @@ export default class ImagePicker extends Vue {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: @light-4;
+  color: @light-5;
+  background-color: @light-3;
   width: 40px;
   height: 40px;
+
   i {
     font-size: 24px;
   }

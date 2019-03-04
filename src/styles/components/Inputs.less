@@ -1,11 +1,11 @@
-// INPUTS
+// Inputs
 
-input[type=text],
-input[type=password],
-input[type=number],
-input[type=email],
-input[type=url],
-input[type=search],
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
 select {
   .radius();
   border: 1px solid @day-input-border;
@@ -14,7 +14,7 @@ select {
   font-size: 14px;
   .padding--input();
   background: @day-input-bg;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   color: @day-title;
   width: 100%;
   transition: all 0.275s ease-in-out;
@@ -25,6 +25,12 @@ select {
     border-color: @teal;
     background-color: @day-input-bg;
     outline: none;
+  }
+
+  ::placeholder,
+  ::-webkit-input-placeholder,
+  :-ms-input-placeholder {
+    color: @light-5;
   }
 }
 
@@ -95,7 +101,7 @@ input[readonly] {
     }
 
     .select2-container {
-      width: 55%!important;
+      width: 55% !important;
     }
   }
 }
@@ -110,7 +116,7 @@ input[readonly] {
   }
 }
 
-input[type=file] {
+input[type="file"] {
   width: auto;
   display: inline-block;
   vertical-align: middle;
@@ -191,7 +197,9 @@ textarea {
     input {
       padding: 0 24px;
     }
-    .fa-search {left: 0px;}
+    .fa-search {
+      left: 0px;
+    }
   }
 }
 
@@ -205,7 +213,7 @@ textarea {
   .input-wrapper {
     input {
       color: transparent;
-      text-shadow: 0 0 5px rgba(55,71,79,0.5);
+      text-shadow: 0 0 5px rgba(55, 71, 79, 0.5);
     }
   }
 }
@@ -244,7 +252,7 @@ textarea {
 
   .text-wrapper {
     color: transparent;
-    text-shadow: 0 0 5px rgba(55,71,79,0.5);
+    text-shadow: 0 0 5px rgba(55, 71, 79, 0.5);
   }
 }
 
@@ -338,9 +346,33 @@ textarea {
 
 .color-category--multi {
   background: #ea10be; /* Old browsers */
-  background: -moz-linear-gradient(-45deg, #ea10be 0%, #d8782a 22%, #e2d622 39%, #82d173 57%, #17a4ea 74%, #8f22e2 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg, #ea10be 0%,#d8782a 22%,#e2d622 39%,#82d173 57%,#17a4ea 74%,#8f22e2 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg, #ea10be 0%,#d8782a 22%,#e2d622 39%,#82d173 57%,#17a4ea 74%,#8f22e2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: -moz-linear-gradient(
+    -45deg,
+    #ea10be 0%,
+    #d8782a 22%,
+    #e2d622 39%,
+    #82d173 57%,
+    #17a4ea 74%,
+    #8f22e2 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    -45deg,
+    #ea10be 0%,
+    #d8782a 22%,
+    #e2d622 39%,
+    #82d173 57%,
+    #17a4ea 74%,
+    #8f22e2 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    135deg,
+    #ea10be 0%,
+    #d8782a 22%,
+    #e2d622 39%,
+    #82d173 57%,
+    #17a4ea 74%,
+    #8f22e2 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ea10be', endColorstr='#8f22e2',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
@@ -352,7 +384,7 @@ textarea {
   .radius();
 }
 
-input[type=text].input-bad {
+input[type="text"].input-bad {
   box-shadow: 0 0 5px @warning;
   padding: 3px 0px 3px 3px;
   margin: 5px 1px 3px 0px;
@@ -364,7 +396,7 @@ input[type=text].input-bad {
   }
 }
 
-input[type=text].input-good {
+input[type="text"].input-good {
   box-shadow: 0 0 5px @teal;
   padding: 3px 0px 3px 3px;
   margin: 5px 1px 3px 0px;
@@ -395,35 +427,35 @@ input[type=text].input-good {
 
 .daterange-picker {
   position: relative !important;
-  font-family: Roboto,sans-serif !important;
+  font-family: Roboto, sans-serif !important;
 
   .input-date {
     border: 1px solid @day-dropdown-border !important;
     background: @day-dropdown-bg !important;
     .radius();
-    line-height: 34px!important;
-    padding: 0 10px!important;
+    line-height: 34px !important;
+    padding: 0 10px !important;
 
     &:after {
-      content: '\f078'!important;
+      content: "\f078" !important;
       border: none;
-      font-family: 'Font Awesome 5 Free';
+      font-family: "Font Awesome 5 Free";
       font-weight: 900;
     }
   }
 
   .calendar {
     height: auto !important;
-    font-family: Roboto,sans-serif !important;
+    font-family: Roboto, sans-serif !important;
     .radius();
     background-color: @day-dropdown-bg!important;
-    .day-shadow()!important;
+    .day-shadow() !important;
 
     .calendar-head {
       h2 {
         font-size: 13px !important;
         padding: 10px !important;
-        font-family: Roboto,sans-serif !important;
+        font-family: Roboto, sans-serif !important;
       }
 
       i.close {
@@ -446,7 +478,7 @@ input[type=text].input-good {
       .calendar_days_in-range {
         background: @light-3;
         color: @day-title;
-        border: 0!important;
+        border: 0 !important;
       }
 
       .calendar-btn-apply {
@@ -460,7 +492,7 @@ input[type=text].input-good {
   .calendar_days li,
   .calendar_weeks li {
     .radius();
-    width: calc(~'13.6% - 4px')!important;
+    width: calc(~"13.6% - 4px") !important;
     margin: 2px;
   }
 
@@ -474,7 +506,7 @@ input[type=text].input-good {
     .calendar_days_selected {
       background: @light-3 !important;
       color: @day-title;
-      border: 0!important;
+      border: 0 !important;
     }
   }
 
@@ -488,27 +520,26 @@ input[type=text].input-good {
 
   .months-text .left,
   .months-text .right {
-    background-image: none!important;
+    background-image: none !important;
     &:after {
-      font-family: 'Font Awesome 5 Free';
+      font-family: "Font Awesome 5 Free";
       font-weight: 900;
       font-style: normal;
     }
   }
 
-  .months-text .left{
+  .months-text .left {
     &:after {
-      content: '\f053'!important;
+      content: "\f053" !important;
     }
   }
 
-  .months-text .right{
+  .months-text .right {
     &:after {
-      content: '\f054'!important;
+      content: "\f054" !important;
     }
   }
 }
-
 
 .night,
 .night-theme {
@@ -587,10 +618,10 @@ input[type=text].input-good {
     border-color: @night-input-border;
   }
 
-  input[type=email],
-  input[type=number],
-  input[type=password],
-  input[type=text],
+  input[type="email"],
+  input[type="number"],
+  input[type="password"],
+  input[type="text"],
   input[type="url"],
   input[type="search"],
   select,
@@ -611,7 +642,7 @@ input[type=text].input-good {
   .input-guard {
     .input-wrapper {
       input {
-        text-shadow: 0 0 5px rgba(255,255,255,0.5);
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         color: transparent;
       }
     }
@@ -620,7 +651,7 @@ input[type=text].input-good {
   .text-guard {
     border-color: @night-border;
     .text-wrapper {
-      text-shadow: 0 0 5px rgba(255,255,255,0.5);
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
     }
   }
 }

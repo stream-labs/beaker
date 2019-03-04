@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="form-field"
-    :class="{ 'form-field--with-label': label }"
-  >
+  <div class="form-field" :class="{ 'form-field--with-label': label }">
     <input
       class="text-input"
       :type="type"
@@ -13,7 +10,7 @@
       @blur="$emit('blur')"
       v-model="content"
       :class="{ 'form-field__input': true, 'form-field__input--error': !!error }"
-    />
+    >
     <label
       :class="{ 'form-field__label--top': value !== '', 'form-field__label--error': !!error }"
       class="form-field__label"
@@ -21,16 +18,10 @@
     >{{ label }}</label>
 
     <transition name="slide">
-      <p
-        v-show="error"
-        class="form-field__error-text"
-      >{{ error }}</p>
+      <p v-show="error" class="form-field__error-text">{{ error }}</p>
     </transition>
 
-    <p
-      v-show="helpText"
-      class="form-field__help-text"
-    >{{ helpText }}</p>
+    <p v-show="helpText" class="form-field__help-text">{{ helpText }}</p>
   </div>
 </template>
 
@@ -83,15 +74,10 @@ export default class TextInput extends Vue {
 
 .form-field__label {
   position: absolute;
-  color: @dark-5;
+  color: @light-5;
   left: 8px;
   top: 12px;
   .radius();
-}
-
-.form-field__label--error,
-.form-field__error-text {
-  color: @red;
 }
 
 .form-field__error-text,
@@ -117,6 +103,12 @@ export default class TextInput extends Vue {
   .form-field__label--top {
     transform: translateY(-20px);
     font-size: 12px;
+    color: @day-paragraph;
+  }
+
+  .form-field__label--error,
+  .form-field__error-text {
+    color: @red;
   }
 
   input:focus + label {
@@ -187,6 +179,10 @@ export default class TextInput extends Vue {
 
   .form-field__label {
     background-color: @night-bg;
+  }
+
+  input:focus + label,
+  .form-field__label--top {
     color: @night-paragraph;
   }
 

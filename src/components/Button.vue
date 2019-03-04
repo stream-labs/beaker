@@ -15,20 +15,12 @@
   >
     <span>
       <span>
-        <i
-          v-if="iconClass"
-          :class="iconClass"
-        ></i>{{ title }}
+        <i v-if="iconClass" :class="iconClass"></i>
+        {{ title }}
       </span>
-      <span
-        v-if="description"
-        class="button__description"
-      >{{ description }}</span>
+      <span v-if="description" class="button__description">{{ description }}</span>
     </span>
-    <i
-      v-if="variation === 'slobs-download'"
-      class="icon-windows"
-    ></i>
+    <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
     <span v-if="price">{{ price }}</span>
   </component>
 </template>
@@ -155,8 +147,7 @@ export default class Button extends Vue {
 @import "./../styles/Imports";
 
 .button {
-  .padding-v-sides(@0);
-  .padding-h-sides(2);
+  .input-padding();
   font-size: 14px;
   text-transform: capitalize;
   background: @day-button;
@@ -189,8 +180,6 @@ export default class Button extends Vue {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -1px;
-    margin-bottom: -1px;
     opacity: 1;
     transition: opacity 275ms ease;
   }
@@ -574,6 +563,7 @@ export default class Button extends Vue {
 .button__description {
   font-size: 12px;
   .weight(@normal);
+  .margin-top(0.5);
 }
 
 .pagination {

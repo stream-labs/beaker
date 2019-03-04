@@ -356,13 +356,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import Accordion from './../components/Accordion.vue'
-import BannerMarketing from './../components/BannerMarketing.vue'
-import BannerSale from './../components/BannerSale.vue'
-import Button from './../components/Button.vue'
-import Tabs from './../components/Tabs.vue'
-import Notice from './../components/Notice.vue'
+import { Component, Vue } from "vue-property-decorator";
+import Accordion from "./../components/Accordion.vue";
+import BannerMarketing from "./../components/BannerMarketing.vue";
+import BannerSale from "./../components/BannerSale.vue";
+import Button from "./../components/Button.vue";
+import Tabs from "./../components/Tabs.vue";
+import Notice from "./../components/Notice.vue";
 
 @Component({
   components: {
@@ -371,8 +371,8 @@ import Notice from './../components/Notice.vue'
     BannerSale,
     Button,
     Tabs,
-    Notice,
-  },
+    Notice
+  }
 })
 export default class Banners extends Vue {
   tabs = [
@@ -381,14 +381,14 @@ export default class Banners extends Vue {
       value: "marketing"
     },
     {
-      name: 'Sale',
-      value: 'sale',
+      name: "Sale",
+      value: "sale"
     },
     {
-      name: 'Notice',
-      value: 'notice',
-    },
-  ]
+      name: "Notice",
+      value: "notice"
+    }
+  ];
 
   selectedTab = "marketing";
   remainingSecs = 10;
