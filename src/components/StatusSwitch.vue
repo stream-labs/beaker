@@ -55,7 +55,7 @@ export default class StatusSwitch extends Vue {
       position: absolute;
       top: 0;
       display: block;
-      width: 34px;
+      width: 28px;
       height: 16px;
       border-radius: 50px;
       background: @day-switch-bg;
@@ -87,7 +87,7 @@ export default class StatusSwitch extends Vue {
     }
 
     &::after {
-      left: 20px;
+      left: 14px;
     }
   }
 }

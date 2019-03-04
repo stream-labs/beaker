@@ -372,6 +372,7 @@ components: {
         ></Button>
       </div>
     </div>
+
     <div class="section">
       <h2>Full-Width Buttons</h2>
       <div class="section">
@@ -507,7 +508,7 @@ components: {
 &lt;/Button&gt;</code></pre>
         </div>
       </Accordion>
-      <Button :variation="'navigation'" :icon="'back'" :title="'Back to Listings'"></Button>
+      <Button :variation="'navigation'" :icon="'back-alt'" :title="'Back to Listings'"></Button>
     </div>
     <table class="docs-table">
       <thead>

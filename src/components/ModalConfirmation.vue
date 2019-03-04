@@ -70,7 +70,6 @@ export default class ModalConfirmation extends Vue {
 }
 
 .s-button-container {
-  width: 60%;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -87,12 +87,13 @@ export default class ColorPicker extends Vue {
 .s-colorpicker__preview {
   height: 20px;
   width: 20px;
-  .radius();
+  .radius(0.5);
   box-sizing: border-box;
   position: absolute;
   top: 10px;
   right: 8px;
   border: 1px solid fade(@day-input-border, 12%);
+  border-style: inset;
 }
 
 .s-colorpicker-container {

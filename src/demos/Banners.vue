@@ -223,6 +223,134 @@
           </tbody>
         </table>
       </div>
+
+      <div slot="notice">
+        <h2>Notice Banner</h2>
+        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+          <div slot="content">
+            <pre>
+<code>&lt;banner-marketing
+  :day-bg=&quot;'https://picsum.photos/1920/300/?image=926'&quot;
+  :night-bg=&quot;'https://picsum.photos/1920/300/?image=914'&quot;
+  :label=&quot;'Introducing Streamlabs OBS'&quot;
+  :icon=&quot;'themes'&quot;
+  :title=&quot;'Largest library of free themes in the world.'&quot;
+  :desc=&quot;'To access over 700+ themes for free, download Streamlabs OBS.'&quot;
+  :link-desc=&quot;'Win 7+  245.8 MB'&quot;&gt;
+  &lt;Button
+    slot=&quot;link&quot;
+    :type=&quot;'a'&quot;
+    :variation=&quot;'action'&quot;
+    :size=&quot;'standard'&quot;
+    :href=&quot;'#'&quot;
+    :title=&quot;'Download'&quot;
+    :icon=&quot;'overview'&quot;&gt;
+  &lt;/Button&gt;
+&lt;/banner-marketing&gt;</code></pre>
+          </div>
+        </Accordion>
+
+        <notice
+          :bgColor="'default'"
+          :title="'Join affiliates and earn $1 for each Streamlabs OBS referral'"
+          :desc="'Share your unique referral link with friends and get paid directly into your PayPal each month.'"
+          :icon="'information'"
+        >
+          <Button
+            slot="button"
+            :type="'button'"
+            :size="'fixed-width'"
+            :variation="'action'"
+            :title="'Join'"
+          ></Button>
+        </notice>
+
+        <notice
+          :bgColor="'warning'"
+          :title="'Your donation link has expired'"
+          :titleColor="'warning'"
+          :desc="'Copy your new donation link and replace all instances containing twitchalerts.com.'"
+          :icon="'error'"
+        >
+          <Button
+            slot="button"
+            :type="'button'"
+            :size="'fixed-width'"
+            :variation="'default'"
+            :title="'Copy Link'"
+          ></Button>
+        </notice>
+
+        <!-- <table class="docs-table">
+          <thead>
+            <tr>
+              <th>Prop</th>
+              <th>Type</th>
+              <th>Required</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>dayBg</td>
+              <td>string</td>
+              <td>true</td>
+              <td>null</td>
+              <td>Background image that will display in day mode.</td>
+            </tr>
+            <tr>
+              <td>nightBg</td>
+              <td>string</td>
+              <td>true</td>
+              <td>null</td>
+              <td>Background image that will display in night mode.</td>
+            </tr>
+            <tr>
+              <td>label</td>
+              <td>string</td>
+              <td>true</td>
+              <td>null</td>
+              <td>Label text in the upper left of the banner.</td>
+            </tr>
+            <tr>
+              <td>icon</td>
+              <td>string</td>
+              <td>true</td>
+              <td>null</td>
+              <td>Icon next to title. Use icon name from icon list.</td>
+            </tr>
+            <tr>
+              <td>title</td>
+              <td>string</td>
+              <td>true</td>
+              <td>null</td>
+              <td>Main banner title.</td>
+            </tr>
+            <tr>
+              <td>desc</td>
+              <td>string</td>
+              <td>true</td>
+              <td>null</td>
+              <td>Description text below banner title.</td>
+            </tr>
+            <tr>
+              <td>linkDesc</td>
+              <td>string</td>
+              <td>false</td>
+              <td>null</td>
+              <td>Description text below link.</td>
+            </tr>
+            <tr>
+              <td>bannerClosed</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>false</td>
+              <td>Default state once the banner is.</td>
+            </tr>
+          </tbody>
+        </table>-->
+      </div>
     </Tabs>
   </div>
 </template>
@@ -234,6 +362,7 @@ import BannerMarketing from "./../components/BannerMarketing.vue";
 import BannerSale from "./../components/BannerSale.vue";
 import Button from "./../components/Button.vue";
 import Tabs from "./../components/Tabs.vue";
+import Notice from "./../components/Notice.vue";
 
 @Component({
   components: {
@@ -241,7 +370,8 @@ import Tabs from "./../components/Tabs.vue";
     BannerMarketing,
     BannerSale,
     Button,
-    Tabs
+    Tabs,
+    Notice
   }
 })
 export default class Banners extends Vue {
@@ -253,6 +383,10 @@ export default class Banners extends Vue {
     {
       name: "Sale",
       value: "sale"
+    },
+    {
+      name: "Notice",
+      value: "notice"
     }
   ];
 

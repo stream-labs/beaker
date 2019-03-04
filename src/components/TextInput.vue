@@ -74,15 +74,10 @@ export default class TextInput extends Vue {
 
 .s-form-field__label {
   position: absolute;
-  color: @dark-5;
+  color: @light-5;
   left: 8px;
   top: 12px;
   .radius();
-}
-
-.s-form-field__label--error,
-.s-form-field__error-text {
-  color: @red;
 }
 
 .s-form-field__error-text,
@@ -108,6 +103,12 @@ export default class TextInput extends Vue {
   .s-form-field__label--top {
     transform: translateY(-20px);
     font-size: 12px;
+    color: @day-paragraph;
+  }
+
+  .form-field__label--error,
+  .form-field__error-text {
+    color: @red;
   }
 
   input:focus + label {
@@ -178,6 +179,10 @@ export default class TextInput extends Vue {
 
   .s-form-field__label {
     background-color: @night-bg;
+  }
+
+  input:focus + label,
+  .form-field__label--top {
     color: @night-paragraph;
   }
 

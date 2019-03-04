@@ -57,6 +57,7 @@ export default class Toggle extends Vue {
     color: @icon;
     .transition();
     outline: none;
+    display: flex;
 
     &--active {
       background-color: @dark-2;

@@ -1,11 +1,11 @@
-// INPUTS
+// Inputs
 
-input[type=text],
-input[type=password],
-input[type=number],
-input[type=email],
-input[type=url],
-input[type=search],
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
 select {
   .radius();
   border: 1px solid @day-input-border;
@@ -14,7 +14,7 @@ select {
   font-size: 14px;
   .padding--input();
   background: @day-input-bg;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   color: @day-title;
   width: 100%;
   transition: all 0.275s ease-in-out;
@@ -25,6 +25,12 @@ select {
     border-color: @teal;
     background-color: @day-input-bg;
     outline: none;
+  }
+
+  ::placeholder,
+  ::-webkit-input-placeholder,
+  :-ms-input-placeholder {
+    color: @light-5;
   }
 }
 
@@ -110,7 +116,7 @@ input[readonly] {
   }
 }
 
-input[type=file] {
+input[type="file"] {
   width: auto;
   display: inline-block;
   vertical-align: middle;
@@ -180,7 +186,7 @@ textarea {
     }
   }
 
-  .s-fa-search {
+  .fa-search {
     color: @icon;
     position: absolute;
     left: 12px;
@@ -360,7 +366,7 @@ textarea {
   .radius();
 }
 
-input[type=text].input-bad {
+input[type="text"].input-bad {
   box-shadow: 0 0 5px @warning;
   padding: 3px 0px 3px 3px;
   margin: 5px 1px 3px 0px;
@@ -372,7 +378,7 @@ input[type=text].input-bad {
   }
 }
 
-input[type=text].input-good {
+input[type="text"].input-good {
   box-shadow: 0 0 5px @teal;
   padding: 3px 0px 3px 3px;
   margin: 5px 1px 3px 0px;
@@ -413,9 +419,9 @@ input[type=text].input-good {
     padding: 0 10px !important;
 
     &:after {
-      content: '\f078' !important;
+      content: "\f078" !important;
       border: none;
-      font-family: 'Font Awesome 5 Free';
+      font-family: "Font Awesome 5 Free";
       font-weight: 900;
     }
   }
@@ -499,140 +505,156 @@ input[type=text].input-good {
   .s-months-text .right {
     background-image: none !important;
 
-    &:after {
-      font-family: 'Font Awesome 5 Free';
-      font-weight: 900;
-      font-style: normal;
-    }
-  }
+    .s-months-text .left,
+    .s-months-text .right {
+      background-image: none !important;
 
-  .s-months-text .left {
-    &:after {
-      content: '\f053' !important;
-    }
-  }
-
-  .s-months-text .right {
-    &:after {
-      content: '\f054' !important;
-    }
-  }
-}
-
-
-.night,
-.night-theme {
-  .s-daterange-picker {
-    .s-input-date {
-      border: 1px solid #e4e8eb !important;
-      background: #2e383f !important;
-      border-color: transparent !important;
+      &:after {
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        font-style: normal;
+      }
     }
 
-    .s-calendar {
-      box-shadow: none !important;
-      background: @night-dropdown-bg  !important;
+    .s-months-text .left {
+      &:after {
+        content: '\f053' !important;
+      }
+    }
 
-      .s-calendar_days {
-        color: @night-paragraph  !important;
+    .s-months-text .right {
+      &:after {
+        content: '\f054' !important;
 
-        li {
-          color: @night-paragraph  !important;
-
-          &:hover {
-            background: @night-hover  !important;
+        .s-months-text .left {
+          &:after {
+            content: "\f053" !important;
           }
         }
 
-        .s-calendar_days_selected {
-          background: @dark-2  !important;
-          color: @night-title;
+        .s-months-text .right {
+          &:after {
+            content: "\f054" !important;
+          }
         }
       }
 
-      .s-calendar-range {
-        border-left-color: @night-border  !important;
-      }
+      .night,
+      .night-theme {
+        .s-daterange-picker {
+          .s-input-date {
+            border: 1px solid #e4e8eb !important;
+            background: #2e383f !important;
+            border-color: transparent !important;
+          }
 
-      .s-calendar-range .calendar_preset-ranges:hover {
-        background: @night-hover  !important;
-      }
+          .s-calendar {
+            box-shadow: none !important;
+            background: @night-dropdown-bg  !important;
 
-      .s-calendar-wrap .calendar_days_in-range {
-        background: @dark-2;
-        color: @night-title;
-      }
+            .s-calendar_days {
+              color: @night-paragraph  !important;
 
-      .s-calendar-wrap li.calendar_days_selected {
-        background: @dark-2  !important;
-        color: @night-title;
-      }
+              li {
+                color: @night-paragraph  !important;
 
-      .s-calendar_preset-ranges {
-        &:hover {
-          background: @dark-2  !important;
+                &:hover {
+                  background: @night-hover  !important;
+                }
+              }
+
+              .s-calendar_days_selected {
+                background: @dark-2  !important;
+                color: @night-title;
+              }
+            }
+
+            .s-calendar-range {
+              border-left-color: @night-border  !important;
+            }
+
+            .s-calendar-range .calendar_preset-ranges:hover {
+              background: @night-hover  !important;
+            }
+
+            .s-calendar-wrap .calendar_days_in-range {
+              background: @dark-2;
+              color: @night-title;
+            }
+
+            .s-calendar-wrap li.calendar_days_selected {
+              background: @dark-2  !important;
+              color: @night-title;
+            }
+
+            .s-calendar_preset-ranges {
+              &:hover {
+                background: @dark-2  !important;
+                color: @night-title;
+              }
+            }
+
+            .s-calendar-range,
+            .s-calendar-wrap {
+
+              .s-calendar_preset-ranges.active-preset,
+              .s-calendar_days_in-range {
+                background: @dark-2;
+                color: @night-title;
+              }
+            }
+          }
+        }
+
+        .s-selected-option {
+          font-size: 12px;
+          padding: 0 30px 0 8px;
+          .radius();
+          margin-top: 8px;
+          display: inline-block;
+          position: relative;
+          background: @night-input-bg;
+          border-color: @night-input-border;
+        }
+
+        input[type="email"],
+        input[type="number"],
+        input[type="password"],
+        input[type="text"],
+        input[type="url"],
+        input[type="search"],
+        select,
+        textarea {
+          border-color: @night-input-border;
+          background: @night-input-bg;
           color: @night-title;
+
+          &:active,
+          &:focus {
+            box-shadow: none;
+            border-color: @teal;
+            background: @night-input-bg;
+          }
+        }
+
+        // Guards
+        .s-input-guard {
+          .s-input-wrapper {
+            input {
+              text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+              color: transparent;
+            }
+          }
+        }
+
+        .s-text-guard {
+          border-color: @night-border;
+
+          .s-text-wrapper {
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+          }
         }
       }
-
-      .s-calendar-range,
-      .s-calendar-wrap {
-
-        .s-calendar_preset-ranges.active-preset,
-        .s-calendar_days_in-range {
-          background: @dark-2;
-          color: @night-title;
-        }
-      }
-    }
-  }
-
-  .s-selected-option {
-    font-size: 12px;
-    padding: 0 30px 0 8px;
-    .radius();
-    margin-top: 8px;
-    display: inline-block;
-    position: relative;
-    background: @night-input-bg;
-    border-color: @night-input-border;
-  }
-
-  input[type=email],
-  input[type=number],
-  input[type=password],
-  input[type=text],
-  input[type="url"],
-  input[type="search"],
-  select,
-  textarea {
-    border-color: @night-input-border;
-    background: @night-input-bg;
-    color: @night-title;
-
-    &:active,
-    &:focus {
-      box-shadow: none;
-      border-color: @teal;
-      background: @night-input-bg;
-    }
-  }
-
-  // Guards
-  .s-input-guard {
-    .s-input-wrapper {
-      input {
-        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-        color: transparent;
-      }
-    }
-  }
-
-  .s-text-guard {
-    border-color: @night-border;
-
-    .s-text-wrapper {
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
     }
   }
 }

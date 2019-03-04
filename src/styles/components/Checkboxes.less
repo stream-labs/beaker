@@ -30,20 +30,24 @@
       left: 0;
       width: 16px;
       height: 16px;
-      content: '';
+      content: "";
       background: transparent;
       .radius();
-      -webkit-transition: border .1s ease, opacity .1s ease, box-shadow .1s ease, -webkit-transform .1s ease;
-      transition: border .1s ease, opacity .1s ease, box-shadow .1s ease, -webkit-transform .1s ease;
-      transition: border .1s ease, opacity .1s ease, transform .1s ease, box-shadow .1s ease;
-      transition: border .1s ease, opacity .1s ease, transform .1s ease, box-shadow .1s ease, -webkit-transform .1s ease;
-      border: 1px solid @day-input-border;
+      -webkit-transition: border 0.1s ease, opacity 0.1s ease,
+        box-shadow 0.1s ease, -webkit-transform 0.1s ease;
+      transition: border 0.1s ease, opacity 0.1s ease, box-shadow 0.1s ease,
+        -webkit-transform 0.1s ease;
+      transition: border 0.1s ease, opacity 0.1s ease, transform 0.1s ease,
+        box-shadow 0.1s ease;
+      transition: border 0.1s ease, opacity 0.1s ease, transform 0.1s ease,
+        box-shadow 0.1s ease, -webkit-transform 0.1s ease;
+      border: 1px solid @light-4;
       box-sizing: border-box;
     }
   }
 
-  input[type=checkbox],
-  input[type=radio] {
+  input[type="checkbox"],
+  input[type="radio"] {
     cursor: pointer;
     position: absolute;
     top: 0;
@@ -71,16 +75,16 @@
     top: 0px;
     opacity: 1;
     color: @white;
-    font-family: 'Font Awesome 5 Free';
+    font-family: "Font Awesome 5 Free";
     font-weight: 900;
-    content: '\f00c';
+    content: "\f00c";
     font-size: 10px;
   }
 }
 
 .s-radio.checkbox {
   label:before {
-    content: '';
+    content: "";
     transform: none;
     width: 16px;
     height: 16px;
@@ -90,7 +94,7 @@
   }
 
   input:checked~label:after {
-    content: '';
+    content: "";
     width: 8px;
     height: 8px;
     background-color: @white;

@@ -147,8 +147,7 @@ export default class Button extends Vue {
 @import './../styles/Imports';
 
 .s-button {
-  .padding-v-sides(@0);
-  .padding-h-sides(2);
+  .input-padding();
   font-size: 14px;
   text-transform: capitalize;
   background: @day-button;
@@ -181,8 +180,6 @@ export default class Button extends Vue {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -1px;
-    margin-bottom: -1px;
     opacity: 1;
     transition: opacity 275ms ease;
   }
@@ -566,6 +563,7 @@ export default class Button extends Vue {
 .s-button__description {
   font-size: 12px;
   .weight(@normal);
+  .margin-top(0.5);
 }
 
 .s-pagination {
