@@ -31,7 +31,7 @@ import Button from './../components/Button.vue'
     Button,
   },
 })
-export default class ContentRows extends Vue {
+export default class ContentRow extends Vue {
   @Prop()
   icon!: string
 
