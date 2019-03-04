@@ -1,7 +1,7 @@
 <template>
   <modal
     name="modal-basic"
-    :classes="'modal-wrapper'"
+    :classes="'s-modal-wrapper'"
     :maxWidth="modalWidth"
     :minWidth="modalMinWidth"
     height="auto"
@@ -83,7 +83,7 @@ export default class ModalBasic extends Vue {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 42%;
+  flex-direction: row;
 }
 
 .night,

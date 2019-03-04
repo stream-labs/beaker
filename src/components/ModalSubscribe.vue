@@ -32,7 +32,7 @@
       </div>
 
       <div class="s-subscribe-bottom">
-        <p class="s-modal-text modal-text-subscribe">{{text}}</p>
+        <p class="s-modal-text s-modal-text-subscribe">{{text}}</p>
         <div class="s-button-subscribe">
           <Button :variation="'subscribe'" :title="'Subscribe with PayPal'" :price="'$5.99/mo'"></Button>
         </div>

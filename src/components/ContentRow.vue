@@ -2,7 +2,7 @@
   <div class="s-content-row">
     <div class="s-content-box">
       <div class="s-banner__icon" v-if="icon">
-        <i :class="`icon-${icon}`"></i>
+        <i :class="`s-icon-${icon}`"></i>
       </div>
       <h2 class="s-content__title">
         <slot name="title"></slot>

@@ -56,7 +56,7 @@ export default class VitualItem extends Vue {
     }
 
     if (this.selected) {
-      classes.push('s-is-selected')
+      classes.push('is-selected')
     }
 
     return classes.join(' ')
@@ -79,7 +79,7 @@ export default class VitualItem extends Vue {
   min-width: 160px;
   max-width: 220px;
 
-  &.s-is-selected {
+  &.is-selected {
     background-color: @selected;
   }
 
@@ -94,7 +94,7 @@ export default class VitualItem extends Vue {
   font-size: 16px;
 }
 
-.s-is-selected {
+.is-selected {
   .s-virtual-item__name {
     color: @white;
   }
@@ -128,7 +128,7 @@ export default class VitualItem extends Vue {
   .s-virtual-item {
     background-color: @night-section-alt;
 
-    &.s-is-selected {
+    &.is-selected {
       background-color: @selected;
     }
   }

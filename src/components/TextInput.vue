@@ -1,7 +1,7 @@
 <template>
   <div class="s-form-field" :class="{ 's-form-field--with-label': label }">
     <input
-      class="text-input"
+      class="s-text-input"
       :type="type"
       :placeholder="placeholder"
       @input="handleInput"

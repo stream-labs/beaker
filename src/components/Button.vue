@@ -20,7 +20,7 @@
       </span>
       <span v-if="description" class="s-button__description">{{ description }}</span>
     </span>
-    <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
+    <i v-if="variation === 'slobs-download'" class="s-icon-windows"></i>
     <span v-if="price">{{ price }}</span>
   </component>
 </template>
@@ -128,7 +128,7 @@ export default class Button extends Vue {
     let classes = []
 
     if (this.icon) {
-      classes.push(`icon-${this.icon}`)
+      classes.push(`s-icon-${this.icon}`)
     }
 
     return classes.join(' ')
@@ -388,7 +388,7 @@ export default class Button extends Vue {
     align-items: flex-start;
   }
 
-  .icon-windows {
+  .s-icon-windows {
     font-size: 16px;
     color: @white;
     margin-left: 40px;
@@ -472,7 +472,7 @@ export default class Button extends Vue {
     color: @day-title;
   }
 
-  .icon-back {
+  .s-icon-back {
     font-size: 12px;
   }
 }

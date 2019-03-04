@@ -9,7 +9,7 @@
     <span>
       <slot/>
     </span>
-    <i v-if="closeable" class="icon-close s-callout__close-button" @click="closeCallout()"></i>
+    <i v-if="closeable" class="s-icon-close s-callout__close-button" @click="closeCallout()"></i>
   </div>
 </template>
 
@@ -67,7 +67,7 @@ export default class Callout extends Vue {
   .transition();
   justify-content: center;
 
-  [class^='icon-'] {
+  [class^='s-icon-'] {
     &:first-child {
       .margin-right();
     }

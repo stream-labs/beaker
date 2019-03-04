@@ -1,7 +1,7 @@
 <template>
   <modal name="new-feature" :adaptive="true" width="100%" height="auto" classes="s-overlay-wrapper">
     <div slot="top-right" class="s-overlay-icon">
-      <span class="s-icon icon-close" @click="$modal.hide('new-feature')"></span>
+      <span class="s-icon s-icon-close" @click="$modal.hide('new-feature')"></span>
     </div>
     <div class="s-overlay-container">
       <div class="s-overlay-body">

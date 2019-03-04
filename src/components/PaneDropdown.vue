@@ -7,7 +7,7 @@
     >
       <span>
         <slot name="title"></slot>
-        <i v-if="dropdownIcon" class="icon-dropdown"></i>
+        <i v-if="dropdownIcon" class="s-icon-dropdown"></i>
       </span>
     </a>
 

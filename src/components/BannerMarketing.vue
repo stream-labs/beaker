@@ -9,13 +9,13 @@
     <div class="s-banner__body" :class="{'s-banner__body--closed': closed}" key="banner-open">
       <div class="s-banner__wrapper">
         <div class="s-banner__label">{{ label }}</div>
-        <i @click="toggleBanner()" class="icon-down"></i>
+        <i @click="toggleBanner()" class="s-icon-down"></i>
       </div>
 
       <div class="s-banner__wrapper" ref="bottomWrapper">
         <div class="s-banner__title">
           <div class="s-banner__icon">
-            <i :class="`icon-${icon}`"></i>
+            <i :class="`s-icon-${icon}`"></i>
           </div>
 
           <div class="s-banner__details">
@@ -25,7 +25,7 @@
         </div>
 
         <div @click.stop class="s-banner__download-wrapper">
-          <i @click="toggleBanner()" class="icon-down"></i>
+          <i @click="toggleBanner()" class="s-icon-down"></i>
           <slot name="link"></slot>
           <div class="s-banner__link-desc">{{ linkDesc }}</div>
         </div>
@@ -167,7 +167,7 @@ export default class BannerMarketing extends Vue {
   &:first-child {
     align-items: center;
 
-    .icon-down {
+    .s-icon-down {
       transform: rotate(180deg);
     }
   }
@@ -175,12 +175,12 @@ export default class BannerMarketing extends Vue {
   &:last-child {
     align-items: flex-end;
 
-    .icon-down {
+    .s-icon-down {
       display: none;
     }
   }
 
-  .icon-down {
+  .s-icon-down {
     font-size: 10px;
     line-height: 22px;
   }
@@ -258,14 +258,14 @@ export default class BannerMarketing extends Vue {
     &:last-child {
       align-items: center;
 
-      .icon-down,
+      .s-icon-down,
       .fa-chevron-up {
         .margin-left(2);
         align-items: center;
         display: flex;
       }
 
-      .icon-down {
+      .s-icon-down {
         height: 32px;
         line-height: 32px;
       }

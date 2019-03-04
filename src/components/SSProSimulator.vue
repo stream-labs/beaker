@@ -19,7 +19,7 @@
 
       <div class="s-sp-simulator__section">
         <div class="s-sp-simulator__video">
-          <i class="icon-media-share-2"></i>
+          <i class="s-icon-media-share-2"></i>
         </div>
       </div>
 

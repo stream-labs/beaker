@@ -3,7 +3,7 @@
     <div class="s-image-picker__thumb" @click="chooseImage">
       <img :src="this.imageThumb" v-if="imageSelected">
       <div class="s-upload-icon" v-if="!imageSelected">
-        <i class="icon-upload-image"></i>
+        <i class="s-icon-upload-image"></i>
       </div>
     </div>
     <div class="s-image-picker__filename">
@@ -16,7 +16,7 @@
       >
       {{ this.imageFileName }}
     </div>
-    <div class="s-button-container button-container--right">
+    <div class="s-button-container s-button-container--right">
       <Button
         v-if="!imageSelected"
         :variation="'default'"
