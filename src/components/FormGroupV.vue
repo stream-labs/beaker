@@ -1,49 +1,39 @@
 <template>
-  <div class="form-group-v">
+  <div class="s-form-group-v">
     <!-- title -->
-    <div class="form-group-v__title">
-      <label>
-        {{ title }}
-      </label>
-      <i
-        v-if="tooltip"
-        class="tooltip icon-question"
-        v-tooltip="tooltip" />
+    <div class="s-form-group-v__title">
+      <label>{{ title }}</label>
+      <i v-if="tooltip" class="s-tooltip icon-question" v-tooltip="tooltip"/>
     </div>
 
-    <div class="form-group-v__input-wrapper">
+    <div class="s-form-group-v__input-wrapper">
       <slot name="input"></slot>
 
-      <div
-        class="form-group-v__help-text"
-        v-if="helpText">
-        {{ helpText }}
-      </div>
+      <div class="s-form-group-v__help-text" v-if="helpText">{{ helpText }}</div>
     </div>
   </div>
-
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class FormGroupV extends Vue {
   @Prop()
-  helpText!: string;
+  helpText!: string
 
   @Prop()
-  tooltip!: string;
+  tooltip!: string
 
   @Prop()
-  title!: string;
+  title!: string
 }
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
-.form-group-v {
+.s-form-group-v {
   .margin-bottom(2);
   display: grid;
   grid-template-columns: repeat(12, [col-start] 1fr);
@@ -51,15 +41,15 @@ export default class FormGroupV extends Vue {
   grid-row-gap: @spacing;
 }
 
-.form-group-v__title {
+.s-form-group-v__title {
   grid-column: col-start / span 12;
 }
 
-.form-group-v__input-wrapper {
+.s-form-group-v__input-wrapper {
   grid-column: col-start / span 12;
 }
 
-.form-group-v__help-text {
+.s-form-group-v__help-text {
   color: @label;
   font-size: 13px;
   .margin-top();

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="virtual-item"
+    class="s-virtual-item"
     :class="[ virtualItemClasses ]"
     :rarity="rarity"
     :selected="selected"
@@ -8,73 +8,66 @@
     :value="value"
     @click="$emit('click')"
   >
-    <span
-      v-if="selectionCount"
-      class="virtual-item__selection-count"
-    >{{ selectionCount }}</span>
-    <span
-      v-if="type"
-      class="virtual-item__label"
-    >{{ type }}</span>
-    <span
-      v-if="quantity"
-      class="virtual-item__label"
-    >{{ quantity }}</span>
-    <div class="virtual-item__img"><img :src="preview" /></div>
-    <h3 class="virtual-item__name">{{ name }}</h3>
-    <span class="virtual-item__rarity">{{ rarity }}</span>
+    <span v-if="selectionCount" class="s-virtual-item__selection-count">{{ selectionCount }}</span>
+    <span v-if="type" class="s-virtual-item__label">{{ type }}</span>
+    <span v-if="quantity" class="s-virtual-item__label">{{ quantity }}</span>
+    <div class="s-virtual-item__img">
+      <img :src="preview">
+    </div>
+    <h3 class="s-virtual-item__name">{{ name }}</h3>
+    <span class="s-virtual-item__rarity">{{ rarity }}</span>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class VitualItem extends Vue {
   @Prop()
-  name!: String;
+  name!: String
 
   @Prop()
-  value!: String;
+  value!: String
 
   @Prop()
-  preview!: String;
+  preview!: String
 
   @Prop()
-  quantity!: Number;
+  quantity!: Number
 
   @Prop()
-  rarity!: String;
+  rarity!: String
 
   @Prop({ default: false })
-  selected!: Boolean;
+  selected!: Boolean
 
   @Prop()
-  selectionCount!: String;
+  selectionCount!: String
 
   @Prop()
-  type!: String;
+  type!: String
 
   get virtualItemClasses() {
-    let classes = [];
+    let classes = []
 
     if (this.rarity) {
-      classes.push(`virtual-item--${this.rarity}`);
+      classes.push(`s-virtual-item--${this.rarity}`)
     }
 
     if (this.selected) {
-      classes.push("is-selected");
+      classes.push('s-is-selected')
     }
 
-    return classes.join(" ");
+    return classes.join(' ')
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
-.virtual-item {
+.s-virtual-item {
   background-color: @day-section;
   position: relative;
   display: grid;
@@ -86,7 +79,7 @@ export default class VitualItem extends Vue {
   min-width: 160px;
   max-width: 220px;
 
-  &.is-selected {
+  &.s-is-selected {
     background-color: @selected;
   }
 
@@ -95,23 +88,23 @@ export default class VitualItem extends Vue {
   }
 }
 
-.virtual-item__name {
+.s-virtual-item__name {
   .margin-bottom();
   .weight(@medium);
   font-size: 16px;
 }
 
-.is-selected {
-  .virtual-item__name {
+.s-is-selected {
+  .s-virtual-item__name {
     color: @white;
   }
 
-  .virtual-item__rarity {
+  .s-virtual-item__rarity {
     color: @night-paragraph;
   }
 }
 
-.virtual-item__selection-count {
+.s-virtual-item__selection-count {
   position: absolute;
   top: 16px;
   right: 16px;
@@ -126,16 +119,16 @@ export default class VitualItem extends Vue {
   .flex-centered();
 }
 
-.virtual-item__img {
+.s-virtual-item__img {
   .margin-bottom(2);
 }
 
 .night,
 .night-theme {
-  .virtual-item {
+  .s-virtual-item {
     background-color: @night-section-alt;
 
-    &.is-selected {
+    &.s-is-selected {
       background-color: @selected;
     }
   }

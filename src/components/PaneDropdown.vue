@@ -1,12 +1,10 @@
 <template >
-  <div
-    class="pane-dropdown"
-    ref="paneMenu">
-
+  <div class="s-pane-dropdown" ref="paneMenu">
     <a
-      class="pane-dropdown__toggle"
-      :class="{ 'pane-dropdown__toggle--active': paneMenuOpen }"
-      @click="paneMenuOpen = !paneMenuOpen">
+      class="s-pane-dropdown__toggle"
+      :class="{ 's-pane-dropdown__toggle--active': paneMenuOpen }"
+      @click="paneMenuOpen = !paneMenuOpen"
+    >
       <span>
         <slot name="title"></slot>
         <i v-if="dropdownIcon" class="icon-dropdown"></i>
@@ -14,68 +12,72 @@
     </a>
 
     <transition name="fade">
-      <div
-        class="pane-dropdown__menu"
-        v-show="paneMenuOpen">
-        <ul class="pane-dropdown__list">
+      <div class="s-pane-dropdown__menu" v-show="paneMenuOpen">
+        <ul class="s-pane-dropdown__list">
           <li v-for="(item, idx) in paneList" :key="idx">
-            <a :href="item.href" class="pane-dropdown__link" :class="item.className">{{ item.textContent }}</a>
+            <a
+              :href="item.href"
+              class="s-pane-dropdown__link"
+              :class="item.className"
+            >{{ item.textContent }}</a>
           </li>
         </ul>
       </div>
     </transition>
 
-    <span ref="panelinks" class="pane-dropdown__slot-list"><slot></slot></span>
+    <span ref="panelinks" class="s-pane-dropdown__slot-list">
+      <slot></slot>
+    </span>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class PaneDropdown extends Vue {
   @Prop({ default: true })
-  dropdownIcon!: boolean;
+  dropdownIcon!: boolean
 
-  paneMenuOpen = false;
-  paneList = null;
+  paneMenuOpen = false
+  paneList = null
 
   created() {
-    document.addEventListener("click", this.documentClick);
+    document.addEventListener('click', this.documentClick)
   }
 
   destroyed() {
-    document.removeEventListener("click", this.documentClick);
+    document.removeEventListener('click', this.documentClick)
   }
 
   mounted() {
-    let links: any = this.$refs.panelinks;
-    let [...list] = links.children;
-    this.paneList = list;
+    let links: any = this.$refs.panelinks
+    let [...list] = links.children
+    this.paneList = list
   }
 
   documentClick(e: Event) {
-    let el: any = this.$refs.paneMenu;
-    let target = e.target;
+    let el: any = this.$refs.paneMenu
+    let target = e.target
     if (el !== target && !el.contains(target)) {
-      this.paneMenuOpen = false;
+      this.paneMenuOpen = false
     }
   }
 
   hide() {
-    this.paneMenuOpen = false;
+    this.paneMenuOpen = false
   }
 
   show() {
-    this.paneMenuOpen = true;
+    this.paneMenuOpen = true
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
-.pane-dropdown {
+.s-pane-dropdown {
   position: relative;
   display: flex;
 
@@ -86,7 +88,6 @@ export default class PaneDropdown extends Vue {
   &__menu {
     position: absolute;
     top: 25px;
-    right: -4px;
     z-index: 100;
     width: auto;
     max-height: 300px;
@@ -156,7 +157,7 @@ export default class PaneDropdown extends Vue {
 // }
 
 .night {
-  .pane-dropdown {
+  .s-pane-dropdown {
     &__toggle {
       &:hover {
         color: @white;

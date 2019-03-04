@@ -1,17 +1,17 @@
 <template>
   <modal
     name="modal-confirmation"
-    :classes="'modal-wrapper'"
+    :classes="'s-modal-wrapper'"
     :maxWidth="modalWidth"
     :minWidth="modalMinWidth"
     height="auto"
     :adaptive="true"
   >
-    <div class="modal-container">
-      <div class="confirmation">
-        <h2 class="modal-sub-title">{{subTitle}}</h2>
-        <p class="modal-text">{{text}}</p>
-        <div class="button-container">
+    <div class="s-modal-container">
+      <div class="s-confirmation">
+        <h2 class="s-modal-sub-title">{{subTitle}}</h2>
+        <p class="s-modal-text">{{text}}</p>
+        <div class="s-button-container">
           <Button
             :variation="'default'"
             :title="'Cancel'"
@@ -58,18 +58,25 @@ export default class ModalConfirmation extends Vue {
 @import './../styles/Imports';
 @import './../styles/components/Modals';
 
-.modal-container {
+.s-modal-container {
   .padding(3);
 }
 
-.confirmation {
+.s-confirmation {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
 }
 
-.modal-default-button {
+.s-button-container {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.s-modal-default-button {
   float: right;
 }
 </style>

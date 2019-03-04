@@ -1,19 +1,19 @@
 <template>
   <modal
     name="modal-redirect"
-    :classes="'modal-wrapper'"
+    :classes="'s-modal-wrapper'"
     :maxWidth="modalWidth"
     :minWidth="modalMinWidth"
     height="auto"
     :adaptive="true"
   >
-    <div class="modal-container">
-      <div class="redirect">
-        <div class="spinner">
+    <div class="s-modal-container">
+      <div class="s-redirect">
+        <div class="s-spinner">
           <Spinner :variation="'bars'"/>
         </div>
-        <h1 class="modal-title">{{title}}</h1>
-        <p class="modal-text">{{text}}</p>
+        <h1 class="s-modal-title">{{title}}</h1>
+        <p class="s-modal-text">{{text}}</p>
       </div>
     </div>
   </modal>
@@ -54,16 +54,16 @@ export default class ModalRedirect extends Vue {
 @import './../styles/Imports';
 @import './../styles/components/Modals';
 
-.redirect {
+.s-redirect {
   text-align: center;
   .padding(3);
 }
 
-.modal-text {
+.s-modal-text {
   .padding-h-sides(8);
 }
 
-.spinner {
+.s-spinner {
   .padding-bottom(1.8);
 }
 </style>

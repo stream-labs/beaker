@@ -7,16 +7,16 @@
     height="auto"
     :adaptive="true"
   >
-    <div class="modal-container">
-      <div class="modal-body">
-        <div class="normal-upper">
-          <h1 class="modal-title">{{title}}</h1>
-          <h2 class="modal-sub-title">{{subTitle}}</h2>
-          <p class="modal-text">{{text}}</p>
+    <div class="s-modal-container">
+      <div class="s-modal-body">
+        <div class="s-normal-upper">
+          <h1 class="s-modal-title">{{title}}</h1>
+          <h2 class="s-modal-sub-title">{{subTitle}}</h2>
+          <p class="s-modal-text">{{text}}</p>
         </div>
       </div>
-      <div class="modal-footer">
-        <div class="modal-footer-inner button-container">
+      <div class="s-modal-footer">
+        <div class="s-modal-footer-inner s-button-container">
           <Button
             :variation="'default'"
             :title="'Close'"
@@ -65,11 +65,11 @@ export default class ModalBasic extends Vue {
 @import './../styles/Imports';
 @import './../styles/components/Modals';
 
-.modal-body {
+.s-modal-body {
   border-radius: 8px 8px 0 0;
 }
 
-.modal-footer {
+.s-modal-footer {
   background: @light-2;
   .radius-bottom(2, 2);
   display: flex;
@@ -77,18 +77,22 @@ export default class ModalBasic extends Vue {
   align-items: center;
 }
 
-.modal-footer-inner {
+.s-modal-footer-inner {
   .padding-v-sides(2);
   .padding-h-sides(3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 42%;
 }
 
 .night,
 .night-theme {
-  .modal-body {
+  .s-modal-body {
     background: @night-shadow;
   }
 
-  .modal-footer {
+  .s-modal-footer {
     background: @dark-2;
   }
 }

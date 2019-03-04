@@ -1,29 +1,29 @@
 <template>
-  <div class="form-group">
+  <div class="s-form-group">
     <slot name="input"></slot>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class FormGroup extends Vue {
   @Prop()
-  helpText!: string;
+  helpText!: string
 
   @Prop()
-  tooltip!: string;
+  tooltip!: string
 
   @Prop()
-  title!: string;
+  title!: string
 }
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
-.form-group {
+.s-form-group {
   .margin-bottom(3);
   display: grid;
   grid-template-rows: 1fr;

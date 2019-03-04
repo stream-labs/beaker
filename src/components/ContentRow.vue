@@ -1,17 +1,17 @@
 <template>
-  <div class="content-row">
-    <div class="content-box">
-      <div class="banner__icon" v-if="icon">
+  <div class="s-content-row">
+    <div class="s-content-box">
+      <div class="s-banner__icon" v-if="icon">
         <i :class="`icon-${icon}`"></i>
       </div>
-      <h2 class="content__title">
+      <h2 class="s-content__title">
         <slot name="title"></slot>
       </h2>
-      <p class="content__text">
+      <p class="s-content__text">
         <slot name="text"></slot>
       </p>
     </div>
-    <div class="button-container button-container--left">
+    <div class="s-button-container s-button-container--left">
       <Button
         :size="'fixed-width'"
         :variation="btnVariation"
@@ -46,7 +46,7 @@ export default class ContentRow extends Vue {
 <style lang="less" scoped>
 @import './../styles/Imports';
 
-.content-row {
+.s-content-row {
   background: @light-2;
   .radius();
   .padding-v-sides();
@@ -57,24 +57,24 @@ export default class ContentRow extends Vue {
   align-items: center;
 }
 
-.content-box {
+.s-content-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.banner__icon {
+.s-banner__icon {
   .margin-right();
 }
 
-.content__title {
+.s-content__title {
   .margin(0);
   .margin-right(3);
 }
 
 .night,
 .night-theme {
-  .content-row {
+  .s-content-row {
     background: @dark-4;
   }
 }

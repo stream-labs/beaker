@@ -1,34 +1,31 @@
 <template>
-  <div class="progress">
-    <div
-      class="progress-bar"
-      :style="getProgress"
-    />
+  <div class="s-progress">
+    <div class="s-progress-bar" :style="getProgress"/>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 @Component({})
 export default class ProgressBar extends Vue {
   @Prop()
-  progressComplete!: Number;
+  progressComplete!: Number
   get getProgress() {
-    return "width:" + this.progressComplete + "%";
+    return 'width:' + this.progressComplete + '%'
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
-.progress {
+@import './../styles/Imports';
+.s-progress {
   display: inline-block;
   height: 8px;
   width: 100%;
   background-color: @light-3;
   border-radius: 100px;
 }
-.progress-bar {
+.s-progress-bar {
   display: block;
   height: 100%;
   left: 0;
@@ -38,7 +35,7 @@ export default class ProgressBar extends Vue {
 }
 .night,
 .night-theme {
-  .progress {
+  .s-progress {
     background-color: @dark-4;
   }
 }

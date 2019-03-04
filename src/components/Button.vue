@@ -8,153 +8,145 @@
     :to="to"
     :href="href"
     :type="type"
-    class="button"
+    class="s-button"
     :class="buttonClasses"
     :disabled="state === 'disabled'"
     @click="$emit('click')"
   >
     <span>
       <span>
-        <i
-          v-if="iconClass"
-          :class="iconClass"
-        ></i>{{ title }}
+        <i v-if="iconClass" :class="iconClass"></i>
+        {{ title }}
       </span>
-      <span
-        v-if="description"
-        class="button__description"
-      >{{ description }}</span>
+      <span v-if="description" class="s-button__description">{{ description }}</span>
     </span>
-    <i
-      v-if="variation === 'slobs-download'"
-      class="icon-windows"
-    ></i>
+    <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
     <span v-if="price">{{ price }}</span>
   </component>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class Button extends Vue {
   @Prop()
   onClick!: {
-    type: Function;
-  };
+    type: Function
+  }
 
   @Prop()
   icon!: {
-    type: String;
-    default: null;
-  };
+    type: String
+    default: null
+  }
 
   @Prop()
   title!: {
-    type: String;
-    default: null;
-  };
+    type: String
+    default: null
+  }
 
   @Prop()
   price!: {
-    type: String;
-    default: null;
-  };
+    type: String
+    default: null
+  }
 
   @Prop()
   description!: {
-    type: String;
-    default: null;
-  };
+    type: String
+    default: null
+  }
 
   @Prop()
   href!: {
-    type: String;
-    default: null;
-  };
+    type: String
+    default: null
+  }
 
   // standard, medium, large, square
   @Prop()
   size!: {
-    type: String;
-    size: null;
-  };
+    type: String
+    size: null
+  }
 
   // hover, focus, loading, disabled
   @Prop()
   state!: {
-    type: String;
-    default: null;
-  };
+    type: String
+    default: null
+  }
 
   // set buttons type to "submit"
   @Prop()
   type!: {
-    type: String;
-    default: null;
-  };
+    type: String
+    default: null
+  }
 
   @Prop()
   to!: {
-    type: String;
-    default: null;
-  };
+    type: String
+    default: null
+  }
 
   // button, a, router-link
-  @Prop({ default: "button" })
-  tag!: String;
+  @Prop({ default: 'button' })
+  tag!: String
 
   @Prop()
   variation!: {
-    type: String;
-    default: "default";
-  };
+    type: String
+    default: 'default'
+  }
 
   get buttonClasses() {
-    let classes = [];
+    let classes = []
 
     if (this.variation) {
-      classes.push(`button--${this.variation}`);
+      classes.push(`s-button--${this.variation}`)
     }
 
     if (this.variation) {
-      classes.push(`button--${this.variation}`);
+      classes.push(`s-button--${this.variation}`)
     }
 
     if (this.size) {
-      classes.push(`button--${this.size}`);
+      classes.push(`s-button--${this.size}`)
     }
 
     if (this.state) {
-      classes.push(`is-${this.state}`);
+      classes.push(`is-${this.state}`)
     }
 
-    return classes.join(" ");
+    return classes.join(' ')
   }
 
   get iconClass() {
-    let classes = [];
+    let classes = []
 
     if (this.icon) {
-      classes.push(`icon-${this.icon}`);
+      classes.push(`icon-${this.icon}`)
     }
 
-    return classes.join(" ");
+    return classes.join(' ')
   }
 }
 </script>
 
 <style lang="less">
-.button-container {
+.s-button-container {
   display: flex;
   flex-wrap: wrap;
 }
 </style>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
-.button {
+.s-button {
   .padding-v-sides(@0);
   .padding-h-sides(2);
   font-size: 14px;
@@ -174,7 +166,7 @@ export default class Button extends Vue {
   .transition();
   .weight(@medium);
   .radius();
-  font-family: "Roboto";
+  font-family: 'Roboto';
   border: 1px solid transparent;
   text-decoration: none;
   position: relative;
@@ -211,8 +203,8 @@ export default class Button extends Vue {
   &.is-loading {
     &:before {
       display: block;
-      content: "\f1ce";
-      font-family: "Font Awesome 5 Free";
+      content: '\f1ce';
+      font-family: 'Font Awesome 5 Free';
       font-weight: 900;
       animation: fade-in 275ms ease, spin 1s ease infinite;
     }
@@ -228,7 +220,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--small {
+.s-button--small {
   height: 32px;
   padding: 0px 8px;
   line-height: 32px;
@@ -240,7 +232,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--large {
+.s-button--large {
   height: 64px;
   padding: 0px 64px;
   border-radius: 32px;
@@ -254,7 +246,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--square {
+.s-button--square {
   height: 32px;
   width: 32px;
   .padding(0);
@@ -269,7 +261,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--default {
+.s-button--default {
   background-color: @day-button;
   color: @day-paragraph;
 
@@ -281,7 +273,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--action {
+.s-button--action {
   background-color: @teal;
   color: @white;
 
@@ -292,7 +284,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--action-alt {
+.s-button--action-alt {
   background-color: @dark-2;
 
   &:focus,
@@ -302,7 +294,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--twitch {
+.s-button--twitch {
   background-color: @twitch;
   color: @white;
 
@@ -313,7 +305,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--yt {
+.s-button--yt {
   background-color: @youtube;
   color: @white;
 
@@ -324,7 +316,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--mixer {
+.s-button--mixer {
   background-color: @mixer;
   color: @white;
 
@@ -335,7 +327,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--facebook {
+.s-button--facebook {
   background-color: @facebook;
   color: @white;
 
@@ -346,7 +338,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--periscope {
+.s-button--periscope {
   background-color: @periscope;
   color: @white;
 
@@ -357,7 +349,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--picarto {
+.s-button--picarto {
   background-color: @picarto;
   color: @white;
 
@@ -368,7 +360,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--warning {
+.s-button--warning {
   color: @warning;
   background-color: rgba(251, 72, 76, 0.16);
 
@@ -379,7 +371,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--slobs-download {
+.s-button--slobs-download {
   display: flex;
   align-items: center;
   height: auto;
@@ -388,7 +380,7 @@ export default class Button extends Vue {
   border-radius: 100px;
   font-size: 16px;
   height: 72px;
-  .button--action;
+  .s-button--action;
 
   > span {
     display: flex;
@@ -403,7 +395,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--editor {
+.s-button--editor {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -419,28 +411,28 @@ export default class Button extends Vue {
   }
 }
 
-.button--full-width {
+.s-button--full-width {
   width: 100%;
 }
 
-.button--subscribe,
-.button--paypal {
+.s-button--subscribe,
+.s-button--paypal {
   display: flex;
   justify-content: space-between;
   text-transform: unset;
-  .button--large;
-  .button--full-width;
-  .button--action;
+  .s-button--large;
+  .s-button--full-width;
+  .s-button--action;
   .padding-h-sides(4);
 }
 
-.button--paypal {
+.s-button--paypal {
   background-color: @paypal-yellow;
 
   &:before {
-    content: "\f1ed";
+    content: '\f1ed';
     position: absolute;
-    font-family: "Font Awesome 5 Brands";
+    font-family: 'Font Awesome 5 Brands';
     font-size: 24px;
     color: @white;
   }
@@ -464,11 +456,11 @@ export default class Button extends Vue {
   }
 }
 
-.button--fixed-width {
+.s-button--fixed-width {
   width: 96px;
 }
 
-.button--navigation {
+.s-button--navigation {
   background: @day-section;
   color: @day-title;
   height: auto;
@@ -485,7 +477,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--allstars {
+.s-button--allstars {
   background-color: @yellow;
 
   &:hover {
@@ -493,7 +485,7 @@ export default class Button extends Vue {
   }
 }
 
-.login-button {
+.s-login-button {
   padding: 0;
   display: flex;
   align-items: center;
@@ -520,24 +512,24 @@ export default class Button extends Vue {
   }
 }
 
-.button-container {
-  .button {
+.s-button-container {
+  .s-button {
     .margin-left(2);
   }
 }
 
-.button-container--left {
-  .button {
+.s-button-container--left {
+  .s-button {
     .margin-right(2);
     .margin-left(@0);
   }
 }
 
-.button-group {
+.s-button-group {
   margin-bottom: 0;
   width: 250px;
 
-  .button {
+  .s-button {
     font-size: 14px;
     float: left;
     margin-left: -1px;
@@ -563,28 +555,28 @@ export default class Button extends Vue {
   }
 }
 
-.button--hidden {
+.s-button--hidden {
   display: none;
 }
 
-.button--table {
+.s-button--table {
   line-height: 14px;
 }
 
-.button__description {
+.s-button__description {
   font-size: 12px;
   .weight(@normal);
 }
 
-.pagination {
+.s-pagination {
   margin-bottom: 0;
 
-  .button {
+  .s-button {
     display: inline-block;
     padding: 0px @spacing;
     .radius();
     margin-right: 0 !important;
-    .button--fixed-width;
+    .s-button--fixed-width;
   }
 
   span {
@@ -593,7 +585,7 @@ export default class Button extends Vue {
   }
 }
 
-.inline-button {
+.s-inline-button {
   text-transform: capitalize;
   .weight(@medium);
   color: @day-paragraph;
@@ -624,25 +616,25 @@ export default class Button extends Vue {
   }
 }
 
-.inline-button--left {
+.s-inline-button--left {
   .margin-left(@0);
   .margin-right(2);
 }
 
-.button--reset-variations {
+.s-button--reset-variations {
   margin-top: -36px;
   float: right;
 }
 
 .night {
-  .button {
+  .s-button {
     &:focus,
     &.is-focused {
       background: lighten(@night-button, 4%);
     }
   }
 
-  .button--default {
+  .s-button--default {
     color: @night-title;
     border-color: @night-button;
     background: @night-button;
@@ -654,7 +646,7 @@ export default class Button extends Vue {
     }
   }
 
-  .button--action {
+  .s-button--action {
     &:focus,
     &.is-focused,
     &:hover {
@@ -662,7 +654,7 @@ export default class Button extends Vue {
     }
   }
 
-  .button--warning {
+  .s-button--warning {
     &:focus,
     &.is-focused,
     &:hover {
@@ -670,7 +662,7 @@ export default class Button extends Vue {
     }
   }
 
-  .button--navigation {
+  .s-button--navigation {
     background: @night-button;
     color: @night-title;
 
@@ -682,8 +674,8 @@ export default class Button extends Vue {
     }
   }
 
-  .button-group {
-    .button {
+  .s-button-group {
+    .s-button {
       &.active {
         background-color: @dark-2;
         border-color: transparent;
@@ -692,12 +684,12 @@ export default class Button extends Vue {
     }
   }
 
-  .button--sqr {
+  .s-button--sqr {
     background: @night-button;
     color: @night-title;
   }
 
-  .button--twitch {
+  .s-button--twitch {
     background-color: @twitch;
     color: @white;
 
@@ -708,7 +700,7 @@ export default class Button extends Vue {
     }
   }
 
-  .button--yt {
+  .s-button--yt {
     background-color: @youtube;
     color: @white;
 
@@ -719,7 +711,7 @@ export default class Button extends Vue {
     }
   }
 
-  .button--mixer {
+  .s-button--mixer {
     background-color: @mixer;
     color: @white;
 
@@ -730,7 +722,7 @@ export default class Button extends Vue {
     }
   }
 
-  .button--fb {
+  .s-button--fb {
     background-color: @facebook;
     color: @white;
 
@@ -741,7 +733,7 @@ export default class Button extends Vue {
     }
   }
 
-  .button--periscope {
+  .s-button--periscope {
     background-color: @periscope;
     color: @white;
 
@@ -752,7 +744,7 @@ export default class Button extends Vue {
     }
   }
 
-  .button--picarto {
+  .s-button--picarto {
     background-color: @picarto;
     color: @white;
 
@@ -763,7 +755,7 @@ export default class Button extends Vue {
     }
   }
 
-  .inline-button {
+  .s-inline-button {
     color: @white;
   }
 }

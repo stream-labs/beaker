@@ -1,9 +1,9 @@
 <template>
-  <div class="fake-alert">
-    <p class="fake-alert__text">{{ alertText }}</p>
-    <div class="fake-alert__message">
+  <div class="s-fake-alert">
+    <p class="s-fake-alert__text">{{ alertText }}</p>
+    <div class="s-fake-alert__message">
       {{ alertMessage }}
-      <span class="fake-alert__icon">
+      <span class="s-fake-alert__icon">
         <img :src="alertImage">
       </span>
     </div>
@@ -11,27 +11,27 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class FakeAlert extends Vue {
-  @Prop({ default: "galazy83 donated $50.00" })
-  alertText!: string;
+  @Prop({ default: 'galazy83 donated $50.00' })
+  alertText!: string
 
-  @Prop({ default: "Thanks for the stream. Go CivRyan!" })
-  alertMessage!: string;
+  @Prop({ default: 'Thanks for the stream. Go CivRyan!' })
+  alertMessage!: string
 
   @Prop({
-    default: "https://thumbs.gfycat.com/PleasedIcyCod-size_restricted.gif"
+    default: 'https://thumbs.gfycat.com/PleasedIcyCod-size_restricted.gif',
   })
-  alertImage!: string;
+  alertImage!: string
 }
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
-.fake-alert {
+.s-fake-alert {
   height: 146px;
   background-color: @light-3;
   width: 100%;
@@ -41,20 +41,20 @@ export default class FakeAlert extends Vue {
   justify-content: center;
 }
 
-.fake-alert__text {
+.s-fake-alert__text {
   font-size: 16px;
   .weight(@medium);
   .margin-v-sides(0);
   color: @day-title;
 }
 
-.fake-alert__message {
+.s-fake-alert__message {
   font-size: 16px;
   display: inline-block;
   .margin-top();
 }
 
-.fake-alert__icon {
+.s-fake-alert__icon {
   display: inline-block;
   vertical-align: middle;
   .padding-left();
@@ -64,11 +64,11 @@ export default class FakeAlert extends Vue {
 
 .night,
 .night-theme {
-  .fake-alert {
+  .s-fake-alert {
     background-color: @dark-4;
   }
 
-  .fake-alert__text {
+  .s-fake-alert__text {
     color: @night-title;
   }
 }

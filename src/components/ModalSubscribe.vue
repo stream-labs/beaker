@@ -1,42 +1,42 @@
 <template>
   <modal
     name="modal-subscribe"
-    :classes="'modal-wrapper'"
+    :classes="'s-modal-wrapper'"
     :maxWidth="modalWidth"
     :minWidth="modalMinWidth"
     height="auto"
     :adaptive="true"
   >
-    <div class="modal-container">
-      <div class="subscribe-icon-box">
-        <i class="icon-close" @click="$modal.hide('modal-subscribe')"></i>
+    <div class="s-modal-container">
+      <div class="s-subscribe-icon-box">
+        <i class="s-icon-close" @click="$modal.hide('modal-subscribe')"></i>
       </div>
-      <div class="subscribe-upper">
-        <div class="subscribe-title-box">
-          <h1 class="modal-title">{{title}}</h1>
+      <div class="s-subscribe-upper">
+        <div class="s-subscribe-title-box">
+          <h1 class="s-modal-title">{{title}}</h1>
           <badge :align-left="true">Pro</badge>
         </div>
-        <h2 class="modal-sub-title">{{subTitle}}</h2>
+        <h2 class="s-modal-sub-title">{{subTitle}}</h2>
       </div>
 
-      <div class="subscribe-body">
-        <div class="subscribe-box">
-          <p class="subscribe-text">{{subscribeText}}</p>
-          <p class="subscribe-message">
+      <div class="s-subscribe-body">
+        <div class="s-subscribe-box">
+          <p class="s-subscribe-text">{{subscribeText}}</p>
+          <p class="s-subscribe-message">
             {{subscribeMessage}}
-            <span class="subscribe-icon">
+            <span class="s-subscribe-icon">
               <img src="../assets/imgs/girl.svg">
             </span>
           </p>
         </div>
       </div>
 
-      <div class="subscribe-bottom">
-        <p class="modal-text modal-text-subscribe">{{text}}</p>
-        <div class="button-subscribe">
+      <div class="s-subscribe-bottom">
+        <p class="s-modal-text modal-text-subscribe">{{text}}</p>
+        <div class="s-button-subscribe">
           <Button :variation="'subscribe'" :title="'Subscribe with PayPal'" :price="'$5.99/mo'"></Button>
         </div>
-        <p class="modal-notes">{{notes}}</p>
+        <p class="s-modal-notes">{{notes}}</p>
       </div>
     </div>
   </modal>
@@ -89,74 +89,74 @@ export default class ModalSubscribe extends Vue {
 @import './../styles/Imports';
 @import './../styles/components/Modals';
 
-.subscribe-upper,
-.subscribe-bottom {
+.s-subscribe-upper,
+.s-subscribe-bottom {
   .padding-v-sides();
   .padding-h-sides(4);
 }
 
-.subscribe-icon-box {
+.s-subscribe-icon-box {
   .padding-v-sides(3);
   .padding-h-sides(3);
   .padding-bottom(0);
   overflow: hidden;
 }
 
-.icon-close {
+.s-icon-close {
   float: right;
   cursor: pointer;
 }
 
-.subscribe-title-box {
+.s-subscribe-title-box {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   .margin-bottom(1.5);
 }
 
-.modal-title {
+.s-modal-title {
   .margin(0);
   .margin-right();
 }
 
-.button-subscribe {
+.s-button-subscribe {
   .margin-top(3);
 }
 
-.modal-text-subscribe {
+.s-modal-text-subscribe {
   .margin-bottom(3);
 }
 
-.subscribe-body {
+.s-subscribe-body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 136px;
 }
 
-.subscribe-box {
+.s-subscribe-box {
   text-align: center;
 }
 
-.subscribe-text {
+.s-subscribe-text {
   font-size: 16px;
   .weight(@medium);
   .margin-v-sides(0);
 }
 
-.subscribe-message {
+.s-subscribe-message {
   font-size: 16px;
   display: inline-block;
   .margin-v-sides(0);
 }
 
-.subscribe-icon {
+.s-subscribe-icon {
   display: inline-block;
   vertical-align: middle;
   .padding-left();
 }
 
-.modal-notes {
+.s-modal-notes {
   text-align: center;
   color: @light-5;
   .small-type();

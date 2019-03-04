@@ -1,4 +1,4 @@
-.checkbox {
+.s-checkbox {
   position: relative;
   display: inline-block;
   width: 100%;
@@ -33,10 +33,10 @@
       content: '';
       background: transparent;
       .radius();
-      -webkit-transition: border .1s ease,opacity .1s ease,box-shadow .1s ease,-webkit-transform .1s ease;
-      transition: border .1s ease,opacity .1s ease,box-shadow .1s ease,-webkit-transform .1s ease;
-      transition: border .1s ease,opacity .1s ease,transform .1s ease,box-shadow .1s ease;
-      transition: border .1s ease,opacity .1s ease,transform .1s ease,box-shadow .1s ease,-webkit-transform .1s ease;
+      -webkit-transition: border .1s ease, opacity .1s ease, box-shadow .1s ease, -webkit-transform .1s ease;
+      transition: border .1s ease, opacity .1s ease, box-shadow .1s ease, -webkit-transform .1s ease;
+      transition: border .1s ease, opacity .1s ease, transform .1s ease, box-shadow .1s ease;
+      transition: border .1s ease, opacity .1s ease, transform .1s ease, box-shadow .1s ease, -webkit-transform .1s ease;
       border: 1px solid @day-input-border;
       box-sizing: border-box;
     }
@@ -48,7 +48,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    opacity: 0!important;
+    opacity: 0 !important;
     outline: 0;
     z-index: 3;
     width: 20px;
@@ -78,7 +78,7 @@
   }
 }
 
-.radio.checkbox {
+.s-radio.checkbox {
   label:before {
     content: '';
     transform: none;
@@ -100,10 +100,11 @@
   }
 }
 
-.radio-button-group,
-.checkbox-group {
-  .checkbox,
-  .radio-button {
+.s-radio-button-group,
+.s-checkbox-group {
+
+  .s-checkbox,
+  .s-radio-button {
     .margin-bottom();
 
     &:last-child {
@@ -113,7 +114,7 @@
 }
 
 .night {
-  .checkbox {
+  .s-checkbox {
     label {
       color: @night-paragraph;
 

@@ -1,24 +1,24 @@
 <template>
-  <modal name="new-feature" :adaptive="true" width="100%" height="auto" classes="overlay-wrapper">
-    <div slot="top-right" class="overlay-icon">
-      <span class="icon icon-close" @click="$modal.hide('new-feature')"></span>
+  <modal name="new-feature" :adaptive="true" width="100%" height="auto" classes="s-overlay-wrapper">
+    <div slot="top-right" class="s-overlay-icon">
+      <span class="s-icon icon-close" @click="$modal.hide('new-feature')"></span>
     </div>
-    <div class="overlay-container">
-      <div class="overlay-body">
-        <p class="overlay__label">{{label}}</p>
-        <h1 class="overlay__title">{{title}}</h1>
-        <p class="overlay__text">
+    <div class="s-overlay-container">
+      <div class="s-overlay-body">
+        <p class="s-overlay__label">{{label}}</p>
+        <h1 class="s-overlay__title">{{title}}</h1>
+        <p class="s-overlay__text">
           <slot></slot>
         </p>
-        <div class="overlay-links">
+        <div class="s-overlay-links">
           <Button :type="'button'" :size="'large'" :variation="'action'" :title="'Set Up Store'"></Button>
-          <p class="overlay__link">
+          <p class="s-overlay__link">
             <a href="#">Go to Dashboard</a>
           </p>
         </div>
       </div>
 
-      <div class="overlay-image">
+      <div class="s-overlay-image">
         <img :src="overlayImage">
       </div>
     </div>
@@ -57,7 +57,7 @@ export default class ModalBasic extends Vue {
   background: @day-overlay;
 }
 
-.overlay-wrapper {
+.s-overlay-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -70,15 +70,15 @@ export default class ModalBasic extends Vue {
   z-index: 999;
 }
 
-.overlay-icon {
+.s-overlay-icon {
   .padding(4);
 }
 
-.icon {
+.s-icon {
   cursor: pointer;
 }
 
-.overlay-container {
+.s-overlay-container {
   width: 65%;
   height: auto;
   margin: 0 auto;
@@ -87,34 +87,34 @@ export default class ModalBasic extends Vue {
   align-items: center;
 }
 
-.overlay-body {
+.s-overlay-body {
   flex-basis: 50%;
 }
 
-.overlay__label {
+.s-overlay__label {
   font-size: 16px;
   .weight(@medium);
   color: @dark-2;
 }
 
-.overlay__title {
+.s-overlay__title {
   font-size: 36px;
   font-weight: 900;
 }
 
-.overlay__text {
+.s-overlay__text {
   line-height: 21px;
   .margin-bottom(3);
 }
 
-.overlay-links {
+.s-overlay-links {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   .margin-top(4);
 }
 
-.overlay__link {
+.s-overlay__link {
   .margin-left(2);
 }
 
@@ -124,7 +124,7 @@ export default class ModalBasic extends Vue {
     background: @night-overlay;
   }
 
-  .overlay__label {
+  .s-overlay__label {
     color: @white;
   }
 }

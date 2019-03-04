@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="!closed"
-    class="callout"
+    class="s-callout"
     :class="[ calloutClass, calloutClosedClass ]"
     @transitionend.self="closed = true"
   >
@@ -9,7 +9,7 @@
     <span>
       <slot/>
     </span>
-    <i v-if="closeable" class="icon-close callout__close-button" @click="closeCallout()"></i>
+    <i v-if="closeable" class="icon-close s-callout__close-button" @click="closeCallout()"></i>
   </div>
 </template>
 
@@ -35,7 +35,7 @@ export default class Callout extends Vue {
   }
 
   get calloutClass() {
-    return `callout--${this.variation}`
+    return `s-callout--${this.variation}`
   }
 
   get calloutIcon() {
@@ -56,7 +56,7 @@ export default class Callout extends Vue {
 <style lang="less" scoped>
 @import './../styles/Imports';
 
-.callout {
+.s-callout {
   position: relative;
   display: flex;
   align-items: center;

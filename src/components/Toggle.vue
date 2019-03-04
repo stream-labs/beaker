@@ -1,49 +1,49 @@
 <template>
-  <div class="toggle">
+  <div class="s-toggle">
     <button
       type="button"
       v-for="(val, key) in values"
       :key="val.id"
       :title="key | capitalize"
       @click="$emit('update:selected', key)"
-      :class="['toggle__option', { 'toggle__option--active': selected === key }]"
+      :class="['s-toggle__option', { 's-toggle__option--active': selected === key }]"
       v-html="val"
     >{{ val }}</button>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({
   filters: {
     capitalize(value: string) {
-      if (!value) return "";
-      value = value.toString();
-      return value.charAt(0).toUpperCase() + value.slice(1);
-    }
-  }
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    },
+  },
 })
 export default class Toggle extends Vue {
   @Prop()
-  values!: object;
+  values!: object
 
   @Prop()
-  selected!: string;
+  selected!: string
 
   @Prop()
-  default!: string;
+  default!: string
 
   created() {
-    this.$emit("update:selected", this.default);
+    this.$emit('update:selected', this.default)
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
-.toggle {
+.s-toggle {
   display: inline-flex;
   .radius();
   .transition();
@@ -67,7 +67,7 @@ export default class Toggle extends Vue {
 
 .night,
 .night-theme {
-  .toggle {
+  .s-toggle {
     &__option {
       background-color: @dark-4;
 
