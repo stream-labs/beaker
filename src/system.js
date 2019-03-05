@@ -21,6 +21,7 @@ import FormGroupV from "@/components/FormGroupV";
 import HelloWorld from "@/components/HelloWorld";
 import ImagePicker from "@/components/ImagePicker";
 import ItemGrid from "@/components/ItemGrid";
+import Loading from "@/components/Loading";
 import ModalBasic from "@/components/ModalBasic";
 import ModalComp from "@/components/ModalComp";
 import ModalConfirmation from "@/components/ModalConfirmation";
@@ -54,6 +55,7 @@ const components = [
   HelloWorld,
   ImagePicker,
   ItemGrid,
+  Loading,
   ModalBasic,
   ModalComp,
   ModalConfirmation,
@@ -99,6 +101,7 @@ export {
   HelloWorld,
   ImagePicker,
   ItemGrid,
+  Loading,
   ModalBasic,
   ModalComp,
   ModalConfirmation,
