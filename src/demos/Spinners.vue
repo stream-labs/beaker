@@ -2,25 +2,25 @@
   <div>
     <div class="section">
       <h1>Spinners</h1>
-      <p>These are animated with pure SVG, they will not be animated in Microsoft Edge, or Opera.</p>
-      <h2>Oscillating Bars</h2>
+      <p>These are animated with pure SVG, they will not be animated in Microsoft Edge, or Opera, and will look different in firefox.</p>
+      <h2>Oscillating Bars Small</h2>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-          <pre><code>&lt;loading-spinner :variation=&quot;bars&quot;&gt;&lt;/loading-spinner&gt;</code></pre>
+          <pre><code>&lt;Spinner :size=&quot;'small'&quot;&gt;&lt;/Spinner&gt;</code></pre>
         </div>
       </accordion>
       <div class="row">
-        <Spinner :variation="'bars'"/>
+        <Spinner :size="'small'"/>
       </div>
 
-      <h2>Spinning Circles</h2>
+      <h2>Oscillating Bars Large</h2>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-          <pre><code>&lt;loading-spinner :variation=&quot;circles&quot;&gt;&lt;/loading-spinner&gt;</code></pre>
+          <pre><code>&lt;Spinner :size=&quot;'large'&quot;&gt;&lt;/Spinner&gt;</code></pre>
         </div>
       </accordion>
       <div class="row">
-        <Spinner :variation="'circles'"/>
+        <Spinner :size="'large'"/>
       </div>
       <table class="docs-table">
         <thead>
@@ -33,10 +33,10 @@
         </thead>
         <tbody>
           <tr>
-            <td>variation</td>
+            <td>size</td>
             <td>String</td>
-            <td>'bars'</td>
-            <td>'bars', 'circles'</td>
+            <td>'small'</td>
+            <td>'small', 'large'</td>
           </tr>
         </tbody>
       </table>
