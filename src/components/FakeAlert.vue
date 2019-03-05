@@ -11,25 +11,25 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class FakeAlert extends Vue {
-  @Prop({ default: 'galazy83 donated $50.00' })
-  alertText!: string
+  @Prop({ default: "galazy83 donated $50.00" })
+  alertText!: string;
 
-  @Prop({ default: 'Thanks for the stream. Go CivRyan!' })
-  alertMessage!: string
+  @Prop({ default: "Thanks for the stream. Go CivRyan!" })
+  alertMessage!: string;
 
   @Prop({
-    default: 'https://thumbs.gfycat.com/PleasedIcyCod-size_restricted.gif',
+    default: "https://thumbs.gfycat.com/PleasedIcyCod-size_restricted.gif"
   })
-  alertImage!: string
+  alertImage!: string;
 }
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 .s-fake-alert {
   height: 146px;

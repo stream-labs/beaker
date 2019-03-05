@@ -3,7 +3,7 @@
     <div class="s-loader">
       <div class="s-loader__bg">
         <div class="s-loader__inner">
-          <Spinner :variation="spinnerType"/>
+          <Spinner :size="spinnerSize"/>
           <p class="s-loader__text">
             <slot></slot>
           </p>
@@ -22,8 +22,8 @@ import Button from './../components/Button.vue'
   components: { Spinner, Button },
 })
 export default class Loading extends Vue {
-  @Prop()
-  spinnerType!: string
+  @Prop({ default: 'small' })
+  spinnerSize!: string
 
   mounted() {
     setTimeout(() => {

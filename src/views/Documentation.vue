@@ -20,12 +20,12 @@
       <image-pickers v-if="activeSection === 'image-pickers'"/>
       <inputs v-if="activeSection === 'inputs'"/>
       <layouts v-if="activeSection === 'layouts'"/>
+      <loaders v-if="activeSection === 'loaders'"/>
       <modals v-if="activeSection === 'modals'"/>
       <notices v-if="activeSection === 'notices'"/>
       <progress-bars v-if="activeSection === 'progress-bars'"/>
       <paginations v-if="activeSection === 'paginations'"/>
       <sliders v-if="activeSection === 'sliders'"/>
-      <spinners v-if="activeSection === 'spinners'"/>
       <streamer-sites v-if="activeSection === 'streamer-sites'"/>
       <tables v-if="activeSection === 'tables'"/>
       <tabs v-if="activeSection === 'tabs'"/>
@@ -57,13 +57,13 @@ import Icons from '@/demos/Icons.vue'
 import ImagePickers from '@/demos/ImagePickers.vue'
 import Inputs from '@/demos/Inputs.vue'
 import Layouts from '@/demos/Layouts.vue'
+import Loaders from '@/demos/Loaders.vue'
 import Modals from '@/demos/Modals.vue'
 import Navigations from '@/demos/Navigations.vue'
 import Notices from '@/demos/Notices.vue'
 import ProgressBars from '@/demos/ProgressBars.vue'
 import Paginations from '@/demos/Paginations.vue'
 import Sliders from '@/demos/Sliders.vue'
-import Spinners from '@/demos/Spinners.vue'
 import StreamerSites from '@/demos/StreamerSites.vue'
 import Tables from '@/demos/Tables.vue'
 import Tabs from '@/demos/Tabs.vue'
@@ -92,13 +92,13 @@ import VirtualItems from '@/demos/VirtualItems.vue'
     ImagePickers,
     Inputs,
     Layouts,
+    Loaders,
     Modals,
     Navigations,
     Notices,
     ProgressBars,
     Paginations,
     Sliders,
-    Spinners,
     StreamerSites,
     Tables,
     Tabs,

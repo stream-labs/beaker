@@ -44,12 +44,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import Button from './../components/Button.vue'
-import ModalBasic from './../components/ModalBasic.vue'
-import ModalSubscribe from './../components/ModalSubscribe.vue'
-import ModalRedirect from './../components/ModalRedirect.vue'
-import ModalConfirmation from './../components/ModalConfirmation.vue'
+import { Component, Prop, Vue } from "vue-property-decorator";
+import Button from "./../components/Button.vue";
+import ModalBasic from "./../components/ModalBasic.vue";
+import ModalSubscribe from "./../components/ModalSubscribe.vue";
+import ModalRedirect from "./../components/ModalRedirect.vue";
+import ModalConfirmation from "./../components/ModalConfirmation.vue";
 
 @Component({
   components: {
@@ -57,54 +57,53 @@ import ModalConfirmation from './../components/ModalConfirmation.vue'
     ModalBasic,
     ModalSubscribe,
     ModalRedirect,
-    ModalConfirmation,
-  },
+    ModalConfirmation
+  }
 })
 export default class ModalComp extends Vue {
   @Prop({ default: 600 })
-  width!: number
+  width!: number;
 
-  modalWidth: number = this.width
+  modalWidth: number = this.width;
 
   @Prop({ default: 600 })
-  minWidth!: number
+  minWidth!: number;
 
-  modalMinWidth: number = this.minWidth
-
-  @Prop()
-  type!: string
-
-  modalType: string = this.type
+  modalMinWidth: number = this.minWidth;
 
   @Prop()
-  title!: string
+  type!: string;
 
-  modalTitle: string = this.title
-
-  @Prop()
-  subTitle!: string
-
-  modalsubTitle: string = this.subTitle
+  modalType: string = this.type;
 
   @Prop()
-  text!: string
+  title!: string;
 
-  modalText: string = this.text
-
-  @Prop()
-  subscribeText!: string
-
-  modalSubscribeText: string = this.subscribeText
+  modalTitle: string = this.title;
 
   @Prop()
-  subscribeMessage!: string
+  subTitle!: string;
 
-  modalSubscribeMessage: string = this.subscribeMessage
+  modalsubTitle: string = this.subTitle;
 
   @Prop()
-  notes!: string
+  text!: string;
 
-  modalNotes: string = this.notes
+  modalText: string = this.text;
+
+  @Prop()
+  subscribeText!: string;
+
+  modalSubscribeText: string = this.subscribeText;
+
+  @Prop()
+  subscribeMessage!: string;
+
+  modalSubscribeMessage: string = this.subscribeMessage;
+
+  @Prop()
+  notes!: string;
+
+  modalNotes: string = this.notes;
 }
 </script>
-

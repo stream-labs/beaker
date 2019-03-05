@@ -26,47 +26,47 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 
 @Component({})
 export default class TextInput extends Vue {
   @Prop()
-  name!: String
+  name!: String;
 
   @Prop()
-  value!: String
+  value!: String;
 
   @Prop()
-  error!: String
+  error!: String;
 
   @Prop()
-  helpText!: String
+  helpText!: String;
 
   @Prop()
   type!: {
-    type: String
-    default: 'text'
-  }
+    type: String;
+    default: "text";
+  };
 
   @Prop()
-  placeholder!: String
+  placeholder!: String;
 
   @Prop()
-  disabled!: Boolean
+  disabled!: Boolean;
 
   @Prop()
-  label!: String
+  label!: String;
 
-  content: String = this.value
+  content: String = this.value;
 
   handleInput(e: String) {
-    this.$emit('input', this.content)
+    this.$emit("input", this.content);
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 .s-form-field__input--error {
   border-color: @red;

@@ -128,17 +128,17 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import Accordion from './../components/Accordion.vue'
-import NewFeatureOverlay from './../components/NewFeatureOverlay.vue'
-import Button from './../components/Button.vue'
+import { Component, Vue } from "vue-property-decorator";
+import Accordion from "./../components/Accordion.vue";
+import NewFeatureOverlay from "./../components/NewFeatureOverlay.vue";
+import Button from "./../components/Button.vue";
 
 @Component({
   components: {
     Accordion,
     NewFeatureOverlay,
-    Button,
-  },
+    Button
+  }
 })
 export default class Modals extends Vue {}
 </script>

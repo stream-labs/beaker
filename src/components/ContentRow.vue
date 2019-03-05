@@ -23,28 +23,28 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import Button from './../components/Button.vue'
+import { Component, Prop, Vue } from "vue-property-decorator";
+import Button from "./../components/Button.vue";
 
 @Component({
   components: {
-    Button,
-  },
+    Button
+  }
 })
 export default class ContentRow extends Vue {
   @Prop()
-  icon!: string
+  icon!: string;
 
-  @Prop({ default: 'default' })
-  btnVariation!: string
+  @Prop({ default: "default" })
+  btnVariation!: string;
 
-  @Prop({ default: 'Default' })
-  btnTitle!: string
+  @Prop({ default: "Default" })
+  btnTitle!: string;
 }
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 .s-content-row {
   background: @light-2;
