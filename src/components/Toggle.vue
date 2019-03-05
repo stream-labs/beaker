@@ -13,35 +13,35 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({
   filters: {
     capitalize(value: string) {
-      if (!value) return ''
-      value = value.toString()
-      return value.charAt(0).toUpperCase() + value.slice(1)
-    },
-  },
+      if (!value) return "";
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    }
+  }
 })
 export default class Toggle extends Vue {
   @Prop()
-  values!: object
+  values!: object;
 
   @Prop()
-  selected!: string
+  selected!: string;
 
   @Prop()
-  default!: string
+  default!: string;
 
   created() {
-    this.$emit('update:selected', this.default)
+    this.$emit("update:selected", this.default);
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 .s-toggle {
   display: inline-flex;

@@ -237,22 +237,22 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import Accordion from './../components/Accordion.vue'
-import ModalComp from './../components/ModalComp.vue'
-import Button from './../components/Button.vue'
+import { Component, Vue } from "vue-property-decorator";
+import Accordion from "./../components/Accordion.vue";
+import ModalComp from "./../components/ModalComp.vue";
+import Button from "./../components/Button.vue";
 
 @Component({
   components: {
     Accordion,
     ModalComp,
-    Button,
-  },
+    Button
+  }
 })
 export default class Modals extends Vue {}
 </script>
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 .buttons {
   .margin-v-sides(4);
