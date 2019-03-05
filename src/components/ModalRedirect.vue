@@ -1,79 +1,69 @@
 <template>
   <modal
     name="modal-redirect"
-    :classes="'modal-wrapper'"
+    :classes="'s-modal-wrapper'"
     :maxWidth="modalWidth"
     :minWidth="modalMinWidth"
-    :height="modalHeight"
-    :minHeight="modalMinHeight"
+    height="auto"
     :adaptive="true"
   >
-    <div class="modal-container">
-      <div class="redirect">
-        <div class="spinner">
+    <div class="s-modal-container">
+      <div class="s-redirect">
+        <div class="s-spinner">
           <Spinner :variation="'bars'"/>
         </div>
-        <h1 class="modal-title">{{title}}</h1>
-        <p class="modal-text">{{text}}</p>
+        <h1 class="s-modal-title">{{title}}</h1>
+        <p class="s-modal-text">{{text}}</p>
       </div>
     </div>
   </modal>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Button from "./../components/Button.vue";
-import Spinner from "./../components/Spinner.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator'
+import Button from './../components/Button.vue'
+import Spinner from './../components/Spinner.vue'
 
 @Component({
   components: {
     Button,
-    Spinner
-  }
+    Spinner,
+  },
 })
 export default class ModalRedirect extends Vue {
   @Prop({ default: 600 })
-  width!: number;
+  width!: number
 
-  modalWidth: number = this.width;
+  modalWidth: number = this.width
 
   @Prop({ default: 600 })
-  minWidth!: number;
+  minWidth!: number
 
-  modalMinWidth: number = this.minWidth;
+  modalMinWidth: number = this.minWidth
 
-  @Prop({ default: "auto" })
-  height!: number;
+  @Prop()
+  title!: string
 
-  modalHeight: number = this.height;
-
-  @Prop({ default: null })
-  minHeight!: number;
-
-  modalMinHeight: number = this.minHeight;
-
-  @Prop({ default: null })
-  title!: string;
-
-  @Prop({ default: null })
-  text!: string;
+  @Prop()
+  text!: string
 }
 </script>
 
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
-@import "./../styles/components/Modals";
+@import './../styles/Imports';
+@import './../styles/components/Modals';
 
-.redirect {
+.s-redirect {
   text-align: center;
   .padding(3);
-  .modal-text {
-    .padding-h-sides(8);
-  }
 }
 
-.spinner {
+.s-modal-text {
+  .padding-h-sides(8);
+}
+
+.s-spinner {
   .padding-bottom(1.8);
 }
 </style>

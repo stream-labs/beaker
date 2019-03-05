@@ -1,18 +1,17 @@
 <template>
   <modal
     name="modal-confirmation"
-    :classes="'modal-wrapper'"
+    :classes="'s-modal-wrapper'"
     :maxWidth="modalWidth"
     :minWidth="modalMinWidth"
-    :height="modalHeight"
-    :minHeight="modalMinHeight"
+    height="auto"
     :adaptive="true"
   >
-    <div class="modal-container">
-      <div class="confirmation">
-        <h2 class="modal-sub-title">{{subTitle}}</h2>
-        <p class="modal-text">{{text}}</p>
-        <div class="button-container">
+    <div class="s-modal-container">
+      <div class="s-confirmation">
+        <h2 class="s-modal-sub-title">{{subTitle}}</h2>
+        <p class="s-modal-text">{{text}}</p>
+        <div class="s-button-container">
           <Button
             :variation="'default'"
             :title="'Cancel'"
@@ -27,59 +26,56 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Button from "./../components/Button.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator'
+import Button from './../components/Button.vue'
 
 @Component({
   components: {
-    Button
-  }
+    Button,
+  },
 })
 export default class ModalConfirmation extends Vue {
   @Prop({ default: 600 })
-  width!: number;
+  width!: number
 
-  modalWidth: number = this.width;
+  modalWidth: number = this.width
 
   @Prop({ default: 600 })
-  minWidth!: number;
+  minWidth!: number
 
-  modalMinWidth: number = this.minWidth;
+  modalMinWidth: number = this.minWidth
 
-  @Prop({ default: "auto" })
-  height!: number;
+  @Prop()
+  subTitle!: string
 
-  modalHeight: number = this.height;
-
-  @Prop({ default: null })
-  minHeight!: number;
-
-  modalMinHeight: number = this.minHeight;
-
-  @Prop({ default: null })
-  subTitle!: string;
-
-  @Prop({ default: null })
-  text!: string;
+  @Prop()
+  text!: string
 }
 </script>
 
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
-@import "./../styles/components/Modals";
+@import './../styles/Imports';
+@import './../styles/components/Modals';
 
-.modal-container {
+.s-modal-container {
   .padding(3);
-  .confirmation {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
 }
 
-.modal-default-button {
+.s-confirmation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.s-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.s-modal-default-button {
   float: right;
 }
 </style>

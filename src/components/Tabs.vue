@@ -1,130 +1,130 @@
 <template>
-  <div class="tabs-wrapper">
-    <div class="tabs-nav-wrapper">
-      <div class="tabs-nav" :class="className">
-        <div v-if="hasPrev" @click="scrollLeft" class="tabs-nav__control has-prev">
-          <i class="icon-down icon-left"></i>
+  <div class="s-tabs-wrapper">
+    <div class="s-tabs-nav-wrapper">
+      <div class="s-tabs-nav" :class="className">
+        <div v-if="hasPrev" @click="scrollLeft" class="s-tabs-nav__control s-has-prev">
+          <i class="s-icon-down s-icon-left"></i>
         </div>
 
         <div
           ref="scrollable_tabs"
           @scroll="calculateScrolls"
-          class="tabs"
+          class="s-tabs"
           :class="{
-          'has-next': hasNext,
-          'has-prev': hasPrev
+          's-has-next': hasNext,
+          's-has-prev': hasPrev
         }"
         >
           <span
             v-for="tab in tabs"
             :key="tab.value"
-            class="tab"
-            :class="{ 'is-active': tab.value === value }"
+            class="s-tab"
+            :class="{ 's-is-active': tab.value === value }"
             @click="showTab(tab.value)"
           >{{ tab.name }}</span>
         </div>
 
-        <div v-if="hasNext" @click="scrollRight" class="tabs-nav__control has-next">
-          <i class="icon-down icon-right"></i>
+        <div v-if="hasNext" @click="scrollRight" class="s-tabs-nav__control s-has-next">
+          <i class="s-icon-down s-icon-right"></i>
         </div>
       </div>
     </div>
 
-    <div class="tab-content" v-if="!hideContent">
+    <div class="s-tab-content" v-if="!hideContent">
       <slot v-for="tab in tabs" :name="tab.value" v-if="tab.value === value"/>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class Tabs extends Vue {
   $refs!: {
-    scrollable_tabs: HTMLDivElement;
-  };
+    scrollable_tabs: HTMLDivElement
+  }
 
-  isMounted = false;
-  tabsContainer: HTMLDivElement = null as any;
-  canScroll = false;
-  hasNext = false;
-  hasPrev = false;
-  private scrollIncrement = 100;
+  isMounted = false
+  tabsContainer: HTMLDivElement = null as any
+  canScroll = false
+  hasNext = false
+  hasPrev = false
+  private scrollIncrement = 100
 
   @Prop()
   tabs!: [
     {
-      name: string;
-      value: string;
+      name: string
+      value: string
     }
-  ];
+  ]
 
   @Prop()
-  value!: string;
+  value!: string
 
   @Prop()
-  className!: string;
+  className!: string
 
   @Prop()
-  hideContent!: boolean;
+  hideContent!: boolean
 
   created() {
-    window.addEventListener("resize", this.calculateScrolls);
+    window.addEventListener('resize', this.calculateScrolls)
   }
 
   destroyed() {
-    window.removeEventListener("resize", this.calculateScrolls);
+    window.removeEventListener('resize', this.calculateScrolls)
   }
 
   mounted() {
-    this.isMounted = true;
-    this.tabsContainer = this.$refs.scrollable_tabs;
-    this.calculateScrolls();
-    if (!this.value) this.showTab(this.tabs[0].value);
+    this.isMounted = true
+    this.tabsContainer = this.$refs.scrollable_tabs
+    this.calculateScrolls()
+    if (!this.value) this.showTab(this.tabs[0].value)
   }
 
   scrollLeft() {
     this.tabsContainer.scrollLeft =
-      this.tabsContainer.scrollLeft - this.scrollIncrement;
+      this.tabsContainer.scrollLeft - this.scrollIncrement
   }
 
   scrollRight() {
     this.tabsContainer.scrollLeft =
-      this.tabsContainer.scrollLeft + this.scrollIncrement;
+      this.tabsContainer.scrollLeft + this.scrollIncrement
   }
 
   calculateScrolls() {
-    if (!this.isMounted) return false;
+    if (!this.isMounted) return false
     this.canScroll =
-      this.tabsContainer.scrollWidth > this.tabsContainer.clientWidth;
-    this.hasPrev = this.tabsContainer.scrollLeft > 0;
+      this.tabsContainer.scrollWidth > this.tabsContainer.clientWidth
+    this.hasPrev = this.tabsContainer.scrollLeft > 0
     let scrollRight =
       this.tabsContainer.scrollWidth -
-      (this.tabsContainer.scrollLeft + this.tabsContainer.clientWidth);
+      (this.tabsContainer.scrollLeft + this.tabsContainer.clientWidth)
 
-    this.hasNext = scrollRight > 0;
+    this.hasNext = scrollRight > 0
   }
 
   showTab(tab: string) {
-    this.$emit("input", tab);
+    this.$emit('input', tab)
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
-.tabs-wrapper {
+.s-tabs-wrapper {
   height: 100%;
 }
 
-.tabs-nav-wrapper {
+.s-tabs-nav-wrapper {
   position: relative;
   height: 34px;
 }
 
-.tabs-nav {
+.s-tabs-nav {
   display: flex;
   align-items: flex-end;
   flex-direction: row;
@@ -142,24 +142,24 @@ export default class Tabs extends Vue {
   left: 0;
 }
 
-.tabs-nav__control {
-  height: calc(~"2 * " @spacing);
+.s-tabs-nav__control {
+  height: calc(~'2 * ' @spacing);
   display: flex;
   align-items: flex-end;
   .margin-bottom(2);
   position: relative;
 
-  &.has-next,
-  &.has-prev {
+  &.s-has-next,
+  &.s-has-prev {
     &:before {
-      content: "";
+      content: '';
       width: 40px;
       height: 16px;
       position: absolute;
     }
   }
 
-  &.has-next {
+  &.s-has-next {
     &:before {
       right: 16px;
       background: -moz-linear-gradient(
@@ -180,7 +180,7 @@ export default class Tabs extends Vue {
     }
   }
 
-  &.has-prev {
+  &.s-has-prev {
     &:before {
       left: 16px;
       background: -moz-linear-gradient(
@@ -202,23 +202,23 @@ export default class Tabs extends Vue {
   }
 }
 
-.tabs {
+.s-tabs {
   display: inline-block;
   overflow-x: hidden;
   white-space: nowrap;
   overflow-y: hidden;
   width: 100%;
 
-  &.has-prev {
+  &.s-has-prev {
     .margin-left(2);
   }
 
-  &.has-next {
+  &.s-has-next {
     .margin-right(2);
   }
 
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     right: 0;
     left: 0;
@@ -229,7 +229,7 @@ export default class Tabs extends Vue {
   }
 }
 
-.tab {
+.s-tab {
   color: @day-paragraph;
   .padding-bottom(2);
   border-bottom: 2px solid transparent;
@@ -246,30 +246,30 @@ export default class Tabs extends Vue {
   }
 }
 
-.tab-content {
+.s-tab-content {
   position: relative;
   overflow-y: auto;
   .padding-v-sides(3);
 }
 
 .night-theme {
-  .tabs {
+  .s-tabs {
     &:before {
       background-color: @night-border;
     }
   }
 
-  .tab {
+  .s-tab {
     color: @night-paragraph;
 
-    &.is-active {
+    &.s-is-active {
       color: @night-title;
       border-color: @light-1;
     }
   }
 
-  .tabs-nav__control {
-    &.has-next {
+  .s-tabs-nav__control {
+    &.s-has-next {
       &:before {
         background: -moz-linear-gradient(
           left,
@@ -289,7 +289,7 @@ export default class Tabs extends Vue {
       }
     }
 
-    &.has-prev {
+    &.s-has-prev {
       &:before {
         background: -moz-linear-gradient(
           left,

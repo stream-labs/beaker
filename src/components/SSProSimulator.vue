@@ -1,84 +1,86 @@
 <template>
-  <div class="sp-simulator">
-    <div class="sp-simulator__web-bar">
-      <div class="sp-simulator__web-bar-dots">
-        <div class="sp-simulator__web-bar-dot"></div>
-        <div class="sp-simulator__web-bar-dot"></div>
-        <div class="sp-simulator__web-bar-dot"></div>
+  <div class="s-sp-simulator">
+    <div class="s-sp-simulator__web-bar">
+      <div class="s-sp-simulator__web-bar-dots">
+        <div class="s-sp-simulator__web-bar-dot"></div>
+        <div class="s-sp-simulator__web-bar-dot"></div>
+        <div class="s-sp-simulator__web-bar-dot"></div>
       </div>
-      <div class="sp-simulator__url-container">{{ username }}.tv</div>
+      <div class="s-sp-simulator__url-container">{{ username }}.tv</div>
     </div>
-    <div class="sp-simulator__web-page" :class="themeClass">
-      <div class="sp-simulator__heading">
-        <img class="sp-simulator__icon" :src="icon">
-        <div class="sp-simulator__header-text">
-          <h1 class="sp-simulator__username">{{ username }}</h1>
-          <div class="sp-simulator__desc"></div>
+    <div class="s-sp-simulator__web-page" :class="themeClass">
+      <div class="s-sp-simulator__heading">
+        <img class="s-sp-simulator__icon" :src="icon">
+        <div class="s-sp-simulator__header-text">
+          <h1 class="s-sp-simulator__username">{{ username }}</h1>
+          <div class="s-sp-simulator__desc"></div>
         </div>
       </div>
 
-      <div class="sp-simulator__section">
-        <div class="sp-simulator__video"><i class="icon-media-share-2"></i></div>
+      <div class="s-sp-simulator__section">
+        <div class="s-sp-simulator__video">
+          <i class="s-icon-media-share-2"></i>
+        </div>
       </div>
 
-      <div class="sp-simulator__section">
-        <div class="ss-simulator__fake-input"></div>
-        <div class="ss-simulator__fake-input"></div>
-        <div class="ss-simulator__fake-input"></div>
-        <div class="ss-simulator__fake-button"></div>
+      <div class="s-sp-simulator__section">
+        <div class="s-ss-simulator__fake-input"></div>
+        <div class="s-ss-simulator__fake-input"></div>
+        <div class="s-ss-simulator__fake-input"></div>
+        <div class="s-ss-simulator__fake-button"></div>
       </div>
 
-      <div class="sp-simulator__section"></div>
-      <div class="sp-simulator__section"></div>
-      <div class="sp-simulator__section"></div>
-      <div class="sp-simulator__section"></div>
+      <div class="s-sp-simulator__section"></div>
+      <div class="s-sp-simulator__section"></div>
+      <div class="s-sp-simulator__section"></div>
+      <div class="s-sp-simulator__section"></div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class SSProSimulator extends Vue {
   @Prop()
-  username!: string;
+  username!: string
 
   @Prop()
-  icon!: String;
+  icon!: String
 
-  themeClasses = ["teal", "orange", "purple", "electric-blue", "red", "lime"];
-  themeClass = "";
-  myInt!: number;
+  themeClasses = ['teal', 'orange', 'purple', 'electric-blue', 'red', 'lime']
+  themeClass = ''
+  myInt!: number
 
   rotateClasses() {
-    let it = this.themeClasses[Symbol.iterator]();
+    let it = this.themeClasses[Symbol.iterator]()
     this.myInt = setInterval(() => {
       // time interval
-      const next = it.next();
+      const next = it.next()
       if (!next.done) {
-        this.themeClass = "sp-simulator__web-page--" + next.value;
+        this.themeClass = 's-sp-simulator__web-page--' + next.value
       } else {
-        it = this.themeClasses[Symbol.iterator]();
+        it = this.themeClasses[Symbol.iterator]()
       }
-    }, 2000);
+    }, 2000)
   }
 
   beforeDestroy() {
-    clearInterval(this.myInt);
+    clearInterval(this.myInt)
   }
 
   mounted() {
-    this.rotateClasses();
+    this.rotateClasses()
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
-@import "./../styles/components/CustomFonts";
+@import './../styles/Imports';
+@import './../styles/components/CustomFonts';
 
-.sp-simulator {
+.s-sp-simulator {
   .radius(2);
   width: 100%;
   max-width: 600px;
@@ -90,7 +92,7 @@ export default class SSProSimulator extends Vue {
   }
 }
 
-.sp-simulator__web-bar {
+.s-sp-simulator__web-bar {
   height: 40px;
   display: grid;
   background-color: @day-section;
@@ -99,11 +101,11 @@ export default class SSProSimulator extends Vue {
   .padding-h-sides();
 }
 
-.sp-simulator__web-bar-dots {
+.s-sp-simulator__web-bar-dots {
   display: flex;
 }
 
-.sp-simulator__web-bar-dot {
+.s-sp-simulator__web-bar-dot {
   width: 12px;
   height: 12px;
   .radius(10);
@@ -111,7 +113,7 @@ export default class SSProSimulator extends Vue {
   background-color: @light-3;
 }
 
-.sp-simulator__url-container {
+.s-sp-simulator__url-container {
   height: 24px;
   width: 248px;
   background-color: @white;
@@ -128,18 +130,18 @@ export default class SSProSimulator extends Vue {
   .weight(@medium);
 }
 
-.sp-simulator__web-page {
+.s-sp-simulator__web-page {
   background-color: @night-bg;
   .padding(2);
   display: grid;
   grid-template-areas:
-    "header header header header"
-    "video video video tip"
-    "merch social countdown lb";
+    'header header header header'
+    'video video video tip'
+    'merch social countdown lb';
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 16px;
 
-  .sp-simulator__section {
+  .s-sp-simulator__section {
     &:nth-child(2) {
       grid-area: video;
     }
@@ -166,7 +168,7 @@ export default class SSProSimulator extends Vue {
   }
 }
 
-.sp-simulator__heading {
+.s-sp-simulator__heading {
   display: flex;
   grid-area: header;
   align-items: center;
@@ -179,11 +181,11 @@ export default class SSProSimulator extends Vue {
   }
 }
 
-.sp-simulator__header-text {
+.s-sp-simulator__header-text {
   width: 72%;
 }
 
-.sp-simulator__desc {
+.s-sp-simulator__desc {
   .margin(@0);
   width: 100%;
   height: @spacing;
@@ -191,7 +193,7 @@ export default class SSProSimulator extends Vue {
   background-color: lighten(@night-bg, 4%);
 }
 
-.sp-simulator__video {
+.s-sp-simulator__video {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -203,21 +205,21 @@ export default class SSProSimulator extends Vue {
   }
 }
 
-.sp-simulator__icon {
+.s-sp-simulator__icon {
   width: 40px;
   height: 40px;
   border-radius: 100%;
   .margin-right(2);
 }
 
-.sp-simulator__section {
+.s-sp-simulator__section {
   .padding(2);
   .radius(2);
   min-height: 100px;
   background-color: darken(@night-bg, 8%);
 }
 
-.ss-simulator__fake-input {
+.s-ss-simulator__fake-input {
   height: 24px;
   .radius();
   border: 1px solid rgba(255, 255, 255, 0.24);
@@ -225,7 +227,7 @@ export default class SSProSimulator extends Vue {
   .padding-h-sides();
 }
 
-.ss-simulator__fake-button {
+.s-ss-simulator__fake-button {
   height: 40px;
   .radius();
   background-color: lighten(@night-bg, 16%);
@@ -237,67 +239,67 @@ export default class SSProSimulator extends Vue {
 }
 
 // Themes
-.sp-simulator__web-page--teal {
+.s-sp-simulator__web-page--teal {
   background-color: @teal;
   .custom-font--bubble;
   color: #303030;
   grid-template-areas:
-    "header header header header"
-    "tip video video video"
-    "merch merch social social";
+    'header header header header'
+    'tip video video video'
+    'merch merch social social';
 
-  .sp-simulator__section {
+  .s-sp-simulator__section {
     &:nth-child(6),
     &:nth-child(7) {
       display: none;
     }
   }
 
-  .sp-simulator__desc,
-  .ss-simulator__fake-button {
+  .s-sp-simulator__desc,
+  .s-ss-simulator__fake-button {
     background-color: lighten(@teal, 8%);
   }
 
-  .sp-simulator__video i {
+  .s-sp-simulator__video i {
     color: darken(@teal, 16%);
   }
 
-  .sp-simulator__section {
+  .s-sp-simulator__section {
     background-color: darken(@teal, 8%);
   }
 }
 
-.sp-simulator__web-page--orange {
+.s-sp-simulator__web-page--orange {
   background-color: #d84e24;
   .custom-font--knock;
   grid-template-areas:
-    "header header header header"
-    "tip video video video"
-    "merch social lb countdown";
-  .sp-simulator__desc,
-  .ss-simulator__fake-button {
+    'header header header header'
+    'tip video video video'
+    'merch social lb countdown';
+  .s-sp-simulator__desc,
+  .s-ss-simulator__fake-button {
     background-color: lighten(#d84e24, 4%);
   }
 
-  .sp-simulator__video i {
+  .s-sp-simulator__video i {
     color: lighten(#d84e24, 4%);
   }
 
-  .sp-simulator__section {
+  .s-sp-simulator__section {
     background-color: darken(#d84e24, 8%);
   }
 }
 
-.sp-simulator__web-page--electric-blue {
+.s-sp-simulator__web-page--electric-blue {
   background-color: #0f83c6;
   .custom-font--smooth-talker();
   color: #202020;
   grid-template-areas:
-    "header header header header"
-    "tip video video video"
-    "merch merch social lb";
+    'header header header header'
+    'tip video video video'
+    'merch merch social lb';
 
-  .sp-simulator__section {
+  .s-sp-simulator__section {
     &:nth-child(7) {
       display: none;
     }
@@ -307,53 +309,53 @@ export default class SSProSimulator extends Vue {
     color: rgb(25, 32, 43);
   }
 
-  .sp-simulator__video i {
+  .s-sp-simulator__video i {
     color: lighten(#0f83c6, 4%);
   }
 
-  .sp-simulator__desc,
-  .ss-simulator__fake-button {
+  .s-sp-simulator__desc,
+  .s-ss-simulator__fake-button {
     background-color: lighten(#0f83c6, 4%);
   }
 
-  .sp-simulator__fake-input {
+  .s-sp-simulator__fake-input {
     border-color: rgba(0, 0, 0, 0.24);
   }
 
-  .sp-simulator__section {
+  .s-sp-simulator__section {
     background-color: darken(#0f83c6, 8%);
   }
 }
 
-.sp-simulator__web-page--purple {
+.s-sp-simulator__web-page--purple {
   background-color: @purple;
   .custom-font--bubble;
   color: #303030;
 
-  .sp-simulator__desc,
-  .ss-simulator__fake-button {
+  .s-sp-simulator__desc,
+  .s-ss-simulator__fake-button {
     background-color: lighten(@purple, 8%);
   }
 
-  .sp-simulator__video i {
+  .s-sp-simulator__video i {
     color: darken(@purple, 16%);
   }
 
-  .sp-simulator__section {
+  .s-sp-simulator__section {
     background-color: darken(@purple, 8%);
   }
 }
 
-.sp-simulator__web-page--red {
+.s-sp-simulator__web-page--red {
   background-color: #af1108;
   .custom-font--straight-facts;
   color: #808080;
   grid-template-areas:
-    "header header header header"
-    "video video video tip"
-    "merch merch merch social";
+    'header header header header'
+    'video video video tip'
+    'merch merch merch social';
 
-  .sp-simulator__section {
+  .s-sp-simulator__section {
     &:nth-child(6),
     &:nth-child(7) {
       display: none;
@@ -364,30 +366,30 @@ export default class SSProSimulator extends Vue {
     color: @white;
   }
 
-  .sp-simulator__video i {
+  .s-sp-simulator__video i {
     color: lighten(#af1108, 4%);
   }
 
-  .sp-simulator__desc,
-  .ss-simulator__fake-button {
+  .s-sp-simulator__desc,
+  .s-ss-simulator__fake-button {
     background-color: lighten(#af1108, 4%);
   }
 
-  .sp-simulator__section {
+  .s-sp-simulator__section {
     background-color: darken(#af1108, 8%);
   }
 }
 
-.sp-simulator__web-page--lime {
+.s-sp-simulator__web-page--lime {
   background-color: #78e236;
   .custom-font--listen-up;
   color: #63695d;
   grid-template-areas:
-    "header header header header"
-    "video video video tip"
-    "merch merch merch merch";
+    'header header header header'
+    'video video video tip'
+    'merch merch merch merch';
 
-  .sp-simulator__section {
+  .s-sp-simulator__section {
     &:nth-child(5),
     &:nth-child(6),
     &:nth-child(7) {
@@ -395,12 +397,12 @@ export default class SSProSimulator extends Vue {
     }
   }
 
-  .sp-simulator__desc,
-  .ss-simulator__fake-button {
+  .s-sp-simulator__desc,
+  .s-ss-simulator__fake-button {
     background-color: lighten(#78e236, 8%);
   }
 
-  .sp-simulator__video i {
+  .s-sp-simulator__video i {
     color: darken(#78e236, 16%);
   }
 
@@ -408,26 +410,26 @@ export default class SSProSimulator extends Vue {
     color: #1e4804;
   }
 
-  .sp-simulator__section {
+  .s-sp-simulator__section {
     background-color: darken(#78e236, 8%);
   }
 }
 
 .night,
 .night-theme {
-  .sp-simulator__web-bar {
+  .s-sp-simulator__web-bar {
     background-color: @night-section;
   }
 
-  .sp-simulator__web-bar-dots {
+  .s-sp-simulator__web-bar-dots {
     display: flex;
   }
 
-  .sp-simulator__web-bar-dot {
+  .s-sp-simulator__web-bar-dot {
     background-color: @dark-4;
   }
 
-  .sp-simulator__url-container {
+  .s-sp-simulator__url-container {
     background-color: @night-bg;
   }
 }

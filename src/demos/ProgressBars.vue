@@ -5,7 +5,7 @@
       <h2>Default Progress Bar</h2>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-<pre><code>&lt;progress-bar :progressComplete=&quot;50&quot;&gt;&lt;/progress-bar&gt;</code></pre>
+          <pre><code>&lt;progress-bar :progressComplete=&quot;50&quot;&gt;&lt;/progress-bar&gt;</code></pre>
         </div>
       </accordion>
       <div class="row">
@@ -34,16 +34,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import ProgressBar from "./../components/ProgressBar.vue";
-import Accordion from "./../components/Accordion.vue";
+import { Component, Vue } from 'vue-property-decorator'
+import ProgressBar from './../components/ProgressBar.vue'
+import Accordion from './../components/Accordion.vue'
 @Component({
   components: {
     ProgressBar,
-    Accordion
-  }
+    Accordion,
+  },
 })
 export default class ProgressBars extends Vue {
-  value = 50;
+  value = 50
 }
 </script>

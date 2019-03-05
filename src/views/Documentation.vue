@@ -6,6 +6,7 @@
       <installation v-if="activeSection === 'installation'"/>
       <assets v-if="activeSection === 'assets'"/>
       <accordions v-if="activeSection === 'accordions'"/>
+      <announcements v-if="activeSection === 'announcements'"/>
       <badges v-if="activeSection === 'badges'"/>
       <banners v-if="activeSection === 'banners'"/>
       <buttons-demo v-if="activeSection === 'buttons'"/>
@@ -18,6 +19,7 @@
       <icons v-if="activeSection === 'icons'"/>
       <image-pickers v-if="activeSection === 'image-pickers'"/>
       <inputs v-if="activeSection === 'inputs'"/>
+      <layouts v-if="activeSection === 'layouts'"/>
       <modals v-if="activeSection === 'modals'"/>
       <notices v-if="activeSection === 'notices'"/>
       <progress-bars v-if="activeSection === 'progress-bars'"/>
@@ -34,37 +36,39 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import LeftNavigation from "@/demos/LeftNavigation.vue"; // @ is an alias to /src
-import Installation from "@/demos/Installation.vue";
-import Assets from "@/demos/Assets.vue";
-import Colors from "@/demos/Colors.vue";
-import Typography from "@/demos/Typography.vue";
-import Accordions from "@/demos/Accordions.vue";
-import Badges from "@/demos/Badges.vue";
-import Banners from "@/demos/Banners.vue";
-import ButtonsDemo from "@/demos/Buttons.vue";
-import CallToActions from "@/demos/CallToActions.vue";
-import Callouts from "@/demos/Callouts.vue";
-import ColorPickers from "@/demos/ColorPickers.vue";
-import Dropdowns from "@/demos/Dropdowns.vue";
-import Extras from "@/demos/Extras.vue";
-import Forms from "@/demos/Forms.vue";
-import Icons from "@/demos/Icons.vue";
-import ImagePickers from "@/demos/ImagePickers.vue";
-import Inputs from "@/demos/Inputs.vue";
-import Modals from "@/demos/Modals.vue";
-import Navigations from "@/demos/Navigations.vue";
-import Notices from "@/demos/Notices.vue";
-import ProgressBars from "@/demos/ProgressBars.vue";
-import Paginations from "@/demos/Paginations.vue";
-import Sliders from "@/demos/Sliders.vue";
-import Spinners from "@/demos/Spinners.vue";
-import StreamerSites from "@/demos/StreamerSites.vue";
-import Tables from "@/demos/Tables.vue";
-import Tabs from "@/demos/Tabs.vue";
-import Toggles from "@/demos/Toggles.vue";
-import VirtualItems from "@/demos/VirtualItems.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator'
+import LeftNavigation from '@/demos/LeftNavigation.vue' // @ is an alias to /src
+import Installation from '@/demos/Installation.vue'
+import Assets from '@/demos/Assets.vue'
+import Colors from '@/demos/Colors.vue'
+import Typography from '@/demos/Typography.vue'
+import Accordions from '@/demos/Accordions.vue'
+import Announcements from '@/demos/Announcements.vue'
+import Badges from '@/demos/Badges.vue'
+import Banners from '@/demos/Banners.vue'
+import ButtonsDemo from '@/demos/Buttons.vue'
+import CallToActions from '@/demos/CallToActions.vue'
+import Callouts from '@/demos/Callouts.vue'
+import ColorPickers from '@/demos/ColorPickers.vue'
+import Dropdowns from '@/demos/Dropdowns.vue'
+import Extras from '@/demos/Extras.vue'
+import Forms from '@/demos/Forms.vue'
+import Icons from '@/demos/Icons.vue'
+import ImagePickers from '@/demos/ImagePickers.vue'
+import Inputs from '@/demos/Inputs.vue'
+import Layouts from '@/demos/Layouts.vue'
+import Modals from '@/demos/Modals.vue'
+import Navigations from '@/demos/Navigations.vue'
+import Notices from '@/demos/Notices.vue'
+import ProgressBars from '@/demos/ProgressBars.vue'
+import Paginations from '@/demos/Paginations.vue'
+import Sliders from '@/demos/Sliders.vue'
+import Spinners from '@/demos/Spinners.vue'
+import StreamerSites from '@/demos/StreamerSites.vue'
+import Tables from '@/demos/Tables.vue'
+import Tabs from '@/demos/Tabs.vue'
+import Toggles from '@/demos/Toggles.vue'
+import VirtualItems from '@/demos/VirtualItems.vue'
 
 @Component({
   components: {
@@ -74,6 +78,7 @@ import VirtualItems from "@/demos/VirtualItems.vue";
     Colors,
     Typography,
     Accordions,
+    Announcements,
     Badges,
     Banners,
     ButtonsDemo,
@@ -86,6 +91,7 @@ import VirtualItems from "@/demos/VirtualItems.vue";
     Icons,
     ImagePickers,
     Inputs,
+    Layouts,
     Modals,
     Navigations,
     Notices,
@@ -97,20 +103,20 @@ import VirtualItems from "@/demos/VirtualItems.vue";
     Tables,
     Tabs,
     Toggles,
-    VirtualItems
-  }
+    VirtualItems,
+  },
 })
 export default class Documentation extends Vue {
-  activeSection = "installation";
+  activeSection = 'installation'
 
   changeSection(activeSection: string) {
-    this.activeSection = activeSection;
+    this.activeSection = activeSection
   }
 }
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
 .documentation {
   display: grid;
@@ -141,16 +147,16 @@ export default class Documentation extends Vue {
 }
 
 .docs-table {
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
 
   th {
-    font-family: "Roboto";
+    font-family: 'Roboto';
   }
 
   tr {
     td {
       &:last-child {
-        font-family: "Roboto";
+        font-family: 'Roboto';
       }
     }
   }

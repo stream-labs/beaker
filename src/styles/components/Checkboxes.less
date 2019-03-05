@@ -1,4 +1,4 @@
-.checkbox {
+.s-checkbox {
   position: relative;
   display: inline-block;
   width: 100%;
@@ -60,7 +60,7 @@
     margin: 0;
   }
 
-  input:checked ~ label {
+  input:checked~label {
     color: @day-title;
 
     &:before {
@@ -69,7 +69,7 @@
     }
   }
 
-  input:checked ~ label:after {
+  input:checked~label:after {
     position: absolute;
     left: 3px;
     top: 0px;
@@ -82,7 +82,7 @@
   }
 }
 
-.radio.checkbox {
+.s-radio.checkbox {
   label:before {
     content: "";
     transform: none;
@@ -93,7 +93,7 @@
     left: 0;
   }
 
-  input:checked ~ label:after {
+  input:checked~label:after {
     content: "";
     width: 8px;
     height: 8px;
@@ -104,10 +104,11 @@
   }
 }
 
-.radio-button-group,
-.checkbox-group {
-  .checkbox,
-  .radio-button {
+.s-radio-button-group,
+.s-checkbox-group {
+
+  .s-checkbox,
+  .s-radio-button {
     .margin-bottom();
 
     &:last-child {
@@ -117,7 +118,7 @@
 }
 
 .night {
-  .checkbox {
+  .s-checkbox {
     label {
       color: @night-paragraph;
 
@@ -126,7 +127,7 @@
       }
     }
 
-    input:checked ~ label {
+    input:checked~label {
       color: @night-title;
     }
   }

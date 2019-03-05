@@ -1,7 +1,7 @@
 <template>
-  <div class="form-field" :class="{ 'form-field--with-label': label }">
+  <div class="s-form-field" :class="{ 's-form-field--with-label': label }">
     <input
-      class="text-input"
+      class="s-text-input"
       :type="type"
       :placeholder="placeholder"
       @input="handleInput"
@@ -9,70 +9,70 @@
       :disabled="disabled"
       @blur="$emit('blur')"
       v-model="content"
-      :class="{ 'form-field__input': true, 'form-field__input--error': !!error }"
+      :class="{ 's-form-field__input': true, 's-form-field__input--error': !!error }"
     >
     <label
-      :class="{ 'form-field__label--top': value !== '', 'form-field__label--error': !!error }"
-      class="form-field__label"
+      :class="{ 's-form-field__label--top': value !== '', 's-form-field__label--error': !!error }"
+      class="s-form-field__label"
       v-if="label"
     >{{ label }}</label>
 
     <transition name="slide">
-      <p v-show="error" class="form-field__error-text">{{ error }}</p>
+      <p v-show="error" class="s-form-field__error-text">{{ error }}</p>
     </transition>
 
-    <p v-show="helpText" class="form-field__help-text">{{ helpText }}</p>
+    <p v-show="helpText" class="s-form-field__help-text">{{ helpText }}</p>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from "vue-property-decorator";
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 
 @Component({})
 export default class TextInput extends Vue {
   @Prop()
-  name!: String;
+  name!: String
 
   @Prop()
-  value!: String;
+  value!: String
 
   @Prop()
-  error!: String;
+  error!: String
 
   @Prop()
-  helpText!: String;
+  helpText!: String
 
   @Prop()
   type!: {
-    type: String;
-    default: "text";
-  };
+    type: String
+    default: 'text'
+  }
 
   @Prop()
-  placeholder!: String;
+  placeholder!: String
 
   @Prop()
-  disabled!: Boolean;
+  disabled!: Boolean
 
   @Prop()
-  label!: String;
+  label!: String
 
-  content: String = this.value;
+  content: String = this.value
 
   handleInput(e: String) {
-    this.$emit("input", this.content);
+    this.$emit('input', this.content)
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
-.form-field__input--error {
+.s-form-field__input--error {
   border-color: @red;
 }
 
-.form-field__label {
+.s-form-field__label {
   position: absolute;
   color: @light-5;
   left: 8px;
@@ -80,14 +80,14 @@ export default class TextInput extends Vue {
   .radius();
 }
 
-.form-field__error-text,
-.form-field__help-text {
+.s-form-field__error-text,
+.s-form-field__help-text {
   .small-type();
   .margin-bottom(0);
   .margin-top();
 }
 
-.form-field--with-label {
+.s-form-field--with-label {
   position: relative;
 
   label {
@@ -100,7 +100,7 @@ export default class TextInput extends Vue {
   }
 
   input:focus + label,
-  .form-field__label--top {
+  .s-form-field__label--top {
     transform: translateY(-20px);
     font-size: 12px;
     color: @day-paragraph;
@@ -115,7 +115,7 @@ export default class TextInput extends Vue {
     color: @teal;
   }
 
-  .form-field--top {
+  .s-form-field--top {
     color: @day-paragraph;
   }
 
@@ -156,7 +156,7 @@ export default class TextInput extends Vue {
 
 .night,
 .night-theme {
-  .form-field--with-label {
+  .s-form-field--with-label {
     position: relative;
 
     input:focus + label {
@@ -164,7 +164,7 @@ export default class TextInput extends Vue {
     }
   }
 
-  .form-field__input--error {
+  .s-form-field__input--error {
     border-color: @red;
 
     &:focus,
@@ -172,12 +172,12 @@ export default class TextInput extends Vue {
       border-color: @red;
     }
 
-    &:focus + .form-field__label {
+    &:focus + .s-form-field__label {
       color: @red;
     }
   }
 
-  .form-field__label {
+  .s-form-field__label {
     background-color: @night-bg;
   }
 
@@ -186,8 +186,8 @@ export default class TextInput extends Vue {
     color: @night-paragraph;
   }
 
-  .form-field__label--error,
-  .form-field__error-text {
+  .s-form-field__label--error,
+  .s-form-field__error-text {
     color: @red;
   }
 }

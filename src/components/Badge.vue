@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="badge"
-    :class="badgeClasses"
-  >
+  <div class="s-badge" :class="badgeClasses">
     <div
       v-if="variant === 'progress'"
       :style="{
@@ -13,15 +10,13 @@
         )`,
         'color': textColor
       }"
-    >
-      {{ `${current}${separator}${total} ${suffix}` }}
-    </div>
-    <slot v-else />
+    >{{ `${current}${separator}${total} ${suffix}` }}</div>
+    <slot v-else/>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class Badge extends Vue {
@@ -33,56 +28,56 @@ export default class Badge extends Vue {
     separator: STRING - whatever you want to separate the current and total e.g. 'out of' in '5 out of 10.' Could be '/', 'of', etc. Default is '/'
     suffix: STRING - whatever you want to include at the end of the progress string. e.g. 'sold' in '5 out of 10 sold.'
   */
-  @Prop({ default: "success" })
-  variant!: string;
+  @Prop({ default: 'success' })
+  variant!: string
 
   @Prop({ default: false })
-  alignLeft!: boolean;
+  alignLeft!: boolean
 
   @Prop({ default: false })
-  noMargin!: boolean;
+  noMargin!: boolean
 
-  @Prop({ default: "#31c3a2" })
-  barColor!: string;
+  @Prop({ default: '#31c3a2' })
+  barColor!: string
 
-  @Prop({ default: "#ffffff" })
-  textColor!: string;
-
-  @Prop()
-  current!: number;
+  @Prop({ default: '#ffffff' })
+  textColor!: string
 
   @Prop()
-  total!: number;
-
-  @Prop({ default: "/" })
-  separator!: string;
+  current!: number
 
   @Prop()
-  suffix!: string;
+  total!: number
+
+  @Prop({ default: '/' })
+  separator!: string
+
+  @Prop()
+  suffix!: string
 
   get badgeClasses() {
-    let classes = [];
+    let classes = []
 
-    classes.push(`badge--${this.variant}`);
+    classes.push(`s-badge--${this.variant}`)
 
     if (this.alignLeft) {
-      classes.push(`badge--left`);
+      classes.push(`s-badge--left`)
     }
 
     if (this.noMargin) {
-      classes.push("badge--no-margin");
+      classes.push('s-badge--no-margin')
     }
 
-    return classes;
+    return classes
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
 // Standout labels, used for 'New', 'Beta', 'Pro', etc
-.badge {
+.s-badge {
   display: inline-block;
   margin: 0 0 0 8px;
   padding: 0 4px;
@@ -163,7 +158,7 @@ export default class Badge extends Vue {
 
 .night,
 .night-theme {
-  .badge {
+  .s-badge {
     &--tag {
       background-color: @dark-5;
       color: @white;

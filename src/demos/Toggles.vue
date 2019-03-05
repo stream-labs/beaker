@@ -10,15 +10,12 @@ components: {
   Toggle
 }</code></pre>
 
-      <accordion
-        :openedTitle="'Hide Code'"
-        :closedTitle="'Show Code'"
-      >
+      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre><code>&lt;toggle
   :values=&quot;{
-    'show': `&lt;i class='icon-view'&gt;&lt;/i&gt;`,
-    'hide': `&lt;i class='icon-hide'&gt;&lt;/i&gt;`
+    'show': `&lt;i class='s-icon-view'&gt;&lt;/i&gt;`,
+    'hide': `&lt;i class='s-icon-hide'&gt;&lt;/i&gt;`
   }&quot;
   :selected.sync=&quot;selectedOption&quot;
   :default=&quot;'visible'&quot;&gt;
@@ -28,8 +25,8 @@ components: {
 
       <toggle
         :values="{
-          'show': `<i class='icon-view'></i>`,
-          'hide': `<i class='icon-hide'></i>`
+          'show': `<i class='s-icon-view'></i>`,
+          'hide': `<i class='s-icon-hide'></i>`
         }"
         :selected.sync="selectedTextOption"
         :default="'show'"
@@ -70,19 +67,19 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue } from 'vue-property-decorator'
 
-import Accordion from "./../components/Accordion.vue";
-import Toggle from "./../components/Toggle.vue";
+import Accordion from './../components/Accordion.vue'
+import Toggle from './../components/Toggle.vue'
 
 @Component({
   components: {
     Accordion,
-    Toggle
-  }
+    Toggle,
+  },
 })
 export default class Toggles extends Vue {
-  selectedOption = "";
-  selectedTextOption = "";
+  selectedOption = ''
+  selectedTextOption = ''
 }
 </script>

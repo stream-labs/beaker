@@ -15,16 +15,18 @@ import CallToAction from "@/components/CallToAction";
 import Callout from "@/components/Callout";
 import Checkbox from "@/components/Checkbox";
 import ColorPicker from "@/components/ColorPicker";
+import ContentRow from "@/components/ContentRow";
 import FormGroupH from "@/components/FormGroupH";
 import FormGroupV from "@/components/FormGroupV";
 import HelloWorld from "@/components/HelloWorld";
 import ImagePicker from "@/components/ImagePicker";
 import ItemGrid from "@/components/ItemGrid";
-import Modal from "@/components/Modal";
 import ModalBasic from "@/components/ModalBasic";
+import ModalComp from "@/components/ModalComp";
 import ModalConfirmation from "@/components/ModalConfirmation";
-import ModalSubscribe from "@/components/ModalSubscribe";
 import ModalRedirect from "@/components/ModalRedirect";
+import ModalSubscribe from "@/components/ModalSubscribe";
+import NewFeatureOverlay from "@/components/NewFeatureOverlay";
 import PaymentForm from "@/components/PaymentForm";
 import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
@@ -46,16 +48,18 @@ const components = [
   CallToAction,
   Callout,
   ColorPicker,
+  ContentRow,
   FormGroupH,
   FormGroupV,
   HelloWorld,
   ImagePicker,
   ItemGrid,
-  Modal,
   ModalBasic,
+  ModalComp,
   ModalConfirmation,
-  ModalSubscribe,
   ModalRedirect,
+  ModalSubscribe,
+  NewFeatureOverlay,
   Selector,
   Slider,
   Spinner,
@@ -89,16 +93,18 @@ export {
   Callout,
   Checkbox,
   ColorPicker,
+  ContentRows,
   FormGroupH,
   FormGroupV,
   HelloWorld,
   ImagePicker,
   ItemGrid,
-  Modal,
   ModalBasic,
+  ModalComp,
   ModalConfirmation,
-  ModalSubscribe,
   ModalRedirect,
+  ModalSubscribe,
+  NewFeatureOverlay,
   PaymentForm,
   Selector,
   Slider,

@@ -1,22 +1,22 @@
 <template>
-  <div class="image-picker">
-    <div class="image-picker__thumb" @click="chooseImage">
+  <div class="s-image-picker">
+    <div class="s-image-picker__thumb" @click="chooseImage">
       <img :src="this.imageThumb" v-if="imageSelected">
-      <div class="upload-icon" v-if="!imageSelected">
-        <i class="icon-upload-image"></i>
+      <div class="s-upload-icon" v-if="!imageSelected">
+        <i class="s-icon-upload-image"></i>
       </div>
     </div>
-    <div class="image-picker__filename">
+    <div class="s-image-picker__filename">
       <input
         ref="fileInput"
-        class="file-input"
+        class="s-file-input"
         type="file"
         accept=".jpg, .jpeg, .png, .gif, .svg"
         @change="onSelectFile"
       >
       {{ this.imageFileName }}
     </div>
-    <div class="button-container button-container--right">
+    <div class="s-button-container s-button-container--right">
       <Button
         v-if="!imageSelected"
         :variation="'default'"
@@ -30,58 +30,58 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Emit } from "vue-property-decorator";
-import Button from "./../components/Button.vue";
+import { Component, Prop, Vue, Emit } from 'vue-property-decorator'
+import Button from './../components/Button.vue'
 
 @Component({
   components: {
-    Button
-  }
+    Button,
+  },
 })
 export default class ImagePicker extends Vue {
   $refs!: {
-    fileInput: HTMLElement;
-  };
+    fileInput: HTMLElement
+  }
 
-  private imageData: any = null;
-  private imageFileName: any = "Click here to add image...";
-  private imageThumb: any = null;
-  private imageSelected: Boolean = false;
+  private imageData: any = null
+  private imageFileName: any = 'Click here to add image...'
+  private imageThumb: any = null
+  private imageSelected: Boolean = false
 
   chooseImage() {
     if (!this.imageSelected) {
-      this.$refs.fileInput.click();
+      this.$refs.fileInput.click()
     }
   }
 
   deleteImage() {
-    this.imageFileName = "Click here to add image...";
-    this.imageThumb = null;
-    this.imageSelected = false;
+    this.imageFileName = 'Click here to add image...'
+    this.imageThumb = null
+    this.imageSelected = false
   }
 
   uploadImage() {
-    this.$emit("upload", this.imageData);
+    this.$emit('upload', this.imageData)
   }
 
   onSelectFile(event: any) {
-    var files = event.target.files;
-    var output: any = [];
+    var files = event.target.files
+    var output: any = []
     for (var i = 0, f; (f = files[i]); i++) {
-      output.push(f.name, f.size);
+      output.push(f.name, f.size)
     }
-    this.imageFileName = output[0];
-    this.imageData = event.target.files[0];
-    this.imageThumb = URL.createObjectURL(files[0]);
-    this.imageSelected = true;
+    this.imageFileName = output[0]
+    this.imageData = event.target.files[0]
+    this.imageThumb = URL.createObjectURL(files[0])
+    this.imageSelected = true
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
-.image-picker {
+.s-image-picker {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -90,7 +90,7 @@ export default class ImagePicker extends Vue {
   height: 40px;
 }
 
-.file-input {
+.s-file-input {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -98,7 +98,7 @@ export default class ImagePicker extends Vue {
   position: absolute;
 }
 
-.upload-icon {
+.s-upload-icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,7 +112,7 @@ export default class ImagePicker extends Vue {
   }
 }
 
-.image-picker__thumb {
+.s-image-picker__thumb {
   display: inline-flex;
   flex-grow: 0;
   height: 40px;
@@ -128,7 +128,7 @@ export default class ImagePicker extends Vue {
   }
 }
 
-.image-picker__filename {
+.s-image-picker__filename {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -148,11 +148,11 @@ export default class ImagePicker extends Vue {
 
 .night,
 .night-theme {
-  .upload-icon,
-  .image-picker__thumb {
+  .s-upload-icon,
+  .s-image-picker__thumb {
     background-color: @dark-4;
   }
-  .image-picker__filename {
+  .s-image-picker__filename {
     background-color: @night-section;
     color: @night-paragraph;
   }

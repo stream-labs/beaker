@@ -75,14 +75,14 @@ import { Component, Vue } from "vue-property-decorator";
 
 import Accordion from "./../components/Accordion.vue";
 import SSProSimulator from "./../components/SSProSimulator.vue";
-import Modal from "./../components/Modal.vue";
+import ModalComp from "./../components/ModalComp.vue";
 import Button from "./../components/Button.vue";
 
 @Component({
   components: {
     Accordion,
     "ss-pro-simulator": SSProSimulator,
-    Modal,
+    ModalComp,
     Button
   }
 })

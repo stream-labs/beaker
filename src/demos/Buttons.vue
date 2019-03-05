@@ -23,7 +23,7 @@ components: {
         <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
           <div slot="content">
             <pre>
-<code>&lt;div class=&quot;button-container button-container--left&quot;&gt;
+<code>&lt;div class=&quot;s-button-container s-button-container--left&quot;&gt;
   &lt;Button
     :variation=&quot;'default'&quot;
     :title=&quot;'Default'&quot;&gt;
@@ -48,7 +48,7 @@ components: {
 &lt;/div&gt;</code></pre>
           </div>
         </Accordion>
-        <div class="button-container button-container--left">
+        <div class="s-button-container s-button-container--left">
           <Button :variation="'default'" :title="'Default'" @click="buttonClick"></Button>
 
           <Button :variation="'action'" :title="'Action'" @click="buttonActionClick"></Button>
@@ -63,7 +63,7 @@ components: {
         <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
           <div slot="content">
             <pre>
-<code>&lt;div class=&quot;button-container button-container--left&quot;&gt;
+<code>&lt;div class=&quot;s-button-container s-button-container--left&quot;&gt;
   &lt;Button
     :variation=&quot;'default'&quot;
     :state=&quot;'disabled'&quot;
@@ -91,7 +91,7 @@ components: {
 &lt;/div&gt;</code></pre>
           </div>
         </Accordion>
-        <div class="button-container button-container--left">
+        <div class="s-button-container s-button-container--left">
           <Button :variation="'default'" :state="'disabled'" :title="'Default'"></Button>
 
           <Button :variation="'action'" :state="'disabled'" :title="'Action'"></Button>
@@ -106,7 +106,7 @@ components: {
         <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
           <div slot="content">
             <pre>
-<code>&lt;div class=&quot;button-container button-container--left&quot;&gt;
+<code>&lt;div class=&quot;s-button-container s-button-container--left&quot;&gt;
   &lt;Button
     :variation=&quot;'default'&quot;
     :state=&quot;'focused'&quot;
@@ -134,7 +134,7 @@ components: {
 &lt;/div&gt;</code></pre>
           </div>
         </Accordion>
-        <div class="button-container button-container--left">
+        <div class="s-button-container s-button-container--left">
           <Button :variation="'default'" :state="'focused'" :title="'Default'"></Button>
 
           <Button :variation="'action'" :state="'focused'" :title="'Action'"></Button>
@@ -149,7 +149,7 @@ components: {
         <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
           <div slot="content">
             <pre>
-<code>&lt;div class=&quot;button-container button-container--left&quot;&gt;
+<code>&lt;div class=&quot;s-button-container s-button-container--left&quot;&gt;
   &lt;Button
     :variation=&quot;'default'&quot;
     :state=&quot;'loading'&quot;
@@ -177,7 +177,7 @@ components: {
 &lt;/div&gt;</code></pre>
           </div>
         </Accordion>
-        <div class="button-container button-container--left">
+        <div class="s-button-container s-button-container--left">
           <Button :variation="'default'" :state="'loading'" :title="'Default'"></Button>
 
           <Button :variation="'action'" :state="'loading'" :title="'Action'">Action</Button>
@@ -210,7 +210,7 @@ components: {
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre>
-<code>&lt;div class=&quot;button-container button-container--left&quot;&gt;
+<code>&lt;div class=&quot;s-button-container s-button-container--left&quot;&gt;
   &lt;Button
     :type=&quot;'button'&quot;
     :size=&quot;'small'&quot;
@@ -242,10 +242,16 @@ components: {
 &lt;/div&gt;</code></pre>
         </div>
       </Accordion>
-      <div class="button-container button-container--left">
+      <div class="s-button-container s-button-container--left">
         <Button :type="'button'" :size="'small'" :variation="'default'" :title="'Default'"></Button>
 
         <Button :type="'button'" :size="'small'" :variation="'action'" :title="'Action'"></Button>
+
+        <Button :type="'button'" :size="'fixed-width'" :variation="'action'" :title="'Action'"></Button>
+
+        <Button :type="'button'" :size="'fixed-width'" :variation="'action'" :title="'Action'"></Button>
+
+        <Button :type="'button'" :size="'fixed-width'" :variation="'action'" :title="'Action'"></Button>
 
         <Button :type="'button'" :size="'small'" :variation="'warning'" :title="'Warning'"></Button>
 
@@ -264,7 +270,7 @@ components: {
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre>
-<code>&lt;div class=&quot;button-container button-container--left&quot;&gt;
+<code>&lt;div class=&quot;s-button-container s-button-container--left&quot;&gt;
   &lt;Button
     :type=&quot;'button'&quot;
     :size=&quot;'large'&quot;
@@ -296,7 +302,7 @@ components: {
 &lt;/div&gt;</code></pre>
         </div>
       </Accordion>
-      <div class="button-container button-container--left">
+      <div class="s-button-container s-button-container--left">
         <Button :type="'button'" :size="'large'" :variation="'default'" :title="'Default'"></Button>
 
         <Button :type="'button'" :size="'large'" :variation="'action'" :title="'Action'"></Button>
@@ -318,7 +324,7 @@ components: {
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre>
-<code>&lt;div class=&quot;button-container button-container--left&quot;&gt;
+<code>&lt;div class=&quot;s-button-container s-button-container--left&quot;&gt;
   &lt;Button
     :type=&quot;'button'&quot;
     :size=&quot;'fixed-width'&quot;
@@ -350,7 +356,7 @@ components: {
 &lt;/div&gt;</code></pre>
         </div>
       </Accordion>
-      <div class="button-container button-container--left">
+      <div class="s-button-container s-button-container--left">
         <Button :type="'button'" :size="'fixed-width'" :variation="'default'" :title="'Default'"></Button>
 
         <Button :type="'button'" :size="'fixed-width'" :variation="'action'" :title="'Action'"></Button>
@@ -440,7 +446,7 @@ components: {
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre>
-<code>&lt;div class=&quot;button-container button-container--left&quot;&gt;
+<code>&lt;div class=&quot;s-button-container s-button-container--left&quot;&gt;
   &lt;Button
     :type=&quot;'button'&quot;
     :size=&quot;'square'&quot;
@@ -480,7 +486,7 @@ components: {
 &lt;/div&gt;</code></pre>
         </div>
       </Accordion>
-      <div class="button-container button-container--left">
+      <div class="s-button-container s-button-container--left">
         <Button :type="'button'" :size="'square'" :variation="'default'" :icon="'add'"></Button>
         <Button :type="'button'" :size="'square'" :variation="'default'" :icon="'subtract'"></Button>
         <Button :type="'button'" :variation="'facebook'" :size="'square'" :icon="'facebook'"></Button>
@@ -639,26 +645,26 @@ components: {
 
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import Accordion from "./../components/Accordion.vue";
-import Button from "./../components/Button.vue";
+import { Component, Vue } from 'vue-property-decorator'
+import Accordion from './../components/Accordion.vue'
+import Button from './../components/Button.vue'
 
 @Component({
   components: {
     Accordion,
-    Button
-  }
+    Button,
+  },
 })
 export default class Forms extends Vue {
-  isLoading = true;
-  isLoadingExample = false;
+  isLoading = true
+  isLoadingExample = false
 
   buttonClick() {
-    alert("Button clicked");
+    alert('Button clicked')
   }
 
   buttonActionClick() {
-    alert("Button clicked");
+    alert('Button clicked')
   }
 }
 </script>

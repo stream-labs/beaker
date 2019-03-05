@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="!closed"
-    class="callout"
+    class="s-callout"
     :class="[ calloutClass, calloutClosedClass ]"
     @transitionend.self="closed = true"
   >
@@ -9,54 +9,54 @@
     <span>
       <slot/>
     </span>
-    <i v-if="closeable" class="icon-close callout__close-button" @click="closeCallout()"></i>
+    <i v-if="closeable" class="s-icon-close s-callout__close-button" @click="closeCallout()"></i>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class Callout extends Vue {
-  @Prop({ default: "success" })
-  variation!: string;
+  @Prop({ default: 'success' })
+  variation!: string
 
   @Prop()
-  icon!: String;
+  icon!: String
 
   @Prop({ default: false })
-  closeable!: boolean;
+  closeable!: boolean
 
-  closed: boolean = false;
-  calloutClosedClass: string = "";
+  closed: boolean = false
+  calloutClosedClass: string = ''
 
   closeCallout() {
-    this.calloutClosedClass = "callout--closed";
+    this.calloutClosedClass = 'callout--closed'
   }
 
   get calloutClass() {
-    return `callout--${this.variation}`;
+    return `s-callout--${this.variation}`
   }
 
   get calloutIcon() {
     switch (this.variation) {
-      case "success":
-      case "success-alt":
-        return "icon-check";
-      case "warning":
-      case "warning-alt":
-        return "icon-delete";
-      case "info":
-        return "icon-information";
+      case 'success':
+      case 'success-alt':
+        return 'icon-check'
+      case 'warning':
+      case 'warning-alt':
+        return 'icon-delete'
+      case 'info':
+        return 'icon-information'
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
-.callout {
+.s-callout {
   position: relative;
   display: flex;
   align-items: center;
@@ -67,7 +67,7 @@ export default class Callout extends Vue {
   .transition();
   justify-content: center;
 
-  [class^="icon-"] {
+  [class^='s-icon-'] {
     &:first-child {
       .margin-right();
     }
