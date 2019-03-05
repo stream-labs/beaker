@@ -20,8 +20,8 @@
           v-if="showTooltipNotice"
           @handle-tooltip="closeTooltip"
           :title="'Widgets have moved'"
-          :desc="'All your favorite widgets, just with a new view.'">
-        </TooltipNotice>
+          :desc="'All your favorite widgets, just with a new view.'"
+        ></TooltipNotice>
       </div>
 
       <table class="docs-table">
@@ -47,21 +47,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import Accordion from "./../components/Accordion.vue";
-import TooltipNotice from "./../components/TooltipNotice.vue";
+import { Component, Vue } from 'vue-property-decorator'
+import Accordion from './../components/Accordion.vue'
+import TooltipNotice from './../components/TooltipNotice.vue'
 
 @Component({
   components: {
     Accordion,
-    TooltipNotice
-  }
+    TooltipNotice,
+  },
 })
 export default class Notices extends Vue {
-  showTooltipNotice = true;
+  showTooltipNotice = true
 
   closeTooltip() {
-    this.showTooltipNotice = false;
+    this.showTooltipNotice = false
   }
 }
 </script>

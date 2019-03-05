@@ -4,13 +4,14 @@
       <h1>Spinners</h1>
       <p>These are animated with pure SVG, they will not be animated in Microsoft Edge, or Opera.</p>
 
-      <loading :isLoading="load" :spinnerType="'bars'" @toFalse="load = $event">
+      <loading v-if="isLoading" :spinnerType="'bars'" @closeLoading="isLoading = false">
         <template slot>Syncing all files to our cloud...</template>
       </loading>
 
       <div class="button-container button-container--left">
-        <Button :variation="'default'" :title="'loading'" slot="test" @click="load = true"></Button>
+        <Button :variation="'default'" :title="'loading'" @click="isLoading = true"></Button>
       </div>
+
       <h2>Oscillating Bars</h2>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
@@ -68,6 +69,6 @@ import Button from './../components/Button.vue'
 })
 export default class Spinners extends Vue {
   msg = 'hi!'
-  load = false
+  isLoading = false
 }
 </script>

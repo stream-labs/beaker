@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div class="s-loader" v-show="loadDone">
+    <div class="s-loader">
       <div class="s-loader__bg">
         <div class="s-loader__inner">
           <Spinner :variation="spinnerType"/>
@@ -23,19 +23,11 @@ import Button from './../components/Button.vue'
 })
 export default class Loading extends Vue {
   @Prop()
-  isLoading!: boolean
-
-  @Prop()
   spinnerType!: string
 
-  get loadDone() {
-    return this.isLoading === true
-  }
-
-  updated() {
+  mounted() {
     setTimeout(() => {
-      // this.isLoading = false
-      this.$emit('toFalse', false)
+      this.$emit('closeLoading')
     }, 4000)
   }
 }
@@ -76,6 +68,10 @@ export default class Loading extends Vue {
 .night-theme {
   .s-loader__bg {
     background: @dark-3;
+  }
+
+  .s-loader__text {
+    color: @white;
   }
 }
 </style>
