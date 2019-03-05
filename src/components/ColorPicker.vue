@@ -20,61 +20,61 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import { Chrome } from 'vue-color'
+import { Component, Prop, Vue } from "vue-property-decorator";
+import { Chrome } from "vue-color";
 
 @Component({
   components: {
-    picker: Chrome,
-  },
+    picker: Chrome
+  }
 })
 export default class ColorPicker extends Vue {
   $refs!: {
-    colorpicker: HTMLElement
-  }
+    colorpicker: HTMLElement;
+  };
 
-  @Prop({ default: '#31c3ac' })
-  defaultColor!: any
+  @Prop({ default: "#31c3ac" })
+  defaultColor!: any;
 
-  private displayPicker: Boolean = false
-  private backgroundColor: String = ''
-  private color: String = this.defaultColor
+  private displayPicker: Boolean = false;
+  private backgroundColor: String = "";
+  private color: String = this.defaultColor;
 
   @Prop()
-  value!: any
+  value!: any;
 
   updateFromPicker(value: any) {
-    this.color = value.hex
-    this.$emit('input', this.color)
+    this.color = value.hex;
+    this.$emit("input", this.color);
   }
 
   updateFromInput(event: any) {
-    this.color = event.target.value
-    this.$emit('input', this.color)
+    this.color = event.target.value;
+    this.$emit("input", this.color);
   }
 
   hidePicker() {
-    document.removeEventListener('click', this.documentClick)
-    this.displayPicker = false
+    document.removeEventListener("click", this.documentClick);
+    this.displayPicker = false;
   }
 
   showPicker() {
-    document.addEventListener('click', this.documentClick)
-    this.displayPicker = true
+    document.addEventListener("click", this.documentClick);
+    this.displayPicker = true;
   }
 
   documentClick(e: any) {
-    let el = this.$refs.colorpicker
-    let target = e.target
+    let el = this.$refs.colorpicker;
+    let target = e.target;
     if (el !== target && !el.contains(target)) {
-      this.hidePicker()
+      this.hidePicker();
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 .s-colorpicker {
   left: 0;

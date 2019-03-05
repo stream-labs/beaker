@@ -91,15 +91,15 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import Accordion from './../components/Accordion.vue'
-import ContentRow from './../components/ContentRow.vue'
+import { Component, Vue } from "vue-property-decorator";
+import Accordion from "./../components/Accordion.vue";
+import ContentRow from "./../components/ContentRow.vue";
 
 @Component({
   components: {
     Accordion,
-    ContentRow,
-  },
+    ContentRow
+  }
 })
 export default class Layouts extends Vue {}
 </script>

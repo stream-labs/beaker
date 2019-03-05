@@ -39,46 +39,48 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class SSProSimulator extends Vue {
-  @Prop()
-  username!: string
+  @Prop({ default: "Awkward__Raccoon" })
+  username!: string;
 
-  @Prop()
-  icon!: String
+  @Prop({
+    default: "https://live.kickstarter.com/images/avatar/medium/avatars4.png"
+  })
+  icon!: String;
 
-  themeClasses = ['teal', 'orange', 'purple', 'electric-blue', 'red', 'lime']
-  themeClass = ''
-  myInt!: number
+  themeClasses = ["teal", "orange", "purple", "electric-blue", "red", "lime"];
+  themeClass = "";
+  myInt!: number;
 
   rotateClasses() {
-    let it = this.themeClasses[Symbol.iterator]()
+    let it = this.themeClasses[Symbol.iterator]();
     this.myInt = setInterval(() => {
       // time interval
-      const next = it.next()
+      const next = it.next();
       if (!next.done) {
-        this.themeClass = 's-sp-simulator__web-page--' + next.value
+        this.themeClass = "s-sp-simulator__web-page--" + next.value;
       } else {
-        it = this.themeClasses[Symbol.iterator]()
+        it = this.themeClasses[Symbol.iterator]();
       }
-    }, 2000)
+    }, 2000);
   }
 
   beforeDestroy() {
-    clearInterval(this.myInt)
+    clearInterval(this.myInt);
   }
 
   mounted() {
-    this.rotateClasses()
+    this.rotateClasses();
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
-@import './../styles/components/CustomFonts';
+@import "./../styles/Imports";
+@import "./../styles/components/CustomFonts";
 
 .s-sp-simulator {
   .radius(2);
@@ -135,9 +137,9 @@ export default class SSProSimulator extends Vue {
   .padding(2);
   display: grid;
   grid-template-areas:
-    'header header header header'
-    'video video video tip'
-    'merch social countdown lb';
+    "header header header header"
+    "video video video tip"
+    "merch social countdown lb";
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 16px;
 
@@ -244,9 +246,9 @@ export default class SSProSimulator extends Vue {
   .custom-font--bubble;
   color: #303030;
   grid-template-areas:
-    'header header header header'
-    'tip video video video'
-    'merch merch social social';
+    "header header header header"
+    "tip video video video"
+    "merch merch social social";
 
   .s-sp-simulator__section {
     &:nth-child(6),
@@ -273,9 +275,9 @@ export default class SSProSimulator extends Vue {
   background-color: #d84e24;
   .custom-font--knock;
   grid-template-areas:
-    'header header header header'
-    'tip video video video'
-    'merch social lb countdown';
+    "header header header header"
+    "tip video video video"
+    "merch social lb countdown";
   .s-sp-simulator__desc,
   .s-ss-simulator__fake-button {
     background-color: lighten(#d84e24, 4%);
@@ -295,9 +297,9 @@ export default class SSProSimulator extends Vue {
   .custom-font--smooth-talker();
   color: #202020;
   grid-template-areas:
-    'header header header header'
-    'tip video video video'
-    'merch merch social lb';
+    "header header header header"
+    "tip video video video"
+    "merch merch social lb";
 
   .s-sp-simulator__section {
     &:nth-child(7) {
@@ -351,9 +353,9 @@ export default class SSProSimulator extends Vue {
   .custom-font--straight-facts;
   color: #808080;
   grid-template-areas:
-    'header header header header'
-    'video video video tip'
-    'merch merch merch social';
+    "header header header header"
+    "video video video tip"
+    "merch merch merch social";
 
   .s-sp-simulator__section {
     &:nth-child(6),
@@ -385,9 +387,9 @@ export default class SSProSimulator extends Vue {
   .custom-font--listen-up;
   color: #63695d;
   grid-template-areas:
-    'header header header header'
-    'video video video tip'
-    'merch merch merch merch';
+    "header header header header"
+    "video video video tip"
+    "merch merch merch merch";
 
   .s-sp-simulator__section {
     &:nth-child(5),

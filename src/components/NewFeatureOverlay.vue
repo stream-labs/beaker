@@ -26,32 +26,32 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import Button from './../components/Button.vue'
+import { Component, Prop, Vue } from "vue-property-decorator";
+import Button from "./../components/Button.vue";
 
 @Component({
   components: {
-    Button,
-  },
+    Button
+  }
 })
 export default class ModalBasic extends Vue {
   @Prop()
-  label!: string
+  label!: string;
 
   @Prop()
-  title!: string
+  title!: string;
 
   @Prop()
-  image!: string
+  image!: string;
 
   get overlayImage() {
-    return this.image
+    return this.image;
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 .v--modal-overlay {
   background: @day-overlay;
@@ -79,7 +79,8 @@ export default class ModalBasic extends Vue {
 }
 
 .s-overlay-container {
-  width: 65%;
+  width: 80%;
+  .max-width();
   height: auto;
   margin: 0 auto;
   display: flex;

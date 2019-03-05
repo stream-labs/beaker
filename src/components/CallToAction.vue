@@ -19,40 +19,40 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import Button from './../components/Button.vue'
+import { Component, Prop, Vue } from "vue-property-decorator";
+import Button from "./../components/Button.vue";
 
 @Component({
   components: {
-    Button,
-  },
+    Button
+  }
 })
 export default class CallToAction extends Vue {
-  @Prop({ default: require('./../assets/imgs/kevin-standard.svg') })
-  thumbnail!: String
+  @Prop({ default: require("./../assets/imgs/kevin-standard.svg") })
+  thumbnail!: String;
 
-  @Prop({ default: 'Get started by downloading Streamlabs OBS' })
-  title!: String
+  @Prop({ default: "Get started by downloading Streamlabs OBS" })
+  title!: String;
 
   @Prop({
     default:
-      'Over 800k creators use Streamlabs OBS daily, delivering entertainment.',
+      "Over 800k creators use Streamlabs OBS daily, delivering entertainment."
   })
-  description!: String
+  description!: String;
 
-  @Prop({ default: 'slobs-download' })
-  buttonVariation!: String
+  @Prop({ default: "slobs-download" })
+  buttonVariation!: String;
 
-  @Prop({ default: 'Download Streamlabs OBS' })
-  buttonTitle!: String
+  @Prop({ default: "Download Streamlabs OBS" })
+  buttonTitle!: String;
 
-  @Prop({ default: 'Windows 7+ 245.8MB' })
-  buttonDescription!: String
+  @Prop({ default: "Windows 7+ 245.8MB" })
+  buttonDescription!: String;
 }
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 .s-call-to-action {
   display: flex;

@@ -23,57 +23,57 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class BannerSale extends Vue {
   @Prop({ required: true })
-  title!: string
+  title!: string;
 
   @Prop({ required: true })
-  desc!: string
+  desc!: string;
 
-  @Prop({ default: '00', required: true })
-  days!: string
+  @Prop({ default: "00", required: true })
+  days!: string;
 
-  @Prop({ default: '00', required: true })
-  hours!: string
+  @Prop({ default: "00", required: true })
+  hours!: string;
 
-  @Prop({ default: '00', required: true })
-  minutes!: string
+  @Prop({ default: "00", required: true })
+  minutes!: string;
 
-  @Prop({ default: '00', required: true })
-  seconds!: string
+  @Prop({ default: "00", required: true })
+  seconds!: string;
 
   @Prop()
-  timeDesc!: string
+  timeDesc!: string;
 
-  @Prop({ default: 'rgba(248, 86, 64, 0.33)' })
-  borderColor!: string
+  @Prop({ default: "rgba(248, 86, 64, 0.33)" })
+  borderColor!: string;
 
-  @Prop({ default: 'rgba(248, 86, 64, 0.08)' })
-  backgroundColor!: string
+  @Prop({ default: "rgba(248, 86, 64, 0.08)" })
+  backgroundColor!: string;
 
   get daysDone() {
-    return this.days === '00'
+    return this.days === "00";
   }
 
   get hoursDone() {
-    return this.daysDone && this.hours === '00'
+    return this.daysDone && this.hours === "00";
   }
 
   get minutesDone() {
-    return this.hoursDone && this.minutes === '00'
+    return this.hoursDone && this.minutes === "00";
   }
 
   get secondsDone() {
-    return this.minutesDone && this.seconds === '00'
+    return this.minutesDone && this.seconds === "00";
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 .s-banner-sale {
   display: flex;

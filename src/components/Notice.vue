@@ -20,50 +20,50 @@
 
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Notice extends Vue {
-  @Prop({ default: 'default' })
+  @Prop({ default: "default" })
   bgColor!: {
-    type: string
-    required: true
-  }
+    type: string;
+    required: true;
+  };
 
   @Prop()
   bgIcon!: {
-    type: string
-    required: true
-  }
+    type: string;
+    required: true;
+  };
 
   @Prop()
   title!: {
-    type: string
-    required: true
-  }
+    type: string;
+    required: true;
+  };
 
   @Prop()
   titleColor!: {
-    type: string
-    required: true
-  }
+    type: string;
+    required: true;
+  };
 
   @Prop()
   desc!: {
-    type: string
-    required: true
-  }
+    type: string;
+    required: true;
+  };
 
   @Prop()
   icon!: {
-    type: string
-    required: true
-  }
+    type: string;
+    required: true;
+  };
 }
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 .s-notice {
   .margin-bottom(3);
@@ -119,13 +119,13 @@ p {
 }
 
 .s-bg-image__default {
-  background: url('../assets/imgs/information-icon.svg') no-repeat;
+  background: url("../assets/imgs/information-icon.svg") no-repeat;
   background-position: center left;
   background-size: contain;
 }
 
 .s-bg-image__warning {
-  background: url('../assets/imgs/error-icon.svg') no-repeat;
+  background: url("../assets/imgs/error-icon.svg") no-repeat;
   background-position: center left;
   background-size: contain;
 }

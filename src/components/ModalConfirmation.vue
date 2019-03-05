@@ -26,37 +26,37 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import Button from './../components/Button.vue'
+import { Component, Prop, Vue } from "vue-property-decorator";
+import Button from "./../components/Button.vue";
 
 @Component({
   components: {
-    Button,
-  },
+    Button
+  }
 })
 export default class ModalConfirmation extends Vue {
   @Prop({ default: 600 })
-  width!: number
+  width!: number;
 
-  modalWidth: number = this.width
+  modalWidth: number = this.width;
 
   @Prop({ default: 600 })
-  minWidth!: number
+  minWidth!: number;
 
-  modalMinWidth: number = this.minWidth
-
-  @Prop()
-  subTitle!: string
+  modalMinWidth: number = this.minWidth;
 
   @Prop()
-  text!: string
+  subTitle!: string;
+
+  @Prop()
+  text!: string;
 }
 </script>
 
 
 <style lang="less" scoped>
-@import './../styles/Imports';
-@import './../styles/components/Modals';
+@import "./../styles/Imports";
+@import "./../styles/components/Modals";
 
 .s-modal-container {
   .padding(3);
