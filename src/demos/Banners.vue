@@ -229,29 +229,23 @@
         <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
           <div slot="content">
             <pre>
-<code>&lt;banner-marketing
-  :day-bg=&quot;'https://picsum.photos/1920/300/?image=926'&quot;
-  :night-bg=&quot;'https://picsum.photos/1920/300/?image=914'&quot;
-  :label=&quot;'Introducing Streamlabs OBS'&quot;
-  :icon=&quot;'themes'&quot;
-  :title=&quot;'Largest library of free themes in the world.'&quot;
-  :desc=&quot;'To access over 700+ themes for free, download Streamlabs OBS.'&quot;
-  :link-desc=&quot;'Win 7+  245.8 MB'&quot;&gt;
+<code>&lt;notice
+  :bgColor=&quot;'default'&quot;
+  :title=&quot;'Join affiliates and earn $1 for each Streamlabs OBS referral'&quot;
+  :desc=&quot;'Share your unique referral link with friends and get paid directly into your PayPal each month.'&quot;
+  :icon=&quot;'information'&quot;&gt;
   &lt;Button
-    slot=&quot;link&quot;
-    :type=&quot;'a'&quot;
+    slot=&quot;button&quot;
+    :type=&quot;'button'&quot;
+    :size=&quot;'fixed-width'&quot;
     :variation=&quot;'action'&quot;
-    :size=&quot;'standard'&quot;
-    :href=&quot;'#'&quot;
-    :title=&quot;'Download'&quot;
-    :icon=&quot;'overview'&quot;&gt;
+    :title=&quot;'Join'&quot;&gt;
   &lt;/Button&gt;
-&lt;/banner-marketing&gt;</code></pre>
+&lt;/notice&gt;</code></pre>
           </div>
         </Accordion>
 
         <notice
-          :bgColor="'default'"
           :title="'Join affiliates and earn $1 for each Streamlabs OBS referral'"
           :desc="'Share your unique referral link with friends and get paid directly into your PayPal each month.'"
           :icon="'information'"
@@ -281,7 +275,7 @@
           ></Button>
         </notice>
 
-        <!-- <table class="docs-table">
+        <table class="docs-table">
           <thead>
             <tr>
               <th>Prop</th>
@@ -293,25 +287,32 @@
           </thead>
           <tbody>
             <tr>
-              <td>dayBg</td>
+              <td>bgColor</td>
               <td>string</td>
               <td>true</td>
-              <td>null</td>
-              <td>Background image that will display in day mode.</td>
+              <td>default</td>
+              <td>Background color that will display</td>
             </tr>
             <tr>
-              <td>nightBg</td>
+              <td>title</td>
               <td>string</td>
               <td>true</td>
               <td>null</td>
-              <td>Background image that will display in night mode.</td>
+              <td>Banner title</td>
             </tr>
             <tr>
-              <td>label</td>
+              <td>titleColor</td>
               <td>string</td>
               <td>true</td>
               <td>null</td>
-              <td>Label text in the upper left of the banner.</td>
+              <td>Banner title color</td>
+            </tr>
+            <tr>
+              <td>desc</td>
+              <td>string</td>
+              <td>true</td>
+              <td>null</td>
+              <td>Description text below banner title</td>
             </tr>
             <tr>
               <td>icon</td>
@@ -320,49 +321,21 @@
               <td>null</td>
               <td>Icon next to title. Use icon name from icon list.</td>
             </tr>
-            <tr>
-              <td>title</td>
-              <td>string</td>
-              <td>true</td>
-              <td>null</td>
-              <td>Main banner title.</td>
-            </tr>
-            <tr>
-              <td>desc</td>
-              <td>string</td>
-              <td>true</td>
-              <td>null</td>
-              <td>Description text below banner title.</td>
-            </tr>
-            <tr>
-              <td>linkDesc</td>
-              <td>string</td>
-              <td>false</td>
-              <td>null</td>
-              <td>Description text below link.</td>
-            </tr>
-            <tr>
-              <td>bannerClosed</td>
-              <td>boolean</td>
-              <td>false</td>
-              <td>false</td>
-              <td>Default state once the banner is.</td>
-            </tr>
           </tbody>
-        </table>-->
+        </table>
       </div>
     </Tabs>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import Accordion from "./../components/Accordion.vue";
-import BannerMarketing from "./../components/BannerMarketing.vue";
-import BannerSale from "./../components/BannerSale.vue";
-import Button from "./../components/Button.vue";
-import Tabs from "./../components/Tabs.vue";
-import Notice from "./../components/Notice.vue";
+import { Component, Vue } from 'vue-property-decorator'
+import Accordion from './../components/Accordion.vue'
+import BannerMarketing from './../components/BannerMarketing.vue'
+import BannerSale from './../components/BannerSale.vue'
+import Button from './../components/Button.vue'
+import Tabs from './../components/Tabs.vue'
+import Notice from './../components/Notice.vue'
 
 @Component({
   components: {
@@ -371,45 +344,45 @@ import Notice from "./../components/Notice.vue";
     BannerSale,
     Button,
     Tabs,
-    Notice
-  }
+    Notice,
+  },
 })
 export default class Banners extends Vue {
   tabs = [
     {
-      name: "Marketing",
-      value: "marketing"
+      name: 'Marketing',
+      value: 'marketing',
     },
     {
-      name: "Sale",
-      value: "sale"
+      name: 'Sale',
+      value: 'sale',
     },
     {
-      name: "Notice",
-      value: "notice"
-    }
-  ];
+      name: 'Notice',
+      value: 'notice',
+    },
+  ]
 
-  selectedTab = "marketing";
-  remainingSecs = 10;
+  selectedTab = 'marketing'
+  remainingSecs = 10
 
   mounted() {
     setInterval(() => {
-      this.remainingSecs--;
+      this.remainingSecs--
       if (this.remainingSecs < 0) {
-        this.remainingSecs = 10;
+        this.remainingSecs = 10
       }
-    }, 1000);
+    }, 1000)
   }
 
   onSelectTabHandler(tab: string) {
-    this.selectedTab = tab;
+    this.selectedTab = tab
   }
 
   get secs() {
     return this.remainingSecs < 10
       ? `0${this.remainingSecs}`
-      : `${this.remainingSecs}`;
+      : `${this.remainingSecs}`
   }
 }
 </script>
