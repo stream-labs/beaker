@@ -76,15 +76,13 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Spinner extends Vue {
-  @Prop({default: 'small'})
+  @Prop({ default: "small" })
   size!: String;
 
   get spinnerClass() {
     return `s-spinner--${this.size}`;
   }
-
 }
-
 </script>
 
 <style lang="less" scoped>
@@ -112,7 +110,7 @@ export default class Spinner extends Vue {
 
 .s-spinner__bar {
   fill: @dark-2;
-  opacity: .24;
+  opacity: 0.24;
 }
 
 .night,
