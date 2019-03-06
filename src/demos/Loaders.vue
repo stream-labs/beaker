@@ -3,6 +3,12 @@
     <div class="section">
       <h1>Loaders</h1>
 
+      <pre><code>import { Loading } from 'streamlabs-beaker';
+        
+components: {
+  Loading
+}</code></pre>
+
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre><code>&lt;loading v-if=&quot;isLoading&quot; :spinnerSize=&quot;'large'&quot; @closeLoading=&quot;isLoading = false&quot;&gt;
@@ -44,6 +50,12 @@
     <div class="section">
       <h1>Spinners</h1>
       <p>These are animated with pure SVG, they will not be animated in Microsoft Edge, or Opera, and will look different in firefox.</p>
+
+      <pre><code>import { Spinner } from 'streamlabs-beaker';
+        
+components: {
+  Spinner
+}</code></pre>
 
       <h2>Oscillating Bars</h2>
 
