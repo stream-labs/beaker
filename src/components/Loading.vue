@@ -36,10 +36,6 @@ export default class Loading extends Vue {
 <style lang="less" scoped>
 @import './../styles/Imports';
 
-.s-loader {
-  .transition();
-}
-
 .s-loader__bg {
   position: fixed;
   box-sizing: border-box;
@@ -62,6 +58,7 @@ export default class Loading extends Vue {
 .s-loader__text {
   text-align: center;
   color: @dark-2;
+  .weight(@medium);
   .margin-top(2);
   .margin-bottom(0);
 }
