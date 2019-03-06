@@ -105,6 +105,7 @@ import Spinner from './../components/Spinner.vue'
 import Loading from './../components/Loading.vue'
 import Accordion from './../components/Accordion.vue'
 import Button from './../components/Button.vue'
+
 @Component({
   components: {
     Spinner,

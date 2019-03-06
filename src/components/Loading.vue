@@ -3,7 +3,7 @@
     <div class="s-loader">
       <div class="s-loader__bg">
         <div class="s-loader__inner">
-          <Spinner :size="spinnerSize"/>
+          <Spinner class="s-spinner__overlay" :size="spinnerSize"/>
           <p class="s-loader__text">
             <slot></slot>
           </p>
@@ -62,6 +62,12 @@ export default class Loading extends Vue {
 .s-loader__text {
   text-align: center;
   color: @dark-2;
+  .margin-top(2);
+  .margin-bottom(0);
+}
+
+.s-spinner__overlay {
+  .padding-top(0);
 }
 
 .night,
