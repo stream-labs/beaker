@@ -14,27 +14,27 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import Spinner from './../components/Spinner.vue'
-import Button from './../components/Button.vue'
+import { Component, Prop, Vue } from "vue-property-decorator"
+import Spinner from "./../components/Spinner.vue"
+import Button from "./../components/Button.vue"
 
 @Component({
   components: { Spinner, Button },
 })
 export default class Loading extends Vue {
-  @Prop({ default: 'small' })
+  @Prop({ default: "small" })
   spinnerSize!: string
 
   mounted() {
     setTimeout(() => {
-      this.$emit('closeLoading')
+      this.$emit("closeLoading")
     }, 4000)
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 .s-loader__bg {
   position: fixed;

@@ -100,11 +100,11 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import Spinner from './../components/Spinner.vue'
-import Loading from './../components/Loading.vue'
-import Accordion from './../components/Accordion.vue'
-import Button from './../components/Button.vue'
+import { Component, Vue } from "vue-property-decorator"
+import Spinner from "./../components/Spinner.vue"
+import Loading from "./../components/Loading.vue"
+import Accordion from "./../components/Accordion.vue"
+import Button from "./../components/Button.vue"
 
 @Component({
   components: {
@@ -115,7 +115,7 @@ import Button from './../components/Button.vue'
   },
 })
 export default class Loaders extends Vue {
-  msg = 'hi!'
+  msg = "hi!"
   isLoading = false
 }
 </script>

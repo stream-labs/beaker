@@ -8,7 +8,6 @@
       :name="name"
       :disabled="disabled"
       @blur="$emit('blur')"
-      v-model="content"
       :class="{ 's-form-field__input': true, 's-form-field__input--error': !!error }"
     >
     <label
