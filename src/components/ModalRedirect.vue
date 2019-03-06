@@ -20,39 +20,39 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import Button from './../components/Button.vue'
-import Spinner from './../components/Spinner.vue'
+import { Component, Prop, Vue } from "vue-property-decorator";
+import Button from "./../components/Button.vue";
+import Spinner from "./../components/Spinner.vue";
 
 @Component({
   components: {
     Button,
-    Spinner,
-  },
+    Spinner
+  }
 })
 export default class ModalRedirect extends Vue {
   @Prop({ default: 600 })
-  width!: number
+  width!: number;
 
-  modalWidth: number = this.width
+  modalWidth: number = this.width;
 
   @Prop({ default: 600 })
-  minWidth!: number
+  minWidth!: number;
 
-  modalMinWidth: number = this.minWidth
-
-  @Prop()
-  title!: string
+  modalMinWidth: number = this.minWidth;
 
   @Prop()
-  text!: string
+  title!: string;
+
+  @Prop()
+  text!: string;
 }
 </script>
 
 
 <style lang="less" scoped>
-@import './../styles/Imports';
-@import './../styles/components/Modals';
+@import "./../styles/Imports";
+@import "./../styles/components/Modals";
 
 .s-redirect {
   text-align: center;

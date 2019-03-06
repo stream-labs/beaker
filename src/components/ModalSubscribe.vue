@@ -43,51 +43,51 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import Button from './../components/Button.vue'
-import Badge from './../components/Badge.vue'
+import { Component, Prop, Vue } from "vue-property-decorator";
+import Button from "./../components/Button.vue";
+import Badge from "./../components/Badge.vue";
 
 @Component({
   components: {
     Button,
-    Badge,
-  },
+    Badge
+  }
 })
 export default class ModalSubscribe extends Vue {
   @Prop({ default: 600 })
-  width!: number
+  width!: number;
 
-  modalWidth: number = this.width
+  modalWidth: number = this.width;
 
   @Prop({ default: 600 })
-  minWidth!: number
+  minWidth!: number;
 
-  modalMinWidth: number = this.minWidth
-
-  @Prop()
-  title!: string
+  modalMinWidth: number = this.minWidth;
 
   @Prop()
-  subTitle!: string
+  title!: string;
 
   @Prop()
-  text!: string
+  subTitle!: string;
 
   @Prop()
-  notes!: string
+  text!: string;
 
   @Prop()
-  subscribeText!: string
+  notes!: string;
 
   @Prop()
-  subscribeMessage!: string
+  subscribeText!: string;
+
+  @Prop()
+  subscribeMessage!: string;
 }
 </script>
 
 
 <style lang="less" scoped>
-@import './../styles/Imports';
-@import './../styles/components/Modals';
+@import "./../styles/Imports";
+@import "./../styles/components/Modals";
 
 .s-subscribe-upper,
 .s-subscribe-bottom {

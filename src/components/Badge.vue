@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Badge extends Vue {
@@ -28,53 +28,53 @@ export default class Badge extends Vue {
     separator: STRING - whatever you want to separate the current and total e.g. 'out of' in '5 out of 10.' Could be '/', 'of', etc. Default is '/'
     suffix: STRING - whatever you want to include at the end of the progress string. e.g. 'sold' in '5 out of 10 sold.'
   */
-  @Prop({ default: 'success' })
-  variant!: string
+  @Prop({ default: "success" })
+  variant!: string;
 
   @Prop({ default: false })
-  alignLeft!: boolean
+  alignLeft!: boolean;
 
   @Prop({ default: false })
-  noMargin!: boolean
+  noMargin!: boolean;
 
-  @Prop({ default: '#31c3a2' })
-  barColor!: string
+  @Prop({ default: "#31c3a2" })
+  barColor!: string;
 
-  @Prop({ default: '#ffffff' })
-  textColor!: string
-
-  @Prop()
-  current!: number
+  @Prop({ default: "#ffffff" })
+  textColor!: string;
 
   @Prop()
-  total!: number
-
-  @Prop({ default: '/' })
-  separator!: string
+  current!: number;
 
   @Prop()
-  suffix!: string
+  total!: number;
+
+  @Prop({ default: "/" })
+  separator!: string;
+
+  @Prop()
+  suffix!: string;
 
   get badgeClasses() {
-    let classes = []
+    let classes = [];
 
-    classes.push(`s-badge--${this.variant}`)
+    classes.push(`s-badge--${this.variant}`);
 
     if (this.alignLeft) {
-      classes.push(`s-badge--left`)
+      classes.push(`s-badge--left`);
     }
 
     if (this.noMargin) {
-      classes.push('s-badge--no-margin')
+      classes.push("s-badge--no-margin");
     }
 
-    return classes
+    return classes;
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 // Standout labels, used for 'New', 'Beta', 'Pro', etc
 .s-badge {

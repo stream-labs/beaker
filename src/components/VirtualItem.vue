@@ -20,52 +20,52 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class VitualItem extends Vue {
   @Prop()
-  name!: String
+  name!: String;
 
   @Prop()
-  value!: String
+  value!: String;
 
   @Prop()
-  preview!: String
+  preview!: String;
 
   @Prop()
-  quantity!: Number
+  quantity!: Number;
 
   @Prop()
-  rarity!: String
+  rarity!: String;
 
   @Prop({ default: false })
-  selected!: Boolean
+  selected!: Boolean;
 
   @Prop()
-  selectionCount!: String
+  selectionCount!: String;
 
   @Prop()
-  type!: String
+  type!: String;
 
   get virtualItemClasses() {
-    let classes = []
+    let classes = [];
 
     if (this.rarity) {
-      classes.push(`s-virtual-item--${this.rarity}`)
+      classes.push(`s-virtual-item--${this.rarity}`);
     }
 
     if (this.selected) {
-      classes.push('is-selected')
+      classes.push("is-selected");
     }
 
-    return classes.join(' ')
+    return classes.join(" ");
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 .s-virtual-item {
   background-color: @day-section;
@@ -89,9 +89,13 @@ export default class VitualItem extends Vue {
 }
 
 .s-virtual-item__name {
-  .margin-bottom();
   .weight(@medium);
   font-size: 16px;
+  .margin-bottom(0);
+}
+
+.s-virtual-item__rarity {
+  .margin-top();
 }
 
 .is-selected {
@@ -121,6 +125,7 @@ export default class VitualItem extends Vue {
 
 .s-virtual-item__img {
   .margin-bottom(2);
+  width: 96px;
 }
 
 .night,
