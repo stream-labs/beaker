@@ -53,7 +53,7 @@ export default class Loading extends Vue {
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
 .s-loader__bg {
   position: fixed;
