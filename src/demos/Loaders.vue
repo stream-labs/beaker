@@ -4,7 +4,7 @@
       <h1>Loaders</h1>
 
       <pre><code>import { Loading } from 'streamlabs-beaker';
-        
+
 components: {
   Loading
 }</code></pre>
@@ -55,7 +55,7 @@ components: {
       <p>These are animated with pure SVG, they will not be animated in Microsoft Edge, or Opera, and will look different in firefox.</p>
 
       <pre><code>import { Spinner } from 'streamlabs-beaker';
-        
+
 components: {
   Spinner
 }</code></pre>
