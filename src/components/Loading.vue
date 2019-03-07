@@ -12,19 +12,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator"
-import Spinner from "./../components/Spinner.vue"
-import Button from "./../components/Button.vue"
+import { Component, Prop, Vue } from "vue-property-decorator";
+import Spinner from "./../components/Spinner.vue";
+import Button from "./../components/Button.vue";
 
 @Component({
-  components: { Spinner, Button },
+  components: { Spinner, Button }
 })
 export default class Loading extends Vue {
   @Prop({ default: "small" })
-  spinnerSize!: string
+  spinnerSize!: string;
 
   @Prop()
-  loadingStrs!: any
+  loadingStrs!: any;
 
   strings: any = "";
   loaderText: string = "";
@@ -42,11 +42,12 @@ export default class Loading extends Vue {
         if (str === undefined) {
           this.$emit("closeLoading");
           clearInterval(id);
-        }      }, 4000);
+        }
+      }, 4000);
     } else {
       setTimeout(() => {
         this.$emit("closeLoading");
-      }, 4500)
+      }, 4500);
     }
   }
 }

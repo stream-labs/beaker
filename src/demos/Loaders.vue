@@ -103,23 +103,27 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator"
-import Spinner from "./../components/Spinner.vue"
-import Loading from "./../components/Loading.vue"
-import Accordion from "./../components/Accordion.vue"
-import Button from "./../components/Button.vue"
+import { Component, Vue } from "vue-property-decorator";
+import Spinner from "./../components/Spinner.vue";
+import Loading from "./../components/Loading.vue";
+import Accordion from "./../components/Accordion.vue";
+import Button from "./../components/Button.vue";
 
 @Component({
   components: {
     Spinner,
     Loading,
     Accordion,
-    Button,
-  },
+    Button
+  }
 })
 export default class Loaders extends Vue {
-  msg = "hi!"
-  isLoading = false
-  strs = ["Syncing all files to our cloud...", "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "sed do eiusmod tempor incididunt ut labore et dolore magna"]
+  msg = "hi!";
+  isLoading = false;
+  strs = [
+    "Syncing all files to our cloud...",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "sed do eiusmod tempor incididunt ut labore et dolore magna"
+  ];
 }
 </script>
