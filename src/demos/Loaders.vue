@@ -19,7 +19,7 @@ components: {
 
       <loading
         v-if="isLoading"
-        :loadingStrs="strs"
+        :loadingStrs="array"
         :spinnerSize="'large'"
         @closeLoading="isLoading = false"
       ></loading>
@@ -120,6 +120,7 @@ import Button from "./../components/Button.vue"
 export default class Loaders extends Vue {
   msg = "hi!"
   isLoading = false
-  strs = ["Syncing all files to our cloud...", "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "sed do eiusmod tempor incididunt ut labore et dolore magna"]
+  array = ["Syncing all files to our cloud...", "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "sed do eiusmod tempor incididunt ut labore et dolore magna"]
+  string = "string"
 }
 </script>
