@@ -26,22 +26,28 @@ export default class Loading extends Vue {
   @Prop()
   loadingStrs!: any
 
-  strings: any = JSON.parse(JSON.stringify(this.loadingStrs));
-
+  strings: any = "";
   loaderText: string = "";
 
   mounted() {
-    this.loaderText = this.strings[0];
-    this.strings.shift();
+    if (this.loadingStrs.length > 0) {
+      this.strings = JSON.parse(JSON.stringify(this.loadingStrs));
+      this.loaderText = this.strings[0];
+      this.strings.shift();
 
-    const id = setInterval(() => {
-      const str = this.strings.shift();
-      console.log(str);
-      this.loaderText = str;
-      if (str === undefined) {
+      const id = setInterval(() => {
+        const str = this.strings.shift();
+        console.log(str);
+        this.loaderText = str;
+        if (str === undefined) {
+          this.$emit("closeLoading");
+          clearInterval(id);
+        }      }, 4000);
+    } else {
+      setTimeout(() => {
         this.$emit("closeLoading");
-        clearInterval(id);
-      }    }, 4500);
+      }, 4500)
+    }
   }
 }
 </script>
