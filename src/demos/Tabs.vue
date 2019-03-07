@@ -50,7 +50,6 @@ export default class TabsDemo extends Vue {
       tabLabel: "General",
       tabTo: "/tab1",
       tabId: "tab1",
-      tabIcon: "/img/kevin-standard.464ab689.svg",
       isDisabled: false
     },
     {

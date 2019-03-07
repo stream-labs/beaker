@@ -1,20 +1,18 @@
 <template>
   <div>
-    <md-tabs md-sync-route class="md-tabs-navigation md-elevation-0">
-      <!-- <md-tab id="tab-home" md-label="Home" to="#"></md-tab>
-      <md-tab id="tab-pages" md-label="Pages" to="#"></md-tab>
-      <md-tab id="tab-posts" md-label="Posts" to="#"></md-tab>
-      <md-tab id="tab-settings" md-label="Settings" to="#"></md-tab>
-      <md-tab id="tab-disabled" md-label="Disabled" md-disabled></md-tab>-->
-      <div v-for="(tab, index) in tabs" :key="index">
-        <md-tab
-          :id="tab.tabId"
-          :md-label="tab.tabLabel"
-          :to="tab.tabDest"
-          :md-disabled="tab.isDisabled"
-          :md-icon="tab.tabIcon"
-        ></md-tab>
-      </div>
+    <md-tabs
+      md-sync-route
+      class="md-tabs-navigation md-elevation-0"
+      v-for="(tab, index) in tabs"
+      :key="index"
+    >
+      <md-tab
+        :id="tab.tabId"
+        :md-label="tab.tabLabel"
+        :to="tab.tabTo"
+        :md-disabled="tab.isDisabled"
+        :md-icon="tab.tabIcon"
+      ></md-tab>
     </md-tabs>
   </div>
 </template>
@@ -22,7 +20,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { MdButton, MdTabs } from 'vue-material/dist/components';
-import 'vue-material/dist/vue-material.min.css'
+// import 'vue-material/dist/vue-material.min.css'
 
 Vue.use(MdButton);
 Vue.use(MdTabs);
@@ -103,10 +101,6 @@ export default class Tabs extends Vue {
 <style lang="less" scoped>
 @import './../styles/Imports';
 
-.small {
-  background: black;
-}
-
 .md-tabs-navigation {
   display: flex;
   margin-bottom: 24px;
@@ -127,5 +121,9 @@ export default class Tabs extends Vue {
   .md-ripple {
     color: #bdc2c4;
   }
+}
+
+.md-tabs-navigation .md-button-content{
+  padding: 1000px !important;
 }
 </style>
