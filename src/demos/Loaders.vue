@@ -19,7 +19,7 @@ components: {
 
       <loading
         v-if="isLoading"
-        :loadingStrs="strs"
+        :loadingStrs="array"
         :spinnerSize="'large'"
         @closeLoading="isLoading = false"
       ></loading>
@@ -118,6 +118,7 @@ import Button from "./../components/Button.vue";
   }
 })
 export default class Loaders extends Vue {
+<<<<<<< HEAD
   msg = "hi!";
   isLoading = false;
   strs = [
@@ -125,5 +126,11 @@ export default class Loaders extends Vue {
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     "sed do eiusmod tempor incididunt ut labore et dolore magna"
   ];
+=======
+  msg = "hi!"
+  isLoading = false
+  array = ["Syncing all files to our cloud...", "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "sed do eiusmod tempor incididunt ut labore et dolore magna"]
+  string = "string"
+>>>>>>> a2deccd97d49d8e6aab6eb581239091166b4e5a6
 }
 </script>
