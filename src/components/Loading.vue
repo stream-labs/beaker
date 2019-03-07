@@ -24,10 +24,10 @@ export default class Loading extends Vue {
   spinnerSize!: string;
 
   @Prop()
-  loadingStrs!: any[] | string
+  loadingStrs!: any[] | string;
 
-  strings: any = JSON.parse(JSON.stringify(this.loadingStrs))
-  loaderText: string = ""
+  strings: any = JSON.parse(JSON.stringify(this.loadingStrs));
+  loaderText: string = "";
 
   loopStr() {
     if (this.strings.length > 1) {
