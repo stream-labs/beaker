@@ -4,9 +4,7 @@
       <div class="s-loader__bg">
         <div class="s-loader__inner">
           <Spinner class="s-spinner__overlay" :size="spinnerSize"/>
-          <p class="s-loader__text">
-            <slot></slot>
-          </p>
+          <p class="s-loader__text">{{ loaderText }}</p>
         </div>
       </div>
     </div>
@@ -25,10 +23,31 @@ export default class Loading extends Vue {
   @Prop({ default: "small" })
   spinnerSize!: string
 
+  @Prop()
+  loadingStrs!: any
+
+  strings: any = "";
+  loaderText: string = "";
+
   mounted() {
-    setTimeout(() => {
-      this.$emit("closeLoading")
-    }, 4000)
+    if (this.loadingStrs.length > 0) {
+      this.strings = JSON.parse(JSON.stringify(this.loadingStrs));
+      this.loaderText = this.strings[0];
+      this.strings.shift();
+
+      const id = setInterval(() => {
+        const str = this.strings.shift();
+        console.log(str);
+        this.loaderText = str;
+        if (str === undefined) {
+          this.$emit("closeLoading");
+          clearInterval(id);
+        }      }, 4000);
+    } else {
+      setTimeout(() => {
+        this.$emit("closeLoading");
+      }, 4500)
+    }
   }
 }
 </script>

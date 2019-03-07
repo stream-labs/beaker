@@ -73,8 +73,8 @@ export default class Accordion extends Vue {
   calculateHeight(element: Element) {
     let newHeight = element.children[0].scrollHeight;
     let padding =
-      (this.$refs.menu.querySelectorAll(".accordion").length + 1) * 16;
-
+      (parent.document.querySelectorAll(".s-accordion").length + 1) * 16;
+    console.log(padding);
     if (!this.defaultOpen) {
       return "0";
     } else {

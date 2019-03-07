@@ -17,9 +17,12 @@ components: {
         </div>
       </accordion>
 
-      <loading v-if="isLoading" :spinnerSize="'large'" @closeLoading="isLoading = false">
-        <template slot>Syncing all files to our cloud...</template>
-      </loading>
+      <loading
+        v-if="isLoading"
+        :loadingStrs="strs"
+        :spinnerSize="'large'"
+        @closeLoading="isLoading = false"
+      ></loading>
 
       <div class="row">
         <div class="button-container button-container--left">
@@ -117,5 +120,6 @@ import Button from "./../components/Button.vue"
 export default class Loaders extends Vue {
   msg = "hi!"
   isLoading = false
+  strs = ["Syncing all files to our cloud...", "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "sed do eiusmod tempor incididunt ut labore et dolore magna"]
 }
 </script>
