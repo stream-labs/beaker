@@ -18,6 +18,7 @@
       <a class="left-navigation__link" @click="changeSection('call-to-actions')">Call To Actions</a>
       <a class="left-navigation__link" @click="changeSection('color-pickers')">Color Picker</a>
       <a class="left-navigation__link" @click="changeSection('dropdowns')">Dropdowns</a>
+      <a class="left-navigation__link" @click="changeSection('empty-sections')">Empty Sections</a>
       <a class="left-navigation__link" @click="changeSection('extras')">Extras</a>
       <a class="left-navigation__link" @click="changeSection('forms')">Forms</a>
       <a class="left-navigation__link" @click="changeSection('icons')">Icons</a>
