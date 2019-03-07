@@ -4,9 +4,7 @@
       <div class="s-loader__bg">
         <div class="s-loader__inner">
           <Spinner class="s-spinner__overlay" :size="spinnerSize"/>
-          <p class="s-loader__text">
-            <slot></slot>
-          </p>
+          <p class="s-loader__text">{{ loaderText }}</p>
         </div>
       </div>
     </div>
@@ -14,27 +12,42 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import Spinner from './../components/Spinner.vue'
-import Button from './../components/Button.vue'
+import { Component, Prop, Vue } from "vue-property-decorator"
+import Spinner from "./../components/Spinner.vue"
+import Button from "./../components/Button.vue"
 
 @Component({
   components: { Spinner, Button },
 })
 export default class Loading extends Vue {
-  @Prop({ default: 'small' })
+  @Prop({ default: "small" })
   spinnerSize!: string
 
+  @Prop()
+  loadingStrs!: any
+
+  strings: any = JSON.parse(JSON.stringify(this.loadingStrs));
+
+  loaderText: string = "";
+
   mounted() {
-    setTimeout(() => {
-      this.$emit('closeLoading')
-    }, 4000)
+    this.loaderText = this.strings[0];
+    this.strings.shift();
+
+    const id = setInterval(() => {
+      const str = this.strings.shift();
+      console.log(str);
+      this.loaderText = str;
+      if (str === undefined) {
+        this.$emit("closeLoading");
+        clearInterval(id);
+      }    }, 4500);
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 .s-loader__bg {
   position: fixed;
