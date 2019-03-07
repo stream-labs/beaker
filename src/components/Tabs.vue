@@ -1,43 +1,31 @@
 <template>
-  <div class="s-tabs-wrapper">
-    <div class="s-tabs-nav-wrapper">
-      <div class="s-tabs-nav" :class="className">
-        <div v-if="hasPrev" @click="scrollLeft" class="s-tabs-nav__control s-has-prev">
-          <i class="s-icon-down s-icon-left"></i>
-        </div>
-
-        <div
-          ref="scrollable_tabs"
-          @scroll="calculateScrolls"
-          class="s-tabs"
-          :class="{
-          's-has-next': hasNext,
-          's-has-prev': hasPrev
-        }"
-        >
-          <span
-            v-for="tab in tabs"
-            :key="tab.value"
-            class="s-tab"
-            :class="{ 's-is-active': tab.value === value }"
-            @click="showTab(tab.value)"
-          >{{ tab.name }}</span>
-        </div>
-
-        <div v-if="hasNext" @click="scrollRight" class="s-tabs-nav__control s-has-next">
-          <i class="s-icon-down s-icon-right"></i>
-        </div>
+  <div>
+    <md-tabs md-sync-route class="md-tabs-navigation md-elevation-0">
+      <!-- <md-tab id="tab-home" md-label="Home" to="#"></md-tab>
+      <md-tab id="tab-pages" md-label="Pages" to="#"></md-tab>
+      <md-tab id="tab-posts" md-label="Posts" to="#"></md-tab>
+      <md-tab id="tab-settings" md-label="Settings" to="#"></md-tab>
+      <md-tab id="tab-disabled" md-label="Disabled" md-disabled></md-tab>-->
+      <div v-for="(tab, index) in tabs" :key="index">
+        <md-tab
+          :id="tab.tabId"
+          :md-label="tab.tabLabel"
+          :to="tab.tabDest"
+          :md-disabled="tab.isDisabled"
+          :md-icon="tab.tabIcon"
+        ></md-tab>
       </div>
-    </div>
-
-    <div class="s-tab-content" v-if="!hideContent">
-      <slot v-for="tab in tabs" :name="tab.value" v-if="tab.value === value"/>
-    </div>
+    </md-tabs>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import { MdButton, MdTabs } from 'vue-material/dist/components';
+import 'vue-material/dist/vue-material.min.css'
+
+Vue.use(MdButton);
+Vue.use(MdTabs);
 
 @Component({})
 export default class Tabs extends Vue {
@@ -55,259 +43,89 @@ export default class Tabs extends Vue {
   @Prop()
   tabs!: [
     {
-      name: string;
-      value: string;
+      tabLabel: string;
+      tabTo: string;
+      tabId: string
+      tabIcon: string
     }
   ];
 
-  @Prop()
-  value!: string;
+  @Prop({ default: "small" })
+  tabSize!: string
 
-  @Prop()
-  className!: string;
+  // get test() {
+  //   return this.tabSize === "small" ? "small" : "large"
+  // }
 
-  @Prop()
-  hideContent!: boolean;
+  // created() {
+  //   window.addEventListener("resize", this.calculateScrolls);
+  // }
 
-  created() {
-    window.addEventListener("resize", this.calculateScrolls);
-  }
+  // destroyed() {
+  //   window.removeEventListener("resize", this.calculateScrolls);
+  // }
 
-  destroyed() {
-    window.removeEventListener("resize", this.calculateScrolls);
-  }
+  // mounted() {
+  //   this.isMounted = true;
+  //   this.tabsContainer = this.$refs.scrollable_tabs;
+  //   this.calculateScrolls();
+  //   if (!this.value) this.showTab(this.tabs[0].value);
+  // }
 
-  mounted() {
-    this.isMounted = true;
-    this.tabsContainer = this.$refs.scrollable_tabs;
-    this.calculateScrolls();
-    if (!this.value) this.showTab(this.tabs[0].value);
-  }
+  // scrollLeft() {
+  //   this.tabsContainer.scrollLeft =
+  //     this.tabsContainer.scrollLeft - this.scrollIncrement;
+  // }
 
-  scrollLeft() {
-    this.tabsContainer.scrollLeft =
-      this.tabsContainer.scrollLeft - this.scrollIncrement;
-  }
+  // scrollRight() {
+  //   this.tabsContainer.scrollLeft =
+  //     this.tabsContainer.scrollLeft + this.scrollIncrement;
+  // }
 
-  scrollRight() {
-    this.tabsContainer.scrollLeft =
-      this.tabsContainer.scrollLeft + this.scrollIncrement;
-  }
+  // calculateScrolls() {
+  //   if (!this.isMounted) return false;
+  //   this.canScroll =
+  //     this.tabsContainer.scrollWidth > this.tabsContainer.clientWidth;
+  //   this.hasPrev = this.tabsContainer.scrollLeft > 0;
+  //   let scrollRight =
+  //     this.tabsContainer.scrollWidth -
+  //     (this.tabsContainer.scrollLeft + this.tabsContainer.clientWidth);
 
-  calculateScrolls() {
-    if (!this.isMounted) return false;
-    this.canScroll =
-      this.tabsContainer.scrollWidth > this.tabsContainer.clientWidth;
-    this.hasPrev = this.tabsContainer.scrollLeft > 0;
-    let scrollRight =
-      this.tabsContainer.scrollWidth -
-      (this.tabsContainer.scrollLeft + this.tabsContainer.clientWidth);
+  //   this.hasNext = scrollRight > 0;
+  // }
 
-    this.hasNext = scrollRight > 0;
-  }
-
-  showTab(tab: string) {
-    this.$emit("input", tab);
-  }
+  // showTab(tab: string) {
+  //   this.$emit("input", tab);
+  // }
 }
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import './../styles/Imports';
 
-.s-tabs-wrapper {
-  height: 100%;
+.small {
+  background: black;
 }
 
-.s-tabs-nav-wrapper {
-  position: relative;
-  height: 34px;
-}
-
-.s-tabs-nav {
+.md-tabs-navigation {
   display: flex;
-  align-items: flex-end;
-  flex-direction: row;
-  justify-content: flex-start;
-  background: transparent;
-  box-sizing: border-box;
-  position: relative;
-  max-width: none;
-  background: transparent;
+  margin-bottom: 24px;
+  border: 0;
+  padding: 0;
+  border-radius: 4px 4px 0 0;
+  background-color: transparent;
+  border-bottom: 1px solid #f0f2f2;
   width: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
 }
 
-.s-tabs-nav__control {
-  height: calc(~"2 * " @spacing);
-  display: flex;
-  align-items: flex-end;
-  .margin-bottom(2);
-  position: relative;
-
-  &.s-has-next,
-  &.s-has-prev {
-    &:before {
-      content: "";
-      width: 40px;
-      height: 16px;
-      position: absolute;
-    }
-  }
-
-  &.s-has-next {
-    &:before {
-      right: 16px;
-      background: -moz-linear-gradient(
-        left,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 1) 100%
-      ); /* FF3.6-15 */
-      background: -webkit-linear-gradient(
-        left,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 1) 100%
-      ); /* Chrome10-25,Safari5.1-6 */
-      background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 1) 100%
-      ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    }
-  }
-
-  &.s-has-prev {
-    &:before {
-      left: 16px;
-      background: -moz-linear-gradient(
-        left,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 255, 255, 0) 100%
-      ); /* FF3.6-15 */
-      background: -webkit-linear-gradient(
-        left,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 255, 255, 0) 100%
-      ); /* Chrome10-25,Safari5.1-6 */
-      background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 255, 255, 0) 100%
-      ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    }
-  }
-}
-
-.s-tabs {
-  display: inline-block;
-  overflow-x: hidden;
-  white-space: nowrap;
-  overflow-y: hidden;
-  width: 100%;
-
-  &.s-has-prev {
-    .margin-left(2);
-  }
-
-  &.s-has-next {
-    .margin-right(2);
-  }
-
-  &:before {
-    content: "";
-    position: absolute;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 1px;
-    background-color: @day-border;
-  }
-}
-
-.s-tab {
-  color: @day-paragraph;
-  .padding-bottom(2);
-  border-bottom: 2px solid transparent;
-  .margin-right(2);
-  cursor: default;
-  .transition();
-  display: inline-block;
-  position: relative;
-  .weight(@medium);
-
-  &.is-active {
-    color: @day-title;
-    border-color: @dark-2;
-  }
-}
-
-.s-tab-content {
-  position: relative;
-  overflow-y: auto;
-  .padding-v-sides(3);
-}
-
+.night,
 .night-theme {
-  .s-tabs {
-    &:before {
-      background-color: @night-border;
-    }
+  .md-tabs-navigation {
+    border-bottom-color: #2b383f;
   }
 
-  .s-tab {
-    color: @night-paragraph;
-
-    &.s-is-active {
-      color: @night-title;
-      border-color: @light-1;
-    }
-  }
-
-  .s-tabs-nav__control {
-    &.s-has-next {
-      &:before {
-        background: -moz-linear-gradient(
-          left,
-          rgba(23, 36, 45, 0) 0%,
-          rgba(23, 36, 45, 1) 100%
-        ); /* FF3.6-15 */
-        background: -webkit-linear-gradient(
-          left,
-          rgba(23, 36, 45, 0) 0%,
-          rgba(23, 36, 45, 1) 100%
-        ); /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(
-          to right,
-          rgba(23, 36, 45, 0) 0%,
-          rgba(23, 36, 45, 1) 100%
-        ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-      }
-    }
-
-    &.s-has-prev {
-      &:before {
-        background: -moz-linear-gradient(
-          left,
-          rgba(23, 36, 45, 1) 0%,
-          rgba(23, 36, 45, 0) 100%
-        ); /* FF3.6-15 */
-        background: -webkit-linear-gradient(
-          left,
-          rgba(23, 36, 45, 1) 0%,
-          rgba(23, 36, 45, 0) 100%
-        ); /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(
-          to right,
-          rgba(23, 36, 45, 1) 0%,
-          rgba(23, 36, 45, 0) 100%
-        ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-      }
-    }
+  .md-ripple {
+    color: #bdc2c4;
   }
 }
 </style>

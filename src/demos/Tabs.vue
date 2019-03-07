@@ -26,10 +26,7 @@ components: {
       </div>
     </Accordion>
 
-    <Tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler">
-      <div slot="general">General slot content</div>
-      <div slot="advanced">Advanced slot content</div>
-    </Tabs>
+    <Tabs :tabs="testTabs" :tabSize="'small'"></Tabs>
   </div>
 </template>
 
@@ -39,6 +36,7 @@ import Accordion from "./../components/Accordion.vue";
 import ScrollNav from "./../components/ScrollNav.vue";
 import Tabs from "./../components/Tabs.vue";
 
+
 @Component({
   components: {
     Accordion,
@@ -47,65 +45,46 @@ import Tabs from "./../components/Tabs.vue";
   }
 })
 export default class TabsDemo extends Vue {
-  tabs = [
+  testTabs = [
     {
-      name: "General",
-      value: "general"
+      tabLabel: "General",
+      tabTo: "/tab1",
+      tabId: "tab1",
+      tabIcon: "/img/kevin-standard.464ab689.svg",
+      isDisabled: false
     },
     {
-      name: "Advanced",
-      value: "advanced"
+      tabLabel: "Advanced",
+      tabTo: "/tab2",
+      tabId: "tab2",
+      isDisabled: false
     },
     {
-      name: "Account",
-      value: "Account"
+      tabLabel: "Account",
+      tabTo: "/tab3",
+      tabId: "tab3",
+      isDisabled: false
     },
     {
-      name: "Integrations",
-      value: "integrations"
+      tabLabel: "Integrations",
+      tabTo: "/tab4",
+      tabId: "tab4",
+      isDisabled: false
     },
     {
-      name: "Payments",
-      value: "payments"
+      tabLabel: "Payments",
+      tabTo: "/tab5",
+      tabId: "tab5",
+      isDisabled: false
     },
     {
-      name: "Donations",
-      value: "donations"
+
+      tabLabel: "Donations",
+      tabTo: "/tab6",
+      tabId: "tab6",
+      isDisabled: true
     },
-    {
-      name: "Subscriptions",
-      value: "subscriptions"
-    },
-    {
-      name: "Preferences",
-      value: "preferences"
-    },
-    {
-      name: "Apps",
-      value: "apps"
-    },
-    {
-      name: "Merch",
-      value: "merch"
-    },
-    {
-      name: "API",
-      value: "api"
-    },
-    {
-      name: "Moderators",
-      value: "moderators"
-    },
-    {
-      name: "Themes",
-      value: "themes"
-    }
   ];
 
-  selectedTab = "general";
-
-  onSelectTabHandler(tab: string) {
-    this.selectedTab = tab;
-  }
 }
 </script>
