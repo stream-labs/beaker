@@ -6,7 +6,7 @@
     <div class="s-payment-form__option">
       <form class="s-credit-card-form s-form">
         <div class="s-form-group">
-          <selector v-model="selected" :options="options" placeholder="Add new credit card"></selector>
+          <selector placeholder="Add new credit card"></selector>
         </div>
         <div class="s-form-group s-credit-card-form__inputs">
           <text-input class="s-credit-card-form__cc-number" type="text" placeholder="Name on card"></text-input>
