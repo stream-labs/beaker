@@ -26,7 +26,8 @@ components: {
       </div>
     </Accordion>
 
-    <Tabs :tabs="testTabs" :tabSize="'small'"></Tabs>
+    <Tabs :tabs="tabs1" :tabSize="'small'"></Tabs>
+    <Tabs :tabs="tabs2" :tabSize="'large'"></Tabs>
   </div>
 </template>
 
@@ -36,7 +37,6 @@ import Accordion from "./../components/Accordion.vue";
 import ScrollNav from "./../components/ScrollNav.vue";
 import Tabs from "./../components/Tabs.vue";
 
-
 @Component({
   components: {
     Accordion,
@@ -45,45 +45,79 @@ import Tabs from "./../components/Tabs.vue";
   }
 })
 export default class TabsDemo extends Vue {
-  testTabs = [
+  tabs1 = [
     {
       tabLabel: "General",
       tabTo: "/tab1",
       tabId: "tab1",
-      isDisabled: false
     },
     {
       tabLabel: "Advanced",
       tabTo: "/tab2",
       tabId: "tab2",
-      isDisabled: false
     },
     {
       tabLabel: "Account",
       tabTo: "/tab3",
       tabId: "tab3",
-      isDisabled: false
     },
     {
       tabLabel: "Integrations",
       tabTo: "/tab4",
       tabId: "tab4",
-      isDisabled: false
     },
     {
       tabLabel: "Payments",
       tabTo: "/tab5",
       tabId: "tab5",
-      isDisabled: false
     },
     {
-
       tabLabel: "Donations",
       tabTo: "/tab6",
       tabId: "tab6",
-      isDisabled: true
     },
   ];
+
+
+  tabs2 = [
+    {
+      tabLabel: "General",
+      tabTo: "/tab7",
+      tabId: "tab7",
+      tabIcon: "",
+    },
+    {
+      tabLabel: "Advanced",
+      tabTo: "/tab8",
+      tabId: "tab8",
+      tabIcon: "",
+    },
+    {
+      tabLabel: "Account",
+      tabTo: "/tab9",
+      tabId: "tab9",
+      tabIcon: "",
+    },
+    {
+      tabLabel: "Integrations",
+      tabTo: "/tab10",
+      tabId: "tab10",
+      tabIcon: "",
+    },
+    {
+      tabLabel: "Payments",
+      tabTo: "/tab11",
+      tabId: "tab11",
+      tabIcon: "",
+    },
+    {
+      tabLabel: "Donations",
+      tabTo: "/tab12",
+      tabId: "tab12",
+      tabIcon: "",
+    },
+  ];
+
 
 }
 </script>

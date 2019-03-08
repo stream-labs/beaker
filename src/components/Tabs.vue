@@ -1,43 +1,22 @@
 <template>
-  <div>
-    <md-tabs
-      md-sync-route
-      class="md-tabs-navigation md-elevation-0"
-      v-for="(tab, index) in tabs"
-      :key="index"
-    >
-      <md-tab
-        :id="tab.tabId"
-        :md-label="tab.tabLabel"
-        :to="tab.tabTo"
-        :md-disabled="tab.isDisabled"
-        :md-icon="tab.tabIcon"
-      ></md-tab>
+  <div class="s-md-wrapper" :class="getTabSize">
+    <md-tabs md-sync-route>
+      <div v-for="(tab, index) in tabs" :key="index">
+        <md-tab :id="tab.tabId" :md-label="tab.tabLabel" :to="tab.tabTo" :md-icon="tab.tabIcon"></md-tab>
+      </div>
     </md-tabs>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import { MdButton, MdTabs } from 'vue-material/dist/components';
-// import 'vue-material/dist/vue-material.min.css'
+import { MdButton, MdTabs } from "vue-material/dist/components";
 
 Vue.use(MdButton);
 Vue.use(MdTabs);
 
 @Component({})
 export default class Tabs extends Vue {
-  $refs!: {
-    scrollable_tabs: HTMLDivElement;
-  };
-
-  isMounted = false;
-  tabsContainer: HTMLDivElement = null as any;
-  canScroll = false;
-  hasNext = false;
-  hasPrev = false;
-  private scrollIncrement = 100;
-
   @Prop()
   tabs!: [
     {
@@ -51,79 +30,89 @@ export default class Tabs extends Vue {
   @Prop({ default: "small" })
   tabSize!: string
 
-  // get test() {
-  //   return this.tabSize === "small" ? "small" : "large"
-  // }
-
-  // created() {
-  //   window.addEventListener("resize", this.calculateScrolls);
-  // }
-
-  // destroyed() {
-  //   window.removeEventListener("resize", this.calculateScrolls);
-  // }
-
-  // mounted() {
-  //   this.isMounted = true;
-  //   this.tabsContainer = this.$refs.scrollable_tabs;
-  //   this.calculateScrolls();
-  //   if (!this.value) this.showTab(this.tabs[0].value);
-  // }
-
-  // scrollLeft() {
-  //   this.tabsContainer.scrollLeft =
-  //     this.tabsContainer.scrollLeft - this.scrollIncrement;
-  // }
-
-  // scrollRight() {
-  //   this.tabsContainer.scrollLeft =
-  //     this.tabsContainer.scrollLeft + this.scrollIncrement;
-  // }
-
-  // calculateScrolls() {
-  //   if (!this.isMounted) return false;
-  //   this.canScroll =
-  //     this.tabsContainer.scrollWidth > this.tabsContainer.clientWidth;
-  //   this.hasPrev = this.tabsContainer.scrollLeft > 0;
-  //   let scrollRight =
-  //     this.tabsContainer.scrollWidth -
-  //     (this.tabsContainer.scrollLeft + this.tabsContainer.clientWidth);
-
-  //   this.hasNext = scrollRight > 0;
-  // }
-
-  // showTab(tab: string) {
-  //   this.$emit("input", tab);
-  // }
+  get getTabSize() {
+    return this.tabSize === "small" ? "font-small" : "font-large"
+  }
 }
 </script>
 
-<style lang="less" scoped>
-@import './../styles/Imports';
+<style lang="less">
+@import "./../styles/Imports";
+// md does not have support for scoped styles
+.font-small {
+  .md-button-content {
+    font-size: 14px;
+  }
+}
 
-.md-tabs-navigation {
-  display: flex;
-  margin-bottom: 24px;
-  border: 0;
-  padding: 0;
-  border-radius: 4px 4px 0 0;
-  background-color: transparent;
-  border-bottom: 1px solid #f0f2f2;
-  width: 100%;
+.font-large {
+  .md-button-content {
+    font-size: 16px;
+  }
+}
+
+.s-md-wrapper {
+  .md-tabs-navigation {
+    display: flex;
+    .margin-bottom(3);
+    .padding(0);
+    border: 0;
+    border-radius: 4px 4px 0 0;
+    background-color: @day-input-bg;
+    border-bottom: 1px solid #f0f2f2;
+    width: 100%;
+  }
+
+  .md-button {
+    color: @dark-5;
+    text-decoration: none;
+    .transition();
+  }
+
+  .md-button:hover {
+    color: @dark-2;
+    outline: none;
+  }
+
+  .md-button.md-active {
+    color: @dark-2;
+    .md-ripple {
+      border-color: @dark-2;
+    }
+  }
+
+  .md-ripple {
+    .padding-bottom(1.75);
+    .margin-right(2);
+    border-bottom: 2px solid @day-input-bg;
+  }
 }
 
 .night,
 .night-theme {
   .md-tabs-navigation {
-    border-bottom-color: #2b383f;
+    border-bottom-color: @dark-4;
   }
 
-  .md-ripple {
-    color: #bdc2c4;
+  .md-button {
+    color: @light-4;
+  }
+
+  .md-button:hover {
+    color: @light-4;
+    outline: none;
+  }
+
+  .md-button.md-active {
+    .md-ripple {
+      border-color: @white;
+      color: @white;
+    }
   }
 }
+</style>
 
-.md-tabs-navigation .md-button-content{
-  padding: 1000px !important;
-}
+
+<style lang="less" scoped>
+@import "./../styles/Imports";
 </style>
