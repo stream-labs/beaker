@@ -23,16 +23,16 @@ export default class TabDevelop extends Vue {
     {
       tabLabel: string;
       tabTo: string;
-      tabId: string
-      tabIcon: string
+      tabId: string;
+      tabIcon: string;
     }
   ];
 
   @Prop({ default: "small" })
-  tabSize!: string
+  tabSize!: string;
 
   get getTabSize() {
-    return this.tabSize === "small" ? "font-small" : "font-large"
+    return this.tabSize === "small" ? "font-small" : "font-large";
   }
 }
 </script>

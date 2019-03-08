@@ -34,16 +34,17 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import Button from "./../components/Button.vue";
-import VueMq from 'vue-mq'
+import VueMq from "vue-mq";
 
 Vue.use(VueMq, {
-  breakpoints: { // default breakpoints - customize this
+  breakpoints: {
+    // default breakpoints - customize this
     sm: 0,
     md: 768,
-    lg: Infinity,
+    lg: Infinity
   },
-  defaultBreakpoint: 'md' // customize this for SSR
-})
+  defaultBreakpoint: "md" // customize this for SSR
+});
 
 @Component({
   components: {

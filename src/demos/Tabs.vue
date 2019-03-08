@@ -47,40 +47,38 @@ import Tabs from "./../components/Tabs.vue";
   }
 })
 export default class TabsDemo extends Vue {
-
   test = [
     {
       tabLabel: "General",
       tabTo: "#",
-      tabId: "tab1",
+      tabId: "tab1"
     },
     {
       tabLabel: "Advanced",
       tabTo: "#",
-      tabId: "tab2",
+      tabId: "tab2"
     },
     {
       tabLabel: "Account",
       tabTo: "#",
-      tabId: "tab3",
+      tabId: "tab3"
     },
     {
       tabLabel: "Integrations",
       tabTo: "#",
-      tabId: "tab4",
+      tabId: "tab4"
     },
     {
       tabLabel: "Payments",
       tabTo: "#",
-      tabId: "tab5",
+      tabId: "tab5"
     },
     {
       tabLabel: "Donations",
       tabTo: "#",
-      tabId: "tab6",
-    },
+      tabId: "tab6"
+    }
   ];
-
 
   tabs = [
     {
@@ -142,6 +140,5 @@ export default class TabsDemo extends Vue {
   onSelectTabHandler(tab: string) {
     this.selectedTab = tab;
   }
-
 }
 </script>
