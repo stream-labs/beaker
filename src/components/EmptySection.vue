@@ -1,9 +1,9 @@
 <template>
   <div class="s-empty-section">
     <i class="s-icon-search" v-if="this.variation === 'search'"></i>
-    <i class="s-icon-hide" v-if="this.variation === 'text'"></i>
-    <div class="s-empty-section--title">{{ title }}</div>
-    <div class="s-empty-section--subtitle">{{ subtitle }}</div>
+    <i class="s-icon-empty" v-if="this.variation === 'text'"></i>
+    <div class="s-empty-section__title">{{ title }}</div>
+    <div class="s-empty-section__subtitle">{{ subtitle }}</div>
     <slot></slot>
   </div>
 </template>
@@ -36,6 +36,7 @@ export default class Spinner extends Vue {
   align-items: center;
   align-content: center;
   justify-content: center;
+
   > i {
     font-size: 40px;
     color: @light-4;
@@ -43,14 +44,14 @@ export default class Spinner extends Vue {
   }
 }
 
-.s-empty-section--title {
+.s-empty-section__title {
   color: @day-title;
   font-size: 16px;
   font-weight: @medium;
   .margin-bottom(2);
 }
 
-.s-empty-section--subtitle {
+.s-empty-section__subtitle {
   color: @day-paragraph;
   font-size: 14px;
   .margin-bottom(2);
