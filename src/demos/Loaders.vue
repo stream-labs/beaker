@@ -4,7 +4,7 @@
       <h1>Loaders</h1>
 
       <pre><code>import { Loading } from 'streamlabs-beaker';
-        
+
 components: {
   Loading
 }</code></pre>
@@ -19,7 +19,7 @@ components: {
 
       <loading
         v-if="isLoading"
-        :loadingStrs="strs"
+        :loadingStrs="array"
         :spinnerSize="'large'"
         @closeLoading="isLoading = false"
       ></loading>
@@ -55,7 +55,7 @@ components: {
       <p>These are animated with pure SVG, they will not be animated in Microsoft Edge, or Opera, and will look different in firefox.</p>
 
       <pre><code>import { Spinner } from 'streamlabs-beaker';
-        
+
 components: {
   Spinner
 }</code></pre>
@@ -103,23 +103,28 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator"
-import Spinner from "./../components/Spinner.vue"
-import Loading from "./../components/Loading.vue"
-import Accordion from "./../components/Accordion.vue"
-import Button from "./../components/Button.vue"
+import { Component, Vue } from "vue-property-decorator";
+import Spinner from "./../components/Spinner.vue";
+import Loading from "./../components/Loading.vue";
+import Accordion from "./../components/Accordion.vue";
+import Button from "./../components/Button.vue";
 
 @Component({
   components: {
     Spinner,
     Loading,
     Accordion,
-    Button,
-  },
+    Button
+  }
 })
 export default class Loaders extends Vue {
-  msg = "hi!"
-  isLoading = false
-  strs = ["Syncing all files to our cloud...", "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "sed do eiusmod tempor incididunt ut labore et dolore magna"]
+  msg = "hi!";
+  isLoading = false;
+  array = [
+    "Syncing all files to our cloud...",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "sed do eiusmod tempor incididunt ut labore et dolore magna"
+  ];
+  string = "string";
 }
 </script>

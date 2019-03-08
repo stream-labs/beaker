@@ -16,6 +16,7 @@ import Callout from "@/components/Callout";
 import Checkbox from "@/components/Checkbox";
 import ColorPicker from "@/components/ColorPicker";
 import ContentRow from "@/components/ContentRow";
+import EmptySection from "@/components/EmptySection";
 import FormGroupH from "@/components/FormGroupH";
 import FormGroupV from "@/components/FormGroupV";
 import HelloWorld from "@/components/HelloWorld";
@@ -51,6 +52,7 @@ const components = [
   Callout,
   ColorPicker,
   ContentRow,
+  EmptySection,
   FormGroupH,
   FormGroupV,
   HelloWorld,
@@ -98,6 +100,7 @@ export {
   Checkbox,
   ColorPicker,
   ContentRows,
+  EmptySection,
   FormGroupH,
   FormGroupV,
   HelloWorld,
