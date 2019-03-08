@@ -26,8 +26,8 @@ components: {
       </div>
     </Accordion>
 
-    <Tabs :tabs="tabs1" :tabSize="'small'"></Tabs>
-    <Tabs :tabs="tabs2" :tabSize="'large'"></Tabs>
+    <TabDevelop :tabs="tabs1" :tabSize="'small'"></TabDevelop>
+    <TabDevelop :tabs="tabs2" :tabSize="'large'"></TabDevelop>
   </div>
 </template>
 
@@ -35,13 +35,13 @@ components: {
 import { Component, Vue } from "vue-property-decorator";
 import Accordion from "./../components/Accordion.vue";
 import ScrollNav from "./../components/ScrollNav.vue";
-import Tabs from "./../components/Tabs.vue";
+import TabDevelop from "./../components/TabDevelop.vue";
 
 @Component({
   components: {
     Accordion,
     ScrollNav,
-    Tabs
+    TabDevelop
   }
 })
 export default class TabsDemo extends Vue {
@@ -84,7 +84,7 @@ export default class TabsDemo extends Vue {
       tabLabel: "General",
       tabTo: "/tab7",
       tabId: "tab7",
-      tabIcon: "",
+      tabIcon: "https://picsum.photos/1920/300/?image=926",
     },
     {
       tabLabel: "Advanced",
