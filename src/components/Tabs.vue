@@ -38,9 +38,6 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import { MdButton, MdTabs } from 'vue-material/dist/components';
-Vue.use(MdButton);
-Vue.use(MdTabs);
 
 @Component({})
 export default class Tabs extends Vue {
@@ -314,3 +311,4 @@ export default class Tabs extends Vue {
   }
 }
 </style>
+

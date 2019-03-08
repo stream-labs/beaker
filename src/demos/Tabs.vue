@@ -26,7 +26,8 @@ components: {
       </div>
     </Accordion>
 
-    <TabDevelop :tabs="tabs" :tabSize="'small'"></TabDevelop>
+    <TabDevelop :tabs="test" :tabSize="'small'"></TabDevelop>
+    <!-- <Tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler"></Tabs> -->
   </div>
 </template>
 
@@ -35,17 +36,19 @@ import { Component, Vue } from "vue-property-decorator";
 import Accordion from "./../components/Accordion.vue";
 import ScrollNav from "./../components/ScrollNav.vue";
 import TabDevelop from "./../components/TabDevelop.vue";
+import Tabs from "./../components/Tabs.vue";
 
 @Component({
   components: {
     Accordion,
     ScrollNav,
     TabDevelop,
+    Tabs
   }
 })
 export default class TabsDemo extends Vue {
 
-  tabs = [
+  test = [
     {
       tabLabel: "General",
       tabTo: "#",
@@ -77,6 +80,68 @@ export default class TabsDemo extends Vue {
       tabId: "tab6",
     },
   ];
+
+
+  tabs = [
+    {
+      name: "General",
+      value: "general"
+    },
+    {
+      name: "Advanced",
+      value: "advanced"
+    },
+    {
+      name: "Account",
+      value: "Account"
+    },
+    {
+      name: "Integrations",
+      value: "integrations"
+    },
+    {
+      name: "Payments",
+      value: "payments"
+    },
+    {
+      name: "Donations",
+      value: "donations"
+    },
+    {
+      name: "Subscriptions",
+      value: "subscriptions"
+    },
+    {
+      name: "Preferences",
+      value: "preferences"
+    },
+    {
+      name: "Apps",
+      value: "apps"
+    },
+    {
+      name: "Merch",
+      value: "merch"
+    },
+    {
+      name: "API",
+      value: "api"
+    },
+    {
+      name: "Moderators",
+      value: "moderators"
+    },
+    {
+      name: "Themes",
+      value: "themes"
+    }
+  ];
+
+  selectedTab = "general";
+
+  onSelectTabHandler(tab: string) {
+    this.selectedTab = tab;
+  }
 
 }
 </script>
