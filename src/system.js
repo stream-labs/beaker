@@ -35,6 +35,7 @@ import Selector from "@/components/Selector";
 import Spinner from "@/components/Spinner";
 import SSProSimulator from "@/components/SSProSimulator";
 import Tabs from "@/components/Tabs";
+import TabDevelop from "@/components/TabDevelop";
 import TextInput from "@/components/TextInput";
 import TooltipNotice from "@/components/TooltipNotice";
 import Toggle from "@/components/Toggle";
@@ -69,6 +70,7 @@ const components = [
   Spinner,
   SSProSimulator,
   Tabs,
+  TabDevelop,
   TextInput,
   TooltipNotice,
   Pagination,
@@ -117,6 +119,7 @@ export {
   Spinner,
   SSProSimulator,
   Tabs,
+  TabDevelop,
   TextInput,
   TooltipNotice,
   Pagination,

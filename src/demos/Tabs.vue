@@ -26,10 +26,8 @@ components: {
       </div>
     </Accordion>
 
-    <Tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler">
-      <div slot="general">General slot content</div>
-      <div slot="advanced">Advanced slot content</div>
-    </Tabs>
+    <TabDevelop :tabs="test" :tabSize="'small'"></TabDevelop>
+    <!-- <Tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler"></Tabs> -->
   </div>
 </template>
 
@@ -37,16 +35,53 @@ components: {
 import { Component, Vue } from "vue-property-decorator";
 import Accordion from "./../components/Accordion.vue";
 import ScrollNav from "./../components/ScrollNav.vue";
+import TabDevelop from "./../components/TabDevelop.vue";
 import Tabs from "./../components/Tabs.vue";
 
 @Component({
   components: {
     Accordion,
     ScrollNav,
+    TabDevelop,
     Tabs
   }
 })
 export default class TabsDemo extends Vue {
+
+  test = [
+    {
+      tabLabel: "General",
+      tabTo: "#",
+      tabId: "tab1",
+    },
+    {
+      tabLabel: "Advanced",
+      tabTo: "#",
+      tabId: "tab2",
+    },
+    {
+      tabLabel: "Account",
+      tabTo: "#",
+      tabId: "tab3",
+    },
+    {
+      tabLabel: "Integrations",
+      tabTo: "#",
+      tabId: "tab4",
+    },
+    {
+      tabLabel: "Payments",
+      tabTo: "#",
+      tabId: "tab5",
+    },
+    {
+      tabLabel: "Donations",
+      tabTo: "#",
+      tabId: "tab6",
+    },
+  ];
+
+
   tabs = [
     {
       name: "General",
@@ -107,5 +142,6 @@ export default class TabsDemo extends Vue {
   onSelectTabHandler(tab: string) {
     this.selectedTab = tab;
   }
+
 }
 </script>

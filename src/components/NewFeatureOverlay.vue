@@ -1,10 +1,16 @@
 <template>
-  <modal name="new-feature" :adaptive="true" width="100%" height="auto" classes="s-overlay-wrapper">
-    <div slot="top-right" class="s-overlay-icon">
+  <modal
+    name="new-feature"
+    :adaptive="true"
+    width="100%"
+    height="auto"
+    classes="s-overlay__wrapper"
+  >
+    <div slot="top-right" class="s-overlay__icon">
       <span class="s-icon s-icon-close" @click="$modal.hide('new-feature')"></span>
     </div>
-    <div class="s-overlay-container">
-      <div class="s-overlay-body">
+    <div class="s-overlay__container" :class="containerMq">
+      <div class="s-overlay__body">
         <p class="s-overlay__label">{{label}}</p>
         <h1 class="s-overlay__title">{{title}}</h1>
         <p class="s-overlay__text">
@@ -18,8 +24,8 @@
         </div>
       </div>
 
-      <div class="s-overlay-image">
-        <img :src="overlayImage">
+      <div class="s-overlay__imageBlock">
+        <img :src="overlayImage" class="s-overlay__image">
       </div>
     </div>
   </modal>
@@ -28,13 +34,23 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import Button from "./../components/Button.vue";
+import VueMq from 'vue-mq'
+
+Vue.use(VueMq, {
+  breakpoints: { // default breakpoints - customize this
+    sm: 0,
+    md: 768,
+    lg: Infinity,
+  },
+  defaultBreakpoint: 'md' // customize this for SSR
+})
 
 @Component({
   components: {
     Button
   }
 })
-export default class ModalBasic extends Vue {
+export default class NewFeatureOverlay extends Vue {
   @Prop()
   label!: string;
 
@@ -47,17 +63,27 @@ export default class ModalBasic extends Vue {
   get overlayImage() {
     return this.image;
   }
+
+  $mq: string = "";
+
+  get containerMq() {
+    return this.$mq === "md" ? "s-overlay__container--mq" : "";
+  }
 }
 </script>
 
 <style lang="less" scoped>
 @import "./../styles/Imports";
 
+.s-overlay__container--mq {
+  display: block !important;
+}
+
 .v--modal-overlay {
   background: @day-overlay;
 }
 
-.s-overlay-wrapper {
+.s-overlay__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -70,7 +96,7 @@ export default class ModalBasic extends Vue {
   z-index: 999;
 }
 
-.s-overlay-icon {
+.s-overlay__icon {
   .padding(4);
 }
 
@@ -78,7 +104,7 @@ export default class ModalBasic extends Vue {
   cursor: pointer;
 }
 
-.s-overlay-container {
+.s-overlay__container {
   width: 80%;
   .max-width();
   height: auto;
@@ -88,7 +114,7 @@ export default class ModalBasic extends Vue {
   align-items: center;
 }
 
-.s-overlay-body {
+.s-overlay__body {
   flex-basis: 50%;
 }
 
@@ -117,6 +143,15 @@ export default class ModalBasic extends Vue {
 
 .s-overlay__link {
   .margin-left(2);
+}
+
+.s-overlay__imageBlock {
+  text-align: center;
+}
+
+.s-overlay__image {
+  max-width: 100%;
+  width: auto;
 }
 
 .night,
