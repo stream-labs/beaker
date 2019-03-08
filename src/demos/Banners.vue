@@ -291,7 +291,7 @@
               <td>string</td>
               <td>true</td>
               <td>default</td>
-              <td>Background color that will display</td>
+              <td>Background color that will display. Options are "default" and "warning". if default It's already set as default props.</td>
             </tr>
             <tr>
               <td>title</td>

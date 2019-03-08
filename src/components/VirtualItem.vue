@@ -49,7 +49,7 @@ export default class VitualItem extends Vue {
   type!: String;
 
   get virtualItemClasses() {
-    let classes = [];
+    const classes: any = [];
 
     if (this.rarity) {
       classes.push(`s-virtual-item--${this.rarity}`);

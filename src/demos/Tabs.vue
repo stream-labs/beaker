@@ -26,8 +26,8 @@ components: {
       </div>
     </Accordion>
 
-    <TabDevelop :tabs="tabs1" :tabSize="'small'"></TabDevelop>
-    <TabDevelop :tabs="tabs2" :tabSize="'large'"></TabDevelop>
+    <TabDevelop :tabs="test" :tabSize="'small'"></TabDevelop>
+    <!-- <Tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler"></Tabs> -->
   </div>
 </template>
 
@@ -36,88 +36,112 @@ import { Component, Vue } from "vue-property-decorator";
 import Accordion from "./../components/Accordion.vue";
 import ScrollNav from "./../components/ScrollNav.vue";
 import TabDevelop from "./../components/TabDevelop.vue";
+import Tabs from "./../components/Tabs.vue";
 
 @Component({
   components: {
     Accordion,
     ScrollNav,
-    TabDevelop
+    TabDevelop,
+    Tabs
   }
 })
 export default class TabsDemo extends Vue {
-  tabs1 = [
+
+  test = [
     {
       tabLabel: "General",
-      tabTo: "/tab1",
+      tabTo: "#",
       tabId: "tab1",
     },
     {
       tabLabel: "Advanced",
-      tabTo: "/tab2",
+      tabTo: "#",
       tabId: "tab2",
     },
     {
       tabLabel: "Account",
-      tabTo: "/tab3",
+      tabTo: "#",
       tabId: "tab3",
     },
     {
       tabLabel: "Integrations",
-      tabTo: "/tab4",
+      tabTo: "#",
       tabId: "tab4",
     },
     {
       tabLabel: "Payments",
-      tabTo: "/tab5",
+      tabTo: "#",
       tabId: "tab5",
     },
     {
       tabLabel: "Donations",
-      tabTo: "/tab6",
+      tabTo: "#",
       tabId: "tab6",
     },
   ];
 
 
-  tabs2 = [
+  tabs = [
     {
-      tabLabel: "General",
-      tabTo: "/tab7",
-      tabId: "tab7",
-      tabIcon: "https://picsum.photos/1920/300/?image=926",
+      name: "General",
+      value: "general"
     },
     {
-      tabLabel: "Advanced",
-      tabTo: "/tab8",
-      tabId: "tab8",
-      tabIcon: "",
+      name: "Advanced",
+      value: "advanced"
     },
     {
-      tabLabel: "Account",
-      tabTo: "/tab9",
-      tabId: "tab9",
-      tabIcon: "",
+      name: "Account",
+      value: "Account"
     },
     {
-      tabLabel: "Integrations",
-      tabTo: "/tab10",
-      tabId: "tab10",
-      tabIcon: "",
+      name: "Integrations",
+      value: "integrations"
     },
     {
-      tabLabel: "Payments",
-      tabTo: "/tab11",
-      tabId: "tab11",
-      tabIcon: "",
+      name: "Payments",
+      value: "payments"
     },
     {
-      tabLabel: "Donations",
-      tabTo: "/tab12",
-      tabId: "tab12",
-      tabIcon: "",
+      name: "Donations",
+      value: "donations"
     },
+    {
+      name: "Subscriptions",
+      value: "subscriptions"
+    },
+    {
+      name: "Preferences",
+      value: "preferences"
+    },
+    {
+      name: "Apps",
+      value: "apps"
+    },
+    {
+      name: "Merch",
+      value: "merch"
+    },
+    {
+      name: "API",
+      value: "api"
+    },
+    {
+      name: "Moderators",
+      value: "moderators"
+    },
+    {
+      name: "Themes",
+      value: "themes"
+    }
   ];
 
+  selectedTab = "general";
+
+  onSelectTabHandler(tab: string) {
+    this.selectedTab = tab;
+  }
 
 }
 </script>

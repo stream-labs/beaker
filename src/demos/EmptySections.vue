@@ -13,8 +13,8 @@ components: {
       <div class="row">
         <empty-section
           :variation="'search'"
-          :title="'This is the title'"
-          :subtitle="'This is a subtitle'"
+          :title="'No results found for ‘sadasdasd’'"
+          :subtitle="'Try another search term.'"
         ></empty-section>
       </div>
 
@@ -35,8 +35,8 @@ components: {
       <div class="row">
         <empty-section
           :variation="'text'"
-          :title="'This is the title'"
-          :subtitle="'This is a subtitle'"
+          :title="'You don’t have any pending users yet'"
+          :subtitle="'Open a queue to get started.'"
         ></empty-section>
       </div>
 

@@ -103,7 +103,7 @@ export default class Button extends Vue {
   };
 
   get buttonClasses() {
-    let classes = [];
+    const classes: any = [];
 
     if (this.variation) {
       classes.push(`s-button--${this.variation}`);
@@ -125,7 +125,7 @@ export default class Button extends Vue {
   }
 
   get iconClass() {
-    let classes = [];
+    const classes: any = [];
 
     if (this.icon) {
       classes.push(`s-icon-${this.icon}`);

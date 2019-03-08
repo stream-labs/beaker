@@ -56,7 +56,7 @@ export default class Badge extends Vue {
   suffix!: string;
 
   get badgeClasses() {
-    let classes = [];
+    const classes: any = [];
 
     classes.push(`s-badge--${this.variant}`);
 

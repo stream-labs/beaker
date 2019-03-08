@@ -52,9 +52,9 @@ export default class Accordion extends Vue {
       return;
     }
 
-    let parent: any = this.$parent,
-      parentMenu: any = this.$parent.$refs.menu,
-      menu = this.$refs.menu;
+    const parent: any = this.$parent
+    const parentMenu: any = this.$parent.$refs.menu
+    const menu = this.$refs.menu
 
     this.defaultOpen = !this.defaultOpen;
     menu.style.transition = "all .275s";
@@ -71,10 +71,9 @@ export default class Accordion extends Vue {
   }
 
   calculateHeight(element: Element) {
-    let newHeight = element.children[0].scrollHeight;
-    let padding =
-      (parent.document.querySelectorAll(".s-accordion").length + 1) * 16;
-    console.log(padding);
+    const newHeight = element.children[0].scrollHeight;
+    const padding =
+      (this.$refs.menu.querySelectorAll(".accordion").length + 1) * 16;
     if (!this.defaultOpen) {
       return "0";
     } else {
@@ -99,7 +98,7 @@ export default class Accordion extends Vue {
   }
 
   get accordionClasses() {
-    let classes = [];
+    const classes: any = [];
 
     if (this.defaultBorder) {
       classes.push("s-accordion--no-border");

@@ -11,6 +11,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { MdButton, MdTabs } from "vue-material/dist/components";
+// import 'vue-material/dist/vue-material.min.css'
 
 Vue.use(MdButton);
 Vue.use(MdTabs);
