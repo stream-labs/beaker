@@ -18,6 +18,7 @@
       <a class="left-navigation__link" @click="changeSection('call-to-actions')">Call To Actions</a>
       <a class="left-navigation__link" @click="changeSection('color-pickers')">Color Picker</a>
       <a class="left-navigation__link" @click="changeSection('dropdowns')">Dropdowns</a>
+      <a class="left-navigation__link" @click="changeSection('empty-sections')">Empty Sections</a>
       <a class="left-navigation__link" @click="changeSection('extras')">Extras</a>
       <a class="left-navigation__link" @click="changeSection('forms')">Forms</a>
       <a class="left-navigation__link" @click="changeSection('icons')">Icons</a>
@@ -41,21 +42,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class LeftNavigation extends Vue {
   @Prop()
-  activeSection!: string
+  activeSection!: string;
 
   changeSection(activeSection: string) {
-    this.$emit('update-section', activeSection)
+    this.$emit("update-section", activeSection);
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 .left-navigation {
   display: flex;
