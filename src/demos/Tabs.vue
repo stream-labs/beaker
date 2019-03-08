@@ -26,8 +26,7 @@ components: {
       </div>
     </Accordion>
 
-    <TabDevelop :tabs="tabs1" :tabSize="'small'"></TabDevelop>
-    <TabDevelop :tabs="tabs2" :tabSize="'large'"></TabDevelop>
+    <TabDevelop :tabs="tabs" :tabSize="'small'"></TabDevelop>
   </div>
 </template>
 
@@ -41,83 +40,43 @@ import TabDevelop from "./../components/TabDevelop.vue";
   components: {
     Accordion,
     ScrollNav,
-    TabDevelop
+    TabDevelop,
   }
 })
 export default class TabsDemo extends Vue {
-  tabs1 = [
+
+  tabs = [
     {
       tabLabel: "General",
-      tabTo: "/tab1",
+      tabTo: "#",
       tabId: "tab1",
     },
     {
       tabLabel: "Advanced",
-      tabTo: "/tab2",
+      tabTo: "#",
       tabId: "tab2",
     },
     {
       tabLabel: "Account",
-      tabTo: "/tab3",
+      tabTo: "#",
       tabId: "tab3",
     },
     {
       tabLabel: "Integrations",
-      tabTo: "/tab4",
+      tabTo: "#",
       tabId: "tab4",
     },
     {
       tabLabel: "Payments",
-      tabTo: "/tab5",
+      tabTo: "#",
       tabId: "tab5",
     },
     {
       tabLabel: "Donations",
-      tabTo: "/tab6",
+      tabTo: "#",
       tabId: "tab6",
     },
   ];
-
-
-  tabs2 = [
-    {
-      tabLabel: "General",
-      tabTo: "/tab7",
-      tabId: "tab7",
-      tabIcon: "https://picsum.photos/1920/300/?image=926",
-    },
-    {
-      tabLabel: "Advanced",
-      tabTo: "/tab8",
-      tabId: "tab8",
-      tabIcon: "",
-    },
-    {
-      tabLabel: "Account",
-      tabTo: "/tab9",
-      tabId: "tab9",
-      tabIcon: "",
-    },
-    {
-      tabLabel: "Integrations",
-      tabTo: "/tab10",
-      tabId: "tab10",
-      tabIcon: "",
-    },
-    {
-      tabLabel: "Payments",
-      tabTo: "/tab11",
-      tabId: "tab11",
-      tabIcon: "",
-    },
-    {
-      tabLabel: "Donations",
-      tabTo: "/tab12",
-      tabId: "tab12",
-      tabIcon: "",
-    },
-  ];
-
 
 }
 </script>
