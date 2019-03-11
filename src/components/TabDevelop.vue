@@ -9,10 +9,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import { MdButton, MdTabs } from 'vue-material/dist/components'
-import 'vue-material/dist/vue-material.min.css'
-import VueMq from 'vue-mq'
+import { Component, Prop, Vue } from "vue-property-decorator"
+import { MdButton, MdTabs } from "vue-material/dist/components"
+import "vue-material/dist/vue-material.min.css"
+import VueMq from "vue-mq"
 
 Vue.use(VueMq, {
   breakpoints: {
@@ -21,7 +21,7 @@ Vue.use(VueMq, {
     md: 768,
     lg: Infinity,
   },
-  defaultBreakpoint: 'md', // customize this for SSR
+  defaultBreakpoint: "md", // customize this for SSR
 })
 
 Vue.use(MdButton)
@@ -39,11 +39,11 @@ export default class TabDevelop extends Vue {
     }
   ]
 
-  @Prop({ default: 'small' })
+  @Prop({ default: "small" })
   tabSize!: string
 
   get getTabSize() {
-    return this.tabSize === 'small' ? 'font-small' : 'font-large'
+    return this.tabSize === "small" ? "font-small" : "font-large"
   }
 }
 </script>

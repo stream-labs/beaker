@@ -33,11 +33,11 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import Accordion from './../components/Accordion.vue'
-import ScrollNav from './../components/ScrollNav.vue'
-import TabDevelop from './../components/TabDevelop.vue'
-import Tabs from './../components/Tabs.vue'
+import { Component, Vue } from "vue-property-decorator"
+import Accordion from "./../components/Accordion.vue"
+import ScrollNav from "./../components/ScrollNav.vue"
+import TabDevelop from "./../components/TabDevelop.vue"
+import Tabs from "./../components/Tabs.vue"
 
 @Component({
   components: {
@@ -50,99 +50,99 @@ import Tabs from './../components/Tabs.vue'
 export default class TabsDemo extends Vue {
   test = [
     {
-      tabLabel: 'General',
-      tabTo: '#',
-      tabId: 'tab1',
-      tabIcon: '../assets/imgs/icon-information-default.svg',
+      tabLabel: "General",
+      tabTo: "#",
+      tabId: "tab1",
+      tabIcon: "../assets/imgs/icon-information-default.svg",
     },
     {
-      tabLabel: 'Advanced',
-      tabTo: '#',
-      tabId: 'tab2',
-      tabIcon: '../assets/imgs/icon-information-default.svg',
+      tabLabel: "Advanced",
+      tabTo: "#",
+      tabId: "tab2",
+      tabIcon: "../assets/imgs/icon-information-default.svg",
     },
     {
-      tabLabel: 'Account',
-      tabTo: '#',
-      tabId: 'tab3',
-      tabIcon: '../assets/imgs/icon-information-default.svg',
+      tabLabel: "Account",
+      tabTo: "#",
+      tabId: "tab3",
+      tabIcon: "../assets/imgs/icon-information-default.svg",
     },
     {
-      tabLabel: 'Integrations',
-      tabTo: '#',
-      tabId: 'tab4',
-      tabIcon: '../assets/imgs/icon-information-default.svg',
+      tabLabel: "Integrations",
+      tabTo: "#",
+      tabId: "tab4",
+      tabIcon: "../assets/imgs/icon-information-default.svg",
     },
     {
-      tabLabel: 'Payments',
-      tabTo: '#',
-      tabId: 'tab5',
-      tabIcon: '../assets/imgs/icon-information-default.svg',
+      tabLabel: "Payments",
+      tabTo: "#",
+      tabId: "tab5",
+      tabIcon: "../assets/imgs/icon-information-default.svg",
     },
     {
-      tabLabel: 'Donations',
-      tabTo: '#',
-      tabId: 'tab6',
-      tabIcon: '../assets/imgs/icon-information-default.svg',
+      tabLabel: "Donations",
+      tabTo: "#",
+      tabId: "tab6",
+      tabIcon: "../assets/imgs/icon-information-default.svg",
     },
   ]
 
   tabs = [
     {
-      name: 'General',
-      value: 'general',
+      name: "General",
+      value: "general",
     },
     {
-      name: 'Advanced',
-      value: 'advanced',
+      name: "Advanced",
+      value: "advanced",
     },
     {
-      name: 'Account',
-      value: 'Account',
+      name: "Account",
+      value: "Account",
     },
     {
-      name: 'Integrations',
-      value: 'integrations',
+      name: "Integrations",
+      value: "integrations",
     },
     {
-      name: 'Payments',
-      value: 'payments',
+      name: "Payments",
+      value: "payments",
     },
     {
-      name: 'Donations',
-      value: 'donations',
+      name: "Donations",
+      value: "donations",
     },
     {
-      name: 'Subscriptions',
-      value: 'subscriptions',
+      name: "Subscriptions",
+      value: "subscriptions",
     },
     {
-      name: 'Preferences',
-      value: 'preferences',
+      name: "Preferences",
+      value: "preferences",
     },
     {
-      name: 'Apps',
-      value: 'apps',
+      name: "Apps",
+      value: "apps",
     },
     {
-      name: 'Merch',
-      value: 'merch',
+      name: "Merch",
+      value: "merch",
     },
     {
-      name: 'API',
-      value: 'api',
+      name: "API",
+      value: "api",
     },
     {
-      name: 'Moderators',
-      value: 'moderators',
+      name: "Moderators",
+      value: "moderators",
     },
     {
-      name: 'Themes',
-      value: 'themes',
+      name: "Themes",
+      value: "themes",
     },
   ]
 
-  selectedTab = 'general'
+  selectedTab = "general"
 
   onSelectTabHandler(tab: string) {
     this.selectedTab = tab
