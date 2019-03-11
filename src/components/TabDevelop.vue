@@ -54,7 +54,7 @@ export default class TabDevelop extends Vue {
 
 @media screen and (max-width:768px) { 
 .md-tabs-navigation .md-button{
-  min-width: 112.97px;
+  min-width: 112px;
 }
 
 }
