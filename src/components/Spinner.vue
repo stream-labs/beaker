@@ -31,6 +31,12 @@
         <rect width="4" height="40" x="12" y="0" ry="2" rx="2" class="s-spinner__bar">
           <animate
             attributeName="opacity"
+            values=".24; .24; .24"
+            begin="0s"
+            dur="0.4s"
+          ></animate>
+          <animate
+            attributeName="opacity"
             values=".24; .08; .24"
             begin="0.4s"
             dur="1.2s"
@@ -48,6 +54,12 @@
           </animateMotion>
         </rect>
         <rect width="4" height="40" x="24" y="0" ry="2" rx="2" class="s-spinner__bar">
+          <animate
+            attributeName="opacity"
+            values=".24; .24; .24"
+            begin="0s"
+            dur="0.8s"
+          ></animate>
           <animate
             attributeName="opacity"
             values=".24; .08; .24"
@@ -110,13 +122,14 @@ export default class Spinner extends Vue {
 
 .s-spinner__bar {
   fill: @dark-2;
-  opacity: 0.24;
+  color: @dark-2;
 }
 
 .night,
 .night-theme {
   .s-spinner__bar {
     fill: @light-2;
+    color: @light-2;
   }
 }
 </style>
