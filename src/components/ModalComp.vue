@@ -108,7 +108,7 @@ export default class ModalComp extends Vue {
 
   modalNotes: string = this.notes;
 
-  @Prop({ default: 'Confirm' })
+  @Prop({ default: "Confirm" })
   confirmButtonText!: string;
 }
 </script>
