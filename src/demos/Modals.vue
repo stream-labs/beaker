@@ -246,7 +246,7 @@ components: {
           <td>string</td>
           <td>Confirm</td>
           <td>
-            Callback function when confirmed (only in Modal Confirmation)
+            Confirm button text (only in Modal Confirmation)
           </td>
         </tr>
       </tbody>
