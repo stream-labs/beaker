@@ -147,6 +147,8 @@ components: {
         :width="400"
         :subTitle="'Delete ‘Streamlabs Pillow’'"
         :text="'Are you sure you want to delete the merch item ‘Streamlabs Pillow’? This action cannot be undone.'"
+        @confirm="() => {}"
+        :confirm-button-text="'Delete'"
       ></ModalComp>
 
       <div class="button-container button-container--left">
@@ -229,6 +231,22 @@ components: {
           <td>
             the note of the bottom only used for
             <code>subscribe</code>
+          </td>
+        </tr>
+        <tr>
+          <td>@confirm</td>
+          <td>Function</td>
+          <td>null</td>
+          <td>
+            Callback function when confirmed (only in Modal Confirmation)
+          </td>
+        </tr>
+        <tr>
+          <td>confirm-button-text</td>
+          <td>string</td>
+          <td>Confirm</td>
+          <td>
+            Callback function when confirmed (only in Modal Confirmation)
           </td>
         </tr>
       </tbody>
