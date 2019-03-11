@@ -96,6 +96,12 @@ components: {
             <td>'small'</td>
             <td>'small', 'large'</td>
           </tr>
+          <tr>
+            <td>swap</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>If you need to swap day/night mode [ true ], default: [ false ]</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -118,7 +124,6 @@ import Button from "./../components/Button.vue";
   }
 })
 export default class Loaders extends Vue {
-  msg = "hi!";
   isLoading = false;
   array = [
     "Syncing all files to our cloud...",
