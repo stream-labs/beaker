@@ -74,7 +74,6 @@ export default class Accordion extends Vue {
     const newHeight = element.children[0].scrollHeight;
     const padding =
       (this.$refs.menu.querySelectorAll(".accordion").length + 1) * 16;
-
     if (!this.defaultOpen) {
       return "0";
     } else {
