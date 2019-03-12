@@ -30,6 +30,7 @@ components: {
         :label="'Introducing Merch Stores'"
         :title="'Increase Your Revenue'"
         :media="require('../assets/video/sample.mp4')"
+        :buttonTitle="'Go To Store'"
       >
         <slot>We’ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.
           <br>
@@ -74,6 +75,18 @@ components: {
           <td>null</td>
           <td>display image or video (you can select either of them)</td>
         </tr>
+        <tr>
+          <td>buttonTitle</td>
+          <td>string</td>
+          <td>null</td>
+          <td>Text displayed in the action button</td>
+        </tr>
+        <tr>
+          <td>buttonRoute</td>
+          <td>string</td>
+          <td>/</td>
+          <td>Router link path for the action button</td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -92,5 +105,5 @@ import Button from "./../components/Button.vue";
     Button
   }
 })
-export default class Modals extends Vue { }
+export default class Modals extends Vue {}
 </script>

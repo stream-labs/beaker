@@ -52,9 +52,9 @@ export default class Accordion extends Vue {
       return;
     }
 
-    const parent: any = this.$parent
-    const parentMenu: any = this.$parent.$refs.menu
-    const menu = this.$refs.menu
+    const parent: any = this.$parent;
+    const parentMenu: any = this.$parent.$refs.menu;
+    const menu = this.$refs.menu;
 
     this.defaultOpen = !this.defaultOpen;
     menu.style.transition = "all .275s";
