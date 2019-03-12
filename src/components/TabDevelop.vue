@@ -70,19 +70,7 @@
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator"
 import ViewMaterial from "vue-material"
-import "vue-material/dist/vue-material.min.css"
-// import VueMq from "vue-mq"
-
-// Vue.use(VueMq, {
-//   breakpoints: {
-//     // default breakpoints - customize this
-//     sm: 0,
-//     md: 768,
-//     lg: Infinity,
-//   },
-//   defaultBreakpoint: "md", // customize this for SSR
-// })
-
+// import "vue-material/dist/vue-material.min.css"
 Vue.use(ViewMaterial)
 
 @Component({})
@@ -206,6 +194,7 @@ export default class TabDevelop extends Vue {
 
 .s-md-wrapper {
   .md-tabs-navigation {
+    display: flex;
     // border-bottom: 1px solid #f0f2f2;
     &::-webkit-scrollbar {
       display: none;
@@ -215,13 +204,44 @@ export default class TabDevelop extends Vue {
   .md-button {
     height: auto;
     width:auto;
-    // min-width:0px;
+    transition: .4s cubic-bezier(.4,0,.2,1);
   }
+
+  .md-button, .md-button-clean {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    outline: none;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    transition: .4s cubic-bezier(.4,0,.2,1);
+    font-family: inherit;
+    line-height: normal;
+    text-decoration: none;
+    vertical-align: top;
+    white-space: nowrap;
+}
 
   .md-button:hover {
     color: @dark-2;
     outline: none;
   }
+
+  // .md-button:before {
+  //   position: absolute;
+  //   top: 0;
+  //   right: 0;
+  //   bottom: 0;
+  //   left: 0;
+  //   z-index: 1;
+  //   opacity: 0;
+  //   transition: .4s cubic-bezier(.4,0,.2,1);
+  //   will-change: background-color,opacity;
+  //   content: " ";
+  // }
 
   .md-button:not([disabled]).md-focused:before, .md-button:not([disabled]):active:before, .md-button:not([disabled]):hover:before{
     background: none;
@@ -241,7 +261,18 @@ export default class TabDevelop extends Vue {
 
   .md-tabs-indicator {
     background: @dark-2;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateZ(0);
+    will-change: left,right;
   }
+
+  .md-tabs-indicator.md-tabs-indicator-left {
+    transition: left .3s cubic-bezier(.4,0,.2,1),right .35s cubic-bezier(.4,0,.2,1) !important;
+  }
+
   
 }
 
