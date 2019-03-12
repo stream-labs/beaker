@@ -61,12 +61,12 @@ export default class NewFeatureOverlay extends Vue {
   title!: string;
 
   @Prop()
-  image!: string;
+  media!: string;
 
   isImage: boolean = true;
 
   get overlayImage() {
-    return this.image;
+    return this.media;
   }
 
   $mq: string = "";
@@ -80,7 +80,7 @@ export default class NewFeatureOverlay extends Vue {
   }
 
   mounted() {
-    if (this.image.includes("mp4") || this.image.includes("webm")) {
+    if (this.media.includes("mp4") || this.media.includes("webm")) {
       this.isImage = false;
     } else {
       this.isImage = true;
