@@ -14,25 +14,23 @@ components: {
       <p>Used for new feature overlay.</p>
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-          <!-- <pre><code>&lt;ModalComp
-  :type=&quot;'basic'&quot;
-  :title=&quot;'UI Modal'&quot;
-  :subTitle=&quot;'Subtitle'&quot;
-  :text=&quot;'Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.'&quot;&gt;
-&lt;/ModalComp&gt;
-
-&lt;Button 
-:variation=&quot;'default'&quot; 
-:title=&quot;'modal'&quot;
- @click=&quot;$modal.show('modal-basic')&quot;&gt;
-&lt;/Button&gt;
-          </code></pre>-->
+          <pre><code>&lt;NewFeatureOverlay
+  :label=&quot;'Introducing Merch Stores'&quot;
+  :title=&quot;'Increase Your Revenue'&quot;
+  :image=&quot;require('../assets/video/sample.mp4')&quot;&gt;
+  &lt;slot&gt;We’ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.
+    &lt;br&gt;
+    &lt;br&gt;We’ve automatically credited $15.00 to your account so you can start trying them out today.
+  &lt;/slot&gt;
+&lt;/NewFeatureOverlay&gt;
+          </code></pre>
         </div>
       </Accordion>
       <NewFeatureOverlay
         :label="'Introducing Merch Stores'"
         :title="'Increase Your Revenue'"
-        :image="require('../assets/imgs/items.svg')"
+        :media="require('../assets/video/sample.mp4')"
+        :buttonTitle="'Go To Store'"
       >
         <slot>We’ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.
           <br>
@@ -49,7 +47,7 @@ components: {
       </div>
     </div>
 
-    <!-- <table class="docs-table">
+    <table class="docs-table">
       <thead>
         <tr>
           <th>Props</th>
@@ -60,22 +58,10 @@ components: {
       </thead>
       <tbody>
         <tr>
-          <td>width</td>
-          <td>number</td>
-          <td>600</td>
-          <td>modal width</td>
-        </tr>
-        <tr>
-          <td>minWidth</td>
-          <td>number</td>
-          <td>600</td>
-          <td>modal minimum width</td>
-        </tr>
-        <tr>
-          <td>type</td>
+          <td>label</td>
           <td>string</td>
           <td>null</td>
-          <td>Type of the modal. Options are basic, subscribe, redirect, and confirmation</td>
+          <td>label to display</td>
         </tr>
         <tr>
           <td>title</td>
@@ -84,46 +70,25 @@ components: {
           <td>title to display</td>
         </tr>
         <tr>
-          <td>subTitle</td>
+          <td>media</td>
           <td>string</td>
           <td>null</td>
-          <td>sub title to display</td>
+          <td>display image or video (you can select either of them)</td>
         </tr>
         <tr>
-          <td>text</td>
+          <td>buttonTitle</td>
           <td>string</td>
           <td>null</td>
-          <td>text to display</td>
+          <td>Text displayed in the action button</td>
         </tr>
         <tr>
-          <td>subscribeText</td>
+          <td>buttonRoute</td>
           <td>string</td>
-          <td>null</td>
-          <td>
-            subscribe text only used for
-            <code>subscribe</code>
-          </td>
-        </tr>
-        <tr>
-          <td>subscribeMessage</td>
-          <td>string</td>
-          <td>null</td>
-          <td>
-            subscribe message only used for
-            <code>subscribe</code>
-          </td>
-        </tr>
-        <tr>
-          <td>notes</td>
-          <td>string</td>
-          <td>null</td>
-          <td>
-            the note of the bottom only used for
-            <code>subscribe</code>
-          </td>
+          <td>/</td>
+          <td>Router link path for the action button</td>
         </tr>
       </tbody>
-    </table>-->
+    </table>
   </div>
 </template>
 
@@ -140,5 +105,5 @@ import Button from "./../components/Button.vue";
     Button
   }
 })
-export default class Modals extends Vue { }
+export default class Modals extends Vue {}
 </script>

@@ -17,15 +17,23 @@
           <slot></slot>
         </p>
         <div class="s-overlay-links">
-          <Button :type="'button'" :size="'large'" :variation="'action'" :title="'Set Up Store'"></Button>
-          <p class="s-overlay__link">
-            <a href="#">Go to Dashboard</a>
-          </p>
+          <Button
+            :type="'button'"
+            :size="'large'"
+            :variation="'action'"
+            :tag="'router-link'"
+            :to="buttonRoute"
+            :title="buttonTitle"
+          ></Button>
+          <a class="s-overlay__link" href="/">Go to Dashboard</a>
         </div>
       </div>
 
-      <div class="s-overlay__imageBlock">
-        <img :src="overlayImage" class="s-overlay__image">
+      <div class="s-overlay__imageBlock" :class="overlay__imageBlockMq">
+        <img v-if="isImage" :src="overlayImage" class="s-overlay__image">
+        <video controls="false" autoplay loop v-if="!isImage" class="s-overlay__image">
+          <source :src="overlayImage">Environment does not support video playback
+        </video>
       </div>
     </div>
   </modal>
@@ -34,16 +42,17 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import Button from "./../components/Button.vue";
-import VueMq from 'vue-mq'
+import VueMq from "vue-mq";
 
 Vue.use(VueMq, {
-  breakpoints: { // default breakpoints - customize this
+  breakpoints: {
+    // default breakpoints - customize this
     sm: 0,
     md: 768,
-    lg: Infinity,
+    lg: Infinity
   },
-  defaultBreakpoint: 'md' // customize this for SSR
-})
+  defaultBreakpoint: "md" // customize this for SSR
+});
 
 @Component({
   components: {
@@ -58,10 +67,18 @@ export default class NewFeatureOverlay extends Vue {
   title!: string;
 
   @Prop()
-  image!: string;
+  media!: string;
+
+  @Prop()
+  buttonTitle!: string;
+
+  @Prop({ default: "/" })
+  buttonRoute!: string;
+
+  isImage: boolean = true;
 
   get overlayImage() {
-    return this.image;
+    return this.media;
   }
 
   $mq: string = "";
@@ -69,14 +86,34 @@ export default class NewFeatureOverlay extends Vue {
   get containerMq() {
     return this.$mq === "md" ? "s-overlay__container--mq" : "";
   }
+
+  get overlay__imageBlockMq() {
+    return this.$mq === "md" ? "s-overlay__imageBlock--mq" : "";
+  }
+
+  mounted() {
+    if (this.media.includes("mp4") || this.media.includes("webm")) {
+      this.isImage = false;
+    } else {
+      this.isImage = true;
+    }
+  }
 }
 </script>
 
 <style lang="less" scoped>
 @import "./../styles/Imports";
+::-webkit-media-controls {
+  display: none !important;
+}
 
 .s-overlay__container--mq {
   display: block !important;
+}
+
+.s-overlay__imageBlock--mq {
+  width: 100% !important;
+  height: auto;
 }
 
 .v--modal-overlay {
@@ -107,11 +144,14 @@ export default class NewFeatureOverlay extends Vue {
 .s-overlay__container {
   width: 80%;
   .max-width();
+  max-width: 1400px;
   height: auto;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 40px;
 }
 
 .s-overlay__body {
@@ -147,6 +187,10 @@ export default class NewFeatureOverlay extends Vue {
 
 .s-overlay__imageBlock {
   text-align: center;
+  justify-self: center;
+  .margin-top(2);
+  .radius(2);
+  overflow: hidden;
 }
 
 .s-overlay__image {
