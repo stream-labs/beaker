@@ -68,29 +68,10 @@
 </template>]
 
 <script lang="ts">
-<<<<<<< HEAD
 import { Component, Prop, Vue, Watch } from "vue-property-decorator"
 import ViewMaterial from "vue-material"
 // import "vue-material/dist/vue-material.min.css"
 Vue.use(ViewMaterial)
-=======
-import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-import ViewMaterial from "vue-material";
-import "vue-material/dist/vue-material.min.css";
-// import VueMq from "vue-mq"
-
-// Vue.use(VueMq, {
-//   breakpoints: {
-//     // default breakpoints - customize this
-//     sm: 0,
-//     md: 768,
-//     lg: Infinity,
-//   },
-//   defaultBreakpoint: "md", // customize this for SSR
-// })
-
-Vue.use(ViewMaterial);
->>>>>>> 2b5b7c864dbbe64b9f84b805f78d14adb24ff701
 
 @Component({})
 export default class TabDevelop extends Vue {
@@ -222,13 +203,8 @@ export default class TabDevelop extends Vue {
 
   .md-button {
     height: auto;
-<<<<<<< HEAD
     width:auto;
     transition: .4s cubic-bezier(.4,0,.2,1);
-=======
-    width: auto;
-    // min-width:0px;
->>>>>>> 2b5b7c864dbbe64b9f84b805f78d14adb24ff701
   }
 
   .md-button, .md-button-clean {
@@ -254,26 +230,10 @@ export default class TabDevelop extends Vue {
     outline: none;
   }
 
-<<<<<<< HEAD
-  // .md-button:before {
-  //   position: absolute;
-  //   top: 0;
-  //   right: 0;
-  //   bottom: 0;
-  //   left: 0;
-  //   z-index: 1;
-  //   opacity: 0;
-  //   transition: .4s cubic-bezier(.4,0,.2,1);
-  //   will-change: background-color,opacity;
-  //   content: " ";
-  // }
 
-  .md-button:not([disabled]).md-focused:before, .md-button:not([disabled]):active:before, .md-button:not([disabled]):hover:before{
-=======
   .md-button:not([disabled]).md-focused:before,
   .md-button:not([disabled]):active:before,
   .md-button:not([disabled]):hover:before {
->>>>>>> 2b5b7c864dbbe64b9f84b805f78d14adb24ff701
     background: none;
   }
 
@@ -298,16 +258,10 @@ export default class TabDevelop extends Vue {
     transform: translateZ(0);
     will-change: left,right;
   }
-<<<<<<< HEAD
 
   .md-tabs-indicator.md-tabs-indicator-left {
     transition: left .3s cubic-bezier(.4,0,.2,1),right .35s cubic-bezier(.4,0,.2,1) !important;
   }
-
-  
-=======
->>>>>>> 2b5b7c864dbbe64b9f84b805f78d14adb24ff701
-}
 
 .night,
 .night-theme {
@@ -337,6 +291,7 @@ export default class TabDevelop extends Vue {
   .md-tabs-indicator {
     background: @white;
   }
+}
 }
 </style>
 
