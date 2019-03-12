@@ -68,9 +68,9 @@
 </template>]
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from "vue-property-decorator"
-import ViewMaterial from "vue-material"
-import "vue-material/dist/vue-material.min.css"
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
+import ViewMaterial from "vue-material";
+import "vue-material/dist/vue-material.min.css";
 // import VueMq from "vue-mq"
 
 // Vue.use(VueMq, {
@@ -83,7 +83,7 @@ import "vue-material/dist/vue-material.min.css"
 //   defaultBreakpoint: "md", // customize this for SSR
 // })
 
-Vue.use(ViewMaterial)
+Vue.use(ViewMaterial);
 
 @Component({})
 export default class TabDevelop extends Vue {
@@ -100,23 +100,23 @@ export default class TabDevelop extends Vue {
 
   data = {
     icon: ""
-  }
+  };
 
   @Prop()
   tabs!: [
     {
-      tabLabel: string
-      tabTo: string
-      tabId: string
-      tabIcon: string
+      tabLabel: string;
+      tabTo: string;
+      tabId: string;
+      tabIcon: string;
     }
-  ]
+  ];
 
   @Prop({ default: "small" })
-  tabSize!: string
+  tabSize!: string;
 
   get getTabSize() {
-    return this.tabSize === "small" ? "font-small" : "font-large"
+    return this.tabSize === "small" ? "font-small" : "font-large";
   }
 
   @Prop()
@@ -152,8 +152,8 @@ export default class TabDevelop extends Vue {
     // console.log(mdButton);
     this.$nextTick(() => {
       // ...
-      console.log(mdButton)
-    })
+      console.log(mdButton);
+    });
     // if (!this.value) this.showTab(this.tabs[0].value);
   }
 
@@ -214,7 +214,7 @@ export default class TabDevelop extends Vue {
 
   .md-button {
     height: auto;
-    width:auto;
+    width: auto;
     // min-width:0px;
   }
 
@@ -223,7 +223,9 @@ export default class TabDevelop extends Vue {
     outline: none;
   }
 
-  .md-button:not([disabled]).md-focused:before, .md-button:not([disabled]):active:before, .md-button:not([disabled]):hover:before{
+  .md-button:not([disabled]).md-focused:before,
+  .md-button:not([disabled]):active:before,
+  .md-button:not([disabled]):hover:before {
     background: none;
   }
 
@@ -236,13 +238,12 @@ export default class TabDevelop extends Vue {
     .padding-bottom(1.75);
     .margin-right(2);
     border-bottom: 2px solid transparent;
-    position:static;
+    position: static;
   }
 
   .md-tabs-indicator {
     background: @dark-2;
   }
-  
 }
 
 .night,
@@ -261,8 +262,8 @@ export default class TabDevelop extends Vue {
   }
 
   .md-ripple {
-      color:  @light-4;
-    }
+    color: @light-4;
+  }
 
   .md-button.md-active {
     .md-ripple {
@@ -270,7 +271,7 @@ export default class TabDevelop extends Vue {
     }
   }
 
-   .md-tabs-indicator {
+  .md-tabs-indicator {
     background: @white;
   }
 }
@@ -281,8 +282,8 @@ export default class TabDevelop extends Vue {
 @import "./../styles/Imports";
 
 .md-tabs {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .s-tabs-wrapper {
@@ -395,7 +396,7 @@ export default class TabDevelop extends Vue {
     bottom: 0;
     width: 100%;
     height: 1px;
-    background-color:@light-3;
+    background-color: @light-3;
   }
 }
 

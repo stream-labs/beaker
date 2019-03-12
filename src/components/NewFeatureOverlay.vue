@@ -17,16 +17,21 @@
           <slot></slot>
         </p>
         <div class="s-overlay-links">
-          <Button :type="'button'" :size="'large'" :variation="'action'" :title="'Set Up Store'"></Button>
-          <p class="s-overlay__link">
-            <a href="#">Go to Dashboard</a>
-          </p>
+          <Button
+            :type="'button'"
+            :size="'large'"
+            :variation="'action'"
+            :tag="'router-link'"
+            :to="buttonRoute"
+            :title="buttonTitle"
+          ></Button>
+          <a class="s-overlay__link" href="/">Go to Dashboard</a>
         </div>
       </div>
 
       <div class="s-overlay__imageBlock" :class="overlay__imageBlockMq">
         <img v-if="isImage" :src="overlayImage" class="s-overlay__image">
-        <video controls v-if="!isImage" class="s-overlay__image">
+        <video controls="false" autoplay loop v-if="!isImage" class="s-overlay__image">
           <source :src="overlayImage">Environment does not support video playback
         </video>
       </div>
@@ -37,16 +42,17 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import Button from "./../components/Button.vue";
-import VueMq from 'vue-mq'
+import VueMq from "vue-mq";
 
 Vue.use(VueMq, {
-  breakpoints: { // default breakpoints - customize this
+  breakpoints: {
+    // default breakpoints - customize this
     sm: 0,
     md: 768,
-    lg: Infinity,
+    lg: Infinity
   },
-  defaultBreakpoint: 'md' // customize this for SSR
-})
+  defaultBreakpoint: "md" // customize this for SSR
+});
 
 @Component({
   components: {
@@ -62,6 +68,12 @@ export default class NewFeatureOverlay extends Vue {
 
   @Prop()
   media!: string;
+
+  @Prop()
+  buttonTitle!: string;
+
+  @Prop({ default: "/" })
+  buttonRoute!: string;
 
   isImage: boolean = true;
 
@@ -91,6 +103,9 @@ export default class NewFeatureOverlay extends Vue {
 
 <style lang="less" scoped>
 @import "./../styles/Imports";
+::-webkit-media-controls {
+  display: none !important;
+}
 
 .s-overlay__container--mq {
   display: block !important;
@@ -129,11 +144,14 @@ export default class NewFeatureOverlay extends Vue {
 .s-overlay__container {
   width: 80%;
   .max-width();
+  max-width: 1400px;
   height: auto;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 40px;
 }
 
 .s-overlay__body {
@@ -169,8 +187,10 @@ export default class NewFeatureOverlay extends Vue {
 
 .s-overlay__imageBlock {
   text-align: center;
-  width: 48%;
+  justify-self: center;
   .margin-top(2);
+  .radius(2);
+  overflow: hidden;
 }
 
 .s-overlay__image {
