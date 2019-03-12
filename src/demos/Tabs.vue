@@ -26,9 +26,8 @@ components: {
       </div>
     </Accordion>
 
-    <tab-develop :tabs="test" :tabSize="'small'"></tab-develop>
-    <!-- <TabDevelop :tabs="test" :tabSize="'large'"></TabDevelop> -->
-    <!-- <Tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler"></Tabs> -->
+    <tab-develop :tabs="test" :tabSize="'small'" @input="onSelectTabHandler"></tab-develop>
+    <tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler"></tabs>
   </div>
 </template>
 

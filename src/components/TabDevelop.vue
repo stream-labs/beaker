@@ -15,19 +15,17 @@
           's-has-prev': hasPrev
         }"
         >
-          <md-tabs @md-changed="checkNewPosts">
+          <md-tabs>
             <template slot="md-tab" slot-scope="{ tab }">
               {{ tab.label }}
-              <i :class="`s-icon-${tab.data}`"></i>
+              <i :class="`s-icon-${tab.data.icon}`"></i>
             </template>
             <div v-for="(tab, index) in tabs" :key="index">
               <md-tab
                 :id="tab.tabId"
                 :md-label="tab.tabLabel"
                 :to="tab.tabTo"
-                :md-template-data="tab.tabIcon"
-                :class="{ 's-is-active': tab.value === value }"
-                @click="showTab(tab.value)"
+                :md-template-data="{icon: tab.tabIcon}"
               ></md-tab>
             </div>
           </md-tabs>
@@ -70,7 +68,7 @@
 </template>]
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator"
+import { Component, Prop, Vue, Watch } from "vue-property-decorator"
 import ViewMaterial from "vue-material"
 import "vue-material/dist/vue-material.min.css"
 // import VueMq from "vue-mq"
@@ -87,15 +85,15 @@ import "vue-material/dist/vue-material.min.css"
 
 Vue.use(ViewMaterial)
 
-@Component({
-})
+@Component({})
 export default class TabDevelop extends Vue {
   $refs!: {
     scrollable_tabs: HTMLDivElement;
   };
 
   isMounted = false;
-  tabsContainer: HTMLDivElement = null as any;
+  // tabsContainer: HTMLDivElement = null as any;
+  tabsContainer: any;
   canScroll = false;
   hasNext = false;
   hasPrev = false;
@@ -108,6 +106,27 @@ export default class TabDevelop extends Vue {
   //     value: string;
   //   }
   // ];
+
+  data = {
+    icon: ""
+  }
+
+  @Prop()
+  tabs!: [
+    {
+      tabLabel: string
+      tabTo: string
+      tabId: string
+      tabIcon: string
+    }
+  ]
+
+  @Prop({ default: "small" })
+  tabSize!: string
+
+  get getTabSize() {
+    return this.tabSize === "small" ? "font-small" : "font-large"
+  }
 
   @Prop()
   value!: string;
@@ -127,6 +146,13 @@ export default class TabDevelop extends Vue {
   }
 
   mounted() {
+    // const tabNav = document.querySelector(".md-tabs-navigation") as HTMLDivElement;
+
+    // this.$nextTick(() => {
+    //   // ...
+    //   console.log(tabNav.offsetWidth)
+    // })
+
     this.isMounted = true;
     this.tabsContainer = this.$refs.scrollable_tabs;
     this.calculateScrolls();
@@ -144,37 +170,22 @@ export default class TabDevelop extends Vue {
   }
 
   calculateScrolls() {
-    if (!this.isMounted) return false;
-    this.canScroll =
-      this.tabsContainer.scrollWidth > this.tabsContainer.clientWidth;
-    this.hasPrev = this.tabsContainer.scrollLeft > 0;
-    let scrollRight =
-      this.tabsContainer.scrollWidth -
-      (this.tabsContainer.scrollLeft + this.tabsContainer.clientWidth);
+    if (!this.isMounted) {
+      return false;
+    } else {
+      this.canScroll =
+        this.tabsContainer.scrollWidth > this.tabsContainer.clientWidth;
+      this.hasPrev = this.tabsContainer.scrollLeft > 0;
+      const scrollRight =
+        this.tabsContainer.scrollWidth -
+        (this.tabsContainer.scrollLeft + this.tabsContainer.clientWidth);
 
-    this.hasNext = scrollRight > 0;
+      this.hasNext = scrollRight > 0;
+    }
   }
 
   showTab(tab: string) {
     this.$emit("input", tab);
-  }
-
-
-  @Prop()
-  tabs!: [
-    {
-      tabLabel: string
-      tabTo: string
-      tabId: string
-      tabIcon: string
-    }
-  ]
-
-  @Prop({ default: "small" })
-  tabSize!: string
-
-  get getTabSize() {
-    return this.tabSize === "small" ? "font-small" : "font-large"
   }
 }
 </script>
@@ -182,12 +193,6 @@ export default class TabDevelop extends Vue {
 <style lang="less">
 @import "./../styles/Imports";
 // md does not have support for scoped styles
-
-// @media screen and (max-width:768px) { 
-//   .md-tabs-navigation .md-button{
-//     min-width: 112px;
-//   }
-// }
 
 .font-small {
   .md-button-content {
@@ -203,7 +208,7 @@ export default class TabDevelop extends Vue {
 
 .s-md-wrapper {
   .md-tabs-navigation {
-    border-bottom: 1px solid #f0f2f2;
+    // border-bottom: 1px solid #f0f2f2;
     &::-webkit-scrollbar {
       display: none;
     }
@@ -231,6 +236,7 @@ export default class TabDevelop extends Vue {
     .padding-bottom(1.75);
     .margin-right(2);
     border-bottom: 2px solid transparent;
+    position:static;
   }
 
   .md-tabs-indicator {
@@ -389,7 +395,7 @@ export default class TabDevelop extends Vue {
     bottom: 0;
     width: 100%;
     height: 1px;
-    background-color: @day-border;
+    background-color:@light-3;
   }
 }
 
@@ -429,48 +435,6 @@ export default class TabDevelop extends Vue {
     &.s-is-active {
       color: @night-title;
       border-color: @light-1;
-    }
-  }
-
-  .s-tabs-nav__control {
-    &.s-has-next {
-      &:before {
-        background: -moz-linear-gradient(
-          left,
-          rgba(23, 36, 45, 0) 0%,
-          rgba(23, 36, 45, 1) 100%
-        ); /* FF3.6-15 */
-        background: -webkit-linear-gradient(
-          left,
-          rgba(23, 36, 45, 0) 0%,
-          rgba(23, 36, 45, 1) 100%
-        ); /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(
-          to right,
-          rgba(23, 36, 45, 0) 0%,
-          rgba(23, 36, 45, 1) 100%
-        ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-      }
-    }
-
-    &.s-has-prev {
-      &:before {
-        background: -moz-linear-gradient(
-          left,
-          rgba(23, 36, 45, 1) 0%,
-          rgba(23, 36, 45, 0) 100%
-        ); /* FF3.6-15 */
-        background: -webkit-linear-gradient(
-          left,
-          rgba(23, 36, 45, 1) 0%,
-          rgba(23, 36, 45, 0) 100%
-        ); /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(
-          to right,
-          rgba(23, 36, 45, 1) 0%,
-          rgba(23, 36, 45, 0) 100%
-        ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-      }
     }
   }
 }
