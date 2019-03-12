@@ -237,17 +237,13 @@ components: {
           <td>@confirm</td>
           <td>Function</td>
           <td>null</td>
-          <td>
-            Callback function when confirmed (only in Modal Confirmation)
-          </td>
+          <td>Callback function when confirmed (only in Modal Confirmation)</td>
         </tr>
         <tr>
           <td>confirm-button-text</td>
           <td>string</td>
           <td>Confirm</td>
-          <td>
-            Confirm button text (only in Modal Confirmation)
-          </td>
+          <td>Confirm button text (only in Modal Confirmation)</td>
         </tr>
       </tbody>
     </table>
@@ -267,7 +263,7 @@ import Button from "./../components/Button.vue";
     Button
   }
 })
-export default class Modals extends Vue {}
+export default class Modals extends Vue { }
 </script>
 <style lang="less" scoped>
 @import "./../styles/Imports";

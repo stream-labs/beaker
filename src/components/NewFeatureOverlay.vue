@@ -43,6 +43,9 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import Button from "./../components/Button.vue";
 import VueMq from "vue-mq";
+import VModal from "vue-js-modal";
+
+Vue.use(VModal);
 
 Vue.use(VueMq, {
   breakpoints: {

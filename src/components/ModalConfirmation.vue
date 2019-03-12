@@ -18,7 +18,12 @@
             :size="'fixed-width'"
             @click="$modal.hide('modal-confirmation')"
           ></Button>
-          <Button @click="onConfirmHandler" :variation="'warning'" :title="confirmButtonText" :size="'fixed-width'"></Button>
+          <Button
+            @click="onConfirmHandler"
+            :variation="'warning'"
+            :title="confirmButtonText"
+            :size="'fixed-width'"
+          ></Button>
         </div>
       </div>
     </div>
