@@ -117,8 +117,6 @@ export default class TabDevelop extends Vue {
 
   get getTabSize() {
     return this.tabSize === "small" ? "font-small" : "font-large";
-<<<<<<< HEAD
-=======
   }
 
   @Prop()
@@ -186,7 +184,6 @@ export default class TabDevelop extends Vue {
 
   showTab(tab: string) {
     this.$emit("input", tab);
->>>>>>> 2b5b7c864dbbe64b9f84b805f78d14adb24ff701
   }
 }
 </script>
