@@ -52,6 +52,9 @@ import ModalBasic from "./../components/ModalBasic.vue";
 import ModalSubscribe from "./../components/ModalSubscribe.vue";
 import ModalRedirect from "./../components/ModalRedirect.vue";
 import ModalConfirmation from "./../components/ModalConfirmation.vue";
+import VModal from "vue-js-modal";
+
+Vue.use(VModal);
 
 @Component({
   components: {
