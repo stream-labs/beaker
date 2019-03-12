@@ -92,20 +92,11 @@ export default class TabDevelop extends Vue {
   };
 
   isMounted = false;
-  // tabsContainer: HTMLDivElement = null as any;
-  tabsContainer: any;
+  tabsContainer: HTMLDivElement = null as any;
   canScroll = false;
   hasNext = false;
   hasPrev = false;
   private scrollIncrement = 100;
-
-  // @Prop()
-  // tabs!: [
-  //   {
-  //     name: string;
-  //     value: string;
-  //   }
-  // ];
 
   data = {
     icon: ""
@@ -156,6 +147,13 @@ export default class TabDevelop extends Vue {
     this.isMounted = true;
     this.tabsContainer = this.$refs.scrollable_tabs;
     this.calculateScrolls();
+
+    const mdButton = document.querySelector(".md-button") as HTMLDivElement;
+    // console.log(mdButton);
+    this.$nextTick(() => {
+      // ...
+      console.log(mdButton)
+    })
     // if (!this.value) this.showTab(this.tabs[0].value);
   }
 
@@ -216,6 +214,8 @@ export default class TabDevelop extends Vue {
 
   .md-button {
     height: auto;
+    width:auto;
+    // min-width:0px;
   }
 
   .md-button:hover {

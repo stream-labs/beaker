@@ -27,7 +27,7 @@ components: {
     </Accordion>
 
     <tab-develop :tabs="test" :tabSize="'small'" @input="onSelectTabHandler"></tab-develop>
-    <tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler"></tabs>
+    <!-- <tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler"></tabs> -->
   </div>
 </template>
 
@@ -55,31 +55,31 @@ export default class TabsDemo extends Vue {
       tabIcon: "information",
     },
     {
-      tabLabel: "Advanced",
+      tabLabel: "General",
       tabTo: "#",
       tabId: "tab2",
       tabIcon: "information",
     },
     {
-      tabLabel: "Account",
+      tabLabel: "General",
       tabTo: "#",
       tabId: "tab3",
       tabIcon: "information",
     },
     {
-      tabLabel: "Integrations",
+      tabLabel: "General",
       tabTo: "#",
       tabId: "tab4",
       tabIcon: "information",
     },
     {
-      tabLabel: "Payments",
+      tabLabel: "General",
       tabTo: "#",
       tabId: "tab5",
       tabIcon: "information",
     },
     {
-      tabLabel: "Donations",
+      tabLabel: "General",
       tabTo: "#",
       tabId: "tab6",
       tabIcon: "information",
