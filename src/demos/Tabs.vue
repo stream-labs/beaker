@@ -26,8 +26,8 @@ components: {
       </div>
     </Accordion>
 
-    <TabDevelop :tabs="test" :tabSize="'small'"></TabDevelop>
-    <TabDevelop :tabs="test" :tabSize="'large'"></TabDevelop>
+    <tab-develop :tabs="test" :tabSize="'small'"></tab-develop>
+    <!-- <TabDevelop :tabs="test" :tabSize="'large'"></TabDevelop> -->
     <!-- <Tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler"></Tabs> -->
   </div>
 </template>
@@ -53,37 +53,37 @@ export default class TabsDemo extends Vue {
       tabLabel: "General",
       tabTo: "#",
       tabId: "tab1",
-      tabIcon: "../assets/imgs/icon-information-default.svg",
+      tabIcon: "information",
     },
     {
       tabLabel: "Advanced",
       tabTo: "#",
       tabId: "tab2",
-      tabIcon: "../assets/imgs/icon-information-default.svg",
+      tabIcon: "information",
     },
     {
       tabLabel: "Account",
       tabTo: "#",
       tabId: "tab3",
-      tabIcon: "../assets/imgs/icon-information-default.svg",
+      tabIcon: "information",
     },
     {
       tabLabel: "Integrations",
       tabTo: "#",
       tabId: "tab4",
-      tabIcon: "../assets/imgs/icon-information-default.svg",
+      tabIcon: "information",
     },
     {
       tabLabel: "Payments",
       tabTo: "#",
       tabId: "tab5",
-      tabIcon: "../assets/imgs/icon-information-default.svg",
+      tabIcon: "information",
     },
     {
       tabLabel: "Donations",
       tabTo: "#",
       tabId: "tab6",
-      tabIcon: "../assets/imgs/icon-information-default.svg",
+      tabIcon: "information",
     },
   ]
 

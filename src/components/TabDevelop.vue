@@ -1,34 +1,45 @@
 <template>
   <div class="s-md-wrapper" :class="getTabSize">
-    <md-tabs md-sync-route>
+    <md-tabs @md-changed="checkNewPosts">
+      <template slot="md-tab" slot-scope="{ tab }">
+        {{ tab.label }}
+        <i :class="`s-icon-${tab.data}`"></i>
+      </template>
       <div v-for="(tab, index) in tabs" :key="index">
-        <md-tab :id="tab.tabId" :md-label="tab.tabLabel" :to="tab.tabTo" :md-icon="tab.tabIcon"></md-tab>
+        <md-tab
+          :id="tab.tabId"
+          :md-label="tab.tabLabel"
+          :to="tab.tabTo"
+          :md-template-data="tab.tabIcon"
+        ></md-tab>
       </div>
     </md-tabs>
   </div>
 </template>
 
+
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator"
-import { MdButton, MdTabs } from "vue-material/dist/components"
+import ViewMaterial from "vue-material"
 import "vue-material/dist/vue-material.min.css"
-import VueMq from "vue-mq"
+// import VueMq from "vue-mq"
 
-Vue.use(VueMq, {
-  breakpoints: {
-    // default breakpoints - customize this
-    sm: 0,
-    md: 768,
-    lg: Infinity,
-  },
-  defaultBreakpoint: "md", // customize this for SSR
+// Vue.use(VueMq, {
+//   breakpoints: {
+//     // default breakpoints - customize this
+//     sm: 0,
+//     md: 768,
+//     lg: Infinity,
+//   },
+//   defaultBreakpoint: "md", // customize this for SSR
+// })
+
+Vue.use(ViewMaterial)
+
+@Component({
 })
-
-Vue.use(MdButton)
-Vue.use(MdTabs)
-
-@Component({})
 export default class TabDevelop extends Vue {
+
   @Prop()
   tabs!: [
     {
@@ -52,12 +63,11 @@ export default class TabDevelop extends Vue {
 @import "./../styles/Imports";
 // md does not have support for scoped styles
 
-@media screen and (max-width:768px) { 
-.md-tabs-navigation .md-button{
-  min-width: 112px;
-}
-
-}
+// @media screen and (max-width:768px) { 
+//   .md-tabs-navigation .md-button{
+//     min-width: 112px;
+//   }
+// }
 
 .font-small {
   .md-button-content {
@@ -73,9 +83,6 @@ export default class TabDevelop extends Vue {
 
 .s-md-wrapper {
   .md-tabs-navigation {
-    overflow:scroll;
-    display: flex;
-    justify-content: space-between;
     border-bottom: 1px solid #f0f2f2;
     &::-webkit-scrollbar {
       display: none;
