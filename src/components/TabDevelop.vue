@@ -68,10 +68,10 @@
 </template>]
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from "vue-property-decorator"
-import ViewMaterial from "vue-material"
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
+import ViewMaterial from "vue-material";
 // import "vue-material/dist/vue-material.min.css"
-Vue.use(ViewMaterial)
+Vue.use(ViewMaterial);
 
 @Component({})
 export default class TabDevelop extends Vue {
@@ -203,11 +203,12 @@ export default class TabDevelop extends Vue {
 
   .md-button {
     height: auto;
-    width:auto;
-    transition: .4s cubic-bezier(.4,0,.2,1);
+    width: auto;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .md-button, .md-button-clean {
+  .md-button,
+  .md-button-clean {
     margin: 0;
     padding: 0;
     display: inline-block;
@@ -217,19 +218,18 @@ export default class TabDevelop extends Vue {
     background: transparent;
     border: 0;
     border-radius: 0;
-    transition: .4s cubic-bezier(.4,0,.2,1);
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     font-family: inherit;
     line-height: normal;
     text-decoration: none;
     vertical-align: top;
     white-space: nowrap;
-}
+  }
 
   .md-button:hover {
     color: @dark-2;
     outline: none;
   }
-
 
   .md-button:not([disabled]).md-focused:before,
   .md-button:not([disabled]):active:before,
@@ -256,42 +256,43 @@ export default class TabDevelop extends Vue {
     bottom: 0;
     left: 0;
     transform: translateZ(0);
-    will-change: left,right;
+    will-change: left, right;
   }
 
   .md-tabs-indicator.md-tabs-indicator-left {
-    transition: left .3s cubic-bezier(.4,0,.2,1),right .35s cubic-bezier(.4,0,.2,1) !important;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      right 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
   }
 
-.night,
-.night-theme {
-  .md-tabs-navigation {
-    border-bottom-color: @dark-4;
-  }
+  .night,
+  .night-theme {
+    .md-tabs-navigation {
+      border-bottom-color: @dark-4;
+    }
 
-  .md-button {
-    color: @light-4;
-  }
+    .md-button {
+      color: @light-4;
+    }
 
-  .md-button:hover {
-    color: @white;
-    outline: none;
-  }
-
-  .md-ripple {
-    color: @light-4;
-  }
-
-  .md-button.md-active {
-    .md-ripple {
+    .md-button:hover {
       color: @white;
+      outline: none;
+    }
+
+    .md-ripple {
+      color: @light-4;
+    }
+
+    .md-button.md-active {
+      .md-ripple {
+        color: @white;
+      }
+    }
+
+    .md-tabs-indicator {
+      background: @white;
     }
   }
-
-  .md-tabs-indicator {
-    background: @white;
-  }
-}
 }
 </style>
 

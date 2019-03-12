@@ -81,7 +81,7 @@ export default class NewFeatureOverlay extends Vue {
     return this.media;
   }
 
-  $mq!: string | string[]
+  $mq!: string | string[];
 
   get containerMq() {
     return this.$mq === "md" ? "s-overlay__container--mq" : "";
