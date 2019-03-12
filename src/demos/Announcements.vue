@@ -32,7 +32,7 @@ components: {
       <NewFeatureOverlay
         :label="'Introducing Merch Stores'"
         :title="'Increase Your Revenue'"
-        :image="require('../assets/imgs/items.svg')"
+        :image="require('../assets/video/sample.mp4')"
       >
         <slot>We’ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.
           <br>

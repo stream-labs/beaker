@@ -24,8 +24,11 @@
         </div>
       </div>
 
-      <div class="s-overlay__imageBlock">
-        <img :src="overlayImage" class="s-overlay__image">
+      <div class="s-overlay__imageBlock" :class="overlay__imageBlockMq">
+        <img v-if="isImage" :src="overlayImage" class="s-overlay__image">
+        <video controls v-if="!isImage" class="s-overlay__image">
+          <source :src="overlayImage">Environment does not support video playback
+        </video>
       </div>
     </div>
   </modal>
@@ -60,6 +63,8 @@ export default class NewFeatureOverlay extends Vue {
   @Prop()
   image!: string;
 
+  isImage: boolean = true;
+
   get overlayImage() {
     return this.image;
   }
@@ -69,6 +74,18 @@ export default class NewFeatureOverlay extends Vue {
   get containerMq() {
     return this.$mq === "md" ? "s-overlay__container--mq" : "";
   }
+
+  get overlay__imageBlockMq() {
+    return this.$mq === "md" ? "s-overlay__imageBlock--mq" : "";
+  }
+
+  mounted() {
+    if (this.image.includes("mp4") || this.image.includes("webm")) {
+      this.isImage = false;
+    } else {
+      this.isImage = true;
+    }
+  }
 }
 </script>
 
@@ -77,6 +94,11 @@ export default class NewFeatureOverlay extends Vue {
 
 .s-overlay__container--mq {
   display: block !important;
+}
+
+.s-overlay__imageBlock--mq {
+  width: 100% !important;
+  height: auto;
 }
 
 .v--modal-overlay {
@@ -147,6 +169,8 @@ export default class NewFeatureOverlay extends Vue {
 
 .s-overlay__imageBlock {
   text-align: center;
+  width: 48%;
+  .margin-top(2);
 }
 
 .s-overlay__image {
