@@ -74,10 +74,10 @@ export default class TabDevelop extends Vue {
 
   data = {
     icon: ""
-  }
-
+  };
+  
   get getTabSize() {
-    return this.tabSize === "small" ? "font-small" : "font-large"
+    return this.tabSize === "small" ? "font-small" : "font-large";
   }
 
   created() {
@@ -170,6 +170,12 @@ export default class TabDevelop extends Vue {
 
   .md-tabs-indicator {
     background: @dark-2;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateZ(0);
+    will-change: left, right;
   }
 }
 
@@ -189,13 +195,13 @@ export default class TabDevelop extends Vue {
 
   .md-active {
     .md-ripple {
-      color: @white;
-    }
-  }
-
-  .md-tabs-indicator {
-    background: @white;
-  }
+      color: @light-4;
+     }
+   }
+   
+   .md-tabs-indicator {
+      background: @white;
+   }
 }
 </style>
 

@@ -18,7 +18,12 @@
             :size="'fixed-width'"
             @click="$modal.hide('modal-confirmation')"
           ></Button>
-          <Button :variation="'warning'" :title="'Delete'" :size="'fixed-width'"></Button>
+          <Button
+            @click="onConfirmHandler"
+            :variation="'warning'"
+            :title="confirmButtonText"
+            :size="'fixed-width'"
+          ></Button>
         </div>
       </div>
     </div>
@@ -50,6 +55,14 @@ export default class ModalConfirmation extends Vue {
 
   @Prop()
   text!: string;
+
+  @Prop({ default: "Confirm" })
+  confirmButtonText!: string;
+
+  onConfirmHandler() {
+    this.$emit("confirm");
+    this.$modal.hide("modal-confirmation");
+  }
 }
 </script>
 
@@ -73,6 +86,16 @@ export default class ModalConfirmation extends Vue {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.s-modal-sub-title {
+  .margin-bottom(0);
+}
+
+.s-modal-text {
+  text-align: center;
+  .margin-top(2);
+  .margin-bottom(2);
 }
 
 .s-modal-default-button {

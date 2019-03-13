@@ -38,6 +38,8 @@
         :text="modalText"
         :width="modalWidth"
         :minWidth="modalMinWidth"
+        @confirm="$emit('confirm')"
+        :confirm-button-text="confirmButtonText"
       ></ModalConfirmation>
     </div>
   </div>
@@ -50,6 +52,9 @@ import ModalBasic from "./../components/ModalBasic.vue";
 import ModalSubscribe from "./../components/ModalSubscribe.vue";
 import ModalRedirect from "./../components/ModalRedirect.vue";
 import ModalConfirmation from "./../components/ModalConfirmation.vue";
+import VModal from "vue-js-modal";
+
+Vue.use(VModal);
 
 @Component({
   components: {
@@ -105,5 +110,8 @@ export default class ModalComp extends Vue {
   notes!: string;
 
   modalNotes: string = this.notes;
+
+  @Prop({ default: "Confirm" })
+  confirmButtonText!: string;
 }
 </script>
