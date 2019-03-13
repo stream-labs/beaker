@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Tabs</h1>
+    <p>Used for Tabs.</p>
 
     <pre><code>import { Tabs } from 'streamlabs-beaker';
 
@@ -8,26 +9,122 @@ components: {
   Tabs
 }</code></pre>
 
-    <h3>Standard</h3>
     <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
       <div slot="content">
         <pre>
-<code>&lt;Tabs
-  :tabs=&quot;tabs&quot;
-  :value=&quot;selectedTab&quot;
-  @input=&quot;onSelectTabHandler&quot;&gt;
-  &lt;div slot=&quot;general&quot;&gt;
-    General slot content
-  &lt;/div&gt;
-  &lt;div slot=&quot;advanced&quot;&gt;
-    Advanced slot content
-  &lt;/div&gt;
-&lt;/Tabs&gt;</code></pre>
+<code>&lt;tab-develop 
+  :tabs=&quot;test&quot; 
+  :tabSize=&quot;'large'&quot;&gt;
+&lt;/tab-develop&gt;
+</code></pre>
       </div>
     </Accordion>
 
-    <tab-develop :tabs="test" :tabSize="'large'"></tab-develop>
+    <div class="section section__components">
+      <tab-develop :tabs="test" :tabSize="'large'"></tab-develop>
+    </div>
     <!-- <tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler"></tabs> -->
+    <!-- <table class="docs-table">
+      <thead>
+        <tr>
+          <th>Prop</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>variant</td>
+          <td>string</td>
+          <td>"success"</td>
+          <td>
+            How the badge will look or funciton. Variants:
+            <code>success</code>,
+            <code>tag</code>,
+            <code>new</code>,
+            <code>beta</code>,
+            <code>warning</code>,
+            <code>pro</code>,
+            <code>progress</code>,
+            <code>mod</code>, and
+            <code>count</code>.
+          </td>
+        </tr>
+        <tr>
+          <td>alignLeft</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>Moves 8px of margin from the left to the right.</td>
+        </tr>
+        <tr>
+          <td>noMargin</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>Removes margin from left and right.</td>
+        </tr>
+        <tr>
+          <td>barColor</td>
+          <td>string</td>
+          <td>"#31c3a2"</td>
+          <td>
+            Background color of progress bar.
+            <code>variant</code> prop must be set to
+            <code>progress</code>.
+          </td>
+        </tr>
+        <tr>
+          <td>textColor</td>
+          <td>string</td>
+          <td>"#ffffff"</td>
+          <td>
+            Text color of progress bar.
+            <code>variant</code> prop must be set to
+            <code>progress</code>.
+          </td>
+        </tr>
+        <tr>
+          <td>current</td>
+          <td>number</td>
+          <td>null</td>
+          <td>
+            Current progress amount.
+            <code>variant</code> prop must be set to
+            <code>progress</code>.
+          </td>
+        </tr>
+        <tr>
+          <td>total</td>
+          <td>number</td>
+          <td>null</td>
+          <td>
+            Total progross amount.
+            <code>variant</code> prop must be set to
+            <code>progress</code>.
+          </td>
+        </tr>
+        <tr>
+          <td>separator</td>
+          <td>string</td>
+          <td>"/"</td>
+          <td>
+            Separator between current and total amounts is displayed.
+            <code>variant</code> prop must be set to
+            <code>progress</code>.
+          </td>
+        </tr>
+        <tr>
+          <td>suffix</td>
+          <td>string</td>
+          <td>null</td>
+          <td>
+            String to the right of the total amount.
+            <code>variant</code> prop must be set to
+            <code>progress</code>.
+          </td>
+        </tr>
+      </tbody>
+    </table> -->
   </div>
 </template>
 
