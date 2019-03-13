@@ -17,13 +17,12 @@ components: {
           <pre><code>&lt;NewFeatureOverlay
   :label=&quot;'Introducing Merch Stores'&quot;
   :title=&quot;'Increase Your Revenue'&quot;
-  :image=&quot;require('../assets/video/sample.mp4')&quot;&gt;
-  &lt;slot&gt;We’ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.
-    &lt;br&gt;
-    &lt;br&gt;We’ve automatically credited $15.00 to your account so you can start trying them out today.
-  &lt;/slot&gt;
-&lt;/NewFeatureOverlay&gt;
-          </code></pre>
+  :media=&quot;require('../assets/video/sample.mp4')&quot;
+  :buttonTitle=&quot;'Go To Store'&quot;
+&gt;
+  &lt;p&gt;We&rsquo;ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.&lt;/p&gt;
+  &lt;p&gt;We&rsquo;ve automatically credited $15.00 to your account so you can start trying them out today.&lt;/p&gt;
+&lt;/NewFeatureOverlay&gt;</code></pre>
         </div>
       </Accordion>
       <NewFeatureOverlay
@@ -32,10 +31,8 @@ components: {
         :media="require('../assets/video/sample.mp4')"
         :buttonTitle="'Go To Store'"
       >
-        <slot>We’ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.
-          <br>
-          <br>We’ve automatically credited $15.00 to your account so you can start trying them out today.
-        </slot>
+        <p>We’ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.</p>
+        <p>We’ve automatically credited $15.00 to your account so you can start trying them out today.</p>
       </NewFeatureOverlay>
 
       <div class="button-container button-container--left">
@@ -105,5 +102,5 @@ import Button from "./../components/Button.vue";
     Button
   }
 })
-export default class Modals extends Vue {}
+export default class AnnoucementsDemo extends Vue {}
 </script>

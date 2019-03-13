@@ -72,24 +72,12 @@ const components = [
   Tabs,
   TabDevelop,
   TextInput,
+  Toggle,
   TooltipNotice,
   Pagination,
   ProgressBar,
   VirtualItem
 ];
-
-// Install the above defined components
-// const System = {
-//   install(Vue) {
-//     components.forEach(component => Vue.component(component.name, component));
-//   }
-// };
-
-// if (typeof window !== "undefined" && window.Vue) {
-//   window.Vue.use(System);
-// }
-
-// Finally export as default
 
 export {
   Accordion,
@@ -121,6 +109,7 @@ export {
   Tabs,
   TabDevelop,
   TextInput,
+  Toggle,
   TooltipNotice,
   Pagination,
   ProgressBar,
