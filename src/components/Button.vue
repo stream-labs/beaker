@@ -358,6 +358,17 @@ export default class Button extends Vue {
   }
 }
 
+.s-button--paypal-blue {
+  background-color: @paypal;
+  color: @white;
+
+  &:focus,
+  &.is-focused,
+  &:hover {
+    background-color: darken(@paypal, 4%);
+  }
+}
+
 .s-button--warning {
   color: @warning;
   background-color: rgba(251, 72, 76, 0.16);

@@ -2,7 +2,9 @@
   <div>
     <div class="section">
       <h1>Badges</h1>
-      <p>By default, our badges are designed to be on the right side of elements with 8px of margin on the left. If you would like to use a badge on the left side of an element, set prop <code>align-left="true"</code> and it will switch the margin to be on the right side.</p>
+      <p>By default, our badges are designed to be on the right side of elements with 8px of margin on the left. If you would like to use a badge on the left side of an element, set prop
+        <code>align-left="true"</code> and it will switch the margin to be on the right side.
+      </p>
 
       <pre><code>import { Badge } from 'streamlabs-beaker';
 
@@ -10,10 +12,7 @@ components: {
   Badge
 }</code></pre>
 
-      <Accordion
-        :openedTitle="'Hide Code'"
-        :closedTitle="'Show Code'"
-      >
+      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre>
 <code>&lt;badge
@@ -65,49 +64,21 @@ components: {
       </Accordion>
 
       <div class="section section__components">
-        <badge
-          :variant="'success'"
-          :align-left="true">
-          Success
-        </badge>
-        <badge
-          :variant="'tag'"
-          :align-left="true">
-          Tag
-        </badge>
-        <badge
-          :variant="'new'"
-          :align-left="true">
-          New
-        </badge>
-        <badge
-          :variant="'beta'"
-          :align-left="true">
-          Beta
-        </badge>
-        <badge
-          :variant="'warning'"
-          :align-left="true">
-          Warning
-        </badge>
-        <badge
-          :variant="'pro'"
-          :align-left="true">
-          Pro
-        </badge>
+        <badge :variant="'success'" :align-left="true">Success</badge>
+        <badge :variant="'tag'" :align-left="true">Tag</badge>
+        <badge :variant="'new'" :align-left="true">New</badge>
+        <badge :variant="'beta'" :align-left="true">Beta</badge>
+        <badge :variant="'warning'" :align-left="true">Warning</badge>
+        <badge :variant="'pro'" :align-left="true">Pro</badge>
         <badge
           :variant="'progress'"
           :bar-color="'#8736e0'"
           :current="17"
           :total="25"
-          :suffix="'Sold'">
-        </badge>
-        <badge
-          :variant="'mod'"
-        >/mod Streamlabs</badge>
-        <badge
-          :variant="'count'"
-        >3</badge>
+          :suffix="'Sold'"
+        ></badge>
+        <badge :variant="'mod'">/mod Streamlabs</badge>
+        <badge :variant="'count'">3</badge>
       </div>
     </div>
 
@@ -125,7 +96,17 @@ components: {
           <td>variant</td>
           <td>string</td>
           <td>"success"</td>
-          <td>How the badge will look or funciton. Variants: <code>success</code>, <code>tag</code>, <code>new</code>, <code>beta</code>, <code>warning</code>, <code>pro</code>, <code>progress</code>, <code>mod</code>, and <code>count</code>.</td>
+          <td>How the badge will look or funciton. Variants:
+            <code>success</code>,
+            <code>tag</code>,
+            <code>new</code>,
+            <code>beta</code>,
+            <code>warning</code>,
+            <code>pro</code>,
+            <code>progress</code>,
+            <code>mod</code>, and
+            <code>count</code>.
+          </td>
         </tr>
         <tr>
           <td>alignLeft</td>
@@ -143,37 +124,55 @@ components: {
           <td>barColor</td>
           <td>string</td>
           <td>"#31c3a2"</td>
-          <td>Background color of progress bar. <code>variant</code> prop must be set to <code>progress</code>.</td>
+          <td>Background color of progress bar.
+            <code>variant</code> prop must be set to
+            <code>progress</code>.
+          </td>
         </tr>
         <tr>
           <td>textColor</td>
           <td>string</td>
           <td>"#ffffff"</td>
-          <td>Text color of progress bar. <code>variant</code> prop must be set to <code>progress</code>.</td>
+          <td>Text color of progress bar.
+            <code>variant</code> prop must be set to
+            <code>progress</code>.
+          </td>
         </tr>
         <tr>
           <td>current</td>
           <td>number</td>
           <td>null</td>
-          <td>Current progress amount. <code>variant</code> prop must be set to <code>progress</code>.</td>
+          <td>Current progress amount.
+            <code>variant</code> prop must be set to
+            <code>progress</code>.
+          </td>
         </tr>
         <tr>
           <td>total</td>
           <td>number</td>
           <td>null</td>
-          <td>Total progross amount. <code>variant</code> prop must be set to <code>progress</code>.</td>
+          <td>Total progross amount.
+            <code>variant</code> prop must be set to
+            <code>progress</code>.
+          </td>
         </tr>
         <tr>
           <td>separator</td>
           <td>string</td>
           <td>"/"</td>
-          <td>Separator between current and total amounts is displayed. <code>variant</code> prop must be set to <code>progress</code>.</td>
+          <td>Separator between current and total amounts is displayed.
+            <code>variant</code> prop must be set to
+            <code>progress</code>.
+          </td>
         </tr>
         <tr>
           <td>suffix</td>
           <td>string</td>
           <td>null</td>
-          <td>String to the right of the total amount. <code>variant</code> prop must be set to <code>progress</code>.</td>
+          <td>String to the right of the total amount.
+            <code>variant</code> prop must be set to
+            <code>progress</code>.
+          </td>
         </tr>
       </tbody>
     </table>
@@ -192,7 +191,7 @@ import Badge from "./../components/Badge.vue";
     Badge
   }
 })
-export default class Badges extends Vue {}
+export default class Badges extends Vue { }
 </script>
 
 <style lang="less" scoped>

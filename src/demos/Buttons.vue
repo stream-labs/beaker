@@ -634,8 +634,9 @@ components: {
             <code>mixer</code>,
             <code>twitch</code>,
             <code>yt</code>,
-            <code>periscope</code> and
-            <code>picarto</code>.
+            <code>periscope</code>,
+            <code>picarto</code>and
+            <code>paypal-blue</code>.
           </td>
         </tr>
       </tbody>

@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Tabs</h1>
+    <p>Used for Tabs.</p>
 
     <pre><code>import { Tabs } from 'streamlabs-beaker';
 
@@ -8,26 +9,56 @@ components: {
   Tabs
 }</code></pre>
 
-    <h3>Standard</h3>
     <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
       <div slot="content">
         <pre>
-<code>&lt;Tabs
-  :tabs=&quot;tabs&quot;
-  :value=&quot;selectedTab&quot;
-  @input=&quot;onSelectTabHandler&quot;&gt;
-  &lt;div slot=&quot;general&quot;&gt;
-    General slot content
-  &lt;/div&gt;
-  &lt;div slot=&quot;advanced&quot;&gt;
-    Advanced slot content
-  &lt;/div&gt;
-&lt;/Tabs&gt;</code></pre>
+<code>&lt;tab-develop 
+  :tabs=&quot;test&quot; 
+  :tabSize=&quot;'large'&quot;&gt;
+&lt;/tab-develop&gt;
+</code></pre>
       </div>
     </Accordion>
 
-    <tab-develop :tabs="test" :tabSize="'small'" @input="onSelectTabHandler"></tab-develop>
+    <div class="section section__components">
+      <tab-develop :tabs="test" :tabSize="'large'"></tab-develop>
+    </div>
     <!-- <tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler"></tabs> -->
+    <table class="docs-table">
+      <thead>
+        <tr>
+          <th>Prop</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>tabs</td>
+          <td>array</td>
+          <td>null</td>
+          <td>tabs information to display. you can make array like below
+            <br>
+            <code>
+              test = [
+              {
+              tabLabel: "General",
+              tabTo: "#",
+              tabId: "tab1",
+              tabIcon: "information"
+              }
+            </code>
+          </td>
+        </tr>
+        <tr>
+          <td>tabSize</td>
+          <td>string</td>
+          <td>small</td>
+          <td>text size of tabs. Options are "small" and "large"</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -55,31 +86,31 @@ export default class TabsDemo extends Vue {
       tabIcon: "information"
     },
     {
-      tabLabel: "General",
+      tabLabel: "Advanced",
       tabTo: "#",
       tabId: "tab2",
       tabIcon: "information"
     },
     {
-      tabLabel: "General",
+      tabLabel: "Account",
       tabTo: "#",
       tabId: "tab3",
       tabIcon: "information"
     },
     {
-      tabLabel: "General",
+      tabLabel: "Integrations",
       tabTo: "#",
       tabId: "tab4",
       tabIcon: "information"
     },
     {
-      tabLabel: "General",
+      tabLabel: "Payments",
       tabTo: "#",
       tabId: "tab5",
       tabIcon: "information"
     },
     {
-      tabLabel: "General",
+      tabLabel: "Apps",
       tabTo: "#",
       tabId: "tab6",
       tabIcon: "information"
