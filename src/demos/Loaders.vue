@@ -127,8 +127,8 @@ export default class Loaders extends Vue {
   isLoading = false;
   array = [
     "Syncing all files to our cloud...",
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "sed do eiusmod tempor incididunt ut labore et dolore magna"
+    "Lorem ipsum dolor sit amet, consectetur...",
+    "Sed do eiusmod tempor incididunt ut labore..."
   ];
   string = "string";
 }

@@ -191,7 +191,7 @@ import Badge from "./../components/Badge.vue";
     Badge
   }
 })
-export default class Badges extends Vue { }
+export default class Badges extends Vue {}
 </script>
 
 <style lang="less" scoped>
