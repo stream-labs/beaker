@@ -147,7 +147,7 @@ export default class TabDevelop extends Vue {
     }
   }
 
-  .md-button {
+.md-button {
     max-width: initial;
     min-width: initial;
     height: auto;
@@ -203,18 +203,12 @@ export default class TabDevelop extends Vue {
   .md-active {
     .md-ripple {
       color: @light-4;
-    }
-
-    .md-button.md-active {
-      .md-ripple {
-        color: @white;
-      }
-    }
-
-  .md-tabs-indicator {
-    background: @white;
-  }
-}
+     }
+   }
+   
+   .md-tabs-indicator {
+      background: @white;
+   }
 }
 </style>
 
