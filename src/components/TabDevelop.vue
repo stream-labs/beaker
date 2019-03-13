@@ -1,7 +1,7 @@
 <template>
   <div class="s-tabs-wrapper s-md-wrapper" :class="getTabSize">
     <div class="s-tabs-nav-wrapper">
-      <div class="s-tabs-nav" :class="className">
+      <div class="s-tabs-nav">
         <div v-if="hasPrev" @click="scrollLeft" class="s-tabs-nav__control s-has-prev">
           <i class="s-icon-down s-icon-left"></i>
         </div>
@@ -29,13 +29,6 @@
               ></md-tab>
             </div>
           </md-tabs>
-          <!-- <span
-            v-for="tab in tabs"
-            :key="tab.value"
-            class="s-tab"
-            :class="{ 's-is-active': tab.value === value }"
-            @click="showTab(tab.value)"
-          >{{ tab.name }}</span>-->
         </div>
 
         <div v-if="hasNext" @click="scrollRight" class="s-tabs-nav__control s-has-next">
@@ -43,106 +36,64 @@
         </div>
       </div>
     </div>
-
-    <!-- <div class="s-tab-content" v-if="!hideContent">
-      <slot v-for="tab in tabs" :name="tab.value" v-if="tab.value === value"/>
-    </div>-->
   </div>
-
-  <!-- <div class="s-md-wrapper" :class="getTabSize">
-    <md-tabs @md-changed="checkNewPosts">
-      <template slot="md-tab" slot-scope="{ tab }">
-        {{ tab.label }}
-        <i :class="`s-icon-${tab.data}`"></i>
-      </template>
-      <div v-for="(tab, index) in tabs" :key="index">
-        <md-tab
-          :id="tab.tabId"
-          :md-label="tab.tabLabel"
-          :to="tab.tabTo"
-          :md-template-data="tab.tabIcon"
-        ></md-tab>
-      </div>
-    </md-tabs>
-  </div>-->
 </template>]
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-import ViewMaterial from "vue-material";
-// import "vue-material/dist/vue-material.min.css"
-Vue.use(ViewMaterial);
+import { Component, Prop, Vue, Watch } from "vue-property-decorator"
+import ViewMaterial from "vue-material"
+import "vue-material/dist/vue-material.min.css"
+
+Vue.use(ViewMaterial)
 
 @Component({})
 export default class TabDevelop extends Vue {
+  @Prop()
+  tabs!: [
+    {
+      tabLabel: string
+      tabTo: string
+      tabId: string
+      tabIcon: string
+    }
+  ]
+
+  @Prop({ default: "small" })
+  tabSize!: string
+
   $refs!: {
     scrollable_tabs: HTMLDivElement;
   };
 
-  isMounted = false;
+  isMounted: boolean = false;
   tabsContainer: HTMLDivElement = null as any;
-  canScroll = false;
-  hasNext = false;
-  hasPrev = false;
-  private scrollIncrement = 100;
+  canScroll: boolean = false;
+  hasNext: boolean = false;
+  hasPrev: boolean = false;
+  private scrollIncrement: number = 100;
 
   data = {
     icon: ""
   };
 
-  @Prop()
-  tabs!: [
-    {
-      tabLabel: string;
-      tabTo: string;
-      tabId: string;
-      tabIcon: string;
-    }
-  ];
-
-  @Prop({ default: "small" })
-  tabSize!: string;
-
   get getTabSize() {
-    return this.tabSize === "small" ? "font-small" : "font-large";
+    return this.tabSize === "large" ? "font-large" : "font-small";
   }
-
-  @Prop()
-  value!: string;
-
-  @Prop()
-  className!: string;
-
-  @Prop()
-  hideContent!: boolean;
 
   created() {
     window.addEventListener("resize", this.calculateScrolls);
   }
 
-  destroyed() {
-    window.removeEventListener("resize", this.calculateScrolls);
+  mounted() {
+    this.$nextTick(() => {
+      this.isMounted = true;
+      this.tabsContainer = this.$refs.scrollable_tabs;
+      this.calculateScrolls();
+    })
   }
 
-  mounted() {
-    // const tabNav = document.querySelector(".md-tabs-navigation") as HTMLDivElement;
-
-    // this.$nextTick(() => {
-    //   // ...
-    //   console.log(tabNav.offsetWidth)
-    // })
-
-    this.isMounted = true;
-    this.tabsContainer = this.$refs.scrollable_tabs;
-    this.calculateScrolls();
-
-    const mdButton = document.querySelector(".md-button") as HTMLDivElement;
-    // console.log(mdButton);
-    this.$nextTick(() => {
-      // ...
-      console.log(mdButton);
-    });
-    // if (!this.value) this.showTab(this.tabs[0].value);
+  destroyed() {
+    window.removeEventListener("resize", this.calculateScrolls);
   }
 
   scrollLeft() {
@@ -170,21 +121,17 @@ export default class TabDevelop extends Vue {
     }
   }
 
-  showTab(tab: string) {
-    this.$emit("input", tab);
-  }
 }
 </script>
 
 <style lang="less">
 @import "./../styles/Imports";
 // md does not have support for scoped styles
-
 .font-small {
-  .md-button-content {
-    font-size: 14px;
+    .md-button-content {
+      font-size: 14px;
+    }
   }
-}
 
 .font-large {
   .md-button-content {
@@ -195,40 +142,20 @@ export default class TabDevelop extends Vue {
 .s-md-wrapper {
   .md-tabs-navigation {
     display: flex;
-    // border-bottom: 1px solid #f0f2f2;
     &::-webkit-scrollbar {
       display: none;
     }
   }
 
-  .md-button {
+.md-button {
+    max-width: initial;
+    min-width: initial;
     height: auto;
-    width: auto;
-    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .md-button,
-  .md-button-clean {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-    position: relative;
-    overflow: hidden;
-    outline: none;
-    background: transparent;
-    border: 0;
-    border-radius: 0;
-    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    font-family: inherit;
-    line-height: normal;
-    text-decoration: none;
-    vertical-align: top;
-    white-space: nowrap;
-  }
-
-  .md-button:hover {
-    color: @dark-2;
-    outline: none;
+    .margin-right(2);
+    &:hover {
+      color: @dark-2;
+      outline: none;
+    }
   }
 
   .md-button:not([disabled]).md-focused:before,
@@ -237,14 +164,13 @@ export default class TabDevelop extends Vue {
     background: none;
   }
 
-  .md-button.md-active {
+  .md-active {
     color: @dark-2;
   }
 
   .md-ripple {
     .padding(0);
-    .padding-bottom(1.75);
-    .margin-right(2);
+    .padding-bottom(1.5);
     border-bottom: 2px solid transparent;
     position: static;
   }
@@ -258,41 +184,31 @@ export default class TabDevelop extends Vue {
     transform: translateZ(0);
     will-change: left, right;
   }
+}
 
-  .md-tabs-indicator.md-tabs-indicator-left {
-    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-      right 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  }
-
-  .night,
-  .night-theme {
-    .md-tabs-navigation {
-      border-bottom-color: @dark-4;
-    }
-
-    .md-button {
-      color: @light-4;
-    }
-
-    .md-button:hover {
+.night,
+.night-theme {
+  .md-button {
+    color: @light-4;
+    &:hover {
       color: @white;
       outline: none;
     }
+  }
 
+  .md-ripple {
+    color: @light-4;
+  }
+
+  .md-active {
     .md-ripple {
       color: @light-4;
-    }
-
-    .md-button.md-active {
-      .md-ripple {
-        color: @white;
-      }
-    }
-
-    .md-tabs-indicator {
+     }
+   }
+   
+   .md-tabs-indicator {
       background: @white;
-    }
-  }
+   }
 }
 </style>
 
@@ -333,7 +249,7 @@ export default class TabDevelop extends Vue {
 }
 
 .s-tabs-nav__control {
-  height: calc(~"2 * " @spacing);
+  height: calc(~'2 * ' @spacing);
   display: flex;
   align-items: flex-end;
   .margin-bottom(2);
@@ -342,7 +258,7 @@ export default class TabDevelop extends Vue {
   &.s-has-next,
   &.s-has-prev {
     &:before {
-      content: "";
+      content: '';
       width: 40px;
       height: 16px;
       position: absolute;
@@ -408,7 +324,7 @@ export default class TabDevelop extends Vue {
   }
 
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     right: 0;
     left: 0;
@@ -419,42 +335,24 @@ export default class TabDevelop extends Vue {
   }
 }
 
-.s-tab {
-  color: @day-paragraph;
-  .padding-bottom(2);
-  border-bottom: 2px solid transparent;
-  .margin-right(2);
-  cursor: default;
-  .transition();
-  display: inline-block;
-  position: relative;
-  .weight(@medium);
-
-  &.is-active {
-    color: @day-title;
-    border-color: @dark-2;
-  }
-}
-
-.s-tab-content {
-  position: relative;
-  overflow-y: auto;
-  .padding-v-sides(3);
-}
-
 .night-theme {
   .s-tabs {
     &:before {
-      background-color: @night-border;
+      background-color: @dark-4;
     }
   }
 
-  .s-tab {
-    color: @night-paragraph;
+  .s-tabs-nav__control {
+    &.s-has-next {
+      &:before {
+        background: none;
+      }
+    }
 
-    &.s-is-active {
-      color: @night-title;
-      border-color: @light-1;
+    &.s-has-prev {
+      &:before {
+        background: none;
+      }
     }
   }
 }
