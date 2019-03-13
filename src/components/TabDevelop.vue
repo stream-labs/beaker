@@ -65,19 +65,19 @@ export default class TabDevelop extends Vue {
     scrollable_tabs: HTMLDivElement;
   };
 
-  isMounted = false;
+  isMounted: boolean = false;
   tabsContainer: HTMLDivElement = null as any;
-  canScroll = false;
-  hasNext = false;
-  hasPrev = false;
-  private scrollIncrement = 100;
+  canScroll: boolean = false;
+  hasNext: boolean = false;
+  hasPrev: boolean = false;
+  private scrollIncrement: number = 100;
 
   data = {
     icon: ""
-  }
+  };
 
   get getTabSize() {
-    return this.tabSize === "small" ? "font-small" : "font-large"
+    return this.tabSize === "large" ? "font-large" : "font-small";
   }
 
   created() {
@@ -140,6 +140,13 @@ export default class TabDevelop extends Vue {
 }
 
 .s-md-wrapper {
+  .md-tabs-navigation {
+    display: flex;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
   .md-button {
     max-width: initial;
     min-width: initial;
@@ -170,6 +177,12 @@ export default class TabDevelop extends Vue {
 
   .md-tabs-indicator {
     background: @dark-2;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateZ(0);
+    will-change: left, right;
   }
 }
 
@@ -189,13 +202,19 @@ export default class TabDevelop extends Vue {
 
   .md-active {
     .md-ripple {
-      color: @white;
+      color: @light-4;
     }
-  }
+
+    .md-button.md-active {
+      .md-ripple {
+        color: @white;
+      }
+    }
 
   .md-tabs-indicator {
     background: @white;
   }
+}
 }
 </style>
 

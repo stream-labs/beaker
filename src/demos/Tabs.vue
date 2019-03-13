@@ -24,7 +24,7 @@ components: {
       <tab-develop :tabs="test" :tabSize="'large'"></tab-develop>
     </div>
     <!-- <tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler"></tabs> -->
-    <!-- <table class="docs-table">
+    <table class="docs-table">
       <thead>
         <tr>
           <th>Prop</th>
@@ -35,113 +35,47 @@ components: {
       </thead>
       <tbody>
         <tr>
-          <td>variant</td>
-          <td>string</td>
-          <td>"success"</td>
-          <td>
-            How the badge will look or funciton. Variants:
-            <code>success</code>,
-            <code>tag</code>,
-            <code>new</code>,
-            <code>beta</code>,
-            <code>warning</code>,
-            <code>pro</code>,
-            <code>progress</code>,
-            <code>mod</code>, and
-            <code>count</code>.
-          </td>
-        </tr>
-        <tr>
-          <td>alignLeft</td>
-          <td>boolean</td>
-          <td>false</td>
-          <td>Moves 8px of margin from the left to the right.</td>
-        </tr>
-        <tr>
-          <td>noMargin</td>
-          <td>boolean</td>
-          <td>false</td>
-          <td>Removes margin from left and right.</td>
-        </tr>
-        <tr>
-          <td>barColor</td>
-          <td>string</td>
-          <td>"#31c3a2"</td>
-          <td>
-            Background color of progress bar.
-            <code>variant</code> prop must be set to
-            <code>progress</code>.
-          </td>
-        </tr>
-        <tr>
-          <td>textColor</td>
-          <td>string</td>
-          <td>"#ffffff"</td>
-          <td>
-            Text color of progress bar.
-            <code>variant</code> prop must be set to
-            <code>progress</code>.
-          </td>
-        </tr>
-        <tr>
-          <td>current</td>
-          <td>number</td>
+          <td>tabs</td>
+          <td>array</td>
           <td>null</td>
-          <td>
-            Current progress amount.
-            <code>variant</code> prop must be set to
-            <code>progress</code>.
+          <td>tabs information to display. you can make array like below
+            <br>
+            <code>
+              test = [
+              {
+              tabLabel: "General",
+              tabTo: "#",
+              tabId: "tab1",
+              tabIcon: "information"
+              }
+            </code>
           </td>
         </tr>
         <tr>
-          <td>total</td>
-          <td>number</td>
-          <td>null</td>
-          <td>
-            Total progross amount.
-            <code>variant</code> prop must be set to
-            <code>progress</code>.
-          </td>
-        </tr>
-        <tr>
-          <td>separator</td>
+          <td>tabSize</td>
           <td>string</td>
-          <td>"/"</td>
-          <td>
-            Separator between current and total amounts is displayed.
-            <code>variant</code> prop must be set to
-            <code>progress</code>.
-          </td>
-        </tr>
-        <tr>
-          <td>suffix</td>
-          <td>string</td>
-          <td>null</td>
-          <td>
-            String to the right of the total amount.
-            <code>variant</code> prop must be set to
-            <code>progress</code>.
-          </td>
+          <td>small</td>
+          <td>text size of tabs. Options are "small" and "large"</td>
         </tr>
       </tbody>
-    </table> -->
+    </table>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator"
-import Accordion from "./../components/Accordion.vue"
-import ScrollNav from "./../components/ScrollNav.vue"
-import TabDevelop from "./../components/TabDevelop.vue"
-import Tabs from "./../components/Tabs.vue"
+import { Component, Vue } from "vue-property-decorator";
+import Accordion from "./../components/Accordion.vue";
+import ScrollNav from "./../components/ScrollNav.vue";
+import TabDevelop from "./../components/TabDevelop.vue";
+import Tabs from "./../components/Tabs.vue";
 
 @Component({
   components: {
     Accordion,
     ScrollNav,
     TabDevelop,
-    Tabs,
-  },
+    Tabs
+  }
 })
 export default class TabsDemo extends Vue {
   test = [
@@ -149,99 +83,99 @@ export default class TabsDemo extends Vue {
       tabLabel: "General",
       tabTo: "#",
       tabId: "tab1",
-      tabIcon: "information",
+      tabIcon: "information"
     },
     {
       tabLabel: "Advanced",
       tabTo: "#",
       tabId: "tab2",
-      tabIcon: "information",
+      tabIcon: "information"
     },
     {
       tabLabel: "Account",
       tabTo: "#",
       tabId: "tab3",
-      tabIcon: "information",
+      tabIcon: "information"
     },
     {
       tabLabel: "Integrations",
       tabTo: "#",
       tabId: "tab4",
-      tabIcon: "information",
+      tabIcon: "information"
     },
     {
       tabLabel: "Payments",
       tabTo: "#",
       tabId: "tab5",
-      tabIcon: "information",
+      tabIcon: "information"
     },
     {
       tabLabel: "Apps",
       tabTo: "#",
       tabId: "tab6",
-      tabIcon: "information",
-    },
-  ]
+      tabIcon: "information"
+    }
+  ];
 
   tabs = [
     {
       name: "General",
-      value: "general",
+      value: "general"
     },
     {
       name: "Advanced",
-      value: "advanced",
+      value: "advanced"
     },
     {
       name: "Account",
-      value: "Account",
+      value: "Account"
     },
     {
       name: "Integrations",
-      value: "integrations",
+      value: "integrations"
     },
     {
       name: "Payments",
-      value: "payments",
+      value: "payments"
     },
     {
       name: "Donations",
-      value: "donations",
+      value: "donations"
     },
     {
       name: "Subscriptions",
-      value: "subscriptions",
+      value: "subscriptions"
     },
     {
       name: "Preferences",
-      value: "preferences",
+      value: "preferences"
     },
     {
       name: "Apps",
-      value: "apps",
+      value: "apps"
     },
     {
       name: "Merch",
-      value: "merch",
+      value: "merch"
     },
     {
       name: "API",
-      value: "api",
+      value: "api"
     },
     {
       name: "Moderators",
-      value: "moderators",
+      value: "moderators"
     },
     {
       name: "Themes",
-      value: "themes",
-    },
-  ]
+      value: "themes"
+    }
+  ];
 
-  selectedTab = "general"
+  selectedTab = "general";
 
   onSelectTabHandler(tab: string) {
-    this.selectedTab = tab
+    this.selectedTab = tab;
   }
 }
 </script>

@@ -310,4 +310,3 @@ export default class Tabs extends Vue {
   }
 }
 </style>
-

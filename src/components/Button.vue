@@ -189,6 +189,7 @@ export default class Button extends Vue {
   &:hover,
   &.is-hovered {
     background-color: darken(@day-button, 4%);
+    text-decoration: none;
   }
 
   &[disabled],

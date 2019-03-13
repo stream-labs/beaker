@@ -147,6 +147,8 @@ components: {
         :width="400"
         :subTitle="'Delete ‘Streamlabs Pillow’'"
         :text="'Are you sure you want to delete the merch item ‘Streamlabs Pillow’? This action cannot be undone.'"
+        @confirm="() => {}"
+        :confirm-button-text="'Delete'"
       ></ModalComp>
 
       <div class="button-container button-container--left">
@@ -231,6 +233,18 @@ components: {
             <code>subscribe</code>
           </td>
         </tr>
+        <tr>
+          <td>@confirm</td>
+          <td>Function</td>
+          <td>null</td>
+          <td>Callback function when confirmed (only in Modal Confirmation)</td>
+        </tr>
+        <tr>
+          <td>confirm-button-text</td>
+          <td>string</td>
+          <td>Confirm</td>
+          <td>Confirm button text (only in Modal Confirmation)</td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -249,7 +263,7 @@ import Button from "./../components/Button.vue";
     Button
   }
 })
-export default class Modals extends Vue {}
+export default class Modals extends Vue { }
 </script>
 <style lang="less" scoped>
 @import "./../styles/Imports";
