@@ -40,10 +40,10 @@
 </template>]
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from "vue-property-decorator"
-import ViewMaterial from "vue-material"
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
+// import ViewMaterial from "vue-material"
 
-Vue.use(ViewMaterial);
+// Vue.use(ViewMaterial);
 
 @Component({})
 export default class TabDevelop extends Vue {
