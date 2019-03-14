@@ -2,6 +2,11 @@
   <div>
     <div class="section">
       <h1>New Feature Overlay</h1>
+      <p>
+        You can trigger this with a button like
+        <code>@click="$modal.show('new-feature')"</code> or call
+        <code>this.$modal.show('new-feature')"</code> on mounted. You may need to set a few second delay on the trigger to prevent the modal closing when the page refreshes.
+      </p>
       <pre><code>import { NewFeatureOverlay } from 'streamlabs-beaker';
 
 components: {
@@ -28,7 +33,7 @@ components: {
       <NewFeatureOverlay
         :label="'Introducing Merch Stores'"
         :title="'Increase Your Revenue'"
-        :media="require('../assets/video/sample.mp4')"
+        :media="'https://cdn.streamlabs.com/static/prototype_cloudbot2.webm'"
         :buttonTitle="'Go To Store'"
       >
         <p>We’ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.</p>
@@ -83,6 +88,18 @@ components: {
           <td>string</td>
           <td>/</td>
           <td>Router link path for the action button</td>
+        </tr>
+        <tr>
+          <td>dismissTitle</td>
+          <td>string</td>
+          <td>Go to Dashboard</td>
+          <td>Text displayed in the link next to the action button to dismiss the announcement.</td>
+        </tr>
+        <tr>
+          <td>dismissRoute</td>
+          <td>string</td>
+          <td>/</td>
+          <td>Router link path to dismiss the annoucement.</td>
         </tr>
       </tbody>
     </table>
