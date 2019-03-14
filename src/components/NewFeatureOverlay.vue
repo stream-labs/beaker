@@ -178,12 +178,6 @@ export default class NewFeatureOverlay extends Vue {
   line-height: 21px;
   .margin-bottom(3);
   font-size: 16px;
-
-  p {
-    font-size: 16px;
-    line-height: 21px;
-    .margin-bottom(2);
-  }
 }
 
 .s-overlay-links {
@@ -218,6 +212,23 @@ export default class NewFeatureOverlay extends Vue {
 
   .s-overlay__label {
     color: @white;
+  }
+}
+</style>
+
+<style lang="less">
+@import "./../styles/Imports";
+
+.s-overlay__text {
+  line-height: 21px;
+  .margin-bottom(3);
+  font-size: 16px;
+
+  p,
+  * {
+    font-size: 16px;
+    line-height: 21px;
+    .margin-bottom(2);
   }
 }
 </style>
