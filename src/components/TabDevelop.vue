@@ -42,24 +42,23 @@
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator"
 import ViewMaterial from "vue-material"
-// import "vue-material/dist/vue-material.min.css"
 
-Vue.use(ViewMaterial)
+Vue.use(ViewMaterial);
 
 @Component({})
 export default class TabDevelop extends Vue {
   @Prop()
   tabs!: [
     {
-      tabLabel: string
-      tabTo: string
-      tabId: string
-      tabIcon: string
+      tabLabel: string;
+      tabTo: string;
+      tabId: string;
+      tabIcon: string;
     }
-  ]
+  ];
 
   @Prop({ default: "small" })
-  tabSize!: string
+  tabSize!: string;
 
   $refs!: {
     scrollable_tabs: HTMLDivElement;
@@ -89,7 +88,7 @@ export default class TabDevelop extends Vue {
       this.isMounted = true;
       this.tabsContainer = this.$refs.scrollable_tabs;
       this.calculateScrolls();
-    })
+    });
   }
 
   destroyed() {
@@ -120,7 +119,6 @@ export default class TabDevelop extends Vue {
       this.hasNext = scrollRight > 0;
     }
   }
-
 }
 </script>
 
@@ -130,10 +128,10 @@ export default class TabDevelop extends Vue {
 
 // md does not have support for scoped styles
 .font-small {
-    .md-button-content {
-      font-size: 14px;
-    }
+  .md-button-content {
+    font-size: 14px;
   }
+}
 
 .font-large {
   .md-button-content {
@@ -149,7 +147,7 @@ export default class TabDevelop extends Vue {
     }
   }
 
-.md-button {
+  .md-button {
     max-width: initial;
     min-width: initial;
     height: auto;
@@ -205,12 +203,12 @@ export default class TabDevelop extends Vue {
   .md-active {
     .md-ripple {
       color: @light-4;
-     }
-   }
-   
-   .md-tabs-indicator {
-      background: @white;
-   }
+    }
+  }
+
+  .md-tabs-indicator {
+    background: @white;
+  }
 }
 </style>
 
@@ -251,7 +249,7 @@ export default class TabDevelop extends Vue {
 }
 
 .s-tabs-nav__control {
-  height: calc(~'2 * ' @spacing);
+  height: calc(~"2 * " @spacing);
   display: flex;
   align-items: flex-end;
   .margin-bottom(2);
@@ -260,7 +258,7 @@ export default class TabDevelop extends Vue {
   &.s-has-next,
   &.s-has-prev {
     &:before {
-      content: '';
+      content: "";
       width: 40px;
       height: 16px;
       position: absolute;
@@ -326,7 +324,7 @@ export default class TabDevelop extends Vue {
   }
 
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     right: 0;
     left: 0;

@@ -13,6 +13,7 @@
       <callouts v-if="activeSection === 'callouts'"/>
       <call-to-actions v-if="activeSection === 'call-to-actions'"/>
       <color-pickers v-if="activeSection === 'color-pickers'"/>
+      <creator-sites v-if="activeSection === 'creator-sites'"/>
       <dropdowns v-if="activeSection === 'dropdowns'"/>
       <empty-sections v-if="activeSection === 'empty-sections'"/>
       <extras v-if="activeSection === 'extras'"/>
@@ -27,7 +28,6 @@
       <progress-bars v-if="activeSection === 'progress-bars'"/>
       <paginations v-if="activeSection === 'paginations'"/>
       <sliders v-if="activeSection === 'sliders'"/>
-      <streamer-sites v-if="activeSection === 'streamer-sites'"/>
       <tables v-if="activeSection === 'tables'"/>
       <tabs v-if="activeSection === 'tabs'"/>
       <toggles v-if="activeSection === 'toggles'"/>
@@ -51,6 +51,7 @@ import ButtonsDemo from "@/demos/Buttons.vue";
 import CallToActions from "@/demos/CallToActions.vue";
 import Callouts from "@/demos/Callouts.vue";
 import ColorPickers from "@/demos/ColorPickers.vue";
+import CreatorSites from "@/demos/CreatorSites.vue";
 import Dropdowns from "@/demos/Dropdowns.vue";
 import EmptySections from "@/demos/EmptySections.vue";
 import Extras from "@/demos/Extras.vue";
@@ -66,7 +67,6 @@ import Notices from "@/demos/Notices.vue";
 import ProgressBars from "@/demos/ProgressBars.vue";
 import Paginations from "@/demos/Paginations.vue";
 import Sliders from "@/demos/Sliders.vue";
-import StreamerSites from "@/demos/StreamerSites.vue";
 import Tables from "@/demos/Tables.vue";
 import Tabs from "@/demos/Tabs.vue";
 import Toggles from "@/demos/Toggles.vue";
@@ -87,6 +87,7 @@ import VirtualItems from "@/demos/VirtualItems.vue";
     Callouts,
     CallToActions,
     ColorPickers,
+    CreatorSites,
     Dropdowns,
     EmptySections,
     Extras,
@@ -102,7 +103,6 @@ import VirtualItems from "@/demos/VirtualItems.vue";
     ProgressBars,
     Paginations,
     Sliders,
-    StreamerSites,
     Tables,
     Tabs,
     Toggles,
