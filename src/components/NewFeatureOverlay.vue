@@ -5,6 +5,7 @@
     :width="'100%'"
     :height="'auto'"
     classes="s-overlay__wrapper"
+    :clickToClose="false"
   >
     <div slot="top-right" class="s-overlay__icon">
       <span class="s-icon s-icon-close" @click="$modal.hide('new-feature')"></span>
@@ -176,6 +177,7 @@ export default class NewFeatureOverlay extends Vue {
 .s-overlay__text {
   line-height: 21px;
   .margin-bottom(3);
+  font-size: 16px;
 }
 
 .s-overlay-links {

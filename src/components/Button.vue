@@ -657,6 +657,8 @@ export default class Button extends Vue {
   }
 
   .s-button--action {
+    color: @night-title;
+
     &:focus,
     &.is-focused,
     &:hover {
@@ -665,6 +667,8 @@ export default class Button extends Vue {
   }
 
   .s-button--warning {
+    color: @warning;
+
     &:focus,
     &.is-focused,
     &:hover {
@@ -701,7 +705,7 @@ export default class Button extends Vue {
 
   .s-button--twitch {
     background-color: @twitch;
-    color: @white;
+    color: @night-title;
 
     &:focus,
     &.is-focused,
@@ -712,7 +716,7 @@ export default class Button extends Vue {
 
   .s-button--yt {
     background-color: @youtube;
-    color: @white;
+    color: @night-title;
 
     &:focus,
     &.is-focused,
@@ -723,7 +727,7 @@ export default class Button extends Vue {
 
   .s-button--mixer {
     background-color: @mixer;
-    color: @white;
+    color: @night-title;
 
     &:focus,
     &.is-focused,
@@ -734,7 +738,7 @@ export default class Button extends Vue {
 
   .s-button--fb {
     background-color: @facebook;
-    color: @white;
+    color: @night-title;
 
     &:focus,
     &.is-focused,
@@ -745,7 +749,7 @@ export default class Button extends Vue {
 
   .s-button--periscope {
     background-color: @periscope;
-    color: @white;
+    color: @night-title;
 
     &:focus,
     &.is-focused,
@@ -756,7 +760,7 @@ export default class Button extends Vue {
 
   .s-button--picarto {
     background-color: @picarto;
-    color: @white;
+    color: @night-title;
 
     &:focus,
     &.is-focused,
@@ -766,7 +770,7 @@ export default class Button extends Vue {
   }
 
   .s-inline-button {
-    color: @white;
+    color: @night-title;
   }
 }
 
