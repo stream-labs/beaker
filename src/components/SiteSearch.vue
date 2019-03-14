@@ -7,9 +7,9 @@
       :keys="['name', 'keywords', 'description']"
       :defaultAll="false"
     />
-      <transition name="fade">
+      <transition name="fadeY">
       <div class="search-results-container" v-if="limitedResult.length >=  1">
-        <transition-group name="fade">
+        <transition-group name="fadeX" v-on:before-enter="beforeEnter" v-on:enter="enter" v-on:leave="leave">
         <div v-for="searchData in limitedResult" :key="searchData.name" class="search-results">
           <div>
             <i :class="'s-' + searchData.image" class="result-image"></i>
@@ -35,7 +35,7 @@ import * as data from "./../components/sitesearchdata.json"
 export default class SiteSearch extends Vue {
   results:any = [];
   searchData = (<any>data).data;
-  private resultLimit: Number = 3
+  private resultLimit: Number = 3;
 
   @Prop()
   $search: any;
@@ -56,6 +56,9 @@ export default class SiteSearch extends Vue {
       this.results = result;
     });
   }
+
+
+
 }
 </script>
 
@@ -71,22 +74,68 @@ export default class SiteSearch extends Vue {
 .search-results-container {
   display: flex;
   flex-direction: column;
-  border: 1px solid red;
+  background-color: @light-2;
+  height: 230px;
+  overflow: hidden;
+  padding: 20px;
 }
 
 .search-results {
   display: flex;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   flex-direction: row;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity .5s;
+.fadeX-enter-active {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
 }
 
-.fade-enter,
-.fade-leave-to {
+.fadeX-leave-active {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
   opacity: 0;
 }
+
+.fadeX-enter {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(10px);
+  opacity: 0;
+}
+
+.fadeX-leave-to {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+.fadeX-move {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.fadeY-enter-active {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+}
+
+.fadeY-leave-active {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+}
+
+.fadeY-enter {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(-10px);
+  opacity: 0;
+}
+
+.fadeY-leave-to {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+
 
 </style>
