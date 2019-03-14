@@ -3,6 +3,7 @@
     <left-navigation @update-section="changeSection" :active-section="activeSection"></left-navigation>
 
     <div class="content">
+      <!--
       <installation v-if="activeSection === 'installation'"/>
       <assets v-if="activeSection === 'assets'"/>
       <accordions v-if="activeSection === 'accordions'"/>
@@ -32,6 +33,8 @@
       <tabs v-if="activeSection === 'tabs'"/>
       <toggles v-if="activeSection === 'toggles'"/>
       <virtual-items v-if="activeSection === 'virtual-items'"/>
+      -->
+      <site-search-demo/>
     </div>
   </div>
 </template>
@@ -65,6 +68,7 @@ import Navigations from "@/demos/Navigations.vue";
 import Notices from "@/demos/Notices.vue";
 import ProgressBars from "@/demos/ProgressBars.vue";
 import Paginations from "@/demos/Paginations.vue";
+import SiteSearchDemo from "@/demos/SiteSearchDemo.vue"
 import Sliders from "@/demos/Sliders.vue";
 import StreamerSites from "@/demos/StreamerSites.vue";
 import Tables from "@/demos/Tables.vue";
@@ -101,6 +105,7 @@ import VirtualItems from "@/demos/VirtualItems.vue";
     Notices,
     ProgressBars,
     Paginations,
+    SiteSearchDemo,
     Sliders,
     StreamerSites,
     Tables,

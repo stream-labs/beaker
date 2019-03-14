@@ -30,6 +30,7 @@ import ModalRedirect from "@/components/ModalRedirect";
 import ModalSubscribe from "@/components/ModalSubscribe";
 import NewFeatureOverlay from "@/components/NewFeatureOverlay";
 import PaymentForm from "@/components/PaymentForm";
+import SiteSearch from "@/components/SiteSearch";
 import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
 import Spinner from "@/components/Spinner";
@@ -66,6 +67,7 @@ const components = [
   ModalSubscribe,
   NewFeatureOverlay,
   Selector,
+  SiteSearch,
   Slider,
   Spinner,
   SSProSimulator,
@@ -115,6 +117,7 @@ export {
   NewFeatureOverlay,
   PaymentForm,
   Selector,
+  SiteSearch,
   Slider,
   Spinner,
   SSProSimulator,
