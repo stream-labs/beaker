@@ -27,7 +27,7 @@ components: {
   &lt;Button
     :variation=&quot;'default'&quot;
     :title=&quot;'Default'&quot;&gt;
-    :onClick=&quot;'buttonClick'&quot;&gt;
+    @click=&quot;'buttonClick'&quot;&gt;
   &lt;/Button&gt;
 
   &lt;Button
