@@ -34,6 +34,9 @@
     "vue-slider-component": "^2.8.0",
     "vuejs-paginate": "^2.1.0"
   },
+  "resolutions": {
+    "**/vue-fuse/vue": "2.6.6"
+  },
   "devDependencies": {
     "@types/node": "^10.12.2",
     "@types/vue-select": "^2.4.0",

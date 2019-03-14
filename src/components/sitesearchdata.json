@@ -1,24 +1,26 @@
 {
-  {
-       "name": "template",
-        "title": "template",
+  "keys": "name",
+"data": [ {
+  
+       "name": "template3",
+        "title": "template5",
         "route": "/noroute",
         "keywords": ["key","words"],
         "description": "This is the template",
-        "image": "g",
+        "image": "icon-italic",
         "howto": "/noroute",
         "weight": 5
       },
       {
-        "name": "template",
-        "title": "template",
+        "name": "template4",
+        "title": "template7",
         "route": "/noroute",
         "keywords": ["key","words"],
         "description": "This is the template",
-        "image": "f",
+        "image": "icon-italic",
         "howto": "/noroute",
         "keymatch": ["one","two","three"],
-        "weight": 1,
+        "weight": 1
       },
       {
         "name": "contact",
@@ -26,10 +28,10 @@
         "route": "/contact",
         "keywords": ["contact","business", "business inquiries", "inquiries", "social", "social media"],
         "description": "Need to get a hold of Streamlabs?",
-        "image": "icon-contact",
+        "image": "icon-phone",
         "howto": null,
         "keymatch": ["howto","apidoc"],
-        "weight": 1,
+        "weight": 1
       },
       {
         "name": "faq",
@@ -40,7 +42,7 @@
         "image": "icon-question",
         "howto": null,
         "keymatch": ["howto","apidoc","contact"],
-        "weight": 2,
+        "weight": 2
       },
       {
         "name": "allstars",
@@ -48,10 +50,10 @@
         "route": "/allstars",
         "keywords": ["Allstars","all stars", "stars", "celebrity", "streamer", "vip"],
         "description": "Are you an All-Star?",
-        "image": "contact image",
+        "image": "icon-bag",
         "howto": null,
         "keymatch": [ ],
-        "weight": 3,
+        "weight": 3
       },
       {
         "name": "careers",
@@ -59,21 +61,21 @@
         "route": "/careers",
         "keywords": ["careers","jobs", "job", "oppourtunities", "oppourtunity", "intern", "internship", "work", "hiring", "hire"],
         "description": "Do you want to work at streamlabs?",
-        "image": "???",
+        "image": "icon-prize",
         "howto": null,
         "keymatch": ["contact"],
-        "weight": 10,
+        "weight": 10
       },
       {
         "name": "terms",
         "title": "Terms of Service",
         "route": "/terms",
         "keywords": ["terms","services", "terms of service", "legal"],
-        "description": "Streamlabs Terms of Service",
-        "image": "icon-legal",
+        "description": "Streamlabs Terms of Service zzzzzzzzzzz",
+        "image": "icon-mug",
         "howto": null,
         "keymatch": ["contact", "faq", "privacy"],
-        "weight": 9,
+        "weight": 9
       },
       {
         "name": "privacy",
@@ -81,12 +83,11 @@
         "route": "/privacy",
         "keywords": ["privacy","policy", "policies", "privacy policy", "terms of service", "legal"],
         "description": "Streamlabs Privacy Policy",
-        "image": "icon-legal",
+        "image": "icon-image",
         "howto": null,
         "keymatch": ["contact", "faq", "terms"],
-        "weight": 9,
-      },
-    keys: ["one", "two"],
-  }
+        "weight": 9
+      }
+    ]
 }
 

@@ -11,6 +11,8 @@
 </template>
 
 <script lang="ts">
+
+
 import { Component, Vue } from "vue-property-decorator";
 import SiteSearch from "./../components/SiteSearch.vue";
 import Accordion from "./../components/Accordion.vue";
