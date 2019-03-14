@@ -20,7 +20,7 @@
           ></Button>
           <Button
             @click="onConfirmHandler"
-            :variation="'warning'"
+            :variation="buttonVariation"
             :title="confirmButtonText"
             :size="'fixed-width'"
           ></Button>
@@ -59,6 +59,9 @@ export default class ModalConfirmation extends Vue {
   @Prop({ default: "Confirm" })
   confirmButtonText!: string;
 
+  @Prop({ default: "warning" })
+  buttonVariation!: string;
+
   onConfirmHandler() {
     this.$emit("confirm");
     this.$modal.hide("modal-confirmation");
@@ -86,6 +89,12 @@ export default class ModalConfirmation extends Vue {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  .s-button {
+    &:first-child {
+      margin-left: 0;
+    }
+  }
 }
 
 .s-modal-sub-title {

@@ -39,7 +39,8 @@
         :width="modalWidth"
         :minWidth="modalMinWidth"
         @confirm="$emit('confirm')"
-        :confirm-button-text="confirmButtonText"
+        :confirmButtonText="confirmButtonText"
+        :buttonVariation="buttonVariation"
       ></ModalConfirmation>
     </div>
   </div>
@@ -111,7 +112,10 @@ export default class ModalComp extends Vue {
 
   modalNotes: string = this.notes;
 
-  @Prop({ default: "Confirm" })
+  @Prop()
   confirmButtonText!: string;
+
+  @Prop()
+  buttonVariation!: string;
 }
 </script>
