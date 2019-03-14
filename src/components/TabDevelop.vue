@@ -40,9 +40,8 @@
 </template>]
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-import ViewMaterial from "vue-material";
-import "vue-material/dist/vue-material.min.css";
+import { Component, Prop, Vue, Watch } from "vue-property-decorator"
+import ViewMaterial from "vue-material"
 
 Vue.use(ViewMaterial);
 
@@ -125,6 +124,8 @@ export default class TabDevelop extends Vue {
 
 <style lang="less">
 @import "./../styles/Imports";
+@import "./../styles/components/Tabs";
+
 // md does not have support for scoped styles
 .font-small {
   .md-button-content {

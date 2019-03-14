@@ -2,8 +2,8 @@
   <modal
     name="new-feature"
     :adaptive="true"
-    width="100%"
-    height="auto"
+    :width="'100%'"
+    :height="'auto'"
     classes="s-overlay__wrapper"
   >
     <div slot="top-right" class="s-overlay__icon">
