@@ -121,7 +121,7 @@ export default class NewFeatureOverlay extends Vue {
 }
 
 .v--modal-overlay {
-  background: @day-overlay;
+  background: @day-overlay!important;
 }
 
 .s-overlay__wrapper {
@@ -178,6 +178,12 @@ export default class NewFeatureOverlay extends Vue {
   line-height: 21px;
   .margin-bottom(3);
   font-size: 16px;
+
+  p {
+    font-size: 16px;
+    line-height: 21px;
+    .margin-bottom(2);
+  }
 }
 
 .s-overlay-links {
@@ -207,7 +213,7 @@ export default class NewFeatureOverlay extends Vue {
 .night,
 .night-theme {
   .v--modal-overlay {
-    background: @night-overlay;
+    background: @night-overlay!important;
   }
 
   .s-overlay__label {
