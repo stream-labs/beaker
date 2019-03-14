@@ -41,6 +41,7 @@ import TooltipNotice from "@/components/TooltipNotice";
 import Toggle from "@/components/Toggle";
 import Pagination from "@/components/Pagination";
 import ProgressBar from "@/components/ProgressBar";
+import UrlBar from "@/components/UrlBar";
 import VirtualItem from "@/components/VirtualItem";
 
 // Define components
@@ -76,6 +77,7 @@ const components = [
   TooltipNotice,
   Pagination,
   ProgressBar,
+  UrlBar,
   VirtualItem
 ];
 
@@ -113,5 +115,6 @@ export {
   TooltipNotice,
   Pagination,
   ProgressBar,
+  UrlBar,
   VirtualItem
 };
