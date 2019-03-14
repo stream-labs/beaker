@@ -11,18 +11,11 @@ components: {
 
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-          <pre><code>&lt;loading v-if=&quot;isLoading&quot; :spinnerSize=&quot;'large'&quot; @closeLoading=&quot;isLoading = false&quot;&gt;
-    &lt;template slot&gt;Syncing all files to our cloud...&lt;/template&gt;
-&lt;/loading&gt;</code></pre>
+          <pre><code>&lt;Loading v-if=&quot;isLoading&quot; :loadingStrs=&quot;array&quot; @closeLoading=&quot;isLoading = false&quot;&gt;&lt;/Loading&gt;</code></pre>
         </div>
       </accordion>
 
-      <loading
-        v-if="isLoading"
-        :loadingStrs="array"
-        :spinnerSize="'large'"
-        @closeLoading="isLoading = false"
-      ></loading>
+      <Loading v-if="isLoading" :loadingStrs="array" @closeLoading="isLoading = false"></Loading>
 
       <div class="row">
         <div class="button-container button-container--left">
@@ -41,10 +34,10 @@ components: {
         </thead>
         <tbody>
           <tr>
-            <td>spinnerSize</td>
-            <td>String</td>
-            <td>'small'</td>
-            <td>'small', 'large'</td>
+            <td>loadingStrs</td>
+            <td>any[] | string</td>
+            <td>-</td>
+            <td>Pass an array of stings into the loader. We recommend 3-4. Each shows for 4 seconds before it rotates.</td>
           </tr>
         </tbody>
       </table>

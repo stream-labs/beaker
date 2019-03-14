@@ -159,6 +159,7 @@ export default class NewFeatureOverlay extends Vue {
 
 .s-overlay__body {
   flex-basis: 50%;
+  text-align: left;
 }
 
 .s-overlay__label {

@@ -3,8 +3,8 @@
     <div class="s-loader">
       <div class="s-loader__bg">
         <div class="s-loader__inner">
-          <Spinner class="s-spinner__overlay" :size="spinnerSize"/>
-          <slot class="s-loader__text">{{ loaderText }}</slot>
+          <Spinner class="s-spinner__overlay" :size="'large'"/>
+          <div class="s-loader__text">{{ loaderText }}</div>
         </div>
       </div>
     </div>
@@ -20,9 +20,6 @@ import Button from "./../components/Button.vue";
   components: { Spinner, Button }
 })
 export default class Loading extends Vue {
-  @Prop({ default: "small" })
-  spinnerSize!: string;
-
   @Prop()
   loadingStrs!: any[] | string;
 

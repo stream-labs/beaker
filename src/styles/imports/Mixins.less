@@ -105,8 +105,12 @@
   border-radius: (@radius * 4px);
 }
 
-.radius-bottom(@bottom-right-radius: 1, @bottom-left-radius: 1) {
-  border-radius: 0 0 @bottom-right-radius * 4px @bottom-left-radius * 4px;
+.radius-bottom(@radius: 1) {
+  border-radius: 0 0 (@radius * 4px) (@radius * 4px);
+}
+
+.radius-top(@radius: 1) {
+  border-radius: (@radius * 4px) (@radius * 4px) 0 0;
 }
 
 // Shadows
