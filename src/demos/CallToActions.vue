@@ -4,7 +4,7 @@
       <h1>Call To Action</h1>
       <p>You can use our callout component if you need to display an important message.</p>
 
-            <pre><code>import { CallToAction } from 'streamlabs-beaker';
+      <pre><code>import { CallToAction } from 'streamlabs-beaker';
 
 components: {
   CallToAction
@@ -12,9 +12,7 @@ components: {
     </div>
     <div class="section">
       <h2>Default Call to Action</h2>
-        <accordion
-        :openedTitle="'Hide Code'"
-        :closedTitle="'Show Code'">
+      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre><code>&lt;call-to-action
   :thumbnail=&quot;'require('./../assets/imgs/logo.svg')'&quot;
@@ -33,12 +31,14 @@ components: {
       <h2>Custom Call to Action</h2>
       <div class="row">
         <call-to-action
-        :thumbnail="require('./../assets/imgs/logo.svg')"
-        :title="'This is a Custom Call To Action'"
-        :description="'A Custom Description'"
-        :buttonVariation="'action'"
-        :buttonTitle="'Click Me'"
-        :buttonDescription="''"/>
+          :thumbnail="require('./../assets/imgs/logo.svg')"
+          :title="'This is a Custom Call To Action'"
+          :description="'A Custom Description'"
+          :buttonVariation="'action'"
+          :buttonTitle="'Click Me'"
+          :buttonDescription="''"
+          :buttonHref="'https://www.google.com/'"
+        />
       </div>
       <table class="docs-table">
         <thead>
@@ -86,6 +86,37 @@ components: {
             <td>Windows 7+ 245.8MB</td>
             <td>Description for 'slobs-download' button variation only, recomended left blank otherwise ( :buttonDescription="'" )</td>
           </tr>
+          <tr>
+            <td>buttonHref</td>
+            <td>String</td>
+            <td>null</td>
+            <td>
+              Used if the the
+              <code>type</code> is an
+              <code>a</code> element (links).
+            </td>
+          </tr>
+          <tr>
+            <td>buttonTo</td>
+            <td>String</td>
+            <td>null</td>
+            <td>
+              Used if the the
+              <code>type</code> is a
+              <code>router-link</code>. Define the path.
+            </td>
+          </tr>
+          <tr>
+            <td>buttonTag</td>
+            <td>String</td>
+            <td>a</td>
+            <td>
+              What type of element the component is. Options are
+              <code>button</code>,
+              <code>a</code>,
+              <code>router-link</code>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -96,10 +127,12 @@ components: {
 import { Component, Vue } from "vue-property-decorator";
 import CallToAction from "./../components/CallToAction.vue";
 import Accordion from "./../components/Accordion.vue";
+import Button from "./../components/Button.vue";
 @Component({
   components: {
     CallToAction,
-    Accordion
+    Accordion,
+    Button
   }
 })
 export default class CallToActions extends Vue {

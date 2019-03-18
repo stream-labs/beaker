@@ -13,6 +13,9 @@
         :size="'large'"
         :title="buttonTitle"
         :description="buttonDescription"
+        :href="buttonHref"
+        :to="buttonTo"
+        :tag="buttonTag"
       ></Button>
     </div>
   </div>
@@ -48,6 +51,15 @@ export default class CallToAction extends Vue {
 
   @Prop({ default: "Windows 7+ 245.8MB" })
   buttonDescription!: String;
+
+  @Prop()
+  buttonHref!: String;
+
+  @Prop()
+  buttonTo!: String;
+
+  @Prop({ default: "a" })
+  buttonTag!: String;
 }
 </script>
 
