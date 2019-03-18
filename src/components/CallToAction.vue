@@ -108,13 +108,13 @@ export default class CallToAction extends Vue {
 
 .s-title {
   font-size: 22px;
-  font-weight: 700;
+  .weight(@bold);
   .margin-bottom(2);
 }
 
 .s-subtitle {
   font-size: 18px;
-  font-weight: medium;
+  .weight(@medium);
 }
 
 .night,
