@@ -17,6 +17,9 @@
         :variation="btnVariation"
         :title="btnTitle"
         :onClick="'buttonClick'"
+        :href="buttonHref"
+        :to="buttonTo"
+        :tag="buttonTag"
       ></Button>
     </div>
   </div>
@@ -40,6 +43,15 @@ export default class ContentRow extends Vue {
 
   @Prop({ default: "Default" })
   btnTitle!: string;
+
+  @Prop()
+  buttonHref!: String;
+
+  @Prop()
+  buttonTo!: String;
+
+  @Prop({ default: "a" })
+  buttonTag!: String;
 }
 </script>
 
