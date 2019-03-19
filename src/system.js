@@ -36,12 +36,13 @@ import Selector from "@/components/Selector";
 import Spinner from "@/components/Spinner";
 import SSProSimulator from "@/components/SSProSimulator";
 import Tabs from "@/components/Tabs";
-import TabDevelop from "@/components/TabDevelop";
+// import TabDevelop from "@/components/TabDevelop";
 import TextInput from "@/components/TextInput";
 import TooltipNotice from "@/components/TooltipNotice";
 import Toggle from "@/components/Toggle";
 import Pagination from "@/components/Pagination";
 import ProgressBar from "@/components/ProgressBar";
+import UrlBar from "@/components/UrlBar";
 import VirtualItem from "@/components/VirtualItem";
 
 // Define components
@@ -72,26 +73,15 @@ const components = [
   Spinner,
   SSProSimulator,
   Tabs,
-  TabDevelop,
+  // TabDevelop,
   TextInput,
+  Toggle,
   TooltipNotice,
   Pagination,
   ProgressBar,
+  UrlBar,
   VirtualItem
 ];
-
-// Install the above defined components
-// const System = {
-//   install(Vue) {
-//     components.forEach(component => Vue.component(component.name, component));
-//   }
-// };
-
-// if (typeof window !== "undefined" && window.Vue) {
-//   window.Vue.use(System);
-// }
-
-// Finally export as default
 
 export {
   Accordion,
@@ -122,10 +112,12 @@ export {
   Spinner,
   SSProSimulator,
   Tabs,
-  TabDevelop,
+  // TabDevelop,
   TextInput,
+  Toggle,
   TooltipNotice,
   Pagination,
   ProgressBar,
+  UrlBar,
   VirtualItem
 };

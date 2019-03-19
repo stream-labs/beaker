@@ -2,17 +2,18 @@
   <modal
     name="new-feature"
     :adaptive="true"
-    width="100%"
-    height="auto"
+    :width="'100%'"
+    :height="'auto'"
     classes="s-overlay__wrapper"
+    :clickToClose="false"
   >
     <div slot="top-right" class="s-overlay__icon">
-      <span class="s-icon s-icon-close" @click="$modal.hide('new-feature')"></span>
+      <span class="s-icon s-icon-close" @click="clickDismiss"></span>
     </div>
     <div class="s-overlay__container" :class="containerMq">
       <div class="s-overlay__body">
-        <p class="s-overlay__label">{{label}}</p>
-        <h1 class="s-overlay__title">{{title}}</h1>
+        <p class="s-overlay__label">{{ label }}</p>
+        <h1 class="s-overlay__title">{{ title }}</h1>
         <p class="s-overlay__text">
           <slot></slot>
         </p>
@@ -24,12 +25,17 @@
             :tag="'router-link'"
             :to="buttonRoute"
             :title="buttonTitle"
+            @click.native="clickDismiss"
           ></Button>
-          <a class="s-overlay__link" href="/">Go to Dashboard</a>
+          <router-link
+            class="s-overlay__link"
+            :to="dismissRoute"
+            @click.native="clickDismiss"
+          >{{ dismissText }}</router-link>
         </div>
       </div>
 
-      <div class="s-overlay__imageBlock" :class="overlay__imageBlockMq">
+      <div class="s-overlay__image-block" :class="overlay__imageBlockMq">
         <img v-if="isImage" :src="overlayImage" class="s-overlay__image">
         <video controls="false" autoplay loop v-if="!isImage" class="s-overlay__image">
           <source :src="overlayImage">Environment does not support video playback
@@ -78,6 +84,12 @@ export default class NewFeatureOverlay extends Vue {
   @Prop({ default: "/" })
   buttonRoute!: string;
 
+  @Prop({ default: "/" })
+  dismissRoute!: string;
+
+  @Prop({ default: "Go to Dashboard" })
+  dismissText!: string;
+
   isImage: boolean = true;
 
   get overlayImage() {
@@ -91,7 +103,7 @@ export default class NewFeatureOverlay extends Vue {
   }
 
   get overlay__imageBlockMq() {
-    return this.$mq === "md" ? "s-overlay__imageBlock--mq" : "";
+    return this.$mq === "md" ? "s-overlay__image-block--mq" : "";
   }
 
   mounted() {
@@ -100,6 +112,10 @@ export default class NewFeatureOverlay extends Vue {
     } else {
       this.isImage = true;
     }
+  }
+
+  clickDismiss() {
+    this.$modal.hide("new-feature");
   }
 }
 </script>
@@ -114,13 +130,13 @@ export default class NewFeatureOverlay extends Vue {
   display: block !important;
 }
 
-.s-overlay__imageBlock--mq {
+.s-overlay__image-block--mq {
   width: 100% !important;
   height: auto;
 }
 
 .v--modal-overlay {
-  background: @day-overlay;
+  background: @day-overlay!important;
 }
 
 .s-overlay__wrapper {
@@ -146,7 +162,6 @@ export default class NewFeatureOverlay extends Vue {
 
 .s-overlay__container {
   width: 80%;
-  .max-width();
   max-width: 1400px;
   height: auto;
   margin: 0 auto;
@@ -159,6 +174,7 @@ export default class NewFeatureOverlay extends Vue {
 
 .s-overlay__body {
   flex-basis: 50%;
+  text-align: left;
 }
 
 .s-overlay__label {
@@ -175,6 +191,7 @@ export default class NewFeatureOverlay extends Vue {
 .s-overlay__text {
   line-height: 21px;
   .margin-bottom(3);
+  font-size: 16px;
 }
 
 .s-overlay-links {
@@ -188,27 +205,44 @@ export default class NewFeatureOverlay extends Vue {
   .margin-left(2);
 }
 
-.s-overlay__imageBlock {
+.s-overlay__image-block {
   text-align: center;
   justify-self: center;
   .margin-top(2);
-  .radius(2);
   overflow: hidden;
 }
 
 .s-overlay__image {
   max-width: 100%;
   width: auto;
+  .radius(2);
 }
 
 .night,
 .night-theme {
   .v--modal-overlay {
-    background: @night-overlay;
+    background: @night-overlay!important;
   }
 
   .s-overlay__label {
     color: @white;
+  }
+}
+</style>
+
+<style lang="less">
+@import "./../styles/Imports";
+
+.s-overlay__text {
+  line-height: 21px;
+  .margin-bottom(3);
+  font-size: 16px;
+
+  p,
+  * {
+    font-size: 16px;
+    line-height: 21px;
+    .margin-bottom(2);
   }
 }
 </style>

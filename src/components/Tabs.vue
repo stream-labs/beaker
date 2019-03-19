@@ -29,9 +29,9 @@
       </div>
     </div>
 
-    <!-- <div class="s-tab-content" v-if="!hideContent">
+    <div class="s-tab-content" v-if="!hideContent">
       <slot v-for="tab in tabs" :name="tab.value" v-if="tab.value === value"/>
-    </div>-->
+    </div>
   </div>
 </template>
 
@@ -77,9 +77,6 @@ export default class Tabs extends Vue {
   }
 
   mounted() {
-    // console.log(this.$refs.scrollable_tabs.scrollWidth)
-    // console.log(this.$parent.$refs.scrollable_tabs)
-    // console.log(this.$refs.scrollable_tabs.clientWidth)
     this.isMounted = true;
     this.tabsContainer = this.$refs.scrollable_tabs;
     this.calculateScrolls();
@@ -101,7 +98,7 @@ export default class Tabs extends Vue {
     this.canScroll =
       this.tabsContainer.scrollWidth > this.tabsContainer.clientWidth;
     this.hasPrev = this.tabsContainer.scrollLeft > 0;
-    let scrollRight =
+    const scrollRight =
       this.tabsContainer.scrollWidth -
       (this.tabsContainer.scrollLeft + this.tabsContainer.clientWidth);
 

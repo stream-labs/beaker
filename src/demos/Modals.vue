@@ -21,8 +21,8 @@ components: {
   :text=&quot;'Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.'&quot;&gt;
 &lt;/ModalComp&gt;
 
-&lt;Button 
-:variation=&quot;'default'&quot; 
+&lt;Button
+:variation=&quot;'default'&quot;
 :title=&quot;'modal'&quot;
  @click=&quot;$modal.show('modal-basic')&quot;&gt;
 &lt;/Button&gt;
@@ -148,7 +148,7 @@ components: {
         :subTitle="'Delete ‘Streamlabs Pillow’'"
         :text="'Are you sure you want to delete the merch item ‘Streamlabs Pillow’? This action cannot be undone.'"
         @confirm="() => {}"
-        :confirm-button-text="'Delete'"
+        :confirmButtonText="'Delete'"
       ></ModalComp>
 
       <div class="button-container button-container--left">
@@ -240,10 +240,19 @@ components: {
           <td>Callback function when confirmed (only in Modal Confirmation)</td>
         </tr>
         <tr>
-          <td>confirm-button-text</td>
+          <td>confirmButtonText</td>
           <td>string</td>
           <td>Confirm</td>
           <td>Confirm button text (only in Modal Confirmation)</td>
+        </tr>
+        <tr>
+          <td>buttonVariation</td>
+          <td>string</td>
+          <td>warning</td>
+          <td>
+            Pass in
+            <code>action</code> if it's a confirmation that doesn't warrant a warning (only in Modal Confirmation)
+          </td>
         </tr>
       </tbody>
     </table>
@@ -263,7 +272,7 @@ import Button from "./../components/Button.vue";
     Button
   }
 })
-export default class Modals extends Vue { }
+export default class Modals extends Vue {}
 </script>
 <style lang="less" scoped>
 @import "./../styles/Imports";

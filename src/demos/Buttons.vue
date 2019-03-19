@@ -27,7 +27,7 @@ components: {
   &lt;Button
     :variation=&quot;'default'&quot;
     :title=&quot;'Default'&quot;&gt;
-    :onClick=&quot;'buttonClick'&quot;&gt;
+    @click=&quot;'buttonClick'&quot;&gt;
   &lt;/Button&gt;
 
   &lt;Button
@@ -634,8 +634,9 @@ components: {
             <code>mixer</code>,
             <code>twitch</code>,
             <code>yt</code>,
-            <code>periscope</code> and
-            <code>picarto</code>.
+            <code>periscope</code>,
+            <code>picarto</code>and
+            <code>paypal-blue</code>.
           </td>
         </tr>
       </tbody>

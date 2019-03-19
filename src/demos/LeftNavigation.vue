@@ -17,6 +17,7 @@
       <a class="left-navigation__link" @click="changeSection('callouts')">Callouts</a>
       <a class="left-navigation__link" @click="changeSection('call-to-actions')">Call To Actions</a>
       <a class="left-navigation__link" @click="changeSection('color-pickers')">Color Picker</a>
+      <a class="left-navigation__link" @click="changeSection('creator-sites')">Creator Sites</a>
       <a class="left-navigation__link" @click="changeSection('dropdowns')">Dropdowns</a>
       <a class="left-navigation__link" @click="changeSection('empty-sections')">Empty Sections</a>
       <a class="left-navigation__link" @click="changeSection('extras')">Extras</a>
@@ -32,7 +33,6 @@
       <a class="left-navigation__link" @click="changeSection('paginations')">Paginations</a>
       <a class="left-navigation__link" @click="changeSection('progress-bars')">Progress Bars</a>
       <a class="left-navigation__link" @click="changeSection('sliders')">Sliders</a>
-      <a class="left-navigation__link" @click="changeSection('streamer-sites')">Streamer Sites</a>
       <a class="left-navigation__link" @click="changeSection('tables')">Tables</a>
       <a class="left-navigation__link" @click="changeSection('tabs')">Tabs</a>
       <a class="left-navigation__link" @click="changeSection('toggles')">Toggles</a>

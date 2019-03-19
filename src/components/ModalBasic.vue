@@ -71,7 +71,7 @@ export default class ModalBasic extends Vue {
 
 .s-modal-footer {
   background: @light-2;
-  .radius-bottom(2, 2);
+  .radius-bottom(2);
   display: flex;
   justify-content: flex-end;
   align-items: center;

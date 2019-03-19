@@ -61,6 +61,7 @@ export default class App extends Vue {
 
 <style lang="less">
 @import "./styles/App";
+@import "./styles/Imports";
 
 #nav {
   border-bottom: 1px solid @day-border;
