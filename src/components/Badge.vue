@@ -1,15 +1,8 @@
 <template>
-  <div v-if="variant === 'pro'">
-    <div class="s-badge" :style="badgesProRewrite">
-      <slot></slot>
-    </div>
-  </div>
-
-  <div v-else>
-    <div class="s-badge" :class="badgeClasses">
-      <div
-        v-if="variant === 'progress'"
-        :style="{
+  <div class="s-badge" :class="badgeClasses" :style="badgeStyles">
+    <div
+      v-if="variant === 'progress'"
+      :style="{
         'background-image': `linear-gradient(
           to right,
           ${ backgroundColor } ${ parseInt(100 * current / total) }%,
@@ -17,9 +10,8 @@
         )`,
         'color': textColor
       }"
-      >{{ `${current}${separator}${total} ${suffix}` }}</div>
-      <slot v-else/>
-    </div>
+    >{{ `${current}${separator}${total} ${suffix}` }}</div>
+    <slot v-else/>
   </div>
 </template>
 
@@ -63,19 +55,25 @@ export default class Badge extends Vue {
   @Prop()
   suffix!: string;
 
-  badgesProRewrite: any = {
+  badgeProRewrite: any = {
     background: this.backgroundColor,
     color: this.textColor
+  };
+
+  get badgeStyles() {
+    const styles: any = [];
+
+    if (this.variant === "pro") {
+      styles.push(this.badgeProRewrite);
+    }
+
+    return styles;
   }
 
   get badgeClasses() {
     const classes: any = [];
 
     classes.push(`s-badge--${this.variant}`);
-
-    // if (this.variant === "pro" && this.backgroundColor) {
-    //   classes.push()
-    // }
 
     if (this.alignLeft) {
       classes.push(`s-badge--left`);
