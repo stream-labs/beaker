@@ -67,9 +67,9 @@ components: {
         <badge :variant="'success'" :align-left="true">Success</badge>
         <badge :variant="'tag'" :align-left="true">Tag</badge>
         <badge :variant="'new'" :align-left="true">New</badge>
-        <badge :variant="'beta'" :align-left="true">Beta</badge>
+        <badge :variant="'beta'" :align-left="true" >Beta</badge>
         <badge :variant="'warning'" :align-left="true">Warning</badge>
-        <badge :variant="'pro'" :align-left="true">Pro</badge>
+        <badge :variant="'pro'" :align-left="true" :backgroundColor="'#999'" :textColor="'#000'">Pro</badge>
         <badge
           :variant="'progress'"
           :bar-color="'#8736e0'"
@@ -121,7 +121,7 @@ components: {
           <td>Removes margin from left and right.</td>
         </tr>
         <tr>
-          <td>barColor</td>
+          <td>backgroundColor</td>
           <td>string</td>
           <td>"#31c3a2"</td>
           <td>Background color of progress bar.

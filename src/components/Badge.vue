@@ -1,17 +1,25 @@
 <template>
-  <div class="s-badge" :class="badgeClasses">
-    <div
-      v-if="variant === 'progress'"
-      :style="{
+  <div v-if="variant === 'pro'">
+    <div class="s-badge" :style="badgesProRewrite">
+      <slot></slot>
+    </div>
+  </div>
+
+  <div v-else>
+    <div class="s-badge" :class="badgeClasses">
+      <div
+        v-if="variant === 'progress'"
+        :style="{
         'background-image': `linear-gradient(
           to right,
-          ${ barColor } ${ parseInt(100 * current / total) }%,
+          ${ backgroundColor } ${ parseInt(100 * current / total) }%,
           rgba(0,0,0,0) 0%
         )`,
         'color': textColor
       }"
-    >{{ `${current}${separator}${total} ${suffix}` }}</div>
-    <slot v-else/>
+      >{{ `${current}${separator}${total} ${suffix}` }}</div>
+      <slot v-else/>
+    </div>
   </div>
 </template>
 
@@ -21,7 +29,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 @Component({})
 export default class Badge extends Vue {
   /*
-    barColor: STRING - pass in color name, rgba or hex code to set the color of the progress bar. Default is #31c3a2 (teal)
+    backgroundColor: STRING - pass in color name, rgba or hex code to set the color of the progress bar. Default is #31c3a2 (teal)
     textColor: STRING - pass in color name, rgba or hex code to set the color of the bar text. Default is #fff (white)
     current: INTEGER or FLOAT - indicates where the current progress should be. e.g. 5 in '5 out of 10.'
     total: INTEGER or FLOAT - indicates what the maximum/completion value is. e.g. 10 in '5 out of 10.'
@@ -37,8 +45,8 @@ export default class Badge extends Vue {
   @Prop({ default: false })
   noMargin!: boolean;
 
-  @Prop({ default: "#31c3a2" })
-  barColor!: string;
+  @Prop()
+  backgroundColor!: string;
 
   @Prop({ default: "#ffffff" })
   textColor!: string;
@@ -55,10 +63,19 @@ export default class Badge extends Vue {
   @Prop()
   suffix!: string;
 
+  badgesProRewrite: any = {
+    background: this.backgroundColor,
+    color: this.textColor
+  }
+
   get badgeClasses() {
     const classes: any = [];
 
     classes.push(`s-badge--${this.variant}`);
+
+    // if (this.variant === "pro" && this.backgroundColor) {
+    //   classes.push()
+    // }
 
     if (this.alignLeft) {
       classes.push(`s-badge--left`);
