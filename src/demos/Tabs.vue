@@ -23,7 +23,7 @@ components: {
     <div class="section section__components">
       <tab-develop :tabs="test" :tabSize="'large'"></tab-develop>
     </div>
-    <!-- <tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler"></tabs> -->
+    <tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler"></tabs>
     <table class="docs-table">
       <thead>
         <tr>

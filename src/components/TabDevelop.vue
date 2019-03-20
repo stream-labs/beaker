@@ -41,9 +41,10 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-// import ViewMaterial from "vue-material"
-
-// Vue.use(ViewMaterial);
+import { MdButton, MdTabs } from 'vue-material/dist/components'
+// import 'vue-material/dist/vue-material.min.css'
+Vue.use(MdButton)
+Vue.use(MdTabs)
 
 @Component({})
 export default class TabDevelop extends Vue {
@@ -148,41 +149,41 @@ export default class TabDevelop extends Vue {
   }
 
   .md-button {
-    max-width: initial;
-    min-width: initial;
-    height: auto;
-    .margin-right(2);
-    &:hover {
-      color: @dark-2;
-      outline: none;
-    }
+    // max-width: initial;
+    // min-width: initial;
+    // height: auto;
+    // .margin-right(2);
+    // &:hover {
+    //   color: @dark-2;
+    //   outline: none;
+    // }
   }
 
-  .md-button:not([disabled]).md-focused:before,
-  .md-button:not([disabled]):active:before,
-  .md-button:not([disabled]):hover:before {
-    background: none;
-  }
+  // .md-button:not([disabled]).md-focused:before,
+  // .md-button:not([disabled]):active:before,
+  // .md-button:not([disabled]):hover:before {
+  //   background: none;
+  // }
 
   .md-active {
-    color: @dark-2;
+    // color: @dark-2;
   }
 
   .md-ripple {
-    .padding(0);
-    .padding-bottom(1.5);
-    border-bottom: 2px solid transparent;
-    position: static;
+    // .padding(0);
+    // .padding-bottom(1.5);
+    // border-bottom: 2px solid transparent;
+    // position: static;
   }
 
   .md-tabs-indicator {
     background: @dark-2;
-    height: 2px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    transform: translateZ(0);
-    will-change: left, right;
+    // height: 2px;
+    // position: absolute;
+    // bottom: 0;
+    // left: 0;
+    // transform: translateZ(0);
+    // will-change: left, right;
   }
 }
 
@@ -214,146 +215,146 @@ export default class TabDevelop extends Vue {
 
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+// @import "./../styles/Imports";
 
-.md-tabs {
-  display: flex;
-  flex-direction: row;
-}
+// .md-tabs {
+//   display: flex;
+//   flex-direction: row;
+// }
 
-.s-tabs-wrapper {
-  height: 100%;
-}
+// .s-tabs-wrapper {
+//   height: 100%;
+// }
 
-.s-tabs-nav-wrapper {
-  position: relative;
-  height: 34px;
-}
+// .s-tabs-nav-wrapper {
+//   position: relative;
+//   height: 34px;
+// }
 
-.s-tabs-nav {
-  display: flex;
-  align-items: flex-end;
-  flex-direction: row;
-  justify-content: flex-start;
-  background: transparent;
-  box-sizing: border-box;
-  position: relative;
-  max-width: none;
-  background: transparent;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-}
+// .s-tabs-nav {
+//   display: flex;
+//   align-items: flex-end;
+//   flex-direction: row;
+//   justify-content: flex-start;
+//   background: transparent;
+//   box-sizing: border-box;
+//   position: relative;
+//   max-width: none;
+//   background: transparent;
+//   width: 100%;
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   right: 0;
+//   left: 0;
+// }
 
-.s-tabs-nav__control {
-  height: calc(~"2 * " @spacing);
-  display: flex;
-  align-items: flex-end;
-  .margin-bottom(2);
-  position: relative;
+// .s-tabs-nav__control {
+//   height: calc(~"2 * " @spacing);
+//   display: flex;
+//   align-items: flex-end;
+//   .margin-bottom(2);
+//   position: relative;
 
-  &.s-has-next,
-  &.s-has-prev {
-    &:before {
-      content: "";
-      width: 40px;
-      height: 16px;
-      position: absolute;
-    }
-  }
+//   &.s-has-next,
+//   &.s-has-prev {
+//     &:before {
+//       content: "";
+//       width: 40px;
+//       height: 16px;
+//       position: absolute;
+//     }
+//   }
 
-  &.s-has-next {
-    &:before {
-      right: 16px;
-      background: -moz-linear-gradient(
-        left,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 1) 100%
-      ); /* FF3.6-15 */
-      background: -webkit-linear-gradient(
-        left,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 1) 100%
-      ); /* Chrome10-25,Safari5.1-6 */
-      background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 1) 100%
-      ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    }
-  }
+//   &.s-has-next {
+//     &:before {
+//       right: 16px;
+//       background: -moz-linear-gradient(
+//         left,
+//         rgba(255, 255, 255, 0) 0%,
+//         rgba(255, 255, 255, 1) 100%
+//       ); /* FF3.6-15 */
+//       background: -webkit-linear-gradient(
+//         left,
+//         rgba(255, 255, 255, 0) 0%,
+//         rgba(255, 255, 255, 1) 100%
+//       ); /* Chrome10-25,Safari5.1-6 */
+//       background: linear-gradient(
+//         to right,
+//         rgba(255, 255, 255, 0) 0%,
+//         rgba(255, 255, 255, 1) 100%
+//       ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+//     }
+//   }
 
-  &.s-has-prev {
-    &:before {
-      left: 16px;
-      background: -moz-linear-gradient(
-        left,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 255, 255, 0) 100%
-      ); /* FF3.6-15 */
-      background: -webkit-linear-gradient(
-        left,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 255, 255, 0) 100%
-      ); /* Chrome10-25,Safari5.1-6 */
-      background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 255, 255, 0) 100%
-      ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    }
-  }
-}
+//   &.s-has-prev {
+//     &:before {
+//       left: 16px;
+//       background: -moz-linear-gradient(
+//         left,
+//         rgba(255, 255, 255, 1) 0%,
+//         rgba(255, 255, 255, 0) 100%
+//       ); /* FF3.6-15 */
+//       background: -webkit-linear-gradient(
+//         left,
+//         rgba(255, 255, 255, 1) 0%,
+//         rgba(255, 255, 255, 0) 100%
+//       ); /* Chrome10-25,Safari5.1-6 */
+//       background: linear-gradient(
+//         to right,
+//         rgba(255, 255, 255, 1) 0%,
+//         rgba(255, 255, 255, 0) 100%
+//       ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+//     }
+//   }
+// }
 
-.s-tabs {
-  display: inline-block;
-  overflow-x: hidden;
-  white-space: nowrap;
-  overflow-y: hidden;
-  width: 100%;
+// .s-tabs {
+//   display: inline-block;
+//   overflow-x: hidden;
+//   white-space: nowrap;
+//   overflow-y: hidden;
+//   width: 100%;
 
-  &.s-has-prev {
-    .margin-left(2);
-  }
+//   &.s-has-prev {
+//     .margin-left(2);
+//   }
 
-  &.s-has-next {
-    .margin-right(2);
-  }
+//   &.s-has-next {
+//     .margin-right(2);
+//   }
 
-  &:before {
-    content: "";
-    position: absolute;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 1px;
-    background-color: @light-3;
-  }
-}
+//   &:before {
+//     content: "";
+//     position: absolute;
+//     right: 0;
+//     left: 0;
+//     bottom: 0;
+//     width: 100%;
+//     height: 1px;
+//     background-color: @light-3;
+//   }
+// }
 
-.night-theme {
-  .s-tabs {
-    &:before {
-      background-color: @dark-4;
-    }
-  }
+// .night-theme {
+//   .s-tabs {
+//     &:before {
+//       background-color: @dark-4;
+//     }
+//   }
 
-  .s-tabs-nav__control {
-    &.s-has-next {
-      &:before {
-        background: none;
-      }
-    }
+//   .s-tabs-nav__control {
+//     &.s-has-next {
+//       &:before {
+//         background: none;
+//       }
+//     }
 
-    &.s-has-prev {
-      &:before {
-        background: none;
-      }
-    }
-  }
-}
-</style>
+//     &.s-has-prev {
+//       &:before {
+//         background: none;
+//       }
+//     }
+//   }
+// }
+// </style>
