@@ -21,7 +21,7 @@ components: {
     </Accordion>
 
     <div class="section section__components">
-      <tab-develop :tabs="test" :tabSize="'large'"></tab-develop>
+      <tab-develop :tabs="test" :tabSize="'small'"></tab-develop>
     </div>
     <tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler"></tabs>
     <table class="docs-table">
