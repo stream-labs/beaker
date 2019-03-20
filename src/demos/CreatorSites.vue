@@ -10,7 +10,7 @@ components: {
   UrlBar
 }</code></pre>
       <div class="section">
-        <SSProSimulator :username="username"></SSProSimulator>
+        <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
         <br>
         <table class="docs-table">
           <thead>
@@ -90,6 +90,6 @@ export default class CreatorSitesDemo extends Vue {
   icon =
     "https://static-cdn.jtvnw.net/jtv_user_pictures/9dfce03d-25cc-4737-96d2-2ecf6924bebe-profile_image-70x70.jpg";
 
-  domain = "morganleee.com";
+  domain = "morganleeeeeeeeeee.com";
 }
 </script>

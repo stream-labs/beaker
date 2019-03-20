@@ -33,7 +33,7 @@ components: {
       <NewFeatureOverlay
         :label="'Introducing Merch Stores'"
         :title="'Increase Your Revenue'"
-        :media="'https://cdn.streamlabs.com/static/prototype_cloudbot2.webm'"
+        :media="'https://cdn.streamlabs.com/cloudbot/prototype_cloudbot_800x300.webm'"
         :buttonTitle="'Go To Store'"
       >
         <p>We’ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.</p>

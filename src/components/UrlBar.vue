@@ -48,14 +48,15 @@ export default class UrlBar extends Vue {
 
 .s-cs-simulator__url-container {
   height: 24px;
-  width: 248px;
+  max-width: 400px;
+  .padding-h-sides();
   background-color: @white;
   color: @day-paragraph;
   text-align: center;
   .radius();
   position: absolute;
-  right: 0%;
-  left: 0%;
+  right: 16%;
+  left: 16%;
   margin: 0 auto;
   top: 8px;
   line-height: 24px;

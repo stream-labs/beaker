@@ -19,7 +19,6 @@
         </p>
         <div class="s-overlay-links">
           <Button
-            :type="'button'"
             :size="'large'"
             :variation="'action'"
             :tag="'router-link'"
