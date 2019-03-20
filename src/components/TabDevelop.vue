@@ -15,7 +15,7 @@
           's-has-prev': hasPrev
         }"
         >
-          <md-tabs>
+          <md-tabs md-sync-route>
             <template slot="md-tab" slot-scope="{ tab }">
               {{ tab.label }}
               <i :class="`s-icon-${tab.data.icon}`"></i>
@@ -123,8 +123,7 @@ export default class TabDevelop extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
-@import "./../styles/components/Tabs-fix";
+@import "./../styles/components/Tabs";
 
 // md does not have support for scoped styles
 .font-small {
