@@ -138,88 +138,11 @@ export default class TabDevelop extends Vue {
     font-size: 16px;
   }
 }
-
-.s-md-wrapper {
-  // .md-tabs-navigation {
-  //   display: flex;
-  //   &::-webkit-scrollbar {
-  //     display: none;
-  //   }
-  // }
-
-  // .md-button {
-  //   max-width: initial;
-  //   min-width: initial;
-  //   height: auto;
-  //   .margin-right(2);
-  //   &:hover {
-  //     color: @dark-2;
-  //     outline: none;
-  //   }
-  // }
-
-  // .md-button:not([disabled]).md-focused:before,
-  // .md-button:not([disabled]):active:before,
-  // .md-button:not([disabled]):hover:before {
-  //   background: none;
-  // }
-
-  // .md-active {
-  //   color: @dark-2;
-  // }
-
-  // .md-ripple {
-  //   .padding(0);
-  //   .padding-bottom(1.5);
-  //   border-bottom: 2px solid transparent;
-  //   position: static;
-  // }
-
-  // .md-tabs-indicator {
-  //   background: @dark-2;
-  //   height: 2px;
-  //   position: absolute;
-  //   bottom: 0;
-  //   left: 0;
-  //   transform: translateZ(0);
-  //   will-change: left, right;
-  // }
-}
-
-.night,
-.night-theme {
-  // .md-button {
-  //   color: @light-4;
-  //   &:hover {
-  //     color: @white;
-  //     outline: none;
-  //   }
-  // }
-
-  // .md-ripple {
-  //   color: @light-4;
-  // }
-
-  // .md-active {
-  //   .md-ripple {
-  //     color: @light-4;
-  //   }
-  // }
-
-  // .md-tabs-indicator {
-  //   background: @white;
-  // }
-}
 </style>
 
 
 <style lang="less" scoped>
 @import "./../styles/Imports";
-
-.md-tabs {
-  display: flex;
-  flex-direction: row;
-}
 
 .s-tabs-wrapper {
   height: 100%;
@@ -258,6 +181,19 @@ export default class TabDevelop extends Vue {
   &.s-has-next,
   &.s-has-prev {
     &:before {
+      right: 16px;
+      background: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        from(rgba(255, 255, 255, 0)),
+        to(#ffffff)
+      );
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        #ffffff 100%
+      );
       content: "";
       width: 40px;
       height: 16px;
@@ -343,42 +279,15 @@ export default class TabDevelop extends Vue {
   }
 
   .s-tabs-nav__control {
-    height: calc(2 * 8px);
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: end;
-    -ms-flex-align: end;
-    align-items: flex-end;
-    margin-bottom: 16px;
-    position: relative;
     &.s-has-next {
       &:before {
-        right: 16px;
-        background: linear-gradient(
-          to right,
-          rgba(23, 36, 45, 0) 0%,
-          #17242d 100%
-        );
-        content: "";
-        width: 40px;
-        height: 16px;
-        position: absolute;
+        background: none;
       }
     }
 
     &.s-has-prev {
       &:before {
-        left: 16px;
-        background: linear-gradient(
-          to right,
-          rgba(255, 255, 255, 0) 0%,
-          #ffffff 100%
-        );
-        content: "";
-        width: 40px;
-        height: 16px;
-        position: absolute;
+        background: none;
       }
     }
   }
