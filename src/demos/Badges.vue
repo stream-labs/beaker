@@ -2,7 +2,8 @@
   <div>
     <div class="section">
       <h1>Badges</h1>
-      <p>By default, our badges are designed to be on the right side of elements with 8px of margin on the left. If you would like to use a badge on the left side of an element, set prop
+      <p>
+        By default, our badges are designed to be on the right side of elements with 8px of margin on the left. If you would like to use a badge on the left side of an element, set prop
         <code>align-left="true"</code> and it will switch the margin to be on the right side.
       </p>
 
@@ -69,10 +70,16 @@ components: {
         <badge :variant="'new'" :align-left="true">New</badge>
         <badge :variant="'beta'" :align-left="true">Beta</badge>
         <badge :variant="'warning'" :align-left="true">Warning</badge>
+        <badge
+          :variant="'pro'"
+          :align-left="true"
+          :backgroundColor="'green'"
+          :textColor="'#fff'"
+        >Pro</badge>
         <badge :variant="'pro'" :align-left="true">Pro</badge>
         <badge
           :variant="'progress'"
-          :bar-color="'#8736e0'"
+          :backgroundColor="'#8736e0'"
           :current="17"
           :total="25"
           :suffix="'Sold'"
@@ -96,7 +103,8 @@ components: {
           <td>variant</td>
           <td>string</td>
           <td>"success"</td>
-          <td>How the badge will look or funciton. Variants:
+          <td>
+            How the badge will look or funciton. Variants:
             <code>success</code>,
             <code>tag</code>,
             <code>new</code>,
@@ -121,28 +129,33 @@ components: {
           <td>Removes margin from left and right.</td>
         </tr>
         <tr>
-          <td>barColor</td>
+          <td>backgroundColor</td>
           <td>string</td>
           <td>"#31c3a2"</td>
-          <td>Background color of progress bar.
+          <td>
+            Background color of progress bar and pro.
             <code>variant</code> prop must be set to
-            <code>progress</code>.
+            <code>progress</code> or
+            <code>pro</code>.
           </td>
         </tr>
         <tr>
           <td>textColor</td>
           <td>string</td>
           <td>"#ffffff"</td>
-          <td>Text color of progress bar.
+          <td>
+            Text color of progress bar and pro.
             <code>variant</code> prop must be set to
-            <code>progress</code>.
+            <code>progress</code> or
+            <code>pro</code>.
           </td>
         </tr>
         <tr>
           <td>current</td>
           <td>number</td>
           <td>null</td>
-          <td>Current progress amount.
+          <td>
+            Current progress amount.
             <code>variant</code> prop must be set to
             <code>progress</code>.
           </td>
@@ -151,7 +164,8 @@ components: {
           <td>total</td>
           <td>number</td>
           <td>null</td>
-          <td>Total progross amount.
+          <td>
+            Total progross amount.
             <code>variant</code> prop must be set to
             <code>progress</code>.
           </td>
@@ -160,7 +174,8 @@ components: {
           <td>separator</td>
           <td>string</td>
           <td>"/"</td>
-          <td>Separator between current and total amounts is displayed.
+          <td>
+            Separator between current and total amounts is displayed.
             <code>variant</code> prop must be set to
             <code>progress</code>.
           </td>
@@ -169,7 +184,8 @@ components: {
           <td>suffix</td>
           <td>string</td>
           <td>null</td>
-          <td>String to the right of the total amount.
+          <td>
+            String to the right of the total amount.
             <code>variant</code> prop must be set to
             <code>progress</code>.
           </td>
