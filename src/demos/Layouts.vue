@@ -85,6 +85,38 @@ components: {
           <td>null</td>
           <td>button title to display</td>
         </tr>
+
+        <tr>
+            <td>buttonHref</td>
+            <td>String</td>
+            <td>null</td>
+            <td>
+              Used if the the
+              <code>type</code> is an
+              <code>a</code> element (links).
+            </td>
+          </tr>
+          <tr>
+            <td>buttonTo</td>
+            <td>String</td>
+            <td>null</td>
+            <td>
+              Used if the the
+              <code>type</code> is a
+              <code>router-link</code>. Define the path.
+            </td>
+          </tr>
+          <tr>
+            <td>buttonTag</td>
+            <td>String</td>
+            <td>button</td>
+            <td>
+              What type of element the component is. Options are
+              <code>button</code>,
+              <code>a</code>,
+              <code>router-link</code>
+            </td>
+          </tr>
       </tbody>
     </table>
   </div>
