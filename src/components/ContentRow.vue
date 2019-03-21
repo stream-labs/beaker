@@ -1,9 +1,7 @@
 <template>
   <div class="s-content-row" :class="contentRowMq">
     <div class="s-content-box" :class="contentBoxMq">
-      <div class="s-banner__icon" :class="bannerIconMq" v-if="icon">
-        <i :class="`s-icon-${icon}`"></i>
-      </div>
+      <i class="s-banner__icon" :class="`s-icon-${icon}`" v-if="icon"></i>
       <h2 class="s-content__title" :class="contentTitleMq">
         <slot name="title"></slot>
       </h2>
@@ -11,7 +9,7 @@
         <slot name="text"></slot>
       </p>
     </div>
-    <div class="s-button-container s-button-container--left">
+    <div class="s-button-container">
       <Button
         :size="'fixed-width'"
         :variation="btnVariation"
@@ -94,7 +92,7 @@ export default class ContentRow extends Vue {
 .s-content-row-mq {
   flex-direction: column;
   .padding(3) !important;
-   .s-button {
+  .s-button {
     .margin-right(0);
   }
 }
@@ -119,12 +117,15 @@ export default class ContentRow extends Vue {
 .s-content-row {
   background: @light-2;
   .radius();
-  .padding-v-sides();
-  .padding-h-sides(2);
+  .padding(2);
   .margin-bottom(2);
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  p {
+    .margin-bottom(0);
+  }
 }
 
 .s-content-box {
