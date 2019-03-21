@@ -656,7 +656,8 @@ export default class Button extends Vue {
     }
   }
 
-  .s-button--action {
+  .s-button--action,
+  .s-button--slobs-download {
     color: @night-title;
 
     &:focus,

@@ -150,21 +150,17 @@ export default class CallToAction extends Vue {
   flex-grow: 3;
 }
 
-.s-title,
-.s-subtitle {
+.s-title {
+  font-size: 20px;
+  .weight(@bold);
+  .margin-bottom(2);
   color: @day-title;
   line-height: 130%;
 }
 
-.s-title {
-  font-size: 22px;
-  .weight(@bold);
-  .margin-bottom(2);
-}
-
 .s-subtitle {
-  font-size: 18px;
-  .weight(@medium);
+  font-size: 14px;
+  color: @day-paragraph;
 }
 
 .night,
@@ -172,9 +168,12 @@ export default class CallToAction extends Vue {
   .s-call-to-action {
     background-color: @night-section-alt;
   }
-  .s-title,
-  .s-subtitle {
+  .s-title {
     color: @night-title;
+  }
+
+  .s-subtitle {
+    color: @night-paragraph;
   }
 }
 </style>
