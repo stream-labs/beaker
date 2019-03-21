@@ -97,6 +97,7 @@ export default class CallToAction extends Vue {
 
 .s-call-to-action-mq {
   flex-direction: column !important;
+
   .s-button {
     .margin-left(0);
   }

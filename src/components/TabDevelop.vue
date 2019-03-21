@@ -17,8 +17,8 @@
         >
           <md-tabs md-sync-route>
             <template slot="md-tab" slot-scope="{ tab }">
+              <i v-if="tab.data.icon" :class="`s-icon-${tab.data.icon}`"></i>
               {{ tab.label }}
-              <i :class="`s-icon-${tab.data.icon}`"></i>
             </template>
             <div v-for="(tab, index) in tabs" :key="index">
               <md-tab
@@ -41,7 +41,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-import { MdButton, MdContent, MdTabs } from 'vue-material/dist/components'
+import { MdButton, MdContent, MdTabs } from "vue-material/dist/components";
 
 Vue.use(MdButton);
 Vue.use(MdContent);
@@ -269,6 +269,12 @@ export default class TabDevelop extends Vue {
     width: 100%;
     height: 1px;
     background-color: @light-3;
+  }
+}
+
+.md-button-content {
+  i {
+    .margin-right(0.5);
   }
 }
 
