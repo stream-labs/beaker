@@ -9,6 +9,19 @@
     </div>
     <div class="s-button-container s-button-container--right">
       <Button
+        v-if="buttonClick"
+        :variation="buttonVariation"
+        :size="'large'"
+        :title="buttonTitle"
+        :description="buttonDescription"
+        :href="buttonHref"
+        :to="buttonTo"
+        :tag="buttonTag"
+        @click.native.prevent="buttonClick"
+      ></Button>
+
+      <Button
+        v-else
         :variation="buttonVariation"
         :size="'large'"
         :title="buttonTitle"
@@ -69,8 +82,11 @@ export default class CallToAction extends Vue {
   @Prop()
   buttonTo!: String;
 
-  @Prop({ default: "a" })
+  @Prop()
   buttonTag!: String;
+
+  @Prop()
+  buttonClick!: Function;
 
   $mq: any;
 
