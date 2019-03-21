@@ -26,7 +26,7 @@ components: {
         </div>
       </accordion>
       <div class="row">
-        <call-to-action/>
+        <call-to-action />
       </div>
       <h2>Custom Call to Action</h2>
       <div class="row">
@@ -37,7 +37,9 @@ components: {
           :buttonVariation="'action'"
           :buttonTitle="'Click Me'"
           :buttonDescription="''"
-          :buttonHref="'https://www.google.com/'"
+          :buttonTag="'a'" 
+          :buttonHref="'https://google.com'"
+          :buttonClick="test"
         />
       </div>
       <table class="docs-table">
@@ -109,12 +111,20 @@ components: {
           <tr>
             <td>buttonTag</td>
             <td>String</td>
-            <td>a</td>
+            <td>null</td>
             <td>
               What type of element the component is. Options are
               <code>button</code>,
               <code>a</code>,
               <code>router-link</code>
+            </td>
+          </tr>
+          <tr>
+            <td>buttonClick</td>
+            <td>Function</td>
+            <td>null</td>
+            <td>
+              Emits a click function.
             </td>
           </tr>
         </tbody>
@@ -137,5 +147,9 @@ import Button from "./../components/Button.vue";
 })
 export default class CallToActions extends Vue {
   value = 50;
+
+  test() {
+    alert("test");
+  }
 }
 </script>
