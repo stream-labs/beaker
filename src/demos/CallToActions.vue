@@ -29,12 +29,17 @@ components: {
         </div>
       </accordion>
       <div class="row">
-        <call-to-action  :buttonClick="test" />
+        <call-to-action  :buttonClick="test"  />
       </div>
       <h2>Custom Call to Action</h2>
       <div class="row">
         <call-to-action
+          :bgColor="'#31c3a2'"
+          :titleColor="'#fff'"
+          :subTitleColor="'#fff'"
           :thumbnail="require('./../assets/imgs/logo.svg')"
+          :thumbnailWidth="120"
+          :thumbnailHeight="'auto'"
           :thumbnailBg="'#fff'"
           :title="'This is a Custom Call To Action'"
           :description="'A Custom Description'"
@@ -43,6 +48,8 @@ components: {
           :buttonDescription="''"
           :buttonTag="'a'" 
           :buttonHref="'https://google.com'"  
+          :buttonBg="'#fff'"
+          :buttonTextColor="'#000'"
         ></call-to-action>
       </div>
       <table class="docs-table">
@@ -55,6 +62,27 @@ components: {
           </tr>
         </thead>
         <tbody>
+<tr>
+            <td>bgColor</td>
+            <td>String</td>
+            <td>#f5f8fa</td>
+            <td>Background color, default color is @day-section (#f5f8fa)</td>
+          </tr>
+
+          <tr>
+            <td>titleColor</td>
+            <td>String</td>
+            <td>#09161d</td>
+            <td>Title color, default color is @day-title (#09161d)</td>
+          </tr>
+
+          <tr>
+            <td>subTitleColor</td>
+            <td>String</td>
+            <td>#4f5e65</td>
+            <td>Sub title color, default color is @day-paragraph (#4f5e65)</td>
+          </tr>
+
           <tr>
             <td>thumbnail</td>
             <td>String</td>
@@ -66,6 +94,20 @@ components: {
             <td>String</td>
             <td>#31C3A2</td>
             <td>A Thumbnail background color, default color is @teal (#31C3A2)</td>
+          </tr>
+
+          <tr>
+            <td>thumbnailWidth</td>
+            <td>Number</td>
+            <td>80</td>
+            <td>A Thumbnail width</td>
+          </tr>
+
+          <tr>
+            <td>thumbnailHeight</td>
+            <td>Number</td>
+            <td>80</td>
+            <td>A Thumbnail height</td>
           </tr>
           
           <tr>
@@ -98,6 +140,19 @@ components: {
             <td>Windows 7+ 245.8MB</td>
             <td>Description for 'slobs-download' button variation only, recomended left blank otherwise ( :buttonDescription="'" )</td>
           </tr>
+<tr>
+            <td>buttonBg</td>
+            <td>String</td>
+            <td>null</td>
+            <td>Button background is forced to be changed</td>
+          </tr>
+          <tr>
+            <td>buttonTextColor</td>
+            <td>String</td>
+            <td>null</td>
+            <td>Button text color is forced to be changed</td>
+          </tr>
+          
           <tr>
             <td>buttonHref</td>
             <td>String</td>
