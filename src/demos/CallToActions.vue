@@ -15,32 +15,35 @@ components: {
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre><code>&lt;call-to-action
-  :thumbnail=&quot;'require('./../assets/imgs/logo.svg')'&quot;
-  :title=&quot;'Call to Action Title'&quot;
-  :description=&quot;'Call to Action Description&quot;
+  :thumbnail=&quot;require('./../assets/imgs/logo.svg')&quot;
+  :thumbnailBg=&quot;'#fff'&quot;
+  :title=&quot;'This is a Custom Call To Action'&quot;
+  :description=&quot;'A Custom Description'&quot;
   :buttonVariation=&quot;'action'&quot;
   :buttonTitle=&quot;'Click Me'&quot;
-  :buttonDescription=&quot;''&quot;&gt;
+  :buttonDescription=&quot;''&quot;
+  :buttonTag=&quot;'a'&quot; 
+  :buttonHref=&quot;'https://google.com'&quot;&gt;
 &lt;/call-to-action&gt;
           </code></pre>
         </div>
       </accordion>
       <div class="row">
-        <call-to-action />
+        <call-to-action  :buttonClick="test" />
       </div>
       <h2>Custom Call to Action</h2>
       <div class="row">
         <call-to-action
           :thumbnail="require('./../assets/imgs/logo.svg')"
+          :thumbnailBg="'#fff'"
           :title="'This is a Custom Call To Action'"
           :description="'A Custom Description'"
           :buttonVariation="'action'"
           :buttonTitle="'Click Me'"
           :buttonDescription="''"
           :buttonTag="'a'" 
-          :buttonHref="'https://google.com'"
-          :buttonClick="test"
-        />
+          :buttonHref="'https://google.com'"  
+        ></call-to-action>
       </div>
       <table class="docs-table">
         <thead>
@@ -56,8 +59,15 @@ components: {
             <td>thumbnail</td>
             <td>String</td>
             <td>require('./../assets/imgs/kevin-standard.svg'</td>
-            <td>A Thumbnail image, background color is @teal (#31C3A2)</td>
+            <td>A Thumbnail image</td>
           </tr>
+ <tr>
+            <td>thumbnailBg</td>
+            <td>String</td>
+            <td>#31C3A2</td>
+            <td>A Thumbnail background color, default color is @teal (#31C3A2)</td>
+          </tr>
+          
           <tr>
             <td>title</td>
             <td>String</td>
