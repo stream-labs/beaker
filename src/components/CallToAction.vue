@@ -1,6 +1,6 @@
 <template>
   <div class="s-call-to-action" :class="callToActionMq">
-    <div class="s-call-to-action__thumb" :class="callToActionThumbMq">
+    <div class="s-call-to-action__thumb" :class="callToActionThumbMq" :style="callToActionThumbBg">
       <img :src="thumbnail">
     </div>
     <div class="s-call-to-action__description" :class="callToActionDescMq">
@@ -58,6 +58,9 @@ export default class CallToAction extends Vue {
   @Prop({ default: require("./../assets/imgs/kevin-standard.svg") })
   thumbnail!: String;
 
+  @Prop()
+  thumbnailBg!: String;  
+
   @Prop({ default: "Get started by downloading Streamlabs OBS" })
   title!: String;
 
@@ -89,6 +92,10 @@ export default class CallToAction extends Vue {
   buttonClick!: Function;
 
   $mq: any;
+
+  callToActionThumbBg: object = {
+    backgroundColor: this.thumbnailBg
+  }
 
   get callToActionMq() {
     return this.$mq === "sm" ? "s-call-to-action-mq" : "";
