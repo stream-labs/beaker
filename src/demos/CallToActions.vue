@@ -14,6 +14,18 @@ components: {
       <h2>Default Call to Action</h2>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
+          <pre><code>&lt;call-to-action  
+  :buttonClick=&quot;test&quot;&gt;
+&lt;/call-to-action&gt;
+          </code></pre>
+        </div>
+      </accordion>
+      <div class="row">
+        <call-to-action  :buttonClick="test"></call-to-action>
+      </div>
+      <h2>Custom Call to Action</h2>
+            <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+        <div slot="content">
           <pre><code>&lt;call-to-action
   :bgColor=&quot;'#31c3a2'&quot;
   :titleColor=&quot;'#fff'&quot;
@@ -35,10 +47,6 @@ components: {
           </code></pre>
         </div>
       </accordion>
-      <div class="row">
-        <call-to-action  :buttonClick="test"  />
-      </div>
-      <h2>Custom Call to Action</h2>
       <div class="row">
         <call-to-action
           :bgColor="'#31c3a2'"
