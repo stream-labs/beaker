@@ -36,7 +36,8 @@ components: {
         </div>
       </accordion>
       <div class="row">
-        <call-to-action  :buttonClick="test"  />
+        <call-to-action      :thumbnailWidth="80"
+          :thumbnailHeight="80" :buttonClick="test"  />
       </div>
       <h2>Custom Call to Action</h2>
       <div class="row">
@@ -46,7 +47,7 @@ components: {
           :subTitleColor="'#fff'"
           :thumbnail="require('./../assets/imgs/logo.svg')"
           :thumbnailWidth="120"
-          :thumbnailHeight="'auto'"
+          :thumbnailHeight="80"
           :thumbnailBg="'#fff'"
           :title="'This is a Custom Call To Action'"
           :description="'A Custom Description'"
@@ -106,14 +107,14 @@ components: {
           <tr>
             <td>thumbnailWidth</td>
             <td>Number</td>
-            <td>80</td>
+            <td>null</td>
             <td>A Thumbnail width</td>
           </tr>
 
           <tr>
             <td>thumbnailHeight</td>
             <td>Number</td>
-            <td>80</td>
+            <td>null</td>
             <td>A Thumbnail height</td>
           </tr>
           
