@@ -261,12 +261,6 @@ components: {
 
         <Button :type="'button'" :size="'small'" :variation="'action'" :title="'Action'"></Button>
 
-        <Button :type="'button'" :size="'fixed-width'" :variation="'action'" :title="'Action'"></Button>
-
-        <Button :type="'button'" :size="'fixed-width'" :variation="'action'" :title="'Action'"></Button>
-
-        <Button :type="'button'" :size="'fixed-width'" :variation="'action'" :title="'Action'"></Button>
-
         <Button :type="'button'" :size="'small'" :variation="'warning'" :title="'Warning'"></Button>
 
         <Button

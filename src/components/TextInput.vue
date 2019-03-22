@@ -1,13 +1,13 @@
 <template>
   <div class="s-form-field" :class="{ 's-form-field--with-label': label }">
     <input
-      class="s-text-input"
       :type="type"
       :placeholder="placeholder"
       @input="handleInput"
       :name="name"
       :disabled="disabled"
       @blur="$emit('blur')"
+      v-model="content"
       :class="{ 's-form-field__input': true, 's-form-field__input--error': !!error }"
     >
     <label
@@ -73,10 +73,15 @@ export default class TextInput extends Vue {
 
 .s-form-field__label {
   position: absolute;
-  color: @light-5;
+  color: @dark-5;
   left: 8px;
   top: 12px;
   .radius();
+}
+
+.s-form-field__label--error,
+.s-form-field__error-text {
+  color: @red;
 }
 
 .s-form-field__error-text,
@@ -102,16 +107,10 @@ export default class TextInput extends Vue {
   .s-form-field__label--top {
     transform: translateY(-20px);
     font-size: 12px;
-    color: @day-paragraph;
-  }
-
-  .form-field__label--error,
-  .form-field__error-text {
-    color: @red;
   }
 
   input:focus + label {
-    color: @teal;
+    color: @day-title;
   }
 
   .s-form-field--top {
@@ -159,7 +158,7 @@ export default class TextInput extends Vue {
     position: relative;
 
     input:focus + label {
-      color: @teal;
+      color: @night-title;
     }
   }
 
@@ -178,10 +177,6 @@ export default class TextInput extends Vue {
 
   .s-form-field__label {
     background-color: @night-bg;
-  }
-
-  input:focus + label,
-  .form-field__label--top {
     color: @night-paragraph;
   }
 

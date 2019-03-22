@@ -5,7 +5,7 @@
     :width="'100%'"
     :height="'auto'"
     classes="s-overlay__wrapper"
-    :clickToClose="false"
+    :clickToClose="true"
   >
     <div slot="top-right" class="s-overlay__icon">
       <span class="s-icon s-icon-close" @click="clickDismiss"></span>
