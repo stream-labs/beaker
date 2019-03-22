@@ -4,7 +4,10 @@
 
     <div class="section">
       <h2>Text Inputs</h2>
-      <p>These 4 fields below are wrapped in a <code>FormGroup</code> component. This will put 16px of margin between form fields and 24px margin between form groups.</p>
+      <p>
+        These 4 fields below are wrapped in a
+        <code>FormGroup</code> component. This will put 16px of margin between form fields and 24px margin between form groups.
+      </p>
       <FormGroup>
         <text-input
           label="Text input"
@@ -12,8 +15,8 @@
           :placeholder="textInputPlaceholder"
           v-model="textInputValue"
           name="textExample"
-          slot="input">
-        </text-input>
+          slot="input"
+        ></text-input>
 
         <text-input
           label="Email input"
@@ -21,8 +24,8 @@
           :placeholder="emailInputPlaceholder"
           v-model="emailInputValue"
           name="emailExample"
-          slot="input">
-        </text-input>
+          slot="input"
+        ></text-input>
 
         <text-input
           label="Password input"
@@ -30,84 +33,79 @@
           :placeholder="passwordInputPlaceholder"
           v-model="passwordInputValue"
           name="passwordExample"
-          slot="input">
-        </text-input>
+          slot="input"
+        ></text-input>
 
         <text-input
           label="With error"
           type="text"
           :placeholder="textInputPlaceholder"
-          v-model="textInputValue"
+          v-model="errorTextInputValue"
           name="textExample"
           slot="input"
-          :error="'Hello, I am an error message'">
-        </text-input>
-
-        <text-input
-          label="With error"
-          type="text"
-          :placeholder="textInputPlaceholder"
-          v-model="textInputValue"
-          name="textExample"
-          slot="input"
-          :help-text="'Hello, I am help text'">
-        </text-input>
+          :error="'Hello, I am an error message'"
+        ></text-input>
       </FormGroup>
 
-       <table class="docs-table">
-      <thead>
-        <tr>
-          <th>Prop</th>
-          <th>Type</th>
-          <th>Default</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>disabled</td>
-          <td>boolean</td>
-          <td>null</td>
-          <td>Puts a disabled class on the form field and disables the input.</td>
-        </tr>
-        <tr>
-          <td>error</td>
-          <td>string</td>
-          <td>null</td>
-          <td>If there is error text, error classes will go on the input - we plan to add better validation handling.</td>
-        </tr>
-        <tr>
-          <td>label</td>
-          <td>string</td>
-          <td>null</td>
-          <td>Optional label for the input.</td>
-        </tr>
-        <tr>
-          <td>name</td>
-          <td>string</td>
-          <td>null</td>
-          <td>Input name attribute.</td>
-        </tr>
-        <tr>
-          <td>placeholder</td>
-          <td>string</td>
-          <td>null</td>
-          <td>Input placeholder text.</td>
-        </tr>
-        <tr>
-          <td>type</td>
-          <td>string</td>
-          <td>text</td>
-          <td>Input type: <code>text</code>, <code>email</code>, <code>password</code>.</td>
-        </tr>
-        <tr>
-          <td>value</td>
-          <td>string</td>
-          <td>null</td>
-          <td>Input value using v-model.</td>
-        </tr>
-      </tbody>
-    </table>
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>disabled</td>
+            <td>boolean</td>
+            <td>null</td>
+            <td>Puts a disabled class on the form field and disables the input.</td>
+          </tr>
+          <tr>
+            <td>error</td>
+            <td>string</td>
+            <td>null</td>
+            <td>If there is error text, error classes will go on the input - we plan to add better validation handling.</td>
+          </tr>
+          <tr>
+            <td>label</td>
+            <td>string</td>
+            <td>null</td>
+            <td>Optional label for the input.</td>
+          </tr>
+          <tr>
+            <td>name</td>
+            <td>string</td>
+            <td>null</td>
+            <td>Input name attribute.</td>
+          </tr>
+          <tr>
+            <td>placeholder</td>
+            <td>string</td>
+            <td>null</td>
+            <td>Input placeholder text.</td>
+          </tr>
+          <tr>
+            <td>type</td>
+            <td>string</td>
+            <td>text</td>
+            <td>
+              Input type:
+              <code>text</code>,
+              <code>email</code>,
+              <code>password</code>.
+            </td>
+          </tr>
+          <tr>
+            <td>value</td>
+            <td>string</td>
+            <td>null</td>
+            <td>Input value using v-model.</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <div class="section">
@@ -220,6 +218,7 @@ export default class Inputs extends Vue {
   textInputValue = "";
   emailInputValue = "";
   passwordInputValue = "";
+  errorTextInputValue = "";
 
   textInputPlaceholder = "Placeholder";
   emailInputPlaceholder = "Placeholder";
