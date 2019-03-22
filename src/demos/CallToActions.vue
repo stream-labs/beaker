@@ -15,7 +15,12 @@ components: {
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre><code>&lt;call-to-action
+  :bgColor=&quot;'#31c3a2'&quot;
+  :titleColor=&quot;'#fff'&quot;
+  :subTitleColor=&quot;'#fff'&quot;
   :thumbnail=&quot;require('./../assets/imgs/logo.svg')&quot;
+  :thumbnailWidth=&quot;120&quot;
+  :thumbnailHeight=&quot;'auto'&quot;
   :thumbnailBg=&quot;'#fff'&quot;
   :title=&quot;'This is a Custom Call To Action'&quot;
   :description=&quot;'A Custom Description'&quot;
@@ -23,7 +28,9 @@ components: {
   :buttonTitle=&quot;'Click Me'&quot;
   :buttonDescription=&quot;''&quot;
   :buttonTag=&quot;'a'&quot; 
-  :buttonHref=&quot;'https://google.com'&quot;&gt;
+  :buttonHref=&quot;'https://google.com'&quot;  
+  :buttonBg=&quot;'#fff'&quot;
+  :buttonTextColor=&quot;'#000'&quot;
 &lt;/call-to-action&gt;
           </code></pre>
         </div>
