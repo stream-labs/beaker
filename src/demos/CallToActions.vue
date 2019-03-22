@@ -14,12 +14,9 @@ components: {
       <h2>Default Call to Action</h2>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-          <pre><code>&lt;call-to-action 
-  :thumbnailWidth=&quot;80&quot;
-  :thumbnailHeight=&quot;80&quot; 
+          <pre><code>&lt;call-to-action
   :buttonClick=&quot;test&quot;&gt;
-&lt;/call-to-action&gt;
-          </code></pre>
+&lt;/call-to-action&gt;</code></pre>
         </div>
       </accordion>
       <div class="row">
@@ -41,12 +38,11 @@ components: {
   :buttonVariation=&quot;'action'&quot;
   :buttonTitle=&quot;'Click Me'&quot;
   :buttonDescription=&quot;''&quot;
-  :buttonTag=&quot;'a'&quot; 
-  :buttonHref=&quot;'https://google.com'&quot;  
+  :buttonTag=&quot;'a'&quot;
+  :buttonHref=&quot;'https://google.com'&quot;
   :buttonBg=&quot;'#fff'&quot;
   :buttonTextColor=&quot;'#000'&quot;
-&lt;/call-to-action&gt;
-          </code></pre>
+&lt;/call-to-action&gt;</code></pre>
         </div>
       </accordion>
       <div class="row">
@@ -116,14 +112,14 @@ components: {
           <tr>
             <td>thumbnailWidth</td>
             <td>Number</td>
-            <td>null</td>
+            <td>80</td>
             <td>A Thumbnail width</td>
           </tr>
 
           <tr>
             <td>thumbnailHeight</td>
             <td>Number</td>
-            <td>null</td>
+            <td>80</td>
             <td>A Thumbnail height</td>
           </tr>
 
