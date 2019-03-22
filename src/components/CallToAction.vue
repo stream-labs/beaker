@@ -1,11 +1,11 @@
 <template>
-  <div class="s-call-to-action" :class="callToActionMq">
-    <div class="s-call-to-action__thumb" :class="callToActionThumbMq" :style="callToActionThumbBg">
+  <div class="s-call-to-action" :class="callToActionMq" :style="callToActionBg">
+    <div class="s-call-to-action__thumb" :class="callToActionThumbMq" :style="callToActionThumb">
       <img :src="thumbnail">
     </div>
     <div class="s-call-to-action__description" :class="callToActionDescMq">
-      <div class="s-title" :class="titleMq">{{ title }}</div>
-      <div class="s-subtitle">{{ description }}</div>
+      <div class="s-title" :class="titleMq" :style="callToActiontitleColor">{{ title }}</div>
+      <div class="s-subtitle" :style="callToActionSubTitleColor">{{ description }}</div>
     </div>
     <div class="s-button-container s-button-container--right">
       <Button
@@ -17,6 +17,8 @@
         :href="buttonHref"
         :to="buttonTo"
         :tag="buttonTag"
+        :bgColor="buttonBg"
+        :textColor="buttonTextColor"
         @click.native.prevent="buttonClick"
       ></Button>
 
@@ -29,6 +31,8 @@
         :href="buttonHref"
         :to="buttonTo"
         :tag="buttonTag"
+        :bgColor="buttonBg"
+        :textColor="buttonTextColor"
       ></Button>
     </div>
   </div>
@@ -55,8 +59,23 @@ Vue.use(VueMq, {
   }
 })
 export default class CallToAction extends Vue {
+  @Prop()
+  bgColor!: String;
+
+  @Prop()
+  titleColor!: String;
+
+  @Prop()
+  subTitleColor!: String;
+
   @Prop({ default: require("./../assets/imgs/kevin-standard.svg") })
   thumbnail!: String;
+
+  @Prop()
+  thumbnailWidth!: number | string;
+
+  @Prop()
+  thumbnailHeight!: number | string;
 
   @Prop()
   thumbnailBg!: String;
@@ -91,9 +110,29 @@ export default class CallToAction extends Vue {
   @Prop()
   buttonClick!: Function;
 
+  @Prop()
+  buttonBg!: String;
+
+  @Prop()
+  buttonTextColor!: String;
+
   $mq: any;
 
-  callToActionThumbBg: object = {
+  callToActiontitleColor: object = {
+    color: this.titleColor
+  };
+
+  callToActionSubTitleColor: object = {
+    color: this.subTitleColor
+  };
+
+  callToActionBg: object = {
+    backgroundColor: this.bgColor
+  };
+
+  callToActionThumb: object = {
+    width: `${this.thumbnailWidth}px`,
+    height: `${this.thumbnailHeight}px`,
     backgroundColor: this.thumbnailBg
   };
 
