@@ -14,17 +14,16 @@ components: {
       <h2>Default Call to Action</h2>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-          <pre><code>&lt;call-to-action  
+          <pre><code>&lt;call-to-action
   :buttonClick=&quot;test&quot;&gt;
-&lt;/call-to-action&gt;
-          </code></pre>
+&lt;/call-to-action&gt;</code></pre>
         </div>
       </accordion>
       <div class="row">
-        <call-to-action  :buttonClick="test"></call-to-action>
+        <call-to-action :thumbnailWidth="80" :thumbnailHeight="80" :buttonClick="test"/>
       </div>
       <h2>Custom Call to Action</h2>
-            <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre><code>&lt;call-to-action
   :bgColor=&quot;'#31c3a2'&quot;
@@ -32,19 +31,18 @@ components: {
   :subTitleColor=&quot;'#fff'&quot;
   :thumbnail=&quot;require('./../assets/imgs/logo.svg')&quot;
   :thumbnailWidth=&quot;120&quot;
-  :thumbnailHeight=&quot;'auto'&quot;
+  :thumbnailHeight=&quot;80&quot;
   :thumbnailBg=&quot;'#fff'&quot;
   :title=&quot;'This is a Custom Call To Action'&quot;
   :description=&quot;'A Custom Description'&quot;
   :buttonVariation=&quot;'action'&quot;
   :buttonTitle=&quot;'Click Me'&quot;
   :buttonDescription=&quot;''&quot;
-  :buttonTag=&quot;'a'&quot; 
-  :buttonHref=&quot;'https://google.com'&quot;  
+  :buttonTag=&quot;'a'&quot;
+  :buttonHref=&quot;'https://google.com'&quot;
   :buttonBg=&quot;'#fff'&quot;
   :buttonTextColor=&quot;'#000'&quot;
-&lt;/call-to-action&gt;
-          </code></pre>
+&lt;/call-to-action&gt;</code></pre>
         </div>
       </accordion>
       <div class="row">
@@ -54,15 +52,15 @@ components: {
           :subTitleColor="'#fff'"
           :thumbnail="require('./../assets/imgs/logo.svg')"
           :thumbnailWidth="120"
-          :thumbnailHeight="'auto'"
+          :thumbnailHeight="80"
           :thumbnailBg="'#fff'"
           :title="'This is a Custom Call To Action'"
           :description="'A Custom Description'"
           :buttonVariation="'action'"
           :buttonTitle="'Click Me'"
           :buttonDescription="''"
-          :buttonTag="'a'" 
-          :buttonHref="'https://google.com'"  
+          :buttonTag="'a'"
+          :buttonHref="'https://google.com'"
           :buttonBg="'#fff'"
           :buttonTextColor="'#000'"
         ></call-to-action>
@@ -77,7 +75,7 @@ components: {
           </tr>
         </thead>
         <tbody>
-<tr>
+          <tr>
             <td>bgColor</td>
             <td>String</td>
             <td>#f5f8fa</td>
@@ -104,7 +102,7 @@ components: {
             <td>require('./../assets/imgs/kevin-standard.svg'</td>
             <td>A Thumbnail image</td>
           </tr>
- <tr>
+          <tr>
             <td>thumbnailBg</td>
             <td>String</td>
             <td>#31C3A2</td>
@@ -124,7 +122,7 @@ components: {
             <td>80</td>
             <td>A Thumbnail height</td>
           </tr>
-          
+
           <tr>
             <td>title</td>
             <td>String</td>
@@ -155,7 +153,7 @@ components: {
             <td>Windows 7+ 245.8MB</td>
             <td>Description for 'slobs-download' button variation only, recomended left blank otherwise ( :buttonDescription="'" )</td>
           </tr>
-<tr>
+          <tr>
             <td>buttonBg</td>
             <td>String</td>
             <td>null</td>
@@ -167,7 +165,7 @@ components: {
             <td>null</td>
             <td>Button text color is forced to be changed</td>
           </tr>
-          
+
           <tr>
             <td>buttonHref</td>
             <td>String</td>
@@ -203,9 +201,7 @@ components: {
             <td>buttonClick</td>
             <td>Function</td>
             <td>null</td>
-            <td>
-              Emits a click function.
-            </td>
+            <td>Emits a click function.</td>
           </tr>
         </tbody>
       </table>

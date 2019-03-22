@@ -71,10 +71,10 @@ export default class CallToAction extends Vue {
   @Prop({ default: require("./../assets/imgs/kevin-standard.svg") })
   thumbnail!: String;
 
-  @Prop()
+  @Prop({ default: 80 })
   thumbnailWidth!: number | string;
 
-  @Prop()
+  @Prop({ default: 80 })
   thumbnailHeight!: number | string;
 
   @Prop()
@@ -194,8 +194,6 @@ export default class CallToAction extends Vue {
   display: inline-flex;
   flex-grow: 0;
   flex-shrink: 0;
-  height: 80px;
-  width: 80px;
   background-color: @teal;
   .radius(3);
   .margin-right(3);
