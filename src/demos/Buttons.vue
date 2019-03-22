@@ -45,6 +45,13 @@ components: {
     :title=&quot;'with icon'&quot;
     :icon=&quot;'settings'&quot;&gt;
   &lt;/Button&gt;
+
+  &lt;Button 
+    :variation=&quot;'default'&quot; 
+    :title=&quot;'Color Change'&quot; 
+    :bgColor=&quot;'#000'&quot; 
+    :textColor=&quot;'#fff'&quot;&gt;
+  &lt;/Button&gt;
 &lt;/div&gt;</code></pre>
           </div>
         </Accordion>
@@ -57,7 +64,12 @@ components: {
 
           <Button :variation="'default'" :title="'with icon'" :icon="'settings'"></Button>
 
-          <Button :variation="'default'" :title="'Color Change'" :bgColor="'#000'" :textColor="'#fff'"></Button>
+          <Button
+            :variation="'default'"
+            :title="'Color Change'"
+            :bgColor="'#000'"
+            :textColor="'#fff'"
+          ></Button>
         </div>
       </div>
       <div class="section">
