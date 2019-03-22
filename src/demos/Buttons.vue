@@ -56,6 +56,8 @@ components: {
           <Button :variation="'warning'" :title="'Warning'"></Button>
 
           <Button :variation="'default'" :title="'with icon'" :icon="'settings'"></Button>
+
+          <Button :variation="'default'" :title="'Color Change'" :bgColor="'#000'" :textColor="'#fff'"></Button>
         </div>
       </div>
       <div class="section">
@@ -530,6 +532,18 @@ components: {
             <code>native</code>. For example
             <code>@click.native.prevent</code>.
           </td>
+        </tr>
+        <tr>
+          <td>bgColor</td>
+          <td>String</td>
+          <td>null</td>
+          <td>Used for background color.</td>
+        </tr>
+        <tr>
+          <td>textColor</td>
+          <td>String</td>
+          <td>null</td>
+          <td>Used for text color.</td>
         </tr>
         <tr>
           <td>icon</td>

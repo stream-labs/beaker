@@ -11,6 +11,7 @@
     class="s-button"
     :class="buttonClasses"
     :disabled="state === 'disabled'"
+    :style="buttonStyles"
     @click="$emit('click')"
   >
     <span>
@@ -33,6 +34,16 @@ export default class Button extends Vue {
   @Prop()
   onClick!: {
     type: Function;
+  };
+
+  @Prop()
+  bgColor!: {
+    type: string;
+  };
+
+  @Prop()
+  textColor!: {
+    type: string;
   };
 
   @Prop()
@@ -100,6 +111,11 @@ export default class Button extends Vue {
   variation!: {
     type: String;
     default: "default";
+  };
+
+  buttonStyles: object = {
+    backgroundColor: this.bgColor,
+    color: this.textColor
   };
 
   get buttonClasses() {
