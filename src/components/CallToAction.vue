@@ -59,7 +59,7 @@ export default class CallToAction extends Vue {
   thumbnail!: String;
 
   @Prop()
-  thumbnailBg!: String;  
+  thumbnailBg!: String;
 
   @Prop({ default: "Get started by downloading Streamlabs OBS" })
   title!: String;
@@ -95,7 +95,7 @@ export default class CallToAction extends Vue {
 
   callToActionThumbBg: object = {
     backgroundColor: this.thumbnailBg
-  }
+  };
 
   get callToActionMq() {
     return this.$mq === "sm" ? "s-call-to-action-mq" : "";
