@@ -112,14 +112,14 @@ components: {
           <tr>
             <td>thumbnailWidth</td>
             <td>Number</td>
-            <td>null</td>
+            <td>80</td>
             <td>A Thumbnail width</td>
           </tr>
 
           <tr>
             <td>thumbnailHeight</td>
             <td>Number</td>
-            <td>null</td>
+            <td>80</td>
             <td>A Thumbnail height</td>
           </tr>
 
