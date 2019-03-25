@@ -30,6 +30,7 @@ components: {
 &lt;/NewFeatureOverlay&gt;</code></pre>
         </div>
       </Accordion>
+
       <NewFeatureOverlay
         :label="'Introducing Merch Stores'"
         :title="'Increase Your Revenue'"
@@ -116,7 +117,7 @@ import Button from "./../components/Button.vue";
   components: {
     Accordion,
     NewFeatureOverlay,
-    Button
+    Button,
   }
 })
 export default class AnnoucementsDemo extends Vue {}

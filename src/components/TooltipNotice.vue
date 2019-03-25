@@ -42,7 +42,7 @@ export default class TooltipNotice extends Vue {
   .padding(2);
   width: 200px;
   .radius();
-  z-index: 1000;
+  z-index: 100;
   position: absolute;
 
   .button {
