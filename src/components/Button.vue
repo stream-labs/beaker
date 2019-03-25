@@ -210,7 +210,8 @@ export default class Button extends Vue {
 
   &[disabled],
   &.is-disabled {
-    opacity: 0.6;
+    background-color: @day-button!important;
+    color: @light-4!important;
     cursor: not-allowed;
   }
 
@@ -657,6 +658,13 @@ export default class Button extends Vue {
     &:focus,
     &.is-focused {
       background: lighten(@night-button, 4%);
+    }
+
+    &[disabled],
+    &.is-disabled {
+      background-color: @dark-4!important;
+      color: @dark-5!important;
+      border-color: @dark-4;
     }
   }
 

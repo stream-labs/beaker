@@ -59,7 +59,7 @@ export default class Accordion extends Vue {
     this.defaultOpen = !this.defaultOpen;
     menu.style.transition = "all .275s";
 
-    if (parent.$el.classList.contains("accordion") && parent.defaultOpen) {
+    if (parent.$el.classList.contains("s-accordion") && parent.defaultOpen) {
       parentMenu.style.maxHeight = "none";
     }
 
@@ -72,8 +72,7 @@ export default class Accordion extends Vue {
 
   calculateHeight(element: Element) {
     const newHeight = element.children[0].scrollHeight;
-    const padding =
-      (this.$refs.menu.querySelectorAll(".accordion").length + 1) * 16;
+    const padding = (this.$el.classList[0].length + 1) * 16;
     if (!this.defaultOpen) {
       return "0";
     } else {

@@ -42,12 +42,12 @@ export default class Callout extends Vue {
     switch (this.variation) {
       case "success":
       case "success-alt":
-        return "icon-check";
+        return "s-icon-check";
       case "warning":
       case "warning-alt":
-        return "icon-delete";
+        return "s-icon-delete";
       case "info":
-        return "icon-information";
+        return "s-icon-information";
     }
   }
 }
