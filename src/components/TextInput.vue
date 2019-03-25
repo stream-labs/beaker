@@ -55,7 +55,7 @@ export default class TextInput extends Vue {
 
   @Prop()
   label!: String;
-  
+
   content: String = "";
 
   handleInput(e: String) {
