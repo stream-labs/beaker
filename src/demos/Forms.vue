@@ -21,7 +21,7 @@ import PaymentForm from "./../components/PaymentForm.vue";
 
 @Component({
   components: {
-    PaymentForm,
+    PaymentForm
     // FormGroupH,
     // FormGroupV,
     // TextInput
