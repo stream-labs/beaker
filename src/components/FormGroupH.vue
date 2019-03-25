@@ -7,7 +7,7 @@
     </div>
 
     <div class="s-form-group-h__input-wrapper">
-      <!-- <slot name="input"></slot> -->
+      <slot name="input"></slot>
 
       <div class="s-form-group-h__help-text" v-if="helpText">{{ helpText }}</div>
     </div>
