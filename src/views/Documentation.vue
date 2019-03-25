@@ -34,7 +34,7 @@
       <toggles v-if="activeSection === 'toggles'"/>
       <virtual-items v-if="activeSection === 'virtual-items'"/>
       -->
-      <site-search-demo/>
+      <site-search-admin/>
     </div>
   </div>
 </template>
@@ -69,7 +69,8 @@ import Navigations from "@/demos/Navigations.vue";
 import Notices from "@/demos/Notices.vue";
 import ProgressBars from "@/demos/ProgressBars.vue";
 import Paginations from "@/demos/Paginations.vue";
-import SiteSearchDemo from "@/demos/SiteSearchDemo.vue"
+import SiteSearchDemo from "@/demos/SiteSearchDemo.vue";
+import SiteSearchAdmin from "@/demos/SiteSearchAdmin.vue";
 import Sliders from "@/demos/Sliders.vue";
 import Tables from "@/demos/Tables.vue";
 import Tabs from "@/demos/Tabs.vue";
@@ -106,6 +107,7 @@ import VirtualItems from "@/demos/VirtualItems.vue";
     Notices,
     ProgressBars,
     Paginations,
+    SiteSearchAdmin,
     SiteSearchDemo,
     Sliders,
     Tables,

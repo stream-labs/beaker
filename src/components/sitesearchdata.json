@@ -1,13 +1,12 @@
 {
   "keys": "name",
 "data": [ {
-  
        "name": "template3",
         "title": "template5",
         "route": "/noroute",
         "keywords": ["key","words"],
         "description": "This is the template",
-        "image": "icon-italic",
+        "image": "icon-none",
         "howto": "/noroute",
         "weight": 5
       },
@@ -17,7 +16,7 @@
         "route": "/noroute",
         "keywords": ["key","words"],
         "description": "This is the template",
-        "image": "icon-italic",
+        "image": "icon-none",
         "howto": "/noroute",
         "keymatch": ["one","two","three"],
         "weight": 1
@@ -50,7 +49,7 @@
         "route": "/allstars",
         "keywords": ["Allstars","all stars", "stars", "celebrity", "streamer", "vip"],
         "description": "Are you an All-Star?",
-        "image": "icon-bag",
+        "image": "icon-none",
         "howto": null,
         "keymatch": [ ],
         "weight": 3
@@ -61,7 +60,7 @@
         "route": "/careers",
         "keywords": ["careers","jobs", "job", "oppourtunities", "oppourtunity", "intern", "internship", "work", "hiring", "hire"],
         "description": "Do you want to work at streamlabs?",
-        "image": "icon-prize",
+        "image": "icon-none",
         "howto": null,
         "keymatch": ["contact"],
         "weight": 10
@@ -72,7 +71,7 @@
         "route": "/terms",
         "keywords": ["terms","services", "terms of service", "legal"],
         "description": "Streamlabs Terms of Service zzzzzzzzzzz",
-        "image": "icon-mug",
+        "image": "icon-none",
         "howto": null,
         "keymatch": ["contact", "faq", "privacy"],
         "weight": 9
@@ -83,11 +82,67 @@
         "route": "/privacy",
         "keywords": ["privacy","policy", "policies", "privacy policy", "terms of service", "legal"],
         "description": "Streamlabs Privacy Policy",
-        "image": "icon-image",
+        "image": "icon-none",
         "howto": null,
         "keymatch": ["contact", "faq", "terms"],
         "weight": 9
+      },
+      {
+        "name": "widgets",
+        "title": "Monetize and grow your stream",
+        "route": "/widgets",
+        "keywords": ["money","monetize", "alerts"],
+        "description": "Monetize and grow your stream with Streamlabs widgets",
+        "image": "icon-widgets",
+        "howto": null,
+        "keymatch": ["alerts","chatbox"],
+        "weight": 1
+      },
+      {
+        "name": "merch",
+        "title": "Sell your custom brand and earn more",
+        "route": "/merch",
+        "keywords": ["merch","store","monetize"],
+        "description": "Earn more from your stream with Streamlabs merch",
+        "image": "icon-merch",
+        "howto": "/merch",
+        "keymatch": ["one","two","three"],
+        "weight": 1
+      },
+      {
+        "name": "mobileapp",
+        "title": "Mobile streaming, made easy",
+        "route": "/mobile-app",
+        "keywords": ["mobile","app","tablet","phone","iphone","android","irl","go"],
+        "description": "Get our and go with the Streamlabs mobile app",
+        "image": "icon-phone",
+        "howto": "/noroute",
+        "keymatch": ["one","two","three"],
+        "weight": 7
+      },
+      {
+        "name": "chatbot",
+        "title": "Create your own Chatbot with a custom name",
+        "route": "/chatbot",
+        "keywords": ["chat","bot","chatbot","mod","moderator","autohost","discord"],
+        "description": "Streamlabs Chatbot is a program developed for Twitch/Youtube/Mixer that provides entertainment and moderation features for your stream. So you can focus on what you do best, play the game and interact with your viewers.",
+        "image": "icon-none",
+        "howto": "/noroute",
+        "keymatch": ["chatbot-changelog"],
+        "weight": 7
+      },
+      {
+        "name": "chatbot-changelog",
+        "title": "Latest updates to the Chatbot",
+        "route": "/noroute",
+        "keywords": ["key","words"],
+        "description": "A list of newly added features and bug fixes for the Streamlabs Chatbot",
+        "image": "icon-none",
+        "howto": "/noroute",
+        "keymatch": ["chatbot"],
+        "weight": 1
       }
+
     ]
 }
 

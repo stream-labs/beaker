@@ -5,7 +5,7 @@
     :width="'100%'"
     :height="'auto'"
     classes="s-overlay__wrapper"
-    :clickToClose="false"
+    :clickToClose="true"
   >
     <div slot="top-right" class="s-overlay__icon">
       <span class="s-icon s-icon-close" @click="clickDismiss"></span>
@@ -19,7 +19,6 @@
         </p>
         <div class="s-overlay-links">
           <Button
-            :type="'button'"
             :size="'large'"
             :variation="'action'"
             :tag="'router-link'"
@@ -56,11 +55,11 @@ Vue.use(VModal);
 Vue.use(VueMq, {
   breakpoints: {
     // default breakpoints - customize this
-    sm: 0,
-    md: 768,
+    sm: 900,
+    md: 1250,
     lg: Infinity
   },
-  defaultBreakpoint: "md" // customize this for SSR
+  defaultBreakpoint: "sm" // customize this for SSR
 });
 
 @Component({
@@ -99,11 +98,11 @@ export default class NewFeatureOverlay extends Vue {
   $mq!: string | string[];
 
   get containerMq() {
-    return this.$mq === "md" ? "s-overlay__container--mq" : "";
+    return this.$mq === "sm" ? "s-overlay__container--mq" : "";
   }
 
   get overlay__imageBlockMq() {
-    return this.$mq === "md" ? "s-overlay__image-block--mq" : "";
+    return this.$mq === "sm" ? "s-overlay__image-block--mq" : "";
   }
 
   mounted() {

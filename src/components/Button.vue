@@ -11,6 +11,7 @@
     class="s-button"
     :class="buttonClasses"
     :disabled="state === 'disabled'"
+    :style="buttonStyles"
     @click="$emit('click')"
   >
     <span>
@@ -33,6 +34,16 @@ export default class Button extends Vue {
   @Prop()
   onClick!: {
     type: Function;
+  };
+
+  @Prop()
+  bgColor!: {
+    type: string;
+  };
+
+  @Prop()
+  textColor!: {
+    type: string;
   };
 
   @Prop()
@@ -100,6 +111,11 @@ export default class Button extends Vue {
   variation!: {
     type: String;
     default: "default";
+  };
+
+  buttonStyles: object = {
+    backgroundColor: this.bgColor,
+    color: this.textColor
   };
 
   get buttonClasses() {
@@ -194,7 +210,8 @@ export default class Button extends Vue {
 
   &[disabled],
   &.is-disabled {
-    opacity: 0.6;
+    background-color: @day-button!important;
+    color: @light-4!important;
     cursor: not-allowed;
   }
 
@@ -642,6 +659,13 @@ export default class Button extends Vue {
     &.is-focused {
       background: lighten(@night-button, 4%);
     }
+
+    &[disabled],
+    &.is-disabled {
+      background-color: @dark-4!important;
+      color: @dark-5!important;
+      border-color: @dark-4;
+    }
   }
 
   .s-button--default {
@@ -656,7 +680,8 @@ export default class Button extends Vue {
     }
   }
 
-  .s-button--action {
+  .s-button--action,
+  .s-button--slobs-download {
     color: @night-title;
 
     &:focus,

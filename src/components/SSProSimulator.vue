@@ -1,13 +1,6 @@
 <template>
   <div class="s-cs-simulator">
-    <div class="s-cs-simulator__web-bar">
-      <div class="s-cs-simulator__web-bar-dots">
-        <div class="s-cs-simulator__web-bar-dot"></div>
-        <div class="s-cs-simulator__web-bar-dot"></div>
-        <div class="s-cs-simulator__web-bar-dot"></div>
-      </div>
-      <div class="s-cs-simulator__url-container">{{ username }}.tv</div>
-    </div>
+    <UrlBar :domain="domain"></UrlBar>
     <div class="s-cs-simulator__web-page" :class="themeClass">
       <div class="s-cs-simulator__heading">
         <img class="s-cs-simulator__icon" :src="icon">
@@ -55,6 +48,9 @@ export default class ScsroSimulator extends Vue {
     default: "https://live.kickstarter.com/images/avatar/medium/avatars4.png"
   })
   icon!: String;
+
+  @Prop({ default: "https://awkwardraccoon.tv" })
+  domain!: string;
 
   themeClasses = ["teal", "orange", "purple", "electric-blue", "red", "lime"];
   themeClass = "";

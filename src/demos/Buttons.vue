@@ -45,6 +45,13 @@ components: {
     :title=&quot;'with icon'&quot;
     :icon=&quot;'settings'&quot;&gt;
   &lt;/Button&gt;
+
+  &lt;Button 
+    :variation=&quot;'default'&quot; 
+    :title=&quot;'Color Change'&quot; 
+    :bgColor=&quot;'#000'&quot; 
+    :textColor=&quot;'#fff'&quot;&gt;
+  &lt;/Button&gt;
 &lt;/div&gt;</code></pre>
           </div>
         </Accordion>
@@ -56,6 +63,13 @@ components: {
           <Button :variation="'warning'" :title="'Warning'"></Button>
 
           <Button :variation="'default'" :title="'with icon'" :icon="'settings'"></Button>
+
+          <Button
+            :variation="'default'"
+            :title="'Color Change'"
+            :bgColor="'#000'"
+            :textColor="'#fff'"
+          ></Button>
         </div>
       </div>
       <div class="section">
@@ -246,12 +260,6 @@ components: {
         <Button :type="'button'" :size="'small'" :variation="'default'" :title="'Default'"></Button>
 
         <Button :type="'button'" :size="'small'" :variation="'action'" :title="'Action'"></Button>
-
-        <Button :type="'button'" :size="'fixed-width'" :variation="'action'" :title="'Action'"></Button>
-
-        <Button :type="'button'" :size="'fixed-width'" :variation="'action'" :title="'Action'"></Button>
-
-        <Button :type="'button'" :size="'fixed-width'" :variation="'action'" :title="'Action'"></Button>
 
         <Button :type="'button'" :size="'small'" :variation="'warning'" :title="'Warning'"></Button>
 
@@ -530,6 +538,18 @@ components: {
             <code>native</code>. For example
             <code>@click.native.prevent</code>.
           </td>
+        </tr>
+        <tr>
+          <td>bgColor</td>
+          <td>String</td>
+          <td>null</td>
+          <td>Used for background color.</td>
+        </tr>
+        <tr>
+          <td>textColor</td>
+          <td>String</td>
+          <td>null</td>
+          <td>Used for text color.</td>
         </tr>
         <tr>
           <td>icon</td>

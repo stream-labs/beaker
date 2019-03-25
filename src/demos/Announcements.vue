@@ -22,7 +22,7 @@ components: {
           <pre><code>&lt;NewFeatureOverlay
   :label=&quot;'Introducing Merch Stores'&quot;
   :title=&quot;'Increase Your Revenue'&quot;
-  :media=&quot;require('../assets/video/sample.mp4')&quot;
+  :media=&quot;'https://cdn.streamlabs.com/cloudbot/prototype_cloudbot_800x300.webm'&quot;
   :buttonTitle=&quot;'Go To Store'&quot;
 &gt;
   &lt;p&gt;We&rsquo;ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.&lt;/p&gt;
@@ -33,7 +33,7 @@ components: {
       <NewFeatureOverlay
         :label="'Introducing Merch Stores'"
         :title="'Increase Your Revenue'"
-        :media="'https://cdn.streamlabs.com/static/prototype_cloudbot2.webm'"
+        :media="'https://cdn.streamlabs.com/cloudbot/prototype_cloudbot_800x300.webm'"
         :buttonTitle="'Go To Store'"
       >
         <p>We’ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.</p>
