@@ -1,10 +1,5 @@
 <template>
-  <div
-    v-if="!closed"
-    class="s-callout"
-    :class="[ calloutClass, calloutClosedClass ]"
-    @transitionend.self="closed = true"
-  >
+  <div v-if="!closed" class="s-callout" :class="[ calloutClass, calloutClosedClass ]">
     <i v-if="icon" :class="[calloutIcon]"></i>
     <span>
       <slot/>
@@ -42,12 +37,12 @@ export default class Callout extends Vue {
     switch (this.variation) {
       case "success":
       case "success-alt":
-        return "icon-check";
+        return "s-icon-check";
       case "warning":
       case "warning-alt":
-        return "icon-delete";
+        return "s-icon-delete";
       case "info":
-        return "icon-information";
+        return "s-icon-information";
     }
   }
 }
