@@ -1,15 +1,11 @@
 <template>
-  <transition name="callout-remove">
-    <div v-if="!closed">
-      <div class="s-callout" :class="[ calloutClass, calloutClosedClass ]">
-        <i v-if="icon" :class="[calloutIcon]"></i>
-        <span>
-          <slot/>
-        </span>
-        <i v-if="closeable" class="s-icon-close s-callout__close-button" @click="closeCallout()"></i>
-      </div>
-    </div>
-  </transition>
+  <div v-if="!closed" class="s-callout" :class="[ calloutClass, calloutClosedClass ]">
+    <i v-if="icon" :class="[calloutIcon]"></i>
+    <span>
+      <slot/>
+    </span>
+    <i v-if="closeable" class="s-icon-close s-callout__close-button" @click="closeCallout()"></i>
+  </div>
 </template>
 
 <script lang="ts">
@@ -30,8 +26,7 @@ export default class Callout extends Vue {
   calloutClosedClass: string = "";
 
   closeCallout() {
-    this.closed = true;
-    // this.calloutClosedClass = "callout--closed";
+    this.calloutClosedClass = "callout--closed";
   }
 
   get calloutClass() {
@@ -52,28 +47,6 @@ export default class Callout extends Vue {
   }
 }
 </script>
-
-<style lang="less">
-@import "./../styles/Imports";
-
-.callout-remove-enter-active {
-  .transition();
-}
-
-.callout-remove-leave-active {
-  height: 20px;
-  .transition();
-}
-
-.callout-remove-enter,
-.callout-remove-leave-to {
-  height: 0;
-  padding: 0;
-  margin: 0;
-  opacity: 0;
-}
-</style>
-
 
 <style lang="less" scoped>
 @import "./../styles/Imports";
@@ -144,11 +117,11 @@ export default class Callout extends Vue {
     background-color: @warning;
   }
 
-  // &.callout--closed {
-  //   height: 0;
-  //   margin: 0;
-  //   padding: 0;
-  //   opacity: 0;
-  // }
+  &.callout--closed {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+  }
 }
 </style>
