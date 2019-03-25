@@ -117,7 +117,7 @@ import Button from "./../components/Button.vue";
   components: {
     Accordion,
     NewFeatureOverlay,
-    Button,
+    Button
   }
 })
 export default class AnnoucementsDemo extends Vue {}
