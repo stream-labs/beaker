@@ -46,14 +46,6 @@ components: {
         </div>
       </accordion>
       <div class="row">
-<<<<<<< HEAD
-        <call-to-action      :thumbnailWidth="80"
-          :thumbnailHeight="80" :buttonClick="test"  />
-      </div>
-      <h2>Custom Call to Action</h2>
-      <div class="row">
-=======
->>>>>>> 577272c3be427fd3c812ab66ea9119ff9d604f80
         <call-to-action
           :bgColor="'#31c3a2'"
           :titleColor="'#fff'"
