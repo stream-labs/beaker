@@ -34,6 +34,7 @@ import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
 import Spinner from "@/components/Spinner";
 import SSProSimulator from "@/components/SSProSimulator";
+import StatusSwitch from "@/components/StatusSwitch";
 import Tabs from "@/components/Tabs";
 // import TabDevelop from "@/components/TabDevelop";
 import TextInput from "@/components/TextInput";
@@ -70,6 +71,7 @@ const components = [
   Slider,
   Spinner,
   SSProSimulator,
+  StatusSwitch,
   Tabs,
   // TabDevelop,
   TextInput,
@@ -108,6 +110,7 @@ export {
   Slider,
   Spinner,
   SSProSimulator,
+  StatusSwitch,
   Tabs,
   // TabDevelop,
   TextInput,
