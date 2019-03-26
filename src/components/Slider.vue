@@ -8,7 +8,7 @@
     :min="min"
     :max="max"
     :interval="interval"
-    :value="value"
+    v-model="value"
     :prefix="prefix"
     :suffix="suffix"
     :formatter="prefix + '{value}' + suffix"
@@ -21,6 +21,7 @@
 <script>
 import { Component, Vue } from "vue-property-decorator";
 import VueSliderComponent from "vue-slider-component";
+
 export default {
   name: "Slider",
   extends: VueSliderComponent,
@@ -29,8 +30,8 @@ export default {
   },
   props: {
     value: {
-      type: [String, Number],
-      defualt: 0
+      type: [String, Number, Array],
+      defualt: 1
     },
     prefix: {
       type: String,
