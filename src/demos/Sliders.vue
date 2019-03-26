@@ -97,6 +97,6 @@ import Accordion from "./../components/Accordion.vue";
   }
 })
 export default class Sliders extends Vue {
-  // value = 50;
+  value = 50;
 }
 </script>

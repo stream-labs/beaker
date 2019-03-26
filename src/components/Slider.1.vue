@@ -8,7 +8,7 @@
     :min="min"
     :max="max"
     :interval="interval"
-    v-model="sliderValue"
+    v-model="value"
     :prefix="prefix"
     :suffix="suffix"
     :formatter="prefix + '{value}' + suffix"
@@ -47,12 +47,6 @@ export default {
     }
   },
 
-  data() {
-    return {
-      sliderValue: this.value
-    };
-  },
-
   created() {
     this.$on("input", this.setValue);
   },
@@ -77,6 +71,10 @@ export default {
 @import "./../styles/Imports";
 
 .vue-slider-component {
+  padding: 4px 0px 28px !important;
+  width: 80% !important;
+  display: inline-block;
+
   .vue-slider {
     background-color: @light-3;
   }
