@@ -30,6 +30,7 @@ components: {
 &lt;/NewFeatureOverlay&gt;</code></pre>
         </div>
       </Accordion>
+
       <NewFeatureOverlay
         :label="'Introducing Merch Stores'"
         :title="'Increase Your Revenue'"
