@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div class="s-loader">
-      <div class="s-loader__bg">
+      <div :class="{ 's-loader__bg--semi': semiOpaque }" class="s-loader__bg">
         <div class="s-loader__inner">
           <Spinner class="s-spinner__overlay" :size="'large'"/>
           <div class="s-loader__text">{{ loaderText }}</div>
@@ -22,6 +22,9 @@ import Button from "./../components/Button.vue";
 export default class Loading extends Vue {
   @Prop()
   loadingStrs!: any[] | string;
+
+  @Prop({ default: false })
+  semiOpaque!: boolean;
 
   strings: any = JSON.parse(JSON.stringify(this.loadingStrs));
   loaderText: string = "";
@@ -64,6 +67,10 @@ export default class Loading extends Vue {
   align-items: center;
 }
 
+.s-loader__bg--semi {
+  background: @day-overlay;
+}
+
 .s-loader__inner {
   width: 100%;
   height: auto;
@@ -85,6 +92,10 @@ export default class Loading extends Vue {
 .night-theme {
   .s-loader__bg {
     background: @dark-3;
+  }
+
+  .s-loader__bg--semi {
+    background: @night-overlay;
   }
 
   .s-loader__text {

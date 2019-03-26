@@ -16,10 +16,21 @@ components: {
       </accordion>
 
       <Loading v-if="isLoading" :loadingStrs="array" @closeLoading="isLoading = false"></Loading>
+      <Loading
+        v-if="isLoadingSemi"
+        :semiOpaque="true"
+        :loadingStrs="array"
+        @closeLoading="isLoadingSemi = false"
+      ></Loading>
 
       <div class="row">
-        <div class="button-container button-container--left">
-          <Button :variation="'default'" :title="'loading'" @click="isLoading = true"></Button>
+        <div class="s-button-container s-button-container--left">
+          <Button :variation="'default'" :title="'loading default'" @click="isLoading = true"></Button>
+          <Button
+            :variation="'default'"
+            :title="'loading semi opaque option'"
+            @click="isLoadingSemi = true"
+          ></Button>
         </div>
       </div>
 
@@ -38,6 +49,12 @@ components: {
             <td>any[] | string</td>
             <td>-</td>
             <td>Pass an array of stings into the loader. We recommend 3-4. Each shows for 4 seconds before it rotates.</td>
+          </tr>
+          <tr>
+            <td>semiOpaque</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>Sets the background overlay to semi-opacity rather than full opacity.</td>
           </tr>
         </tbody>
       </table>
@@ -118,6 +135,7 @@ import Button from "./../components/Button.vue";
 })
 export default class Loaders extends Vue {
   isLoading = false;
+  isLoadingSemi = false;
   array = [
     "Syncing all files to our cloud...",
     "Lorem ipsum dolor sit amet, consectetur...",

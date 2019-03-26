@@ -41,7 +41,7 @@ components: {
         <p>We’ve automatically credited $15.00 to your account so you can start trying them out today.</p>
       </NewFeatureOverlay>
 
-      <div class="button-container button-container--left">
+      <div class="s-button-container s-button-container--left">
         <Button
           :variation="'default'"
           :title="'New Feature Overlay'"
