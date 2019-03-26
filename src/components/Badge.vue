@@ -95,14 +95,15 @@ export default class Badge extends Vue {
 .s-badge {
   display: inline-block;
   margin: 0 0 0 8px;
-  padding: 0 4px;
+  padding: 0 5px;
   border: 1px solid transparent;
   .radius();
-  font-size: 13px;
+  font-size: 14px;
   .weight(@medium);
   color: @white;
   vertical-align: text-bottom;
-  line-height: 16px;
+  line-height: 22px;
+  box-sizing: border-box;
 
   &--left {
     margin: 0 8px 0 0;
@@ -112,14 +113,15 @@ export default class Badge extends Vue {
     margin: 0;
   }
 
+  &--new,
   &--success {
     background-color: @teal-semi;
     color: @teal;
   }
 
-  &--new {
-    background-color: @purple-semi;
-    color: @purple;
+  &--new-alt {
+    background-color: transparent;
+    color: @teal;
   }
 
   &--tag {
@@ -184,23 +186,14 @@ export default class Badge extends Vue {
       color: @white;
     }
 
-    &--teal {
-      background-color: @teal;
-      color: @white;
-    }
-
+    &--success,
     &--new {
-      background-color: @purple;
+      background-color: @teal;
       color: @white;
     }
 
     &--warning {
       background-color: @red;
-      color: @white;
-    }
-
-    &--success {
-      background-color: @teal;
       color: @white;
     }
 

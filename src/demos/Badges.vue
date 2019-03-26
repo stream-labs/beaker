@@ -65,9 +65,9 @@ components: {
       </Accordion>
 
       <div class="section section__components">
-        <badge :variant="'success'" :align-left="true">Success</badge>
-        <badge :variant="'tag'" :align-left="true">Tag</badge>
         <badge :variant="'new'" :align-left="true">New</badge>
+        <badge :variant="'new-alt'" :align-left="true">New Alt</badge>
+        <badge :variant="'tag'" :align-left="true">Tag</badge>
         <badge :variant="'beta'" :align-left="true">Beta</badge>
         <badge :variant="'warning'" :align-left="true">Warning</badge>
         <badge
