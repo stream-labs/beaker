@@ -57,7 +57,7 @@ components: {
 
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-          <pre><code>&lt;Spinner :size=&quot;'small'&quot;&gt;&lt;/Spinner&gt;</code></pre>
+          <pre><code>&lt;Spinner&lt;/Spinner&gt;</code></pre>
         </div>
       </accordion>
       <div class="row">
