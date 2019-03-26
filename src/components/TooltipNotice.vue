@@ -1,12 +1,10 @@
 <template>
-  <div>
-    <div class="s-tooltip-notice">
-      <div class="s-tooltip-notice-content">
-        <i class="s-icon-dropdown s-tooltip-notice__arrow"></i>
-        <h3>{{ title }}</h3>
-        <p>{{ desc }}</p>
-        <Button @click="clickHandler" :title="'Got It'" :variation="'action'" :size="'small'"></Button>
-      </div>
+  <div class="s-tooltip-notice">
+    <div class="s-tooltip-notice-content">
+      <i class="s-icon-dropdown s-tooltip-notice__arrow"></i>
+      <h3>{{ title }}</h3>
+      <p>{{ desc }}</p>
+      <Button @click="clickHandler" :title="'Got It'" :variation="'action'" :size="'small'"></Button>
     </div>
   </div>
 </template>
