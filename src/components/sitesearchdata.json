@@ -6,7 +6,7 @@
         "route": "/noroute",
         "keywords": ["key","words"],
         "description": "This is the template",
-        "image": "icon-none",
+        "image": "icon-question",
         "howto": "/noroute",
         "weight": 5
       },
@@ -16,7 +16,7 @@
         "route": "/noroute",
         "keywords": ["key","words"],
         "description": "This is the template",
-        "image": "icon-none",
+        "image": "icon-question",
         "howto": "/noroute",
         "keymatch": ["one","two","three"],
         "weight": 1
@@ -49,7 +49,7 @@
         "route": "/allstars",
         "keywords": ["Allstars","all stars", "stars", "celebrity", "streamer", "vip"],
         "description": "Are you an All-Star?",
-        "image": "icon-none",
+        "image": "icon-question",
         "howto": null,
         "keymatch": [ ],
         "weight": 3
@@ -60,7 +60,7 @@
         "route": "/careers",
         "keywords": ["careers","jobs", "job", "oppourtunities", "oppourtunity", "intern", "internship", "work", "hiring", "hire"],
         "description": "Do you want to work at streamlabs?",
-        "image": "icon-none",
+        "image": "icon-question",
         "howto": null,
         "keymatch": ["contact"],
         "weight": 10
@@ -71,7 +71,7 @@
         "route": "/terms",
         "keywords": ["terms","services", "terms of service", "legal"],
         "description": "Streamlabs Terms of Service zzzzzzzzzzz",
-        "image": "icon-none",
+        "image": "icon-question",
         "howto": null,
         "keymatch": ["contact", "faq", "privacy"],
         "weight": 9
@@ -82,7 +82,7 @@
         "route": "/privacy",
         "keywords": ["privacy","policy", "policies", "privacy policy", "terms of service", "legal"],
         "description": "Streamlabs Privacy Policy",
-        "image": "icon-none",
+        "image": "icon-question",
         "howto": null,
         "keymatch": ["contact", "faq", "terms"],
         "weight": 9
@@ -104,7 +104,7 @@
         "route": "/merch",
         "keywords": ["merch","store","monetize"],
         "description": "Earn more from your stream with Streamlabs merch",
-        "image": "icon-merch",
+        "image": "icon-question",
         "howto": "/merch",
         "keymatch": ["one","two","three"],
         "weight": 1
@@ -126,7 +126,7 @@
         "route": "/chatbot",
         "keywords": ["chat","bot","chatbot","mod","moderator","autohost","discord"],
         "description": "Streamlabs Chatbot is a program developed for Twitch/Youtube/Mixer that provides entertainment and moderation features for your stream. So you can focus on what you do best, play the game and interact with your viewers.",
-        "image": "icon-none",
+        "image": "icon-question",
         "howto": "/noroute",
         "keymatch": ["chatbot-changelog"],
         "weight": 7
@@ -137,7 +137,7 @@
         "route": "/noroute",
         "keywords": ["key","words"],
         "description": "A list of newly added features and bug fixes for the Streamlabs Chatbot",
-        "image": "icon-none",
+        "image": "icon-question",
         "howto": "/noroute",
         "keymatch": ["chatbot"],
         "weight": 1

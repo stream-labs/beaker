@@ -26,3 +26,7 @@ export default class SiteSearchDemo extends Vue {
   msg = "Hi!";
 }
 </script>
+
+
+
+
