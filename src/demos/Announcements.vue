@@ -124,7 +124,7 @@ import Button from "./../components/Button.vue";
 })
 export default class AnnoucementsDemo extends Vue {
   trackingCodeComponent() {
-    console.log("componentEventTracking")
+    console.log("componentEventTracking");
     // ga('send','event', 'newfeatureoverlay', 'modal_shown', '');
   }
 
