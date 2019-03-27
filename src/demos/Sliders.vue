@@ -29,7 +29,7 @@ components: {
       </accordion>
 
       <div class="row">
-        <slider :min="0" :max="100" :interval="1" :value="value" :suffix="'%'" :tooltip="'always'"></slider>
+        <slider :min="0" :max="100" :interval="1"  :value="value" :suffix="'%'" :tooltip="'always'"></slider>
       </div>
 
       <table class="docs-table">

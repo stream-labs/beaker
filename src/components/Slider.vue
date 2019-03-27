@@ -8,7 +8,7 @@
     :min="min"
     :max="max"
     :interval="interval"
-    v-model="sliderValue"
+    v-model="displayValue"
     :prefix="prefix"
     :suffix="suffix"
     :formatter="prefix + '{value}' + suffix"
@@ -17,11 +17,9 @@
   ></vue-slider-component>
 </template>
 
-
 <script>
 import { Component, Vue } from "vue-property-decorator";
 import VueSliderComponent from "vue-slider-component";
-
 export default {
   name: "Slider",
   extends: VueSliderComponent,
@@ -30,8 +28,8 @@ export default {
   },
   props: {
     value: {
-      type: [String, Number, Array],
-      defualt: 1
+      type: [Number, String, Array],
+      default: 1
     },
     prefix: {
       type: String,
@@ -49,23 +47,20 @@ export default {
 
   data() {
     return {
-      sliderValue: this.value
+      displayValue: this.value
     };
   },
 
   created() {
     this.$on("input", this.setValue);
   },
-
   destroyed() {
     this.$off("input", this.setValue);
   },
-
   methods: {
     emitInput(val) {
       this.$emit("input", val);
     },
-
     setValue(val) {
       this.currentValue = val;
     }
