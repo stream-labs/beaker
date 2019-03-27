@@ -6,6 +6,7 @@
     :height="'auto'"
     classes="s-overlay__wrapper"
     :clickToClose="true"
+    @opened="opened"
   >
     <div slot="top-right" class="s-overlay__icon">
       <span class="s-icon s-icon-close" @click="clickDismiss"></span>
@@ -24,7 +25,7 @@
             :tag="'router-link'"
             :to="buttonRoute"
             :title="buttonTitle"
-            @click.native="clickDismiss"
+            @click.native="occurEventTrackingButton"
           ></Button>
           <router-link
             class="s-overlay__link"
@@ -89,6 +90,9 @@ export default class NewFeatureOverlay extends Vue {
   @Prop({ default: "Go to Dashboard" })
   dismissText!: string;
 
+  @Prop()
+  eventTrackingComponent!: Function;
+
   isImage: boolean = true;
 
   get overlayImage() {
@@ -111,6 +115,16 @@ export default class NewFeatureOverlay extends Vue {
     } else {
       this.isImage = true;
     }
+  }
+
+  opened(event) {
+    typeof this.eventTrackingComponent === "function" &&
+      this.eventTrackingComponent();
+  }
+
+  occurEventTrackingButton() {
+    this.$emit("eventTrackingButton");
+    this.clickDismiss();
   }
 
   clickDismiss() {
