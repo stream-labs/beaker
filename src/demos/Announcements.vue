@@ -24,9 +24,10 @@ components: {
   :title=&quot;'Increase Your Revenue'&quot;
   :media=&quot;'https://cdn.streamlabs.com/cloudbot/prototype_cloudbot_800x300.webm'&quot;
   :buttonTitle=&quot;'Go To Store'&quot;
-&gt;
-  &lt;p&gt;We&rsquo;ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.&lt;/p&gt;
-  &lt;p&gt;We&rsquo;ve automatically credited $15.00 to your account so you can start trying them out today.&lt;/p&gt;
+  :eventTrackingComponent=&quot;trackingCodeComponent&quot;
+  @eventTrackingButton=&quot;trackingCodeButton&quot;&gt;
+  &lt;p&gt;We’ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.&lt;/p&gt;
+  &lt;p&gt;We’ve automatically credited $15.00 to your account so you can start trying them out today.&lt;/p&gt;
 &lt;/NewFeatureOverlay&gt;</code></pre>
         </div>
       </Accordion>
@@ -104,6 +105,18 @@ components: {
           <td>/</td>
           <td>Router link path to dismiss the annoucement.</td>
         </tr>
+        <tr>
+          <td>eventTrackingComponent</td>
+          <td>function</td>
+          <td>null</td>
+          <td>Function to call out the tracking code of modal component.</td>
+        </tr>
+        <tr>
+          <td>@eventTrackingButton</td>
+          <td>function</td>
+          <td>null</td>
+          <td>Emits a eventTrackingButton function to call out the tracking code of modal button.</td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -124,13 +137,13 @@ import Button from "./../components/Button.vue";
 })
 export default class AnnoucementsDemo extends Vue {
   trackingCodeComponent() {
-    console.log("componentEventTracking")
-    // ga('send','event', 'newfeatureoverlay', 'modal_shown', '');
+    console.log("componentEventTracking");
+    ga('send','event', 'newfeatureoverlay', 'modal_shown', 'component');
   }
 
   trackingCodeButton() {
     console.log("buttonEventTracking");
-    // ga('send','event', 'newfeatureoverlay', 'modal_click', '');
+    ga('send','event', 'newfeatureoverlay', 'modal_click', 'button');
   }
 }
 </script>
