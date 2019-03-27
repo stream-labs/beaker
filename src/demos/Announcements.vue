@@ -36,6 +36,8 @@ components: {
         :title="'Increase Your Revenue'"
         :media="'https://cdn.streamlabs.com/cloudbot/prototype_cloudbot_800x300.webm'"
         :buttonTitle="'Go To Store'"
+        :eventTrackingComponent="trackingCodeComponent"
+        @eventTrackingButton="trackingCodeButton"
       >
         <p>We’ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.</p>
         <p>We’ve automatically credited $15.00 to your account so you can start trying them out today.</p>
@@ -120,5 +122,15 @@ import Button from "./../components/Button.vue";
     Button
   }
 })
-export default class AnnoucementsDemo extends Vue {}
+export default class AnnoucementsDemo extends Vue {
+  trackingCodeComponent() {
+    console.log("componentEventTracking")
+    // ga('send','event', 'newfeatureoverlay', 'modal_shown', '');
+  }
+
+  trackingCodeButton() {
+    console.log("buttonEventTracking");
+    // ga('send','event', 'newfeatureoverlay', 'modal_click', '');
+  }
+}
 </script>
