@@ -29,7 +29,7 @@ components: {
       </accordion>
 
       <div class="row">
-        <slider :min="0" :max="100" :interval="1" v-model="value" :suffix="'%'" :tooltip="'always'"></slider>
+        <slider :min="0" :max="100" :interval="1"  :value="value" :suffix="'%'" :tooltip="'always'"></slider>
       </div>
 
       <table class="docs-table">
@@ -74,7 +74,7 @@ components: {
           </tr>
           <tr>
             <td>value</td>
-            <td>Number, String, Array, Object</td>
+            <td>Number, String, Array</td>
             <td>1</td>
             <td>Initial value of the slider.</td>
           </tr>
