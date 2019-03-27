@@ -138,12 +138,12 @@ import Button from "./../components/Button.vue";
 export default class AnnoucementsDemo extends Vue {
   trackingCodeComponent() {
     console.log("componentEventTracking");
-    ga("send", "event", "newfeatureoverlay", "modal_shown", "component");
+    // ga('send','event', 'newfeatureoverlay', 'modal_shown', 'component');
   }
 
   trackingCodeButton() {
     console.log("buttonEventTracking");
-    ga("send", "event", "newfeatureoverlay", "modal_click", "button");
+    // ga('send','event', 'newfeatureoverlay', 'modal_click', 'button');
   }
 }
 </script>
