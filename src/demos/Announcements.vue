@@ -115,7 +115,7 @@ components: {
           <td>@eventTrackingButton</td>
           <td>function</td>
           <td>null</td>
-          <td>Emits a eventTrackingButton function to call out the tracking code of modal button.</td>
+          <td>Emits a eventTrackingButton to call out the tracking code of modal button.</td>
         </tr>
       </tbody>
     </table>
