@@ -118,7 +118,7 @@ export default class NewFeatureOverlay extends Vue {
   }
 
   opened(event) {
-    this.eventTrackingComponent();
+    typeof this.eventTrackingComponent === 'function' && this.eventTrackingComponent();
   }
 
   occurEventTrackingButton() {
