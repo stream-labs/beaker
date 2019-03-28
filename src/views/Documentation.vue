@@ -143,7 +143,7 @@ export default class Documentation extends Vue {
   }
 }
 
-.accordion {
+.s-accordion {
   pre {
     .margin-bottom(@0);
   }

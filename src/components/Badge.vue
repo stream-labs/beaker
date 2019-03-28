@@ -55,6 +55,9 @@ export default class Badge extends Vue {
   @Prop()
   suffix!: string;
 
+  @Prop()
+  small!: Boolean;
+
   badgeProRewrite: any = {
     background: this.backgroundColor,
     color: this.textColor
@@ -63,7 +66,7 @@ export default class Badge extends Vue {
   get badgeStyles() {
     const styles: any = [];
 
-    if (this.variant === "pro") {
+    if (this.backgroundColor) {
       styles.push(this.badgeProRewrite);
     }
 
@@ -83,6 +86,10 @@ export default class Badge extends Vue {
       classes.push("s-badge--no-margin");
     }
 
+    if (this.small) {
+      classes.push("s-badge--small");
+    }
+
     return classes;
   }
 }
@@ -96,13 +103,12 @@ export default class Badge extends Vue {
   display: inline-block;
   margin: 0 0 0 8px;
   padding: 0 5px;
-  border: 1px solid transparent;
   .radius();
   font-size: 14px;
   .weight(@medium);
   color: @white;
   vertical-align: text-bottom;
-  line-height: 22px;
+  line-height: 24px;
   box-sizing: border-box;
 
   &--left {
@@ -111,6 +117,11 @@ export default class Badge extends Vue {
 
   &--no-margin {
     margin: 0;
+  }
+
+  &--small {
+    line-height: 16px;
+    font-size: 12px;
   }
 
   &--new,
@@ -134,8 +145,8 @@ export default class Badge extends Vue {
   }
 
   &--beta {
-    background-color: @yellow-light;
-    color: @yellow-dark;
+    background-color: @yellow-semi;
+    color: @yellow;
   }
 
   &--warning {
@@ -144,23 +155,24 @@ export default class Badge extends Vue {
   }
 
   &--count {
-    padding: 1px 2.5px 0;
+    padding: 1px 4px 0;
     border-radius: 16px;
     font-size: 10px;
+    line-height: 14px;
     .weight(@medium);
-    line-height: 1;
     background-color: @red;
+    .margin(0);
   }
 
   &--mod {
-    color: @yellow-dark;
+    color: @yellow;
     background-color: @white;
+    .margin-h-sides();
   }
 
   &--progress {
     height: 18px;
     .padding(0);
-    border: none;
     line-height: 18px;
     background-color: @light-4;
 
@@ -182,7 +194,7 @@ export default class Badge extends Vue {
     }
 
     &--beta {
-      background-color: @info-dark;
+      background-color: @info;
       color: @white;
     }
 
