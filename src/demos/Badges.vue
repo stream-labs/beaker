@@ -13,9 +13,11 @@ components: {
   Badge
 }</code></pre>
 
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre>
+      <div class="section">
+        <h2>Standard Badges</h2>
+        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+          <div slot="content">
+            <pre>
 <code>&lt;badge
   :variant=&quot;success&quot;
   :align-left=&quot;true&quot;
@@ -61,22 +63,15 @@ components: {
 &lt;badge
   :variant=&quot;count&quot;
 &gt;3&lt;/badge&gt;</code></pre>
-        </div>
-      </Accordion>
-
-      <div class="section section__components">
+          </div>
+        </Accordion>
         <badge :variant="'new'" :align-left="true">New</badge>
         <badge :variant="'new-alt'" :align-left="true">New Alt</badge>
         <badge :variant="'tag'" :align-left="true">Tag</badge>
         <badge :variant="'beta'" :align-left="true">Beta</badge>
         <badge :variant="'warning'" :align-left="true">Warning</badge>
-        <badge
-          :variant="'pro'"
-          :align-left="true"
-          :backgroundColor="'green'"
-          :textColor="'#fff'"
-        >Pro</badge>
         <badge :variant="'pro'" :align-left="true">Pro</badge>
+        <badge :align-left="true" :backgroundColor="'pink'" :textColor="'#fff'">Custom</badge>
         <badge
           :variant="'progress'"
           :backgroundColor="'#8736e0'"
@@ -86,6 +81,14 @@ components: {
         ></badge>
         <badge :variant="'mod'">/mod Streamlabs</badge>
         <badge :variant="'count'">3</badge>
+      </div>
+
+      <div class="section">
+        <h2>Small Badges</h2>
+        <badge :small="true" :variant="'tag'" :align-left="true">Tag</badge>
+        <badge :small="true" :variant="'beta'" :align-left="true">Beta</badge>
+        <badge :small="true" :variant="'warning'" :align-left="true">Warning</badge>
+        <badge :small="true" :variant="'pro'" :align-left="true">Pro</badge>
       </div>
     </div>
 
@@ -132,23 +135,13 @@ components: {
           <td>backgroundColor</td>
           <td>string</td>
           <td>"#31c3a2"</td>
-          <td>
-            Background color of progress bar and pro.
-            <code>variant</code> prop must be set to
-            <code>progress</code> or
-            <code>pro</code>.
-          </td>
+          <td>Use this prop to change the background color only if you need an option that's not one of the provided variants.</td>
         </tr>
         <tr>
           <td>textColor</td>
           <td>string</td>
           <td>"#ffffff"</td>
-          <td>
-            Text color of progress bar and pro.
-            <code>variant</code> prop must be set to
-            <code>progress</code> or
-            <code>pro</code>.
-          </td>
+          <td>Use this prop to change the text color only if you need an option that's not one of the provided variants.</td>
         </tr>
         <tr>
           <td>current</td>

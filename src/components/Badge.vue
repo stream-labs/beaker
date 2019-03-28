@@ -55,6 +55,9 @@ export default class Badge extends Vue {
   @Prop()
   suffix!: string;
 
+  @Prop()
+  small!: Boolean;
+
   badgeProRewrite: any = {
     background: this.backgroundColor,
     color: this.textColor
@@ -63,7 +66,7 @@ export default class Badge extends Vue {
   get badgeStyles() {
     const styles: any = [];
 
-    if (this.variant === "pro") {
+    if (this.backgroundColor) {
       styles.push(this.badgeProRewrite);
     }
 
@@ -83,6 +86,10 @@ export default class Badge extends Vue {
       classes.push("s-badge--no-margin");
     }
 
+    if (this.small) {
+      classes.push("s-badge--small");
+    }
+
     return classes;
   }
 }
@@ -96,13 +103,12 @@ export default class Badge extends Vue {
   display: inline-block;
   margin: 0 0 0 8px;
   padding: 0 5px;
-  border: 1px solid transparent;
   .radius();
   font-size: 14px;
   .weight(@medium);
   color: @white;
   vertical-align: text-bottom;
-  line-height: 22px;
+  line-height: 24px;
   box-sizing: border-box;
 
   &--left {
@@ -111,6 +117,11 @@ export default class Badge extends Vue {
 
   &--no-margin {
     margin: 0;
+  }
+
+  &--small {
+    line-height: 16px;
+    font-size: 12px;
   }
 
   &--new,
@@ -160,7 +171,6 @@ export default class Badge extends Vue {
   &--progress {
     height: 18px;
     .padding(0);
-    border: none;
     line-height: 18px;
     background-color: @light-4;
 
