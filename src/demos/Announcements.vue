@@ -24,8 +24,8 @@ components: {
   :title=&quot;'Increase Your Revenue'&quot;
   :media=&quot;'https://cdn.streamlabs.com/cloudbot/prototype_cloudbot_800x300.webm'&quot;
   :buttonTitle=&quot;'Go To Store'&quot;
-  :eventTrackingComponent=&quot;trackingCodeComponent&quot;
-  @eventTrackingButton=&quot;trackingCodeButton&quot;&gt;
+  :onOpen=&quot;trackingCodeComponent&quot;
+  @onAction=&quot;trackingCodeButton&quot;&gt;
   &lt;p&gt;We’ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.&lt;/p&gt;
   &lt;p&gt;We’ve automatically credited $15.00 to your account so you can start trying them out today.&lt;/p&gt;
 &lt;/NewFeatureOverlay&gt;</code></pre>
@@ -37,8 +37,8 @@ components: {
         :title="'Increase Your Revenue'"
         :media="'https://cdn.streamlabs.com/cloudbot/prototype_cloudbot_800x300.webm'"
         :buttonTitle="'Go To Store'"
-        :eventTrackingComponent="trackingCodeComponent"
-        @eventTrackingButton="trackingCodeButton"
+        :onOpen="trackingCodeComponent"
+        @onAction="trackingCodeButton"
       >
         <p>We’ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.</p>
         <p>We’ve automatically credited $15.00 to your account so you can start trying them out today.</p>
@@ -106,16 +106,16 @@ components: {
           <td>Router link path to dismiss the annoucement.</td>
         </tr>
         <tr>
-          <td>eventTrackingComponent</td>
+          <td>onOpen</td>
           <td>function</td>
           <td>null</td>
           <td>Function to call out the tracking code of modal component.</td>
         </tr>
         <tr>
-          <td>@eventTrackingButton</td>
+          <td>@onAction</td>
           <td>function</td>
           <td>null</td>
-          <td>Emits a eventTrackingButton to call out the tracking code of modal button.</td>
+          <td>Emits a onAction to call out the tracking code of modal button.</td>
         </tr>
       </tbody>
     </table>
