@@ -25,26 +25,42 @@ export default class Loading extends Vue {
 
   @Prop({ default: false })
   semiOpaque!: boolean;
-  
+
   @Prop()
   randomize!: boolean;
 
   strings: any = JSON.parse(JSON.stringify(this.loadingStrs));
   loaderText: string = "";
 
-  randomStrings() {
-    console.log("test");
+  loopString() {
+    const str = this.strings.shift();
+    this.strings.push(str);
+    this.loaderText = str;
+    setTimeout(this.loopString, 1000);
   }
 
-  loopStr() {
+  shuffleStrings() {
+    for (let i = this.strings.length - 1; i >= 0; i--) {
+      const random = Math.floor(Math.random() * i);
+      [this.strings[i], this.strings[random]] = [
+        this.strings[random],
+        this.strings[i]
+      ];
+    }
+    if (this.loaderText === this.strings[0]) {
+      this.shuffleStrings();
+    } else {
+      this.loopString();
+    }
+  }
+
+  onLoopStrings() {
     if (this.strings.length > 1) {
       if (this.randomize) {
-        this.randomStrings();
+        this.shuffleStrings();
+      } else {
+        this.loopString();
       }
-      const str = this.strings.shift();
-      this.strings.push(str);
-      this.loaderText = str;
-      setTimeout(this.loopStr, 4000);
     } else {
       this.loaderText = this.strings[0];
     }
@@ -54,7 +70,7 @@ export default class Loading extends Vue {
     if (typeof this.loadingStrs === "string") {
       this.loaderText = this.loadingStrs;
     } else {
-      this.loopStr();
+      this.onLoopStrings();
     }
   }
 }
