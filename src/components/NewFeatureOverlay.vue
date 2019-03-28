@@ -9,7 +9,7 @@
     @opened="opened"
   >
     <div slot="top-right" class="s-overlay__icon">
-      <span class="s-icon s-icon-close" @click="clickDismiss"></span>
+      <span class="s-icon s-icon-close" @click="onDismiss"></span>
     </div>
     <div class="s-overlay__container" :class="containerMq">
       <div class="s-overlay__body">
@@ -25,12 +25,12 @@
             :tag="'router-link'"
             :to="buttonRoute"
             :title="buttonTitle"
-            @click.native="occurEventTrackingButton"
+            @click.native="onSecondaryAction"
           ></Button>
           <router-link
             class="s-overlay__link"
             :to="dismissRoute"
-            @click.native="clickDismiss"
+            @click.native="onDismiss"
           >{{ dismissText }}</router-link>
         </div>
       </div>
@@ -91,7 +91,7 @@ export default class NewFeatureOverlay extends Vue {
   dismissText!: string;
 
   @Prop()
-  eventTrackingComponent!: Function;
+  onOpen!: Function;
 
   isImage: boolean = true;
 
@@ -118,15 +118,15 @@ export default class NewFeatureOverlay extends Vue {
   }
 
   opened(event) {
-    typeof this.eventTrackingComponent === 'function' && this.eventTrackingComponent();
+    typeof this.onOpen === 'function' && this.onOpen();
   }
 
-  occurEventTrackingButton() {
-    this.$emit("eventTrackingButton");
-    this.clickDismiss();
+  onSecondaryAction() {
+    this.$emit("onAction");
+    this.onDismiss();
   }
 
-  clickDismiss() {
+  onDismiss() {
     this.$modal.hide("new-feature");
   }
 }
