@@ -25,12 +25,22 @@ export default class Loading extends Vue {
 
   @Prop({ default: false })
   semiOpaque!: boolean;
+  
+  @Prop()
+  randomize!: boolean;
 
   strings: any = JSON.parse(JSON.stringify(this.loadingStrs));
   loaderText: string = "";
 
+  randomStrings() {
+    console.log("test");
+  }
+
   loopStr() {
     if (this.strings.length > 1) {
+      if (this.randomize) {
+        this.randomStrings();
+      }
       const str = this.strings.shift();
       this.strings.push(str);
       this.loaderText = str;

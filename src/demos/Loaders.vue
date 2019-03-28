@@ -20,6 +20,7 @@ components: {
         v-if="isLoadingSemi"
         :semiOpaque="true"
         :loadingStrs="array"
+        :randomize="true"
         @closeLoading="isLoadingSemi = false"
       ></Loading>
 
