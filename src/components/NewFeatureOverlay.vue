@@ -117,7 +117,7 @@ export default class NewFeatureOverlay extends Vue {
   }
 
   opened(event) {
-    typeof this.onOpen === 'function' && this.onOpen();
+    typeof this.onOpen === "function" && this.onOpen();
   }
 
   onPrimaryAction() {
