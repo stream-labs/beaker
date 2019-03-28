@@ -27,10 +27,7 @@
             :title="buttonTitle"
             @click.native="onPrimaryAction"
           ></Button>
-          <router-link
-            class="s-overlay__link"
-            :to="dismissRoute"
-          >{{ dismissText }}</router-link>
+          <router-link class="s-overlay__link" :to="dismissRoute">{{ dismissText }}</router-link>
         </div>
       </div>
 
@@ -92,6 +89,9 @@ export default class NewFeatureOverlay extends Vue {
   @Prop()
   onOpen!: Function;
 
+  @Prop()
+  onAction!: Function;
+
   isImage: boolean = true;
 
   get overlayImage() {
@@ -121,8 +121,7 @@ export default class NewFeatureOverlay extends Vue {
   }
 
   onPrimaryAction() {
-    this.$emit("onAction");
-    this.onDismiss();
+    typeof this.onAction === "function" && this.onAction();
   }
 
   onDismiss() {
