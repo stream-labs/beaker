@@ -145,8 +145,8 @@ export default class Badge extends Vue {
   }
 
   &--beta {
-    background-color: @yellow-light;
-    color: @yellow-dark;
+    background-color: @yellow-semi;
+    color: @yellow;
   }
 
   &--warning {
@@ -155,17 +155,19 @@ export default class Badge extends Vue {
   }
 
   &--count {
-    padding: 1px 2.5px 0;
+    padding: 1px 4px 0;
     border-radius: 16px;
     font-size: 10px;
+    line-height: 14px;
     .weight(@medium);
-    line-height: 1;
     background-color: @red;
+    .margin(0);
   }
 
   &--mod {
-    color: @yellow-dark;
+    color: @yellow;
     background-color: @white;
+    .margin-h-sides();
   }
 
   &--progress {
@@ -192,7 +194,7 @@ export default class Badge extends Vue {
     }
 
     &--beta {
-      background-color: @info-dark;
+      background-color: @info;
       color: @white;
     }
 

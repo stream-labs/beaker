@@ -68,6 +68,12 @@ export default class Callout extends Vue {
     }
   }
 
+  > span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
   a {
     color: inherit;
   }
@@ -101,8 +107,8 @@ export default class Callout extends Vue {
   }
 
   &--info {
-    background-color: @yellow-dark-semi;
-    color: @info-dark;
+    background-color: @yellow-semi;
+    color: @info;
   }
 
   &--success.strong {
@@ -110,7 +116,7 @@ export default class Callout extends Vue {
   }
 
   &--info.strong {
-    background-color: @info-dark;
+    background-color: @info;
   }
 
   &--warning.strong {
