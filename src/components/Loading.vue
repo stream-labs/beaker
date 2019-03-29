@@ -4,7 +4,7 @@
       <div :class="{ 's-loader__bg--semi': semiOpaque }" class="s-loader__bg">
         <div class="s-loader__inner">
           <Spinner class="s-spinner__overlay" :size="'large'"/>
-          <div class="s-loader__text">{{ loaderText  }}</div>
+          <div class="s-loader__text">{{ loaderText }}</div>
         </div>
       </div>
     </div>
