@@ -11,11 +11,11 @@ components: {
 
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-          <pre><code>&lt;Loading v-if=&quot;isLoading&quot; :loadingStrs=&quot;array&quot; @closeLoading=&quot;isLoading = false&quot;&gt;&lt;/Loading&gt;</code></pre>
+          <pre><code>&lt;Loading v-if=&quot;isLoading&quot; :loadingStrs=&quot;string&quot; @closeLoading=&quot;isLoading = false&quot;&gt;&lt;/Loading&gt;</code></pre>
         </div>
       </accordion>
 
-      <Loading v-if="isLoading" :loadingStrs="array" @closeLoading="isLoading = false"></Loading>
+      <Loading v-if="isLoading" :loadingStrs="string" @closeLoading="isLoading = false"></Loading>
       <Loading
         v-if="isLoadingSemi"
         :semiOpaque="true"
@@ -169,6 +169,6 @@ export default class Loaders extends Vue {
     "Lorem ipsum dolor sit amet, consectetur...",
     "Sed do eiusmod tempor incididunt ut labore..."
   ];
-  string = "string";
+  string = "test";
 }
 </script>
