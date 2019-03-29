@@ -29,7 +29,8 @@ import ModalConfirmation from "@/components/ModalConfirmation";
 import ModalRedirect from "@/components/ModalRedirect";
 import ModalSubscribe from "@/components/ModalSubscribe";
 import NewFeatureOverlay from "@/components/NewFeatureOverlay";
-import PaymentForm from "@/components/PaymentForm";
+import PaneDropdown from "@/components/PaneDropdown";
+// import PaymentForm from "@/components/PaymentForm";
 import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
 import Spinner from "@/components/Spinner";
@@ -67,6 +68,9 @@ const components = [
   ModalRedirect,
   ModalSubscribe,
   NewFeatureOverlay,
+  Pagination,
+  PaneDropdown,
+  ProgressBar,
   Selector,
   Slider,
   Spinner,
@@ -77,8 +81,6 @@ const components = [
   TextInput,
   Toggle,
   TooltipNotice,
-  Pagination,
-  ProgressBar,
   UrlBar,
   VirtualItem
 ];
@@ -105,7 +107,9 @@ export {
   ModalRedirect,
   ModalSubscribe,
   NewFeatureOverlay,
-  PaymentForm,
+  Pagination,
+  PaneDropdown,
+  ProgressBar,
   Selector,
   Slider,
   Spinner,
@@ -116,8 +120,6 @@ export {
   TextInput,
   Toggle,
   TooltipNotice,
-  Pagination,
-  ProgressBar,
   UrlBar,
   VirtualItem
 };
