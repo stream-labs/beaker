@@ -70,5 +70,8 @@ export default class Spinner extends Vue {
   .s-empty-section__title {
     color: @night-title;
   }
+  .s-empty-section__subtitle {
+    color: @night-paragraph;
+  }
 }
 </style>
