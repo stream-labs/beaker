@@ -68,12 +68,6 @@ export default class Callout extends Vue {
     }
   }
 
-  > span {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-
   a {
     color: inherit;
   }

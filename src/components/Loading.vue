@@ -29,12 +29,12 @@ export default class Loading extends Vue {
   @Prop({ default: false })
   isRandom!: boolean;
 
-  loaderText : string = "";
+  loaderText: string = "";
   index: number = 0;
 
   mounted() {
     if (typeof this.loadingStrs === "string") {
-      this.loaderText  = this.loadingStrs;
+      this.loaderText = this.loadingStrs;
     } else {
       this.distinguishNumberOfArrays();
     }
@@ -62,9 +62,7 @@ export default class Loading extends Vue {
   }
 
   loopRandomText() {
-    const randomIndex = Math.floor(
-      Math.random() * this.loadingStrs.length
-    );
+    const randomIndex = Math.floor(Math.random() * this.loadingStrs.length);
     if (this.loaderText === this.loadingStrs[randomIndex]) {
       this.loopRandomText();
     } else {
