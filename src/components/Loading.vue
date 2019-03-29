@@ -4,7 +4,7 @@
       <div :class="{ 's-loader__bg--semi': semiOpaque }" class="s-loader__bg">
         <div class="s-loader__inner">
           <Spinner class="s-spinner__overlay" :size="'large'"/>
-          <div class="s-loader__text">{{ loaderText }}</div>
+          <div class="s-loader__text">{{ displayText }}</div>
         </div>
       </div>
     </div>
@@ -21,7 +21,10 @@ import Button from "./../components/Button.vue";
 })
 export default class Loading extends Vue {
   @Prop()
-  loadingStrs!: any[] | string;
+  loaderText!: string;
+
+  @Prop()
+  loaderMultipleText!: any[];
 
   @Prop({ default: false })
   semiOpaque!: boolean;
@@ -29,53 +32,47 @@ export default class Loading extends Vue {
   @Prop({ default: false })
   isRandom!: boolean;
 
-  strings: any = JSON.parse(JSON.stringify(this.loadingStrs));
-  loaderText: string = "";
+  displayText: string = "";
+  index: number = 0;
 
   mounted() {
-    if (typeof this.loadingStrs === "string") {
-      this.loaderText = this.loadingStrs;
+    if (this.loaderText) {
+      this.displayText = this.loaderText;
     } else {
       this.distinguishNumberOfArrays();
     }
   }
 
   distinguishNumberOfArrays() {
-    if (this.strings.length > 1) {
+    if (this.loaderMultipleText.length > 1) {
       if (this.isRandom) {
         this.loopRandomText();
       } else {
         this.loopText();
       }
     } else {
-      this.loaderText = this.strings[0];
+      this.displayText = this.loaderMultipleText[0];
     }
   }
 
   loopText() {
-    const firstString = this.strings.shift();
-    this.strings.push(firstString);
-    this.loaderText = firstString;
-    setTimeout(this.loopText, 1000);
+    this.displayText = this.loaderMultipleText[this.index];
+    this.index++;
+    if (this.index === this.loaderMultipleText.length) {
+      this.index = 0;
+    }
+    setTimeout(this.loopText, 4000);
   }
 
   loopRandomText() {
-    this.shuffleStrings();
-    if (this.loaderText === this.strings[0]) {
+    const randomIndex = Math.floor(
+      Math.random() * this.loaderMultipleText.length
+    );
+    if (this.displayText === this.loaderMultipleText[randomIndex]) {
       this.loopRandomText();
     } else {
-      this.loaderText = this.strings[0];
-      setTimeout(this.loopRandomText, 1000);
-    }
-  }
-
-  shuffleStrings() {
-    for (let i = this.strings.length - 1; i >= 0; i--) {
-      const random = Math.floor(Math.random() * i);
-      [this.strings[i], this.strings[random]] = [
-        this.strings[random],
-        this.strings[i]
-      ];
+      this.displayText = this.loaderMultipleText[randomIndex];
+      setTimeout(this.loopRandomText, 4000);
     }
   }
 }
