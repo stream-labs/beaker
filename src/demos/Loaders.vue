@@ -20,12 +20,31 @@ components: {
         v-if="isLoadingSemi"
         :semiOpaque="true"
         :loadingStrs="array"
+        :isRandom="true"
         @closeLoading="isLoadingSemi = false"
       ></Loading>
 
       <div class="row">
         <div class="s-button-container s-button-container--left">
           <Button :variation="'default'" :title="'loading default'" @click="isLoading = true"></Button>
+        </div>
+      </div>
+
+      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+        <div slot="content">
+          <pre><code>&lt;Loading
+  v-if=&quot;isLoadingSemi&quot;
+  :semiOpaque=&quot;true&quot;
+  :loadingStrs=&quot;array&quot;
+  :isRandom=&quot;true&quot;
+  @closeLoading=&quot;isLoadingSemi = false&quot;&gt;
+&lt;/Loading&gt;
+</code></pre>
+        </div>
+      </accordion>
+
+      <div class="row">
+        <div class="s-button-container s-button-container--left">
           <Button
             :variation="'default'"
             :title="'loading semi opaque option'"
@@ -49,6 +68,15 @@ components: {
             <td>any[] | string</td>
             <td>-</td>
             <td>Pass an array of stings into the loader. We recommend 3-4. Each shows for 4 seconds before it rotates.</td>
+          </tr>
+          <tr>
+            <td>isRandom</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>
+              Randomize the strings if you set
+              <code>loadingStrs</code>as an array
+            </td>
           </tr>
           <tr>
             <td>semiOpaque</td>

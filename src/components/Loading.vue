@@ -26,25 +26,56 @@ export default class Loading extends Vue {
   @Prop({ default: false })
   semiOpaque!: boolean;
 
+  @Prop({ default: false })
+  isRandom!: boolean;
+
   strings: any = JSON.parse(JSON.stringify(this.loadingStrs));
   loaderText: string = "";
-
-  loopStr() {
-    if (this.strings.length > 1) {
-      const str = this.strings.shift();
-      this.strings.push(str);
-      this.loaderText = str;
-      setTimeout(this.loopStr, 4000);
-    } else {
-      this.loaderText = this.strings[0];
-    }
-  }
 
   mounted() {
     if (typeof this.loadingStrs === "string") {
       this.loaderText = this.loadingStrs;
     } else {
-      this.loopStr();
+      this.distinguishNumberOfArrays();
+    }
+  }
+
+  distinguishNumberOfArrays() {
+    if (this.strings.length > 1) {
+      if (this.isRandom) {
+        this.loopRandomText();
+      } else {
+        this.loopText();
+      }
+    } else {
+      this.loaderText = this.strings[0];
+    }
+  }
+
+  loopText() {
+    const firstString = this.strings.shift();
+    this.strings.push(firstString);
+    this.loaderText = firstString;
+    setTimeout(this.loopText, 1000);
+  }
+
+  loopRandomText() {
+    this.shuffleStrings();
+    if (this.loaderText === this.strings[0]) {
+      this.loopRandomText();
+    } else {
+      this.loaderText = this.strings[0];
+      setTimeout(this.loopRandomText, 1000);
+    }
+  }
+
+  shuffleStrings() {
+    for (let i = this.strings.length - 1; i >= 0; i--) {
+      const random = Math.floor(Math.random() * i);
+      [this.strings[i], this.strings[random]] = [
+        this.strings[random],
+        this.strings[i]
+      ];
     }
   }
 }
