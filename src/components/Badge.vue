@@ -168,6 +168,7 @@ export default class Badge extends Vue {
     color: @yellow;
     background-color: @white;
     .margin-h-sides();
+    vertical-align: middle;
   }
 
   &--progress {

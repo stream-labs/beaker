@@ -29,8 +29,8 @@ export default class Loading extends Vue {
   @Prop({ default: false })
   isRandom!: boolean;
 
-  strings: any = JSON.parse(JSON.stringify(this.loadingStrs));
   loaderText: string = "";
+  index: number = 0;
 
   mounted() {
     if (typeof this.loadingStrs === "string") {
@@ -41,41 +41,33 @@ export default class Loading extends Vue {
   }
 
   distinguishNumberOfArrays() {
-    if (this.strings.length > 1) {
+    if (this.loadingStrs.length > 1) {
       if (this.isRandom) {
         this.loopRandomText();
       } else {
         this.loopText();
       }
     } else {
-      this.loaderText = this.strings[0];
+      this.loaderText = this.loadingStrs[0];
     }
   }
 
   loopText() {
-    const firstString = this.strings.shift();
-    this.strings.push(firstString);
-    this.loaderText = firstString;
-    setTimeout(this.loopText, 1000);
+    this.loaderText = this.loadingStrs[this.index];
+    this.index++;
+    if (this.index === this.loadingStrs.length) {
+      this.index = 0;
+    }
+    setTimeout(this.loopText, 4000);
   }
 
   loopRandomText() {
-    this.shuffleStrings();
-    if (this.loaderText === this.strings[0]) {
+    const randomIndex = Math.floor(Math.random() * this.loadingStrs.length);
+    if (this.loaderText === this.loadingStrs[randomIndex]) {
       this.loopRandomText();
     } else {
-      this.loaderText = this.strings[0];
-      setTimeout(this.loopRandomText, 1000);
-    }
-  }
-
-  shuffleStrings() {
-    for (let i = this.strings.length - 1; i >= 0; i--) {
-      const random = Math.floor(Math.random() * i);
-      [this.strings[i], this.strings[random]] = [
-        this.strings[random],
-        this.strings[i]
-      ];
+      this.loaderText = this.loadingStrs[randomIndex];
+      setTimeout(this.loopRandomText, 4000);
     }
   }
 }
