@@ -4,7 +4,7 @@
       <div :class="{ 's-loader__bg--semi': semiOpaque }" class="s-loader__bg">
         <div class="s-loader__inner">
           <Spinner class="s-spinner__overlay" :size="'large'"/>
-          <div class="s-loader__text">{{ displayText }}</div>
+          <div class="s-loader__text">{{ loaderText  }}</div>
         </div>
       </div>
     </div>
@@ -21,10 +21,7 @@ import Button from "./../components/Button.vue";
 })
 export default class Loading extends Vue {
   @Prop()
-  loaderText!: string;
-
-  @Prop()
-  loaderMultipleText!: any[];
+  loadingStrs!: any[] | string;
 
   @Prop({ default: false })
   semiOpaque!: boolean;
@@ -32,33 +29,33 @@ export default class Loading extends Vue {
   @Prop({ default: false })
   isRandom!: boolean;
 
-  displayText: string = "";
+  loaderText : string = "";
   index: number = 0;
 
   mounted() {
-    if (this.loaderText) {
-      this.displayText = this.loaderText;
+    if (typeof this.loadingStrs === "string") {
+      this.loaderText  = this.loadingStrs;
     } else {
       this.distinguishNumberOfArrays();
     }
   }
 
   distinguishNumberOfArrays() {
-    if (this.loaderMultipleText.length > 1) {
+    if (this.loadingStrs.length > 1) {
       if (this.isRandom) {
         this.loopRandomText();
       } else {
         this.loopText();
       }
     } else {
-      this.displayText = this.loaderMultipleText[0];
+      this.loaderText = this.loadingStrs[0];
     }
   }
 
   loopText() {
-    this.displayText = this.loaderMultipleText[this.index];
+    this.loaderText = this.loadingStrs[this.index];
     this.index++;
-    if (this.index === this.loaderMultipleText.length) {
+    if (this.index === this.loadingStrs.length) {
       this.index = 0;
     }
     setTimeout(this.loopText, 4000);
@@ -66,12 +63,12 @@ export default class Loading extends Vue {
 
   loopRandomText() {
     const randomIndex = Math.floor(
-      Math.random() * this.loaderMultipleText.length
+      Math.random() * this.loadingStrs.length
     );
-    if (this.displayText === this.loaderMultipleText[randomIndex]) {
+    if (this.loaderText === this.loadingStrs[randomIndex]) {
       this.loopRandomText();
     } else {
-      this.displayText = this.loaderMultipleText[randomIndex];
+      this.loaderText = this.loadingStrs[randomIndex];
       setTimeout(this.loopRandomText, 4000);
     }
   }

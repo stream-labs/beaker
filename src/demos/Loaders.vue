@@ -11,15 +11,15 @@ components: {
 
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-          <pre><code>&lt;Loading v-if=&quot;isLoading&quot; :loaderText=&quot;string&quot; @closeLoading=&quot;isLoading = false&quot;&gt;&lt;/Loading&gt;</code></pre>
+          <pre><code>&lt;Loading v-if=&quot;isLoading&quot; :loadingStrs=&quot;string&quot; @closeLoading=&quot;isLoading = false&quot;&gt;&lt;/Loading&gt;</code></pre>
         </div>
       </accordion>
 
-      <Loading v-if="isLoading" :loaderText="string" @closeLoading="isLoading = false"></Loading>
+      <Loading v-if="isLoading" :loadingStrs="string" @closeLoading="isLoading = false"></Loading>
       <Loading
         v-if="isLoadingSemi"
         :semiOpaque="true"
-        :loaderMultipleText="array"
+        :loadingStrs="array"
         :isRandom="true"
         @closeLoading="isLoadingSemi = false"
       ></Loading>
@@ -35,7 +35,7 @@ components: {
           <pre><code>&lt;Loading
   v-if=&quot;isLoadingSemi&quot;
   :semiOpaque=&quot;true&quot;
-  :loaderMultipleText=&quot;array&quot;
+  :loadingStrs=&quot;array&quot;
   :isRandom=&quot;true&quot;
   @closeLoading=&quot;isLoadingSemi = false&quot;&gt;
 &lt;/Loading&gt;
@@ -64,14 +64,8 @@ components: {
         </thead>
         <tbody>
           <tr>
-            <td>loaderText</td>
-            <td>string</td>
-            <td>-</td>
-            <td>Pass a sting into the loader.</td>
-          </tr>
-          <tr>
-            <td>loaderMultipleText</td>
-            <td>any[]</td>
+            <td>loadingStrs</td>
+            <td>any[] | string</td>
             <td>-</td>
             <td>Pass an array of stings into the loader. We recommend 3-4. Each shows for 4 seconds before it rotates.</td>
           </tr>
