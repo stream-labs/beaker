@@ -20,7 +20,7 @@ components: {
         v-if="isLoadingSemi"
         :semiOpaque="true"
         :loadingStrs="array"
-        :randomize="true"
+        :isRandom="true"
         @closeLoading="isLoadingSemi = false"
       ></Loading>
 
@@ -138,19 +138,9 @@ export default class Loaders extends Vue {
   isLoading = false;
   isLoadingSemi = false;
   array = [
-    // "Syncing all files to our cloud...",
-    // "Lorem ipsum dolor sit amet, consectetur...",
-    // "Sed do eiusmod tempor incididunt ut labore...",
-    "1",
-    "2",
-    // "3",
-    // "4",
-    // "5",
-    // "6",
-    // "7",
-    // "8",
-    // "9",
-    // "10"
+    "Syncing all files to our cloud...",
+    "Lorem ipsum dolor sit amet, consectetur...",
+    "Sed do eiusmod tempor incididunt ut labore...",
   ];
   string = "string";
 }
