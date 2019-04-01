@@ -35,6 +35,8 @@
       <virtual-items v-if="activeSection === 'virtual-items'"/>
       -->
       <site-search-demo/>
+      P
+      <icons/>
     </div>
   </div>
 </template>

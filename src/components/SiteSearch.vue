@@ -252,7 +252,6 @@ export default class SiteSearch extends Vue {
       color: @dark-2;
     }
   }
-
 }
 
 .fadeX-enter-active {
