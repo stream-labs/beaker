@@ -109,6 +109,20 @@ components: {
           <td>href for the action button if tag is set to <code>a</code></td>
         </tr>
         <tr>
+          <td>buttonTarget</td>
+          <td>string</td>
+          <td>null</td>
+          <td>
+            Use to set different targets for button if set to
+            <code>a</code>
+            Options are:
+            <code>_self</code>,
+            <code>_blank</code>,
+            <code>_parent</code>,
+            <code>_top</code>
+          </td>
+        </tr>
+        <tr>
           <td>dismissTitle</td>
           <td>string</td>
           <td>Go to Dashboard</td>
