@@ -85,13 +85,25 @@ components: {
           <td>buttonTitle</td>
           <td>string</td>
           <td>null</td>
+          <td>What type of element the button is, <code>button</code>, <code>a</code>, <code>router-link</code></td>
+        </tr>
+        <tr>
+          <td>buttonTag</td>
+          <td>string</td>
+          <td>null</td>
           <td>Text displayed in the action button</td>
         </tr>
         <tr>
           <td>buttonRoute</td>
           <td>string</td>
           <td>/</td>
-          <td>Router link path for the action button</td>
+          <td>Router link path for the action button if tag is <code>router-link</code></td>
+        </tr>
+        <tr>
+          <td>buttonHref</td>
+          <td>string</td>
+          <td>null</td>
+          <td>href for the action button if tag is set to <code>a</code></td>
         </tr>
         <tr>
           <td>dismissTitle</td>

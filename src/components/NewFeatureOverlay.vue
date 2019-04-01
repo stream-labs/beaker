@@ -22,8 +22,9 @@
           <Button
             :size="'large'"
             :variation="'action'"
-            :tag="'router-link'"
+            :tag="buttonTag"
             :to="buttonRoute"
+            :href="buttonHref"
             :title="buttonTitle"
             @click.native="onPrimaryAction"
           ></Button>
@@ -83,6 +84,12 @@ export default class NewFeatureOverlay extends Vue {
 
   @Prop({ default: "/" })
   buttonRoute!: string;
+
+  @Prop({ default : 'button'})
+  buttonTag!: String;
+
+  @Prop({})
+  buttonHref!: String;
 
   @Prop({ default: "/" })
   dismissRoute!: string;
