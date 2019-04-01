@@ -77,7 +77,7 @@ export default class Button extends Vue {
     default: null;
   };
 
-  @Prop({ default: '_self'})
+  @Prop({ default: "_self" })
   target!: String;
 
   // standard, medium, large, square

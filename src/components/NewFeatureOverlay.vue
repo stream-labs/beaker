@@ -86,14 +86,14 @@ export default class NewFeatureOverlay extends Vue {
   @Prop({ default: "/" })
   buttonRoute!: string;
 
-  @Prop({ default : 'router-link'})
+  @Prop({ default: "router-link" })
   buttonTag!: String;
 
   @Prop()
   buttonHref!: String;
 
   @Prop()
-  buttonTarget!: String
+  buttonTarget!: String;
 
   @Prop({ default: "/" })
   dismissRoute!: string;
