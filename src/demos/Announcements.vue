@@ -39,6 +39,9 @@ components: {
         :buttonTitle="'Go To Store'"
         :onOpen="trackingCodeComponent"
         :onAction="trackingCodeButton"
+        :buttonTag="'a'"
+        :buttonHref="'https://www.twitch.tv/ext/xab8h6nj36fc2wtn71yikw9hqjd6v4-0.0.1'"
+        :buttonTarget="'_blank'"
       >
         <p>We’ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.</p>
         <p>We’ve automatically credited $15.00 to your account so you can start trying them out today.</p>
@@ -85,13 +88,25 @@ components: {
           <td>buttonTitle</td>
           <td>string</td>
           <td>null</td>
+          <td>What type of element the button is, <code>button</code>, <code>a</code>, <code>router-link</code></td>
+        </tr>
+        <tr>
+          <td>buttonTag</td>
+          <td>string</td>
+          <td>null</td>
           <td>Text displayed in the action button</td>
         </tr>
         <tr>
           <td>buttonRoute</td>
           <td>string</td>
           <td>/</td>
-          <td>Router link path for the action button</td>
+          <td>Router link path for the action button if tag is <code>router-link</code></td>
+        </tr>
+        <tr>
+          <td>buttonHref</td>
+          <td>string</td>
+          <td>null</td>
+          <td>href for the action button if tag is set to <code>a</code></td>
         </tr>
         <tr>
           <td>dismissTitle</td>
