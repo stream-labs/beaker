@@ -39,6 +39,9 @@ components: {
         :buttonTitle="'Go To Store'"
         :onOpen="trackingCodeComponent"
         :onAction="trackingCodeButton"
+        :buttonTag="'a'"
+        :buttonHref="'https://www.twitch.tv/ext/xab8h6nj36fc2wtn71yikw9hqjd6v4-0.0.1'"
+        :buttonTarget="'_blank'"
       >
         <p>We’ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.</p>
         <p>We’ve automatically credited $15.00 to your account so you can start trying them out today.</p>

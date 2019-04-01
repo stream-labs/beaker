@@ -13,6 +13,7 @@
     :disabled="state === 'disabled'"
     :style="buttonStyles"
     @click="$emit('click')"
+    :target="target"
   >
     <span>
       <span>
@@ -75,6 +76,9 @@ export default class Button extends Vue {
     type: String;
     default: null;
   };
+
+  @Prop({ default: '_self'})
+  target!: String;
 
   // standard, medium, large, square
   @Prop()
