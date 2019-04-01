@@ -638,6 +638,20 @@ components: {
           </td>
         </tr>
         <tr>
+          <td>target</td>
+          <td>String</td>
+          <td>_self</td>
+          <td>
+            Used to set different targets for
+            <code>a</code>
+            links,
+            <code>_self</code>,
+            <code>_blank</code>,
+            <code>_parent</code>,
+            <code>_top</code>
+          </td>
+        </tr>
+        <tr>
           <td>variation</td>
           <td>String</td>
           <td>default</td>
