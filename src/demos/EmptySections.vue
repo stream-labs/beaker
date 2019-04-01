@@ -34,7 +34,6 @@ components: {
 
       <div class="row">
         <empty-section
-          :variation="'text'"
           :title="'You don’t have any pending users yet'"
           :subtitle="'Open a queue to get started.'"
         ></empty-section>
@@ -44,7 +43,6 @@ components: {
         <div slot="content">
           <pre>
 <code>&lt;empty-section
-  :variation=&quot;'search'&quot;
   :title=&quot;'The title'&quot;
   :interval=&quot;'The Subtitle'&quot;&gt;
   &lt;div&gt;Anything within element will be slotted below&lt;/div&gt;
