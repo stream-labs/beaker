@@ -1,9 +1,12 @@
 <template>
   <transition name="fade">
-    <div class="s-loader">
-      <div :class="{ 's-loader__bg--semi': semiOpaque }" class="s-loader__bg">
+    <div class="s-loader" :swapMode="swapMode">
+      <div
+        :class="{ 's-loader__bg--semi': semiOpaque, 's-loader--modeswap': swapMode }"
+        class="s-loader__bg"
+      >
         <div class="s-loader__inner">
-          <Spinner class="s-spinner__overlay" :size="'large'"/>
+          <Spinner :swap="swapMode" class="s-spinner__overlay" :size="'large'"/>
           <div class="s-loader__text">{{ loaderText }}</div>
         </div>
       </div>
@@ -28,6 +31,9 @@ export default class Loading extends Vue {
 
   @Prop({ default: false })
   isRandom!: boolean;
+
+  @Prop({ default: false })
+  swapMode!: Boolean;
 
   loaderText: string = "";
   index: number = 0;
@@ -111,6 +117,15 @@ export default class Loading extends Vue {
   .padding-top(0);
 }
 
+// in case day/night mode needs to be switched
+.s-loader--modeswap {
+  background: @dark-3;
+
+  .s-loader__text {
+    color: @white;
+  }
+}
+
 .night,
 .night-theme {
   .s-loader__bg {
@@ -123,6 +138,15 @@ export default class Loading extends Vue {
 
   .s-loader__text {
     color: @white;
+  }
+
+  // in case day/night mode needs to be switched
+  .s-loader--modeswap {
+    background: @white;
+
+    .s-loader__text {
+      color: @dark-2;
+    }
   }
 }
 </style>

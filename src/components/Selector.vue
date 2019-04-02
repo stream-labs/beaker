@@ -1,14 +1,16 @@
 <template>
-  <v-select
-    :value="value"
-    :options="options"
-    :disabled="disabled"
-    :clearable="false"
-    :searchable="searchable"
-    :multiple="multiple"
-    :placeholder="placeholder"
-    @input="val => emitInput(val)"
-  ></v-select>
+  <div class="s-selector">
+    <v-select
+      :value="value"
+      :options="options"
+      :disabled="disabled"
+      :clearable="false"
+      :searchable="searchable"
+      :multiple="multiple"
+      :placeholder="placeholder"
+      @input="val => emitInput(val)"
+    ></v-select>
+  </div>
 </template>
 
 <script>
@@ -47,171 +49,23 @@ export default {
 <style lang="less">
 @import "./../styles/Imports";
 
-.v-select {
-  font-family: "Roboto";
-  background-color: @day-dropdown-bg;
-  border-color: @day-dropdown-border;
-  .radius();
-
-  &.open {
-    .open-indicator:before {
-      transform: none;
-    }
-  }
-
-  &.disabled {
-    .dropdown-toggle {
-      background-color: @day-input-disabled;
-      color: @light-5;
-
-      input {
-        background: transparent;
-      }
-    }
-
-    .open-indicator {
-      background: transparent;
-    }
-
-    .selected-tag {
-      color: @light-5;
-
-      .close {
-        background-color: transparent;
-      }
-    }
-  }
-
-  .open-indicator {
-    font-style: normal;
-  }
-
-  .dropdown-toggle {
-    border: 0;
-    .padding-h-sides();
-    .padding-v-sides(@0);
-    height: 40px;
-  }
-
-  .open-indicator:before {
-    border: 0;
-    transform: none;
-    content: "\e996";
-    font-family: "icomoon";
-    color: @icon;
-    height: auto;
-    width: auto;
-  }
-
-  .form-control {
-    padding: 0;
-  }
-
-  .vs__selected-options {
-    .padding(@0);
-    align-items: center;
-  }
-
-  .selected-tag {
-    .margin(@0);
-    .padding-h-sides();
-    .margin-right();
-    color: @day-paragraph;
-    line-height: 24px;
-    border: 0;
+.s-selector {
+  .v-select {
     font-family: "Roboto";
-    background-color: @white;
-
-    .close {
-      opacity: 1;
-      text-shadow: none;
-
-      &:hover {
-        &:after {
-          color: @day-title;
-          .transition();
-        }
-      }
-
-      &:after {
-        font-family: "icomoon";
-        content: "\e956";
-        font-size: 12px;
-        .margin-left();
-        color: @icon;
-        .weight(@normal);
-        line-height: 24px;
-      }
-
-      span {
-        display: none;
-      }
-    }
-  }
-
-  &.single {
-    .selected-tag {
-      .padding(@0);
-    }
-  }
-
-  input[type="search"],
-  input[type="search"]:focus {
-    .margin(@0);
-    font-size: 14px;
-    font-family: "Roboto";
-    .padding-h-sides(0);
-  }
-
-  .dropdown-menu {
-    .padding(0);
     background-color: @day-dropdown-bg;
     border-color: @day-dropdown-border;
-    .day-shadow();
+    .radius();
 
-    li {
-      line-height: 40px;
-
-      a {
-        color: @day-paragraph;
-        .padding-h-sides();
-        .padding-v-sides(0);
-        text-decoration: none;
-
-        &:hover,
-        &.active,
-        &.highlight {
-          background-color: @light-3;
-          color: @day-title;
-        }
+    &.open {
+      .open-indicator:before {
+        transform: none;
       }
     }
-
-    .active {
-      a {
-        background-color: @light-3;
-      }
-    }
-
-    .highlight {
-      a {
-        background-color: @light-3;
-        color: @day-title;
-      }
-    }
-  }
-}
-
-.night,
-.night-theme {
-  .v-select {
-    background-color: @night-dropdown-bg;
-    border-color: @night-dropdown-border;
 
     &.disabled {
       .dropdown-toggle {
-        background-color: @night-input-disabled;
-        color: @dark-5;
+        background-color: @day-input-disabled;
+        color: @light-5;
 
         input {
           background: transparent;
@@ -223,57 +77,210 @@ export default {
       }
 
       .selected-tag {
-        color: @dark-5;
+        color: @light-5;
+
+        .close {
+          background-color: transparent;
+        }
+      }
+    }
+
+    .open-indicator {
+      font-style: normal;
+    }
+
+    .dropdown-toggle {
+      border: 0;
+      .padding-h-sides();
+      .padding-v-sides(@0);
+      height: 40px;
+    }
+
+    .open-indicator:before {
+      border: 0;
+      transform: none;
+      content: "\e996";
+      font-family: "icomoon";
+      color: @icon;
+      height: auto;
+      width: auto;
+    }
+
+    .form-control {
+      padding: 0;
+    }
+
+    .vs__selected-options {
+      .padding(@0);
+      align-items: center;
+    }
+
+    .selected-tag {
+      .margin(@0);
+      .padding-h-sides();
+      .margin-right();
+      color: @day-paragraph;
+      line-height: 24px;
+      border: 0;
+      font-family: "Roboto";
+      background-color: @white;
+
+      .close {
+        opacity: 1;
+        text-shadow: none;
+
+        &:hover {
+          &:after {
+            color: @day-title;
+            .transition();
+          }
+        }
+
+        &:after {
+          font-family: "icomoon";
+          content: "\e956";
+          font-size: 12px;
+          .margin-left();
+          color: @icon;
+          .weight(@normal);
+          line-height: 24px;
+        }
+
+        span {
+          display: none;
+        }
       }
     }
 
     &.single {
       .selected-tag {
+        .padding(@0);
         background-color: transparent;
       }
     }
 
-    .selected-tag {
-      color: @night-paragraph;
-      background-color: @dark-3;
-
-      .close {
-        &:hover {
-          &:after {
-            color: @night-title;
-          }
-        }
-      }
+    input[type="search"],
+    input[type="search"]:focus {
+      .margin(@0);
+      font-size: 14px;
+      font-family: "Roboto";
+      .padding-h-sides(0);
     }
 
     .dropdown-menu {
-      background-color: @night-dropdown-bg;
-      border-color: @night-dropdown-border;
-      .night-shadow();
+      .padding(0);
+      background-color: @day-dropdown-bg;
+      border-color: @day-dropdown-border;
+      .day-shadow();
 
       li {
+        line-height: 40px;
+
         a {
-          color: @night-paragraph;
+          color: @day-paragraph;
+          .padding-h-sides();
+          .padding-v-sides(0);
+          text-decoration: none;
 
           &:hover,
           &.active,
           &.highlight {
-            background-color: @night-hover;
-            color: @night-title;
+            background-color: @light-3;
+            color: @day-title;
           }
         }
       }
 
       .active {
         a {
-          background-color: @night-hover;
+          background-color: @light-3;
         }
       }
 
       .highlight {
         a {
-          background-color: @night-hover;
-          color: @night-title;
+          background-color: @light-3;
+          color: @day-title;
+        }
+      }
+    }
+  }
+}
+
+.night,
+.night-theme {
+  .s-selector {
+    .v-select {
+      background-color: @night-dropdown-bg;
+      border-color: @night-dropdown-border;
+
+      &.disabled {
+        .dropdown-toggle {
+          background-color: @night-input-disabled;
+          color: @dark-5;
+
+          input {
+            background: transparent;
+          }
+        }
+
+        .open-indicator {
+          background: transparent;
+        }
+
+        .selected-tag {
+          color: @dark-5;
+        }
+      }
+
+      &.single {
+        .selected-tag {
+          background-color: transparent;
+        }
+      }
+
+      .selected-tag {
+        color: @night-paragraph;
+        background-color: @dark-3;
+
+        .close {
+          &:hover {
+            &:after {
+              color: @night-title;
+            }
+          }
+        }
+      }
+
+      .dropdown-menu {
+        background-color: @night-dropdown-bg;
+        border-color: @night-dropdown-border;
+        .night-shadow();
+
+        li {
+          a {
+            color: @night-paragraph;
+
+            &:hover,
+            &.active,
+            &.highlight {
+              background-color: @night-hover;
+              color: @night-title;
+            }
+          }
+        }
+
+        .active {
+          a {
+            background-color: @night-hover;
+          }
+        }
+
+        .highlight {
+          a {
+            background-color: @night-hover;
+            color: @night-title;
+          }
         }
       }
     }
