@@ -24,12 +24,7 @@
     </div>
 
     <div v-if="type === 'redirect'">
-      <ModalRedirect
-        :title="title"
-        :text="text"
-        :width="width"
-        :minWidth="minWidth"
-      ></ModalRedirect>
+      <ModalRedirect :title="title" :text="text" :width="width" :minWidth="minWidth"></ModalRedirect>
     </div>
 
     <div v-if="type === 'confirmation'">
