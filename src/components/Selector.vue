@@ -86,16 +86,50 @@ export default {
 
   .vs__selected-options {
     .padding(@0);
+    align-items: center;
   }
 
   .selected-tag {
     .margin(@0);
+    .padding-h-sides();
     .margin-right();
     color: @day-paragraph;
-    .padding(@0);
-    line-height: 40px;
+    line-height: 24px;
     border: 0;
     font-family: "Roboto";
+    background-color: @white;
+
+    .close {
+      opacity: 1;
+      text-shadow: none;
+
+      &:hover {
+        &:after {
+          color: @day-title;
+          .transition();
+        }
+      }
+
+      &:after {
+        font-family: "icomoon";
+        content: "\e956";
+        font-size: 12px;
+        .margin-left();
+        color: @icon;
+        .weight(@normal);
+        line-height: 24px;
+      }
+
+      span {
+        display: none;
+      }
+    }
+  }
+
+  &.single {
+    .selected-tag {
+      .padding(@0);
+    }
   }
 
   input[type="search"],
@@ -151,8 +185,24 @@ export default {
     background-color: @night-dropdown-bg;
     border-color: @night-dropdown-border;
 
+    &.single {
+      .selected-tag {
+        color: @night-paragraph;
+        background-color: transparent;
+      }
+    }
+
     .selected-tag {
       color: @night-paragraph;
+      background-color: @dark-3;
+
+      .close {
+        &:hover {
+          &:after {
+            color: @night-title;
+          }
+        }
+      }
     }
 
     .dropdown-menu {

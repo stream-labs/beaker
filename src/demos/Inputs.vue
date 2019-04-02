@@ -111,6 +111,12 @@
     <div class="section">
       <h2>Selector</h2>
       <selector v-model="selected" :options="['Option A', 'Option B', 'Option C']"></selector>
+      <br>
+      <selector
+        v-model="multipleSelected"
+        :options="['Option A', 'Option B', 'Option C', 'Option D', 'Option E', 'Option F']"
+        multiple
+      ></selector>
     </div>
 
     <div class="section">
@@ -206,6 +212,7 @@ export default class Inputs extends Vue {
   checkboxValue2 = true;
   checkboxValue3 = false;
   selected = "Option A";
+  multipleSelected = [];
   radioValue1 = true;
   radioValue2 = false;
   statusValue = true;
