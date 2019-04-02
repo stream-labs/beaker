@@ -1,6 +1,6 @@
 <template>
   <div class="s-site-search" :class="[{ 'is-open' : isOpen }, {'phase-one' : phaseOne}, {'phase-two' : phaseTwo}]">
-    <input type="search" v-model="value" placeholder="Search..." class="search-input" @click="playOpeningSequence">
+    <input type="search" v-model="value" placeholder="Search..." class="search-input" @focus="playOpeningSequence" @blur="playClosingSequence">
       <transition-group name="fadeY">
       <div class="search-results-container suggested" :key="limitedResult.length" v-if="phaseTwo && limitedResult.length <= 0">
         <div class="quick-links">Quick Links</div>
@@ -14,7 +14,7 @@
 
       <div class="search-results-container found" :key="limitedResult.length" v-if="phaseTwo && limitedResult.length >= 1">
         <transition-group name="fadeX">
-        <div v-for="searchResult in limitedResult" :key="searchResult.name" class="search-results">
+        <div v-for="searchResult in limitedResult" :key="searchResult.title" class="search-results">
           <div class="result-image">
             <i :class="'s-' + searchResult.image" class="result-image"></i>
           </div>
@@ -156,19 +156,13 @@ export default class SiteSearch extends Vue {
     }
   }
 
-
   mounted () {
     this.initFuse();
   }
 
-
-
   get limitedResult() {
     return this.resultLimit ? this.result.slice(0,this.resultLimit) : this.result;
   }
-
-
-
 
 }
 </script>
@@ -176,14 +170,10 @@ export default class SiteSearch extends Vue {
 <style lang="less" scoped>
 @import "./../styles/Imports";
 
-
-
-
 .search-input {
   border: none;
   padding: none;
 }
-
 
 .result-title {
   font-size: 14px;
@@ -192,10 +182,8 @@ export default class SiteSearch extends Vue {
 }
 
 .result-image {
-
   width: 14px;
   height: 100%;
-
   color: @light-5;
   .margin-right();
   >i {
@@ -208,15 +196,13 @@ export default class SiteSearch extends Vue {
   border: 1px solid @light-5;
   border-radius: @radius;
   height: 40px;
+  width: 100%;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-
     &.phase-one {
     height: 215px;
+    z-index: 4000;
   }
-
-
 }
-
 
 .search-results-container {
   display: flex;
@@ -226,14 +212,13 @@ export default class SiteSearch extends Vue {
   border-radius: @radius;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
-    .quick-links {
-      font-size: 12px;
-      color: @light-5;
-      .margin-bottom();
-      .input-padding();
-    }
+  .quick-links {
+    font-size: 12px;
+    color: @light-5;
+    .margin-bottom();
+    .input-padding();
+  }
 }
-
 
 .search-results {
   display: flex;
@@ -252,7 +237,6 @@ export default class SiteSearch extends Vue {
       color: @dark-2;
     }
   }
-
 }
 
 .fadeX-enter-active {
@@ -281,7 +265,6 @@ export default class SiteSearch extends Vue {
 .fadeX-move {
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 
 .fadeY-enter-active {
   transition: all 0.25s 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -331,8 +314,5 @@ export default class SiteSearch extends Vue {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   height: 220px;
 }
-
-
-
 
 </style>
