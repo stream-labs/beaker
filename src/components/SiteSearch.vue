@@ -1,12 +1,20 @@
 <template>
   <div class="s-site-search" :class="[{ 'is-open' : isOpen }, {'phase-one' : phaseOne}, {'phase-two' : phaseTwo}]">
-    <input type="search" v-model="value" placeholder="Search..." class="search-input" @focus="playOpeningSequence" @blur="playClosingSequence">
-      <transition-group name="fadeY">
+    <div class="search-bar-container">
+      <div class="search-icon">
+        <i class="s-icon-search"></i>
+      </div>
+      <input ref="search_input" type="text" v-model="value" placeholder="Search..." class="search-input" @focus="playOpeningSequence" @blur="playClosingSequence">
+      <div class="search-bar-status-container">
+        <div v-if="noResults">No Results</div>
+      </div>
+    </div>
+    <transition-group name="fadeY">
       <div class="search-results-container suggested" :key="limitedResult.length" v-if="phaseTwo && limitedResult.length <= 0">
         <div class="quick-links">Quick Links</div>
         <div class="search-results" v-for="(suggested, i) in suggestedLinks" :key="suggested.name">
           <div class="result-image">
-            <i :class="'s-' + searchData[quickLinkLoc[i]].image" class="result-image"></i>
+            <i :class="searchData[quickLinkLoc[i]].image" class="result-image"></i>
           </div>
           <div class="result-title">{{ suggested.name }}  </div>
         </div>
@@ -14,11 +22,11 @@
 
       <div class="search-results-container found" :key="limitedResult.length" v-if="phaseTwo && limitedResult.length >= 1">
         <transition-group name="fadeX">
-        <div v-for="searchResult in limitedResult" :key="searchResult.title" class="search-results">
+        <div v-for="searchResult in limitedResult" :key="searchResult.name" class="search-results">
           <div class="result-image">
-            <i :class="'s-' + searchResult.image" class="result-image"></i>
+            <i :class="searchResult.image" class="result-image"></i>
           </div>
-          <div class="result-title">{{ searchResult.name }}</div>
+          <div class="result-title">{{ searchResult.title }}</div>
         </div>
         </transition-group>
       </div>
@@ -35,15 +43,23 @@ import * as data from "./../components/sitesearchdata.json"
 
 @Component({})
 export default class SiteSearch extends Vue {
+  $refs!: {
+    search_input: HTMLInputElement;
+  }
+
+  private searchInput: Number = 0;
+
   result:any = [];
   searchData = (<any>data).data;
 
 
-
+  private isOpen: Boolean = false;
   private phaseOne: Boolean = false;
   private phaseTwo: Boolean = false;
 
   private searchOpen: Boolean = false;
+
+
   private resultLimit: Number = 5;
 
   private fuse:any = null;
@@ -92,10 +108,20 @@ export default class SiteSearch extends Vue {
       distance: 100,
       maxPatternLength: 32,
       minMatchCharLength: 1,
-      keys: ['description','title','keywords']
+      keys: ['name']
     }
     return options
   }
+
+  get noResults () {
+    if (this.result.length === 0 && this.value != '') {
+      return true;
+    } else {
+      return false;
+    }
+
+  }
+
 
   @Watch('searchData')
     watchSearchData() {
@@ -161,7 +187,17 @@ export default class SiteSearch extends Vue {
   }
 
   get limitedResult() {
-    return this.resultLimit ? this.result.slice(0,this.resultLimit) : this.result;
+
+
+   return this.resultLimit ? this.result.slice(0,this.resultLimit).sort((a,b) => b.weight - a.weight) : this.result;
+
+
+
+ //   let jjj = this.resultLimit ? this.result.slice(0,this.resultLimit) : this.result;
+    //jjj.sort((a,b) => b.weight - a.weight)
+    //return jjj;
+
+
   }
 
 }
@@ -181,7 +217,7 @@ export default class SiteSearch extends Vue {
   font-weight: @medium;
 }
 
-.result-image {
+.result-image, .search-image {
   width: 14px;
   height: 100%;
   color: @light-5;
@@ -196,20 +232,33 @@ export default class SiteSearch extends Vue {
   border: 1px solid @light-5;
   border-radius: @radius;
   height: 40px;
-  width: 100%;
+  width: 500px;
+  position: relative;
+
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    &.phase-one {
+
+  &.phase-one {
+    background-color: @light-1;
     height: 215px;
-    z-index: 4000;
   }
+
+  >i {
+    font-size: 14px;
+  }
+
+}
+
+.search-bar-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+    .input-padding();
 }
 
 .search-results-container {
   display: flex;
   flex-direction: column;
-  background-color: @light-1;
   overflow: hidden;
-  border-radius: @radius;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
   .quick-links {
@@ -218,6 +267,13 @@ export default class SiteSearch extends Vue {
     .margin-bottom();
     .input-padding();
   }
+}
+
+.search-bar-status-container {
+  font-size: 14px;
+  white-space: nowrap;
+  color: @light-5;
+  .margin-left();
 }
 
 .search-results {

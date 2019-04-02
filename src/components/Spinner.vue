@@ -136,6 +136,11 @@ export default class Spinner extends Vue {
   justify-content: center;
 }
 
+.s-spinner--tiny {
+  height: 14px;
+  width: 9px;
+}
+
 .s-spinner--small {
   height: 40px;
   width: 28px;

@@ -35,8 +35,15 @@
       <virtual-items v-if="activeSection === 'virtual-items'"/>
       -->
       <site-search-demo/>
-      P
-      <icons/>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum, mauris at gravida viverra, magna tortor congue nisi, at lobortis velit ligula id velit. Phasellus at aliquet dolor. Pellentesque suscipit malesuada euismod. Nulla aliquet magna rutrum, malesuada urna vitae, porttitor ipsum. Duis vehicula vehicula neque quis vestibulum. Curabitur consectetur tellus et leo vehicula luctus. Nulla vehicula eu ante ac convallis. Morbi tincidunt eu erat in consectetur.
+
+In eget lectus quis ex semper hendrerit vitae id lacus. Aliquam ac dui aliquam, tempus ipsum non, aliquet leo. Donec efficitur nunc ut turpis commodo suscipit. Nam nisl mi, dignissim non gravida ut, accumsan quis tortor. Fusce imperdiet ex sed nisi bibendum auctor. Pellentesque ut magna et turpis gravida auctor vitae nec lectus. Mauris neque metus, faucibus ac finibus vel, elementum id urna. Mauris mattis mi imperdiet libero tempor, eu maximus est venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In dictum sollicitudin tempor. Duis ornare turpis sit amet nisi pellentesque tempus. Nullam id lacinia nisl, id varius massa. Vestibulum dignissim nibh in purus commodo lacinia.
+
+Duis fermentum orci at sem aliquam varius. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras nibh magna, rhoncus nec velit vitae, faucibus ultricies erat. Morbi tempus condimentum velit. Cras nec ornare lacus. Nulla ullamcorper eros eget urna faucibus condimentum. In hac habitasse platea dictumst. Morbi lobortis dictum sem, quis maximus leo sodales at. In sodales laoreet nisl cursus posuere. Sed convallis tortor vel sapien mattis dapibus. Nulla nibh purus, facilisis a neque in, cursus sollicitudin erat. Phasellus hendrerit, tellus nec tincidunt commodo, ante mi bibendum erat, sit amet pellentesque leo lacus ac arcu.
+
+Quisque mollis odio vel suscipit condimentum. Curabitur mattis quis risus sed convallis. Donec mauris turpis, ultrices a vehicula id, imperdiet sed arcu. Maecenas volutpat nec dolor vel tincidunt. Nam vestibulum varius lacus in pulvinar. In a mi sed lectus placerat maximus sed a turpis. Vivamus consequat nunc nec sem rutrum rhoncus. Aliquam erat volutpat. Aliquam eget purus eu augue mollis pretium vitae sit amet massa. Sed viverra a leo ornare venenatis. Fusce tincidunt interdum dolor, et sodales dolor imperdiet non. Nullam auctor massa ut neque fringilla, et hendrerit metus ultricies. Morbi aliquam et leo at pretium.
+
+Aenean facilisis fermentum efficitur. Vestibulum non velit imperdiet dolor condimentum convallis. Cras at sollicitudin risus. Nulla ullamcorper luctus nunc maximus tristique. Mauris non libero felis. Aliquam rutrum, dolor non tristique tincidunt, tellus ipsum ullamcorper nisl, quis consequat mi purus nec mi. Quisque scelerisque et urna ac suscipit. Ut a tempor nibh. Sed interdum commodo neque, id condimentum orci consequat in. Pellentesque tincidunt ligula in euismod fringilla. Quisque libero nisl, vestibulum at felis nec, commodo malesuada ante. Curabitur euismod libero ac finibus rutrum.
     </div>
   </div>
 </template>
