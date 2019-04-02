@@ -59,6 +59,29 @@ export default {
     }
   }
 
+  &.disabled {
+    .dropdown-toggle {
+      background-color: @day-input-disabled;
+      color: @light-5;
+
+      input {
+        background: transparent;
+      }
+    }
+
+    .open-indicator {
+      background: transparent;
+    }
+
+    .selected-tag {
+      color: @light-5;
+
+      .close {
+        background-color: transparent;
+      }
+    }
+  }
+
   .open-indicator {
     font-style: normal;
   }
@@ -185,9 +208,27 @@ export default {
     background-color: @night-dropdown-bg;
     border-color: @night-dropdown-border;
 
+    &.disabled {
+      .dropdown-toggle {
+        background-color: @night-input-disabled;
+        color: @dark-5;
+
+        input {
+          background: transparent;
+        }
+      }
+
+      .open-indicator {
+        background: transparent;
+      }
+
+      .selected-tag {
+        color: @dark-5;
+      }
+    }
+
     &.single {
       .selected-tag {
-        color: @night-paragraph;
         background-color: transparent;
       }
     }

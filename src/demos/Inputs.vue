@@ -116,11 +116,50 @@
 components: {
   Selector
 }</code></pre>
+
+      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+        <div slot="content">
+          <pre>
+<code>&lt;selector v-model=&quot;selected&quot; :options=&quot;['Option A', 'Option B', 'Option C']&quot;&gt;&lt;/selector&gt;
+
+&lt;selector
+  v-model=&quot;selected&quot;
+  :options=&quot;['Option A', 'Option B', 'Option C', 'Option D', 'Option E', 'Option F']&quot;
+  disabled
+&gt;&lt;/selector&gt;
+
+&lt;selector
+  v-model=&quot;multipleSelected&quot;
+  :options=&quot;['Option A', 'Option B', 'Option C', 'Option D', 'Option E', 'Option F']&quot;
+  multiple
+&gt;&lt;/selector&gt;
+
+&lt;selector
+  v-model=&quot;multipleSelected&quot;
+  :options=&quot;['Option A', 'Option B', 'Option C', 'Option D', 'Option E', 'Option F']&quot;
+  disabled
+  multiple
+&gt;&lt;/selector&gt;</code></pre>
+        </div>
+      </Accordion>
       <selector v-model="selected" :options="['Option A', 'Option B', 'Option C']"></selector>
+      <br>
+      <selector
+        v-model="selected"
+        :options="['Option A', 'Option B', 'Option C', 'Option D', 'Option E', 'Option F']"
+        disabled
+      ></selector>
       <br>
       <selector
         v-model="multipleSelected"
         :options="['Option A', 'Option B', 'Option C', 'Option D', 'Option E', 'Option F']"
+        multiple
+      ></selector>
+      <br>
+      <selector
+        v-model="multipleSelected"
+        :options="['Option A', 'Option B', 'Option C', 'Option D', 'Option E', 'Option F']"
+        disabled
         multiple
       ></selector>
 
@@ -267,7 +306,7 @@ export default class Inputs extends Vue {
   checkboxValue2 = true;
   checkboxValue3 = false;
   selected = "Option A";
-  multipleSelected = [];
+  multipleSelected = ["Option B", "Option D"];
   radioValue1 = true;
   radioValue2 = false;
   statusValue = true;
