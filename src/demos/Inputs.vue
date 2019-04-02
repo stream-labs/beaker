@@ -59,7 +59,7 @@
         <tbody>
           <tr>
             <td>disabled</td>
-            <td>boolean</td>
+            <td>Boolean</td>
             <td>null</td>
             <td>Puts a disabled class on the form field and disables the input.</td>
           </tr>
@@ -110,6 +110,12 @@
 
     <div class="section">
       <h2>Selector</h2>
+
+      <pre><code>import { Selector } from 'streamlabs-beaker';
+
+components: {
+  Selector
+}</code></pre>
       <selector v-model="selected" :options="['Option A', 'Option B', 'Option C']"></selector>
       <br>
       <selector
@@ -117,6 +123,55 @@
         :options="['Option A', 'Option B', 'Option C', 'Option D', 'Option E', 'Option F']"
         multiple
       ></selector>
+
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>disabled</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>Puts a disabled class on the form field and disables the input.</td>
+          </tr>
+          <tr>
+            <td>options</td>
+            <td>[''] or {}</td>
+            <td>null</td>
+            <td>Array of strings or objects to use as the options.</td>
+          </tr>
+          <tr>
+            <td>multiple</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>Optional label for the input.</td>
+          </tr>
+          <tr>
+            <td>placeholder</td>
+            <td>String</td>
+            <td>''</td>
+            <td>Equivalent to the `placeholder` attribute on an input.</td>
+          </tr>
+          <tr>
+            <td>searchable</td>
+            <td>Boolean</td>
+            <td>true</td>
+            <td>Optional label for the input.</td>
+          </tr>
+          <tr>
+            <td>value</td>
+            <td>string</td>
+            <td>null</td>
+            <td>Current selected value.</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <div class="section">
@@ -129,7 +184,7 @@
 
       <div class="section">
         <h3>Checkbox Group</h3>
-        <div class="checkbox-group">
+        <div class="s-checkbox-group">
           <checkbox :label="'Checkbox label'" v-model="checkboxValue1"></checkbox>
           <checkbox :label="'Checkbox label'" v-model="checkboxValue2"></checkbox>
           <checkbox :label="'Checkbox label'" v-model="checkboxValue3"></checkbox>
@@ -140,7 +195,7 @@
     <div class="section">
       <h2>Radios</h2>
       <div class="section">
-        <div class="checkbox-group">
+        <div class="s-checkbox-group">
           <radio :label="'Enable'" :name="'radio-group'" v-model="radioValue1"></radio>
           <radio :label="'Disable'" :name="'radio-group'" v-model="radioValue2"></radio>
         </div>
