@@ -47,7 +47,7 @@ export default class ModalBasic extends Vue {
   minWidth!: number;
 
   @Prop()
-  title!: string | Function;
+  title!: string;
 
   @Prop()
   subTitle!: string;
