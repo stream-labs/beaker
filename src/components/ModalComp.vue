@@ -1,43 +1,38 @@
 <template>
   <div>
-    <div v-if="modalType === 'basic'">
+    <div v-if="type === 'basic'">
       <ModalBasic
-        :title="modalTitle"
-        :subTitle="modalsubTitle"
-        :text="modalText"
-        :width="modalWidth"
-        :minWidth="modalMinWidth"
+        :title="title"
+        :subTitle="subTitle"
+        :text="text"
+        :width="width"
+        :minWidth="minWidth"
       ></ModalBasic>
     </div>
 
-    <div v-if="modalType === 'subscribe'">
+    <div v-if="type === 'subscribe'">
       <ModalSubscribe
-        :title="modalTitle"
-        :subTitle="modalsubTitle"
-        :text="modalText"
-        :subscribeText="modalSubscribeText"
-        :subscribeMessage="modalSubscribeMessage"
-        :notes="modalNotes"
-        :width="modalWidth"
-        :minWidth="modalMinWidth"
+        :title="title"
+        :subTitle="subTitle"
+        :text="text"
+        :subscribeText="subscribeText"
+        :subscribeMessage="subscribeMessage"
+        :notes="notes"
+        :width="width"
+        :minWidth="minWidth"
       ></ModalSubscribe>
     </div>
 
-    <div v-if="modalType === 'redirect'">
-      <ModalRedirect
-        :title="modalTitle"
-        :text="modalText"
-        :width="modalWidth"
-        :minWidth="modalMinWidth"
-      ></ModalRedirect>
+    <div v-if="type === 'redirect'">
+      <ModalRedirect :title="title" :text="text" :width="width" :minWidth="minWidth"></ModalRedirect>
     </div>
 
-    <div v-if="modalType === 'confirmation'">
+    <div v-if="type === 'confirmation'">
       <ModalConfirmation
-        :subTitle="modalsubTitle"
-        :text="modalText"
-        :width="modalWidth"
-        :minWidth="modalMinWidth"
+        :subTitle="subTitle"
+        :text="text"
+        :width="width"
+        :minWidth="minWidth"
         @confirm="$emit('confirm')"
         :confirmButtonText="confirmButtonText"
         :buttonVariation="buttonVariation"
@@ -70,47 +65,29 @@ export default class ModalComp extends Vue {
   @Prop({ default: 600 })
   width!: number;
 
-  modalWidth: number = this.width;
-
   @Prop({ default: 600 })
   minWidth!: number;
-
-  modalMinWidth: number = this.minWidth;
 
   @Prop()
   type!: string;
 
-  modalType: string = this.type;
-
   @Prop()
   title!: string;
-
-  modalTitle: string = this.title;
 
   @Prop()
   subTitle!: string;
 
-  modalsubTitle: string = this.subTitle;
-
   @Prop()
   text!: string;
-
-  modalText: string = this.text;
 
   @Prop()
   subscribeText!: string;
 
-  modalSubscribeText: string = this.subscribeText;
-
   @Prop()
   subscribeMessage!: string;
 
-  modalSubscribeMessage: string = this.subscribeMessage;
-
   @Prop()
   notes!: string;
-
-  modalNotes: string = this.notes;
 
   @Prop()
   confirmButtonText!: string;
