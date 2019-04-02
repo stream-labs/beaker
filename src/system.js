@@ -29,20 +29,21 @@ import ModalConfirmation from "@/components/ModalConfirmation";
 import ModalRedirect from "@/components/ModalRedirect";
 import ModalSubscribe from "@/components/ModalSubscribe";
 import NewFeatureOverlay from "@/components/NewFeatureOverlay";
+import Pagination from "@/components/Pagination";
 import PaneDropdown from "@/components/PaneDropdown";
 // import PaymentForm from "@/components/PaymentForm";
-import Slider from "@/components/Slider";
+import ProgressBar from "@/components/ProgressBar";
 import Selector from "@/components/Selector";
+import SiteSearch from "@/components/SiteSearch";
+import Slider from "@/components/Slider";
 import Spinner from "@/components/Spinner";
 import SSProSimulator from "@/components/SSProSimulator";
 import StatusSwitch from "@/components/StatusSwitch";
 import Tabs from "@/components/Tabs";
 // import TabDevelop from "@/components/TabDevelop";
 import TextInput from "@/components/TextInput";
-import TooltipNotice from "@/components/TooltipNotice";
 import Toggle from "@/components/Toggle";
-import Pagination from "@/components/Pagination";
-import ProgressBar from "@/components/ProgressBar";
+import TooltipNotice from "@/components/TooltipNotice";
 import UrlBar from "@/components/UrlBar";
 import VirtualItem from "@/components/VirtualItem";
 
@@ -72,6 +73,7 @@ const components = [
   PaneDropdown,
   ProgressBar,
   Selector,
+  SiteSearch,
   Slider,
   Spinner,
   SSProSimulator,
@@ -111,6 +113,7 @@ export {
   PaneDropdown,
   ProgressBar,
   Selector,
+  SiteSearch,
   Slider,
   Spinner,
   SSProSimulator,

@@ -1,0 +1,1513 @@
+{
+  "keys": "name",
+  "data": [
+    {
+      "name": "contact",
+      "title": "Contact Us",
+      "route": "/contact",
+      "keywords": [
+        "contact",
+        "business",
+        "business inquiries",
+        "inquiries",
+        "social",
+        "social media"
+      ],
+      "description": "Need to get a hold of Streamlabs?",
+      "keymatches": [
+        "howto",
+        "apidoc"
+      ],
+      "image": "s-icon-phone-case",
+      "howto": "null",
+      "weight": 2
+    },
+    {
+      "name": "faq",
+      "title": "FAQ - Frequently Asked Questions",
+      "route": "/faq",
+      "keywords": [
+        "faq",
+        "frequently asked questions",
+        "question",
+        "questions",
+        "answer",
+        "answers"
+      ],
+      "description": "Browse through some frequently asked questions.",
+      "keymatches": [
+        "howto",
+        "contact"
+      ],
+      "image": "s-icon-question",
+      "howto": "null",
+      "weight": 3
+    },
+    {
+      "name": "allstars",
+      "title": "Streamlabs All Stars",
+      "route": "/allstars",
+      "keywords": [
+        "all stars",
+        "stars",
+        "vip",
+        "celebrity",
+        "rock star",
+        " star"
+      ],
+      "description": "Be an All Star with Streamlabs.",
+      "keymatches": [
+        "faq"
+      ],
+      "image": "s-icon-loyalty",
+      "howto": "null",
+      "weight": 3
+    },
+    {
+      "name": "d-allstars",
+      "title": "Streamlabs All Stars",
+      "route": "/allstars",
+      "keywords": [
+        "all stars",
+        "stars",
+        "vip",
+        "celebrity",
+        "rock star",
+        " star"
+      ],
+      "description": "Be an All Star with Streamlabs.",
+      "keymatches": [
+        "faq"
+      ],
+      "image": "s-icon-loyalty",
+      "howto": "null",
+      "weight": 1
+    },
+    {
+      "name": "careers",
+      "title": "Careers at Streamlabs",
+      "route": "/careers",
+      "keywords": [
+        "careers",
+        "jobs",
+        "oppourtunities"
+      ],
+      "description": "Want to work at Streamlabs?",
+      "keymatches": [
+        "faq",
+        " contact"
+      ],
+      "image": "s-icon-link",
+      "howto": "null",
+      "weight": 3
+    },
+    {
+      "name": "terms",
+      "title": "Terms of Service",
+      "route": "/terms",
+      "keywords": [
+        "terms",
+        "services",
+        "terms of service",
+        "legal"
+      ],
+      "description": "Streamlabs Terms of Service.",
+      "keymatches": [
+        "faq",
+        " contact",
+        " privacy"
+      ],
+      "image": "s-icon-link",
+      "howto": "null",
+      "weight": 6
+    },
+    {
+      "name": "privacy",
+      "title": "Privacy Policy",
+      "route": "/privacy",
+      "keywords": [
+        "privacy",
+        " private",
+        " policy",
+        " policies",
+        " privacy policies"
+      ],
+      "description": "Streamlabs Privacy Policy.",
+      "keymatches": [
+        "faq",
+        " contact",
+        " terms"
+      ],
+      "image": "s-icon-link",
+      "howto": "null",
+      "weight": 6
+    },
+    {
+      "name": "widgets",
+      "title": "Widgets Overview",
+      "route": "/widgets",
+      "keywords": [
+        "widgets",
+        " tools",
+        " stream",
+        " streaming"
+      ],
+      "description": "Monetize and grow your stream!",
+      "keymatches": [
+        "howto"
+      ],
+      "image": "s-icon-stream",
+      "howto": "null",
+      "weight": 5
+    },
+    {
+      "name": "merch",
+      "title": "Merchandise",
+      "route": "/merch",
+      "keywords": [
+        "widgets",
+        " merch",
+        " store",
+        " clothes",
+        " mugs",
+        " logo",
+        " branding",
+        " brand",
+        " sell",
+        " selling",
+        " purchase",
+        " purchasing"
+      ],
+      "description": "Become more visible with Merch from Streamlabs",
+      "keymatches": [
+        "widgets",
+        " howto"
+      ],
+      "image": "s-icon-merch",
+      "howto": "null",
+      "weight": 9
+    },
+    {
+      "name": "mobileapp",
+      "title": "Mobile App",
+      "route": "/mobileapp",
+      "keywords": [
+        "app",
+        " apple",
+        " android",
+        " istore",
+        " google play",
+        " outside",
+        " mobile",
+        " phone",
+        " tablet",
+        " cell",
+        " modular"
+      ],
+      "description": "Take your stream outside with Streamlabs Mobile",
+      "keymatches": [
+        "widgets",
+        " howto"
+      ],
+      "image": "s-icon-phone-case",
+      "howto": "null",
+      "weight": 7
+    },
+    {
+      "name": "chatbot",
+      "title": "Streamlabs Chatbot",
+      "route": "/chatbot",
+      "keywords": [
+        "bot",
+        "chat",
+        "chatbot",
+        " commands",
+        " custom",
+        " custom commands"
+      ],
+      "description": "Provide entertainment and moderation for your chat.",
+      "keymatches": [
+        "widgets",
+        " howto"
+      ],
+      "image": "s-icon-suggestions",
+      "howto": "null",
+      "weight": 5
+    },
+    {
+      "name": "d-chatbot",
+      "title": "Streamlabs Chatbot",
+      "route": "/dashboard#/chatbot",
+      "keywords": [
+        "bot",
+        "chat",
+        "chatbot",
+        " commands",
+        " custom",
+        " custom commands"
+      ],
+      "description": "Provide entertainment and moderation for your chat.",
+      "keymatches": [
+        "widgets",
+        " howto"
+      ],
+      "image": "s-icon-suggestions",
+      "howto": "null",
+      "weight": 1
+    },
+    {
+      "name": "chatbot-changelog",
+      "title": "Chatbot Changelog",
+      "route": "/chatbot-changelog",
+      "keywords": [
+        "bot",
+        " chat",
+        " changes",
+        " bug",
+        " bugs",
+        " bug fixes"
+      ],
+      "description": "Newely added features and bug fixes for the Streamlabs Chatbot.",
+      "keymatches": [
+        "chatbot"
+      ],
+      "image": "s-icon-suggestions",
+      "howto": "null",
+      "weight": 1
+    },
+    {
+      "name": "changelog",
+      "title": "Streamlabs Changelog",
+      "route": "/changelog",
+      "keywords": [
+        "changes",
+        " bug fixes",
+        " fixes",
+        " updates"
+      ],
+      "description": "Your go-to source for changes to Streamlabs",
+      "keymatches": [
+        "about"
+      ],
+      "image": "s-icon-notifications",
+      "howto": "null",
+      "weight": 6
+    },
+    {
+      "name": "about",
+      "title": "About Streamlabs",
+      "route": "/about",
+      "keywords": [
+        "about",
+        " who",
+        " what",
+        " streamlabs"
+      ],
+      "description": "What is Streamlabs?",
+      "keymatches": [
+        "terms",
+        " privacy"
+      ],
+      "image": "s-icon-information",
+      "howto": "null",
+      "weight": 8
+    },
+    {
+      "name": "streamlabs-obs",
+      "title": "Streamlabs OBS",
+      "route": "/streamlabs-obs",
+      "keywords": [
+        "streamlabs",
+        " software",
+        " obs",
+        " open",
+        " broadcast",
+        " software",
+        " open broadcast software",
+        " OBS",
+        " SLOBS",
+        " slobs",
+        " broadcasting",
+        " recording",
+        " stream",
+        " streaming"
+      ],
+      "description": "Streamlabs OBS",
+      "keymatches": [
+        "wigets",
+        " howto",
+        " mobileapp"
+      ],
+      "image": "s-icon-windows",
+      "howto": "null",
+      "weight": 6
+    },
+    {
+      "name": "affiliates",
+      "title": "Affiliate Program",
+      "route": "/affiliates",
+      "keywords": [
+        "affiliates",
+        " rewards",
+        " program",
+        " rev"
+      ],
+      "description": "Streamlabs Affiliate Program",
+      "keymatches": [
+        "allstars"
+      ],
+      "image": "s-icon-team-2",
+      "howto": "null",
+      "weight": 4
+    },
+    {
+      "name": "face-masks",
+      "title": "Face Masks",
+      "route": "/face-masks",
+      "keywords": [
+        "face",
+        " masks",
+        " masks",
+        " snap",
+        " snap camera",
+        " camera",
+        " webcam",
+        " face masks"
+      ],
+      "description": "Face Masks",
+      "keymatches": [
+        "widgets",
+        " streamlabs-obs",
+        " face-maks-tutorial"
+      ],
+      "image": "s-icon-moustache",
+      "howto": "null",
+      "weight": 9
+    },
+    {
+      "name": "face-mask-tutorial",
+      "title": "Face Mask Tutorial",
+      "route": "/face-mask-tutorial",
+      "keywords": [
+        "face",
+        " masks",
+        " masks",
+        " snap",
+        " snap camera",
+        " camera",
+        " webcam",
+        " face masks",
+        " tutorial",
+        " how to",
+        " how",
+        " howto"
+      ],
+      "description": "Face Mask Tutorial",
+      "keymatches": [
+        "face-masks"
+      ],
+      "image": "s-icon-moustache",
+      "howto": "null",
+      "weight": 6
+    },
+    {
+      "name": "d-widgets",
+      "title": "Widgets",
+      "route": "/dashboard#/widgets",
+      "keywords": [
+        "widgets",
+        " alerts",
+        " alert box",
+        " chat",
+        " chatbox",
+        " events",
+        " event list",
+        " goals",
+        " donations",
+        " stream labels",
+        " lavels",
+        " media share",
+        " media",
+        " views",
+        " viewer count",
+        " ticker",
+        " donation ticker",
+        " followers",
+        " follower goal",
+        " the jar",
+        " tipjar",
+        " tips",
+        " tip jar",
+        " streamboss",
+        " stream boss",
+        " bit boss",
+        " end credits",
+        " credits",
+        " special thanks",
+        " bit goal",
+        " sponsor banner",
+        " banner",
+        " sponsors",
+        " sub goal",
+        " spin wheel",
+        " spin to win",
+        " tiltify",
+        " merch"
+      ],
+      "description": "Streamlabs Widgets",
+      "keymatches": [
+        "widgets"
+      ],
+      "image": "s-icon-link",
+      "howto": "null",
+      "weight": 8
+    },
+    {
+      "name": "w-alertbox",
+      "title": "Alert Box",
+      "route": "/obs-widgets/alert-box",
+      "keywords": [
+        "alerts",
+        " alertbox",
+        " events",
+        " box",
+        " widgets",
+        " tips",
+        " donations",
+        " bit",
+        " superchat",
+        " follow",
+        " sub",
+        " subscription",
+        " support"
+      ],
+      "description": "Streamlabs Alert Box",
+      "keymatches": [
+        "d-alertbox"
+      ],
+      "image": "s-icon-desktop",
+      "howto": "null",
+      "weight": 7
+    },
+    {
+      "name": "d-alertbox",
+      "title": "Alert Box Settings",
+      "route": "/dashboard#/alertbox",
+      "keywords": [
+        "alerts",
+        " alertbox",
+        " events",
+        " box",
+        " widgets",
+        " tips",
+        " donations",
+        " bit",
+        " superchat",
+        " follow",
+        " sub",
+        " subscription",
+        " support",
+        " me",
+        " your",
+        " mine"
+      ],
+      "description": "Your Alert Box Settings",
+      "keymatches": [
+        "w-alertbox"
+      ],
+      "image": "s-icon-desktop",
+      "howto": "null",
+      "weight": 9
+    },
+    {
+      "name": "w-tipjar",
+      "title": "Tip Jar",
+      "route": "/obs-widgets/tip-jar",
+      "keywords": [
+        "tip",
+        " tips",
+        " tip jar",
+        " jar",
+        " donations",
+        " widget",
+        " mine"
+      ],
+      "description": "Streamlabs Tip Jar",
+      "keymatches": [
+        "d-tipjar"
+      ],
+      "image": "s-icon-jar",
+      "howto": "null",
+      "weight": 8
+    },
+    {
+      "name": "d-tipjar",
+      "title": "Tip Jar Settings",
+      "route": "/dashboard#/jar",
+      "keywords": [
+        "tip",
+        " tips",
+        " tip jar",
+        " jar",
+        " donations",
+        " widget",
+        " my",
+        " your",
+        " mine"
+      ],
+      "description": "Your Tip Jar Settings",
+      "keymatches": [
+        "w-tipjar"
+      ],
+      "image": "s-icon-jar",
+      "howto": "null",
+      "weight": 9
+    },
+    {
+      "name": "w-donationticker",
+      "title": "Donation Ticker",
+      "route": "/obs-widgets/donation-ticker",
+      "keywords": [
+        "donation",
+        " donations",
+        " tips",
+        " ticker",
+        " news reel",
+        " reel",
+        " news",
+        " "
+      ],
+      "description": "Streamlabs Donation Ticker",
+      "keymatches": [
+        "d-donationticker"
+      ],
+      "image": "s-icon-donation-ticker",
+      "howto": "null",
+      "weight": 8
+    },
+    {
+      "name": "d-donationticker",
+      "title": "Donation Ticker Settings",
+      "route": "/dashboard#/donationticker",
+      "keywords": [
+        "donation",
+        " donations",
+        " tips",
+        " ticker",
+        " news reel",
+        " reel",
+        " news",
+        " you",
+        " my",
+        " mine"
+      ],
+      "description": "Your Donation Ticker Settings",
+      "keymatches": [
+        "w-donationticker"
+      ],
+      "image": "s-icon-donation-ticker",
+      "howto": "null",
+      "weight": 9
+    },
+    {
+      "name": "w-spinwheel",
+      "title": "Spin Wheel",
+      "route": "/obs-widgets/spin-wheel",
+      "keywords": [
+        "spin",
+        " wheel",
+        " spin wheel",
+        " win",
+        " to",
+        " spin to win",
+        " "
+      ],
+      "description": "Streamlabs Spin Wheel",
+      "keymatches": [
+        "d-spinwheel"
+      ],
+      "image": "s-icon-link",
+      "howto": "null",
+      "weight": 8
+    },
+    {
+      "name": "d-spinwheel",
+      "title": "Spin Wheel Settings",
+      "route": "/dashboard#/wheel",
+      "keywords": [
+        "spin",
+        " wheel",
+        " spin wheel",
+        " win",
+        " to",
+        " spin to win",
+        " me",
+        " mine",
+        " your"
+      ],
+      "description": "Your Spin Wheel Settings",
+      "keymatches": [
+        "w-spinwheel"
+      ],
+      "image": "s-icon-link",
+      "howto": "null",
+      "weight": 9
+    },
+    {
+      "name": "w-streamboss",
+      "title": "Stream Boss",
+      "route": "/obs-widgets/stream-boss",
+      "keywords": [
+        "stream",
+        " boss",
+        " streamboss",
+        " enemy"
+      ],
+      "description": "Streamlabs Stream boss",
+      "keymatches": [
+        "d-streamboss"
+      ],
+      "image": "s-icon-link",
+      "howto": "null",
+      "weight": 8
+    },
+    {
+      "name": "d-streamboss",
+      "title": "Stream Boss Settings",
+      "route": "/dashboard#/streamboss",
+      "keywords": [
+        "stream",
+        " boss",
+        " streamboss",
+        " enemy",
+        " me",
+        " mine",
+        " your"
+      ],
+      "description": "Your Stream Boss Settings",
+      "keymatches": [
+        "w-streamboss"
+      ],
+      "image": "s-icon-link",
+      "howto": "null",
+      "weight": 9
+    },
+    {
+      "name": "w-sponsorbanner",
+      "title": "Sponsor Banner",
+      "route": "/obs-widgets/sponsor-banner",
+      "keywords": [
+        "sponsor",
+        " sponsorship",
+        " banner",
+        " advertisement",
+        " ad"
+      ],
+      "description": "Streamlabs Sponsor Banner",
+      "keymatches": [
+        "d-sponsorbanner"
+      ],
+      "image": "s-icon-link",
+      "howto": "null",
+      "weight": 8
+    },
+    {
+      "name": "d-sponsorbanner",
+      "title": "Sponsor Banner Settings",
+      "route": "/dashboard#/sponsorbanner",
+      "keywords": [
+        "sponsor",
+        " sponsorship",
+        " banner",
+        " advertisement",
+        " ad",
+        " my",
+        " mine",
+        " your"
+      ],
+      "description": "Your Sponsor Banner Settings",
+      "keymatches": [
+        "w-sponsorbanner"
+      ],
+      "image": "s-icon-link",
+      "howto": "null",
+      "weight": 9
+    },
+    {
+      "name": "w-mediashare",
+      "title": "Media Share",
+      "route": "/obs-widgets/media-share",
+      "keywords": [
+        "media",
+        " share",
+        " link",
+        " youtube",
+        " video",
+        " vid",
+        " movie"
+      ],
+      "description": "Streamlabs Media Share",
+      "keymatches": [
+        "d-mediashare"
+      ],
+      "image": "s-icon-media-share-2",
+      "howto": "null",
+      "weight": 8
+    },
+    {
+      "name": "d-mediashare",
+      "title": "Media Share Settings",
+      "route": "/dashboard#/mediashare",
+      "keywords": [
+        "media",
+        " share",
+        " link",
+        " youtube",
+        " video",
+        " vid",
+        " movie",
+        " me",
+        " mine",
+        " your"
+      ],
+      "description": "Your Media Share Settings",
+      "keymatches": [
+        "w-mediashare"
+      ],
+      "image": "s-icon-media-share-2",
+      "howto": "null",
+      "weight": 9
+    },
+    {
+      "name": "w-goals",
+      "title": "Goal Bars",
+      "route": "/obs-widgets/goals",
+      "keywords": [
+        "goal",
+        " goals",
+        " bars",
+        " goal bars",
+        " donations",
+        " subs",
+        " follows"
+      ],
+      "description": "Stream Labs Goal Bars",
+      "keymatches": [
+        "d-donationgoal",
+        " d-subscriptiongoal",
+        " d-bitgoal"
+      ],
+      "image": "",
+      "howto": "null",
+      "weight": 8
+    },
+    {
+      "name": "d-donationgoal",
+      "title": "Donation Goal Settings",
+      "route": "/dashboard#/donationgoal",
+      "keywords": [
+        "goal",
+        " goals",
+        " bars",
+        " goal bars",
+        " donations",
+        " me",
+        " my",
+        " mine",
+        " you"
+      ],
+      "description": "Your Donation Goal Settings",
+      "keymatches": [
+        "w-goals",
+        " d-subscriptiongoal",
+        " d-bit-goal"
+      ],
+      "image": "s-icon-link",
+      "howto": "null",
+      "weight": 9
+    },
+    {
+      "name": "d-subscriptiongoal",
+      "title": "Subscription Goal Settings",
+      "route": "/dashboard#/subgoal",
+      "keywords": [
+        "goal",
+        " goals",
+        " bars",
+        " goal bars",
+        " subscriptions",
+        " my",
+        " mine",
+        " your"
+      ],
+      "description": "Your Subscription Goal Settings",
+      "keymatches": [
+        "w-goals",
+        " d-donationgoal",
+        " d-bitgoal"
+      ],
+      "image": "s-icon-link",
+      "howto": "null",
+      "weight": 9
+    },
+    {
+      "name": "d-bitgoal",
+      "title": "Bit Goal Settings",
+      "route": "/dashboard#/bitgoal",
+      "keywords": [
+        "goal",
+        " goals",
+        " bars",
+        " goal bars",
+        " bits",
+        " my",
+        " mine",
+        " your"
+      ],
+      "description": "Your Bit Goal Settings",
+      "keymatches": [
+        "w-goals",
+        " d-donationgoal",
+        " d-subscriptiongoal"
+      ],
+      "image": "s-icon-link",
+      "howto": "null",
+      "weight": 9
+    },
+    {
+      "name": "d-tiltifygoal",
+      "title": "Tiltify Donation Goal Settings",
+      "route": "/dashboard#/tiltifydonationgoal",
+      "keywords": [
+        "goal",
+        " goals",
+        " bars",
+        " goal bars",
+        " donations",
+        " charity",
+        " tiltify",
+        " my",
+        " mine",
+        " your"
+      ],
+      "description": "Your Tiltify Goal Settings",
+      "keymatches": [
+        "w-goals",
+        " d-donationgoal"
+      ],
+      "image": "s-icon-link",
+      "howto": "null",
+      "weight": 9
+    },
+    {
+      "name": "w-chatbox",
+      "title": "Chat Box",
+      "route": "/obs-widgets/chat-box",
+      "keywords": [
+        "chat",
+        " chatbox",
+        " irc"
+      ],
+      "description": "Streamlabs Chat Box",
+      "keymatches": [
+        "d-chatbox"
+      ],
+      "image": "s-icon-chat-box",
+      "howto": "null",
+      "weight": 8
+    },
+    {
+      "name": "d-chatbox",
+      "title": "Chat Box Settings ",
+      "route": "/dashboard#/chatbox",
+      "keywords": [
+        "chat",
+        " chatbox",
+        " irc",
+        " me",
+        " mine",
+        " your"
+      ],
+      "description": "Chat Box Settings",
+      "keymatches": [
+        "w-chatbox"
+      ],
+      "image": "s-icon-chat-box",
+      "howto": "null",
+      "weight": 9
+    },
+    {
+      "name": "w-merch",
+      "title": "Merch Alert",
+      "route": "/obs-widgets/merch",
+      "keywords": [
+        "merch",
+        " alert",
+        " purchase",
+        " store"
+      ],
+      "description": "Streamlabs Merch Alerts",
+      "keymatches": [
+        "d-merch",
+        " merch"
+      ],
+      "image": "s-icon-merch",
+      "howto": "null",
+      "weight": 8
+    },
+    {
+      "name": "d-merch",
+      "title": "Merch Alert Settings",
+      "route": "/dashboard#/alertbox",
+      "keywords": [
+        "merch",
+        " alerts",
+        " purchase",
+        " store",
+        " me",
+        " mine",
+        " your"
+      ],
+      "description": "Your Merch Alert Settings",
+      "keymatches": [
+        "w-merch",
+        " merch"
+      ],
+      "image": "s-icon-merch",
+      "howto": "null",
+      "weight": 9
+    },
+    {
+      "name": "w-eventlist",
+      "title": "Event List",
+      "route": "/obs-widgets/event-list",
+      "keywords": [
+        "events",
+        " list",
+        " donations",
+        " subscriptions",
+        " bits",
+        " follows",
+        " event list"
+      ],
+      "description": "Streamlabs Event List",
+      "keymatches": [
+        "d-eventlist"
+      ],
+      "image": "s-icon-event-list",
+      "howto": "null",
+      "weight": 8
+    },
+    {
+      "name": "d-eventlist",
+      "title": "Event List Settings ",
+      "route": "/dashboard#/eventlist",
+      "keywords": [
+        "events",
+        " list",
+        " donations",
+        " subscriptions",
+        " bits",
+        " follows",
+        " event list",
+        " me",
+        " mine",
+        " your"
+      ],
+      "description": "Your Event List Settings",
+      "keymatches": [
+        "w-eventlist"
+      ],
+      "image": "s-icon-event-list",
+      "howto": "null",
+      "weight": 9
+    },
+    {
+      "name": "w-viewercount",
+      "title": "Viewer Counter Settings",
+      "route": "/obs-widgets/viewer-counter",
+      "keywords": [
+        "viewers",
+        " views",
+        " counter",
+        " count",
+        " twitch",
+        " youtube",
+        " mixer"
+      ],
+      "description": "Streamlabs Viewer Counter",
+      "keymatches": [
+        "d-viewercount"
+      ],
+      "image": "s-icon-view",
+      "howto": "null",
+      "weight": 8
+    },
+    {
+      "name": "d-viewercount",
+      "title": "Viewer Counter Settings",
+      "route": "/dashboard#/viewercount",
+      "keywords": [
+        "viewers",
+        " views",
+        " counter",
+        " count",
+        " twitch",
+        " youtube",
+        " mixer",
+        " my",
+        " mine",
+        " your"
+      ],
+      "description": "Your Viewer Counter Settings",
+      "keymatches": [
+        "w-viewercount"
+      ],
+      "image": "s-icon-view",
+      "howto": "null",
+      "weight": 9
+    },
+    {
+      "name": "w-credits",
+      "title": "End Credits",
+      "route": "/obs-widgets/end-credits",
+      "keywords": [
+        "credits",
+        " thanks",
+        " roll",
+        " role",
+        " rolls",
+        " give",
+        " promote",
+        ""
+      ],
+      "description": "Streamlabs End Credits",
+      "keymatches": [
+        "d-credits"
+      ],
+      "image": "s-icon-link",
+      "howto": "null",
+      "weight": 8
+    },
+    {
+      "name": "d-credits",
+      "title": "End Credits Settings ",
+      "route": "/dashboard#/credits",
+      "keywords": [
+        "credits",
+        " thanks",
+        " roll",
+        " role",
+        " rolls",
+        " give",
+        " promote",
+        " my",
+        " mine",
+        " your"
+      ],
+      "description": "Your End Credits Settings",
+      "keymatches": [
+        "w-credits"
+      ],
+      "image": "s-icon-link",
+      "howto": "null",
+      "weight": 9
+    },
+    {
+      "name": "pricing",
+      "title": "Streamlabs Pricing",
+      "route": "/pricing",
+      "keywords": [
+        "pricing",
+        " tips",
+        " cut",
+        " share",
+        " zero cut",
+        " streamlabs"
+      ],
+      "description": "100% of Your Tips are Yours to Keep",
+      "keymatches": [
+        "privacy",
+        " terms"
+      ],
+      "image": "s-icon-earnings",
+      "howto": "null",
+      "weight": 5
+    },
+    {
+      "name": "twitchkittens",
+      "title": "TwitchKittens Overlays",
+      "route": "/twitchkittens/overlays",
+      "keywords": [
+        "twitchkittens",
+        " kittens",
+        " twitchkittens",
+        " overlays"
+      ],
+      "description": "TwitchKittens Overlays on Streamlabs OBS",
+      "keymatches": [
+        ""
+      ],
+      "image": "s-icon-link",
+      "howto": "null",
+      "weight": 5
+    },
+    {
+      "name": "blog",
+      "title": "Streamlabs Blog",
+      "route": "/blog",
+      "keywords": [
+        "streamlabs",
+        " blog",
+        " news",
+        " blogger"
+      ],
+      "description": "Streamlabs Blog",
+      "keymatches": [
+        ""
+      ],
+      "image": "s-icon-link",
+      "howto": "null",
+      "weight": 5
+    },
+    {
+      "name": "library",
+      "title": "Overlay Library",
+      "route": "/library",
+      "keywords": [
+        "overlays",
+        " free",
+        " library",
+        " collection",
+        " overlay library",
+        " nerd or die",
+        " twitchkittens",
+        " vbi",
+        " visuals by impulse"
+      ],
+      "description": "Streamlabs Overlay Library",
+      "keymatches": [
+        ""
+      ],
+      "image": "s-icon-link",
+      "howto": "null",
+      "weight": 5
+    },
+    {
+      "name": "stats",
+      "title": "Dashboard Statistics",
+      "route": "/dashboard#/stats",
+      "keywords": [
+        "stats",
+        " statistics",
+        " your stats",
+        " stream stats",
+        " hours",
+        " logs"
+      ],
+      "description": "Your Dashboard Statistics",
+      "keymatches": [
+        ""
+      ],
+      "image": "s-icon-graph",
+      "howto": "null",
+      "weight": 7
+    },
+    {
+      "name": "recentevents-twitch",
+      "title": "Dashboard Recent Events",
+      "route": "/dashboard#/twitch",
+      "keywords": [
+        "recent events",
+        " recent",
+        " events",
+        " twitch"
+      ],
+      "description": "Your Recent Events (Twitch)",
+      "keymatches": [
+        "streamlabs-obs"
+      ],
+      "image": "s-icon-live-dashboard",
+      "howto": "null",
+      "weight": 7
+    },
+    {
+      "name": " cloudbot",
+      "title": "Cloudbot",
+      "route": "/dashboard#/cloudbot",
+      "keywords": [
+        "cloudbot",
+        " chatbot",
+        " moderator",
+        " streamelements",
+        " stream",
+        " elements",
+        " anhkbot",
+        " streambot",
+        " streamlabs chatbot",
+        " rutonychat",
+        " irc",
+        " scripts",
+        " scripting",
+        " commands",
+        " polls",
+        " bettings",
+        " loyalty",
+        " queue",
+        " quotes",
+        " timers",
+        " modules",
+        " mods",
+        " mod tools",
+        " minigame",
+        " heist",
+        " gamble"
+      ],
+      "description": "Streamlabs Cloudbot",
+      "keymatches": [
+        "chatbot"
+      ],
+      "image": "s-icon-cloud",
+      "howto": "null",
+      "weight": 7
+    },
+    {
+      "name": "merchstore",
+      "title": "Your Merch Store",
+      "route": "/dashboard#/merchadmin",
+      "keywords": [
+        "merch",
+        " store",
+        " merchandise",
+        " merchandize",
+        " sell stuff",
+        " monetize",
+        " branding",
+        " logo",
+        ""
+      ],
+      "description": "Your Merch Store",
+      "keymatches": [
+        "merch"
+      ],
+      "image": "s-icon-merch",
+      "howto": "null",
+      "weight": 7
+    },
+    {
+      "name": "donationsettings",
+      "title": "Donation Settings",
+      "route": "/dashboard#/settings/donation-settings",
+      "keywords": [
+        "donation settings",
+        " settings",
+        " your",
+        " my",
+        " mine"
+      ],
+      "description": "Your Donation Settings",
+      "keymatches": [
+        ""
+      ],
+      "image": "s-icon-settings",
+      "howto": "null",
+      "weight": 9
+    },
+    {
+      "name": "accountsettings",
+      "title": "Account Settings",
+      "route": "/dashboard#/settings/account-settings",
+      "keywords": [
+        "account",
+        " account settings",
+        " your",
+        " my",
+        " mine"
+      ],
+      "description": "Your Account Settings",
+      "keymatches": [
+        ""
+      ],
+      "image": "s-icon-settings",
+      "howto": "null",
+      "weight": 9
+    },
+    {
+      "name": "sharedaccess",
+      "title": "Shared Access",
+      "route": "/dashboard#/settings/shared-access",
+      "keywords": [
+        "shared access",
+        " shared",
+        " access",
+        " moderator",
+        " team"
+      ],
+      "description": "Your Shared Access Settings",
+      "keymatches": [
+        "privacy"
+      ],
+      "image": "s-icon-settings",
+      "howto": "null",
+      "weight": 9
+    },
+    {
+      "name": "integrations",
+      "title": "Platform Integrations",
+      "route": "/dashboard#/settings/integrations",
+      "keywords": [
+        "integrations",
+        " patreon",
+        " extra life",
+        " tiltify",
+        " razer chroma",
+        " discord",
+        " tipeeestream",
+        " treatstream",
+        " charity streaming",
+        " justgiving"
+      ],
+      "description": "Your Platform Integrations",
+      "keymatches": [
+        "accountsettings"
+      ],
+      "image": "s-icon-settings",
+      "howto": "null",
+      "weight": 8
+    },
+    {
+      "name": "apisettings",
+      "title": "API settings",
+      "route": "/dashboard#/settings/api-settings",
+      "keywords": [
+        "settings",
+        " api",
+        " API",
+        " developer"
+      ],
+      "description": "Your Streamlabs API Settings",
+      "keymatches": [
+        "privacy",
+        " terms"
+      ],
+      "image": "s-icon-settings",
+      "howto": "null",
+      "weight": 8
+    },
+    {
+      "name": "d-affiliates",
+      "title": "Affiliates Dashboard",
+      "route": "/dashboard#/affiliates",
+      "keywords": [
+        "affiliates",
+        " settings",
+        " my",
+        " mine",
+        " your"
+      ],
+      "description": "Your Streamlabs Affiliate Dashboard",
+      "keymatches": [
+        "privacy",
+        " affiliates"
+      ],
+      "image": "s-icon-earnings",
+      "howto": "null",
+      "weight": 8
+    },
+    {
+      "name": "d-donations",
+      "title": "My Donations",
+      "route": "/dashboard#/donations",
+      "keywords": [
+        "donations list",
+        " donations",
+        " tips",
+        " "
+      ],
+      "description": "Your Donations",
+      "keymatches": [
+        "donationsettings"
+      ],
+      "image": "s-icon-earnings",
+      "howto": "null",
+      "weight": 7
+    },
+    {
+      "name": "d-subscribers",
+      "title": "My Subscribers",
+      "route": "/dashboard#/subscribers",
+      "keywords": [
+        "subscriber list",
+        " subscriptions",
+        " subs",
+        " subscribers"
+      ],
+      "description": "Your Subscribers",
+      "keymatches": [
+        ""
+      ],
+      "image": "s-icon-loyalty",
+      "howto": "null",
+      "weight": 7
+    },
+    {
+      "name": "d-widgetthemes",
+      "title": "Your Widget Themes",
+      "route": "/dashboard#/widgetthemes",
+      "keywords": [
+        "widgets",
+        " widget themes",
+        " library",
+        " alert profiles",
+        " profiles"
+      ],
+      "description": "Manage your Widget Themes",
+      "keymatches": [
+        "widgets",
+        " d-widgets"
+      ],
+      "image": "s-icon-widgets",
+      "howto": "null",
+      "weight": 7
+    },
+    {
+      "name": "d-facemasks",
+      "title": "Face Masks Dashboard",
+      "route": "/dashboard#/facemasks",
+      "keywords": [
+        "face",
+        " masks",
+        " face masks",
+        " alerts",
+        " snap",
+        " snap camera",
+        " "
+      ],
+      "description": "Streamlabs Face Masks Dashboard",
+      "keymatches": [
+        "facemasks"
+      ],
+      "image": "s-icon-moustache",
+      "howto": "null",
+      "weight": 7
+    },
+    {
+      "name": "loyaltyextension",
+      "title": "Streamlabs Loyalty Extension",
+      "route": "/dashboard#/loyalty",
+      "keywords": [
+        "loyalty",
+        " extension",
+        " twitch",
+        " rewards"
+      ],
+      "description": "Streamlabs Loyalty Extension (Twitch)",
+      "keymatches": [
+        ""
+      ],
+      "image": "s-icon-loyalty",
+      "howto": "null",
+      "weight": 6
+    }
+  ]
+}
