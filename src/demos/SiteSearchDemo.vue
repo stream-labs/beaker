@@ -16,8 +16,6 @@
 </template>
 
 <script lang="ts">
-
-
 import { Component, Vue } from "vue-property-decorator";
 import SiteSearch from "./../components/SiteSearch.vue";
 import Accordion from "./../components/Accordion.vue";
@@ -35,7 +33,6 @@ export default class SiteSearchDemo extends Vue {
 
 <style lang="less">
 @import "./../styles/Imports";
-
 
 .topnav {
   width: 100%;
@@ -71,10 +68,5 @@ export default class SiteSearchDemo extends Vue {
     flex-grow: 0;
     background-color: @teal;
   }
-
 }
-
-
 </style>
-
-
