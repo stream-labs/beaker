@@ -15,7 +15,7 @@
           's-has-prev': hasPrev
         }"
         >
-          <md-tabs md-sync-route>
+          <md-tabs md-sync-route @md-changed="showTab">
             <template slot="md-tab" slot-scope="{ tab }">
               <i v-if="tab.data.icon" :class="`s-icon-${tab.data.icon}`"></i>
               {{ tab.label }}
@@ -41,11 +41,11 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-// import { MdButton, MdContent, MdTabs } from "vue-material/dist/components";
+import { MdButton, MdContent, MdTabs } from "vue-material/dist/components";
 
-// Vue.use(MdButton);
-// Vue.use(MdContent);
-// Vue.use(MdTabs);
+Vue.use(MdButton);
+Vue.use(MdContent);
+Vue.use(MdTabs);
 
 @Component({})
 export default class TabDevelop extends Vue {
@@ -120,6 +120,11 @@ export default class TabDevelop extends Vue {
 
       this.hasNext = scrollRight > 0;
     }
+  }
+
+  showTab(activeTab) {
+    console.log(activeTab);
+    this.$emit("input", activeTab);
   }
 }
 </script>

@@ -12,27 +12,32 @@ components: {
     <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
       <div slot="content">
         <pre>
-<code>&lt;tab-develop
-  :tabs=&quot;test&quot;
+<code>&lt;tab-develop 
+  :tabs=&quot;test&quot; 
   :tabSize=&quot;'large'&quot;&gt;
 &lt;/tab-develop&gt;
 </code></pre>
       </div>
     </Accordion>
 
-    <div class="section section__components">
-      <tab-develop :tabs="standard"></tab-develop>
-    </div>
-
-    <div class="section section__components">
-      <tab-develop :tabs="test"></tab-develop>
-    </div>
-
-    <div class="section section__components">
+    <!-- <div class="section section__components">
       <tab-develop :tabs="test" :tabSize="'large'"></tab-develop>
-    </div>
-
-    <!-- <tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler"></tabs> -->
+    </div> -->
+    <tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler">
+      <div slot="general">general</div>
+      <div slot="advanced">advanced</div>
+      <div slot="account">account</div>
+      <div slot="integrations">integrations</div>
+      <div slot="payments">payments</div>
+      <div slot="donations">donations</div>
+      <div slot="subscriptions">subscriptions</div>
+      <div slot="preferences">preferences</div>
+      <div slot="apps">apps</div>
+      <div slot="merch">merch</div>
+      <div slot="api">api</div>
+      <div slot="moderators">moderators</div>
+      <div slot="themes">themes</div>
+    </tabs>
     <table class="docs-table">
       <thead>
         <tr>
@@ -47,8 +52,7 @@ components: {
           <td>tabs</td>
           <td>array</td>
           <td>null</td>
-          <td>
-            tabs information to display. you can make array like below
+          <td>tabs information to display. you can make array like below
             <br>
             <code>
               test = [
@@ -88,39 +92,6 @@ import Tabs from "./../components/Tabs.vue";
   }
 })
 export default class TabsDemo extends Vue {
-  standard = [
-    {
-      tabLabel: "General",
-      tabTo: "#",
-      tabId: "tab1"
-    },
-    {
-      tabLabel: "Advanced",
-      tabTo: "#",
-      tabId: "tab2"
-    },
-    {
-      tabLabel: "Account",
-      tabTo: "#",
-      tabId: "tab3"
-    },
-    {
-      tabLabel: "Integrations",
-      tabTo: "#",
-      tabId: "tab4"
-    },
-    {
-      tabLabel: "Payments",
-      tabTo: "#",
-      tabId: "tab5"
-    },
-    {
-      tabLabel: "Apps",
-      tabTo: "#",
-      tabId: "tab6"
-    }
-  ];
-
   test = [
     {
       tabLabel: "General",
@@ -157,6 +128,61 @@ export default class TabsDemo extends Vue {
       tabTo: "#",
       tabId: "tab6",
       tabIcon: "information"
+    }
+  ];
+
+  tabs = [
+    {
+      name: "General",
+      value: "general"
+    },
+    {
+      name: "Advanced",
+      value: "advanced"
+    },
+    {
+      name: "Account",
+      value: "account"
+    },
+    {
+      name: "Integrations",
+      value: "integrations"
+    },
+    {
+      name: "Payments",
+      value: "payments"
+    },
+    {
+      name: "Donations",
+      value: "donations"
+    },
+    {
+      name: "Subscriptions",
+      value: "subscriptions"
+    },
+    {
+      name: "Preferences",
+      value: "preferences"
+    },
+    {
+      name: "Apps",
+      value: "apps"
+    },
+    {
+      name: "Merch",
+      value: "merch"
+    },
+    {
+      name: "API",
+      value: "api"
+    },
+    {
+      name: "Moderators",
+      value: "moderators"
+    },
+    {
+      name: "Themes",
+      value: "themes"
     }
   ];
 

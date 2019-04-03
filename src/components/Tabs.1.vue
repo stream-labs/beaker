@@ -20,7 +20,6 @@
             :key="tab.value"
             class="s-tab"
             :class="{ 's-is-active': tab.value === value }"
-            @click="showTab(tab.value)"
           >{{ tab.name }}</span>
         </div>
 
@@ -107,7 +106,6 @@ export default class Tabs extends Vue {
   }
 
   showTab(tab: string) {
-    console.log(tab);
     this.$emit("input", tab);
   }
 }
