@@ -54,7 +54,7 @@
           :label="'New Streamlabs OBS App'"
           :title="'Introducing Pretzel Rocks Music Player'"
           :desc="'Stream-safe music for broadcasters with an ever-growing catalog of music. Currently 5k+ tracks.'"
-          :link-desc="'15D Free Trial'"
+          :link-desc="'$4.99/mo'"
         >
           <Button
             slot="link"
