@@ -10,6 +10,7 @@
 
 import Accordion from "@/components/Accordion";
 import Badge from "@/components/Badge";
+import BannerMarketing from "@/components/BannerMarketing";
 import Button from "@/components/Button";
 import CallToAction from "@/components/CallToAction";
 import Callout from "@/components/Callout";
@@ -50,6 +51,7 @@ import VirtualItem from "@/components/VirtualItem";
 const components = [
   Accordion,
   Badge,
+  BannerMarketing,
   Button,
   CallToAction,
   Callout,
@@ -88,6 +90,7 @@ const components = [
 export {
   Accordion,
   Badge,
+  BannerMarketing,
   Button,
   CallToAction,
   Callout,
