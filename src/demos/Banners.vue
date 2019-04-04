@@ -29,10 +29,10 @@
         </Accordion>
 
         <banner-marketing
-          :day-bg="'https://picsum.photos/1920/300/?image=926'"
-          :night-bg="'https://picsum.photos/1920/300/?image=914'"
+          :bg-image="'https://cdn.streamlabs.com/static/imgs/pretzel_dashboard_banner_bg.png'"
+          :bg-image-night="'http://cdn.backgroundhost.com/backgrounds/subtlepatterns/cartographer.png'"
+          :icon-name="'themes'"
           :label="'Introducing Streamlabs OBS'"
-          :icon="'themes'"
           :title="'Largest library of free themes in the world.'"
           :desc="'To access over 700+ themes for free, download Streamlabs OBS.'"
           :link-desc="'Win 7+  245.8 MB'"
@@ -48,6 +48,24 @@
           ></Button>
         </banner-marketing>
 
+        <banner-marketing
+          :bg-image="'https://cdn.streamlabs.com/static/imgs/pretzel_dashboard_banner_bg.png'"
+          :icon-image="require('../assets/imgs/pretzel-icon.png')"
+          :label="'New Streamlabs OBS App'"
+          :title="'Introducing Pretzel Rocks Music Player'"
+          :desc="'Stream-safe music for broadcasters with an ever-growing catalog of music. Currently 5k+ tracks.'"
+          :link-desc="'$4.99/mo'"
+        >
+          <Button
+            slot="link"
+            :type="'a'"
+            :variation="'action'"
+            :size="'standard'"
+            :href="'#'"
+            :title="'Try It Now'"
+          ></Button>
+        </banner-marketing>
+
         <table class="docs-table">
           <thead>
             <tr>
@@ -60,16 +78,16 @@
           </thead>
           <tbody>
             <tr>
-              <td>dayBg</td>
+              <td>bgImage</td>
               <td>string</td>
               <td>true</td>
               <td>null</td>
               <td>Background image that will display in day mode.</td>
             </tr>
             <tr>
-              <td>nightBg</td>
+              <td>bgImageNight</td>
               <td>string</td>
-              <td>true</td>
+              <td>false</td>
               <td>null</td>
               <td>Background image that will display in night mode.</td>
             </tr>
@@ -81,11 +99,18 @@
               <td>Label text in the upper left of the banner.</td>
             </tr>
             <tr>
-              <td>icon</td>
+              <td>iconImage</td>
               <td>string</td>
-              <td>true</td>
+              <td>false</td>
               <td>null</td>
-              <td>Icon next to title. Use icon name from icon list.</td>
+              <td>Icon image next to title. Use a url path. If using iconName - do not use iconImg. We will improve functionality in near future.</td>
+            </tr>
+            <tr>
+              <td>iconName</td>
+              <td>string</td>
+              <td>false</td>
+              <td>null</td>
+              <td>Icon next to title. Use icon name from icon list. If using iconImg - do not use iconName. We will improve functionality in near future.</td>
             </tr>
             <tr>
               <td>title</td>
