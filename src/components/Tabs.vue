@@ -19,9 +19,13 @@
             v-for="tab in tabs"
             :key="tab.value"
             class="s-tab"
-            :class="{ 's-is-active': tab.value === value }"
+            :class="{ 'is-active': tab.value === value}"
+            :style="selectTabSize"
             @click="showTab(tab.value)"
-          >{{ tab.name }}</span>
+          >
+            {{ tab.name }}
+            <span :class="`s-icon-${tab.icon}`"></span>
+          </span>
         </div>
 
         <div v-if="hasNext" @click="scrollRight" class="s-tabs-nav__control s-has-next">
@@ -31,7 +35,9 @@
     </div>
 
     <div class="s-tab-content" v-if="!hideContent">
-      <slot v-for="tab in tabs" :name="tab.value" v-if="tab.value === value"/>
+      <div v-for="(tab, index) in tabs" :key="index">
+        <slot :name="tab.value" v-if="tab.value === value"/>
+      </div>
     </div>
   </div>
 </template>
@@ -41,6 +47,27 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Tabs extends Vue {
+  @Prop()
+  tabs!: [
+    {
+      name: string;
+      value: string;
+      icon: string;
+    }
+  ];
+
+  @Prop()
+  size!: string;
+
+  @Prop()
+  value!: string;
+
+  @Prop()
+  className!: string;
+
+  @Prop()
+  hideContent!: boolean;
+
   $refs!: {
     scrollable_tabs: HTMLDivElement;
   };
@@ -52,22 +79,19 @@ export default class Tabs extends Vue {
   hasPrev = false;
   private scrollIncrement = 100;
 
-  @Prop()
-  tabs!: [
-    {
-      name: string;
-      value: string;
+  get tabSize() {
+    if (this.size === "small") {
+      return "14px";
+    } else if (this.size === "large") {
+      return "16px";
+    } else {
+      return "14px";
     }
-  ];
+  }
 
-  @Prop()
-  value!: string;
-
-  @Prop()
-  className!: string;
-
-  @Prop()
-  hideContent!: boolean;
+  selectTabSize = {
+    fontSize: this.tabSize
+  };
 
   created() {
     window.addEventListener("resize", this.calculateScrolls);
@@ -232,15 +256,14 @@ export default class Tabs extends Vue {
 
 .s-tab {
   color: @day-paragraph;
-  .padding-bottom(2);
+  .padding-bottom(1.375);
   border-bottom: 2px solid transparent;
-  .margin-right(2);
-  cursor: default;
-  .transition();
+  .margin-right(2.5);
+  cursor: pointer;
   display: inline-block;
   position: relative;
+  .transition();
   .weight(@medium);
-
   &.is-active {
     color: @day-title;
     border-color: @dark-2;

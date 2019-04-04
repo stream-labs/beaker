@@ -23,7 +23,7 @@ components: {
     <!-- <div class="section section__components">
       <tab-develop :tabs="test" :tabSize="'large'"></tab-develop>
     </div> -->
-    <tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler">
+    <tabs :tabs="tabs" :size="'small'" :value="selectedTab" @input="onSelectTabHandler">
       <div slot="general">general</div>
       <div slot="advanced">advanced</div>
       <div slot="account">account</div>
@@ -92,97 +92,110 @@ import Tabs from "./../components/Tabs.vue";
   }
 })
 export default class TabsDemo extends Vue {
-  test = [
-    {
-      tabLabel: "General",
-      tabTo: "#",
-      tabId: "tab1",
-      tabIcon: "information"
-    },
-    {
-      tabLabel: "Advanced",
-      tabTo: "#",
-      tabId: "tab2",
-      tabIcon: "information"
-    },
-    {
-      tabLabel: "Account",
-      tabTo: "#",
-      tabId: "tab3",
-      tabIcon: "information"
-    },
-    {
-      tabLabel: "Integrations",
-      tabTo: "#",
-      tabId: "tab4",
-      tabIcon: "information"
-    },
-    {
-      tabLabel: "Payments",
-      tabTo: "#",
-      tabId: "tab5",
-      tabIcon: "information"
-    },
-    {
-      tabLabel: "Apps",
-      tabTo: "#",
-      tabId: "tab6",
-      tabIcon: "information"
-    }
-  ];
+  // test = [
+  //   {
+  //     tabLabel: "General",
+  //     tabTo: "#",
+  //     tabId: "tab1",
+  //     tabIcon: "information"
+  //   },
+  //   {
+  //     tabLabel: "Advanced",
+  //     tabTo: "#",
+  //     tabId: "tab2",
+  //     tabIcon: "information"
+  //   },
+  //   {
+  //     tabLabel: "Account",
+  //     tabTo: "#",
+  //     tabId: "tab3",
+  //     tabIcon: "information"
+  //   },
+  //   {
+  //     tabLabel: "Integrations",
+  //     tabTo: "#",
+  //     tabId: "tab4",
+  //     tabIcon: "information"
+  //   },
+  //   {
+  //     tabLabel: "Payments",
+  //     tabTo: "#",
+  //     tabId: "tab5",
+  //     tabIcon: "information"
+  //   },
+  //   {
+  //     tabLabel: "Apps",
+  //     tabTo: "#",
+  //     tabId: "tab6",
+  //     tabIcon: "information"
+  //   }
+  // ];
 
   tabs = [
     {
       name: "General",
-      value: "general"
+      value: "general",
+      icon: "information"
     },
     {
       name: "Advanced",
-      value: "advanced"
+      value: "advanced",
+      icon: ""
     },
     {
       name: "Account",
-      value: "account"
+      value: "account",
+      icon: ""
     },
     {
       name: "Integrations",
-      value: "integrations"
+      value: "integrations",
+      icon: ""
     },
     {
       name: "Payments",
-      value: "payments"
+      value: "payments",
+      icon: ""
     },
     {
       name: "Donations",
-      value: "donations"
+      value: "donations",
+      icon: ""
     },
     {
       name: "Subscriptions",
-      value: "subscriptions"
+      value: "subscriptions",
+      icon: ""
     },
     {
       name: "Preferences",
-      value: "preferences"
+      value: "preferences",
+      icon: ""
     },
     {
       name: "Apps",
-      value: "apps"
+      value: "apps",
+      icon: ""
     },
     {
       name: "Merch",
-      value: "merch"
+      value: "merch",
+      icon: ""
     },
     {
       name: "API",
-      value: "api"
+      value: "api",
+      icon: ""
     },
     {
       name: "Moderators",
-      value: "moderators"
+      value: "moderators",
+      icon: ""
     },
     {
       name: "Themes",
-      value: "themes"
+      value: "themes",
+      icon: ""
     }
   ];
 
