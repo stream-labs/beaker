@@ -8,19 +8,18 @@
       "keywords": [
         "contact",
         "business",
-        "business inquiries",
         "inquiries",
         "social",
-        "social media"
+        " media"
       ],
       "description": "Need to get a hold of Streamlabs?",
       "keymatches": [
         "howto",
-        "apidoc"
+        "faq"
       ],
-      "image": "s-icon-phone-case",
+      "image": "icon-phone-case",
       "howto": "null",
-      "weight": 2
+      "weight": 1
     },
     {
       "name": "faq",
@@ -28,58 +27,63 @@
       "route": "/faq",
       "keywords": [
         "faq",
-        "frequently asked questions",
-        "question",
+        "frequently",
+        "asked",
         "questions",
-        "answer",
-        "answers"
+        "answers",
+        "how"
       ],
       "description": "Browse through some frequently asked questions.",
       "keymatches": [
         "howto",
         "contact"
       ],
-      "image": "s-icon-question",
+      "image": "icon-question",
       "howto": "null",
-      "weight": 3
+      "weight": 1
     },
     {
       "name": "allstars",
       "title": "Streamlabs All Stars",
       "route": "/allstars",
       "keywords": [
-        "all stars",
+        "all",
         "stars",
-        "vip",
+        "rock",
         "celebrity",
-        "rock star",
-        " star"
+        "vip",
+        "very",
+        "important",
+        "person"
       ],
       "description": "Be an All Star with Streamlabs.",
       "keymatches": [
         "faq"
       ],
-      "image": "s-icon-loyalty",
+      "image": "icon-loyalty",
       "howto": "null",
-      "weight": 3
+      "weight": 1
     },
     {
       "name": "d-allstars",
-      "title": "Streamlabs All Stars",
+      "title": "Streamlabs All Star Dashboard",
       "route": "/allstars",
       "keywords": [
-        "all stars",
+        "all",
         "stars",
-        "vip",
+        "rock",
         "celebrity",
-        "rock star",
-        " star"
+        "vip",
+        "very",
+        "important",
+        "person",
+        "dashboard"
       ],
-      "description": "Be an All Star with Streamlabs.",
+      "description": "Streamlabs All Star Dashboard",
       "keymatches": [
         "faq"
       ],
-      "image": "s-icon-loyalty",
+      "image": "icon-loyalty",
       "howto": "null",
       "weight": 1
     },
@@ -97,9 +101,9 @@
         "faq",
         " contact"
       ],
-      "image": "s-icon-link",
+      "image": "icon-link",
       "howto": "null",
-      "weight": 3
+      "weight": 1
     },
     {
       "name": "terms",
@@ -117,9 +121,9 @@
         " contact",
         " privacy"
       ],
-      "image": "s-icon-link",
+      "image": "icon-link",
       "howto": "null",
-      "weight": 6
+      "weight": 1
     },
     {
       "name": "privacy",
@@ -138,9 +142,9 @@
         " contact",
         " terms"
       ],
-      "image": "s-icon-link",
+      "image": "icon-link",
       "howto": "null",
-      "weight": 6
+      "weight": 1
     },
     {
       "name": "widgets",
@@ -156,9 +160,9 @@
       "keymatches": [
         "howto"
       ],
-      "image": "s-icon-stream",
+      "image": "icon-stream",
       "howto": "null",
-      "weight": 5
+      "weight": 1
     },
     {
       "name": "merch",
@@ -183,9 +187,9 @@
         "widgets",
         " howto"
       ],
-      "image": "s-icon-merch",
+      "image": "icon-merch",
       "howto": "null",
-      "weight": 9
+      "weight": 1
     },
     {
       "name": "mobileapp",
@@ -209,9 +213,9 @@
         "widgets",
         " howto"
       ],
-      "image": "s-icon-phone-case",
+      "image": "icon-phone-case",
       "howto": "null",
-      "weight": 7
+      "weight": 1
     },
     {
       "name": "chatbot",
@@ -230,9 +234,9 @@
         "widgets",
         " howto"
       ],
-      "image": "s-icon-suggestions",
+      "image": "icon-suggestions",
       "howto": "null",
-      "weight": 5
+      "weight": 1
     },
     {
       "name": "d-chatbot",
@@ -251,7 +255,7 @@
         "widgets",
         " howto"
       ],
-      "image": "s-icon-suggestions",
+      "image": "icon-suggestions",
       "howto": "null",
       "weight": 1
     },
@@ -271,7 +275,7 @@
       "keymatches": [
         "chatbot"
       ],
-      "image": "s-icon-suggestions",
+      "image": "icon-suggestions",
       "howto": "null",
       "weight": 1
     },
@@ -289,9 +293,9 @@
       "keymatches": [
         "about"
       ],
-      "image": "s-icon-notifications",
+      "image": "icon-notifications",
       "howto": "null",
-      "weight": 6
+      "weight": 1
     },
     {
       "name": "about",
@@ -308,9 +312,9 @@
         "terms",
         " privacy"
       ],
-      "image": "s-icon-information",
+      "image": "icon-information",
       "howto": "null",
-      "weight": 8
+      "weight": 1
     },
     {
       "name": "streamlabs-obs",
@@ -338,9 +342,9 @@
         " howto",
         " mobileapp"
       ],
-      "image": "s-icon-windows",
+      "image": "icon-windows",
       "howto": "null",
-      "weight": 6
+      "weight": 1
     },
     {
       "name": "affiliates",
@@ -356,9 +360,9 @@
       "keymatches": [
         "allstars"
       ],
-      "image": "s-icon-team-2",
+      "image": "icon-team-2",
       "howto": "null",
-      "weight": 4
+      "weight": 1
     },
     {
       "name": "face-masks",
@@ -380,9 +384,9 @@
         " streamlabs-obs",
         " face-maks-tutorial"
       ],
-      "image": "s-icon-moustache",
+      "image": "icon-moustache",
       "howto": "null",
-      "weight": 9
+      "weight": 1
     },
     {
       "name": "face-mask-tutorial",
@@ -406,9 +410,9 @@
       "keymatches": [
         "face-masks"
       ],
-      "image": "s-icon-moustache",
+      "image": "icon-moustache",
       "howto": "null",
-      "weight": 6
+      "weight": 1
     },
     {
       "name": "d-widgets",
@@ -458,9 +462,9 @@
       "keymatches": [
         "widgets"
       ],
-      "image": "s-icon-link",
+      "image": "icon-link",
       "howto": "null",
-      "weight": 8
+      "weight": 1
     },
     {
       "name": "w-alertbox",
@@ -485,9 +489,9 @@
       "keymatches": [
         "d-alertbox"
       ],
-      "image": "s-icon-desktop",
+      "image": "icon-desktop",
       "howto": "null",
-      "weight": 7
+      "weight": 1
     },
     {
       "name": "d-alertbox",
@@ -515,9 +519,9 @@
       "keymatches": [
         "w-alertbox"
       ],
-      "image": "s-icon-desktop",
+      "image": "icon-desktop",
       "howto": "null",
-      "weight": 9
+      "weight": 1
     },
     {
       "name": "w-tipjar",
@@ -536,9 +540,9 @@
       "keymatches": [
         "d-tipjar"
       ],
-      "image": "s-icon-jar",
+      "image": "icon-jar",
       "howto": "null",
-      "weight": 8
+      "weight": 1
     },
     {
       "name": "d-tipjar",
@@ -559,9 +563,9 @@
       "keymatches": [
         "w-tipjar"
       ],
-      "image": "s-icon-jar",
+      "image": "icon-jar",
       "howto": "null",
-      "weight": 9
+      "weight": 1
     },
     {
       "name": "w-donationticker",
@@ -581,9 +585,9 @@
       "keymatches": [
         "d-donationticker"
       ],
-      "image": "s-icon-donation-ticker",
+      "image": "icon-donation-ticker",
       "howto": "null",
-      "weight": 8
+      "weight": 1
     },
     {
       "name": "d-donationticker",
@@ -605,9 +609,9 @@
       "keymatches": [
         "w-donationticker"
       ],
-      "image": "s-icon-donation-ticker",
+      "image": "icon-donation-ticker",
       "howto": "null",
-      "weight": 9
+      "weight": 1
     },
     {
       "name": "w-spinwheel",
@@ -626,9 +630,9 @@
       "keymatches": [
         "d-spinwheel"
       ],
-      "image": "s-icon-link",
+      "image": "icon-link",
       "howto": "null",
-      "weight": 8
+      "weight": 1
     },
     {
       "name": "d-spinwheel",
@@ -649,9 +653,9 @@
       "keymatches": [
         "w-spinwheel"
       ],
-      "image": "s-icon-link",
+      "image": "icon-link",
       "howto": "null",
-      "weight": 9
+      "weight": 1
     },
     {
       "name": "w-streamboss",
@@ -667,9 +671,9 @@
       "keymatches": [
         "d-streamboss"
       ],
-      "image": "s-icon-link",
+      "image": "icon-link",
       "howto": "null",
-      "weight": 8
+      "weight": 1
     },
     {
       "name": "d-streamboss",
@@ -688,9 +692,9 @@
       "keymatches": [
         "w-streamboss"
       ],
-      "image": "s-icon-link",
+      "image": "icon-link",
       "howto": "null",
-      "weight": 9
+      "weight": 1
     },
     {
       "name": "w-sponsorbanner",
@@ -707,9 +711,9 @@
       "keymatches": [
         "d-sponsorbanner"
       ],
-      "image": "s-icon-link",
+      "image": "icon-link",
       "howto": "null",
-      "weight": 8
+      "weight": 1
     },
     {
       "name": "d-sponsorbanner",
@@ -729,9 +733,9 @@
       "keymatches": [
         "w-sponsorbanner"
       ],
-      "image": "s-icon-link",
+      "image": "icon-link",
       "howto": "null",
-      "weight": 9
+      "weight": 1
     },
     {
       "name": "w-mediashare",
@@ -750,9 +754,9 @@
       "keymatches": [
         "d-mediashare"
       ],
-      "image": "s-icon-media-share-2",
+      "image": "icon-media-share-2",
       "howto": "null",
-      "weight": 8
+      "weight": 1
     },
     {
       "name": "d-mediashare",
@@ -774,9 +778,9 @@
       "keymatches": [
         "w-mediashare"
       ],
-      "image": "s-icon-media-share-2",
+      "image": "icon-media-share-2",
       "howto": "null",
-      "weight": 9
+      "weight": 1
     },
     {
       "name": "w-goals",
@@ -797,9 +801,9 @@
         " d-subscriptiongoal",
         " d-bitgoal"
       ],
-      "image": "",
+      "image": "icon-link",
       "howto": "null",
-      "weight": 8
+      "weight": 1
     },
     {
       "name": "d-donationgoal",
@@ -822,9 +826,9 @@
         " d-subscriptiongoal",
         " d-bit-goal"
       ],
-      "image": "s-icon-link",
+      "image": "icon-link",
       "howto": "null",
-      "weight": 9
+      "weight": 1
     },
     {
       "name": "d-subscriptiongoal",
@@ -846,9 +850,9 @@
         " d-donationgoal",
         " d-bitgoal"
       ],
-      "image": "s-icon-link",
+      "image": "icon-link",
       "howto": "null",
-      "weight": 9
+      "weight": 1
     },
     {
       "name": "d-bitgoal",
@@ -870,9 +874,9 @@
         " d-donationgoal",
         " d-subscriptiongoal"
       ],
-      "image": "s-icon-link",
+      "image": "icon-link",
       "howto": "null",
-      "weight": 9
+      "weight": 1
     },
     {
       "name": "d-tiltifygoal",
@@ -895,9 +899,9 @@
         "w-goals",
         " d-donationgoal"
       ],
-      "image": "s-icon-link",
+      "image": "icon-link",
       "howto": "null",
-      "weight": 9
+      "weight": 1
     },
     {
       "name": "w-chatbox",
@@ -912,9 +916,9 @@
       "keymatches": [
         "d-chatbox"
       ],
-      "image": "s-icon-chat-box",
+      "image": "icon-chat-box",
       "howto": "null",
-      "weight": 8
+      "weight": 1
     },
     {
       "name": "d-chatbox",
@@ -932,9 +936,9 @@
       "keymatches": [
         "w-chatbox"
       ],
-      "image": "s-icon-chat-box",
+      "image": "icon-chat-box",
       "howto": "null",
-      "weight": 9
+      "weight": 1
     },
     {
       "name": "w-merch",
@@ -951,9 +955,9 @@
         "d-merch",
         " merch"
       ],
-      "image": "s-icon-merch",
+      "image": "icon-merch",
       "howto": "null",
-      "weight": 8
+      "weight": 1
     },
     {
       "name": "d-merch",
@@ -973,9 +977,9 @@
         "w-merch",
         " merch"
       ],
-      "image": "s-icon-merch",
+      "image": "icon-merch",
       "howto": "null",
-      "weight": 9
+      "weight": 1
     },
     {
       "name": "w-eventlist",
@@ -994,9 +998,9 @@
       "keymatches": [
         "d-eventlist"
       ],
-      "image": "s-icon-event-list",
+      "image": "icon-event-list",
       "howto": "null",
-      "weight": 8
+      "weight": 1
     },
     {
       "name": "d-eventlist",
@@ -1018,9 +1022,9 @@
       "keymatches": [
         "w-eventlist"
       ],
-      "image": "s-icon-event-list",
+      "image": "icon-event-list",
       "howto": "null",
-      "weight": 9
+      "weight": 1
     },
     {
       "name": "w-viewercount",
@@ -1039,9 +1043,9 @@
       "keymatches": [
         "d-viewercount"
       ],
-      "image": "s-icon-view",
+      "image": "icon-view",
       "howto": "null",
-      "weight": 8
+      "weight": 1
     },
     {
       "name": "d-viewercount",
@@ -1063,9 +1067,9 @@
       "keymatches": [
         "w-viewercount"
       ],
-      "image": "s-icon-view",
+      "image": "icon-view",
       "howto": "null",
-      "weight": 9
+      "weight": 1
     },
     {
       "name": "w-credits",
@@ -1085,9 +1089,9 @@
       "keymatches": [
         "d-credits"
       ],
-      "image": "s-icon-link",
+      "image": "icon-link",
       "howto": "null",
-      "weight": 8
+      "weight": 1
     },
     {
       "name": "d-credits",
@@ -1109,9 +1113,9 @@
       "keymatches": [
         "w-credits"
       ],
-      "image": "s-icon-link",
+      "image": "icon-link",
       "howto": "null",
-      "weight": 9
+      "weight": 1
     },
     {
       "name": "pricing",
@@ -1130,9 +1134,9 @@
         "privacy",
         " terms"
       ],
-      "image": "s-icon-earnings",
+      "image": "icon-earnings",
       "howto": "null",
-      "weight": 5
+      "weight": 1
     },
     {
       "name": "twitchkittens",
@@ -1148,9 +1152,9 @@
       "keymatches": [
         ""
       ],
-      "image": "s-icon-link",
+      "image": "icon-link",
       "howto": "null",
-      "weight": 5
+      "weight": 1
     },
     {
       "name": "blog",
@@ -1166,9 +1170,9 @@
       "keymatches": [
         ""
       ],
-      "image": "s-icon-link",
+      "image": "icon-link",
       "howto": "null",
-      "weight": 5
+      "weight": 1
     },
     {
       "name": "library",
@@ -1189,9 +1193,9 @@
       "keymatches": [
         ""
       ],
-      "image": "s-icon-link",
+      "image": "icon-link",
       "howto": "null",
-      "weight": 5
+      "weight": 1
     },
     {
       "name": "stats",
@@ -1209,9 +1213,9 @@
       "keymatches": [
         ""
       ],
-      "image": "s-icon-graph",
+      "image": "icon-graph",
       "howto": "null",
-      "weight": 7
+      "weight": 1
     },
     {
       "name": "recentevents-twitch",
@@ -1227,9 +1231,9 @@
       "keymatches": [
         "streamlabs-obs"
       ],
-      "image": "s-icon-live-dashboard",
+      "image": "icon-live-dashboard",
       "howto": "null",
-      "weight": 7
+      "weight": 1
     },
     {
       "name": " cloudbot",
@@ -1267,9 +1271,9 @@
       "keymatches": [
         "chatbot"
       ],
-      "image": "s-icon-cloud",
+      "image": "icon-cloud",
       "howto": "null",
-      "weight": 7
+      "weight": 1
     },
     {
       "name": "merchstore",
@@ -1290,9 +1294,9 @@
       "keymatches": [
         "merch"
       ],
-      "image": "s-icon-merch",
+      "image": "icon-merch",
       "howto": "null",
-      "weight": 7
+      "weight": 1
     },
     {
       "name": "donationsettings",
@@ -1309,9 +1313,9 @@
       "keymatches": [
         ""
       ],
-      "image": "s-icon-settings",
+      "image": "icon-settings",
       "howto": "null",
-      "weight": 9
+      "weight": 1
     },
     {
       "name": "accountsettings",
@@ -1328,9 +1332,9 @@
       "keymatches": [
         ""
       ],
-      "image": "s-icon-settings",
+      "image": "icon-settings",
       "howto": "null",
-      "weight": 9
+      "weight": 1
     },
     {
       "name": "sharedaccess",
@@ -1347,9 +1351,9 @@
       "keymatches": [
         "privacy"
       ],
-      "image": "s-icon-settings",
+      "image": "icon-settings",
       "howto": "null",
-      "weight": 9
+      "weight": 1
     },
     {
       "name": "integrations",
@@ -1371,9 +1375,9 @@
       "keymatches": [
         "accountsettings"
       ],
-      "image": "s-icon-settings",
+      "image": "icon-settings",
       "howto": "null",
-      "weight": 8
+      "weight": 1
     },
     {
       "name": "apisettings",
@@ -1390,9 +1394,9 @@
         "privacy",
         " terms"
       ],
-      "image": "s-icon-settings",
+      "image": "icon-settings",
       "howto": "null",
-      "weight": 8
+      "weight": 1
     },
     {
       "name": "d-affiliates",
@@ -1410,9 +1414,9 @@
         "privacy",
         " affiliates"
       ],
-      "image": "s-icon-earnings",
+      "image": "icon-earnings",
       "howto": "null",
-      "weight": 8
+      "weight": 1
     },
     {
       "name": "d-donations",
@@ -1428,9 +1432,9 @@
       "keymatches": [
         "donationsettings"
       ],
-      "image": "s-icon-earnings",
+      "image": "icon-earnings",
       "howto": "null",
-      "weight": 7
+      "weight": 1
     },
     {
       "name": "d-subscribers",
@@ -1446,9 +1450,9 @@
       "keymatches": [
         ""
       ],
-      "image": "s-icon-loyalty",
+      "image": "icon-loyalty",
       "howto": "null",
-      "weight": 7
+      "weight": 1
     },
     {
       "name": "d-widgetthemes",
@@ -1466,9 +1470,9 @@
         "widgets",
         " d-widgets"
       ],
-      "image": "s-icon-widgets",
+      "image": "icon-widgets",
       "howto": "null",
-      "weight": 7
+      "weight": 1
     },
     {
       "name": "d-facemasks",
@@ -1487,9 +1491,9 @@
       "keymatches": [
         "facemasks"
       ],
-      "image": "s-icon-moustache",
+      "image": "icon-moustache",
       "howto": "null",
-      "weight": 7
+      "weight": 1
     },
     {
       "name": "loyaltyextension",
@@ -1505,9 +1509,9 @@
       "keymatches": [
         ""
       ],
-      "image": "s-icon-loyalty",
+      "image": "icon-loyalty",
       "howto": "null",
-      "weight": 6
+      "weight": 1
     }
   ]
 }

@@ -1,46 +1,44 @@
 <template>
-  <div class="s-site-search" :class="[{ 'is-open' : isOpen }, {'phase-one' : phaseOne}, {'phase-two' : phaseTwo}]">
-    <div class="search-bar-container">
-      <div class="search-icon">
+  <div class="s-sitesearch" :class="[{ 's-sitesearch--is-open' : isOpen }, {'s-sitesearch--phase-one' : phaseOne}, {'s-sitesearch--phase-two' : phaseTwo}]">
+    <div class="s-sitesearch--searchbar__cont">
+      <div class="s-sitesearch--icon">
         <i class="s-icon-search"></i>
       </div>
-      <input ref="search_input" type="text" v-model="value" placeholder="Search..." class="search-input" @focus="playOpeningSequence" @blur="playClosingSequence">
-      <div class="search-bar-status-container">
+      <input ref="search_input" type="text" v-model="value" placeholder="Search..." class="s-sitesearch__input" @focus="playOpeningSequence" @blur="playClosingSequence">
+      <div class="s-sitesearch-status__cont">
         <div v-if="noResults">No Results</div>
       </div>
     </div>
-    <transition-group name="fadeY">
-      <div class="search-results-container suggested" :key="limitedResult.length" v-if="phaseTwo && limitedResult.length <= 0">
-        <div class="quick-links">Quick Links</div>
-        <div class="search-results" v-for="(suggested, i) in suggestedLinks" :key="suggested.name">
-          <div class="result-image">
-            <i :class="searchData[quickLinkLoc[i]].image" class="result-image"></i>
+    <transition-group name="s-sitesearch--fadeY">
+      <div class="s-sitesearch-results__cont" :key="limitedResult.length" v-if="phaseTwo && limitedResult.length <= 0">
+        <div class="s-sitesearch-quicklinks">Quick Links</div>
+        <router-link :to="searchData[quickLinkLoc[i]].route" tag="div" class="s-sitesearch-results" v-for="(suggested, i) in suggestedLinks" :key="suggested.name">
+          <div class="s-sitesearch__result--image">
+            <i :class="searchData[quickLinkLoc[i]].image" class="s-sitesearch__result--image"></i>
           </div>
-          <div class="result-title">{{ suggested.name }}  </div>
-        </div>
+          <div class="s-sitesearch__result--title">{{ searchData[quickLinkLoc[i]].title }}  </div>
+        </router-link>
       </div>
-
-      <div class="search-results-container found" :key="limitedResult.length" v-if="phaseTwo && limitedResult.length >= 1">
-        <transition-group name="fadeX">
-        <div v-for="searchResult in limitedResult" :key="searchResult.name" class="search-results">
-          <div class="result-image">
-            <i :class="searchResult.image" class="result-image"></i>
+      <div class="s-sitesearch-results__cont" :key="limitedResult.length" v-if="phaseTwo && limitedResult.length >= 1">
+        <transition-group name="s-sitesearch--fadeX">
+        <router-link :to="searchResult.route" tag="div" v-for="searchResult in limitedResult" :key="searchResult.name" class="s-sitesearch-results">
+          <div class="s-sitesearch__result--image">
+            <i :class="searchResult.image" class="s-sitesearch__result--image"></i>
           </div>
-          <div class="result-title">{{ searchResult.title }}</div>
-        </div>
+          <div class="s-sitesearch__result--title">{{ searchResult.title }}</div>
+        </router-link>
         </transition-group>
       </div>
     </transition-group>
   </div>
-
 </template>
 
 <script lang="ts">
 
 import { Component, Prop, Watch, Vue } from "vue-property-decorator";
 import Fuse from 'fuse.js';
-import * as data from "./../components/sitesearchdata.json"
-
+//import * as data from "./../components/sitesearchdata.json"
+import * as data from "/data/sitesearchdata.json"
 @Component({})
 export default class SiteSearch extends Vue {
   $refs!: {
@@ -48,32 +46,21 @@ export default class SiteSearch extends Vue {
   }
 
   private searchInput: Number = 0;
-
   result:any = [];
   searchData = (<any>data).data;
-
-
   private isOpen: Boolean = false;
   private phaseOne: Boolean = false;
   private phaseTwo: Boolean = false;
-
   private searchOpen: Boolean = false;
-
-
   private resultLimit: Number = 5;
-
   private fuse:any = null;
   private value:String = '';
-
   private quickLinkLoc: any = [];
-
-
-
   private quickLinks: any = [
-    { name: 'widgets' },
-    { name: 'contact' },
+    { name: 'accountsettings' },
+    { name: 'stats' },
     { name: 'faq' },
-    { name: 'mobileapp' }
+    { name: 'w-alertbox' }
   ]
 
   @Prop({default: ''})
@@ -119,20 +106,18 @@ export default class SiteSearch extends Vue {
     } else {
       return false;
     }
-
   }
 
-
   @Watch('searchData')
-    watchSearchData() {
-      this.fuse.searchData = this.searchData;
-      this.fuseSearch();
-    }
+  watchSearchData() {
+    this.fuse.searchData = this.searchData;
+    this.fuseSearch();
+  }
 
   @Watch('search')
-    watchSearch() {
-      this.value = this.search;
-    }
+  watchSearch() {
+    this.value = this.search;
+  }
 
   @Watch('value')
   watchValue () {
@@ -187,37 +172,27 @@ export default class SiteSearch extends Vue {
   }
 
   get limitedResult() {
-
-
-   return this.resultLimit ? this.result.slice(0,this.resultLimit).sort((a,b) => b.weight - a.weight) : this.result;
-
-
-
- //   let jjj = this.resultLimit ? this.result.slice(0,this.resultLimit) : this.result;
-    //jjj.sort((a,b) => b.weight - a.weight)
-    //return jjj;
-
-
+    return this.resultLimit ? this.result.slice(0,this.resultLimit).sort((a,b) => b.weight - a.weight) : this.result;
   }
-
 }
+
 </script>
 
 <style lang="less" scoped>
 @import "./../styles/Imports";
 
-.search-input {
+.s-sitesearch__input {
   border: none;
   padding: none;
 }
 
-.result-title {
+.s-sitesearch__result--title {
   font-size: 14px;
   color: @dark-5;
   font-weight: @medium;
 }
 
-.result-image, .search-image {
+.s-sitesearch__result--image {
   width: 14px;
   height: 100%;
   color: @light-5;
@@ -228,16 +203,15 @@ export default class SiteSearch extends Vue {
   }
 }
 
-.s-site-search {
+.s-sitesearch {
   border: 1px solid @light-5;
   border-radius: @radius;
   height: 40px;
   width: 500px;
   position: relative;
-
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
-  &.phase-one {
+  &.s-sitesearch--phase-one {
     background-color: @light-1;
     height: 215px;
   }
@@ -245,23 +219,22 @@ export default class SiteSearch extends Vue {
   >i {
     font-size: 14px;
   }
-
 }
 
-.search-bar-container {
+.s-sitesearch--searchbar__cont {
   display: flex;
   flex-direction: row;
   align-items: center;
     .input-padding();
 }
 
-.search-results-container {
+.s-sitesearch-results__cont {
   display: flex;
   flex-direction: column;
   overflow: hidden;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
-  .quick-links {
+  .s-sitesearch-quicklinks {
     font-size: 12px;
     color: @light-5;
     .margin-bottom();
@@ -269,14 +242,14 @@ export default class SiteSearch extends Vue {
   }
 }
 
-.search-bar-status-container {
+.s-sitesearch-status__cont {
   font-size: 14px;
   white-space: nowrap;
   color: @light-5;
   .margin-left();
 }
 
-.search-results {
+.s-sitesearch-results {
   display: flex;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   flex-direction: row;
@@ -288,87 +261,65 @@ export default class SiteSearch extends Vue {
   &:hover {
     background-color: @light-2;
     cursor: pointer;
-    .result-image,
-    .result-title {
+    .s-sitesearch__result--image,
+    .s-sitesearch__result--title {
       color: @dark-2;
     }
   }
 }
 
-.fadeX-enter-active {
+.s-sitesearch--fadeX-enter-active {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 1;
 }
 
-.fadeX-leave-active {
+.s-sitesearch--fadeX-leave-active {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   position: absolute;
   opacity: 0;
 }
 
-.fadeX-enter {
+.s-sitesearch--fadeX-enter {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateX(10px);
   opacity: 0;
 }
 
-.fadeX-leave-to {
+.s-sitesearch--fadeX-leave-to {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
   transform: translateX(10px);
 }
 
-.fadeX-move {
+.s-sitesearch--fadeX-move {
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.fadeY-enter-active {
+.s-sitesearch--fadeY-enter-active {
   transition: all 0.25s 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 1;
 }
 
-.fadeY-leave-active {
+.s-sitesearch--fadeY-leave-active {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   position: absolute;
   opacity: 0;
 }
 
-.fadeY-enter {
+.s-sitesearch--fadeY-enter {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(-10px);
   opacity: 0;
 }
 
-.fadeY-leave-to {
+.s-sitesearch--fadeY-leave-to {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
   transform: translateY(-10px);
 }
 
-.fadeY-move {
+.s-sitesearch--fadeY-move {
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-
-.open-enter-active {
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  height: 220px;
-}
-
-.open-leave-active {
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-
-}
-
-.open-enter {
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  height: 30px;
-
-}
-
-.open-leave-to {
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  height: 220px;
 }
 
 </style>
