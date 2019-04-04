@@ -32,7 +32,7 @@
       <tabs v-if="activeSection === 'tabs'"/>
       <toggles v-if="activeSection === 'toggles'"/>
       <virtual-items v-if="activeSection === 'virtual-items'"/>
-     </div>
+    </div>
   </div>
 </template>
 
