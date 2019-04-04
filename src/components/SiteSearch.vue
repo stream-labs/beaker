@@ -37,8 +37,9 @@
 
 import { Component, Prop, Watch, Vue } from "vue-property-decorator";
 import Fuse from 'fuse.js';
-//import * as data from "./../components/sitesearchdata.json"
-import * as data from "/data/sitesearchdata.json"
+//import * as dummy from "./../components/sitesearchdata.json"
+
+
 @Component({})
 export default class SiteSearch extends Vue {
   $refs!: {
@@ -62,6 +63,9 @@ export default class SiteSearch extends Vue {
     { name: 'faq' },
     { name: 'w-alertbox' }
   ]
+
+  @Prop({ default: 'beaker-dummy'})
+  searchLib!: string;
 
   @Prop({default: ''})
   search!: String;

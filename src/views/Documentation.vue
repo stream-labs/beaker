@@ -66,7 +66,7 @@ import Navigations from "@/demos/Navigations.vue";
 import Notices from "@/demos/Notices.vue";
 import ProgressBars from "@/demos/ProgressBars.vue";
 import Paginations from "@/demos/Paginations.vue";
-import SiteSearchDemo from "@/demos/SiteSearchDemo.vue";
+//import SiteSearchDemo from "@/demos/SiteSearchDemo.vue";
 import Sliders from "@/demos/Sliders.vue";
 import Tables from "@/demos/Tables.vue";
 import Tabs from "@/demos/Tabs.vue";
@@ -103,7 +103,7 @@ import VirtualItems from "@/demos/VirtualItems.vue";
     Notices,
     ProgressBars,
     Paginations,
-    SiteSearchDemo,
+    //SiteSearchDemo,
     Sliders,
     Tables,
     Tabs,
