@@ -55,6 +55,9 @@ export default class Badge extends Vue {
   @Prop()
   suffix!: string;
 
+  @Prop()
+  small!: Boolean;
+
   badgeProRewrite: any = {
     background: this.backgroundColor,
     color: this.textColor
@@ -63,7 +66,7 @@ export default class Badge extends Vue {
   get badgeStyles() {
     const styles: any = [];
 
-    if (this.variant === "pro") {
+    if (this.backgroundColor) {
       styles.push(this.badgeProRewrite);
     }
 
@@ -83,6 +86,10 @@ export default class Badge extends Vue {
       classes.push("s-badge--no-margin");
     }
 
+    if (this.small) {
+      classes.push("s-badge--small");
+    }
+
     return classes;
   }
 }
@@ -95,14 +102,14 @@ export default class Badge extends Vue {
 .s-badge {
   display: inline-block;
   margin: 0 0 0 8px;
-  padding: 0 4px;
-  border: 1px solid transparent;
+  padding: 0 5px;
   .radius();
-  font-size: 13px;
+  font-size: 14px;
   .weight(@medium);
   color: @white;
   vertical-align: text-bottom;
-  line-height: 16px;
+  line-height: 24px;
+  box-sizing: border-box;
 
   &--left {
     margin: 0 8px 0 0;
@@ -112,14 +119,20 @@ export default class Badge extends Vue {
     margin: 0;
   }
 
+  &--small {
+    line-height: 16px;
+    font-size: 12px;
+  }
+
+  &--new,
   &--success {
     background-color: @teal-semi;
     color: @teal;
   }
 
-  &--new {
-    background-color: @purple-semi;
-    color: @purple;
+  &--new-alt {
+    background-color: transparent;
+    color: @teal;
   }
 
   &--tag {
@@ -132,8 +145,8 @@ export default class Badge extends Vue {
   }
 
   &--beta {
-    background-color: @yellow-light;
-    color: @yellow-dark;
+    background-color: @yellow-semi;
+    color: @yellow;
   }
 
   &--warning {
@@ -142,23 +155,25 @@ export default class Badge extends Vue {
   }
 
   &--count {
-    padding: 1px 2.5px 0;
+    padding: 1px 4px 0;
     border-radius: 16px;
     font-size: 10px;
+    line-height: 14px;
     .weight(@medium);
-    line-height: 1;
     background-color: @red;
+    .margin(0);
   }
 
   &--mod {
-    color: @yellow-dark;
+    color: @yellow;
     background-color: @white;
+    .margin-h-sides();
+    vertical-align: middle;
   }
 
   &--progress {
     height: 18px;
     .padding(0);
-    border: none;
     line-height: 18px;
     background-color: @light-4;
 
@@ -180,27 +195,18 @@ export default class Badge extends Vue {
     }
 
     &--beta {
-      background-color: @info-dark;
+      background-color: @info;
       color: @white;
     }
 
-    &--teal {
-      background-color: @teal;
-      color: @white;
-    }
-
+    &--success,
     &--new {
-      background-color: @purple;
+      background-color: @teal;
       color: @white;
     }
 
     &--warning {
       background-color: @red;
-      color: @white;
-    }
-
-    &--success {
-      background-color: @teal;
       color: @white;
     }
 

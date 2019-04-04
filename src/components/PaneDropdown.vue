@@ -122,7 +122,7 @@ export default class PaneDropdown extends Vue {
   }
 
   &__list {
-    .margin();
+    .margin(2);
     padding: 0;
     list-style-type: none;
   }

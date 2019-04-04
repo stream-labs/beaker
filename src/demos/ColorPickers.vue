@@ -8,10 +8,7 @@
       <h2>Default Color Picker</h2>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-          <pre><code>&lt;color-picker
-  :defaultColor=&quot;'#31c3a2'&quot;&gt;
-&lt;/color-picker&gt;
-          </code></pre>
+          <pre><code>&lt;color-picker :defaultColor=&quot;'#31c3a2'&quot;&gt;&lt;/color-picker&gt;</code></pre>
         </div>
       </accordion>
       <div class="row">

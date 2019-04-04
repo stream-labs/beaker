@@ -2,8 +2,8 @@
   <modal
     name="modal-redirect"
     :classes="'s-modal-wrapper'"
-    :maxWidth="modalWidth"
-    :minWidth="modalMinWidth"
+    :maxWidth="width"
+    :minWidth="minWidth"
     height="auto"
     :adaptive="true"
   >
@@ -34,12 +34,8 @@ export default class ModalRedirect extends Vue {
   @Prop({ default: 600 })
   width!: number;
 
-  modalWidth: number = this.width;
-
   @Prop({ default: 600 })
   minWidth!: number;
-
-  modalMinWidth: number = this.minWidth;
 
   @Prop()
   title!: string;

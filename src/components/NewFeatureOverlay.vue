@@ -6,9 +6,10 @@
     :height="'auto'"
     classes="s-overlay__wrapper"
     :clickToClose="true"
+    @opened="opened"
   >
     <div slot="top-right" class="s-overlay__icon">
-      <span class="s-icon s-icon-close" @click="clickDismiss"></span>
+      <span class="s-icon s-icon-close" @click="onDismiss"></span>
     </div>
     <div class="s-overlay__container" :class="containerMq">
       <div class="s-overlay__body">
@@ -21,15 +22,17 @@
           <Button
             :size="'large'"
             :variation="'action'"
-            :tag="'router-link'"
+            :tag="buttonTag"
             :to="buttonRoute"
+            :href="buttonHref"
+            :target="buttonTarget"
             :title="buttonTitle"
-            @click.native="clickDismiss"
+            @click.native="onPrimaryAction"
           ></Button>
           <router-link
             class="s-overlay__link"
             :to="dismissRoute"
-            @click.native="clickDismiss"
+            @click.native="onDismiss"
           >{{ dismissText }}</router-link>
         </div>
       </div>
@@ -83,11 +86,26 @@ export default class NewFeatureOverlay extends Vue {
   @Prop({ default: "/" })
   buttonRoute!: string;
 
+  @Prop({ default: "router-link" })
+  buttonTag!: String;
+
+  @Prop()
+  buttonHref!: String;
+
+  @Prop()
+  buttonTarget!: String;
+
   @Prop({ default: "/" })
   dismissRoute!: string;
 
   @Prop({ default: "Go to Dashboard" })
   dismissText!: string;
+
+  @Prop()
+  onOpen!: Function;
+
+  @Prop()
+  onAction!: Function;
 
   isImage: boolean = true;
 
@@ -113,7 +131,16 @@ export default class NewFeatureOverlay extends Vue {
     }
   }
 
-  clickDismiss() {
+  opened(event) {
+    typeof this.onOpen === "function" && this.onOpen();
+  }
+
+  onPrimaryAction() {
+    typeof this.onAction === "function" && this.onAction();
+    this.onDismiss();
+  }
+
+  onDismiss() {
     this.$modal.hide("new-feature");
   }
 }

@@ -24,23 +24,30 @@ components: {
   :title=&quot;'Increase Your Revenue'&quot;
   :media=&quot;'https://cdn.streamlabs.com/cloudbot/prototype_cloudbot_800x300.webm'&quot;
   :buttonTitle=&quot;'Go To Store'&quot;
-&gt;
-  &lt;p&gt;We&rsquo;ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.&lt;/p&gt;
-  &lt;p&gt;We&rsquo;ve automatically credited $15.00 to your account so you can start trying them out today.&lt;/p&gt;
+  :onOpen=&quot;trackingCodeComponent&quot;
+  :onAction=&quot;trackingCodeButton&quot;&gt;
+  &lt;p&gt;We’ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.&lt;/p&gt;
+  &lt;p&gt;We’ve automatically credited $15.00 to your account so you can start trying them out today.&lt;/p&gt;
 &lt;/NewFeatureOverlay&gt;</code></pre>
         </div>
       </Accordion>
+
       <NewFeatureOverlay
         :label="'Introducing Merch Stores'"
         :title="'Increase Your Revenue'"
         :media="'https://cdn.streamlabs.com/cloudbot/prototype_cloudbot_800x300.webm'"
         :buttonTitle="'Go To Store'"
+        :onOpen="trackingCodeComponent"
+        :onAction="trackingCodeButton"
+        :buttonTag="'a'"
+        :buttonHref="'https://www.twitch.tv/ext/xab8h6nj36fc2wtn71yikw9hqjd6v4-0.0.1'"
+        :buttonTarget="'_blank'"
       >
         <p>We’ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.</p>
         <p>We’ve automatically credited $15.00 to your account so you can start trying them out today.</p>
       </NewFeatureOverlay>
 
-      <div class="button-container button-container--left">
+      <div class="s-button-container s-button-container--left">
         <Button
           :variation="'default'"
           :title="'New Feature Overlay'"
@@ -81,13 +88,50 @@ components: {
           <td>buttonTitle</td>
           <td>string</td>
           <td>null</td>
+          <td>
+            What type of element the button is,
+            <code>button</code>,
+            <code>a</code>,
+            <code>router-link</code>
+          </td>
+        </tr>
+        <tr>
+          <td>buttonTag</td>
+          <td>string</td>
+          <td>null</td>
           <td>Text displayed in the action button</td>
         </tr>
         <tr>
           <td>buttonRoute</td>
           <td>string</td>
           <td>/</td>
-          <td>Router link path for the action button</td>
+          <td>
+            Router link path for the action button if tag is
+            <code>router-link</code>
+          </td>
+        </tr>
+        <tr>
+          <td>buttonHref</td>
+          <td>string</td>
+          <td>null</td>
+          <td>
+            href for the action button if tag is set to
+            <code>a</code>
+          </td>
+        </tr>
+        <tr>
+          <td>buttonTarget</td>
+          <td>string</td>
+          <td>null</td>
+          <td>
+            Use to set different targets for button if set to
+            <code>a</code>
+            Options are:
+            <code>_self</code>,
+            <code>_blank</code>,
+            <code>_parent</code>,
+            <code>_top</code>
+          </td>
         </tr>
         <tr>
           <td>dismissTitle</td>
@@ -100,6 +144,18 @@ components: {
           <td>string</td>
           <td>/</td>
           <td>Router link path to dismiss the annoucement.</td>
+        </tr>
+        <tr>
+          <td>onOpen</td>
+          <td>function</td>
+          <td>null</td>
+          <td>Function to call out the tracking code of modal component.</td>
+        </tr>
+        <tr>
+          <td>onAction</td>
+          <td>function</td>
+          <td>null</td>
+          <td>Function to call out the tracking code of modal button.</td>
         </tr>
       </tbody>
     </table>
@@ -119,5 +175,15 @@ import Button from "./../components/Button.vue";
     Button
   }
 })
-export default class AnnoucementsDemo extends Vue {}
+export default class AnnoucementsDemo extends Vue {
+  trackingCodeComponent() {
+    console.log("componentEventTracking");
+    // ga('send','event', 'newfeatureoverlay', 'modal_shown', 'component');
+  }
+
+  trackingCodeButton() {
+    console.log("buttonEventTracking");
+    // ga('send','event', 'newfeatureoverlay', 'modal_click', 'button');
+  }
+}
 </script>

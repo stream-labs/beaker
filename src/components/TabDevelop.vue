@@ -41,11 +41,11 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-import { MdButton, MdContent, MdTabs } from "vue-material/dist/components";
+// import { MdButton, MdContent, MdTabs } from "vue-material/dist/components";
 
-Vue.use(MdButton);
-Vue.use(MdContent);
-Vue.use(MdTabs);
+// Vue.use(MdButton);
+// Vue.use(MdContent);
+// Vue.use(MdTabs);
 
 @Component({})
 export default class TabDevelop extends Vue {

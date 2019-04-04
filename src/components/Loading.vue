@@ -1,9 +1,12 @@
 <template>
   <transition name="fade">
-    <div class="s-loader">
-      <div class="s-loader__bg">
+    <div class="s-loader" :swapMode="swapMode">
+      <div
+        :class="{ 's-loader__bg--semi': semiOpaque, 's-loader--modeswap': swapMode }"
+        class="s-loader__bg"
+      >
         <div class="s-loader__inner">
-          <Spinner class="s-spinner__overlay" :size="'large'"/>
+          <Spinner :swap="swapMode" class="s-spinner__overlay" :size="'large'"/>
           <div class="s-loader__text">{{ loaderText }}</div>
         </div>
       </div>
@@ -23,25 +26,54 @@ export default class Loading extends Vue {
   @Prop()
   loadingStrs!: any[] | string;
 
-  strings: any = JSON.parse(JSON.stringify(this.loadingStrs));
-  loaderText: string = "";
+  @Prop({ default: false })
+  semiOpaque!: boolean;
 
-  loopStr() {
-    if (this.strings.length > 1) {
-      const str = this.strings.shift();
-      this.strings.push(str);
-      this.loaderText = str;
-      setTimeout(this.loopStr, 4000);
-    } else {
-      this.loaderText = this.strings[0];
-    }
-  }
+  @Prop({ default: false })
+  isRandom!: boolean;
+
+  @Prop({ default: false })
+  swapMode!: Boolean;
+
+  loaderText: string = "";
+  index: number = 0;
 
   mounted() {
     if (typeof this.loadingStrs === "string") {
       this.loaderText = this.loadingStrs;
     } else {
-      this.loopStr();
+      this.distinguishNumberOfArrays();
+    }
+  }
+
+  distinguishNumberOfArrays() {
+    if (this.loadingStrs.length > 1) {
+      if (this.isRandom) {
+        this.loopRandomText();
+      } else {
+        this.loopText();
+      }
+    } else {
+      this.loaderText = this.loadingStrs[0];
+    }
+  }
+
+  loopText() {
+    this.loaderText = this.loadingStrs[this.index];
+    this.index++;
+    if (this.index === this.loadingStrs.length) {
+      this.index = 0;
+    }
+    setTimeout(this.loopText, 4000);
+  }
+
+  loopRandomText() {
+    const randomIndex = Math.floor(Math.random() * this.loadingStrs.length);
+    if (this.loaderText === this.loadingStrs[randomIndex]) {
+      this.loopRandomText();
+    } else {
+      this.loaderText = this.loadingStrs[randomIndex];
+      setTimeout(this.loopRandomText, 4000);
     }
   }
 }
@@ -64,6 +96,10 @@ export default class Loading extends Vue {
   align-items: center;
 }
 
+.s-loader__bg--semi {
+  background: @day-overlay;
+}
+
 .s-loader__inner {
   width: 100%;
   height: auto;
@@ -81,14 +117,36 @@ export default class Loading extends Vue {
   .padding-top(0);
 }
 
+// in case day/night mode needs to be switched
+.s-loader--modeswap {
+  background: @dark-3;
+
+  .s-loader__text {
+    color: @white;
+  }
+}
+
 .night,
 .night-theme {
   .s-loader__bg {
     background: @dark-3;
   }
 
+  .s-loader__bg--semi {
+    background: @night-overlay;
+  }
+
   .s-loader__text {
     color: @white;
+  }
+
+  // in case day/night mode needs to be switched
+  .s-loader--modeswap {
+    background: @white;
+
+    .s-loader__text {
+      color: @dark-2;
+    }
   }
 }
 </style>

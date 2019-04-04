@@ -163,6 +163,7 @@ export default class Spinner extends Vue {
 .night-theme {
   .s-spinner__bar {
     fill: @light-2;
+
     &.s-spinner--modeswap {
       fill: @dark-2;
     }
