@@ -15,8 +15,7 @@ components: {
 <code>&lt;tabs 
   :tabs=&quot;tabs&quot; 
   :size=&quot;'small'&quot;
-  :value=&quot;selectedTab&quot;
-  @input=&quot;onSelectTabHandler&quot;&gt;
+  :selected=&quot;advanced&quot;&gt;
   &lt;div slot=&quot;general&quot;&gt;general&lt;/div&gt;
   &lt;div slot=&quot;advanced&quot;&gt;advanced&lt;/div&gt;
   &lt;div slot=&quot;account&quot;&gt;account&lt;/div&gt;
@@ -38,7 +37,7 @@ components: {
     <!-- <div class="section section__components">
       <tab-develop :tabs="test" :tabSize="'large'"></tab-develop>
     </div>-->
-    <tabs :tabs="tabs" :size="'small'" :selected="'account'">
+    <tabs :tabs="tabs" :size="'small'" :selected="'advanced'">
       <div slot="general">general</div>
       <div slot="advanced">advanced</div>
       <div slot="account">account</div>

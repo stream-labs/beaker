@@ -60,6 +60,9 @@ export default class Tabs extends Vue {
   size!: string;
 
   @Prop()
+  selected!: string;
+
+  @Prop()
   className!: string;
 
   @Prop()
@@ -76,7 +79,11 @@ export default class Tabs extends Vue {
   hasPrev = false;
   private scrollIncrement = 100;
 
-  selectedTab: string = this.tabs[0].value;
+  selectedTab: string = "";
+
+  selectTabSize = {
+    fontSize: this.tabSize
+  };
 
   get tabSize() {
     if (this.size === "small") {
@@ -87,10 +94,6 @@ export default class Tabs extends Vue {
       return "14px";
     }
   }
-
-  selectTabSize = {
-    fontSize: this.tabSize
-  };
 
   created() {
     window.addEventListener("resize", this.calculateScrolls);
@@ -104,7 +107,11 @@ export default class Tabs extends Vue {
     this.isMounted = true;
     this.tabsContainer = this.$refs.scrollable_tabs;
     this.calculateScrolls();
-    if (!this.selectedTab) this.showTab(this.tabs[0].value);
+    if (this.selected){
+      this.selectedTab = this.selected;
+    } else {
+      this.selectedTab = this.tabs[0].value;
+    }
   }
 
   scrollLeft() {
@@ -131,7 +138,7 @@ export default class Tabs extends Vue {
 
   showTab(tab: string) {
     console.log(tab);
-    this.selectedTab = tab
+    this.selectedTab = tab;
   }
 }
 </script>
