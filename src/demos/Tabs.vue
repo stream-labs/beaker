@@ -12,18 +12,33 @@ components: {
     <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
       <div slot="content">
         <pre>
-<code>&lt;tab-develop 
-  :tabs=&quot;test&quot; 
-  :tabSize=&quot;'large'&quot;&gt;
-&lt;/tab-develop&gt;
+<code>&lt;tabs 
+  :tabs=&quot;tabs&quot; 
+  :size=&quot;'small'&quot;
+  :value=&quot;selectedTab&quot;
+  @input=&quot;onSelectTabHandler&quot;&gt;
+  &lt;div slot=&quot;general&quot;&gt;general&lt;/div&gt;
+  &lt;div slot=&quot;advanced&quot;&gt;advanced&lt;/div&gt;
+  &lt;div slot=&quot;account&quot;&gt;account&lt;/div&gt;
+  &lt;div slot=&quot;integrations&quot;&gt;integrations&lt;/div&gt;
+  &lt;div slot=&quot;payments&quot;&gt;payments&lt;/div&gt;
+  &lt;div slot=&quot;donations&quot;&gt;donations&lt;/div&gt;
+  &lt;div slot=&quot;subscriptions&quot;&gt;subscriptions&lt;/div&gt;
+  &lt;div slot=&quot;preferences&quot;&gt;preferences&lt;/div&gt;
+  &lt;div slot=&quot;apps&quot;&gt;apps&lt;/div&gt;
+  &lt;div slot=&quot;merch&quot;&gt;merch&lt;/div&gt;
+  &lt;div slot=&quot;api&quot;&gt;api&lt;/div&gt;
+  &lt;div slot=&quot;moderators&quot;&gt;moderators&lt;/div&gt;
+  &lt;div slot=&quot;themes&quot;&gt;themes&lt;/div&gt;
+&lt;/tabs&gt;
 </code></pre>
       </div>
     </Accordion>
 
     <!-- <div class="section section__components">
       <tab-develop :tabs="test" :tabSize="'large'"></tab-develop>
-    </div> -->
-    <tabs :tabs="tabs" :size="'small'" :value="selectedTab" @input="onSelectTabHandler">
+    </div>-->
+    <tabs :tabs="tabs" :size="'small'" :selected="'account'">
       <div slot="general">general</div>
       <div slot="advanced">advanced</div>
       <div slot="account">account</div>
@@ -52,23 +67,35 @@ components: {
           <td>tabs</td>
           <td>array</td>
           <td>null</td>
-          <td>tabs information to display. you can make array like below
+          <td>
+            tabs information to display. you can make array like below
             <br>
             <code>
-              test = [
+              tabs = [
               {
-              tabLabel: "General",
-              tabTo: "#",
-              tabId: "tab1",
-              tabIcon: "information"
+              name: "General",
+              value: "general",
+              icon: "information"
               }
             </code>
           </td>
         </tr>
         <tr>
-          <td>tabSize</td>
+          <td>size</td>
           <td>string</td>
           <td>small</td>
+          <td>text size of tabs. Options are "small" and "large"</td>
+        </tr>
+        <tr>
+          <td>value</td>
+          <td>string</td>
+          <td>null</td>
+          <td>default selected tab</td>
+        </tr>
+        <tr>
+          <td>@input</td>
+          <td>function</td>
+          <td>null</td>
           <td>text size of tabs. Options are "small" and "large"</td>
         </tr>
       </tbody>
@@ -201,8 +228,8 @@ export default class TabsDemo extends Vue {
 
   selectedTab = "general";
 
-  onSelectTabHandler(tab: string) {
-    this.selectedTab = tab;
-  }
+  // onSelectTabHandler(tab: string) {
+  //   this.selectedTab = tab;
+  // }
 }
 </script>

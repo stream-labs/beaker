@@ -19,7 +19,7 @@
             v-for="tab in tabs"
             :key="tab.value"
             class="s-tab"
-            :class="{ 'is-active': tab.value === value}"
+            :class="{ 'is-active': tab.value === selectedTab}"
             :style="selectTabSize"
             @click="showTab(tab.value)"
           >
@@ -36,7 +36,7 @@
 
     <div class="s-tab-content" v-if="!hideContent">
       <div v-for="(tab, index) in tabs" :key="index">
-        <slot :name="tab.value" v-if="tab.value === value"/>
+        <slot :name="tab.value" v-if="tab.value === selectedTab"/>
       </div>
     </div>
   </div>
@@ -60,9 +60,6 @@ export default class Tabs extends Vue {
   size!: string;
 
   @Prop()
-  value!: string;
-
-  @Prop()
   className!: string;
 
   @Prop()
@@ -78,6 +75,8 @@ export default class Tabs extends Vue {
   hasNext = false;
   hasPrev = false;
   private scrollIncrement = 100;
+
+  selectedTab: string = this.tabs[0].value;
 
   get tabSize() {
     if (this.size === "small") {
@@ -105,7 +104,7 @@ export default class Tabs extends Vue {
     this.isMounted = true;
     this.tabsContainer = this.$refs.scrollable_tabs;
     this.calculateScrolls();
-    if (!this.value) this.showTab(this.tabs[0].value);
+    if (!this.selectedTab) this.showTab(this.tabs[0].value);
   }
 
   scrollLeft() {
@@ -132,7 +131,7 @@ export default class Tabs extends Vue {
 
   showTab(tab: string) {
     console.log(tab);
-    this.$emit("input", tab);
+    this.selectedTab = tab
   }
 }
 </script>
