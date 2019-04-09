@@ -42,6 +42,7 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import Button from "./../components/Button.vue";
 import VueMq from "vue-mq";
+import kevin from './../assets/imgs/kevin-standard.svg';
 
 Vue.use(VueMq, {
   breakpoints: {
@@ -68,7 +69,7 @@ export default class CallToAction extends Vue {
   @Prop()
   subTitleColor!: String;
 
-  @Prop({ default: require("./../assets/imgs/kevin-standard.svg") })
+  @Prop({ default: kevin })
   thumbnail!: String;
 
   @Prop({ default: 80 })
