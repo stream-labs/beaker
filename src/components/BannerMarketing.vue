@@ -1,21 +1,28 @@
 <template>
   <div class="s-banner" ref="banner">
-    <div class="s-banner__bg s-banner__bg--day" :style="{ 'background-image': `url('${dayBg}')`}"></div>
+    <div
+      class="s-banner__bg"
+      :style="{ 'background': `linear-gradient(to bottom left, rgba(227, 232, 235, 0.72), rgba(227, 232, 235, 0.72)), url('${bgImage}') center center no-repeat`}"
+    ></div>
+
     <div
       class="s-banner__bg s-banner__bg--night"
-      :style="{ 'background-image': `url('${nightBg}')`}"
+      :style="{ 'background': `linear-gradient(to bottom left, rgba(9, 22, 29, 0.72), rgba(9, 22, 29, 0.72)), url('${bgImageNight}') center center no-repeat`}"
     ></div>
 
     <div class="s-banner__body" :class="{'s-banner__body--closed': closed}" key="banner-open">
       <div class="s-banner__wrapper">
         <div class="s-banner__label">{{ label }}</div>
-        <i @click="toggleBanner()" class="s-icon-down"></i>
+        <i @click="toggleBanner()" class="icon-down"></i>
       </div>
 
       <div class="s-banner__wrapper" ref="bottomWrapper">
         <div class="s-banner__title">
-          <div class="s-banner__icon">
-            <i :class="`s-icon-${icon}`"></i>
+          <div class="s-banner__icon" v-if="iconName">
+            <i :class="`icon-${iconName}`"></i>
+          </div>
+          <div class="s-banner__icon" v-if="iconImage">
+            <img :src="iconImage">
           </div>
 
           <div class="s-banner__details">
@@ -25,7 +32,7 @@
         </div>
 
         <div @click.stop class="s-banner__download-wrapper">
-          <i @click="toggleBanner()" class="s-icon-down"></i>
+          <i @click="toggleBanner()" class="icon-down"></i>
           <slot name="link"></slot>
           <div class="s-banner__link-desc">{{ linkDesc }}</div>
         </div>
@@ -41,13 +48,12 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 @Component({})
 export default class BannerMarketing extends Vue {
   @Prop()
-  dayBg!: {
+  bgImageNight!: {
     type: string;
-    required: true;
   };
 
   @Prop()
-  nightBg!: {
+  bgImage!: {
     type: string;
     required: true;
   };
@@ -59,9 +65,13 @@ export default class BannerMarketing extends Vue {
   };
 
   @Prop()
-  icon!: {
+  iconName!: {
     type: string;
-    required: true;
+  };
+
+  @Prop()
+  iconImage!: {
+    type: string;
   };
 
   @Prop()
@@ -92,8 +102,6 @@ export default class BannerMarketing extends Vue {
   toggleBanner() {
     this.closed = !this.closed;
     this.updateBannerHeight();
-
-    // LocalForage.setItem('slobsAd', this.infoBannerClosed);
   }
 
   updateBannerHeight() {
@@ -108,19 +116,6 @@ export default class BannerMarketing extends Vue {
       }, 1);
     }
   }
-  // mounted() {
-  //   LocalForage.getItem('slobsAd', (err, value) => {
-  //     if (value !== null && !parseInt(value)) {
-  //       this.infoBannerClosed = value;
-  //     }
-  //   });
-
-  //   LocalForage.getItem('uiMode', (err, value) => {
-  //     if (value !== null && !parseInt(value)) {
-  //       this.hidden = true;
-  //     }
-  //   });
-  // },
 }
 </script>
 
@@ -144,8 +139,7 @@ export default class BannerMarketing extends Vue {
   left: 0;
   width: 100%;
   height: 100%;
-  background-position: center;
-  background-size: cover;
+  background-size: cover !important;
 }
 
 .s-banner__bg--night {
@@ -167,7 +161,10 @@ export default class BannerMarketing extends Vue {
   &:first-child {
     align-items: center;
 
-    .s-icon-down {
+    .icon-down {
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
       transform: rotate(180deg);
     }
   }
@@ -175,20 +172,16 @@ export default class BannerMarketing extends Vue {
   &:last-child {
     align-items: flex-end;
 
-    .s-icon-down {
+    .icon-down {
       display: none;
     }
-  }
-
-  .s-icon-down {
-    font-size: 10px;
-    line-height: 22px;
   }
 }
 
 .s-banner__label {
   background: rgba(0, 0, 0, 0.16);
-  padding: 2px 8px;
+  padding: 0 5px;
+  line-height: 24px;
   .radius();
   .weight(@medium);
   font-size: 16px;
@@ -196,16 +189,19 @@ export default class BannerMarketing extends Vue {
 
 .s-banner__icon {
   .radius();
-  height: 60px;
-  width: 60px;
+  height: 56px;
+  width: 56px;
   display: flex;
+  flex: 0 0 56px;
   justify-content: center;
   align-items: center;
   .margin-right(2);
   background-color: @white;
+  overflow: hidden;
 
   img {
-    width: 44px;
+    width: 100%;
+    height: 100%;
   }
 
   i {
@@ -226,20 +222,16 @@ export default class BannerMarketing extends Vue {
 
 .s-banner__name {
   font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 0;
+  .weight(@bold);
+  .margin-bottom(0);
 }
 
 .s-banner__desc {
   margin: 0;
 }
 
-.s-banner__desc,
 .s-banner__download-label {
   .weight(@medium);
-}
-
-.s-banner__download-label {
   margin-top: 4px;
 }
 
@@ -258,16 +250,10 @@ export default class BannerMarketing extends Vue {
     &:last-child {
       align-items: center;
 
-      .s-icon-down,
-      .fa-chevron-up {
+      .icon-down {
         .margin-left(2);
         align-items: center;
         display: flex;
-      }
-
-      .s-icon-down {
-        height: 32px;
-        line-height: 32px;
       }
     }
   }
@@ -281,26 +267,19 @@ export default class BannerMarketing extends Vue {
   }
 
   .s-banner__desc,
-  .s-banner__label {
+  .s-banner__label,
+  .s-banner__link-desc {
     display: none;
   }
 
   .s-banner__icon {
-    width: 32px;
-    height: 32px;
-
-    img {
-      width: 26px;
-    }
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
 
     i {
       font-size: 18px;
     }
-  }
-
-  .s-banner__download-label {
-    margin-top: 0px;
-    .margin-right(2);
   }
 
   .s-banner__link-desc {
@@ -314,7 +293,18 @@ export default class BannerMarketing extends Vue {
   margin-top: 4px;
 }
 
-.night {
+.night,
+.night-theme {
+  .s-banner__bg {
+    background: rgba(9, 22, 29, 0.88);
+    background: linear-gradient(
+        to bottom,
+        rgba(9, 22, 29, 0.6),
+        rgba(9, 22, 29, 0.88)
+      ),
+      url("https://cdn.streamlabs.com/static/imgs/pretzel_dashboard_banner_bg.png");
+  }
+
   .s-banner__icon {
     .radius();
     background: @day-title;

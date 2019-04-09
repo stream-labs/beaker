@@ -1522,7 +1522,7 @@
     </div>
     <div class="glyph fs1">
       <div class="clearfix bshadow0 pbs">
-        <span class="s-icon-down"></span>
+        <span class="icon-down"></span>
         <span class="mls">icon-down</span>
       </div>
       <fieldset class="fs0 size1of1 clearfix hidden-false">

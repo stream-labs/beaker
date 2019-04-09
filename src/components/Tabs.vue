@@ -3,7 +3,7 @@
     <div class="s-tabs-nav-wrapper">
       <div class="s-tabs-nav" :class="className">
         <div v-if="hasPrev" @click="scrollLeft" class="s-tabs-nav__control s-has-prev">
-          <i class="s-icon-down s-icon-left"></i>
+          <i class="icon-down icon-left"></i>
         </div>
 
         <div
@@ -29,7 +29,7 @@
         </div>
 
         <div v-if="hasNext" @click="scrollRight" class="s-tabs-nav__control s-has-next">
-          <i class="s-icon-down s-icon-right"></i>
+          <i class="icon-down icon-right"></i>
         </div>
       </div>
     </div>
