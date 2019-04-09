@@ -99,7 +99,7 @@ export {
   Callout,
   Checkbox,
   ColorPicker,
-  ContentRows,
+  ContentRow,
   EmptySection,
   FormGroupH,
   FormGroupV,
