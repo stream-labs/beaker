@@ -19,7 +19,7 @@
         :tag="buttonTag"
         :bgColor="buttonBg"
         :textColor="buttonTextColor"
-        @click.native.prevent="buttonClick"
+        @click="buttonClick"
       ></Button>
 
       <Button
