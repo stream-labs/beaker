@@ -706,8 +706,6 @@ export default class Forms extends Vue {
 
   reportSlobsDownloads() {
     console.log("test");
-    ga("send", "event", "Download", "Button click", "Slobs");
-    twttr.conversion.trackPid("o0evq");
   }
 
   buttonActionClick() {
