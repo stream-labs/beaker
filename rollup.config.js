@@ -4,6 +4,7 @@ const typescript = require('rollup-plugin-typescript');
 const vue = require('rollup-plugin-vue');
 const rebaseAssets = require('rollup-plugin-rebase');
 const svg = require('rollup-plugin-svg');
+const minify = require('rollup-plugin-babel-minify');
 
 module.exports = {
   input: 'src/system.js',
@@ -14,7 +15,8 @@ module.exports = {
     },
     {
       file: 'dist/beaker.esm.js',
-      format: 'esm'
+      format: 'esm',
+      exports: 'named',
     }
   ],
   external: ['vue', 'vue-router'],
@@ -25,5 +27,6 @@ module.exports = {
     vue({ defaultLang: { script: 'ts', style: 'less' } }),
     rebaseAssets(),
     svg(),
+    minify(),
   ],
 };
