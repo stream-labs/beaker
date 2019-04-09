@@ -107,7 +107,7 @@ export default class Tabs extends Vue {
     this.isMounted = true;
     this.tabsContainer = this.$refs.scrollable_tabs;
     this.calculateScrolls();
-    if (this.selected){
+    if (this.selected) {
       this.selectedTab = this.selected;
     } else {
       this.selectedTab = this.tabs[0].value;
