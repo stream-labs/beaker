@@ -32,6 +32,7 @@ import ModalSubscribe from "@/components/ModalSubscribe";
 import NewFeatureOverlay from "@/components/NewFeatureOverlay";
 import PaneDropdown from "@/components/PaneDropdown";
 // import PaymentForm from "@/components/PaymentForm";
+import Radio from "@/components/Radio";
 import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
 import Spinner from "@/components/Spinner";
@@ -55,6 +56,7 @@ const components = [
   Button,
   CallToAction,
   Callout,
+  Checkbox,
   ColorPicker,
   ContentRow,
   EmptySection,
@@ -73,6 +75,7 @@ const components = [
   Pagination,
   PaneDropdown,
   ProgressBar,
+  Radio,
   Selector,
   Slider,
   Spinner,
@@ -113,6 +116,7 @@ export {
   Pagination,
   PaneDropdown,
   ProgressBar,
+  Radio,
   Selector,
   Slider,
   Spinner,
