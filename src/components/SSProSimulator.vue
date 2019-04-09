@@ -12,7 +12,7 @@
 
       <div class="s-cs-simulator__section">
         <div class="s-cs-simulator__video">
-          <i class="s-icon-media-share-2"></i>
+          <i class="icon-media-share-2"></i>
         </div>
       </div>
 

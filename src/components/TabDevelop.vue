@@ -3,7 +3,7 @@
     <div class="s-tabs-nav-wrapper">
       <div class="s-tabs-nav">
         <div v-if="hasPrev" @click="scrollLeft" class="s-tabs-nav__control s-has-prev">
-          <i class="s-icon-down s-icon-left"></i>
+          <i class="icon-down icon-left"></i>
         </div>
 
         <div
@@ -17,7 +17,7 @@
         >
           <md-tabs md-sync-route>
             <template slot="md-tab" slot-scope="{ tab }">
-              <i v-if="tab.data.icon" :class="`s-icon-${tab.data.icon}`"></i>
+              <i v-if="tab.data.icon" :class="`icon-${tab.data.icon}`"></i>
               {{ tab.label }}
             </template>
             <div v-for="(tab, index) in tabs" :key="index">
@@ -32,7 +32,7 @@
         </div>
 
         <div v-if="hasNext" @click="scrollRight" class="s-tabs-nav__control s-has-next">
-          <i class="s-icon-down s-icon-right"></i>
+          <i class="icon-down icon-right"></i>
         </div>
       </div>
     </div>

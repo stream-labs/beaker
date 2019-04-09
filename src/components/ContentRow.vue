@@ -1,7 +1,7 @@
 <template>
   <div class="s-content-row" :class="contentRowMq">
     <div class="s-content-box" :class="contentBoxMq">
-      <i class="s-banner__icon" :class="`s-icon-${icon}`" v-if="icon"></i>
+      <i class="s-banner__icon" :class="`icon-${icon}`" v-if="icon"></i>
       <h2 class="s-content__title" :class="contentTitleMq">
         <slot name="title"></slot>
       </h2>
