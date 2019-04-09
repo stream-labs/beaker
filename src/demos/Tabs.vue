@@ -34,9 +34,6 @@ components: {
       </div>
     </Accordion>
 
-    <!-- <div class="section section__components">
-      <tab-develop :tabs="test" :tabSize="'large'"></tab-develop>
-    </div>-->
     <tabs :tabs="tabs" :size="'small'" :selected="'advanced'">
       <div slot="general">general</div>
       <div slot="advanced">advanced</div>
@@ -106,14 +103,12 @@ components: {
 import { Component, Vue } from "vue-property-decorator";
 import Accordion from "./../components/Accordion.vue";
 import ScrollNav from "./../components/ScrollNav.vue";
-import TabDevelop from "./../components/TabDevelop.vue";
 import Tabs from "./../components/Tabs.vue";
 
 @Component({
   components: {
     Accordion,
     ScrollNav,
-    TabDevelop,
     Tabs
   }
 })
@@ -224,11 +219,5 @@ export default class TabsDemo extends Vue {
       icon: ""
     }
   ];
-
-  selectedTab = "general";
-
-  // onSelectTabHandler(tab: string) {
-  //   this.selectedTab = tab;
-  // }
 }
 </script>
