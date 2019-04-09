@@ -12,8 +12,8 @@ components: {
     <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
       <div slot="content">
         <pre>
-<code>&lt;tabs 
-  :tabs=&quot;tabs&quot; 
+<code>&lt;tabs
+  :tabs=&quot;tabs&quot;
   :size=&quot;'small'&quot;
   :selected=&quot;advanced&quot;&gt;
   &lt;div slot=&quot;general&quot;&gt;general&lt;/div&gt;

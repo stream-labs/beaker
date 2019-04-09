@@ -46,17 +46,23 @@ components: {
     :icon=&quot;'settings'&quot;&gt;
   &lt;/Button&gt;
 
-  &lt;Button 
-    :variation=&quot;'default'&quot; 
-    :title=&quot;'Color Change'&quot; 
-    :bgColor=&quot;'#000'&quot; 
+  &lt;Button
+    :variation=&quot;'default'&quot;
+    :title=&quot;'Color Change'&quot;
+    :bgColor=&quot;'#000'&quot;
     :textColor=&quot;'#fff'&quot;&gt;
   &lt;/Button&gt;
 &lt;/div&gt;</code></pre>
           </div>
         </Accordion>
         <div class="s-button-container s-button-container--left">
-          <Button :variation="'default'" :title="'Default'" :tag="'a'" :href="'https://laravel.com/docs/5.8/routing'" @click="reportSlobsDownloads"></Button>
+          <Button
+            :variation="'default'"
+            :title="'Default'"
+            :tag="'a'"
+            :href="'https://laravel.com/docs/5.8/routing'"
+            @click="reportSlobsDownloads"
+          ></Button>
 
           <Button :variation="'action'" :title="'Action'" @click="buttonActionClick"></Button>
 
@@ -700,8 +706,8 @@ export default class Forms extends Vue {
 
   reportSlobsDownloads() {
     console.log("test");
-    ga('send', 'event', 'Download', 'Button click', 'Slobs');
-    twttr.conversion.trackPid('o0evq');
+    ga("send", "event", "Download", "Button click", "Slobs");
+    twttr.conversion.trackPid("o0evq");
   }
 
   buttonActionClick() {
