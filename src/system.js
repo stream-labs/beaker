@@ -5,48 +5,45 @@
  * You should & can add your own dependencies here if needed.
  */
 
-// Define contexts to require
-// const contexts = require.context("@/components/", true, /\.vue$/);
-
-import Accordion from "@/components/Accordion";
-import Badge from "@/components/Badge";
-import BannerMarketing from "@/components/BannerMarketing";
-import Button from "@/components/Button";
-import CallToAction from "@/components/CallToAction";
-import Callout from "@/components/Callout";
-import Checkbox from "@/components/Checkbox";
-import ColorPicker from "@/components/ColorPicker";
-import ContentRow from "@/components/ContentRow";
-import EmptySection from "@/components/EmptySection";
-import FormGroupH from "@/components/FormGroupH";
-import FormGroupV from "@/components/FormGroupV";
-import HelloWorld from "@/components/HelloWorld";
-import ImagePicker from "@/components/ImagePicker";
-import ItemGrid from "@/components/ItemGrid";
-import Loading from "@/components/Loading";
-import ModalBasic from "@/components/ModalBasic";
-import ModalComp from "@/components/ModalComp";
-import ModalConfirmation from "@/components/ModalConfirmation";
-import ModalRedirect from "@/components/ModalRedirect";
-import ModalSubscribe from "@/components/ModalSubscribe";
-import NewFeatureOverlay from "@/components/NewFeatureOverlay";
-import PaneDropdown from "@/components/PaneDropdown";
-// import PaymentForm from "@/components/PaymentForm";
-import Radio from "@/components/Radio";
-import Slider from "@/components/Slider";
-import Selector from "@/components/Selector";
-import Spinner from "@/components/Spinner";
-import SSProSimulator from "@/components/SSProSimulator";
-import StatusSwitch from "@/components/StatusSwitch";
-import Tabs from "@/components/Tabs";
-// import TabDevelop from "@/components/TabDevelop";
-import TextInput from "@/components/TextInput";
-import TooltipNotice from "@/components/TooltipNotice";
-import Toggle from "@/components/Toggle";
-import Pagination from "@/components/Pagination";
-import ProgressBar from "@/components/ProgressBar";
-import UrlBar from "@/components/UrlBar";
-import VirtualItem from "@/components/VirtualItem";
+import Accordion from "./components/Accordion.vue";
+import Badge from "./components/Badge.vue";
+import BannerMarketing from "./components/BannerMarketing.vue";
+import Button from "./components/Button.vue";
+import CallToAction from "./components/CallToAction.vue";
+import Callout from "./components/Callout.vue";
+import Checkbox from "./components/Checkbox.vue";
+import ColorPicker from "./components/ColorPicker.vue";
+import ContentRow from "./components/ContentRow.vue";
+import EmptySection from "./components/EmptySection.vue";
+import FormGroupH from "./components/FormGroupH.vue";
+import FormGroupV from "./components/FormGroupV.vue";
+import HelloWorld from "./components/HelloWorld.vue";
+import ImagePicker from "./components/ImagePicker.vue";
+import ItemGrid from "./components/ItemGrid.vue";
+import Loading from "./components/Loading.vue";
+import ModalBasic from "./components/ModalBasic.vue";
+import ModalComp from "./components/ModalComp.vue";
+import ModalConfirmation from "./components/ModalConfirmation.vue";
+import ModalRedirect from "./components/ModalRedirect.vue";
+import ModalSubscribe from "./components/ModalSubscribe.vue";
+import NewFeatureOverlay from "./components/NewFeatureOverlay.vue";
+import PaneDropdown from "./components/PaneDropdown.vue";
+// import PaymentForm from "./components/PaymentForm.vue";
+import Radio from "./components/Radio.vue";
+import Slider from "./components/Slider.vue";
+import Selector from "./components/Selector.vue";
+import Spinner from "./components/Spinner.vue";
+import SSProSimulator from "./components/SSProSimulator.vue";
+import StatusSwitch from "./components/StatusSwitch.vue";
+import Tabs from "./components/Tabs.vue";
+// import TabDevelop from "./components/TabDevelop.vue";
+import TextInput from "./components/TextInput.vue";
+import TooltipNotice from "./components/TooltipNotice.vue";
+import Toggle from "./components/Toggle.vue";
+import Pagination from "./components/Pagination.vue";
+import ProgressBar from "./components/ProgressBar.vue";
+import UrlBar from "./components/UrlBar.vue";
+import VirtualItem from "./components/VirtualItem.vue";
 
 // Define components
 const components = [
@@ -99,7 +96,7 @@ export {
   Callout,
   Checkbox,
   ColorPicker,
-  ContentRows,
+  ContentRow,
   EmptySection,
   FormGroupH,
   FormGroupV,
