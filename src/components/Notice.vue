@@ -4,7 +4,7 @@
       <div class="s-notice__icon-bg" :class="`s-bg-image__${bgColor}`"></div>
       <div class="s-notice__body">
         <div class="s-notice__icon">
-          <i class="s-icon" :class="`s-icon-${icon}`"></i>
+          <i class="s-icon" :class="`icon-${icon}`"></i>
         </div>
         <div class="s-notice__detail">
           <h2 class="s-notice__title" :class="`s-notice__title--${titleColor}`">{{title}}</h2>
@@ -130,11 +130,11 @@ p {
   background-size: contain;
 }
 
-.s-icon-information {
+.icon-information {
   color: @light-5;
 }
 
-.s-icon-error {
+.icon-error {
   color: @warning;
 }
 

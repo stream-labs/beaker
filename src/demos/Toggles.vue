@@ -14,8 +14,8 @@ components: {
         <div slot="content">
           <pre><code>&lt;toggle
   :values=&quot;{
-    'show': `&lt;i class='s-icon-view'&gt;&lt;/i&gt;`,
-    'hide': `&lt;i class='s-icon-hide'&gt;&lt;/i&gt;`
+    'show': `&lt;i class='icon-view'&gt;&lt;/i&gt;`,
+    'hide': `&lt;i class='icon-hide'&gt;&lt;/i&gt;`
   }&quot;
   :selected.sync=&quot;selectedOption&quot;
   :default=&quot;'visible'&quot;&gt;
@@ -25,8 +25,8 @@ components: {
 
       <toggle
         :values="{
-          'show': `<i class='s-icon-view'></i>`,
-          'hide': `<i class='s-icon-hide'></i>`
+          'show': `<i class='icon-view'></i>`,
+          'hide': `<i class='icon-hide'></i>`
         }"
         :selected.sync="selectedTextOption"
         :default="'show'"
