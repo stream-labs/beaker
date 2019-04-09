@@ -20,7 +20,7 @@ components: {
         </div>
       </accordion>
       <div class="row">
-        <call-to-action :thumbnailWidth="80" :thumbnailHeight="80" :buttonClick="test"/>
+        <call-to-action :buttonClick="test"/>
       </div>
       <h2>Custom Call to Action</h2>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
