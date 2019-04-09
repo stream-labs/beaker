@@ -56,7 +56,7 @@ components: {
           </div>
         </Accordion>
         <div class="s-button-container s-button-container--left">
-          <Button :variation="'default'" :title="'Default'" @click="buttonClick"></Button>
+          <Button :variation="'default'" :title="'Default'" :tag="'a'" :href="'https://laravel.com/docs/5.8/routing'" @click="reportSlobsDownloads"></Button>
 
           <Button :variation="'action'" :title="'Action'" @click="buttonActionClick"></Button>
 
@@ -696,6 +696,12 @@ export default class Forms extends Vue {
 
   buttonClick() {
     alert("Button clicked");
+  }
+
+  reportSlobsDownloads() {
+    console.log("test");
+    ga('send', 'event', 'Download', 'Button click', 'Slobs');
+    twttr.conversion.trackPid('o0evq');
   }
 
   buttonActionClick() {
