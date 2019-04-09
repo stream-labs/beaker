@@ -1,6 +1,6 @@
 {
   "name": "streamlabs-beaker",
-  "version": "0.3.83",
+  "version": "0.3.84",
   "main": "./dist/beaker.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -19,7 +19,6 @@
   "dependencies": {
     "google-fonts-webpack-plugin": "^0.4.4",
     "v-tooltip": "^2.0.0-rc.33",
-    "vee-validate": "^2.1.7",
     "vue": "^2.6.6",
     "vue-class-component": "^6.0.0",
     "vue-color": "^2.7.0",
