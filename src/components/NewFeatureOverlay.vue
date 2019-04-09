@@ -9,7 +9,7 @@
     @opened="opened"
   >
     <div slot="top-right" class="s-overlay__icon">
-      <span class="s-icon s-icon-close" @click="onDismiss"></span>
+      <span class="s-icon icon-close" @click="onDismiss"></span>
     </div>
     <div class="s-overlay__container" :class="containerMq">
       <div class="s-overlay__body">
@@ -182,7 +182,7 @@ export default class NewFeatureOverlay extends Vue {
   .padding(4);
 }
 
-.s-icon {
+.icon {
   cursor: pointer;
 }
 

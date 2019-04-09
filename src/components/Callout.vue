@@ -4,7 +4,7 @@
     <span>
       <slot/>
     </span>
-    <i v-if="closeable" class="s-icon-close s-callout__close-button" @click="closeCallout()"></i>
+    <i v-if="closeable" class="icon-close s-callout__close-button" @click="closeCallout()"></i>
   </div>
 </template>
 
@@ -37,12 +37,12 @@ export default class Callout extends Vue {
     switch (this.variation) {
       case "success":
       case "success-alt":
-        return "s-icon-check";
+        return "icon-check";
       case "warning":
       case "warning-alt":
-        return "s-icon-delete";
+        return "icon-delete";
       case "info":
-        return "s-icon-information";
+        return "icon-information";
     }
   }
 }
@@ -62,7 +62,7 @@ export default class Callout extends Vue {
   .transition();
   justify-content: center;
 
-  [class^="s-icon-"] {
+  [class^="icon-"] {
     &:first-child {
       .margin-right();
     }
