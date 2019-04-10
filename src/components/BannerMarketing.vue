@@ -92,6 +92,9 @@ export default class BannerMarketing extends Vue {
   @Prop({ default: false })
   bannerClosed!: boolean;
 
+  @Prop()
+  onToggle!: Function;
+
   closed: boolean = false;
 
   mounted() {
@@ -100,6 +103,7 @@ export default class BannerMarketing extends Vue {
   }
 
   toggleBanner() {
+    typeof this.onToggle === "function" && this.onToggle();
     this.closed = !this.closed;
     this.updateBannerHeight();
   }
