@@ -95,7 +95,7 @@ export default class BannerMarketing extends Vue {
   @Prop()
   onToggle!: Function;
 
-  @Watch('bannerClosed')
+  @Watch("bannerClosed")
   onBannerCloseStateChanged(val: boolean, oldVal: boolean) {
     this.closed = val;
     this.updateBannerHeight();
