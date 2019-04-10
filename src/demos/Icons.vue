@@ -2,6 +2,26 @@
   <div class="icons">
     <div class="glyph fs1">
       <div class="clearfix bshadow0 pbs">
+        <span class="icon-periscope"></span>
+        <span class="mls">icon-periscope</span>
+      </div>
+      <fieldset class="fs0 size1of1 clearfix hidden-false">
+        <input type="text" readonly value="e9ba" class="unit size1of2">
+        <input
+          type="text"
+          maxlength="1"
+          readonly
+          value="&#xe9ba;"
+          class="unitRight size1of2 talign-right"
+        >
+      </fieldset>
+      <div class="fs0 bshadow0 clearfix hidden-true">
+        <span class="unit pvs fgc1">liga:</span>
+        <input type="text" readonly value class="liga unitRight">
+      </div>
+    </div>
+    <div class="glyph fs1">
+      <div class="clearfix bshadow0 pbs">
         <span class="icon-windows"></span>
         <span class="mls">icon-windows</span>
       </div>
@@ -682,7 +702,7 @@
     </div>
     <div class="glyph fs1">
       <div class="clearfix bshadow0 pbs">
-        <span class="load"></span>
+        <span class="icon-download"></span>
         <span class="mls">icon-download</span>
       </div>
       <fieldset class="fs0 size1of1 clearfix hidden-false">
@@ -3720,6 +3740,166 @@
         <input type="text" readonly value class="liga unitRight">
       </div>
     </div>
+    <div class="glyph fs1">
+      <div class="clearfix bshadow0 pbs">
+        <span class="icon-kevin-night"></span>
+        <span class="mls">icon-kevin-night</span>
+      </div>
+      <fieldset class="fs0 size1of1 clearfix hidden-false">
+        <input type="text" readonly value="e9bb" class="unit size1of2">
+        <input
+          type="text"
+          maxlength="1"
+          readonly
+          value="&#xe9bb;"
+          class="unitRight size1of2 talign-right"
+        >
+      </fieldset>
+      <div class="fs0 bshadow0 clearfix hidden-true">
+        <span class="unit pvs fgc1">liga:</span>
+        <input type="text" readonly value class="liga unitRight">
+      </div>
+    </div>
+    <div class="glyph fs1">
+      <div class="clearfix bshadow0 pbs">
+        <span class="icon-kevin-day"></span>
+        <span class="mls">icon-kevin-day</span>
+      </div>
+      <fieldset class="fs0 size1of1 clearfix hidden-false">
+        <input type="text" readonly value="e9bc" class="unit size1of2">
+        <input
+          type="text"
+          maxlength="1"
+          readonly
+          value="&#xe9bc;"
+          class="unitRight size1of2 talign-right"
+        >
+      </fieldset>
+      <div class="fs0 bshadow0 clearfix hidden-true">
+        <span class="unit pvs fgc1">liga:</span>
+        <input type="text" readonly value class="liga unitRight">
+      </div>
+    </div>
+    <div class="glyph fs1">
+      <div class="clearfix bshadow0 pbs">
+        <span class="icon-cloudbot"></span>
+        <span class="mls">icon-cloudbot</span>
+      </div>
+      <fieldset class="fs0 size1of1 clearfix hidden-false">
+        <input type="text" readonly value="e9bd" class="unit size1of2">
+        <input
+          type="text"
+          maxlength="1"
+          readonly
+          value="&#xe9bd;"
+          class="unitRight size1of2 talign-right"
+        >
+      </fieldset>
+      <div class="fs0 bshadow0 clearfix hidden-true">
+        <span class="unit pvs fgc1">liga:</span>
+        <input type="text" readonly value class="liga unitRight">
+      </div>
+    </div>
+    <div class="glyph fs1">
+      <div class="clearfix bshadow0 pbs">
+        <span class="icon-empty"></span>
+        <span class="mls">icon-empty</span>
+      </div>
+      <fieldset class="fs0 size1of1 clearfix hidden-false">
+        <input type="text" readonly value="e9be" class="unit size1of2">
+        <input
+          type="text"
+          maxlength="1"
+          readonly
+          value="&#xe9be;"
+          class="unitRight size1of2 talign-right"
+        >
+      </fieldset>
+      <div class="fs0 bshadow0 clearfix hidden-true">
+        <span class="unit pvs fgc1">liga:</span>
+        <input type="text" readonly value class="liga unitRight">
+      </div>
+    </div>
+    <div class="glyph fs1">
+      <div class="clearfix bshadow0 pbs">
+        <span class="icon-face-masks-2"></span>
+        <span class="mls">icon-face-masks-2</span>
+      </div>
+      <fieldset class="fs0 size1of1 clearfix hidden-false">
+        <input type="text" readonly value="e9bf" class="unit size1of2">
+        <input
+          type="text"
+          maxlength="1"
+          readonly
+          value="&#xe9bf;"
+          class="unitRight size1of2 talign-right"
+        >
+      </fieldset>
+      <div class="fs0 bshadow0 clearfix hidden-true">
+        <span class="unit pvs fgc1">liga:</span>
+        <input type="text" readonly value class="liga unitRight">
+      </div>
+    </div>
+    <div class="glyph fs1">
+      <div class="clearfix bshadow0 pbs">
+        <span class="icon-face-masks-3"></span>
+        <span class="mls">icon-face-masks-3</span>
+      </div>
+      <fieldset class="fs0 size1of1 clearfix hidden-false">
+        <input type="text" readonly value="e9c0" class="unit size1of2">
+        <input
+          type="text"
+          maxlength="1"
+          readonly
+          value="&#xe9c0;"
+          class="unitRight size1of2 talign-right"
+        >
+      </fieldset>
+      <div class="fs0 bshadow0 clearfix hidden-true">
+        <span class="unit pvs fgc1">liga:</span>
+        <input type="text" readonly value class="liga unitRight">
+      </div>
+    </div>
+    <div class="glyph fs1">
+      <div class="clearfix bshadow0 pbs">
+        <span class="icon-ideas"></span>
+        <span class="mls">icon-ideas</span>
+      </div>
+      <fieldset class="fs0 size1of1 clearfix hidden-false">
+        <input type="text" readonly value="e9c1" class="unit size1of2">
+        <input
+          type="text"
+          maxlength="1"
+          readonly
+          value="&#xe9c1;"
+          class="unitRight size1of2 talign-right"
+        >
+      </fieldset>
+      <div class="fs0 bshadow0 clearfix hidden-true">
+        <span class="unit pvs fgc1">liga:</span>
+        <input type="text" readonly value class="liga unitRight">
+      </div>
+    </div>
+    <div class="glyph fs1">
+      <div class="clearfix bshadow0 pbs">
+        <span class="icon-creator-site"></span>
+        <span class="mls">icon-creator-site</span>
+      </div>
+      <fieldset class="fs0 size1of1 clearfix hidden-false">
+        <input type="text" readonly value="e9c2" class="unit size1of2">
+        <input
+          type="text"
+          maxlength="1"
+          readonly
+          value="&#xe9c2;"
+          class="unitRight size1of2 talign-right"
+        >
+      </fieldset>
+      <div class="fs0 bshadow0 clearfix hidden-true">
+        <span class="unit pvs fgc1">liga:</span>
+        <input type="text" readonly value class="liga unitRight">
+      </div>
+    </div>
   </div>
 </template>
 
@@ -3749,6 +3929,12 @@ fieldset {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   grid-gap: 16px;
+  color: @icon;
+}
+
+.mls {
+  color: @day-paragraph;
+  margin: 0 8px;
 }
 
 .glyph {
@@ -3757,7 +3943,10 @@ fieldset {
   .radius();
 }
 
-.mls {
-  margin: 0 8px;
+.night,
+.night-theme {
+  .mls {
+    color: @night-paragraph;
+  }
 }
 </style>
