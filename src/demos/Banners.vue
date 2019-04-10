@@ -14,7 +14,8 @@
   :icon=&quot;'themes'&quot;
   :title=&quot;'Largest library of free themes in the world.'&quot;
   :desc=&quot;'To access over 700+ themes for free, download Streamlabs OBS.'&quot;
-  :link-desc=&quot;'Win 7+  245.8 MB'&quot;&gt;
+  :link-desc=&quot;'Win 7+  245.8 MB'&quot;
+  :onToggle=&quot;test&quot;&gt;
   &lt;Button
     slot=&quot;link&quot;
     :type=&quot;'a'&quot;
@@ -36,6 +37,7 @@
           :title="'Largest library of free themes in the world.'"
           :desc="'To access over 700+ themes for free, download Streamlabs OBS.'"
           :link-desc="'Win 7+  245.8 MB'"
+          :onToggle="test"
         >
           <Button
             slot="link"
@@ -139,6 +141,13 @@
               <td>false</td>
               <td>false</td>
               <td>Default state the banner is. Open by default.</td>
+            </tr>
+            <tr>
+              <td>onToggle</td>
+              <td>function</td>
+              <td>null</td>
+              <td>false</td>
+              <td>Function which is called when you toggle the icon close.</td>
             </tr>
           </tbody>
         </table>
@@ -408,6 +417,10 @@ export default class Banners extends Vue {
     return this.remainingSecs < 10
       ? `0${this.remainingSecs}`
       : `${this.remainingSecs}`;
+  }
+
+  test() {
+    console.log("test");
   }
 }
 </script>
