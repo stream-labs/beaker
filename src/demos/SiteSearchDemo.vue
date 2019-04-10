@@ -30,7 +30,7 @@ import * as searchData from "./../components/sitesearchdata.json";
   }
 })
 export default class SiteSearchDemo extends Vue {
-  jsonSearch = (<any>searchData).data;
+  jsonSearch = (searchData as any).data;
 }
 </script>
 
