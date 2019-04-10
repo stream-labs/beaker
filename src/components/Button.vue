@@ -77,7 +77,7 @@ export default class Button extends Vue {
     default: null;
   };
 
-  @Prop({ default: "_self" })
+  @Prop({ default: "_self" })	
   target!: String;
 
   // standard, medium, large, square
@@ -181,7 +181,7 @@ export default class Button extends Vue {
   margin: 0;
   display: inline-block;
   height: 40px;
-  line-height: 38px;
+  line-height: 40px;
   .transition();
   .weight(@medium);
   .radius();
@@ -242,7 +242,7 @@ export default class Button extends Vue {
 .s-button--small {
   height: 32px;
   .padding-h-sides();
-  line-height: 30px;
+  line-height: 32px;
 
   .fas,
   .far,
@@ -256,7 +256,7 @@ export default class Button extends Vue {
   padding: 0px 64px;
   border-radius: 32px;
   font-size: 16px;
-  line-height: 62px;
+  line-height: 64px;
 
   .fas,
   .far,
@@ -494,7 +494,7 @@ export default class Button extends Vue {
   background: @day-section;
   color: @day-title;
   height: auto;
-  line-height: 22px;
+  line-height: 24px;
   height: 24px;
 
   &:hover {
