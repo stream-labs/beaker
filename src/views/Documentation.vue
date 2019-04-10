@@ -3,35 +3,7 @@
     <left-navigation @update-section="changeSection" :active-section="activeSection"></left-navigation>
 
     <div class="content">
-      <installation v-if="activeSection === 'installation'"/>
-      <assets v-if="activeSection === 'assets'"/>
-      <accordions v-if="activeSection === 'accordions'"/>
-      <announcements v-if="activeSection === 'announcements'"/>
-      <badges v-if="activeSection === 'badges'"/>
-      <banners v-if="activeSection === 'banners'"/>
-      <buttons-demo v-if="activeSection === 'buttons'"/>
-      <callouts v-if="activeSection === 'callouts'"/>
-      <call-to-actions v-if="activeSection === 'call-to-actions'"/>
-      <color-pickers v-if="activeSection === 'color-pickers'"/>
-      <creator-sites v-if="activeSection === 'creator-sites'"/>
-      <dropdowns v-if="activeSection === 'dropdowns'"/>
-      <empty-sections v-if="activeSection === 'empty-sections'"/>
-      <extras v-if="activeSection === 'extras'"/>
-      <forms v-if="activeSection === 'forms'"/>
-      <icons v-if="activeSection === 'icons'"/>
-      <image-pickers v-if="activeSection === 'image-pickers'"/>
-      <inputs v-if="activeSection === 'inputs'"/>
-      <layouts v-if="activeSection === 'layouts'"/>
-      <loaders v-if="activeSection === 'loaders'"/>
-      <modals v-if="activeSection === 'modals'"/>
-      <notices v-if="activeSection === 'notices'"/>
-      <progress-bars v-if="activeSection === 'progress-bars'"/>
-      <paginations v-if="activeSection === 'paginations'"/>
-      <sliders v-if="activeSection === 'sliders'"/>
-      <tables v-if="activeSection === 'tables'"/>
-      <tabs v-if="activeSection === 'tabs'"/>
-      <toggles v-if="activeSection === 'toggles'"/>
-      <virtual-items v-if="activeSection === 'virtual-items'"/>
+      <router-view/>
     </div>
   </div>
 </template>
