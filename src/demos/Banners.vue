@@ -57,6 +57,7 @@
           :title="'Introducing Pretzel Rocks Music Player'"
           :desc="'Stream-safe music for broadcasters with an ever-growing catalog of music. Currently 5k+ tracks.'"
           :link-desc="'$4.99/mo'"
+          :banner-closed="bannerClosed"
         >
           <Button
             slot="link"
@@ -399,6 +400,8 @@ export default class Banners extends Vue {
 
   selectedTab = "marketing";
   remainingSecs = 10;
+
+  bannerClosed = false;
 
   mounted() {
     setInterval(() => {
