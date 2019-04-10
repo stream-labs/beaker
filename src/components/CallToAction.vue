@@ -68,7 +68,7 @@ export default class CallToAction extends Vue {
   @Prop()
   subTitleColor!: String;
 
-  @Prop({ default: 'https://cdn.streamlabs.com/static/kevin-standard.svg' })
+  @Prop({ default: "https://cdn.streamlabs.com/static/kevin-standard.svg" })
   thumbnail!: String;
 
   @Prop({ default: 80 })
