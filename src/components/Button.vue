@@ -13,6 +13,7 @@
     :disabled="state === 'disabled'"
     :style="buttonStyles"
     @click="$emit('click')"
+    :target="target"
   >
     <span>
       <span>
@@ -237,7 +238,7 @@ export default class Button extends Vue {
 
 .s-button--small {
   height: 32px;
-  padding: 0px 8px;
+  .padding-h-sides();
   line-height: 32px;
 
   .fas,
