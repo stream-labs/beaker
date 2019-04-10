@@ -138,7 +138,7 @@
               <td>boolean</td>
               <td>false</td>
               <td>false</td>
-              <td>Default state once the banner is.</td>
+              <td>Default state the banner is. Open by default.</td>
             </tr>
           </tbody>
         </table>

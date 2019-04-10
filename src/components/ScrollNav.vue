@@ -2,7 +2,7 @@
   <div>
     <div class="s-apps-nav">
       <div v-if="hasPrev" @click="scrollLeft" class="s-apps-nav-control flex s-has-prev">
-        <i class="s-icon-down s-icon-left"></i>
+        <i class="icon-down icon-left"></i>
         <span>...</span>
       </div>
       <div
@@ -26,7 +26,7 @@
       </div>
       <div v-if="hasNext" @click="scrollRight" class="s-apps-nav-control flex s-has-next">
         <span>...</span>
-        <i class="s-icon-down s-icon-right"></i>
+        <i class="icon-down icon-right"></i>
       </div>
     </div>
   </div>

@@ -1522,8 +1522,8 @@
     </div>
     <div class="glyph fs1">
       <div class="clearfix bshadow0 pbs">
-        <span class="s-s-icon-down"></span>
-        <span class="mls">s-icon-down</span>
+        <span class="icon-down"></span>
+        <span class="mls">icon-down</span>
       </div>
       <fieldset class="fs0 size1of1 clearfix hidden-false">
         <input type="text" readonly value="e92b" class="unit size1of2">

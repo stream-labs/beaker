@@ -1,7 +1,7 @@
 <template>
   <div class="s-empty-section">
-    <i class="s-icon-search" v-if="this.variation === 'search'"></i>
-    <i class="s-icon-empty" v-if="this.variation === 'text'"></i>
+    <i class="icon-search" v-if="this.variation === 'search'"></i>
+    <i class="icon-empty" v-if="this.variation === 'text'"></i>
     <div class="s-empty-section__title">{{ title }}</div>
     <div class="s-empty-section__subtitle">{{ subtitle }}</div>
     <slot></slot>

@@ -2,24 +2,24 @@
   <div class="s-banner" ref="banner">
     <div
       class="s-banner__bg"
-      :style="{ 'background': `linear-gradient(to bottom left, rgba(227, 232, 235, 0.64), rgba(227, 232, 235, 0.64)), url('${bgImage}') center center no-repeat`}"
+      :style="{ 'background': `linear-gradient(to bottom left, rgba(227, 232, 235, 0.72), rgba(227, 232, 235, 0.72)), url('${bgImage}') center center no-repeat`}"
     ></div>
 
     <div
       class="s-banner__bg s-banner__bg--night"
-      :style="{ 'background': `linear-gradient(to bottom left, rgba(9, 22, 29, 0.64), rgba(9, 22, 29, 0.64)), url('${bgImageNight}') center center no-repeat`}"
+      :style="{ 'background': `linear-gradient(to bottom left, rgba(9, 22, 29, 0.72), rgba(9, 22, 29, 0.72)), url('${bgImageNight}') center center no-repeat`}"
     ></div>
 
     <div class="s-banner__body" :class="{'s-banner__body--closed': closed}" key="banner-open">
       <div class="s-banner__wrapper">
         <div class="s-banner__label">{{ label }}</div>
-        <i @click="toggleBanner()" class="s-icon-down"></i>
+        <i @click="toggleBanner()" class="icon-down"></i>
       </div>
 
       <div class="s-banner__wrapper" ref="bottomWrapper">
         <div class="s-banner__title">
           <div class="s-banner__icon" v-if="iconName">
-            <i :class="`s-icon-${iconName}`"></i>
+            <i :class="`icon-${iconName}`"></i>
           </div>
           <div class="s-banner__icon" v-if="iconImage">
             <img :src="iconImage">
@@ -32,7 +32,7 @@
         </div>
 
         <div @click.stop class="s-banner__download-wrapper">
-          <i @click="toggleBanner()" class="s-icon-down"></i>
+          <i @click="toggleBanner()" class="icon-down"></i>
           <slot name="link"></slot>
           <div class="s-banner__link-desc">{{ linkDesc }}</div>
         </div>
@@ -161,7 +161,7 @@ export default class BannerMarketing extends Vue {
   &:first-child {
     align-items: center;
 
-    .s-icon-down {
+    .icon-down {
       width: 32px;
       height: 32px;
       line-height: 32px;
@@ -172,14 +172,9 @@ export default class BannerMarketing extends Vue {
   &:last-child {
     align-items: flex-end;
 
-    .s-icon-down {
+    .icon-down {
       display: none;
     }
-  }
-
-  .s-icon-down {
-    font-size: 10px;
-    line-height: 22px;
   }
 }
 
@@ -255,8 +250,7 @@ export default class BannerMarketing extends Vue {
     &:last-child {
       align-items: center;
 
-      .s-icon-down,
-      .fa-chevron-up {
+      .icon-down {
         .margin-left(2);
         align-items: center;
         display: flex;

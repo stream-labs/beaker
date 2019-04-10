@@ -3,7 +3,7 @@
     <div class="s-tabs-nav-wrapper">
       <div class="s-tabs-nav" :class="className">
         <div v-if="hasPrev" @click="scrollLeft" class="s-tabs-nav__control s-has-prev">
-          <i class="s-icon-down s-icon-left"></i>
+          <i class="icon-down icon-left"></i>
         </div>
 
         <div
@@ -19,18 +19,25 @@
             v-for="tab in tabs"
             :key="tab.value"
             class="s-tab"
-            :class="{ 's-is-active': tab.value === value }"
-          >{{ tab.name }}</span>
+            :class="{ 'is-active': tab.value === selectedTab}"
+            :style="selectTabSize"
+            @click="showTab(tab.value)"
+          >
+            {{ tab.name }}
+            <span :class="`s-icon-${tab.icon}`"></span>
+          </span>
         </div>
 
         <div v-if="hasNext" @click="scrollRight" class="s-tabs-nav__control s-has-next">
-          <i class="s-icon-down s-icon-right"></i>
+          <i class="icon-down icon-right"></i>
         </div>
       </div>
     </div>
 
     <div class="s-tab-content" v-if="!hideContent">
-      <slot v-for="tab in tabs" :name="tab.value" v-if="tab.value === value"/>
+      <div v-for="(tab, index) in tabs" :key="index">
+        <slot :name="tab.value" v-if="tab.value === selectedTab"/>
+      </div>
     </div>
   </div>
 </template>
@@ -40,6 +47,27 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Tabs extends Vue {
+  @Prop()
+  tabs!: [
+    {
+      name: string;
+      value: string;
+      icon: string;
+    }
+  ];
+
+  @Prop()
+  size!: string;
+
+  @Prop()
+  selected!: string;
+
+  @Prop()
+  className!: string;
+
+  @Prop()
+  hideContent!: boolean;
+
   $refs!: {
     scrollable_tabs: HTMLDivElement;
   };
@@ -51,22 +79,21 @@ export default class Tabs extends Vue {
   hasPrev = false;
   private scrollIncrement = 100;
 
-  @Prop()
-  tabs!: [
-    {
-      name: string;
-      value: string;
+  selectedTab: string = "";
+
+  selectTabSize = {
+    fontSize: this.tabSize
+  };
+
+  get tabSize() {
+    if (this.size === "small") {
+      return "14px";
+    } else if (this.size === "large") {
+      return "16px";
+    } else {
+      return "14px";
     }
-  ];
-
-  @Prop()
-  value!: string;
-
-  @Prop()
-  className!: string;
-
-  @Prop()
-  hideContent!: boolean;
+  }
 
   created() {
     window.addEventListener("resize", this.calculateScrolls);
@@ -80,7 +107,11 @@ export default class Tabs extends Vue {
     this.isMounted = true;
     this.tabsContainer = this.$refs.scrollable_tabs;
     this.calculateScrolls();
-    if (!this.value) this.showTab(this.tabs[0].value);
+    if (this.selected) {
+      this.selectedTab = this.selected;
+    } else {
+      this.selectedTab = this.tabs[0].value;
+    }
   }
 
   scrollLeft() {
@@ -106,7 +137,8 @@ export default class Tabs extends Vue {
   }
 
   showTab(tab: string) {
-    this.$emit("input", tab);
+    console.log(tab);
+    this.selectedTab = tab;
   }
 }
 </script>
@@ -230,15 +262,14 @@ export default class Tabs extends Vue {
 
 .s-tab {
   color: @day-paragraph;
-  .padding-bottom(2);
+  .padding-bottom(1.375);
   border-bottom: 2px solid transparent;
-  .margin-right(2);
-  cursor: default;
-  .transition();
+  .margin-right(2.5);
+  cursor: pointer;
   display: inline-block;
   position: relative;
+  .transition();
   .weight(@medium);
-
   &.is-active {
     color: @day-title;
     border-color: @dark-2;

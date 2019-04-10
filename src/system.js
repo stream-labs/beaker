@@ -34,6 +34,8 @@ import Pagination from "@/components/Pagination";
 import PaneDropdown from "@/components/PaneDropdown";
 // import PaymentForm from "@/components/PaymentForm";
 import ProgressBar from "@/components/ProgressBar";
+import Radio from "@/components/Radio";
+import Slider from "@/components/Slider";
 import Selector from "@/components/Selector";
 import SiteSearch from "@/components/SiteSearch";
 import Slider from "@/components/Slider";
@@ -56,6 +58,7 @@ const components = [
   Button,
   CallToAction,
   Callout,
+  Checkbox,
   ColorPicker,
   ContentRow,
   EmptySection,
@@ -74,6 +77,7 @@ const components = [
   Pagination,
   PaneDropdown,
   ProgressBar,
+  Radio,
   Selector,
   SiteSearch,
   Slider,
@@ -98,7 +102,7 @@ export {
   Callout,
   Checkbox,
   ColorPicker,
-  ContentRows,
+  ContentRow,
   EmptySection,
   FormGroupH,
   FormGroupV,
@@ -115,6 +119,7 @@ export {
   Pagination,
   PaneDropdown,
   ProgressBar,
+  Radio,
   Selector,
   SiteSearch,
   Slider,
