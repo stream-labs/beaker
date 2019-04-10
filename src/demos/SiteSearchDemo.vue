@@ -7,7 +7,9 @@
       <div class="topnav">
         <div class="logo">K</div>
         <div class="spacer">fff</div>
-        <div class="seach-holder"><site-search/></div>
+        <div class="seach-holder">
+          <site-search :jsonSearch="jsonSearch"></site-search>
+        </div>
         <div class="buttons">sdf</div>
       </div>
       <div class="row">Content underneigth</div>
@@ -19,6 +21,8 @@
 import { Component, Vue } from "vue-property-decorator";
 import SiteSearch from "./../components/SiteSearch.vue";
 import Accordion from "./../components/Accordion.vue";
+import * as searchData from "./../components/sitesearchdata.json";
+
 @Component({
   components: {
     SiteSearch,
@@ -26,7 +30,7 @@ import Accordion from "./../components/Accordion.vue";
   }
 })
 export default class SiteSearchDemo extends Vue {
-  msg = "Hi!";
+  jsonSearch = (<any>searchData).data;
 }
 </script>
 

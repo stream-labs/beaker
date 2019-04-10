@@ -1,32 +1,63 @@
 <template>
-  <div class="s-sitesearch" :class="[{ 's-sitesearch--is-open' : isOpen }, {'s-sitesearch--phase-one' : phaseOne}, {'s-sitesearch--phase-two' : phaseTwo}]">
+  <div
+    class="s-sitesearch"
+    :class="[{ 's-sitesearch--is-open' : isOpen }, {'s-sitesearch--phase-one' : phaseOne}, {'s-sitesearch--phase-two' : phaseTwo}]"
+  >
     <div class="s-sitesearch--searchbar__cont">
       <div class="s-sitesearch--icon">
         <i class="s-icon-search"></i>
       </div>
-      <input ref="search_input" type="text" v-model="value" placeholder="Search..." class="s-sitesearch__input" @focus="playOpeningSequence" @blur="playClosingSequence">
+      <input
+        ref="search_input"
+        type="text"
+        v-model="value"
+        placeholder="Search..."
+        class="s-sitesearch__input"
+        @focus="playOpeningSequence"
+        @blur="playClosingSequence"
+      >
       <div class="s-sitesearch-status__cont">
         <div v-if="noResults">No Results</div>
       </div>
     </div>
     <transition-group name="s-sitesearch--fadeY">
-      <div class="s-sitesearch-results__cont" :key="limitedResult.length" v-if="phaseTwo && limitedResult.length <= 0">
+      <div
+        class="s-sitesearch-results__cont"
+        :key="limitedResult.length"
+        v-if="phaseTwo && limitedResult.length <= 0"
+      >
         <div class="s-sitesearch-quicklinks">Quick Links</div>
-        <router-link :to="searchData[quickLinkLoc[i]].route" tag="div" class="s-sitesearch-results" v-for="(suggested, i) in suggestedLinks" :key="suggested.name">
+        <router-link
+          :to="searchData[quickLinkLoc[i]].route"
+          tag="div"
+          class="s-sitesearch-results"
+          v-for="(suggested, i) in suggestedLinks"
+          :key="suggested.name"
+        >
           <div class="s-sitesearch__result--image">
             <i :class="searchData[quickLinkLoc[i]].image" class="s-sitesearch__result--image"></i>
           </div>
-          <div class="s-sitesearch__result--title">{{ searchData[quickLinkLoc[i]].title }}  </div>
+          <div class="s-sitesearch__result--title">{{ searchData[quickLinkLoc[i]].title }}</div>
         </router-link>
       </div>
-      <div class="s-sitesearch-results__cont" :key="limitedResult.length" v-if="phaseTwo && limitedResult.length >= 1">
+      <div
+        class="s-sitesearch-results__cont"
+        :key="limitedResult.length"
+        v-if="phaseTwo && limitedResult.length >= 1"
+      >
         <transition-group name="s-sitesearch--fadeX">
-        <router-link :to="searchResult.route" tag="div" v-for="searchResult in limitedResult" :key="searchResult.name" class="s-sitesearch-results">
-          <div class="s-sitesearch__result--image">
-            <i :class="searchResult.image" class="s-sitesearch__result--image"></i>
-          </div>
-          <div class="s-sitesearch__result--title">{{ searchResult.title }}</div>
-        </router-link>
+          <router-link
+            :to="searchResult.route"
+            tag="div"
+            v-for="searchResult in limitedResult"
+            :key="searchResult.name"
+            class="s-sitesearch-results"
+          >
+            <div class="s-sitesearch__result--image">
+              <i :class="searchResult.image" class="s-sitesearch__result--image"></i>
+            </div>
+            <div class="s-sitesearch__result--title">{{ searchResult.title }}</div>
+          </router-link>
         </transition-group>
       </div>
     </transition-group>
@@ -34,50 +65,52 @@
 </template>
 
 <script lang="ts">
-
 import { Component, Prop, Watch, Vue } from "vue-property-decorator";
-import Fuse from 'fuse.js';
+import Fuse from "fuse.js";
 //import * as dummy from "./../components/sitesearchdata.json"
-
 
 @Component({})
 export default class SiteSearch extends Vue {
   $refs!: {
     search_input: HTMLInputElement;
-  }
+  };
 
   private searchInput: Number = 0;
-  result:any = [];
-  searchData = (<any>data).data;
+  result: any = [];
+  //searchData = (<any>data).data;
   private isOpen: Boolean = false;
   private phaseOne: Boolean = false;
   private phaseTwo: Boolean = false;
   private searchOpen: Boolean = false;
   private resultLimit: Number = 5;
-  private fuse:any = null;
-  private value:String = '';
+  private fuse: any = null;
+  private value: String = "";
   private quickLinkLoc: any = [];
   private quickLinks: any = [
-    { name: 'accountsettings' },
-    { name: 'stats' },
-    { name: 'faq' },
-    { name: 'w-alertbox' }
-  ]
+    { name: "accountsettings" },
+    { name: "stats" },
+    { name: "faq" },
+    { name: "w-alertbox" }
+  ];
 
-  @Prop({ default: 'beaker-dummy'})
+  @Prop()
+  jsonSearch!: any;
+  searchData = this.jsonSearch;
+
+  @Prop({ default: "beaker-dummy" })
   searchLib!: string;
 
-  @Prop({default: ''})
+  @Prop({ default: "" })
   search!: String;
 
-  @Prop({default: 'fuseResultsUpdated'})
+  @Prop({ default: "fuseResultsUpdated" })
   eventName!: string;
 
-  @Prop({default: 'fuseInputChanged'})
+  @Prop({ default: "fuseInputChanged" })
   inputChangeEventName!: string;
 
   get suggestedLinks() {
-    return this.quickLinks.filter((i) => {
+    return this.quickLinks.filter(i => {
       let findResult: any = this.searchData.find(data => data.name === i.name);
       let suggestResult: any = this.searchData.indexOf(findResult);
       this.quickLinkLoc.push(suggestResult);
@@ -99,38 +132,38 @@ export default class SiteSearch extends Vue {
       distance: 100,
       maxPatternLength: 32,
       minMatchCharLength: 1,
-      keys: ['name']
-    }
-    return options
+      keys: ["name"]
+    };
+    return options;
   }
 
-  get noResults () {
-    if (this.result.length === 0 && this.value != '') {
+  get noResults() {
+    if (this.result.length === 0 && this.value != "") {
       return true;
     } else {
       return false;
     }
   }
 
-  @Watch('searchData')
+  @Watch("searchData")
   watchSearchData() {
     this.fuse.searchData = this.searchData;
     this.fuseSearch();
   }
 
-  @Watch('search')
+  @Watch("search")
   watchSearch() {
     this.value = this.search;
   }
 
-  @Watch('value')
-  watchValue () {
+  @Watch("value")
+  watchValue() {
     this.$parent.$emit(this.inputChangeEventName, this.value);
-    this.$emit(this.inputChangeEventName, this.value)
+    this.$emit(this.inputChangeEventName, this.value);
     this.fuseSearch();
   }
 
-  @Watch('result')
+  @Watch("result")
   watchResult() {
     this.$emit(this.eventName, this.result);
     this.$parent.$emit(this.eventName, this.result);
@@ -157,29 +190,32 @@ export default class SiteSearch extends Vue {
   }
 
   initFuse() {
-    this.fuse = new Fuse(this.searchData, this.options)
+    this.fuse = new Fuse(this.searchData, this.options);
     if (this.search) {
       this.value = this.search;
     }
   }
 
-  fuseSearch () {
-    if (this.value.trim() === '') {
+  fuseSearch() {
+    if (this.value.trim() === "") {
       this.result = [];
     } else {
       this.result = this.fuse.search(this.value.trim());
     }
   }
 
-  mounted () {
+  mounted() {
     this.initFuse();
   }
 
   get limitedResult() {
-    return this.resultLimit ? this.result.slice(0,this.resultLimit).sort((a,b) => b.weight - a.weight) : this.result;
+    return this.resultLimit
+      ? this.result
+          .slice(0, this.resultLimit)
+          .sort((a, b) => b.weight - a.weight)
+      : this.result;
   }
 }
-
 </script>
 
 <style lang="less" scoped>
@@ -201,7 +237,7 @@ export default class SiteSearch extends Vue {
   height: 100%;
   color: @light-5;
   .margin-right();
-  >i {
+  > i {
     padding: 0;
     margin: 0;
   }
@@ -220,7 +256,7 @@ export default class SiteSearch extends Vue {
     height: 215px;
   }
 
-  >i {
+  > i {
     font-size: 14px;
   }
 }
@@ -229,7 +265,7 @@ export default class SiteSearch extends Vue {
   display: flex;
   flex-direction: row;
   align-items: center;
-    .input-padding();
+  .input-padding();
 }
 
 .s-sitesearch-results__cont {
@@ -325,5 +361,4 @@ export default class SiteSearch extends Vue {
 .s-sitesearch--fadeY-move {
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 </style>
