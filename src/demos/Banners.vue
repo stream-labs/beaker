@@ -14,7 +14,8 @@
   :icon=&quot;'themes'&quot;
   :title=&quot;'Largest library of free themes in the world.'&quot;
   :desc=&quot;'To access over 700+ themes for free, download Streamlabs OBS.'&quot;
-  :link-desc=&quot;'Win 7+  245.8 MB'&quot;&gt;
+  :link-desc=&quot;'Win 7+  245.8 MB'&quot;
+  :onToggle=&quot;test&quot;&gt;
   &lt;Button
     slot=&quot;link&quot;
     :type=&quot;'a'&quot;
