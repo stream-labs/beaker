@@ -11,76 +11,10 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import LeftNavigation from "@/demos/LeftNavigation.vue"; // @ is an alias to /src
-import Installation from "@/demos/Installation.vue";
-import Assets from "@/demos/Assets.vue";
-import Colors from "@/demos/Colors.vue";
-import Typography from "@/demos/Typography.vue";
-import Accordions from "@/demos/Accordions.vue";
-import Announcements from "@/demos/Announcements.vue";
-import Badges from "@/demos/Badges.vue";
-import Banners from "@/demos/Banners.vue";
-import ButtonsDemo from "@/demos/Buttons.vue";
-import CallToActions from "@/demos/CallToActions.vue";
-import Callouts from "@/demos/Callouts.vue";
-import ColorPickers from "@/demos/ColorPickers.vue";
-import CreatorSites from "@/demos/CreatorSites.vue";
-import Dropdowns from "@/demos/Dropdowns.vue";
-import EmptySections from "@/demos/EmptySections.vue";
-import Extras from "@/demos/Extras.vue";
-import Forms from "@/demos/Forms.vue";
-import Icons from "@/demos/Icons.vue";
-import ImagePickers from "@/demos/ImagePickers.vue";
-import Inputs from "@/demos/Inputs.vue";
-import Layouts from "@/demos/Layouts.vue";
-import Loaders from "@/demos/Loaders.vue";
-import Modals from "@/demos/Modals.vue";
-import Navigations from "@/demos/Navigations.vue";
-import Notices from "@/demos/Notices.vue";
-import ProgressBars from "@/demos/ProgressBars.vue";
-import Paginations from "@/demos/Paginations.vue";
-//import SiteSearchDemo from "@/demos/SiteSearchDemo.vue";
-import Sliders from "@/demos/Sliders.vue";
-import Tables from "@/demos/Tables.vue";
-import Tabs from "@/demos/Tabs.vue";
-import Toggles from "@/demos/Toggles.vue";
-import VirtualItems from "@/demos/VirtualItems.vue";
 
 @Component({
   components: {
     LeftNavigation,
-    Installation,
-    Assets,
-    Colors,
-    Typography,
-    Accordions,
-    Announcements,
-    Badges,
-    Banners,
-    ButtonsDemo,
-    Callouts,
-    CallToActions,
-    ColorPickers,
-    CreatorSites,
-    Dropdowns,
-    EmptySections,
-    Extras,
-    Forms,
-    Icons,
-    ImagePickers,
-    Inputs,
-    Layouts,
-    Loaders,
-    Modals,
-    Navigations,
-    Notices,
-    ProgressBars,
-    Paginations,
-    //SiteSearchDemo,
-    Sliders,
-    Tables,
-    Tabs,
-    Toggles,
-    VirtualItems
   }
 })
 export default class Documentation extends Vue {

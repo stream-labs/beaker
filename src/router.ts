@@ -7,12 +7,11 @@ Vue.use(Router);
 
 export default new Router({
   routes: [
-    ...demos.map(({ name, componentName }) => {
+    ...demos.map(({ name, component }) => {
       return {
         path: `/${name}`,
         name: name,
-        component: () =>
-          import(/* webpackChunkName: "view-[request]" */ `@/demos/${componentName}.vue`)
+        component
       };
     }),
     {
