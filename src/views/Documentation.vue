@@ -14,7 +14,7 @@ import LeftNavigation from "@/demos/LeftNavigation.vue"; // @ is an alias to /sr
 
 @Component({
   components: {
-    LeftNavigation,
+    LeftNavigation
   }
 })
 export default class Documentation extends Vue {
