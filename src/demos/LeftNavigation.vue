@@ -30,6 +30,7 @@
       <a class="left-navigation__link" @click="changeSection('modals')">Modals</a>
       <!-- <a class="left-navigation__link" @click="changeSection('merch')">Merch</a> -->
       <a class="left-navigation__link" @click="changeSection('notices')">Notices</a>
+      <a class="left-navigation__link" @click="changeSection('onboardings')">Onboardings</a>
       <a class="left-navigation__link" @click="changeSection('paginations')">Paginations</a>
       <a class="left-navigation__link" @click="changeSection('progress-bars')">Progress Bars</a>
       <a class="left-navigation__link" @click="changeSection('sliders')">Sliders</a>

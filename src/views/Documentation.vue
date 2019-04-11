@@ -25,6 +25,7 @@
       <loaders v-if="activeSection === 'loaders'"/>
       <modals v-if="activeSection === 'modals'"/>
       <notices v-if="activeSection === 'notices'"/>
+      <onboardings v-if="activeSection === 'onboardings'"/>
       <progress-bars v-if="activeSection === 'progress-bars'"/>
       <paginations v-if="activeSection === 'paginations'"/>
       <sliders v-if="activeSection === 'sliders'"/>
@@ -64,6 +65,7 @@ import Loaders from "@/demos/Loaders.vue";
 import Modals from "@/demos/Modals.vue";
 import Navigations from "@/demos/Navigations.vue";
 import Notices from "@/demos/Notices.vue";
+import Onboardings from "@/demos/Onboardings.vue";
 import ProgressBars from "@/demos/ProgressBars.vue";
 import Paginations from "@/demos/Paginations.vue";
 import Sliders from "@/demos/Sliders.vue";
@@ -100,6 +102,7 @@ import VirtualItems from "@/demos/VirtualItems.vue";
     Modals,
     Navigations,
     Notices,
+    Onboardings,
     ProgressBars,
     Paginations,
     Sliders,
