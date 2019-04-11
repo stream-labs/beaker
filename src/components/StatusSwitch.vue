@@ -23,7 +23,7 @@ export default class StatusSwitch extends Vue {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import "./../styles/Imports";
 
 .s-status-switch {
