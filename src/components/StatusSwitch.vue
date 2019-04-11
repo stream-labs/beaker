@@ -20,12 +20,6 @@ export default class StatusSwitch extends Vue {
 
   @Prop({ default: false })
   value?: boolean;
-
-  mounted() {
-    if (this.$slots.default && this.$slots.default[0]) {
-      console.log(!!this.$slots.default[0].tag);
-    }
-  }
 }
 </script>
 
