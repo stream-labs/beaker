@@ -6,7 +6,6 @@
   >
     <div class="s-status-switch__paddle"></div>
     <label v-if="label">{{ label }}</label>
-    <!-- <span v-if="label" class="s-status-switch__label">{{ label }}</span> -->
     <slot></slot>
   </div>
 </template>
@@ -38,7 +37,7 @@ export default class StatusSwitch extends Vue {
   display: inline-flex;
   align-items: center;
 
-  .s-status-switch__label, label {
+  label {
     .margin-left(1);
     color: @day-paragraph;
   }
@@ -66,7 +65,7 @@ export default class StatusSwitch extends Vue {
   }
 
   &.enabled {
-    .s-status-switch__label, label {
+    label {
       color: @day-title;
     }
     .s-status-switch__paddle {
@@ -81,7 +80,7 @@ export default class StatusSwitch extends Vue {
 
 .night {
   .s-status-switch {
-    &__label {
+    label {
       color: @night-paragraph;
     }
 
@@ -90,7 +89,7 @@ export default class StatusSwitch extends Vue {
     }
 
     &.enabled {
-      .s-status-switch__label, label {
+      label {
         color: @night-title;
       }
 
