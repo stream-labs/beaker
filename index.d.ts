@@ -3,6 +3,7 @@ declare module "vuejs-paginate";
 declare module "vue-color";
 declare module "vue-select";
 declare module '*.svg';
+declare module '*.png';
 declare module "vue-js-modal" {
   import { PluginFunction } from "vue";
   export const install: PluginFunction<{}>;

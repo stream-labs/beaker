@@ -2,24 +2,18 @@ const resolve = require("rollup-plugin-node-resolve");
 const commonjs = require("rollup-plugin-commonjs");
 const typescript = require("rollup-plugin-typescript");
 const vue = require("rollup-plugin-vue");
-const rebaseAssets = require("rollup-plugin-rebase");
 const svg = require("rollup-plugin-svg");
+const rebaseAssets = require("rollup-plugin-rebase");
+const image = require("rollup-plugin-image");
 const minify = require("rollup-plugin-babel-minify");
 const serve = require("rollup-plugin-serve");
 
 module.exports = {
-  input: "src/system.js",
-  output: [
-    {
-      file: "dist/beaker.common.js",
-      format: "cjs"
-    },
-    {
-      file: "dist/beaker.esm.js",
-      format: "esm",
-      exports: "named"
-    }
-  ],
+  input: "src/main.js",
+  output: {
+    file: "public/main.js",
+    format: "iife",
+  },
   external: ["vue", "vue-router"],
   plugins: [
     resolve(),
@@ -32,6 +26,8 @@ module.exports = {
     vue({ defaultLang: { script: "ts", style: "less" } }),
     rebaseAssets(),
     svg(),
+    image(),
     minify(),
+    serve("pubic")
   ]
 };

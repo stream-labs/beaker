@@ -17,7 +17,7 @@
 
     <div class="floating-links">
       <a class="floating-link" target="_blank" href="https://github.com/mbiemiller/beaker">
-        <img src="./assets/imgs/github.png">
+        {{githubImg}}
       </a>
       <a
         class="floating-link"
@@ -33,7 +33,8 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import Toggle from "./components/Toggle.vue";
-import Documentation from "@/views/Documentation.vue";
+import Documentation from "./views/Documentation.vue";
+import githubImg from "./assets/imgs/github.png";
 
 @Component({
   components: {
@@ -46,6 +47,7 @@ export default class App extends Vue {
   nightClasses = ["night", "night-theme"];
   nightTheme = false;
   theme = "";
+  githubImg = githubImg;
 
   themes = {
     day: "Day",
