@@ -43,7 +43,7 @@
 
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 
 @Component({})
 export default class BannerMarketing extends Vue {
@@ -92,6 +92,15 @@ export default class BannerMarketing extends Vue {
   @Prop({ default: false })
   bannerClosed!: boolean;
 
+  @Prop()
+  onToggle!: Function;
+
+  @Watch("bannerClosed")
+  onBannerCloseStateChanged(val: boolean, oldVal: boolean) {
+    this.closed = val;
+    this.updateBannerHeight();
+  }
+
   closed: boolean = false;
 
   mounted() {
@@ -100,6 +109,7 @@ export default class BannerMarketing extends Vue {
   }
 
   toggleBanner() {
+    typeof this.onToggle === "function" && this.onToggle();
     this.closed = !this.closed;
     this.updateBannerHeight();
   }

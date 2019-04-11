@@ -30,8 +30,9 @@ import NewFeatureOverlay from "./components/NewFeatureOverlay.vue";
 import PaneDropdown from "./components/PaneDropdown.vue";
 // import PaymentForm from "./components/PaymentForm.vue";
 import Radio from "./components/Radio.vue";
-import Slider from "./components/Slider.vue";
 import Selector from "./components/Selector.vue";
+import SiteSearch from "./components/SiteSearch.vue";
+import Slider from "./components/Slider.vue";
 import Spinner from "./components/Spinner.vue";
 import SSProSimulator from "./components/SSProSimulator.vue";
 import StatusSwitch from "./components/StatusSwitch.vue";
@@ -74,6 +75,7 @@ const components = [
   ProgressBar,
   Radio,
   Selector,
+  SiteSearch,
   Slider,
   Spinner,
   SSProSimulator,
@@ -115,6 +117,7 @@ export {
   ProgressBar,
   Radio,
   Selector,
+  SiteSearch,
   Slider,
   Spinner,
   SSProSimulator,

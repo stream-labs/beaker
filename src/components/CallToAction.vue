@@ -19,7 +19,7 @@
         :tag="buttonTag"
         :bgColor="buttonBg"
         :textColor="buttonTextColor"
-        @click.native.prevent="buttonClick"
+        @click="buttonClick"
       ></Button>
 
       <Button
@@ -69,7 +69,7 @@ export default class CallToAction extends Vue {
   @Prop()
   subTitleColor!: String;
 
-  @Prop({ default: kevin })
+  @Prop({ default: "https://cdn.streamlabs.com/static/kevin-standard.svg" })
   thumbnail!: String;
 
   @Prop({ default: 80 })
@@ -198,7 +198,7 @@ export default class CallToAction extends Vue {
   background-color: @teal;
   .radius(3);
   .margin-right(3);
-  .padding(1);
+  .padding(2);
 
   img {
     width: 100%;

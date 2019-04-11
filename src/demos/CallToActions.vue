@@ -20,7 +20,7 @@ components: {
         </div>
       </accordion>
       <div class="row">
-        <call-to-action :thumbnailWidth="80" :thumbnailHeight="80" :buttonClick="test"/>
+        <call-to-action :buttonClick="test"/>
       </div>
       <h2>Custom Call to Action</h2>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
@@ -99,7 +99,7 @@ components: {
           <tr>
             <td>thumbnail</td>
             <td>String</td>
-            <td>require('./../assets/imgs/kevin-standard.svg'</td>
+            <td>'https://cdn.streamlabs.com/static/kevin-standard.svg'</td>
             <td>A Thumbnail image</td>
           </tr>
           <tr>
