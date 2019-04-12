@@ -38,24 +38,34 @@ components: {
         </div>
       </Accordion>
 
-      <Onboarding :steps="steps" :current="1" :isSkip="true" :callback="test">
+      <Onboarding :steps="4" :current="1" :isSkip="true" :callback="test">
         <OnboardingStep slot="1">
-          <template slot="title">Setup Donations</template>
-          <template slot="desc">Connect your Paypal account</template>
-        </OnboardingStep>
-        <OnboardingStep slot="2">
-          <template slot="title">Enable Cloudbot</template>
+          <template slot="title">Review setup 1</template>
           <template
             slot="desc"
-          >Streamlabs Cloudbot is a chatbot that provides entertainment and moderation features for your stream.</template>
+          >Your custom Creator Website is almost ready. To use this custom theme and domain, finish subscribing to pro and your new website will be live within 1 hour.</template>
+          <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
+        </OnboardingStep>
+        <OnboardingStep slot="2">
+          <template slot="title">Review setup 2</template>
+          <template
+            slot="desc"
+          >Your custom Creator Website is almost ready. To use this custom theme and domain, finish subscribing to pro and your new website will be live within 1 hour.</template>
+          <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
         </OnboardingStep>
         <OnboardingStep slot="3">
-          <template slot="title">Let’s setup your custom streamer website</template>
-          <template slot="desc">This is where your viewers will go to engage with you.</template>
+          <template slot="title">Review setup 3</template>
+          <template
+            slot="desc"
+          >Your custom Creator Website is almost ready. To use this custom theme and domain, finish subscribing to pro and your new website will be live within 1 hour.</template>
+          <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
         </OnboardingStep>
         <OnboardingStep slot="4">
-          <template slot="title">Setup your custom Streamer Website</template>
-          <template slot="desc">1. Choose Your Layout</template>
+          <template slot="title">Review setup 4</template>
+          <template
+            slot="desc"
+          >Your custom Creator Website is almost ready. To use this custom theme and domain, finish subscribing to pro and your new website will be live within 1 hour.</template>
+          <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
         </OnboardingStep>
       </Onboarding>
     </div>
@@ -72,32 +82,9 @@ components: {
       <tbody>
         <tr>
           <td>steps</td>
-          <td>array</td>
+          <td>number</td>
           <td>null</td>
-          <td>
-            steps information to display. you can make array like below
-            <br>
-            <code>
-              steps = [
-              {
-              step: 1,
-              isChecked: false
-              },
-              {
-              step: 2,
-              isChecked: false
-              },
-              {
-              step: 3,
-              isChecked: false
-              },
-              {
-              step: 4,
-              isChecked: false
-              }
-              ];
-            </code>
-          </td>
+          <td>total number of steps to display</td>
         </tr>
         <tr>
           <td>current</td>
@@ -127,36 +114,25 @@ import { Component, Vue } from "vue-property-decorator";
 import Accordion from "./../components/Accordion.vue";
 import Onboarding from "./../components/Onboarding.vue";
 import OnboardingStep from "./../components/OnboardingStep.vue";
+import SSProSimulator from "./../components/SSProSimulator.vue";
 
 @Component({
   components: {
     Accordion,
     Onboarding,
-    OnboardingStep
+    OnboardingStep,
+    SSProSimulator
   }
 })
 export default class Onboardings extends Vue {
-  steps = [
-    {
-      step: 1,
-      isChecked: false
-    },
-    {
-      step: 2,
-      isChecked: false
-    },
-    {
-      step: 3,
-      isChecked: false
-    },
-    {
-      step: 4,
-      isChecked: false
-    }
-  ];
-
   test() {
     console.log("test");
   }
+
+  username = "morganleee";
+  icon =
+    "https://static-cdn.jtvnw.net/jtv_user_pictures/9dfce03d-25cc-4737-96d2-2ecf6924bebe-profile_image-70x70.jpg";
+
+  domain = "morganleeeeeeeeeee.com";
 }
 </script>

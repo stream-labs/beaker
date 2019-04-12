@@ -1,8 +1,14 @@
 <template>
   <div class="s-onboarding-step">
-    <h1 class="as"><slot name="title"></slot></h1>
-    <p><slot name="desc"></slot></p>
-    <slot></slot>
+    <h1>
+      <slot name="title"></slot>
+    </h1>
+    <p>
+      <slot name="desc"></slot>
+    </p>
+    <div class="s-contents">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -23,3 +29,11 @@ export default class OnboardingStep extends Vue {
   desc!: string;
 }
 </script>
+
+<style lang="less" scoped>
+@import "./../styles/Imports";
+
+.s-contents {
+  .margin-top(4);
+}
+</style>
