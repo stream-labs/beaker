@@ -5,7 +5,7 @@
   >
     <div class="s-sitesearch--searchbar__cont">
       <div class="s-sitesearch--icon">
-        <i class="s-icon-search"></i>
+        <i class="icon-search"></i>
       </div>
       <input
         ref="search_input"
@@ -67,7 +67,6 @@
 <script lang="ts">
 import { Component, Prop, Watch, Vue } from "vue-property-decorator";
 import Fuse from "fuse.js";
-//import * as dummy from "./../components/sitesearchdata.json"
 
 @Component({})
 export default class SiteSearch extends Vue {
@@ -77,7 +76,6 @@ export default class SiteSearch extends Vue {
 
   private searchInput: Number = 0;
   result: any = [];
-  //searchData = (<any>data).data;
   private isOpen: Boolean = false;
   private phaseOne: Boolean = false;
   private phaseTwo: Boolean = false;
@@ -90,7 +88,7 @@ export default class SiteSearch extends Vue {
     { name: "accountsettings" },
     { name: "stats" },
     { name: "faq" },
-    { name: "w-alertbox" }
+    { name: "d-alertbox" }
   ];
 
   @Prop()
@@ -249,6 +247,7 @@ export default class SiteSearch extends Vue {
   height: 40px;
   width: 500px;
   position: relative;
+  transform-origin: top;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
   &.s-sitesearch--phase-one {
