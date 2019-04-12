@@ -30,6 +30,8 @@ import ModalConfirmation from "@/components/ModalConfirmation";
 import ModalRedirect from "@/components/ModalRedirect";
 import ModalSubscribe from "@/components/ModalSubscribe";
 import NewFeatureOverlay from "@/components/NewFeatureOverlay";
+import Onboarding from "@/components/Onboarding";
+import OnboardingStep from "@/components/OnboardingStep";
 import Pagination from "@/components/Pagination";
 import PaneDropdown from "@/components/PaneDropdown";
 // import PaymentForm from "@/components/PaymentForm";
@@ -73,6 +75,8 @@ const components = [
   ModalRedirect,
   ModalSubscribe,
   NewFeatureOverlay,
+  Onboarding,
+  OnboardingStep,
   Pagination,
   PaneDropdown,
   ProgressBar,
@@ -115,6 +119,8 @@ export {
   ModalRedirect,
   ModalSubscribe,
   NewFeatureOverlay,
+  Onboarding,
+  OnboardingStep,
   Pagination,
   PaneDropdown,
   ProgressBar,

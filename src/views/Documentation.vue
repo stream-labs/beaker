@@ -11,7 +11,6 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import LeftNavigation from "@/demos/LeftNavigation.vue"; // @ is an alias to /src
-
 @Component({
   components: {
     LeftNavigation
