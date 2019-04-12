@@ -28,12 +28,12 @@
       >
         <div class="s-sitesearch-quicklinks">Quick Links</div>
         <router-link
-          :to="searchData[quickLinkLoc[i]].route"
+          :to="{ name: searchData[quickLinkLoc[i]].route, path: searchData[quickLinkLoc[i]].route }"
+          replace
           tag="div"
           class="s-sitesearch-results"
           v-for="(suggested, i) in suggestedLinks"
           :key="suggested.name"
-          replace
         >
           <div class="s-sitesearch__result--image">
             <i :class="searchData[quickLinkLoc[i]].image" class="s-sitesearch__result--image"></i>
@@ -48,12 +48,12 @@
       >
         <transition-group name="s-sitesearch--fadeX">
           <router-link
-            :to="searchResult.route"
+            :to="{ name: searchResult.route, path: searchResult.route }"
+            replace
             tag="div"
             v-for="searchResult in limitedResult"
             :key="searchResult.name"
             class="s-sitesearch-results"
-            replace
           >
             <div class="s-sitesearch__result--image">
               <i :class="searchResult.image" class="s-sitesearch__result--image"></i>
@@ -228,14 +228,14 @@ export default class SiteSearch extends Vue {
 
 .s-sitesearch__result--title {
   font-size: 14px;
-  color: @dark-5;
+  color: @day-paragraph;
   font-weight: @medium;
 }
 
 .s-sitesearch__result--image {
   width: 14px;
   height: 100%;
-  color: @light-5;
+  color: @icon;
   .margin-right();
   > i {
     padding: 0;
@@ -244,7 +244,7 @@ export default class SiteSearch extends Vue {
 }
 
 .s-sitesearch {
-  border: 1px solid @light-5;
+  border: 1px solid @day-input-border;
   border-radius: @radius;
   height: 40px;
   width: 500px;
@@ -253,7 +253,7 @@ export default class SiteSearch extends Vue {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
   &.s-sitesearch--phase-one {
-    background-color: @light-1;
+    background-color: @day-bg;
     height: 215px;
   }
 
@@ -277,7 +277,7 @@ export default class SiteSearch extends Vue {
 
   .s-sitesearch-quicklinks {
     font-size: 12px;
-    color: @light-5;
+    color: @label;
     .margin-bottom();
     .input-padding();
   }
@@ -286,7 +286,7 @@ export default class SiteSearch extends Vue {
 .s-sitesearch-status__cont {
   font-size: 14px;
   white-space: nowrap;
-  color: @light-5;
+  color: @icon;
   .margin-left();
 }
 
@@ -300,11 +300,11 @@ export default class SiteSearch extends Vue {
   .padding-v-sides();
 
   &:hover {
-    background-color: @light-2;
+    background-color: @day-dropdown-bg;
     cursor: pointer;
     .s-sitesearch__result--image,
     .s-sitesearch__result--title {
-      color: @dark-2;
+      color: @day-title;
     }
   }
 }
@@ -361,5 +361,40 @@ export default class SiteSearch extends Vue {
 
 .s-sitesearch--fadeY-move {
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.night {
+  .s-sitesearch__result--title {
+    color: @night-paragraph;
+  }
+
+  .s-sitesearch__result--image {
+    color: @icon;
+  }
+
+  .s-sitesearch {
+    border: 1px solid @night-input-border;
+
+    &.s-sitesearch--phase-one {
+      background-color: @night-bg;
+    }
+  }
+
+  .s-sitesearch-results__cont {
+    .s-sitesearch-quicklinks {
+      color: @label;
+    }
+  }
+
+  .s-sitesearch-status__cont {
+    color: @icon;
+  }
+
+  .s-sitesearch-results {
+    &:hover {
+      background-color: @night-dropdown-bg;
+      color: @night-title;
+    }
+  }
 }
 </style>
