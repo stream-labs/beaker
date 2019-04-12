@@ -24,7 +24,7 @@
             :title="'Continue'"
             @click="continueProcess"
           ></Button>
-          <Button v-if="isCompleted" :variation="'action'" :title="'Complete'"></Button>
+          <Button v-if="isCompleted" :variation="'action'" :title="'Complete'" @click="onComplete"></Button>
           <Button
             v-if="!isCompleted && currentStep === steps"
             :variation="'default'"
@@ -58,13 +58,19 @@ export default class Onboarding extends Vue {
   callback!: Function;
 
   @Prop()
+  complete!: Function;
+
+  @Prop()
   isSkip!: boolean;
 
   currentStep: number = this.current;
   stepObjects: any[] = [];
 
-  mounted() {
+  beforeMount() {
     this.countStepObjects;
+  }
+
+  mounted() {
     this.currentTop;
   }
 
@@ -72,7 +78,7 @@ export default class Onboarding extends Vue {
     for (let i = 0; i < this.steps; i++) {
       this.stepObjects.push({ isChecked: false });
     }
-    return
+    return;
   }
 
   get currentTop() {
@@ -127,6 +133,10 @@ export default class Onboarding extends Vue {
     this.callback();
     this.addCheckmark();
     this.nextStep();
+  }
+
+  onComplete() {
+    this.complete();
   }
 }
 </script>

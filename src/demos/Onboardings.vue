@@ -38,7 +38,7 @@ components: {
         </div>
       </Accordion>
 
-      <Onboarding :steps="4" :current="1" :isSkip="true" :callback="test">
+      <Onboarding :steps="4" :current="1" :isSkip="true" :callback="callback" :complete="complete">
         <OnboardingStep slot="1">
           <template slot="title">Review setup 1</template>
           <template
@@ -125,8 +125,12 @@ import SSProSimulator from "./../components/SSProSimulator.vue";
   }
 })
 export default class Onboardings extends Vue {
-  test() {
-    console.log("test");
+  callback() {
+    console.log("callback");
+  }
+
+  complete() {
+    console.log("complete");
   }
 
   username = "morganleee";
