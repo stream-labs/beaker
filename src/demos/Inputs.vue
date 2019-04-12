@@ -246,6 +246,48 @@ components: {
       <div class="section">
         <status-switch v-model="statusValue" :label="'Status Label'"></status-switch>
       </div>
+      <div class="section">
+        <small>
+          <status-switch v-model="statusValue">
+            <label>Small Switch</label>
+          </status-switch>
+        </small>
+      </div>
+      <div class="section">
+        <h1>
+          <status-switch v-model="statusValue">
+            <label>H1 Switch</label>
+          </status-switch>
+        </h1>
+      </div>
+
+      <div class="section">
+        <status-switch v-model="statusValue" />
+        <status-switch v-model="statusValue" />
+        <status-switch v-model="statusValue" />
+      </div>
+
+      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
+        <div slot="content">
+          <pre><code>&lt;status-switch v-model="statusValue" :label="'Status Label'"&gt;&lt;/status-switch&gt;
+
+&lt;small&gt;
+  &lt;status-switch v-model="statusValue"&gt;
+    &lt;label&gt;Small Switch&lt;/label&gt;
+  &lt;/status-switch&gt;
+&lt;/small&gt;
+
+&lt;h1&gt;
+  &lt;status-switch v-model="statusValue"&gt;
+    &lt;label&gt;H1 Switch&lt;/label&gt;
+  &lt;/status-switch&gt;
+&lt;/h1&gt;
+
+&lt;status-switch v-model="statusValue" /&gt;
+&lt;status-switch v-model="statusValue" /&gt;
+&lt;status-switch v-model="statusValue" /&gt;</code></pre>
+        </div>
+      </Accordion>
     </div>
 
     <div class="section">
