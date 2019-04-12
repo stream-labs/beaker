@@ -72,5 +72,4 @@ export default class OnboardingStep extends Vue {
 
 <style lang="less" scoped>
 @import "./../styles/Imports";
-
 </style>
