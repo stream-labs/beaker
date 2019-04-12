@@ -99,7 +99,7 @@ components: {
           <tr>
             <td>thumbnail</td>
             <td>String</td>
-            <td>require('./../assets/imgs/kevin-standard.svg'</td>
+            <td>'https://cdn.streamlabs.com/static/kevin-standard.svg'</td>
             <td>A Thumbnail image</td>
           </tr>
           <tr>

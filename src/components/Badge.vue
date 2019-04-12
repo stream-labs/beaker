@@ -133,6 +133,7 @@ export default class Badge extends Vue {
   &--new-alt {
     background-color: transparent;
     color: @teal;
+    .padding-h-sides(@0);
   }
 
   &--tag {
