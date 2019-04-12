@@ -6,7 +6,7 @@
           v-for="(key,index) in steps.length"
           :key="index"
           class="s-bullet"
-          :class="{'current-step': index + 1 === currentStep, 'icon-check-mark': checked[index + 1] === currentStep && isChecked}"
+          :class="{'current-step': index + 1 === currentStep, 'icon-check-mark': steps[index + 1] === currentStep && isChecked || steps[index + 1] < currentStep}"
         ></span>
       </div>
       <div class="s-body">
@@ -93,9 +93,7 @@ export default class Onboarding extends Vue {
   callback!: Function;
 
   currentStep: number = this.current;
-  
-  checked: any[] = this.steps;
-  
+
   isChecked: boolean = false;
 
   mounted() {
@@ -109,7 +107,7 @@ export default class Onboarding extends Vue {
   }
 
   nextStep() {
-    if (this.currentStep < this.steps.length ) {
+    if (this.currentStep < this.steps.length) {
       this.currentStep++;
     }
   }
@@ -130,7 +128,6 @@ export default class Onboarding extends Vue {
     this.checkmark();
     this.nextStep();
   }
-
 }
 </script>
 
