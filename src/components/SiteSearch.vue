@@ -33,6 +33,7 @@
           class="s-sitesearch-results"
           v-for="(suggested, i) in suggestedLinks"
           :key="suggested.name"
+          replace
         >
           <div class="s-sitesearch__result--image">
             <i :class="searchData[quickLinkLoc[i]].image" class="s-sitesearch__result--image"></i>
@@ -52,6 +53,7 @@
             v-for="searchResult in limitedResult"
             :key="searchResult.name"
             class="s-sitesearch-results"
+            replace
           >
             <div class="s-sitesearch__result--image">
               <i :class="searchResult.image" class="s-sitesearch__result--image"></i>
