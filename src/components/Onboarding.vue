@@ -2,15 +2,25 @@
   <div>
     <div class="s-onboarding-main">
       <div class="s-bullets">
-        <span v-for="(key,index) in 5" :key="index"></span>
+        <span
+          v-for="(key,index) in steps.length"
+          :key="index"
+          class="s-bullet"
+          :class="{'current-step': index + 1 === currentStep, 'icon-check-mark': checked[index + 1] === currentStep && isChecked}"
+        ></span>
       </div>
       <div class="s-body">
-        <slot :name="current"></slot>
+        <slot :name="currentStep"></slot>
       </div>
     </div>
     <div class="s-onboarding-footer">
-      <p @click="nextStep">Skip</p>
-      <Button :variation="'default'" :title="'Continue'" @click="nextStep"></Button>
+      <div class="s-previousStep">
+        <p v-show="currentStep !== 1" @click="previousStep">Back</p>
+      </div>
+      <div class="s-nextStep">
+        <p @click="nextStep">Skip</p>
+        <Button :variation="'default'" :title="'Continue'" @click="continueProcess"></Button>
+      </div>
     </div>
   </div>
   <!-- <modal
@@ -65,20 +75,6 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import OnboardingStep from "./../components/OnboardingStep.vue";
 import Button from "./../components/Button.vue";
-// import VueMq from "vue-mq";
-// import VModal from "vue-js-modal";
-
-// Vue.use(VModal);
-
-// Vue.use(VueMq, {
-//   breakpoints: {
-//     // default breakpoints - customize this
-//     sm: 900,
-//     md: 1250,
-//     lg: Infinity
-//   },
-//   defaultBreakpoint: "sm" // customize this for SSR
-// });
 
 @Component({
   components: {
@@ -88,71 +84,53 @@ import Button from "./../components/Button.vue";
 })
 export default class Onboarding extends Vue {
   @Prop()
-  steps!: number;
+  steps!: any[];
 
-  current: number = 1;
+  @Prop()
+  current!: number;
 
-  nextStep() {
-    if (this.current < this.steps - 1) {
-      this.current = this.current + 1;
-    } else {
-      return;
+  @Prop()
+  callback!: Function;
+
+  currentStep: number = this.current;
+  
+  checked: any[] = this.steps;
+  
+  isChecked: boolean = false;
+
+  mounted() {
+    this.currentTop;
+  }
+
+  get currentTop() {
+    if (this.currentStep > this.steps.length || this.currentStep < 0) {
+      return (this.currentStep = 1);
     }
   }
 
-  //   @Prop()
-  //   label!: string;
-  //   @Prop()
-  //   title!: string;
-  //   @Prop()
-  //   media!: string;
-  //   @Prop()
-  //   buttonTitle!: string;
-  //   @Prop({ default: "/" })
-  //   buttonRoute!: string;
-  //   @Prop({ default: "router-link" })
-  //   buttonTag!: String;
-  //   @Prop()
-  //   buttonHref!: String;
-  //   @Prop()
-  //   buttonTarget!: String;
-  //   @Prop({ default: "/" })
-  //   dismissRoute!: string;
-  //   @Prop({ default: "Go to Dashboard" })
-  //   dismissText!: string;
-  //   @Prop()
-  //   onOpen!: Function;
-  //   @Prop()
-  //   onAction!: Function;
-  //   isImage: boolean = true;
-  //   get overlayImage() {
-  //     return this.media;
-  //   }
-  //   $mq!: string | string[];
-  //   get containerMq() {
-  //     return this.$mq === "sm" ? "s-overlay__container--mq" : "";
-  //   }
-  //   get overlay__imageBlockMq() {
-  //     return this.$mq === "sm" ? "s-overlay__image-block--mq" : "";
-  //   }
-  //   mounted() {
-  //     if (this.media.includes("mp4") || this.media.includes("webm")) {
-  //       this.isImage = false;
-  //     } else {
-  //       this.isImage = true;
-  //     }
-  //   }
-  //   opened(event) {
-  //     typeof this.onOpen === "function" && this.onOpen();
-  //   }
-  //   onPrimaryAction() {
-  //     typeof this.onAction === "function" && this.onAction();
-  //     this.onDismiss();
-  //   }
-  //   onDismiss() {
-  //     this.$modal.hide("new-feature");
-  //   }
-  // }
+  nextStep() {
+    if (this.currentStep < this.steps.length ) {
+      this.currentStep++;
+    }
+  }
+
+  previousStep() {
+    this.isChecked = false;
+    if (this.currentStep > 1) {
+      this.currentStep--;
+    }
+  }
+
+  checkmark() {
+    this.isChecked = true;
+  }
+
+  continueProcess() {
+    this.callback();
+    this.checkmark();
+    this.nextStep();
+  }
+
 }
 </script>
 
@@ -168,39 +146,76 @@ export default class Onboarding extends Vue {
 .s-bullets {
   display: flex;
   flex-direction: column;
-  background: #fff;
   position: relative;
   .margin-right(6);
-  span {
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    background: @dark-2;
-    border-radius: 50%;
-    .margin-bottom(4);
-  }
-  span:first-child {
-    background: @red;
-  }
+}
+
+.s-bullet {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: @dark-2;
+  border-radius: 50%;
+  z-index: 10;
+  .margin-bottom(4);
+  .transition();
+}
+
+.s-bullet:last-child {
+  .margin-bottom(0);
+}
+
+.s-bullet.current-step {
+  background: yellowgreen;
 }
 
 .s-bullets::before {
   content: "";
   width: 2px;
-  height: 260px;
   background: @dark-2;
   position: absolute;
+  top: 0;
+  bottom: 5px;
   left: 11px;
+}
+
+.s-body {
+  .transition();
 }
 
 .s-onboarding-footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid @light-3;
+  .padding-top(3);
+  .margin-top(5);
+  p {
+    text-decoration: underline;
+    .margin(0);
+    cursor: pointer;
+  }
+  button {
+    cursor: pointer;
+  }
+}
+
+.s-nextStep {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   p {
-    .margin(0);
     .margin-right(2);
-    text-decoration: underline;
+  }
+}
+
+.night,
+.night-there {
+  .s-bullet.current-step {
+    background: @white;
+  }
+  .s-onboarding-footer {
+    border-top: 1px solid @dark-5;
   }
 }
 </style>

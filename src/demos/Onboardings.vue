@@ -2,9 +2,7 @@
   <div>
     <div class="section">
       <h1>Onboarding</h1>
-      <p>
-        Onboarding component
-      </p>
+      <p>Onboarding component</p>
       <pre><code>import { Onboarding } from 'streamlabs-beaker';
 
 components: {
@@ -29,44 +27,25 @@ components: {
 &lt;/NewFeatureOverlay&gt;</code></pre>
         </div>
       </Accordion>
-      
-      <Onboarding :steps="steps">
-        <OnboardingStep slot="1" :title="'Setup Donations'" :desc="''" isDone="test1">
-          <template>
-          </template>
-        </OnboardingStep> 
-        <OnboardingStep slot="2" :title="'Choose Creator Website Theme'" :desc="'Select theme from below. More customizations will be available within the editor.'" isDone="test2">
-          <template>
-          </template>
-        </OnboardingStep>  
-        <OnboardingStep slot="3" :title="'Choose Your Domain Name'" :desc="'We’ll get you started by scanning all available domains relating to your username and suggesting the best option for your landing page. You can also click more and browse other suggestions or search for a domain name of your choice. '" isDone="test1">
-          <template>
-          </template>
-        </OnboardingStep>   
+
+      <Onboarding :steps="[1,2,3]" :current="2" :callback="test">
+        <OnboardingStep slot="1">
+          <template slot="title">Setup Donations</template>
+          <template slot="desc">Setup Donations</template>
+        </OnboardingStep>
+        <OnboardingStep slot="2">
+          <template slot="title">Choose Creator Website Theme</template>
+          <template
+            slot="desc"
+          >Select theme from below. More customizations will be available within the editor.</template>
+        </OnboardingStep>
+        <OnboardingStep slot="3">
+          <template slot="title">Choose Your Domain Nam</template>
+          <template
+            slot="desc"
+          >We’ll get you started by scanning all available domains relating to your username and suggesting the best option for your landing page. You can also click more and browse other suggestions or search for a domain name of your choice.</template>
+        </OnboardingStep>
       </Onboarding>
-
-      <!-- <NewFeatureOverlay
-        :label="'Introducing Merch Stores'"
-        :title="'Increase Your Revenue'"
-        :media="'https://cdn.streamlabs.com/cloudbot/prototype_cloudbot_800x300.webm'"
-        :buttonTitle="'Go To Store'"
-        :onOpen="trackingCodeComponent"
-        :onAction="trackingCodeButton"
-        :buttonTag="'a'"
-        :buttonHref="'https://www.twitch.tv/ext/xab8h6nj36fc2wtn71yikw9hqjd6v4-0.0.1'"
-        :buttonTarget="'_blank'"
-      >
-        <p>We’ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.</p>
-        <p>We’ve automatically credited $15.00 to your account so you can start trying them out today.</p>
-      </NewFeatureOverlay>
-
-      <div class="s-button-container s-button-container--left">
-        <Button
-          :variation="'default'"
-          :title="'New Feature Overlay'"
-          @click="$modal.show('new-feature')"
-        ></Button>
-      </div> -->
     </div>
 
     <table class="docs-table">
@@ -180,35 +159,17 @@ import { Component, Vue } from "vue-property-decorator";
 import Accordion from "./../components/Accordion.vue";
 import Onboarding from "./../components/Onboarding.vue";
 import OnboardingStep from "./../components/OnboardingStep.vue";
-// import Button from "./../components/Button.vue";
 
 @Component({
   components: {
     Accordion,
     Onboarding,
     OnboardingStep
-    // Button
   }
 })
 export default class Onboardings extends Vue {
-  steps = 4;
-
-  test1() {
-    return true;
-  }
-
-  test2() {
-    return false;
-  }
-
-  trackingCodeComponent() {
-    console.log("componentEventTracking");
-    // ga('send','event', 'newfeatureoverlay', 'modal_shown', 'component');
-  }
-
-  trackingCodeButton() {
-    console.log("buttonEventTracking");
-    // ga('send','event', 'newfeatureoverlay', 'modal_click', 'button');
+  test() {
+    console.log("test");
   }
 }
 </script>
