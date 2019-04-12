@@ -15,35 +15,47 @@ components: {
       <p>Used for onboarding.</p>
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-          <pre><code>&lt;NewFeatureOverlay
-  :label=&quot;'Introducing Merch Stores'&quot;
-  :title=&quot;'Increase Your Revenue'&quot;
-  :media=&quot;'https://cdn.streamlabs.com/cloudbot/prototype_cloudbot_800x300.webm'&quot;
-  :buttonTitle=&quot;'Go To Store'&quot;
-  :onOpen=&quot;trackingCodeComponent&quot;
-  :onAction=&quot;trackingCodeButton&quot;&gt;
-  &lt;p&gt;We’ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.&lt;/p&gt;
-  &lt;p&gt;We’ve automatically credited $15.00 to your account so you can start trying them out today.&lt;/p&gt;
-&lt;/NewFeatureOverlay&gt;</code></pre>
+          <pre><code>&lt;Onboarding :steps=&quot;steps&quot; :current=&quot;1&quot; :isSkip=&quot;true&quot; :callback=&quot;test&quot;&gt;
+  &lt;OnboardingStep slot=&quot;1&quot;&gt;
+    &lt;template slot=&quot;title&quot;&gt;Setup Donations&lt;/template&gt;
+    &lt;template slot=&quot;desc&quot;&gt;Connect your Paypal account&lt;/template&gt;
+  &lt;/OnboardingStep&gt;
+  &lt;OnboardingStep slot=&quot;2&quot;&gt;
+    &lt;template slot=&quot;title&quot;&gt;Enable Cloudbot&lt;/template&gt;
+    &lt;template
+      slot=&quot;desc&quot;
+    &gt;Streamlabs Cloudbot is a chatbot that provides entertainment and moderation features for your stream.&lt;/template&gt;
+  &lt;/OnboardingStep&gt;
+  &lt;OnboardingStep slot=&quot;3&quot;&gt;
+    &lt;template slot=&quot;title&quot;&gt;Let’s setup your custom streamer website&lt;/template&gt;
+    &lt;template slot=&quot;desc&quot;&gt;This is where your viewers will go to engage with you.&lt;/template&gt;
+  &lt;/OnboardingStep&gt;
+  &lt;OnboardingStep slot=&quot;4&quot;&gt;
+    &lt;template slot=&quot;title&quot;&gt;Setup your custom Streamer Website&lt;/template&gt;
+    &lt;template slot=&quot;desc&quot;&gt;1. Choose Your Layout&lt;/template&gt;
+  &lt;/OnboardingStep&gt;
+&lt;/Onboarding&gt;</code></pre>
         </div>
       </Accordion>
 
-      <Onboarding :steps="[1,2,3]" :current="2" :callback="test">
+      <Onboarding :steps="steps" :current="1" :isSkip="true" :callback="test">
         <OnboardingStep slot="1">
           <template slot="title">Setup Donations</template>
-          <template slot="desc">Setup Donations</template>
+          <template slot="desc">Connect your Paypal account</template>
         </OnboardingStep>
         <OnboardingStep slot="2">
-          <template slot="title">Choose Creator Website Theme</template>
+          <template slot="title">Enable Cloudbot</template>
           <template
             slot="desc"
-          >Select theme from below. More customizations will be available within the editor.</template>
+          >Streamlabs Cloudbot is a chatbot that provides entertainment and moderation features for your stream.</template>
         </OnboardingStep>
         <OnboardingStep slot="3">
-          <template slot="title">Choose Your Domain Nam</template>
-          <template
-            slot="desc"
-          >We’ll get you started by scanning all available domains relating to your username and suggesting the best option for your landing page. You can also click more and browse other suggestions or search for a domain name of your choice.</template>
+          <template slot="title">Let’s setup your custom streamer website</template>
+          <template slot="desc">This is where your viewers will go to engage with you.</template>
+        </OnboardingStep>
+        <OnboardingStep slot="4">
+          <template slot="title">Setup your custom Streamer Website</template>
+          <template slot="desc">1. Choose Your Layout</template>
         </OnboardingStep>
       </Onboarding>
     </div>
@@ -59,95 +71,51 @@ components: {
       </thead>
       <tbody>
         <tr>
-          <td>label</td>
-          <td>string</td>
-          <td>null</td>
-          <td>label to display</td>
-        </tr>
-        <tr>
-          <td>title</td>
-          <td>string</td>
-          <td>null</td>
-          <td>title to display</td>
-        </tr>
-        <tr>
-          <td>media</td>
-          <td>string</td>
-          <td>null</td>
-          <td>display image or video (you can select either of them)</td>
-        </tr>
-        <tr>
-          <td>buttonTitle</td>
-          <td>string</td>
+          <td>steps</td>
+          <td>array</td>
           <td>null</td>
           <td>
-            What type of element the button is,
-            <code>button</code>,
-            <code>a</code>,
-            <code>router-link</code>
+            steps information to display. you can make array like below
+            <br>
+            <code>
+              steps = [
+              {
+              step: 1,
+              isChecked: false
+              },
+              {
+              step: 2,
+              isChecked: false
+              },
+              {
+              step: 3,
+              isChecked: false
+              },
+              {
+              step: 4,
+              isChecked: false
+              }
+              ];
+            </code>
           </td>
         </tr>
         <tr>
-          <td>buttonTag</td>
-          <td>string</td>
+          <td>current</td>
+          <td>number</td>
           <td>null</td>
-          <td>Text displayed in the action button</td>
+          <td>current step to display</td>
         </tr>
         <tr>
-          <td>buttonRoute</td>
-          <td>string</td>
-          <td>/</td>
-          <td>
-            Router link path for the action button if tag is
-            <code>router-link</code>
-          </td>
-        </tr>
-        <tr>
-          <td>buttonHref</td>
-          <td>string</td>
+          <td>isSkip</td>
+          <td>boolean</td>
           <td>null</td>
-          <td>
-            href for the action button if tag is set to
-            <code>a</code>
-          </td>
+          <td>choose if you display skip menu</td>
         </tr>
         <tr>
-          <td>buttonTarget</td>
-          <td>string</td>
-          <td>null</td>
-          <td>
-            Use to set different targets for button if set to
-            <code>a</code>
-            Options are:
-            <code>_self</code>,
-            <code>_blank</code>,
-            <code>_parent</code>,
-            <code>_top</code>
-          </td>
-        </tr>
-        <tr>
-          <td>dismissTitle</td>
-          <td>string</td>
-          <td>Go to Dashboard</td>
-          <td>Text displayed in the link next to the action button to dismiss the announcement.</td>
-        </tr>
-        <tr>
-          <td>dismissRoute</td>
-          <td>string</td>
-          <td>/</td>
-          <td>Router link path to dismiss the annoucement.</td>
-        </tr>
-        <tr>
-          <td>onOpen</td>
+          <td>callback</td>
           <td>function</td>
           <td>null</td>
-          <td>Function to call out the tracking code of modal component.</td>
-        </tr>
-        <tr>
-          <td>onAction</td>
-          <td>function</td>
-          <td>null</td>
-          <td>Function to call out the tracking code of modal button.</td>
+          <td>Function to call out callback</td>
         </tr>
       </tbody>
     </table>
@@ -168,6 +136,25 @@ import OnboardingStep from "./../components/OnboardingStep.vue";
   }
 })
 export default class Onboardings extends Vue {
+  steps = [
+    {
+      step: 1,
+      isChecked: false
+    },
+    {
+      step: 2,
+      isChecked: false
+    },
+    {
+      step: 3,
+      isChecked: false
+    },
+    {
+      step: 4,
+      isChecked: false
+    }
+  ];
+
   test() {
     console.log("test");
   }

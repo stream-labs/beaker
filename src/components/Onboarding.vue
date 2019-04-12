@@ -6,7 +6,7 @@
           v-for="(key,index) in steps.length"
           :key="index"
           class="s-bullet"
-          :class="{'current-step': index + 1 === currentStep, 'icon-check-mark': steps[index + 1] === currentStep && isChecked || steps[index + 1] < currentStep}"
+          :class="[{'current-step': currentStepStyle(index), 'icon-check-mark': checkmarkStyle(index)}]"
         ></span>
       </div>
       <div class="s-body">
@@ -18,57 +18,11 @@
         <p v-show="currentStep !== 1" @click="previousStep">Back</p>
       </div>
       <div class="s-nextStep">
-        <p @click="nextStep">Skip</p>
+        <p v-if="isSkip" @click="nextStep">Skip</p>
         <Button :variation="'default'" :title="'Continue'" @click="continueProcess"></Button>
       </div>
     </div>
   </div>
-  <!-- <modal
-    name="new-feature"
-    :adaptive="true"
-    :width="'100%'"
-    :height="'auto'"
-    classes="s-overlay__wrapper"
-    :clickToClose="true"
-    @opened="opened"
-  >
-    <div slot="top-right" class="s-overlay__icon">
-      <span class="s-icon icon-close" @click="onDismiss"></span>
-    </div>
-    <div class="s-overlay__container" :class="containerMq">
-      <div class="s-overlay__body">
-        <p class="s-overlay__label">{{ label }}</p>
-        <h1 class="s-overlay__title">{{ title }}</h1>
-        <p class="s-overlay__text">
-          <slot></slot>
-        </p>
-        <div class="s-overlay-links">
-          <Button
-            :size="'large'"
-            :variation="'action'"
-            :tag="buttonTag"
-            :to="buttonRoute"
-            :href="buttonHref"
-            :target="buttonTarget"
-            :title="buttonTitle"
-            @click.native="onPrimaryAction"
-          ></Button>
-          <router-link
-            class="s-overlay__link"
-            :to="dismissRoute"
-            @click.native="onDismiss"
-          >{{ dismissText }}</router-link>
-        </div>
-      </div>
-
-      <div class="s-overlay__image-block" :class="overlay__imageBlockMq">
-        <img v-if="isImage" :src="overlayImage" class="s-overlay__image">
-        <video controls="false" autoplay loop v-if="!isImage" class="s-overlay__image">
-          <source :src="overlayImage">Environment does not support video playback
-        </video>
-      </div>
-    </div>
-  </modal>-->
 </template>
 
 <script lang="ts">
@@ -92,9 +46,10 @@ export default class Onboarding extends Vue {
   @Prop()
   callback!: Function;
 
-  currentStep: number = this.current;
+  @Prop()
+  isSkip!: boolean;
 
-  isChecked: boolean = false;
+  currentStep: number = this.current;
 
   mounted() {
     this.currentTop;
@@ -106,6 +61,14 @@ export default class Onboarding extends Vue {
     }
   }
 
+  currentStepStyle(index) {
+    return index + 1 === this.currentStep;
+  }
+
+  checkmarkStyle(index) {
+    return this.steps[index].isChecked;
+  }
+
   nextStep() {
     if (this.currentStep < this.steps.length) {
       this.currentStep++;
@@ -113,14 +76,18 @@ export default class Onboarding extends Vue {
   }
 
   previousStep() {
-    this.isChecked = false;
     if (this.currentStep > 1) {
       this.currentStep--;
+      this.steps[this.currentStep - 1].isChecked = false;
     }
   }
 
   checkmark() {
-    this.isChecked = true;
+    if (
+      !(this.steps[this.currentStep - 1] === this.steps[this.steps.length - 1])
+    ) {
+      this.steps[this.currentStep - 1].isChecked = true;
+    }
   }
 
   continueProcess() {
@@ -156,6 +123,9 @@ export default class Onboarding extends Vue {
   z-index: 10;
   .margin-bottom(4);
   .transition();
+  text-align: center;
+  vertical-align: middle;
+  line-height: 24px;
 }
 
 .s-bullet:last-child {
@@ -163,7 +133,7 @@ export default class Onboarding extends Vue {
 }
 
 .s-bullet.current-step {
-  background: yellowgreen;
+  background: @teal;
 }
 
 .s-bullets::before {
