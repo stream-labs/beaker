@@ -1,25 +1,32 @@
 <template>
-  <div>
+  <div class="s-onboarding-wrapper">
+    <div class="s-bullets">
+      <span
+        v-for="(key,index) in steps.length"
+        :key="index"
+        class="s-bullet"
+        :class="[{'current-step': currentStepStyle(index), 'icon-check-mark': checkmarkStyle(index)}]"
+      ></span>
+    </div>
     <div class="s-onboarding-main">
-      <div class="s-bullets">
-        <span
-          v-for="(key,index) in steps.length"
-          :key="index"
-          class="s-bullet"
-          :class="[{'current-step': currentStepStyle(index), 'icon-check-mark': checkmarkStyle(index)}]"
-        ></span>
-      </div>
       <div class="s-body">
         <slot :name="currentStep"></slot>
       </div>
-    </div>
-    <div class="s-onboarding-footer">
-      <div class="s-previousStep">
-        <p v-show="currentStep !== 1" @click="previousStep">Back</p>
-      </div>
-      <div class="s-nextStep">
-        <p v-if="isSkip" @click="nextStep">Skip</p>
-        <Button :variation="'default'" :title="'Continue'" @click="continueProcess"></Button>
+      <div class="s-onboarding-footer">
+        <div class="s-previousStep">
+          <p v-show="currentStep !== 1" @click="previousStep">Back</p>
+        </div>
+        <div class="s-nextStep">
+          <p v-if="isSkip" @click="nextStep">Skip</p>
+          <Button
+            v-if="currentStep !== steps.length"
+            :variation="'action'"
+            :title="'Continue'"
+            @click="continueProcess"
+          ></Button>
+          <Button v-if="isCompleted" :variation="'action'" :title="'Complete'" @click="onComplete"></Button>
+          <Button v-if="!isCompleted && currentStep === steps.length" :variation="'default'" :title="'continue'" @click="onComplete"></Button>
+        </div>
       </div>
     </div>
   </div>
@@ -59,6 +66,19 @@ export default class Onboarding extends Vue {
     if (this.currentStep > this.steps.length || this.currentStep < 0) {
       return (this.currentStep = 1);
     }
+  }
+
+  get isCompleted() {
+    let checkedCount = 0;
+    for (let i = 0; i < this.steps.length; i++) {
+      if (this.steps[i].isChecked) {
+        checkedCount++;
+      }
+    }
+    return (
+      this.currentStep === this.steps.length &&
+      checkedCount === this.steps.length - 1
+    );
   }
 
   currentStepStyle(index) {
@@ -101,16 +121,22 @@ export default class Onboarding extends Vue {
 <style lang="less" scoped>
 @import "./../styles/Imports";
 
-.s-onboarding-main {
+.s-onboarding-wrapper {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+}
+
+.s-onboarding-main {
+  width: 800px;
+  height: auto;
 }
 
 .s-bullets {
   display: flex;
   flex-direction: column;
   position: relative;
+  .margin-top(6);
   .margin-right(6);
 }
 
@@ -121,7 +147,7 @@ export default class Onboarding extends Vue {
   background: @dark-2;
   border-radius: 50%;
   z-index: 10;
-  .margin-bottom(4);
+  .margin-bottom(5);
   .transition();
   text-align: center;
   vertical-align: middle;
