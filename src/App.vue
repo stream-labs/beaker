@@ -12,7 +12,8 @@
         @click.native="toggleTheme()"
       ></toggle>
     </div>
-    <router-view/>
+
+    <documentation></documentation>
 
     <div class="floating-links">
       <a class="floating-link" target="_blank" href="https://github.com/mbiemiller/beaker">
@@ -32,10 +33,12 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import Toggle from "./components/Toggle.vue";
+import Documentation from "@/views/Documentation.vue";
 
 @Component({
   components: {
-    Toggle
+    Toggle,
+    Documentation
   }
 })
 export default class App extends Vue {
