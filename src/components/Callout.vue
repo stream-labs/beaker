@@ -1,10 +1,12 @@
 <template>
   <div v-if="!closed" class="s-callout" :class="[ calloutClass, calloutClosedClass ]">
-    <i v-if="icon" :class="[calloutIcon]"></i>
     <span>
-      <slot/>
+      <i v-if="icon" :class="[calloutIcon]"></i>
+      <span>
+        <slot/>
+      </span>
+      <i v-if="closeable" class="icon-close s-callout__close-button" @click="closeCallout()"></i>
     </span>
-    <i v-if="closeable" class="icon-close s-callout__close-button" @click="closeCallout()"></i>
   </div>
 </template>
 
@@ -133,15 +135,31 @@ export default class Callout extends Vue {
     height: 48px;
     line-height: 48px;
     z-index: 100;
-    max-width: 1120px;
-    margin: 0 auto 24px;
+    margin: 0 auto;
+    position: fixed;
+    bottom: 0;
+    right: calc(~"0% + 9px");
+    left: 0%;
+    .radius(0);
+
+    > span {
+      max-width: 1120px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 16px 1fr 16px;
+      align-items: center;
+      grid-gap: 8px;
+      margin: 0 auto;
+    }
 
     a {
       text-decoration: none;
     }
 
     .s-callout__close-button {
-      top: 16px;
+      position: relative;
+      top: 0;
+      right: 0;
     }
   }
 }
