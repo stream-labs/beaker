@@ -75,7 +75,7 @@ components: {
     <div class="section">
       <h2>Cookies Callout</h2>
       <p>Used on landing page to warn users about use of cookies on our site.</p>
-      <callout :variation="'cookies'" :closeable="true">
+      <callout :variation="'cookies'" :icon="'info'" :closeable="true">
         Cookies callout.
         <a href="#0">Link</a>
       </callout>

@@ -43,6 +43,8 @@ export default class Callout extends Vue {
         return "icon-delete";
       case "info":
         return "icon-information";
+      case "cookies":
+        return "icon-information";
     }
   }
 }
