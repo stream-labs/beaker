@@ -17,7 +17,7 @@
           <p v-show="currentStep !== 1" @click="previousStep">Back</p>
         </div>
         <div class="s-nextStep">
-          <p v-if="isSkip" @click="nextStep">Skip</p>
+          <p v-if="skip" @click="nextStep">Skip</p>
           <Button
             v-if="currentStep !== steps"
             :variation="'action'"
@@ -55,13 +55,13 @@ export default class Onboarding extends Vue {
   current!: number;
 
   @Prop()
-  callback!: Function;
+  continueFunc!: Function;
 
   @Prop()
-  complete!: Function;
+  completeFunc!: Function;
 
   @Prop()
-  isSkip!: boolean;
+  skip!: boolean;
 
   currentStep: number = this.current;
   stepObjects: any[] = [];
@@ -70,21 +70,11 @@ export default class Onboarding extends Vue {
     this.countStepObjects;
   }
 
-  mounted() {
-    this.currentTop;
-  }
-
   get countStepObjects() {
     for (let i = 0; i < this.steps; i++) {
       this.stepObjects.push({ isChecked: false });
     }
     return;
-  }
-
-  get currentTop() {
-    if (this.currentStep > this.steps || this.currentStep < 0) {
-      return (this.currentStep = 1);
-    }
   }
 
   get isCompleted() {
@@ -114,29 +104,26 @@ export default class Onboarding extends Vue {
   previousStep() {
     if (this.currentStep > 1) {
       this.currentStep--;
-      this.stepObjects[this.currentStep - 1].isChecked = false;
+      this.removeCheckmark();
     }
   }
 
   addCheckmark() {
-    if (
-      !(
-        this.stepObjects[this.currentStep - 1] ===
-        this.stepObjects[this.steps - 1]
-      )
-    ) {
-      this.stepObjects[this.currentStep - 1].isChecked = true;
-    }
+    this.stepObjects[this.currentStep - 1].isChecked = true;
+  }
+
+  removeCheckmark() {
+    this.stepObjects[this.currentStep - 1].isChecked = false;
   }
 
   continueProcess() {
-    this.callback();
     this.addCheckmark();
     this.nextStep();
+    this.continueFunc();
   }
 
   onComplete() {
-    this.complete();
+    this.completeFunc();
   }
 }
 </script>
