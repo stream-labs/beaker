@@ -1,7 +1,12 @@
 <template>
-  <div class="s-status-switch">
-    <input class="s-status-switch__input" ref="switchInput" type="checkbox" :checked="current">
-    <label @click="onLabelClick()" class="s-status-switch__paddle">{{ label }}</label>
+  <div
+    class="s-status-switch"
+    :class="{ enabled: !!value }"
+    @click="$emit('input', !value)"
+  >
+    <div class="s-status-switch__paddle"></div>
+    <label v-if="label">{{ label }}</label>
+    <slot></slot>
   </div>
 </template>
 
@@ -10,23 +15,11 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class StatusSwitch extends Vue {
-  $refs!: {
-    switchInput: HTMLInputElement;
-  };
-
   @Prop()
-  label!: string;
+  label?: string;
 
-  @Prop()
-  value!: boolean;
-
-  current = this.value;
-
-  onLabelClick(): void {
-    this.$refs.switchInput.checked = !this.$refs.switchInput.checked;
-    this.current = this.$refs.switchInput.checked;
-    this.$emit("input", this.current);
-  }
+  @Prop({ default: false })
+  value?: boolean;
 }
 </script>
 
@@ -34,60 +27,69 @@ export default class StatusSwitch extends Vue {
 @import "./../styles/Imports";
 
 .s-status-switch {
-  position: relative;
-  margin: 0;
-  outline: 0;
   user-select: none;
+  display: inline-flex;
+  align-items: center;
 
-  &__input {
-    position: absolute;
-    margin-bottom: 0;
-    opacity: 0;
+  label {
+    .margin-left(1);
+    color: @day-paragraph;
   }
 
-  &__paddle {
+  .s-status-switch__paddle {
+    height: 1em;
+    width: 2em;
+    background: @day-switch-bg;
+    border-radius: 1em;
+    display: inline-flex;
+    align-items: center;
     position: relative;
-    padding-left: 42px;
-    .transition();
-
-    &::before {
+    padding: 2px;
+    box-sizing: content-box;
+    cursor: pointer;
+    &:before {
       content: "";
+      width: 1em;
+      height: 1em;
+      background: #fff;
+      border-radius: 1em;
       position: absolute;
-      top: 0;
-      display: block;
-      width: 28px;
-      height: 16px;
-      border-radius: 50px;
-      background: @day-switch-bg;
-      cursor: pointer;
-      .transition();
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      transform: translateZ(0);
-      display: block;
-      height: 12px;
-      width: 12px;
-      border-radius: 50px;
-      background: @white;
-      cursor: pointer;
-      .transition();
+      transition: transform 125ms ease-out;
     }
   }
 
-  input:checked ~ .s-status-switch__paddle {
-    color: @dark-2;
-
-    &::before {
+  &.enabled {
+    label {
+      color: @day-title;
+    }
+    .s-status-switch__paddle {
       background: @teal;
+
+      &:before {
+        transform: translateX(100%);
+      }
+    }
+  }
+}
+
+.night {
+  .s-status-switch {
+    label {
+      color: @night-paragraph;
     }
 
-    &::after {
-      left: 14px;
+    .s-status-switch__paddle {
+      background: @night-switch-bg;
+    }
+
+    &.enabled {
+      label {
+        color: @night-title;
+      }
+
+      .s-status-switch__paddle {
+        background: @teal;
+      }
     }
   }
 }
