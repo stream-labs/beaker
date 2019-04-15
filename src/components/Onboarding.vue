@@ -70,21 +70,11 @@ export default class Onboarding extends Vue {
     this.countStepObjects;
   }
 
-  mounted() {
-    this.currentTop;
-  }
-
   get countStepObjects() {
     for (let i = 0; i < this.steps; i++) {
       this.stepObjects.push({ isChecked: false });
     }
     return;
-  }
-
-  get currentTop() {
-    if (this.currentStep > this.steps || this.currentStep < 0) {
-      return (this.currentStep = 1);
-    }
   }
 
   get isCompleted() {
@@ -107,6 +97,7 @@ export default class Onboarding extends Vue {
 
   nextStep() {
     if (this.currentStep < this.steps) {
+      this.addCheckmark();
       this.currentStep++;
     }
   }
@@ -114,25 +105,21 @@ export default class Onboarding extends Vue {
   previousStep() {
     if (this.currentStep > 1) {
       this.currentStep--;
-      this.stepObjects[this.currentStep - 1].isChecked = false;
+      this.removeCheckmark();
     }
   }
 
   addCheckmark() {
-    if (
-      !(
-        this.stepObjects[this.currentStep - 1] ===
-        this.stepObjects[this.steps - 1]
-      )
-    ) {
-      this.stepObjects[this.currentStep - 1].isChecked = true;
-    }
+    this.stepObjects[this.currentStep - 1].isChecked = true;
+  }
+
+  removeCheckmark() {
+    this.stepObjects[this.currentStep - 1].isChecked = false;
   }
 
   continueProcess() {
-    this.callback();
-    this.addCheckmark();
     this.nextStep();
+    this.callback();
   }
 
   onComplete() {
