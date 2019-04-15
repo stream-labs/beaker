@@ -15,30 +15,40 @@ components: {
       <p>Used for onboarding.</p>
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-          <pre><code>&lt;Onboarding :steps=&quot;steps&quot; :current=&quot;1&quot; :isSkip=&quot;true&quot; :callback=&quot;test&quot;&gt;
+          <pre><code>&lt;Onboarding :steps=&quot;4&quot; :current=&quot;1&quot; :skip=&quot;true&quot; :continueFunc=&quot;continue&quot; :completeFunc=&quot;complete&quot;&gt;
   &lt;OnboardingStep slot=&quot;1&quot;&gt;
     &lt;template slot=&quot;title&quot;&gt;Setup Donations&lt;/template&gt;
     &lt;template slot=&quot;desc&quot;&gt;Connect your Paypal account&lt;/template&gt;
+    &lt;SSProSimulator :username=&quot;username&quot; :domain=&quot;domain&quot;&gt;&lt;/SSProSimulator&gt;
   &lt;/OnboardingStep&gt;
   &lt;OnboardingStep slot=&quot;2&quot;&gt;
     &lt;template slot=&quot;title&quot;&gt;Enable Cloudbot&lt;/template&gt;
     &lt;template
       slot=&quot;desc&quot;
     &gt;Streamlabs Cloudbot is a chatbot that provides entertainment and moderation features for your stream.&lt;/template&gt;
+    &lt;SSProSimulator :username=&quot;username&quot; :domain=&quot;domain&quot;&gt;&lt;/SSProSimulator&gt;
   &lt;/OnboardingStep&gt;
   &lt;OnboardingStep slot=&quot;3&quot;&gt;
     &lt;template slot=&quot;title&quot;&gt;Let’s setup your custom streamer website&lt;/template&gt;
     &lt;template slot=&quot;desc&quot;&gt;This is where your viewers will go to engage with you.&lt;/template&gt;
+    &lt;SSProSimulator :username=&quot;username&quot; :domain=&quot;domain&quot;&gt;&lt;/SSProSimulator&gt;
   &lt;/OnboardingStep&gt;
   &lt;OnboardingStep slot=&quot;4&quot;&gt;
     &lt;template slot=&quot;title&quot;&gt;Setup your custom Streamer Website&lt;/template&gt;
     &lt;template slot=&quot;desc&quot;&gt;1. Choose Your Layout&lt;/template&gt;
+    &lt;SSProSimulator :username=&quot;username&quot; :domain=&quot;domain&quot;&gt;&lt;/SSProSimulator&gt;
   &lt;/OnboardingStep&gt;
 &lt;/Onboarding&gt;</code></pre>
         </div>
       </Accordion>
 
-      <Onboarding :steps="4" :current="1" :isSkip="true" :callback="callback" :complete="complete">
+      <Onboarding
+        :steps="4"
+        :current="1"
+        :skip="true"
+        :continueFunc="continueFunc"
+        :completeFunc="completeFunc"
+      >
         <OnboardingStep slot="1">
           <template slot="title">Review setup 1</template>
           <template
@@ -93,16 +103,22 @@ components: {
           <td>current step to display</td>
         </tr>
         <tr>
-          <td>isSkip</td>
+          <td>skip</td>
           <td>boolean</td>
           <td>null</td>
           <td>choose if you display skip menu</td>
         </tr>
         <tr>
-          <td>callback</td>
+          <td>continueFunc</td>
           <td>function</td>
           <td>null</td>
-          <td>Function to call out callback</td>
+          <td>Function to call out when you click continue button</td>
+        </tr>
+        <tr>
+          <td>completeFunc</td>
+          <td>function</td>
+          <td>null</td>
+          <td>Function to call out when you click complete button</td>
         </tr>
       </tbody>
     </table>
@@ -125,11 +141,11 @@ import SSProSimulator from "./../components/SSProSimulator.vue";
   }
 })
 export default class Onboardings extends Vue {
-  callback() {
-    console.log("callback");
+  continueFunc() {
+    console.log("continue");
   }
 
-  complete() {
+  completeFunc() {
     console.log("complete");
   }
 

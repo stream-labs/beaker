@@ -17,7 +17,7 @@
           <p v-show="currentStep !== 1" @click="previousStep">Back</p>
         </div>
         <div class="s-nextStep">
-          <p v-if="isSkip" @click="nextStep">Skip</p>
+          <p v-if="skip" @click="nextStep">Skip</p>
           <Button
             v-if="currentStep !== steps"
             :variation="'action'"
@@ -55,13 +55,13 @@ export default class Onboarding extends Vue {
   current!: number;
 
   @Prop()
-  callback!: Function;
+  continueFunc!: Function;
 
   @Prop()
-  complete!: Function;
+  completeFunc!: Function;
 
   @Prop()
-  isSkip!: boolean;
+  skip!: boolean;
 
   currentStep: number = this.current;
   stepObjects: any[] = [];
@@ -97,7 +97,6 @@ export default class Onboarding extends Vue {
 
   nextStep() {
     if (this.currentStep < this.steps) {
-      this.addCheckmark();
       this.currentStep++;
     }
   }
@@ -118,12 +117,13 @@ export default class Onboarding extends Vue {
   }
 
   continueProcess() {
+    this.addCheckmark();
     this.nextStep();
-    this.callback();
+    this.continueFunc();
   }
 
   onComplete() {
-    this.complete();
+    this.completeFunc();
   }
 }
 </script>
