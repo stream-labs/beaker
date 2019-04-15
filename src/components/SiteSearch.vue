@@ -28,17 +28,18 @@
       >
         <div class="s-sitesearch-quicklinks">Quick Links</div>
         <router-link
-          :to="{ name: searchData[quickLinkLoc[i]].route, path: searchData[quickLinkLoc[i]].route }"
+          :to="searchData[quickLinkLoc[i]].route"
           replace
           tag="div"
-          class="s-sitesearch-results"
           v-for="(suggested, i) in suggestedLinks"
           :key="suggested.name"
         >
-          <div class="s-sitesearch__result--image">
-            <i :class="searchData[quickLinkLoc[i]].image" class="s-sitesearch__result--image"></i>
-          </div>
-          <div class="s-sitesearch__result--title">{{ searchData[quickLinkLoc[i]].title }}</div>
+          <a class="s-sitesearch-results">
+            <div class="s-sitesearch__result--image">
+              <i :class="searchData[quickLinkLoc[i]].image" class="s-sitesearch__result--image"></i>
+            </div>
+            <div class="s-sitesearch__result--title">{{ searchData[quickLinkLoc[i]].title }}</div>
+          </a>
         </router-link>
       </div>
       <div
@@ -48,17 +49,18 @@
       >
         <transition-group name="s-sitesearch--fadeX">
           <router-link
-            :to="{ name: searchResult.route, path: searchResult.route }"
+            :to="searchResult.route"
             replace
             tag="div"
             v-for="searchResult in limitedResult"
             :key="searchResult.name"
-            class="s-sitesearch-results"
           >
-            <div class="s-sitesearch__result--image">
-              <i :class="searchResult.image" class="s-sitesearch__result--image"></i>
-            </div>
-            <div class="s-sitesearch__result--title">{{ searchResult.title }}</div>
+            <a class="s-sitesearch-results">
+              <div class="s-sitesearch__result--image">
+                <i :class="searchResult.image" class="s-sitesearch__result--image"></i>
+              </div>
+              <div class="s-sitesearch__result--title">{{ searchResult.title }}</div>
+            </a>
           </router-link>
         </transition-group>
       </div>
@@ -298,6 +300,7 @@ export default class SiteSearch extends Vue {
   align-content: center;
   .input-padding();
   .padding-v-sides();
+  text-decoration: none;
 
   &:hover {
     background-color: @day-dropdown-bg;
