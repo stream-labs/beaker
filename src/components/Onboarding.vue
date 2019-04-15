@@ -2,14 +2,14 @@
   <div class="s-onboarding-wrapper">
     <div class="s-bullets">
       <span
-        v-for="(key,index) in steps.length"
+        v-for="(key,index) in steps"
         :key="index"
         class="s-bullet"
         :class="[{'current-step': currentStepStyle(index), 'icon-check-mark': checkmarkStyle(index)}]"
       ></span>
     </div>
     <div class="s-onboarding-main">
-      <div class="s-body">
+      <div class="s-onboarding-body">
         <slot :name="currentStep"></slot>
       </div>
       <div class="s-onboarding-footer">
@@ -19,13 +19,17 @@
         <div class="s-nextStep">
           <p v-if="isSkip" @click="nextStep">Skip</p>
           <Button
-            v-if="currentStep !== steps.length"
+            v-if="currentStep !== steps"
             :variation="'action'"
             :title="'Continue'"
             @click="continueProcess"
           ></Button>
           <Button v-if="isCompleted" :variation="'action'" :title="'Complete'" @click="onComplete"></Button>
-          <Button v-if="!isCompleted && currentStep === steps.length" :variation="'default'" :title="'continue'" @click="onComplete"></Button>
+          <Button
+            v-if="!isCompleted && currentStep === steps"
+            :variation="'default'"
+            :title="'continue'"
+          ></Button>
         </div>
       </div>
     </div>
@@ -45,7 +49,7 @@ import Button from "./../components/Button.vue";
 })
 export default class Onboarding extends Vue {
   @Prop()
-  steps!: any[];
+  steps!: number;
 
   @Prop()
   current!: number;
@@ -54,31 +58,43 @@ export default class Onboarding extends Vue {
   callback!: Function;
 
   @Prop()
+  complete!: Function;
+
+  @Prop()
   isSkip!: boolean;
 
   currentStep: number = this.current;
+  stepObjects: any[] = [];
+
+  beforeMount() {
+    this.countStepObjects;
+  }
 
   mounted() {
     this.currentTop;
   }
 
+  get countStepObjects() {
+    for (let i = 0; i < this.steps; i++) {
+      this.stepObjects.push({ isChecked: false });
+    }
+    return;
+  }
+
   get currentTop() {
-    if (this.currentStep > this.steps.length || this.currentStep < 0) {
+    if (this.currentStep > this.steps || this.currentStep < 0) {
       return (this.currentStep = 1);
     }
   }
 
   get isCompleted() {
     let checkedCount = 0;
-    for (let i = 0; i < this.steps.length; i++) {
-      if (this.steps[i].isChecked) {
+    for (let i = 0; i < this.steps; i++) {
+      if (this.stepObjects[i].isChecked) {
         checkedCount++;
       }
     }
-    return (
-      this.currentStep === this.steps.length &&
-      checkedCount === this.steps.length - 1
-    );
+    return this.currentStep === this.steps && checkedCount === this.steps - 1;
   }
 
   currentStepStyle(index) {
@@ -86,11 +102,11 @@ export default class Onboarding extends Vue {
   }
 
   checkmarkStyle(index) {
-    return this.steps[index].isChecked;
+    return this.stepObjects[index].isChecked;
   }
 
   nextStep() {
-    if (this.currentStep < this.steps.length) {
+    if (this.currentStep < this.steps) {
       this.currentStep++;
     }
   }
@@ -98,22 +114,29 @@ export default class Onboarding extends Vue {
   previousStep() {
     if (this.currentStep > 1) {
       this.currentStep--;
-      this.steps[this.currentStep - 1].isChecked = false;
+      this.stepObjects[this.currentStep - 1].isChecked = false;
     }
   }
 
-  checkmark() {
+  addCheckmark() {
     if (
-      !(this.steps[this.currentStep - 1] === this.steps[this.steps.length - 1])
+      !(
+        this.stepObjects[this.currentStep - 1] ===
+        this.stepObjects[this.steps - 1]
+      )
     ) {
-      this.steps[this.currentStep - 1].isChecked = true;
+      this.stepObjects[this.currentStep - 1].isChecked = true;
     }
   }
 
   continueProcess() {
     this.callback();
-    this.checkmark();
+    this.addCheckmark();
     this.nextStep();
+  }
+
+  onComplete() {
+    this.complete();
   }
 }
 </script>
@@ -172,7 +195,7 @@ export default class Onboarding extends Vue {
   left: 11px;
 }
 
-.s-body {
+.s-onboarding-body {
   .transition();
 }
 
