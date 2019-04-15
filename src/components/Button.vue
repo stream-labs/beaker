@@ -180,7 +180,7 @@ export default class Button extends Vue {
   overflow: hidden;
   display: inline-block;
   height: 40px;
-  line-height: 40px;
+  line-height: 38px;
   .transition();
   .weight(@medium);
   .radius();
@@ -241,7 +241,7 @@ export default class Button extends Vue {
 .s-button--small {
   height: 32px;
   .padding-h-sides();
-  line-height: 32px;
+  line-height: 30px;
 
   .fas,
   .far,
@@ -255,7 +255,7 @@ export default class Button extends Vue {
   padding: 0px 64px;
   border-radius: 32px;
   font-size: 16px;
-  line-height: 64px;
+  line-height: 62px;
 
   .fas,
   .far,
@@ -493,7 +493,7 @@ export default class Button extends Vue {
   background: @day-section;
   color: @day-title;
   height: auto;
-  line-height: 24px;
+  line-height: 22px;
   height: 24px;
 
   &:hover {
@@ -613,42 +613,6 @@ export default class Button extends Vue {
     display: inline-block;
     margin: 0 10px;
   }
-}
-
-.s-inline-button {
-  text-transform: capitalize;
-  .weight(@medium);
-  color: @day-paragraph;
-  font-size: 14px;
-  .margin-left(2);
-  line-height: 22px;
-  text-decoration: none;
-
-  &.warn {
-    color: @warning;
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  .fa-times-circle {
-    color: @icon;
-    font-size: 16px;
-
-    &:hover {
-      color: @warning;
-    }
-  }
-
-  i {
-    .margin-right();
-  }
-}
-
-.s-inline-button--left {
-  .margin-left(@0);
-  .margin-right(2);
 }
 
 .s-button--reset-variations {
@@ -795,10 +759,6 @@ export default class Button extends Vue {
     &:hover {
       background-color: lighten(@picarto, 4%);
     }
-  }
-
-  .s-inline-button {
-    color: @night-title;
   }
 }
 
