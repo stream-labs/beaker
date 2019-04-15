@@ -56,8 +56,8 @@ export default class Callout extends Vue {
   display: flex;
   align-items: center;
   .margin-bottom(3);
-  .padding();
-  height: 40px;
+  .padding-h-sides(2);
+  line-height: 40px;
   .radius();
   .transition();
   justify-content: center;
@@ -74,8 +74,8 @@ export default class Callout extends Vue {
 
   &__close-button {
     position: absolute;
-    top: 13px;
-    right: 8px;
+    top: 12px;
+    right: 16px;
     color: inherit;
     opacity: 0.6;
     .transition();
@@ -122,6 +122,22 @@ export default class Callout extends Vue {
     margin: 0;
     padding: 0;
     opacity: 0;
+  }
+
+  &--cookies {
+    background-color: @dark-4;
+    color: @white;
+    justify-content: flex-start;
+    height: 48px;
+    line-height: 48px;
+
+    a {
+      text-decoration: none;
+    }
+
+    .s-callout__close-button {
+      top: 16px;
+    }
   }
 }
 </style>

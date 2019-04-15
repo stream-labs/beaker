@@ -73,6 +73,24 @@ components: {
     </div>
 
     <div class="section">
+      <h2>Cookies Callout</h2>
+      <p>Used on landing page to warn users about use of cookies on our site.</p>
+      <callout :variation="'cookies'" :closeable="true">
+        Cookies callout.
+        <a href="#0">Link</a>
+      </callout>
+      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+        <div slot="content">
+          <pre><code>&lt;callout :variation=&quot;'success'&quot;&gt;Success callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;
+
+&lt;callout :variation=&quot;'warning' :icon=&quot;'warning'&quot;&gt;Warning callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;
+
+&lt;callout :variation=&quot;'info'&quot;&gt;Info callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;</code></pre>
+        </div>
+      </accordion>
+    </div>
+
+    <div class="section">
       <h2>Callout Options</h2>
 
       <div class="section">
