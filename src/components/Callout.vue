@@ -125,11 +125,14 @@ export default class Callout extends Vue {
   }
 
   &--cookies {
-    background-color: @dark-4;
+    background-color: @dark-5;
     color: @white;
     justify-content: flex-start;
     height: 48px;
     line-height: 48px;
+    z-index: 100;
+    max-width: 1120px;
+    margin: 0 auto 24px;
 
     a {
       text-decoration: none;
