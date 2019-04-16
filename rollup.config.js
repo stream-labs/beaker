@@ -32,6 +32,6 @@ module.exports = {
     vue({ defaultLang: { script: "ts", style: "less" } }),
     rebaseAssets(),
     svg(),
-    minify(),
+    minify()
   ]
 };

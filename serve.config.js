@@ -17,7 +17,7 @@ module.exports = {
   output: {
     file: "public/main.js",
     format: "iife",
-    globals: ['ebyfzXxX_vue', 'pPuHzvBT_vue', 'bCNEBiXp_vue']
+    globals: ["ebyfzXxX_vue", "pPuHzvBT_vue", "bCNEBiXp_vue"]
   },
   plugins: [
     vue({ defaultLang: { script: "ts", style: "less" } }),
@@ -33,7 +33,7 @@ module.exports = {
     image(),
     json(),
     // minify(),
-    replace({ 'process.env.NODE_ENV': JSON.stringify("production") }),
-    serve({ contentBase: 'public', open: true })
+    replace({ "process.env.NODE_ENV": JSON.stringify("production") }),
+    serve({ contentBase: "public", open: true })
   ]
 };
