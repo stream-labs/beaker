@@ -5,7 +5,7 @@
   >
     <div class="s-sitesearch--searchbar__cont">
       <div class="s-sitesearch--icon">
-        <i class="s-icon-search"></i>
+        <i class="icon-search"></i>
       </div>
       <input
         ref="search_input"
@@ -30,14 +30,16 @@
         <router-link
           :to="searchData[quickLinkLoc[i]].route"
           tag="div"
-          class="s-sitesearch-results"
           v-for="(suggested, i) in suggestedLinks"
           :key="suggested.name"
+          exact
         >
-          <div class="s-sitesearch__result--image">
-            <i :class="searchData[quickLinkLoc[i]].image" class="s-sitesearch__result--image"></i>
-          </div>
-          <div class="s-sitesearch__result--title">{{ searchData[quickLinkLoc[i]].title }}</div>
+          <a class="s-sitesearch-results">
+            <div class="s-sitesearch__result--image">
+              <i :class="searchData[quickLinkLoc[i]].image" class="s-sitesearch__result--image"></i>
+            </div>
+            <div class="s-sitesearch__result--title">{{ searchData[quickLinkLoc[i]].title }}</div>
+          </a>
         </router-link>
       </div>
       <div
@@ -51,12 +53,14 @@
             tag="div"
             v-for="searchResult in limitedResult"
             :key="searchResult.name"
-            class="s-sitesearch-results"
+            exact
           >
-            <div class="s-sitesearch__result--image">
-              <i :class="searchResult.image" class="s-sitesearch__result--image"></i>
-            </div>
-            <div class="s-sitesearch__result--title">{{ searchResult.title }}</div>
+            <a class="s-sitesearch-results">
+              <div class="s-sitesearch__result--image">
+                <i :class="searchResult.image" class="s-sitesearch__result--image"></i>
+              </div>
+              <div class="s-sitesearch__result--title">{{ searchResult.title }}</div>
+            </a>
           </router-link>
         </transition-group>
       </div>
@@ -67,7 +71,6 @@
 <script lang="ts">
 import { Component, Prop, Watch, Vue } from "vue-property-decorator";
 import Fuse from "fuse.js";
-//import * as dummy from "./../components/sitesearchdata.json"
 
 @Component({})
 export default class SiteSearch extends Vue {
@@ -77,7 +80,6 @@ export default class SiteSearch extends Vue {
 
   private searchInput: Number = 0;
   result: any = [];
-  //searchData = (<any>data).data;
   private isOpen: Boolean = false;
   private phaseOne: Boolean = false;
   private phaseTwo: Boolean = false;
@@ -86,12 +88,6 @@ export default class SiteSearch extends Vue {
   private fuse: any = null;
   private value: String = "";
   private quickLinkLoc: any = [];
-  private quickLinks: any = [
-    { name: "accountsettings" },
-    { name: "stats" },
-    { name: "faq" },
-    { name: "w-alertbox" }
-  ];
 
   @Prop()
   jsonSearch!: any;
@@ -108,6 +104,9 @@ export default class SiteSearch extends Vue {
 
   @Prop({ default: "fuseInputChanged" })
   inputChangeEventName!: string;
+
+  @Prop()
+  quickLinks!: any[];
 
   get suggestedLinks() {
     return this.quickLinks.filter(i => {
@@ -228,14 +227,14 @@ export default class SiteSearch extends Vue {
 
 .s-sitesearch__result--title {
   font-size: 14px;
-  color: @dark-5;
+  color: @day-paragraph;
   font-weight: @medium;
 }
 
 .s-sitesearch__result--image {
   width: 14px;
   height: 100%;
-  color: @light-5;
+  color: @icon;
   .margin-right();
   > i {
     padding: 0;
@@ -244,15 +243,16 @@ export default class SiteSearch extends Vue {
 }
 
 .s-sitesearch {
-  border: 1px solid @light-5;
+  border: 1px solid @day-input-border;
   border-radius: @radius;
   height: 40px;
   width: 500px;
   position: relative;
+  transform-origin: top;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
   &.s-sitesearch--phase-one {
-    background-color: @light-1;
+    background-color: @day-bg;
     height: 215px;
   }
 
@@ -276,7 +276,7 @@ export default class SiteSearch extends Vue {
 
   .s-sitesearch-quicklinks {
     font-size: 12px;
-    color: @light-5;
+    color: @label;
     .margin-bottom();
     .input-padding();
   }
@@ -285,7 +285,7 @@ export default class SiteSearch extends Vue {
 .s-sitesearch-status__cont {
   font-size: 14px;
   white-space: nowrap;
-  color: @light-5;
+  color: @icon;
   .margin-left();
 }
 
@@ -297,13 +297,14 @@ export default class SiteSearch extends Vue {
   align-content: center;
   .input-padding();
   .padding-v-sides();
+  text-decoration: none;
 
   &:hover {
-    background-color: @light-2;
+    background-color: @day-dropdown-bg;
     cursor: pointer;
     .s-sitesearch__result--image,
     .s-sitesearch__result--title {
-      color: @dark-2;
+      color: @day-title;
     }
   }
 }
@@ -360,5 +361,40 @@ export default class SiteSearch extends Vue {
 
 .s-sitesearch--fadeY-move {
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.night {
+  .s-sitesearch__result--title {
+    color: @night-paragraph;
+  }
+
+  .s-sitesearch__result--image {
+    color: @icon;
+  }
+
+  .s-sitesearch {
+    border: 1px solid @night-input-border;
+
+    &.s-sitesearch--phase-one {
+      background-color: @night-bg;
+    }
+  }
+
+  .s-sitesearch-results__cont {
+    .s-sitesearch-quicklinks {
+      color: @label;
+    }
+  }
+
+  .s-sitesearch-status__cont {
+    color: @icon;
+  }
+
+  .s-sitesearch-results {
+    &:hover {
+      background-color: @night-dropdown-bg;
+      color: @night-title;
+    }
+  }
 }
 </style>

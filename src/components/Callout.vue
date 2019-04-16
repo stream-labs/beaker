@@ -1,10 +1,12 @@
 <template>
   <div v-if="!closed" class="s-callout" :class="[ calloutClass, calloutClosedClass ]">
-    <i v-if="icon" :class="[calloutIcon]"></i>
     <span>
-      <slot/>
+      <i v-if="icon" :class="[calloutIcon]"></i>
+      <span>
+        <slot/>
+      </span>
+      <i v-if="closeable" class="icon-close s-callout__close-button" @click="closeCallout()"></i>
     </span>
-    <i v-if="closeable" class="icon-close s-callout__close-button" @click="closeCallout()"></i>
   </div>
 </template>
 
@@ -43,6 +45,8 @@ export default class Callout extends Vue {
         return "icon-delete";
       case "info":
         return "icon-information";
+      case "cookies":
+        return "icon-information";
     }
   }
 }
@@ -56,8 +60,8 @@ export default class Callout extends Vue {
   display: flex;
   align-items: center;
   .margin-bottom(3);
-  .padding();
-  height: 40px;
+  .padding-h-sides(2);
+  line-height: 40px;
   .radius();
   .transition();
   justify-content: center;
@@ -74,8 +78,8 @@ export default class Callout extends Vue {
 
   &__close-button {
     position: absolute;
-    top: 13px;
-    right: 8px;
+    top: 12px;
+    right: 16px;
     color: inherit;
     opacity: 0.6;
     .transition();
@@ -122,6 +126,41 @@ export default class Callout extends Vue {
     margin: 0;
     padding: 0;
     opacity: 0;
+  }
+
+  &--cookies {
+    background-color: @dark-5;
+    color: @white;
+    justify-content: flex-start;
+    height: 48px;
+    line-height: 48px;
+    z-index: 100;
+    margin: 0 auto;
+    position: fixed;
+    bottom: 0;
+    right: calc(~"0% + 9px");
+    left: 0%;
+    .radius(0);
+
+    > span {
+      max-width: 1120px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 16px 1fr 16px;
+      align-items: center;
+      grid-gap: 8px;
+      margin: 0 auto;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .s-callout__close-button {
+      position: relative;
+      top: 0;
+      right: 0;
+    }
   }
 }
 </style>
