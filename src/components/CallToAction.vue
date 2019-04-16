@@ -42,7 +42,6 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import Button from "./../components/Button.vue";
 import VueMq from "vue-mq";
-import kevin from "./../assets/imgs/kevin-standard.svg";
 
 Vue.use(VueMq, {
   breakpoints: {
