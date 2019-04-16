@@ -10,7 +10,8 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import LeftNavigation from "@/demos/LeftNavigation.vue"; // @ is an alias to /src
+import LeftNavigation from "../demos/LeftNavigation.vue";
+
 @Component({
   components: {
     LeftNavigation

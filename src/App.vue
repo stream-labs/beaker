@@ -17,7 +17,7 @@
 
     <div class="floating-links">
       <a class="floating-link" target="_blank" href="https://github.com/mbiemiller/beaker">
-        <img src="./assets/imgs/github.png">
+        <img src="./assets/imgs/github.png" />
       </a>
       <a
         class="floating-link"
@@ -33,7 +33,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import Toggle from "./components/Toggle.vue";
-import Documentation from "@/views/Documentation.vue";
+import Documentation from "./views/Documentation.vue";
 
 @Component({
   components: {

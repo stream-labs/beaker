@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import demos from "@/demos";
+import demos from "../demos";
 
 const excludeFromComponentDemos = ["installation", "assets"];
 
