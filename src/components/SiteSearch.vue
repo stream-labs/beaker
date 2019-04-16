@@ -29,7 +29,6 @@
         <div class="s-sitesearch-quicklinks">Quick Links</div>
         <router-link
           :to="searchData[quickLinkLoc[i]].route"
-          replace
           tag="div"
           v-for="(suggested, i) in suggestedLinks"
           :key="suggested.name"
@@ -51,7 +50,6 @@
         <transition-group name="s-sitesearch--fadeX">
           <router-link
             :to="searchResult.route"
-            replace
             tag="div"
             v-for="searchResult in limitedResult"
             :key="searchResult.name"
@@ -109,7 +107,6 @@ export default class SiteSearch extends Vue {
 
   @Prop()
   quickLinks!: any[];
-
 
   get suggestedLinks() {
     return this.quickLinks.filter(i => {
@@ -208,7 +205,6 @@ export default class SiteSearch extends Vue {
 
   mounted() {
     this.initFuse();
-    console.log(this.quickLinks)
   }
 
   get limitedResult() {
