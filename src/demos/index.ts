@@ -1,4 +1,4 @@
-const demos = require.context("@/demos", true, /\.vue$/);
+const demos = require.context("../demos", true, /\.vue$/);
 
 export default demos.keys().map(key => {
   const componentName = key.slice(2, -4);
