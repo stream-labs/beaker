@@ -29,10 +29,10 @@
         <div class="s-sitesearch-quicklinks">Quick Links</div>
         <router-link
           :to="searchData[quickLinkLoc[i]].route"
-          replace
           tag="div"
           v-for="(suggested, i) in suggestedLinks"
           :key="suggested.name"
+          exact
         >
           <a class="s-sitesearch-results">
             <div class="s-sitesearch__result--image">
@@ -50,10 +50,10 @@
         <transition-group name="s-sitesearch--fadeX">
           <router-link
             :to="searchResult.route"
-            replace
             tag="div"
             v-for="searchResult in limitedResult"
             :key="searchResult.name"
+            exact
           >
             <a class="s-sitesearch-results">
               <div class="s-sitesearch__result--image">
@@ -88,12 +88,6 @@ export default class SiteSearch extends Vue {
   private fuse: any = null;
   private value: String = "";
   private quickLinkLoc: any = [];
-  private quickLinks: any = [
-    { name: "accountsettings" },
-    { name: "stats" },
-    { name: "faq" },
-    { name: "d-alertbox" }
-  ];
 
   @Prop()
   jsonSearch!: any;
@@ -110,6 +104,9 @@ export default class SiteSearch extends Vue {
 
   @Prop({ default: "fuseInputChanged" })
   inputChangeEventName!: string;
+
+  @Prop()
+  quickLinks!: any[];
 
   get suggestedLinks() {
     return this.quickLinks.filter(i => {
