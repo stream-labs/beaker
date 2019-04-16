@@ -195,7 +195,7 @@ export default class CallToAction extends Vue {
   flex-grow: 0;
   flex-shrink: 0;
   background-color: @teal;
-  .radius(3);
+  .radius();
   .margin-right(3);
   .padding(2);
 
