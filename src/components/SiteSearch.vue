@@ -33,6 +33,7 @@
           tag="div"
           v-for="(suggested, i) in suggestedLinks"
           :key="suggested.name"
+          exact
         >
           <a class="s-sitesearch-results">
             <div class="s-sitesearch__result--image">
@@ -54,6 +55,7 @@
             tag="div"
             v-for="searchResult in limitedResult"
             :key="searchResult.name"
+            exact
           >
             <a class="s-sitesearch-results">
               <div class="s-sitesearch__result--image">
@@ -88,12 +90,6 @@ export default class SiteSearch extends Vue {
   private fuse: any = null;
   private value: String = "";
   private quickLinkLoc: any = [];
-  private quickLinks: any = [
-    { name: "accountsettings" },
-    { name: "stats" },
-    { name: "faq" },
-    { name: "d-alertbox" }
-  ];
 
   @Prop()
   jsonSearch!: any;
@@ -110,6 +106,10 @@ export default class SiteSearch extends Vue {
 
   @Prop({ default: "fuseInputChanged" })
   inputChangeEventName!: string;
+
+  @Prop()
+  quickLinks!: any[];
+
 
   get suggestedLinks() {
     return this.quickLinks.filter(i => {
@@ -208,6 +208,7 @@ export default class SiteSearch extends Vue {
 
   mounted() {
     this.initFuse();
+    console.log(this.quickLinks)
   }
 
   get limitedResult() {

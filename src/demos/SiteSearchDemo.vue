@@ -2,17 +2,8 @@
   <div>
     <div class="section">
       <h1>Site Search</h1>
-      <p>A work in progressfffffffffffffff</p>
-
-      <div class="topnav">
-        <div class="logo">K</div>
-        <div class="spacer">fff</div>
-        <div class="seach-holder">
-          <site-search :jsonSearch="jsonSearch"></site-search>
-        </div>
-        <div class="buttons">sdf</div>
-      </div>
-      <div class="row">Content underneigth</div>
+      <p>This site search is in very early beta stages</p>
+      <site-search :jsonSearch="jsonSearch" :quickLinks="[{name: 'faq'}, {name: 'contact'}, {name: 'privacy'}, {name: 'allstars'}]"></site-search>
     </div>
   </div>
 </template>
