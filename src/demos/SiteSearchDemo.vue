@@ -2,17 +2,71 @@
   <div>
     <div class="section">
       <h1>Site Search</h1>
-      <p>A work in progressfffffffffffffff</p>
+      <p>This site search is in very early beta stages, it is not ready for prod</p>
 
-      <div class="topnav">
-        <div class="logo">K</div>
-        <div class="spacer">fff</div>
-        <div class="seach-holder">
-          <site-search :jsonSearch="jsonSearch"></site-search>
+      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+        <div slot="content">
+          <pre><code>
+  &lt;site-search
+    :jsonSearch=&quot;jsonSearch&quot;
+    :quickLinks=&quot;[
+      {name: 'faq'},
+      {name: 'terms'},
+      {name: 'privacy'},
+      {name: 'allstars'}
+    ]&gt;
+  &lt;/site-search&gt;
+
+  &lt;script&gt;
+
+    import * as searchData from &quot;./../location&quot;;
+
+
+    data() {
+      return {
+        jsonSearch: [] = (searchData).data
+      };
+    }
+
+  &lt;/script&gt;
+
+
+  </code></pre>
         </div>
-        <div class="buttons">sdf</div>
+      </accordion>
+
+      <h2>Seach Demo</h2>
+      <div class="row">
+        <site-search
+          :jsonSearch="jsonSearch"
+          :quickLinks="[{name: 'faq'}, {name: 'terms'}, {name: 'privacy'}, {name: 'allstars'}]"
+        ></site-search>
       </div>
-      <div class="row">Content underneigth</div>
+
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Props</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>jsonSearch</td>
+            <td>String</td>
+            <td>null</td>
+            <td>Name of the imported json (must be imported in parent)</td>
+          </tr>
+          <tr>
+            <td>quickLinks</td>
+            <td>Array</td>
+            <td>null</td>
+            <td>max of 4 links, each must match name of entry in search json</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
