@@ -17,7 +17,7 @@
 
     <div class="floating-links">
       <a class="floating-link" target="_blank" href="https://github.com/mbiemiller/beaker">
-        {{githubImg}}
+        <img :src="githubImg" />
       </a>
       <a
         class="floating-link"
