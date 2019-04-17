@@ -83,16 +83,10 @@ components: {
           <td>text size of tabs. Options are "small" and "large"</td>
         </tr>
         <tr>
-          <td>value</td>
+          <td>selected</td>
           <td>string</td>
           <td>null</td>
           <td>default selected tab</td>
-        </tr>
-        <tr>
-          <td>@input</td>
-          <td>function</td>
-          <td>null</td>
-          <td>text size of tabs. Options are "small" and "large"</td>
         </tr>
       </tbody>
     </table>
