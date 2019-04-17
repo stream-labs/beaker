@@ -12,11 +12,7 @@
     </a>
 
     <transition name="fade">
-      <div
-        :class="{ 's-pane-dropdown__menu--right': alignMenuRight }"
-        class="s-pane-dropdown__menu"
-        v-show="paneMenuOpen"
-      >
+      <div :class="menuAlignClass" class="s-pane-dropdown__menu" v-show="paneMenuOpen">
         <ul class="s-pane-dropdown__list">
           <li v-for="(item, idx) in paneList" :key="idx">
             <a
@@ -43,8 +39,8 @@ export default class PaneDropdown extends Vue {
   @Prop({ default: true })
   dropdownIcon!: boolean;
 
-  @Prop({ default: false })
-  alignMenuRight!: boolean;
+  @Prop({ default: null })
+  menuAlign!: string;
 
   paneMenuOpen = false;
   paneList = null;
@@ -55,6 +51,10 @@ export default class PaneDropdown extends Vue {
 
   destroyed() {
     document.removeEventListener("click", this.documentClick);
+  }
+
+  get menuAlignClass() {
+    return `s-pane-dropdown__menu--${this.menuAlign}`;
   }
 
   mounted() {
@@ -120,6 +120,11 @@ export default class PaneDropdown extends Vue {
     right: 0;
   }
 
+  &__menu--center {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   &__link {
     width: 100%;
     margin-left: 0;
@@ -157,6 +162,10 @@ export default class PaneDropdown extends Vue {
 
   &__toggle--active {
     color: @dark-2;
+
+    i {
+      color: @dark-2;
+    }
   }
 }
 
@@ -168,14 +177,20 @@ export default class PaneDropdown extends Vue {
       }
     }
 
+    &__toggle--active {
+      color: white;
+
+      i {
+        color: white;
+      }
+    }
+
     &__menu {
       background-color: @dark-4;
     }
 
     &__link,
     a {
-      color: @night-paragraph;
-
       &:hover {
         color: @night-title;
       }

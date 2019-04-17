@@ -27,14 +27,18 @@
     </div>
 
     <div class="section">
-      <h3>Align Menu Right</h3>
+      <h3>Menu Align</h3>
 
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content"></div>
-      </Accordion>
-
-      <pane-dropdown :alignMenuRight="true">
-        <span slot="title">Dropdown Menu</span>
+      <pane-dropdown :menuAlign="'right'">
+        <span slot="title">Right Dropdown Menu</span>
+        <a href="#">Hey I'm a longer link here</a>
+        <a href="#">Let's see how this looks</a>
+        <a href="#">I'm in a pane dropdown aligned to the right</a>
+      </pane-dropdown>
+      <br>
+      <br>
+      <pane-dropdown :menuAlign="'center'">
+        <span slot="title">Center Dropdown Menu</span>
         <a href="#">Hey I'm a longer link here</a>
         <a href="#">Let's see how this looks</a>
         <a href="#">I'm in a pane dropdown aligned to the right</a>
@@ -60,10 +64,14 @@
             <td>Show or hide dropdown icon.</td>
           </tr>
           <tr>
-            <td>alignMenuRight</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>Align the dropdown menu to the right side of its toggle.</td>
+            <td>menuAlign</td>
+            <td>string</td>
+            <td>null</td>
+            <td>
+              Default will align the menu to the left side of the toggle. Use
+              <code>right</code> or
+              <code>center</code> to align the dropdown menu to the right or center of its toggle.
+            </td>
           </tr>
         </tbody>
       </table>
