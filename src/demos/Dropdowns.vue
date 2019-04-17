@@ -6,9 +6,7 @@
       <h2>Pane Dropdown</h2>
       <h3>With Dropdown Icon</h3>
 
-      <Accordion
-        :openedTitle="'Hide Code'"
-        :closedTitle="'Show Code'">
+      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre>
 <code>&lt;pane-dropdown&gt;
@@ -29,27 +27,17 @@
     </div>
 
     <div class="section">
-      <h3>Without Dropdown Icon</h3>
+      <h3>Align Menu Right</h3>
 
-      <Accordion
-        :openedTitle="'Hide Code'"
-        :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre>
-<code>&lt;pane-dropdown :dropdown-icon=&quot;false&quot;&gt;
-  &lt;i slot=&quot;title&quot; class=&quot;icon-settings&quot;&gt;&lt;/i&gt;
-  &lt;a href=&quot;#&quot;&gt;Add&lt;/a&gt;
-  &lt;a href=&quot;#&quot;&gt;Update&lt;/a&gt;
-  &lt;a href=&quot;#&quot;&gt;Remove&lt;/a&gt;
-&lt;/pane-dropdown&gt;</code></pre>
-        </div>
+      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+        <div slot="content"></div>
       </Accordion>
 
-      <pane-dropdown :dropdown-icon="false">
-        <i slot="title" class="icon-settings"></i>
-        <a href="#">Add</a>
-        <a href="#">Update</a>
-        <a href="#">Remove</a>
+      <pane-dropdown :alignMenuRight="true">
+        <span slot="title">Dropdown Menu</span>
+        <a href="#">Hey I'm a longer link here</a>
+        <a href="#">Let's see how this looks</a>
+        <a href="#">I'm in a pane dropdown aligned to the right</a>
       </pane-dropdown>
     </div>
 
@@ -64,12 +52,18 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr></tr>
           <tr>
             <td>dropdownIcon</td>
             <td>boolean</td>
             <td>true</td>
             <td>Show or hide dropdown icon.</td>
+          </tr>
+          <tr>
+            <td>alignMenuRight</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>Align the dropdown menu to the right side of its toggle.</td>
           </tr>
         </tbody>
       </table>
@@ -92,9 +86,3 @@ import Tabs from "./../components/Tabs.vue";
 })
 export default class Dropdowns extends Vue {}
 </script>
-
-<style lang="less" scoped>
-.pane-dropdown {
-  display: inline-block !important;
-}
-</style>

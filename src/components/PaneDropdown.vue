@@ -12,7 +12,11 @@
     </a>
 
     <transition name="fade">
-      <div class="s-pane-dropdown__menu" v-show="paneMenuOpen">
+      <div
+        :class="{ 's-pane-dropdown__menu--right': alignMenuRight }"
+        class="s-pane-dropdown__menu"
+        v-show="paneMenuOpen"
+      >
         <ul class="s-pane-dropdown__list">
           <li v-for="(item, idx) in paneList" :key="idx">
             <a
@@ -38,6 +42,9 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 export default class PaneDropdown extends Vue {
   @Prop({ default: true })
   dropdownIcon!: boolean;
+
+  @Prop({ default: false })
+  alignMenuRight!: boolean;
 
   paneMenuOpen = false;
   paneList = null;
@@ -79,7 +86,7 @@ export default class PaneDropdown extends Vue {
 
 .s-pane-dropdown {
   position: relative;
-  display: flex;
+  display: inline-block;
 
   &__slot-list {
     display: none;
@@ -107,6 +114,10 @@ export default class PaneDropdown extends Vue {
         margin-bottom: 0;
       }
     }
+  }
+
+  &__menu--right {
+    right: 0;
   }
 
   &__link {
@@ -138,9 +149,9 @@ export default class PaneDropdown extends Vue {
     }
 
     i {
-      font-size: 16px;
       color: @icon;
-      margin-left: 4px;
+      .margin-left();
+      margin-top: -2px;
     }
   }
 
@@ -148,13 +159,6 @@ export default class PaneDropdown extends Vue {
     color: @dark-2;
   }
 }
-
-// .pane-dropdown--left {
-//   .pane-dropdown__menu {
-//     left: 0;
-//     right: auto;
-//   }
-// }
 
 .night {
   .s-pane-dropdown {
