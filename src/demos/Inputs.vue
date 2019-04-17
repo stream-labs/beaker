@@ -218,15 +218,15 @@ components: {
 
       <div class="section">
         <h3>Single Checkbox</h3>
-        <checkbox :label="'Checkbox label'" v-model="checkboxValue0"></checkbox>
+        <checkbox :name="'checkbox1'" :label="'Checkbox label'" v-model="checkboxValue0"></checkbox>
       </div>
 
       <div class="section">
         <h3>Checkbox Group</h3>
         <div class="s-checkbox-group">
-          <checkbox :label="'Checkbox label'" v-model="checkboxValue1"></checkbox>
-          <checkbox :label="'Checkbox label'" v-model="checkboxValue2"></checkbox>
-          <checkbox :label="'Checkbox label'" v-model="checkboxValue3"></checkbox>
+          <checkbox :name="'checkbox2'" :label="'Checkbox label'" v-model="checkboxValue1"></checkbox>
+          <checkbox :name="'checkbox3'" :label="'Checkbox label'" v-model="checkboxValue2"></checkbox>
+          <checkbox :name="'checkbox4'" :label="'Checkbox label'" v-model="checkboxValue3"></checkbox>
         </div>
       </div>
     </div>
@@ -262,9 +262,9 @@ components: {
       </div>
 
       <div class="section">
-        <status-switch v-model="statusValue" />
-        <status-switch v-model="statusValue" />
-        <status-switch v-model="statusValue" />
+        <status-switch v-model="statusValue"/>
+        <status-switch v-model="statusValue"/>
+        <status-switch v-model="statusValue"/>
       </div>
 
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
