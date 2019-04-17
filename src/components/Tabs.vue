@@ -3,7 +3,7 @@
     <div class="s-tabs-nav-wrapper">
       <div class="s-tabs-nav" :class="className">
         <div v-if="hasPrev" @click="scrollLeft" class="s-tabs-nav__control s-has-prev">
-          <i class="icon-down icon-left"></i>
+          <i class="icon-down"></i>
         </div>
 
         <div
@@ -15,7 +15,7 @@
           's-has-prev': hasPrev
         }"
         >
-          <span
+          <div
             v-for="tab in tabs"
             :key="tab.value"
             class="s-tab"
@@ -23,13 +23,19 @@
             :style="selectTabSize"
             @click="showTab(tab.value)"
           >
-            {{ tab.name }}
-            <span :class="`s-icon-${tab.icon}`"></span>
-          </span>
+            <router-link :to="`#/${tab.value}`" class="s-tab-link">
+              {{ tab.name }}
+              <span :class="`icon-${tab.icon}`"></span>
+            </router-link>
+            <!-- <div>
+              {{ tab.name }}
+              <span :class="`icon-${tab.icon}`"></span>
+            </div>-->
+          </div>
         </div>
 
         <div v-if="hasNext" @click="scrollRight" class="s-tabs-nav__control s-has-next">
-          <i class="icon-down icon-right"></i>
+          <i class="icon-down"></i>
         </div>
       </div>
     </div>
@@ -145,6 +151,10 @@ export default class Tabs extends Vue {
 
 <style lang="less" scoped>
 @import "./../styles/Imports";
+
+a {
+  text-decoration: none;
+}
 
 .s-tabs-wrapper {
   height: 100%;
@@ -262,7 +272,6 @@ export default class Tabs extends Vue {
 
 .s-tab {
   color: @day-paragraph;
-  .padding-bottom(1.375);
   border-bottom: 2px solid transparent;
   .margin-right(2.5);
   cursor: pointer;
@@ -274,6 +283,11 @@ export default class Tabs extends Vue {
     color: @day-title;
     border-color: @dark-2;
   }
+}
+
+.s-tab-link {
+  .padding-bottom(1.375);
+  display: inline-block;
 }
 
 .s-tab-content {
