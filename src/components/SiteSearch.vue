@@ -27,20 +27,19 @@
         v-if="phaseTwo && limitedResult.length <= 0"
       >
         <div class="s-sitesearch-quicklinks">Quick Links</div>
-        <router-link
-          :to="searchData[quickLinkLoc[i]].route"
-          tag="div"
+        <a
+          :href="searchData[quickLinkLoc[i]].route"
+
           v-for="(suggested, i) in suggestedLinks"
           :key="suggested.name"
-          exact
+          class="s-sitesearch-results"
         >
-          <a class="s-sitesearch-results">
-            <div class="s-sitesearch__result--image">
-              <i :class="searchData[quickLinkLoc[i]].image" class="s-sitesearch__result--image"></i>
-            </div>
-            <div class="s-sitesearch__result--title">{{ searchData[quickLinkLoc[i]].title }}</div>
-          </a>
-        </router-link>
+          <div class="s-sitesearch__result--image">
+            <i :class="searchData[quickLinkLoc[i]].image" class="s-sitesearch__result--image"></i>
+          </div>
+          <div class="s-sitesearch__result--title">{{ searchData[quickLinkLoc[i]].title }}</div>
+        </a>
+
       </div>
       <div
         class="s-sitesearch-results__cont"
@@ -48,20 +47,18 @@
         v-if="phaseTwo && limitedResult.length >= 1"
       >
         <transition-group name="s-sitesearch--fadeX">
-          <router-link
-            :to="searchResult.route"
-            tag="div"
+          <a
+            :href="searchResult.route"
+
             v-for="searchResult in limitedResult"
             :key="searchResult.name"
-            exact
+            class="s-sitesearch-results"
           >
-            <a class="s-sitesearch-results">
-              <div class="s-sitesearch__result--image">
-                <i :class="searchResult.image" class="s-sitesearch__result--image"></i>
-              </div>
-              <div class="s-sitesearch__result--title">{{ searchResult.title }}</div>
-            </a>
-          </router-link>
+            <div class="s-sitesearch__result--image">
+              <i :class="searchResult.image" class="s-sitesearch__result--image"></i>
+            </div>
+            <div class="s-sitesearch__result--title">{{ searchResult.title }}</div>
+          </a>
         </transition-group>
       </div>
     </transition-group>
