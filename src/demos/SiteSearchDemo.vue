@@ -3,7 +3,6 @@
     <div class="section">
       <h1>Site Search</h1>
       <p>This site search is in very early beta stages, it is not ready for prod</p>
-
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre><code>
@@ -36,7 +35,7 @@
       </accordion>
 
       <h2>Seach Demo</h2>
-      <div class="row">
+      <div class="row topnav">
         <site-search
           :jsonSearch="jsonSearch"
           :quickLinks="[{name: 'faq'}, {name: 'terms'}, {name: 'privacy'}, {name: 'allstars'}]"
@@ -88,43 +87,10 @@ export default class SiteSearchDemo extends Vue {
 }
 </script>
 
-
 <style lang="less">
 @import "./../styles/Imports";
 
 .topnav {
-  width: 100%;
   height: 40px;
-  display: flex;
-  flex-direction: row;
-
-  .logo {
-    display: inline-flex;
-    width: 40px;
-    height: 40px;
-    flex-grow: 0;
-    background-color: @teal;
-  }
-
-  .spacer {
-    display: inline-flex;
-    height: 40px;
-    flex-grow: 1;
-    background-color: #ff99ff;
-  }
-
-  .search-holder {
-    display: inline-flex;
-    height: 40px;
-    flex-grow: 0;
-  }
-
-  .buttons {
-    display: inline-flex;
-    height: 40px;
-    width: 200px;
-    flex-grow: 0;
-    background-color: @teal;
-  }
 }
 </style>
