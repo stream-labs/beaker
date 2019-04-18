@@ -103,7 +103,7 @@ export default class AppsNav extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
 .s-apps-nav {

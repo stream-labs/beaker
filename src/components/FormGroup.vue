@@ -20,7 +20,7 @@ export default class FormGroup extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
 .s-form-group {
