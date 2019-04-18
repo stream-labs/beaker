@@ -38,7 +38,14 @@
       <div class="row topnav">
         <site-search
           :jsonSearch="jsonSearch"
-          :quickLinks="[{name: 'faq'}, {name: 'terms'}, {name: 'privacy'}, {name: 'allstars'}]"
+          :quickLinks="[
+    {name: 'donationsettings'},
+    {name: 'd-alertbox'},
+    {name: 'creatorsites'},
+    {name: 'merch'},
+    {name: 'd-facemasks'},
+    {name: 'streamlabs-obs'}
+    ]"
         ></site-search>
       </div>
 
@@ -62,7 +69,7 @@
             <td>quickLinks</td>
             <td>Array</td>
             <td>null</td>
-            <td>max of 4 links, each must match name of entry in search json</td>
+            <td>max of 6 links, each must match name of entry in search json</td>
           </tr>
         </tbody>
       </table>
