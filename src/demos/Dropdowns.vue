@@ -43,6 +43,17 @@
         <a href="#">Let's see how this looks</a>
         <a href="#">I'm in a pane dropdown aligned to the right</a>
       </pane-dropdown>
+      <br>
+      <br>
+      <pane-dropdown :custom="true">
+        <span slot="title">Custom Dropdown Menu</span>
+        <div>
+          hey
+          <span>watsup</span>
+          <br>
+          <b>put whatever you want in here</b>
+        </div>
+      </pane-dropdown>
     </div>
 
     <div class="section">

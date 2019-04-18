@@ -13,7 +13,9 @@
 
     <transition name="fade">
       <div :class="menuAlignClass" class="s-pane-dropdown__menu" v-show="paneMenuOpen">
-        <ul class="s-pane-dropdown__list">
+        <slot v-if="custom"></slot>
+
+        <ul class="s-pane-dropdown__list" v-else>
           <li v-for="(item, idx) in paneList" :key="idx">
             <a
               :href="item.href"
@@ -25,7 +27,7 @@
       </div>
     </transition>
 
-    <span ref="panelinks" class="s-pane-dropdown__slot-list">
+    <span v-if="!custom" ref="panelinks" class="s-pane-dropdown__slot-list">
       <slot></slot>
     </span>
   </div>
@@ -41,6 +43,9 @@ export default class PaneDropdown extends Vue {
 
   @Prop({ default: null })
   menuAlign!: string;
+
+  @Prop({ default: false })
+  custom!: boolean;
 
   paneMenuOpen = false;
   paneList = null;
