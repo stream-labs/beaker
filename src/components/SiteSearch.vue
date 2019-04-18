@@ -238,7 +238,6 @@ export default class SiteSearch extends Vue {
   border-radius: @radius;
   height: 40px;
   max-width: 500px;
-  min-width: 305px;
   position: relative;
   transform-origin: top;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -386,11 +385,5 @@ export default class SiteSearch extends Vue {
     color: @icon;
   }
 
-  .s-sitesearch-results {
-    &:hover {
-      background-color: @night-dropdown-bg;
-      color: @night-title;
-    }
-  }
 }
 </style>
