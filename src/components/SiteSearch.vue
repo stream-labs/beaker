@@ -72,13 +72,11 @@ export default class SiteSearch extends Vue {
     search_input: HTMLInputElement;
   };
 
-  private searchInput: Number = 0;
   result: any = [];
   private isOpen: Boolean = false;
   private phaseOne: Boolean = false;
   private phaseTwo: Boolean = false;
-  private searchOpen: Boolean = false;
-  private resultLimit: Number = 5;
+  private resultLimit: Number = 7;
   private fuse: any = null;
   private value: String = "";
   private quickLinkLoc: any = [];
@@ -86,9 +84,6 @@ export default class SiteSearch extends Vue {
   @Prop()
   jsonSearch!: any;
   searchData = this.jsonSearch;
-
-  @Prop({ default: "beaker-dummy" })
-  searchLib!: string;
 
   @Prop({ default: "" })
   search!: String;
@@ -136,6 +131,12 @@ export default class SiteSearch extends Vue {
     } else {
       return false;
     }
+  }
+
+  get limitedResult() {
+    return this.resultLimit
+      ? this.result.slice(0, this.resultLimit).sort(this.sortWeight)
+      : this.result;
   }
 
   @Watch("searchData")
@@ -197,16 +198,12 @@ export default class SiteSearch extends Vue {
     }
   }
 
-  mounted() {
-    this.initFuse();
+  sortWeight(a, b) {
+    return b.weight - a.weight;
   }
 
-  get limitedResult() {
-    return this.resultLimit
-      ? this.result
-          .slice(0, this.resultLimit)
-          .sort((a, b) => b.weight - a.weight)
-      : this.result;
+  mounted() {
+    this.initFuse();
   }
 }
 </script>
@@ -248,7 +245,7 @@ export default class SiteSearch extends Vue {
 
   &.s-sitesearch--phase-one {
     background-color: @day-bg;
-    height: 215px;
+    height: 280px;
   }
 
   > i {
@@ -261,6 +258,10 @@ export default class SiteSearch extends Vue {
   flex-direction: row;
   align-items: center;
   .input-padding();
+}
+
+.s-sitesearch--icon {
+  height: 14px;
 }
 
 .s-sitesearch-results__cont {
