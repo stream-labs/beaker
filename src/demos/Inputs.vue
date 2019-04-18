@@ -235,7 +235,7 @@ components: {
       <h2>Radios</h2>
       <div class="section">
         <div class="s-checkbox-group">
-          <radio :label="'Enable'" :name="'radio-group'" v-model="radioValue1"></radio>
+          <radio :label="'Enable'" :name="'radio-group'" v-model="radioValue1" :onClick="test"></radio>
           <radio :label="'Disable'" :name="'radio-group'" v-model="radioValue2"></radio>
         </div>
       </div>
@@ -343,6 +343,10 @@ import FormGroup from "./../components/FormGroup.vue";
   }
 })
 export default class Inputs extends Vue {
+  test() {
+    console.log("test");
+  }
+
   checkboxValue0 = true;
   checkboxValue1 = false;
   checkboxValue2 = true;
