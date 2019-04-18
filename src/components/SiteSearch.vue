@@ -11,7 +11,7 @@
         ref="search_input"
         type="text"
         v-model="value"
-        placeholder="Search..."
+        placeholder="Search Streamlabs..."
         class="s-sitesearch__input"
         @focus="playOpeningSequence"
         @blur="playClosingSequence"
@@ -29,7 +29,6 @@
         <div class="s-sitesearch-quicklinks">Quick Links</div>
         <a
           :href="searchData[quickLinkLoc[i]].route"
-
           v-for="(suggested, i) in suggestedLinks"
           :key="suggested.name"
           class="s-sitesearch-results"
@@ -39,7 +38,6 @@
           </div>
           <div class="s-sitesearch__result--title">{{ searchData[quickLinkLoc[i]].title }}</div>
         </a>
-
       </div>
       <div
         class="s-sitesearch-results__cont"
@@ -49,7 +47,6 @@
         <transition-group name="s-sitesearch--fadeX">
           <a
             :href="searchResult.route"
-
             v-for="searchResult in limitedResult"
             :key="searchResult.name"
             class="s-sitesearch-results"
@@ -243,7 +240,8 @@ export default class SiteSearch extends Vue {
   border: 1px solid @day-input-border;
   border-radius: @radius;
   height: 40px;
-  width: 500px;
+  max-width: 500px;
+  min-width: 305px;
   position: relative;
   transform-origin: top;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
