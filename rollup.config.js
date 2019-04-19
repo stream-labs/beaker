@@ -5,7 +5,6 @@ const vue = require("rollup-plugin-vue");
 const rebaseAssets = require("rollup-plugin-rebase");
 const svg = require("rollup-plugin-svg");
 const minify = require("rollup-plugin-babel-minify");
-const serve = require("rollup-plugin-serve");
 
 module.exports = {
   input: "src/system.js",
