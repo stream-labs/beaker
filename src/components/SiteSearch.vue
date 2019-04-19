@@ -389,6 +389,19 @@ export default class SiteSearch extends Vue {
     }
   }
 
+
+  .s-sitesearch-results {
+    &:hover {
+      background-color: @night-dropdown-bg;
+      cursor: pointer;
+
+      .s-sitesearch__result--image,
+      .s-sitesearch__result--title {
+        color: @night-title;
+      }
+    }
+  }
+
   .s-sitesearch-results__cont {
     .s-sitesearch-quicklinks {
       color: @label;
