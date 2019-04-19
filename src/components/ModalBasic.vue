@@ -61,8 +61,8 @@ export default class ModalBasic extends Vue {
 </script>
 
 <style lang="less" scoped>
-@import './../styles/Imports';
-@import './../styles/components/Modals';
+@import "./../styles/Imports";
+@import "./../styles/components/Modals";
 
 .s-modal-body {
   border-radius: 8px 8px 0 0;

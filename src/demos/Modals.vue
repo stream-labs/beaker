@@ -34,7 +34,7 @@ components: {
       <ModalComp
         :name="'basic'"
         :type="'basic'"
-        :title="'UI Modal1'"
+        :title="'UI Modal'"
         :subTitle="'Subtitle'"
         :text="'Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.'"
       ></ModalComp>
@@ -281,7 +281,7 @@ import Button from "./../components/Button.vue";
 export default class Modals extends Vue { }
 </script>
 <style lang="less" scoped>
-@import './../styles/Imports';
+@import "./../styles/Imports";
 
 .buttons {
   .margin-v-sides(4);

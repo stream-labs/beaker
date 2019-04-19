@@ -50,8 +50,8 @@ export default class ModalRedirect extends Vue {
 
 
 <style lang="less" scoped>
-@import './../styles/Imports';
-@import './../styles/components/Modals';
+@import "./../styles/Imports";
+@import "./../styles/components/Modals";
 
 .s-redirect {
   text-align: center;

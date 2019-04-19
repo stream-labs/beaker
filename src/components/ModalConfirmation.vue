@@ -70,8 +70,8 @@ export default class ModalConfirmation extends Vue {
 
 
 <style lang="less" scoped>
-@import './../styles/Imports';
-@import './../styles/components/Modals';
+@import "./../styles/Imports";
+@import "./../styles/components/Modals";
 
 .s-modal-container {
   .padding(3);
