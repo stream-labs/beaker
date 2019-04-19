@@ -5,9 +5,10 @@
       :name="name"
       :checked="value"
       :ref="label"
+      @click="onInputClick"
       @change="$emit('input', $event.target.checked)"
     >
-    <label @click="onLabelClick()">{{ label }}</label>
+    <label @click="onLabelClick">{{ label }}</label>
   </div>
 </template>
 
@@ -25,7 +26,15 @@ export default class Radio extends Vue {
   @Prop()
   value!: Boolean;
 
+  @Prop()
+  onClick!: Function;
+
+  onInputClick() {
+    this.onClick && this.onClick();
+  }
+
   onLabelClick(): void {
+    this.onClick && this.onClick();
     let input: any = this.$refs[`${this.label}`];
     input.checked = true;
   }

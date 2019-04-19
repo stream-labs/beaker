@@ -218,15 +218,15 @@ components: {
 
       <div class="section">
         <h3>Single Checkbox</h3>
-        <checkbox :label="'Checkbox label'" v-model="checkboxValue0"></checkbox>
+        <checkbox :name="'checkbox1'" :label="'Checkbox label'" v-model="checkboxValue0"></checkbox>
       </div>
 
       <div class="section">
         <h3>Checkbox Group</h3>
         <div class="s-checkbox-group">
-          <checkbox :label="'Checkbox label'" v-model="checkboxValue1"></checkbox>
-          <checkbox :label="'Checkbox label'" v-model="checkboxValue2"></checkbox>
-          <checkbox :label="'Checkbox label'" v-model="checkboxValue3"></checkbox>
+          <checkbox :name="'checkbox2'" :label="'Checkbox label'" v-model="checkboxValue1"></checkbox>
+          <checkbox :name="'checkbox3'" :label="'Checkbox label'" v-model="checkboxValue2"></checkbox>
+          <checkbox :name="'checkbox4'" :label="'Checkbox label'" v-model="checkboxValue3"></checkbox>
         </div>
       </div>
     </div>
@@ -235,7 +235,7 @@ components: {
       <h2>Radios</h2>
       <div class="section">
         <div class="s-checkbox-group">
-          <radio :label="'Enable'" :name="'radio-group'" v-model="radioValue1"></radio>
+          <radio :label="'Enable'" :name="'radio-group'" v-model="radioValue1" :onClick="test"></radio>
           <radio :label="'Disable'" :name="'radio-group'" v-model="radioValue2"></radio>
         </div>
       </div>
@@ -262,9 +262,9 @@ components: {
       </div>
 
       <div class="section">
-        <status-switch v-model="statusValue" />
-        <status-switch v-model="statusValue" />
-        <status-switch v-model="statusValue" />
+        <status-switch v-model="statusValue"/>
+        <status-switch v-model="statusValue"/>
+        <status-switch v-model="statusValue"/>
       </div>
 
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
@@ -343,6 +343,10 @@ import FormGroup from "./../components/FormGroup.vue";
   }
 })
 export default class Inputs extends Vue {
+  test() {
+    console.log("test");
+  }
+
   checkboxValue0 = true;
   checkboxValue1 = false;
   checkboxValue2 = true;

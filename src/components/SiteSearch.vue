@@ -11,7 +11,7 @@
         ref="search_input"
         type="text"
         v-model="value"
-        placeholder="Search..."
+        placeholder="Search Streamlabs..."
         class="s-sitesearch__input"
         @focus="playOpeningSequence"
         @blur="playClosingSequence"
@@ -29,7 +29,6 @@
         <div class="s-sitesearch-quicklinks">Quick Links</div>
         <a
           :href="searchData[quickLinkLoc[i]].route"
-
           v-for="(suggested, i) in suggestedLinks"
           :key="suggested.name"
           class="s-sitesearch-results"
@@ -39,7 +38,6 @@
           </div>
           <div class="s-sitesearch__result--title">{{ searchData[quickLinkLoc[i]].title }}</div>
         </a>
-
       </div>
       <div
         class="s-sitesearch-results__cont"
@@ -49,7 +47,6 @@
         <transition-group name="s-sitesearch--fadeX">
           <a
             :href="searchResult.route"
-
             v-for="searchResult in limitedResult"
             :key="searchResult.name"
             class="s-sitesearch-results"
@@ -75,13 +72,11 @@ export default class SiteSearch extends Vue {
     search_input: HTMLInputElement;
   };
 
-  private searchInput: Number = 0;
   result: any = [];
   private isOpen: Boolean = false;
   private phaseOne: Boolean = false;
   private phaseTwo: Boolean = false;
-  private searchOpen: Boolean = false;
-  private resultLimit: Number = 5;
+  private resultLimit: Number = 7;
   private fuse: any = null;
   private value: String = "";
   private quickLinkLoc: any = [];
@@ -89,9 +84,6 @@ export default class SiteSearch extends Vue {
   @Prop()
   jsonSearch!: any;
   searchData = this.jsonSearch;
-
-  @Prop({ default: "beaker-dummy" })
-  searchLib!: string;
 
   @Prop({ default: "" })
   search!: String;
@@ -139,6 +131,12 @@ export default class SiteSearch extends Vue {
     } else {
       return false;
     }
+  }
+
+  get limitedResult() {
+    return this.resultLimit
+      ? this.result.slice(0, this.resultLimit).sort(this.sortWeight)
+      : this.result;
   }
 
   @Watch("searchData")
@@ -200,16 +198,12 @@ export default class SiteSearch extends Vue {
     }
   }
 
-  mounted() {
-    this.initFuse();
+  sortWeight(a, b) {
+    return b.weight - a.weight;
   }
 
-  get limitedResult() {
-    return this.resultLimit
-      ? this.result
-          .slice(0, this.resultLimit)
-          .sort((a, b) => b.weight - a.weight)
-      : this.result;
+  mounted() {
+    this.initFuse();
   }
 }
 </script>
@@ -218,8 +212,15 @@ export default class SiteSearch extends Vue {
 @import "./../styles/Imports";
 
 .s-sitesearch__input {
+  margin: 0;
   border: none;
-  padding: none;
+  height: 39px;
+  font-size: 14px;
+  .padding--input();
+  background: @day-input-bg;
+  font-family: "Roboto";
+  color: @day-title;
+  width: 100%;
 }
 
 .s-sitesearch__result--title {
@@ -243,14 +244,14 @@ export default class SiteSearch extends Vue {
   border: 1px solid @day-input-border;
   border-radius: @radius;
   height: 40px;
-  width: 500px;
+  max-width: 500px;
   position: relative;
   transform-origin: top;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
   &.s-sitesearch--phase-one {
     background-color: @day-bg;
-    height: 215px;
+    height: 265px;
   }
 
   > i {
@@ -265,6 +266,14 @@ export default class SiteSearch extends Vue {
   .input-padding();
 }
 
+.s-sitesearch--icon {
+  display: flex;
+  align-items: center;
+  height: 39px;
+  color: @icon;
+  padding-bottom: 1px; // Aligns Icon Better Visually
+}
+
 .s-sitesearch-results__cont {
   display: flex;
   flex-direction: column;
@@ -272,9 +281,11 @@ export default class SiteSearch extends Vue {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
   .s-sitesearch-quicklinks {
+    display: flex;
+    align-items: center;
+    height: 32px;
     font-size: 12px;
     color: @label;
-    .margin-bottom();
     .input-padding();
   }
 }
@@ -289,6 +300,7 @@ export default class SiteSearch extends Vue {
 .s-sitesearch-results {
   display: flex;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 32px;
   flex-direction: row;
   align-items: center;
   align-content: center;
@@ -387,11 +399,5 @@ export default class SiteSearch extends Vue {
     color: @icon;
   }
 
-  .s-sitesearch-results {
-    &:hover {
-      background-color: @night-dropdown-bg;
-      color: @night-title;
-    }
-  }
 }
 </style>

@@ -2,6 +2,8 @@
   <div class="s-checkbox">
     <input
       type="checkbox"
+      :name="name"
+      :value="value"
       :checked="value"
       :ref="label"
       @change="$emit('input', $event.target.checked)"
@@ -17,6 +19,9 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 export default class Checkbox extends Vue {
   @Prop()
   label!: String;
+
+  @Prop()
+  name!: String;
 
   @Prop()
   value!: Boolean;

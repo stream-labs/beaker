@@ -2,8 +2,8 @@
   <modal
     name="new-feature"
     :adaptive="true"
-    :width="'100%'"
-    :height="'auto'"
+    :width="width"
+    :height="height"
     classes="s-overlay__wrapper"
     :clickToClose="true"
     @opened="opened"
@@ -71,6 +71,12 @@ Vue.use(VueMq, {
   }
 })
 export default class NewFeatureOverlay extends Vue {
+  @Prop({ default: "100%" })
+  width!: string | number;
+
+  @Prop({ default: "auto" })
+  height!: string | number;
+
   @Prop()
   label!: string;
 

@@ -10,7 +10,7 @@
     <div class="s-colorpicker__preview" :style="{ backgroundColor: color }" @click="showPicker()"></div>
     <picker
       class="s-colorpicker"
-      :value="color"
+      :value="colors"
       v-if="displayPicker"
       :disable-alpha="true"
       :disable-fields="true"
@@ -36,15 +36,24 @@ export default class ColorPicker extends Vue {
   @Prop({ default: "#31c3ac" })
   defaultColor!: any;
 
+  @Prop()
+  value!: any;
+
   private displayPicker: Boolean = false;
   private backgroundColor: String = "";
   private color: String = this.defaultColor;
 
-  @Prop()
-  value!: any;
+  colors: object = {
+    hex: "#194d33",
+    hsl: { h: 150, s: 0.5, l: 0.2, a: 1 },
+    hsv: { h: 150, s: 0.66, v: 0.3, a: 1 },
+    rgba: { r: 25, g: 77, b: 51, a: 1 },
+    a: 1
+  };
 
   updateFromPicker(value: any) {
     this.color = value.hex;
+    this.colors = value;
     this.$emit("input", this.color);
   }
 
