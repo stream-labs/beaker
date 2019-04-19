@@ -95,7 +95,7 @@ export default class Badge extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
 // Standout labels, used for 'New', 'Beta', 'Pro', etc

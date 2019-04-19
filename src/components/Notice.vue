@@ -4,7 +4,7 @@
       <div class="s-notice__icon-bg" :class="`s-bg-image__${bgColor}`"></div>
       <div class="s-notice__body">
         <div class="s-notice__icon">
-          <i class="s-icon" :class="`icon-${icon}`"></i>
+          <i class="s-icon" :class="`s-notice__icon-${icon} icon-${icon}`"></i>
         </div>
         <div class="s-notice__detail">
           <h2 class="s-notice__title" :class="`s-notice__title--${titleColor}`">{{title}}</h2>
@@ -62,7 +62,7 @@ export default class Notice extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
 .s-notice {
@@ -130,11 +130,11 @@ p {
   background-size: contain;
 }
 
-.icon-information {
+.s-notice__icon-information {
   color: @light-5;
 }
 
-.icon-error {
+.s-notice__icon-error {
   color: @warning;
 }
 

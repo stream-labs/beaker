@@ -163,7 +163,7 @@ export default class Button extends Vue {
 }
 </style>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
 .s-button {

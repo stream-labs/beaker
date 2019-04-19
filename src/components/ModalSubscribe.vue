@@ -9,7 +9,7 @@
   >
     <div class="s-modal-container">
       <div class="s-subscribe-icon-box">
-        <i class="icon-close" @click="$modal.hide('modal-subscribe')"></i>
+        <i class="s-subscribe-icon icon-close" @click="$modal.hide('modal-subscribe')"></i>
       </div>
       <div class="s-subscribe-upper">
         <div class="s-subscribe-title-box">
@@ -81,7 +81,7 @@ export default class ModalSubscribe extends Vue {
 </script>
 
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 @import "./../styles/components/Modals";
 
@@ -98,7 +98,7 @@ export default class ModalSubscribe extends Vue {
   overflow: hidden;
 }
 
-.icon-close {
+.s-subscribe-icon {
   float: right;
   cursor: pointer;
 }

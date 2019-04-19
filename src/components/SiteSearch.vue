@@ -208,7 +208,7 @@ export default class SiteSearch extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
 .s-sitesearch__input {

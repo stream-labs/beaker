@@ -152,7 +152,7 @@ export default class NewFeatureOverlay extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 ::-webkit-media-controls {
   display: none !important;
@@ -188,7 +188,7 @@ export default class NewFeatureOverlay extends Vue {
   .padding(4);
 }
 
-.icon {
+.s-icon {
   cursor: pointer;
 }
 
