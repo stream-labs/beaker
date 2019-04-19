@@ -212,8 +212,15 @@ export default class SiteSearch extends Vue {
 @import "./../styles/Imports";
 
 .s-sitesearch__input {
+  margin: 0;
   border: none;
-  padding: none;
+  height: 39px;
+  font-size: 14px;
+  .padding--input();
+  background: @day-input-bg;
+  font-family: "Roboto";
+  color: @day-title;
+  width: 100%;
 }
 
 .s-sitesearch__result--title {
@@ -244,7 +251,7 @@ export default class SiteSearch extends Vue {
 
   &.s-sitesearch--phase-one {
     background-color: @day-bg;
-    height: 280px;
+    height: 265px;
   }
 
   > i {
@@ -260,7 +267,11 @@ export default class SiteSearch extends Vue {
 }
 
 .s-sitesearch--icon {
-  height: 14px;
+  display: flex;
+  align-items: center;
+  height: 39px;
+  color: @icon;
+  padding-bottom: 1px; // Aligns Icon Better Visually
 }
 
 .s-sitesearch-results__cont {
@@ -270,9 +281,11 @@ export default class SiteSearch extends Vue {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
   .s-sitesearch-quicklinks {
+    display: flex;
+    align-items: center;
+    height: 32px;
     font-size: 12px;
     color: @label;
-    .margin-bottom();
     .input-padding();
   }
 }
@@ -287,6 +300,7 @@ export default class SiteSearch extends Vue {
 .s-sitesearch-results {
   display: flex;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 32px;
   flex-direction: row;
   align-items: center;
   align-content: center;
