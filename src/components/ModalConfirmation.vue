@@ -1,6 +1,6 @@
 <template>
   <modal
-    name="modal-confirmation"
+    :name="name"
     :classes="'s-modal-wrapper'"
     :maxWidth="width"
     :minWidth="minWidth"
@@ -16,7 +16,7 @@
             :variation="'default'"
             :title="'Cancel'"
             :size="'fixed-width'"
-            @click="$modal.hide('modal-confirmation')"
+            @click="$modal.hide(name)"
           ></Button>
           <Button
             @click="onConfirmHandler"
@@ -40,6 +40,9 @@ import Button from "./../components/Button.vue";
   }
 })
 export default class ModalConfirmation extends Vue {
+  @Prop()
+  name!: string;
+
   @Prop({ default: 600 })
   width!: number;
 
@@ -67,8 +70,8 @@ export default class ModalConfirmation extends Vue {
 
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
-@import "./../styles/components/Modals";
+@import './../styles/Imports';
+@import './../styles/components/Modals';
 
 .s-modal-container {
   .padding(3);

@@ -2,6 +2,7 @@
   <div>
     <div v-if="type === 'basic'">
       <ModalBasic
+        :name="name"
         :title="title"
         :subTitle="subTitle"
         :text="text"
@@ -12,6 +13,7 @@
 
     <div v-if="type === 'subscribe'">
       <ModalSubscribe
+        :name="name"
         :title="title"
         :subTitle="subTitle"
         :text="text"
@@ -24,11 +26,12 @@
     </div>
 
     <div v-if="type === 'redirect'">
-      <ModalRedirect :title="title" :text="text" :width="width" :minWidth="minWidth"></ModalRedirect>
+      <ModalRedirect :name="name" :title="title" :text="text" :width="width" :minWidth="minWidth"></ModalRedirect>
     </div>
 
     <div v-if="type === 'confirmation'">
       <ModalConfirmation
+        :name="name"
         :subTitle="subTitle"
         :text="text"
         :width="width"
@@ -62,6 +65,9 @@ Vue.use(VModal);
   }
 })
 export default class ModalComp extends Vue {
+  @Prop()
+  name!: string;
+
   @Prop({ default: 600 })
   width!: number;
 
