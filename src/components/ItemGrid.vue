@@ -14,7 +14,7 @@ export default class ItemGrid extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
 .s-item-grid {
