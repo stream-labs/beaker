@@ -34,14 +34,11 @@ export default class ColorPicker extends Vue {
   };
 
   @Prop({ default: "#31c3ac" })
-  defaultColor!: any;
-
-  @Prop()
   value!: any;
 
   private displayPicker: Boolean = false;
   private backgroundColor: String = "";
-  private color: String = this.defaultColor;
+  private color: String = this.value;
 
   colors: object = {
     hex: "#194d33",
