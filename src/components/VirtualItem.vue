@@ -64,7 +64,7 @@ export default class VitualItem extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
 .s-virtual-item {
@@ -81,6 +81,13 @@ export default class VitualItem extends Vue {
 
   &.is-selected {
     background-color: @selected;
+    .s-virtual-item__name {
+      color: @white;
+    }
+
+    .s-virtual-item__rarity {
+      color: @night-paragraph;
+    }
   }
 
   &:hover {
@@ -96,16 +103,6 @@ export default class VitualItem extends Vue {
 
 .s-virtual-item__rarity {
   .margin-top();
-}
-
-.is-selected {
-  .s-virtual-item__name {
-    color: @white;
-  }
-
-  .s-virtual-item__rarity {
-    color: @night-paragraph;
-  }
 }
 
 .s-virtual-item__selection-count {

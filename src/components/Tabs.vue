@@ -3,7 +3,7 @@
     <div class="s-tabs-nav-wrapper">
       <div class="s-tabs-nav" :class="className">
         <div v-if="hasPrev" @click="scrollLeft" class="s-tabs-nav__control s-has-prev">
-          <i class="icon-down"></i>
+          <i class="icon-back"></i>
         </div>
 
         <div
@@ -24,8 +24,9 @@
             @click="showTab(tab.value)"
           >
             <router-link :to="`#/${tab.value}`" class="s-tab-link">
+              <i v-if="tab.icon" :class="`icon-${tab.icon}`"></i>
+
               {{ tab.name }}
-              <span :class="`icon-${tab.icon}`"></span>
             </router-link>
             <!-- <div>
               {{ tab.name }}
@@ -35,7 +36,7 @@
         </div>
 
         <div v-if="hasNext" @click="scrollRight" class="s-tabs-nav__control s-has-next">
-          <i class="icon-down"></i>
+          <i class="icon-back"></i>
         </div>
       </div>
     </div>
@@ -149,7 +150,7 @@ export default class Tabs extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
 a {
@@ -201,6 +202,10 @@ a {
   }
 
   &.s-has-next {
+    .icon-back {
+      transform: rotate(180deg);
+    }
+
     &:before {
       right: 16px;
       background: -moz-linear-gradient(
@@ -279,15 +284,24 @@ a {
   position: relative;
   .transition();
   .weight(@medium);
+
   &.is-active {
-    color: @day-title;
     border-color: @dark-2;
+
+    .s-tab-link {
+      color: @day-title;
+    }
+  }
+
+  i {
+    .margin-right();
   }
 }
 
 .s-tab-link {
   .padding-bottom(1.375);
-  display: inline-block;
+  display: flex;
+  text-decoration: none;
 }
 
 .s-tab-content {
@@ -306,9 +320,12 @@ a {
   .s-tab {
     color: @night-paragraph;
 
-    &.s-is-active {
-      color: @night-title;
+    &.is-active {
       border-color: @light-1;
+
+      .s-tab-link {
+        color: @night-title;
+      }
     }
   }
 

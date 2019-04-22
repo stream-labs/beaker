@@ -79,7 +79,7 @@ export default class Loading extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
 .s-loader__bg {
