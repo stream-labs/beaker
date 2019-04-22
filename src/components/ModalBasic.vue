@@ -1,6 +1,6 @@
 <template>
   <modal
-    name="modal-basic"
+    :name="name"
     :classes="'s-modal-wrapper'"
     :maxWidth="width"
     :minWidth="minWidth"
@@ -21,7 +21,7 @@
             :variation="'default'"
             :title="'Close'"
             :size="'fixed-width'"
-            @click="$modal.hide('modal-basic')"
+            @click="$modal.hide(name)"
           ></Button>
           <Button :variation="'action'" :title="'Confirm'" :size="'fixed-width'"></Button>
         </div>
@@ -40,6 +40,9 @@ import Button from "./../components/Button.vue";
   }
 })
 export default class ModalBasic extends Vue {
+  @Prop()
+  name!: string;
+
   @Prop({ default: 600 })
   width!: number;
 

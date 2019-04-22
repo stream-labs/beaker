@@ -1,6 +1,6 @@
 <template>
   <modal
-    name="modal-redirect"
+    :name="name"
     :classes="'s-modal-wrapper'"
     :maxWidth="width"
     :minWidth="minWidth"
@@ -31,6 +31,9 @@ import Spinner from "./../components/Spinner.vue";
   }
 })
 export default class ModalRedirect extends Vue {
+  @Prop()
+  name!: string;
+
   @Prop({ default: 600 })
   width!: number;
 

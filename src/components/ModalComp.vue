@@ -2,6 +2,7 @@
   <div>
     <div v-if="type === 'basic'">
       <ModalBasic
+        :name="selectName"
         :title="title"
         :subTitle="subTitle"
         :text="text"
@@ -12,6 +13,7 @@
 
     <div v-if="type === 'subscribe'">
       <ModalSubscribe
+        :name="selectName"
         :title="title"
         :subTitle="subTitle"
         :text="text"
@@ -24,11 +26,18 @@
     </div>
 
     <div v-if="type === 'redirect'">
-      <ModalRedirect :title="title" :text="text" :width="width" :minWidth="minWidth"></ModalRedirect>
+      <ModalRedirect
+        :name="selectName"
+        :title="title"
+        :text="text"
+        :width="width"
+        :minWidth="minWidth"
+      ></ModalRedirect>
     </div>
 
     <div v-if="type === 'confirmation'">
       <ModalConfirmation
+        :name="selectName"
         :subTitle="subTitle"
         :text="text"
         :width="width"
@@ -62,6 +71,9 @@ Vue.use(VModal);
   }
 })
 export default class ModalComp extends Vue {
+  @Prop()
+  name!: string;
+
   @Prop({ default: 600 })
   width!: number;
 
@@ -94,5 +106,41 @@ export default class ModalComp extends Vue {
 
   @Prop()
   buttonVariation!: string;
+
+  get selectName() {
+    switch (this.type) {
+      case "basic":
+        if (this.name) {
+          return this.name;
+        } else {
+          return (this.name = "modal-basic");
+        }
+        break;
+
+      case "subscribe":
+        if (this.name) {
+          return this.name;
+        } else {
+          return (this.name = "modal-subscribe");
+        }
+        break;
+
+      case "redirect":
+        if (this.name) {
+          return this.name;
+        } else {
+          return (this.name = "modal-redirect");
+        }
+        break;
+
+      case "confirmation":
+        if (this.name) {
+          return this.name;
+        } else {
+          return (this.name = "modal-confirmation");
+        }
+        break;
+    }
+  }
 }
 </script>

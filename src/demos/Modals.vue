@@ -15,6 +15,7 @@ components: {
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre><code>&lt;ModalComp
+  :name=&quot;'basic'&quot;
   :type=&quot;'basic'&quot;
   :title=&quot;'UI Modal'&quot;
   :subTitle=&quot;'Subtitle'&quot;
@@ -24,7 +25,7 @@ components: {
 &lt;Button
 :variation=&quot;'default'&quot;
 :title=&quot;'modal'&quot;
- @click=&quot;$modal.show('modal-basic')&quot;&gt;
+ @click=&quot;$modal.show('basic')&quot;&gt;
 &lt;/Button&gt;
 </code></pre>
         </div>
@@ -37,8 +38,17 @@ components: {
         :text="'Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.'"
       ></ModalComp>
 
-      <div class="button-container button-container--left">
-        <Button :variation="'default'" :title="'modal'" @click="$modal.show('modal-basic')"></Button>
+      <ModalComp
+        :name="'modal-basic2'"
+        :type="'basic'"
+        :title="'UI Modal2'"
+        :subTitle="'Subtitle2'"
+        :text="'Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.'"
+      ></ModalComp>
+
+      <div class="s-button-container s-button-container--left">
+        <Button :variation="'default'" :title="'modal basic1'" @click="$modal.show('modal-basic')"></Button>
+        <Button :variation="'default'" :title="'modal basic2'" @click="$modal.show('modal-basic2')"></Button>
       </div>
     </div>
 
@@ -48,6 +58,7 @@ components: {
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre><code>&lt;ModalComp
+  :name=&quot;'subscribe'&quot;
   :type=&quot;'subscribe'&quot;
   :title=&quot;'Streamlabs'&quot;
   :subTitle=&quot;'Never pay for GIFs and effects again!'&quot;
@@ -60,7 +71,7 @@ components: {
 &lt;Button
   :variation=&quot;'default'&quot;
   :title=&quot;'modal subscribe'&quot;
-  @click=&quot;$modal.show('modal-subscribe')&quot;&gt;
+  @click=&quot;$modal.show('subscribe')&quot;&gt;
 &lt;/Button&gt;
 </code></pre>
         </div>
@@ -91,6 +102,7 @@ components: {
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre><code>&lt;ModalComp
+  :name=&quot;'redirect'&quot;
   :type=&quot;'redirect'&quot;
   :title=&quot;'Redirecting ...'&quot;
   :text=&quot;'Redirecting you to PayPal to update your method of payment. Click here if you have been waiting longer than 5 seconds.'&quot;&gt;
@@ -99,7 +111,7 @@ components: {
 &lt;Button
   :variation=&quot;'default'&quot;
   :title=&quot;'modal redirect'&quot;
-  @click=&quot;$modal.show('modal-redirect')&quot;&gt;
+  @click=&quot;$modal.show('redirect')&quot;&gt;
 &lt;/Button&gt;
 </code></pre>
         </div>
@@ -127,6 +139,7 @@ components: {
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre><code>&lt;ModalComp
+  :name=&quot;'confirmation'&quot;
   :type=&quot;'confirmation'&quot;
   :width=&quot;400&quot;
   :subTitle=&quot;'Delete ‘Streamlabs Pillow’'&quot;
@@ -136,7 +149,7 @@ components: {
 &lt;Button
   :variation=&quot;'warning'&quot;
   :title=&quot;'modal confirmation'&quot;
-  @click=&quot;$modal.show('modal-confirmation')&quot;&gt;
+  @click=&quot;$modal.show('confirmation')&quot;&gt;
 &lt;/Button&gt;
 </code></pre>
         </div>
@@ -170,6 +183,13 @@ components: {
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>null</td>
+          <td>name is optional. if you need specific name for the modal, use name prop. Also don't forget to change $modal.show() to the name you set as prop. <br>
+          ex. <code>:name="'modal-basic2'"</code><code>$modal.show('modal-basic2')</code></td>
+        </tr>
         <tr>
           <td>width</td>
           <td>number</td>
@@ -272,7 +292,7 @@ import Button from "./../components/Button.vue";
     Button
   }
 })
-export default class Modals extends Vue {}
+export default class Modals extends Vue { }
 </script>
 <style lang="less" scoped>
 @import "./../styles/Imports";

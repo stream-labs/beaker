@@ -1,6 +1,6 @@
 <template>
   <modal
-    name="modal-subscribe"
+    :name="name"
     :classes="'s-modal-wrapper'"
     :maxWidth="width"
     :minWidth="minWidth"
@@ -9,7 +9,7 @@
   >
     <div class="s-modal-container">
       <div class="s-subscribe-icon-box">
-        <i class="s-subscribe-icon icon-close" @click="$modal.hide('modal-subscribe')"></i>
+        <i class="icon-close" @click="$modal.hide(name)"></i>
       </div>
       <div class="s-subscribe-upper">
         <div class="s-subscribe-title-box">
@@ -54,6 +54,9 @@ import Badge from "./../components/Badge.vue";
   }
 })
 export default class ModalSubscribe extends Vue {
+  @Prop()
+  name!: string;
+
   @Prop({ default: 600 })
   width!: number;
 
