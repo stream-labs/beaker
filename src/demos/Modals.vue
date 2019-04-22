@@ -31,24 +31,23 @@ components: {
       </Accordion>
 
       <ModalComp
-        :name="'basic1'"
         :type="'basic'"
         :title="'UI Modal'"
         :subTitle="'Subtitle'"
         :text="'Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.'"
       ></ModalComp>
 
-        <ModalComp
-        :name="'basic2'"
+      <ModalComp
+        :name="'modal-basic2'"
         :type="'basic'"
         :title="'UI Modal2'"
         :subTitle="'Subtitle2'"
         :text="'Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.'"
       ></ModalComp>
 
-      <div class="button-container button-container--left">
-        <Button :variation="'default'" :title="'modal basic1'" @click="$modal.show('basic1')"></Button>
-        <Button :variation="'default'" :title="'modal basic2'" @click="$modal.show('basic2')"></Button>
+      <div class="s-button-container s-button-container--left">
+        <Button :variation="'default'" :title="'modal basic1'" @click="$modal.show('modal-basic')"></Button>
+        <Button :variation="'default'" :title="'modal basic2'" @click="$modal.show('modal-basic2')"></Button>
       </div>
     </div>
 
@@ -77,7 +76,6 @@ components: {
       </Accordion>
 
       <ModalComp
-        :name="'subscribe'"
         :type="'subscribe'"
         :title="'Streamlabs'"
         :subTitle="'Never pay for GIFs and effects again!'"
@@ -91,7 +89,7 @@ components: {
         <Button
           :variation="'default'"
           :title="'modal subscribe'"
-          @click="$modal.show('subscribe')"
+          @click="$modal.show('modal-subscribe')"
         ></Button>
       </div>
     </div>
@@ -117,7 +115,6 @@ components: {
       </Accordion>
 
       <ModalComp
-        :name="'redirect'"
         :type="'redirect'"
         :title="'Redirecting ...'"
         :text="'Redirecting you to PayPal to update your method of payment. Click here if you have been waiting longer than 5 seconds.'"
@@ -127,7 +124,7 @@ components: {
         <Button
           :variation="'default'"
           :title="'modal redirect'"
-          @click="$modal.show('redirect')"
+          @click="$modal.show('modal-redirect')"
         ></Button>
       </div>
     </div>
@@ -155,7 +152,6 @@ components: {
       </Accordion>
 
       <ModalComp
-        :name="'confirmation'"
         :type="'confirmation'"
         :width="400"
         :subTitle="'Delete ‘Streamlabs Pillow’'"
@@ -168,7 +164,7 @@ components: {
         <Button
           :variation="'warning'"
           :title="'modal confirmation'"
-          @click="$modal.show('confirmation')"
+          @click="$modal.show('modal-confirmation')"
         ></Button>
       </div>
     </div>
@@ -183,6 +179,13 @@ components: {
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>null</td>
+          <td>name is optional. if you need specific name for the modal, use name prop. Also don't forget to change $modal.show() to the name you set as prop. <br>
+          ex. <code>:name="'modal-basic2'"</code><code>$modal.show('modal-basic2')</code></td>
+        </tr>
         <tr>
           <td>width</td>
           <td>number</td>
