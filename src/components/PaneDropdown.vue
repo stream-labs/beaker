@@ -67,9 +67,11 @@ export default class PaneDropdown extends Vue {
   }
 
   mounted() {
-    let links: any = this.$refs.panelinks;
-    let [...list] = links.children;
-    this.paneList = list;
+    if (!this.custom) {
+      let links: any = this.$refs.panelinks;
+      let [...list] = links.children;
+      this.paneList = list;
+    }
   }
 
   documentClick(e: Event) {
