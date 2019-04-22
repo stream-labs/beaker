@@ -18,7 +18,7 @@
         </div>
       </Accordion>
 
-      <pane-dropdown>
+      <pane-dropdown :icon="'icon-information'">
         <template slot="title">Trending</template>
         <a href="#">Most Installed</a>
         <a href="#">Newly Added</a>
