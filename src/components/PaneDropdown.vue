@@ -17,7 +17,7 @@
 
         <ul class="s-pane-dropdown__list" v-else>
           <li v-for="(item, idx) in paneList" :key="idx">
-            <i :class="icon" class="s-pane-dropdown__icon"></i>
+            <i v-if="icons" :class="icons[idx]" class="s-pane-dropdown__icon"></i>
             <a
               :href="item.href"
               class="s-pane-dropdown__link"
@@ -40,7 +40,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 @Component({})
 export default class PaneDropdown extends Vue {
   @Prop()
-  icon!: string;
+  icons!: string[];
 
   @Prop({ default: true })
   dropdownIcon!: boolean;

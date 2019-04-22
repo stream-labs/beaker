@@ -18,7 +18,7 @@
         </div>
       </Accordion>
 
-      <pane-dropdown :icon="'icon-information'">
+      <pane-dropdown :icons="icons">
         <template slot="title">Trending</template>
         <a href="#">Most Installed</a>
         <a href="#">Newly Added</a>
@@ -84,6 +84,12 @@
               <code>center</code> to align the dropdown menu to the right or center of its toggle.
             </td>
           </tr>
+          <tr>
+            <td>icons</td>
+            <td>string[]</td>
+            <td>null</td>
+            <td>This is optional. icon displayed next to the link. icon is set by the order in the array.</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -103,5 +109,11 @@ import Tabs from "./../components/Tabs.vue";
     Tabs
   }
 })
-export default class Dropdowns extends Vue {}
+export default class Dropdowns extends Vue {
+  icons = [
+    "icon-check",
+    "icon-delete",
+    "icon-information"
+  ]
+}
 </script>
