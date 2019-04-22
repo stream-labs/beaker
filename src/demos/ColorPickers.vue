@@ -12,7 +12,7 @@
         </div>
       </accordion>
       <div class="row">
-        <color-picker></color-picker>
+        <color-picker :value="'#ccc'"></color-picker>
       </div>
       <table class="docs-table">
         <thead>
@@ -25,7 +25,7 @@
         </thead>
         <tbody>
           <tr>
-            <td>defaultColor</td>
+            <td>value</td>
             <td>String</td>
             <td>#31c3a2</td>
             <td>Color to show up on a fresh color picker</td>
