@@ -2,7 +2,7 @@
   <div>
     <div v-if="type === 'basic'">
       <ModalBasic
-        :name="SelectName"
+        :name="selectName"
         :title="title"
         :subTitle="subTitle"
         :text="text"
@@ -13,7 +13,7 @@
 
     <div v-if="type === 'subscribe'">
       <ModalSubscribe
-        :name="SelectName"
+        :name="selectName"
         :title="title"
         :subTitle="subTitle"
         :text="text"
@@ -27,7 +27,7 @@
 
     <div v-if="type === 'redirect'">
       <ModalRedirect
-        :name="SelectName"
+        :name="selectName"
         :title="title"
         :text="text"
         :width="width"
@@ -37,7 +37,7 @@
 
     <div v-if="type === 'confirmation'">
       <ModalConfirmation
-        :name="SelectName"
+        :name="selectName"
         :subTitle="subTitle"
         :text="text"
         :width="width"
@@ -107,7 +107,7 @@ export default class ModalComp extends Vue {
   @Prop()
   buttonVariation!: string;
 
-  get SelectName() {
+  get selectName() {
     switch (this.type) {
       case "basic":
         if (this.name) {
