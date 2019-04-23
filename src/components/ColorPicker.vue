@@ -2,12 +2,16 @@
   <div class="s-colorpicker-container" ref="colorpicker">
     <input
       type="text"
+      :value="displayColor"
+      :placeholder="placeholder"
       @click="showPicker()"
-      :value="color"
-      @change="updateFromInput"
-      placeholder="test"
+      @input="updateFromInput"
     >
-    <div class="s-colorpicker__preview" :style="{ backgroundColor: color }" @click="showPicker()"></div>
+    <div
+      class="s-colorpicker__preview"
+      :style="{ backgroundColor: displayColor }"
+      @click="showPicker()"
+    ></div>
     <picker
       class="s-colorpicker"
       :value="colors"
@@ -36,27 +40,29 @@ export default class ColorPicker extends Vue {
   @Prop({ default: "#31c3ac" })
   value!: any;
 
+  @Prop()
+  placeholder!: string;
+
   private displayPicker: Boolean = false;
   private backgroundColor: String = "";
-  private color: String = this.value;
+  private displayColor: String = this.value;
 
-  colors: object = {
-    hex: "#194d33",
-    hsl: { h: 150, s: 0.5, l: 0.2, a: 1 },
-    hsv: { h: 150, s: 0.66, v: 0.3, a: 1 },
-    rgba: { r: 25, g: 77, b: 51, a: 1 },
-    a: 1
-  };
+  colors: object = {};
+
+  mounted() {
+    this.colors = Object.assign({}, this.colors, { hex: this.displayColor });
+  }
 
   updateFromPicker(value: any) {
-    this.color = value.hex;
+    this.displayColor = value.hex;
     this.colors = value;
-    this.$emit("input", this.color);
+    this.$emit("input", this.displayColor);
   }
 
   updateFromInput(event: any) {
-    this.color = event.target.value;
-    this.$emit("input", this.color);
+    this.displayColor = event.target.value;
+    this.colors = event.target.value;
+    this.$emit("input", this.displayColor);
   }
 
   hidePicker() {

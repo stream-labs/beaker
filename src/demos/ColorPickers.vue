@@ -8,11 +8,11 @@
       <h2>Default Color Picker</h2>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-          <pre><code>&lt;color-picker :value=&quot;'#ccc'&quot;&gt;&lt;/color-picker&gt;</code></pre>
+          <pre><code>&lt;color-picker :v-model=&quot;color&quot;&gt;&lt;/color-picker&gt;</code></pre>
         </div>
       </accordion>
       <div class="row">
-        <color-picker :value="'#ccc'"></color-picker>
+        <color-picker v-model="color" :placeholder="'test'"></color-picker>
       </div>
       <table class="docs-table">
         <thead>
@@ -29,6 +29,12 @@
             <td>String</td>
             <td>#31c3a2</td>
             <td>Color to show up on a fresh color picker</td>
+          </tr>
+          <tr>
+            <td>placeholder</td>
+            <td>String</td>
+            <td>null</td>
+            <td>It shows as a placeholder in case of blank</td>
           </tr>
         </tbody>
       </table>
@@ -48,6 +54,6 @@ import ColorPicker from "./../components/ColorPicker.vue";
   }
 })
 export default class ColorPickers extends Vue {
-  msg = "hi"!;
+  color = "#ccc";
 }
 </script>
