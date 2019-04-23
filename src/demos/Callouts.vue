@@ -75,7 +75,7 @@ components: {
     <div class="section">
       <h2>Cookies Callout</h2>
       <p>Used on landing page to warn users about use of cookies on our site.</p>
-      <callout :variation="'cookies'" :icon="'info'" :closeable="true">
+      <callout :variation="'cookies'" :icon="'info'" :closeable="true" :onClose="cookieCalloutClosed">
         Cookies callout.
         <a href="#0">Link</a>
       </callout>
@@ -183,6 +183,12 @@ components: {
               <code>'info'</code>.
             </td>
           </tr>
+          <tr>
+            <td>onClose</td>
+            <td>Function</td>
+            <td>-</td>
+            <td>on close callback</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -200,7 +206,13 @@ import Callout from "./../components/Callout.vue";
     Callout
   }
 })
-export default class Callouts extends Vue {}
+export default class Callouts extends Vue {
+
+  cookieCalloutClosed() {
+   console.log("cookie callout closed");
+  }
+
+}
 </script>
 
 <style lang="less" scoped>
