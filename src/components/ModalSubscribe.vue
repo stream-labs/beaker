@@ -88,10 +88,6 @@ export default class ModalSubscribe extends Vue {
 @import "./../styles/Imports";
 @import "./../styles/components/Modals";
 
-.s-modal-title {
-  .margin-bottom(0) !important;
-}
-
 .s-subscribe-upper,
 .s-subscribe-bottom {
   .padding-v-sides();
