@@ -141,30 +141,29 @@ export default class PaneDropdown extends Vue {
   }
 
   &__icon {
-    .margin-right(0.5);
+    .margin-right();
   }
 
   &__list {
     .margin(2);
     padding: 0;
     list-style-type: none;
+
     li {
       display: flex;
       align-items: center;
     }
+
     a {
       text-decoration: none;
       white-space: nowrap;
       display: block;
       .margin-bottom();
     }
-    i {
-      .margin-right(0.5);
-    }
-  }
 
-  &__icon {
-    .margin-right(0.5);
+    i {
+      .margin-right();
+    }
   }
 
   &__toggle {
