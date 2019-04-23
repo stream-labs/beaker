@@ -24,11 +24,15 @@ export default class Callout extends Vue {
   @Prop({ default: false })
   closeable!: boolean;
 
+  @Prop()
+  onClose!: Function;
+
   closed: boolean = false;
   calloutClosedClass: string = "";
 
   closeCallout() {
     this.calloutClosedClass = "callout--closed";
+    typeof this.onClose === "function" && this.onClose();
   }
 
   get calloutClass() {
