@@ -20,8 +20,12 @@
 
       <pane-dropdown>
         <template slot="title">Trending</template>
-        <a href="#">Most Installed</a>
-        <a href="#">Newly Added</a>
+        <a href="#">
+          <i class="icon-check"></i>Most Installed
+        </a>
+        <a href="#">
+          <i class="icon-delete"></i>Newly Added
+        </a>
         <a href="#">Trending</a>
       </pane-dropdown>
     </div>

@@ -17,6 +17,7 @@
 
         <ul class="s-pane-dropdown__list" v-else>
           <li v-for="(item, idx) in paneList" :key="idx">
+            <i v-if="item.children.length > 0" :class="item.children[0].className" class="s-pane-dropdown__icon"></i>
             <a
               :href="item.href"
               class="s-pane-dropdown__link"
@@ -38,6 +39,9 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class PaneDropdown extends Vue {
+  @Prop()
+  icons!: string[];
+
   @Prop({ default: true })
   dropdownIcon!: boolean;
 
@@ -63,9 +67,11 @@ export default class PaneDropdown extends Vue {
   }
 
   mounted() {
-    let links: any = this.$refs.panelinks;
-    let [...list] = links.children;
-    this.paneList = list;
+    if (!this.custom) {
+      let links: any = this.$refs.panelinks;
+      let [...list] = links.children;
+      this.paneList = list;
+    }
   }
 
   documentClick(e: Event) {
@@ -142,10 +148,22 @@ export default class PaneDropdown extends Vue {
     }
   }
 
+  &__icon {
+    .margin-right(0.5);
+  }
+
   &__list {
     .margin(2);
     padding: 0;
     list-style-type: none;
+    li {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__icon {
+    .margin-right(0.5);
   }
 
   &__toggle {
