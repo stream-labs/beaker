@@ -2,14 +2,14 @@
   <div class="s-colorpicker-container" ref="colorpicker">
     <input
       type="text"
-      :value="displayColor"
+      :value="value"
       :placeholder="placeholder"
       @click="showPicker()"
       @input="updateFromInput"
     >
     <div
       class="s-colorpicker__preview"
-      :style="{ backgroundColor: displayColor }"
+      :style="{ backgroundColor: value }"
       @click="showPicker()"
     ></div>
     <picker
@@ -45,25 +45,21 @@ export default class ColorPicker extends Vue {
 
   private displayPicker: Boolean = false;
   private backgroundColor: String = "";
-  private displayColor: String = "";
 
   colors: object = {};
 
   created() {
-    this.displayColor = this.value;
-    this.colors = Object.assign({}, this.colors, { hex: this.displayColor });
+    this.colors = Object.assign({}, this.colors, { hex: this.value });
   }
 
   updateFromPicker(value: any) {
-    this.displayColor = value.hex;
     this.colors = value;
-    this.$emit("input", this.displayColor);
+    this.$emit("input", value.hex);
   }
 
   updateFromInput(event: any) {
-    this.displayColor = event.target.value;
     this.colors = event.target.value;
-    this.$emit("input", this.displayColor);
+    this.$emit("input", event.target.value);
   }
 
   hidePicker() {
