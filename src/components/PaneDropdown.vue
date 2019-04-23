@@ -17,7 +17,7 @@
 
         <ul class="s-pane-dropdown__list" v-else>
           <li v-for="(item, idx) in paneList" :key="idx">
-            <i v-if="icons" :class="icons[idx]" class="s-pane-dropdown__icon"></i>
+            <i v-if="item.children.length > 0" :class="item.children[0].className" class="s-pane-dropdown__icon"></i>
             <a
               :href="item.href"
               class="s-pane-dropdown__link"
@@ -146,6 +146,10 @@ export default class PaneDropdown extends Vue {
     &:hover {
       color: @day-title;
     }
+  }
+
+  &__icon {
+    .margin-right(0.5);
   }
 
   &__list {
