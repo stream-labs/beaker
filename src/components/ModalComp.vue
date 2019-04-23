@@ -2,7 +2,7 @@
   <div>
     <div v-if="type === 'basic'">
       <ModalBasic
-        :name="selectName"
+        :name="modalName"
         :title="title"
         :subTitle="subTitle"
         :text="text"
@@ -13,7 +13,7 @@
 
     <div v-if="type === 'subscribe'">
       <ModalSubscribe
-        :name="selectName"
+        :name="modalName"
         :title="title"
         :subTitle="subTitle"
         :text="text"
@@ -27,7 +27,7 @@
 
     <div v-if="type === 'redirect'">
       <ModalRedirect
-        :name="selectName"
+        :name="modalName"
         :title="title"
         :text="text"
         :width="width"
@@ -37,7 +37,7 @@
 
     <div v-if="type === 'confirmation'">
       <ModalConfirmation
-        :name="selectName"
+        :name="modalName"
         :subTitle="subTitle"
         :text="text"
         :width="width"
@@ -107,37 +107,43 @@ export default class ModalComp extends Vue {
   @Prop()
   buttonVariation!: string;
 
-  get selectName() {
+  modalName: string = "";
+
+  mounted() {
+    this.selectName();
+  }
+
+  selectName() {
     switch (this.type) {
       case "basic":
         if (this.name) {
-          return this.name;
+          this.modalName = this.name;
         } else {
-          return (this.name = "modal-basic");
+          this.modalName = "modal-basic";
         }
         break;
 
       case "subscribe":
         if (this.name) {
-          return this.name;
+          this.modalName = this.name;
         } else {
-          return (this.name = "modal-subscribe");
+          this.modalName = "modal-subscribe";
         }
         break;
 
       case "redirect":
         if (this.name) {
-          return this.name;
+          this.modalName = this.name;
         } else {
-          return (this.name = "modal-redirect");
+          this.modalName = "modal-redirect";
         }
         break;
 
       case "confirmation":
         if (this.name) {
-          return this.name;
+          this.modalName = this.name;
         } else {
-          return (this.name = "modal-confirmation");
+          this.modalName = "modal-confirmation";
         }
         break;
     }

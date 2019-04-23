@@ -46,7 +46,7 @@ components: {
         :text="'Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.'"
       ></ModalComp>
 
-      <div class="s-button-container s-button-container--left">
+      <div class="s-button-container--left">
         <Button :variation="'default'" :title="'modal basic1'" @click="$modal.show('modal-basic')"></Button>
         <Button :variation="'default'" :title="'modal basic2'" @click="$modal.show('modal-basic2')"></Button>
       </div>
@@ -292,7 +292,7 @@ import Button from "./../components/Button.vue";
     Button
   }
 })
-export default class Modals extends Vue { }
+export default class Modals extends Vue {}
 </script>
 <style lang="less" scoped>
 @import "./../styles/Imports";
