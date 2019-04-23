@@ -15,7 +15,6 @@ components: {
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre><code>&lt;ModalComp
-  :name=&quot;'basic'&quot;
   :type=&quot;'basic'&quot;
   :title=&quot;'UI Modal'&quot;
   :subTitle=&quot;'Subtitle'&quot;
@@ -24,8 +23,8 @@ components: {
 
 &lt;Button
 :variation=&quot;'default'&quot;
-:title=&quot;'modal'&quot;
- @click=&quot;$modal.show('basic')&quot;&gt;
+:title=&quot;'basic1'&quot;
+ @click=&quot;$modal.show('modal-basic')&quot;&gt;
 &lt;/Button&gt;
 </code></pre>
         </div>
@@ -187,8 +186,12 @@ components: {
           <td>name</td>
           <td>string</td>
           <td>null</td>
-          <td>name is optional. if you need specific name for the modal, use name prop. Also don't forget to change $modal.show() to the name you set as prop. <br>
-          ex. <code>:name="'modal-basic2'"</code><code>$modal.show('modal-basic2')</code></td>
+          <td>
+            name is optional. if you need specific name for the modal, use name prop. Also don't forget to change $modal.show() to the name you set as prop.
+            <br>ex.
+            <code>:name="'modal-basic2'"</code>
+            <code>$modal.show('modal-basic2')</code>
+          </td>
         </tr>
         <tr>
           <td>width</td>
@@ -294,10 +297,3 @@ import Button from "./../components/Button.vue";
 })
 export default class Modals extends Vue {}
 </script>
-<style lang="less" scoped>
-@import "./../styles/Imports";
-
-.buttons {
-  .margin-v-sides(4);
-}
-</style>

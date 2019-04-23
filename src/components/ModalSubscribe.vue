@@ -84,7 +84,7 @@ export default class ModalSubscribe extends Vue {
 </script>
 
 
-<style lang="less">
+<style lang="less" scoped>
 @import "./../styles/Imports";
 @import "./../styles/components/Modals";
 

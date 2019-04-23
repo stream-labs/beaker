@@ -69,7 +69,7 @@ export default class ModalConfirmation extends Vue {
 </script>
 
 
-<style lang="less">
+<style lang="less" scoped>
 @import "./../styles/Imports";
 @import "./../styles/components/Modals";
 
