@@ -207,11 +207,9 @@ import Callout from "./../components/Callout.vue";
   }
 })
 export default class Callouts extends Vue {
-
   cookieCalloutClosed() {
-   console.log("cookie callout closed");
+    console.log("cookie callout closed");
   }
-
 }
 </script>
 
