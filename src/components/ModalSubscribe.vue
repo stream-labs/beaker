@@ -84,7 +84,7 @@ export default class ModalSubscribe extends Vue {
 </script>
 
 
-<style lang="less">
+<style lang="less" scoped>
 @import "./../styles/Imports";
 @import "./../styles/components/Modals";
 
@@ -95,6 +95,9 @@ export default class ModalSubscribe extends Vue {
 }
 
 .s-subscribe-icon-box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   .padding-v-sides(3);
   .padding-h-sides(3);
   .padding-bottom(0);
