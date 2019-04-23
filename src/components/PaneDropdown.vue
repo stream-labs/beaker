@@ -14,17 +14,9 @@
     <transition name="fade">
       <div :class="menuAlignClass" class="s-pane-dropdown__menu" v-show="paneMenuOpen">
         <slot v-if="custom"></slot>
-
-        <ul class="s-pane-dropdown__list" v-else>
-          <li v-for="(item, idx) in paneList" :key="idx">
-            <i v-if="item.children.length > 0" :class="item.children[0].className" class="s-pane-dropdown__icon"></i>
-            <a
-              :href="item.href"
-              class="s-pane-dropdown__link"
-              :class="item.className"
-            >{{ item.textContent }}</a>
-          </li>
-        </ul>
+        <div v-else class="s-pane-dropdown__list">
+          <slot></slot>
+        </div>
       </div>
     </transition>
 
@@ -159,6 +151,15 @@ export default class PaneDropdown extends Vue {
     li {
       display: flex;
       align-items: center;
+    }
+    a {
+      text-decoration: none;
+      white-space: nowrap;
+      display: block;
+      .margin-bottom();
+    }
+    i {
+      .margin-right(0.5);
     }
   }
 
