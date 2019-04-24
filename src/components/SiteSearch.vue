@@ -30,7 +30,7 @@
         <a
           :href="searchData[quickLinkLoc[i]].route"
           v-for="(suggested, i) in suggestedLinks"
-          :key="suggested.name"
+          :key="suggested.item.name"
           class="s-sitesearch-results"
         >
           <div class="s-sitesearch__result--image">
@@ -46,15 +46,15 @@
       >
         <transition-group name="s-sitesearch--fadeX">
           <a
-            :href="searchResult.route"
+            :href="searchResult.item.route"
             v-for="searchResult in limitedResult"
-            :key="searchResult.name"
+            :key="searchResult.item.name"
             class="s-sitesearch-results"
           >
             <div class="s-sitesearch__result--image">
-              <i :class="searchResult.image" class="s-sitesearch__result--image"></i>
+              <i :class="searchResult.item.image" class="s-sitesearch__result--image"></i>
             </div>
-            <div class="s-sitesearch__result--title">{{ searchResult.title }}</div>
+            <div class="s-sitesearch__result--title">{{ searchResult.item.title }}</div>
           </a>
         </transition-group>
       </div>
@@ -99,7 +99,9 @@ export default class SiteSearch extends Vue {
 
   get suggestedLinks() {
     return this.quickLinks.filter(i => {
-      let findResult: any = this.searchData.find(data => data.name === i.name);
+      let findResult: any = this.searchData.find(
+        data => data.name === i.item.name
+      );
       let suggestResult: any = this.searchData.indexOf(findResult);
       this.quickLinkLoc.push(suggestResult);
       return suggestResult;
@@ -109,7 +111,7 @@ export default class SiteSearch extends Vue {
   get options() {
     let options = {
       caseSensitive: false,
-      includeScore: false,
+      includeScore: true,
       includeMatches: false,
       tokenize: false,
       matchAllTokens: false,
@@ -199,7 +201,13 @@ export default class SiteSearch extends Vue {
   }
 
   sortWeight(a, b) {
-    return b.weight - a.weight;
+    let aResult: any = this.result.find(data => data.item.name === a.item.name);
+    let aLoc: any = this.result.indexOf(aResult);
+
+    let bResult: any = this.result.find(data => data.item.name === b.item.name);
+    let bLoc: any = this.result.indexOf(bResult);
+
+    return b.item.weight * bLoc.score - a.item.weight * aLoc.score;
   }
 
   mounted() {
