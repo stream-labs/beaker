@@ -14,6 +14,7 @@
     :formatter="prefix + '{value}' + suffix"
     :data="data"
     @callback="value => emitInput(value)"
+    :disabled="disabled"
   ></vue-slider-component>
 </template>
 
