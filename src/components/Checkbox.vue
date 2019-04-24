@@ -2,13 +2,12 @@
   <div class="s-checkbox">
     <input
       type="checkbox"
+      :id="id"
       :name="name"
       :value="value"
-      :checked="value"
-      :ref="label"
-      @change="$emit('input', $event.target.checked)"
+      :checked="isChecked"
     >
-    <label @click="onLabelClick()">{{ label }}</label>
+    <label :for="id">{{ label }}</label>
   </div>
 </template>
 
@@ -21,15 +20,16 @@ export default class Checkbox extends Vue {
   label!: String;
 
   @Prop()
+  id!: String;
+
+  @Prop()
   name!: String;
 
   @Prop()
-  value!: Boolean;
+  value!: String;
 
-  onLabelClick() {
-    let input: any = this.$refs[`${this.label}`];
-    input.checked = !input.checked;
-  }
+  @Prop()
+  isChecked!: Boolean;
 }
 </script>
 
