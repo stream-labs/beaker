@@ -218,15 +218,39 @@ components: {
 
       <div class="section">
         <h3>Single Checkbox</h3>
-        <checkbox :id="'checkbox1'" :name="'checkbox1'" :label="'Checkbox label'" v-model="checkboxValue1" :isChecked="true"></checkbox>
+        <checkbox
+          :id="'checkbox1'"
+          :name="'checkbox1'"
+          :label="'Checkbox label'"
+          v-model="checkboxValue1"
+          :isChecked="true"
+        ></checkbox>
       </div>
 
       <div class="section">
         <h3>Checkbox Group</h3>
         <div class="s-checkbox-group">
-        <checkbox :id="'checkbox2'" :name="'checkbox2'" :label="'Checkbox label'" v-model="checkboxValue2" :isChecked="false"></checkbox>
-        <checkbox :id="'checkbox3'" :name="'checkbox3'" :label="'Checkbox label'" v-model="checkboxValue3" :isChecked="true"></checkbox>
-        <checkbox :id="'checkbox4'" :name="'checkbox4'" :label="'Checkbox label'" v-model="checkboxValue4" :isChecked="false"></checkbox>
+          <checkbox
+            :id="'checkbox2'"
+            :name="'checkbox2'"
+            :label="'Checkbox label'"
+            v-model="checkboxValue2"
+            :isChecked="false"
+          ></checkbox>
+          <checkbox
+            :id="'checkbox3'"
+            :name="'checkbox3'"
+            :label="'Checkbox label'"
+            v-model="checkboxValue3"
+            :isChecked="true"
+          ></checkbox>
+          <checkbox
+            :id="'checkbox4'"
+            :name="'checkbox4'"
+            :label="'Checkbox label'"
+            v-model="checkboxValue4"
+            :isChecked="false"
+          ></checkbox>
         </div>
       </div>
     </div>
@@ -235,8 +259,21 @@ components: {
       <h2>Radios</h2>
       <div class="section">
         <div class="s-checkbox-group">
-          <radio :label="'Enable'" :name="'radio-group'" v-model="radioValue1" :onClick="test"></radio>
-          <radio :label="'Disable'" :name="'radio-group'" v-model="radioValue2"></radio>
+          <radio
+            :id="'radio1'"
+            :name="'radio-group'"
+            :label="'Enable'"
+            v-model="radioValue1"
+            :isChecked="true"
+          ></radio>
+          <radio
+            :id="'radio2'"
+            :name="'radio-group'"
+            :label="'Disable'"
+            v-model="radioValue2"
+          ></radio>
+          <!-- <radio :label="'Enable'" :name="'radio-group'" v-model="radioValue1" :onClick="test"></radio>
+          <radio :label="'Disable'" :name="'radio-group'" v-model="radioValue2"></radio> -->
         </div>
       </div>
     </div>
