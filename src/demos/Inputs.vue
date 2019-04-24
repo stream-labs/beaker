@@ -218,15 +218,15 @@ components: {
 
       <div class="section">
         <h3>Single Checkbox</h3>
-        <checkbox :name="'checkbox1'" :label="'Checkbox label'" v-model="checkboxValue0"></checkbox>
+        <checkbox :id="'checkbox1'" :name="'checkbox1'" :label="'Checkbox label'" v-model="checkboxValue1" :isChecked="true"></checkbox>
       </div>
 
       <div class="section">
         <h3>Checkbox Group</h3>
         <div class="s-checkbox-group">
-          <checkbox :name="'checkbox2'" :label="'Checkbox label'" v-model="checkboxValue1"></checkbox>
-          <checkbox :name="'checkbox3'" :label="'Checkbox label'" v-model="checkboxValue2"></checkbox>
-          <checkbox :name="'checkbox4'" :label="'Checkbox label'" v-model="checkboxValue3"></checkbox>
+        <checkbox :id="'checkbox2'" :name="'checkbox2'" :label="'Checkbox label'" v-model="checkboxValue2" :isChecked="false"></checkbox>
+        <checkbox :id="'checkbox3'" :name="'checkbox3'" :label="'Checkbox label'" v-model="checkboxValue3" :isChecked="true"></checkbox>
+        <checkbox :id="'checkbox4'" :name="'checkbox4'" :label="'Checkbox label'" v-model="checkboxValue4" :isChecked="false"></checkbox>
         </div>
       </div>
     </div>
@@ -347,10 +347,10 @@ export default class Inputs extends Vue {
     console.log("test");
   }
 
-  checkboxValue0 = true;
-  checkboxValue1 = false;
-  checkboxValue2 = true;
-  checkboxValue3 = false;
+  checkboxValue1 = "checkboxValue0";
+  checkboxValue2 = "checkboxValue1";
+  checkboxValue3 = "checkboxValue2";
+  checkboxValue4 = "checkboxValue3";
   selected = "Option A";
   multipleSelected = ["Option B", "Option D"];
   radioValue1 = true;
