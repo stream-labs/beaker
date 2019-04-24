@@ -39,13 +39,13 @@
         <site-search
           :jsonSearch="jsonSearch"
           :quickLinks="[
-    {name: 'donationsettings'},
-    {name: 'd-alertbox'},
-    {name: 'creatorsites'},
-    {name: 'merch'},
-    {name: 'd-facemasks'},
-    {name: 'streamlabs-obs'}
-    ]"
+          {item:{name:'donationsettings'}},
+          {item:{name: 'd-alertbox'}},
+          {item:{name: 'creatorsites'}},
+          {item:{name: 'merch'}},
+          {item:{name:'d-facemasks'}},
+          {item:{name:'streamlabs-obs'}}
+          ]"
         ></site-search>
       </div>
 
