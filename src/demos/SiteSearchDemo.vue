@@ -42,7 +42,7 @@
           {item:{name:'donationsettings'}},
           {item:{name: 'd-alertbox'}},
           {item:{name: 'creatorsites'}},
-          {item:{name: 'merch'}},
+          {item:{name: 'merchsetup'}},
           {item:{name:'d-facemasks'}},
           {item:{name:'streamlabs-obs'}}
           ]"
