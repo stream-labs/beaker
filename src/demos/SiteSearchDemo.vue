@@ -9,10 +9,12 @@
   &lt;site-search
     :jsonSearch=&quot;jsonSearch&quot;
     :quickLinks=&quot;[
-      {name: 'faq'},
-      {name: 'terms'},
-      {name: 'privacy'},
-      {name: 'allstars'}
+      {item:{name:'donationsettings'}},
+      {item:{name: 'd-alertbox'}},
+      {item:{name: 'creatorsites'}},
+      {item:{name: 'merchsetup'}},
+      {item:{name:'d-facemasks'}},
+      {item:{name:'streamlabs-obs'}}
     ]&gt;
   &lt;/site-search&gt;
 
@@ -42,7 +44,7 @@
           {item:{name:'donationsettings'}},
           {item:{name: 'd-alertbox'}},
           {item:{name: 'creatorsites'}},
-          {item:{name: 'merch'}},
+          {item:{name: 'merchsetup'}},
           {item:{name:'d-facemasks'}},
           {item:{name:'streamlabs-obs'}}
           ]"
