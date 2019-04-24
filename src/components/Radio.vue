@@ -2,13 +2,12 @@
   <div class="s-radio s-checkbox">
     <input
       type="radio"
+      :id="id"
       :name="name"
-      :checked="value"
-      :ref="label"
-      @click="onInputClick"
-      @change="$emit('input', $event.target.checked)"
+      :value="value"
+      :checked="isChecked"
     >
-    <label @click="onLabelClick">{{ label }}</label>
+    <label :for="id">{{ label }}</label>
   </div>
 </template>
 
@@ -21,23 +20,16 @@ export default class Radio extends Vue {
   label!: String;
 
   @Prop()
+  id!: String;
+
+  @Prop()
   name!: String;
 
   @Prop()
-  value!: Boolean;
+  value!: String;
 
   @Prop()
-  onClick!: Function;
-
-  onInputClick() {
-    this.onClick && this.onClick();
-  }
-
-  onLabelClick(): void {
-    this.onClick && this.onClick();
-    let input: any = this.$refs[`${this.label}`];
-    input.checked = true;
-  }
+  isChecked!: Boolean;
 }
 </script>
 
