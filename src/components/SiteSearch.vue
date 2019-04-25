@@ -112,17 +112,23 @@ export default class SiteSearch extends Vue {
     let options = {
       caseSensitive: false,
       includeScore: true,
-      includeMatches: true,
-      tokenize: true,
-      matchAllTokens: true,
-      findAllMatches: true,
+      includeMatches: false,
+      tokenize: false,
+      matchAllTokens: false,
+      findAllMatches: false,
       shouldSort: true,
-      threshold: 0.40,
+      threshold: 0.2,
       location: 0,
-      distance: 50,
+      distance: 0.90,
       maxPatternLength: 16,
-      minMatchCharLength: 2,
-      keys: ["keywords"]
+      minMatchCharLength: 1,
+      keys: [{
+        name: "keywords",
+        weight: 0.9
+      },{
+        name: "title",
+        weight: 0.1
+      }]
     };
     return options;
   }
@@ -135,10 +141,14 @@ export default class SiteSearch extends Vue {
     }
   }
 
+  get fullSort() {
+    return this.result.sort(this.sortWeight);
+  }
+
   get limitedResult() {
     return this.resultLimit
-      ? this.result.slice(0, this.resultLimit).sort(this.sortWeight)
-      : this.result;
+      ? this.fullSort.slice(0, this.resultLimit)
+      : this.fullSort;
   }
 
   @Watch("searchData")
