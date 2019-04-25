@@ -299,6 +299,7 @@ export default class Button extends Vue {
   &.is-focused,
   &:hover {
     background-color: darken(@teal, 4%);
+    color: @white;
   }
 }
 
