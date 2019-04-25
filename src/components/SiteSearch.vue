@@ -112,17 +112,17 @@ export default class SiteSearch extends Vue {
     let options = {
       caseSensitive: false,
       includeScore: true,
-      includeMatches: false,
-      tokenize: false,
-      matchAllTokens: false,
-      findAllMatches: false,
+      includeMatches: true,
+      tokenize: true,
+      matchAllTokens: true,
+      findAllMatches: true,
       shouldSort: true,
-      threshold: 0.6,
+      threshold: 0.40,
       location: 0,
-      distance: 100,
-      maxPatternLength: 32,
-      minMatchCharLength: 1,
-      keys: ["name"]
+      distance: 50,
+      maxPatternLength: 16,
+      minMatchCharLength: 2,
+      keys: ["keywords"]
     };
     return options;
   }
@@ -202,12 +202,11 @@ export default class SiteSearch extends Vue {
 
   sortWeight(a, b) {
     let aResult: any = this.result.find(data => data.item.name === a.item.name);
-    let aLoc: any = this.result.indexOf(aResult);
+
 
     let bResult: any = this.result.find(data => data.item.name === b.item.name);
-    let bLoc: any = this.result.indexOf(bResult);
 
-    return b.item.weight * bLoc.score - a.item.weight * aLoc.score;
+    return (b.item.weight * aResult.score) - (a.item.weight * bResult.score);
   }
 
   mounted() {
