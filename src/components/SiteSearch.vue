@@ -117,12 +117,18 @@ export default class SiteSearch extends Vue {
       matchAllTokens: false,
       findAllMatches: false,
       shouldSort: true,
-      threshold: 0.6,
+      threshold: 0.2,
       location: 0,
-      distance: 100,
-      maxPatternLength: 32,
+      distance: 0.90,
+      maxPatternLength: 16,
       minMatchCharLength: 1,
-      keys: ["name"]
+      keys: [{
+        name: "keywords",
+        weight: 0.9
+      },{
+        name: "title",
+        weight: 0.1
+      }]
     };
     return options;
   }
@@ -135,10 +141,14 @@ export default class SiteSearch extends Vue {
     }
   }
 
+  get fullSort() {
+    return this.result.sort(this.sortWeight);
+  }
+
   get limitedResult() {
     return this.resultLimit
-      ? this.result.slice(0, this.resultLimit).sort(this.sortWeight)
-      : this.result;
+      ? this.fullSort.slice(0, this.resultLimit)
+      : this.fullSort;
   }
 
   @Watch("searchData")
@@ -202,12 +212,11 @@ export default class SiteSearch extends Vue {
 
   sortWeight(a, b) {
     let aResult: any = this.result.find(data => data.item.name === a.item.name);
-    let aLoc: any = this.result.indexOf(aResult);
+
 
     let bResult: any = this.result.find(data => data.item.name === b.item.name);
-    let bLoc: any = this.result.indexOf(bResult);
 
-    return b.item.weight * bLoc.score - a.item.weight * aLoc.score;
+    return (b.item.weight * aResult.score) - (a.item.weight * bResult.score);
   }
 
   mounted() {
