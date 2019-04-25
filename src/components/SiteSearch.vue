@@ -15,6 +15,7 @@
         class="s-sitesearch__input"
         @focus="playOpeningSequence"
         @blur="playClosingSequence"
+        @keyup.esc="resetSearch"
       >
       <div class="s-sitesearch-status__cont">
         <div v-if="noResults">No Results</div>
@@ -196,6 +197,11 @@ export default class SiteSearch extends Vue {
         this.phaseTwo = !this.phaseTwo;
       }, 100);
     }
+  }
+
+  resetSearch() {
+    this.value = '';
+    this.playClosingSequence();
   }
 
   initFuse() {
