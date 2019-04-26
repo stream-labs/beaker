@@ -6,6 +6,7 @@
       :name="name"
       :value="value"
       :checked="isChecked"
+      @click="onClickAction"
     >
     <label :for="id">{{ label }}</label>
   </div>
@@ -30,6 +31,13 @@ export default class Radio extends Vue {
 
   @Prop()
   isChecked!: Boolean;
+
+  @Prop()
+  onClick!: Function;
+
+  onClickAction() {
+    typeof this.onClick === "function" && this.onClick();
+  }
 }
 </script>
 
