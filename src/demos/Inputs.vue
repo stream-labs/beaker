@@ -265,6 +265,7 @@ components: {
             :label="'Enable'"
             v-model="radioValue1"
             :isChecked="true"
+            :onClick="test"
           ></radio>
           <radio
             :id="'radio2'"
