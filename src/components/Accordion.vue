@@ -98,6 +98,7 @@ export default class Accordion extends Vue {
 
   get accordionClasses() {
     const classes: any = [];
+    console.log(classes);
 
     if (this.defaultBorder) {
       classes.push("s-accordion--no-border");

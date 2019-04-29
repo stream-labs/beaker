@@ -1,12 +1,15 @@
 <template>
-  <div class="s-toggle">
+  <div :class="[ 's-toggle', toggleClass ]">
     <button
       type="button"
       v-for="(val, key) in values"
       :key="val.id"
       :title="key | capitalize"
       @click="$emit('update:selected', key)"
-      :class="['s-toggle__option', { 's-toggle__option--active': selected === key }]"
+      :class="[
+        's-toggle__option',
+        { 's-toggle__option--active': selected === key }
+      ]"
       v-html="val"
     >{{ val }}</button>
   </div>
@@ -34,8 +37,17 @@ export default class Toggle extends Vue {
   @Prop()
   default!: string;
 
+  @Prop()
+  variation!: string;
+
   created() {
     this.$emit("update:selected", this.default);
+  }
+
+  get toggleClass() {
+    if (this.variation) {
+      return `s-toggle--${this.variation}`
+    }
   }
 }
 </script>
@@ -53,15 +65,37 @@ export default class Toggle extends Vue {
   &__option {
     .padding();
     border: none;
+    font-size: 14px;
     background-color: @day-section;
     color: @icon;
     .transition();
     outline: none;
     display: flex;
+    font-family: "Roboto", sans-serif;
 
     &--active {
       background-color: @dark-2;
       color: @white;
+    }
+  }
+
+  &--text {
+    .s-toggle__option {
+      padding: 8px 6px;
+
+      &:first-child {
+        padding-left: 8px;
+      }
+
+      &:last-child {
+        padding-right: 8px;
+      }
+
+      &--active {
+        background-color: @day-section;
+        color: @dark-2;
+        font-weight: 500;
+      }
     }
   }
 }
@@ -74,6 +108,15 @@ export default class Toggle extends Vue {
 
       &--active {
         background-color: @dark-2;
+      }
+    }
+
+    &--text {
+      .s-toggle__option {
+        &--active {
+          background-color: @dark-4;
+          color: @white;
+        }
       }
     }
   }
