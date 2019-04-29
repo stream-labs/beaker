@@ -118,6 +118,10 @@ export default class TextInput extends Vue {
     color: @day-title;
   }
 
+  input:focus + .s-form-field__label--error {
+    color: @red;
+  }
+
   .s-form-field--top {
     color: @day-paragraph;
   }
