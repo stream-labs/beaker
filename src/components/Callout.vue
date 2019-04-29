@@ -1,15 +1,12 @@
 <template>
-  <div
-    v-if="!closed"
-    class="callout"
-    :class="[ calloutClass, calloutClosedClass ]"
-    @transitionend.self="closed = true"
-  >
-    <i v-if="icon" :class="[calloutIcon]"></i>
+  <div v-if="!closed" class="s-callout" :class="[ calloutClass, calloutClosedClass ]">
     <span>
-      <slot/>
+      <i v-if="icon" :class="[calloutIcon]"></i>
+      <span>
+        <slot/>
+      </span>
+      <i v-if="closeable" class="icon-close s-callout__close-button" @click="closeCallout()"></i>
     </span>
-    <i v-if="closeable" class="icon-close callout__close-button" @click="closeCallout()"></i>
   </div>
 </template>
 
@@ -27,15 +24,19 @@ export default class Callout extends Vue {
   @Prop({ default: false })
   closeable!: boolean;
 
+  @Prop()
+  onClose!: Function;
+
   closed: boolean = false;
   calloutClosedClass: string = "";
 
   closeCallout() {
     this.calloutClosedClass = "callout--closed";
+    typeof this.onClose === "function" && this.onClose();
   }
 
   get calloutClass() {
-    return `callout--${this.variation}`;
+    return `s-callout--${this.variation}`;
   }
 
   get calloutIcon() {
@@ -48,21 +49,23 @@ export default class Callout extends Vue {
         return "icon-delete";
       case "info":
         return "icon-information";
+      case "cookies":
+        return "icon-information";
     }
   }
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
-.callout {
+.s-callout {
   position: relative;
   display: flex;
   align-items: center;
   .margin-bottom(3);
-  .padding();
-  height: 40px;
+  .padding-h-sides(2);
+  line-height: 40px;
   .radius();
   .transition();
   justify-content: center;
@@ -79,8 +82,8 @@ export default class Callout extends Vue {
 
   &__close-button {
     position: absolute;
-    top: 13px;
-    right: 8px;
+    top: 12px;
+    right: 16px;
     color: inherit;
     opacity: 0.6;
     .transition();
@@ -89,6 +92,10 @@ export default class Callout extends Vue {
     &:hover {
       opacity: 1;
     }
+  }
+
+  &.strong {
+    color: @white;
   }
 
   &--success {
@@ -102,8 +109,20 @@ export default class Callout extends Vue {
   }
 
   &--info {
-    background-color: @yellow-dark-semi;
-    color: @info-dark;
+    background-color: @yellow-semi;
+    color: @info;
+  }
+
+  &--success.strong {
+    background-color: @teal;
+  }
+
+  &--info.strong {
+    background-color: @info;
+  }
+
+  &--warning.strong {
+    background-color: @warning;
   }
 
   &.callout--closed {
@@ -111,6 +130,41 @@ export default class Callout extends Vue {
     margin: 0;
     padding: 0;
     opacity: 0;
+  }
+
+  &--cookies {
+    background-color: @dark-5;
+    color: @white;
+    justify-content: flex-start;
+    height: 48px;
+    line-height: 48px;
+    z-index: 100;
+    margin: 0 auto;
+    position: fixed;
+    bottom: 0;
+    right: calc(~"0% + 9px");
+    left: 0%;
+    .radius(0);
+
+    > span {
+      max-width: 1120px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 16px 1fr 16px;
+      align-items: center;
+      grid-gap: 8px;
+      margin: 0 auto;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .s-callout__close-button {
+      position: relative;
+      top: 0;
+      right: 0;
+    }
   }
 }
 </style>

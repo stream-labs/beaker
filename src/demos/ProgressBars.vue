@@ -5,7 +5,7 @@
       <h2>Default Progress Bar</h2>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-<pre><code>&lt;progress-bar :progressComplete=&quot;50&quot;&gt;&lt;/progress-bar&gt;</code></pre>
+          <pre><code>&lt;progress-bar :progressComplete=&quot;50&quot;&gt;&lt;/progress-bar&gt;</code></pre>
         </div>
       </accordion>
       <div class="row">

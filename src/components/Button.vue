@@ -8,16 +8,19 @@
     :to="to"
     :href="href"
     :type="type"
-    class="button"
+    class="s-button"
     :class="buttonClasses"
     :disabled="state === 'disabled'"
+    :style="buttonStyles"
     @click="$emit('click')"
+    :target="target"
   >
     <span>
       <span>
-        <i v-if="iconClass" :class="iconClass"></i>{{ title }}
+        <i v-if="iconClass" :class="iconClass"></i>
+        {{ title }}
       </span>
-      <span v-if="description" class="button__description">{{ description }}</span>
+      <span v-if="description" class="s-button__description">{{ description }}</span>
     </span>
     <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
     <span v-if="price">{{ price }}</span>
@@ -32,6 +35,16 @@ export default class Button extends Vue {
   @Prop()
   onClick!: {
     type: Function;
+  };
+
+  @Prop()
+  bgColor!: {
+    type: string;
+  };
+
+  @Prop()
+  textColor!: {
+    type: string;
   };
 
   @Prop()
@@ -63,6 +76,9 @@ export default class Button extends Vue {
     type: String;
     default: null;
   };
+
+  @Prop({ default: "_self" })
+  target!: String;
 
   // standard, medium, large, square
   @Prop()
@@ -101,19 +117,24 @@ export default class Button extends Vue {
     default: "default";
   };
 
+  buttonStyles: object = {
+    backgroundColor: this.bgColor,
+    color: this.textColor
+  };
+
   get buttonClasses() {
-    let classes = [];
+    const classes: any = [];
 
     if (this.variation) {
-      classes.push(`button--${this.variation}`);
+      classes.push(`s-button--${this.variation}`);
     }
 
     if (this.variation) {
-      classes.push(`button--${this.variation}`);
+      classes.push(`s-button--${this.variation}`);
     }
 
     if (this.size) {
-      classes.push(`button--${this.size}`);
+      classes.push(`s-button--${this.size}`);
     }
 
     if (this.state) {
@@ -124,7 +145,7 @@ export default class Button extends Vue {
   }
 
   get iconClass() {
-    let classes = [];
+    const classes: any = [];
 
     if (this.icon) {
       classes.push(`icon-${this.icon}`);
@@ -136,18 +157,17 @@ export default class Button extends Vue {
 </script>
 
 <style lang="less">
-.button-container {
+.s-button-container {
   display: flex;
   flex-wrap: wrap;
 }
 </style>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
-.button {
-  .padding-v-sides(@0);
-  .padding-h-sides(2);
+.s-button {
+  .input-padding();
   font-size: 14px;
   text-transform: capitalize;
   background: @day-button;
@@ -158,10 +178,9 @@ export default class Button extends Vue {
   -ms-user-select: none;
   white-space: nowrap;
   overflow: hidden;
-  margin: 0;
   display: inline-block;
   height: 40px;
-  line-height: 40px;
+  line-height: 38px;
   .transition();
   .weight(@medium);
   .radius();
@@ -180,8 +199,6 @@ export default class Button extends Vue {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -1px;
-    margin-bottom: -1px;
     opacity: 1;
     transition: opacity 275ms ease;
   }
@@ -191,11 +208,13 @@ export default class Button extends Vue {
   &:hover,
   &.is-hovered {
     background-color: darken(@day-button, 4%);
+    text-decoration: none;
   }
 
   &[disabled],
   &.is-disabled {
-    opacity: 0.6;
+    background-color: @day-button!important;
+    color: @light-4!important;
     cursor: not-allowed;
   }
 
@@ -219,10 +238,10 @@ export default class Button extends Vue {
   }
 }
 
-.button--small {
+.s-button--small {
   height: 32px;
-  padding: 0px 8px;
-  line-height: 32px;
+  .padding-h-sides();
+  line-height: 30px;
 
   .fas,
   .far,
@@ -231,12 +250,12 @@ export default class Button extends Vue {
   }
 }
 
-.button--large {
+.s-button--large {
   height: 64px;
   padding: 0px 64px;
   border-radius: 32px;
   font-size: 16px;
-  line-height: 64px;
+  line-height: 62px;
 
   .fas,
   .far,
@@ -245,7 +264,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--square {
+.s-button--square {
   height: 32px;
   width: 32px;
   .padding(0);
@@ -260,7 +279,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--default {
+.s-button--default {
   background-color: @day-button;
   color: @day-paragraph;
 
@@ -272,7 +291,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--action {
+.s-button--action {
   background-color: @teal;
   color: @white;
 
@@ -280,10 +299,11 @@ export default class Button extends Vue {
   &.is-focused,
   &:hover {
     background-color: darken(@teal, 4%);
+    color: @white;
   }
 }
 
-.button--action-alt {
+.s-button--action-alt {
   background-color: @dark-2;
 
   &:focus,
@@ -293,7 +313,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--twitch {
+.s-button--twitch {
   background-color: @twitch;
   color: @white;
 
@@ -304,7 +324,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--yt {
+.s-button--yt {
   background-color: @youtube;
   color: @white;
 
@@ -315,7 +335,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--mixer {
+.s-button--mixer {
   background-color: @mixer;
   color: @white;
 
@@ -326,7 +346,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--facebook {
+.s-button--facebook {
   background-color: @facebook;
   color: @white;
 
@@ -337,7 +357,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--periscope {
+.s-button--periscope {
   background-color: @periscope;
   color: @white;
 
@@ -348,7 +368,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--picarto {
+.s-button--picarto {
   background-color: @picarto;
   color: @white;
 
@@ -359,7 +379,18 @@ export default class Button extends Vue {
   }
 }
 
-.button--warning {
+.s-button--paypal-blue {
+  background-color: @paypal;
+  color: @white;
+
+  &:focus,
+  &.is-focused,
+  &:hover {
+    background-color: darken(@paypal, 4%);
+  }
+}
+
+.s-button--warning {
   color: @warning;
   background-color: rgba(251, 72, 76, 0.16);
 
@@ -370,7 +401,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--slobs-download {
+.s-button--slobs-download {
   display: flex;
   align-items: center;
   height: auto;
@@ -379,7 +410,7 @@ export default class Button extends Vue {
   border-radius: 100px;
   font-size: 16px;
   height: 72px;
-  .button--action;
+  .s-button--action;
 
   > span {
     display: flex;
@@ -394,7 +425,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--editor {
+.s-button--editor {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -410,22 +441,22 @@ export default class Button extends Vue {
   }
 }
 
-.button--full-width {
+.s-button--full-width {
   width: 100%;
 }
 
-.button--subscribe,
-.button--paypal {
+.s-button--subscribe,
+.s-button--paypal {
   display: flex;
   justify-content: space-between;
   text-transform: unset;
-  .button--large;
-  .button--full-width;
-  .button--action;
+  .s-button--large;
+  .s-button--full-width;
+  .s-button--action;
   .padding-h-sides(4);
 }
 
-.button--paypal {
+.s-button--paypal {
   background-color: @paypal-yellow;
 
   &:before {
@@ -455,15 +486,15 @@ export default class Button extends Vue {
   }
 }
 
-.button--fixed-width {
+.s-button--fixed-width {
   width: 96px;
 }
 
-.button--navigation {
+.s-button--navigation {
   background: @day-section;
   color: @day-title;
   height: auto;
-  line-height: 24px;
+  line-height: 22px;
   height: 24px;
 
   &:hover {
@@ -476,7 +507,7 @@ export default class Button extends Vue {
   }
 }
 
-.button--allstars {
+.s-button--allstars {
   background-color: @yellow;
 
   &:hover {
@@ -484,7 +515,7 @@ export default class Button extends Vue {
   }
 }
 
-.login-button {
+.s-login-button {
   padding: 0;
   display: flex;
   align-items: center;
@@ -511,24 +542,24 @@ export default class Button extends Vue {
   }
 }
 
-.button-container {
-  .button {
+.s-button-container {
+  .s-button {
     .margin-left(2);
   }
 }
 
-.button-container--left {
-  .button {
+.s-button-container--left {
+  .s-button {
     .margin-right(2);
     .margin-left(@0);
   }
 }
 
-.button-group {
+.s-button-group {
   margin-bottom: 0;
   width: 250px;
 
-  .button {
+  .s-button {
     font-size: 14px;
     float: left;
     margin-left: -1px;
@@ -554,28 +585,29 @@ export default class Button extends Vue {
   }
 }
 
-.button--hidden {
+.s-button--hidden {
   display: none;
 }
 
-.button--table {
+.s-button--table {
   line-height: 14px;
 }
 
-.button__description {
+.s-button__description {
   font-size: 12px;
   .weight(@normal);
+  .margin-top(0.5);
 }
 
-.pagination {
+.s-pagination {
   margin-bottom: 0;
 
-  .button {
+  .s-button {
     display: inline-block;
     padding: 0px @spacing;
     .radius();
     margin-right: 0 !important;
-    .button--fixed-width;
+    .s-button--fixed-width;
   }
 
   span {
@@ -584,56 +616,27 @@ export default class Button extends Vue {
   }
 }
 
-.inline-button {
-  text-transform: capitalize;
-  .weight(@medium);
-  color: @day-paragraph;
-  font-size: 14px;
-  .margin-left(2);
-  line-height: 22px;
-  text-decoration: none;
-
-  &.warn {
-    color: @warning;
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  .fa-times-circle {
-    color: @icon;
-    font-size: 16px;
-
-    &:hover {
-      color: @warning;
-    }
-  }
-
-  i {
-    .margin-right();
-  }
-}
-
-.inline-button--left {
-  .margin-left(@0);
-  .margin-right(2);
-}
-
-.button--reset-variations {
+.s-button--reset-variations {
   margin-top: -36px;
   float: right;
 }
 
 .night {
-  .button {
+  .s-button {
     &:focus,
     &.is-focused {
       background: lighten(@night-button, 4%);
     }
+
+    &[disabled],
+    &.is-disabled {
+      background-color: @dark-4!important;
+      color: @dark-5!important;
+      border-color: @dark-4;
+    }
   }
 
-  .button--default {
+  .s-button--default {
     color: @night-title;
     border-color: @night-button;
     background: @night-button;
@@ -645,15 +648,21 @@ export default class Button extends Vue {
     }
   }
 
-  .button--action {
+  .s-button--action,
+  .s-button--slobs-download {
+    color: @night-title;
+
     &:focus,
     &.is-focused,
     &:hover {
       background: lighten(@teal, 4%);
+      color: @white;
     }
   }
 
-  .button--warning {
+  .s-button--warning {
+    color: @warning;
+
     &:focus,
     &.is-focused,
     &:hover {
@@ -661,7 +670,7 @@ export default class Button extends Vue {
     }
   }
 
-  .button--navigation {
+  .s-button--navigation {
     background: @night-button;
     color: @night-title;
 
@@ -673,8 +682,8 @@ export default class Button extends Vue {
     }
   }
 
-  .button-group {
-    .button {
+  .s-button-group {
+    .s-button {
       &.active {
         background-color: @dark-2;
         border-color: transparent;
@@ -683,14 +692,14 @@ export default class Button extends Vue {
     }
   }
 
-  .button--sqr {
+  .s-button--sqr {
     background: @night-button;
     color: @night-title;
   }
 
-  .button--twitch {
+  .s-button--twitch {
     background-color: @twitch;
-    color: @white;
+    color: @night-title;
 
     &:focus,
     &.is-focused,
@@ -699,9 +708,9 @@ export default class Button extends Vue {
     }
   }
 
-  .button--yt {
+  .s-button--yt {
     background-color: @youtube;
-    color: @white;
+    color: @night-title;
 
     &:focus,
     &.is-focused,
@@ -710,9 +719,9 @@ export default class Button extends Vue {
     }
   }
 
-  .button--mixer {
+  .s-button--mixer {
     background-color: @mixer;
-    color: @white;
+    color: @night-title;
 
     &:focus,
     &.is-focused,
@@ -721,9 +730,9 @@ export default class Button extends Vue {
     }
   }
 
-  .button--fb {
+  .s-button--fb {
     background-color: @facebook;
-    color: @white;
+    color: @night-title;
 
     &:focus,
     &.is-focused,
@@ -732,9 +741,9 @@ export default class Button extends Vue {
     }
   }
 
-  .button--periscope {
+  .s-button--periscope {
     background-color: @periscope;
-    color: @white;
+    color: @night-title;
 
     &:focus,
     &.is-focused,
@@ -743,19 +752,15 @@ export default class Button extends Vue {
     }
   }
 
-  .button--picarto {
+  .s-button--picarto {
     background-color: @picarto;
-    color: @white;
+    color: @night-title;
 
     &:focus,
     &.is-focused,
     &:hover {
       background-color: lighten(@picarto, 4%);
     }
-  }
-
-  .inline-button {
-    color: @white;
   }
 }
 

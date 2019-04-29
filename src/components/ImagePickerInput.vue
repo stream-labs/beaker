@@ -1,17 +1,18 @@
 <template>
-<div class="image-picker-input">
-  <div
-    :value="option.value"
-    :title="option.title"
-    :image="option.image"
-    v-for="option in options"
-    :key="option.value"
-    class="image-picker-input__option"
-    :class="[value === option.value ? 'active' : '']"
-    @click="emitInput(option.value)">
-    <img :src="option.image">
+  <div class="s-image-picker-input">
+    <div
+      :value="option.value"
+      :title="option.title"
+      :image="option.image"
+      v-for="option in options"
+      :key="option.value"
+      class="s-image-picker-input__option"
+      :class="[value === option.value ? 'active' : '']"
+      @click="emitInput(option.value)"
+    >
+      <img :src="option.image">
+    </div>
   </div>
-</div>
 </template>
 
 <script lang="ts">
@@ -55,10 +56,10 @@ export default class ImagePickerInput extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
-.image-picker-input {
+.s-image-picker-input {
   width: 100%;
   max-width: 370px;
   display: grid;
@@ -66,7 +67,7 @@ export default class ImagePickerInput extends Vue {
   grid-gap: 8px;
 }
 
-.image-picker-input__option {
+.s-image-picker-input__option {
   width: 64px;
   height: 64px;
   border: 1px solid @day-solid-input;
@@ -92,7 +93,7 @@ export default class ImagePickerInput extends Vue {
 }
 
 .night-theme {
-  .image-picker-input__option {
+  .s-image-picker-input__option {
     border-color: @night-border;
     background-color: @night-solid-input;
 

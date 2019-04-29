@@ -1,13 +1,13 @@
 <template>
-  <div class="accordion" :class="[ accordionClasses ]">
-    <div class="accordion__toggle" @click.capture="toggleAccordion">
+  <div class="s-accordion" :class="[ accordionClasses ]">
+    <div class="s-accordion__toggle" @click.capture="toggleAccordion">
       <slot name="toggle">
         <span v-show="defaultOpen">{{ title || openedTitle }}</span>
         <span v-show="!defaultOpen">{{ title || closedTitle }}</span>
       </slot>
     </div>
 
-    <div class="accordion__menu" ref="menu">
+    <div class="s-accordion__menu" ref="menu">
       <slot name="content"></slot>
     </div>
   </div>
@@ -52,14 +52,14 @@ export default class Accordion extends Vue {
       return;
     }
 
-    let parent: any = this.$parent,
-      parentMenu: any = this.$parent.$refs.menu,
-      menu = this.$refs.menu;
+    const parent: any = this.$parent;
+    const parentMenu: any = this.$parent.$refs.menu;
+    const menu = this.$refs.menu;
 
     this.defaultOpen = !this.defaultOpen;
     menu.style.transition = "all .275s";
 
-    if (parent.$el.classList.contains("accordion") && parent.defaultOpen) {
+    if (parent.$el.classList.contains("s-accordion") && parent.defaultOpen) {
       parentMenu.style.maxHeight = "none";
     }
 
@@ -71,10 +71,8 @@ export default class Accordion extends Vue {
   }
 
   calculateHeight(element: Element) {
-    let newHeight = element.children[0].scrollHeight;
-    let padding =
-      (this.$refs.menu.querySelectorAll(".accordion").length + 1) * 16;
-
+    const newHeight = element.children[0].scrollHeight;
+    const padding = (this.$el.classList[0].length + 1) * 16;
     if (!this.defaultOpen) {
       return "0";
     } else {
@@ -99,10 +97,10 @@ export default class Accordion extends Vue {
   }
 
   get accordionClasses() {
-    let classes = [];
+    const classes: any = [];
 
     if (this.defaultBorder) {
-      classes.push("accordion--no-border");
+      classes.push("s-accordion--no-border");
     }
 
     if (!this.defaultOpen) {
@@ -114,22 +112,22 @@ export default class Accordion extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
-.accordions {
-  .accordion {
+.s-accordions {
+  .s-accordion {
     &:last-child {
       .margin-bottom(@0);
     }
 
-    .accordion__menu {
+    .s-accordion__menu {
       .transition();
     }
   }
 }
 
-.accordion {
+.s-accordion {
   .radius();
   background-color: @day-bg;
   border: 1px solid @day-input-border;
@@ -141,13 +139,13 @@ export default class Accordion extends Vue {
   }
 
   &.is-closed {
-    .accordion__menu {
+    .s-accordion__menu {
       max-height: 0;
       .padding-v-sides(@0);
       opacity: 0;
     }
 
-    & > .accordion__toggle {
+    & > .s-accordion__toggle {
       &:before {
         content: "\e957";
       }
@@ -155,18 +153,18 @@ export default class Accordion extends Vue {
   }
 
   &:not(.is-closed) {
-    & > .accordion__menu {
+    & > .s-accordion__menu {
       overflow: visible;
       opacity: 1;
     }
   }
 }
 
-.accordion--no-border {
+.s-accordion--no-border {
   border: 0;
   background-color: transparent;
 
-  .accordion__toggle {
+  .s-accordion__toggle {
     .padding(@0);
     padding-left: 24px;
 
@@ -176,18 +174,18 @@ export default class Accordion extends Vue {
     }
   }
 
-  .accordion__menu {
+  .s-accordion__menu {
     .padding(@0);
     .padding-top();
   }
 }
 
-.accordion__toggle,
-.accordion__menu {
+.s-accordion__toggle,
+.s-accordion__menu {
   width: 100%;
 }
 
-.accordion__toggle {
+.s-accordion__toggle {
   .weight(@medium);
   color: @day-title;
   position: relative;
@@ -215,15 +213,15 @@ export default class Accordion extends Vue {
   }
 }
 
-.accordion__menu {
+.s-accordion__menu {
   .transition();
   overflow: hidden;
   .padding(2);
   .padding-top(@0);
 }
 
-.accordions {
-  .accordion {
+.s-accordions {
+  .s-accordion {
     &:last-child {
       margin-bottom: 0px;
     }
@@ -232,16 +230,16 @@ export default class Accordion extends Vue {
 
 .night,
 .night-theme {
-  .accordion {
+  .s-accordion {
     border-color: @night-input-border;
     background-color: @night-bg;
   }
 
-  .accordion--no-border {
+  .s-accordion--no-border {
     background-color: transparent;
   }
 
-  .accordion__toggle {
+  .s-accordion__toggle {
     color: @night-title;
 
     &:before {

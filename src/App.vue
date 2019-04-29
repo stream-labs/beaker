@@ -9,14 +9,23 @@
         :values="themes"
         :selected.sync="theme"
         :default="'day'"
-        @click.native="toggleTheme()">
-      </toggle>
+        @click.native="toggleTheme()"
+      ></toggle>
     </div>
-    <router-view/>
+
+    <documentation></documentation>
 
     <div class="floating-links">
-      <a class="floating-link" target="_blank" href="https://github.com/mbiemiller/beaker"><img src="./assets/imgs/github.png"></a>
-      <a class="floating-link" target="_blank" href="https://www.npmjs.com/package/streamlabs-beaker"><img src="./assets/imgs/npm.svg"></a>
+      <a class="floating-link" target="_blank" href="https://github.com/mbiemiller/beaker">
+        <img src="./assets/imgs/github.png" />
+      </a>
+      <a
+        class="floating-link"
+        target="_blank"
+        href="https://www.npmjs.com/package/streamlabs-beaker"
+      >
+        <img src="./assets/imgs/npm.svg">
+      </a>
     </div>
   </div>
 </template>
@@ -24,10 +33,12 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import Toggle from "./components/Toggle.vue";
+import Documentation from "./views/Documentation.vue";
 
 @Component({
   components: {
-    Toggle
+    Toggle,
+    Documentation
   }
 })
 export default class App extends Vue {
@@ -53,6 +64,7 @@ export default class App extends Vue {
 
 <style lang="less">
 @import "./styles/App";
+@import "./styles/Imports";
 
 #nav {
   border-bottom: 1px solid @day-border;
@@ -69,7 +81,7 @@ export default class App extends Vue {
     }
   }
 
-  .toggle {
+  .s-toggle {
     position: absolute;
     left: 0;
     bottom: -54px;

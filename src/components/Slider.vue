@@ -8,15 +8,15 @@
     :min="min"
     :max="max"
     :interval="interval"
-    :value="value"
+    v-model="displayValue"
     :prefix="prefix"
     :suffix="suffix"
     :formatter="prefix + '{value}' + suffix"
     :data="data"
     @callback="value => emitInput(value)"
+    :disabled="disabled"
   ></vue-slider-component>
 </template>
-
 
 <script>
 import { Component, Vue } from "vue-property-decorator";
@@ -29,8 +29,8 @@ export default {
   },
   props: {
     value: {
-      type: [String, Number],
-      defualt: 0
+      type: [Number, String, Array],
+      default: 1
     },
     prefix: {
       type: String,
@@ -46,19 +46,22 @@ export default {
     }
   },
 
+  data() {
+    return {
+      displayValue: this.value
+    };
+  },
+
   created() {
     this.$on("input", this.setValue);
   },
-
   destroyed() {
     this.$off("input", this.setValue);
   },
-
   methods: {
     emitInput(val) {
       this.$emit("input", val);
     },
-
     setValue(val) {
       this.currentValue = val;
     }
@@ -70,10 +73,6 @@ export default {
 @import "./../styles/Imports";
 
 .vue-slider-component {
-  padding: 4px 0px 28px !important;
-  width: 80% !important;
-  display: inline-block;
-
   .vue-slider {
     background-color: @light-3;
   }

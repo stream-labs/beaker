@@ -7,17 +7,17 @@
       :click-handler="selectPage"
       :prev-text="'Prev'"
       :next-text="'Next'"
-      :container-class="'pagination'"
-      :page-class="'pagination__page'"
-      :page-link-class="'pagination__page-link'"
-      :prev-class="'pagination__prev'"
-      :prev-link-class="'pagination__prev-link'"
-      :next-class="'pagination__next'"
-      :next-link-class="'pagination__next-link'"
-      :break-view-class="'pagination__break'"
-      :break-view-link-class="'pagination__break-link'"
-      :active-class="'pagination__active'"
-      :disabled-class="'pagination__disabled'"
+      :container-class="'s-pagination'"
+      :page-class="'s-pagination__page'"
+      :page-link-class="'s-pagination__page-link'"
+      :prev-class="'s-pagination__prev'"
+      :prev-link-class="'s-pagination__prev-link'"
+      :next-class="'s-pagination__next'"
+      :next-link-class="'s-pagination__next-link'"
+      :break-view-class="'s-pagination__break'"
+      :break-view-link-class="'s-pagination__break-link'"
+      :active-class="'s-pagination__active'"
+      :disabled-class="'s-pagination__disabled'"
     ></vue-paginate-component>
   </div>
 </template>
@@ -57,10 +57,6 @@ export default class Pagination extends Vue {
         const { left, top, width, height } = entry.contentRect;
 
         if (width < 456) this.pageRange = 1;
-
-        console.log("Element:", entry.target);
-        console.log(`Element's size: ${width}px x ${height}px`);
-        console.log(`Element's paddings: ${top}px ; ${left}px`);
       }
     });
 
@@ -84,7 +80,7 @@ export default class Pagination extends Vue {
 <style lang="less">
 @import "./../styles/Imports";
 
-.pagination {
+.s-pagination {
   display: flex;
   align-items: center;
   padding: 0;
@@ -167,14 +163,14 @@ export default class Pagination extends Vue {
   &__active {
     background-color: @dark-2;
 
-    .pagination__page-link {
+    .s-pagination__page-link {
       color: @light-1;
     }
   }
 
   &__disabled {
-    .pagination__prev,
-    .pagination__next {
+    .s-pagination__prev,
+    .s-pagination__next {
       &-link {
         background-color: @light-3;
         color: @light-4;
@@ -185,7 +181,7 @@ export default class Pagination extends Vue {
 }
 
 .night {
-  .pagination {
+  .s-pagination {
     &--bg {
       .padding();
       .radius(2);
@@ -225,7 +221,7 @@ export default class Pagination extends Vue {
     &__active {
       background-color: @dark-2;
 
-      .pagination__page-link {
+      .s-pagination__page-link {
         &:hover {
           background-color: @dark-2;
         }
@@ -233,8 +229,8 @@ export default class Pagination extends Vue {
     }
 
     &__disabled {
-      .pagination__prev,
-      .pagination__next {
+      .s-pagination__prev,
+      .s-pagination__next {
         &-link {
           background-color: @dark-4;
           color: @dark-5;

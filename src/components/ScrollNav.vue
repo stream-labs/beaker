@@ -1,30 +1,30 @@
 <template>
   <div>
-    <div class="apps-nav">
-      <div v-if="hasPrev" @click="scrollLeft" class="apps-nav-control flex has-prev">
+    <div class="s-apps-nav">
+      <div v-if="hasPrev" @click="scrollLeft" class="s-apps-nav-control flex s-has-prev">
         <i class="icon-down icon-left"></i>
         <span>...</span>
       </div>
       <div
         ref="scrollable_nav"
         @scroll="calculateScrolls"
-        class="apps-tab__container"
+        class="s-apps-tab__container"
         :class="{
-        'has-next': hasNext,
-        'has-prev': hasPrev
+        's-has-next': hasNext,
+        's-has-prev': hasPrev
       }"
       >
         <span
           v-for="item in items"
           :key="item.value"
           @click="navigateItem(item.value)"
-          class="app-tab"
-          :class="{ 'is-active': item.value === value }"
+          class="s-app-tab"
+          :class="{ 's-is-active': item.value === value }"
         >
           <span>{{ item.name }}</span>
         </span>
       </div>
-      <div v-if="hasNext" @click="scrollRight" class="apps-nav-control flex has-next">
+      <div v-if="hasNext" @click="scrollRight" class="s-apps-nav-control flex s-has-next">
         <span>...</span>
         <i class="icon-down icon-right"></i>
       </div>
@@ -103,10 +103,10 @@ export default class AppsNav extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
-.apps-nav {
+.s-apps-nav {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -120,30 +120,30 @@ export default class AppsNav extends Vue {
   z-index: 1;
 }
 
-.apps-tab__container {
+.s-apps-tab__container {
   display: inline-block;
   overflow-x: auto;
   white-space: nowrap;
   overflow-y: hidden;
 
-  &.has-prev {
+  &.s-has-prev {
     .margin-left(2);
   }
-  &.has-next {
+  &.s-has-next {
     .margin-right(2);
   }
 }
 
-.apps-nav-control {
+.s-apps-nav-control {
   cursor: pointer;
 
-  &.has-prev {
+  &.s-has-prev {
     margin-left: 8px;
     i {
       margin-right: 5px;
     }
   }
-  &.has-next {
+  &.s-has-next {
     margin-right: 8px;
     i {
       margin-left: 5px;
@@ -151,36 +151,36 @@ export default class AppsNav extends Vue {
   }
 }
 
-.apps-tab__container::-webkit-scrollbar {
+.s-apps-tab__container::-webkit-scrollbar {
   display: none;
   width: 0;
   height: 0;
 }
 
-.app-tab {
+.s-app-tab {
   .padding();
   color: @day-paragraph;
   .weight(@medium);
   cursor: pointer;
 
-  &.is-active {
+  &.s-is-active {
     color: @day-title;
   }
 }
 
-.app-tab-icon {
+.s-app-tab-icon {
   margin-left: 4px;
 }
 
 .night-theme {
-  .apps-nav {
+  .s-apps-nav {
     background-color: @night-bg;
     border-color: @night-border;
   }
-  .app-tab {
+  .s-app-tab {
     color: @night-paragraph;
 
-    &.is-active {
+    &.s-is-active {
       color: @night-title;
     }
   }

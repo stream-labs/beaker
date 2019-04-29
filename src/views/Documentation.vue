@@ -3,90 +3,18 @@
     <left-navigation @update-section="changeSection" :active-section="activeSection"></left-navigation>
 
     <div class="content">
-      <installation v-if="activeSection === 'installation'"/>
-      <assets v-if="activeSection === 'assets'"/>
-
-      <accordions v-if="activeSection === 'accordions'"/>
-      <badges v-if="activeSection === 'badges'"/>
-      <banners v-if="activeSection === 'banners'"/>
-      <buttons-demo v-if="activeSection === 'buttons'"/>
-      <callouts v-if="activeSection === 'callouts'"/>
-      <call-to-actions v-if="activeSection === 'call-to-actions'"/>
-      <color-pickers v-if="activeSection === 'color-pickers'"/>
-      <dropdowns v-if="activeSection === 'dropdowns'"/>
-      <forms v-if="activeSection === 'forms'"/>
-      <icons v-if="activeSection === 'icons'"/>
-      <image-pickers v-if="activeSection === 'image-pickers'"/>
-      <inputs v-if="activeSection === 'inputs'"/>
-      <progress-bars v-if="activeSection === 'progress-bars'"/>
-      <paginations v-if="activeSection === 'paginations'"/>
-      <sliders v-if="activeSection === 'sliders'"/>
-      <spinners v-if="activeSection === 'spinners'"/>
-      <tables v-if="activeSection === 'tables'"/>
-      <tabs v-if="activeSection === 'tabs'"/>
-      <toggles v-if="activeSection === 'toggles'"/>
-      <virtual-items v-if="activeSection === 'virtual-items'"/>
+      <router-view/>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import LeftNavigation from "@/demos/LeftNavigation.vue"; // @ is an alias to /src
-import Installation from "@/demos/Installation.vue";
-import Assets from "@/demos/Assets.vue";
-import Colors from "@/demos/Colors.vue";
-import Typography from "@/demos/Typography.vue";
-import Accordions from "@/demos/Accordions.vue";
-import Badges from "@/demos/Badges.vue";
-import Banners from "@/demos/Banners.vue";
-import ButtonsDemo from "@/demos/Buttons.vue";
-import CallToActions from "@/demos/CallToActions.vue";
-import Callouts from "@/demos/Callouts.vue";
-import ColorPickers from "@/demos/ColorPickers.vue";
-import Dropdowns from "@/demos/Dropdowns.vue";
-import Forms from "@/demos/Forms.vue";
-import Icons from "@/demos/Icons.vue";
-import ImagePickers from "@/demos/ImagePickers.vue";
-import Inputs from "@/demos/Inputs.vue";
-import Navigations from "@/demos/Navigations.vue";
-import ProgressBars from "@/demos/ProgressBars.vue";
-import Paginations from "@/demos/Paginations.vue";
-import Sliders from "@/demos/Sliders.vue";
-import Spinners from "@/demos/Spinners.vue"
-import Tables from "@/demos/Tables.vue";
-import Tabs from "@/demos/Tabs.vue";
-import Toggles from "@/demos/Toggles.vue";
-import VirtualItems from "@/demos/VirtualItems.vue";
+import LeftNavigation from "../demos/LeftNavigation.vue";
 
 @Component({
   components: {
-    LeftNavigation,
-    Installation,
-    Assets,
-    Colors,
-    Typography,
-    Accordions,
-    Badges,
-    Banners,
-    ButtonsDemo,
-    Callouts,
-    CallToActions,
-    ColorPickers,
-    Dropdowns,
-    Forms,
-    Icons,
-    ImagePickers,
-    Inputs,
-    Navigations,
-    ProgressBars,
-    Paginations,
-    Sliders,
-    Spinners,
-    Tables,
-    Tabs,
-    Toggles,
-    VirtualItems
+    LeftNavigation
   }
 })
 export default class Documentation extends Vue {
@@ -123,7 +51,7 @@ export default class Documentation extends Vue {
   }
 }
 
-.accordion {
+.s-accordion {
   pre {
     .margin-bottom(@0);
   }

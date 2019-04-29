@@ -1,19 +1,16 @@
 <template>
-  <div
-    class="badge"
-    :class="badgeClasses">
+  <div class="s-badge" :class="badgeClasses" :style="badgeStyles">
     <div
       v-if="variant === 'progress'"
       :style="{
         'background-image': `linear-gradient(
           to right,
-          ${ barColor } ${ parseInt(100 * current / total) }%,
+          ${ backgroundColor } ${ parseInt(100 * current / total) }%,
           rgba(0,0,0,0) 0%
         )`,
         'color': textColor
-      }">
-      {{ `${current}${separator}${total} ${suffix}` }}
-    </div>
+      }"
+    >{{ `${current}${separator}${total} ${suffix}` }}</div>
     <slot v-else/>
   </div>
 </template>
@@ -24,7 +21,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 @Component({})
 export default class Badge extends Vue {
   /*
-    barColor: STRING - pass in color name, rgba or hex code to set the color of the progress bar. Default is #31c3a2 (teal)
+    backgroundColor: STRING - pass in color name, rgba or hex code to set the color of the progress bar. Default is #31c3a2 (teal)
     textColor: STRING - pass in color name, rgba or hex code to set the color of the bar text. Default is #fff (white)
     current: INTEGER or FLOAT - indicates where the current progress should be. e.g. 5 in '5 out of 10.'
     total: INTEGER or FLOAT - indicates what the maximum/completion value is. e.g. 10 in '5 out of 10.'
@@ -40,8 +37,8 @@ export default class Badge extends Vue {
   @Prop({ default: false })
   noMargin!: boolean;
 
-  @Prop({ default: "#31c3a2" })
-  barColor!: string;
+  @Prop()
+  backgroundColor!: string;
 
   @Prop({ default: "#ffffff" })
   textColor!: string;
@@ -58,17 +55,39 @@ export default class Badge extends Vue {
   @Prop()
   suffix!: string;
 
-  get badgeClasses() {
-    let classes = [];
+  @Prop()
+  small!: Boolean;
 
-    classes.push(`badge--${this.variant}`);
+  badgeProRewrite: any = {
+    background: this.backgroundColor,
+    color: this.textColor
+  };
+
+  get badgeStyles() {
+    const styles: any = [];
+
+    if (this.backgroundColor) {
+      styles.push(this.badgeProRewrite);
+    }
+
+    return styles;
+  }
+
+  get badgeClasses() {
+    const classes: any = [];
+
+    classes.push(`s-badge--${this.variant}`);
 
     if (this.alignLeft) {
-      classes.push(`badge--left`);
+      classes.push(`s-badge--left`);
     }
 
     if (this.noMargin) {
-      classes.push("badge--no-margin");
+      classes.push("s-badge--no-margin");
+    }
+
+    if (this.small) {
+      classes.push("s-badge--small");
     }
 
     return classes;
@@ -76,22 +95,21 @@ export default class Badge extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
 // Standout labels, used for 'New', 'Beta', 'Pro', etc
-.badge {
+.s-badge {
   display: inline-block;
   margin: 0 0 0 8px;
-  padding: 0 4px;
-  border: 1px solid transparent;
+  padding: 0 5px;
   .radius();
-  font-size: 13px;
+  font-size: 14px;
   .weight(@medium);
-  text-transform: capitalize;
   color: @white;
   vertical-align: text-bottom;
-  line-height: 16px;
+  line-height: 24px;
+  box-sizing: border-box;
 
   &--left {
     margin: 0 8px 0 0;
@@ -101,14 +119,21 @@ export default class Badge extends Vue {
     margin: 0;
   }
 
+  &--small {
+    line-height: 16px;
+    font-size: 12px;
+  }
+
+  &--new,
   &--success {
     background-color: @teal-semi;
     color: @teal;
   }
 
-  &--new {
-    background-color: @purple-semi;
-    color: @purple;
+  &--new-alt {
+    background-color: transparent;
+    color: @teal;
+    .padding-h-sides(@0);
   }
 
   &--tag {
@@ -121,8 +146,8 @@ export default class Badge extends Vue {
   }
 
   &--beta {
-    background-color: @yellow-light;
-    color: @yellow-dark;
+    background-color: @yellow-semi;
+    color: @yellow;
   }
 
   &--warning {
@@ -131,15 +156,25 @@ export default class Badge extends Vue {
   }
 
   &--count {
-    padding: 2px 8px;
-    border-radius: 10px;
+    padding: 1px 4px 0;
+    border-radius: 16px;
     font-size: 10px;
+    line-height: 14px;
+    .weight(@medium);
+    background-color: @red;
+    .margin(0);
+  }
+
+  &--mod {
+    color: @yellow;
+    background-color: @white;
+    .margin-h-sides();
+    vertical-align: middle;
   }
 
   &--progress {
     height: 18px;
     .padding(0);
-    border: none;
     line-height: 18px;
     background-color: @light-4;
 
@@ -154,24 +189,20 @@ export default class Badge extends Vue {
 
 .night,
 .night-theme {
-  .badge {
+  .s-badge {
     &--tag {
       background-color: @dark-5;
       color: @white;
     }
 
     &--beta {
-      background-color: @info-dark;
+      background-color: @info;
       color: @white;
     }
 
-    &--teal {
-      background-color: @teal;
-      color: @white;
-    }
-
+    &--success,
     &--new {
-      background-color: @purple;
+      background-color: @teal;
       color: @white;
     }
 
@@ -180,9 +211,8 @@ export default class Badge extends Vue {
       color: @white;
     }
 
-    &--success {
-      background-color: @teal;
-      color: @white;
+    &--mod {
+      background-color: @dark-3;
     }
 
     &--progress {

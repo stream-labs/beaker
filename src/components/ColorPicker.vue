@@ -1,10 +1,20 @@
 <template>
-  <div class="colorpicker-container" ref="colorpicker">
-    <input type="text" @click="showPicker()" :value="color" @change="updateFromInput">
-    <div class="colorpicker__preview" :style="{ backgroundColor: color }" @click="showPicker()"></div>
+  <div class="s-colorpicker-container" ref="colorpicker">
+    <input
+      type="text"
+      :value="value"
+      :placeholder="placeholder"
+      @click="showPicker()"
+      @input="updateFromInput"
+    >
+    <div
+      class="s-colorpicker__preview"
+      :style="{ backgroundColor: value }"
+      @click="showPicker()"
+    ></div>
     <picker
-      class="colorpicker"
-      :value="color"
+      class="s-colorpicker"
+      :value="colors"
       v-if="displayPicker"
       :disable-alpha="true"
       :disable-fields="true"
@@ -27,24 +37,29 @@ export default class ColorPicker extends Vue {
     colorpicker: HTMLElement;
   };
 
-  @Prop({ default: "#31c3ac" })
-  defaultColor!: any;
-
-  private displayPicker: Boolean = false;
-  private backgroundColor: String = "";
-  private color: String = this.defaultColor;
-
   @Prop()
   value!: any;
 
+  @Prop()
+  placeholder!: string;
+
+  private displayPicker: Boolean = false;
+  private backgroundColor: String = "";
+
+  colors: object = {};
+
+  created() {
+    this.colors = Object.assign({}, this.colors, { hex: this.value });
+  }
+
   updateFromPicker(value: any) {
-    this.color = value.hex;
-    this.$emit("input", this.color);
+    this.colors = value;
+    this.$emit("input", value.hex);
   }
 
   updateFromInput(event: any) {
-    this.color = event.target.value;
-    this.$emit("input", this.color);
+    this.colors = event.target.value;
+    this.$emit("input", event.target.value);
   }
 
   hidePicker() {
@@ -67,10 +82,10 @@ export default class ColorPicker extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
-.colorpicker {
+.s-colorpicker {
   left: 0;
   top: 0;
   position: relative !important;
@@ -78,18 +93,19 @@ export default class ColorPicker extends Vue {
   .day-shadow !important;
 }
 
-.colorpicker__preview {
+.s-colorpicker__preview {
   height: 20px;
   width: 20px;
-  .radius();
+  .radius(0.5);
   box-sizing: border-box;
   position: absolute;
   top: 10px;
   right: 8px;
   border: 1px solid fade(@day-input-border, 12%);
+  border-style: inset;
 }
 
-.colorpicker-container {
+.s-colorpicker-container {
   position: relative;
   width: 176px;
   display: inline-block;

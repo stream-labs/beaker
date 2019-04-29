@@ -39,6 +39,12 @@
   margin-left: (@spacing * 8px);
 }
 
+// Max-width
+.max-width() {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
 // Line Height
 .line-height(@line-height: 1) {
   line-height: 130%;
@@ -80,6 +86,9 @@
   padding-left: (@spacing * 8px);
 }
 
+.input-padding() {
+  padding: 0 12px 0 12px;
+}
 
 // Positioning
 .absolute (@top: auto, @right: auto, @bottom: auto, @left: auto) {
@@ -96,8 +105,12 @@
   border-radius: (@radius * 4px);
 }
 
-.radius-bottom() {
-  border-radius: 0 0 @radius @radius;
+.radius-bottom(@radius: 1) {
+  border-radius: 0 0 (@radius * 4px) (@radius * 4px);
+}
+
+.radius-top(@radius: 1) {
+  border-radius: (@radius * 4px) (@radius * 4px) 0 0;
 }
 
 // Shadows

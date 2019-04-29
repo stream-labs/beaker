@@ -1,5 +1,5 @@
 <template>
-  <div class="item-grid">
+  <div class="s-item-grid">
     <slot></slot>
   </div>
 </template>
@@ -14,10 +14,10 @@ export default class ItemGrid extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
-.item-grid {
+.s-item-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   grid-gap: 16px;

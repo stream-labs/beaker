@@ -1,20 +1,21 @@
 <template>
   <div
-    class="banner-sale"
+    class="s-banner-sale"
     :style="{
       'background-color': backgroundColor,
       'border-color': borderColor
-    }">
-    <div class="banner-sale__wrapper header">
+    }"
+  >
+    <div class="s-banner-sale__wrapper s-header">
       <h1>{{ title }}</h1>
       <p>{{ desc }}</p>
     </div>
-    <div class="banner-sale__wrapper header">
-      <h1 class="banner-sale__time">
-        <span :class="{'banner-sale__time--done': daysDone}">{{ `${ days }d` }}</span>
-        <span :class="{'banner-sale__time--done': hoursDone}">{{ `${ hours }h` }}</span>
-        <span :class="{'banner-sale__time--done': minutesDone}">{{ `${ minutes }m` }}</span>
-        <span :class="{'banner-sale__time--done': secondsDone}">{{ `${ seconds }s` }}</span>
+    <div class="s-banner-sale__wrapper s-header">
+      <h1 class="s-banner-sale__time">
+        <span :class="{'s-banner-sale__time--done': daysDone}">{{ `${ days }d` }}</span>
+        <span :class="{'s-banner-sale__time--done': hoursDone}">{{ `${ hours }h` }}</span>
+        <span :class="{'s-banner-sale__time--done': minutesDone}">{{ `${ minutes }m` }}</span>
+        <span :class="{'s-banner-sale__time--done': secondsDone}">{{ `${ seconds }s` }}</span>
       </h1>
       <p>{{ timeDesc }}</p>
     </div>
@@ -71,10 +72,10 @@ export default class BannerSale extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
-.banner-sale {
+.s-banner-sale {
   display: flex;
   justify-content: space-between;
   .margin-bottom(3);

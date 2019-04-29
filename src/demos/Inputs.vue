@@ -4,7 +4,10 @@
 
     <div class="section">
       <h2>Text Inputs</h2>
-      <p>These 4 fields below are wrapped in a <code>FormGroup</code> component. This will put 16px of margin between form fields and 24px margin between form groups.</p>
+      <p>
+        These 4 fields below are wrapped in a
+        <code>FormGroup</code> component. This will put 16px of margin between form fields and 24px margin between form groups.
+      </p>
       <FormGroup>
         <text-input
           label="Text input"
@@ -12,8 +15,8 @@
           :placeholder="textInputPlaceholder"
           v-model="textInputValue"
           name="textExample"
-          slot="input">
-        </text-input>
+          slot="input"
+        ></text-input>
 
         <text-input
           label="Email input"
@@ -21,8 +24,8 @@
           :placeholder="emailInputPlaceholder"
           v-model="emailInputValue"
           name="emailExample"
-          slot="input">
-        </text-input>
+          slot="input"
+        ></text-input>
 
         <text-input
           label="Password input"
@@ -30,89 +33,184 @@
           :placeholder="passwordInputPlaceholder"
           v-model="passwordInputValue"
           name="passwordExample"
-          slot="input">
-        </text-input>
+          slot="input"
+        ></text-input>
 
         <text-input
           label="With error"
           type="text"
           :placeholder="textInputPlaceholder"
-          v-model="textInputValue"
+          v-model="errorTextInputValue"
           name="textExample"
           slot="input"
-          :error="'Hello, I am an error message'">
-        </text-input>
-
-        <text-input
-          label="With error"
-          type="text"
-          :placeholder="textInputPlaceholder"
-          v-model="textInputValue"
-          name="textExample"
-          slot="input"
-          :help-text="'Hello, I am help text'">
-        </text-input>
+          :error="'Hello, I am an error message'"
+        ></text-input>
       </FormGroup>
 
-       <table class="docs-table">
-      <thead>
-        <tr>
-          <th>Prop</th>
-          <th>Type</th>
-          <th>Default</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>disabled</td>
-          <td>boolean</td>
-          <td>null</td>
-          <td>Puts a disabled class on the form field and disables the input.</td>
-        </tr>
-        <tr>
-          <td>error</td>
-          <td>string</td>
-          <td>null</td>
-          <td>If there is error text, error classes will go on the input - we plan to add better validation handling.</td>
-        </tr>
-        <tr>
-          <td>label</td>
-          <td>string</td>
-          <td>null</td>
-          <td>Optional label for the input.</td>
-        </tr>
-        <tr>
-          <td>name</td>
-          <td>string</td>
-          <td>null</td>
-          <td>Input name attribute.</td>
-        </tr>
-        <tr>
-          <td>placeholder</td>
-          <td>string</td>
-          <td>null</td>
-          <td>Input placeholder text.</td>
-        </tr>
-        <tr>
-          <td>type</td>
-          <td>string</td>
-          <td>text</td>
-          <td>Input type: <code>text</code>, <code>email</code>, <code>password</code>.</td>
-        </tr>
-        <tr>
-          <td>value</td>
-          <td>string</td>
-          <td>null</td>
-          <td>Input value using v-model.</td>
-        </tr>
-      </tbody>
-    </table>
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>disabled</td>
+            <td>Boolean</td>
+            <td>null</td>
+            <td>Puts a disabled class on the form field and disables the input.</td>
+          </tr>
+          <tr>
+            <td>error</td>
+            <td>string</td>
+            <td>null</td>
+            <td>If there is error text, error classes will go on the input - we plan to add better validation handling.</td>
+          </tr>
+          <tr>
+            <td>label</td>
+            <td>string</td>
+            <td>null</td>
+            <td>Optional label for the input.</td>
+          </tr>
+          <tr>
+            <td>name</td>
+            <td>string</td>
+            <td>null</td>
+            <td>Input name attribute.</td>
+          </tr>
+          <tr>
+            <td>placeholder</td>
+            <td>string</td>
+            <td>null</td>
+            <td>Input placeholder text.</td>
+          </tr>
+          <tr>
+            <td>type</td>
+            <td>string</td>
+            <td>text</td>
+            <td>
+              Input type:
+              <code>text</code>,
+              <code>email</code>,
+              <code>password</code>.
+            </td>
+          </tr>
+          <tr>
+            <td>value</td>
+            <td>string</td>
+            <td>null</td>
+            <td>Input value using v-model.</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <div class="section">
       <h2>Selector</h2>
+
+      <pre><code>import { Selector } from 'streamlabs-beaker';
+
+components: {
+  Selector
+}</code></pre>
+
+      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+        <div slot="content">
+          <pre>
+<code>&lt;selector v-model=&quot;selected&quot; :options=&quot;['Option A', 'Option B', 'Option C']&quot;&gt;&lt;/selector&gt;
+
+&lt;selector
+  v-model=&quot;selected&quot;
+  :options=&quot;['Option A', 'Option B', 'Option C', 'Option D', 'Option E', 'Option F']&quot;
+  disabled
+&gt;&lt;/selector&gt;
+
+&lt;selector
+  v-model=&quot;multipleSelected&quot;
+  :options=&quot;['Option A', 'Option B', 'Option C', 'Option D', 'Option E', 'Option F']&quot;
+  multiple
+&gt;&lt;/selector&gt;
+
+&lt;selector
+  v-model=&quot;multipleSelected&quot;
+  :options=&quot;['Option A', 'Option B', 'Option C', 'Option D', 'Option E', 'Option F']&quot;
+  disabled
+  multiple
+&gt;&lt;/selector&gt;</code></pre>
+        </div>
+      </Accordion>
       <selector v-model="selected" :options="['Option A', 'Option B', 'Option C']"></selector>
+      <br>
+      <selector
+        v-model="selected"
+        :options="['Option A', 'Option B', 'Option C', 'Option D', 'Option E', 'Option F']"
+        disabled
+      ></selector>
+      <br>
+      <selector
+        v-model="multipleSelected"
+        :options="['Option A', 'Option B', 'Option C', 'Option D', 'Option E', 'Option F']"
+        multiple
+      ></selector>
+      <br>
+      <selector
+        v-model="multipleSelected"
+        :options="['Option A', 'Option B', 'Option C', 'Option D', 'Option E', 'Option F']"
+        disabled
+        multiple
+      ></selector>
+
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>disabled</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>Puts a disabled class on the form field and disables the input.</td>
+          </tr>
+          <tr>
+            <td>options</td>
+            <td>[''] or {}</td>
+            <td>null</td>
+            <td>Array of strings or objects to use as the options.</td>
+          </tr>
+          <tr>
+            <td>multiple</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>Optional label for the input.</td>
+          </tr>
+          <tr>
+            <td>placeholder</td>
+            <td>String</td>
+            <td>''</td>
+            <td>Equivalent to the `placeholder` attribute on an input.</td>
+          </tr>
+          <tr>
+            <td>searchable</td>
+            <td>Boolean</td>
+            <td>true</td>
+            <td>Optional label for the input.</td>
+          </tr>
+          <tr>
+            <td>value</td>
+            <td>string</td>
+            <td>null</td>
+            <td>Current selected value.</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <div class="section">
@@ -120,15 +218,39 @@
 
       <div class="section">
         <h3>Single Checkbox</h3>
-        <checkbox :label="'Checkbox label'" v-model="checkboxValue0"></checkbox>
+        <checkbox
+          :id="'checkbox1'"
+          :name="'checkbox1'"
+          :label="'Checkbox label'"
+          v-model="checkboxValue1"
+          :isChecked="true"
+        ></checkbox>
       </div>
 
       <div class="section">
         <h3>Checkbox Group</h3>
-        <div class="checkbox-group">
-          <checkbox :label="'Checkbox label'" v-model="checkboxValue1"></checkbox>
-          <checkbox :label="'Checkbox label'" v-model="checkboxValue2"></checkbox>
-          <checkbox :label="'Checkbox label'" v-model="checkboxValue3"></checkbox>
+        <div class="s-checkbox-group">
+          <checkbox
+            :id="'checkbox2'"
+            :name="'checkbox2'"
+            :label="'Checkbox label'"
+            v-model="checkboxValue2"
+            :isChecked="false"
+          ></checkbox>
+          <checkbox
+            :id="'checkbox3'"
+            :name="'checkbox3'"
+            :label="'Checkbox label'"
+            v-model="checkboxValue3"
+            :isChecked="true"
+          ></checkbox>
+          <checkbox
+            :id="'checkbox4'"
+            :name="'checkbox4'"
+            :label="'Checkbox label'"
+            v-model="checkboxValue4"
+            :isChecked="false"
+          ></checkbox>
         </div>
       </div>
     </div>
@@ -136,9 +258,23 @@
     <div class="section">
       <h2>Radios</h2>
       <div class="section">
-        <div class="checkbox-group">
-          <radio :label="'Enable'" :name="'radio-group'" v-model="radioValue1"></radio>
-          <radio :label="'Disable'" :name="'radio-group'" v-model="radioValue2"></radio>
+        <div class="s-checkbox-group">
+          <radio
+            :id="'radio1'"
+            :name="'radio-group'"
+            :label="'Enable'"
+            v-model="radioValue1"
+            :isChecked="true"
+            :onClick="test"
+          ></radio>
+          <radio
+            :id="'radio2'"
+            :name="'radio-group'"
+            :label="'Disable'"
+            v-model="radioValue2"
+          ></radio>
+          <!-- <radio :label="'Enable'" :name="'radio-group'" v-model="radioValue1" :onClick="test"></radio>
+          <radio :label="'Disable'" :name="'radio-group'" v-model="radioValue2"></radio> -->
         </div>
       </div>
     </div>
@@ -148,6 +284,48 @@
       <div class="section">
         <status-switch v-model="statusValue" :label="'Status Label'"></status-switch>
       </div>
+      <div class="section">
+        <small>
+          <status-switch v-model="statusValue">
+            <label>Small Switch</label>
+          </status-switch>
+        </small>
+      </div>
+      <div class="section">
+        <h1>
+          <status-switch v-model="statusValue">
+            <label>H1 Switch</label>
+          </status-switch>
+        </h1>
+      </div>
+
+      <div class="section">
+        <status-switch v-model="statusValue"/>
+        <status-switch v-model="statusValue"/>
+        <status-switch v-model="statusValue"/>
+      </div>
+
+      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
+        <div slot="content">
+          <pre><code>&lt;status-switch v-model="statusValue" :label="'Status Label'"&gt;&lt;/status-switch&gt;
+
+&lt;small&gt;
+  &lt;status-switch v-model="statusValue"&gt;
+    &lt;label&gt;Small Switch&lt;/label&gt;
+  &lt;/status-switch&gt;
+&lt;/small&gt;
+
+&lt;h1&gt;
+  &lt;status-switch v-model="statusValue"&gt;
+    &lt;label&gt;H1 Switch&lt;/label&gt;
+  &lt;/status-switch&gt;
+&lt;/h1&gt;
+
+&lt;status-switch v-model="statusValue" /&gt;
+&lt;status-switch v-model="statusValue" /&gt;
+&lt;status-switch v-model="statusValue" /&gt;</code></pre>
+        </div>
+      </Accordion>
     </div>
 
     <div class="section">
@@ -203,11 +381,16 @@ import FormGroup from "./../components/FormGroup.vue";
   }
 })
 export default class Inputs extends Vue {
-  checkboxValue0 = true;
-  checkboxValue1 = false;
-  checkboxValue2 = true;
-  checkboxValue3 = false;
+  test() {
+    console.log("test");
+  }
+
+  checkboxValue1 = "checkboxValue0";
+  checkboxValue2 = "checkboxValue1";
+  checkboxValue3 = "checkboxValue2";
+  checkboxValue4 = "checkboxValue3";
   selected = "Option A";
+  multipleSelected = ["Option B", "Option D"];
   radioValue1 = true;
   radioValue2 = false;
   statusValue = true;
@@ -220,6 +403,7 @@ export default class Inputs extends Vue {
   textInputValue = "";
   emailInputValue = "";
   passwordInputValue = "";
+  errorTextInputValue = "";
 
   textInputPlaceholder = "Placeholder";
   emailInputPlaceholder = "Placeholder";

@@ -23,13 +23,15 @@ components: {
   :min=&quot;0&quot;
   :max=&quot;100&quot;
   :interval=&quot;1&quot;
-  :value=&quot;50&quot;&gt;
+  :value=&quot;value&quot;
+  :suffix=&quot;'%'&quot;
+  :tooltip=&quot;'always'&quot;
 &lt;/slider&gt;</code></pre>
         </div>
       </accordion>
 
       <div class="row">
-        <slider :min="0" :max="100" :interval="1" v-model="value" :suffix="'%'" :tooltip="'always'"></slider>
+        <slider :min="0" :max="100" :interval="1" :value="value" :suffix="'%'" :tooltip="'always'"></slider>
       </div>
 
       <table class="docs-table">
@@ -74,9 +76,15 @@ components: {
           </tr>
           <tr>
             <td>value</td>
-            <td>Number, String, Array, Object</td>
+            <td>Number, String, Array</td>
             <td>1</td>
             <td>Initial value of the slider.</td>
+          </tr>
+          <tr>
+            <td>disabled</td>
+            <td>Boolean</td>
+            <td>null</td>
+            <td>Whether to disable the slider.</td>
           </tr>
         </tbody>
       </table>

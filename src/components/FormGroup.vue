@@ -1,5 +1,5 @@
 <template>
-  <div class="form-group">
+  <div class="s-form-group">
     <slot name="input"></slot>
   </div>
 </template>
@@ -20,10 +20,10 @@ export default class FormGroup extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
-.form-group {
+.s-form-group {
   .margin-bottom(3);
   display: grid;
   grid-template-rows: 1fr;

@@ -1,22 +1,22 @@
 <template>
-  <div class="image-picker">
-    <div class="image-picker__thumb" @click="chooseImage">
+  <div class="s-image-picker">
+    <div class="s-image-picker__thumb" @click="chooseImage">
       <img :src="this.imageThumb" v-if="imageSelected">
-      <div class="upload-icon" v-if="!imageSelected">
+      <div class="s-upload-icon" v-if="!imageSelected">
         <i class="icon-upload-image"></i>
       </div>
     </div>
-    <div class="image-picker__filename">
+    <div class="s-image-picker__filename">
       <input
         ref="fileInput"
-        class="file-input"
+        class="s-file-input"
         type="file"
         accept=".jpg, .jpeg, .png, .gif, .svg"
-        @input="onSelectFile"
+        @change="onSelectFile"
       >
       {{ this.imageFileName }}
     </div>
-    <div class="button-container button-container--right">
+    <div class="s-button-container s-button-container--right">
       <Button
         v-if="!imageSelected"
         :variation="'default'"
@@ -78,10 +78,10 @@ export default class ImagePicker extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
-.image-picker {
+.s-image-picker {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -90,7 +90,7 @@ export default class ImagePicker extends Vue {
   height: 40px;
 }
 
-.file-input {
+.s-file-input {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -98,19 +98,21 @@ export default class ImagePicker extends Vue {
   position: absolute;
 }
 
-.upload-icon {
+.s-upload-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: @light-4;
+  color: @light-5;
+  background-color: @light-3;
   width: 40px;
   height: 40px;
+
   i {
     font-size: 24px;
   }
 }
 
-.image-picker__thumb {
+.s-image-picker__thumb {
   display: inline-flex;
   flex-grow: 0;
   height: 40px;
@@ -126,7 +128,7 @@ export default class ImagePicker extends Vue {
   }
 }
 
-.image-picker__filename {
+.s-image-picker__filename {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -146,11 +148,11 @@ export default class ImagePicker extends Vue {
 
 .night,
 .night-theme {
-  .upload-icon,
-  .image-picker__thumb {
+  .s-upload-icon,
+  .s-image-picker__thumb {
     background-color: @dark-4;
   }
-  .image-picker__filename {
+  .s-image-picker__filename {
     background-color: @night-section;
     color: @night-paragraph;
   }

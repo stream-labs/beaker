@@ -1,11 +1,11 @@
 form,
-.form {
-  .form-group:last-child {
+.s-form {
+  .s-form-group:last-child {
     margin-bottom: 0;
   }
 }
 
-.form-group {
+.s-form-group {
   .margin-bottom(2);
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -13,25 +13,25 @@ form,
   grid-row-gap: @spacing;
 }
 
-.form-group label:first-child {
+.s-form-group label:first-child {
   grid-column: 1/13;
 }
 
-.form-group * {
+.s-form-group * {
   grid-column: 1/13;
 }
 
 @media(min-width: 980px) {
-  .form-group label:first-child  {
+  .s-form-group label:first-child {
     grid-column: 1/4;
   }
 
-  .form-group * {
+  .s-form-group * {
     grid-column: 4/13;
   }
 }
 
-.form-group__help-text {
+.s-form-group__help-text {
   color: @label;
   font-size: 13px;
 }

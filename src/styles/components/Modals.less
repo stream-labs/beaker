@@ -1,0 +1,47 @@
+.v--modal-overlay {
+    background: @day-modal-mask;
+}
+
+.s-modal-container {
+    background: @white;
+    .radius(2);
+}
+
+.s-modal-body {
+    background: @white;
+    .padding(4);
+    .padding-bottom(3);
+}
+
+.s-modal-title,
+.s-modal-sub-title {
+    color: @day-title;
+    .margin-bottom(3);
+}
+
+.s-modal-sub-title {
+    .margin-bottom(2);
+    .weight(@medium);
+}
+
+.s-modal-default-button {
+    float: right;
+}
+
+.night,
+.night-theme {
+    .v--modal-overlay {
+        background-color: @night-modal-mask;
+    }
+
+    .s-modal-container {
+        background: @dark-3;
+        box-shadow: 0px 4px 8px @night-shadow;
+    }
+
+    .s-modal-title,
+    .s-modal-sub-title {
+        color: @night-title;
+    }
+
+}

@@ -1,18 +1,21 @@
 <template>
   <div
-    class="virtual-item"
+    class="s-virtual-item"
     :class="[ virtualItemClasses ]"
     :rarity="rarity"
     :selected="selected"
     :quantity="quantity"
     :value="value"
-    @click="$emit('click')">
-    <span v-if="selectionCount" class="virtual-item__selection-count">{{ selectionCount }}</span>
-    <span v-if="type" class="virtual-item__label">{{ type }}</span>
-    <span v-if="quantity" class="virtual-item__label">{{ quantity }}</span>
-    <div class="virtual-item__img"><img :src="preview" /></div>
-    <h3 class="virtual-item__name">{{ name }}</h3>
-    <span class="virtual-item__rarity">{{ rarity }}</span>
+    @click="$emit('click')"
+  >
+    <span v-if="selectionCount" class="s-virtual-item__selection-count">{{ selectionCount }}</span>
+    <span v-if="type" class="s-virtual-item__label">{{ type }}</span>
+    <span v-if="quantity" class="s-virtual-item__label">{{ quantity }}</span>
+    <div class="s-virtual-item__img">
+      <img :src="preview">
+    </div>
+    <h3 class="s-virtual-item__name">{{ name }}</h3>
+    <span class="s-virtual-item__rarity">{{ rarity }}</span>
   </div>
 </template>
 
@@ -46,10 +49,10 @@ export default class VitualItem extends Vue {
   type!: String;
 
   get virtualItemClasses() {
-    let classes = [];
+    const classes: any = [];
 
     if (this.rarity) {
-      classes.push(`virtual-item--${this.rarity}`);
+      classes.push(`s-virtual-item--${this.rarity}`);
     }
 
     if (this.selected) {
@@ -61,10 +64,10 @@ export default class VitualItem extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
-.virtual-item {
+.s-virtual-item {
   background-color: @day-section;
   position: relative;
   display: grid;
@@ -78,6 +81,13 @@ export default class VitualItem extends Vue {
 
   &.is-selected {
     background-color: @selected;
+    .s-virtual-item__name {
+      color: @white;
+    }
+
+    .s-virtual-item__rarity {
+      color: @night-paragraph;
+    }
   }
 
   &:hover {
@@ -85,23 +95,17 @@ export default class VitualItem extends Vue {
   }
 }
 
-.virtual-item__name {
-  .margin-bottom();
+.s-virtual-item__name {
   .weight(@medium);
   font-size: 16px;
+  .margin-bottom(0);
 }
 
-.is-selected {
-  .virtual-item__name {
-    color: @white;
-  }
-
-  .virtual-item__rarity {
-    color: @night-paragraph;
-  }
+.s-virtual-item__rarity {
+  .margin-top();
 }
 
-.virtual-item__selection-count {
+.s-virtual-item__selection-count {
   position: absolute;
   top: 16px;
   right: 16px;
@@ -116,13 +120,14 @@ export default class VitualItem extends Vue {
   .flex-centered();
 }
 
-.virtual-item__img {
+.s-virtual-item__img {
   .margin-bottom(2);
+  width: 96px;
 }
 
 .night,
 .night-theme {
-  .virtual-item {
+  .s-virtual-item {
     background-color: @night-section-alt;
 
     &.is-selected {

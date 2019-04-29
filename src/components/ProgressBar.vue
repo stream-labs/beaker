@@ -1,6 +1,6 @@
 <template>
-  <div class="progress">
-    <div class="progress-bar" :style="getProgress"/>
+  <div class="s-progress">
+    <div class="s-progress-bar" :style="getProgress"/>
   </div>
 </template>
 
@@ -16,16 +16,16 @@ export default class ProgressBar extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
-.progress {
+.s-progress {
   display: inline-block;
   height: 8px;
   width: 100%;
   background-color: @light-3;
   border-radius: 100px;
 }
-.progress-bar {
+.s-progress-bar {
   display: block;
   height: 100%;
   left: 0;
@@ -35,7 +35,7 @@ export default class ProgressBar extends Vue {
 }
 .night,
 .night-theme {
-  .progress {
+  .s-progress {
     background-color: @dark-4;
   }
 }

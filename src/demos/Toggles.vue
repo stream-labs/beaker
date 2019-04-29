@@ -4,15 +4,13 @@
       <h1>Toggles</h1>
       <p>Toggle between two custom options such as show and hide.</p>
 
-  <pre><code>import { Toggle } from 'streamlabs-beaker';
+      <pre><code>import { Toggle } from 'streamlabs-beaker';
 
 components: {
   Toggle
 }</code></pre>
 
-      <accordion
-        :openedTitle="'Hide Code'"
-        :closedTitle="'Show Code'">
+      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre><code>&lt;toggle
   :values=&quot;{
@@ -31,7 +29,8 @@ components: {
           'hide': `<i class='icon-hide'></i>`
         }"
         :selected.sync="selectedTextOption"
-        :default="'show'"></toggle>
+        :default="'show'"
+      ></toggle>
     </div>
 
     <table class="docs-table">

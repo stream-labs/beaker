@@ -1,12 +1,10 @@
 <template >
-  <div
-    class="pane-dropdown"
-    ref="paneMenu">
-
+  <div class="s-pane-dropdown" ref="paneMenu">
     <a
-      class="pane-dropdown__toggle"
-      :class="{ 'pane-dropdown__toggle--active': paneMenuOpen }"
-      @click="paneMenuOpen = !paneMenuOpen">
+      class="s-pane-dropdown__toggle"
+      :class="{ 's-pane-dropdown__toggle--active': paneMenuOpen }"
+      @click="paneMenuOpen = !paneMenuOpen"
+    >
       <span>
         <slot name="title"></slot>
         <i v-if="dropdownIcon" class="icon-dropdown"></i>
@@ -14,18 +12,17 @@
     </a>
 
     <transition name="fade">
-      <div
-        class="pane-dropdown__menu"
-        v-show="paneMenuOpen">
-        <ul class="pane-dropdown__list">
-          <li v-for="(item, idx) in paneList" :key="idx">
-            <a :href="item.href" class="pane-dropdown__link" :class="item.className">{{ item.textContent }}</a>
-          </li>
-        </ul>
+      <div :class="menuAlignClass" class="s-pane-dropdown__menu" v-show="paneMenuOpen">
+        <slot v-if="custom"></slot>
+        <div v-else class="s-pane-dropdown__list">
+          <slot></slot>
+        </div>
       </div>
     </transition>
 
-    <span ref="panelinks" class="pane-dropdown__slot-list"><slot></slot></span>
+    <span v-if="!custom" ref="panelinks" class="s-pane-dropdown__slot-list">
+      <slot></slot>
+    </span>
   </div>
 </template>
 
@@ -34,8 +31,17 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class PaneDropdown extends Vue {
+  @Prop()
+  icons!: string[];
+
   @Prop({ default: true })
   dropdownIcon!: boolean;
+
+  @Prop({ default: null })
+  menuAlign!: string;
+
+  @Prop({ default: false })
+  custom!: boolean;
 
   paneMenuOpen = false;
   paneList = null;
@@ -48,10 +54,16 @@ export default class PaneDropdown extends Vue {
     document.removeEventListener("click", this.documentClick);
   }
 
+  get menuAlignClass() {
+    return `s-pane-dropdown__menu--${this.menuAlign}`;
+  }
+
   mounted() {
-    let links: any = this.$refs.panelinks;
-    let [...list] = links.children;
-    this.paneList = list;
+    if (!this.custom) {
+      let links: any = this.$refs.panelinks;
+      let [...list] = links.children;
+      this.paneList = list;
+    }
   }
 
   documentClick(e: Event) {
@@ -72,12 +84,12 @@ export default class PaneDropdown extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
-.pane-dropdown {
+.s-pane-dropdown {
   position: relative;
-  display: flex;
+  display: inline-block;
 
   &__slot-list {
     display: none;
@@ -86,7 +98,6 @@ export default class PaneDropdown extends Vue {
   &__menu {
     position: absolute;
     top: 25px;
-    right: -4px;
     z-index: 100;
     width: auto;
     max-height: 300px;
@@ -108,6 +119,15 @@ export default class PaneDropdown extends Vue {
     }
   }
 
+  &__menu--right {
+    right: 0;
+  }
+
+  &__menu--center {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   &__link {
     width: 100%;
     margin-left: 0;
@@ -120,10 +140,30 @@ export default class PaneDropdown extends Vue {
     }
   }
 
+  &__icon {
+    .margin-right();
+  }
+
   &__list {
-    .margin();
+    .margin(2);
     padding: 0;
     list-style-type: none;
+
+    li {
+      display: flex;
+      align-items: center;
+    }
+
+    a {
+      text-decoration: none;
+      white-space: nowrap;
+      display: block;
+      .margin-bottom();
+    }
+
+    i {
+      .margin-right();
+    }
   }
 
   &__toggle {
@@ -137,29 +177,34 @@ export default class PaneDropdown extends Vue {
     }
 
     i {
-      font-size: 16px;
       color: @icon;
-      margin-left: 4px;
+      .margin-left();
+      margin-top: -2px;
     }
   }
 
   &__toggle--active {
     color: @dark-2;
+
+    i {
+      color: @dark-2;
+    }
   }
 }
 
-// .pane-dropdown--left {
-//   .pane-dropdown__menu {
-//     left: 0;
-//     right: auto;
-//   }
-// }
-
 .night {
-  .pane-dropdown {
+  .s-pane-dropdown {
     &__toggle {
       &:hover {
         color: @white;
+      }
+    }
+
+    &__toggle--active {
+      color: white;
+
+      i {
+        color: white;
       }
     }
 
@@ -169,8 +214,6 @@ export default class PaneDropdown extends Vue {
 
     &__link,
     a {
-      color: @night-paragraph;
-
       &:hover {
         color: @night-title;
       }

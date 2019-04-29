@@ -6,9 +6,7 @@
       <h2>Pane Dropdown</h2>
       <h3>With Dropdown Icon</h3>
 
-      <Accordion
-        :openedTitle="'Hide Code'"
-        :closedTitle="'Show Code'">
+      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre>
 <code>&lt;pane-dropdown&gt;
@@ -22,34 +20,43 @@
 
       <pane-dropdown>
         <template slot="title">Trending</template>
-        <a href="#">Most Installed</a>
-        <a href="#">Newly Added</a>
+        <a href="#">
+          <i class="icon-check"></i>Most Installed
+        </a>
+        <a href="#">
+          <i class="icon-delete"></i>Newly Added
+        </a>
         <a href="#">Trending</a>
       </pane-dropdown>
     </div>
 
     <div class="section">
-      <h3>Without Dropdown Icon</h3>
+      <h3>Menu Align</h3>
 
-      <Accordion
-        :openedTitle="'Hide Code'"
-        :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre>
-<code>&lt;pane-dropdown :dropdown-icon=&quot;false&quot;&gt;
-  &lt;i slot=&quot;title&quot; class=&quot;icon-settings&quot;&gt;&lt;/i&gt;
-  &lt;a href=&quot;#&quot;&gt;Add&lt;/a&gt;
-  &lt;a href=&quot;#&quot;&gt;Update&lt;/a&gt;
-  &lt;a href=&quot;#&quot;&gt;Remove&lt;/a&gt;
-&lt;/pane-dropdown&gt;</code></pre>
+      <pane-dropdown :menuAlign="'right'">
+        <span slot="title">Right Dropdown Menu</span>
+        <a href="#">Hey I'm a longer link here</a>
+        <a href="#">Let's see how this looks</a>
+        <a href="#">I'm in a pane dropdown aligned to the right</a>
+      </pane-dropdown>
+      <br>
+      <br>
+      <pane-dropdown :menuAlign="'center'">
+        <span slot="title">Center Dropdown Menu</span>
+        <a href="#">Hey I'm a longer link here</a>
+        <a href="#">Let's see how this looks</a>
+        <a href="#">I'm in a pane dropdown aligned to the right</a>
+      </pane-dropdown>
+      <br>
+      <br>
+      <pane-dropdown :custom="true">
+        <span slot="title">Custom Dropdown Menu</span>
+        <div>
+          hey
+          <span>watsup</span>
+          <br>
+          <b>put whatever you want in here</b>
         </div>
-      </Accordion>
-
-      <pane-dropdown :dropdown-icon="false">
-        <i slot="title" class="icon-settings"></i>
-        <a href="#">Add</a>
-        <a href="#">Update</a>
-        <a href="#">Remove</a>
       </pane-dropdown>
     </div>
 
@@ -64,12 +71,22 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr></tr>
           <tr>
             <td>dropdownIcon</td>
             <td>boolean</td>
             <td>true</td>
             <td>Show or hide dropdown icon.</td>
+          </tr>
+          <tr>
+            <td>menuAlign</td>
+            <td>string</td>
+            <td>null</td>
+            <td>
+              Default will align the menu to the left side of the toggle. Use
+              <code>right</code> or
+              <code>center</code> to align the dropdown menu to the right or center of its toggle.
+            </td>
           </tr>
         </tbody>
       </table>
@@ -92,9 +109,3 @@ import Tabs from "./../components/Tabs.vue";
 })
 export default class Dropdowns extends Vue {}
 </script>
-
-<style lang="less" scoped>
-.pane-dropdown {
-  display: inline-block !important;
-}
-</style>

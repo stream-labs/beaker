@@ -1,13 +1,14 @@
 <template>
-  <div class="toggle">
-    <button type="button"
+  <div class="s-toggle">
+    <button
+      type="button"
       v-for="(val, key) in values"
       :key="val.id"
       :title="key | capitalize"
       @click="$emit('update:selected', key)"
-      :class="['toggle__option', { 'toggle__option--active': selected === key }]"
+      :class="['s-toggle__option', { 's-toggle__option--active': selected === key }]"
       v-html="val"
-      >{{ val }}</button>
+    >{{ val }}</button>
   </div>
 </template>
 
@@ -39,10 +40,10 @@ export default class Toggle extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 
-.toggle {
+.s-toggle {
   display: inline-flex;
   .radius();
   .transition();
@@ -56,6 +57,7 @@ export default class Toggle extends Vue {
     color: @icon;
     .transition();
     outline: none;
+    display: flex;
 
     &--active {
       background-color: @dark-2;
@@ -66,7 +68,7 @@ export default class Toggle extends Vue {
 
 .night,
 .night-theme {
-  .toggle {
+  .s-toggle {
     &__option {
       background-color: @dark-4;
 

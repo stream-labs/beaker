@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Tabs</h1>
+    <p>Used for Tabs.</p>
 
     <pre><code>import { Tabs } from 'streamlabs-beaker';
 
@@ -8,37 +9,87 @@ components: {
   Tabs
 }</code></pre>
 
-    <h3>Standard</h3>
-    <Accordion
-      :openedTitle="'Hide Code'"
-      :closedTitle="'Show Code'">
+    <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
       <div slot="content">
         <pre>
-<code>&lt;Tabs
+<code>&lt;tabs
   :tabs=&quot;tabs&quot;
-  :value=&quot;selectedTab&quot;
-  @input=&quot;onSelectTabHandler&quot;&gt;
-  &lt;div slot=&quot;general&quot;&gt;
-    General slot content
-  &lt;/div&gt;
-  &lt;div slot=&quot;advanced&quot;&gt;
-    Advanced slot content
-  &lt;/div&gt;
-&lt;/Tabs&gt;</code></pre>
+  :size=&quot;'small'&quot;
+  :selected=&quot;advanced&quot;&gt;
+  &lt;div slot=&quot;general&quot;&gt;general&lt;/div&gt;
+  &lt;div slot=&quot;advanced&quot;&gt;advanced&lt;/div&gt;
+  &lt;div slot=&quot;account&quot;&gt;account&lt;/div&gt;
+  &lt;div slot=&quot;integrations&quot;&gt;integrations&lt;/div&gt;
+  &lt;div slot=&quot;payments&quot;&gt;payments&lt;/div&gt;
+  &lt;div slot=&quot;donations&quot;&gt;donations&lt;/div&gt;
+  &lt;div slot=&quot;subscriptions&quot;&gt;subscriptions&lt;/div&gt;
+  &lt;div slot=&quot;preferences&quot;&gt;preferences&lt;/div&gt;
+  &lt;div slot=&quot;apps&quot;&gt;apps&lt;/div&gt;
+  &lt;div slot=&quot;merch&quot;&gt;merch&lt;/div&gt;
+  &lt;div slot=&quot;api&quot;&gt;api&lt;/div&gt;
+  &lt;div slot=&quot;moderators&quot;&gt;moderators&lt;/div&gt;
+  &lt;div slot=&quot;themes&quot;&gt;themes&lt;/div&gt;
+&lt;/tabs&gt;
+</code></pre>
       </div>
     </Accordion>
 
-    <Tabs
-      :tabs="tabs"
-      :value="selectedTab"
-      @input="onSelectTabHandler">
-      <div slot="general">
-        General slot content
-      </div>
-      <div slot="advanced">
-        Advanced slot content
-      </div>
-    </Tabs>
+    <tabs :tabs="tabs" :size="'small'" :selected="'advanced'">
+      <div slot="general">general</div>
+      <div slot="advanced">advanced</div>
+      <div slot="account">account</div>
+      <div slot="integrations">integrations</div>
+      <div slot="payments">payments</div>
+      <div slot="donations">donations</div>
+      <div slot="subscriptions">subscriptions</div>
+      <div slot="preferences">preferences</div>
+      <div slot="apps">apps</div>
+      <div slot="merch">merch</div>
+      <div slot="api">api</div>
+      <div slot="moderators">moderators</div>
+      <div slot="themes">themes</div>
+    </tabs>
+    <table class="docs-table">
+      <thead>
+        <tr>
+          <th>Prop</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>tabs</td>
+          <td>array</td>
+          <td>null</td>
+          <td>
+            tabs information to display. you can make array like below
+            <br>
+            <code>
+              tabs = [
+              {
+              name: "General",
+              value: "general",
+              icon: "information"
+              }
+            </code>
+          </td>
+        </tr>
+        <tr>
+          <td>size</td>
+          <td>string</td>
+          <td>small</td>
+          <td>text size of tabs. Options are "small" and "large"</td>
+        </tr>
+        <tr>
+          <td>selected</td>
+          <td>string</td>
+          <td>null</td>
+          <td>default selected tab</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -56,65 +107,111 @@ import Tabs from "./../components/Tabs.vue";
   }
 })
 export default class TabsDemo extends Vue {
+  // test = [
+  //   {
+  //     tabLabel: "General",
+  //     tabTo: "#",
+  //     tabId: "tab1",
+  //     tabIcon: "information"
+  //   },
+  //   {
+  //     tabLabel: "Advanced",
+  //     tabTo: "#",
+  //     tabId: "tab2",
+  //     tabIcon: "information"
+  //   },
+  //   {
+  //     tabLabel: "Account",
+  //     tabTo: "#",
+  //     tabId: "tab3",
+  //     tabIcon: "information"
+  //   },
+  //   {
+  //     tabLabel: "Integrations",
+  //     tabTo: "#",
+  //     tabId: "tab4",
+  //     tabIcon: "information"
+  //   },
+  //   {
+  //     tabLabel: "Payments",
+  //     tabTo: "#",
+  //     tabId: "tab5",
+  //     tabIcon: "information"
+  //   },
+  //   {
+  //     tabLabel: "Apps",
+  //     tabTo: "#",
+  //     tabId: "tab6",
+  //     tabIcon: "information"
+  //   }
+  // ];
+
   tabs = [
     {
       name: "General",
-      value: "general"
+      value: "general",
+      icon: "information"
     },
     {
       name: "Advanced",
-      value: "advanced"
+      value: "advanced",
+      icon: ""
     },
     {
       name: "Account",
-      value: "Account"
+      value: "account",
+      icon: ""
     },
     {
       name: "Integrations",
-      value: "integrations"
+      value: "integrations",
+      icon: ""
     },
     {
       name: "Payments",
-      value: "payments"
+      value: "payments",
+      icon: ""
     },
     {
       name: "Donations",
-      value: "donations"
+      value: "donations",
+      icon: ""
     },
     {
       name: "Subscriptions",
-      value: "subscriptions"
+      value: "subscriptions",
+      icon: ""
     },
     {
       name: "Preferences",
-      value: "preferences"
+      value: "preferences",
+      icon: ""
     },
     {
       name: "Apps",
-      value: "apps"
+      value: "apps",
+      icon: ""
     },
     {
       name: "Merch",
-      value: "merch"
+      value: "merch",
+      icon: ""
     },
     {
       name: "API",
-      value: "api"
+      value: "api",
+      icon: ""
     },
     {
       name: "Moderators",
-      value: "moderators"
+      value: "moderators",
+      icon: ""
     },
     {
       name: "Themes",
-      value: "themes"
+      value: "themes",
+      icon: ""
     }
   ];
-
-  selectedTab = "general";
-
-  onSelectTabHandler(tab: string) {
-    this.selectedTab = tab;
-  }
 }
 </script>
