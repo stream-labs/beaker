@@ -7,7 +7,7 @@
       :name="name"
       :disabled="disabled"
       @blur="$emit('blur')"
-      v-model="content"
+      v-model="selectContent"
       :class="{ 's-form-field__input': true, 's-form-field__input--error': !!error }"
     >
     <label
@@ -57,8 +57,15 @@ export default class TextInput extends Vue {
   label!: String;
 
   content: String = "";
+
+  get selectContent() {
+    if (this.value) {
+      return (this.content = this.value);
+    }
+  }
+
   handleInput(e: String) {
-    this.$emit("input", this.content);
+    this.$emit("input", this.value);
   }
 }
 </script>
