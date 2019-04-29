@@ -400,7 +400,7 @@ export default class Inputs extends Vue {
   jarValue = "glass-pint";
 
   // Text inputs
-  textInputValue = "";
+  textInputValue = "test";
   emailInputValue = "";
   passwordInputValue = "";
   errorTextInputValue = "";
