@@ -66,6 +66,12 @@ export default class TextInput extends Vue {
 <style lang="less">
 @import "./../styles/Imports";
 
+.s-form-field {
+  .s-form-field__input {
+    border: 1px solid @light-4;
+  }
+}
+
 .s-form-field__input--error {
   border-color: @red;
 }
@@ -110,6 +116,10 @@ export default class TextInput extends Vue {
 
   input:focus + label {
     color: @day-title;
+  }
+
+  input:focus + .s-form-field__label--error {
+    color: @red;
   }
 
   .s-form-field--top {
