@@ -57,8 +57,17 @@ export default class TextInput extends Vue {
   label!: String;
 
   content: String = "";
+
+  mounted() {
+    if (this.value) {
+      return (this.content = this.value);
+    } else {
+      this.content;
+    }
+  }
+
   handleInput(e: String) {
-    this.$emit("input", this.content);
+    this.$emit("input", this.value);
   }
 }
 </script>
