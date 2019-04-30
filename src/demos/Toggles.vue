@@ -18,7 +18,7 @@ components: {
     'hide': `&lt;i class='icon-hide'&gt;&lt;/i&gt;`
   }&quot;
   :selected.sync=&quot;selectedOption&quot;
-  :default=&quot;'visible'&quot;&gt;
+  :default=&quot;'show'&quot;&gt;
 &lt;/toggle&gt;</code></pre>
         </div>
       </accordion>
@@ -28,8 +28,34 @@ components: {
           'show': `<i class='icon-view'></i>`,
           'hide': `<i class='icon-hide'></i>`
         }"
-        :selected.sync="selectedTextOption"
+        :selected.sync="selectedOption"
         :default="'show'"
+      ></toggle>
+    </div>
+
+    <div class="section">
+      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+        <div slot="content">
+          <pre><code>&lt;toggle
+  :values=&quot;{
+    'revenue': 'Revenue',
+    'growth': 'Growth'
+  }&quot;
+  :selected.sync=&quot;selectedOption&quot;
+  :default=&quot;'revenue'&quot;&gt;
+  :variation=&quot;'text'&quot;
+&lt;/toggle&gt;</code></pre>
+        </div>
+      </accordion>
+
+      <toggle
+        :values="{
+          'revenue': 'Revenue',
+          'growth': 'Growth'
+        }"
+        :selected.sync="selectedTextOption"
+        :default="'revenue'"
+        :variation="'text'"
       ></toggle>
     </div>
 
@@ -60,6 +86,12 @@ components: {
           <td>string</td>
           <td>null</td>
           <td>Set to have a preselected toggle option when created.</td>
+        </tr>
+        <tr>
+          <td>variation</td>
+          <td>string</td>
+          <td>null</td>
+          <td>Add a toggle variation for a subtle style change. Options are <code>text</code>.</td>
         </tr>
       </tbody>
     </table>
