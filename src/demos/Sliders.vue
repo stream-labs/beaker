@@ -1,3 +1,4 @@
+
 <template>
   <div>
     <div class="section">
@@ -31,7 +32,7 @@ components: {
       </accordion>
 
       <div class="row">
-        <slider :min="0" :max="100" :interval="1" :value="value" :suffix="'%'" :tooltip="'always'"></slider>
+        <slider :min="0" :max="100" :interval="1" :value="1" :tooltip="'always'"></slider>
       </div>
 
       <table class="docs-table">
@@ -106,5 +107,6 @@ import Accordion from "./../components/Accordion.vue";
 })
 export default class Sliders extends Vue {
   value = 50;
+  data = [1, 2, 3, 4, 5];
 }
 </script>

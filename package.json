@@ -27,7 +27,7 @@
     "vue-property-decorator": "^7.0.0",
     "vue-router": "^3.0.1",
     "vue-select": "^2.5.1",
-    "vue-slider-component": "^2.8.0",
+    "vue-slider-component": "^3.0.31",
     "vuejs-paginate": "^2.1.0"
   },
   "resolutions": {
