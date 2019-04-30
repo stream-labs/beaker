@@ -46,7 +46,7 @@ export default class Toggle extends Vue {
 
   get toggleClass() {
     if (this.variation) {
-      return `s-toggle--${this.variation}`
+      return `s-toggle--${this.variation}`;
     }
   }
 }
