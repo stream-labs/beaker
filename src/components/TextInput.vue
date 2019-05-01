@@ -8,13 +8,20 @@
       :disabled="disabled"
       @blur="$emit('blur')"
       v-model="content"
-      :class="{ 's-form-field__input': true, 's-form-field__input--error': !!error }"
-    >
+      :class="{
+        's-form-field__input': true,
+        's-form-field__input--error': !!error
+      }"
+    />
     <label
-      :class="{ 's-form-field__label--top': value !== '', 's-form-field__label--error': !!error }"
+      :class="{
+        's-form-field__label--top': value !== '',
+        's-form-field__label--error': !!error
+      }"
       class="s-form-field__label"
       v-if="label"
-    >{{ label }}</label>
+      >{{ label }}</label
+    >
 
     <transition name="slide">
       <p v-show="error" class="s-form-field__error-text">{{ error }}</p>
@@ -58,7 +65,7 @@ export default class TextInput extends Vue {
 
   content: String = "";
 
-  mounted() {
+  created() {
     if (this.value) {
       return (this.content = this.value);
     } else {
@@ -67,7 +74,7 @@ export default class TextInput extends Vue {
   }
 
   handleInput(e: String) {
-    this.$emit("input", this.value);
+    this.$emit("input", this.content);
   }
 }
 </script>

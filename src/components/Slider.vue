@@ -1,85 +1,118 @@
 <template>
   <vue-slider-component
+    :width="width"
     :height="8"
     :dotHeight="16"
     :dotWidth="24"
-    :tooltip="tooltip"
-    :tooltip-dir="'bottom'"
+    :tooltip="displayTooltip"
+    :tooltipPlacement="'bottom'"
     :min="min"
     :max="max"
     :interval="interval"
     v-model="displayValue"
     :prefix="prefix"
     :suffix="suffix"
-    :formatter="prefix + '{value}' + suffix"
-    :data="data"
-    @callback="value => emitInput(value)"
+    :tooltipFormatter="prefix + '{value}' + suffix"
+    @change="value => emitInput(value)"
     :disabled="disabled"
+    :data="data"
+    :marks="displayMarks"
+    class="s-slider"
   ></vue-slider-component>
 </template>
 
-<script>
-import { Component, Vue } from "vue-property-decorator";
+<script lang="ts">
+import { Component, Prop, Vue } from "vue-property-decorator";
 import VueSliderComponent from "vue-slider-component";
-export default {
-  name: "Slider",
-  extends: VueSliderComponent,
+
+@Component({
   components: {
     VueSliderComponent
-  },
-  props: {
-    value: {
-      type: [Number, String, Array],
-      default: 1
-    },
-    prefix: {
-      type: String,
-      default: ""
-    },
-    suffix: {
-      type: String,
-      default: ""
-    },
-    data: {
-      type: String,
-      default: null
-    }
-  },
+  }
+})
+export default class Slider extends Vue {
+  @Prop({ default: null })
+  data!: Array<number> | Array<string>;
 
-  data() {
-    return {
-      displayValue: this.value
-    };
-  },
+  @Prop({ default: 1 })
+  value!: number | string | Array<number> | Array<string>;
+
+  @Prop({ default: "" })
+  prefix!: String;
+
+  @Prop({ default: "" })
+  suffix!: String;
+
+  @Prop({ default: "focus" })
+  tooltip!: "none" | "always" | "focus";
+
+  @Prop()
+  min!: number;
+
+  @Prop()
+  max!: number;
+
+  @Prop()
+  interval!: number;
+
+  @Prop()
+  disabled!: boolean;
+
+  @Prop()
+  width!: number | string;
+
+  @Prop({ default: false })
+  dataVisible!: boolean;
+
+  displayValue: number | string | Array<number> | Array<string> = this.value;
+  displayTooltop:  "none" | "always" | "focus" = "always";
+
+  get displayMarks() {
+    return this.dataVisible ? true : false;
+  }
+
+  get displayTooltip() {
+    return this.dataVisible ? this.displayTooltop = "none" : this.displayTooltop = this.tooltip;
+  }
 
   created() {
     this.$on("input", this.setValue);
-  },
+  }
+
   destroyed() {
     this.$off("input", this.setValue);
-  },
-  methods: {
-    emitInput(val) {
-      this.$emit("input", val);
-    },
-    setValue(val) {
-      this.currentValue = val;
-    }
   }
-};
+
+  emitInput(val) {
+    this.$emit("input", val);
+  }
+
+  setValue(val) {
+    this.displayValue = val;
+  }
+}
 </script>
 
 <style lang="less">
 @import "./../styles/Imports";
 
-.vue-slider-component {
-  .vue-slider {
+.s-slider {
+  flex: 1;
+  width: 100%;
+
+  .vue-slider-rail {
     background-color: @light-3;
+    .radius(3);
   }
 
   .vue-slider-process {
     background-color: @teal;
+    .radius(3);
   }
+
+  // .vue-slider-mark-label {
+  //   display: none;
+  // }
 
   .vue-slider-dot {
     .vue-slider-dot-handle {
@@ -87,7 +120,9 @@ export default {
       box-shadow: none;
       .radius(3);
       position: relative;
-
+      width: 24px;
+      height: 16px;
+      left: -6px;
       &:before,
       &:after {
         border: none;
@@ -112,6 +147,23 @@ export default {
         right: 2px;
       }
     }
+
+    .vue-slider-dot-tooltip-bottom {
+      bottom: -16px;
+      left: 6px;
+      -webkit-transform: translate(-50%, 100%);
+      transform: translate(-50%, 100%);
+    }
+
+    .vue-slider-dot-tooltip-text {
+      font-size: 14px;
+      .padding-h-sides();
+      .padding-v-sides(0.5);
+      color: @dark-2;
+      border-radius: 5px;
+      border: 1px solid @light-4;
+      background-color: @white;
+    }
   }
 
   .vue-slider-tooltip {
@@ -128,9 +180,9 @@ export default {
 
 .night,
 .night-theme {
-  .vue-slider-component {
-    .vue-slider {
-      background-color: @dark-4;
+  .vue-slider {
+    .vue-slider-rail {
+      background-color: @dark-5;
     }
 
     .vue-slider-dot {

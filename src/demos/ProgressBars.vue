@@ -9,7 +9,7 @@
         </div>
       </accordion>
       <div class="row">
-        <progress-bar :progressComplete="50"/>
+        <progress-bar :progressComplete="50" />
       </div>
       <table class="docs-table">
         <thead>

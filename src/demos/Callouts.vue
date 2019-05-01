@@ -2,7 +2,10 @@
   <div>
     <div class="section">
       <h1>Callouts</h1>
-      <p>You can use our callout component if you need to display a message to users.</p>
+      <p>
+        You can use our callout component if you need to display a message to
+        users.
+      </p>
       <h4>Rules</h4>
       <ul></ul>
 
@@ -15,7 +18,12 @@ components: {
 
     <div class="section">
       <h2>Default Callouts</h2>
-      <p>There are 3 basic callout variations: success, warning, and info. These can be used whenever necessary but please limit to 1 callout per page and limit the text to 1 line. You can link to more info in a modal or another page if needed.</p>
+      <p>
+        There are 3 basic callout variations: success, warning, and info. These
+        can be used whenever necessary but please limit to 1 callout per page
+        and limit the text to 1 line. You can link to more info in a modal or
+        another page if needed.
+      </p>
       <callout :variation="'success'">
         Success callout.
         <a href="#0">Link</a>
@@ -44,7 +52,9 @@ components: {
       <h2>Strong Callouts</h2>
       <p>
         These should be used
-        <strong>very sparingly</strong>. These should be used in cases when something is going to be completed removed or something could become broken/lost if action is not taken.
+        <strong>very sparingly</strong>. These should be used in cases when
+        something is going to be completed removed or something could become
+        broken/lost if action is not taken.
       </p>
 
       <p>There are 3 strong callout variations: success, warning, and info.</p>
@@ -74,8 +84,15 @@ components: {
 
     <div class="section">
       <h2>Cookies Callout</h2>
-      <p>Used on landing page to warn users about use of cookies on our site.</p>
-      <callout :variation="'cookies'" :icon="'info'" :closeable="true" :onClose="cookieCalloutClosed">
+      <p>
+        Used on landing page to warn users about use of cookies on our site.
+      </p>
+      <callout
+        :variation="'cookies'"
+        :icon="'info'"
+        :closeable="true"
+        :onClose="cookieCalloutClosed"
+      >
         Cookies callout.
         <a href="#0">Link</a>
       </callout>
@@ -97,7 +114,8 @@ components: {
         <h3>Closable</h3>
         <p>
           Use the
-          <strong>closeable</strong> prop to give the callout the ability to close.
+          <strong>closeable</strong> prop to give the callout the ability to
+          close.
         </p>
         <callout :variation="'success'" :closeable="true">
           Success callout.
@@ -113,7 +131,9 @@ components: {
         <h3>With Icon</h3>
         <p>
           You can use the
-          <code>icon</code> prop to set it to 'success', 'warning', or 'info' for most common cases. If you need a different icon you can simply use it inline.
+          <code>icon</code> prop to set it to 'success', 'warning', or 'info'
+          for most common cases. If you need a different icon you can simply use
+          it inline.
         </p>
         <callout :icon="'success'" :variation="'success'" :closeable="true">
           Success callout.
@@ -160,10 +180,8 @@ components: {
             <td>'success'</td>
             <td>
               Use
-              <code>'success'</code>,
-              <code>'warning'</code> or
-              <code>'info'</code>. Add
-              <code>'strong'</code> when necessary.
+              <code>'success'</code>, <code>'warning'</code> or
+              <code>'info'</code>. Add <code>'strong'</code> when necessary.
             </td>
           </tr>
           <tr>
@@ -178,8 +196,7 @@ components: {
             <td>-</td>
             <td>
               Use
-              <code>'success'</code>,
-              <code>'warning'</code> or
+              <code>'success'</code>, <code>'warning'</code> or
               <code>'info'</code>.
             </td>
           </tr>
@@ -213,5 +230,4 @@ export default class Callouts extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>

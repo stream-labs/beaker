@@ -10,7 +10,7 @@
       :class="[value === option.value ? 'active' : '']"
       @click="emitInput(option.value)"
     >
-      <img :src="option.image">
+      <img :src="option.image" />
     </div>
   </div>
 </template>

@@ -10,9 +10,9 @@
     <div class="s-modal-container">
       <div class="s-modal-body">
         <div class="s-normal-upper">
-          <h1 class="s-modal-title">{{title}}</h1>
-          <h2 class="s-modal-sub-title">{{subTitle}}</h2>
-          <p class="s-modal-text">{{text}}</p>
+          <h1 class="s-modal-title">{{ title }}</h1>
+          <h2 class="s-modal-sub-title">{{ subTitle }}</h2>
+          <p class="s-modal-text">{{ text }}</p>
         </div>
       </div>
       <div class="s-modal-footer">
@@ -23,7 +23,11 @@
             :size="'fixed-width'"
             @click="$modal.hide(name)"
           ></Button>
-          <Button :variation="'action'" :title="'Confirm'" :size="'fixed-width'"></Button>
+          <Button
+            :variation="'action'"
+            :title="'Confirm'"
+            :size="'fixed-width'"
+          ></Button>
         </div>
       </div>
     </div>

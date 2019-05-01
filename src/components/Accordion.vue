@@ -1,5 +1,5 @@
 <template>
-  <div class="s-accordion" :class="[ accordionClasses ]">
+  <div class="s-accordion" :class="[accordionClasses]">
     <div class="s-accordion__toggle" @click.capture="toggleAccordion">
       <slot name="toggle">
         <span v-show="defaultOpen">{{ title || openedTitle }}</span>

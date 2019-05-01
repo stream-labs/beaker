@@ -34,7 +34,9 @@ components: {
         :type="'basic'"
         :title="'UI Modal'"
         :subTitle="'Subtitle'"
-        :text="'Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.'"
+        :text="
+          'Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.'
+        "
       ></ModalComp>
 
       <ModalComp
@@ -42,12 +44,22 @@ components: {
         :type="'basic'"
         :title="'UI Modal2'"
         :subTitle="'Subtitle2'"
-        :text="'Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.'"
+        :text="
+          'Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.'
+        "
       ></ModalComp>
 
       <div class="s-button-container--left">
-        <Button :variation="'default'" :title="'modal basic1'" @click="$modal.show('modal-basic')"></Button>
-        <Button :variation="'default'" :title="'modal basic2'" @click="$modal.show('modal-basic2')"></Button>
+        <Button
+          :variation="'default'"
+          :title="'modal basic1'"
+          @click="$modal.show('modal-basic')"
+        ></Button>
+        <Button
+          :variation="'default'"
+          :title="'modal basic2'"
+          @click="$modal.show('modal-basic2')"
+        ></Button>
       </div>
     </div>
 
@@ -80,7 +92,9 @@ components: {
         :type="'subscribe'"
         :title="'Streamlabs'"
         :subTitle="'Never pay for GIFs and effects again!'"
-        :text="'Get unlimited free GIFs and effects that will show up on all alerts on all channels! You’ll also get a fancy ‘Pro’ badge next to your username on your donations.'"
+        :text="
+          'Get unlimited free GIFs and effects that will show up on all alerts on all channels! You’ll also get a fancy ‘Pro’ badge next to your username on your donations.'
+        "
         :subscribeText="'galazy83 donated $50.00!'"
         :subscribeMessage="'Thanks for the stream. Go CivRyan!'"
         :notes="'You may cancel your subscription at any time.'"
@@ -119,7 +133,9 @@ components: {
       <ModalComp
         :type="'redirect'"
         :title="'Redirecting ...'"
-        :text="'Redirecting you to PayPal to update your method of payment. Click here if you have been waiting longer than 5 seconds.'"
+        :text="
+          'Redirecting you to PayPal to update your method of payment. Click here if you have been waiting longer than 5 seconds.'
+        "
       ></ModalComp>
 
       <div class="button-container button-container--left">
@@ -158,7 +174,9 @@ components: {
         :type="'confirmation'"
         :width="400"
         :subTitle="'Delete ‘Streamlabs Pillow’'"
-        :text="'Are you sure you want to delete the merch item ‘Streamlabs Pillow’? This action cannot be undone.'"
+        :text="
+          'Are you sure you want to delete the merch item ‘Streamlabs Pillow’? This action cannot be undone.'
+        "
         @confirm="() => {}"
         :confirmButtonText="'Delete'"
       ></ModalComp>
@@ -187,8 +205,10 @@ components: {
           <td>string</td>
           <td>null</td>
           <td>
-            name is optional. if you need specific name for the modal, use name prop. Also don't forget to change $modal.show() to the name you set as prop.
-            <br>ex.
+            name is optional. if you need specific name for the modal, use name
+            prop. Also don't forget to change $modal.show() to the name you set
+            as prop.
+            <br />ex.
             <code>:name="'modal-basic2'"</code>
             <code>$modal.show('modal-basic2')</code>
           </td>
@@ -209,7 +229,10 @@ components: {
           <td>type</td>
           <td>string</td>
           <td>null</td>
-          <td>Type of the modal. Options are basic, subscribe, redirect, and confirmation</td>
+          <td>
+            Type of the modal. Options are basic, subscribe, redirect, and
+            confirmation
+          </td>
         </tr>
         <tr>
           <td>title</td>
@@ -274,7 +297,8 @@ components: {
           <td>warning</td>
           <td>
             Pass in
-            <code>action</code> if it's a confirmation that doesn't warrant a warning (only in Modal Confirmation)
+            <code>action</code> if it's a confirmation that doesn't warrant a
+            warning (only in Modal Confirmation)
           </td>
         </tr>
       </tbody>

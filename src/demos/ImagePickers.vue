@@ -9,7 +9,7 @@
         </div>
       </accordion>
       <div class="row">
-        <image-picker/>
+        <image-picker />
       </div>
       <!--
       <table class="docs-table">
