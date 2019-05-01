@@ -295,7 +295,6 @@ export default class SiteSearch extends Vue {
 
   &.s-sitesearch--phase-one {
     background-color: @day-bg;
-    // height: 271px;
   }
 
   > i {
