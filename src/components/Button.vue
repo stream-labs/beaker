@@ -20,9 +20,11 @@
         <i v-if="iconClass" :class="iconClass"></i>
         {{ title }}
       </span>
-      <span v-if="description" class="s-button__description">{{
+      <span v-if="description" class="s-button__description">
+        {{
         description
-      }}</span>
+        }}
+      </span>
     </span>
     <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
     <span v-if="price">{{ price }}</span>
@@ -126,10 +128,6 @@ export default class Button extends Vue {
 
   get buttonClasses() {
     const classes: any = [];
-
-    if (this.variation) {
-      classes.push(`s-button--${this.variation}`);
-    }
 
     if (this.variation) {
       classes.push(`s-button--${this.variation}`);
@@ -326,7 +324,7 @@ export default class Button extends Vue {
   }
 }
 
-.s-button--yt {
+.s-button--youtube {
   background-color: @youtube;
   color: @white;
 
