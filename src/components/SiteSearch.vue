@@ -2,6 +2,7 @@
   <div
     class="s-sitesearch"
     :class="[{ 's-sitesearch--is-open' : isOpen }, {'s-sitesearch--phase-one' : phaseOne}, {'s-sitesearch--phase-two' : phaseTwo}]"
+    :style="calcHeight"
   >
     <div class="s-sitesearch--searchbar__cont">
       <div class="s-sitesearch--icon">
@@ -13,8 +14,9 @@
         v-model="value"
         placeholder="Search Streamlabs..."
         class="s-sitesearch__input"
-        @focus="playOpeningSequence"
-        @blur="playClosingSequence"
+        @focus.stop.prevent="playOpeningSequence"
+        @blur.stop.prevent="playClosingSequence"
+        @keyup.stop.prevent="keyEvent"
       >
       <div class="s-sitesearch-status__cont">
         <div v-if="noResults">No Results</div>
@@ -32,6 +34,8 @@
           v-for="(suggested, i) in suggestedLinks"
           :key="suggested.item.name"
           class="s-sitesearch-results"
+          :class="{'s-active-result': currentResult === i }"
+          @mouseover="currentResult = i"
         >
           <div class="s-sitesearch__result--image">
             <i :class="searchData[quickLinkLoc[i]].image" class="s-sitesearch__result--image"></i>
@@ -47,9 +51,10 @@
         <transition-group name="s-sitesearch--fadeX">
           <a
             :href="searchResult.item.route"
-            v-for="searchResult in limitedResult"
+            v-for="(searchResult, i) in limitedResult"
             :key="searchResult.item.name"
             class="s-sitesearch-results"
+            :class="{'s-active-result': currentResult === i }"
           >
             <div class="s-sitesearch__result--image">
               <i :class="searchResult.item.image" class="s-sitesearch__result--image"></i>
@@ -80,6 +85,8 @@ export default class SiteSearch extends Vue {
   private fuse: any = null;
   private value: String = "";
   private quickLinkLoc: any = [];
+  private keyEvents: any = [];
+  private currentResult: number = 0;
 
   @Prop()
   jsonSearch!: any;
@@ -154,6 +161,22 @@ export default class SiteSearch extends Vue {
       : this.fullSort;
   }
 
+  get calcHeight() {
+    if (this.phaseOne === false) {
+      return "height: 40px;";
+    }
+    if (
+      this.result.length >= 1 &&
+      this.result.length <= 7 &&
+      this.phaseOne == true
+    ) {
+      let x = parseInt(this.result.length) * 32 + 47;
+      return "height: " + x + "px;";
+    } else {
+      return "height: 271px;";
+    }
+  }
+
   @Watch("searchData")
   watchSearchData() {
     this.fuse.searchData = this.searchData;
@@ -176,6 +199,33 @@ export default class SiteSearch extends Vue {
   watchResult() {
     this.$emit(this.eventName, this.result);
     this.$parent.$emit(this.eventName, this.result);
+  }
+
+  keyEvent(event) {
+    // KEYPRESS UP
+    if (event.keyCode === 38 && this.currentResult > 0) {
+      this.currentResult--;
+    }
+    // KEYPRESS DOWN
+    if (event.keyCode === 40 && this.currentResult < 5) {
+      this.currentResult++;
+    }
+    // KEYPRESS ENTER
+    if (event.keyCode === 13 && this.phaseOne) {
+      if (this.result <= 0) {
+        window.location.href = this.searchData[
+          this.quickLinkLoc[this.currentResult]
+        ].route;
+      } else {
+        window.location.href = this.limitedResult[
+          this.currentResult
+        ].item.route;
+      }
+    }
+    // KEYPRESS ESC
+    if (event.keyCode === 27 && this.phaseOne) {
+      this.blurSearch();
+    }
   }
 
   playClosingSequence() {
@@ -205,6 +255,12 @@ export default class SiteSearch extends Vue {
     }
   }
 
+  blurSearch() {
+    this.value = "";
+    this.$refs.search_input.blur();
+    this.currentResult = 0;
+  }
+
   fuseSearch() {
     if (this.value.trim() === "") {
       this.result = [];
@@ -216,8 +272,6 @@ export default class SiteSearch extends Vue {
   sortWeight(a, b) {
     let aResult: any = this.result.find(data => data.item.name === a.item.name);
     let bResult: any = this.result.find(data => data.item.name === b.item.name);
-    //console.log(b.item.name + ' || ' + b.item.weight + ' *** ' + bResult.score + ' === ' + b.item.weight * bResult.score);
-    //console.log(a.item.name + ' || ' + a.item.weight + ' *** ' + aResult.score + ' === ' + a.item.weight * aResult.score);
     return b.item.weight * bResult.score - a.item.weight * aResult.score;
   }
 
@@ -241,7 +295,6 @@ export default class SiteSearch extends Vue {
 
   &.s-sitesearch--phase-one {
     background-color: @day-bg;
-    height: 265px;
   }
 
   > i {
@@ -258,6 +311,11 @@ export default class SiteSearch extends Vue {
     font-family: "Roboto";
     color: @day-title;
     width: 100%;
+  }
+
+  ::placeholder {
+    color: #91979a;
+    opacity: 1;
   }
 
   .s-sitesearch__result--title {
@@ -326,13 +384,16 @@ export default class SiteSearch extends Vue {
     .padding-v-sides();
     text-decoration: none;
 
-    &:hover {
+    &.s-active-result {
       background-color: @day-dropdown-bg;
-      cursor: pointer;
       .s-sitesearch__result--image,
       .s-sitesearch__result--title {
         color: @day-title;
       }
+    }
+
+    &:hover {
+      cursor: pointer;
     }
   }
 
@@ -399,6 +460,10 @@ export default class SiteSearch extends Vue {
       background-color: @night-bg;
     }
 
+    .s-sitesearch__input {
+      color: @night-title;
+    }
+
     .s-sitesearch__result--title {
       color: @night-paragraph;
     }
@@ -408,10 +473,8 @@ export default class SiteSearch extends Vue {
     }
 
     .s-sitesearch-results {
-      &:hover {
+      &.s-active-result {
         background-color: @night-dropdown-bg;
-        cursor: pointer;
-
         .s-sitesearch__result--image,
         .s-sitesearch__result--title {
           color: @night-title;
