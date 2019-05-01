@@ -46,16 +46,16 @@ export default class Slider extends Vue {
   tooltip!: "none" | "always" | "focus";
 
   @Prop()
-  min!: any;
+  min!: number;
 
   @Prop()
-  max!: any;
+  max!: number;
 
   @Prop()
-  interval!: any;
+  interval!: number;
 
   @Prop()
-  disabled!: any;
+  disabled!: boolean;
 
   @Prop()
   width!: number | string;
