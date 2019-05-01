@@ -4,7 +4,7 @@
     <div class="s-fake-alert__message">
       {{ alertMessage }}
       <span class="s-fake-alert__icon">
-        <img :src="alertImage">
+        <img :src="alertImage" />
       </span>
     </div>
   </div>

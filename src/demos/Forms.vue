@@ -1,11 +1,19 @@
 <template>
   <div>
     <form-group-h :title="title" :helpText="helpText" :tooltip="tooltip">
-      <text-input slot="input" :type="textInputType" :placeholder="textInputPlaceholder"></text-input>
+      <text-input
+        slot="input"
+        :type="textInputType"
+        :placeholder="textInputPlaceholder"
+      ></text-input>
     </form-group-h>
 
     <form-group-v :title="title" :helpText="helpText" :tooltip="tooltip">
-      <text-input slot="input" :type="textInputType" :placeholder="textInputPlaceholder"></text-input>
+      <text-input
+        slot="input"
+        :type="textInputType"
+        :placeholder="textInputPlaceholder"
+      ></text-input>
     </form-group-v>
 
     <payment-form></payment-form>

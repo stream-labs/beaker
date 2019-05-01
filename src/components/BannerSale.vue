@@ -12,10 +12,18 @@
     </div>
     <div class="s-banner-sale__wrapper s-header">
       <h1 class="s-banner-sale__time">
-        <span :class="{'s-banner-sale__time--done': daysDone}">{{ `${ days }d` }}</span>
-        <span :class="{'s-banner-sale__time--done': hoursDone}">{{ `${ hours }h` }}</span>
-        <span :class="{'s-banner-sale__time--done': minutesDone}">{{ `${ minutes }m` }}</span>
-        <span :class="{'s-banner-sale__time--done': secondsDone}">{{ `${ seconds }s` }}</span>
+        <span :class="{ 's-banner-sale__time--done': daysDone }">{{
+          `${days}d`
+        }}</span>
+        <span :class="{ 's-banner-sale__time--done': hoursDone }">{{
+          `${hours}h`
+        }}</span>
+        <span :class="{ 's-banner-sale__time--done': minutesDone }">{{
+          `${minutes}m`
+        }}</span>
+        <span :class="{ 's-banner-sale__time--done': secondsDone }">{{
+          `${seconds}s`
+        }}</span>
       </h1>
       <p>{{ timeDesc }}</p>
     </div>

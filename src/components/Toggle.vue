@@ -1,5 +1,5 @@
 <template>
-  <div :class="[ 's-toggle', toggleClass ]">
+  <div :class="['s-toggle', toggleClass]">
     <button
       type="button"
       v-for="(val, key) in values"
@@ -11,7 +11,9 @@
         { 's-toggle__option--active': selected === key }
       ]"
       v-html="val"
-    >{{ val }}</button>
+    >
+      {{ val }}
+    </button>
   </div>
 </template>
 

@@ -4,7 +4,12 @@
       <i class="icon-dropdown s-tooltip-notice__arrow"></i>
       <h3>{{ title }}</h3>
       <p>{{ desc }}</p>
-      <Button @click="clickHandler" :title="'Got It'" :variation="'action'" :size="'small'"></Button>
+      <Button
+        @click="clickHandler"
+        :title="'Got It'"
+        :variation="'action'"
+        :size="'small'"
+      ></Button>
     </div>
   </div>
 </template>

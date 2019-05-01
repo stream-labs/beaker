@@ -2,7 +2,10 @@
   <div>
     <div class="section">
       <h1>Pagination</h1>
-      <p>You can pass how many items you would like per page and total items for a dynamic page count or manually enter how many pages you want.</p>
+      <p>
+        You can pass how many items you would like per page and total items for
+        a dynamic page count or manually enter how many pages you want.
+      </p>
 
       <Accordion
         :openedTitle="'Hide Code'"
@@ -59,13 +62,19 @@
             <td>totalPageCount</td>
             <td>Number</td>
             <td>0</td>
-            <td>Manually set the number of pages you want. Will ignore <code>itemsPerPage</code> & <code>totalItemCount</code> props when set.</td>
+            <td>
+              Manually set the number of pages you want. Will ignore
+              <code>itemsPerPage</code> & <code>totalItemCount</code> props when
+              set.
+            </td>
           </tr>
           <tr>
             <td>@page-selected</td>
             <td>Event</td>
             <td>null</td>
-            <td>Event emitted when page is changed. Passes current page number.</td>
+            <td>
+              Event emitted when page is changed. Passes current page number.
+            </td>
           </tr>
         </tbody>
       </table>

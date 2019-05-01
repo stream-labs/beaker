@@ -13,30 +13,34 @@
       </div>
       <div class="s-subscribe-upper">
         <div class="s-subscribe-title-box">
-          <h1 class="s-modal-title">{{title}}</h1>
+          <h1 class="s-modal-title">{{ title }}</h1>
           <badge :align-left="true">Pro</badge>
         </div>
-        <h2 class="s-modal-sub-title">{{subTitle}}</h2>
+        <h2 class="s-modal-sub-title">{{ subTitle }}</h2>
       </div>
 
       <div class="s-subscribe-body">
         <div class="s-subscribe-box">
-          <p class="s-subscribe-text">{{subscribeText}}</p>
+          <p class="s-subscribe-text">{{ subscribeText }}</p>
           <p class="s-subscribe-message">
-            {{subscribeMessage}}
+            {{ subscribeMessage }}
             <span class="s-subscribe-icon">
-              <img src="../assets/imgs/girl.svg">
+              <img src="../assets/imgs/girl.svg" />
             </span>
           </p>
         </div>
       </div>
 
       <div class="s-subscribe-bottom">
-        <p class="s-modal-text s-modal-text-subscribe">{{text}}</p>
+        <p class="s-modal-text s-modal-text-subscribe">{{ text }}</p>
         <div class="s-button-subscribe">
-          <Button :variation="'subscribe'" :title="'Subscribe with PayPal'" :price="'$5.99/mo'"></Button>
+          <Button
+            :variation="'subscribe'"
+            :title="'Subscribe with PayPal'"
+            :price="'$5.99/mo'"
+          ></Button>
         </div>
-        <p class="s-modal-notes">{{notes}}</p>
+        <p class="s-modal-notes">{{ notes }}</p>
       </div>
     </div>
   </modal>
@@ -82,7 +86,6 @@ export default class ModalSubscribe extends Vue {
   subscribeMessage!: string;
 }
 </script>
-
 
 <style lang="less" scoped>
 @import "./../styles/Imports";

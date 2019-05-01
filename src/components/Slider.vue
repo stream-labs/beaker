@@ -17,6 +17,7 @@
     :disabled="disabled"
     :data="data"
     :marks="displayMarks"
+    class="s-slider"
   ></vue-slider-component>
 </template>
 
@@ -97,7 +98,10 @@ export default class Slider extends Vue {
 <style lang="less">
 @import "./../styles/Imports";
 
-.vue-slider {
+.s-slider {
+  flex: 1;
+  width: 100%;
+
   .vue-slider-rail {
     background-color: @light-3;
     .radius(3);

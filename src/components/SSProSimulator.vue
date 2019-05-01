@@ -3,7 +3,7 @@
     <UrlBar :domain="domain"></UrlBar>
     <div class="s-cs-simulator__web-page" :class="themeClass">
       <div class="s-cs-simulator__heading">
-        <img class="s-cs-simulator__icon" :src="icon">
+        <img class="s-cs-simulator__icon" :src="icon" />
         <div class="s-cs-simulator__header-text">
           <h1 class="s-cs-simulator__username">{{ username }}</h1>
           <div class="s-cs-simulator__desc"></div>

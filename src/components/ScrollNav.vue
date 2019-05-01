@@ -1,7 +1,11 @@
 <template>
   <div>
     <div class="s-apps-nav">
-      <div v-if="hasPrev" @click="scrollLeft" class="s-apps-nav-control flex s-has-prev">
+      <div
+        v-if="hasPrev"
+        @click="scrollLeft"
+        class="s-apps-nav-control flex s-has-prev"
+      >
         <i class="icon-down icon-left"></i>
         <span>...</span>
       </div>
@@ -10,9 +14,9 @@
         @scroll="calculateScrolls"
         class="s-apps-tab__container"
         :class="{
-        's-has-next': hasNext,
-        's-has-prev': hasPrev
-      }"
+          's-has-next': hasNext,
+          's-has-prev': hasPrev
+        }"
       >
         <span
           v-for="item in items"
@@ -24,7 +28,11 @@
           <span>{{ item.name }}</span>
         </span>
       </div>
-      <div v-if="hasNext" @click="scrollRight" class="s-apps-nav-control flex s-has-next">
+      <div
+        v-if="hasNext"
+        @click="scrollRight"
+        class="s-apps-nav-control flex s-has-next"
+      >
         <span>...</span>
         <i class="icon-down icon-right"></i>
       </div>

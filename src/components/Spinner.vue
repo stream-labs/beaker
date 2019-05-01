@@ -47,7 +47,12 @@
           class="s-spinner__bar"
           :class="swapMode"
         >
-          <animate attributeName="opacity" values=".24; .24; .24" begin="0s" dur="0.4s"></animate>
+          <animate
+            attributeName="opacity"
+            values=".24; .24; .24"
+            begin="0s"
+            dur="0.4s"
+          ></animate>
           <animate
             attributeName="opacity"
             values=".24; .08; .24"
@@ -76,7 +81,12 @@
           class="s-spinner__bar"
           :class="swapMode"
         >
-          <animate attributeName="opacity" values=".24; .24; .24" begin="0s" dur="0.8s"></animate>
+          <animate
+            attributeName="opacity"
+            values=".24; .24; .24"
+            begin="0s"
+            dur="0.8s"
+          ></animate>
           <animate
             attributeName="opacity"
             values=".24; .08; .24"

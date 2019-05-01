@@ -25,8 +25,8 @@ components: {
 
       <toggle
         :values="{
-          'show': `<i class='icon-view'></i>`,
-          'hide': `<i class='icon-hide'></i>`
+          show: `<i class='icon-view'></i>`,
+          hide: `<i class='icon-hide'></i>`
         }"
         :selected.sync="selectedOption"
         :default="'show'"
@@ -50,8 +50,8 @@ components: {
 
       <toggle
         :values="{
-          'revenue': 'Revenue',
-          'growth': 'Growth'
+          revenue: 'Revenue',
+          growth: 'Growth'
         }"
         :selected.sync="selectedTextOption"
         :default="'revenue'"
@@ -73,7 +73,10 @@ components: {
           <td>values</td>
           <td>object</td>
           <td>null</td>
-          <td>Set toggle options with strings for the keys and HTML for the values. Keys will also be displayed as toggle title attributes.</td>
+          <td>
+            Set toggle options with strings for the keys and HTML for the
+            values. Keys will also be displayed as toggle title attributes.
+          </td>
         </tr>
         <tr>
           <td>selected.sync</td>
@@ -91,7 +94,10 @@ components: {
           <td>variation</td>
           <td>string</td>
           <td>null</td>
-          <td>Add a toggle variation for a subtle style change. Options are <code>text</code>.</td>
+          <td>
+            Add a toggle variation for a subtle style change. Options are
+            <code>text</code>.
+          </td>
         </tr>
       </tbody>
     </table>

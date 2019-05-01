@@ -30,12 +30,18 @@
         </Accordion>
 
         <banner-marketing
-          :bg-image="'https://cdn.streamlabs.com/static/imgs/pretzel_dashboard_banner_bg.png'"
-          :bg-image-night="'http://cdn.backgroundhost.com/backgrounds/subtlepatterns/cartographer.png'"
+          :bg-image="
+            'https://cdn.streamlabs.com/static/imgs/pretzel_dashboard_banner_bg.png'
+          "
+          :bg-image-night="
+            'http://cdn.backgroundhost.com/backgrounds/subtlepatterns/cartographer.png'
+          "
           :icon-name="'themes'"
           :label="'Introducing Streamlabs OBS'"
           :title="'Largest library of free themes in the world.'"
-          :desc="'To access over 700+ themes for free, download Streamlabs OBS.'"
+          :desc="
+            'To access over 700+ themes for free, download Streamlabs OBS.'
+          "
           :link-desc="'Win 7+  245.8 MB'"
           :onToggle="test"
         >
@@ -51,11 +57,15 @@
         </banner-marketing>
 
         <banner-marketing
-          :bg-image="'https://cdn.streamlabs.com/static/imgs/pretzel_dashboard_banner_bg.png'"
+          :bg-image="
+            'https://cdn.streamlabs.com/static/imgs/pretzel_dashboard_banner_bg.png'
+          "
           :icon-image="require('../assets/imgs/pretzel-icon.png')"
           :label="'New Streamlabs OBS App'"
           :title="'Introducing Pretzel Rocks Music Player'"
-          :desc="'Stream-safe music for broadcasters with an ever-growing catalog of music. Currently 5k+ tracks.'"
+          :desc="
+            'Stream-safe music for broadcasters with an ever-growing catalog of music. Currently 5k+ tracks.'
+          "
           :link-desc="'$4.99/mo'"
           :banner-closed="bannerClosed"
         >
@@ -106,14 +116,21 @@
               <td>string</td>
               <td>false</td>
               <td>null</td>
-              <td>Icon image next to title. Use a url path. If using iconName - do not use iconImg. We will improve functionality in near future.</td>
+              <td>
+                Icon image next to title. Use a url path. If using iconName - do
+                not use iconImg. We will improve functionality in near future.
+              </td>
             </tr>
             <tr>
               <td>iconName</td>
               <td>string</td>
               <td>false</td>
               <td>null</td>
-              <td>Icon next to title. Use icon name from icon list. If using iconImg - do not use iconName. We will improve functionality in near future.</td>
+              <td>
+                Icon next to title. Use icon name from icon list. If using
+                iconImg - do not use iconName. We will improve functionality in
+                near future.
+              </td>
             </tr>
             <tr>
               <td>title</td>
@@ -281,8 +298,12 @@
         </Accordion>
 
         <notice
-          :title="'Join affiliates and earn $1 for each Streamlabs OBS referral'"
-          :desc="'Share your unique referral link with friends and get paid directly into your PayPal each month.'"
+          :title="
+            'Join affiliates and earn $1 for each Streamlabs OBS referral'
+          "
+          :desc="
+            'Share your unique referral link with friends and get paid directly into your PayPal each month.'
+          "
           :icon="'information'"
         >
           <Button
@@ -298,7 +319,9 @@
           :bgColor="'warning'"
           :title="'Your donation link has expired'"
           :titleColor="'warning'"
-          :desc="'Copy your new donation link and replace all instances containing twitchalerts.com.'"
+          :desc="
+            'Copy your new donation link and replace all instances containing twitchalerts.com.'
+          "
           :icon="'error'"
         >
           <Button
@@ -326,7 +349,10 @@
               <td>string</td>
               <td>true</td>
               <td>default</td>
-              <td>Background color that will display. Options are "default" and "warning". if default It's already set as default props.</td>
+              <td>
+                Background color that will display. Options are "default" and
+                "warning". if default It's already set as default props.
+              </td>
             </tr>
             <tr>
               <td>title</td>

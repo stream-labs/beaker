@@ -1,9 +1,9 @@
 <template>
-  <div id="app" :class="[ nightTheme ? nightClasses : '', appClass ]">
+  <div id="app" :class="[nightTheme ? nightClasses : '', appClass]">
     <div id="nav">
       <div class="logo">
-        <img v-if="nightTheme" src="./assets/imgs/beaker-full-night.svg">
-        <img v-else src="./assets/imgs/beaker-full.svg">
+        <img v-if="nightTheme" src="./assets/imgs/beaker-full-night.svg" />
+        <img v-else src="./assets/imgs/beaker-full.svg" />
       </div>
       <toggle
         :values="themes"
@@ -16,7 +16,11 @@
     <documentation></documentation>
 
     <div class="floating-links">
-      <a class="floating-link" target="_blank" href="https://github.com/mbiemiller/beaker">
+      <a
+        class="floating-link"
+        target="_blank"
+        href="https://github.com/mbiemiller/beaker"
+      >
         <img src="./assets/imgs/github.png" />
       </a>
       <a
@@ -24,7 +28,7 @@
         target="_blank"
         href="https://www.npmjs.com/package/streamlabs-beaker"
       >
-        <img src="./assets/imgs/npm.svg">
+        <img src="./assets/imgs/npm.svg" />
       </a>
     </div>
   </div>

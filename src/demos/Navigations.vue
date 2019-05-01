@@ -2,11 +2,15 @@
   <div>
     <div class="section">
       <h2>Horizintal Scroll</h2>
-      <p>Our slider component is extended from <a target="_blank" href="https://github.com/NightCatSama/vue-slider-component">Vue Slider Component</a>
+      <p>
+        Our slider component is extended from
+        <a
+          target="_blank"
+          href="https://github.com/NightCatSama/vue-slider-component"
+          >Vue Slider Component</a
+        >
       </p>
-      <accordion
-        :openedTitle="'Hide Code'"
-        :closedTitle="'Show Code'">
+      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre>
 <code>&lt;slider
@@ -54,7 +58,10 @@
             <td>suffix</td>
             <td>String</td>
             <td>px</td>
-            <td>Suffix label that will be displayed next to the value in the tooltip</td>
+            <td>
+              Suffix label that will be displayed next to the value in the
+              tooltip
+            </td>
           </tr>
           <tr>
             <td>tooltip</td>

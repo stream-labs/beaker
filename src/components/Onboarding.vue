@@ -2,10 +2,15 @@
   <div class="s-onboarding-wrapper">
     <div class="s-bullets">
       <span
-        v-for="(key,index) in steps"
+        v-for="(key, index) in steps"
         :key="index"
         class="s-bullet"
-        :class="[{'current-step': currentStepStyle(index), 'icon-check-mark': checkmarkStyle(index)}]"
+        :class="[
+          {
+            'current-step': currentStepStyle(index),
+            'icon-check-mark': checkmarkStyle(index)
+          }
+        ]"
       ></span>
     </div>
     <div class="s-onboarding-main">
@@ -24,7 +29,12 @@
             :title="'Continue'"
             @click="continueProcess"
           ></Button>
-          <Button v-if="isCompleted" :variation="'action'" :title="'Complete'" @click="onComplete"></Button>
+          <Button
+            v-if="isCompleted"
+            :variation="'action'"
+            :title="'Complete'"
+            @click="onComplete"
+          ></Button>
           <Button
             v-if="!isCompleted && currentStep === steps"
             :variation="'default'"

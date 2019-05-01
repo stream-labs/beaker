@@ -2,7 +2,9 @@
   <div>
     <div class="section">
       <h1>Site Search</h1>
-      <p>This site search is in very early beta stages, it is not ready for prod</p>
+      <p>
+        This site search is in very early beta stages, it is not ready for prod
+      </p>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre><code>
@@ -41,12 +43,12 @@
         <site-search
           :jsonSearch="jsonSearch"
           :quickLinks="[
-          {item:{name:'donationsettings'}},
-          {item:{name: 'd-alertbox'}},
-          {item:{name: 'creatorsites'}},
-          {item:{name: 'merchsetup'}},
-          {item:{name:'d-facemasks'}},
-          {item:{name:'streamlabs-obs'}}
+            { item: { name: 'donationsettings' } },
+            { item: { name: 'd-alertbox' } },
+            { item: { name: 'creatorsites' } },
+            { item: { name: 'merchsetup' } },
+            { item: { name: 'd-facemasks' } },
+            { item: { name: 'streamlabs-obs' } }
           ]"
         ></site-search>
       </div>
@@ -71,7 +73,9 @@
             <td>quickLinks</td>
             <td>Array</td>
             <td>null</td>
-            <td>max of 6 links, each must match name of entry in search json</td>
+            <td>
+              max of 6 links, each must match name of entry in search json
+            </td>
           </tr>
         </tbody>
       </table>

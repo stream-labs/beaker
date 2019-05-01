@@ -1,11 +1,19 @@
 <template>
   <div class="s-call-to-action" :class="callToActionMq" :style="callToActionBg">
-    <div class="s-call-to-action__thumb" :class="callToActionThumbMq" :style="callToActionThumb">
-      <img :src="thumbnail">
+    <div
+      class="s-call-to-action__thumb"
+      :class="callToActionThumbMq"
+      :style="callToActionThumb"
+    >
+      <img :src="thumbnail" />
     </div>
     <div class="s-call-to-action__description" :class="callToActionDescMq">
-      <div class="s-title" :class="titleMq" :style="callToActiontitleColor">{{ title }}</div>
-      <div class="s-subtitle" :style="callToActionSubTitleColor">{{ description }}</div>
+      <div class="s-title" :class="titleMq" :style="callToActiontitleColor">
+        {{ title }}
+      </div>
+      <div class="s-subtitle" :style="callToActionSubTitleColor">
+        {{ description }}
+      </div>
     </div>
     <div class="s-button-container s-button-container--right">
       <Button

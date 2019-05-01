@@ -7,8 +7,10 @@
           <i class="s-icon" :class="`s-notice__icon-${icon} icon-${icon}`"></i>
         </div>
         <div class="s-notice__detail">
-          <h2 class="s-notice__title" :class="`s-notice__title--${titleColor}`">{{title}}</h2>
-          <p class="s-notice__desc">{{desc}}</p>
+          <h2 class="s-notice__title" :class="`s-notice__title--${titleColor}`">
+            {{ title }}
+          </h2>
+          <p class="s-notice__desc">{{ desc }}</p>
         </div>
       </div>
       <div class="s-notice__button">
@@ -17,7 +19,6 @@
     </div>
   </div>
 </template>
-
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
