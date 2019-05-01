@@ -21,6 +21,8 @@ components: {
         <div slot="content">
           <pre>
 <code>&lt;slider
+  @input=&quot;updateValue(value)&quot;
+  :data=&quot;data&quot;
   :min=&quot;0&quot;
   :max=&quot;100&quot;
   :interval=&quot;1&quot;
@@ -31,8 +33,18 @@ components: {
         </div>
       </accordion>
 
-      <div class="row">
-        <slider :min="0" :max="100" :interval="1" :value="value" :tooltip="'always'"></slider>
+      <div class="row section">
+        <slider
+          @input="updateValue(value)"
+          :data="data"
+          :min="0"
+          :max="100"
+          :interval="1"
+          v-model="value"
+          :suffix="'%'"
+          :tooltip="'always'"
+          ref="slider"
+        ></slider>
       </div>
 
       <table class="docs-table">
@@ -50,6 +62,12 @@ components: {
             <td>Array</td>
             <td>undefined</td>
             <td>Custom data</td>
+          </tr>
+           <tr>
+            <td>dataVisible</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>It displays marks and hide tooltip if true</td>
           </tr>
           <tr>
             <td>value</td>
@@ -73,7 +91,12 @@ components: {
             <td>tooltip</td>
             <td>String</td>
             <td>always</td>
-            <td>Show the tooltip or not. Options are 'always' or 'false'</td>
+            <td>
+              Show the tooltip or not. Options are
+              <code>none</code>,
+              <code>always</code> or
+              <code>focus</code>
+            </td>
           </tr>
           <tr>
             <td>min</td>
@@ -125,6 +148,22 @@ import Accordion from "./../components/Accordion.vue";
 })
 export default class Sliders extends Vue {
   value = 50;
-  data = [1, 2, 3, 4, 5];
+  data = [1, 50, 100];
+
+  mounted() {
+    console.log(this.$refs);
+  }
+
+  updateValue(value) {
+    console.log("value is " , value);
+  }
 }
 </script>
+
+<style lang="less" scoped>
+@import "./../styles/Imports";
+.section {
+  .margin-v-sides(9);
+}
+</style>
+
