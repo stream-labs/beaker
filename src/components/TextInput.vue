@@ -58,7 +58,7 @@ export default class TextInput extends Vue {
 
   content: String = "";
 
-  mounted() {
+  created() {
     if (this.value) {
       return (this.content = this.value);
     } else {
@@ -67,7 +67,7 @@ export default class TextInput extends Vue {
   }
 
   handleInput(e: String) {
-    this.$emit("input", this.value);
+    this.$emit("input", this.content);
   }
 }
 </script>
