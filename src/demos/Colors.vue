@@ -5,7 +5,7 @@
     <pre><code>yarn add streamlabs-beaker</code></pre>
     <p>or</p>
     <pre><code>npm install streamlabs-beaker --save</code></pre>
-    <br>
+    <br />
     <h4>To use a component, add:</h4>
     <pre><code>import { Accordion } from 'streamlabs-beaker';
 

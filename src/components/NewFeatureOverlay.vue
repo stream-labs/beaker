@@ -33,14 +33,22 @@
             class="s-overlay__link"
             :to="dismissRoute"
             @click.native="onDismiss"
-          >{{ dismissText }}</router-link>
+            >{{ dismissText }}</router-link
+          >
         </div>
       </div>
 
       <div class="s-overlay__image-block" :class="overlay__imageBlockMq">
-        <img v-if="isImage" :src="overlayImage" class="s-overlay__image">
-        <video controls="false" autoplay loop v-if="!isImage" class="s-overlay__image">
-          <source :src="overlayImage">Environment does not support video playback
+        <img v-if="isImage" :src="overlayImage" class="s-overlay__image" />
+        <video
+          controls="false"
+          autoplay
+          loop
+          v-if="!isImage"
+          class="s-overlay__image"
+        >
+          <source :src="overlayImage" />
+          Environment does not support video playback
         </video>
       </div>
     </div>

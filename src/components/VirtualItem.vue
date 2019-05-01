@@ -1,18 +1,20 @@
 <template>
   <div
     class="s-virtual-item"
-    :class="[ virtualItemClasses ]"
+    :class="[virtualItemClasses]"
     :rarity="rarity"
     :selected="selected"
     :quantity="quantity"
     :value="value"
     @click="$emit('click')"
   >
-    <span v-if="selectionCount" class="s-virtual-item__selection-count">{{ selectionCount }}</span>
+    <span v-if="selectionCount" class="s-virtual-item__selection-count">{{
+      selectionCount
+    }}</span>
     <span v-if="type" class="s-virtual-item__label">{{ type }}</span>
     <span v-if="quantity" class="s-virtual-item__label">{{ quantity }}</span>
     <div class="s-virtual-item__img">
-      <img :src="preview">
+      <img :src="preview" />
     </div>
     <h3 class="s-virtual-item__name">{{ name }}</h3>
     <span class="s-virtual-item__rarity">{{ rarity }}</span>

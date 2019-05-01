@@ -1,9 +1,12 @@
 <template>
   <div class="documentation">
-    <left-navigation @update-section="changeSection" :active-section="activeSection"></left-navigation>
+    <left-navigation
+      @update-section="changeSection"
+      :active-section="activeSection"
+    ></left-navigation>
 
     <div class="content">
-      <router-view/>
+      <router-view />
     </div>
   </div>
 </template>

@@ -2,15 +2,23 @@
   <div class="s-banner" ref="banner">
     <div
       class="s-banner__bg"
-      :style="{ 'background': `linear-gradient(to bottom left, rgba(227, 232, 235, 0.72), rgba(227, 232, 235, 0.72)), url('${bgImage}') center center no-repeat`}"
+      :style="{
+        background: `linear-gradient(to bottom left, rgba(227, 232, 235, 0.72), rgba(227, 232, 235, 0.72)), url('${bgImage}') center center no-repeat`
+      }"
     ></div>
 
     <div
       class="s-banner__bg s-banner__bg--night"
-      :style="{ 'background': `linear-gradient(to bottom left, rgba(9, 22, 29, 0.72), rgba(9, 22, 29, 0.72)), url('${bgImageNight}') center center no-repeat`}"
+      :style="{
+        background: `linear-gradient(to bottom left, rgba(9, 22, 29, 0.72), rgba(9, 22, 29, 0.72)), url('${bgImageNight}') center center no-repeat`
+      }"
     ></div>
 
-    <div class="s-banner__body" :class="{'s-banner__body--closed': closed}" key="banner-open">
+    <div
+      class="s-banner__body"
+      :class="{ 's-banner__body--closed': closed }"
+      key="banner-open"
+    >
       <div class="s-banner__wrapper">
         <div class="s-banner__label">{{ label }}</div>
         <i @click="toggleBanner()" class="icon-down"></i>
@@ -22,7 +30,7 @@
             <i :class="`icon-${iconName}`"></i>
           </div>
           <div class="s-banner__icon" v-if="iconImage">
-            <img :src="iconImage">
+            <img :src="iconImage" />
           </div>
 
           <div class="s-banner__details">
@@ -40,7 +48,6 @@
     </div>
   </div>
 </template>
-
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";

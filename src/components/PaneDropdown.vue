@@ -1,4 +1,4 @@
-<template >
+<template>
   <div class="s-pane-dropdown" ref="paneMenu">
     <a
       class="s-pane-dropdown__toggle"
@@ -12,7 +12,11 @@
     </a>
 
     <transition name="fade">
-      <div :class="menuAlignClass" class="s-pane-dropdown__menu" v-show="paneMenuOpen">
+      <div
+        :class="menuAlignClass"
+        class="s-pane-dropdown__menu"
+        v-show="paneMenuOpen"
+      >
         <slot v-if="custom"></slot>
         <div v-else class="s-pane-dropdown__list">
           <slot></slot>

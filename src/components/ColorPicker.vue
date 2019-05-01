@@ -6,7 +6,7 @@
       :placeholder="placeholder"
       @click="showPicker()"
       @input="updateFromInput"
-    >
+    />
     <div
       class="s-colorpicker__preview"
       :style="{ backgroundColor: value }"

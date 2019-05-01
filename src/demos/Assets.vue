@@ -4,50 +4,50 @@
     <div class="logo-demos logo-demos--icons">
       <div class="logo-demo">
         <a href="/img/kevin-standard.svg" download>
-          <img src="./../assets/imgs/kevin-standard.svg">
+          <img src="./../assets/imgs/kevin-standard.svg" />
         </a>
       </div>
     </div>
     <div class="logo-demos">
       <div class="logo-demo logo-demo--day">
         <a href="/img/kevin-day.svg" download>
-          <img src="./../assets/imgs/kevin-day.svg">
+          <img src="./../assets/imgs/kevin-day.svg" />
         </a>
-        
+
         <a href="/img/logo.svg" download>
-          <img src="./../assets/imgs/logo.svg">
+          <img src="./../assets/imgs/logo.svg" />
         </a>
         <a href="/img/logo-slobs.svg" download>
-          <img src="./../assets/imgs/logo-slobs.svg">
+          <img src="./../assets/imgs/logo-slobs.svg" />
         </a>
         <a href="/img/logo-merch.svg" download>
-          <img src="./../assets/imgs/logo-merch.svg">
+          <img src="./../assets/imgs/logo-merch.svg" />
         </a>
         <a href="/img/logo-platform.svg" download>
-          <img src="./../assets/imgs/logo-platform.svg">
+          <img src="./../assets/imgs/logo-platform.svg" />
         </a>
         <a href="/img/logo-mobile.svg" download>
-          <img src="./../assets/imgs/logo-mobile.svg">
+          <img src="./../assets/imgs/logo-mobile.svg" />
         </a>
       </div>
       <div class="logo-demo logo-demo--night">
         <a href="/img/kevin-night.svg" download>
-          <img src="./../assets/imgs/kevin-night.svg">
+          <img src="./../assets/imgs/kevin-night.svg" />
         </a>
         <a href="/img/logo-night.svg" download>
-          <img src="./../assets/imgs/logo-night.svg">
+          <img src="./../assets/imgs/logo-night.svg" />
         </a>
         <a href="/img/logo-slobs-night.svg" download>
-          <img src="./../assets/imgs/logo-slobs-night.svg">
+          <img src="./../assets/imgs/logo-slobs-night.svg" />
         </a>
         <a href="/img/logo-merch-night.svg" download>
-          <img src="./../assets/imgs/logo-merch-night.svg">
+          <img src="./../assets/imgs/logo-merch-night.svg" />
         </a>
         <a href="/img/logo-platform-night.svg" download>
-          <img src="./../assets/imgs/logo-platform-night.svg">
+          <img src="./../assets/imgs/logo-platform-night.svg" />
         </a>
         <a href="/img/logo-mobile-night.svg" download>
-          <img src="./../assets/imgs/logo-mobile-night.svg">
+          <img src="./../assets/imgs/logo-mobile-night.svg" />
         </a>
       </div>
     </div>

@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <div class="section">
@@ -9,7 +8,8 @@
         <a
           target="_blank"
           href="https://github.com/NightCatSama/vue-slider-component"
-        >Vue Slider Component</a>
+          >Vue Slider Component</a
+        >
       </p>
       <pre><code>import { Slider } from 'streamlabs-beaker';
 
@@ -32,7 +32,13 @@ components: {
       </accordion>
 
       <div class="row">
-        <slider :min="0" :max="100" :interval="1" :value="value" :tooltip="'always'"></slider>
+        <slider
+          :min="0"
+          :max="100"
+          :interval="1"
+          :value="value"
+          :tooltip="'always'"
+        ></slider>
       </div>
 
       <table class="docs-table">
@@ -61,13 +67,19 @@ components: {
             <td>prefix</td>
             <td>String</td>
             <td>""</td>
-            <td>Prefix label that will be displayed next to the value in the tooltip</td>
+            <td>
+              Prefix label that will be displayed next to the value in the
+              tooltip
+            </td>
           </tr>
           <tr>
             <td>suffix</td>
             <td>String</td>
             <td>px</td>
-            <td>Suffix label that will be displayed next to the value in the tooltip</td>
+            <td>
+              Suffix label that will be displayed next to the value in the
+              tooltip
+            </td>
           </tr>
           <tr>
             <td>tooltip</td>

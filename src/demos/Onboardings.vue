@@ -1,4 +1,4 @@
-  <template>
+<template>
   <div>
     <div class="section">
       <h1>Onboarding</h1>
@@ -50,32 +50,60 @@ components: {
         :completeFunc="completeFunc"
       >
         <OnboardingStep slot="1">
-          <template slot="title">Review setup 1</template>
-          <template
-            slot="desc"
-          >Your custom Creator Website is almost ready. To use this custom theme and domain, finish subscribing to pro and your new website will be live within 1 hour.</template>
-          <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
+          <template slot="title"
+            >Review setup 1</template
+          >
+          <template slot="desc"
+            >Your custom Creator Website is almost ready. To use this custom
+            theme and domain, finish subscribing to pro and your new website
+            will be live within 1 hour.</template
+          >
+          <SSProSimulator
+            :username="username"
+            :domain="domain"
+          ></SSProSimulator>
         </OnboardingStep>
         <OnboardingStep slot="2">
-          <template slot="title">Review setup 2</template>
-          <template
-            slot="desc"
-          >Your custom Creator Website is almost ready. To use this custom theme and domain, finish subscribing to pro and your new website will be live within 1 hour.</template>
-          <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
+          <template slot="title"
+            >Review setup 2</template
+          >
+          <template slot="desc"
+            >Your custom Creator Website is almost ready. To use this custom
+            theme and domain, finish subscribing to pro and your new website
+            will be live within 1 hour.</template
+          >
+          <SSProSimulator
+            :username="username"
+            :domain="domain"
+          ></SSProSimulator>
         </OnboardingStep>
         <OnboardingStep slot="3">
-          <template slot="title">Review setup 3</template>
-          <template
-            slot="desc"
-          >Your custom Creator Website is almost ready. To use this custom theme and domain, finish subscribing to pro and your new website will be live within 1 hour.</template>
-          <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
+          <template slot="title"
+            >Review setup 3</template
+          >
+          <template slot="desc"
+            >Your custom Creator Website is almost ready. To use this custom
+            theme and domain, finish subscribing to pro and your new website
+            will be live within 1 hour.</template
+          >
+          <SSProSimulator
+            :username="username"
+            :domain="domain"
+          ></SSProSimulator>
         </OnboardingStep>
         <OnboardingStep slot="4">
-          <template slot="title">Review setup 4</template>
-          <template
-            slot="desc"
-          >Your custom Creator Website is almost ready. To use this custom theme and domain, finish subscribing to pro and your new website will be live within 1 hour.</template>
-          <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
+          <template slot="title"
+            >Review setup 4</template
+          >
+          <template slot="desc"
+            >Your custom Creator Website is almost ready. To use this custom
+            theme and domain, finish subscribing to pro and your new website
+            will be live within 1 hour.</template
+          >
+          <SSProSimulator
+            :username="username"
+            :domain="domain"
+          ></SSProSimulator>
         </OnboardingStep>
       </Onboarding>
     </div>

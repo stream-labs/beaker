@@ -6,7 +6,7 @@
       :name="name"
       :value="value"
       :checked="isChecked"
-    >
+    />
     <label :for="id">{{ label }}</label>
   </div>
 </template>

@@ -2,11 +2,18 @@
   <transition name="fade">
     <div class="s-loader" :swapMode="swapMode">
       <div
-        :class="{ 's-loader__bg--semi': semiOpaque, 's-loader--modeswap': swapMode }"
+        :class="{
+          's-loader__bg--semi': semiOpaque,
+          's-loader--modeswap': swapMode
+        }"
         class="s-loader__bg"
       >
         <div class="s-loader__inner">
-          <Spinner :swap="swapMode" class="s-spinner__overlay" :size="'large'"/>
+          <Spinner
+            :swap="swapMode"
+            class="s-spinner__overlay"
+            :size="'large'"
+          />
           <div class="s-loader__text">{{ loaderText }}</div>
         </div>
       </div>

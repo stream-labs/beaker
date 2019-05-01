@@ -1,11 +1,13 @@
-  <template>
+<template>
   <div>
     <div class="section">
       <h1>New Feature Overlay</h1>
       <p>
         You can trigger this with a button like
         <code>@click="$modal.show('new-feature')"</code> or call
-        <code>this.$modal.show('new-feature')"</code> on mounted. You may need to set a few second delay on the trigger to prevent the modal closing when the page refreshes.
+        <code>this.$modal.show('new-feature')"</code> on mounted. You may need
+        to set a few second delay on the trigger to prevent the modal closing
+        when the page refreshes.
       </p>
       <pre><code>import { NewFeatureOverlay } from 'streamlabs-beaker';
 
@@ -35,16 +37,26 @@ components: {
       <NewFeatureOverlay
         :label="'Introducing Merch Stores'"
         :title="'Increase Your Revenue'"
-        :media="'https://cdn.streamlabs.com/cloudbot/prototype_cloudbot_800x300.webm'"
+        :media="
+          'https://cdn.streamlabs.com/cloudbot/prototype_cloudbot_800x300.webm'
+        "
         :buttonTitle="'Go To Store'"
         :onOpen="trackingCodeComponent"
         :onAction="trackingCodeButton"
         :buttonTag="'a'"
-        :buttonHref="'https://www.twitch.tv/ext/xab8h6nj36fc2wtn71yikw9hqjd6v4-0.0.1'"
+        :buttonHref="
+          'https://www.twitch.tv/ext/xab8h6nj36fc2wtn71yikw9hqjd6v4-0.0.1'
+        "
         :buttonTarget="'_blank'"
       >
-        <p>We’ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.</p>
-        <p>We’ve automatically credited $15.00 to your account so you can start trying them out today.</p>
+        <p>
+          We’ve worked with some of the best developers in the industry to bring
+          you the tools to take your stream to the next level.
+        </p>
+        <p>
+          We’ve automatically credited $15.00 to your account so you can start
+          trying them out today.
+        </p>
       </NewFeatureOverlay>
 
       <div class="s-button-container s-button-container--left">
@@ -90,8 +102,7 @@ components: {
           <td>null</td>
           <td>
             What type of element the button is,
-            <code>button</code>,
-            <code>a</code>,
+            <code>button</code>, <code>a</code>,
             <code>router-link</code>
           </td>
         </tr>
@@ -127,9 +138,7 @@ components: {
             Use to set different targets for button if set to
             <code>a</code>
             Options are:
-            <code>_self</code>,
-            <code>_blank</code>,
-            <code>_parent</code>,
+            <code>_self</code>, <code>_blank</code>, <code>_parent</code>,
             <code>_top</code>
           </td>
         </tr>
@@ -137,7 +146,10 @@ components: {
           <td>dismissTitle</td>
           <td>string</td>
           <td>Go to Dashboard</td>
-          <td>Text displayed in the link next to the action button to dismiss the announcement.</td>
+          <td>
+            Text displayed in the link next to the action button to dismiss the
+            announcement.
+          </td>
         </tr>
         <tr>
           <td>dismissRoute</td>

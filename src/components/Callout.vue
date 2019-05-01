@@ -1,11 +1,19 @@
 <template>
-  <div v-if="!closed" class="s-callout" :class="[ calloutClass, calloutClosedClass ]">
+  <div
+    v-if="!closed"
+    class="s-callout"
+    :class="[calloutClass, calloutClosedClass]"
+  >
     <span>
       <i v-if="icon" :class="[calloutIcon]"></i>
       <span>
-        <slot/>
+        <slot />
       </span>
-      <i v-if="closeable" class="icon-close s-callout__close-button" @click="closeCallout()"></i>
+      <i
+        v-if="closeable"
+        class="icon-close s-callout__close-button"
+        @click="closeCallout()"
+      ></i>
     </span>
   </div>
 </template>

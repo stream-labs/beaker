@@ -9,8 +9,8 @@
   >
     <div class="s-modal-container">
       <div class="s-confirmation">
-        <h2 class="s-modal-sub-title">{{subTitle}}</h2>
-        <p class="s-modal-text">{{text}}</p>
+        <h2 class="s-modal-sub-title">{{ subTitle }}</h2>
+        <p class="s-modal-text">{{ text }}</p>
         <div class="s-button-container">
           <Button
             :variation="'default'"
@@ -67,7 +67,6 @@ export default class ModalConfirmation extends Vue {
   }
 }
 </script>
-
 
 <style lang="less" scoped>
 @import "./../styles/Imports";

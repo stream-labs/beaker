@@ -1,6 +1,6 @@
 <template>
   <div class="s-progress">
-    <div class="s-progress-bar" :style="getProgress"/>
+    <div class="s-progress-bar" :style="getProgress" />
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="s-image-picker">
     <div class="s-image-picker__thumb" @click="chooseImage">
-      <img :src="this.imageThumb" v-if="imageSelected">
+      <img :src="this.imageThumb" v-if="imageSelected" />
       <div class="s-upload-icon" v-if="!imageSelected">
         <i class="icon-upload-image"></i>
       </div>
@@ -13,7 +13,7 @@
         type="file"
         accept=".jpg, .jpeg, .png, .gif, .svg"
         @change="onSelectFile"
-      >
+      />
       {{ this.imageFileName }}
     </div>
     <div class="s-button-container s-button-container--right">
@@ -23,8 +23,13 @@
         :title="'Select Image'"
         @click="chooseImage"
       />
-      <Button v-if="imageSelected" :variation="'action'" :title="'Upload'"/>
-      <Button v-if="imageSelected" :variation="'warning'" :title="'Delete'" @click="deleteImage"/>
+      <Button v-if="imageSelected" :variation="'action'" :title="'Upload'" />
+      <Button
+        v-if="imageSelected"
+        :variation="'warning'"
+        :title="'Delete'"
+        @click="deleteImage"
+      />
     </div>
   </div>
 </template>

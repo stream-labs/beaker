@@ -5,13 +5,15 @@
       :style="{
         'background-image': `linear-gradient(
           to right,
-          ${ backgroundColor } ${ parseInt(100 * current / total) }%,
+          ${backgroundColor} ${parseInt((100 * current) / total)}%,
           rgba(0,0,0,0) 0%
         )`,
-        'color': textColor
+        color: textColor
       }"
-    >{{ `${current}${separator}${total} ${suffix}` }}</div>
-    <slot v-else/>
+    >
+      {{ `${current}${separator}${total} ${suffix}` }}
+    </div>
+    <slot v-else />
   </div>
 </template>
 

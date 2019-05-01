@@ -1,7 +1,11 @@
 <template>
   <div
     class="s-sitesearch"
-    :class="[{ 's-sitesearch--is-open' : isOpen }, {'s-sitesearch--phase-one' : phaseOne}, {'s-sitesearch--phase-two' : phaseTwo}]"
+    :class="[
+      { 's-sitesearch--is-open': isOpen },
+      { 's-sitesearch--phase-one': phaseOne },
+      { 's-sitesearch--phase-two': phaseTwo }
+    ]"
     :style="calcHeight"
   >
     <div class="s-sitesearch--searchbar__cont">
@@ -17,7 +21,7 @@
         @focus.stop.prevent="playOpeningSequence"
         @blur.stop.prevent="playClosingSequence"
         @keyup.stop.prevent="keyEvent"
-      >
+      />
       <div class="s-sitesearch-status__cont">
         <div v-if="noResults">No Results</div>
       </div>
@@ -34,13 +38,18 @@
           v-for="(suggested, i) in suggestedLinks"
           :key="suggested.item.name"
           class="s-sitesearch-results"
-          :class="{'s-active-result': currentResult === i }"
+          :class="{ 's-active-result': currentResult === i }"
           @mouseover="currentResult = i"
         >
           <div class="s-sitesearch__result--image">
-            <i :class="searchData[quickLinkLoc[i]].image" class="s-sitesearch__result--image"></i>
+            <i
+              :class="searchData[quickLinkLoc[i]].image"
+              class="s-sitesearch__result--image"
+            ></i>
           </div>
-          <div class="s-sitesearch__result--title">{{ searchData[quickLinkLoc[i]].title }}</div>
+          <div class="s-sitesearch__result--title">
+            {{ searchData[quickLinkLoc[i]].title }}
+          </div>
         </a>
       </div>
       <div
@@ -54,13 +63,18 @@
             v-for="(searchResult, i) in limitedResult"
             :key="searchResult.item.name"
             class="s-sitesearch-results"
-            :class="{'s-active-result': currentResult === i }"
+            :class="{ 's-active-result': currentResult === i }"
             @mouseover="currentResult = i"
           >
             <div class="s-sitesearch__result--image">
-              <i :class="searchResult.item.image" class="s-sitesearch__result--image"></i>
+              <i
+                :class="searchResult.item.image"
+                class="s-sitesearch__result--image"
+              ></i>
             </div>
-            <div class="s-sitesearch__result--title">{{ searchResult.item.title }}</div>
+            <div class="s-sitesearch__result--title">
+              {{ searchResult.item.title }}
+            </div>
           </a>
         </transition-group>
       </div>
