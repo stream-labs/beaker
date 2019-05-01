@@ -4,7 +4,7 @@
     :height="8"
     :dotHeight="16"
     :dotWidth="24"
-    :tooltip="tooltip"
+    :tooltip="displayTooltip"
     :tooltipPlacement="'bottom'"
     :min="min"
     :max="max"
@@ -13,7 +13,7 @@
     :prefix="prefix"
     :suffix="suffix"
     :tooltipFormatter="prefix + '{value}' + suffix"
-    @callback="value => emitInput(value)"
+    @change="value => emitInput(value)"
     :disabled="disabled"
     :data="data"
     :marks="displayMarks"
@@ -61,10 +61,18 @@ export default class Slider extends Vue {
   @Prop()
   width!: number | string;
 
+  @Prop({ default: false })
+  dataVisible!: boolean;
+
   displayValue: number | string | Array<number> | Array<string> = this.value;
+  displayTooltop:  "none" | "always" | "focus" = "always";
 
   get displayMarks() {
-    return this.data ? true : false;
+    return this.dataVisible ? true : false;
+  }
+
+  get displayTooltip() {
+    return this.dataVisible ? this.displayTooltop = "none" : this.displayTooltop = this.tooltip;
   }
 
   created() {
@@ -80,7 +88,7 @@ export default class Slider extends Vue {
   }
 
   setValue(val) {
-    this.value = val;
+    this.displayValue = val;
   }
 }
 </script>
@@ -101,6 +109,10 @@ export default class Slider extends Vue {
     background-color: @teal;
     .radius(3);
   }
+
+  // .vue-slider-mark-label {
+  //   display: none;
+  // }
 
   .vue-slider-dot {
     .vue-slider-dot-handle {
@@ -134,6 +146,23 @@ export default class Slider extends Vue {
         transform: rotate(-90deg);
         right: 2px;
       }
+    }
+
+    .vue-slider-dot-tooltip-bottom {
+      bottom: -16px;
+      left: 6px;
+      -webkit-transform: translate(-50%, 100%);
+      transform: translate(-50%, 100%);
+    }
+
+    .vue-slider-dot-tooltip-text {
+      font-size: 14px;
+      .padding-h-sides();
+      .padding-v-sides(0.5);
+      color: @dark-2;
+      border-radius: 5px;
+      border: 1px solid @light-4;
+      background-color: @white;
     }
   }
 
