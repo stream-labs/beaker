@@ -216,10 +216,12 @@ export default class SiteSearch extends Vue {
         window.location.href = this.searchData[
           this.quickLinkLoc[this.currentResult]
         ].route;
+        this.blurSearch();
       } else {
         window.location.href = this.limitedResult[
           this.currentResult
         ].item.route;
+        this.blurSearch();
       }
     }
     // KEYPRESS ESC
