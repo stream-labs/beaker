@@ -65,14 +65,16 @@ export default class Slider extends Vue {
   dataVisible!: boolean;
 
   displayValue: number | string | Array<number> | Array<string> = this.value;
-  displayTooltop:  "none" | "always" | "focus" = "always";
+  displayTooltop: "none" | "always" | "focus" = "always";
 
   get displayMarks() {
     return this.dataVisible ? true : false;
   }
 
   get displayTooltip() {
-    return this.dataVisible ? this.displayTooltop = "none" : this.displayTooltop = this.tooltip;
+    return this.dataVisible
+      ? (this.displayTooltop = "none")
+      : (this.displayTooltop = this.tooltip);
   }
 
   created() {
@@ -193,6 +195,12 @@ export default class Slider extends Vue {
         &:after {
           color: @dark-5;
         }
+      }
+
+      .vue-slider-dot-tooltip-text {
+        color: @white;
+        border: 1px solid @dark-5;
+        background-color: @dark-3;
       }
     }
 
