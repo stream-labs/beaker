@@ -1,84 +1,101 @@
 <template>
   <vue-slider-component
+    :width="width"
     :height="8"
     :dotHeight="16"
     :dotWidth="24"
     :tooltip="tooltip"
-    :tooltip-dir="'bottom'"
+    :tooltipPlacement="'bottom'"
     :min="min"
     :max="max"
     :interval="interval"
     v-model="displayValue"
     :prefix="prefix"
     :suffix="suffix"
-    :formatter="prefix + '{value}' + suffix"
-    :data="data"
+    :tooltipFormatter="prefix + '{value}' + suffix"
     @callback="value => emitInput(value)"
     :disabled="disabled"
+    :data="data"
+    :marks="displayMarks"
   ></vue-slider-component>
 </template>
 
-<script>
-import { Component, Vue } from "vue-property-decorator";
+<script lang="ts">
+import { Component, Prop, Vue } from "vue-property-decorator";
 import VueSliderComponent from "vue-slider-component";
-export default {
-  name: "Slider",
-  extends: VueSliderComponent,
+
+@Component({
   components: {
     VueSliderComponent
-  },
-  props: {
-    value: {
-      type: [Number, String, Array],
-      default: 1
-    },
-    prefix: {
-      type: String,
-      default: ""
-    },
-    suffix: {
-      type: String,
-      default: ""
-    },
-    data: {
-      type: String,
-      default: null
-    }
-  },
+  }
+})
+export default class Slider extends Vue {
+  @Prop({ default: null })
+  data!: Array<number> | Array<string>;
 
-  data() {
-    return {
-      displayValue: this.value
-    };
-  },
+  @Prop({ default: 1 })
+  value!: number | string | Array<number> | Array<string>;
+
+  @Prop({ default: "" })
+  prefix!: String;
+
+  @Prop({ default: "" })
+  suffix!: String;
+
+  @Prop({ default: "focus" })
+  tooltip!: "none" | "always" | "focus";
+
+  @Prop()
+  min!: number;
+
+  @Prop()
+  max!: number;
+
+  @Prop()
+  interval!: number;
+
+  @Prop()
+  disabled!: boolean;
+
+  @Prop()
+  width!: number | string;
+
+  displayValue: number | string | Array<number> | Array<string> = this.value;
+
+  get displayMarks() {
+    return this.data ? true : false;
+  }
 
   created() {
     this.$on("input", this.setValue);
-  },
+  }
+
   destroyed() {
     this.$off("input", this.setValue);
-  },
-  methods: {
-    emitInput(val) {
-      this.$emit("input", val);
-    },
-    setValue(val) {
-      this.currentValue = val;
-    }
   }
-};
+
+  emitInput(val) {
+    this.$emit("input", val);
+  }
+
+  setValue(val) {
+    this.value = val;
+  }
+}
 </script>
 
 <style lang="less">
 @import "./../styles/Imports";
 
-.vue-slider-component {
-  .vue-slider {
+.vue-slider {
+  .vue-slider-rail {
     background-color: @light-3;
+    .radius(3);
   }
 
   .vue-slider-process {
     background-color: @teal;
+    .radius(3);
   }
 
   .vue-slider-dot {
@@ -87,7 +104,9 @@ export default {
       box-shadow: none;
       .radius(3);
       position: relative;
-
+      width: 24px;
+      height: 16px;
+      left: -6px;
       &:before,
       &:after {
         border: none;
@@ -128,9 +147,9 @@ export default {
 
 .night,
 .night-theme {
-  .vue-slider-component {
-    .vue-slider {
-      background-color: @dark-4;
+  .vue-slider {
+    .vue-slider-rail {
+      background-color: @dark-5;
     }
 
     .vue-slider-dot {
