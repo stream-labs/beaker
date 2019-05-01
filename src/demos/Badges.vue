@@ -3,8 +3,11 @@
     <div class="section">
       <h1>Badges</h1>
       <p>
-        By default, our Badges are designed to be on the right side of elements with 8px of margin on the left. If you would like to use a Badge on the left side of an element, set prop
-        <code>align-left="true"</code> and it will switch the margin to be on the right side.
+        By default, our Badges are designed to be on the right side of elements
+        with 8px of margin on the left. If you would like to use a Badge on the
+        left side of an element, set prop
+        <code>align-left="true"</code> and it will switch the margin to be on
+        the right side.
       </p>
 
       <pre><code>import { Badge } from 'streamlabs-beaker';
@@ -60,7 +63,9 @@ components: {
         <Badge :variant="'beta'" :align-left="true">Beta</Badge>
         <Badge :variant="'warning'" :align-left="true">Warning</Badge>
         <Badge :variant="'pro'" :align-left="true">Pro</Badge>
-        <Badge :align-left="true" :backgroundColor="'pink'" :textColor="'#fff'">Custom</Badge>
+        <Badge :align-left="true" :backgroundColor="'pink'" :textColor="'#fff'"
+          >Custom</Badge
+        >
       </div>
 
       <div class="section">
@@ -95,7 +100,9 @@ components: {
         </Accordion>
         <Badge :small="true" :variant="'tag'" :align-left="true">Tag</Badge>
         <Badge :small="true" :variant="'beta'" :align-left="true">Beta</Badge>
-        <Badge :small="true" :variant="'warning'" :align-left="true">Warning</Badge>
+        <Badge :small="true" :variant="'warning'" :align-left="true"
+          >Warning</Badge
+        >
         <Badge :small="true" :variant="'pro'" :align-left="true">Pro</Badge>
       </div>
 
@@ -168,15 +175,9 @@ components: {
           <td>"success"</td>
           <td>
             How the Badge will look or funciton. Variants:
-            <code>success</code>,
-            <code>tag</code>,
-            <code>new</code>,
-            <code>beta</code>,
-            <code>warning</code>,
-            <code>pro</code>,
-            <code>progress</code>,
-            <code>mod</code>, and
-            <code>count</code>.
+            <code>success</code>, <code>tag</code>, <code>new</code>,
+            <code>beta</code>, <code>warning</code>, <code>pro</code>,
+            <code>progress</code>, <code>mod</code>, and <code>count</code>.
           </td>
         </tr>
         <tr>
@@ -195,13 +196,19 @@ components: {
           <td>backgroundColor</td>
           <td>string</td>
           <td>"#31c3a2"</td>
-          <td>Use this prop to change the background color only if you need an option that's not one of the provided variants.</td>
+          <td>
+            Use this prop to change the background color only if you need an
+            option that's not one of the provided variants.
+          </td>
         </tr>
         <tr>
           <td>textColor</td>
           <td>string</td>
           <td>"#ffffff"</td>
-          <td>Use this prop to change the text color only if you need an option that's not one of the provided variants.</td>
+          <td>
+            Use this prop to change the text color only if you need an option
+            that's not one of the provided variants.
+          </td>
         </tr>
         <tr>
           <td>current</td>
@@ -209,8 +216,7 @@ components: {
           <td>null</td>
           <td>
             Current progress amount.
-            <code>variant</code> prop must be set to
-            <code>progress</code>.
+            <code>variant</code> prop must be set to <code>progress</code>.
           </td>
         </tr>
         <tr>
@@ -219,8 +225,7 @@ components: {
           <td>null</td>
           <td>
             Total progross amount.
-            <code>variant</code> prop must be set to
-            <code>progress</code>.
+            <code>variant</code> prop must be set to <code>progress</code>.
           </td>
         </tr>
         <tr>
@@ -229,8 +234,7 @@ components: {
           <td>"/"</td>
           <td>
             Separator between current and total amounts is displayed.
-            <code>variant</code> prop must be set to
-            <code>progress</code>.
+            <code>variant</code> prop must be set to <code>progress</code>.
           </td>
         </tr>
         <tr>
@@ -239,8 +243,7 @@ components: {
           <td>null</td>
           <td>
             String to the right of the total amount.
-            <code>variant</code> prop must be set to
-            <code>progress</code>.
+            <code>variant</code> prop must be set to <code>progress</code>.
           </td>
         </tr>
       </tbody>

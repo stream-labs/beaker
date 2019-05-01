@@ -4,9 +4,9 @@
       <h1>Buttons</h1>
       <p>
         Our button component is super flexible. It can act as type
-        <code>button</code>,
-        <code>a</code> tag or
-        <code>router-link</code>. Please note that you may need to use 'ButtonInput' rather than 'Button' to avoid issues.
+        <code>button</code>, <code>a</code> tag or <code>router-link</code>.
+        Please note that you may need to use 'ButtonInput' rather than 'Button'
+        to avoid issues.
       </p>
 
       <pre><code>import { Button } from 'streamlabs-beaker';
@@ -64,11 +64,19 @@ components: {
             @click="reportSlobsDownloads"
           ></Button>
 
-          <Button :variation="'action'" :title="'Action'" @click="buttonActionClick"></Button>
+          <Button
+            :variation="'action'"
+            :title="'Action'"
+            @click="buttonActionClick"
+          ></Button>
 
           <Button :variation="'warning'" :title="'Warning'"></Button>
 
-          <Button :variation="'default'" :title="'with icon'" :icon="'settings'"></Button>
+          <Button
+            :variation="'default'"
+            :title="'with icon'"
+            :icon="'settings'"
+          ></Button>
 
           <Button
             :variation="'default'"
@@ -112,13 +120,30 @@ components: {
           </div>
         </Accordion>
         <div class="s-button-container s-button-container--left">
-          <Button :variation="'default'" :state="'disabled'" :title="'Default'"></Button>
+          <Button
+            :variation="'default'"
+            :state="'disabled'"
+            :title="'Default'"
+          ></Button>
 
-          <Button :variation="'action'" :state="'disabled'" :title="'Action'"></Button>
+          <Button
+            :variation="'action'"
+            :state="'disabled'"
+            :title="'Action'"
+          ></Button>
 
-          <Button :variation="'warning'" :state="'disabled'" :title="'Warning'"></Button>
+          <Button
+            :variation="'warning'"
+            :state="'disabled'"
+            :title="'Warning'"
+          ></Button>
 
-          <Button :variation="'default'" :state="'disabled'" :title="'with icon'" :icon="'edit'"></Button>
+          <Button
+            :variation="'default'"
+            :state="'disabled'"
+            :title="'with icon'"
+            :icon="'edit'"
+          ></Button>
         </div>
       </div>
       <div class="section">
@@ -155,13 +180,30 @@ components: {
           </div>
         </Accordion>
         <div class="s-button-container s-button-container--left">
-          <Button :variation="'default'" :state="'focused'" :title="'Default'"></Button>
+          <Button
+            :variation="'default'"
+            :state="'focused'"
+            :title="'Default'"
+          ></Button>
 
-          <Button :variation="'action'" :state="'focused'" :title="'Action'"></Button>
+          <Button
+            :variation="'action'"
+            :state="'focused'"
+            :title="'Action'"
+          ></Button>
 
-          <Button :variation="'warning'" :state="'focused'" :title="'Warning'"></Button>
+          <Button
+            :variation="'warning'"
+            :state="'focused'"
+            :title="'Warning'"
+          ></Button>
 
-          <Button :variation="'default'" :state="'focused'" :title="'with icon'" :icon="'edit'"></Button>
+          <Button
+            :variation="'default'"
+            :state="'focused'"
+            :title="'with icon'"
+            :icon="'edit'"
+          ></Button>
         </div>
       </div>
       <div class="section">
@@ -198,11 +240,19 @@ components: {
           </div>
         </Accordion>
         <div class="s-button-container s-button-container--left">
-          <Button :variation="'default'" :state="'loading'" :title="'Default'"></Button>
+          <Button
+            :variation="'default'"
+            :state="'loading'"
+            :title="'Default'"
+          ></Button>
 
-          <Button :variation="'action'" :state="'loading'" :title="'Action'">Action</Button>
+          <Button :variation="'action'" :state="'loading'" :title="'Action'"
+            >Action</Button
+          >
 
-          <Button :variation="'warning'" :state="'loading'" :title="'Warning'">Warning</Button>
+          <Button :variation="'warning'" :state="'loading'" :title="'Warning'"
+            >Warning</Button
+          >
 
           <Button
             :variation="'default'"
@@ -226,7 +276,10 @@ components: {
     </div>
     <div class="section">
       <h2>Small Buttons</h2>
-      <p>Small is the size used on Streamlabs OBS. It is slightly smaller than our standard button.</p>
+      <p>
+        Small is the size used on Streamlabs OBS. It is slightly smaller than
+        our standard button.
+      </p>
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre>
@@ -263,11 +316,26 @@ components: {
         </div>
       </Accordion>
       <div class="s-button-container s-button-container--left">
-        <Button :type="'button'" :size="'small'" :variation="'default'" :title="'Default'"></Button>
+        <Button
+          :type="'button'"
+          :size="'small'"
+          :variation="'default'"
+          :title="'Default'"
+        ></Button>
 
-        <Button :type="'button'" :size="'small'" :variation="'action'" :title="'Action'"></Button>
+        <Button
+          :type="'button'"
+          :size="'small'"
+          :variation="'action'"
+          :title="'Action'"
+        ></Button>
 
-        <Button :type="'button'" :size="'small'" :variation="'warning'" :title="'Warning'"></Button>
+        <Button
+          :type="'button'"
+          :size="'small'"
+          :variation="'warning'"
+          :title="'Warning'"
+        ></Button>
 
         <Button
           :type="'button'"
@@ -280,7 +348,10 @@ components: {
     </div>
     <div class="section">
       <h2>Large Buttons</h2>
-      <p>Used on website marketing pages and for the Donate button on the tip page.</p>
+      <p>
+        Used on website marketing pages and for the Donate button on the tip
+        page.
+      </p>
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre>
@@ -317,11 +388,26 @@ components: {
         </div>
       </Accordion>
       <div class="s-button-container s-button-container--left">
-        <Button :type="'button'" :size="'large'" :variation="'default'" :title="'Default'"></Button>
+        <Button
+          :type="'button'"
+          :size="'large'"
+          :variation="'default'"
+          :title="'Default'"
+        ></Button>
 
-        <Button :type="'button'" :size="'large'" :variation="'action'" :title="'Action'"></Button>
+        <Button
+          :type="'button'"
+          :size="'large'"
+          :variation="'action'"
+          :title="'Action'"
+        ></Button>
 
-        <Button :type="'button'" :size="'large'" :variation="'warning'" :title="'Warning'"></Button>
+        <Button
+          :type="'button'"
+          :size="'large'"
+          :variation="'warning'"
+          :title="'Warning'"
+        ></Button>
 
         <Button
           :type="'button'"
@@ -371,11 +457,26 @@ components: {
         </div>
       </Accordion>
       <div class="s-button-container s-button-container--left">
-        <Button :type="'button'" :size="'fixed-width'" :variation="'default'" :title="'Default'"></Button>
+        <Button
+          :type="'button'"
+          :size="'fixed-width'"
+          :variation="'default'"
+          :title="'Default'"
+        ></Button>
 
-        <Button :type="'button'" :size="'fixed-width'" :variation="'action'" :title="'Action'"></Button>
+        <Button
+          :type="'button'"
+          :size="'fixed-width'"
+          :variation="'action'"
+          :title="'Action'"
+        ></Button>
 
-        <Button :type="'button'" :size="'fixed-width'" :variation="'warning'" :title="'Warning'"></Button>
+        <Button
+          :type="'button'"
+          :size="'fixed-width'"
+          :variation="'warning'"
+          :title="'Warning'"
+        ></Button>
 
         <Button
           :type="'button'"
@@ -402,7 +503,11 @@ components: {
 &lt;/Button&gt;</code></pre>
           </div>
         </Accordion>
-        <Button :size="'full-width'" :variation="'default'" :title="'Start Giveaway'"></Button>
+        <Button
+          :size="'full-width'"
+          :variation="'default'"
+          :title="'Start Giveaway'"
+        ></Button>
       </div>
       <div class="section">
         <h3>Subscribe</h3>
@@ -417,7 +522,11 @@ components: {
 &lt;/Button&gt;</code></pre>
           </div>
         </Accordion>
-        <Button :variation="'subscribe'" :title="'Subscribe'" :price="'$4.99'"></Button>
+        <Button
+          :variation="'subscribe'"
+          :title="'Subscribe'"
+          :price="'$4.99'"
+        ></Button>
       </div>
       <div class="section">
         <h3>Paypal</h3>
@@ -432,7 +541,11 @@ components: {
 &lt;/Button&gt;</code></pre>
           </div>
         </Accordion>
-        <Button :variation="'paypal'" :title="'Subscribe with PayPal'" :price="'$4.99'"></Button>
+        <Button
+          :variation="'paypal'"
+          :title="'Subscribe with PayPal'"
+          :price="'$4.99'"
+        ></Button>
       </div>
       <div class="section">
         <h3>Download</h3>
@@ -501,12 +614,42 @@ components: {
         </div>
       </Accordion>
       <div class="s-button-container s-button-container--left">
-        <Button :type="'button'" :size="'square'" :variation="'default'" :icon="'add'"></Button>
-        <Button :type="'button'" :size="'square'" :variation="'default'" :icon="'subtract'"></Button>
-        <Button :type="'button'" :variation="'facebook'" :size="'square'" :icon="'facebook'"></Button>
-        <Button :type="'button'" :variation="'periscope'" :size="'square'" :icon="'periscope'"></Button>
-        <Button :type="'button'" :variation="'mixer'" :size="'square'" :icon="'mixer'"></Button>
-        <Button :type="'button'" :variation="'picarto'" :size="'square'" :icon="'picarto'"></Button>
+        <Button
+          :type="'button'"
+          :size="'square'"
+          :variation="'default'"
+          :icon="'add'"
+        ></Button>
+        <Button
+          :type="'button'"
+          :size="'square'"
+          :variation="'default'"
+          :icon="'subtract'"
+        ></Button>
+        <Button
+          :type="'button'"
+          :variation="'facebook'"
+          :size="'square'"
+          :icon="'facebook'"
+        ></Button>
+        <Button
+          :type="'button'"
+          :variation="'periscope'"
+          :size="'square'"
+          :icon="'periscope'"
+        ></Button>
+        <Button
+          :type="'button'"
+          :variation="'mixer'"
+          :size="'square'"
+          :icon="'mixer'"
+        ></Button>
+        <Button
+          :type="'button'"
+          :variation="'picarto'"
+          :size="'square'"
+          :icon="'picarto'"
+        ></Button>
       </div>
     </div>
     <div class="section">
@@ -522,7 +665,11 @@ components: {
 &lt;/Button&gt;</code></pre>
         </div>
       </Accordion>
-      <Button :variation="'navigation'" :icon="'back-alt'" :title="'Back to Listings'"></Button>
+      <Button
+        :variation="'navigation'"
+        :icon="'back-alt'"
+        :title="'Back to Listings'"
+      ></Button>
     </div>
     <table class="docs-table">
       <thead>
@@ -540,8 +687,7 @@ components: {
           <td>null</td>
           <td>
             Emits a click function. If you are using an event modifier such as
-            <code>prevent</code>, use
-            <code>native</code>. For example
+            <code>prevent</code>, use <code>native</code>. For example
             <code>@click.native.prevent</code>.
           </td>
         </tr>
@@ -561,7 +707,11 @@ components: {
           <td>icon</td>
           <td>String</td>
           <td>null</td>
-          <td>Use the endings of our custom icons. For example 'icon-settings' would be 'settings'. See icons page of the design system for a full list.</td>
+          <td>
+            Use the endings of our custom icons. For example 'icon-settings'
+            would be 'settings'. See icons page of the design system for a full
+            list.
+          </td>
         </tr>
         <tr>
           <td>title</td>
@@ -579,7 +729,10 @@ components: {
           <td>description</td>
           <td>String</td>
           <td>null</td>
-          <td>Used for Streamlabs OBS download buttons to describe the version, size and compatibility.</td>
+          <td>
+            Used for Streamlabs OBS download buttons to describe the version,
+            size and compatibility.
+          </td>
         </tr>
         <tr>
           <td>href</td>
@@ -587,8 +740,7 @@ components: {
           <td>null</td>
           <td>
             Used if the the
-            <code>type</code> is an
-            <code>a</code> element (links).
+            <code>type</code> is an <code>a</code> element (links).
           </td>
         </tr>
         <tr>
@@ -597,9 +749,7 @@ components: {
           <td>standard</td>
           <td>
             Size of the button. Options are
-            <code>small</code>,
-            <code>large</code>,
-            <code>square</code>,
+            <code>small</code>, <code>large</code>, <code>square</code>,
             <code>fixed-width</code>, and
             <code>full-width</code>
           </td>
@@ -610,9 +760,7 @@ components: {
           <td>null</td>
           <td>
             State of the button. Options are
-            <code>hover</code>,
-            <code>focus</code>,
-            <code>loading</code> and
+            <code>hover</code>, <code>focus</code>, <code>loading</code> and
             <code>disabled</code>.
           </td>
         </tr>
@@ -628,8 +776,7 @@ components: {
           <td>null</td>
           <td>
             Used if the the
-            <code>type</code> is a
-            <code>router-link</code>. Define the path.
+            <code>type</code> is a <code>router-link</code>. Define the path.
           </td>
         </tr>
         <tr>
@@ -638,8 +785,7 @@ components: {
           <td>button</td>
           <td>
             What type of element the component is. Options are
-            <code>button</code>,
-            <code>a</code>,
+            <code>button</code>, <code>a</code>,
             <code>router-link</code>
           </td>
         </tr>
@@ -651,9 +797,7 @@ components: {
             Used to set different targets for
             <code>a</code>
             links,
-            <code>_self</code>,
-            <code>_blank</code>,
-            <code>_parent</code>,
+            <code>_self</code>, <code>_blank</code>, <code>_parent</code>,
             <code>_top</code>
           </td>
         </tr>
@@ -663,19 +807,11 @@ components: {
           <td>default</td>
           <td>
             The variation style of a button. Primary options are
-            <code>default</code>,
-            <code>action</code> and
-            <code>warning</code>. Other options are
-            <code>subscribe</code>,
-            <code>paypal</code>,
-            <code>download</code> and
-            <code>navigation</code>. Platform options are
-            <code>facebook</code>,
-            <code>mixer</code>,
-            <code>twitch</code>,
-            <code>yt</code>,
-            <code>periscope</code>,
-            <code>picarto</code>and
+            <code>default</code>, <code>action</code> and <code>warning</code>.
+            Other options are <code>subscribe</code>, <code>paypal</code>,
+            <code>download</code> and <code>navigation</code>. Platform options
+            are <code>facebook</code>, <code>mixer</code>, <code>twitch</code>,
+            <code>yt</code>, <code>periscope</code>, <code>picarto</code>and
             <code>paypal-blue</code>.
           </td>
         </tr>
@@ -683,7 +819,6 @@ components: {
     </table>
   </div>
 </template>
-
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";

@@ -7,7 +7,7 @@
       :value="value"
       :checked="isChecked"
       @click="onClickAction"
-    >
+    />
     <label :for="id">{{ label }}</label>
   </div>
 </template>

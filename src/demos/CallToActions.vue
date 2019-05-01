@@ -2,7 +2,10 @@
   <div>
     <div class="section">
       <h1>Call To Action</h1>
-      <p>You can use our callout component if you need to display an important message.</p>
+      <p>
+        You can use our callout component if you need to display an important
+        message.
+      </p>
 
       <pre><code>import { CallToAction } from 'streamlabs-beaker';
 
@@ -20,7 +23,7 @@ components: {
         </div>
       </accordion>
       <div class="row">
-        <call-to-action :buttonClick="test"/>
+        <call-to-action :buttonClick="test" />
       </div>
       <h2>Custom Call to Action</h2>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
@@ -106,7 +109,9 @@ components: {
             <td>thumbnailBg</td>
             <td>String</td>
             <td>#31C3A2</td>
-            <td>A Thumbnail background color, default color is @teal (#31C3A2)</td>
+            <td>
+              A Thumbnail background color, default color is @teal (#31C3A2)
+            </td>
           </tr>
 
           <tr>
@@ -132,7 +137,10 @@ components: {
           <tr>
             <td>description</td>
             <td>String</td>
-            <td>Over 800k creators use Streamlabs OBS daily, delivering entertainment.</td>
+            <td>
+              Over 800k creators use Streamlabs OBS daily, delivering
+              entertainment.
+            </td>
             <td>A short description for the call the action component</td>
           </tr>
           <tr>
@@ -151,7 +159,10 @@ components: {
             <td>buttonDescription</td>
             <td>String</td>
             <td>Windows 7+ 245.8MB</td>
-            <td>Description for 'slobs-download' button variation only, recomended left blank otherwise ( :buttonDescription="'" )</td>
+            <td>
+              Description for 'slobs-download' button variation only, recomended
+              left blank otherwise ( :buttonDescription="'" )
+            </td>
           </tr>
           <tr>
             <td>buttonBg</td>
@@ -172,8 +183,7 @@ components: {
             <td>null</td>
             <td>
               Used if the the
-              <code>type</code> is an
-              <code>a</code> element (links).
+              <code>type</code> is an <code>a</code> element (links).
             </td>
           </tr>
           <tr>
@@ -182,8 +192,7 @@ components: {
             <td>null</td>
             <td>
               Used if the the
-              <code>type</code> is a
-              <code>router-link</code>. Define the path.
+              <code>type</code> is a <code>router-link</code>. Define the path.
             </td>
           </tr>
           <tr>
@@ -192,8 +201,7 @@ components: {
             <td>null</td>
             <td>
               What type of element the component is. Options are
-              <code>button</code>,
-              <code>a</code>,
+              <code>button</code>, <code>a</code>,
               <code>router-link</code>
             </td>
           </tr>

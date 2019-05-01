@@ -6,7 +6,8 @@
       <h2>Text Inputs</h2>
       <p>
         These 4 fields below are wrapped in a
-        <code>FormGroup</code> component. This will put 16px of margin between form fields and 24px margin between form groups.
+        <code>FormGroup</code> component. This will put 16px of margin between
+        form fields and 24px margin between form groups.
       </p>
       <FormGroup>
         <text-input
@@ -61,13 +62,18 @@
             <td>disabled</td>
             <td>Boolean</td>
             <td>null</td>
-            <td>Puts a disabled class on the form field and disables the input.</td>
+            <td>
+              Puts a disabled class on the form field and disables the input.
+            </td>
           </tr>
           <tr>
             <td>error</td>
             <td>string</td>
             <td>null</td>
-            <td>If there is error text, error classes will go on the input - we plan to add better validation handling.</td>
+            <td>
+              If there is error text, error classes will go on the input - we
+              plan to add better validation handling.
+            </td>
           </tr>
           <tr>
             <td>label</td>
@@ -93,9 +99,7 @@
             <td>text</td>
             <td>
               Input type:
-              <code>text</code>,
-              <code>email</code>,
-              <code>password</code>.
+              <code>text</code>, <code>email</code>, <code>password</code>.
             </td>
           </tr>
           <tr>
@@ -142,23 +146,47 @@ components: {
 &gt;&lt;/selector&gt;</code></pre>
         </div>
       </Accordion>
-      <selector v-model="selected" :options="['Option A', 'Option B', 'Option C']"></selector>
-      <br>
       <selector
         v-model="selected"
-        :options="['Option A', 'Option B', 'Option C', 'Option D', 'Option E', 'Option F']"
+        :options="['Option A', 'Option B', 'Option C']"
+      ></selector>
+      <br />
+      <selector
+        v-model="selected"
+        :options="[
+          'Option A',
+          'Option B',
+          'Option C',
+          'Option D',
+          'Option E',
+          'Option F'
+        ]"
         disabled
       ></selector>
-      <br>
+      <br />
       <selector
         v-model="multipleSelected"
-        :options="['Option A', 'Option B', 'Option C', 'Option D', 'Option E', 'Option F']"
+        :options="[
+          'Option A',
+          'Option B',
+          'Option C',
+          'Option D',
+          'Option E',
+          'Option F'
+        ]"
         multiple
       ></selector>
-      <br>
+      <br />
       <selector
         v-model="multipleSelected"
-        :options="['Option A', 'Option B', 'Option C', 'Option D', 'Option E', 'Option F']"
+        :options="[
+          'Option A',
+          'Option B',
+          'Option C',
+          'Option D',
+          'Option E',
+          'Option F'
+        ]"
         disabled
         multiple
       ></selector>
@@ -177,7 +205,9 @@ components: {
             <td>disabled</td>
             <td>Boolean</td>
             <td>false</td>
-            <td>Puts a disabled class on the form field and disables the input.</td>
+            <td>
+              Puts a disabled class on the form field and disables the input.
+            </td>
           </tr>
           <tr>
             <td>options</td>
@@ -282,7 +312,10 @@ components: {
     <div class="section">
       <h2>Status Switch</h2>
       <div class="section">
-        <status-switch v-model="statusValue" :label="'Status Label'"></status-switch>
+        <status-switch
+          v-model="statusValue"
+          :label="'Status Label'"
+        ></status-switch>
       </div>
       <div class="section">
         <small>
@@ -300,12 +333,16 @@ components: {
       </div>
 
       <div class="section">
-        <status-switch v-model="statusValue"/>
-        <status-switch v-model="statusValue"/>
-        <status-switch v-model="statusValue"/>
+        <status-switch v-model="statusValue" />
+        <status-switch v-model="statusValue" />
+        <status-switch v-model="statusValue" />
       </div>
 
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
+      <Accordion
+        :openedTitle="'Hide Code'"
+        :closedTitle="'Show Code'"
+        class="docs-code"
+      >
         <div slot="content">
           <pre><code>&lt;status-switch v-model="statusValue" :label="'Status Label'"&gt;&lt;/status-switch&gt;
 
@@ -332,8 +369,15 @@ components: {
       <h2>Image Input Picker</h2>
       <div class="section">
         <h3>Default</h3>
-        <p>By default, the image input picker is setup to have our Alert Box layout styles as the options.</p>
-        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
+        <p>
+          By default, the image input picker is setup to have our Alert Box
+          layout styles as the options.
+        </p>
+        <Accordion
+          :openedTitle="'Hide Code'"
+          :closedTitle="'Show Code'"
+          class="docs-code"
+        >
           <div slot="content">
             <pre>
 <code>&lt;image-picker-input v-model=&quot;layoutValue&quot;&gt;&lt;/image-picker-input&gt;</code></pre>
@@ -343,14 +387,24 @@ components: {
       </div>
       <div class="section">
         <h3>Custom</h3>
-        <p>You can pass in any options you'd like with the options prop. This is an example using our Jar options.</p>
-        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
+        <p>
+          You can pass in any options you'd like with the options prop. This is
+          an example using our Jar options.
+        </p>
+        <Accordion
+          :openedTitle="'Hide Code'"
+          :closedTitle="'Show Code'"
+          class="docs-code"
+        >
           <div slot="content">
             <pre>
 <code>&lt;image-picker-input v-model=&quot;jarValue&quot; :options=&quot;options&quot;&gt;&lt;/image-picker-input&gt;</code></pre>
           </div>
         </Accordion>
-        <image-picker-input v-model="jarValue" :options="options"></image-picker-input>
+        <image-picker-input
+          v-model="jarValue"
+          :options="options"
+        ></image-picker-input>
       </div>
     </div>
   </div>

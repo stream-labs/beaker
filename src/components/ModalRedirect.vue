@@ -10,10 +10,10 @@
     <div class="s-modal-container">
       <div class="s-redirect">
         <div class="s-spinner">
-          <Spinner :variation="'bars'"/>
+          <Spinner :variation="'bars'" />
         </div>
-        <h1 class="s-modal-title">{{title}}</h1>
-        <p class="s-modal-text">{{text}}</p>
+        <h1 class="s-modal-title">{{ title }}</h1>
+        <p class="s-modal-text">{{ text }}</p>
       </div>
     </div>
   </modal>
@@ -47,7 +47,6 @@ export default class ModalRedirect extends Vue {
   text!: string;
 }
 </script>
-
 
 <style lang="less" scoped>
 @import "./../styles/Imports";

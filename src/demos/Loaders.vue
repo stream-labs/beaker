@@ -2,7 +2,10 @@
   <div>
     <div class="section">
       <h1>Loaders</h1>
-      <p>These are animated with pure SVG, they will not be animated in Microsoft Edge, or Opera, and will look different in firefox.</p>
+      <p>
+        These are animated with pure SVG, they will not be animated in Microsoft
+        Edge, or Opera, and will look different in firefox.
+      </p>
 
       <div class="section">
         <h2>Full Page Loading</h2>
@@ -22,11 +25,19 @@ components: {
             </div>
           </accordion>
 
-          <Loading v-if="isLoading" :loadingStrs="string" @closeLoading="isLoading = false"></Loading>
+          <Loading
+            v-if="isLoading"
+            :loadingStrs="string"
+            @closeLoading="isLoading = false"
+          ></Loading>
 
           <div class="row">
             <div class="s-button-container s-button-container--left">
-              <Button :variation="'default'" :title="'loading default'" @click="isLoading = true"></Button>
+              <Button
+                :variation="'default'"
+                :title="'loading default'"
+                @click="isLoading = true"
+              ></Button>
             </div>
           </div>
         </div>
@@ -114,7 +125,10 @@ components: {
               <td>loadingStrs</td>
               <td>any[] | string</td>
               <td>-</td>
-              <td>Pass an array of stings into the loader. We recommend 3-4. Each shows for 4 seconds before it rotates.</td>
+              <td>
+                Pass an array of stings into the loader. We recommend 3-4. Each
+                shows for 4 seconds before it rotates.
+              </td>
             </tr>
             <tr>
               <td>isRandom</td>
@@ -129,13 +143,19 @@ components: {
               <td>semiOpaque</td>
               <td>boolean</td>
               <td>false</td>
-              <td>Sets the background overlay to semi-opacity rather than full opacity.</td>
+              <td>
+                Sets the background overlay to semi-opacity rather than full
+                opacity.
+              </td>
             </tr>
             <tr>
               <td>swapMode</td>
               <td>boolean</td>
               <td>false</td>
-              <td>In case you need to swap day/night mode - used for Creator Sites.</td>
+              <td>
+                In case you need to swap day/night mode - used for Creator
+                Sites.
+              </td>
             </tr>
           </tbody>
         </table>
@@ -160,11 +180,14 @@ components: {
         </div>
       </accordion>
       <div class="row">
-        <Spinner :size="'small'"/>
+        <Spinner :size="'small'" />
       </div>
 
       <h3>Loading Spinner Large</h3>
-      <p>This is the large size spinner. It should only be used in large sections or full page transitions.</p>
+      <p>
+        This is the large size spinner. It should only be used in large sections
+        or full page transitions.
+      </p>
 
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
@@ -172,7 +195,7 @@ components: {
         </div>
       </accordion>
       <div class="row">
-        <Spinner :size="'large'"/>
+        <Spinner :size="'large'" />
       </div>
       <table class="docs-table">
         <thead>
@@ -194,7 +217,9 @@ components: {
             <td>swap</td>
             <td>Boolean</td>
             <td>false</td>
-            <td>If you need to swap day/night mode [ true ], default: [ false ]</td>
+            <td>
+              If you need to swap day/night mode [ true ], default: [ false ]
+            </td>
           </tr>
         </tbody>
       </table>

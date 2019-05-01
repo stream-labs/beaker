@@ -2,7 +2,10 @@
   <div>
     <div class="section">
       <h1>Extras</h1>
-      <p>Premade designs you can slot into modals, marketing sections, etc to make your lives easier.</p>
+      <p>
+        Premade designs you can slot into modals, marketing sections, etc to
+        make your lives easier.
+      </p>
     </div>
     <div class="section">
       <h2>Fake Alert</h2>
@@ -12,13 +15,8 @@ components: {
   FakeAlert
 }</code></pre>
 
-      <Accordion
-        :openedTitle="'Hide Code'"
-        :closedTitle="'Show Code'"
-      >
-        <div slot="content">
-
-        </div>
+      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+        <div slot="content"></div>
       </Accordion>
 
       <div class="section section__components">

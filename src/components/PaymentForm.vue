@@ -9,14 +9,36 @@
           <selector placeholder="Add new credit card"></selector>
         </div>
         <div class="s-form-group s-credit-card-form__inputs">
-          <text-input class="s-credit-card-form__cc-number" type="text" placeholder="Name on card"></text-input>
-          <text-input class="s-credit-card-form__cc-exp" type="text" placeholder="Expiry MM/YYYY"></text-input>
-          <text-input class="s-credit-card-form__cc-cvc" type="text" placeholder="CVC"></text-input>
-          <text-input class="s-credit-card-form__cc-zip" type="text" placeholder="Zip/Postal"></text-input>
-          <selector class="s-credit-card-form__cc-country" placeholder="Country"></selector>
+          <text-input
+            class="s-credit-card-form__cc-number"
+            type="text"
+            placeholder="Name on card"
+          ></text-input>
+          <text-input
+            class="s-credit-card-form__cc-exp"
+            type="text"
+            placeholder="Expiry MM/YYYY"
+          ></text-input>
+          <text-input
+            class="s-credit-card-form__cc-cvc"
+            type="text"
+            placeholder="CVC"
+          ></text-input>
+          <text-input
+            class="s-credit-card-form__cc-zip"
+            type="text"
+            placeholder="Zip/Postal"
+          ></text-input>
+          <selector
+            class="s-credit-card-form__cc-country"
+            placeholder="Country"
+          ></selector>
         </div>
         <div class="s-form-group">
-          <checkbox label="Save this payment method for next time" v-model="savePaymentMethod"></checkbox>
+          <checkbox
+            label="Save this payment method for next time"
+            v-model="savePaymentMethod"
+          ></checkbox>
         </div>
       </form>
     </div>
