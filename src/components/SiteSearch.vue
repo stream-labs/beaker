@@ -55,6 +55,7 @@
             :key="searchResult.item.name"
             class="s-sitesearch-results"
             :class="{'s-active-result': currentResult === i }"
+            @mouseover="currentResult = i"
           >
             <div class="s-sitesearch__result--image">
               <i :class="searchResult.item.image" class="s-sitesearch__result--image"></i>
@@ -207,8 +208,14 @@ export default class SiteSearch extends Vue {
       this.currentResult--;
     }
     // KEYPRESS DOWN
-    if (event.keyCode === 40 && this.currentResult < 5) {
-      this.currentResult++;
+    if (this.result.length === 0) {
+      if (event.keyCode === 40 && this.currentResult < 5) {
+        this.currentResult++;
+      }
+    } else {
+      if (event.keyCode === 40 && this.currentResult < 6) {
+        this.currentResult++;
+      }
     }
     // KEYPRESS ENTER
     if (event.keyCode === 13 && this.phaseOne) {
