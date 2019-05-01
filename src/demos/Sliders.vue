@@ -64,7 +64,7 @@ components: {
             <td>undefined</td>
             <td>Custom data</td>
           </tr>
-           <tr>
+          <tr>
             <td>dataVisible</td>
             <td>Boolean</td>
             <td>false</td>
@@ -100,8 +100,7 @@ components: {
             <td>always</td>
             <td>
               Show the tooltip or not. Options are
-              <code>none</code>,
-              <code>always</code> or
+              <code>none</code>, <code>always</code> or
               <code>focus</code>
             </td>
           </tr>
@@ -162,7 +161,7 @@ export default class Sliders extends Vue {
   }
 
   updateValue(value) {
-    console.log("value is " , value);
+    console.log("value is ", value);
   }
 }
 </script>
@@ -173,4 +172,3 @@ export default class Sliders extends Vue {
   .margin-v-sides(9);
 }
 </style>
-
