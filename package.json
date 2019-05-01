@@ -15,7 +15,6 @@
     "dist/*"
   ],
   "dependencies": {
-    "@material/ripple": "^2.0.0",
     "fuse.js": "^3.4.4",
     "google-fonts-webpack-plugin": "^0.4.4",
     "v-tooltip": "^2.0.0-rc.33",
