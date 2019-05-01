@@ -55,6 +55,7 @@
             :key="searchResult.item.name"
             class="s-sitesearch-results"
             :class="{'s-active-result': currentResult === i }"
+            @mouseover="currentResult = i"
           >
             <div class="s-sitesearch__result--image">
               <i :class="searchResult.item.image" class="s-sitesearch__result--image"></i>
