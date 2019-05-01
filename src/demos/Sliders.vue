@@ -32,7 +32,7 @@ components: {
       </accordion>
 
       <div class="row">
-        <slider :data="data" :min="0" :max="100" :interval="1" :value="1" :tooltip="'always'"></slider>
+        <slider :min="0" :max="100" :interval="1" :value="value" :tooltip="'always'"></slider>
       </div>
 
       <table class="docs-table">
