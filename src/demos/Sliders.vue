@@ -29,6 +29,7 @@ components: {
   :value=&quot;value&quot;
   :suffix=&quot;'%'&quot;
   :tooltip=&quot;'always'&quot;
+  ref=&quot;slider&quot;
 &lt;/slider&gt;</code></pre>
         </div>
       </accordion>
