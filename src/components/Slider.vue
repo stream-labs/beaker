@@ -91,7 +91,7 @@ export default class Slider extends Vue {
   }
 
   setValue(val) {
-    this.displayValue = val;
+    this.value = val;
   }
 }
 </script>
