@@ -93,13 +93,19 @@ components: {
             <td>prefix</td>
             <td>String</td>
             <td>""</td>
-            <td>Prefix label that will be displayed next to the value in the tooltip</td>
+            <td>
+              Prefix label that will be displayed next to the value in the
+              tooltip
+            </td>
           </tr>
           <tr>
             <td>suffix</td>
             <td>String</td>
             <td>""</td>
-            <td>Suffix label that will be displayed next to the value in the tooltip</td>
+            <td>
+              Suffix label that will be displayed next to the value in the
+              tooltip
+            </td>
           </tr>
           <tr>
             <td>data</td>
