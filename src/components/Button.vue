@@ -203,8 +203,8 @@ export default class Button extends Vue {
       Math.abs(buttonRect.top - clickLoc.y) - this.rippleSize / 2
     );
 
-    this.rippleColor = "#09161d";
-    this.rippleOpacity = 0.075;
+    this.rippleColor = "#000000";
+    this.rippleOpacity = 0.06;
     if (
       buttonVar === '"paypal"' ||
       buttonVar === '"subscribe"' ||
