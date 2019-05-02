@@ -811,8 +811,8 @@ components: {
             Other options are <code>subscribe</code>, <code>paypal</code>,
             <code>download</code> and <code>navigation</code>. Platform options
             are <code>facebook</code>, <code>mixer</code>, <code>twitch</code>,
-            <code>yt</code>, <code>periscope</code>, <code>picarto</code>and
-            <code>paypal-blue</code>.
+            <code>youtube</code>, <code>periscope</code>,
+            <code>picarto</code>and <code>paypal-blue</code>.
           </td>
         </tr>
       </tbody>
