@@ -1,3 +1,4 @@
+    
 <template>
   <div>
     <div class="section">
@@ -8,8 +9,7 @@
         <a
           target="_blank"
           href="https://github.com/NightCatSama/vue-slider-component"
-          >Vue Slider Component</a
-        >
+        >Vue Slider Component</a>
       </p>
       <pre><code>import { Slider } from 'streamlabs-beaker';
 
@@ -24,21 +24,23 @@ components: {
   :min=&quot;0&quot;
   :max=&quot;100&quot;
   :interval=&quot;1&quot;
-  :value=&quot;value&quot;
-  :suffix=&quot;'%'&quot;
-  :tooltip=&quot;'always'&quot;
+  :value=&quot;50&quot;&gt;
 &lt;/slider&gt;</code></pre>
         </div>
       </accordion>
 
       <div class="row">
         <slider
-          :min="0"
-          :max="100"
-          :interval="1"
           :value="value"
+          @input="value => updateValue(value)"
+          :max="100"
+          :min="1"
+          :interval="1"
           :tooltip="'always'"
-        ></slider>
+          :suffix="'%'"
+          :data="data"
+          ref="slider"
+        />
       </div>
 
       <table class="docs-table">
@@ -52,46 +54,10 @@ components: {
         </thead>
         <tbody>
           <tr>
-            <td>data</td>
-            <td>Array</td>
-            <td>undefined</td>
-            <td>Custom data</td>
-          </tr>
-          <tr>
-            <td>value</td>
-            <td>Number, String, Array</td>
-            <td>1</td>
-            <td>Initial value of the slider</td>
-          </tr>
-          <tr>
-            <td>prefix</td>
-            <td>String</td>
-            <td>""</td>
-            <td>
-              Prefix label that will be displayed next to the value in the
-              tooltip
-            </td>
-          </tr>
-          <tr>
-            <td>suffix</td>
-            <td>String</td>
-            <td>px</td>
-            <td>
-              Suffix label that will be displayed next to the value in the
-              tooltip
-            </td>
-          </tr>
-          <tr>
-            <td>tooltip</td>
-            <td>String</td>
-            <td>always</td>
-            <td>Show the tooltip or not. Options are 'always' or 'false'</td>
-          </tr>
-          <tr>
-            <td>min</td>
+            <td>interval</td>
             <td>Number</td>
-            <td>null</td>
-            <td>The minimum numerical value that can be selected</td>
+            <td>1</td>
+            <td>The steps between the values</td>
           </tr>
           <tr>
             <td>max</td>
@@ -100,22 +66,40 @@ components: {
             <td>The maximum numerical value that can be selected</td>
           </tr>
           <tr>
-            <td>interval</td>
+            <td>min</td>
             <td>Number</td>
-            <td>1</td>
-            <td>The steps between the values</td>
+            <td>null</td>
+            <td>The minimum numerical value that can be selected</td>
           </tr>
           <tr>
-            <td>disabled</td>
-            <td>Boolean</td>
-            <td>null</td>
-            <td>Whether to disable the slider</td>
+            <td>suffix</td>
+            <td>String</td>
+            <td>px</td>
+            <td>Suffix label that will be displayed next to the value in the tooltip</td>
+          </tr>
+          <tr>
+            <td>tooltip</td>
+            <td>String</td>
+            <td>always</td>
+            <td>Show the tooltip or not. Options are 'always' or 'false'</td>
+          </tr>
+          <tr>
+            <td>value</td>
+            <td>Number, String, Array, Object</td>
+            <td>1</td>
+            <td>Initial value of the slider.</td>
           </tr>
           <tr>
             <td>width</td>
             <td>Number, String</td>
             <td>auto</td>
-            <td>The width of the component</td>
+            <td>The width of the component.</td>
+          </tr>
+          <tr>
+            <td>data</td>
+            <td>Array</td>
+            <td>null</td>
+            <td>Custom data.</td>
           </tr>
         </tbody>
       </table>
@@ -125,10 +109,8 @@ components: {
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-
 import Slider from "./../components/Slider.vue";
 import Accordion from "./../components/Accordion.vue";
-
 @Component({
   components: {
     Slider,
@@ -137,6 +119,14 @@ import Accordion from "./../components/Accordion.vue";
 })
 export default class Sliders extends Vue {
   value = 50;
-  data = [1, 2, 3, 4, 5];
+  data = [1, 50, 100];
+
+  mounted() {
+    console.log(this.$refs);
+  }
+
+  updateValue(value) {
+    console.log("value is ", value);
+  }
 }
 </script>

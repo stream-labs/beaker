@@ -22,9 +22,7 @@
         {{ title }}
       </span>
       <span v-if="description" class="s-button__description">
-        {{
-        description
-        }}
+        {{ description }}
       </span>
     </span>
     <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
@@ -137,10 +135,6 @@ export default class Button extends Vue {
 
   get buttonClasses() {
     const classes: any = [];
-
-    if (this.variation) {
-      classes.push(`s-button--${this.variation}`);
-    }
 
     if (this.variation) {
       classes.push(`s-button--${this.variation}`);
@@ -420,7 +414,7 @@ export default class Button extends Vue {
   }
 }
 
-.s-button--yt {
+.s-button--youtube {
   background-color: @youtube;
   color: @white;
 
@@ -741,6 +735,7 @@ export default class Button extends Vue {
     &.is-focused,
     &:hover {
       background: lighten(@night-button, 4%);
+      color: @night-title;
     }
   }
 
@@ -752,7 +747,7 @@ export default class Button extends Vue {
     &.is-focused,
     &:hover {
       background: lighten(@teal, 4%);
-      color: @white;
+      color: @night-title;
     }
   }
 
@@ -763,6 +758,7 @@ export default class Button extends Vue {
     &.is-focused,
     &:hover {
       background-color: rgba(251, 72, 76, 0.32);
+      color: @warning;
     }
   }
 
@@ -801,10 +797,11 @@ export default class Button extends Vue {
     &.is-focused,
     &:hover {
       background-color: lighten(@twitch, 4%);
+      color: @night-title;
     }
   }
 
-  .s-button--yt {
+  .s-button--youtube {
     background-color: @youtube;
     color: @night-title;
 
@@ -812,6 +809,7 @@ export default class Button extends Vue {
     &.is-focused,
     &:hover {
       background-color: lighten(@youtube, 4%);
+      color: @night-title;
     }
   }
 
@@ -823,6 +821,7 @@ export default class Button extends Vue {
     &.is-focused,
     &:hover {
       background-color: lighten(@mixer, 4%);
+      color: @night-title;
     }
   }
 
@@ -834,6 +833,7 @@ export default class Button extends Vue {
     &.is-focused,
     &:hover {
       background-color: lighten(@facebook, 4%);
+      color: @night-title;
     }
   }
 
@@ -845,6 +845,7 @@ export default class Button extends Vue {
     &.is-focused,
     &:hover {
       background-color: lighten(@periscope, 4%);
+      color: @night-title;
     }
   }
 
@@ -856,6 +857,7 @@ export default class Button extends Vue {
     &.is-focused,
     &:hover {
       background-color: lighten(@picarto, 4%);
+      color: @night-title;
     }
   }
 }
