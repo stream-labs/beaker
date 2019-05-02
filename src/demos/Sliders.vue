@@ -1,4 +1,3 @@
-    
 <template>
   <div>
     <div class="section">
@@ -9,7 +8,8 @@
         <a
           target="_blank"
           href="https://github.com/NightCatSama/vue-slider-component"
-        >Vue Slider Component</a>
+          >Vue Slider Component</a
+        >
       </p>
       <pre><code>import { Slider } from 'streamlabs-beaker';
 
@@ -54,28 +54,34 @@ components: {
         </thead>
         <tbody>
           <tr>
-            <td>interval</td>
-            <td>Number</td>
-            <td>1</td>
-            <td>The steps between the values</td>
+            <td>width</td>
+            <td>Number, String</td>
+            <td>auto</td>
+            <td>The width of the component.</td>
           </tr>
           <tr>
-            <td>max</td>
-            <td>Number</td>
-            <td>null</td>
-            <td>The maximum numerical value that can be selected</td>
+            <td>value</td>
+            <td>Number, String, Array</td>
+            <td>1</td>
+            <td>Initial value of the slider.</td>
           </tr>
           <tr>
             <td>min</td>
             <td>Number</td>
-            <td>null</td>
+            <td>0</td>
             <td>The minimum numerical value that can be selected</td>
           </tr>
           <tr>
-            <td>suffix</td>
-            <td>String</td>
-            <td>px</td>
-            <td>Suffix label that will be displayed next to the value in the tooltip</td>
+            <td>max</td>
+            <td>Number</td>
+            <td>100</td>
+            <td>The maximum numerical value that can be selected</td>
+          </tr>
+          <tr>
+            <td>interval</td>
+            <td>Number</td>
+            <td>1</td>
+            <td>The steps between the values</td>
           </tr>
           <tr>
             <td>tooltip</td>
@@ -84,16 +90,22 @@ components: {
             <td>Show the tooltip or not. Options are 'always' or 'false'</td>
           </tr>
           <tr>
-            <td>value</td>
-            <td>Number, String, Array, Object</td>
-            <td>1</td>
-            <td>Initial value of the slider.</td>
+            <td>prefix</td>
+            <td>String</td>
+            <td>""</td>
+            <td>
+              Prefix label that will be displayed next to the value in the
+              tooltip
+            </td>
           </tr>
           <tr>
-            <td>width</td>
-            <td>Number, String</td>
-            <td>auto</td>
-            <td>The width of the component.</td>
+            <td>suffix</td>
+            <td>String</td>
+            <td>""</td>
+            <td>
+              Suffix label that will be displayed next to the value in the
+              tooltip
+            </td>
           </tr>
           <tr>
             <td>data</td>
