@@ -711,7 +711,7 @@ export default class Button extends Vue {
     }
   }
 
-  .s-button--yt {
+  .s-button--youtube {
     background-color: @youtube;
     color: @night-title;
 
