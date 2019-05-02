@@ -44,7 +44,7 @@ export default class Slider extends Vue {
   interval!: number;
 
   @Prop({ default: "always" })
-  tooltip!: "alywas" | false;
+  tooltip!: "always" | false;
 
   @Prop({ default: "" })
   prefix!: string;
