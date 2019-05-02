@@ -78,9 +78,9 @@ export default class Slider extends Vue {
       : (this.displayTooltop = this.tooltip);
   }
 
-  created() {
-    this.$on("input", this.setValue);
-  }
+  // created() {
+  //   this.$on("input", this.setValue);
+  // }
 
   destroyed() {
     this.$off("input", this.setValue);
@@ -91,7 +91,7 @@ export default class Slider extends Vue {
   }
 
   setValue(val) {
-    this.value = val;
+    this.displayValue = val;
   }
 }
 </script>
