@@ -1,4 +1,3 @@
-    
 <template>
   <div>
     <div class="section">
@@ -9,7 +8,8 @@
         <a
           target="_blank"
           href="https://github.com/NightCatSama/vue-slider-component"
-        >Vue Slider Component</a>
+          >Vue Slider Component</a
+        >
       </p>
       <pre><code>import { Slider } from 'streamlabs-beaker';
 
@@ -65,7 +65,6 @@ components: {
             <td>1</td>
             <td>Initial value of the slider.</td>
           </tr>
-
           <tr>
             <td>min</td>
             <td>Number</td>

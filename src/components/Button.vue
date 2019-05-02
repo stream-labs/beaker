@@ -8,12 +8,13 @@
     :to="to"
     :href="href"
     :type="type"
-    class="s-button"
-    :class="buttonClasses"
+    class="s-button ripple"
+    :class="[buttonClasses, { 'ripple-animate': rippleAnimate }]"
     :disabled="state === 'disabled'"
-    :style="buttonStyles"
     @click="$emit('click')"
     :target="target"
+    @mousedown="pressDown"
+    :style="rippleStyle"
   >
     <span>
       <span>
@@ -124,6 +125,14 @@ export default class Button extends Vue {
     color: this.textColor
   };
 
+  private rippleStartX = 0;
+  private rippleStartY = 0;
+  private rippleSize = 0;
+  private rippleColor = "";
+  private rippleOpacity = 0;
+  private rippleDuration = "";
+  private rippleAnimate = false;
+
   get buttonClasses() {
     const classes: any = [];
 
@@ -150,6 +159,65 @@ export default class Button extends Vue {
     }
 
     return classes.join(" ");
+  }
+
+  get rippleStyle() {
+    let s =
+      "--ripple-x:" +
+      this.rippleStartX +
+      "px; --ripple-y:" +
+      this.rippleStartY +
+      "px; --ripple-size:" +
+      this.rippleSize +
+      "px; --ripple-color:" +
+      this.rippleColor +
+      "; --ripple-opacity:" +
+      this.rippleOpacity +
+      "; --ripple-duration:" +
+      this.rippleDuration +
+      ";";
+    return s;
+  }
+
+  rippleAnimation() {
+    return new Promise(resolve => {
+      this.rippleAnimate = true;
+      let animationEnded = e => {
+        this.$el.removeEventListener("animationnend", animationEnded);
+        resolve();
+      };
+      this.$el.addEventListener("animationend", animationEnded);
+    });
+  }
+
+  pressDown(e) {
+    let buttonRect = this.$el.getBoundingClientRect();
+    let clickLoc = { x: e.pageX, y: e.pageY };
+    let buttonVar = JSON.stringify(this.variation);
+    let buttonSize = JSON.stringify(this.size);
+    this.rippleSize = Math.floor(buttonRect.width * 2);
+    this.rippleStartX = Math.floor(
+      Math.abs(buttonRect.left - clickLoc.x) - this.rippleSize / 2
+    );
+    this.rippleStartY = Math.floor(
+      Math.abs(buttonRect.top - clickLoc.y) - this.rippleSize / 2
+    );
+
+    this.rippleColor = "#09161d";
+    this.rippleOpacity = 0.075;
+    if (
+      buttonVar === '"paypal"' ||
+      buttonVar === '"subscribe"' ||
+      buttonSize === '"full-width"'
+    ) {
+      this.rippleDuration = "800ms";
+    } else {
+      this.rippleDuration = "400ms";
+    }
+
+    if (!this.rippleAnimate) {
+      this.rippleAnimation().then(() => (this.rippleAnimate = false));
+    }
   }
 }
 </script>
@@ -187,6 +255,10 @@ export default class Button extends Vue {
   text-decoration: none;
   position: relative;
   outline: transparent dotted 2px;
+
+  * {
+    z-index: 5;
+  }
 
   i {
     .margin-right();
@@ -233,6 +305,26 @@ export default class Button extends Vue {
   img {
     width: 14px;
     height: auto;
+  }
+
+  &.ripple {
+    &.ripple-animate {
+      &:after {
+        animation: s-ripple var(--ripple-duration, 400);
+      }
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      top: var(--ripple-y, 0);
+      left: var(--ripple-x, 0);
+      width: var(--ripple-size, 0);
+      height: var(--ripple-size, 0);
+      border-radius: var(--ripple-size, 0);
+      background-color: var(--ripple-color, #ffffff);
+      opacity: 0;
+      z-index: 2;
+    }
   }
 }
 
@@ -787,6 +879,27 @@ export default class Button extends Vue {
   100% {
     -webkit-transform: rotate(359deg);
     transform: rotate(359deg);
+  }
+}
+
+@keyframes s-ripple {
+  0% {
+    animation-timing-function: linear;
+    transform: scale(0.15);
+    opacity: 0;
+  }
+  15% {
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: var(--ripple-opacity, 0.3);
+  }
+  70% {
+    transform: scale(1);
+  }
+  80% {
+    animation-timing-function: linear;
+  }
+  100% {
+    opacity: 0;
   }
 }
 </style>
