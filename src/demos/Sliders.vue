@@ -65,7 +65,6 @@ components: {
             <td>1</td>
             <td>Initial value of the slider.</td>
           </tr>
-
           <tr>
             <td>min</td>
             <td>Number</td>
