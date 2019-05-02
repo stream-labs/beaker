@@ -8,12 +8,13 @@
     :to="to"
     :href="href"
     :type="type"
-    class="s-button"
+    class="s-button ripple"
     :class="buttonClasses"
     :disabled="state === 'disabled'"
-    :style="buttonStyles"
     @click="$emit('click')"
     :target="target"
+    @mousedown="pressDown"
+    :style="rippleStyle"
   >
     <span>
       <span>
@@ -119,10 +120,15 @@ export default class Button extends Vue {
     default: "default";
   };
 
+
   buttonStyles: object = {
     backgroundColor: this.bgColor,
     color: this.textColor
   };
+
+
+  private rippleStartX = 0;
+  private rippleStartY = 0;
 
   get buttonClasses() {
     const classes: any = [];
@@ -155,6 +161,58 @@ export default class Button extends Vue {
 
     return classes.join(" ");
   }
+
+
+get rippleStyle() {
+  let s = '--ripple-x:' + this.rippleStartX + 'px; --ripple-y:' + this.rippleStartY + 'px;';
+  return s;
+
+
+
+}
+
+
+
+  pressDown(e) {
+
+  let buttonRect = this.$el.getBoundingClientRect();
+  let clickLoc = {x: e.pageX, y: e.pageY}
+
+
+
+  this.rippleStartX = Math.abs(buttonRect.left - clickLoc.x);
+  this.rippleStartY = Math.abs(buttonRect.top - clickLoc.y);
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 </script>
 
@@ -191,6 +249,10 @@ export default class Button extends Vue {
   text-decoration: none;
   position: relative;
   outline: transparent dotted 2px;
+
+  * {
+    z-index: 5;
+  }
 
   i {
     .margin-right();
@@ -237,6 +299,23 @@ export default class Button extends Vue {
   img {
     width: 14px;
     height: auto;
+  }
+
+  &.ripple {
+    &:after {
+      content: "";
+      position: absolute;
+      top: var(--ripple-y, 0);
+      left: var(--ripple-x, 0);
+      width: 100%;
+      height: 100%;
+      border-radius: 250px;
+      background-image: linear-gradient(120deg, #eaee44, #33d0ff);
+      opacity: .7;
+
+      z-index: 2;
+
+    }
   }
 }
 
