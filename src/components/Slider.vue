@@ -9,7 +9,7 @@
     :min="min"
     :max="max"
     :interval="interval"
-    :value="value"
+    :value="displayValue"
     :prefix="prefix"
     :suffix="suffix"
     :formatter="prefix + '{value}' + suffix"
@@ -18,51 +18,61 @@
   ></vue-slider-component>
 </template>
 
-<script>
-import { Component, Vue } from "vue-property-decorator";
+<script lang="ts">
+import { Component, Prop, Vue } from "vue-property-decorator";
 import VueSliderComponent from "vue-slider-component";
-export default {
-  name: "Slider",
-  extends: VueSliderComponent,
+
+@Component({
   components: {
     VueSliderComponent
-  },
-  props: {
-    width: {
-      type: Number | String
-    },
-    value: {
-      type: [String, Number],
-      defualt: 0
-    },
-    prefix: {
-      type: String,
-      default: ""
-    },
-    suffix: {
-      type: String,
-      default: ""
-    },
-    data: {
-      type: Array,
-      default: null
-    }
-  },
+  }
+})
+export default class Slider extends Vue {
+  @Prop()
+  width!: number | string;
+
+  @Prop({ default: 1 })
+  value!: number | string | Array<number> | Array<string>;
+
+  @Prop({ default: 0 })
+  min!: number;
+
+  @Prop({ default: 100 })
+  max!: number;
+
+  @Prop({ default: 1 })
+  interval!: number;
+
+  @Prop({ default: "always" })
+  tooltip!: "always" | false;
+
+  @Prop({ default: "" })
+  prefix!: string;
+
+  @Prop({ default: "" })
+  suffix!: string;
+
+  @Prop()
+  data!: Array<number> | Array<string>;
+
+  displayValue: number | string | Array<number> | Array<string> = this.value;
+
   created() {
     this.$on("input", this.setValue);
-  },
+  }
+
   destroyed() {
     this.$off("input", this.setValue);
-  },
-  methods: {
-    emitInput(val) {
-      this.$emit("input", val);
-    },
-    setValue(val) {
-      this.currentValue = val;
-    }
   }
-};
+
+  emitInput(val) {
+    this.$emit("input", val);
+  }
+
+  setValue(val) {
+    this.displayValue = val;
+  }
+}
 </script>
 
 <style lang="less">
