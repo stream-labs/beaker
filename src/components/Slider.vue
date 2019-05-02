@@ -1,5 +1,6 @@
 <template>
   <vue-slider-component
+    :value="value"
     :width="width"
     :height="8"
     :dotHeight="16"
@@ -77,9 +78,9 @@ export default class Slider extends Vue {
       : (this.displayTooltop = this.tooltip);
   }
 
-  created() {
-    this.$on("input", this.setValue);
-  }
+  // created() {
+  //   this.$on("input", this.setValue);
+  // }
 
   destroyed() {
     this.$off("input", this.setValue);
