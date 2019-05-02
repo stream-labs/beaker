@@ -211,7 +211,11 @@ export default class SiteSearch extends Vue {
   }
 
   @Watch("result")
-  watchResult() {
+  watchResult(val: [], oldVal: []) {
+    console.log(val);
+    if (this.noResults || this.value == '' || val.length != oldVal.length) {
+      this.currentResult = 0;
+    }
     this.$emit(this.eventName, this.result);
     this.$parent.$emit(this.eventName, this.result);
   }
