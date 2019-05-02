@@ -9,7 +9,7 @@
     :href="href"
     :type="type"
     class="s-button ripple"
-    :class="[buttonClasses, {'ripple-animate' : rippleAnimate}]"
+    :class="[buttonClasses, { 'ripple-animate': rippleAnimate }]"
     :disabled="state === 'disabled'"
     @click="$emit('click')"
     :target="target"

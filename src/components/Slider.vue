@@ -29,7 +29,7 @@ export default {
   },
   props: {
     width: {
-      type: Number | String,
+      type: Number | String
     },
     value: {
       type: [String, Number],
