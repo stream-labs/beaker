@@ -29,14 +29,14 @@ components: {
   :value=&quot;value&quot;
   :suffix=&quot;'%'&quot;
   :tooltip=&quot;'always'&quot;
-  ref=&quot;slider&quot;
+  ref=&quot;slider'&quot;
 &lt;/slider&gt;</code></pre>
         </div>
       </accordion>
 
       <div class="row section">
         <slider
-          @input="updateValue(value)"
+          @input="value => updateValue(value)"
           :data="data"
           :min="0"
           :max="100"

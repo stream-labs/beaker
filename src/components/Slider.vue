@@ -1,5 +1,6 @@
 <template>
   <vue-slider-component
+    :value="value"
     :width="width"
     :height="8"
     :dotHeight="16"
