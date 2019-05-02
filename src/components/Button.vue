@@ -21,9 +21,7 @@
         {{ title }}
       </span>
       <span v-if="description" class="s-button__description">
-        {{
-        description
-        }}
+        {{ description }}
       </span>
     </span>
     <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
