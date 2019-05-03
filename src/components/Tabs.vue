@@ -318,7 +318,7 @@ a {
   .padding-v-sides(3);
 }
 
-.night-theme {
+.night, .night-theme {
   .s-tabs {
     &:before {
       background-color: @night-border;
