@@ -1,5 +1,6 @@
 <template>
   <vue-slider-component
+    class="s-slider"
     :width="width"
     :height="8"
     :dotHeight="16"
@@ -77,19 +78,25 @@ export default class Slider extends Vue {
 
 <style lang="less">
 @import "./../styles/Imports";
-.vue-slider-component {
+.s-slider {
+  width: 100%;
+  flex: 1;
+
   .vue-slider {
     background-color: @light-3;
   }
+
   .vue-slider-process {
     background-color: @teal;
   }
+
   .vue-slider-dot {
     .vue-slider-dot-handle {
       background-color: @dark-2;
       box-shadow: none;
       .radius(3);
       position: relative;
+
       &:before,
       &:after {
         border: none;
@@ -103,32 +110,38 @@ export default class Slider extends Vue {
         content: "\e996";
         display: inline-block;
       }
+
       &:before {
         transform: rotate(90deg);
         left: 2px;
       }
+
       &:after {
         transform: rotate(-90deg);
         right: 2px;
       }
     }
   }
+
   .vue-slider-tooltip {
     background-color: transparent;
     border: 0;
     color: @day-title;
     padding: 0;
+
     &:before {
       border: 0 !important;
     }
   }
 }
+
 .night,
 .night-theme {
   .vue-slider-component {
     .vue-slider {
       background-color: @dark-4;
     }
+
     .vue-slider-dot {
       .vue-slider-dot-handle {
         background-color: @light-1;
@@ -138,6 +151,7 @@ export default class Slider extends Vue {
         }
       }
     }
+
     .vue-slider-tooltip {
       color: @night-title;
     }
