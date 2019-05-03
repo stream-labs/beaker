@@ -291,7 +291,6 @@ components: {
             :label="'Enable'"
             v-model="radioValue1"
             :isChecked="true"
-            :onClick="test"
           ></radio>
           <radio
             :id="'radio2'"
@@ -412,10 +411,6 @@ import FormGroup from "./../components/FormGroup.vue";
   }
 })
 export default class Inputs extends Vue {
-  test() {
-    console.log("test");
-  }
-
   checkboxValue1 = true;
   checkboxValue2 = false;
   checkboxValue3 = true;
