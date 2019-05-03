@@ -40,6 +40,7 @@
           class="s-sitesearch-results"
           :class="{ 's-active-result': currentResult === i }"
           @mouseover="currentResult = i"
+          @mouseup="blurSearch"
         >
           <div class="s-sitesearch__result--image">
             <i
@@ -65,6 +66,7 @@
             class="s-sitesearch-results"
             :class="{ 's-active-result': currentResult === i }"
             @mouseover="currentResult = i"
+            @mouseup="blurSearch"
           >
             <div class="s-sitesearch__result--image">
               <i
