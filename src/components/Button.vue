@@ -21,9 +21,7 @@
         <i v-if="iconClass" :class="iconClass"></i>
         {{ title }}
       </span>
-      <span v-if="description" class="s-button__description">
-        {{ description }}
-      </span>
+      <span v-if="description" class="s-button__description">{{ description }}</span>
     </span>
     <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
     <span v-if="price">{{ price }}</span>
@@ -128,8 +126,8 @@ export default class Button extends Vue {
   private rippleStartX = 0;
   private rippleStartY = 0;
   private rippleSize = 0;
-  private rippleColor = "";
-  private rippleOpacity = 0;
+  private rippleColor = "#000000";
+  private rippleOpacity = 0.075;
   private rippleDuration = "";
   private rippleAnimate = false;
 
@@ -203,12 +201,18 @@ export default class Button extends Vue {
       Math.abs(buttonRect.top - clickLoc.y) - this.rippleSize / 2
     );
 
-    this.rippleColor = "#000000";
-    this.rippleOpacity = 0.06;
+    if (buttonVar === '"paypal"') {
+      this.rippleColor = "#e3b63b";
+      this.rippleDuration = "800ms";
+      this.rippleOpacity = 0.5;
+    }
+    if (buttonVar === '"warning"') {
+      this.rippleColor = "#ce4a38";
+    }
     if (
-      buttonVar === '"paypal"' ||
       buttonVar === '"subscribe"' ||
-      buttonSize === '"full-width"'
+      buttonSize === '"full-width"' ||
+      buttonVar === '"paypal"'
     ) {
       this.rippleDuration = "800ms";
     } else {
@@ -321,7 +325,7 @@ export default class Button extends Vue {
       width: var(--ripple-size, 0);
       height: var(--ripple-size, 0);
       border-radius: var(--ripple-size, 0);
-      background-color: var(--ripple-color, #ffffff);
+      background-color: var(--ripple-color, #000000);
       opacity: 0;
       z-index: 2;
     }
