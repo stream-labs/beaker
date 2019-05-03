@@ -1,13 +1,6 @@
 <template>
   <div class="s-radio s-checkbox">
-    <input
-      type="radio"
-      :id="id"
-      :name="name"
-      :value="value"
-      :checked="isChecked"
-      @click="onClickAction"
-    />
+    <input type="radio" :id="id" :name="name" :value="value" @click="onClickAction">
     <label :for="id">{{ label }}</label>
   </div>
 </template>
@@ -18,19 +11,19 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 @Component({})
 export default class Radio extends Vue {
   @Prop()
-  label!: String;
+  label!: string;
 
   @Prop()
-  id!: String;
+  id!: string;
 
   @Prop()
-  name!: String;
+  name!: string;
 
   @Prop()
-  value!: String;
+  value!: string;
 
   @Prop()
-  isChecked!: Boolean;
+  isChecked!: boolean;
 
   @Prop()
   onClick!: Function;
