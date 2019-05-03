@@ -1,6 +1,7 @@
 <template>
   <div class="s-call-to-action" :class="callToActionMq" :style="callToActionBg">
     <div
+      v-if="hasThumbnail"
       class="s-call-to-action__thumb"
       :class="callToActionThumbMq"
       :style="callToActionThumb"
@@ -15,7 +16,8 @@
         {{ description }}
       </div>
     </div>
-    <div class="s-button-container s-button-container--right">
+    <slot v-if="customButtonSlot"></slot>
+    <div v-else class="s-button-container s-button-container--right">
       <Button
         v-if="buttonClick"
         :variation="buttonVariation"
@@ -79,6 +81,9 @@ export default class CallToAction extends Vue {
   @Prop({ default: "https://cdn.streamlabs.com/static/kevin-standard.svg" })
   thumbnail!: String;
 
+  @Prop({ default: true })
+  hasThumbnail!: Boolean;
+
   @Prop({ default: 80 })
   thumbnailWidth!: number | string;
 
@@ -123,6 +128,9 @@ export default class CallToAction extends Vue {
 
   @Prop()
   buttonTextColor!: String;
+
+  @Prop({ default: false })
+  customButtonSlot!: Boolean;
 
   $mq: any;
 
