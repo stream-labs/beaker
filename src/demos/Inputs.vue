@@ -248,6 +248,7 @@ components: {
           :name="'checkbox1'"
           :label="'Checkbox label'"
           :booleanValue="checkboxValue1"
+          :isChecked="true"
         ></checkbox>
       </div>
 
@@ -259,20 +260,21 @@ components: {
             :name="'checkbox2'"
             :label="'Checkbox label'"
             :booleanValue="checkboxValue2"
-            true-value="yes"
-            false-value="no"
+            :isChecked="false"
           ></checkbox>
           <checkbox
             :id="'checkbox3'"
             :name="'checkbox3'"
             :label="'Checkbox label'"
             :booleanValue="checkboxValue3"
+            :isChecked="true"
           ></checkbox>
           <checkbox
             :id="'checkbox4'"
             :name="'checkbox4'"
             :label="'Checkbox label'"
             :booleanValue="checkboxValue4"
+            :isChecked="false"
           ></checkbox>
         </div>
       </div>
@@ -285,14 +287,19 @@ components: {
           <radio
             :id="'radio1'"
             :name="'radio-group'"
+            :value="'value1'"
             :label="'Enable'"
             v-model="radioValue1"
             :isChecked="true"
             :onClick="test"
           ></radio>
-          <radio :id="'radio2'" :name="'radio-group'" :label="'Disable'" v-model="radioValue2"></radio>
-          <!-- <radio :label="'Enable'" :name="'radio-group'" v-model="radioValue1" :onClick="test"></radio>
-          <radio :label="'Disable'" :name="'radio-group'" v-model="radioValue2"></radio>-->
+          <radio
+            :id="'radio2'"
+            :name="'radio-group'"
+            :value="'value2'"
+            :label="'Disable'"
+            v-model="radioValue2"
+          ></radio>
         </div>
       </div>
     </div>
