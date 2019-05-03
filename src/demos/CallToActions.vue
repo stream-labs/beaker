@@ -59,7 +59,7 @@ components: {
           :thumbnailBg="'#fff'"
           :title="'This is a Custom Call To Action'"
           :description="'A Custom Description'"
-          :buttonVariation="'action'"
+          :buttonVariation="'default'"
           :buttonTitle="'Click Me'"
           :buttonDescription="''"
           :buttonTag="'a'"
@@ -67,6 +67,23 @@ components: {
           :buttonBg="'#fff'"
           :buttonTextColor="'#000'"
         ></call-to-action>
+      </div>
+
+      <div class="row">
+        <call-to-action
+          :bgColor="'#31c3a2'"
+          :titleColor="'#fff'"
+          :subTitleColor="'#fff'"
+          :title="'This is a Custom Call To Action'"
+          :description="'A Custom Description'"
+          :hasThumbnail="false"
+          :customButtonSlot="true"
+        >
+          <div class="s-button-container">
+            <Button :title="'Using slot'"></Button>
+            <Button :title="'Using slot'"></Button>
+          </div>
+        </call-to-action>
       </div>
       <table class="docs-table">
         <thead>

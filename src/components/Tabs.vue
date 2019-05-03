@@ -318,6 +318,7 @@ a {
   .padding-v-sides(3);
 }
 
+.night,
 .night-theme {
   .s-tabs {
     &:before {
