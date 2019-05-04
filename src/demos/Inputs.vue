@@ -247,8 +247,8 @@ components: {
           :id="'checkbox1'"
           :name="'checkbox1'"
           :label="'Checkbox label'"
-          :booleanValue="checkboxValue1"
-          :isChecked="true"
+          :value="checkboxValue1"
+          @update-value="checkboxValue1 = $event"
         ></checkbox>
       </div>
 
@@ -259,22 +259,22 @@ components: {
             :id="'checkbox2'"
             :name="'checkbox2'"
             :label="'Checkbox label'"
-            :booleanValue="checkboxValue2"
-            :isChecked="false"
+            :value="checkboxValue2"
+            @update-value="checkboxValue1 = $event"
           ></checkbox>
           <checkbox
             :id="'checkbox3'"
             :name="'checkbox3'"
             :label="'Checkbox label'"
-            :booleanValue="checkboxValue3"
-            :isChecked="true"
+            :value="checkboxValue3"
+            @update-value="checkboxValue1 = $event"
           ></checkbox>
           <checkbox
             :id="'checkbox4'"
             :name="'checkbox4'"
             :label="'Checkbox label'"
-            :booleanValue="checkboxValue4"
-            :isChecked="false"
+            :value="checkboxValue4"
+            @update-value="checkboxValue1 = $event"
           ></checkbox>
         </div>
       </div>

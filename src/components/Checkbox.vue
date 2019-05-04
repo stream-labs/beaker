@@ -1,12 +1,12 @@
 <template>
   <div class="s-checkbox">
-    <input type="checkbox" :id="id" :name="name" v-model="value">
+    <input type="checkbox" :id="id" :name="name" v-model="checkboxValue" @change="handleInput">
     <label :for="id">{{ label }}</label>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 
 @Component({})
 export default class Checkbox extends Vue {
@@ -20,9 +20,14 @@ export default class Checkbox extends Vue {
   name!: string;
 
   @Prop()
-  booleanValue!: boolean;
+  value!: boolean;
 
-  value: boolean = this.booleanValue;
+  checkboxValue: boolean = this.value;
+
+  handleInput() {
+    this.$emit("update-value", this.checkboxValue);
+  }
+
 }
 </script>
 
