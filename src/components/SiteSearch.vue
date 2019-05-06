@@ -40,6 +40,7 @@
           class="s-sitesearch-results"
           :class="{ 's-active-result': currentResult === i }"
           @mouseover="currentResult = i"
+          @mouseup="blurSearch"
         >
           <div class="s-sitesearch__result--image">
             <i
@@ -65,6 +66,7 @@
             class="s-sitesearch-results"
             :class="{ 's-active-result': currentResult === i }"
             @mouseover="currentResult = i"
+            @mouseup="blurSearch"
           >
             <div class="s-sitesearch__result--image">
               <i
@@ -212,7 +214,6 @@ export default class SiteSearch extends Vue {
 
   @Watch("result")
   watchResult(val: [], oldVal: []) {
-    console.log(val);
     if (this.noResults || this.value == "" || val.length != oldVal.length) {
       this.currentResult = 0;
     }

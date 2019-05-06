@@ -108,6 +108,7 @@ export default {
 
     .form-control {
       padding: 0;
+      border: none !important;
     }
 
     .vs__selected-options {
