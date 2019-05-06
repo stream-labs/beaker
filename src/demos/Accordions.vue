@@ -8,7 +8,11 @@ components: {
   Accordion
 }</code></pre>
       <h3>Default settings</h3>
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
+      <Accordion
+        :openedTitle="'Hide Code'"
+        :closedTitle="'Show Code'"
+        class="docs-code"
+      >
         <div slot="content">
           <pre>
 <code>&lt;Accordion :opened-title=&quot;'Close Accordion'&quot; :closed-title=&quot;'Open Accordion'&quot;&gt;
@@ -19,12 +23,21 @@ components: {
         </div>
       </Accordion>
 
-      <Accordion :opened-title="'Close Accordion'" :closed-title="'Open Accordion'">
-        <div slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+      <Accordion
+        :opened-title="'Close Accordion'"
+        :closed-title="'Open Accordion'"
+      >
+        <div slot="content">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </div>
       </Accordion>
 
       <h3>Set to be open</h3>
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
+      <Accordion
+        :openedTitle="'Hide Code'"
+        :closedTitle="'Show Code'"
+        class="docs-code"
+      >
         <div slot="content">
           <pre>
 <code>&lt;Accordion :opened-title=&quot;'Hide Content'&quot; :closed-title=&quot;'Show Content'&quot; :isOpen=&quot;true&quot;&gt;
@@ -34,12 +47,22 @@ components: {
 &lt;/Accordion&gt;</code></pre>
         </div>
       </Accordion>
-      <Accordion :opened-title="'Hide Content'" :closed-title="'Show Content'" :isOpened="true">
-        <div slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+      <Accordion
+        :opened-title="'Hide Content'"
+        :closed-title="'Show Content'"
+        :isOpened="true"
+      >
+        <div slot="content">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </div>
       </Accordion>
 
       <h3>Alternative no border style</h3>
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
+      <Accordion
+        :openedTitle="'Hide Code'"
+        :closedTitle="'Show Code'"
+        class="docs-code"
+      >
         <div slot="content">
           <pre>
 <code>&lt;Accordion :opened-title=&quot;'Hide Content'&quot; :closed-title=&quot;'Show Content'&quot; :no-border=&quot;true&quot;&gt;
@@ -49,12 +72,22 @@ components: {
 &lt;/Accordion&gt;</code></pre>
         </div>
       </Accordion>
-      <Accordion :opened-title="'Hide Content'" :closed-title="'Show Content'" :noBorder="true">
-        <div slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+      <Accordion
+        :opened-title="'Hide Content'"
+        :closed-title="'Show Content'"
+        :noBorder="true"
+      >
+        <div slot="content">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </div>
       </Accordion>
 
       <h3>Accordion within Accordion</h3>
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
+      <Accordion
+        :openedTitle="'Hide Code'"
+        :closedTitle="'Show Code'"
+        class="docs-code"
+      >
         <div slot="content">
           <pre>
 <code>&lt;Accordion :opened-title=&quot;'Hide Inner Accordion'&quot; :closed-title=&quot;'Show Inner Accordion'&quot;&gt;
@@ -70,11 +103,17 @@ components: {
         </div>
       </Accordion>
 
-      <Accordion :opened-title="'Hide Inner Accordion'" :closed-title="'Show Inner Accordion'">
+      <Accordion
+        :opened-title="'Hide Inner Accordion'"
+        :closed-title="'Show Inner Accordion'"
+      >
         <div slot="content">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          <Accordion :opened-title="'Hide Content'" :closed-title="'Show Content'">
+          <Accordion
+            :opened-title="'Hide Content'"
+            :closed-title="'Show Content'"
+          >
             <div slot="content">
               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
@@ -98,7 +137,11 @@ components: {
       </Accordion>
 
       <h3>Alternative toggle slot</h3>
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
+      <Accordion
+        :openedTitle="'Hide Code'"
+        :closedTitle="'Show Code'"
+        class="docs-code"
+      >
         <div slot="content">
           <pre>
 <code>&lt;Accordion :opened-title=&quot;'Hide Content'&quot; :closed-title=&quot;'Show Content'&quot; :no-border=&quot;true&quot;&gt;
@@ -110,9 +153,15 @@ components: {
       </Accordion>
       <Accordion>
         <div slot="toggle">
-          <img class="logo" alt="Vue logo" src="../assets/imgs/beaker-round.svg">
+          <img
+            class="logo"
+            alt="Vue logo"
+            src="../assets/imgs/beaker-round.svg"
+          />
         </div>
-        <div slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+        <div slot="content">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </div>
       </Accordion>
 
       <table class="docs-table">
