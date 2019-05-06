@@ -1,6 +1,12 @@
 <template>
   <div class="s-checkbox">
-    <input type="checkbox" :id="id" :name="name" v-model="checkboxValue" @change="handleInput">
+    <input
+      type="checkbox"
+      :id="id"
+      :name="name"
+      v-model="checkboxValue"
+      @change="handleInput"
+    />
     <label :for="id">{{ label }}</label>
   </div>
 </template>
@@ -27,7 +33,6 @@ export default class Checkbox extends Vue {
   handleInput() {
     this.$emit("update-value", this.checkboxValue);
   }
-
 }
 </script>
 
