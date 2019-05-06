@@ -144,8 +144,8 @@ export default class Callout extends Vue {
     background-color: @dark-5;
     color: @white;
     justify-content: flex-start;
-    height: 48px;
-    line-height: 48px;
+    min-height: 48px;
+    line-height: 130%;
     z-index: 100;
     margin: 0 auto;
     position: fixed;
@@ -153,6 +153,8 @@ export default class Callout extends Vue {
     right: calc(~"0% + 9px");
     left: 0%;
     .radius(0);
+    .padding-top();
+    .padding-bottom();
 
     > span {
       max-width: 1120px;
