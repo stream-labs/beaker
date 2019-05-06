@@ -1,6 +1,6 @@
 <template>
   <div class="s-checkbox">
-    <input type="checkbox" :id="id" :name="name" v-model="value">
+    <input type="checkbox" :id="id" :name="name" v-model="checkboxValue" @change="handleInput">
     <label :for="id">{{ label }}</label>
   </div>
 </template>
@@ -20,9 +20,14 @@ export default class Checkbox extends Vue {
   name!: string;
 
   @Prop()
-  booleanValue!: boolean;
+  value!: boolean;
 
-  value: boolean = this.booleanValue;
+  checkboxValue: boolean = this.value;
+
+  handleInput() {
+    this.$emit("update-value", this.checkboxValue);
+  }
+
 }
 </script>
 
