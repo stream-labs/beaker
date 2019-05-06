@@ -1,6 +1,12 @@
 <template>
   <div class="s-radio s-checkbox">
-    <input type="radio" :id="id" :name="name" :value="value" @click="onClickAction">
+    <input
+      type="radio"
+      :id="id"
+      :name="name"
+      :value="value"
+      @click="onClickAction"
+    />
     <label :for="id">{{ label }}</label>
   </div>
 </template>

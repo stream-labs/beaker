@@ -2,7 +2,11 @@
   <div class="s-tabs-wrapper">
     <div class="s-tabs-nav-wrapper">
       <div class="s-tabs-nav" :class="className">
-        <div v-if="hasPrev" @click="scrollLeft" class="s-tabs-nav__control s-has-prev">
+        <div
+          v-if="hasPrev"
+          @click="scrollLeft"
+          class="s-tabs-nav__control s-has-prev"
+        >
           <i class="icon-back"></i>
         </div>
 
@@ -34,7 +38,11 @@
           </div>
         </div>
 
-        <div v-if="hasNext" @click="scrollRight" class="s-tabs-nav__control s-has-next">
+        <div
+          v-if="hasNext"
+          @click="scrollRight"
+          class="s-tabs-nav__control s-has-next"
+        >
           <i class="icon-back"></i>
         </div>
       </div>
@@ -42,7 +50,7 @@
 
     <div class="s-tab-content" v-if="!hideContent">
       <div v-for="(tab, index) in tabs" :key="index">
-        <slot :name="tab.value" v-if="tab.value === selectedTab"/>
+        <slot :name="tab.value" v-if="tab.value === selectedTab" />
       </div>
     </div>
   </div>

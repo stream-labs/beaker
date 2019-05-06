@@ -1,6 +1,6 @@
 <template>
   <div class="s-checkbox">
-    <input type="checkbox" :id="id" :name="name" v-model="value">
+    <input type="checkbox" :id="id" :name="name" v-model="value" />
     <label :for="id">{{ label }}</label>
   </div>
 </template>
