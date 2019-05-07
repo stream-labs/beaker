@@ -141,7 +141,8 @@ components: {
           </pre>
         </div>
       </Accordion>
-      <accordion :title="'Left Navigation'" :leftNav="true">
+      <accordion :leftNav="true">
+        <div slot="title">Left Navigation</div>
         <div slot="content">
           <div class="fake-nav">
             <div class="fake-nav-item">
