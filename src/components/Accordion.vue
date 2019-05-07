@@ -1,6 +1,10 @@
 <template>
   <div class="s-accordion" :class="[accordionClasses]">
-    <div class="s-accordion__head" :class="{'is-open' : isOpen}" @click="openContent">
+    <div
+      class="s-accordion__head"
+      :class="{ 'is-open': isOpen }"
+      @click="openContent"
+    >
       <div class="s-accordion__button">
         <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px">
           <path
@@ -31,9 +35,18 @@
       </div>
       <div class="s-accordion--title">{{ accordionTitle }}</div>
     </div>
-    <transition name="expand" @enter="open" @after-enter="afterOpen" @leave="close">
-      <div class="s-accordion__content" :class="[{'is-open' : isOpen}, {'left-nav' : leftNav}]" v-if="isOpen">
-        <slot name="content"/>
+    <transition
+      name="expand"
+      @enter="open"
+      @after-enter="afterOpen"
+      @leave="close"
+    >
+      <div
+        class="s-accordion__content"
+        :class="[{ 'is-open': isOpen }, { 'left-nav': leftNav }]"
+        v-if="isOpen"
+      >
+        <slot name="content" />
       </div>
     </transition>
   </div>
@@ -129,8 +142,6 @@ export default class Accordian extends Vue {
   }
 }
 </script>
-
-
 
 <style lang="less">
 @import "./../styles/Imports";
