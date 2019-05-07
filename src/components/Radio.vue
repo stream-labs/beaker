@@ -5,6 +5,7 @@
       :id="id"
       :name="name"
       :value="value"
+      :checked="isChecked"
       @click="$emit('onClick')"
     />
     <label :for="id">{{ label }}</label>
