@@ -88,4 +88,5 @@ export default class VirtualItems extends Vue {
 }
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+</style>
