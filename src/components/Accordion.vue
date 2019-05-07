@@ -33,20 +33,18 @@
           </transition>
         </svg>
       </div>
-      <div class="s-accordion--title">{{ accordionTitle }}</div>
+      <div class="s-accordion--title" v-if="leftNav">
+        <slot name="title"/>
+      </div>
+      <div class="s-accordion--title" v-else>{{ accordionTitle }}</div>
     </div>
-    <transition
-      name="expand"
-      @enter="open"
-      @after-enter="afterOpen"
-      @leave="close"
-    >
+    <transition name="expand" @enter="open" @after-enter="afterOpen" @leave="close">
       <div
         class="s-accordion__content"
-        :class="[{ 'is-open': isOpen }, { 'left-nav': leftNav }]"
+        :class="[{'is-open' : isOpen}, {'left-nav' : leftNav}]"
         v-if="isOpen"
       >
-        <slot name="content" />
+        <slot name="content"/>
       </div>
     </transition>
   </div>
@@ -166,10 +164,21 @@ export default class Accordian extends Vue {
 
   &.left-nav {
     border: none;
-    .padding-left(0);
+    .padding(0);
+    .margin-bottom(0);
 
     .s-accordion__content {
-      .padding-left(4);
+      .padding-left(0);
+    }
+
+    .s-accordion__head {
+      &.is-open {
+        .margin-bottom(0);
+      }
+    }
+
+    .s-accordion__button {
+      .margin-right(1.5);
     }
   }
 
