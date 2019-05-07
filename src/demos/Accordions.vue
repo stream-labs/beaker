@@ -2,12 +2,20 @@
   <div>
     <div class="section">
       <h1>Accordions</h1>
-      <pre><code>import { Accordion } from 'streamlabs-beaker';
+
+      <pre>
+        <code>
+Import { Accordion } from 'streamlabs-beaker';
 
 components: {
   Accordion
-}</code></pre>
-      <h3>Default settings</h3>
+}
+        </code>
+      </pre>
+    </div>
+    <!-- Default Settings -->
+    <div class="section">
+      <h3>Default Settings</h3>
       <Accordion
         :openedTitle="'Hide Code'"
         :closedTitle="'Show Code'"
@@ -15,14 +23,16 @@ components: {
       >
         <div slot="content">
           <pre>
-<code>&lt;Accordion :opened-title=&quot;'Close Accordion'&quot; :closed-title=&quot;'Open Accordion'&quot;&gt;
+            <code>
+&lt;Accordion :opened-title=&quot;'Close Accordion'&quot; :closed-title=&quot;'Open Accordion'&quot;&gt;
   &lt;div slot=&quot;content&quot;&gt;
     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
   &lt;/div&gt;
-&lt;/Accordion&gt;</code></pre>
+&lt;/Accordion&gt;
+            </code>
+          </pre>
         </div>
       </Accordion>
-
       <Accordion
         :opened-title="'Close Accordion'"
         :closed-title="'Open Accordion'"
@@ -31,7 +41,10 @@ components: {
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </div>
       </Accordion>
+    </div>
 
+    <!-- Set to be open -->
+    <div class="section">
       <h3>Set to be open</h3>
       <Accordion
         :openedTitle="'Hide Code'"
@@ -40,11 +53,14 @@ components: {
       >
         <div slot="content">
           <pre>
-<code>&lt;Accordion :opened-title=&quot;'Hide Content'&quot; :closed-title=&quot;'Show Content'&quot; :isOpen=&quot;true&quot;&gt;
+            <code>
+&lt;Accordion :opened-title=&quot;'Hide Content'&quot; :closed-title=&quot;'Show Content'&quot; :isOpen=&quot;true&quot;&gt;
   &lt;div slot=&quot;content&quot;&gt;
     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
   &lt;/div&gt;
-&lt;/Accordion&gt;</code></pre>
+&lt;/Accordion&gt;
+            </code>
+          </pre>
         </div>
       </Accordion>
       <Accordion
@@ -56,8 +72,11 @@ components: {
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </div>
       </Accordion>
+    </div>
 
-      <h3>Alternative no border style</h3>
+    <!-- Alternative - No Border -->
+    <div class="section">
+      <h3>Alternative - No Border</h3>
       <Accordion
         :openedTitle="'Hide Code'"
         :closedTitle="'Show Code'"
@@ -65,11 +84,14 @@ components: {
       >
         <div slot="content">
           <pre>
-<code>&lt;Accordion :opened-title=&quot;'Hide Content'&quot; :closed-title=&quot;'Show Content'&quot; :no-border=&quot;true&quot;&gt;
+            <code>
+&lt;Accordion :opened-title=&quot;'Hide Content'&quot; :closed-title=&quot;'Show Content'&quot; :no-border=&quot;true&quot;&gt;
   &lt;div slot=&quot;content&quot;&gt;
     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
   &lt;/div&gt;
-&lt;/Accordion&gt;</code></pre>
+&lt;/Accordion&gt;
+            </code>
+          </pre>
         </div>
       </Accordion>
       <Accordion
@@ -81,8 +103,11 @@ components: {
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </div>
       </Accordion>
+    </div>
 
-      <h3>Accordion within Accordion</h3>
+    <!-- Accordion within an Accordion -->
+    <div class="section">
+      <h3>Accordion within an Accordion</h3>
       <Accordion
         :openedTitle="'Hide Code'"
         :closedTitle="'Show Code'"
@@ -90,7 +115,8 @@ components: {
       >
         <div slot="content">
           <pre>
-<code>&lt;Accordion :opened-title=&quot;'Hide Inner Accordion'&quot; :closed-title=&quot;'Show Inner Accordion'&quot;&gt;
+            <code>
+&lt;Accordion :opened-title=&quot;'Hide Inner Accordion'&quot; :closed-title=&quot;'Show Inner Accordion'&quot;&gt;
   &lt;div slot=&quot;content&quot;&gt;
     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
     &lt;Accordion :opened-title=&quot;'Hide Content'&quot; :closed-title=&quot;'Show Content'&quot;&gt;
@@ -99,10 +125,11 @@ components: {
       &lt;/div&gt;
     &lt;/Accordion&gt;
   &lt;/div&gt;
-&lt;/Accordion&gt;</code></pre>
+&lt;/Accordion&gt;
+            </code>
+          </pre>
         </div>
       </Accordion>
-
       <Accordion
         :opened-title="'Hide Inner Accordion'"
         :closed-title="'Show Inner Accordion'"
@@ -135,8 +162,11 @@ components: {
           </Accordion>
         </div>
       </Accordion>
+    </div>
 
-      <h3>Alternative toggle slot</h3>
+    <!-- Variant - Left Navigation -->
+    <div class="section">
+      <h3>Variant - Left Navigation</h3>
       <Accordion
         :openedTitle="'Hide Code'"
         :closedTitle="'Show Code'"
@@ -144,25 +174,40 @@ components: {
       >
         <div slot="content">
           <pre>
-<code>&lt;Accordion :opened-title=&quot;'Hide Content'&quot; :closed-title=&quot;'Show Content'&quot; :no-border=&quot;true&quot;&gt;
+            <code>
+&lt;Accordion :title=&quot;'Left Navigation'&quot; :leftNav=&quot;true&quot;&gt;
   &lt;div slot=&quot;content&quot;&gt;
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    &lt;div&gt;anything you want really&lt;/div&gt;
   &lt;/div&gt;
-&lt;/Accordion&gt;</code></pre>
+&lt;/Accordion&gt;
+            </code>
+          </pre>
         </div>
       </Accordion>
-      <Accordion>
-        <div slot="toggle">
-          <img
-            class="logo"
-            alt="Vue logo"
-            src="../assets/imgs/beaker-round.svg"
-          />
-        </div>
+      <accordion :title="'Left Navigation'" :leftNav="true">
         <div slot="content">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          <div class="fake-nav">
+            <div class="fake-nav-item">
+              <div class="fake-nav-icon">
+                <i class="icon-question"></i>
+              </div>
+              <div class="fake-nav-title">Nav Item</div>
+            </div>
+            <div class="fake-nav-item">
+              <div class="fake-nav-icon">
+                <i class="icon-question"></i>
+              </div>
+              <div class="fake-nav-title">Styling Handled By</div>
+            </div>
+            <div class="fake-nav-item">
+              <div class="fake-nav-icon">
+                <i class="icon-question"></i>
+              </div>
+              <div class="fake-nav-title">Slot and navigation.less</div>
+            </div>
+          </div>
         </div>
-      </Accordion>
+      </accordion>
 
       <table class="docs-table">
         <thead>
@@ -204,6 +249,12 @@ components: {
             <td>false</td>
             <td>Alternative style with no border or padding</td>
           </tr>
+          <tr>
+            <td>leftNab</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>Alternative style for use in Left Navigation</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -237,3 +288,32 @@ export default class Accordions extends Vue {
   };
 }
 </script>
+
+<style lang="less">
+@import "./../styles/Imports";
+
+.fake-nav {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.fake-nav-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 32px;
+
+  .fake-nav-icon {
+    color: black;
+    .margin-right(1);
+  }
+
+  .fake-nav-title {
+    color: black;
+    font-weight: @medium;
+    font-size: 14px;
+  }
+}
+</style>

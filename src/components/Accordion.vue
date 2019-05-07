@@ -43,7 +43,7 @@
     >
       <div
         class="s-accordion__content"
-        :class="{ 'is-open': isOpen }"
+        :class="[{ 'is-open': isOpen }, { 'left-nav': leftNav }]"
         v-if="isOpen"
       >
         <slot name="content" />
@@ -79,10 +79,14 @@ export default class Accordian extends Vue {
   private defaultBorder = false;
 
   get accordionTitle() {
-    if (this.isOpen) {
-      return this.openedTitle;
+    if (this.title !== undefined) {
+      return this.title;
     } else {
-      return this.closedTitle;
+      if (this.isOpen) {
+        return this.openedTitle;
+      } else {
+        return this.closedTitle;
+      }
     }
   }
 
@@ -90,6 +94,9 @@ export default class Accordian extends Vue {
     let classes: any = [];
     if (this.noBorder) {
       classes.push("no-border");
+    }
+    if (this.leftNav) {
+      classes.push("left-nav");
     }
     return classes.join(" ");
   }
@@ -155,6 +162,15 @@ export default class Accordian extends Vue {
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  &.left-nav {
+    border: none;
+    .padding-left(0);
+
+    .s-accordion__content {
+      .padding-left(4);
+    }
   }
 
   .s-accordion__head {
