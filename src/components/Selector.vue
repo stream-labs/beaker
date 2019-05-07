@@ -169,6 +169,7 @@ export default {
     }
 
     .dropdown-menu {
+      max-height: 200px !important;
       .padding(0);
       background-color: @day-dropdown-bg;
       border-color: @day-dropdown-border;
