@@ -294,16 +294,17 @@ components: {
             :name="'radio-group'"
             :value="'value1'"
             :label="'Enable'"
-            v-model="radioValue1"
             :isChecked="true"
+            @onChange="data = $event"
           ></radio>
           <radio
             :id="'radio2'"
             :name="'radio-group'"
             :value="'value2'"
             :label="'Disable'"
-            v-model="radioValue2"
+            @onChange="data = $event"
           ></radio>
+          <span>Picked: {{ data }}</span>
         </div>
       </div>
     </div>
@@ -434,6 +435,8 @@ import FormGroup from "./../components/FormGroup.vue";
   }
 })
 export default class Inputs extends Vue {
+  data = "";
+
   checkboxValue1 = true;
   checkboxValue2 = false;
   checkboxValue3 = true;

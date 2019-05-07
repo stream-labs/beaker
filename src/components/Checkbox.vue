@@ -31,7 +31,7 @@ export default class Checkbox extends Vue {
   checkboxValue: boolean = this.value;
 
   handleInput() {
-    this.$emit("update-value", this.checkboxValue);
+    this.$emit("input", this.checkboxValue);
   }
 }
 </script>

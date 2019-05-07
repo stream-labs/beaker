@@ -5,7 +5,10 @@
       :id="id"
       :name="name"
       :value="value"
+      :input="(radioData = value)"
+      :checked="isChecked"
       @click="$emit('onClick')"
+      @change="$emit('onChange', radioData)"
     />
     <label :for="id">{{ label }}</label>
   </div>
