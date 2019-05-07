@@ -5,7 +5,7 @@
       :id="id"
       :name="name"
       :value="value"
-      @click="onClickAction"
+      @click="$emit('onClick')"
     />
     <label :for="id">{{ label }}</label>
   </div>
@@ -30,13 +30,6 @@ export default class Radio extends Vue {
 
   @Prop()
   isChecked!: boolean;
-
-  @Prop()
-  onClick!: Function;
-
-  onClickAction() {
-    typeof this.onClick === "function" && this.onClick();
-  }
 }
 </script>
 
