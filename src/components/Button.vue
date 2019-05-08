@@ -255,12 +255,12 @@ export default class Button extends Vue {
   line-height: 38px;
   .transition();
   .weight(@medium);
-  .radius();
+  .radius(); 
   font-family: "Roboto";
   border: 1px solid transparent;
-  text-decoration: none;
+  text-decoration: none !important;
   position: relative;
-  outline: transparent dotted 2px;
+  outline: none;
 
   * {
     z-index: 5;
@@ -285,6 +285,7 @@ export default class Button extends Vue {
   &.is-hovered {
     background-color: darken(@day-button, 4%);
     text-decoration: none;
+    outline: transparent dotted 2px;
   }
 
   &[disabled],
