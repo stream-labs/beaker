@@ -62,9 +62,7 @@
             <td>disabled</td>
             <td>Boolean</td>
             <td>null</td>
-            <td>
-              Puts a disabled class on the form field and disables the input.
-            </td>
+            <td>Puts a disabled class on the form field and disables the input.</td>
           </tr>
           <tr>
             <td>error</td>
@@ -99,7 +97,9 @@
             <td>text</td>
             <td>
               Input type:
-              <code>text</code>, <code>email</code>, <code>password</code>.
+              <code>text</code>,
+              <code>email</code>,
+              <code>password</code>.
             </td>
           </tr>
           <tr>
@@ -146,11 +146,8 @@ components: {
 &gt;&lt;/selector&gt;</code></pre>
         </div>
       </Accordion>
-      <selector
-        v-model="selected"
-        :options="['Option A', 'Option B', 'Option C']"
-      ></selector>
-      <br />
+      <selector v-model="selected" :options="['Option A', 'Option B', 'Option C']"></selector>
+      <br>
       <selector
         v-model="selected"
         :options="[
@@ -163,7 +160,7 @@ components: {
         ]"
         disabled
       ></selector>
-      <br />
+      <br>
       <selector
         v-model="multipleSelected"
         :options="[
@@ -176,7 +173,7 @@ components: {
         ]"
         multiple
       ></selector>
-      <br />
+      <br>
       <selector
         v-model="multipleSelected"
         :options="[
@@ -205,9 +202,7 @@ components: {
             <td>disabled</td>
             <td>Boolean</td>
             <td>false</td>
-            <td>
-              Puts a disabled class on the form field and disables the input.
-            </td>
+            <td>Puts a disabled class on the form field and disables the input.</td>
           </tr>
           <tr>
             <td>options</td>
@@ -252,8 +247,7 @@ components: {
           :id="'checkbox1'"
           :name="'checkbox1'"
           :label="'Checkbox label'"
-          :isChecked="checkboxValue1"
-          @onChange="checkboxValue1 = $event"
+          v-model="checkboxValue1"
         ></checkbox>
       </div>
 
@@ -263,23 +257,20 @@ components: {
           <checkbox
             :id="'checkbox2'"
             :name="'checkbox2'"
-            :label="'Checkbox label'"
-            :isChecked="checkboxValue2"
-            @onChange="checkboxValue2 = $event"
+            :label="'Checkbox labe2'"
+            v-model="checkboxValue2"
           ></checkbox>
           <checkbox
             :id="'checkbox3'"
             :name="'checkbox3'"
             :label="'Checkbox label'"
-            :isChecked="checkboxValue3"
-            @onChange="checkboxValue3 = $event"
+             v-model="checkboxValue3"
           ></checkbox>
           <checkbox
             :id="'checkbox4'"
             :name="'checkbox4'"
             :label="'Checkbox label'"
-            :isChecked="checkboxValue4"
-            @onChange="checkboxValue4 = $event"
+            v-model="checkboxValue4"
           ></checkbox>
         </div>
       </div>
@@ -312,10 +303,7 @@ components: {
     <div class="section">
       <h2>Status Switch</h2>
       <div class="section">
-        <status-switch
-          v-model="statusValue"
-          :label="'Status Label'"
-        ></status-switch>
+        <status-switch v-model="statusValue" :label="'Status Label'"></status-switch>
       </div>
       <div class="section">
         <small>
@@ -333,16 +321,12 @@ components: {
       </div>
 
       <div class="section">
-        <status-switch v-model="statusValue" />
-        <status-switch v-model="statusValue" />
-        <status-switch v-model="statusValue" />
+        <status-switch v-model="statusValue"/>
+        <status-switch v-model="statusValue"/>
+        <status-switch v-model="statusValue"/>
       </div>
 
-      <Accordion
-        :openedTitle="'Hide Code'"
-        :closedTitle="'Show Code'"
-        class="docs-code"
-      >
+      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
         <div slot="content">
           <pre><code>&lt;status-switch v-model="statusValue" :label="'Status Label'"&gt;&lt;/status-switch&gt;
 
@@ -373,11 +357,7 @@ components: {
           By default, the image input picker is setup to have our Alert Box
           layout styles as the options.
         </p>
-        <Accordion
-          :openedTitle="'Hide Code'"
-          :closedTitle="'Show Code'"
-          class="docs-code"
-        >
+        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
           <div slot="content">
             <pre>
 <code>&lt;image-picker-input v-model=&quot;layoutValue&quot;&gt;&lt;/image-picker-input&gt;</code></pre>
@@ -391,20 +371,13 @@ components: {
           You can pass in any options you'd like with the options prop. This is
           an example using our Jar options.
         </p>
-        <Accordion
-          :openedTitle="'Hide Code'"
-          :closedTitle="'Show Code'"
-          class="docs-code"
-        >
+        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
           <div slot="content">
             <pre>
 <code>&lt;image-picker-input v-model=&quot;jarValue&quot; :options=&quot;options&quot;&gt;&lt;/image-picker-input&gt;</code></pre>
           </div>
         </Accordion>
-        <image-picker-input
-          v-model="jarValue"
-          :options="options"
-        ></image-picker-input>
+        <image-picker-input v-model="jarValue" :options="options"></image-picker-input>
       </div>
     </div>
   </div>
