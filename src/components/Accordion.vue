@@ -34,7 +34,7 @@
         </svg>
       </div>
       <div class="s-accordion--title" v-if="leftNav">
-        <slot name="title"/>
+        <slot name="title" />
       </div>
       <div class="s-accordion--title" v-else>{{ accordionTitle }}</div>
     </div>

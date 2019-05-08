@@ -54,7 +54,7 @@ export default class Slider extends Vue {
   @Prop({ default: "" })
   suffix!: string;
 
-  @Prop({default: false})
+  @Prop({ default: false })
   disabled!: boolean;
 
   @Prop()

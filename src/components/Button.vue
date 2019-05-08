@@ -255,7 +255,7 @@ export default class Button extends Vue {
   line-height: 38px;
   .transition();
   .weight(@medium);
-  .radius(); 
+  .radius();
   font-family: "Roboto";
   border: 1px solid transparent;
   text-decoration: none !important;
