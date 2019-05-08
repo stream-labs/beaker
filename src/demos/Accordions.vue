@@ -16,7 +16,11 @@ components: {
     <!-- Default Settings -->
     <div class="section">
       <h3>Default Settings</h3>
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
+      <Accordion
+        :openedTitle="'Hide Code'"
+        :closedTitle="'Show Code'"
+        class="docs-code"
+      >
         <div slot="content">
           <pre>
             <code>
@@ -29,15 +33,24 @@ components: {
           </pre>
         </div>
       </Accordion>
-      <Accordion :opened-title="'Close Accordion'" :closed-title="'Open Accordion'">
-        <div slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+      <Accordion
+        :opened-title="'Close Accordion'"
+        :closed-title="'Open Accordion'"
+      >
+        <div slot="content">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </div>
       </Accordion>
     </div>
 
     <!-- Set to be open -->
     <div class="section">
       <h3>Set to be open</h3>
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
+      <Accordion
+        :openedTitle="'Hide Code'"
+        :closedTitle="'Show Code'"
+        class="docs-code"
+      >
         <div slot="content">
           <pre>
             <code>
@@ -50,15 +63,25 @@ components: {
           </pre>
         </div>
       </Accordion>
-      <Accordion :opened-title="'Hide Content'" :closed-title="'Show Content'" :isOpened="true">
-        <div slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+      <Accordion
+        :opened-title="'Hide Content'"
+        :closed-title="'Show Content'"
+        :isOpened="true"
+      >
+        <div slot="content">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </div>
       </Accordion>
     </div>
 
     <!-- Alternative - No Border -->
     <div class="section">
       <h3>Alternative - No Border</h3>
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
+      <Accordion
+        :openedTitle="'Hide Code'"
+        :closedTitle="'Show Code'"
+        class="docs-code"
+      >
         <div slot="content">
           <pre>
             <code>
@@ -71,15 +94,25 @@ components: {
           </pre>
         </div>
       </Accordion>
-      <Accordion :opened-title="'Hide Content'" :closed-title="'Show Content'" :noBorder="true">
-        <div slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+      <Accordion
+        :opened-title="'Hide Content'"
+        :closed-title="'Show Content'"
+        :noBorder="true"
+      >
+        <div slot="content">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </div>
       </Accordion>
     </div>
 
     <!-- Accordion within an Accordion -->
     <div class="section">
       <h3>Accordion within an Accordion</h3>
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
+      <Accordion
+        :openedTitle="'Hide Code'"
+        :closedTitle="'Show Code'"
+        class="docs-code"
+      >
         <div slot="content">
           <pre>
             <code>
@@ -97,11 +130,17 @@ components: {
           </pre>
         </div>
       </Accordion>
-      <Accordion :opened-title="'Hide Inner Accordion'" :closed-title="'Show Inner Accordion'">
+      <Accordion
+        :opened-title="'Hide Inner Accordion'"
+        :closed-title="'Show Inner Accordion'"
+      >
         <div slot="content">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          <Accordion :opened-title="'Hide Content'" :closed-title="'Show Content'">
+          <Accordion
+            :opened-title="'Hide Content'"
+            :closed-title="'Show Content'"
+          >
             <div slot="content">
               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
@@ -128,7 +167,11 @@ components: {
     <!-- Variant - Left Navigation -->
     <div class="section">
       <h3>Variant - Left Navigation</h3>
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
+      <Accordion
+        :openedTitle="'Hide Code'"
+        :closedTitle="'Show Code'"
+        class="docs-code"
+      >
         <div slot="content">
           <pre>
             <code>
@@ -208,7 +251,7 @@ components: {
             <td>Alternative style with no border or padding</td>
           </tr>
           <tr>
-            <td>leftNab</td>
+            <td>leftNav</td>
             <td>boolean</td>
             <td>false</td>
             <td>Alternative style for use in Left Navigation</td>
@@ -246,7 +289,6 @@ export default class Accordions extends Vue {
   };
 }
 </script>
-
 
 <style lang="less">
 @import "./../styles/Imports";
