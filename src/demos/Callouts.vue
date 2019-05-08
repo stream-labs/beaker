@@ -230,5 +230,4 @@ export default class Callouts extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>

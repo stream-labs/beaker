@@ -1,4 +1,3 @@
-
 <template>
   <div class="s-radio s-checkbox">
     <input
@@ -6,7 +5,7 @@
       :id="id"
       :name="name"
       :value="value"
-      :input="radioData = value"
+      :input="(radioData = value)"
       :checked="isChecked"
       @click="$emit('onClick')"
       @change="$emit('onChange', radioData)"
