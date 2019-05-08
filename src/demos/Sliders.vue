@@ -8,8 +8,7 @@
         <a
           target="_blank"
           href="https://github.com/NightCatSama/vue-slider-component"
-          >Vue Slider Component</a
-        >
+        >Vue Slider Component</a>
       </p>
       <pre><code>import { Slider } from 'streamlabs-beaker';
 
@@ -112,6 +111,12 @@ components: {
             <td>Array</td>
             <td>null</td>
             <td>Custom data.</td>
+          </tr>
+          <tr>
+            <td>disabled</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>Whether to disable the component.</td>
           </tr>
         </tbody>
       </table>

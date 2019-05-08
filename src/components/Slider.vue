@@ -15,6 +15,7 @@
     :suffix="suffix"
     :formatter="prefix + '{value}' + suffix"
     :data="data"
+    :disabled="disabled"
     @callback="value => emitInput(value)"
   ></vue-slider-component>
 </template>
@@ -52,6 +53,9 @@ export default class Slider extends Vue {
 
   @Prop({ default: "" })
   suffix!: string;
+
+  @Prop({default: false})
+  disabled!: boolean;
 
   @Prop()
   data!: Array<number> | Array<string>;
