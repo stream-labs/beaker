@@ -38,13 +38,18 @@
       </div>
       <div class="s-accordion--title" v-else>{{ accordionTitle }}</div>
     </div>
-    <transition name="expand" @enter="open" @after-enter="afterOpen" @leave="close">
+    <transition
+      name="expand"
+      @enter="open"
+      @after-enter="afterOpen"
+      @leave="close"
+    >
       <div
         class="s-accordion__content"
-        :class="[{'is-open' : isOpen}, {'left-nav' : leftNav}]"
+        :class="[{ 'is-open': isOpen }, { 'left-nav': leftNav }]"
         v-if="isOpen"
       >
-        <slot name="content"/>
+        <slot name="content" />
       </div>
     </transition>
   </div>
