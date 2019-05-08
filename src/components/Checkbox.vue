@@ -4,7 +4,6 @@
       type="checkbox"
       :id="id"
       :name="name"
-      :value="value"
       :checked="isChecked"
       @change="$emit('onChange', $event.target.checked)"
     />
@@ -25,9 +24,6 @@ export default class Checkbox extends Vue {
 
   @Prop()
   name!: string;
-
-  @Prop()
-  value!: boolean;
 
   @Prop()
   isChecked!: boolean;
