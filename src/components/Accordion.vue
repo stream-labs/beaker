@@ -201,6 +201,10 @@ export default class Accordian extends Vue {
       color: @day-title;
       transform: translateY(1px); // for better visual alignment;
     }
+
+    &:hover {
+      cursor: default;
+    }
   }
 
   .s-accordion__button {
