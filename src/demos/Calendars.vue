@@ -1,6 +1,7 @@
 <template>
   <div>
     <s-date-picker></s-date-picker>
+    <div>0 1 2 3 4 5 6 7 8 9</div>
   </div>
 </template>
 

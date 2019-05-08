@@ -41,8 +41,6 @@ components: {
           :data="data"
           ref="slider"
         />
-
-        <date-picker></date-picker>
       </div>
 
       <table class="docs-table">
@@ -125,12 +123,10 @@ components: {
 import { Component, Vue } from "vue-property-decorator";
 import Slider from "./../components/Slider.vue";
 import Accordion from "./../components/Accordion.vue";
-import DatePicker from "vuejs-datepicker";
 @Component({
   components: {
     Slider,
-    Accordion,
-    DatePicker
+    Accordion
   }
 })
 export default class Sliders extends Vue {
