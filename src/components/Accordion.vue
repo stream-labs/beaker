@@ -199,6 +199,10 @@ export default class Accordian extends Vue {
   .s-accordion__button {
     display: inline-flex;
     .margin-right(2);
+
+      &:hover {
+      cursor: pointer;
+    }
   }
 
   svg,
