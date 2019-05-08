@@ -251,7 +251,7 @@ components: {
             <td>Alternative style with no border or padding</td>
           </tr>
           <tr>
-            <td>leftNab</td>
+            <td>leftNav</td>
             <td>boolean</td>
             <td>false</td>
             <td>Alternative style for use in Left Navigation</td>
