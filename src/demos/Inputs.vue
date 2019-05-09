@@ -264,7 +264,7 @@ components: {
             :id="'checkbox3'"
             :name="'checkbox3'"
             :label="'Checkbox label'"
-            v-model="checkboxValue3"
+             v-model="checkboxValue3"
           ></checkbox>
           <checkbox
             :id="'checkbox4'"
@@ -394,7 +394,6 @@ import Radio from "./../components/Radio.vue";
 import StatusSwitch from "./../components/StatusSwitch.vue";
 import TextInput from "./../components/TextInput.vue";
 import FormGroup from "./../components/FormGroup.vue";
-import Guard from "./../components/Guard.vue";
 
 @Component({
   components: {
@@ -405,8 +404,7 @@ import Guard from "./../components/Guard.vue";
     Radio,
     StatusSwitch,
     TextInput,
-    FormGroup,
-    Guard
+    FormGroup
   }
 })
 export default class Inputs extends Vue {
