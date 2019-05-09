@@ -1,11 +1,11 @@
 <template>
-  <div id="app" :class="[theme === 'night' ? nightClasses : '', appClass]">
+  <div id="app" :class="[isNightTheme ? nightClasses : '', appClass]">
     <div id="nav">
       <div class="logo">
-        <img v-if="nightTheme" src="./assets/imgs/beaker-full-night.svg">
+        <img v-if="isNightTheme" src="./assets/imgs/beaker-full-night.svg">
         <img v-else src="./assets/imgs/beaker-full.svg">
       </div>
-      <toggle :values="themes" v-model="theme" @click.native="toggleTheme()"></toggle>
+      <toggle :values="themes" v-model="theme"></toggle>
     </div>
 
     <documentation></documentation>
@@ -45,6 +45,10 @@ export default class App extends Vue {
     day: "Day",
     night: "Night"
   };
+
+  get isNightTheme() {
+    return this.theme === "night";
+  }
 }
 </script>
 
