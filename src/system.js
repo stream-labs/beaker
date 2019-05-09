@@ -47,7 +47,7 @@ import Pagination from './components/Pagination.vue';
 import ProgressBar from './components/ProgressBar.vue';
 import UrlBar from './components/UrlBar.vue';
 import VirtualItem from './components/VirtualItem.vue';
-import TextGuard from './components/TextGuard.vue';
+import Guard from './components/Guard.vue';
 
 // Define components
 const components = [
@@ -92,7 +92,7 @@ const components = [
   TooltipNotice,
   UrlBar,
   VirtualItem,
-  TextGuard
+  Guard
 ];
 
 export {
