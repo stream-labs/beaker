@@ -9,9 +9,13 @@
       {{ placeholder }}
     </div>
     <div
-      :class="visible ?  'beaker-text-wrapper' : 'beaker-text-wrapper beaker-text-wrapper--readable'"
+      :class="
+        visible
+          ? 'beaker-text-wrapper'
+          : 'beaker-text-wrapper beaker-text-wrapper--readable'
+      "
     >
-      <slot v-if="$slots.content" name="content"/>
+      <slot v-if="$slots.content" name="content" />
       <div v-else>{{ value }}</div>
     </div>
   </div>
@@ -25,9 +29,13 @@
       {{ placeholder }}
     </div>
     <div
-      :class="visible ?  'beaker-input-wrapper' : 'beaker-input-wrapper beaker-input-wrapper--readable'"
+      :class="
+        visible
+          ? 'beaker-input-wrapper'
+          : 'beaker-input-wrapper beaker-input-wrapper--readable'
+      "
     >
-      <slot name="content"/>
+      <slot name="content" />
     </div>
   </div>
 </template>
