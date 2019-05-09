@@ -190,6 +190,9 @@ components: {
         disabled
         multiple
       ></selector>
+      <br />
+
+      <selector :options="options" :label="'title'"></selector>
 
       <table class="docs-table">
         <thead>
