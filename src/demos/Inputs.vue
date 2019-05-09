@@ -252,9 +252,7 @@ components: {
           :id="'checkbox1'"
           :name="'checkbox1'"
           :label="'Checkbox label'"
-          :value="checkboxValue1"
-          :isChecked="true"
-          @onChange="checkboxValue1 = $event"
+          v-model="checkboxValue1"
         ></checkbox>
       </div>
 
@@ -264,24 +262,20 @@ components: {
           <checkbox
             :id="'checkbox2'"
             :name="'checkbox2'"
-            :label="'Checkbox label'"
-            :value="checkboxValue2"
-            @onChange="checkboxValue2 = $event"
+            :label="'Checkbox labe2'"
+            v-model="checkboxValue2"
           ></checkbox>
           <checkbox
             :id="'checkbox3'"
             :name="'checkbox3'"
             :label="'Checkbox label'"
-            :value="checkboxValue3"
-            :isChecked="true"
-            @onChange="checkboxValue3 = $event"
+            v-model="checkboxValue3"
           ></checkbox>
           <checkbox
             :id="'checkbox4'"
             :name="'checkbox4'"
             :label="'Checkbox label'"
-            :value="checkboxValue4"
-            @onChange="checkboxValue4 = $event"
+            v-model="checkboxValue4"
           ></checkbox>
         </div>
       </div>

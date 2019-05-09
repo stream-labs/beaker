@@ -33,7 +33,7 @@
           </transition>
         </svg>
       </div>
-      <div class="s-accordion--title" v-if="leftNav">
+      <div class="s-accordion--title" v-if="hasTitleSlot">
         <slot name="title" />
       </div>
       <div class="s-accordion--title" v-else>{{ accordionTitle }}</div>
@@ -91,6 +91,10 @@ export default class Accordian extends Vue {
         return this.closedTitle;
       }
     }
+  }
+
+  get hasTitleSlot() {
+    return !!this.$slots.title;
   }
 
   get accordionClasses() {

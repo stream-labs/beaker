@@ -3,6 +3,7 @@
     class="picker"
     calendar-class="picker__calendar"
     placeholder="Select Date"
+
     :inline="true"
   ></vue-date-picker>
 </template>
@@ -24,17 +25,27 @@ export default class DatePicker extends Vue {}
 
 .picker {
   &__calendar {
-    width: 280px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+        "header header header"
+        "dates dates dates"
+        "dates dates dates"
+        "dates dates dates";
+    grid-gap: 8px;
+    width: 304px;
     .padding(2);
     .radius(2);
     border: none;
     box-shadow: 0 4px 8px rgba(9, 22, 29, .08);
 
     header {
+      grid-area: header;
       display: grid;
-      grid-template-columns: 32px 1fr 32px;
-      grid-column-gap: 8px;
-      line-height: 32px;
+      grid-template-columns: 40px 1fr 40px;
+      grid-column-gap: 16px;
+      .margin-bottom(2);
+      line-height: 40px;
 
       span {
         width: initial;
@@ -42,6 +53,7 @@ export default class DatePicker extends Vue {}
         font-size: 16px;
         font-weight: 500;
         .transition();
+        background-color: @light-2;
 
         &:not(.disabled).prev,
         &:not(.disabled).next,
@@ -54,7 +66,7 @@ export default class DatePicker extends Vue {}
 
       .prev,
       .next {
-        width: 32px;
+        width: 40px;
       }
 
       .prev {
@@ -71,11 +83,11 @@ export default class DatePicker extends Vue {}
     }
 
     & > div {
+      grid-area: dates;
       display: grid;
       grid-template-columns: repeat(7, minmax(32px, 1fr));
-      grid-template-rows: 24px repeat(5, auto);
-      grid-gap: 4px;
-      .margin-top();
+      grid-template-rows: 16px repeat(5, auto);
+      grid-gap: 8px;
     }
   }
 
@@ -89,27 +101,33 @@ export default class DatePicker extends Vue {}
     line-height: 32px;
     .transition();
 
-    &:not(.blank):not(.disabled):not(.selected).day {
-      &:hover {
-        border: none;
+    &:not(.blank):not(.disabled):not(.selected) {
+      &.day,
+      &.month,
+      &.year {
         background-color: @light-2;
-        // color: @white;
+
+        &:hover {
+          border: none;
+          background-color: @light-2;
+        }
       }
     }
 
     &.day-header {
+      align-self: center;
       height: auto;
       line-height: normal;
     }
 
     &.selected {
       font-weight: 700;
-      background-color: @teal;
+      background-color: @dark-2;
       color: @white;
 
       &:hover {
-        background-color: fade(@teal, 90%);
-        border: none;
+        background-color: @dark-2;
+        border: none !important;
       }
     }
   }
@@ -119,7 +137,50 @@ export default class DatePicker extends Vue {}
   .picker {
     &__calendar {
       background: @dark-4;
-      color: @light-4;
+      color: @white;
+
+      header {
+        span {
+          background-color: @dark-5;
+
+          &:not(.disabled).prev,
+          &:not(.disabled).next,
+          &:not(.disabled).up {
+            background-color: @dark-5;
+
+            &:hover {
+              background-color: lighten(@dark-5, 5%);
+            }
+          }
+        }
+
+        .next {
+          &::after {
+            border-left-color: @light-4;
+          }
+        }
+
+        .prev {
+          &::after {
+            border-right-color: @light-4;
+          }
+        }
+      }
+    }
+
+    .cell {
+      &:not(.blank):not(.disabled):not(.selected) {
+        &.day,
+        &.month,
+        &.year {
+          background-color: @dark-5;
+
+          &:hover {
+            background-color: lighten(@dark-5, 5%);
+            border: none;
+          }
+        }
+      }
     }
   }
 }

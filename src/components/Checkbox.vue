@@ -4,9 +4,8 @@
       type="checkbox"
       :id="id"
       :name="name"
-      :value="value"
-      :checked="isChecked"
-      @change="$emit('onChange', $event.target.checked)"
+      :checked="value"
+      @change="$emit('input', $event.target.checked)"
     />
     <label :for="id">{{ label }}</label>
   </div>
@@ -28,9 +27,6 @@ export default class Checkbox extends Vue {
 
   @Prop()
   value!: boolean;
-
-  @Prop()
-  isChecked!: boolean;
 }
 </script>
 

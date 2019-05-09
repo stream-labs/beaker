@@ -1,16 +1,11 @@
 <template>
-  <div id="app" :class="[nightTheme ? nightClasses : '', appClass]">
+  <div id="app" :class="[isNightTheme ? nightClasses : '', appClass]">
     <div id="nav">
       <div class="logo">
-        <img v-if="nightTheme" src="./assets/imgs/beaker-full-night.svg" />
+        <img v-if="isNightTheme" src="./assets/imgs/beaker-full-night.svg" />
         <img v-else src="./assets/imgs/beaker-full.svg" />
       </div>
-      <toggle
-        :values="themes"
-        :selected.sync="theme"
-        :default="'day'"
-        @click.native="toggleTheme()"
-      ></toggle>
+      <toggle :values="themes" v-model="theme"></toggle>
     </div>
 
     <documentation></documentation>
@@ -48,20 +43,15 @@ import Documentation from "./views/Documentation.vue";
 export default class App extends Vue {
   appClass = "app-wrapper";
   nightClasses = ["night", "night-theme"];
-  nightTheme = false;
-  theme = "";
+  theme = "night";
 
   themes = {
     day: "Day",
     night: "Night"
   };
 
-  toggleTheme() {
-    if (this.theme === "night") {
-      this.nightTheme = true;
-    } else {
-      this.nightTheme = false;
-    }
+  get isNightTheme() {
+    return this.theme === "night";
   }
 }
 </script>
