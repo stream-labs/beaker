@@ -2,8 +2,8 @@
   <div id="app" :class="[isNightTheme ? nightClasses : '', appClass]">
     <div id="nav">
       <div class="logo">
-        <img v-if="isNightTheme" src="./assets/imgs/beaker-full-night.svg">
-        <img v-else src="./assets/imgs/beaker-full.svg">
+        <img v-if="isNightTheme" src="./assets/imgs/beaker-full-night.svg" />
+        <img v-else src="./assets/imgs/beaker-full.svg" />
       </div>
       <toggle :values="themes" v-model="theme"></toggle>
     </div>
