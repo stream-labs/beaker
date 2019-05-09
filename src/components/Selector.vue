@@ -1,6 +1,13 @@
 <template>
   <div class="s-selector">
+    <v-select v-if="label" :options="options" :label="label">
+      <template slot="option" slot-scope="option">
+        {{ option[label] }}
+      </template>
+    </v-select>
+
     <v-select
+      v-else
       :value="value"
       :options="options"
       :disabled="disabled"
@@ -25,6 +32,8 @@ export default {
   components: {
     vSelect
   },
+
+  props: ["label"],
 
   created() {
     this.$on("input", this.setValue);
