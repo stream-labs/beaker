@@ -50,7 +50,7 @@ components: {
           revenue: 'Revenue',
           growth: 'Growth'
         }"
-         v-model="selectedTextOption"
+        v-model="selectedTextOption"
         :variation="'text'"
       ></toggle>
     </div>
