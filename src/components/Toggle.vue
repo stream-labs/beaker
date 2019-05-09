@@ -77,6 +77,7 @@ export default class Toggle extends Vue {
   &--text {
     .s-toggle__option {
       padding: 8px 6px;
+      line-height: 1.2;
 
       &:first-child {
         padding-left: 8px;

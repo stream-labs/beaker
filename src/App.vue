@@ -11,15 +11,19 @@
     <documentation></documentation>
 
     <div class="floating-links">
-      <a class="floating-link" target="_blank" href="https://github.com/mbiemiller/beaker">
-        <img src="./assets/imgs/github.png">
+      <a
+        class="floating-link"
+        target="_blank"
+        href="https://github.com/mbiemiller/beaker"
+      >
+        <img src="./assets/imgs/github.png" />
       </a>
       <a
         class="floating-link"
         target="_blank"
         href="https://www.npmjs.com/package/streamlabs-beaker"
       >
-        <img src="./assets/imgs/npm.svg">
+        <img src="./assets/imgs/npm.svg" />
       </a>
     </div>
   </div>

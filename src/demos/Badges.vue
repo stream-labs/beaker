@@ -27,11 +27,6 @@ components: {
 &gt;New&lt;/Badge&gt;
 
 &lt;Badge
-  :variant=&quot;new-alt&quot;
-  :align-left=&quot;true&quot;
-&gt;New Alt&lt;/Badge&gt;
-
-&lt;Badge
   :variant=&quot;tag&quot;
   :align-left=&quot;true&quot;
 &gt;Tag&lt;/Badge&gt;
@@ -54,11 +49,10 @@ components: {
 &lt;Badge
   :align-left=&quot;true&quot;
   :backgroundColor=&quot;'pink'&quot;
-&gt;Pro&lt;/Badge&gt;</code></pre>
+&gt;Custom&lt;/Badge&gt;</code></pre>
           </div>
         </Accordion>
         <Badge :variant="'new'" :align-left="true">New</Badge>
-        <Badge :variant="'new-alt'" :align-left="true">New Alt</Badge>
         <Badge :variant="'tag'" :align-left="true">Tag</Badge>
         <Badge :variant="'beta'" :align-left="true">Beta</Badge>
         <Badge :variant="'warning'" :align-left="true">Warning</Badge>
@@ -66,6 +60,45 @@ components: {
         <Badge :align-left="true" :backgroundColor="'pink'" :textColor="'#fff'"
           >Custom</Badge
         >
+      </div>
+
+      <div class="section">
+        <h2>Alt Badges</h2>
+        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+          <div slot="content">
+            <pre>
+<code>&lt;Badge
+  :variant=&quot;new-alt&quot;
+  :align-left=&quot;true&quot;
+&gt;New Alt&lt;/Badge&gt;
+
+&lt;Badge
+  :variant=&quot;tag-alt&quot;
+  :align-left=&quot;true&quot;
+&gt;Tag Alt&lt;/Badge&gt;
+
+&lt;Badge
+  :variant=&quot;beta-alt&quot;
+  :align-left=&quot;true&quot;
+&gt;Beta Alt&lt;/Badge&gt;
+
+&lt;Badge
+  :variant=&quot;warning-alt&quot;
+  :align-left=&quot;true&quot;
+&gt;Warn Alt&lt;/Badge&gt;
+
+&lt;Badge
+  :variant=&quot;pro-alt&quot;
+  :align-left=&quot;true&quot;
+&gt;Pro Alt&lt;/Badge&gt;</code></pre>
+          </div>
+        </Accordion>
+
+        <Badge :variant="'new-alt'" :align-left="true">New Alt</Badge>
+        <Badge :variant="'tag-alt'" :align-left="true">Tag Alt</Badge>
+        <Badge :variant="'beta-alt'" :align-left="true">Beta Alt</Badge>
+        <Badge :variant="'warning-alt'" :align-left="true">Warning Alt</Badge>
+        <Badge :variant="'pro-alt'" :align-left="true">Pro Alt</Badge>
       </div>
 
       <div class="section">
@@ -175,9 +208,13 @@ components: {
           <td>"success"</td>
           <td>
             How the Badge will look or funciton. Variants:
-            <code>success</code>, <code>tag</code>, <code>new</code>,
-            <code>beta</code>, <code>warning</code>, <code>pro</code>,
-            <code>progress</code>, <code>mod</code>, and <code>count</code>.
+            <code>success</code>, <code>tag</code>*, <code>new</code>*,
+            <code>beta</code>*, <code>warning</code>*, <code>pro</code>*,
+            <code>progress</code>, <code>mod</code>, and
+            <code>count</code>.<br /><small
+              >*Alternate style available by adding <code>-alt</code> to variant
+              string.</small
+            >
           </td>
         </tr>
         <tr>

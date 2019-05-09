@@ -143,8 +143,20 @@ export default class Badge extends Vue {
     color: @day-paragraph;
   }
 
+  &--tag-alt {
+    background-color: transparent;
+    color: @day-paragraph;
+    .padding-h-sides(@0);
+  }
+
   &--pro {
     background-color: @light-5;
+  }
+
+  &--pro-alt {
+    background-color: transparent;
+    color: @light-5;
+    .padding-h-sides(@0);
   }
 
   &--beta {
@@ -152,9 +164,21 @@ export default class Badge extends Vue {
     color: @yellow;
   }
 
+  &--beta-alt {
+    background-color: transparent;
+    color: @yellow;
+    .padding-h-sides(@0);
+  }
+
   &--warning {
     background-color: @red-semi;
     color: @warning;
+  }
+
+  &--warning-alt {
+    background-color: transparent;
+    color: @warning;
+    .padding-h-sides(@0);
   }
 
   &--count {

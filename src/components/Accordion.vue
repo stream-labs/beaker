@@ -93,7 +93,7 @@ export default class Accordian extends Vue {
     }
   }
 
-  get hasTitleSlot(){
+  get hasTitleSlot() {
     return !!this.$slots.title;
   }
 
