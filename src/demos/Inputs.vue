@@ -187,7 +187,6 @@ components: {
         disabled
         multiple
       ></selector>
-      <selector :custom="true" :options="tests" multiple></selector>
 
       <table class="docs-table">
         <thead>
@@ -433,19 +432,6 @@ export default class Inputs extends Vue {
   textInputPlaceholder = "Placeholder";
   emailInputPlaceholder = "Placeholder";
   passwordInputPlaceholder = "Placeholder";
-
-  tests = [
-    {
-      value: "glass-pint",
-      title: "Glass Pint",
-      test: "test1"
-    },
-    {
-      value: "glass-beer",
-      title: "Glass Beer",
-      test: "test2"
-    }
-  ];
 
   options = [
     {
