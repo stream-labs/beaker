@@ -1,13 +1,6 @@
 <template>
   <div class="s-selector">
-    <v-select v-if="label" :options="options" :label="label">
-      <template slot="option" slot-scope="option">
-        {{ option[label] }}
-      </template>
-    </v-select>
-
     <v-select
-      v-else
       :value="value"
       :options="options"
       :disabled="disabled"
@@ -16,7 +9,9 @@
       :multiple="multiple"
       :placeholder="placeholder"
       @input="val => emitInput(val)"
-    ></v-select>
+    >
+      <template v-if="label" slot="option" slot-scope="option">{{ option[label] }}</template>
+    </v-select>
   </div>
 </template>
 
