@@ -5,10 +5,10 @@
       v-for="(val, key) in values"
       :key="val.id"
       :title="key | capitalize"
-      @click="$emit('update:selected', key)"
+      @click="$emit('input', key)"
       :class="[
         's-toggle__option',
-        { 's-toggle__option--active': selected === key }
+        { 's-toggle__option--active': value === key }
       ]"
       v-html="val"
     >
@@ -34,17 +34,10 @@ export default class Toggle extends Vue {
   values!: object;
 
   @Prop()
-  selected!: string;
-
-  @Prop()
-  default!: string;
+  value!: string;
 
   @Prop()
   variation!: string;
-
-  created() {
-    this.$emit("update:selected", this.default);
-  }
 
   get toggleClass() {
     if (this.variation) {
