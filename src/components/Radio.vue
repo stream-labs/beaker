@@ -4,12 +4,11 @@
       type="radio"
       :id="id"
       :name="name"
-      :value="value"
-      :input="(radioData = value)"
-      :checked="isChecked"
+      :value="label"
+      v-model="value"
+      @input="$emit('input', $event.target.value)"
       @click="$emit('onClick')"
-      @change="$emit('onChange', radioData)"
-    />
+    >
     <label :for="id">{{ label }}</label>
   </div>
 </template>
@@ -30,9 +29,6 @@ export default class Radio extends Vue {
 
   @Prop()
   value!: string;
-
-  @Prop()
-  isChecked!: boolean;
 }
 </script>
 
