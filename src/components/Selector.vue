@@ -10,7 +10,9 @@
       :placeholder="placeholder"
       @input="val => emitInput(val)"
     >
-      <template v-if="label" slot="option" slot-scope="option">{{ option[label] }}</template>
+      <template v-if="label" slot="option" slot-scope="option">{{
+        option[label]
+      }}</template>
     </v-select>
   </div>
 </template>
