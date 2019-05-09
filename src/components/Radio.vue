@@ -4,8 +4,8 @@
       type="radio"
       :id="id"
       :name="name"
-      :value="label"
-      v-model="value"
+      :checked="val == value"
+      :value="val"
       @input="$emit('input', $event.target.value)"
       @click="$emit('onClick')"
     >
@@ -29,6 +29,9 @@ export default class Radio extends Vue {
 
   @Prop()
   value!: string;
+
+  @Prop()
+  val!: boolean;
 }
 </script>
 
