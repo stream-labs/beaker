@@ -113,6 +113,12 @@ components: {
             <td>null</td>
             <td>Custom data.</td>
           </tr>
+          <tr>
+            <td>disabled</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>Whether to disable the component.</td>
+          </tr>
         </tbody>
       </table>
     </div>
