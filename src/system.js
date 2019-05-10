@@ -136,5 +136,6 @@ export {
   Toggle,
   TooltipNotice,
   UrlBar,
-  VirtualItem
+  VirtualItem,
+  Guard
 };
