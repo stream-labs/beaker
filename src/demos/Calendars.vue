@@ -1,9 +1,8 @@
 <template>
   <div>
-    <s-date-picker></s-date-picker>
+    <s-date-picker :placeholder="'test'"></s-date-picker>
   </div>
 </template>
-
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
@@ -14,7 +13,7 @@ import DatePicker from "./../components/DatePicker.vue";
 @Component({
   components: {
     Accordion,
-    's-date-picker': DatePicker
+    "s-date-picker": DatePicker
   }
 })
 export default class Calendars extends Vue {}

@@ -2,22 +2,30 @@
   <vue-date-picker
     class="picker"
     calendar-class="picker__calendar"
-    placeholder="Select Date"
-
-    :inline="true"
+    v-bind="{ ...datePickerProps }"
+    @selected="updateDate"
   ></vue-date-picker>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import VueDatePicker from 'vuejs-datepicker';
+import VueDatePicker from "vuejs-datepicker";
 
 @Component({
   components: {
     VueDatePicker
-  }
+  },
+  props: { ...VueDatePicker.props }
 })
-export default class DatePicker extends Vue {}
+export default class DatePicker extends Vue {
+  get datePickerProps() {
+    return {...this.$props};
+  }
+
+  updateDate(date) {
+    console.log(date);
+  }
+}
 </script>
 
 <style lang="less">
@@ -28,16 +36,16 @@ export default class DatePicker extends Vue {}
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas:
-        "header header header"
-        "dates dates dates"
-        "dates dates dates"
-        "dates dates dates";
+      "header header header"
+      "dates dates dates"
+      "dates dates dates"
+      "dates dates dates";
     grid-gap: 8px;
     width: 304px;
     .padding(2);
     .radius(2);
     border: none;
-    box-shadow: 0 4px 8px rgba(9, 22, 29, .08);
+    box-shadow: 0 4px 8px rgba(9, 22, 29, 0.08);
 
     header {
       grid-area: header;
