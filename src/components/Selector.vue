@@ -11,9 +11,9 @@
       @input="val => emitInput(val)"
       :label="label"
     >
-      <template v-if="label" slot="option" slot-scope="option">{{
-        option[label]
-      }}</template>
+      <template v-if="label" slot="option" slot-scope="option">
+        {{ option[label] }}
+      </template>
     </v-select>
   </div>
 </template>
@@ -179,7 +179,7 @@ export default {
       max-height: 200px !important;
       .padding(0);
       background-color: @day-dropdown-bg;
-      border-color: @day-dropdown-border;
+      border: 0;
       .day-shadow();
 
       li {
@@ -194,8 +194,8 @@ export default {
           &:hover,
           &.active,
           &.highlight {
-            background-color: @light-3;
-            color: @day-title;
+            background-color: @selected;
+            color: @white;
           }
         }
       }
@@ -263,8 +263,9 @@ export default {
 
       .dropdown-menu {
         background-color: @night-dropdown-bg;
-        border-color: @night-dropdown-border;
         .night-shadow();
+        top: calc(~"100% - 4px");
+        padding-top: 4px;
 
         li {
           a {
