@@ -1,40 +1,30 @@
 <template>
   <div
     v-if="type === 'text'"
-    :class="visible ? 'beaker-text-guard' : 'beaker-text-guard--readable'"
+    :class="visible ? 's-text-guard' : 's-text-guard--readable'"
     @click="showText"
   >
-    <div v-if="visible" class="beaker-text-guard__text">
+    <div v-if="visible" class="s-text-guard__text">
       <i class="fas fa-lock"></i>
       {{ placeholder }}
     </div>
     <div
       :class="
         visible
-          ? 'beaker-text-wrapper'
-          : 'beaker-text-wrapper beaker-text-wrapper--readable'
+          ? 's-text-guard-wrapper'
+          : 's-text-guard-wrapper s-text-guard-wrapper--readable'
       "
     >
-      <slot v-if="$slots.content" name="content" />
+      <slot v-if="$slots.content" name="content"/>
       <div v-else>{{ value }}</div>
     </div>
   </div>
-  <div
-    v-else
-    :class="visible ? 'beaker-input-guard' : 'beaker-input-guard--readable'"
-    @click="showText"
-  >
-    <div v-if="visible" class="beaker-input-guard__text">
+  <div v-else :class="visible ? 's-input-guard' : 's-input-guard--readable'" @click="showText">
+    <div v-if="visible" class="s-input-guard__text">
       <i class="fas fa-lock"></i>
       {{ placeholder }}
     </div>
-    <div
-      :class="
-        visible
-          ? 'beaker-input-wrapper'
-          : 'beaker-input-wrapper beaker-input-wrapper--readable'
-      "
-    >
+    <div :class="visible ? 's-input-guard-wrapper': 's-input-guard-wrapper s-input-guard-wrapper--readable'">
       <slot name="content" />
     </div>
   </div>
@@ -72,13 +62,13 @@ export default class Guard extends Vue {
 <style lang="less">
 @import "./../styles/Imports";
 //  Input Guard Css
-.beaker-input-guard {
+.s-input-guard {
   position: relative;
   flex: 1;
   margin-right: 10px;
   .radius();
 
-  .beaker-input-wrapper {
+  .s-input-guard-wrapper {
     input {
       color: transparent;
       text-shadow: 0 0 5px rgba(55, 71, 79, 0.5);
@@ -87,7 +77,7 @@ export default class Guard extends Vue {
 }
 
 //  Text Guard Css
-.beaker-text-guard {
+.s-text-guard {
   width: auto;
   min-width: 150px;
   border: 1px solid @day-border;
@@ -96,27 +86,27 @@ export default class Guard extends Vue {
   .radius();
   padding: 0 8px;
 
-  .beaker-text-wrapper {
+  .s-text-guard-wrapper {
     color: transparent;
     text-shadow: 0 0 5px rgba(55, 71, 79, 0.5);
   }
 }
 
-.beaker-text-wrapper--readable,
-.beaker-input-wrapper--readable {
+.s-text-guard-wrapper--readable,
+.s-input-guard-wrapper--readable {
   color: inherit;
   text-shadow: none;
 }
 
-.beaker-text-guard--readable {
+.s-text-guard--readable {
   border: 0px;
 }
 
 .night,
 .night-theme {
-  .beaker-text-guard {
+  .s-text-guard {
     border: 1px solid @night-border;
-    .beaker-ext-wrapper {
+    .s-ext-wrapper {
       text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
     }
   }
@@ -124,8 +114,8 @@ export default class Guard extends Vue {
 
 .night,
 .night-theme {
-  .beaker-input-guard {
-    .beaker-input-wrapper {
+  .s-input-guard {
+    .s-input-guard-wrapper {
       input {
         text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         color: transparent;
@@ -134,8 +124,8 @@ export default class Guard extends Vue {
   }
 }
 
-.beaker-text-guard__text,
-.beaker-input-guard__text {
+.s-text-guard__text,
+.s-input-guard__text {
   position: absolute;
   z-index: 2;
   top: 50%;
