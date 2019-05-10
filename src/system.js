@@ -17,6 +17,7 @@ import ContentRow from "./components/ContentRow.vue";
 import EmptySection from "./components/EmptySection.vue";
 import FormGroupH from "./components/FormGroupH.vue";
 import FormGroupV from "./components/FormGroupV.vue";
+import Guard from "./components/Guard.vue";
 import HelloWorld from "./components/HelloWorld.vue";
 import ImagePicker from "./components/ImagePicker.vue";
 import ItemGrid from "./components/ItemGrid.vue";
@@ -48,51 +49,6 @@ import ProgressBar from "./components/ProgressBar.vue";
 import UrlBar from "./components/UrlBar.vue";
 import VirtualItem from "./components/VirtualItem.vue";
 
-// Define components
-const components = [
-  Accordion,
-  Badge,
-  BannerMarketing,
-  Button,
-  CallToAction,
-  Callout,
-  Checkbox,
-  ColorPicker,
-  ContentRow,
-  EmptySection,
-  FormGroupH,
-  FormGroupV,
-  HelloWorld,
-  ImagePicker,
-  ItemGrid,
-  Loading,
-  ModalBasic,
-  ModalComp,
-  ModalConfirmation,
-  ModalRedirect,
-  ModalSubscribe,
-  NewFeatureOverlay,
-  Onboarding,
-  OnboardingStep,
-  Pagination,
-  PaneDropdown,
-  ProgressBar,
-  Radio,
-  Selector,
-  SiteSearch,
-  Slider,
-  Spinner,
-  SSProSimulator,
-  StatusSwitch,
-  Tabs,
-  // TabDevelop,
-  TextInput,
-  Toggle,
-  TooltipNotice,
-  UrlBar,
-  VirtualItem
-];
-
 export {
   Accordion,
   Badge,
@@ -106,6 +62,7 @@ export {
   EmptySection,
   FormGroupH,
   FormGroupV,
+  Guard,
   HelloWorld,
   ImagePicker,
   ItemGrid,
@@ -122,14 +79,14 @@ export {
   PaneDropdown,
   ProgressBar,
   Radio,
+  SSProSimulator,
   Selector,
   SiteSearch,
   Slider,
   Spinner,
-  SSProSimulator,
   StatusSwitch,
-  Tabs,
   // TabDevelop,
+  Tabs,
   TextInput,
   Toggle,
   TooltipNotice,

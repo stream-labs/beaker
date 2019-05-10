@@ -190,6 +190,9 @@ components: {
         disabled
         multiple
       ></selector>
+      <br />
+
+      <selector :options="options" :label="'title'"></selector>
 
       <table class="docs-table">
         <thead>
@@ -288,19 +291,18 @@ components: {
           <radio
             :id="'radio1'"
             :name="'radio-group'"
-            :value="'value1'"
-            :label="'Enable'"
-            :isChecked="true"
-            @onChange="data = $event"
+            :label="'Enabled'"
+            :val="true"
+            v-model="radioValue"
           ></radio>
           <radio
             :id="'radio2'"
             :name="'radio-group'"
-            :value="'value2'"
-            :label="'Disable'"
-            @onChange="data = $event"
+            :label="'Disabled'"
+            :val="false"
+            v-model="radioValue"
           ></radio>
-          <span>Picked: {{ data }}</span>
+          <span>Picked: {{ radioValue }}</span>
         </div>
       </div>
     </div>
@@ -432,6 +434,8 @@ import FormGroup from "./../components/FormGroup.vue";
 })
 export default class Inputs extends Vue {
   data = "";
+
+  radioValue = true;
 
   checkboxValue1 = true;
   checkboxValue2 = false;

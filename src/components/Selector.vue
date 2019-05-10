@@ -9,7 +9,11 @@
       :multiple="multiple"
       :placeholder="placeholder"
       @input="val => emitInput(val)"
-    ></v-select>
+    >
+      <template v-if="label" slot="option" slot-scope="option">{{
+        option[label]
+      }}</template>
+    </v-select>
   </div>
 </template>
 
@@ -25,6 +29,8 @@ export default {
   components: {
     vSelect
   },
+
+  props: ["label"],
 
   created() {
     this.$on("input", this.setValue);

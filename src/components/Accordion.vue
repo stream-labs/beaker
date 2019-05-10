@@ -202,6 +202,7 @@ export default class Accordian extends Vue {
     }
 
     .s-accordion--title {
+      width: 100%;
       color: @day-title;
       transform: translateY(1px); // for better visual alignment;
     }
