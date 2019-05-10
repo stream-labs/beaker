@@ -127,7 +127,7 @@ export default {
       .margin(@0);
       .padding-h-sides();
       .margin-right();
-      color: @day-paragraph;
+      color: @dark-2;
       line-height: 24px;
       border: 0;
       font-family: "Roboto";
@@ -249,7 +249,7 @@ export default {
       }
 
       .selected-tag {
-        color: @night-paragraph;
+        color: @white;
         background-color: @dark-3;
 
         .close {
