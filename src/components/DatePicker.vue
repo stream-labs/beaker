@@ -1,29 +1,74 @@
 <template>
-  <vue-date-picker
-    class="picker"
-    calendar-class="picker__calendar"
-    v-bind="{ ...datePickerProps }"
-    @selected="updateDate"
-  ></vue-date-picker>
+  <pane-dropdown :auto-height="true">
+    <div slot="title" class="picker__title">{{ dateTitle }}</div>
+    <vue-date-picker
+      class="picker"
+      calendar-class="picker__calendar"
+      v-bind="{ ...datePickerProps }"
+      @selected="updateDate"
+      :inline="true"
+    ></vue-date-picker>
+  </pane-dropdown>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import PaneDropdown from './PaneDropdown.vue';
 import VueDatePicker from "vuejs-datepicker";
+
+interface selectedDate {
+  date: Date;
+  selected: boolean;
+}
 
 @Component({
   components: {
-    VueDatePicker
+    VueDatePicker,
+    PaneDropdown,
   },
   props: { ...VueDatePicker.props }
 })
 export default class DatePicker extends Vue {
+  @Prop({ default: 'Select Date', type: String })
+  placeholder!: string;
+
+  today = new Date();
+  selectedDate: selectedDate = {
+    date: new Date(),
+    selected: false
+  };
+
   get datePickerProps() {
     return {...this.$props};
   }
 
+  get dateTitle() {
+    if (this.selectedDate.selected) {
+      const selectedDate = new Date(this.selectedDate.date.toString());
+      const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      const day = selectedDate.getDate();
+      const month = selectedDate.getMonth();
+      const year = selectedDate.getFullYear();
+
+      if (
+        day === this.today.getDate() - 1 &&
+        month === this.today.getMonth() &&
+        year === this.today.getFullYear()
+      ) {
+        return 'Yesterday'
+      }
+
+      return `${day} ${months[month]} ${year}`;
+    }
+
+    return this.placeholder;
+  }
+
   updateDate(date) {
-    console.log(date);
+    this.selectedDate = {
+      date,
+      selected: true
+    };
   }
 }
 </script>
@@ -32,6 +77,10 @@ export default class DatePicker extends Vue {
 @import "./../styles/Imports";
 
 .picker {
+  &__title {
+    font-size: 16px;
+  }
+
   &__calendar {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -41,11 +90,11 @@ export default class DatePicker extends Vue {
       "dates dates dates"
       "dates dates dates";
     grid-gap: 8px;
-    width: 304px;
-    .padding(2);
+    width: 272px;
+    // .padding(2);
     .radius(2);
     border: none;
-    box-shadow: 0 4px 8px rgba(9, 22, 29, 0.08);
+    // box-shadow: 0 4px 8px rgba(9, 22, 29, 0.08);
 
     header {
       grid-area: header;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <s-date-picker :placeholder="'test'"></s-date-picker>
+    <s-date-picker :placeholder="'Select Comparison Date'"></s-date-picker>
   </div>
 </template>
 
