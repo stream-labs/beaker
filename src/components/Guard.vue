@@ -1,31 +1,15 @@
 <template>
-  <div
-    v-if="type === 'text'"
-    :class="visible ? 's-text-guard' : 's-text-guard--readable'"
-    @click="showText"
-  >
-    <div v-if="visible" class="s-text-guard__text">
+  <div :class="guardClasses" @click="showText">
+    <div v-if="visible" :class="`${prefix}__text`">
       <i class="fas fa-lock"></i>
       {{ placeholder }}
     </div>
     <div
-      :class="
-        visible
-          ? 's-text-guard-wrapper'
-          : 's-text-guard-wrapper s-text-guard-wrapper--readable'
+      :class="visible? `${prefix}-wrapper` : `${prefix}-wrapper ${prefix}-wrapper--readable`
       "
     >
       <slot v-if="$slots.content" name="content"/>
       <div v-else>{{ value }}</div>
-    </div>
-  </div>
-  <div v-else :class="visible ? 's-input-guard' : 's-input-guard--readable'" @click="showText">
-    <div v-if="visible" class="s-input-guard__text">
-      <i class="fas fa-lock"></i>
-      {{ placeholder }}
-    </div>
-    <div :class="visible ? 's-input-guard-wrapper': 's-input-guard-wrapper s-input-guard-wrapper--readable'">
-      <slot name="content" />
     </div>
   </div>
 </template>
@@ -44,10 +28,17 @@ export default class Guard extends Vue {
   @Prop({ default: true })
   showOnClick!: boolean;
 
+  @Prop({ default: "normal" })
+  variation!: string;
+
   @Prop({ default: "text" })
   type!: string;
 
   visible: boolean = true;
+
+  get prefix() {
+    return this.type === "input" ? "s-input-guard" : "s-text-guard";
+  }
 
   showText() {
     if (this.showOnClick) {
@@ -55,6 +46,21 @@ export default class Guard extends Vue {
     } else {
       this.$emit("click");
     }
+  }
+
+  get guardClasses() {
+    const classes: string[] = [];
+    if (this.visible) {
+      classes.push(this.prefix);
+    } else {
+      classes.push(`${this.prefix}--readable`);
+    }
+
+    if (this.type === "alt") {
+      classes.push(`${this.prefix}--alt`);
+    }
+
+    return classes;
   }
 }
 </script>
@@ -96,9 +102,6 @@ export default class Guard extends Vue {
 .s-input-guard-wrapper--readable {
   color: inherit;
   text-shadow: none;
-}
-
-.s-text-guard--readable {
   border: 0px;
 }
 
@@ -106,14 +109,15 @@ export default class Guard extends Vue {
 .night-theme {
   .s-text-guard {
     border: 1px solid @night-border;
-    .s-ext-wrapper {
+    .s-text-guard-wrapper {
       text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
     }
   }
-}
 
-.night,
-.night-theme {
+  .s-text-guard--alt {
+    border-color: @night-border-alt;
+  }
+
   .s-input-guard {
     .s-input-guard-wrapper {
       input {
