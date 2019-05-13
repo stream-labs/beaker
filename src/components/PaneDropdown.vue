@@ -83,6 +83,8 @@ export default class PaneDropdown extends Vue {
   open(element) {
     let width = getComputedStyle(element).width;
     element.style.width = width;
+    let maxWidth = getComputedStyle(element).width;
+    element.style.maxWidth = maxWidth;
     element.style.position = `absolute`;
     element.style.visibility = `hidden`;
     element.style.height = `auto`;
