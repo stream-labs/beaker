@@ -11,10 +11,27 @@
       @input="val => emitInput(val)"
       :label="label"
     >
+      <slot
+        name="selected-option"
+        v-bind="(typeof option === 'object')?option:{[label]: option}"
+      >{{ option }}</slot>
+    </v-select>
+
+    <!-- <v-select
+      :value="value"
+      :options="options"
+      :disabled="disabled"
+      :clearable="false"
+      :searchable="searchable"
+      :multiple="multiple"
+      :placeholder="placeholder"
+      @input="val => emitInput(val)"
+      :label="label"
+    >
       <template v-if="label" slot="option" slot-scope="option">{{
         option[label]
       }}</template>
-    </v-select>
+    </v-select>-->
   </div>
 </template>
 
