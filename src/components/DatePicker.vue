@@ -1,9 +1,9 @@
 <template>
-  <pane-dropdown ref="dropdown" :auto-height="true">
-    <div slot="title" class="picker__title">{{ dateTitle }}</div>
+  <pane-dropdown :auto-height="true">
+    <div slot="title" class="s-date-picker__title">{{ dateTitle }}</div>
     <vue-date-picker
-      class="picker"
-      calendar-class="picker__calendar"
+      class="s-date-picker"
+      calendar-class="s-date-picker__calendar"
       v-bind="{ ...datePickerProps }"
       :inline="true"
       @selected="updateDate"
@@ -95,7 +95,7 @@ export default class DatePicker extends Vue {
 <style lang="less">
 @import "./../styles/Imports";
 
-.picker {
+.s-date-picker {
   &__title {
     font-size: 16px;
   }
@@ -110,10 +110,8 @@ export default class DatePicker extends Vue {
       "dates dates dates";
     grid-gap: 8px;
     width: 272px;
-    // .padding(2);
     .radius(2);
     border: none;
-    // box-shadow: 0 4px 8px rgba(9, 22, 29, 0.08);
 
     header {
       grid-area: header;
@@ -215,7 +213,7 @@ export default class DatePicker extends Vue {
 }
 
 .night {
-  .picker {
+  .s-date-picker {
     &__calendar {
       background: @dark-4;
       color: @white;
