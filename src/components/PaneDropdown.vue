@@ -18,7 +18,7 @@
       @leave="close"
     >
       <div
-        :class="menuAlignClass"
+        :class="menuClasses"
         class="s-pane-dropdown__menu"
         @mouseup="paneMenuOpen = !paneMenuOpen"
         v-show="paneMenuOpen"
@@ -55,6 +55,9 @@ export default class PaneDropdown extends Vue {
   menuAlign!: string;
 
   @Prop({ default: false })
+  autoHeight!: boolean;
+
+  @Prop({ default: false })
   custom!: boolean;
 
   paneMenuOpen = false;
@@ -68,8 +71,18 @@ export default class PaneDropdown extends Vue {
     document.removeEventListener("click", this.documentClick);
   }
 
-  get menuAlignClass() {
-    return `s-pane-dropdown__menu--${this.menuAlign}`;
+  get menuClasses() {
+    let classes: string[] = [];
+
+    if (this.menuAlign) {
+      classes.push(`s-pane-dropdown__menu--${this.menuAlign}`);
+    }
+
+    if (this.autoHeight) {
+      classes.push("s-pane-dropdown__menu--auto-height");
+    }
+
+    return classes;
   }
 
   openContent() {
@@ -166,6 +179,10 @@ export default class PaneDropdown extends Vue {
       &:last-child {
         margin-bottom: 0;
       }
+    }
+
+    &--auto-height {
+      max-height: initial;
     }
   }
 
