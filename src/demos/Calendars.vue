@@ -1,6 +1,6 @@
 <template>
   <div>
-    <s-date-picker :placeholder="'Select Comparison Date'"></s-date-picker>
+    <s-date-picker @selected="logDate" :disabled-dates="state.disabledDates" :placeholder="'Select Comparison Date'"></s-date-picker>
   </div>
 </template>
 
@@ -16,7 +16,17 @@ import DatePicker from "./../components/DatePicker.vue";
     "s-date-picker": DatePicker
   }
 })
-export default class Calendars extends Vue {}
+export default class Calendars extends Vue {
+  state = {
+    disabledDates: {
+      dates: [new Date()]
+    }
+  }
+
+  logDate(date) {
+    console.log(date);
+  }
+}
 </script>
 
 <style lang="less" scoped></style>

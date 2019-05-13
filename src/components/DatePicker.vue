@@ -1,5 +1,5 @@
 <template>
-  <pane-dropdown :auto-height="true">
+  <pane-dropdown ref="dropdown" :auto-height="true">
     <div slot="title" class="picker__title">{{ dateTitle }}</div>
     <vue-date-picker
       class="picker"
@@ -58,6 +58,7 @@ export default class DatePicker extends Vue {
         return 'Yesterday'
       }
 
+      this.$refs.dropdown.hide();
       return `${day} ${months[month]} ${year}`;
     }
 
@@ -69,6 +70,8 @@ export default class DatePicker extends Vue {
       date,
       selected: true
     };
+
+    this.$emit('selected', date);
   }
 }
 </script>
@@ -187,6 +190,11 @@ export default class DatePicker extends Vue {
         border: none !important;
       }
     }
+
+    &.disabled {
+      color: @dark-5;
+      opacity: .5;
+    }
   }
 }
 
@@ -237,6 +245,10 @@ export default class DatePicker extends Vue {
             border: none;
           }
         }
+      }
+
+      &.disabled {
+        color: @white;
       }
     }
   }
