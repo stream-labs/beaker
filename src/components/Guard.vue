@@ -5,10 +5,13 @@
       {{ placeholder }}
     </div>
     <div
-      :class="visible? `${prefix}-wrapper` : `${prefix}-wrapper ${prefix}-wrapper--readable`
+      :class="
+        visible
+          ? `${prefix}-wrapper`
+          : `${prefix}-wrapper ${prefix}-wrapper--readable`
       "
     >
-      <slot v-if="$slots.content" name="content"/>
+      <slot v-if="$slots.content" name="content" />
       <div v-else>{{ value }}</div>
     </div>
   </div>
