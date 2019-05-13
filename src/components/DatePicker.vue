@@ -5,15 +5,15 @@
       class="picker"
       calendar-class="picker__calendar"
       v-bind="{ ...datePickerProps }"
-      @selected="updateDate"
       :inline="true"
+      @selected="updateDate"
     ></vue-date-picker>
   </pane-dropdown>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import PaneDropdown from './PaneDropdown.vue';
+import PaneDropdown from "./PaneDropdown.vue";
 import VueDatePicker from "vuejs-datepicker";
 
 interface selectedDate {
@@ -24,16 +24,16 @@ interface selectedDate {
 @Component({
   components: {
     VueDatePicker,
-    PaneDropdown,
+    PaneDropdown
   },
   props: { ...VueDatePicker.props }
 })
 export default class DatePicker extends Vue {
   $refs!: {
-    dropdown: Vue
-  }
+    dropdown: Vue;
+  };
 
-  @Prop({ default: 'Select Date', type: String })
+  @Prop({ default: "Select Date", type: String })
   placeholder!: string;
 
   today = new Date();
@@ -43,13 +43,26 @@ export default class DatePicker extends Vue {
   };
 
   get datePickerProps() {
-    return {...this.$props};
+    return { ...this.$props };
   }
 
   get dateTitle() {
     if (this.selectedDate.selected) {
       const selectedDate = new Date(this.selectedDate.date.toString());
-      const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ];
       const day = selectedDate.getDate();
       const month = selectedDate.getMonth();
       const year = selectedDate.getFullYear();
@@ -59,10 +72,9 @@ export default class DatePicker extends Vue {
         month === this.today.getMonth() &&
         year === this.today.getFullYear()
       ) {
-        return 'Yesterday'
+        return "Yesterday";
       }
 
-      this.$refs.dropdown.hide();
       return `${day} ${months[month]} ${year}`;
     }
 
@@ -75,7 +87,7 @@ export default class DatePicker extends Vue {
       selected: true
     };
 
-    this.$emit('selected', date);
+    this.$emit("selected", date);
   }
 }
 </script>
@@ -197,7 +209,7 @@ export default class DatePicker extends Vue {
 
     &.disabled {
       color: @dark-5;
-      opacity: .5;
+      opacity: 0.5;
     }
   }
 }

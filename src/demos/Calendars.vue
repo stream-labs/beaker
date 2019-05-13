@@ -1,6 +1,71 @@
 <template>
   <div>
-    <s-date-picker @selected="logDate" :disabled-dates="state.disabledDates" :placeholder="'Select Comparison Date'"></s-date-picker>
+    <h1>Calendars</h1>
+
+    <div class="section">
+      <h2>Date Picker</h2>
+      <p>
+        Our Date Picker component is extended from
+        <a
+          target="_blank"
+          href="https://github.com/charliekassel/vuejs-datepicker"
+          >Vue Date Picker</a
+        >.
+      </p>
+
+      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+        <div slot="content">
+          <pre>
+<code>import { DatePicker } from 'streamlabs-beaker';
+
+components: {
+  &quot;s-date-picker&quot;: DatePicker
+}
+
+&lt;s-date-picker
+  :disabled-dates=&quot;state.disabledDates&quot;
+  :placeholder=&quot;'Select Date'&quot;
+  @selected=&quot;logDate&quot;
+&gt;&lt;/s-date-picker&gt;</code></pre>
+        </div>
+      </Accordion>
+
+      <s-date-picker
+        :disabled-dates="state.disabledDates"
+        :placeholder="'Select Date'"
+        @selected="logDate"
+      ></s-date-picker>
+    </div>
+
+    <div class="section">
+      <p>
+        All the props that are available the Vue Date Picker component are
+        available in our version. You can view all available props
+        <a
+          href="https://www.npmjs.com/package/vuejs-datepicker#available-props"
+          target="_blank"
+          >here</a
+        >. Though ,only the <code>selected</code> event is available.
+      </p>
+
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Payload</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr></tr>
+          <tr>
+            <td>selected</td>
+            <td>Date</td>
+            <td>A date has been selected.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -21,7 +86,7 @@ export default class Calendars extends Vue {
     disabledDates: {
       dates: [new Date()]
     }
-  }
+  };
 
   logDate(date) {
     console.log(date);

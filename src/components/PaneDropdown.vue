@@ -79,7 +79,7 @@ export default class PaneDropdown extends Vue {
     }
 
     if (this.autoHeight) {
-      classes.push('s-pane-dropdown__menu--auto-height');
+      classes.push("s-pane-dropdown__menu--auto-height");
     }
 
     return classes;
