@@ -1,6 +1,6 @@
 {
   "name": "streamlabs-beaker",
-  "version": "0.4.73",
+  "version": "0.4.74",
   "main": "./dist/beaker.common.js",
   "module": "./dist/beaker.esm.js",
   "sideEffects": false,
