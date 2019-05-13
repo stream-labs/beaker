@@ -9,7 +9,13 @@
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre>
-<code>&lt;pane-dropdown&gt;
+<code>import { Accordion } from 'streamlabs-beaker';
+
+components: {
+  Accordion
+}
+
+&lt;pane-dropdown&gt;
   &lt;template slot=&quot;title&quot;&gt;Trending&lt;/template&gt;
   &lt;a href=&quot;#&quot;&gt;Add&lt;/a&gt;
   &lt;a href=&quot;#&quot;&gt;Update&lt;/a&gt;
@@ -17,7 +23,6 @@
 &lt;/pane-dropdown&gt;</code></pre>
         </div>
       </Accordion>
-
       <pane-dropdown>
         <template slot="title"
           >Trending</template
@@ -27,10 +32,8 @@
         <a href="#">Trending</a>
       </pane-dropdown>
     </div>
-
     <div class="section">
       <h3>Menu Align</h3>
-
       <pane-dropdown :menuAlign="'right'">
         <span slot="title">Right Dropdown Menu</span>
         <a href="#">Hey I'm a longer link here</a>

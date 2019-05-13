@@ -192,7 +192,13 @@ components: {
       ></selector>
       <br />
 
-      <selector :options="options" :label="'title'"></selector>
+      <selector
+        v-model="optionSelected"
+        :options="options"
+        :label="'title'"
+        multiple
+      ></selector>
+      <br />
 
       <table class="docs-table">
         <thead>
@@ -443,6 +449,7 @@ export default class Inputs extends Vue {
   checkboxValue4 = false;
   selected = "Option A";
   multipleSelected = ["Option B", "Option D"];
+  optionSelected = ["Glass Pint", "Glass Beer"];
   radioValue1 = true;
   radioValue2 = false;
   statusValue = true;

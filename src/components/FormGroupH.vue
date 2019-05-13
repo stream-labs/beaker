@@ -41,6 +41,10 @@ export default class FormGroupH extends Vue {
   grid-template-columns: repeat(12, [col-start] 1fr);
   grid-column-gap: 16px;
   grid-row-gap: @spacing;
+
+  .s-tooltip {
+    .margin-left();
+  }
 }
 
 .s-form-group-h__title {
