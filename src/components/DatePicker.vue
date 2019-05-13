@@ -1,6 +1,13 @@
 <template>
-  <pane-dropdown :auto-height="true">
-    <div slot="title" class="s-date-picker__title">{{ dateTitle }}</div>
+  <pane-dropdown
+    :class="(variant === 'toggle') ? `s-date-picker__${variant}` : null"
+    :dropdown-icon="(variant === 'toggle') ? false : true"
+    :auto-height="true"
+  >
+    <div
+      slot="title"
+      class="s-date-picker__title"
+    >{{ dateTitle }}</div>
     <vue-date-picker
       class="s-date-picker"
       calendar-class="s-date-picker__calendar"
@@ -32,6 +39,9 @@ export default class DatePicker extends Vue {
   $refs!: {
     dropdown: Vue;
   };
+
+  @Prop({})
+  variant!: string;
 
   @Prop({ default: "Select Date", type: String })
   placeholder!: string;
@@ -98,6 +108,21 @@ export default class DatePicker extends Vue {
 .s-date-picker {
   &__title {
     font-size: 16px;
+  }
+
+  &__toggle {
+    .radius();
+    background-color: @dark-4;
+
+    .s-date-picker__title {
+      padding: 7px;
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .s-pane-dropdown__menu {
+      top: 32px;
+    }
   }
 
   &__calendar {
