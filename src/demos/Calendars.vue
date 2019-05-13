@@ -38,6 +38,16 @@ components: {
     </div>
 
     <div class="section">
+      <h2>Toggle Style Variant</h2>
+      <s-date-picker
+        :variant="'toggle'"
+        :disabled-dates="state.disabledDates"
+        :placeholder="'Select Date'"
+        @selected="logDate"
+      ></s-date-picker>
+    </div>
+
+    <div class="section">
       <p>
         All the props that are available the Vue Date Picker component are
         available in our version. You can view all available props
@@ -45,23 +55,37 @@ components: {
           href="https://www.npmjs.com/package/vuejs-datepicker#available-props"
           target="_blank"
           >here</a
-        >. Though ,only the <code>selected</code> event is available.
+        >. Though, only the <code>selected</code> event is available.
       </p>
 
       <table class="docs-table">
         <thead>
           <tr>
-            <th>Event</th>
-            <th>Payload</th>
+            <th>Props</th>
+            <th>Type</th>
+            <th>Default</th>
             <th>Description</th>
           </tr>
         </thead>
         <tbody>
           <tr></tr>
           <tr>
-            <td>selected</td>
-            <td>Date</td>
-            <td>A date has been selected.</td>
+            <td>placeholder</td>
+            <td>string</td>
+            <td>null</td>
+            <td>
+              You can add a placeholder title. Will be replaced with selected
+              date.
+            </td>
+          </tr>
+          <tr>
+            <td>variant</td>
+            <td>string</td>
+            <td>null</td>
+            <td>
+              Allows for different style variations. Available options:
+              <code>toggle</code>.
+            </td>
           </tr>
         </tbody>
       </table>
