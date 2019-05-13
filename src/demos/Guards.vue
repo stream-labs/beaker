@@ -15,7 +15,7 @@
           </pre>
         </div>
       </Accordion>
-      <guard class="guard-margin" :value="'Text'" />
+      <guard class="guard-margin" type="alt" :value="'Text'" />
 
       <h2>Input Guard</h2>
       <Accordion
