@@ -29,6 +29,10 @@ interface selectedDate {
   props: { ...VueDatePicker.props }
 })
 export default class DatePicker extends Vue {
+  $refs!: {
+    dropdown: Vue
+  }
+
   @Prop({ default: 'Select Date', type: String })
   placeholder!: string;
 
