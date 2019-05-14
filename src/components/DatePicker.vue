@@ -105,6 +105,7 @@ export default class DatePicker extends Vue {
 .s-date-picker {
   &__title {
     font-size: 16px;
+    line-height: 1.3;
   }
 
   &__toggle {
