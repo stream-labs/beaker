@@ -60,6 +60,16 @@ export default class PrimeSection extends Vue {
 .prime-section {
   background: rgba(255, 255, 255, 0.88);
   .padding(3);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  text-align: center;
+
+  .s-empty-section {
+    .padding(@0);
+  }
 }
 
 .night,
