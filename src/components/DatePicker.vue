@@ -12,6 +12,9 @@
       v-bind="{ ...datePickerProps }"
       :inline="true"
       @selected="updateDate"
+      :initial-view="view"
+      :minimum-view="view"
+      :maximum-view="maxView"
     ></vue-date-picker>
   </pane-dropdown>
 </template>
@@ -34,15 +37,14 @@ interface selectedDate {
   props: { ...VueDatePicker.props }
 })
 export default class DatePicker extends Vue {
-  $refs!: {
-    dropdown: Vue;
-  };
-
   @Prop({})
   variant!: string;
 
   @Prop({ default: "Select Date", type: String })
   placeholder!: string;
+
+  @Prop({ default: "day" })
+  view!: string;
 
   today = new Date();
   selectedDate: selectedDate = {
@@ -83,10 +85,17 @@ export default class DatePicker extends Vue {
         return "Yesterday";
       }
 
+      if (this.view === "month") return `${months[month]} ${year}`;
+      if (this.view === "year") return `${year}`;
+
       return `${day} ${months[month]} ${year}`;
     }
 
     return this.placeholder;
+  }
+
+  get maxView() {
+    return this.view === "month" ? this.view : "year";
   }
 
   updateDate(date) {

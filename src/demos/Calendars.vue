@@ -32,6 +32,7 @@ components: {
 
       <s-date-picker
         :disabled-dates="state.disabledDates"
+        :full-month-name="true"
         :placeholder="'Select Date'"
         @selected="logDate"
       ></s-date-picker>
@@ -43,6 +44,7 @@ components: {
         :variant="'toggle'"
         :disabled-dates="state.disabledDates"
         :placeholder="'Select Date'"
+        :view="'month'"
         @selected="logDate"
       ></s-date-picker>
     </div>
