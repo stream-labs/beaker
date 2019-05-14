@@ -32,7 +32,7 @@ import VueSliderComponent from "vue-slider-component";
 export default class Slider extends Vue {
   @Watch("value")
   updateLocalValue() {
-    console.log("Its watching")
+    console.log("Its watching");
     this.displayValue = this.value;
   }
 
