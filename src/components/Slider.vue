@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Watch, Vue } from "vue-property-decorator";
 import VueSliderComponent from "vue-slider-component";
 
 @Component({
@@ -30,6 +30,11 @@ import VueSliderComponent from "vue-slider-component";
   }
 })
 export default class Slider extends Vue {
+  @Watch("value")
+  updateLocalValue() {
+    this.displayValue = this.value;
+  }
+
   @Prop()
   width!: number | string;
 
