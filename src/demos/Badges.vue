@@ -60,6 +60,7 @@ components: {
         <Badge :align-left="true" :backgroundColor="'pink'" :textColor="'#fff'"
           >Custom</Badge
         >
+        <Badge :variant="'prime'" :align-left="true"></Badge>
       </div>
 
       <div class="section">
@@ -99,6 +100,7 @@ components: {
         <Badge :variant="'beta-alt'" :align-left="true">Beta Alt</Badge>
         <Badge :variant="'warning-alt'" :align-left="true">Warning Alt</Badge>
         <Badge :variant="'pro-alt'" :align-left="true">Pro Alt</Badge>
+        <Badge :variant="'prime-alt'" :align-left="true"></Badge>
       </div>
 
       <div class="section">
@@ -210,11 +212,12 @@ components: {
             How the Badge will look or funciton. Variants:
             <code>success</code>, <code>tag</code>*, <code>new</code>*,
             <code>beta</code>*, <code>warning</code>*, <code>pro</code>*,
-            <code>progress</code>, <code>mod</code>, and
-            <code>count</code>.<br /><small
-              >*Alternate style available by adding <code>-alt</code> to variant
-              string.</small
-            >
+            <code>progress</code>, <code>mod</code>, and <code>count</code>.
+            <br />
+            <small>
+              *Alternate style available by adding
+              <code>-alt</code> to variant string.
+            </small>
           </td>
         </tr>
         <tr>
