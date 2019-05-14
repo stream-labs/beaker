@@ -1,6 +1,10 @@
 <template>
   <vue-slider-component
     class="s-slider"
+    :class="{
+      's-slider--simple': simpleTheme,
+      's-slider--has-tooltip': tooltip === 'always'
+    }"
     :width="width"
     :height="8"
     :dotHeight="16"
@@ -17,6 +21,7 @@
     :data="data"
     :disabled="disabled"
     @callback="value => emitInput(value)"
+    :simpleTheme="simpleTheme"
   ></vue-slider-component>
 </template>
 
@@ -62,6 +67,9 @@ export default class Slider extends Vue {
 
   displayValue: number | string | Array<number> | Array<string> = this.value;
 
+  @Prop({ default: false })
+  simpleTheme!: boolean;
+
   created() {
     this.$on("input", this.setValue);
   }
@@ -85,6 +93,7 @@ export default class Slider extends Vue {
 .s-slider {
   width: 100%;
   flex: 1;
+  padding: 4px 0px !important;
 
   .vue-slider {
     background-color: @light-3;
@@ -139,9 +148,19 @@ export default class Slider extends Vue {
   }
 }
 
+.s-slider--simple {
+  .vue-slider-process {
+    background-color: @selected;
+  }
+}
+
+.s-slider--has-tooltip {
+  padding: 4px 0px 26px !important;
+}
+
 .night,
 .night-theme {
-  .vue-slider-component {
+  .s-slider {
     .vue-slider {
       background-color: @dark-4;
     }
@@ -158,6 +177,12 @@ export default class Slider extends Vue {
 
     .vue-slider-tooltip {
       color: @night-title;
+    }
+  }
+
+  .s-slider--simple {
+    .vue-slider-process {
+      background-color: @selected;
     }
   }
 }
