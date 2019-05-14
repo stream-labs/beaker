@@ -9,8 +9,7 @@
         <a
           target="_blank"
           href="https://github.com/NightCatSama/vue-slider-component"
-          >Vue Slider Component</a
-        >
+        >Vue Slider Component</a>
       </p>
       <pre><code>import { Slider } from 'streamlabs-beaker';
 
@@ -44,16 +43,14 @@ components: {
           :interval="1"
           :tooltip="'always'"
           :suffix="'%'"
-          :data="data"
+          ref="slider"
         />
       </div>
     </div>
 
     <div class="section">
       <h2>Simple Theme</h2>
-      <p>
-        Use in more compact places when you don't want the bright teal present.
-      </p>
+      <p>Use in more compact places when you don't want the bright teal present.</p>
 
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
@@ -137,17 +134,13 @@ components: {
           <td>prefix</td>
           <td>String</td>
           <td>""</td>
-          <td>
-            Prefix label that will be displayed next to the value in the tooltip
-          </td>
+          <td>Prefix label that will be displayed next to the value in the tooltip</td>
         </tr>
         <tr>
           <td>suffix</td>
           <td>String</td>
           <td>""</td>
-          <td>
-            Suffix label that will be displayed next to the value in the tooltip
-          </td>
+          <td>Suffix label that will be displayed next to the value in the tooltip</td>
         </tr>
         <tr>
           <td>data</td>
@@ -165,9 +158,7 @@ components: {
           <td>simpleTheme</td>
           <td>Boolean</td>
           <td>false</td>
-          <td>
-            Use for toned down colors to avoid bright teal in small areas.
-          </td>
+          <td>Use for toned down colors to avoid bright teal in small areas.</td>
         </tr>
       </tbody>
     </table>
@@ -186,7 +177,7 @@ import Accordion from "./../components/Accordion.vue";
 })
 export default class Sliders extends Vue {
   value = 50;
-  data = [1, 50, 100];
+  // data = [1, 50, 100];
 
   // updateValue(value) {
   //   console.log("value is ", value);
