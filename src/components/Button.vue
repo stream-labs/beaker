@@ -278,13 +278,9 @@ export default class Button extends Vue {
     opacity: 1;
     transition: opacity 275ms ease;
   }
-
+  
   &:focus,
-  &.is-focused,
-  &:hover,
-  &.is-hovered {
-    background-color: darken(@day-button, 4%);
-    text-decoration: none;
+  &.is-focused {
     outline: transparent dotted 2px;
   }
 
