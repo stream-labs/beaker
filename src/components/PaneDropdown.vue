@@ -141,7 +141,7 @@ export default class PaneDropdown extends Vue {
   }
 
   onMenuClick() {
-    this.closeOnSelect ? this.paneMenuOpen = !this.paneMenuOpen : null;
+    this.closeOnSelect ? (this.paneMenuOpen = !this.paneMenuOpen) : null;
   }
 
   hide() {
