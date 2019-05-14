@@ -20,7 +20,7 @@
       <div
         :class="menuClasses"
         class="s-pane-dropdown__menu"
-        @mouseup="paneMenuOpen = !paneMenuOpen"
+        @mouseup="onMenuClick"
         v-show="paneMenuOpen"
       >
         <slot v-if="custom"></slot>
@@ -56,6 +56,9 @@ export default class PaneDropdown extends Vue {
 
   @Prop({ default: false })
   autoHeight!: boolean;
+
+  @Prop({ default: true })
+  closeOnSelect!: boolean;
 
   @Prop({ default: false })
   custom!: boolean;
@@ -135,6 +138,10 @@ export default class PaneDropdown extends Vue {
     if (el !== target && !el.contains(target)) {
       this.paneMenuOpen = false;
     }
+  }
+
+  onMenuClick() {
+    this.closeOnSelect ? this.paneMenuOpen = !this.paneMenuOpen : null;
   }
 
   hide() {
