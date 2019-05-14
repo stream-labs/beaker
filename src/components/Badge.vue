@@ -13,6 +13,7 @@
     >
       {{ `${current}${separator}${total} ${suffix}` }}
     </div>
+    <div v-if="variant === 'prime' || variant === 'prime-alt'">Prime</div>
     <slot v-else />
   </div>
 </template>
@@ -209,6 +210,47 @@ export default class Badge extends Vue {
       padding: 0 4px;
       .radius();
       line-height: 18px;
+    }
+  }
+
+  &--prime {
+    background-color: @prime;
+    color: @white;
+    padding: 0 8px 0 26px;
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+    font-style: italic;
+    .weight(@bold);
+
+    &::before {
+      content: "\e9bb";
+      font-family: "icomoon";
+      position: absolute;
+      left: -16px;
+      bottom: -8px;
+      font-size: 38px;
+      -webkit-transform: rotate(20deg);
+      -moz-transform: rotate(20deg);
+      -o-transform: rotate(20deg);
+      -ms-transform: rotate(20deg);
+      transform: rotate(20deg);
+      font-style: normal;
+      display: inline-block;
+      .weight(@normal);
+    }
+  }
+
+  &--prime-alt {
+    background-color: transparent;
+    color: @prime;
+    .padding-h-sides(@0);
+    font-style: italic;
+    .weight(@bold);
+    font-size: inherit;
+
+    &::before {
+      display: none;
     }
   }
 }
