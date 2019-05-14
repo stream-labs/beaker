@@ -38,7 +38,6 @@ components: {
           :interval="1"
           :tooltip="'always'"
           :suffix="'%'"
-          :data="data"
           ref="slider"
         />
       </div>
@@ -137,7 +136,7 @@ import Accordion from "./../components/Accordion.vue";
 })
 export default class Sliders extends Vue {
   value = 50;
-  data = [1, 50, 100];
+  // data = [1, 50, 100];
 
   mounted() {
     console.log(this.$refs);
