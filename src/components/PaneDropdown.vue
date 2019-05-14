@@ -1,5 +1,5 @@
 <template>
-  <div class="s-pane-dropdown" ref="paneMenu">
+  <div class="s-pane-dropdown" ref="paneMenu" @blur.stop.prevent="close">
     <a
       class="s-pane-dropdown__toggle"
       :class="{ 's-pane-dropdown__toggle--active': paneMenuOpen }"
@@ -11,10 +11,16 @@
       </span>
     </a>
 
-    <transition name="fade">
+    <transition
+      name="expand"
+      @enter="open"
+      @after-enter="afterOpen"
+      @leave="close"
+    >
       <div
-        :class="menuAlignClass"
+        :class="menuClasses"
         class="s-pane-dropdown__menu"
+        @mouseup="paneMenuOpen = !paneMenuOpen"
         v-show="paneMenuOpen"
       >
         <slot v-if="custom"></slot>
@@ -23,7 +29,6 @@
         </div>
       </div>
     </transition>
-
     <span v-if="!custom" ref="panelinks" class="s-pane-dropdown__slot-list">
       <slot></slot>
     </span>
@@ -35,6 +40,11 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class PaneDropdown extends Vue {
+  $refs!: {
+    paneMenu: HTMLDivElement;
+    panelinks: HTMLSpanElement;
+  };
+
   @Prop()
   icons!: string[];
 
@@ -43,6 +53,9 @@ export default class PaneDropdown extends Vue {
 
   @Prop({ default: null })
   menuAlign!: string;
+
+  @Prop({ default: false })
+  autoHeight!: boolean;
 
   @Prop({ default: false })
   custom!: boolean;
@@ -58,8 +71,54 @@ export default class PaneDropdown extends Vue {
     document.removeEventListener("click", this.documentClick);
   }
 
-  get menuAlignClass() {
-    return `s-pane-dropdown__menu--${this.menuAlign}`;
+  get menuClasses() {
+    let classes: string[] = [];
+
+    if (this.menuAlign) {
+      classes.push(`s-pane-dropdown__menu--${this.menuAlign}`);
+    }
+
+    if (this.autoHeight) {
+      classes.push("s-pane-dropdown__menu--auto-height");
+    }
+
+    return classes;
+  }
+
+  openContent() {
+    this.paneMenuOpen = !this.paneMenuOpen;
+  }
+
+  afterOpen(element) {
+    element.style.height = "auto";
+  }
+
+  open(element) {
+    let width = getComputedStyle(element).width;
+    element.style.width = width;
+    let maxWidth = getComputedStyle(element).width;
+    element.style.maxWidth = maxWidth;
+    element.style.position = `absolute`;
+    element.style.visibility = `hidden`;
+    element.style.height = `auto`;
+    let height = getComputedStyle(element).height;
+    element.style.width = null;
+    element.style.position = null;
+    element.style.visibility = null;
+    element.style.height = 0;
+    getComputedStyle(element).height;
+    setTimeout(() => {
+      element.style.height = height;
+    });
+  }
+
+  close(element) {
+    let height = getComputedStyle(element).height;
+    element.style.height = height;
+    getComputedStyle(element).height;
+    setTimeout(() => {
+      element.style.height = 0;
+    });
   }
 
   mounted() {
@@ -120,6 +179,10 @@ export default class PaneDropdown extends Vue {
       &:last-child {
         margin-bottom: 0;
       }
+    }
+
+    &--auto-height {
+      max-height: initial;
     }
   }
 
@@ -194,6 +257,18 @@ export default class PaneDropdown extends Vue {
       color: @dark-2;
     }
   }
+}
+
+.expand-enter-active,
+.expand-leave-active {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+.expand-enter,
+.expand-leave-to {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 0;
+  opacity: 0;
 }
 
 .night {

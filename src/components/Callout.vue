@@ -177,4 +177,13 @@ export default class Callout extends Vue {
     }
   }
 }
+
+.night,
+.night-theme {
+  .s-callout {
+    a {
+      color: inherit;
+    }
+  }
+}
 </style>

@@ -1,41 +1,18 @@
 <template>
-  <div
-    v-if="type === 'text'"
-    :class="visible ? 'beaker-text-guard' : 'beaker-text-guard--readable'"
-    @click="showText"
-  >
-    <div v-if="visible" class="beaker-text-guard__text">
+  <div :class="guardClasses" @click="showText">
+    <div v-if="visible" :class="`${prefix}__text`">
       <i class="fas fa-lock"></i>
       {{ placeholder }}
     </div>
     <div
       :class="
         visible
-          ? 'beaker-text-wrapper'
-          : 'beaker-text-wrapper beaker-text-wrapper--readable'
+          ? `${prefix}-wrapper`
+          : `${prefix}-wrapper ${prefix}-wrapper--readable`
       "
     >
       <slot v-if="$slots.content" name="content" />
       <div v-else>{{ value }}</div>
-    </div>
-  </div>
-  <div
-    v-else
-    :class="visible ? 'beaker-input-guard' : 'beaker-input-guard--readable'"
-    @click="showText"
-  >
-    <div v-if="visible" class="beaker-input-guard__text">
-      <i class="fas fa-lock"></i>
-      {{ placeholder }}
-    </div>
-    <div
-      :class="
-        visible
-          ? 'beaker-input-wrapper'
-          : 'beaker-input-wrapper beaker-input-wrapper--readable'
-      "
-    >
-      <slot name="content" />
     </div>
   </div>
 </template>
@@ -54,10 +31,17 @@ export default class Guard extends Vue {
   @Prop({ default: true })
   showOnClick!: boolean;
 
+  @Prop({ default: "normal" })
+  variation!: string;
+
   @Prop({ default: "text" })
   type!: string;
 
   visible: boolean = true;
+
+  get prefix() {
+    return this.type === "input" ? "s-input-guard" : "s-text-guard";
+  }
 
   showText() {
     if (this.showOnClick) {
@@ -66,19 +50,34 @@ export default class Guard extends Vue {
       this.$emit("click");
     }
   }
+
+  get guardClasses() {
+    const classes: string[] = [];
+    if (this.visible) {
+      classes.push(this.prefix);
+    } else {
+      classes.push(`${this.prefix}--readable`);
+    }
+
+    if (this.type === "alt") {
+      classes.push(`${this.prefix}--alt`);
+    }
+
+    return classes;
+  }
 }
 </script>
 
 <style lang="less">
 @import "./../styles/Imports";
 //  Input Guard Css
-.beaker-input-guard {
+.s-input-guard {
   position: relative;
   flex: 1;
   margin-right: 10px;
   .radius();
 
-  .beaker-input-wrapper {
+  .s-input-guard-wrapper {
     input {
       color: transparent;
       text-shadow: 0 0 5px rgba(55, 71, 79, 0.5);
@@ -87,7 +86,7 @@ export default class Guard extends Vue {
 }
 
 //  Text Guard Css
-.beaker-text-guard {
+.s-text-guard {
   width: auto;
   min-width: 150px;
   border: 1px solid @day-border;
@@ -96,36 +95,34 @@ export default class Guard extends Vue {
   .radius();
   padding: 0 8px;
 
-  .beaker-text-wrapper {
+  .s-text-guard-wrapper {
     color: transparent;
     text-shadow: 0 0 5px rgba(55, 71, 79, 0.5);
   }
 }
 
-.beaker-text-wrapper--readable,
-.beaker-input-wrapper--readable {
+.s-text-guard-wrapper--readable,
+.s-input-guard-wrapper--readable {
   color: inherit;
   text-shadow: none;
-}
-
-.beaker-text-guard--readable {
   border: 0px;
 }
 
 .night,
 .night-theme {
-  .beaker-text-guard {
+  .s-text-guard {
     border: 1px solid @night-border;
-    .beaker-ext-wrapper {
+    .s-text-guard-wrapper {
       text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
     }
   }
-}
 
-.night,
-.night-theme {
-  .beaker-input-guard {
-    .beaker-input-wrapper {
+  .s-text-guard--alt {
+    border-color: @night-border-alt;
+  }
+
+  .s-input-guard {
+    .s-input-guard-wrapper {
       input {
         text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         color: transparent;
@@ -134,8 +131,8 @@ export default class Guard extends Vue {
   }
 }
 
-.beaker-text-guard__text,
-.beaker-input-guard__text {
+.s-text-guard__text,
+.s-input-guard__text {
   position: absolute;
   z-index: 2;
   top: 50%;
