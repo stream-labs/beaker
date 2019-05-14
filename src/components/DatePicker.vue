@@ -109,12 +109,14 @@ export default class DatePicker extends Vue {
 
   &__toggle {
     .radius();
-    background-color: @dark-4;
+    background-color: @light-2;
 
     .s-date-picker__title {
-      padding: 7px;
+      padding: 7px 6px;
       font-size: 14px;
       font-weight: 400;
+      line-height: 1.3;
+      color: @dark-2;
     }
 
     .s-pane-dropdown__menu {
@@ -236,6 +238,14 @@ export default class DatePicker extends Vue {
 
 .night {
   .s-date-picker {
+    &__toggle {
+      background-color: @dark-4;
+
+      .s-date-picker__title {
+        color: @white;
+      }
+    }
+
     &__calendar {
       background: @dark-4;
       color: @white;
