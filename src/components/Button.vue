@@ -278,7 +278,7 @@ export default class Button extends Vue {
     opacity: 1;
     transition: opacity 275ms ease;
   }
-  
+
   &:focus,
   &.is-focused {
     outline: transparent dotted 2px;
