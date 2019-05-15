@@ -28,6 +28,7 @@ import ModalComp from "./components/ModalComp.vue";
 import ModalConfirmation from "./components/ModalConfirmation.vue";
 import ModalRedirect from "./components/ModalRedirect.vue";
 import ModalSubscribe from "./components/ModalSubscribe.vue";
+import NavCallToAction from "./components/NavCallToAction.vue";
 import NewFeatureOverlay from "./components/NewFeatureOverlay.vue";
 import Onboarding from "./components/Onboarding.vue";
 import OnboardingStep from "./components/OnboardingStep.vue";
@@ -75,6 +76,7 @@ export {
   ModalConfirmation,
   ModalRedirect,
   ModalSubscribe,
+  NavCallToAction,
   NewFeatureOverlay,
   Onboarding,
   OnboardingStep,
