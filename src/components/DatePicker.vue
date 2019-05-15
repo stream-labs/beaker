@@ -15,6 +15,7 @@
       :initial-view="view"
       :minimum-view="view"
       :maximum-view="maxView"
+      :value="startDate"
     ></vue-date-picker>
   </pane-dropdown>
 </template>
@@ -46,8 +47,8 @@ export default class DatePicker extends Vue {
   @Prop({ default: "day", type: String })
   view!: string;
 
-  @Prop({ default: null, type: Date })
-  startDate!: Date;
+  @Prop({ default: null, type: [Date, String] })
+  startDate!: Date | string;
 
   today = new Date();
   selectedDate: selectedDate = {
@@ -55,12 +56,13 @@ export default class DatePicker extends Vue {
     selected: false
   };
 
-  mounted() {
+  created() {
     if (this.startDate) {
-      this.selectedDate = {
-        date: this.startDate,
-        selected: true
-      };
+      let date = this.startDate
+      if (typeof date === "string") {
+        date = new Date(this.startDate);
+      }
+      this.updateDate(date);
     }
   }
 
