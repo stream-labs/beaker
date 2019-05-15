@@ -21,9 +21,9 @@
         <i v-if="iconClass" :class="iconClass"></i>
         {{ title }}
       </span>
-      <span v-if="description" class="s-button__description">
-        {{ description }}
-      </span>
+      <span v-if="description" class="s-button__description">{{
+        description
+      }}</span>
     </span>
     <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
     <span v-if="price">{{ price }}</span>
@@ -726,6 +726,31 @@ export default class Button extends Vue {
 .s-button--reset-variations {
   margin-top: -36px;
   float: right;
+}
+
+.s-button--prime {
+  background-color: @prime;
+  color: @white;
+  border-radius: 100px;
+  padding: 0 12px 0 30px;
+  border: 0;
+
+  &:before {
+    content: "\e9bb";
+    font-family: "icomoon";
+    position: absolute;
+    left: -16px;
+    bottom: -8px;
+    font-size: 38px;
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    transform: rotate(20deg);
+    font-style: normal;
+    display: inline-block;
+    .weight(@normal);
+  }
 }
 
 .night {

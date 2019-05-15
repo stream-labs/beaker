@@ -46,6 +46,26 @@
         ></PrimeSection>
       </div>
     </div>
+
+    <NavCallToAction
+      :description="
+        'Forward email from your custom domain name to your current mailbox.'
+      "
+      :buttonTitle="'Join Prime'"
+      :buttonVariation="'prime'"
+      @click="testNavClick"
+    >
+      <div slot="title">
+        Unlock unlimited themes with
+        <Badge :variant="'prime-alt'"></Badge>
+      </div>
+      <div slot="extras">
+        <div>Prime also includes:</div>
+        <div>Custom Domain Name</div>
+        <div>30+ Professional Themes</div>
+        <div>Advanced SEO & Analytics</div>
+      </div>
+    </NavCallToAction>
   </div>
 </template>
 
@@ -54,17 +74,23 @@ import { Component, Vue } from "vue-property-decorator";
 import Accordion from "./../components/Accordion.vue";
 import Badge from "./../components/Badge.vue";
 import PrimeSection from "./../components/PrimeSection.vue";
+import NavCallToAction from "./../components/NavCallToAction.vue";
 
 @Component({
   components: {
     Accordion,
     Badge,
-    PrimeSection
+    PrimeSection,
+    NavCallToAction
   }
 })
 export default class PrimeComponents extends Vue {
   testClick() {
-    console.log("test click");
+    console.log("test prime section click");
+  }
+
+  testNavClick() {
+    console.log("test prime nav click");
   }
 }
 </script>
