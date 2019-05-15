@@ -728,6 +728,35 @@ export default class Button extends Vue {
   float: right;
 }
 
+.s-button--prime {
+  background-color: @prime;
+  color: @white;
+  border-radius: 100px;
+  padding: 0 12px 0 30px;
+  border: 0;
+
+  &:before {
+    content: "\e9bb";
+    font-family: "icomoon";
+    position: absolute;
+    left: -16px;
+    bottom: -8px;
+    font-size: 38px;
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    transform: rotate(20deg);
+    font-style: normal;
+    display: inline-block;
+    .weight(@normal);
+  }
+
+  &:focus {
+    background-color: @prime;
+  }
+}
+
 .night {
   .s-button {
     &:focus,
@@ -875,6 +904,15 @@ export default class Button extends Vue {
     &:hover {
       background-color: lighten(@picarto, 4%);
       color: @night-title;
+    }
+  }
+
+  .s-button--prime {
+    background-color: @prime;
+    color: @white;
+
+    &:focus {
+      background-color: @prime;
     }
   }
 }
