@@ -79,7 +79,8 @@ components: {
             <td>string</td>
             <td>'Select Date'</td>
             <td>
-              You can add a placeholder title. Will be replaced when date is selected.
+              You can add a placeholder title. Will be replaced when date is
+              selected.
             </td>
           </tr>
           <tr>

@@ -61,7 +61,7 @@ export default class DatePicker extends Vue {
       this.selectedDate = {
         date: this.startDate,
         selected: true
-      }
+      };
     }
   }
 
