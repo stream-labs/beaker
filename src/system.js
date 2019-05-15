@@ -32,6 +32,7 @@ import NewFeatureOverlay from "./components/NewFeatureOverlay.vue";
 import Onboarding from "./components/Onboarding.vue";
 import OnboardingStep from "./components/OnboardingStep.vue";
 import PaneDropdown from "./components/PaneDropdown.vue";
+import PrimeSection from "./components/PrimeSection.vue";
 // import PaymentForm from "./components/PaymentForm.vue";
 import Radio from "./components/Radio.vue";
 import Selector from "./components/Selector.vue";
@@ -79,6 +80,7 @@ export {
   OnboardingStep,
   Pagination,
   PaneDropdown,
+  PrimeSection,
   ProgressBar,
   Radio,
   SSProSimulator,
