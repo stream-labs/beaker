@@ -43,14 +43,27 @@ export default class DatePicker extends Vue {
   @Prop({ default: "Select Date", type: String })
   placeholder!: string;
 
-  @Prop({ default: "day" })
+  @Prop({ default: "day", type: String })
   view!: string;
+
+  @Prop({ default: null, type: Date })
+  startDate!: Date;
 
   today = new Date();
   selectedDate: selectedDate = {
     date: new Date(),
     selected: false
   };
+
+  mounted() {
+    if (this.startDate) {
+      this.$props.value = this.startDate;
+      this.selectedDate = {
+        date: this.startDate,
+        selected: true
+      }
+    }
+  }
 
   get datePickerProps() {
     return { ...this.$props };

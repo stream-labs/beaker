@@ -24,7 +24,9 @@ components: {
 
 &lt;s-date-picker
   :disabled-dates=&quot;state.disabledDates&quot;
+  :full-month-name=&quot;true&quot;
   :placeholder=&quot;'Select Date'&quot;
+  :start-date=&quot;tomorrow&quot;
   @selected=&quot;logDate&quot;
 &gt;&lt;/s-date-picker&gt;</code></pre>
         </div>
@@ -34,6 +36,7 @@ components: {
         :disabled-dates="state.disabledDates"
         :full-month-name="true"
         :placeholder="'Select Date'"
+        :start-date="tomorrow"
         @selected="logDate"
       ></s-date-picker>
     </div>
@@ -74,10 +77,9 @@ components: {
           <tr>
             <td>placeholder</td>
             <td>string</td>
-            <td>null</td>
+            <td>'Select Date'</td>
             <td>
-              You can add a placeholder title. Will be replaced with selected
-              date.
+              You can add a placeholder title. Will be replaced when date is selected.
             </td>
           </tr>
           <tr>
@@ -88,6 +90,12 @@ components: {
               Allows for different style variations. Available options:
               <code>toggle</code>.
             </td>
+          </tr>
+          <tr>
+            <td>startDate</td>
+            <td>Date</td>
+            <td>null</td>
+            <td>Have calendar start at a preselected date.</td>
           </tr>
         </tbody>
       </table>
@@ -113,6 +121,12 @@ export default class Calendars extends Vue {
       dates: [new Date()]
     }
   };
+
+  tomorrow = new Date();
+
+  mounted() {
+    this.tomorrow.setDate(this.tomorrow.getDate() + 1);
+  }
 
   logDate(date) {
     console.log(date);
