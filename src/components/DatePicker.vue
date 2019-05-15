@@ -57,7 +57,6 @@ export default class DatePicker extends Vue {
 
   mounted() {
     if (this.startDate) {
-      this.$props.value = this.startDate;
       this.selectedDate = {
         date: this.startDate,
         selected: true
