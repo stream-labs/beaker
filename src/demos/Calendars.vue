@@ -24,7 +24,9 @@ components: {
 
 &lt;s-date-picker
   :disabled-dates=&quot;state.disabledDates&quot;
+  :full-month-name=&quot;true&quot;
   :placeholder=&quot;'Select Date'&quot;
+  :start-date=&quot;tomorrow&quot;
   @selected=&quot;logDate&quot;
 &gt;&lt;/s-date-picker&gt;</code></pre>
         </div>
@@ -32,7 +34,9 @@ components: {
 
       <s-date-picker
         :disabled-dates="state.disabledDates"
+        :full-month-name="true"
         :placeholder="'Select Date'"
+        :start-date="tomorrow"
         @selected="logDate"
       ></s-date-picker>
     </div>
@@ -43,6 +47,7 @@ components: {
         :variant="'toggle'"
         :disabled-dates="state.disabledDates"
         :placeholder="'Select Date'"
+        :view="'month'"
         @selected="logDate"
       ></s-date-picker>
     </div>
@@ -72,10 +77,10 @@ components: {
           <tr>
             <td>placeholder</td>
             <td>string</td>
-            <td>null</td>
+            <td>'Select Date'</td>
             <td>
-              You can add a placeholder title. Will be replaced with selected
-              date.
+              You can add a placeholder title. Will be replaced when date is
+              selected.
             </td>
           </tr>
           <tr>
@@ -87,6 +92,12 @@ components: {
               <code>toggle</code>.
             </td>
           </tr>
+          <tr>
+            <td>startDate</td>
+            <td>Date</td>
+            <td>null</td>
+            <td>Have calendar start at a preselected date.</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -96,6 +107,7 @@ components: {
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 
+import moment from "moment";
 import Accordion from "./../components/Accordion.vue";
 import DatePicker from "./../components/DatePicker.vue";
 
@@ -111,6 +123,10 @@ export default class Calendars extends Vue {
       dates: [new Date()]
     }
   };
+
+  tomorrow = moment()
+    .add(1, "days")
+    .format();
 
   logDate(date) {
     console.log(date);

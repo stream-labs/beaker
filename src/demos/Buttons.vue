@@ -84,6 +84,8 @@ components: {
             :bgColor="'#000'"
             :textColor="'#fff'"
           ></Button>
+
+          <Button :variation="'prime'" :title="'Join Prime'"></Button>
         </div>
       </div>
       <div class="section">
@@ -343,6 +345,12 @@ components: {
           :variation="'default'"
           :title="'With Icon'"
           :icon="'image'"
+        ></Button>
+
+        <Button
+          :variation="'prime'"
+          :title="'Join Prime'"
+          :size="'small'"
         ></Button>
       </div>
     </div>
