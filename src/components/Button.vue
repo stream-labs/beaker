@@ -21,9 +21,9 @@
         <i v-if="iconClass" :class="iconClass"></i>
         {{ title }}
       </span>
-      <span v-if="description" class="s-button__description">{{
-        description
-      }}</span>
+      <span v-if="description" class="s-button__description">
+        {{ description }}
+      </span>
     </span>
     <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
     <span v-if="price">{{ price }}</span>
@@ -751,6 +751,10 @@ export default class Button extends Vue {
     display: inline-block;
     .weight(@normal);
   }
+
+  &:focus {
+    background-color: @prime;
+  }
 }
 
 .night {
@@ -900,6 +904,15 @@ export default class Button extends Vue {
     &:hover {
       background-color: lighten(@picarto, 4%);
       color: @night-title;
+    }
+  }
+
+  .s-button--prime {
+    background-color: @prime;
+    color: @white;
+
+    &:focus {
+      background-color: @prime;
     }
   }
 }
