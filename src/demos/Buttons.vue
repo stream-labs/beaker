@@ -815,12 +815,13 @@ components: {
           <td>default</td>
           <td>
             The variation style of a button. Primary options are
-            <code>default</code>, <code>action</code> and <code>warning</code>.
-            Other options are <code>subscribe</code>, <code>paypal</code>,
-            <code>download</code> and <code>navigation</code>. Platform options
-            are <code>facebook</code>, <code>mixer</code>, <code>twitch</code>,
-            <code>youtube</code>, <code>periscope</code>,
-            <code>picarto</code>and <code>paypal-blue</code>.
+            <code>default</code>, <code>action</code>, <code>prime</code> and
+            <code>warning</code>. Other options are <code>subscribe</code>,
+            <code>paypal</code>, <code>download</code> and
+            <code>navigation</code>. Platform options are <code>facebook</code>,
+            <code>mixer</code>, <code>twitch</code>, <code>youtube</code>,
+            <code>periscope</code>, <code>picarto</code>and
+            <code>paypal-blue</code>.
           </td>
         </tr>
       </tbody>
