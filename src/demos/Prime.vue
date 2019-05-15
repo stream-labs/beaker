@@ -46,6 +46,51 @@
         ></PrimeSection>
       </div>
     </div>
+
+    <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+      <div slot="content">
+        <pre>
+<code>&lt;NavCallToAction
+  :description=&quot;
+    'Forward email from your custom domain name to your current mailbox.'
+  &quot;
+  :buttonTitle=&quot;'Join Prime'&quot;
+  :buttonVariation=&quot;'prime'&quot;
+  @click=&quot;testNavClick&quot;
+&gt;
+  &lt;div slot=&quot;title&quot;&gt;
+    Unlock unlimited themes with
+    &lt;Badge :variant=&quot;'prime-alt'&quot;&gt;&lt;/Badge&gt;
+  &lt;/div&gt;
+  &lt;div slot=&quot;extras&quot;&gt;
+    &lt;div&gt;Prime also includes:&lt;/div&gt;
+    &lt;div&gt;Custom Domain Name&lt;/div&gt;
+    &lt;div&gt;30+ Professional Themes&lt;/div&gt;
+    &lt;div&gt;Advanced SEO &amp; Analytics&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/NavCallToAction&gt;</code></pre>
+      </div>
+    </accordion>
+
+    <NavCallToAction
+      :description="
+        'Forward email from your custom domain name to your current mailbox.'
+      "
+      :buttonTitle="'Join Prime'"
+      :buttonVariation="'prime'"
+      @click="testNavClick"
+    >
+      <div slot="title">
+        Unlock unlimited themes with
+        <Badge :variant="'prime-alt'"></Badge>
+      </div>
+      <div slot="extras">
+        <div>Prime also includes:</div>
+        <div>Custom Domain Name</div>
+        <div>30+ Professional Themes</div>
+        <div>Advanced SEO & Analytics</div>
+      </div>
+    </NavCallToAction>
   </div>
 </template>
 
@@ -54,17 +99,23 @@ import { Component, Vue } from "vue-property-decorator";
 import Accordion from "./../components/Accordion.vue";
 import Badge from "./../components/Badge.vue";
 import PrimeSection from "./../components/PrimeSection.vue";
+import NavCallToAction from "./../components/NavCallToAction.vue";
 
 @Component({
   components: {
     Accordion,
     Badge,
-    PrimeSection
+    PrimeSection,
+    NavCallToAction
   }
 })
 export default class PrimeComponents extends Vue {
   testClick() {
-    console.log("test click");
+    console.log("test prime section click");
+  }
+
+  testNavClick() {
+    console.log("test prime nav click");
   }
 }
 </script>

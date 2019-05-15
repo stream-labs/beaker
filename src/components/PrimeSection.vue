@@ -52,11 +52,6 @@ export default class PrimeSection extends Vue {
 <style lang="less">
 @import "./../styles/Imports";
 
-.s-badge--prime-alt {
-  margin-right: 6px;
-  vertical-align: baseline;
-}
-
 .prime-section {
   background: rgba(255, 255, 255, 0.88);
   .padding(3);
@@ -69,6 +64,11 @@ export default class PrimeSection extends Vue {
 
   .s-empty-section {
     .padding(@0);
+  }
+
+  .s-badge--prime-alt {
+    margin-right: 5px;
+    vertical-align: baseline;
   }
 }
 
