@@ -107,7 +107,7 @@ components: {
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 
-import moment from 'moment';
+import moment from "moment";
 import Accordion from "./../components/Accordion.vue";
 import DatePicker from "./../components/DatePicker.vue";
 
@@ -124,7 +124,9 @@ export default class Calendars extends Vue {
     }
   };
 
-  tomorrow = moment().add(1, 'days').format();
+  tomorrow = moment()
+    .add(1, "days")
+    .format();
 
   logDate(date) {
     console.log(date);

@@ -58,7 +58,7 @@ export default class DatePicker extends Vue {
 
   created() {
     if (this.startDate) {
-      let date = this.startDate
+      let date = this.startDate;
       if (typeof date === "string") {
         date = new Date(this.startDate);
       }
