@@ -62,7 +62,7 @@ export {
   Checkbox,
   ColorPicker,
   ContentRow,
-  DatePicker,
+  // DatePicker,
   EmptySection,
   FormGroupH,
   FormGroupV,
