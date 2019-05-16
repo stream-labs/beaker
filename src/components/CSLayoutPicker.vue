@@ -48,6 +48,7 @@ export default class CSLayoutPicker extends Vue {
 .s-cs-layout-picker {
   overflow: hidden;
   display: grid;
+  width: 100%;
 
   * {
     min-width: 0;

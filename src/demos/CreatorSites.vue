@@ -89,16 +89,18 @@ components: {
           </div>
         </Accordion>
 
-        <CSLayoutPicker>
-          <div
-            slot="layouts"
-            v-for="layout in webLayouts"
-            :key="layout.id"
-            class="s-cs-layout-picker__layout"
-          >
-            <img :src="layout.src" />
-          </div>
-        </CSLayoutPicker>
+        <div class="flex">
+          <CSLayoutPicker>
+            <div
+              slot="layouts"
+              v-for="layout in webLayouts"
+              :key="layout.id"
+              class="s-cs-layout-picker__layout"
+            >
+              <img :src="layout.src" />
+            </div>
+          </CSLayoutPicker>
+        </div>
       </div>
     </div>
   </div>
@@ -203,5 +205,13 @@ export default class CreatorSitesDemo extends Vue {
     margin: auto 0;
     right: -16px;
   }
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 </style>
