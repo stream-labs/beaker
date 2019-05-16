@@ -89,7 +89,7 @@ components: {
           </div>
         </Accordion>
 
-        <CSLayoutPicker :layouts="webLayouts">
+        <CSLayoutPicker>
           <div
             slot="layouts"
             v-for="layout in webLayouts"
