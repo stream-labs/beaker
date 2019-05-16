@@ -1,16 +1,13 @@
 <template>
   <div class="s-cs-layout-picker">
-    <div
-      @click="showChooseLayout"
-      v-if="addLayout"
-      class="s-cs-layout-picker__add-bar"
-    >
+    <div @click="showChooseLayout" v-if="addLayout" class="s-cs-layout-picker__add-bar">
       <i class="icon-add"></i>
     </div>
     <div
       v-if="chooseLayout"
       v-click-outside="showAddLayout"
       class="s-cs-layout-picker__layouts-bar"
+      ref="layoutsBar"
     >
       <slot name="layouts"></slot>
     </div>
