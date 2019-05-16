@@ -3,8 +3,7 @@
     <div class="section">
       <h1>Step</h1>
       <p>
-        You can use our callout component if you need to display an important
-        message.
+        step component
       </p>
 
       <pre><code>import { Step } from 'streamlabs-beaker';
@@ -14,16 +13,42 @@ components: {
 }</code></pre>
     </div>
     <div class="section">
-      <h2>Default Call to Action</h2>
+      <h2></h2>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-          <pre><code>&lt;call-to-action
-  :buttonClick=&quot;test&quot;&gt;
-&lt;/call-to-action&gt;</code></pre>
+          <pre><code>&lt;step :title=&quot;'Enable Pro'&quot;&gt;
+  &lt;div class=&quot;info&quot;&gt;
+    &lt;p&gt;+20 CCV&lt;/p&gt;
+    &lt;i class=&quot;icon-information&quot;&gt;&lt;/i&gt;
+  &lt;/div&gt;
+&lt;/step&gt;
+
+&lt;step
+  :title=&quot;'Enable Pro'&quot;
+  :isCompleted=&quot;true&quot;
+  :hasCheckmark=&quot;true&quot;
+  :completedText=&quot;'Complete'&quot;&gt;
+  &lt;div class=&quot;info&quot;&gt;
+    &lt;p&gt;+20 CCV&lt;/p&gt;
+    &lt;i class=&quot;icon-information&quot;&gt;&lt;/i&gt;
+  &lt;/div&gt;
+&lt;/step&gt;
+
+&lt;step :icon=&quot;'icon-donation-settings'&quot; :title=&quot;'Tip'&quot; :hasPrime=&quot;true&quot;
+  &gt;&lt;div&gt;0/1&lt;/div&gt;
+&lt;/step&gt;
+
+&lt;step
+  :icon=&quot;'icon-donation-settings'&quot;
+  :title=&quot;'Tip'&quot;
+  :isCompleted=&quot;true&quot;
+  :completedText=&quot;'1/1'&quot;&gt;
+  &lt;div&gt;0/1&lt;/div&gt;
+&lt;/step&gt;</code></pre>
         </div>
       </accordion>
       <div class="row">
-        <step :title="'Enable Pro'" :point="'+20 CCV'">
+        <step :title="'Enable Pro'">
           <div class="info">
             <p>+20 CCV</p>
             <i class="icon-information"></i>
@@ -32,7 +57,6 @@ components: {
         <br />
         <step
           :title="'Enable Pro'"
-          :point="'+20 CCV'"
           :isCompleted="true"
           :hasCheckmark="true"
           :completedText="'Complete'"
@@ -67,137 +91,47 @@ components: {
         </thead>
         <tbody>
           <tr>
-            <td>bgColor</td>
-            <td>String</td>
-            <td>#f5f8fa</td>
-            <td>Background color, default color is @day-section (#f5f8fa)</td>
-          </tr>
-
-          <tr>
-            <td>titleColor</td>
-            <td>String</td>
-            <td>#09161d</td>
-            <td>Title color, default color is @day-title (#09161d)</td>
-          </tr>
-
-          <tr>
-            <td>subTitleColor</td>
-            <td>String</td>
-            <td>#4f5e65</td>
-            <td>Sub title color, default color is @day-paragraph (#4f5e65)</td>
-          </tr>
-
-          <tr>
-            <td>thumbnail</td>
-            <td>String</td>
-            <td>'https://cdn.streamlabs.com/static/kevin-standard.svg'</td>
-            <td>A Thumbnail image</td>
-          </tr>
-          <tr>
-            <td>thumbnailBg</td>
-            <td>String</td>
-            <td>#31C3A2</td>
-            <td>
-              A Thumbnail background color, default color is @teal (#31C3A2)
-            </td>
-          </tr>
-
-          <tr>
-            <td>thumbnailWidth</td>
-            <td>Number</td>
-            <td>80</td>
-            <td>A Thumbnail width</td>
-          </tr>
-
-          <tr>
-            <td>thumbnailHeight</td>
-            <td>Number</td>
-            <td>80</td>
-            <td>A Thumbnail height</td>
-          </tr>
-
-          <tr>
             <td>title</td>
             <td>String</td>
-            <td>Get started by downloading Streamlabs OBS</td>
-            <td>Title for the call to action component</td>
+            <td>null</td>
+            <td>title to display</td>
           </tr>
           <tr>
-            <td>description</td>
+            <td>icon</td>
             <td>String</td>
+            <td>null</td>
+            <td>icon to display</td>
+          </tr>
+          <tr>
+            <td>isCompleted</td>
+            <td>Boolean</td>
+            <td>false</td>
             <td>
-              Over 800k creators use Streamlabs OBS daily, delivering
-              entertainment.
-            </td>
-            <td>A short description for the call the action component</td>
-          </tr>
-          <tr>
-            <td>buttonVariation</td>
-            <td>String</td>
-            <td>slobs-download</td>
-            <td>Takes any button variation, but 'action' is recomended</td>
-          </tr>
-          <tr>
-            <td>buttonTitle</td>
-            <td>String</td>
-            <td>Download Streamlabs OBS</td>
-            <td>The title for the button</td>
-          </tr>
-          <tr>
-            <td>buttonDescription</td>
-            <td>String</td>
-            <td>Windows 7+ 245.8MB</td>
-            <td>
-              Description for 'slobs-download' button variation only, recomended
-              left blank otherwise ( :buttonDescription="'" )
+              background would be @dark-4, color would be @dark-5 when it is
+              true
             </td>
           </tr>
           <tr>
-            <td>buttonBg</td>
-            <td>String</td>
-            <td>null</td>
-            <td>Button background is forced to be changed</td>
-          </tr>
-          <tr>
-            <td>buttonTextColor</td>
-            <td>String</td>
-            <td>null</td>
-            <td>Button text color is forced to be changed</td>
-          </tr>
-
-          <tr>
-            <td>buttonHref</td>
+            <td>completedText</td>
             <td>String</td>
             <td>null</td>
             <td>
-              Used if the the
-              <code>type</code> is an <code>a</code> element (links).
+              It shows instead of slot when isCompleted is true
             </td>
           </tr>
           <tr>
-            <td>buttonTo</td>
-            <td>String</td>
-            <td>null</td>
+            <td>isChecked</td>
+            <td>Boolean</td>
+            <td>false</td>
             <td>
-              Used if the the
-              <code>type</code> is a <code>router-link</code>. Define the path.
+              add check mark icon and line through for title when it is true
             </td>
           </tr>
           <tr>
-            <td>buttonTag</td>
-            <td>String</td>
-            <td>null</td>
-            <td>
-              What type of element the component is. Options are
-              <code>button</code>, <code>a</code>,
-              <code>router-link</code>
-            </td>
-          </tr>
-          <tr>
-            <td>buttonClick</td>
-            <td>Function</td>
-            <td>null</td>
-            <td>Emits a click function.</td>
+            <td>hasPrime</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>It shows prime alt badge when it is true</td>
           </tr>
         </tbody>
       </table>
@@ -207,16 +141,12 @@ components: {
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import CallToAction from "./../components/CallToAction.vue";
 import Step from "./../components/Step.vue";
 import Accordion from "./../components/Accordion.vue";
-import Button from "./../components/Button.vue";
 @Component({
   components: {
-    CallToAction,
     Step,
-    Accordion,
-    Button
+    Accordion
   }
 })
 export default class Steps extends Vue {}
@@ -240,4 +170,3 @@ export default class Steps extends Vue {}
   }
 }
 </style>
-

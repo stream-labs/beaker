@@ -30,29 +30,26 @@ import Badge from "./../components/Badge.vue";
 })
 export default class Step extends Vue {
   @Prop(String)
-  icon!: string;
-
-  @Prop(String)
   title!: string;
 
   @Prop(String)
-  point!: string;
-
-  @Prop({ default: false })
-  hasPrime!: boolean;
+  icon!: string;
 
   @Prop({ default: false })
   isCompleted!: boolean;
 
+  @Prop(String)
+  completedText!: string;
+
   @Prop({ default: false })
   hasCheckmark!: boolean;
 
-  @Prop(String)
-  completedText!: string;
+  @Prop({ default: false })
+  hasPrime!: boolean;
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import "./../styles/Imports";
 
 .s-step {
@@ -61,7 +58,7 @@ export default class Step extends Vue {
   align-items: center;
   background: @dark-5;
   .radius();
-  .padding-v-sides(1.5);
+  .padding(1.5);
   .padding-h-sides(1.5);
 }
 
