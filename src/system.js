@@ -42,6 +42,7 @@ import Slider from "./components/Slider.vue";
 import Spinner from "./components/Spinner.vue";
 import SSProSimulator from "./components/SSProSimulator.vue";
 import StatusSwitch from "./components/StatusSwitch.vue";
+import Step from "./components/Step.vue";
 import Tabs from "./components/Tabs.vue";
 // import TabDevelop from "./components/TabDevelop.vue";
 import TextInput from "./components/TextInput.vue";
@@ -91,6 +92,7 @@ export {
   Slider,
   Spinner,
   StatusSwitch,
+  Step,
   // TabDevelop,
   Tabs,
   TextInput,
