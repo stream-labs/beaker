@@ -11,7 +11,7 @@ components: {
 }</code></pre>
       <div class="section">
         <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
-        <br />
+        <br>
         <table class="docs-table">
           <thead>
             <tr>
@@ -31,9 +31,7 @@ components: {
             <tr>
               <td>icon</td>
               <td>string</td>
-              <td>
-                "https://live.kickstarter.com/images/avatar/medium/avatars4.png"
-              </td>
+              <td>"https://live.kickstarter.com/images/avatar/medium/avatars4.png"</td>
               <td>Set this to users platform icon.</td>
             </tr>
             <tr>
@@ -45,11 +43,34 @@ components: {
           </tbody>
         </table>
       </div>
-      <br />
-      <br />
+      <br>
+      <br>
       <div class="section">
         <UrlBar :domain="domain"></UrlBar>
-        <br />
+        <br>
+        <table class="docs-table">
+          <thead>
+            <tr>
+              <th>Prop</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>domain</td>
+              <td>string</td>
+              <td>-</td>
+              <td>Domain name for the Url Bar.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section">
+        <CSLayoutPicker></CSLayoutPicker>
+        <br>
         <table class="docs-table">
           <thead>
             <tr>
@@ -79,12 +100,14 @@ import { Component, Vue } from "vue-property-decorator";
 import Accordion from "./../components/Accordion.vue";
 import SSProSimulator from "./../components/SSProSimulator.vue";
 import UrlBar from "./../components/UrlBar.vue";
+import CSLayoutPicker from "./../components/CSLayoutPicker.vue";
 
 @Component({
   components: {
     Accordion,
     SSProSimulator,
-    UrlBar
+    UrlBar,
+    CSLayoutPicker
   }
 })
 export default class CreatorSitesDemo extends Vue {
