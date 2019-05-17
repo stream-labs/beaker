@@ -24,7 +24,7 @@ components: {
 <code>&lt;empty-section
   :variation=&quot;'search'&quot;
   :title=&quot;'The title'&quot;
-  :interval=&quot;'The Subtitle'&quot;&gt;
+  :subtitle=&quot;'The Subtitle'&quot;&gt;
   &lt;div&gt;Anything within element will be slotted below&lt;/div&gt;
 &lt;/empty-section&gt;</code></pre>
         </div>
@@ -44,7 +44,7 @@ components: {
           <pre>
 <code>&lt;empty-section
   :title=&quot;'The title'&quot;
-  :interval=&quot;'The Subtitle'&quot;&gt;
+  :subtitle=&quot;'The Subtitle'&quot;&gt;
   &lt;div&gt;Anything within element will be slotted below&lt;/div&gt;
 &lt;/empty-section&gt;</code></pre>
         </div>
@@ -64,11 +64,9 @@ components: {
         <div slot="content">
           <pre>
 <code>&lt;empty-section
-  :variation=&quot;'search'&quot;
-  :title=&quot;'The title'&quot;
-  :interval=&quot;'The Subtitle'&quot;&gt;
-  &lt;div&gt;Anything within element will be slotted below&lt;/div&gt;
-&lt;/empty-section&gt;</code></pre>
+  :variation=&quot;'warning'&quot;
+  :title=&quot;'You need to setup your domain'&quot;
+  :subtitle=&quot;'A domain name is required for custom email.'&quot;&gt;</code></pre>
         </div>
       </accordion>
 
