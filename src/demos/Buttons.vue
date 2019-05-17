@@ -314,6 +314,13 @@ components: {
     :title=&quot;'With Icon'&quot;
     :icon=&quot;'image'&quot;&gt;
   &lt;/Button&gt;
+
+  &lt;Button
+    :variation="'rewards-gold'"
+    :icon-img="'https://cdn.streamlabs.com/streamer-loyalty/gold-status-circle.svg'"
+    :size="'small'"
+    :title="'Rewards'"&gt;
+  &lt;/Button&gt;
 &lt;/div&gt;</code></pre>
         </div>
       </Accordion>
@@ -351,6 +358,15 @@ components: {
           :variation="'prime'"
           :title="'Join Prime'"
           :size="'small'"
+        ></Button>
+
+        <Button
+          :variation="'rewards-gold'"
+          :icon-img="
+            'https://cdn.streamlabs.com/streamer-loyalty/gold-status-circle.svg'
+          "
+          :size="'small'"
+          :title="'Rewards'"
         ></Button>
       </div>
     </div>
@@ -719,6 +735,15 @@ components: {
             Use the endings of our custom icons. For example 'icon-settings'
             would be 'settings'. See icons page of the design system for a full
             list.
+          </td>
+        </tr>
+        <tr>
+          <td>iconImg</td>
+          <td>String</td>
+          <td>null</td>
+          <td>
+            Takes image source string to use an image as an icon. Icon image
+            will have a 14px width.
           </td>
         </tr>
         <tr>

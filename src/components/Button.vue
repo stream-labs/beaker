@@ -1,6 +1,7 @@
 <template>
   <component
     :icon="icon"
+    :icon-img="iconImg"
     :title="title"
     :price="price"
     :description="description"
@@ -19,6 +20,9 @@
     <span>
       <span>
         <i v-if="iconClass" :class="iconClass"></i>
+        <i v-if="iconImg" class="icon-img">
+          <img :src="iconImg" :alt="`${title} Icon Image`" />
+        </i>
         {{ title }}
       </span>
       <span v-if="description" class="s-button__description">
@@ -52,6 +56,12 @@ export default class Button extends Vue {
 
   @Prop()
   icon!: {
+    type: String;
+    default: null;
+  };
+
+  @Prop()
+  iconImg!: {
     type: String;
     default: null;
   };
@@ -269,6 +279,11 @@ export default class Button extends Vue {
   i {
     .margin-right();
     color: inherit;
+  }
+
+  .icon-img {
+    display: flex;
+    align-items: center;
   }
 
   span {
@@ -757,6 +772,36 @@ export default class Button extends Vue {
   }
 }
 
+.s-button--rewards-silver,
+.s-button--rewards-gold,
+.s-button--rewards-platinum,
+.s-button--rewards-diamond,
+.s-button--rewards-legend {
+  background-color: transparent;
+  border: 1px solid @light-5;
+  color: @light-5;
+}
+
+.s-button--rewards-gold {
+  border-color: @yellow;
+  color: @yellow;
+}
+
+.s-button--rewards-platinum {
+  border-color: @dark-5;
+  color: @dark-5;
+}
+
+.s-button--rewards-diamond {
+  border-color: #6da893;
+  color: #6da893;
+}
+
+.s-button--rewards-legend {
+  border-color: @purple;
+  color: @purple;
+}
+
 .night {
   .s-button {
     &:focus,
@@ -913,6 +958,16 @@ export default class Button extends Vue {
 
     &:focus {
       background-color: @prime;
+    }
+  }
+
+  .s-button--rewards-silver,
+  .s-button--rewards-gold,
+  .s-button--rewards-platinum,
+  .s-button--rewards-diamond,
+  .s-button--rewards-legend {
+    &:focus {
+      background-color: transparent;
     }
   }
 }
