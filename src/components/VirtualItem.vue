@@ -124,7 +124,7 @@ export default class VitualItem extends Vue {
 .s-virtual-item__rarity {
   .margin-top();
 
-  i {
+  .icon-check-mark {
     .margin-right();
   }
 
