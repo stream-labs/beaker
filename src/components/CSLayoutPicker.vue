@@ -39,6 +39,11 @@ export default class CSLayoutPicker extends Vue {
     this.chooseLayout = false;
     this.addLayout = true;
   }
+
+  closeChooseLayout() {
+    this.chooseLayout = false;
+    this.addLayout = true;
+  }
 }
 </script>
 
