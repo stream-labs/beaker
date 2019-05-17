@@ -50,6 +50,28 @@ components: {
         </div>
       </accordion>
 
+      <h2>Warning Variation</h2>
+
+      <div class="row">
+        <empty-section
+          :variation="'warning'"
+          :title="'You need to setup your domain'"
+          :subtitle="'A domain name is required for custom email.'"
+        ></empty-section>
+      </div>
+
+      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+        <div slot="content">
+          <pre>
+<code>&lt;empty-section
+  :variation=&quot;'search'&quot;
+  :title=&quot;'The title'&quot;
+  :interval=&quot;'The Subtitle'&quot;&gt;
+  &lt;div&gt;Anything within element will be slotted below&lt;/div&gt;
+&lt;/empty-section&gt;</code></pre>
+        </div>
+      </accordion>
+
       <table class="docs-table">
         <thead>
           <tr>
