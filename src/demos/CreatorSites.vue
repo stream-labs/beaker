@@ -89,18 +89,18 @@ components: {
           </div>
         </Accordion>
 
-        <div class="flex">
-          <CSLayoutPicker>
-            <div
-              slot="layouts"
-              v-for="layout in webLayouts"
-              :key="layout.id"
-              class="s-cs-layout-picker__layout"
-            >
+        <CSLayoutPicker>
+          <div
+            slot="layouts"
+            v-for="layout in webLayouts"
+            :key="layout.id"
+            class="s-cs-layout-picker__layout"
+          >
+            <div>
               <img :src="layout.src" />
             </div>
-          </CSLayoutPicker>
-        </div>
+          </div>
+        </CSLayoutPicker>
       </div>
     </div>
   </div>
