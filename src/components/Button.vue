@@ -772,6 +772,7 @@ export default class Button extends Vue {
   }
 }
 
+.s-button--rewards-standard,
 .s-button--rewards-silver,
 .s-button--rewards-gold,
 .s-button--rewards-platinum,
@@ -779,12 +780,12 @@ export default class Button extends Vue {
 .s-button--rewards-legend {
   background-color: transparent;
   border: 1px solid @light-5;
-  color: @light-5;
+  color: @dark-5;
 }
 
 .s-button--rewards-gold {
-  border-color: @yellow;
-  color: @yellow;
+  border-color: #d2a752;
+  color: #d2a752;
 }
 
 .s-button--rewards-platinum {
@@ -961,6 +962,7 @@ export default class Button extends Vue {
     }
   }
 
+  .s-button--rewards-standard,
   .s-button--rewards-silver,
   .s-button--rewards-gold,
   .s-button--rewards-platinum,
@@ -969,6 +971,17 @@ export default class Button extends Vue {
     &:focus {
       background-color: transparent;
     }
+  }
+
+  .s-button--rewards-standard,
+  .s-button--rewards-silver {
+    border-color: @light-4;
+    color: @light-4;
+  }
+
+  .s-button--rewards-platinum {
+    border-color: @light-3;
+    color: @light-3;
   }
 }
 
