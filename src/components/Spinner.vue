@@ -33,7 +33,8 @@
             dur="1.2s"
             repeatCount="indefinite"
           ></animate>
-          <animateTransform v-if="firefox"
+          <animateTransform
+            v-if="firefox"
             attributeName="transform"
             type="translate"
             values="0 0 ; 0 4; 0 0"
@@ -75,7 +76,8 @@
             dur="1.2s"
             repeatCount="indefinite"
           ></animate>
-          <animateTransform v-if="firefox"
+          <animateTransform
+            v-if="firefox"
             attributeName="transform"
             type="translate"
             values="0 0 ; 0 4; 0 0"
@@ -117,7 +119,8 @@
             dur="1.2s"
             repeatCount="indefinite"
           ></animate>
-          <animateTransform v-if="firefox"
+          <animateTransform
+            v-if="firefox"
             attributeName="transform"
             type="translate"
             values="0 0 ; 0 4; 0 0"
@@ -141,7 +144,6 @@ import { Component, Prop, Vue } from "vue-property-decorator";
   name: "Spinner"
 })
 export default class Spinner extends Vue {
-
   private firefox: Boolean = false;
 
   @Prop({ default: "small" })
@@ -180,7 +182,9 @@ export default class Spinner extends Vue {
   align-content: center;
   justify-content: center;
 
-  svg,path,rect {
+  svg,
+  path,
+  rect {
     transform-origin: top;
   }
 }
