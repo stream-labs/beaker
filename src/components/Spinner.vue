@@ -33,6 +33,14 @@
             dur="1.2s"
             repeatCount="indefinite"
           ></animate>
+          <animateTransform v-if="firefox"
+            attributeName="transform"
+            type="translate"
+            values="0 0 ; 0 4; 0 0"
+            begin="0s"
+            dur="1.2s"
+            repeatCount="indefinite"
+          ></animateTransform>
           <animateMotion begin="0s" dur="1.2s" repeatCount="indefinite">
             <mpath xlink:href="#s-bar-y-path"></mpath>
           </animateMotion>
@@ -67,6 +75,14 @@
             dur="1.2s"
             repeatCount="indefinite"
           ></animate>
+          <animateTransform v-if="firefox"
+            attributeName="transform"
+            type="translate"
+            values="0 0 ; 0 4; 0 0"
+            begin="0.4s"
+            dur="1.2s"
+            repeatCount="indefinite"
+          ></animateTransform>
           <animateMotion begin="0.4s" dur="1.2s" repeatCount="indefinite">
             <mpath xlink:href="#s-bar-y-path"></mpath>
           </animateMotion>
@@ -101,6 +117,14 @@
             dur="1.2s"
             repeatCount="indefinite"
           ></animate>
+          <animateTransform v-if="firefox"
+            attributeName="transform"
+            type="translate"
+            values="0 0 ; 0 4; 0 0"
+            begin="0.8s"
+            dur="1.2s"
+            repeatCount="indefinite"
+          ></animateTransform>
           <animateMotion begin="0.8s" dur="1.2s" repeatCount="indefinite">
             <mpath xlink:href="#s-bar-y-path"></mpath>
           </animateMotion>
@@ -117,6 +141,9 @@ import { Component, Prop, Vue } from "vue-property-decorator";
   name: "Spinner"
 })
 export default class Spinner extends Vue {
+
+  private firefox: Boolean = false;
+
   @Prop({ default: "small" })
   size!: String;
 
@@ -130,6 +157,12 @@ export default class Spinner extends Vue {
   get swapMode() {
     if (this.swap === true) {
       return "s-spinner--modeswap";
+    }
+  }
+
+  mounted() {
+    if (navigator.userAgent.indexOf("Firefox") != -1) {
+      this.firefox = true;
     }
   }
 }
@@ -146,6 +179,10 @@ export default class Spinner extends Vue {
   align-items: center;
   align-content: center;
   justify-content: center;
+
+  svg,path,rect {
+    transform-origin: top;
+  }
 }
 
 .s-spinner--tiny {
