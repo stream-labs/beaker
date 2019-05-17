@@ -1,7 +1,7 @@
 <template>
   <div
     class="s-step"
-    :class="{ completed: isCompleted, checked: hasCheckmark }"
+    :class="{ 's-step--completed': isCompleted, checked: hasCheckmark }"
   >
     <div class="s-step__title">
       <span class="s-step__icon" :class="icon" v-if="icon"></span>
@@ -14,7 +14,7 @@
         :align-left="true"
       ></Badge>
     </div>
-    <slot v-if="!isCompleted"> </slot>
+    <slot v-if="!isCompleted"></slot>
     <div v-if="isCompleted">{{ completedText }}</div>
   </div>
 </template>
@@ -72,6 +72,8 @@ export default class Step extends Vue {
 
 .s-step__title-text {
   .margin(0);
+  color: @night-title;
+  .weight(@medium);
 }
 
 .s-step__icon {
@@ -82,7 +84,7 @@ export default class Step extends Vue {
   margin-left: 8px;
 }
 
-.completed {
+.s-step--completed {
   color: @dark-5;
   background: @dark-4;
   .s-step__icon,
@@ -95,6 +97,23 @@ export default class Step extends Vue {
 .checked {
   .s-step__title-text {
     text-decoration: line-through;
+  }
+}
+
+.night,
+.night-theme {
+  .s-step__title-text {
+    color: @night-title;
+  }
+
+  .s-step--completed {
+    color: @dark-5;
+
+    .s-step__icon,
+    .s-step__title-text,
+    .s-step__badge {
+      color: @dark-5;
+    }
   }
 }
 </style>
