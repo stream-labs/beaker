@@ -23,7 +23,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import PaneDropdown from "./PaneDropdown.vue";
-import VueDatePicker from "vuejs-datepicker";
+// import VueDatePicker from "vuejs-datepicker";
 
 interface selectedDate {
   date: Date;
@@ -32,10 +32,10 @@ interface selectedDate {
 
 @Component({
   components: {
-    VueDatePicker,
+    // VueDatePicker,
     PaneDropdown
-  },
-  props: { ...VueDatePicker.props }
+  }
+  // props: { ...VueDatePicker.props }
 })
 export default class DatePicker extends Vue {
   @Prop({})
