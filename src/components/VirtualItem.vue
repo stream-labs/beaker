@@ -99,6 +99,10 @@ export default class VitualItem extends Vue {
   min-width: 160px;
   max-width: 220px;
 
+  @media (max-width: 640px) {
+    max-width: none;
+  }
+
   &.is-selected {
     background-color: @selected;
     .s-virtual-item__name {
@@ -113,59 +117,59 @@ export default class VitualItem extends Vue {
   &:hover {
     cursor: pointer;
   }
-}
 
-.s-virtual-item__name {
-  .weight(@medium);
-  font-size: 16px;
-  .margin-bottom(0);
-}
-
-.s-virtual-item__rarity {
-  .margin-top();
-
-  .icon-check-mark {
-    .margin-right();
+  .s-virtual-item__name {
+    .weight(@medium);
+    font-size: 16px;
+    .margin-bottom(0);
   }
 
-  &.entered {
-    color: @teal;
+  .s-virtual-item__rarity {
+    .margin-top();
+
+    .icon-check-mark {
+      .margin-right();
+    }
+
+    &.entered {
+      color: @teal;
+    }
   }
-}
 
-.s-virtual-item__selection-count {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  cursor: pointer;
-  background-color: @white;
-  color: @dark-2;
-  .small-type();
-  .weight(@medium);
-  .radius(4);
-  width: 16px;
-  height: 16px;
-  .flex-centered();
-}
-
-.s-virtual-item__selection-remaining {
-  position: absolute;
-  top: 16px;
-  right: 12px;
-  background: @dark-5;
-  color: @white;
-  .radius();
-  .padding(0.5);
-
-  &.warning {
-    background: @red;
+  .s-virtual-item__selection-count {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
+    background-color: @white;
+    color: @dark-2;
+    .small-type();
+    .weight(@medium);
+    .radius(4);
+    width: 16px;
+    height: 16px;
+    .flex-centered();
   }
-}
 
-.s-virtual-item__img {
-  margin: 0 auto;
-  .margin-bottom(2);
-  width: 96px;
+  .s-virtual-item__selection-remaining {
+    font-size: 14px;
+    position: absolute;
+    top: 16px;
+    right: 12px;
+    background: @dark-5;
+    color: @white;
+    .radius();
+    .padding(0.5);
+
+    &.warning {
+      background: @red;
+    }
+  }
+
+  .s-virtual-item__img {
+    margin: 0 auto;
+    .margin-bottom(2);
+  }
 }
 
 .night,
