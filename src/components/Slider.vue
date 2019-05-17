@@ -187,7 +187,7 @@ export default class Slider extends Vue {
 
   .s-slider--simple {
     .vue-slider-process {
-      background-color: @selected;
+      background-color: @dark-5;
     }
   }
 }
