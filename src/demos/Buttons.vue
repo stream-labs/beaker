@@ -840,9 +840,9 @@ components: {
             <code>default</code>, <code>action</code>, <code>prime</code> and
             <code>warning</code>. Other options are <code>subscribe</code>,
             <code>paypal</code>, <code>download</code>, and
-            <code>navigation</code>. Reward options are <code>standard</code>,
-            <code>silver</code>, <code>gold</code>, <code>platinum</code>,
-            <code>diamond</code>, and <code>legend</code>. Platform options are
+            <code>navigation</code>. Reward options are <code>rewards-standard</code>,
+            <code>rewards-silver</code>, <code>rewards-gold</code>, <code>rewards-platinum</code>,
+            <code>rewards-diamond</code>, and <code>rewards-legend</code>. Platform options are
             <code>facebook</code>, <code>mixer</code>, <code>twitch</code>,
             <code>youtube</code>, <code>periscope</code>,
             <code>picarto</code>and <code>paypal-blue</code>.
