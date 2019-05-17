@@ -3,6 +3,7 @@
     <i class="icon-search" v-if="this.variation === 'search'"></i>
     <i class="icon-empty" v-if="this.variation === 'text'"></i>
     <i class="icon-lock" v-if="this.variation === 'prime'"></i>
+    <i class="icon-error" v-if="this.variation === 'warning'"></i>
 
     <div v-if="titleSlot" class="s-empty-section__title">
       <slot name="title"></slot>
