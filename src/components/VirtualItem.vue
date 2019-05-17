@@ -24,7 +24,7 @@
     </div>
     <h3 class="s-virtual-item__name">{{ name }}</h3>
     <span class="s-virtual-item__rarity" :class="{ entered: isGiveaway }">
-      <i class="icon-check-mark" v-if="this.isGiveaway"></i>
+      <i class="icon-check-mark" v-if="isGiveaway"></i>
       {{ rarity }}
     </span>
   </div>
