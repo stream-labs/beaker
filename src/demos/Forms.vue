@@ -16,6 +16,21 @@
       ></text-input>
     </form-group-v>
 
+    <form-group-v :title="title">
+      <selector
+        slot="input"
+        v-model="selected"
+        :options="[
+          'Option A',
+          'Option B',
+          'Option C',
+          'Option D',
+          'Option E',
+          'Option F'
+        ]"
+      ></selector>
+    </form-group-v>
+
     <payment-form></payment-form>
   </div>
 </template>
@@ -25,6 +40,8 @@ import { Component, Vue } from "vue-property-decorator";
 import PaymentForm from "./../components/PaymentForm.vue";
 import FormGroupH from "./../components/FormGroupH.vue";
 import FormGroupV from "./../components/FormGroupV.vue";
+import Selector from "./../components/Selector.vue";
+
 import TextInput from "./../components/TextInput.vue";
 
 @Component({
@@ -32,6 +49,7 @@ import TextInput from "./../components/TextInput.vue";
     PaymentForm,
     FormGroupH,
     FormGroupV,
+    Selector,
     TextInput
   }
 })
