@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import ClickOutside from "vue-click-outside";
 
 @Component({
@@ -36,6 +36,11 @@ export default class CSLayoutPicker extends Vue {
   }
 
   showAddLayout() {
+    this.chooseLayout = false;
+    this.addLayout = true;
+  }
+
+  closeChooseLayout() {
     this.chooseLayout = false;
     this.addLayout = true;
   }
