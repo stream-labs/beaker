@@ -125,7 +125,7 @@ export default class VitualItem extends Vue {
   .margin-top();
 
   i {
-    margin-right: 8px;
+    .margin-right();
   }
 
   &.entered {
@@ -154,7 +154,7 @@ export default class VitualItem extends Vue {
   right: 12px;
   background: @dark-5;
   color: @white;
-  .radius(1);
+  .radius();
   .padding(0.5);
 
   &.warning {
