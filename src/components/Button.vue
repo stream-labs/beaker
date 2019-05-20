@@ -780,10 +780,6 @@ export default class Button extends Vue {
 .s-button--rewards-legend {
   background-color: transparent;
   border: 1px solid @day-all-stars-gold;
-  color: @day-all-stars-gold;
-}
-
-.s-button--rewards-standard {
   color: @day-all-stars-gold !important;
 }
 
