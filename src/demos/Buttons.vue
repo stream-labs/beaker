@@ -361,7 +361,7 @@ components: {
         ></Button>
 
         <Button
-          :variation="'rewards-silver'"
+          :variation="'rewards-standard'"
           :size="'small'"
           :title="'Rewards'"
         ></Button>
