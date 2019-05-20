@@ -789,22 +789,22 @@ export default class Button extends Vue {
 
 .s-button--rewards-silver {
   border-color: @day-all-stars-silver;
-  color: @dark-5;
+  color: @dark-5 !important;
 }
 
 .s-button--rewards-platinum {
   border-color: @day-all-stars-platinum;
-  color: @dark-4;
+  color: @dark-4 !important;
 }
 
 .s-button--rewards-diamond {
   border-color: @day-all-stars-diamond;
-  color: @day-all-stars-diamond;
+  color: @day-all-stars-diamond !important;
 }
 
 .s-button--rewards-legend {
   border-color: @day-all-stars-legend;
-  color: @day-all-stars-legend;
+  color: @day-all-stars-legend !important;
 }
 
 .night {
@@ -979,12 +979,12 @@ export default class Button extends Vue {
 
   .s-button--rewards-silver {
     border-color: @night-all-stars-silver;
-    color: @night-all-stars-silver;
+    color: @night-all-stars-silver !important;
   }
 
   .s-button--rewards-platinum {
     border-color: @night-all-stars-platinum;
-    color: @night-all-stars-platinum;
+    color: @night-all-stars-platinum !important;
   }
 }
 
