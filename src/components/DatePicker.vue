@@ -9,13 +9,13 @@
     <div slot="title" class="s-date-picker__title">{{ dateTitle }}</div>
     <vue-date-picker
       calendar-class="s-date-picker__calendar"
-      v-bind="{ ...datePickerProps }"
+      v-bind="{ ...$props }"
       :inline="true"
       @selected="updateDate"
       :initial-view="view"
       :minimum-view="view"
       :maximum-view="maxView"
-      :value="startDate"
+      :value="value"
     ></vue-date-picker>
   </pane-dropdown>
 </template>
@@ -23,19 +23,14 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import PaneDropdown from "./PaneDropdown.vue";
-// import VueDatePicker from "vuejs-datepicker";
-
-interface selectedDate {
-  date: Date;
-  selected: boolean;
-}
+import VueDatePicker from "vuejs-datepicker";
 
 @Component({
   components: {
-    // VueDatePicker,
+    VueDatePicker,
     PaneDropdown
-  }
-  // props: { ...VueDatePicker.props }
+  },
+  props: { ...VueDatePicker.props }
 })
 export default class DatePicker extends Vue {
   @Prop({})
@@ -51,10 +46,7 @@ export default class DatePicker extends Vue {
   startDate!: Date | string;
 
   today = new Date();
-  selectedDate: selectedDate = {
-    date: new Date(),
-    selected: false
-  };
+  selectedDate = new Date();
 
   created() {
     if (this.startDate) {
@@ -71,8 +63,8 @@ export default class DatePicker extends Vue {
   }
 
   get dateTitle() {
-    if (this.selectedDate.selected) {
-      const selectedDate = new Date(this.selectedDate.date.toString());
+    if (this.$props.value) {
+      const selectedDate = new Date(this.$props.value.toString());
       const months = [
         "January",
         "February",
@@ -90,7 +82,6 @@ export default class DatePicker extends Vue {
       const day = selectedDate.getDate();
       const month = selectedDate.getMonth();
       const year = selectedDate.getFullYear();
-
       if (
         day === this.today.getDate() - 1 &&
         month === this.today.getMonth() &&
@@ -98,13 +89,10 @@ export default class DatePicker extends Vue {
       ) {
         return "Yesterday";
       }
-
       if (this.view === "month") return `${months[month]} ${year}`;
       if (this.view === "year") return `${year}`;
-
       return `${day} ${months[month]} ${year}`;
     }
-
     return this.placeholder;
   }
 
@@ -113,29 +101,21 @@ export default class DatePicker extends Vue {
   }
 
   updateDate(date) {
-    this.selectedDate = {
-      date,
-      selected: true
-    };
-
-    this.$emit("selected", date);
+    this.$emit("input", date);
   }
 }
 </script>
 
 <style lang="less">
 @import "./../styles/Imports";
-
 .s-date-picker {
   &__title {
     font-size: 16px;
     line-height: 1.3;
   }
-
   &__toggle {
     .radius();
     background-color: @light-2;
-
     .s-date-picker__title {
       padding: 7px 6px;
       font-size: 14px;
@@ -143,12 +123,10 @@ export default class DatePicker extends Vue {
       line-height: 1.3;
       color: @dark-5;
     }
-
     .s-pane-dropdown__menu {
       top: 32px;
     }
   }
-
   &__calendar {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -161,7 +139,6 @@ export default class DatePicker extends Vue {
     width: 272px;
     .radius(2);
     border: none;
-
     header {
       grid-area: header;
       display: grid;
@@ -169,7 +146,6 @@ export default class DatePicker extends Vue {
       grid-column-gap: 16px;
       .margin-bottom(2);
       line-height: 40px;
-
       span {
         width: initial;
         .radius();
@@ -177,7 +153,6 @@ export default class DatePicker extends Vue {
         font-weight: 500;
         .transition();
         background-color: @light-2;
-
         &:not(.disabled).prev,
         &:not(.disabled).next,
         &:not(.disabled).up {
@@ -186,25 +161,21 @@ export default class DatePicker extends Vue {
           }
         }
       }
-
       .prev,
       .next {
         width: 40px;
       }
-
       .prev {
         &:after {
           margin-left: -3px;
         }
       }
-
       .next {
         &:after {
           margin-left: 4px;
         }
       }
     }
-
     & > div {
       grid-area: dates;
       display: grid;
@@ -213,7 +184,6 @@ export default class DatePicker extends Vue {
       grid-gap: 8px;
     }
   }
-
   .cell {
     width: auto;
     height: 32px;
@@ -223,79 +193,65 @@ export default class DatePicker extends Vue {
     font-weight: 500;
     line-height: 32px;
     .transition();
-
     &:not(.blank):not(.disabled):not(.selected) {
       &.day,
       &.month,
       &.year {
         background-color: @light-2;
-
         &:hover {
           border: none;
           background-color: @light-2;
         }
       }
     }
-
     &.day-header {
       align-self: center;
       height: auto;
       line-height: normal;
     }
-
     &.selected {
       font-weight: 700;
       background-color: @dark-2;
       color: @white;
-
       &:hover {
         background-color: @dark-2;
         border: none !important;
       }
     }
-
     &.disabled {
       color: @dark-5;
       opacity: 0.5;
     }
   }
 }
-
 .night {
   .s-date-picker {
     &__toggle {
       background-color: @dark-4;
-
       .s-date-picker__title {
         color: @white;
       }
     }
-
     &__calendar {
       background: @dark-4;
       color: @white;
-
       header {
         span {
           background-color: @dark-5;
-
           &:not(.disabled).prev,
           &:not(.disabled).next,
           &:not(.disabled).up {
             background-color: @dark-5;
-
             &:hover {
               background-color: lighten(@dark-5, 5%);
             }
           }
         }
-
         .next {
           &::after {
             border-left-color: @light-4;
           }
         }
-
         .prev {
           &::after {
             border-right-color: @light-4;
@@ -303,21 +259,18 @@ export default class DatePicker extends Vue {
         }
       }
     }
-
     .cell {
       &:not(.blank):not(.disabled):not(.selected) {
         &.day,
         &.month,
         &.year {
           background-color: @dark-5;
-
           &:hover {
             background-color: lighten(@dark-5, 5%);
             border: none;
           }
         }
       }
-
       &.disabled {
         color: @white;
       }

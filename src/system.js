@@ -15,7 +15,7 @@ import Checkbox from "./components/Checkbox.vue";
 import ColorPicker from "./components/ColorPicker.vue";
 import ContentRow from "./components/ContentRow.vue";
 import CSLayoutPicker from "./components/CSLayoutPicker.vue";
-// import DatePicker from "./components/DatePicker.vue";
+import DatePicker from "./components/DatePicker.vue";
 import EmptySection from "./components/EmptySection.vue";
 import FormGroupH from "./components/FormGroupH.vue";
 import FormGroupV from "./components/FormGroupV.vue";
@@ -65,7 +65,7 @@ export {
   ColorPicker,
   ContentRow,
   CSLayoutPicker,
-  // DatePicker,
+  DatePicker,
   EmptySection,
   FormGroupH,
   FormGroupV,

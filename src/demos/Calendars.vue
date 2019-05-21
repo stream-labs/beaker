@@ -37,7 +37,7 @@ components: {
         :full-month-name="true"
         :placeholder="'Select Date'"
         :start-date="tomorrow"
-        @selected="logDate"
+        v-model="selectedDate"
       ></s-date-picker>
     </div>
 
@@ -48,7 +48,7 @@ components: {
         :disabled-dates="state.disabledDates"
         :placeholder="'Select Date'"
         :view="'month'"
-        @selected="logDate"
+        v-model="selectedDate"
       ></s-date-picker>
     </div>
 
@@ -105,7 +105,7 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Watch, Vue } from "vue-property-decorator";
 
 import moment from "moment";
 import Accordion from "./../components/Accordion.vue";
@@ -124,13 +124,11 @@ export default class Calendars extends Vue {
     }
   };
 
+  selectedDate = new Date();
+
   tomorrow = moment()
     .add(1, "days")
     .format();
-
-  logDate(date) {
-    console.log(date);
-  }
 }
 </script>
 

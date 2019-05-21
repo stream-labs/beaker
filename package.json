@@ -51,6 +51,7 @@
     "vue-select": "^2.5.1",
     "vue-slider-component": "^2.8",
     "vue-template-compiler": "^2.6.6",
+    "vuejs-datepicker": "^1.5.4",
     "vuejs-paginate": "^2.1.0"
   },
   "peerDependencies": {
@@ -66,6 +67,7 @@
     "vue-router": "^3.0.1",
     "vue-select": "^2.5.1",
     "vue-slider-component": "^2.8",
+    "vuejs-datepicker": "^1.5.4",
     "vuejs-paginate": "^2.1.0"
   },
   "types": "./index.d.ts"
