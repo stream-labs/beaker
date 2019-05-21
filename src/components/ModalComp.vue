@@ -8,6 +8,7 @@
         :text="text"
         :width="width"
         :minWidth="minWidth"
+        ><slot></slot
       ></ModalBasic>
     </div>
 

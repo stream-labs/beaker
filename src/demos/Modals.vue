@@ -49,6 +49,17 @@ components: {
         "
       ></ModalComp>
 
+      <ModalComp
+        :name="'modal-basic3'"
+        :type="'basic'"
+        :title="'UI Modal3'"
+        :subTitle="'Subtitle3'"
+        :text="
+          'Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.'
+        "
+        >hey there</ModalComp
+      >
+
       <div class="s-button-container--left">
         <Button
           :variation="'default'"
@@ -59,6 +70,11 @@ components: {
           :variation="'default'"
           :title="'modal basic2'"
           @click="$modal.show('modal-basic2')"
+        ></Button>
+        <Button
+          :variation="'default'"
+          :title="'modal basic3'"
+          @click="$modal.show('modal-basic3')"
         ></Button>
       </div>
     </div>
