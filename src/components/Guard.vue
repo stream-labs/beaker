@@ -59,7 +59,7 @@ export default class Guard extends Vue {
       classes.push(`${this.prefix}--readable`);
     }
 
-    if (this.type === "alt") {
+    if (this.variation === "alt") {
       classes.push(`${this.prefix}--alt`);
     }
 
