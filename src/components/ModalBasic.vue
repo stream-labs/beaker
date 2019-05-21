@@ -13,6 +13,7 @@
           <h1 class="s-modal-title">{{ title }}</h1>
           <h2 class="s-modal-sub-title">{{ subTitle }}</h2>
           <p class="s-modal-text">{{ text }}</p>
+          <slot></slot>
         </div>
       </div>
       <div class="s-modal-footer">

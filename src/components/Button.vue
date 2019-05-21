@@ -779,28 +779,28 @@ export default class Button extends Vue {
 .s-button--rewards-diamond,
 .s-button--rewards-legend {
   background-color: transparent;
-  border: 1px solid @light-5;
-  color: @dark-5;
+  border: 1px solid @day-all-stars-gold;
+  color: @day-all-stars-gold !important;
 }
 
-.s-button--rewards-gold {
-  border-color: #d2a752;
-  color: #d2a752;
+.s-button--rewards-silver {
+  border-color: @day-all-stars-silver;
+  color: @dark-5 !important;
 }
 
 .s-button--rewards-platinum {
-  border-color: @dark-5;
-  color: @dark-5;
+  border-color: @day-all-stars-platinum;
+  color: @dark-4 !important;
 }
 
 .s-button--rewards-diamond {
-  border-color: #6da893;
-  color: #6da893;
+  border-color: @day-all-stars-diamond;
+  color: @day-all-stars-diamond !important;
 }
 
 .s-button--rewards-legend {
-  border-color: @purple;
-  color: @purple;
+  border-color: @day-all-stars-legend;
+  color: @day-all-stars-legend !important;
 }
 
 .night {
@@ -973,15 +973,14 @@ export default class Button extends Vue {
     }
   }
 
-  .s-button--rewards-standard,
   .s-button--rewards-silver {
-    border-color: @light-4;
-    color: @light-4;
+    border-color: @night-all-stars-silver;
+    color: @night-all-stars-silver !important;
   }
 
   .s-button--rewards-platinum {
-    border-color: @light-3;
-    color: @light-3;
+    border-color: @night-all-stars-platinum;
+    color: @night-all-stars-platinum !important;
   }
 }
 
