@@ -218,6 +218,7 @@ export default class PaneDropdown extends Vue {
 
   &__menu--relative {
     position: relative;
+    top: 0;
   }
 
   &__menu--simple {
