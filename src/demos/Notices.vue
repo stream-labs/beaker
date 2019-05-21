@@ -19,6 +19,7 @@
         <TooltipNotice
           v-if="showTooltipNotice"
           @handle-tooltip="closeTooltip"
+          :arrowPosition="'top'"
           :title="'Widgets have moved'"
           :desc="'All your favorite widgets, just with a new view.'"
         ></TooltipNotice>
