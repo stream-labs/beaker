@@ -63,6 +63,12 @@ export default class PaneDropdown extends Vue {
   @Prop({ default: false })
   custom!: boolean;
 
+  @Prop({ default: false })
+  relativeMenu!: boolean;
+
+  @Prop({ default: false })
+  simpleMenu!: boolean;
+
   paneMenuOpen = false;
   paneList = null;
 
@@ -83,6 +89,14 @@ export default class PaneDropdown extends Vue {
 
     if (this.autoHeight) {
       classes.push("s-pane-dropdown__menu--auto-height");
+    }
+
+    if (this.relativeMenu) {
+      classes.push("s-pane-dropdown__menu--relative");
+    }
+
+    if (this.simpleMenu) {
+      classes.push("s-pane-dropdown__menu--simple");
     }
 
     return classes;
@@ -202,6 +216,19 @@ export default class PaneDropdown extends Vue {
     transform: translateX(-50%);
   }
 
+  &__menu--relative {
+    position: relative;
+  }
+
+  &__menu--simple {
+    background-color: transparent;
+    box-shadow: none;
+
+    .s-pane-dropdown__list {
+      .margin(0);
+    }
+  }
+
   &__link {
     width: 100%;
     margin-left: 0;
@@ -296,6 +323,10 @@ export default class PaneDropdown extends Vue {
 
     &__menu {
       background-color: @dark-4;
+    }
+
+    &__menu--simple {
+      background-color: transparent;
     }
 
     &__link,
