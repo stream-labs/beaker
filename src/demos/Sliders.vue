@@ -9,18 +9,21 @@
           <a
             target="_blank"
             href="https://github.com/NightCatSama/vue-slider-component"
-          >Vue Slider Component</a> and makes use of
+            >Vue Slider Component</a
+          >
+          and makes use of
           <a
             target="_blank"
             href="https://github.com/que-etc/resize-observer-polyfill"
-          >Resize Observer Polyfill</a>.
+            >Resize Observer Polyfill</a
+          >.
         </p>
         <p>
           This slider works best when using
-          <code>v-model</code>. However, if
-          <code>:value</code> and
+          <code>v-model</code>. However, if <code>:value</code> and
           <code>@input</code> must be used please use something like
-          <code>@input="value => updateValue(value)"</code> and define the function yourself.
+          <code>@input="value => updateValue(value)"</code> and define the
+          function yourself.
         </p>
       </div>
       <pre>
@@ -71,7 +74,10 @@ components: {
     <div class="section">
       <div class="row">
         <h2>Simple Theme</h2>
-        <p>Use in more compact places when you don't want the bright teal present.</p>
+        <p>
+          Use in more compact places when you don't want the bright teal
+          present.
+        </p>
         <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
           <div slot="content">
             <pre>
@@ -90,17 +96,17 @@ components: {
             </pre>
           </div>
         </accordion>
-      <slider
-        :value="value"
-        @input="value => updateValue(value)"
-        :max="100"
-        :min="1"
-        :interval="1"
-        :tooltip="'always'"
-        :suffix="'%'"
-        :simpleTheme="true"
-      />
-    </div>
+        <slider
+          :value="value"
+          @input="value => updateValue(value)"
+          :max="100"
+          :min="1"
+          :interval="1"
+          :tooltip="'always'"
+          :suffix="'%'"
+          :simpleTheme="true"
+        />
+      </div>
     </div>
 
     <!-- Props Table -->
@@ -155,13 +161,19 @@ components: {
             <td>prefix</td>
             <td>String</td>
             <td>""</td>
-            <td>Prefix label that will be displayed next to the value in the tooltip</td>
+            <td>
+              Prefix label that will be displayed next to the value in the
+              tooltip
+            </td>
           </tr>
           <tr>
             <td>suffix</td>
             <td>String</td>
             <td>""</td>
-            <td>Suffix label that will be displayed next to the value in the tooltip</td>
+            <td>
+              Suffix label that will be displayed next to the value in the
+              tooltip
+            </td>
           </tr>
           <tr>
             <td>data</td>
@@ -179,7 +191,9 @@ components: {
             <td>simpleTheme</td>
             <td>Boolean</td>
             <td>false</td>
-            <td>Use for toned down colors to avoid bright teal in small areas.</td>
+            <td>
+              Use for toned down colors to avoid bright teal in small areas.
+            </td>
           </tr>
         </tbody>
       </table>
