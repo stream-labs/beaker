@@ -1,0 +1,20 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-16.04'
+
+	steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+ - bash: yarn install --frozen-lockfile --check-files
+  displayName: 'Install Dependencies'
+
+ - bash: 'yarn lint'
+  displayName: 'TSLint'
+
+ - bash: 'yarn build'
+  displayName: 'Compile Assets'
