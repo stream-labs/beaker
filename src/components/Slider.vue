@@ -86,7 +86,9 @@ export default class Slider extends Vue {
       let { left, top, width, height } = entry.contentRect;
       if (!this.debounced) {
         this.debounce().then(() => {
-          this.$refs.slider.refresh();
+          if (this.$refs.slider) {
+            this.$refs.slider.refresh();
+          }
         });
       }
     }
