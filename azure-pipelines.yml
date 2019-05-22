@@ -10,11 +10,11 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
- - bash: yarn install --frozen-lockfile --check-files
+- bash: yarn install --frozen-lockfile --check-files
   displayName: 'Install Dependencies'
 
- - bash: 'yarn lint'
+- bash: 'yarn lint'
   displayName: 'TSLint'
 
- - bash: 'yarn build'
+- bash: 'yarn build'
   displayName: 'Compile Assets'
