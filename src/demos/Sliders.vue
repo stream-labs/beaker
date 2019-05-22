@@ -18,13 +18,6 @@
             >Resize Observer Polyfill</a
           >.
         </p>
-        <p>
-          This slider works best when using
-          <code>v-model</code>. However, if <code>:value</code> and
-          <code>@input</code> must be used please use something like
-          <code>@input="value => updateValue(value)"</code> and define the
-          function yourself.
-        </p>
       </div>
       <pre>
           <code>
