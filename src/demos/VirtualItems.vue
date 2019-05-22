@@ -32,7 +32,6 @@
           :selectionCount="mask.selectionCount"
           :selected="mask.selected"
           @click="clickEvent"
-          :isClickable="true"
         ></VirtualItem>
       </ItemGrid>
     </div>

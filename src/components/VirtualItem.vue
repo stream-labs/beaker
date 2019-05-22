@@ -69,8 +69,13 @@ export default class VitualItem extends Vue {
   @Prop(String)
   type!: string;
 
-  @Prop({ default: false })
-  isClickable!: boolean;
+  isClickable: boolean = false;
+
+  mounted() {
+    if (this.$listeners.click) {
+      this.isClickable = true
+    }
+  }
 
   get virtualItemClasses() {
     const classes: any = [];
