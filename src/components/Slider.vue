@@ -79,8 +79,7 @@ export default class Slider extends Vue {
   @Prop({ default: false })
   simpleTheme!: boolean;
 
-  private displayValue: number | string | Array<number> | Array<string> = this
-    .value;
+  displayValue: number | string | Array<number> | Array<string> = this.value;
   private debounced: boolean = false;
   private ro = new ResizeObserver((entries, observer) => {
     for (let entry of entries) {
