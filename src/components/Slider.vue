@@ -39,7 +39,7 @@ import ResizeObserver from "resize-observer-polyfill";
 export default class Slider extends Vue {
   $refs!: {
     slider: any;
-  }
+  };
 
   @Watch("value")
   updateLocalValue() {
@@ -76,19 +76,19 @@ export default class Slider extends Vue {
   @Prop()
   data!: Array<number> | Array<string>;
 
-  displayValue: number | string | Array<number> | Array<string> = this.value;
-
   @Prop({ default: false })
   simpleTheme!: boolean;
 
+  private displayValue: number | string | Array<number> | Array<string> = this
+    .value;
   private debounced: boolean = false;
-  private ro = new ResizeObserver((entries, observer) =>  {
+  private ro = new ResizeObserver((entries, observer) => {
     for (let entry of entries) {
-      let {left, top, width, height} = entry.contentRect;
+      let { left, top, width, height } = entry.contentRect;
       if (!this.debounced) {
         this.debounce().then(() => {
           this.$refs.slider.refresh();
-        })
+        });
       }
     }
   });
@@ -98,7 +98,7 @@ export default class Slider extends Vue {
   }
 
   mounted() {
-    this.ro.observe(this.$refs.slider.$el)
+    this.ro.observe(this.$refs.slider.$el);
   }
 
   beforeDestroy() {
@@ -119,17 +119,16 @@ export default class Slider extends Vue {
 
   debounce() {
     return new Promise(resolve => {
-      if(!this.debounced) {
-        this.debounced = true
+      if (!this.debounced) {
+        this.debounced = true;
         setTimeout(() => {
           this.debounced = false;
           resolve();
         }, 500);
       }
-    })
+    });
   }
-
-  }
+}
 </script>
 
 <style lang="less">
