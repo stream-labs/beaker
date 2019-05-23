@@ -38,6 +38,16 @@
   :width=&quot;300&quot;
   :title=&quot;'Custom width'&quot;
   :desc=&quot;'All your favorite widgets, just with a new view.'&quot;
+&gt;&lt;/TooltipNotice&gt;
+
+&lt;TooltipNotice
+  v-if=&quot;showTooltipNotice&quot;
+  @handle-tooltip=&quot;alertTooltip&quot;
+  @handle-tooltip-secondary=&quot;closeTooltip&quot;
+  :title=&quot;'Secondary Action'&quot;
+  :desc=&quot;'All your favorite widgets, just with a new view.'&quot;
+  :hasSecondaryAction=&quot;true&quot;
+  :secondaryActionTitle=&quot;'No thanks'&quot;
 &gt;&lt;/TooltipNotice&gt;</code></pre>
         </div>
       </accordion>
@@ -73,6 +83,16 @@
           :width="300"
           :title="'Custom width'"
           :desc="'All your favorite widgets, just with a new view.'"
+        ></TooltipNotice>
+
+        <TooltipNotice
+          v-if="showTooltipNotice"
+          @handle-tooltip="alertTooltip"
+          @handle-tooltip-secondary="closeTooltip"
+          :title="'Secondary Action'"
+          :desc="'All your favorite widgets, just with a new view.'"
+          :hasSecondaryAction="true"
+          :secondaryActionTitle="'No thanks'"
         ></TooltipNotice>
       </div>
 
@@ -112,6 +132,20 @@
           </tr>
 
           <tr>
+            <td>hasSecondaryAction</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>Have a second action option</td>
+          </tr>
+
+          <tr>
+            <td>secondaryActionTitle</td>
+            <td>string</td>
+            <td>'Learn more'</td>
+            <td>Title for secondary action</td>
+          </tr>
+
+          <tr>
             <td>width</td>
             <td>number</td>
             <td>200</td>
@@ -137,6 +171,10 @@ import TooltipNotice from "./../components/TooltipNotice.vue";
 export default class Notices extends Vue {
   showTooltipNotice = true;
 
+  alertTooltip() {
+    window.alert("tooltip clicked");
+  }
+
   closeTooltip() {
     this.showTooltipNotice = false;
   }
@@ -149,23 +187,28 @@ export default class Notices extends Vue {
 
   .s-tooltip-notice {
     &:nth-child(1) {
-      top: 200px;
+      top: 250px;
       left: 0px;
     }
 
     &:nth-child(2) {
-      top: 200px;
+      top: 250px;
       left: 250px;
     }
 
     &:nth-child(3) {
-      top: 200px;
+      top: 250px;
       left: 500px;
     }
 
     &:nth-child(4) {
-      top: 200px;
-      left: 750px;
+      top: 450px;
+      left: 0;
+    }
+
+    &:nth-child(5) {
+      top: 450px;
+      left: 350px;
     }
   }
 }

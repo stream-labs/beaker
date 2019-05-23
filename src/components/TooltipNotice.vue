@@ -14,6 +14,15 @@
         :variation="'action'"
         :size="'small'"
       ></Button>
+
+      <Button
+        class="s-tooltip-notice__secondary-action"
+        v-if="hasSecondaryAction"
+        @click="secondaryClickHandler"
+        :title="secondaryActionTitle"
+        :variation="'link'"
+        :size="'small'"
+      ></Button>
     </div>
   </div>
 </template>
@@ -34,6 +43,9 @@ export default class TooltipNotice extends Vue {
   @Prop({ default: "Got it" })
   buttonTitle!: string;
 
+  @Prop({ default: "Learn More" })
+  secondaryActionTitle!: string;
+
   @Prop({ required: true })
   desc!: string;
 
@@ -43,11 +55,18 @@ export default class TooltipNotice extends Vue {
   @Prop({ default: true })
   hasButton!: boolean;
 
+  @Prop({ default: false })
+  hasSecondaryAction!: boolean;
+
   @Prop({ default: 200 })
   width!: number;
 
   clickHandler() {
     this.$emit("handle-tooltip");
+  }
+
+  secondaryClickHandler() {
+    this.$emit("handle-tooltip-secondary");
   }
 
   get arrowClasses() {
@@ -119,6 +138,10 @@ export default class TooltipNotice extends Vue {
   top: 8px;
   left: -36px;
   transform: rotate(-90deg);
+}
+
+.s-tooltip-notice__secondary-action {
+  .margin-left(2);
 }
 
 .night,
