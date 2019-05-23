@@ -149,7 +149,7 @@ export default {
     border: none;
     border-radius: 5px;
     background: @dark-4;
-    color: @dark-2;
+    color: @selected;
     padding: 0 0 0 5px;
     width: 100%;
     transition: border 0.1s ease;
@@ -159,11 +159,13 @@ export default {
   }
 
   .multiselect__input:-ms-input-placeholder {
-    color: #35495e;
+    color: @day-paragraph;
+    opacity: 1;
   }
-  
+
   .multiselect__input::placeholder {
-    color: #35495e;
+    color: @day-paragraph;
+    opacity: 0.7;
   }
 
   .multiselect__tag ~ .multiselect__input,
@@ -186,7 +188,7 @@ export default {
     padding-left: 5px;
     margin-bottom: 8px;
     background: @light-3;
-    color: @dark-2;
+    color: @selected;
     font-size: 14px;
   }
 
@@ -211,7 +213,7 @@ export default {
     padding: 4px 26px 4px 10px;
     border-radius: 5px;
     margin-right: 10px;
-    color: @dark-2;
+    color: @selected;
     line-height: 1;
     background: @white;
     margin-bottom: 5px;
@@ -239,7 +241,7 @@ export default {
 
   .multiselect__tag-icon:after {
     content: "\D7";
-    color: @dark-2;
+    color: @selected;
     font-size: 14px;
   }
 
@@ -250,7 +252,7 @@ export default {
 
   .multiselect__tag-icon:focus:after,
   .multiselect__tag-icon:hover:after {
-    color: @dark-2;
+    color: @selected;
   }
 
   .multiselect__current {
@@ -282,17 +284,19 @@ export default {
     text-align: center;
     transition: transform 0.2s ease;
   }
-  
+
   .multiselect__select:before {
     position: relative;
     right: 0;
-    top: 65%;
-    color: #999;
-    margin-top: 4px;
-    border-color: @dark-5 transparent transparent;
-    border-style: solid;
-    border-width: 5px 5px 0;
-    content: "";
+    top: 25%;
+    border: 0;
+    -webkit-transform: none;
+    transform: none;
+    content: "\E996";
+    font-family: "icomoon";
+    color: #91979a;
+    height: auto;
+    width: auto;
   }
 
   .multiselect__placeholder {
@@ -309,13 +313,14 @@ export default {
   .multiselect__content-wrapper {
     position: absolute;
     display: block;
-    background: @dark-4;
+    background: transparent;
     width: 100%;
     max-height: 240px;
     overflow: auto;
     border-top: none;
     z-index: 50;
     -webkit-overflow-scrolling: touch;
+    border-radius: 0 0 4px 4px;
   }
 
   .multiselect__content {
@@ -372,13 +377,14 @@ export default {
   }
 
   .multiselect__option--highlight {
-    color: @dark-2;
     outline: none;
+    background: @selected;
+    color: @night-title;
   }
 
   .multiselect__option--highlight:after {
     content: attr(data-select);
-    color: #fff;
+    color: @white;
   }
 
   .multiselect__option--selected {
@@ -390,12 +396,12 @@ export default {
   }
 
   .multiselect__option--selected.multiselect__option--highlight {
-    color: @dark-2;
+    color: @night-title;
   }
 
   .multiselect__option--selected.multiselect__option--highlight:after {
     content: attr(data-deselect);
-    color: #fff;
+    color: @white;
   }
 
   .multiselect--disabled .multiselect__current,
@@ -416,20 +422,20 @@ export default {
   }
 
   .multiselect__option--group.multiselect__option--highlight {
-    color: #fff;
+    color: @white;
   }
 
   .multiselect__option--disabled.multiselect__option--highlight {
     background: #dedede;
   }
-  
+
   .multiselect__option--group-selected.multiselect__option--highlight {
-    color: #fff;
+    color: @white;
   }
 
   .multiselect__option--group-selected.multiselect__option--highlight:after {
     content: attr(data-deselect);
-    color: #fff;
+    color: @white;
   }
 
   .multiselect-enter-active,
@@ -498,13 +504,13 @@ export default {
       background: @night-dropdown-bg;
       border: @night-dropdown-border;
     }
-    
+
     .multiselect__select {
       &:before {
         border-color: @white transparent transparent;
       }
     }
-    
+
     .multiselect__input:-ms-input-placeholder {
       color: @light-4;
     }
@@ -532,14 +538,15 @@ export default {
         background: transparent;
       }
     }
-    
+
     .multiselect__option {
       background: @night-dropdown-bg;
       color: @light-4;
     }
 
     .multiselect__option--highlight {
-      color: @white;
+      background: @night-hover;
+      color: @night-title;
     }
   }
 }
