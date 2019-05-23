@@ -8,9 +8,9 @@
     :value="value"
     @click="$emit('click')"
   >
-    <span v-if="selectionCount" class="s-virtual-item__selection-count">{{
-      selectionCount
-    }}</span>
+    <span v-if="selectionCount" class="s-virtual-item__selection-count">
+      {{ selectionCount }}
+    </span>
     <span
       v-if="remainingTime"
       class="s-virtual-item__selection-remaining"
@@ -68,6 +68,14 @@ export default class VitualItem extends Vue {
   @Prop(String)
   type!: string;
 
+  isClickable: boolean = false;
+
+  mounted() {
+    if (this.$listeners.click) {
+      this.isClickable = true;
+    }
+  }
+
   get virtualItemClasses() {
     const classes: any = [];
 
@@ -77,6 +85,10 @@ export default class VitualItem extends Vue {
 
     if (this.selected) {
       classes.push("is-selected");
+    }
+
+    if (this.isClickable) {
+      classes.push("clickable");
     }
 
     return classes.join(" ");
@@ -110,7 +122,7 @@ export default class VitualItem extends Vue {
     }
   }
 
-  &:hover {
+  .clickable&:hover {
     cursor: pointer;
   }
 }
