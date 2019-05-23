@@ -48,7 +48,6 @@
     "vue-mq": "^1.0.1",
     "vue-property-decorator": "^7.0.0",
     "vue-router": "^3.0.1",
-    "vue-select": "^2.5.1",
     "vue-slider-component": "^2.8",
     "vue-template-compiler": "^2.6.6",
     "vuejs-paginate": "^2.1.0"
@@ -64,9 +63,11 @@
     "vue-mq": "^1.0.1",
     "vue-property-decorator": "^7.0.0",
     "vue-router": "^3.0.1",
-    "vue-select": "^2.5.1",
     "vue-slider-component": "^2.8",
     "vuejs-paginate": "^2.1.0"
   },
-  "types": "./index.d.ts"
+  "types": "./index.d.ts",
+  "dependencies": {
+    "vue-multiselect": "^2.1.6"
+  }
 }

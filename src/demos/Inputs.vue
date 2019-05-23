@@ -146,10 +146,10 @@ components: {
 &gt;&lt;/selector&gt;</code></pre>
         </div>
       </Accordion>
-      <selector
+      <Selector
         v-model="selected"
         :options="['Option A', 'Option B', 'Option C']"
-      ></selector>
+      ></Selector>
       <br />
       <selector
         v-model="selected"
@@ -175,6 +175,7 @@ components: {
           'Option F'
         ]"
         multiple
+        :searchable="false"
       ></selector>
       <br />
       <selector
@@ -192,12 +193,7 @@ components: {
       ></selector>
       <br />
 
-      <selector
-        v-model="optionSelected"
-        :options="options"
-        :label="'title'"
-        multiple
-      ></selector>
+      <selector v-model="objectSelected" :options="show"></selector>
       <br />
 
       <table class="docs-table">
@@ -211,12 +207,10 @@ components: {
         </thead>
         <tbody>
           <tr>
-            <td>disabled</td>
-            <td>Boolean</td>
-            <td>false</td>
-            <td>
-              Puts a disabled class on the form field and disables the input.
-            </td>
+            <td>value</td>
+            <td>string</td>
+            <td>null</td>
+            <td>Current selected value.</td>
           </tr>
           <tr>
             <td>options</td>
@@ -243,10 +237,12 @@ components: {
             <td>Optional label for the input.</td>
           </tr>
           <tr>
-            <td>value</td>
-            <td>string</td>
-            <td>null</td>
-            <td>Current selected value.</td>
+            <td>disabled</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>
+              Puts a disabled class on the form field and disables the input.
+            </td>
           </tr>
         </tbody>
       </table>
@@ -450,6 +446,7 @@ export default class Inputs extends Vue {
   selected = "Option A";
   multipleSelected = ["Option B", "Option D"];
   optionSelected = ["Glass Pint", "Glass Beer"];
+  objectSelected = "Bounce In";
   radioValue1 = true;
   radioValue2 = false;
   statusValue = true;
@@ -469,88 +466,29 @@ export default class Inputs extends Vue {
   passwordInputPlaceholder = "Placeholder";
 
   options = [
-    {
-      value: "glass-pint",
-      title: "Glass Pint",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-pint.png"
-    },
-    {
-      value: "glass-beer",
-      title: "Glass Beer",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-beer.png"
-    },
-    {
-      value: "glass-beer-2",
-      title: "Glass Beer 2",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-beer2.png"
-    },
-    {
-      value: "glass-coffee",
-      title: "Glass Coffee",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-coffee.png"
-    },
-    {
-      value: "glass-fancy",
-      title: "Glass Fancy",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-fancy.png"
-    },
-    {
-      value: "glass-whiskey",
-      title: "Glass Whiskey",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-whiskey.png"
-    },
-    {
-      value: "glass-burbon",
-      title: "Glass Burbon",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-burbon.png"
-    },
-    {
-      value: "glass-martini",
-      title: "Glass Martini",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-martini.png"
-    },
-    {
-      value: "glass-beer-3",
-      title: "Glass Beer 3",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-beer3.png"
-    },
-    {
-      value: "glass-wine",
-      title: "Glass Wine",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-wine.png"
-    },
-    {
-      value: "glass-baileys",
-      title: "Glass Baileys",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-baileys.png"
-    },
-    {
-      value: "glass-champagne",
-      title: "Glass Champagne",
-      image:
-        "https://cdn.streamlabs.com/static/tip-jar/jars/glass-champagne.png"
-    },
-    {
-      value: "glass-coffee-no-handle",
-      title: "Glass Coffee No Handle",
-      image:
-        "https://cdn.streamlabs.com/static/tip-jar/jars/glass-coffee-no-handle.png"
-    },
-    {
-      value: "glass-plinko",
-      title: "Glass Plinko",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-plinko.png"
-    },
-    {
-      value: "glass-stocking",
-      title: "Glass Stocking",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-stocking.png"
-    },
-    {
-      value: "glass-snowman",
-      title: "Glass Snowman",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-snowman.png"
-    }
+    { name: "Vue.js", language: "JavaScript" },
+    { name: "Rails", language: "Ruby" },
+    { name: "Sinatra", language: "Ruby" },
+    { name: "Laravel", language: "PHP", $isDisabled: true },
+    { name: "Phoenix", language: "Elixir" }
+  ];
+
+  show = [
+    "Bounce",
+    "Bounce In",
+    "Bounce In Down",
+    "Bounce In Left",
+    "Bounce In Right",
+    "Bounce In Up",
+    "Fade In",
+    "Fade In Down",
+    "Fade In Down Big",
+    "Fade In Left",
+    "Fade In Left Big",
+    "Fade In Right",
+    "Fade In",
+    "Fade In Up",
+    "Fade In Up Big"
   ];
 }
 </script>
