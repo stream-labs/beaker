@@ -22,12 +22,14 @@
     :disabled="disabled"
     @callback="value => emitInput(value)"
     :simpleTheme="simpleTheme"
+    ref="slider"
   ></vue-slider-component>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Watch, Vue } from "vue-property-decorator";
 import VueSliderComponent from "vue-slider-component";
+import ResizeObserver from "resize-observer-polyfill";
 
 @Component({
   components: {
@@ -35,6 +37,10 @@ import VueSliderComponent from "vue-slider-component";
   }
 })
 export default class Slider extends Vue {
+  $refs!: {
+    slider: any;
+  };
+
   @Watch("value")
   updateLocalValue() {
     this.displayValue = this.value;
@@ -70,13 +76,34 @@ export default class Slider extends Vue {
   @Prop()
   data!: Array<number> | Array<string>;
 
-  displayValue: number | string | Array<number> | Array<string> = this.value;
-
   @Prop({ default: false })
   simpleTheme!: boolean;
 
+  displayValue: number | string | Array<number> | Array<string> = this.value;
+  private debounced: boolean = false;
+  private ro = new ResizeObserver((entries, observer) => {
+    for (let entry of entries) {
+      let { left, top, width, height } = entry.contentRect;
+      if (!this.debounced) {
+        this.debounce().then(() => {
+          if (this.$refs.slider) {
+            this.$refs.slider.refresh();
+          }
+        });
+      }
+    }
+  });
+
   created() {
     this.$on("input", this.setValue);
+  }
+
+  mounted() {
+    this.ro.observe(this.$refs.slider.$el);
+  }
+
+  beforeDestroy() {
+    this.ro.unobserve(this.$refs.slider.$el);
   }
 
   destroyed() {
@@ -89,6 +116,18 @@ export default class Slider extends Vue {
 
   setValue(val) {
     this.displayValue = val;
+  }
+
+  debounce() {
+    return new Promise(resolve => {
+      if (!this.debounced) {
+        this.debounced = true;
+        setTimeout(() => {
+          this.debounced = false;
+          resolve();
+        }, 500);
+      }
+    });
   }
 }
 </script>

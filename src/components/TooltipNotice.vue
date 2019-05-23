@@ -1,7 +1,10 @@
 <template>
   <div class="s-tooltip-notice">
     <div class="s-tooltip-notice-content">
-      <i class="icon-dropdown s-tooltip-notice__arrow"></i>
+      <i
+        :class="arrowClasses"
+        class="icon-dropdown s-tooltip-notice__arrow"
+      ></i>
       <h3>{{ title }}</h3>
       <p>{{ desc }}</p>
       <Button
@@ -30,8 +33,21 @@ export default class TooltipNotice extends Vue {
   @Prop({ required: true })
   desc!: string;
 
+  @Prop({ default: "left" })
+  arrowPosition!: string;
+
   clickHandler() {
     this.$emit("handle-tooltip");
+  }
+
+  get arrowClasses() {
+    let classes: string[] = [];
+
+    if (this.arrowPosition) {
+      classes.push(`s-tooltip-notice__arrow--${this.arrowPosition}`);
+    }
+
+    return classes;
   }
 }
 </script>
@@ -71,6 +87,24 @@ export default class TooltipNotice extends Vue {
   top: 8px;
   left: -36px;
   color: @white;
+}
+
+.s-tooltip-notice__arrow--top {
+  top: -38px;
+  left: 126px;
+  transform: rotate(180deg);
+}
+
+.s-tooltip-notice__arrow--bottom {
+  top: 8px;
+  left: -36px;
+  transform: rotate(0deg);
+}
+
+.s-tooltip-notice__arrow--right {
+  top: 8px;
+  left: -36px;
+  transform: rotate(-90deg);
 }
 
 .night,

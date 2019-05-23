@@ -30,7 +30,7 @@ import Button from "./../components/Button.vue";
   components: { Spinner, Button }
 })
 export default class Loading extends Vue {
-  @Prop()
+  @Prop({ default: [] })
   loadingStrs!: any[] | string;
 
   @Prop({ default: false })

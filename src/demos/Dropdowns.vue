@@ -60,6 +60,24 @@ components: {
         </div>
       </pane-dropdown>
     </div>
+    <div class="section">
+      <h3>Relative Menu</h3>
+      <pane-dropdown :relativeMenu="true">
+        <span slot="title">Relative Menu</span>
+        <a href="#">Hey I'm a longer link here</a>
+        <a href="#">Let's see how this looks</a>
+        <a href="#">I'm in a pane dropdown aligned to the right</a>
+      </pane-dropdown>
+    </div>
+    <div class="section">
+      <h3>Simple Menu</h3>
+      <pane-dropdown :relativeMenu="true" :simpleMenu="true">
+        <span slot="title">Simple Menu</span>
+        <a href="#">Hey I'm a longer link here</a>
+        <a href="#">Let's see how this looks</a>
+        <a href="#">I'm in a pane dropdown aligned to the right</a>
+      </pane-dropdown>
+    </div>
 
     <div class="section">
       <table class="docs-table">
@@ -88,6 +106,33 @@ components: {
               <code>right</code> or <code>center</code> to align the dropdown
               menu to the right or center of its toggle.
             </td>
+          </tr>
+          <tr>
+            <td>closeOnSelect</td>
+            <td>boolean</td>
+            <td>true</td>
+            <td>Close the dropdown when a link is clicked.</td>
+          </tr>
+          <tr>
+            <td>autoHeight</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>No max height</td>
+          </tr>
+          <tr>
+            <td>relativeMenu</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>
+              Change the menu from position absolute to relative so it pushes
+              the content below it down.
+            </td>
+          </tr>
+          <tr>
+            <td>simpleMenu</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>Removes menues bg colors, box shadow and paddinga.</td>
           </tr>
         </tbody>
       </table>
