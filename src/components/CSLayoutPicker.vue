@@ -89,6 +89,7 @@ export default class CSLayoutPicker extends Vue {
   grid-column-gap: 32px;
   grid-row-gap: 16px;
   grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+  align-content: flex-start;
 
   * {
     min-width: 0;
