@@ -1,5 +1,5 @@
 <template>
-  <div class="s-tooltip-notice">
+  <div class="s-tooltip-notice" :style="{ width: width + 'px' }">
     <div class="s-tooltip-notice-content">
       <i
         :class="arrowClasses"
@@ -8,8 +8,9 @@
       <h3>{{ title }}</h3>
       <p>{{ desc }}</p>
       <Button
+        v-if="hasButton"
         @click="clickHandler"
-        :title="'Got It'"
+        :title="buttonTitle"
         :variation="'action'"
         :size="'small'"
       ></Button>
@@ -30,11 +31,20 @@ export default class TooltipNotice extends Vue {
   @Prop({ required: true })
   title!: string;
 
+  @Prop({ default: "Got it" })
+  buttonTitle!: string;
+
   @Prop({ required: true })
   desc!: string;
 
   @Prop({ default: "left" })
   arrowPosition!: string;
+
+  @Prop({ default: true })
+  hasButton!: boolean;
+
+  @Prop({ default: 200 })
+  width!: number;
 
   clickHandler() {
     this.$emit("handle-tooltip");
@@ -64,8 +74,12 @@ export default class TooltipNotice extends Vue {
   z-index: 100;
   position: absolute;
 
-  .button {
-    .margin-top();
+  .s-button {
+    .margin-top(2);
+  }
+
+  p {
+    .margin-bottom(0);
   }
 
   h3 {

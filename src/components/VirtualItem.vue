@@ -9,19 +9,18 @@
     @click="$emit('click')"
   >
     <span v-if="selectionCount" class="s-virtual-item__selection-count">
-      {{
-      selectionCount
-      }}
+      {{ selectionCount }}
     </span>
     <span
       v-if="remainingTime"
       class="s-virtual-item__selection-remaining"
       :class="{ warning: hasWarning }"
-    >{{ remainingTime }}</span>
+      >{{ remainingTime }}</span
+    >
     <span v-if="type" class="s-virtual-item__label">{{ type }}</span>
     <span v-if="quantity" class="s-virtual-item__label">{{ quantity }}</span>
     <div class="s-virtual-item__img">
-      <img :src="preview">
+      <img :src="preview" />
     </div>
     <h3 class="s-virtual-item__name">{{ name }}</h3>
     <span class="s-virtual-item__rarity" :class="{ entered: isGiveaway }">
@@ -73,7 +72,7 @@ export default class VitualItem extends Vue {
 
   mounted() {
     if (this.$listeners.click) {
-      this.isClickable = true
+      this.isClickable = true;
     }
   }
 
@@ -89,7 +88,7 @@ export default class VitualItem extends Vue {
     }
 
     if (this.isClickable) {
-      classes.push("clickable")
+      classes.push("clickable");
     }
 
     return classes.join(" ");
@@ -124,7 +123,7 @@ export default class VitualItem extends Vue {
   }
 
   .clickable&:hover {
-      cursor: pointer;
+    cursor: pointer;
   }
 }
 
