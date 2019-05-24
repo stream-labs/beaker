@@ -55,15 +55,19 @@ function initTooltip(el, binding) {
   el.insertAdjacentElement("afterbegin", tooltip);
   let placement = getPlacement(el);
   tooltip.style.transform = "translate(" + placement.leftOffset + "px," + placement.topOffset + "px)";
-
 }
 
+
 const Tooltip: DirectiveOptions = {
+  bind(vnode) {
+    console.log(vnode)
+  },
     inserted(el, binding) {
       initHover(el);
       initTooltip(el,binding);
     },
-    update(el, value: any) {
+    update(vnode, oldVnode) {
+      console.log(vnode)
     },
     unbind(el, binding) {
       el.removeEventListener("mouseover", () => { handleMouseOver(el) });
