@@ -12,7 +12,7 @@
       :track-by="trackBy"
       :label="label"
       ><template v-if="label" slot="singleLabel" slot-scope="{ option }">{{
-        option.label
+        option[label]
       }}</template>
     </multiselect>
   </div>

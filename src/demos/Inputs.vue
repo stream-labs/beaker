@@ -193,7 +193,12 @@ components: {
       ></selector>
       <br />
 
-      <selector v-model="objectSelected" :options="show"></selector>
+      <selector
+        v-model="objectSelected"
+        :options="options"
+        :label="'title'"
+        :trackBy="'title'"
+      ></selector>
       <br />
 
       <table class="docs-table">
@@ -446,7 +451,11 @@ export default class Inputs extends Vue {
   selected = "Option A";
   multipleSelected = ["Option B", "Option D"];
   optionSelected = ["Glass Pint", "Glass Beer"];
-  objectSelected = "Bounce In";
+  objectSelected = {
+    value: "glass-pint",
+    title: "Glass Pint",
+    image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-pint.png"
+  };
   radioValue1 = true;
   radioValue2 = false;
   statusValue = true;
