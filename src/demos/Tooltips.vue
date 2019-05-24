@@ -22,11 +22,6 @@
     </div>
 
     <div class="row">
-      <h2>Progress Bars</h2>
-      <progress-bar :progressComplete="50" v-tooltip="'Installing'"></progress-bar>
-    </div>
-
-    <div class="row">
       <h2>Badges</h2>
       <Badge :variant="warning" :align-left="true" v-tooltip="'A Tooltip for a Badge? nope.'">Warn</Badge>
     </div>
