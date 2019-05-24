@@ -1,10 +1,6 @@
 <template>
   <div class="s-accordion" :class="[accordionClasses]">
-    <div
-      class="s-accordion__head"
-      :class="{ 'is-open': isOpen }"
-      @click="openContent"
-    >
+    <div class="s-accordion__head" :class="{ 'is-open': isOpen }" @click="openContent">
       <div class="s-accordion__button">
         <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px">
           <path
@@ -34,22 +30,17 @@
         </svg>
       </div>
       <div class="s-accordion--title" v-if="hasTitleSlot">
-        <slot name="title" />
+        <slot name="title"/>
       </div>
       <div class="s-accordion--title" v-else>{{ accordionTitle }}</div>
     </div>
-    <transition
-      name="expand"
-      @enter="open"
-      @after-enter="afterOpen"
-      @leave="close"
-    >
+    <transition name="expand" @enter="open" @after-enter="afterOpen" @leave="close">
       <div
         class="s-accordion__content"
         :class="[{ 'is-open': isOpen }, { 'left-nav': leftNav }]"
         v-if="isOpen"
       >
-        <slot name="content" />
+        <slot name="content"/>
       </div>
     </transition>
   </div>
@@ -108,7 +99,15 @@ export default class Accordian extends Vue {
     return classes.join(" ");
   }
 
-  openContent() {
+  openContent(event: any) {
+    let blockedNodes = ["INPUT", "BUTTON", "LABEL"];
+    console.log(event.target.parentNode.parent);
+    if (
+      blockedNodes.indexOf(event.target.nodeName) !== -1 ||
+      blockedNodes.indexOf(event.target.parentNode.parentNode.nodeName) !== -1
+    ) {
+      return;
+    }
     this.isOpen = !this.isOpen;
   }
 

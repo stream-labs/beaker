@@ -267,10 +267,12 @@ import { Component, Vue } from "vue-property-decorator";
 
 import Accordion from "./../components/Accordion.vue";
 import ColorPicker from "./../components/ColorPicker.vue";
+import Button from "./../components/Button.vue";
 
 @Component({
   components: {
     Accordion,
+    's-button': Button,
     ColorPicker
   }
 })
