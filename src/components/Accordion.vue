@@ -110,7 +110,6 @@ export default class Accordian extends Vue {
 
   openContent(event: any) {
     let blockedNodes = ["INPUT", "BUTTON", "LABEL"];
-    console.log(event.target.parentNode.parent);
     if (
       blockedNodes.indexOf(event.target.nodeName) !== -1 ||
       blockedNodes.indexOf(event.target.parentNode.parentNode.nodeName) !== -1
