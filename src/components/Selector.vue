@@ -4,17 +4,14 @@
       :value="value"
       :options="options"
       :searchable="searchable"
-      :allow-empty="false"
       :multiple="multiple"
       :placeholder="placeholder"
-      :taggable="true"
       :disabled="disabled"
       :max-height="200"
       @input="val => emitInput(val)"
-      @tag="addTag"
-      :trackBy="label"
+      :track-by="trackBy"
       :label="label"
-      ><template v-if="hasObject" slot="singleLabel" slot-scope="{ option }">{{
+      ><template v-if="label" slot="singleLabel" slot-scope="{ option }">{{
         option.label
       }}</template>
     </multiselect>
@@ -34,20 +31,8 @@ export default {
     Selector
   },
 
-  data() {
-    return {
-      hasObject: false
-    };
-  },
-
   created() {
     this.$on("input", this.setValue);
-  },
-
-  mounted() {
-    if (typeof this.options[0] === "object") {
-      return (this.hasObject = true);
-    }
   },
 
   destroyed() {
@@ -55,17 +40,6 @@ export default {
   },
 
   methods: {
-    addTag(newTag) {
-      const tag = {
-        name: newTag,
-        code: newTag.substring(0, 2) + Math.floor(Math.random() * 10000000)
-      };
-      if (this.options.includes(tag.name)) {
-        this.options.push(tag);
-        this.value.push(tag);
-      }
-    },
-
     emitInput(val) {
       this.$emit("input", val);
     },
