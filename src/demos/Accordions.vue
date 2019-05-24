@@ -272,7 +272,7 @@ import Button from "./../components/Button.vue";
 @Component({
   components: {
     Accordion,
-    's-button': Button,
+    "s-button": Button,
     ColorPicker
   }
 })
