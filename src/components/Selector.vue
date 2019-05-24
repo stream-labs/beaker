@@ -124,12 +124,13 @@ export default {
     border-radius: 5px;
     background: @dark-4;
     color: @selected;
-    padding: 0 0 0 5px;
+    padding: 2px 0 0 5px;
     width: 100%;
     transition: border 0.1s ease;
     box-sizing: border-box;
     margin-bottom: 8px;
     vertical-align: top;
+    height: 20px;
   }
 
   .multiselect__input:-ms-input-placeholder {
@@ -171,7 +172,7 @@ export default {
   }
 
   .multiselect__tags {
-    min-height: 40px;
+    height: 40px;
     display: block;
     padding: 8px 40px 0 8px;
     border-radius: 5px;
@@ -278,6 +279,7 @@ export default {
     display: inline-block;
     margin-bottom: 10px;
     padding-top: 2px;
+    padding-left: 5px;
   }
 
   .multiselect--active .multiselect__placeholder {
