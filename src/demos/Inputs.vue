@@ -146,10 +146,10 @@ components: {
 &gt;&lt;/selector&gt;</code></pre>
         </div>
       </Accordion>
-      <selector
+      <Selector
         v-model="selected"
         :options="['Option A', 'Option B', 'Option C']"
-      ></selector>
+      ></Selector>
       <br />
       <selector
         v-model="selected"
@@ -175,6 +175,7 @@ components: {
           'Option F'
         ]"
         multiple
+        :searchable="false"
       ></selector>
       <br />
       <selector
@@ -193,10 +194,10 @@ components: {
       <br />
 
       <selector
-        v-model="optionSelected"
+        v-model="objectSelected"
         :options="options"
         :label="'title'"
-        multiple
+        :trackBy="'title'"
       ></selector>
       <br />
 
@@ -211,12 +212,10 @@ components: {
         </thead>
         <tbody>
           <tr>
-            <td>disabled</td>
-            <td>Boolean</td>
-            <td>false</td>
-            <td>
-              Puts a disabled class on the form field and disables the input.
-            </td>
+            <td>value</td>
+            <td>string</td>
+            <td>null</td>
+            <td>Current selected value.</td>
           </tr>
           <tr>
             <td>options</td>
@@ -243,10 +242,12 @@ components: {
             <td>Optional label for the input.</td>
           </tr>
           <tr>
-            <td>value</td>
-            <td>string</td>
-            <td>null</td>
-            <td>Current selected value.</td>
+            <td>disabled</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>
+              Puts a disabled class on the form field and disables the input.
+            </td>
           </tr>
         </tbody>
       </table>
@@ -450,6 +451,11 @@ export default class Inputs extends Vue {
   selected = "Option A";
   multipleSelected = ["Option B", "Option D"];
   optionSelected = ["Glass Pint", "Glass Beer"];
+  objectSelected = {
+    value: "glass-pint",
+    title: "Glass Pint",
+    image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-pint.png"
+  };
   radioValue1 = true;
   radioValue2 = false;
   statusValue = true;
@@ -551,6 +557,24 @@ export default class Inputs extends Vue {
       title: "Glass Snowman",
       image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-snowman.png"
     }
+  ];
+
+  show = [
+    "Bounce",
+    "Bounce In",
+    "Bounce In Down",
+    "Bounce In Left",
+    "Bounce In Right",
+    "Bounce In Up",
+    "Fade In",
+    "Fade In Down",
+    "Fade In Down Big",
+    "Fade In Left",
+    "Fade In Left Big",
+    "Fade In Right",
+    "Fade In",
+    "Fade In Up",
+    "Fade In Up Big"
   ];
 }
 </script>
