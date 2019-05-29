@@ -7,11 +7,11 @@
   padding: 0;
   margin: 0;
   border: none;
-  transition: opacity .10s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity .35s cubic-bezier(0.4, 0, 0.2, 1);
 
   &.s-tooltip-visible {
     opacity: 1;
-    transition: opacity .05s .25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity .10s .35s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .s-tooltip__label,
@@ -22,6 +22,7 @@
 
   .s-tooltip__label {
     .padding(1);
+    display: block;
     background-color: @dark-2;
     color: @light-3;
     max-width: 400px;
@@ -41,20 +42,9 @@
   }
 }
 
-@keyframes s-tooltip-fadein {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.s-tooltip__hover {
+  position: absolute;
+  display: block;
+  z-index: 77;
 }
 
-@keyframes s-tooltip-fadeout {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
