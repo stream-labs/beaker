@@ -90,7 +90,8 @@ function init(el, binding) {
   let hover = document.createElement("div");
   hover.style.width = rect.width + "px";
   hover.style.height = rect.height + "px";
-  hover.style.transform = "translate(-" + rect.paddingLeft + "px,-" + rect.paddingTop + "px)";
+  hover.style.transform =
+    "translate(-" + rect.paddingLeft + "px,-" + rect.paddingTop + "px)";
   hover.className = "s-tooltip__hover";
   let tooltip = document.createElement("div");
   tooltip.className = "s-tooltip";
@@ -110,13 +111,13 @@ function init(el, binding) {
     .addEventListener("mouseout", () => {
       handleMouseOut(el);
     });
-    el.parentElement
+  el.parentElement
     .querySelector(".s-tooltip__hover")
     .addEventListener("mousedown", () => {
       handleMouseClick(el, event);
     });
-    let placement = getPlacement(el);
-    tooltip.style.transform =
+  let placement = getPlacement(el);
+  tooltip.style.transform =
     "translate(" + placement.leftOffset + "px," + placement.topOffset + "px)";
 }
 
@@ -130,14 +131,14 @@ function handleMouseOut(el) {
 
 function handleMouseClick(el, event) {
   el.querySelector(".s-tooltip__hover").style.pointerEvents = "none";
-  let element:any = document.elementFromPoint(event.clientX, event.clientY);
+  let element: any = document.elementFromPoint(event.clientX, event.clientY);
   element.click();
   el.querySelector(".s-tooltip__hover").style.pointerEvents = "inherit";
 }
 
 function getPlacement(el) {
   let element = queryElement(el);
-  let tooltip = queryElement(el.parentElement.querySelector("div.s-tooltip"))
+  let tooltip = queryElement(el.parentElement.querySelector("div.s-tooltip"));
   let placement = {
     topOffset: -Math.abs(tooltip.height + 8 + element.paddingTop),
     leftOffset: element.width / 2 - tooltip.width / 2 - element.paddingLeft,
@@ -161,15 +162,16 @@ function redraw(el) {
     hover.style.width = hW;
   });
   tooltip.style.transform =
-  "translate(" + placement.leftOffset + "px," + placement.topOffset + "px)";
-  hover.style.transform = "translate(-" + rect.paddingLeft + "px,-" + rect.paddingTop + "px)";
+    "translate(" + placement.leftOffset + "px," + placement.topOffset + "px)";
+  hover.style.transform =
+    "translate(-" + rect.paddingLeft + "px,-" + rect.paddingTop + "px)";
 }
 
 const Tooltip: DirectiveOptions = {
   inserted(el, binding) {
-    init(el,binding);
+    init(el, binding);
     new ResizeSensor(el, function() {
-      console.log('resize')
+      console.log("resize");
       if (!el.classList.contains("debounce")) {
         debounce(el).then(() => {
           redraw(el);

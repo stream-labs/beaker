@@ -11,7 +11,12 @@
       </span>
     </a>
 
-    <transition name="expand" @enter="open" @after-enter="afterOpen" @leave="close">
+    <transition
+      name="expand"
+      @enter="open"
+      @after-enter="afterOpen"
+      @leave="close"
+    >
       <div
         :class="menuClasses"
         class="s-pane-dropdown__menu"

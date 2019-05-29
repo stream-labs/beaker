@@ -8,10 +8,10 @@
 Import { Tooltip } from 'streamlabs-beaker';
 
 directives: {
-  Tooltip
+  's-tooltip': Tooltip
 }
 
-&lt;div v-tooltip="'A tooltip for an image'"&gt;
+&lt;div v-s-tooltip="'A tooltip for an image'"&gt;
   &lt;img src="https://thumbs.gfycat.com/PleasedIcyCod-size_restricted.gif"&gt;
 &lt;/div&gt;
 
@@ -25,8 +25,13 @@ directives: {
         <h2>Information</h2>
         <p>
           Tooltip will work on most beaker components that dont have
-          <code>overflow: hidden</code> set. If the HTML element is not a beaker component the tooltip will default to the elements parent. Smaller HTML elements
-          <code>&lt;i&gt;, &lt;img&gt;</code>, etc. should have the directive placed in it's own parent. This particular directive was designed to be used within pre-made beaker components, but should work elsewhere too. Try to work this into a component, rather than on the site itself.
+          <code>overflow: hidden</code> set. If the HTML element is not a beaker
+          component the tooltip will default to the elements parent. Smaller
+          HTML elements <code>&lt;i&gt;, &lt;img&gt;</code>, etc. should have
+          the directive placed in it's own parent. This particular directive was
+          designed to be used within pre-made beaker components, but should work
+          elsewhere too. Try to work this into a component, rather than on the
+          site itself.
         </p>
       </div>
     </div>
@@ -39,9 +44,13 @@ directives: {
         <Accordion
           :opened-title="'Close Accordion'"
           :closed-title="'Open Accordion'"
-          v-tooltip="'Dont use a tooltip on an accordion, this is just an example'"
+          v-s-tooltip="
+            'Dont use a tooltip on an accordion, this is just an example'
+          "
         >
-          <div slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+          <div slot="content">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          </div>
         </Accordion>
       </div>
 
@@ -56,7 +65,7 @@ directives: {
           :interval="1"
           :tooltip="'always'"
           :suffix="'%'"
-          v-tooltip="'Adjust Volume'"
+          v-s-tooltip="'Adjust Volume'"
         />
       </div>
 
@@ -66,15 +75,18 @@ directives: {
         <Badge
           :variant="warning"
           :align-left="true"
-          v-tooltip="'Why would you want a tooltip here?'"
-        >Warn</Badge>
+          v-s-tooltip="'Why would you want a tooltip here?'"
+          >Warn</Badge
+        >
       </div>
 
       <!-- Dropdowns -->
       <div class="row">
         <h2>Dropdowns</h2>
-        <pane-dropdown v-tooltip="'A tooltip on a dropdown? WHY?'">
-          <template slot="title">Trending</template>
+        <pane-dropdown v-s-tooltip="'A tooltip on a dropdown? WHY?'">
+          <template slot="title"
+            >Trending</template
+          >
           <a href="#">Add</a>
           <a href="#">Update</a>
           <a href="#">Remove</a>
@@ -84,9 +96,12 @@ directives: {
       <!-- Toggles -->
       <div class="row">
         <toggle
-          :values="{'show': `<i class='icon-view'></i>`,'hide': `<i class='icon-hide'></i>`}"
+          :values="{
+            show: `<i class='icon-view'></i>`,
+            hide: `<i class='icon-hide'></i>`
+          }"
           v-model="selectedOption"
-          v-tooltip="'A toggle? WTF'"
+          v-s-tooltip="'A toggle? WTF'"
         ></toggle>
       </div>
     </div>
@@ -103,7 +118,7 @@ directives: {
             <pre>
               <code>
 &lt;div class="any_old_container"&gt;
-  &lt;div v-tooltip="'A short sentence.'"&gt;&lt;/div&gt;
+  &lt;div v-s-tooltip="'A short sentence.'"&gt;&lt;/div&gt;
 &lt;/div&gt;
               </code>
             </pre>
@@ -111,10 +126,12 @@ directives: {
         </Accordion>
         <div>
           <div
-            v-tooltip="'This is a tooltip'"
+            v-s-tooltip="'This is a tooltip'"
             class="tooltip-sample"
             style="width: 300px;"
-          >Regular HTML Elements, &lt;div&gt;, &lt;p&gt;, etc.</div>
+          >
+            Regular HTML Elements, &lt;div&gt;, &lt;p&gt;, etc.
+          </div>
         </div>
       </div>
 
@@ -126,7 +143,7 @@ directives: {
             <pre>
               <code>
 &lt;div class="any_old_container"&gt;
-  &lt;div v-tooltip="'A Tooltip Message'"&gt;
+  &lt;div v-s-tooltip="'A Tooltip Message'"&gt;
     &lt;i class="icon-question"&gt;&lt;/i&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -135,7 +152,10 @@ directives: {
           </div>
         </Accordion>
         <div>
-          <div v-tooltip="'for i type, it must be in parent'" style="width: 14px;">
+          <div
+            v-s-tooltip="'for i type, it must be in parent'"
+            style="width: 14px;"
+          >
             <i class="icon-question"></i>
           </div>
         </div>
@@ -143,9 +163,11 @@ directives: {
         <div>
           <div
             style="width: 50px; height: 50px;"
-            v-tooltip="'tooltip for images must be in parent'"
+            v-s-tooltip="'tooltip for images must be in parent'"
           >
-            <img src="https://thumbs.gfycat.com/PleasedIcyCod-size_restricted.gif">
+            <img
+              src="https://thumbs.gfycat.com/PleasedIcyCod-size_restricted.gif"
+            />
           </div>
         </div>
       </div>
@@ -174,7 +196,7 @@ import PaneDropdown from "./../components/PaneDropdown.vue";
     PaneDropdown
   },
   directives: {
-    Tooltip
+    "s-tooltip": Tooltip
   }
 })
 export default class Callouts extends Vue {
