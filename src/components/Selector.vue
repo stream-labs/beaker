@@ -365,7 +365,7 @@ export default {
 
   .multiselect__option--selected {
     color: @dark-5;
-    background: @dark-2 !important
+    background: @dark-2 !important;
   }
 
   .multiselect__option--selected:after {
