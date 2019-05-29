@@ -14,7 +14,6 @@ function queryElement(el) {
   return q;
 }
 
-// css resize sensor broken down, removed z-index sensor
 function ResizeSensor(el: Element, callback) {
   let expand = document.createElement("div");
   expand.style.position = "absolute";
@@ -73,48 +72,35 @@ function ResizeSensor(el: Element, callback) {
   shrink.addEventListener("scroll", onScroll);
 }
 
-
-// simple debounce promise
-function debounce() {
+function debounce(el) {
   return new Promise(resolve => {
-    if (!debouncedTooltip) {
-      debouncedTooltip = true;
+    if (!el.classList.contains("debounce")) {
+      el.classList.add("debounce");
       setTimeout(() => {
-        debouncedTooltip = false;
+        el.classList.remove("debounce");
         resolve();
       }, 500);
     }
   });
 }
 
-
-
-
-
-
-
-
-
 function init(el, binding) {
   el.parentElement.style.position = "relative";
   let rect = queryElement(el);
   let hover = document.createElement("div");
-
   hover.style.width = rect.width + "px";
   hover.style.height = rect.height + "px";
-  hover.style.backgroundColor = "#ff000025";
   hover.style.transform = "translate(-" + rect.paddingLeft + "px,-" + rect.paddingTop + "px)";
   hover.className = "s-tooltip__hover";
   let tooltip = document.createElement("div");
-
   tooltip.className = "s-tooltip";
   tooltip.innerHTML =
     '<div class="s-tooltip__label">' +
     binding.value +
     '</div><div class="s-tooltip__caret"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 5" width="16px" height="5px"><path d="M16 0c-1.11 0-2.17.44-2.96 1.23l-2.83 2.85C8.99 5.31 7 5.31 5.78 4.08L2.96 1.23C2.17.44 1.11 0 0 0h16z"></path></svg></div>';
-  hover.insertAdjacentElement("afterbegin", tooltip);
-   el.insertAdjacentElement("afterbegin", hover);
-   el.parentElement
+  el.insertAdjacentElement("afterbegin", tooltip);
+  el.insertAdjacentElement("afterbegin", hover);
+  el.parentElement
     .querySelector(".s-tooltip__hover")
     .addEventListener("mouseover", () => {
       handleMouseOver(el);
@@ -161,42 +147,32 @@ function getPlacement(el) {
   return placement;
 }
 
-
-function redrawTooltip(el) {
+function redraw(el) {
   let placement = getPlacement(el);
   let rect = queryElement(el);
-  let tooltip = el.parentElement.parentElement.querySelector(".s-tooltip");
-  let hover = el.parentElement.parentElement.querySelector(".s-tooltip__hover");
-  let ht = getComputedStyle(tooltip).height;
-  let hh = getComputedStyle(hover).height;
-  let wt = getComputedStyle(tooltip).width;
-  let wh = getComputedStyle(hover).width;
-  tooltip.style.height = 0;
-  hover.style.height = 0;
+  let tooltip = el.querySelector(".s-tooltip");
+  let hover = el.querySelector(".s-tooltip__hover");
+  let tW = getComputedStyle(tooltip).width;
+  let hW = getComputedStyle(el).width;
   tooltip.style.width = 0;
   hover.style.width = 0;
   setTimeout(() => {
-    tooltip.style.height = ht;
-    hover.style.height = hh;
-    tooltip.style.width = wt;
-    hover.style.width = wh;
+    tooltip.style.width = tW;
+    hover.style.width = hW;
   });
   tooltip.style.transform =
-    "translate(" + placement.leftOffset + "px," + placement.topOffset + "px)";
-    hover.style.transform = "translate(-" + rect.paddingLeft + "px,-" + rect.paddingTop + "px)";
+  "translate(" + placement.leftOffset + "px," + placement.topOffset + "px)";
+  hover.style.transform = "translate(-" + rect.paddingLeft + "px,-" + rect.paddingTop + "px)";
 }
-
-var debouncedTooltip: boolean = false;
 
 const Tooltip: DirectiveOptions = {
   inserted(el, binding) {
-    //initHover(el);
-    //initTooltip(el, binding);
     init(el,binding);
     new ResizeSensor(el, function() {
-      if (!debouncedTooltip) {
-        debounce().then(() => {
-          redrawTooltip(el);
+      console.log('resize')
+      if (!el.classList.contains("debounce")) {
+        debounce(el).then(() => {
+          redraw(el);
         });
       }
     });
