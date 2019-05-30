@@ -42,15 +42,16 @@ $refs!: {
 
 private isDragging: boolean = false;
 private size: number = 0;
-private currentValue: number = 0;
+private currentValue: any = 0;
 private currentSlider: number = 0;
-private isComponentExists: boolean = true;
+//private isComponentExists: boolean = true;
 private interval: number = 1;
 private lazy: boolean = false;
 private realTime: boolean = false;
+private offset: any = null;
 
-@Prop({default: null})
-data!: [];
+@Prop({ default: null})
+data!: [string, number];
 
 @Prop({default: "wrap"})
 id!: string;
@@ -59,7 +60,7 @@ id!: string;
 range!: [];
 
 @Prop({default: 0})
-value!: number | string;
+value!: [string,number];
 
 @Prop({default: 0})
 min!: number;
@@ -81,14 +82,15 @@ get val() {
   return this.data ? this.data[this.currentValue] : this.currentValue;
 }
 
-set val(val) {
+set val(newVal) {
+
   if (this.data) {
-    let index = this.data.indexOf(val);
+    let index = this.data.indexOf(newVal);
     if (index > -1) {
       this.currentValue = index;
     }
   } else {
-    this.currentValue = val;
+    this.currentValue = newVal;
   }
 }
 
@@ -155,19 +157,12 @@ get total () {
 
 
   @Watch("value")
-  watchValue(val) {
-    if (this.isDragging) {
-      this.setValue(val);
-    } else {
-      this.setValue(val);
-    }
+  watchValue(newVal) {
+    this.setValue(newVal);
   }
 
   @Watch("max")
   watchMax(val) {
-    if (val < this.min) {
-      return this.printError('[VueSlideBar error]: The maximum value can not be less than the minimum value.')
-    }
     let resetVal = this.limitValue(this.val)
     this.setValue(resetVal)
     this.refresh()
@@ -183,6 +178,7 @@ get total () {
     this.setValue(resetVal)
     this.refresh()
   }
+
 
 
 
@@ -207,15 +203,15 @@ get total () {
 
 
     getPos (e) {
-      this.realTime && this.getStaticData()
-      return e.clientX - this.offset
+      this.realTime && this.getStaticData();
+      return e.clientX - this.offset;
     }
 
 
     wrapClick (e) {
       if (this.isDisabled || (!this.draggable && e.target.id === this.id)) return false
       let pos = this.getPos(e)
-      this.setValueOnPos(pos)
+      this.setValueOnPos(pos, true)
     }
 
 
@@ -228,15 +224,20 @@ get total () {
     moving (e) {
       if (!this.isDragging || !this.draggable) return false
       e.preventDefault()
-      if (e.targetTouches && e.targetTouches[0]) e = e.targetTouches[0]
+      if (e.targetTouches && e.targetTouches[0]) {
+        e = e.targetTouches[0];
+      }
       this.setValueOnPos(this.getPos(e), true)
       this.setTransitionTime(0);
     }
 
     moveEnd (e) {
+      console.log('moveEnd');
       if (this.isDragging && this.draggable) {
+        console.log('moveEnd EMIT')
         this.$emit('dragEnd', this)
         if (this.lazy && this.isDiff(this.val, this.value)) {
+          console.log('syncValue');
           this.syncValue()
         }
       } else {
@@ -244,6 +245,14 @@ get total () {
       }
       this.isDragging = false
       this.setPosition()
+      console.log('end of moveEnd');
+
+    }
+
+
+
+    dragEnd(e) {
+      console.log('drag ended');
     }
 
 
@@ -256,11 +265,11 @@ get total () {
         this.setCurrentValue(v, isDrag)
       } else if (pos < range[0]) {
         this.setTransform(range[0])
-        this.setCurrentValue(valueRange[0])
+        this.setCurrentValue(valueRange[0], true)
         if (this.currentSlider === 1) this.currentSlider = 0
       } else {
         this.setTransform(range[1])
-        this.setCurrentValue(valueRange[1])
+        this.setCurrentValue(valueRange[1], true)
         if (this.currentSlider === 0) this.currentSlider = 1
       }
     }
@@ -277,6 +286,7 @@ get total () {
 
 
     setCurrentValue (val, bool) {
+      //console.log('setCurrentValue');
       if (val < this.minimum || val > this.maximum) return false
       if (this.isDiff(this.currentValue, val)) {
         this.currentValue = val
@@ -289,12 +299,14 @@ get total () {
 
 
     setIndex (val) {
+      console.log('setIndex');
       val = this.spacing * val + this.minimum
-      this.setCurrentValue(val)
+      this.setCurrentValue(val, true)
     }
 
 
     setValue (val) {
+      //console.log('setValue');
       if (this.isDiff(this.val, val)) {
         let resetVal = this.limitValue(val)
         this.val = resetVal
@@ -304,6 +316,7 @@ get total () {
     }
 
     setPosition () {
+      //console.log('setPosition');
       this.setTransitionTime(.25)
       this.setTransform(this.position)
     }
@@ -345,6 +358,7 @@ get total () {
 
 
     syncValue () {
+      //console.log('syncValue');
       let val = this.val
       if (this.range) {
         this.$emit('callbackRange', this.range[this.currentIndex])
@@ -365,8 +379,8 @@ get total () {
 
     getStaticData () {
       if (this.$refs.elem) {
-        this.size = this.$refs.elem.offsetWidth
-        this.offset = this.$refs.elem.getBoundingClientRect().left
+        this.size = this.$refs.elem.offsetWidth;
+        this.offset = this.$refs.elem.getBoundingClientRect().left;
       }
     }
 
@@ -384,17 +398,23 @@ get total () {
     }
 
 
+
+    updated() {
+    console.log(this.data);
+    }
+
+
   mounted () {
 
-        this.getStaticData()
-        this.setValue(this.limitValue(this.value), 0)
-        this.bindEvents()
+        this.getStaticData();
+        this.setValue(this.limitValue(this.value));
+        this.bindEvents();
 
   }
 
 
   beforeDestroy () {
-    this.isComponentExists = false
+    // this.isComponentExists = false
     this.unbindEvents()
   }
 }
