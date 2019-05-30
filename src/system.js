@@ -40,6 +40,7 @@ import Radio from "./components/Radio.vue";
 import Selector from "./components/Selector.vue";
 import SiteSearch from "./components/SiteSearch.vue";
 import Slider from "./components/Slider.vue";
+import SliderTwo from "./components/SliderTwo.vue";
 import Spinner from "./components/Spinner.vue";
 import SSProSimulator from "./components/SSProSimulator.vue";
 import StatusSwitch from "./components/StatusSwitch.vue";
@@ -92,6 +93,7 @@ export {
   Selector,
   SiteSearch,
   Slider,
+  SliderTwo,
   Spinner,
   StatusSwitch,
   Step,
