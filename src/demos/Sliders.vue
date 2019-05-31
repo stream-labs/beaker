@@ -7,9 +7,11 @@
         :value="localValue"
         @input="value => updateLocalValue(value)"
         :min="0"
-        :max="20"
-        :data="datarange"
-        :range="rangedata"
+        :max="100"
+        :interval="25"
+        :marks="true"
+        :labels="true"
+        :units="'px'"
       />
 
     </div>
@@ -30,23 +32,8 @@ import Accordion from "./../components/Accordion.vue";
 export default class Sliders extends Vue {
 
 
-datarange: number[] = [
-  0,5,10,15,20
 
-]
-
-rangedata: any[] = [
-  {label: '0p'},
-  {label: '5p'},
-  {label: '10p'},
-  {label: '15p'},
-  {label: '20p'}
-]
-
-
-
-
-localValue: number | string = 5;
+localValue: number | string = 6;
 
   updateLocalValue(value) {
     this.localValue = value;
