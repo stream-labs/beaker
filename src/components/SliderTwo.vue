@@ -1,12 +1,12 @@
 <template>
   <div
     ref="wrap"
-    :id="id"
+  
     class="s-slider"
     @click="wrapClick">
     <div ref="elem" class="s-slider-bar">
       <template>
-        <div ref="tooltip"
+        <div ref="handle"
           class="s-slider-dot-cont"
           @mousedown="moveStart"
           >
@@ -34,27 +34,23 @@ import { Component, Prop, Watch, Vue } from "vue-property-decorator";
 export default class SliderTwo extends Vue {
 
 $refs!: {
-  elem: any,
-  process: any,
-  tooltip: any,
-  wrap: any
+  elem: HTMLDivElement,
+  process: HTMLDivElement,
+  handle: HTMLDivElement,
+  wrap: HTMLDivElement
 }
 
 private isDragging: boolean = false;
 private size: number = 0;
 private currentValue: any = 0;
-private currentSlider: number = 0;
-//private isComponentExists: boolean = true;
-private interval: number = 1;
 private lazy: boolean = false;
-private realTime: boolean = false;
 private offset: any = null;
+
+@Prop({ default: 1})
+interval!: number;
 
 @Prop({ default: null})
 data!: [string, number];
-
-@Prop({default: "wrap"})
-id!: string;
 
 @Prop({default: null})
 range!: [];
@@ -74,16 +70,10 @@ isDisabled!: boolean;
 @Prop({default: true})
 draggable!: boolean;
 
-get slider () {
-  return this.$refs.tooltip;
-}
-
 get val() {
   return this.data ? this.data[this.currentValue] : this.currentValue;
 }
-
 set val(newVal) {
-
   if (this.data) {
     let index = this.data.indexOf(newVal);
     if (index > -1) {
@@ -93,6 +83,15 @@ set val(newVal) {
     this.currentValue = newVal;
   }
 }
+
+
+
+
+
+
+
+
+
 
 get currentIndex () {
   return (this.currentValue - this.minimum) / this.spacing;
@@ -110,20 +109,25 @@ get maximum () {
   return this.data ? (this.data.length - 1) : this.max;
 }
 
+get spacing () {
+  return this.data ? 1 : this.interval;
+}
+
+
 get multiple () {
   let decimals = `${this.interval}`.split('.')[1];
   return decimals ? Math.pow(10, decimals.length) : 1;
 }
 
-get spacing () {
-  return this.data ? 1 : this.interval;
-}
+
+
+
 
 get total () {
   if (this.data) {
     return this.data.length - 1;
   } else if (Math.floor((this.maximum - this.minimum) * this.multiple) % (this.interval * this.multiple) !== 0) {
-    this.printError('[VueSlideBar error]: Prop[interval] is illegal, Please make sure that the interval can be divisible')
+    console.error('[ERROR]: Prop[interval] must be a divisor of [min] - [max]')
   }
   return (this.maximum - this.minimum) / this.interval;
 }
@@ -172,7 +176,7 @@ get total () {
   @Watch("min")
   watchMin(val) {
     if (val > this.max) {
-      return this.printError('[VueSlideBar error]: The minimum value can not be greater than the maximum value.')
+      return console.error('[ERROR]: [min] cannot be higher than [max]')
     }
     let resetVal = this.limitValue(this.val)
     this.setValue(resetVal)
@@ -203,15 +207,15 @@ get total () {
 
 
     getPos (e) {
-      this.realTime && this.getStaticData();
+      this.getStaticData();
       return e.clientX - this.offset;
     }
 
 
     wrapClick (e) {
-      if (this.isDisabled || (!this.draggable && e.target.id === this.id)) return false
-      let pos = this.getPos(e)
-      this.setValueOnPos(pos, true)
+      if (this.isDisabled) return false;
+      let pos = this.getPos(e);
+      this.setValueOnPos(pos, false);
     }
 
 
@@ -232,45 +236,49 @@ get total () {
     }
 
     moveEnd (e) {
-      console.log('moveEnd');
+      //console.log('moveEnd');
       if (this.isDragging && this.draggable) {
         console.log('moveEnd EMIT')
         this.$emit('dragEnd', this)
+        this.dragEnded(e);
         if (this.lazy && this.isDiff(this.val, this.value)) {
-          console.log('syncValue');
+          //console.log('syncValue');
           this.syncValue()
         }
       } else {
         return false
       }
-      this.isDragging = false
-      this.setPosition()
-      console.log('end of moveEnd');
+      this.isDragging = false;
+      //this.setValueOnPos(this.getPos(e), true)
+      //this.setPosition()
+      //this.setTransitionTime(.25);
+      //console.log('end of moveEnd');
 
     }
 
 
 
-    dragEnd(e) {
+    dragEnded(e) {
+      this.setValue(this.limitValue(this.value));
       console.log('drag ended');
     }
 
 
     setValueOnPos (pos, isDrag) {
+      //console.log('setValueOnPos');
       let range = this.limit
       let valueRange = this.valueLimit
       if (pos >= range[0] && pos <= range[1]) {
+        //console.log('main pos');
         this.setTransform(pos)
         let v = (Math.round(pos / this.gap) * (this.spacing * this.multiple) + (this.minimum * this.multiple)) / this.multiple
         this.setCurrentValue(v, isDrag)
       } else if (pos < range[0]) {
         this.setTransform(range[0])
         this.setCurrentValue(valueRange[0], true)
-        if (this.currentSlider === 1) this.currentSlider = 0
       } else {
         this.setTransform(range[1])
         this.setCurrentValue(valueRange[1], true)
-        if (this.currentSlider === 0) this.currentSlider = 1
       }
     }
 
@@ -291,6 +299,7 @@ get total () {
       if (this.isDiff(this.currentValue, val)) {
         this.currentValue = val
         if (!this.lazy || !this.isDragging) {
+          console.log('syncValue');
           this.syncValue()
         }
       }
@@ -306,7 +315,7 @@ get total () {
 
 
     setValue (val) {
-      //console.log('setValue');
+      console.log('setValue');
       if (this.isDiff(this.val, val)) {
         let resetVal = this.limitValue(val)
         this.val = resetVal
@@ -316,28 +325,30 @@ get total () {
     }
 
     setPosition () {
-      //console.log('setPosition');
+      console.log('setPosition');
       this.setTransitionTime(.25)
       this.setTransform(this.position)
     }
 
 
     setTransform (val) {
-      let value = val - ((this.$refs.tooltip.scrollWidth - 2) / 2)
+      console.log('setTransform')
+      let value = val - ((this.$refs.handle.scrollWidth - 2) / 2)
       let translateValue = `translateX(${value}px)`
-      this.slider.style.transform = translateValue
-      this.slider.style.WebkitTransform = translateValue
-      this.slider.style.msTransform = translateValue
+      this.$refs.handle.style.transform = translateValue
+      this.$refs.handle.style.webkitTransform = translateValue
+      this.$refs.handle.style.transform = translateValue
       this.$refs.process.style.width = `${val}px`
-      this.$refs.process.style['left'] = 0
+      //this.$refs.process.style['left'] = 0
     }
 
 
     setTransitionTime (t) {
-      this.slider.style.transitionDuration = `${t}s`
-      this.slider.style.WebkitTransitionDuration = `${t}s`
+      console.log('setTransitionTime');
+      this.$refs.handle.style.transitionDuration = `${t}s`
+      this.$refs.handle.style.webkitTransitionDuration = `${t}s`
       this.$refs.process.style.transitionDuration = `${t}s`
-      this.$refs.process.style.WebkitTransitionDuration = `${t}s`;
+      this.$refs.process.style.webkitTransitionDuration = `${t}s`;
     }
 
 
@@ -390,11 +401,6 @@ get total () {
         this.getStaticData()
         this.setPosition()
       }
-    }
-
-
-    printError (msg) {
-      console.error(msg)
     }
 
 

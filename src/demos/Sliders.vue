@@ -6,7 +6,7 @@
       <slider
         :value="localValue"
         @input="value => updateLocalValue(value)"
-        :min="1"
+        :min="0"
         :max="20"
         :data="datarange"
         :range="rangedata"
