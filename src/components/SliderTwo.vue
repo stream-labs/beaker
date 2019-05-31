@@ -127,7 +127,7 @@ get total () {
   if (this.data) {
     return this.data.length - 1;
   } else if (Math.floor((this.maximum - this.minimum) * this.multiple) % (this.interval * this.multiple) !== 0) {
-    console.error('[ERROR]: Prop[interval] must be a divisor of [min] - [max]')
+    console.error('[ERROR]: Prop[interval] must be a divisor of [max] - [min]')
   }
   return (this.maximum - this.minimum) / this.interval;
 }
