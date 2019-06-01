@@ -33,66 +33,6 @@
 <script lang="ts">
 import { Component, Prop, Watch, Vue } from "vue-property-decorator";
 
-// function ResizeSensor(el: HTMLDivElement, callback) {
-//   let expand = document.createElement("div");
-//   expand.classList.add("s-slider-expand-watch");
-//   expand.style.position = "absolute";
-//   expand.style.left = "0px";
-//   expand.style.top = "0px";
-//   expand.style.right = "0px";
-//   expand.style.bottom = "0px";
-//   expand.style.overflow = "hidden";
-//   expand.style.visibility = "hidden";
-//   let expandChild = document.createElement("div");
-//   expandChild.style.position = "absolute";
-//   expandChild.style.left = "0px";
-//   expandChild.style.top = "0px";
-//   expandChild.style.width = "10000000px";
-//   expandChild.style.height = "10000000px";
-//   expand.appendChild(expandChild);
-//   let shrink = document.createElement("div");
-//   shrink.classList.add("s-slider-shrink-watch");
-//   shrink.style.position = "absolute";
-//   shrink.style.left = "0px";
-//   shrink.style.top = "0px";
-//   shrink.style.right = "0px";
-//   shrink.style.bottom = "0px";
-//   shrink.style.overflow = "hidden";
-//   shrink.style.visibility = "hidden";
-//   let shrinkChild = document.createElement("div");
-//   shrinkChild.style.position = "absolute";
-//   shrinkChild.style.left = "0px";
-//   shrinkChild.style.top = "0px";
-//   shrinkChild.style.width = "200%";
-//   shrinkChild.style.height = "200%";
-//   shrink.appendChild(shrinkChild);
-//   el.appendChild(expand);
-//   el.appendChild(shrink);
-//   function setScroll() {
-//     expand.scrollLeft = 10000000;
-//     expand.scrollTop = 10000000;
-//     shrink.scrollLeft = 10000000;
-//     shrink.scrollTop = 10000000;
-//   }
-//   setScroll();
-//   let size = el.getBoundingClientRect();
-//   let currentWidth = size.width;
-//   let currentHeight = size.height;
-//   let onScroll = function() {
-//     let size = el.getBoundingClientRect();
-//     let newWidth = size.width;
-//     let newHeight = size.height;
-//     if (newWidth != currentWidth || newHeight != currentHeight) {
-//       currentWidth = newWidth;
-//       currentHeight = newHeight;
-//       callback();
-//     }
-//     setScroll();
-//   };
-//   expand.addEventListener("scroll", onScroll);
-//   shrink.addEventListener("scroll", onScroll);
-// }
-
 @Component({})
 export default class SliderTwo extends Vue {
   $refs!: {
@@ -223,9 +163,6 @@ export default class SliderTwo extends Vue {
   watchMax(val) {
     let resetVal = this.limitValue(this.val);
     this.setValue(resetVal);
-    // this.debounce().then(() => {
-    //   this.refresh(this.$refs.elem);
-    // });
   }
 
   @Watch("min")
@@ -235,9 +172,6 @@ export default class SliderTwo extends Vue {
     }
     let resetVal = this.limitValue(this.val);
     this.setValue(resetVal);
-    // this.debounce().then(() => {
-    //   this.refresh(this.$refs.elem);
-    // });
   }
 
   debounce() {
@@ -252,11 +186,9 @@ export default class SliderTwo extends Vue {
     });
   }
 
-
-
   dnr() {
     this.debounce().then(() => {
-      console.log('after db')
+      console.log("after db");
       let size = this.$refs.elem.getBoundingClientRect();
       let newWidth = size.width;
       let newHeight = size.height;
@@ -268,159 +200,80 @@ export default class SliderTwo extends Vue {
     });
   }
 
+  resizeSensor(el: HTMLDivElement) {
+    let expand = document.createElement("div");
+    expand.classList.add("s-slider-expand-watch");
+    expand.style.position = "absolute";
+    expand.style.left = "0px";
+    expand.style.top = "0px";
+    expand.style.right = "0px";
+    expand.style.bottom = "0px";
+    expand.style.overflow = "hidden";
+    expand.style.visibility = "hidden";
+    let expandChild = document.createElement("div");
+    expandChild.style.position = "absolute";
+    expandChild.style.left = "0px";
+    expandChild.style.top = "0px";
+    expandChild.style.width = "10000000px";
+    expandChild.style.height = "10000000px";
+    expand.appendChild(expandChild);
+    let shrink = document.createElement("div");
+    shrink.classList.add("s-slider-shrink-watch");
+    shrink.style.position = "absolute";
+    shrink.style.left = "0px";
+    shrink.style.top = "0px";
+    shrink.style.right = "0px";
+    shrink.style.bottom = "0px";
+    shrink.style.overflow = "hidden";
+    shrink.style.visibility = "hidden";
+    let shrinkChild = document.createElement("div");
+    shrinkChild.style.position = "absolute";
+    shrinkChild.style.left = "0px";
+    shrinkChild.style.top = "0px";
+    shrinkChild.style.width = "200%";
+    shrinkChild.style.height = "200%";
+    shrink.appendChild(shrinkChild);
+    el.appendChild(expand);
+    el.appendChild(shrink);
+    this.setSensorScroll(this.$refs.elem);
+    let size = el.getBoundingClientRect();
+    this.currentWidth = size.width;
+    this.currentHeight = size.height;
+  }
 
-
-resizeSensor(el: HTMLDivElement) {
-  let expand = document.createElement("div");
-  expand.classList.add("s-slider-expand-watch");
-  expand.style.position = "absolute";
-  expand.style.left = "0px";
-  expand.style.top = "0px";
-  expand.style.right = "0px";
-  expand.style.bottom = "0px";
-  expand.style.overflow = "hidden";
-  expand.style.visibility = "hidden";
-  let expandChild = document.createElement("div");
-  expandChild.style.position = "absolute";
-  expandChild.style.left = "0px";
-  expandChild.style.top = "0px";
-  expandChild.style.width = "10000000px";
-  expandChild.style.height = "10000000px";
-  expand.appendChild(expandChild);
-  let shrink = document.createElement("div");
-  shrink.classList.add("s-slider-shrink-watch");
-  shrink.style.position = "absolute";
-  shrink.style.left = "0px";
-  shrink.style.top = "0px";
-  shrink.style.right = "0px";
-  shrink.style.bottom = "0px";
-  shrink.style.overflow = "hidden";
-  shrink.style.visibility = "hidden";
-  let shrinkChild = document.createElement("div");
-  shrinkChild.style.position = "absolute";
-  shrinkChild.style.left = "0px";
-  shrinkChild.style.top = "0px";
-  shrinkChild.style.width = "200%";
-  shrinkChild.style.height = "200%";
-  shrink.appendChild(shrinkChild);
-  el.appendChild(expand);
-  el.appendChild(shrink);
-  this.setSensorScroll(this.$refs.elem);
-  let size = el.getBoundingClientRect();
-  this.currentWidth = size.width
-  this.currentHeight = size.height
-}
-
-
-
-setSensorScroll(el) {
+  setSensorScroll(el) {
     el.querySelector(".s-slider-expand-watch").scrollLeft = 10000000;
     el.querySelector(".s-slider-expand-watch").scrollTop = 10000000;
     el.querySelector(".s-slider-shrink-watch").scrollLeft = 10000000;
     el.querySelector(".s-slider-shrink-watch").scrollTop = 10000000;
-}
-
-//  onScroll = (el: any) => {
-//     console.log('on scroll event listener')
-//     let size = el.getBoundingClientRect();
-//     let newWidth = size.width
-//     let newHeight = size.height
-//     if (newWidth != this.currentWidth || newHeight != this.currentHeight) {
-//       this.currentWidth = newWidth;
-//       this.currentHeight = newHeight;
-//       this.callback(el);
-//     }
-//   }
-
-//   callback(el) {
-//     console.log('call back init');
-//     if (!el.classList.contains("debounce")) {
-//             this.debounce().then(() => {
-//       this.refresh();
-//     });
-//       }
-//   }
-
-
-
-
-
-
-
-
-
-
-//  ResizeSensor(el: HTMLDivElement, callback) {
-//   let expand = document.createElement("div");
-//   expand.classList.add("s-slider-expand-watch");
-//   expand.style.position = "absolute";
-//   expand.style.left = "0px";
-//   expand.style.top = "0px";
-//   expand.style.right = "0px";
-//   expand.style.bottom = "0px";
-//   expand.style.overflow = "hidden";
-//   expand.style.visibility = "hidden";
-//   let expandChild = document.createElement("div");
-//   expandChild.style.position = "absolute";
-//   expandChild.style.left = "0px";
-//   expandChild.style.top = "0px";
-//   expandChild.style.width = "10000000px";
-//   expandChild.style.height = "10000000px";
-//   expand.appendChild(expandChild);
-//   let shrink = document.createElement("div");
-//   shrink.classList.add("s-slider-shrink-watch");
-//   shrink.style.position = "absolute";
-//   shrink.style.left = "0px";
-//   shrink.style.top = "0px";
-//   shrink.style.right = "0px";
-//   shrink.style.bottom = "0px";
-//   shrink.style.overflow = "hidden";
-//   shrink.style.visibility = "hidden";
-//   let shrinkChild = document.createElement("div");
-//   shrinkChild.style.position = "absolute";
-//   shrinkChild.style.left = "0px";
-//   shrinkChild.style.top = "0px";
-//   shrinkChild.style.width = "200%";
-//   shrinkChild.style.height = "200%";
-//   shrink.appendChild(shrinkChild);
-//   el.appendChild(expand);
-//   el.appendChild(shrink);
-//   function setScroll() {
-//     expand.scrollLeft = 10000000;
-//     expand.scrollTop = 10000000;
-//     shrink.scrollLeft = 10000000;
-//     shrink.scrollTop = 10000000;
-//   }
-//   setScroll();
-//   let size = el.getBoundingClientRect();
-//   let currentWidth = size.width;
-//   let currentHeight = size.height;
-//   var onScroll = () => {
-//     let size = el.getBoundingClientRect();
-//     let newWidth = size.width;
-//     let newHeight = size.height;
-//     if (newWidth != currentWidth || newHeight != currentHeight) {
-//       currentWidth = newWidth;
-//       currentHeight = newHeight;
-//       callback();
-//     }
-//     setScroll();
-//   };
-
+  }
 
   bindEvents(el: any) {
     document.addEventListener("mousemove", this.moving);
     document.addEventListener("mouseup", this.moveEnd);
     document.addEventListener("mouseleave", this.moveEnd);
-    console.log(el)
-    el.querySelector(".s-slider-shrink-watch").addEventListener("scroll", this.dnr);
-    el.querySelector(".s-slider-expand-watch").addEventListener("scroll", this.dnr);
+    el.querySelector(".s-slider-shrink-watch").addEventListener(
+      "scroll",
+      this.dnr
+    );
+    el.querySelector(".s-slider-expand-watch").addEventListener(
+      "scroll",
+      this.dnr
+    );
   }
 
-  unbindEvents() {
+  unbindEvents(el: any) {
     document.removeEventListener("mousemove", this.moving);
     document.removeEventListener("mouseup", this.moveEnd);
     document.removeEventListener("mouseleave", this.moveEnd);
+    el.querySelector(".s-slider-shrink-watch").removeEventListener(
+      "scroll",
+      this.dnr
+    );
+    el.querySelector(".s-slider-expand-watch").removeEventListener(
+      "scroll",
+      this.dnr
+    );
   }
 
   getPos(e) {
@@ -613,17 +466,11 @@ setSensorScroll(el) {
     this.setValue(this.limitValue(this.value));
     this.createMarks();
     this.resizeSensor(this.$refs.elem);
-     this.bindEvents(this.$refs.elem);
-
-    
-    
-    }
-
-
-
+    this.bindEvents(this.$refs.elem);
+  }
 
   beforeDestroy() {
-    this.unbindEvents();
+    this.unbindEvents(this.$refs.elem);
   }
 }
 </script>
@@ -656,14 +503,13 @@ setSensorScroll(el) {
     border-radius: 4px;
     background-color: @teal;
     transition: all 0s;
-    //will-change: width;
+    will-change: width;
   }
 
   .s-slider-dot-cont {
     position: absolute;
     display: flex;
     flex-direction: column;
-
     align-items: center;
     transition: all 0s;
     will-change: transform;
@@ -710,6 +556,7 @@ setSensorScroll(el) {
 
   .s-slider-dot-tooltip {
     .margin-top();
+    padding-top: 1px;
     font-size: 14px;
     color: @dark-5;
     font-weight: @medium;
@@ -803,5 +650,4 @@ setSensorScroll(el) {
     }
   }
 }
-
 </style>
