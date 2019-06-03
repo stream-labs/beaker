@@ -6,12 +6,12 @@
           <div class="s-slider-dot">
             <div class="s-slider-dot-handle"></div>
           </div>
-          <div class="s-slider-dot-tooltip">{{value}}{{units}}</div>
+          <div class="s-slider-dot-tooltip">{{ value }}{{ units }}</div>
         </div>
       </template>
       <div ref="process" class="s-slider-process"></div>
     </div>
-    <div class="s-slider-mark-cont" v-if="(interval && marks)">
+    <div class="s-slider-mark-cont" v-if="interval && marks">
       <transition-group
         name="s-slider--ani__ticks"
         v-for="(tick, index) in range"
@@ -19,12 +19,18 @@
         class="s-slider-marks"
         tag="div"
       >
-        <div class="s-slider-tick" v-if="marks && value != range[index]" key="tick"></div>
+        <div
+          class="s-slider-tick"
+          v-if="marks && value != range[index]"
+          key="tick"
+        ></div>
         <div
           v-if="labels && value != range[index]"
           class="s-slider-label"
           key="index"
-        >{{ range[index] }}{{ units }}</div>
+        >
+          {{ range[index] }}{{ units }}
+        </div>
       </transition-group>
     </div>
   </div>
@@ -474,7 +480,6 @@ export default class SliderTwo extends Vue {
   }
 }
 </script>
-
 
 <style lang="less" scoped>
 @import "./../styles/Imports";

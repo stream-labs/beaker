@@ -195,16 +195,16 @@ components: {
       <div class="row">
         <h1>NEW SLIDER</h1>
         <p>Dont use this yet.</p>
-     <slider-two
-        :value="localValue"
-        @input="value => updateLocalValue(value)"
-        :min="0"
-        :max="100"
-        :interval="5"
-        :units="'%'"
-      />
-      </div></div>
-
+        <slider-two
+          :value="localValue"
+          @input="value => updateLocalValue(value)"
+          :min="0"
+          :max="100"
+          :interval="5"
+          :units="'%'"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -216,19 +216,18 @@ import Accordion from "./../components/Accordion.vue";
 @Component({
   components: {
     "slider-two": SliderTwo,
-    "slider": Slider,
+    slider: Slider,
     Accordion
   }
 })
 export default class Sliders extends Vue {
-
-localValue: number | string = 15;
+  localValue: number | string = 15;
 
   updateLocalValue(value) {
     this.localValue = value;
   }
 
-   value = 50;
+  value = 50;
   data = [1, 50, 100];
   updateValue(value) {
     console.log(value);
