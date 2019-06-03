@@ -191,23 +191,45 @@ components: {
         </tbody>
       </table>
     </div>
+    <div class="section">
+      <div class="row">
+        <h1>NEW SLIDER</h1>
+        <p>Dont use this yet.</p>
+     <slider-two
+        :value="localValue"
+        @input="value => updateLocalValue(value)"
+        :min="0"
+        :max="100"
+        :interval="5"
+        :units="'%'"
+      />
+      </div></div>
+
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import Slider from "./../components/Slider.vue";
+import SliderTwo from "./../components/SliderTwo.vue";
 import Accordion from "./../components/Accordion.vue";
 @Component({
   components: {
-    Slider,
+    "slider-two": SliderTwo,
+    "slider": Slider,
     Accordion
   }
 })
 export default class Sliders extends Vue {
-  value = 50;
-  data = [1, 50, 100];
 
+localValue: number | string = 15;
+
+  updateLocalValue(value) {
+    this.localValue = value;
+  }
+
+   value = 50;
+  data = [1, 50, 100];
   updateValue(value) {
     console.log(value);
   }
