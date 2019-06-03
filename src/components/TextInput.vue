@@ -6,6 +6,7 @@
       @input="handleInput"
       :name="name"
       :disabled="disabled"
+      :readonly="readonly"
       @blur="$emit('blur')"
       v-model="content"
       :class="{
@@ -62,6 +63,9 @@ export default class TextInput extends Vue {
 
   @Prop()
   label!: String;
+
+  @Prop()
+  readonly!: Boolean;
 
   content: String = "";
 
