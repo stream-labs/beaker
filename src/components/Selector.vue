@@ -291,11 +291,16 @@ export default {
 
     &::-webkit-scrollbar-track {
       background: @light-3;
+      border-radius: 0 0 4px 0;
     }
 
     &::-webkit-scrollbar-thumb {
       border-radius: 100px;
       background: @light-4;
+    }
+
+    &::-webkit-scrollbar-corner {
+      background: @light-3;
     }
   }
 
