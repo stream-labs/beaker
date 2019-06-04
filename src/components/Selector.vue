@@ -1,6 +1,7 @@
 <template>
   <div class="s-selector">
     <multiselect
+      :style="styleObject"
       :value="value"
       :options="options"
       :searchable="searchable"
@@ -31,12 +32,20 @@ export default {
     Selector
   },
 
+  props: ["width"],
+
   created() {
     this.$on("input", this.setValue);
   },
 
   destroyed() {
     this.$off("input", this.setValue);
+  },
+
+  computed: {
+    styleObject() {
+      return { width: this.multiple ? "100%" : "176px" };
+    }
   },
 
   methods: {
@@ -287,6 +296,7 @@ export default {
 
     &::-webkit-scrollbar {
       width: 6px;
+      background: transparent;
     }
 
     &::-webkit-scrollbar-track {
@@ -479,6 +489,10 @@ export default {
 
       &::-webkit-scrollbar-thumb {
         background: @light-5;
+      }
+
+      &::-webkit-scrollbar-corner {
+        background: @dark-5;
       }
     }
 
