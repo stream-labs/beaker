@@ -163,7 +163,7 @@ export default {
   .multiselect__tags {
     height: 40px;
     display: block;
-    padding: 8px 40px 0 8px;
+    padding: 9px 40px 0 8px;
     border: 1px solid @light-3;
     box-shadow: 0px 4px 8px rgba(9, 22, 29, 0.08);
     background: @light-3;
@@ -469,16 +469,11 @@ export default {
     .multiselect__content-wrapper {
       border-top: 1px solid @night-selector-selected;
 
-      &::-webkit-scrollbar {
-        width: 4px;
-      }
-
       &::-webkit-scrollbar-track {
         background: @dark-5;
       }
 
       &::-webkit-scrollbar-thumb {
-        border-radius: 100px;
         background: @light-5;
       }
     }
