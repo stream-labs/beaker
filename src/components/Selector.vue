@@ -165,7 +165,6 @@ export default {
     display: block;
     padding: 9px 40px 0 8px;
     border: 1px solid @light-3;
-    box-shadow: 0px 4px 8px rgba(9, 22, 29, 0.08);
     background: @light-3;
     font-size: 14px;
     .radius();
@@ -464,7 +463,6 @@ export default {
     .multiselect__tags {
       background: @night-dropdown-bg;
       border: @night-dropdown-border;
-      box-shadow: 0px 4px 8px rgba(9, 22, 29, 0.24);
     }
 
     .multiselect__content-wrapper {
