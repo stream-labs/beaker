@@ -1,6 +1,7 @@
 <template>
   <div class="s-selector">
     <multiselect
+      :style="styleObject"
       :value="value"
       :options="options"
       :searchable="searchable"
@@ -31,12 +32,20 @@ export default {
     Selector
   },
 
+  props: ["width"],
+
   created() {
     this.$on("input", this.setValue);
   },
 
   destroyed() {
     this.$off("input", this.setValue);
+  },
+
+  computed: {
+    styleObject() {
+      return { width: this.multiple ? "100%" : "176px" };
+    }
   },
 
   methods: {
@@ -165,7 +174,6 @@ export default {
     display: block;
     padding: 9px 40px 0 8px;
     border: 1px solid @light-3;
-    box-shadow: 0px 4px 8px rgba(9, 22, 29, 0.08);
     background: @light-3;
     font-size: 14px;
     .radius();
@@ -288,15 +296,21 @@ export default {
 
     &::-webkit-scrollbar {
       width: 6px;
+      background: transparent;
     }
 
     &::-webkit-scrollbar-track {
       background: @light-3;
+      border-radius: 0 0 4px 0;
     }
 
     &::-webkit-scrollbar-thumb {
       border-radius: 100px;
       background: @light-4;
+    }
+
+    &::-webkit-scrollbar-corner {
+      background: @light-3;
     }
   }
 
@@ -464,7 +478,6 @@ export default {
     .multiselect__tags {
       background: @night-dropdown-bg;
       border: @night-dropdown-border;
-      box-shadow: 0px 4px 8px rgba(9, 22, 29, 0.24);
     }
 
     .multiselect__content-wrapper {
@@ -476,6 +489,10 @@ export default {
 
       &::-webkit-scrollbar-thumb {
         background: @light-5;
+      }
+
+      &::-webkit-scrollbar-corner {
+        background: @dark-5;
       }
     }
 
