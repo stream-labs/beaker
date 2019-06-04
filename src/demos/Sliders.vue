@@ -99,6 +99,7 @@ components: {
           :suffix="'%'"
           :simpleTheme="true"
         />
+        <i class="fas fa-question-circle"></i>
       </div>
     </div>
 
@@ -195,14 +196,17 @@ components: {
       <div class="row">
         <h1>NEW SLIDER</h1>
         <p>Dont use this yet.</p>
-        <slider-two
-          :value="localValue"
-          @input="value => updateLocalValue(value)"
-          :min="0"
-          :max="100"
-          :interval="5"
-          :suffix="'%'"
-        />
+        <div class="side-by-side">
+          <slider-two
+            :value="localValue"
+            @input="value => updateLocalValue(value)"
+            :min="0"
+            :max="100"
+            :suffix="'%'"
+            :interval="25"
+          />
+          <div class="tt"><i class="fas fa-question-circle"></i></div>
+        </div>
       </div>
     </div>
 
@@ -247,3 +251,9 @@ export default class Sliders extends Vue {
   }
 }
 </script>
+
+<style lang="less">
+.side-by-side {
+  flex-direction: row;
+}
+</style>
