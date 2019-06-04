@@ -201,10 +201,17 @@ components: {
           :min="0"
           :max="100"
           :interval="5"
-          :units="'%'"
+          :suffix="'%'"
         />
       </div>
     </div>
+
+    <slider-two
+      :value="localValueTwo"
+      @input="value => updateLocalValueTwo(value)"
+      :data="data"
+      :simpleTheme="true"
+    />
   </div>
 </template>
 
@@ -227,8 +234,14 @@ export default class Sliders extends Vue {
     this.localValue = value;
   }
 
+  localValueTwo: number | string = 15;
+
+  updateLocalValueTwo(value) {
+    this.localValueTwo = value;
+  }
+
   value = 50;
-  data = [1, 50, 100];
+  data = ["one", "two", "three"];
   updateValue(value) {
     console.log(value);
   }

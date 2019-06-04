@@ -6,10 +6,16 @@
           <div class="s-slider-dot">
             <div class="s-slider-dot-handle"></div>
           </div>
-          <div class="s-slider-dot-tooltip">{{ value }}{{ units }}</div>
+          <div class="s-slider-dot-tooltip">
+            {{ prefix }}{{ value }}{{ suffix }}
+          </div>
         </div>
       </template>
-      <div ref="process" class="s-slider-process"></div>
+      <div
+        ref="process"
+        class="s-slider-process"
+        :class="{ 's-slider-simple': simpleTheme }"
+      ></div>
     </div>
     <div class="s-slider-mark-cont" v-if="interval && marks">
       <transition-group
@@ -22,14 +28,14 @@
         <div
           class="s-slider-tick"
           v-if="marks && value != range[index]"
-          key="tick"
+          key="tick_lines"
         ></div>
         <div
           v-if="labels && value != range[index]"
           class="s-slider-label"
-          key="index"
+          key="tick_values"
         >
-          {{ range[index] }}{{ units }}
+          {{ prefix }}{{ range[index] }}{{ suffix }}
         </div>
       </transition-group>
     </div>
@@ -56,6 +62,7 @@ export default class SliderTwo extends Vue {
   private range: any[] = [];
   private currentWidth: number = 0;
   private currentHeight: number = 0;
+  private bounced: boolean = false;
 
   @Prop({ default: 1 })
   interval!: number;
@@ -75,8 +82,14 @@ export default class SliderTwo extends Vue {
   @Prop({ default: true })
   tooltip!: boolean;
 
-  @Prop({ default: "%" })
-  units!: string;
+  @Prop({ default: null })
+  suffix!: string;
+
+  @Prop({ default: null })
+  prefix!: string;
+
+  @Prop({ default: false })
+  simpleTheme!: boolean;
 
   @Prop({ default: false })
   marks!: boolean;
@@ -165,36 +178,20 @@ export default class SliderTwo extends Vue {
     this.setValue(newVal);
   }
 
-  @Watch("max")
-  watchMax(val) {
-    let resetVal = this.limitValue(this.val);
-    this.setValue(resetVal);
-  }
-
-  @Watch("min")
-  watchMin(val) {
-    if (val > this.max) {
-      return console.error("[ERROR]: [min] cannot be higher than [max]");
-    }
-    let resetVal = this.limitValue(this.val);
-    this.setValue(resetVal);
-  }
-
   debounce() {
     return new Promise(resolve => {
-      if (!this.$refs.elem.classList.contains("debounce")) {
-        this.$refs.elem.classList.add("debounce");
+      if (!this.bounced) {
+        this.bounced = true;
         setTimeout(() => {
-          this.$refs.elem.classList.remove("debounce");
+          this.bounced = false;
           resolve();
-        }, 500);
+        }, 100);
       }
     });
   }
 
   dnr() {
     this.debounce().then(() => {
-      console.log("after db");
       let size = this.$refs.elem.getBoundingClientRect();
       let newWidth = size.width;
       let newHeight = size.height;
@@ -306,13 +303,12 @@ export default class SliderTwo extends Vue {
       e = e.targetTouches[0];
     }
     this.setValueOnPos(this.getPos(e), true);
-    this.setTransitionTime(0);
   }
 
   moveEnd(e) {
     if (this.isDragging && this.draggable) {
       this.$emit("dragEnd", this);
-      this.dragEnded(e);
+      this.setValue(this.limitValue(this.value));
       if (this.lazy && this.isDiff(this.val, this.value)) {
         this.syncValue();
       }
@@ -320,10 +316,6 @@ export default class SliderTwo extends Vue {
       return false;
     }
     this.isDragging = false;
-  }
-
-  dragEnded(e) {
-    this.setValue(this.limitValue(this.value));
   }
 
   setValueOnPos(pos, isDrag) {
@@ -401,7 +393,11 @@ export default class SliderTwo extends Vue {
   }
 
   setPosition() {
-    this.setTransitionTime(0.25);
+    if (!this.isDragging) {
+      this.setTransitionTime(0.25);
+    } else {
+      this.setTransitionTime(0);
+    }
     this.setTransform(this.position);
   }
 
@@ -470,13 +466,19 @@ export default class SliderTwo extends Vue {
   mounted() {
     this.getStaticData();
     this.setValue(this.limitValue(this.value));
-    this.createMarks();
-    this.resizeSensor(this.$refs.elem);
-    this.bindEvents(this.$refs.elem);
+    if (this.marks) {
+      this.createMarks();
+    }
+    if (this.$refs.elem) {
+      this.resizeSensor(this.$refs.elem);
+      this.bindEvents(this.$refs.elem);
+    }
   }
 
   beforeDestroy() {
-    this.unbindEvents(this.$refs.elem);
+    if (this.$refs.elem) {
+      this.unbindEvents(this.$refs.elem);
+    }
   }
 }
 </script>
@@ -508,7 +510,10 @@ export default class SliderTwo extends Vue {
     border-radius: 4px;
     background-color: @teal;
     transition: all 0s;
-    will-change: width;
+
+    &.s-slider-simple {
+      background-color: @selected;
+    }
   }
 
   .s-slider-dot-cont {
@@ -517,7 +522,6 @@ export default class SliderTwo extends Vue {
     flex-direction: column;
     align-items: center;
     transition: all 0s;
-    will-change: transform;
     cursor: pointer;
     z-index: 3;
     left: 0;
