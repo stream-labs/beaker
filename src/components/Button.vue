@@ -270,7 +270,7 @@ export default class Button extends Vue {
   border: 1px solid transparent;
   text-decoration: none !important;
   position: relative;
-  outline: none;
+  outline: none !important;
 
   * {
     z-index: 5;
@@ -703,7 +703,7 @@ export default class Button extends Vue {
   &:hover,
   &:focus {
     background-color: transparent;
-    outline: 0;
+    outline: none;
   }
 }
 
