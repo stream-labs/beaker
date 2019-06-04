@@ -165,7 +165,6 @@ export default {
     display: block;
     padding: 9px 40px 0 8px;
     border: 1px solid @light-3;
-    box-shadow: 0px 4px 8px rgba(9, 22, 29, 0.08);
     background: @light-3;
     font-size: 14px;
     .radius();
@@ -284,6 +283,7 @@ export default {
     -webkit-overflow-scrolling: touch;
     border-radius: 0 0 4px 4px;
     border-top: 1px solid #d1d8db;
+    box-shadow: 0px 4px 8px rgba(9, 22, 29, 0.08);
 
     &::-webkit-scrollbar {
       width: 6px;
