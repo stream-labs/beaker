@@ -75,7 +75,6 @@ export default {
     width: 100%;
     min-height: 40px;
     text-align: left;
-    color: #35495e;
   }
 
   .multiselect * {
@@ -124,23 +123,13 @@ export default {
     border-radius: 5px;
     background: @dark-4;
     color: @selected;
-    padding: 2px 0 0 5px;
+    padding: 0 0 0 5px;
     width: 100%;
     transition: border 0.1s ease;
     box-sizing: border-box;
     margin-bottom: 8px;
     vertical-align: top;
     height: 20px;
-  }
-
-  .multiselect__input:-ms-input-placeholder {
-    color: @day-paragraph;
-    opacity: 1;
-  }
-
-  .multiselect__input::placeholder {
-    color: @day-paragraph;
-    opacity: 0.7;
   }
 
   .multiselect__tag ~ .multiselect__input,
@@ -160,7 +149,7 @@ export default {
   }
 
   .multiselect__single {
-    padding-left: 5px;
+    padding: 0 0 0 5px;
     margin-bottom: 8px;
     background: @light-3;
     color: @selected;
@@ -174,9 +163,9 @@ export default {
   .multiselect__tags {
     height: 40px;
     display: block;
-    padding: 8px 40px 0 8px;
-    border-radius: 5px;
+    padding: 9px 40px 0 8px;
     border: 1px solid @light-3;
+    box-shadow: 0px 4px 8px rgba(9, 22, 29, 0.08);
     background: @light-3;
     font-size: 14px;
     .radius();
@@ -269,7 +258,7 @@ export default {
     transform: none;
     content: "\E996";
     font-family: "icomoon";
-    color: #91979a;
+    color: @dark-2;
     height: auto;
     width: auto;
   }
@@ -278,8 +267,6 @@ export default {
     color: #adadad;
     display: inline-block;
     margin-bottom: 10px;
-    padding-top: 2px;
-    padding-left: 5px;
   }
 
   .multiselect--active .multiselect__placeholder {
@@ -289,7 +276,6 @@ export default {
   .multiselect__content-wrapper {
     position: absolute;
     display: block;
-    background: transparent;
     width: 100%;
     max-height: 240px;
     overflow: auto;
@@ -297,6 +283,20 @@ export default {
     z-index: 50;
     -webkit-overflow-scrolling: touch;
     border-radius: 0 0 4px 4px;
+    border-top: 1px solid #d1d8db;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: @light-3;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 100px;
+      background: @light-4;
+    }
   }
 
   .multiselect__content {
@@ -315,7 +315,6 @@ export default {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom: none;
-    border-top: 1px solid #e8e8e8;
   }
 
   .multiselect__content::webkit-scrollbar {
@@ -336,7 +335,7 @@ export default {
     position: relative;
     cursor: pointer;
     white-space: nowrap;
-    color: @dark-5;
+    color: @dark-2;
     background: @light-3;
     font-size: 14px;
   }
@@ -354,31 +353,24 @@ export default {
 
   .multiselect__option--highlight {
     outline: none;
-    background: @selected;
-    color: @night-title;
+    background: linear-gradient(
+        0deg,
+        rgba(9, 22, 29, 0.08),
+        rgba(9, 22, 29, 0.08)
+      ),
+      #e3e8eb;
   }
 
   .multiselect__option--highlight:after {
     content: attr(data-select);
-    color: @white;
-  }
-
-  .multiselect__option--selected {
-    color: @dark-5;
-    background: @dark-2 !important;
   }
 
   .multiselect__option--selected:after {
     content: attr(data-selected);
   }
 
-  .multiselect__option--selected.multiselect__option--highlight {
-    color: @night-title;
-  }
-
   .multiselect__option--selected.multiselect__option--highlight:after {
     content: attr(data-deselect);
-    color: @white;
   }
 
   .multiselect--disabled .multiselect__current,
@@ -398,21 +390,12 @@ export default {
     color: @light-4;
   }
 
-  .multiselect__option--group.multiselect__option--highlight {
-    color: @white;
-  }
-
   .multiselect__option--disabled.multiselect__option--highlight {
     background: #dedede;
   }
 
-  .multiselect__option--group-selected.multiselect__option--highlight {
-    color: @white;
-  }
-
   .multiselect__option--group-selected.multiselect__option--highlight:after {
     content: attr(data-deselect);
-    color: @white;
   }
 
   .multiselect-enter-active,
@@ -480,11 +463,24 @@ export default {
     .multiselect__tags {
       background: @night-dropdown-bg;
       border: @night-dropdown-border;
+      box-shadow: 0px 4px 8px rgba(9, 22, 29, 0.24);
+    }
+
+    .multiselect__content-wrapper {
+      border-top: 1px solid @night-selector-selected;
+
+      &::-webkit-scrollbar-track {
+        background: @dark-5;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: @light-5;
+      }
     }
 
     .multiselect__select {
       &:before {
-        border-color: @white transparent transparent;
+        color: @white;
       }
     }
 
@@ -518,16 +514,11 @@ export default {
 
     .multiselect__option {
       background: @night-dropdown-bg;
-      color: @light-4;
-    }
-
-    .multiselect__option--selected {
-      background: @night-hover !important;
+      color: @white;
     }
 
     .multiselect__option--highlight {
-      background: @night-hover;
-      color: @night-title;
+      background: @night-selector-selected;
     }
   }
 }

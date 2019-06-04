@@ -60,7 +60,7 @@
         <tbody>
           <tr>
             <td>disabled</td>
-            <td>Boolean</td>
+            <td>boolean</td>
             <td>null</td>
             <td>
               Puts a disabled class on the form field and disables the input.
@@ -107,6 +107,12 @@
             <td>string</td>
             <td>null</td>
             <td>Input value using v-model.</td>
+          </tr>
+          <tr>
+            <td>readonly</td>
+            <td>boolean</td>
+            <td>null</td>
+            <td>Specifies that an input field is read-only.</td>
           </tr>
         </tbody>
       </table>
