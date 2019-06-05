@@ -54,6 +54,7 @@ import Pagination from "./components/Pagination.vue";
 import ProgressBar from "./components/ProgressBar.vue";
 import UrlBar from "./components/UrlBar.vue";
 import VirtualItem from "./components/VirtualItem.vue";
+import TaggingInput from './components/TaggingInput.vue';
 
 export {
   Accordion,
@@ -99,6 +100,7 @@ export {
   Step,
   // TabDevelop,
   Tabs,
+  TaggingInput,
   TextInput,
   Toggle,
   TooltipNotice,

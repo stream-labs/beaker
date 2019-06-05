@@ -354,6 +354,18 @@ components: {
             (only in Modal Subscribe).
           </td>
         </tr>
+        <tr>
+          <td>buttonTitle</td>
+          <td>string</td>
+          <td>Subscribe with PayPal</td>
+          <td>Set subscribe button title (only in Modal Subscribe).</td>
+        </tr>
+        <tr>
+          <td>buttonTitle</td>
+          <td>string</td>
+          <td>$5.99</td>
+          <td>Set subscribe button title (only in Modal Subscribe).</td>
+        </tr>
       </tbody>
     </table>
   </div>
