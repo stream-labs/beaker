@@ -256,9 +256,6 @@ export default class Sliders extends Vue {
 .side-by-side {
   display: flex;
   flex-direction: row;
-
-
-
 }
 
 .tt {
