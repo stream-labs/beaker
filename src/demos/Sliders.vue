@@ -245,7 +245,7 @@ export default class Sliders extends Vue {
   }
 
   value = 50;
-  data = ["one", "two", "three"];
+  data = ["one", "two", "three", "four", "five", "six"];
   updateValue(value) {
     console.log(value);
   }
@@ -254,6 +254,14 @@ export default class Sliders extends Vue {
 
 <style lang="less">
 .side-by-side {
+  display: flex;
   flex-direction: row;
+
+
+
+}
+
+.tt {
+  margin-left: 16px;
 }
 </style>
