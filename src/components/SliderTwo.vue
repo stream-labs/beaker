@@ -1,45 +1,33 @@
 <template>
-  <div ref="wrap" class="s-slider" @click="wrapClick">
-    <div ref="elem" class="s-slider-bar">
-      <template>
-        <div ref="handle" class="s-slider-dot-cont" @mousedown="moveStart">
-          <div class="s-slider-dot">
-            <div class="s-slider-dot-handle"></div>
+    <div ref="wrap" class="s-slider" @click="wrapClick">
+      <div ref="elem" class="s-slider-bar">
+        <template>
+          <div ref="handle" class="s-slider-dot-cont" @mousedown="moveStart">
+            <div class="s-slider-dot">
+              <div class="s-slider-dot-handle"></div>
+            </div>
+            <div class="s-slider-dot-tooltip">{{ prefix }}{{ val }}{{ suffix}}</div>
           </div>
-          <div class="s-slider-dot-tooltip">
-            {{ prefix }}{{ value }}{{ suffix }}
-          </div>
-        </div>
-      </template>
-      <div
-        ref="process"
-        class="s-slider-process"
-        :class="{ 's-slider-simple': simpleTheme }"
-      ></div>
-    </div>
-    <div class="s-slider-mark-cont" v-if="interval && marks">
-      <transition-group
-        name="s-slider--ani__ticks"
-        v-for="(tick, index) in range"
-        :key="index"
-        class="s-slider-marks"
-        tag="div"
-      >
-        <div
-          class="s-slider-tick"
-          v-if="marks && value != range[index]"
-          key="tick_lines"
-        ></div>
-        <div
-          v-if="labels && value != range[index]"
-          class="s-slider-label"
-          key="tick_values"
+        </template>
+        <div ref="process" class="s-slider-process" :class="{ 's-slider-simple': simpleTheme }"></div>
+      </div>
+      <div class="s-slider-mark-cont" v-if="interval && marks">
+        <transition-group
+          name="s-slider--ani__ticks"
+          v-for="(tick, index) in range"
+          :key="index"
+          class="s-slider-marks"
+          tag="div"
         >
-          {{ prefix }}{{ range[index] }}{{ suffix }}
-        </div>
-      </transition-group>
+          <div class="s-slider-tick" v-if="marks && value != range[index]" key="tick_lines"></div>
+          <div
+            v-if="labels && value != range[index]"
+            class="s-slider-label"
+            key="tick_values"
+          >{{ prefix }}{{ range[index] }}{{ suffix }}</div>
+        </transition-group>
+      </div>
     </div>
-  </div>
 </template>
 
 <script lang="ts">
@@ -67,8 +55,11 @@ export default class SliderTwo extends Vue {
   @Prop({ default: 1 })
   interval!: number;
 
+  @Prop({ default: 0 })
+  steps!: number;
+
   @Prop({ default: null })
-  data!: [string, number];
+  data!: any[];
 
   @Prop({ default: 0 })
   value!: [string, number];
@@ -338,12 +329,10 @@ export default class SliderTwo extends Vue {
   }
 
   createMarks() {
-    if (this.interval) {
-      let ticks = (this.max - this.min) / this.interval;
-      let t = 0 - this.interval;
-      for (let i = -1; i < ticks; i++) {
-        t = t + this.interval;
-        this.range.push(t);
+    if (this.data !== []) {
+      let ticks = this.data.length;
+      for (let i = 0; i < ticks; i++) {
+        this.range.push(this.data[i]);
       }
     } else if (
       Math.floor((this.maximum - this.minimum) * this.multiple) %
@@ -353,6 +342,13 @@ export default class SliderTwo extends Vue {
       console.error(
         "[ERROR]: Prop[interval] must be a divisor of [max] - [min]"
       );
+    } else {
+      let ticks = (this.max - this.min) / this.interval;
+      let t = 0 - this.interval;
+      for (let i = -1; i < ticks; i++) {
+        t = t + this.interval;
+        this.range.push(t);
+      }
     }
   }
 
@@ -464,6 +460,11 @@ export default class SliderTwo extends Vue {
   }
 
   mounted() {
+    if (this.steps !== 0) {
+      console.error(
+        "[ERROR]: Prop[steps] has been replaced with Prop[interval]"
+      );
+    }
     this.getStaticData();
     this.setValue(this.limitValue(this.value));
     if (this.marks) {
