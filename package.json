@@ -1,6 +1,6 @@
 {
   "name": "streamlabs-beaker",
-  "version": "0.4.123",
+  "version": "0.5.0",
   "main": "./dist/beaker.common.js",
   "module": "./dist/beaker.esm.js",
   "sideEffects": false,
@@ -41,6 +41,7 @@
     "rollup-plugin-vue": "^4.7.2",
     "tslib": "^1.9.3",
     "typescript": "^3.0.0",
+    "vee-validate": "^2.0.0-rc.25",
     "vue-class-component": "^6.0.0",
     "vue-click-outside": "^1.0.7",
     "vue-color": "^2.7.0",
@@ -68,5 +69,6 @@
     "vue-slider-component": "^2.8",
     "vuejs-paginate": "^2.1.0"
   },
-  "types": "./index.d.ts"
+  "types": "./index.d.ts",
+  "dependencies": {}
 }
