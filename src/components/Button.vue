@@ -554,7 +554,8 @@ export default class Button extends Vue {
 }
 
 .s-button--subscribe,
-.s-button--paypal {
+.s-button--paypal,
+.s-button--paypal-blue {
   display: flex;
   justify-content: space-between;
   text-transform: unset;
