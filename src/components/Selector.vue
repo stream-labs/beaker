@@ -146,6 +146,14 @@ export default {
     width: auto;
   }
 
+  .multiselect__input {
+    background: transparent;
+  }
+
+  .multiselect__input::placeholder {
+    color: @dark-5;
+  }
+
   .multiselect__input:hover,
   .multiselect__single:hover {
     border-color: #cfcfcf;
@@ -307,6 +315,7 @@ export default {
     &::-webkit-scrollbar-thumb {
       border-radius: 100px;
       background: @light-4;
+      border: none;
     }
 
     &::-webkit-scrollbar-corner {
