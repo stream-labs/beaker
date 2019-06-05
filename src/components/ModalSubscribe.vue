@@ -14,13 +14,16 @@
       <div class="s-subscribe-upper">
         <div class="s-subscribe-title-box">
           <h1 class="s-modal-title">{{ title }}</h1>
-          <badge :align-left="true">Pro</badge>
+          <badge v-if="proBadge" :align-left="true">Pro</badge>
         </div>
         <h2 class="s-modal-sub-title">{{ subTitle }}</h2>
       </div>
 
       <div class="s-subscribe-body">
-        <div class="s-subscribe-box">
+        <div v-if="customPreview" class="s-subscribe-box">
+          <slot name="preview"></slot>
+        </div>
+        <div v-else class="s-subscribe-box">
           <p class="s-subscribe-text">{{ subscribeText }}</p>
           <p class="s-subscribe-message">
             {{ subscribeMessage }}
@@ -87,6 +90,12 @@ export default class ModalSubscribe extends Vue {
 
   @Prop()
   subscribeMessage!: string;
+
+  @Prop({ default: true })
+  proBadge!: boolean;
+
+  @Prop({ default: false })
+  customPreview!: boolean;
 
   @Prop({ default: "Subscribe with PayPal" })
   buttonTitle!: string;
