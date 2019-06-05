@@ -317,6 +317,18 @@ components: {
             warning (only in Modal Confirmation)
           </td>
         </tr>
+        <tr>
+          <td>buttonTitle</td>
+          <td>string</td>
+          <td>Subscribe with PayPal</td>
+          <td>Only in subscribe modal, set subscribe button title.</td>
+        </tr>
+        <tr>
+          <td>buttonTitle</td>
+          <td>string</td>
+          <td>$5.99</td>
+          <td>Only in subscribe modal, set subscribe button price.</td>
+        </tr>
       </tbody>
     </table>
   </div>
