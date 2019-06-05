@@ -44,6 +44,7 @@
             :variation="buttonVariation"
             :title="buttonTitle"
             :price="buttonPrice"
+            @click="$emit('click')"
           ></Button>
         </div>
         <p class="s-modal-notes">{{ notes }}</p>
