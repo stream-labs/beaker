@@ -108,7 +108,14 @@ export default class Accordian extends Vue {
     return classes.join(" ");
   }
 
-  openContent() {
+  openContent(event: any) {
+    let blockedNodes = ["INPUT", "BUTTON", "LABEL"];
+    if (
+      blockedNodes.indexOf(event.target.nodeName) !== -1 ||
+      blockedNodes.indexOf(event.target.parentNode.parentNode.nodeName) !== -1
+    ) {
+      return;
+    }
     this.isOpen = !this.isOpen;
   }
 
