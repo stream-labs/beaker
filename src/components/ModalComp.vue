@@ -23,10 +23,15 @@
         :notes="notes"
         :width="width"
         :minWidth="minWidth"
+        :proBadge="proBadge"
+        :customPreview="customPreview"
         :buttonTitle="buttonTitle"
         :buttonPrice="buttonPrice"
         :buttonVariation="buttonVariation"
       >
+        <template #preview>
+          <slot name="preview"></slot>
+        </template>
         <slot></slot>
       </ModalSubscribe>
     </div>
@@ -106,6 +111,12 @@ export default class ModalComp extends Vue {
 
   @Prop()
   notes!: string;
+
+  @Prop()
+  proBadge!: boolean;
+
+  @Prop()
+  customPreview!: boolean;
 
   @Prop()
   confirmButtonText!: string;
