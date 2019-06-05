@@ -28,6 +28,7 @@
         :buttonTitle="buttonTitle"
         :buttonPrice="buttonPrice"
         :buttonVariation="buttonVariation"
+        @click="$emit('subscribe-click')"
       >
         <template #preview>
           <slot name="preview"></slot>
