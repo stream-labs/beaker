@@ -199,19 +199,9 @@ import PaneDropdown from "./../components/PaneDropdown.vue";
     "s-tooltip": Tooltip
   }
 })
-export default class Callouts extends Vue {
+export default class Tooltips extends Vue {
   @Prop()
   value: any;
-
-  @Prop()
-  warning: any;
-
-  cookieCalloutClosed() {
-    console.log("cookie callout closed");
-  }
-  updateValue(value) {
-    // na
-  }
 }
 </script>
 
