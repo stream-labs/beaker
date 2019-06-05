@@ -1,6 +1,7 @@
 <template>
   <div class="s-form-field" :class="{ 's-form-field--with-label': label }">
     <input
+      ref="input"
       :type="type"
       :placeholder="placeholder"
       @input="handleInput"
@@ -13,7 +14,7 @@
         's-form-field__input': true,
         's-form-field__input--error': !!error
       }"
-    />
+    >
     <label
       :class="{
         's-form-field__label--top': value !== '',
@@ -21,8 +22,7 @@
       }"
       class="s-form-field__label"
       v-if="label"
-      >{{ label }}</label
-    >
+    >{{ label }}</label>
 
     <transition name="slide">
       <p v-show="error" class="s-form-field__error-text">{{ error }}</p>
@@ -34,9 +34,14 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
+import { Util } from "./../util/Util";
 
 @Component({})
 export default class TextInput extends Vue {
+  $refs!: {
+    input: HTMLInputElement;
+  };
+
   @Prop()
   name!: String;
 
@@ -77,8 +82,22 @@ export default class TextInput extends Vue {
     }
   }
 
-  handleInput(e: String) {
-    this.$emit("input", this.content);
+  mounted() {
+    const exclude = ["input"];
+    Util.attachListeners(this.$listeners, this.$refs.input, exclude);
+  }
+
+  beforeDestroy() {
+    Util.detachListeners(this.$listeners, this.$refs.input);
+  }
+
+  @Watch("value")
+  valueChanged(newValue: string) {
+    this.content = newValue;
+  }
+
+  handleInput(event: { target: HTMLInputElement }) {
+    this.$emit("input", event.target.value);
   }
 }
 </script>
