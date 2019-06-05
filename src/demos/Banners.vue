@@ -385,6 +385,19 @@
           </tbody>
         </table>
       </div>
+
+      <div slot="discord">
+        <h2>Discord Banner</h2>
+        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+          <div slot="content">
+            <pre>
+<code>
+  </code></pre>
+          </div>
+        </Accordion>
+
+        <Banner-Discord></Banner-Discord>
+      </div>
     </Tabs>
   </div>
 </template>
@@ -394,6 +407,7 @@ import { Component, Vue } from "vue-property-decorator";
 import Accordion from "./../components/Accordion.vue";
 import BannerMarketing from "./../components/BannerMarketing.vue";
 import BannerSale from "./../components/BannerSale.vue";
+import BannerDiscord from "./../components/BannerDiscord.vue";
 import Button from "./../components/Button.vue";
 import Tabs from "./../components/Tabs.vue";
 import Notice from "./../components/Notice.vue";
@@ -403,6 +417,7 @@ import Notice from "./../components/Notice.vue";
     Accordion,
     BannerMarketing,
     BannerSale,
+    BannerDiscord,
     Button,
     Tabs,
     Notice
@@ -421,6 +436,10 @@ export default class Banners extends Vue {
     {
       name: "Notice",
       value: "notice"
+    },
+    {
+      name: "Discord",
+      value: "discord"
     }
   ];
 
