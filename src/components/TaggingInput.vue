@@ -11,6 +11,7 @@
         slot="input"
         :error="errors.first(name)"
         v-on="filteredListeners"
+        @keyup.enter="onAdd"
       ></text-input>
 
       <Button
