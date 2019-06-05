@@ -1,33 +1,45 @@
 <template>
-    <div ref="wrap" class="s-slider" @click="wrapClick">
-      <div ref="elem" class="s-slider-bar">
-        <template>
-          <div ref="handle" class="s-slider-dot-cont" @mousedown="moveStart">
-            <div class="s-slider-dot">
-              <div class="s-slider-dot-handle"></div>
-            </div>
-            <div class="s-slider-dot-tooltip">{{ prefix }}{{ val }}{{ suffix}}</div>
+  <div ref="wrap" class="s-slider" @click="wrapClick">
+    <div ref="elem" class="s-slider-bar">
+      <template>
+        <div ref="handle" class="s-slider-dot-cont" @mousedown="moveStart">
+          <div class="s-slider-dot">
+            <div class="s-slider-dot-handle"></div>
           </div>
-        </template>
-        <div ref="process" class="s-slider-process" :class="{ 's-slider-simple': simpleTheme }"></div>
-      </div>
-      <div class="s-slider-mark-cont" v-if="interval && marks">
-        <transition-group
-          name="s-slider--ani__ticks"
-          v-for="(tick, index) in range"
-          :key="index"
-          class="s-slider-marks"
-          tag="div"
-        >
-          <div class="s-slider-tick" v-if="marks && value != range[index]" key="tick_lines"></div>
-          <div
-            v-if="labels && value != range[index]"
-            class="s-slider-label"
-            key="tick_values"
-          >{{ prefix }}{{ range[index] }}{{ suffix }}</div>
-        </transition-group>
-      </div>
+          <div class="s-slider-dot-tooltip">
+            {{ prefix }}{{ val }}{{ suffix }}
+          </div>
+        </div>
+      </template>
+      <div
+        ref="process"
+        class="s-slider-process"
+        :class="{ 's-slider-simple': simpleTheme }"
+      ></div>
     </div>
+    <div class="s-slider-mark-cont" v-if="interval && marks">
+      <transition-group
+        name="s-slider--ani__ticks"
+        v-for="(tick, index) in range"
+        :key="index"
+        class="s-slider-marks"
+        tag="div"
+      >
+        <div
+          class="s-slider-tick"
+          v-if="marks && value != range[index]"
+          key="tick_lines"
+        ></div>
+        <div
+          v-if="labels && value != range[index]"
+          class="s-slider-label"
+          key="tick_values"
+        >
+          {{ prefix }}{{ range[index] }}{{ suffix }}
+        </div>
+      </transition-group>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
