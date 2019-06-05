@@ -51,7 +51,8 @@
     "vue-router": "^3.0.1",
     "vue-slider-component": "^2.8",
     "vue-template-compiler": "^2.6.6",
-    "vuejs-paginate": "^2.1.0"
+    "vuejs-paginate": "^2.1.0",
+    "vee-validate": "^2.0.0-rc.25"
   },
   "peerDependencies": {
     "fuse.js": "^3.4.4",
@@ -70,6 +71,6 @@
   },
   "types": "./index.d.ts",
   "dependencies": {
-    "vee-validate": "^2.2.9"
+  
   }
 }
