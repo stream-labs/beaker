@@ -105,10 +105,6 @@ export default class ModalSubscribe extends Vue {
 
   @Prop({ default: "subscribe" })
   buttonVariation!: string;
-
-  get textString() {
-    return typeof this.text === "string" ? true : false;
-  }
 }
 </script>
 
