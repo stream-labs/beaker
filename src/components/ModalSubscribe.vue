@@ -186,6 +186,7 @@ export default class ModalSubscribe extends Vue {
   text-align: center;
   color: @light-5;
   .small-type();
-  .padding-v-sides(2);
+  .padding-top(3);
+  .padding-bottom(2);
 }
 </style>
