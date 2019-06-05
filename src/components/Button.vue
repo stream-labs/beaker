@@ -554,7 +554,8 @@ export default class Button extends Vue {
   .padding-h-sides(4);
 }
 
-.s-button--paypal {
+.s-button--paypal,
+.s-button--paypal-blue {
   background-color: @paypal-yellow;
 
   &:before {
