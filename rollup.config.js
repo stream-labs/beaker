@@ -19,7 +19,7 @@ module.exports = {
       exports: "named"
     }
   ],
-  external: ["vue", "vue-router"],
+  external: ["vue", "vue-router", "lodash"],
   plugins: [
     resolve(),
     commonjs({

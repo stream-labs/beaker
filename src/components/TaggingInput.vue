@@ -2,7 +2,6 @@
   <div class="s-tagging-input">
     <div class="s-tagging-input__container">
       <text-input
-        ref="input"
         :label="label"
         :placeholder="placeholder"
         :name="name"
@@ -11,6 +10,7 @@
         type="text"
         slot="input"
         :error="errors.first(name)"
+        v-on="filteredListeners"
       ></text-input>
 
       <Button
@@ -23,10 +23,7 @@
 
     <div class="s-tagging-input__tags">
       <div v-for="(tag, index) in value" :key="index" :class="tagClasses">
-        <i
-          class="s-tagging-input__tag-icon icon-close"
-          @click="onRemove(index)"
-        ></i>
+        <i class="s-tagging-input__tag-icon icon-close" @click="onRemove(index)"></i>
         <div class="s-tagging-input__tag-text">{{ tag }}</div>
       </div>
     </div>
@@ -37,7 +34,7 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import TextInput from "./TextInput.vue";
 import Button from "./Button.vue";
-import { Util } from "./../util/Util";
+import { omit } from "lodash";
 
 @Component({
   components: {
@@ -46,10 +43,6 @@ import { Util } from "./../util/Util";
   }
 })
 export default class TaggingInput extends Vue {
-  $refs!: {
-    input: HTMLInputElement;
-  };
-
   @Prop()
   name!: string;
 
@@ -86,12 +79,8 @@ export default class TaggingInput extends Vue {
     return `s-tagging-input__tag s-tagging-input__tag--${this.tagVariation}`;
   }
 
-  mounted() {
-    Util.attachListeners(this.$listeners, this.$refs.input);
-  }
-
-  beforeDestroy() {
-    Util.detachListeners(this.$listeners, this.$refs.input);
+  get filteredListeners() {
+    return omit(this.$listeners, ["input"]);
   }
 
   onAdd() {
@@ -106,7 +95,10 @@ export default class TaggingInput extends Vue {
 
     const found = this.value.find(v => {
       if (this.prefix && !this.textInputValue.startsWith(this.prefix)) {
-        return v.toLowerCase() === this.textInputValue.trim().toLowerCase();
+        return (
+          v.toLowerCase() ===
+          this.prefix + this.textInputValue.trim().toLowerCase()
+        );
       } else {
         return v.toLowerCase() === this.textInputValue.trim().toLowerCase();
       }
