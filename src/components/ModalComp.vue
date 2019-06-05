@@ -23,7 +23,9 @@
         :notes="notes"
         :width="width"
         :minWidth="minWidth"
-      ></ModalSubscribe>
+      >
+        <slot></slot>
+      </ModalSubscribe>
     </div>
 
     <div v-if="type === 'redirect'">

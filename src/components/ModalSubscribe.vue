@@ -32,7 +32,8 @@
       </div>
 
       <div class="s-subscribe-bottom">
-        <p class="s-modal-text s-modal-text-subscribe">{{ text }}</p>
+        <p v-if="text" class="s-modal-text s-modal-text-subscribe">{{ text }}</p>
+        <slot v-else></slot>
         <div class="s-button-subscribe">
           <Button
             :variation="'subscribe'"
@@ -84,6 +85,10 @@ export default class ModalSubscribe extends Vue {
 
   @Prop()
   subscribeMessage!: string;
+
+  get textString() {
+    return typeof this.text === "string" ? true : false;
+  }
 }
 </script>
 
