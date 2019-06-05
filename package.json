@@ -68,5 +68,8 @@
     "vue-slider-component": "^2.8",
     "vuejs-paginate": "^2.1.0"
   },
-  "types": "./index.d.ts"
+  "types": "./index.d.ts",
+  "dependencies": {
+    "vee-validate": "^2.2.9"
+  }
 }
