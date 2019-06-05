@@ -1,6 +1,6 @@
 {
   "name": "streamlabs-beaker",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "main": "./dist/beaker.common.js",
   "module": "./dist/beaker.esm.js",
   "sideEffects": false,
@@ -69,6 +69,5 @@
     "vue-slider-component": "^2.8",
     "vuejs-paginate": "^2.1.0"
   },
-  "types": "./index.d.ts",
-  "dependencies": {}
+  "types": "./index.d.ts"
 }
