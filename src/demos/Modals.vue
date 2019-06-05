@@ -314,20 +314,22 @@ components: {
           <td>
             Pass in
             <code>action</code> if it's a confirmation that doesn't warrant a
-            warning (only in Modal Confirmation)
+            warning (only in Modal Confirmation). In Modal Subscribe default is
+            <code>subscribe</code>. Can be set to <code>paypal</code> and
+            <code>paypal-blue</code> variations.
           </td>
         </tr>
         <tr>
           <td>buttonTitle</td>
           <td>string</td>
           <td>Subscribe with PayPal</td>
-          <td>Only in subscribe modal, set subscribe button title.</td>
+          <td>Set subscribe button title (only in Modal Subscribe).</td>
         </tr>
         <tr>
           <td>buttonTitle</td>
           <td>string</td>
           <td>$5.99</td>
-          <td>Only in subscribe modal, set subscribe button price.</td>
+          <td>Set subscribe button title (only in Modal Subscribe).</td>
         </tr>
       </tbody>
     </table>

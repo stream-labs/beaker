@@ -32,7 +32,9 @@
       </div>
 
       <div class="s-subscribe-bottom">
-        <p v-if="text" class="s-modal-text s-modal-text-subscribe">{{ text }}</p>
+        <p v-if="text" class="s-modal-text s-modal-text-subscribe">
+          {{ text }}
+        </p>
         <slot v-else></slot>
         <div class="s-button-subscribe">
           <Button
@@ -86,13 +88,13 @@ export default class ModalSubscribe extends Vue {
   @Prop()
   subscribeMessage!: string;
 
-  @Prop({ default: 'Subscribe with PayPal' })
+  @Prop({ default: "Subscribe with PayPal" })
   buttonTitle!: string;
 
-  @Prop({ default: '$5.99/mo' })
+  @Prop({ default: "$5.99/mo" })
   buttonPrice!: string;
 
-  @Prop({ default: 'subscribe' })
+  @Prop({ default: "subscribe" })
   buttonVariation!: string;
 
   get textString() {
