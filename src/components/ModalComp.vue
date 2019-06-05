@@ -23,6 +23,9 @@
         :notes="notes"
         :width="width"
         :minWidth="minWidth"
+        :buttonTitle="buttonTitle"
+        :buttonPrice="buttonPrice"
+        :buttonVariation="buttonVariation"
       >
         <slot></slot>
       </ModalSubscribe>
@@ -109,6 +112,12 @@ export default class ModalComp extends Vue {
 
   @Prop()
   buttonVariation!: string;
+
+  @Prop()
+  buttonTitle!: string;
+
+  @Prop()
+  buttonPrice!: string;
 
   modalName: string = "";
 

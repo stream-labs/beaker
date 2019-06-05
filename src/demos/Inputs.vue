@@ -62,7 +62,9 @@
             <td>disabled</td>
             <td>boolean</td>
             <td>null</td>
-            <td>Puts a disabled class on the form field and disables the input.</td>
+            <td>
+              Puts a disabled class on the form field and disables the input.
+            </td>
           </tr>
           <tr>
             <td>error</td>
@@ -97,9 +99,7 @@
             <td>text</td>
             <td>
               Input type:
-              <code>text</code>,
-              <code>email</code>,
-              <code>password</code>.
+              <code>text</code>, <code>email</code>, <code>password</code>.
             </td>
           </tr>
           <tr>
@@ -152,8 +152,11 @@ components: {
 &gt;&lt;/selector&gt;</code></pre>
         </div>
       </Accordion>
-      <Selector v-model="selected" :options="['Option A', 'Option B', 'Option C']"></Selector>
-      <br>
+      <Selector
+        v-model="selected"
+        :options="['Option A', 'Option B', 'Option C']"
+      ></Selector>
+      <br />
       <selector
         v-model="selected"
         :options="[
@@ -166,7 +169,7 @@ components: {
         ]"
         disabled
       ></selector>
-      <br>
+      <br />
       <selector
         v-model="multipleSelected"
         :options="[
@@ -180,7 +183,7 @@ components: {
         multiple
         :searchable="false"
       ></selector>
-      <br>
+      <br />
       <selector
         v-model="multipleSelected"
         :options="[
@@ -194,10 +197,15 @@ components: {
         disabled
         multiple
       ></selector>
-      <br>
+      <br />
 
-      <selector v-model="objectSelected" :options="options" :label="'title'" :trackBy="'title'"></selector>
-      <br>
+      <selector
+        v-model="objectSelected"
+        :options="options"
+        :label="'title'"
+        :trackBy="'title'"
+      ></selector>
+      <br />
 
       <table class="docs-table">
         <thead>
@@ -243,7 +251,9 @@ components: {
             <td>disabled</td>
             <td>Boolean</td>
             <td>false</td>
-            <td>Puts a disabled class on the form field and disables the input.</td>
+            <td>
+              Puts a disabled class on the form field and disables the input.
+            </td>
           </tr>
         </tbody>
       </table>
@@ -313,7 +323,10 @@ components: {
     <div class="section">
       <h2>Status Switch</h2>
       <div class="section">
-        <status-switch v-model="statusValue" :label="'Status Label'"></status-switch>
+        <status-switch
+          v-model="statusValue"
+          :label="'Status Label'"
+        ></status-switch>
       </div>
       <div class="section">
         <small>
@@ -331,12 +344,16 @@ components: {
       </div>
 
       <div class="section">
-        <status-switch v-model="statusValue"/>
-        <status-switch v-model="statusValue"/>
-        <status-switch v-model="statusValue"/>
+        <status-switch v-model="statusValue" />
+        <status-switch v-model="statusValue" />
+        <status-switch v-model="statusValue" />
       </div>
 
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
+      <Accordion
+        :openedTitle="'Hide Code'"
+        :closedTitle="'Show Code'"
+        class="docs-code"
+      >
         <div slot="content">
           <pre><code>&lt;status-switch v-model="statusValue" :label="'Status Label'"&gt;&lt;/status-switch&gt;
 
@@ -367,7 +384,11 @@ components: {
           By default, the image input picker is setup to have our Alert Box
           layout styles as the options.
         </p>
-        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
+        <Accordion
+          :openedTitle="'Hide Code'"
+          :closedTitle="'Show Code'"
+          class="docs-code"
+        >
           <div slot="content">
             <pre>
 <code>&lt;image-picker-input v-model=&quot;layoutValue&quot;&gt;&lt;/image-picker-input&gt;</code></pre>
@@ -381,19 +402,31 @@ components: {
           You can pass in any options you'd like with the options prop. This is
           an example using our Jar options.
         </p>
-        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'" class="docs-code">
+        <Accordion
+          :openedTitle="'Hide Code'"
+          :closedTitle="'Show Code'"
+          class="docs-code"
+        >
           <div slot="content">
             <pre>
 <code>&lt;image-picker-input v-model=&quot;jarValue&quot; :options=&quot;options&quot;&gt;&lt;/image-picker-input&gt;</code></pre>
           </div>
         </Accordion>
-        <image-picker-input v-model="jarValue" :options="options"></image-picker-input>
+        <image-picker-input
+          v-model="jarValue"
+          :options="options"
+        ></image-picker-input>
       </div>
     </div>
 
     <div class="section">
       <h3>Tagging Input</h3>
-      <TaggingInput name="aliases" placeholder="!hello" maxItems="10" inputValidation="required"/>
+      <TaggingInput
+        name="aliases"
+        placeholder="!hello"
+        maxItems="10"
+        inputValidation="required"
+      />
     </div>
   </div>
 </template>
