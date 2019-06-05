@@ -426,6 +426,7 @@ components: {
         placeholder="!hello"
         maxItems="10"
         inputValidation="required"
+        @keydown.space.prevent
       />
     </div>
   </div>
