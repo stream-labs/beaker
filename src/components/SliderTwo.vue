@@ -17,7 +17,7 @@
         :class="{ 's-slider-simple': simpleTheme }"
       ></div>
     </div>
-    <div class="s-slider-mark-cont" v-if="interval && marks">
+    <div class="s-slider-mark-cont" v-if="marks">
       <transition-group
         name="s-slider--ani__ticks"
         v-for="(tick, index) in range"
@@ -283,7 +283,6 @@ export default class SliderTwo extends Vue {
   }
 
   getPos(e) {
-    this.getStaticData();
     return e.clientX - this.offset;
   }
 
@@ -291,9 +290,10 @@ export default class SliderTwo extends Vue {
     if (this.isDisabled) return false;
     let pos = this.getPos(e);
     this.setValueOnPos(pos, false);
+    if (!this.isDragging) this.setTransform(this.position);
   }
 
-  moveStart(e, index) {
+  moveStart() {
     if (!this.draggable) return false;
     this.isDragging = true;
     this.$emit("dragStart", this);
@@ -302,30 +302,29 @@ export default class SliderTwo extends Vue {
   moving(e) {
     if (!this.isDragging || !this.draggable) return false;
     e.preventDefault();
-    if (e.targetTouches && e.targetTouches[0]) {
-      e = e.targetTouches[0];
-    }
     this.setValueOnPos(this.getPos(e), true);
+    this.setTransform(this.getPos(e));
   }
 
   moveEnd(e) {
     if (this.isDragging && this.draggable) {
       this.$emit("dragEnd", this);
       this.setValue(this.limitValue(this.value));
+      this.setTransitionTime(0.125);
+      this.setTransform(this.position);
+      this.isDragging = false;
       if (this.lazy && this.isDiff(this.val, this.value)) {
         this.syncValue();
       }
     } else {
       return false;
     }
-    this.isDragging = false;
   }
 
   setValueOnPos(pos, isDrag) {
     let range = this.limit;
     let valueRange = this.valueLimit;
     if (pos >= range[0] && pos <= range[1]) {
-      this.setTransform(pos);
       let v =
         (Math.round(pos / this.gap) * (this.spacing * this.multiple) +
           this.minimum * this.multiple) /
@@ -383,7 +382,6 @@ export default class SliderTwo extends Vue {
         this.syncValue();
       }
     }
-    bool || this.setPosition();
   }
 
   setIndex(val) {
@@ -397,16 +395,6 @@ export default class SliderTwo extends Vue {
       this.val = resetVal;
       this.syncValue();
     }
-    this.setPosition();
-  }
-
-  setPosition() {
-    if (!this.isDragging) {
-      this.setTransitionTime(0.25);
-    } else {
-      this.setTransitionTime(0);
-    }
-    this.setTransform(this.position);
   }
 
   setTransform(val) {
@@ -466,7 +454,7 @@ export default class SliderTwo extends Vue {
   refresh(el) {
     if (el) {
       this.getStaticData();
-      this.setPosition();
+      this.setTransform(this.position);
       this.setSensorScroll(el);
     }
   }
@@ -479,12 +467,21 @@ export default class SliderTwo extends Vue {
     }
     this.getStaticData();
     this.setValue(this.limitValue(this.value));
+    this.setTransform(this.position);
     if (this.marks) {
       this.createMarks();
     }
     if (this.$refs.elem) {
       this.resizeSensor(this.$refs.elem);
       this.bindEvents(this.$refs.elem);
+    }
+  }
+
+  updated() {
+    if (!this.isDragging) {
+      this.setTransitionTime(0.25);
+    } else {
+      this.setTransitionTime(0);
     }
   }
 
@@ -500,14 +497,14 @@ export default class SliderTwo extends Vue {
 @import "./../styles/Imports";
 
 .s-slider {
-  width: 100%;
-  flex: 1;
+  display: flex;
   padding: 4px 0px !important;
   position: relative;
-  box-sizing: border-box;
+  box-sizing: content-box;
   user-select: none;
 
   .s-slider-bar {
+    width: 100%;
     background-color: @light-3;
     height: 8px;
     border-radius: 4px;
@@ -525,7 +522,7 @@ export default class SliderTwo extends Vue {
     transition: all 0s;
 
     &.s-slider-simple {
-      background-color: @selected;
+      background-color: @light-5;
     }
   }
 
@@ -644,7 +641,13 @@ export default class SliderTwo extends Vue {
 .night-theme {
   .s-slider {
     .s-slider-bar {
-      background-color: @dark-5;
+      background-color: @dark-4;
+    }
+
+    .s-slider-process {
+      &.s-slider-simple {
+        background-color: @dark-5;
+      }
     }
 
     .s-slider-dot {

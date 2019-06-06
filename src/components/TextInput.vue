@@ -1,5 +1,13 @@
 <template>
   <div class="s-form-field" :class="{ 's-form-field--with-label': label }">
+    <div v-if="type === 'number'" class="s-arrows">
+      <div class="s-arrow arrow-up" @click="increment">
+        <i class="fa fa-chevron-up"></i>
+      </div>
+      <div class="s-arrow arrow-down" @click="decrement">
+        <i class="fa fa-chevron-down"></i>
+      </div>
+    </div>
     <input
       :type="type"
       :placeholder="placeholder"
@@ -14,6 +22,7 @@
         's-form-field__input--error': !!error
       }"
       v-on="filteredListeners"
+      @mousewheel="mouseWheel"
     >
     <label
       :class="{
@@ -22,7 +31,8 @@
       }"
       class="s-form-field__label"
       v-if="label"
-    >{{ label }}</label>
+      >{{ label }}</label
+    >
 
     <transition name="slide">
       <p v-show="error" class="s-form-field__error-text">{{ error }}</p>
@@ -50,11 +60,8 @@ export default class TextInput extends Vue {
   @Prop()
   helpText!: String;
 
-  @Prop()
-  type!: {
-    type: String;
-    default: "text";
-  };
+  @Prop({ default: "text" })
+  type!: String;
 
   @Prop()
   placeholder!: String;
@@ -68,14 +75,13 @@ export default class TextInput extends Vue {
   @Prop()
   readonly!: Boolean;
 
-  content: String = "";
+  content!: String;
 
   created() {
-    if (this.value) {
-      return (this.content = this.value);
-    } else {
-      this.content;
-    }
+    this.content =
+      this.value !== undefined || this.value !== null
+        ? this.value.toString()
+        : "";
   }
 
   get filteredListeners() {
@@ -84,11 +90,33 @@ export default class TextInput extends Vue {
 
   @Watch("value")
   valueChanged(newValue: string) {
-    this.content = newValue;
+    this.content = newValue.toString();
   }
 
-  handleInput(event: { target: HTMLInputElement }) {
-    this.$emit("input", event.target.value);
+  handleInput(event: { target: HTMLInputElement }) { 
+    this.update(this.type ==='number' ?  Number(event.target.value) : event.target.value);
+  }
+
+  increment() {
+    this.update(Number(this.content) + 1);
+  }
+
+  decrement() {
+    this.update(Number(this.content) - 1);
+  }
+
+  mouseWheel(event: WheelEvent) {
+    if (this.type === "number") {
+      if (event.deltaY > 0) this.decrement();
+      else this.increment();
+
+      event.preventDefault();
+    }
+  }
+
+  update(value) {
+    this.$emit("input", value);
+
   }
 }
 </script>
@@ -103,6 +131,47 @@ export default class TextInput extends Vue {
 
   input {
     height: 40px;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+    padding-right: 30px;
+  }
+
+  .s-arrows {
+    height: 40px;
+    .absolute(0, 8px, 0, auto);
+    .transition();
+    z-index: 2;
+    width: 30px;
+    opacity: 0.7;
+    cursor: pointer;
+    &:hover {
+      opacity: 1;
+    }
+    .s-arrow {
+      display: flex !important;
+      .fa {
+        position: relative;
+        font-size: 9px;
+      }
+      &:active {
+        color: black;
+      }
+      &.arrow-up {
+        .absolute(6px, 3px, auto, auto);
+      }
+      &.arrow-down {
+        .absolute(24px, 3px, auto, auto);
+      }
+    }
   }
 }
 
@@ -154,7 +223,7 @@ export default class TextInput extends Vue {
   }
 
   input:focus + .s-form-field__label--error {
-    color: @red;
+    color: green;
   }
 
   .s-form-field--top {

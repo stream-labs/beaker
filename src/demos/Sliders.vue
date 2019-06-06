@@ -196,16 +196,15 @@ components: {
       <div class="row">
         <h1>NEW SLIDER</h1>
         <p>Dont use this yet.</p>
-        <div class="side-by-side">
+        <div class="flex-row">
           <slider-two
             :value="localValue"
             @input="value => updateLocalValue(value)"
             :min="0"
             :max="100"
             :suffix="'%'"
-            :interval="25"
           />
-          <div class="tt"><i class="fas fa-question-circle"></i></div>
+          <div class="icon-holder"><i class="fas fa-question-circle"></i></div>
         </div>
       </div>
     </div>
@@ -247,18 +246,20 @@ export default class Sliders extends Vue {
   value = 50;
   data = ["one", "two", "three", "four", "five", "six"];
   updateValue(value) {
-    console.log(value);
+    console.log(value); // this function is required, it doesn't have to do anything, it just needs to exist.
   }
 }
 </script>
 
 <style lang="less">
-.side-by-side {
+@import "./../styles/Imports";
+
+.flex-row {
   display: flex;
   flex-direction: row;
 }
 
-.tt {
-  margin-left: 16px;
+.icon-holder {
+  .margin-left(2);
 }
 </style>

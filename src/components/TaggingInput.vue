@@ -24,7 +24,10 @@
 
     <div class="s-tagging-input__tags">
       <div v-for="(tag, index) in value" :key="index" :class="tagClasses">
-        <i class="s-tagging-input__tag-icon icon-close" @click="onRemove(index)"></i>
+        <i
+          class="s-tagging-input__tag-icon icon-close"
+          @click="onRemove(index)"
+        ></i>
         <div class="s-tagging-input__tag-text">{{ tag }}</div>
       </div>
     </div>
@@ -47,10 +50,10 @@ export default class TaggingInput extends Vue {
   @Prop()
   name!: string;
 
-  @Prop({ default: "TextInput" })
+  @Prop()
   label!: string;
 
-  @Prop({ default: "TextInput" })
+  @Prop()
   placeholder!: string;
 
   @Prop({ default: "Add Tag" })

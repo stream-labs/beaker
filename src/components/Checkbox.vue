@@ -26,7 +26,7 @@ export default class Checkbox extends Vue {
   name!: string;
 
   @Prop({ type: Boolean, required: true })
-  value!: boolean;
+  value!: boolean | undefined;
 }
 </script>
 
