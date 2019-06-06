@@ -468,7 +468,7 @@ export default class Inputs extends Vue {
 
   // Text inputs
   textInputValue = "test";
-  numberInputValue = "0";
+  numberInputValue = 0;
   emailInputValue = "";
   passwordInputValue = "";
   errorTextInputValue = "";

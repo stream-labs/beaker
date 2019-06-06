@@ -22,7 +22,7 @@
         's-form-field__input--error': !!error
       }"
       v-on="filteredListeners"
-      @mousewheel="$emit('mouseWheel',$event)"
+      @mousewheel="mouseWheel"
     >
     <label
       :class="{
@@ -74,10 +74,13 @@ export default class TextInput extends Vue {
   @Prop()
   readonly!: Boolean;
 
-  content!: String | Number;
+  content!: String;
 
   created() {
-    this.content = this.value;
+    this.content =
+      this.value !== undefined || this.value !== null
+        ? this.value.toString()
+        : "";
   }
 
   get filteredListeners() {
@@ -86,7 +89,7 @@ export default class TextInput extends Vue {
 
   @Watch("value")
   valueChanged(newValue: string) {
-    this.content = newValue;
+    this.content = newValue.toString();
   }
 
   handleInput(event: { target: HTMLInputElement }) {
@@ -96,12 +99,22 @@ export default class TextInput extends Vue {
   increment() {
     this.update(Number(this.content) + 1);
   }
+
   decrement() {
     this.update(Number(this.content) - 1);
   }
 
+  mouseWheel(event: WheelEvent) {
+    if (this.type === "number") {
+      if (event.deltaY > 0) this.decrement();
+      else this.increment();
+
+      event.preventDefault();
+    }
+  }
+
   update(value) {
-    this.$emit("input", value.toString());
+    this.$emit("input", value);
   }
 }
 </script>
