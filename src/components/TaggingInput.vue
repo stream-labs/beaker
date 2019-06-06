@@ -50,10 +50,10 @@ export default class TaggingInput extends Vue {
   @Prop()
   name!: string;
 
-  @Prop({ default: "TextInput" })
+  @Prop()
   label!: string;
 
-  @Prop({ default: "TextInput" })
+  @Prop()
   placeholder!: string;
 
   @Prop({ default: "Add Tag" })
