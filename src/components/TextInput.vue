@@ -92,8 +92,8 @@ export default class TextInput extends Vue {
     this.content = newValue.toString();
   }
 
-  handleInput(event: { target: HTMLInputElement }) {
-    this.update(event.target.value);
+  handleInput(event: { target: HTMLInputElement }) { 
+    this.update(this.type ==='number' ?  Number(event.target.value) : event.target.value);
   }
 
   increment() {
@@ -115,6 +115,7 @@ export default class TextInput extends Vue {
 
   update(value) {
     this.$emit("input", value);
+
   }
 }
 </script>
