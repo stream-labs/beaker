@@ -127,6 +127,7 @@ export default class TextInput extends Vue {
 
   input[type="number"] {
     -moz-appearance: textfield; /* Firefox */
+    padding-right: 30px;
   }
 
   .s-arrows {
