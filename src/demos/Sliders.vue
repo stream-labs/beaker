@@ -246,7 +246,7 @@ export default class Sliders extends Vue {
   value = 50;
   data = ["one", "two", "three", "four", "five", "six"];
   updateValue(value) {
-    // console.log(value);
+    console.log(value); // this function is required, it doesn't have to do anything, it just needs to exist.
   }
 }
 </script>
