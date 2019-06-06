@@ -7,7 +7,7 @@
             <div class="s-slider-dot-handle"></div>
           </div>
           <div class="s-slider-dot-tooltip">
-            {{ prefix }}{{ val }}{{ suffix }}
+            {{ prefix }}{{ displayValue }}{{ suffix }}
           </div>
         </div>
       </template>
@@ -63,6 +63,7 @@ export default class SliderTwo extends Vue {
   private currentWidth: number = 0;
   private currentHeight: number = 0;
   private bounced: boolean = false;
+  private halt: boolean = false;
 
   @Prop({ default: 1 })
   interval!: number;
@@ -72,6 +73,9 @@ export default class SliderTwo extends Vue {
 
   @Prop({ default: null })
   data!: any[];
+
+  @Prop({default: true })
+  dataIndexing!: boolean;
 
   @Prop({ default: 0 })
   value!: [string, number];
@@ -107,7 +111,11 @@ export default class SliderTwo extends Vue {
   draggable!: boolean;
 
   get val() {
-    return this.data ? this.data[this.currentValue] : this.currentValue;
+    if (this.dataIndexing) {
+      return this.data ? this.data.indexOf(this.data[this.currentValue]): this.currentValue;
+    } else {
+      return this.data ? this.data[this.currentValue] : this.currentValue;
+    }
   }
   set val(newVal) {
     if (this.data) {
@@ -117,6 +125,14 @@ export default class SliderTwo extends Vue {
       }
     } else {
       this.currentValue = newVal;
+    }
+  }
+
+  get displayValue() {
+    if (this.data) {
+    return this.dataIndexing ? this.data[this.currentIndex] : this.currentValue;
+    } else {
+      return this.currentValue;
     }
   }
 
@@ -303,7 +319,7 @@ export default class SliderTwo extends Vue {
     if (!this.isDragging || !this.draggable) return false;
     e.preventDefault();
     this.setValueOnPos(this.getPos(e), true);
-    this.setTransform(this.getPos(e));
+    if (!this.halt) this.setTransform(this.getPos(e));
   }
 
   moveEnd(e) {
@@ -325,15 +341,20 @@ export default class SliderTwo extends Vue {
     let range = this.limit;
     let valueRange = this.valueLimit;
     if (pos >= range[0] && pos <= range[1]) {
+      this.halt = false;
       let v =
         (Math.round(pos / this.gap) * (this.spacing * this.multiple) +
           this.minimum * this.multiple) /
         this.multiple;
       this.setCurrentValue(v, isDrag);
     } else if (pos < range[0]) {
+      this.halt = true;
+      console.log('overshoot1')
       this.setTransform(range[0]);
       this.setCurrentValue(valueRange[0], true);
     } else {
+      this.halt = true;
+      console.log('overshoot2')
       this.setTransform(range[1]);
       this.setCurrentValue(valueRange[1], true);
     }
