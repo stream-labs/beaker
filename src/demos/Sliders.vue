@@ -202,6 +202,7 @@ components: {
             @input="value => updateLocalValue(value)"
             :min="0"
             :max="100"
+            :dataIndexing="false"
             :suffix="'%'"
           />
           <div class="icon-holder"><i class="fas fa-question-circle"></i></div>
