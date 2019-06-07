@@ -99,6 +99,7 @@ components: {
           :suffix="'%'"
           :simpleTheme="true"
         />
+        <i class="fas fa-question-circle"></i>
       </div>
     </div>
 
@@ -191,25 +192,75 @@ components: {
         </tbody>
       </table>
     </div>
+    <div class="section">
+      <div class="row">
+        <h1>NEW SLIDER</h1>
+        <p>Dont use this yet.</p>
+        <div class="flex-row">
+          <slider-two
+            :value="localValue"
+            @input="value => updateLocalValue(value)"
+            :min="0"
+            :max="100"
+            :dataIndexing="false"
+            :suffix="'%'"
+          />
+          <div class="icon-holder"><i class="fas fa-question-circle"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <slider-two
+      :value="localValueTwo"
+      @input="value => updateLocalValueTwo(value)"
+      :data="data"
+      :simpleTheme="true"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import Slider from "./../components/Slider.vue";
+import SliderTwo from "./../components/SliderTwo.vue";
 import Accordion from "./../components/Accordion.vue";
 @Component({
   components: {
-    Slider,
+    "slider-two": SliderTwo,
+    slider: Slider,
     Accordion
   }
 })
 export default class Sliders extends Vue {
-  value = 50;
-  data = [1, 50, 100];
+  localValue: number | string = 15;
 
+  updateLocalValue(value) {
+    this.localValue = value;
+  }
+
+  localValueTwo: number | string = 15;
+
+  updateLocalValueTwo(value) {
+    this.localValueTwo = value;
+  }
+
+  value = 50;
+  data = ["one", "two", "three", "four", "five", "six"];
   updateValue(value) {
-    console.log(value);
+    console.log(value); // this function is required, it doesn't have to do anything, it just needs to exist.
   }
 }
 </script>
+
+<style lang="less">
+@import "./../styles/Imports";
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.icon-holder {
+  .margin-left(2);
+}
+</style>

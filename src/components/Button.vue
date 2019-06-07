@@ -270,7 +270,7 @@ export default class Button extends Vue {
   border: 1px solid transparent;
   text-decoration: none !important;
   position: relative;
-  outline: none;
+  outline: none !important;
 
   * {
     z-index: 5;
@@ -487,17 +487,6 @@ export default class Button extends Vue {
   }
 }
 
-.s-button--paypal-blue {
-  background-color: @paypal;
-  color: @white;
-
-  &:focus,
-  &.is-focused,
-  &:hover {
-    background-color: darken(@paypal, 4%);
-  }
-}
-
 .s-button--warning {
   color: @warning;
   background-color: rgba(251, 72, 76, 0.16);
@@ -554,7 +543,8 @@ export default class Button extends Vue {
 }
 
 .s-button--subscribe,
-.s-button--paypal {
+.s-button--paypal,
+.s-button--paypal-blue {
   display: flex;
   justify-content: space-between;
   text-transform: unset;
@@ -564,7 +554,8 @@ export default class Button extends Vue {
   .padding-h-sides(4);
 }
 
-.s-button--paypal {
+.s-button--paypal,
+.s-button--paypal-blue {
   background-color: @paypal-yellow;
 
   &:before {
@@ -591,6 +582,17 @@ export default class Button extends Vue {
         }
       }
     }
+  }
+}
+
+.s-button--paypal-blue {
+  background-color: @paypal;
+  color: @white;
+
+  &:focus,
+  &.is-focused,
+  &:hover {
+    background-color: darken(@paypal, 4%);
   }
 }
 
@@ -703,7 +705,7 @@ export default class Button extends Vue {
   &:hover,
   &:focus {
     background-color: transparent;
-    outline: 0;
+    outline: none;
   }
 }
 

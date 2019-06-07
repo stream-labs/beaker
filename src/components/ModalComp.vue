@@ -8,8 +8,10 @@
         :text="text"
         :width="width"
         :minWidth="minWidth"
-        ><slot></slot
-      ></ModalBasic>
+        v-on="$listeners"
+      >
+        <slot></slot>
+      </ModalBasic>
     </div>
 
     <div v-if="type === 'subscribe'">
@@ -23,7 +25,19 @@
         :notes="notes"
         :width="width"
         :minWidth="minWidth"
-      ></ModalSubscribe>
+        :proBadge="proBadge"
+        :customPreview="customPreview"
+        :buttonTitle="buttonTitle"
+        :buttonPrice="buttonPrice"
+        :buttonVariation="buttonVariation"
+        :cancelTitle="cancelTitle"
+        v-on="$listeners"
+      >
+        <template #preview>
+          <slot name="preview"></slot>
+        </template>
+        <slot></slot>
+      </ModalSubscribe>
     </div>
 
     <div v-if="type === 'redirect'">
@@ -33,6 +47,7 @@
         :text="text"
         :width="width"
         :minWidth="minWidth"
+        v-on="$listeners"
       ></ModalRedirect>
     </div>
 
@@ -43,9 +58,9 @@
         :text="text"
         :width="width"
         :minWidth="minWidth"
-        @confirm="$emit('confirm')"
         :confirmButtonText="confirmButtonText"
         :buttonVariation="buttonVariation"
+        v-on="$listeners"
       ></ModalConfirmation>
     </div>
   </div>
@@ -103,10 +118,25 @@ export default class ModalComp extends Vue {
   notes!: string;
 
   @Prop()
+  proBadge!: boolean;
+
+  @Prop()
+  customPreview!: boolean;
+
+  @Prop()
   confirmButtonText!: string;
 
   @Prop()
   buttonVariation!: string;
+
+  @Prop()
+  buttonTitle!: string;
+
+  @Prop()
+  buttonPrice!: string;
+
+  @Prop()
+  cancelTitle!: string;
 
   modalName: string = "";
 

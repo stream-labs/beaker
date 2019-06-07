@@ -9,6 +9,7 @@
         <code>FormGroup</code> component. This will put 16px of margin between
         form fields and 24px margin between form groups.
       </p>
+      
       <FormGroup>
         <text-input
           label="Text input"
@@ -17,6 +18,19 @@
           v-model="textInputValue"
           name="textExample"
           slot="input"
+        ></text-input>
+
+        <text-input
+          label="Number input"
+          type="number"
+          :placeholder="textInputPlaceholder"
+          v-model="numberInputValue"
+          v-validate="'required|between:-1,100'"
+          :min="-1"
+          :max="100"
+          name="numberinputExample"
+          slot="input"
+          :error="errors.first('numberinputExample')"
         ></text-input>
 
         <text-input
@@ -46,6 +60,17 @@
           slot="input"
           :error="'Hello, I am an error message'"
         ></text-input>
+
+        <text-area
+          name="myarea"
+          v-model="textAreaInputValue"
+          autoResize="true"
+          label="Text input"
+          placeholder="This is where you put some cool stuff"
+          :maxLength="1000"
+          :maxHeight="100"
+          slot="input"
+        ></text-area>
       </FormGroup>
 
       <table class="docs-table">
@@ -60,7 +85,7 @@
         <tbody>
           <tr>
             <td>disabled</td>
-            <td>Boolean</td>
+            <td>boolean</td>
             <td>null</td>
             <td>
               Puts a disabled class on the form field and disables the input.
@@ -108,6 +133,12 @@
             <td>null</td>
             <td>Input value using v-model.</td>
           </tr>
+          <tr>
+            <td>readonly</td>
+            <td>boolean</td>
+            <td>null</td>
+            <td>Specifies that an input field is read-only.</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -146,10 +177,10 @@ components: {
 &gt;&lt;/selector&gt;</code></pre>
         </div>
       </Accordion>
-      <selector
+      <Selector
         v-model="selected"
         :options="['Option A', 'Option B', 'Option C']"
-      ></selector>
+      ></Selector>
       <br />
       <selector
         v-model="selected"
@@ -175,6 +206,7 @@ components: {
           'Option F'
         ]"
         multiple
+        :searchable="false"
       ></selector>
       <br />
       <selector
@@ -193,10 +225,10 @@ components: {
       <br />
 
       <selector
-        v-model="optionSelected"
+        v-model="objectSelected"
         :options="options"
         :label="'title'"
-        multiple
+        :trackBy="'title'"
       ></selector>
       <br />
 
@@ -211,12 +243,10 @@ components: {
         </thead>
         <tbody>
           <tr>
-            <td>disabled</td>
-            <td>Boolean</td>
-            <td>false</td>
-            <td>
-              Puts a disabled class on the form field and disables the input.
-            </td>
+            <td>value</td>
+            <td>string</td>
+            <td>null</td>
+            <td>Current selected value.</td>
           </tr>
           <tr>
             <td>options</td>
@@ -243,10 +273,12 @@ components: {
             <td>Optional label for the input.</td>
           </tr>
           <tr>
-            <td>value</td>
-            <td>string</td>
-            <td>null</td>
-            <td>Current selected value.</td>
+            <td>disabled</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>
+              Puts a disabled class on the form field and disables the input.
+            </td>
           </tr>
         </tbody>
       </table>
@@ -411,6 +443,17 @@ components: {
         ></image-picker-input>
       </div>
     </div>
+
+    <div class="section">
+      <h3>Tagging Input</h3>
+      <TaggingInput
+        name="aliases"
+        placeholder="!hello"
+        maxItems="10"
+        inputValidation="required"
+        @keydown.space.prevent
+      />
+    </div>
   </div>
 </template>
 
@@ -425,6 +468,8 @@ import Radio from "./../components/Radio.vue";
 import StatusSwitch from "./../components/StatusSwitch.vue";
 import TextInput from "./../components/TextInput.vue";
 import FormGroup from "./../components/FormGroup.vue";
+import TaggingInput from "./../components/TaggingInput.vue";
+import TextArea from "./../components/TextArea.vue";
 
 @Component({
   components: {
@@ -435,7 +480,9 @@ import FormGroup from "./../components/FormGroup.vue";
     Radio,
     StatusSwitch,
     TextInput,
-    FormGroup
+    FormGroup,
+    TaggingInput,
+    TextArea
   }
 })
 export default class Inputs extends Vue {
@@ -450,6 +497,11 @@ export default class Inputs extends Vue {
   selected = "Option A";
   multipleSelected = ["Option B", "Option D"];
   optionSelected = ["Glass Pint", "Glass Beer"];
+  objectSelected = {
+    value: "glass-pint",
+    title: "Glass Pint",
+    image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-pint.png"
+  };
   radioValue1 = true;
   radioValue2 = false;
   statusValue = true;
@@ -460,9 +512,11 @@ export default class Inputs extends Vue {
 
   // Text inputs
   textInputValue = "test";
+  numberInputValue = 0;
   emailInputValue = "";
   passwordInputValue = "";
   errorTextInputValue = "";
+  textAreaInputValue = "";
 
   textInputPlaceholder = "Placeholder";
   emailInputPlaceholder = "Placeholder";
@@ -551,6 +605,24 @@ export default class Inputs extends Vue {
       title: "Glass Snowman",
       image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-snowman.png"
     }
+  ];
+
+  show = [
+    "Bounce",
+    "Bounce In",
+    "Bounce In Down",
+    "Bounce In Left",
+    "Bounce In Right",
+    "Bounce In Up",
+    "Fade In",
+    "Fade In Down",
+    "Fade In Down Big",
+    "Fade In Left",
+    "Fade In Left Big",
+    "Fade In Right",
+    "Fade In",
+    "Fade In Up",
+    "Fade In Up Big"
   ];
 }
 </script>
