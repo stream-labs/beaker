@@ -45,8 +45,10 @@
             :variation="buttonVariation"
             :title="buttonTitle"
             :price="buttonPrice"
-            @click="$emit('click')"
+            @click="$emit('subscribe-click')"
           ></Button>
+
+          <span class="s-button-cancel" @click="$emit('cancel-click')">{{ cancelTitle }}</span>
         </div>
         <p class="s-modal-notes">{{ notes }}</p>
       </div>
@@ -107,6 +109,9 @@ export default class ModalSubscribe extends Vue {
 
   @Prop({ default: "subscribe" })
   buttonVariation!: string;
+
+  @Prop({ default: "Cancel" })
+  cancelTitle!: string;
 }
 </script>
 
@@ -148,7 +153,16 @@ export default class ModalSubscribe extends Vue {
 }
 
 .s-button-subscribe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   .margin-top(3);
+}
+
+.s-button-cancel {
+  display: inline-block;
+  .padding-top(2);
+  text-decoration: underline;
 }
 
 .s-modal-text-subscribe {
