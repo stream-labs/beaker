@@ -95,7 +95,7 @@ export default class TextInput extends Vue {
   @Prop({ type: Boolean })
   readonly!: boolean;
 
-  content!: string;
+  content: string = "";
 
   created() {
     this.content =
@@ -143,7 +143,7 @@ export default class TextInput extends Vue {
 
   decrement() {
     if (this.isMinReached) return;
-    
+
     this.update(Number(this.content) - this.step);
   }
 
