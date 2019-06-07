@@ -95,7 +95,7 @@ export default class TextInput extends Vue {
   @Prop({ type: Boolean })
   readonly!: boolean;
 
-  content!: string;
+  content: string = "";
 
   created() {
     this.content =
@@ -143,7 +143,7 @@ export default class TextInput extends Vue {
 
   decrement() {
     if (this.isMinReached) return;
-    
+
     this.update(Number(this.content) - this.step);
   }
 
@@ -172,12 +172,12 @@ export default class TextInput extends Vue {
     border: 1px solid @light-4;
   }
 
-  input {
+  .s-form-field__input {
     height: 40px;
   }
 
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
+  .s-form-field__input::-webkit-outer-spin-button,
+  .s-form-field__input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
@@ -224,7 +224,7 @@ export default class TextInput extends Vue {
 }
 
 .s-form-field__input--error {
-  border-color: @red;
+  border-color: @red !important;
 }
 
 .s-form-field__label {
@@ -260,17 +260,17 @@ export default class TextInput extends Vue {
     line-height: 130%;
   }
 
-  input:focus + label,
+  .s-form-field__input:focus + label,
   .s-form-field__label--top {
     transform: translateY(-20px);
     font-size: 12px;
   }
 
-  input:focus + label {
+  .s-form-field__input:focus + label {
     color: @day-title;
   }
 
-  input:focus + .s-form-field__label--error {
+  .s-form-field__input:focus + .s-form-field__label--error {
     color: green;
   }
 
@@ -318,7 +318,7 @@ export default class TextInput extends Vue {
   .s-form-field--with-label {
     position: relative;
 
-    input:focus + label {
+    .s-form-field__input:focus + label {
       color: @night-title;
     }
   }

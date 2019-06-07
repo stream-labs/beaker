@@ -9,6 +9,7 @@
         <code>FormGroup</code> component. This will put 16px of margin between
         form fields and 24px margin between form groups.
       </p>
+      
       <FormGroup>
         <text-input
           label="Text input"
@@ -59,6 +60,17 @@
           slot="input"
           :error="'Hello, I am an error message'"
         ></text-input>
+
+        <text-area
+          name="myarea"
+          v-model="textAreaInputValue"
+          autoResize="true"
+          label="Text input"
+          placeholder="This is where you put some cool stuff"
+          :maxLength="1000"
+          :maxHeight="100"
+          slot="input"
+        ></text-area>
       </FormGroup>
 
       <table class="docs-table">
@@ -429,6 +441,7 @@ import StatusSwitch from "./../components/StatusSwitch.vue";
 import TextInput from "./../components/TextInput.vue";
 import FormGroup from "./../components/FormGroup.vue";
 import TaggingInput from "./../components/TaggingInput.vue";
+import TextArea from "./../components/TextArea.vue";
 
 @Component({
   components: {
@@ -440,7 +453,8 @@ import TaggingInput from "./../components/TaggingInput.vue";
     StatusSwitch,
     TextInput,
     FormGroup,
-    TaggingInput
+    TaggingInput,
+    TextArea
   }
 })
 export default class Inputs extends Vue {
@@ -474,6 +488,7 @@ export default class Inputs extends Vue {
   emailInputValue = "";
   passwordInputValue = "";
   errorTextInputValue = "";
+  textAreaInputValue = "";
 
   textInputPlaceholder = "Placeholder";
   emailInputPlaceholder = "Placeholder";
