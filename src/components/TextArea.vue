@@ -11,7 +11,7 @@
         ref="textArea"
         :name="name"
         :cols="cols"
-        :rows="1"
+        :rows="rows"
         :placeholder="placeholder"
         :maxlength="maxLength"
         :value="value"
@@ -67,7 +67,7 @@ export default class TextArea extends Vue {
   @Prop({ default: 100 })
   cols!: number;
 
-  @Prop({ default: 5 })
+  @Prop({ default: 3 })
   rows!: number;
 
   @Prop()
@@ -119,6 +119,7 @@ export default class TextArea extends Vue {
 
   .s-form-area__input {
     .area-padding();
+    resize: vertical;
   }
 
   .s-form-area__input::-webkit-scrollbar-corner {
