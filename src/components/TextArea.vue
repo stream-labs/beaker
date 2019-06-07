@@ -1,7 +1,7 @@
 <template>
   <div class="s-form-area" :class="{ 's-form-area--with-label': label }">
     <div class="s-form-area__container">
-      <p v-if="maxLength" class="s-form-area_characters">{{currentLength}}/{{maxLength}}</p>
+      <p v-if="maxLength" class="s-form-area__characters">{{currentLength}}/{{maxLength}}</p>
       <textarea
         :class="{
         's-form-area__input': true,
@@ -148,7 +148,7 @@ export default class TextArea extends Vue {
   }
 }
 
-.s-form-area_characters {
+.s-form-area__characters {
   .absolute(auto, 20px, 15px, auto);
   margin: 0;
 }
