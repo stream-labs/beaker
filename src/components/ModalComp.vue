@@ -30,7 +30,8 @@
         :buttonTitle="buttonTitle"
         :buttonPrice="buttonPrice"
         :buttonVariation="buttonVariation"
-        @click="$emit('subscribe-click')"
+        :cancelTitle="cancelTitle"
+        @subscribe-click="$emit('subscribe-click')"
         v-on="$listeners"
       >
         <template #preview>
@@ -135,6 +136,9 @@ export default class ModalComp extends Vue {
 
   @Prop()
   buttonPrice!: string;
+
+  @Prop()
+  cancelTitle!: string;
 
   modalName: string = "";
 
