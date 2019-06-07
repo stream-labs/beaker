@@ -16,6 +16,7 @@
         :maxlength="maxLength"
         :value="value"
         @input="onValueChange"
+        v-on="filteredListeners"
       />
       <label
         :class="{
@@ -37,7 +38,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-import { omit, isNil } from "lodash";
+import { omit } from "lodash";
 
 @Component({})
 export default class TextArea extends Vue {
@@ -80,6 +81,10 @@ export default class TextArea extends Vue {
 
   mounted() {
     this.updateSize();
+  }
+
+  get filteredListeners() {
+    return omit(this.$listeners, ["input"]);
   }
 
   get currentLength() {
