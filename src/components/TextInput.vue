@@ -21,6 +21,7 @@
       </div>
     </div>
     <input
+      ref="input"
       :type="type"
       :placeholder="placeholder"
       @input="handleInput"
@@ -35,7 +36,7 @@
       }"
       v-on="filteredListeners"
       @mousewheel="mouseWheel"
-    />
+    >
     <label
       :class="{
         's-form-field__label--top': value !== '',
@@ -43,8 +44,7 @@
       }"
       class="s-form-field__label"
       v-if="label"
-      >{{ label }}</label
-    >
+    >{{ label }}</label>
 
     <transition name="slide">
       <p v-show="error" class="s-form-field__error-text">{{ error }}</p>
@@ -60,6 +60,10 @@ import { omit, isNil } from "lodash";
 
 @Component({})
 export default class TextInput extends Vue {
+  $refs!: {
+    input: HTMLInputElement;
+  };
+
   @Prop({ type: String })
   name!: string;
 
@@ -100,9 +104,13 @@ export default class TextInput extends Vue {
 
   created() {
     this.content =
-      this.value !== undefined || this.value !== null
+      this.value !== undefined && this.value !== null
         ? this.value.toString()
         : "";
+  }
+
+  focus() {
+    this.$refs.input.focus();
   }
 
   get filteredListeners() {
