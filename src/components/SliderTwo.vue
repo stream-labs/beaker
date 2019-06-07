@@ -74,7 +74,7 @@ export default class SliderTwo extends Vue {
   @Prop({ default: null })
   data!: any[];
 
-  @Prop({default: true })
+  @Prop({ default: true })
   dataIndexing!: boolean;
 
   @Prop({ default: 0 })
@@ -112,7 +112,9 @@ export default class SliderTwo extends Vue {
 
   get val() {
     if (this.dataIndexing) {
-      return this.data ? this.data.indexOf(this.data[this.currentValue]): this.currentValue;
+      return this.data
+        ? this.data.indexOf(this.data[this.currentValue])
+        : this.currentValue;
     } else {
       return this.data ? this.data[this.currentValue] : this.currentValue;
     }
@@ -130,7 +132,9 @@ export default class SliderTwo extends Vue {
 
   get displayValue() {
     if (this.data) {
-    return this.dataIndexing ? this.data[this.currentIndex] : this.currentValue;
+      return this.dataIndexing
+        ? this.data[this.currentIndex]
+        : this.currentValue;
     } else {
       return this.currentValue;
     }
@@ -349,12 +353,12 @@ export default class SliderTwo extends Vue {
       this.setCurrentValue(v, isDrag);
     } else if (pos < range[0]) {
       this.halt = true;
-      console.log('overshoot1')
+      console.log("overshoot1");
       this.setTransform(range[0]);
       this.setCurrentValue(valueRange[0], true);
     } else {
       this.halt = true;
-      console.log('overshoot2')
+      console.log("overshoot2");
       this.setTransform(range[1]);
       this.setCurrentValue(valueRange[1], true);
     }
