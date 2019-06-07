@@ -26,6 +26,8 @@
           :placeholder="textInputPlaceholder"
           v-model="numberInputValue"
           v-validate="'required|between:-1,100'"
+          :min="-1"
+          :max="100"
           name="numberinputExample"
           slot="input"
           :error="errors.first('numberinputExample')"

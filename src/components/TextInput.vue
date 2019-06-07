@@ -1,11 +1,23 @@
 <template>
   <div class="s-form-field" :class="{ 's-form-field--with-label': label }">
     <div v-if="type === 'number'" class="s-arrows">
-      <div class="s-arrow arrow-up" @click="increment">
-        <i class="fa fa-chevron-up"></i>
+      <div
+        :class="{
+        's-arrow arrow-up': true,
+        's-arrow--disabled': isMaxReached
+      }"
+        @click="increment"
+      >
+        <i class="fas fa-caret-up"></i>
       </div>
-      <div class="s-arrow arrow-down" @click="decrement">
-        <i class="fa fa-chevron-down"></i>
+      <div
+        :class="{
+        's-arrow arrow-down': true,
+        's-arrow--disabled': isMinReached
+      }"
+        @click="decrement"
+      >
+        <i class="fas fa-caret-down"></i>
       </div>
     </div>
     <input
@@ -31,8 +43,7 @@
       }"
       class="s-form-field__label"
       v-if="label"
-      >{{ label }}</label
-    >
+    >{{ label }}</label>
 
     <transition name="slide">
       <p v-show="error" class="s-form-field__error-text">{{ error }}</p>
@@ -44,38 +55,47 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-import { omit } from "lodash";
+import { omit, isNil } from "lodash";
 
 @Component({})
 export default class TextInput extends Vue {
-  @Prop()
-  name!: String;
+  @Prop({ type: String })
+  name!: string;
 
-  @Prop()
-  value!: String;
+  @Prop({ type: [String, Number] })
+  value!: string;
 
-  @Prop()
-  error!: String;
+  @Prop({ type: String })
+  error!: string;
 
-  @Prop()
-  helpText!: String;
+  @Prop({ type: Number })
+  min!: number;
 
-  @Prop({ default: "text" })
-  type!: String;
+  @Prop({ type: Number })
+  max!: number;
 
-  @Prop()
-  placeholder!: String;
+  @Prop({ type: Number, default: 1 })
+  step!: number;
 
-  @Prop()
-  disabled!: Boolean;
+  @Prop({ type: String })
+  helpText!: string;
 
-  @Prop()
-  label!: String;
+  @Prop({ type: String, default: "text" })
+  type!: string;
 
-  @Prop()
-  readonly!: Boolean;
+  @Prop({ type: String })
+  placeholder!: string;
 
-  content!: String;
+  @Prop({ type: Boolean })
+  disabled!: boolean;
+
+  @Prop({ type: String })
+  label!: string;
+
+  @Prop({ type: Boolean })
+  readonly!: boolean;
+
+  content!: string;
 
   created() {
     this.content =
@@ -88,21 +108,43 @@ export default class TextInput extends Vue {
     return omit(this.$listeners, ["input"]);
   }
 
+  get isMaxReached() {
+    return (
+      this.type === "number" &&
+      !isNil(this.max) &&
+      Number(this.value) >= this.max
+    );
+  }
+
+  get isMinReached() {
+    return (
+      this.type === "number" &&
+      !isNil(this.min) &&
+      Number(this.value) <= this.min
+    );
+  }
+
   @Watch("value")
   valueChanged(newValue: string) {
     this.content = newValue.toString();
   }
 
-  handleInput(event: { target: HTMLInputElement }) { 
-    this.update(this.type ==='number' ?  Number(event.target.value) : event.target.value);
+  handleInput(event: { target: HTMLInputElement }) {
+    this.update(
+      this.type === "number" ? Number(event.target.value) : event.target.value
+    );
   }
 
   increment() {
-    this.update(Number(this.content) + 1);
+    if (this.isMaxReached) return;
+
+    this.update(Number(this.content) + this.step);
   }
 
   decrement() {
-    this.update(Number(this.content) - 1);
+    if (this.isMinReached) return;
+    
+    this.update(Number(this.content) - this.step);
   }
 
   mouseWheel(event: WheelEvent) {
@@ -116,7 +158,6 @@ export default class TextInput extends Vue {
 
   update(value) {
     this.$emit("input", value);
-
   }
 }
 </script>
@@ -125,6 +166,8 @@ export default class TextInput extends Vue {
 @import "./../styles/Imports";
 
 .s-form-field {
+  position: relative;
+
   .s-form-field__input {
     border: 1px solid @light-4;
   }
@@ -158,9 +201,9 @@ export default class TextInput extends Vue {
     }
     .s-arrow {
       display: flex !important;
-      .fa {
+      .fas {
         position: relative;
-        font-size: 9px;
+        font-size: 12px;
       }
       &:active {
         color: black;
@@ -169,9 +212,14 @@ export default class TextInput extends Vue {
         .absolute(6px, 3px, auto, auto);
       }
       &.arrow-down {
-        .absolute(24px, 3px, auto, auto);
+        .absolute(auto, 3px, 6px, auto);
       }
     }
+  }
+
+  .s-arrow--disabled {
+    color: @light-3;
+    cursor: default;
   }
 }
 
@@ -296,6 +344,10 @@ export default class TextInput extends Vue {
   .s-form-field__label--error,
   .s-form-field__error-text {
     color: @red;
+  }
+
+  .s-arrow--disabled {
+    color: @dark-4;
   }
 }
 </style>
