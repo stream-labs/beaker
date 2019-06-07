@@ -8,8 +8,10 @@
         :text="text"
         :width="width"
         :minWidth="minWidth"
-        ><slot></slot
-      ></ModalBasic>
+        v-on="$listeners"
+      >
+        <slot></slot>
+      </ModalBasic>
     </div>
 
     <div v-if="type === 'subscribe'">
@@ -29,6 +31,7 @@
         :buttonPrice="buttonPrice"
         :buttonVariation="buttonVariation"
         @click="$emit('subscribe-click')"
+        v-on="$listeners"
       >
         <template #preview>
           <slot name="preview"></slot>
@@ -44,6 +47,7 @@
         :text="text"
         :width="width"
         :minWidth="minWidth"
+        v-on="$listeners"
       ></ModalRedirect>
     </div>
 
@@ -57,6 +61,7 @@
         @confirm="$emit('confirm')"
         :confirmButtonText="confirmButtonText"
         :buttonVariation="buttonVariation"
+        v-on="$listeners"
       ></ModalConfirmation>
     </div>
   </div>

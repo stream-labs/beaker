@@ -3,18 +3,18 @@
     <div v-if="type === 'number'" class="s-arrows">
       <div
         :class="{
-        's-arrow arrow-up': true,
-        's-arrow--disabled': isMaxReached
-      }"
+          's-arrow arrow-up': true,
+          's-arrow--disabled': isMaxReached
+        }"
         @click="increment"
       >
         <i class="fas fa-caret-up"></i>
       </div>
       <div
         :class="{
-        's-arrow arrow-down': true,
-        's-arrow--disabled': isMinReached
-      }"
+          's-arrow arrow-down': true,
+          's-arrow--disabled': isMinReached
+        }"
         @click="decrement"
       >
         <i class="fas fa-caret-down"></i>
@@ -35,7 +35,7 @@
       }"
       v-on="filteredListeners"
       @mousewheel="mouseWheel"
-    >
+    />
     <label
       :class="{
         's-form-field__label--top': value !== '',
@@ -43,7 +43,8 @@
       }"
       class="s-form-field__label"
       v-if="label"
-    >{{ label }}</label>
+      >{{ label }}</label
+    >
 
     <transition name="slide">
       <p v-show="error" class="s-form-field__error-text">{{ error }}</p>
