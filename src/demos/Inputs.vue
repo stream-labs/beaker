@@ -9,7 +9,7 @@
         <code>FormGroup</code> component. This will put 16px of margin between
         form fields and 24px margin between form groups.
       </p>
-      
+
       <FormGroup>
         <text-input
           label="Text input"

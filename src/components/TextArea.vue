@@ -1,13 +1,15 @@
 <template>
   <div class="s-form-area" :class="{ 's-form-area--with-label': label }">
     <div class="s-form-area__container">
-      <p v-if="maxLength" class="s-form-area__characters">{{currentLength}}/{{maxLength}}</p>
+      <p v-if="maxLength" class="s-form-area__characters">
+        {{ currentLength }}/{{ maxLength }}
+      </p>
       <textarea
         :class="{
-        's-form-area__input': true,
-        's-form-area__input--error': !!error,
-        's-form-area__input--count': !!maxLength
-      }"
+          's-form-area__input': true,
+          's-form-area__input--error': !!error,
+          's-form-area__input--count': !!maxLength
+        }"
         ref="textArea"
         :name="name"
         :cols="cols"
@@ -20,12 +22,13 @@
       />
       <label
         :class="{
-        's-form-area__label--top': value !== '',
-        's-form-area__label--error': !!error
-      }"
+          's-form-area__label--top': value !== '',
+          's-form-area__label--error': !!error
+        }"
         class="s-form-area__label"
         v-if="label"
-      >{{ label }}</label>
+        >{{ label }}</label
+      >
     </div>
 
     <transition name="slide">
