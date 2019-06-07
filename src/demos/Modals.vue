@@ -114,6 +114,8 @@ components: {
         :subscribeText="'galazy83 donated $50.00!'"
         :subscribeMessage="'Thanks for the stream. Go CivRyan!'"
         :notes="'You may cancel your subscription at any time.'"
+        @subscribe-click="logClick('Subscribe Click')"
+        @cancel-click="logClick('cancel click')"
       ></ModalComp>
 
       <div class="button-container button-container--left">
@@ -384,5 +386,9 @@ import Button from "./../components/Button.vue";
     Button
   }
 })
-export default class Modals extends Vue {}
+export default class Modals extends Vue {
+  logClick(string: string){
+    console.log(string);
+  }
+}
 </script>

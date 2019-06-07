@@ -31,8 +31,6 @@
         :buttonPrice="buttonPrice"
         :buttonVariation="buttonVariation"
         :cancelTitle="cancelTitle"
-        @subscribe-click="$emit('subscribe-click')"
-        @cancel-click="$emit('cancel-click')"
         v-on="$listeners"
       >
         <template #preview>
@@ -60,7 +58,6 @@
         :text="text"
         :width="width"
         :minWidth="minWidth"
-        @confirm="$emit('confirm')"
         :confirmButtonText="confirmButtonText"
         :buttonVariation="buttonVariation"
         v-on="$listeners"
