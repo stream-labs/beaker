@@ -32,6 +32,7 @@
         :buttonVariation="buttonVariation"
         :cancelTitle="cancelTitle"
         @subscribe-click="$emit('subscribe-click')"
+        @cancel-click="$emit('cancel-click')"
         v-on="$listeners"
       >
         <template #preview>
