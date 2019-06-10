@@ -48,7 +48,9 @@
             @click="$emit('subscribe-click')"
           ></Button>
 
-          <span class="s-button-cancel" @click="$emit('cancel-click')">{{ cancelTitle }}</span>
+          <span class="s-button-cancel" @click="$emit('cancel-click')">{{
+            cancelTitle
+          }}</span>
         </div>
         <p class="s-modal-notes">{{ notes }}</p>
       </div>

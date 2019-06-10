@@ -336,8 +336,8 @@ components: {
           <td>boolean</td>
           <td>true</td>
           <td>
-            Displays <code>Pro</code> badge in modal header (only in Modal
-            Subscribe).
+            Displays
+            <code>Pro</code> badge in modal header (only in Modal Subscribe).
           </td>
         </tr>
         <tr>
@@ -347,10 +347,9 @@ components: {
           <td>
             Allows for custom preview above modal text. Uses
             <code>preview</code> slot.
-            <code
-              >&lt;template #preview&gt;Custom Preview
-              HTML&lt;template&gt;</code
-            >
+            <code>
+              &lt;template #preview&gt;Custom Preview HTML&lt;template&gt;
+            </code>
             (only in Modal Subscribe).
           </td>
         </tr>
