@@ -8,6 +8,7 @@
 import Accordion from "./components/Accordion.vue";
 import Badge from "./components/Badge.vue";
 import BannerMarketing from "./components/BannerMarketing.vue";
+import BeakerTooltip from "./directives/BeakerTooltip.ts";
 import Button from "./components/Button.vue";
 import CallToAction from "./components/CallToAction.vue";
 import Callout from "./components/Callout.vue";
@@ -61,6 +62,7 @@ export {
   Accordion,
   Badge,
   BannerMarketing,
+  BeakerTooltip,
   Button,
   CallToAction,
   Callout,

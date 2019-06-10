@@ -167,7 +167,7 @@ function redraw(el) {
     "translate(-" + rect.paddingLeft + "px,-" + rect.paddingTop + "px)";
 }
 
-const Tooltip: DirectiveOptions = {
+const BeakerTooltip: DirectiveOptions = {
   inserted(el, binding) {
     init(el, binding);
     new ResizeSensor(el, function() {
@@ -189,4 +189,4 @@ const Tooltip: DirectiveOptions = {
   }
 };
 
-export default Tooltip;
+export default BeakerTooltip;
