@@ -61,6 +61,7 @@ export {
   Accordion,
   Badge,
   BannerMarketing,
+  BeakerTooltip,
   Button,
   CallToAction,
   Callout,
