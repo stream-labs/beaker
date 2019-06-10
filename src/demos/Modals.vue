@@ -41,24 +41,18 @@ components: {
       <h2>Modal Subscribe</h2>
       <p>Used once subscribe.</p>
 
-      <DemoSection title="Modal Subscribe" :code="demoCode">
-        <template #components>
-          <ModalComp
-            type="subscribe"
-            :scrollable="true"
-            title="Streamlabs"
-            subTitle="Never pay for GIFs and effects again!"
-            text="
-              Get unlimited free GIFs and effects that will show up on all
-              alerts on all channels! You’ll also get a fancy ‘Pro’ badge next
-              to your username on your donations.
-            "
-            subscribe-text="galazy83 donated $50.00!"
-            subscribe-message="Thanks for the stream. Go CivRyan!"
-            notes="You may cancel your subscription at any time."
-          />
-        </template>
-      </DemoSection>
+      <ModalComp
+        :type="'subscribe'"
+        :scrollable="true"
+        :title="'Streamlabs'"
+        :subTitle="'Never pay for GIFs and effects again!'"
+        :text="
+          'Get unlimited free GIFs and effects that will show up on all alerts on all channels! You’ll also get a fancy ‘Pro’ badge next to your username on your donations.'
+        "
+        :subscribeText="'galazy83 donated $50.00!'"
+        :subscribeMessage="'Thanks for the stream. Go CivRyan!'"
+        :notes="'You may cancel your subscription at any time.'"
+      ></ModalComp>
 
       <div class="button-container button-container--left">
         <Button
