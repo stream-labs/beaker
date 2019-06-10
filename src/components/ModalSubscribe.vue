@@ -6,6 +6,7 @@
     :minWidth="minWidth"
     height="auto"
     :adaptive="true"
+    :scrollable="scrollable"
     v-on="$listeners"
   >
     <div class="s-modal-container">
@@ -78,6 +79,9 @@ export default class ModalSubscribe extends Vue {
 
   @Prop({ default: 600 })
   minWidth!: number;
+
+  @Prop({ default: false })
+  scrollable!: boolean;
 
   @Prop()
   title!: string;
@@ -165,6 +169,7 @@ export default class ModalSubscribe extends Vue {
   display: inline-block;
   .padding-top(2);
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .s-modal-text-subscribe {
