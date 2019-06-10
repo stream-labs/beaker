@@ -11,7 +11,7 @@
     :type="type"
     class="s-button ripple"
     :class="[buttonClasses, { 'ripple-animate': rippleAnimate }]"
-    :disabled="state === 'disabled'"
+    :disabled="state === 'disabled' || state === 'loading'"
     @click="$emit('click')"
     :target="target"
     @mousedown="pressDown"
@@ -299,7 +299,7 @@ export default class Button extends Vue {
     outline: transparent dotted 2px;
   }
 
-  &[disabled],
+  &[disabled]:not(.is-loading),
   &.is-disabled {
     background-color: @day-button!important;
     color: @light-4!important;
@@ -307,6 +307,8 @@ export default class Button extends Vue {
   }
 
   &.is-loading {
+    cursor: not-allowed;
+
     &:before {
       display: block;
       content: "\f1ce";
@@ -812,7 +814,7 @@ export default class Button extends Vue {
       background: lighten(@night-button, 4%);
     }
 
-    &[disabled],
+    &[disabled]:not(.is-loading),
     &.is-disabled {
       background-color: @dark-4!important;
       color: @dark-5!important;
