@@ -391,11 +391,11 @@
         <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
           <div slot="content">
             <pre>
-<code>&lt;Banner-Discord&gt;&lt;/Banner-Discord&gt;</code></pre>
+<code>&lt;banner-discord&gt;&lt;/banner-discord&gt;</code></pre>
           </div>
         </Accordion>
 
-        <Banner-Discord></Banner-Discord>
+        <banner-discord></banner-discord>
 
         <table class="docs-table">
           <thead>
