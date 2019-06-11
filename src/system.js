@@ -7,6 +7,7 @@
 
 import Accordion from "./components/Accordion.vue";
 import Badge from "./components/Badge.vue";
+import BannerDiscord from "./components/BannerDiscord.vue";
 import BannerMarketing from "./components/BannerMarketing.vue";
 import BeakerTooltip from "./directives/BeakerTooltip.ts";
 import Button from "./components/Button.vue";
@@ -61,6 +62,7 @@ import TextArea from "./components/TextArea.vue";
 export {
   Accordion,
   Badge,
+  BannerDiscord,
   BannerMarketing,
   BeakerTooltip,
   Button,
