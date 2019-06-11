@@ -15,11 +15,11 @@
     @click="$emit('click')"
     :target="target"
     @mousedown="pressDown"
-    :style="rippleStyle"
+    :style="buttonStyle"
   >
     <span>
       <span>
-        <i v-if="iconClass" :class="iconClass"></i>
+        <i v-if="iconClass && iconPosition === 'left'" :class="iconClass"></i>
         <i v-if="iconImg" class="icon-img">
           <img :src="iconImg" :alt="`${title} Icon Image`" />
         </i>
@@ -28,6 +28,10 @@
       <span v-if="description" class="s-button__description">{{
         description
       }}</span>
+      <i
+        v-if="iconClass && iconPosition === 'right'"
+        :class="['icon--right', iconClass]"
+      ></i>
     </span>
     <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
     <span v-if="price">{{ price }}</span>
@@ -58,6 +62,11 @@ export default class Button extends Vue {
   icon!: {
     type: String;
     default: null;
+  };
+
+  @Prop({ default: "left" })
+  iconPosition!: {
+    type: String;
   };
 
   @Prop()
@@ -130,11 +139,6 @@ export default class Button extends Vue {
     default: "default";
   };
 
-  buttonStyles: object = {
-    backgroundColor: this.bgColor,
-    color: this.textColor
-  };
-
   private rippleStartX = 0;
   private rippleStartY = 0;
   private rippleSize = 0;
@@ -171,7 +175,7 @@ export default class Button extends Vue {
     return classes.join(" ");
   }
 
-  get rippleStyle() {
+  get buttonStyle() {
     let s =
       "--ripple-x:" +
       this.rippleStartX +
@@ -185,6 +189,10 @@ export default class Button extends Vue {
       this.rippleOpacity +
       "; --ripple-duration:" +
       this.rippleDuration +
+      "; background-color:" +
+      this.bgColor +
+      "; color:" +
+      this.textColor
       ";";
     return s;
   }
@@ -249,27 +257,27 @@ export default class Button extends Vue {
 @import "./../styles/Imports";
 
 .s-button {
+  position: relative;
+  display: inline-block;
+  height: 40px;
   .input-padding();
+  border: 1px solid transparent;
+  .radius();
+  font-family: "Roboto";
   font-size: 14px;
+  .weight(@medium);
+  text-align: center;
+  line-height: 38px;
+  text-decoration: none !important;
   text-transform: capitalize;
   background: @day-button;
   color: @day-paragraph;
-  text-align: center;
   vertical-align: middle;
   -webkit-user-select: none;
   -ms-user-select: none;
   white-space: nowrap;
   overflow: hidden;
-  display: inline-block;
-  height: 40px;
-  line-height: 38px;
   .transition();
-  .weight(@medium);
-  .radius();
-  font-family: "Roboto";
-  border: 1px solid transparent;
-  text-decoration: none !important;
-  position: relative;
   outline: none !important;
 
   * {
@@ -284,6 +292,11 @@ export default class Button extends Vue {
   .icon-img {
     display: flex;
     align-items: center;
+  }
+
+  .icon--right {
+    .margin-right(0);
+    .margin-left(3);
   }
 
   span {
