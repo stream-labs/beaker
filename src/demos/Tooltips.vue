@@ -5,7 +5,7 @@
         <h1>Tooltips</h1>
         <pre>
           <code>
-Import { Tooltip } from 'streamlabs-beaker';
+Import { BeakerTooltip } from 'streamlabs-beaker';
 
 directives: {
   's-tooltip': Tooltip
@@ -196,7 +196,7 @@ import PaneDropdown from "./../components/PaneDropdown.vue";
     PaneDropdown
   },
   directives: {
-    "s-tooltip": Tooltip
+    "s-tooltip": BeakerTooltip
   }
 })
 export default class Tooltips extends Vue {
