@@ -15,7 +15,7 @@
     @click="$emit('click')"
     :target="target"
     @mousedown="pressDown"
-    :style="[rippleStyle, buttonStyles]"
+    :style="buttonStyle"
   >
     <span>
       <span>
@@ -139,11 +139,6 @@ export default class Button extends Vue {
     default: "default";
   };
 
-  buttonStyles: object = {
-    backgroundColor: this.bgColor,
-    color: this.textColor
-  };
-
   private rippleStartX = 0;
   private rippleStartY = 0;
   private rippleSize = 0;
@@ -180,7 +175,7 @@ export default class Button extends Vue {
     return classes.join(" ");
   }
 
-  get rippleStyle() {
+  get buttonStyle() {
     let s =
       "--ripple-x:" +
       this.rippleStartX +
@@ -194,6 +189,10 @@ export default class Button extends Vue {
       this.rippleOpacity +
       "; --ripple-duration:" +
       this.rippleDuration +
+      "; background-color:" +
+      this.bgColor +
+      "; color:" +
+      this.textColor
       ";";
     return s;
   }

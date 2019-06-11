@@ -17,6 +17,7 @@
           :placeholder="textInputPlaceholder"
           v-model="textInputValue"
           name="textExample"
+          autoComplete="on"
           slot="input"
         ></text-input>
 

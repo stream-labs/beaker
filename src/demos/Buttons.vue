@@ -81,8 +81,8 @@ components: {
           <Button
             :variation="'default'"
             :title="'Color Change'"
-            :bgColor="'#000'"
-            :textColor="'#fff'"
+            :bgColor="'pink'"
+            :textColor="'red'"
           ></Button>
 
           <Button :variation="'prime'" :title="'Join Prime'"></Button>
