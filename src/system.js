@@ -9,6 +9,7 @@ import Accordion from "./components/Accordion.vue";
 import Badge from "./components/Badge.vue";
 import BannerDiscord from "./components/BannerDiscord.vue";
 import BannerMarketing from "./components/BannerMarketing.vue";
+import BeakerTooltip from "./directives/BeakerTooltip.ts";
 import Button from "./components/Button.vue";
 import CallToAction from "./components/CallToAction.vue";
 import Callout from "./components/Callout.vue";
@@ -55,12 +56,15 @@ import Pagination from "./components/Pagination.vue";
 import ProgressBar from "./components/ProgressBar.vue";
 import UrlBar from "./components/UrlBar.vue";
 import VirtualItem from "./components/VirtualItem.vue";
+import TaggingInput from "./components/TaggingInput.vue";
+import TextArea from "./components/TextArea.vue";
 
 export {
   Accordion,
   Badge,
   BannerDiscord,
   BannerMarketing,
+  BeakerTooltip,
   Button,
   CallToAction,
   Callout,
@@ -101,6 +105,8 @@ export {
   Step,
   // TabDevelop,
   Tabs,
+  TaggingInput,
+  TextArea,
   TextInput,
   Toggle,
   TooltipNotice,

@@ -391,12 +391,36 @@
         <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
           <div slot="content">
             <pre>
-<code>
-  </code></pre>
+<code>&lt;Banner-Discord&gt;&lt;/Banner-Discord&gt;</code></pre>
           </div>
         </Accordion>
 
         <Banner-Discord></Banner-Discord>
+
+        <table class="docs-table">
+          <thead>
+            <tr>
+              <th>Prop</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>title</td>
+              <td>string</td>
+              <td>
+                Join the Streamlabs OBS Discussion on
+                &lt;span&gt;Discord&lt;/span&gt;
+              </td>
+              <td>
+                Set the title of the banner. You can wrap text in
+                <code>&lt;span&gt;</code> tags to give them medium font weight.
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </Tabs>
   </div>

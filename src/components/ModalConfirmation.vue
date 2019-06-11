@@ -6,6 +6,7 @@
     :minWidth="minWidth"
     height="auto"
     :adaptive="true"
+    v-on="$listeners"
   >
     <div class="s-modal-container">
       <div class="s-confirmation">

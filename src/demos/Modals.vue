@@ -314,8 +314,56 @@ components: {
           <td>
             Pass in
             <code>action</code> if it's a confirmation that doesn't warrant a
-            warning (only in Modal Confirmation)
+            warning (only in Modal Confirmation). In Modal Subscribe default is
+            <code>subscribe</code>. Can be set to <code>paypal</code> and
+            <code>paypal-blue</code> variations.
           </td>
+        </tr>
+        <tr>
+          <td>buttonTitle</td>
+          <td>string</td>
+          <td>Subscribe with PayPal</td>
+          <td>Set subscribe button title (only in Modal Subscribe).</td>
+        </tr>
+        <tr>
+          <td>buttonPrice</td>
+          <td>string</td>
+          <td>$5.99</td>
+          <td>Set subscribe button title (only in Modal Subscribe).</td>
+        </tr>
+        <tr>
+          <td>proBadge</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>
+            Displays
+            <code>Pro</code> badge in modal header (only in Modal Subscribe).
+          </td>
+        </tr>
+        <tr>
+          <td>customPreview</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>
+            Allows for custom preview above modal text. Uses
+            <code>preview</code> slot.
+            <code>
+              &lt;template #preview&gt;Custom Preview HTML&lt;template&gt;
+            </code>
+            (only in Modal Subscribe).
+          </td>
+        </tr>
+        <tr>
+          <td>buttonTitle</td>
+          <td>string</td>
+          <td>Subscribe with PayPal</td>
+          <td>Set subscribe button title (only in Modal Subscribe).</td>
+        </tr>
+        <tr>
+          <td>buttonTitle</td>
+          <td>string</td>
+          <td>$5.99</td>
+          <td>Set subscribe button title (only in Modal Subscribe).</td>
         </tr>
       </tbody>
     </table>

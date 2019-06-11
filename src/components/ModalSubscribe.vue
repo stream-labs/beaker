@@ -6,6 +6,8 @@
     :minWidth="minWidth"
     height="auto"
     :adaptive="true"
+    :scrollable="scrollable"
+    v-on="$listeners"
   >
     <div class="s-modal-container">
       <div class="s-subscribe-icon-box">
@@ -14,13 +16,16 @@
       <div class="s-subscribe-upper">
         <div class="s-subscribe-title-box">
           <h1 class="s-modal-title">{{ title }}</h1>
-          <badge :align-left="true">Pro</badge>
+          <badge v-if="proBadge" :align-left="true">Pro</badge>
         </div>
         <h2 class="s-modal-sub-title">{{ subTitle }}</h2>
       </div>
 
       <div class="s-subscribe-body">
-        <div class="s-subscribe-box">
+        <div v-if="customPreview" class="s-subscribe-box">
+          <slot name="preview"></slot>
+        </div>
+        <div v-else class="s-subscribe-box">
           <p class="s-subscribe-text">{{ subscribeText }}</p>
           <p class="s-subscribe-message">
             {{ subscribeMessage }}
@@ -32,14 +37,21 @@
       </div>
 
       <div class="s-subscribe-bottom">
-        <p v-if="text" class="s-modal-text s-modal-text-subscribe">{{ text }}</p>
+        <p v-if="text" class="s-modal-text s-modal-text-subscribe">
+          {{ text }}
+        </p>
         <slot v-else></slot>
         <div class="s-button-subscribe">
           <Button
-            :variation="'subscribe'"
-            :title="'Subscribe with PayPal'"
-            :price="'$5.99/mo'"
+            :variation="buttonVariation"
+            :title="buttonTitle"
+            :price="buttonPrice"
+            @click="$emit('subscribe-click')"
           ></Button>
+
+          <span class="s-button-cancel" @click="$emit('cancel-click')">{{
+            cancelTitle
+          }}</span>
         </div>
         <p class="s-modal-notes">{{ notes }}</p>
       </div>
@@ -68,6 +80,9 @@ export default class ModalSubscribe extends Vue {
   @Prop({ default: 600 })
   minWidth!: number;
 
+  @Prop({ default: false })
+  scrollable!: boolean;
+
   @Prop()
   title!: string;
 
@@ -86,9 +101,23 @@ export default class ModalSubscribe extends Vue {
   @Prop()
   subscribeMessage!: string;
 
-  get textString() {
-    return typeof this.text === "string" ? true : false;
-  }
+  @Prop({ default: true })
+  proBadge!: boolean;
+
+  @Prop({ default: false })
+  customPreview!: boolean;
+
+  @Prop({ default: "Subscribe with PayPal" })
+  buttonTitle!: string;
+
+  @Prop({ default: "$5.99/mo" })
+  buttonPrice!: string;
+
+  @Prop({ default: "subscribe" })
+  buttonVariation!: string;
+
+  @Prop({ default: "Cancel" })
+  cancelTitle!: string;
 }
 </script>
 
@@ -130,7 +159,17 @@ export default class ModalSubscribe extends Vue {
 }
 
 .s-button-subscribe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   .margin-top(3);
+}
+
+.s-button-cancel {
+  display: inline-block;
+  .padding-top(2);
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .s-modal-text-subscribe {
@@ -170,6 +209,7 @@ export default class ModalSubscribe extends Vue {
   text-align: center;
   color: @light-5;
   .small-type();
-  .padding-v-sides(2);
+  .padding-top(3);
+  .padding-bottom(2);
 }
 </style>

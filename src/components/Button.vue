@@ -11,15 +11,15 @@
     :type="type"
     class="s-button ripple"
     :class="[buttonClasses, { 'ripple-animate': rippleAnimate }]"
-    :disabled="state === 'disabled'"
+    :disabled="state === 'disabled' || state === 'loading'"
     @click="$emit('click')"
     :target="target"
     @mousedown="pressDown"
-    :style="rippleStyle"
+    :style="[rippleStyle, buttonStyles]"
   >
     <span>
       <span>
-        <i v-if="iconClass" :class="iconClass"></i>
+        <i v-if="iconClass && iconPosition === 'left'" :class="iconClass"></i>
         <i v-if="iconImg" class="icon-img">
           <img :src="iconImg" :alt="`${title} Icon Image`" />
         </i>
@@ -28,6 +28,10 @@
       <span v-if="description" class="s-button__description">{{
         description
       }}</span>
+      <i
+        v-if="iconClass && iconPosition === 'right'"
+        :class="['icon--right', iconClass]"
+      ></i>
     </span>
     <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
     <span v-if="price">{{ price }}</span>
@@ -58,6 +62,11 @@ export default class Button extends Vue {
   icon!: {
     type: String;
     default: null;
+  };
+
+  @Prop({ default: "left" })
+  iconPosition!: {
+    type: String;
   };
 
   @Prop()
@@ -249,27 +258,27 @@ export default class Button extends Vue {
 @import "./../styles/Imports";
 
 .s-button {
+  position: relative;
+  display: inline-block;
+  height: 40px;
   .input-padding();
+  border: 1px solid transparent;
+  .radius();
+  font-family: "Roboto";
   font-size: 14px;
+  .weight(@medium);
+  text-align: center;
+  line-height: 38px;
+  text-decoration: none !important;
   text-transform: capitalize;
   background: @day-button;
   color: @day-paragraph;
-  text-align: center;
   vertical-align: middle;
   -webkit-user-select: none;
   -ms-user-select: none;
   white-space: nowrap;
   overflow: hidden;
-  display: inline-block;
-  height: 40px;
-  line-height: 38px;
   .transition();
-  .weight(@medium);
-  .radius();
-  font-family: "Roboto";
-  border: 1px solid transparent;
-  text-decoration: none !important;
-  position: relative;
   outline: none !important;
 
   * {
@@ -286,6 +295,11 @@ export default class Button extends Vue {
     align-items: center;
   }
 
+  .icon--right {
+    .margin-right(0);
+    .margin-left(3);
+  }
+
   span {
     display: flex;
     justify-content: center;
@@ -299,7 +313,7 @@ export default class Button extends Vue {
     outline: transparent dotted 2px;
   }
 
-  &[disabled],
+  &[disabled]:not(.is-loading),
   &.is-disabled {
     background-color: @day-button!important;
     color: @light-4!important;
@@ -307,6 +321,8 @@ export default class Button extends Vue {
   }
 
   &.is-loading {
+    cursor: not-allowed;
+
     &:before {
       display: block;
       content: "\f1ce";
@@ -487,17 +503,6 @@ export default class Button extends Vue {
   }
 }
 
-.s-button--paypal-blue {
-  background-color: @paypal;
-  color: @white;
-
-  &:focus,
-  &.is-focused,
-  &:hover {
-    background-color: darken(@paypal, 4%);
-  }
-}
-
 .s-button--warning {
   color: @warning;
   background-color: rgba(251, 72, 76, 0.16);
@@ -554,7 +559,8 @@ export default class Button extends Vue {
 }
 
 .s-button--subscribe,
-.s-button--paypal {
+.s-button--paypal,
+.s-button--paypal-blue {
   display: flex;
   justify-content: space-between;
   text-transform: unset;
@@ -564,7 +570,8 @@ export default class Button extends Vue {
   .padding-h-sides(4);
 }
 
-.s-button--paypal {
+.s-button--paypal,
+.s-button--paypal-blue {
   background-color: @paypal-yellow;
 
   &:before {
@@ -591,6 +598,17 @@ export default class Button extends Vue {
         }
       }
     }
+  }
+}
+
+.s-button--paypal-blue {
+  background-color: @paypal;
+  color: @white;
+
+  &:focus,
+  &.is-focused,
+  &:hover {
+    background-color: darken(@paypal, 4%);
   }
 }
 
@@ -810,7 +828,7 @@ export default class Button extends Vue {
       background: lighten(@night-button, 4%);
     }
 
-    &[disabled],
+    &[disabled]:not(.is-loading),
     &.is-disabled {
       background-color: @dark-4!important;
       color: @dark-5!important;

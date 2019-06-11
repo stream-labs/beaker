@@ -99,6 +99,7 @@ components: {
           :suffix="'%'"
           :simpleTheme="true"
         />
+        <i class="fas fa-question-circle"></i>
       </div>
     </div>
 
@@ -195,14 +196,17 @@ components: {
       <div class="row">
         <h1>NEW SLIDER</h1>
         <p>Dont use this yet.</p>
-        <slider-two
-          :value="localValue"
-          @input="value => updateLocalValue(value)"
-          :min="0"
-          :max="100"
-          :interval="5"
-          :suffix="'%'"
-        />
+        <div class="flex-row">
+          <slider-two
+            :value="localValue"
+            @input="value => updateLocalValue(value)"
+            :min="0"
+            :max="100"
+            :dataIndexing="false"
+            :suffix="'%'"
+          />
+          <div class="icon-holder"><i class="fas fa-question-circle"></i></div>
+        </div>
       </div>
     </div>
 
@@ -241,9 +245,22 @@ export default class Sliders extends Vue {
   }
 
   value = 50;
-  data = ["one", "two", "three"];
+  data = ["one", "two", "three", "four", "five", "six"];
   updateValue(value) {
-    console.log(value);
+    console.log(value); // this function is required, it doesn't have to do anything, it just needs to exist.
   }
 }
 </script>
+
+<style lang="less">
+@import "./../styles/Imports";
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.icon-holder {
+  .margin-left(2);
+}
+</style>

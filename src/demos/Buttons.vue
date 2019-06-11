@@ -735,6 +735,15 @@ components: {
           </td>
         </tr>
         <tr>
+          <td>iconPosition</td>
+          <td>String</td>
+          <td>left</td>
+          <td>
+            Positions the icon left or right. If positioned right, the icon will
+            have a left margin of 24px.
+          </td>
+        </tr>
+        <tr>
           <td>iconImg</td>
           <td>String</td>
           <td>null</td>
