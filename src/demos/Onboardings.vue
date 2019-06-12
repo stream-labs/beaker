@@ -43,7 +43,7 @@ components: {
       </Accordion>
 
       <Onboarding
-        :steps="4"
+        :steps="3"
         :stepLocation="'top'"
         :current="1"
         :skip="true"
