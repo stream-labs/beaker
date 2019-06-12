@@ -8,6 +8,7 @@
       :variation="'custom'"
       :bgColor="'#FFFFFF'"
       :textColor="'#7289DA'"
+      v-on="$listeners"
     ></Button>
   </div>
 </template>
