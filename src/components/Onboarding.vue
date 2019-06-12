@@ -1,19 +1,19 @@
 <template>
-  <div class="s-onboarding-wrapper">
-    <div class="s-bullets">
-      <span
-        v-for="(key, index) in steps"
-        :key="index"
-        class="s-bullet"
-        :class="[
+  <div class="s-onboarding-wrapper" :class="locationClass">
+    <div class="s-onboarding-main">
+      <div class="s-bullets" :class="locationClass">
+        <div
+          v-for="(key, index) in steps"
+          :key="index"
+          class="s-bullet"
+          :class="[
           {
             'current-step': currentStepStyle(index),
             'icon-check-mark': checkmarkStyle(index)
           }
         ]"
-      ></span>
-    </div>
-    <div class="s-onboarding-main">
+        ></div>
+      </div>
       <div class="s-onboarding-body">
         <slot :name="currentStep"></slot>
       </div>
@@ -29,12 +29,7 @@
             :title="'Continue'"
             @click="continueProcess"
           ></Button>
-          <Button
-            v-if="isCompleted"
-            :variation="'action'"
-            :title="'Complete'"
-            @click="onComplete"
-          ></Button>
+          <Button v-if="isCompleted" :variation="'action'" :title="'Complete'" @click="onComplete"></Button>
           <Button
             v-if="!isCompleted && currentStep === steps"
             :variation="'default'"
@@ -60,6 +55,9 @@ import Button from "./../components/Button.vue";
 export default class Onboarding extends Vue {
   @Prop()
   steps!: number;
+
+  @Prop({ default: "left" })
+  stepLocation!: string;
 
   @Prop()
   current!: number;
@@ -95,6 +93,11 @@ export default class Onboarding extends Vue {
       }
     }
     return this.currentStep === this.steps && checkedCount === this.steps - 1;
+  }
+
+  get locationClass() {
+    if (this.stepLocation === "left") return "s-onboarding__left";
+    if (this.stepLocation === "top") return "s-onboarding__top";
   }
 
   currentStepStyle(index) {
@@ -143,21 +146,58 @@ export default class Onboarding extends Vue {
 
 .s-onboarding-wrapper {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+
+  &.s-onboarding__left {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  &.s-onboarding__top {
+    flex-direction: column;
+  }
 }
 
 .s-onboarding-main {
   width: 800px;
   height: auto;
+  z-index: 10;
 }
 
 .s-bullets {
   display: flex;
-  flex-direction: column;
   position: relative;
-  .margin-top(6);
-  .margin-right(6);
+
+  justify-content: space-between;
+
+  &.s-onboarding__left {
+    flex-direction: column;
+
+    :before {
+      content: "";
+      width: 2px;
+      background: @dark-2;
+      position: absolute;
+      top: 0;
+      bottom: 5px;
+      left: 11px;
+    }
+  }
+
+  &.s-onboarding__top {
+    flex-direction: row;
+
+    width: 100%;
+
+    :after {
+      content: "";
+      width: 100%;
+      height: 2px;
+      background: @dark-2;
+      position: absolute;
+      top: 11px;
+      z-index: -1;
+    }
+  }
 }
 
 .s-bullet {
@@ -180,16 +220,6 @@ export default class Onboarding extends Vue {
 
 .s-bullet.current-step {
   background: @teal;
-}
-
-.s-bullets::before {
-  content: "";
-  width: 2px;
-  background: @dark-2;
-  position: absolute;
-  top: 0;
-  bottom: 5px;
-  left: 11px;
 }
 
 .s-onboarding-body {

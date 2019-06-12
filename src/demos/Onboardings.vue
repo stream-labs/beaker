@@ -44,6 +44,7 @@ components: {
 
       <Onboarding
         :steps="4"
+        :stepLocation="'top'"
         :current="1"
         :skip="true"
         :continueFunc="continueFunc"
