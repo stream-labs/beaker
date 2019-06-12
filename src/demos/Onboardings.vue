@@ -33,82 +33,42 @@ components: {
     &lt;template slot=&quot;desc&quot;&gt;This is where your viewers will go to engage with you.&lt;/template&gt;
     &lt;SSProSimulator :username=&quot;username&quot; :domain=&quot;domain&quot;&gt;&lt;/SSProSimulator&gt;
   &lt;/OnboardingStep&gt;
-  &lt;OnboardingStep slot=&quot;4&quot;&gt;
-    &lt;template slot=&quot;title&quot;&gt;Setup your custom Streamer Website&lt;/template&gt;
-    &lt;template slot=&quot;desc&quot;&gt;1. Choose Your Layout&lt;/template&gt;
-    &lt;SSProSimulator :username=&quot;username&quot; :domain=&quot;domain&quot;&gt;&lt;/SSProSimulator&gt;
-  &lt;/OnboardingStep&gt;
 &lt;/Onboarding&gt;</code></pre>
         </div>
       </Accordion>
-
-      <Onboarding
-        :steps="3"
-        :stepLocation="'top'"
-        :current="1"
-        :skip="true"
-        :continueFunc="continueFunc"
-        :completeFunc="completeFunc"
-      >
-        <OnboardingStep slot="1">
-          <template slot="title"
-            >Review setup 1</template
-          >
-          <template slot="desc"
-            >Your custom Creator Website is almost ready. To use this custom
-            theme and domain, finish subscribing to pro and your new website
-            will be live within 1 hour.</template
-          >
-          <SSProSimulator
-            :username="username"
-            :domain="domain"
-          ></SSProSimulator>
-        </OnboardingStep>
-        <OnboardingStep slot="2">
-          <template slot="title"
-            >Review setup 2</template
-          >
-          <template slot="desc"
-            >Your custom Creator Website is almost ready. To use this custom
-            theme and domain, finish subscribing to pro and your new website
-            will be live within 1 hour.</template
-          >
-          <SSProSimulator
-            :username="username"
-            :domain="domain"
-          ></SSProSimulator>
-        </OnboardingStep>
-        <OnboardingStep slot="3">
-          <template slot="title"
-            >Review setup 3</template
-          >
-          <template slot="desc"
-            >Your custom Creator Website is almost ready. To use this custom
-            theme and domain, finish subscribing to pro and your new website
-            will be live within 1 hour.</template
-          >
-          <SSProSimulator
-            :username="username"
-            :domain="domain"
-          ></SSProSimulator>
-        </OnboardingStep>
-        <OnboardingStep slot="4">
-          <template slot="title"
-            >Review setup 4</template
-          >
-          <template slot="desc"
-            >Your custom Creator Website is almost ready. To use this custom
-            theme and domain, finish subscribing to pro and your new website
-            will be live within 1 hour.</template
-          >
-          <SSProSimulator
-            :username="username"
-            :domain="domain"
-          ></SSProSimulator>
-        </OnboardingStep>
-      </Onboarding>
+      <div class="row" style="padding-top: 96px; margin-bottom: 96px;">
+        <Onboarding
+          :steps="3"
+          :stepLocation="'top'"
+          :current="1"
+          :skip="true"
+          :continueFunc="continueFunc"
+          :completeFunc="completeFunc"
+        >
+          <OnboardingStep slot="1">
+            <template slot="title">Getting Started</template>
+            <template
+              slot="desc"
+            >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut luctus nibh. Sed quis velit vitae leo sagittis rutrum. In hac habitasse platea dictumst. Fusce eget tempus risus, posuere tincidunt mauris. Mauris faucibus felis vitae.</template>
+            <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
+          </OnboardingStep>
+          <OnboardingStep slot="2">
+            <template slot="title">A Few More Things</template>
+            <template
+              slot="desc"
+            >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tincidunt convallis felis non dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi sit amet commodo neque. Aliquam et sem nec velit eleifend sollicitudin quis eget ligula.</template>
+            <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
+          </OnboardingStep>
+          <OnboardingStep slot="3">
+            <template slot="title">Almost There</template>
+            <template
+              slot="desc"
+            >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis purus id ligula dictum accumsan. Donec non posuere neque.</template>
+            <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
+          </OnboardingStep>
+        </Onboarding>
+      </div>
     </div>
-
     <table class="docs-table">
       <thead>
         <tr>
@@ -124,6 +84,16 @@ components: {
           <td>number</td>
           <td>null</td>
           <td>total number of steps to display</td>
+        </tr>
+        <tr>
+          <td>stepLocation</td>
+          <td>string</td>
+          <td>left</td>
+          <td>
+            Location of progress steps,
+            <code>'left'</code> or
+            <code>'top'</code>
+          </td>
         </tr>
         <tr>
           <td>current</td>
