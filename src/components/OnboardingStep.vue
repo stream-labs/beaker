@@ -6,7 +6,7 @@
     <p>
       <slot name="desc"></slot>
     </p>
-    <div class="s-contents">
+    <div>
       <slot></slot>
     </div>
   </div>
@@ -29,11 +29,3 @@ export default class OnboardingStep extends Vue {
   desc!: string;
 }
 </script>
-
-<style lang="less">
-@import "./../styles/Imports";
-
-.s-contents {
-  .margin-top(4);
-}
-</style>
