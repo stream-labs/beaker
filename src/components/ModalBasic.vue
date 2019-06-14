@@ -29,6 +29,7 @@
             :variation="'action'"
             :title="'Confirm'"
             :size="'fixed-width'"
+            @click="$emit('confirm')"
           ></Button>
         </div>
       </div>
