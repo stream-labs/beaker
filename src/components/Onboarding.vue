@@ -21,7 +21,7 @@
         <p v-show="currentStep !== 1" @click="previousStep">Back</p>
       </div>
       <div class="s-nextStep">
-        <p v-if="skip" @click="nextStep">Skip</p>
+        <p v-if="skip  && currentStep !== stepObjects.length" @click="nextStep">Skip</p>
         <Button
           v-if="currentStep !== steps"
           :variation="'action'"
@@ -71,8 +71,6 @@ export default class Onboarding extends Vue {
 
   currentStep: number = this.current;
   stepObjects: any[] = [];
-
-
 
   get countStepObjects() {
     for (let i = 0; i < this.steps; i++) {
@@ -178,7 +176,6 @@ export default class Onboarding extends Vue {
 
     &.s-onboarding__top {
       flex-direction: row;
-      .margin-bottom(4);
       width: 400px;
       min-height: 24px;
     }
