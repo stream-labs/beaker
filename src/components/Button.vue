@@ -192,8 +192,8 @@ export default class Button extends Vue {
       "; background-color:" +
       this.bgColor +
       "; color:" +
-      this.textColor
-      ";";
+      this.textColor;
+    ";";
     return s;
   }
 

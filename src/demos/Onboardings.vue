@@ -46,25 +46,49 @@ components: {
           :completeFunc="completeFunc"
         >
           <OnboardingStep slot="1">
-            <template slot="title">Getting Started</template>
-            <template
-              slot="desc"
-            >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut luctus nibh. Sed quis velit vitae leo sagittis rutrum. In hac habitasse platea dictumst. Fusce eget tempus risus, posuere tincidunt mauris. Mauris faucibus felis vitae.</template>
-            <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
+            <template slot="title"
+              >Getting Started</template
+            >
+            <template slot="desc"
+              >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut
+              luctus nibh. Sed quis velit vitae leo sagittis rutrum. In hac
+              habitasse platea dictumst. Fusce eget tempus risus, posuere
+              tincidunt mauris. Mauris faucibus felis vitae.</template
+            >
+            <SSProSimulator
+              :username="username"
+              :domain="domain"
+            ></SSProSimulator>
           </OnboardingStep>
           <OnboardingStep slot="2">
-            <template slot="title">A Few More Things</template>
-            <template
-              slot="desc"
-            >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tincidunt convallis felis non dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi sit amet commodo neque. Aliquam et sem nec velit eleifend sollicitudin quis eget ligula.</template>
-            <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
+            <template slot="title"
+              >A Few More Things</template
+            >
+            <template slot="desc"
+              >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+              tincidunt convallis felis non dapibus. Vestibulum ante ipsum
+              primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+              Morbi sit amet commodo neque. Aliquam et sem nec velit eleifend
+              sollicitudin quis eget ligula.</template
+            >
+            <SSProSimulator
+              :username="username"
+              :domain="domain"
+            ></SSProSimulator>
           </OnboardingStep>
           <OnboardingStep slot="3">
-            <template slot="title">Almost There</template>
-            <template
-              slot="desc"
-            >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis purus id ligula dictum accumsan. Donec non posuere neque.</template>
-            <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
+            <template slot="title"
+              >Almost There</template
+            >
+            <template slot="desc"
+              >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+              convallis purus id ligula dictum accumsan. Donec non posuere
+              neque.</template
+            >
+            <SSProSimulator
+              :username="username"
+              :domain="domain"
+            ></SSProSimulator>
           </OnboardingStep>
         </Onboarding>
       </div>
@@ -106,6 +130,12 @@ components: {
           <td>boolean</td>
           <td>null</td>
           <td>choose if you display skip menu</td>
+        </tr>
+        <tr>
+          <td>completeOnSkip</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>Allow completion when steps are skipped</td>
         </tr>
         <tr>
           <td>continueFunc</td>
