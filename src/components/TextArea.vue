@@ -86,6 +86,10 @@ export default class TextArea extends Vue {
     this.updateSize();
   }
 
+  focus() {
+    this.$refs.textArea.focus();
+  }
+
   get filteredListeners() {
     return omit(this.$listeners, ["input"]);
   }

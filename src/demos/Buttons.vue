@@ -81,8 +81,8 @@ components: {
           <Button
             :variation="'default'"
             :title="'Color Change'"
-            :bgColor="'#000'"
-            :textColor="'#fff'"
+            :bgColor="'pink'"
+            :textColor="'red'"
           ></Button>
 
           <Button :variation="'prime'" :title="'Join Prime'"></Button>
@@ -732,6 +732,15 @@ components: {
             Use the endings of our custom icons. For example 'icon-settings'
             would be 'settings'. See icons page of the design system for a full
             list.
+          </td>
+        </tr>
+        <tr>
+          <td>iconPosition</td>
+          <td>String</td>
+          <td>left</td>
+          <td>
+            Positions the icon left or right. If positioned right, the icon will
+            have a left margin of 24px.
           </td>
         </tr>
         <tr>

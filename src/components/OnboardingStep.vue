@@ -6,7 +6,7 @@
     <p>
       <slot name="desc"></slot>
     </p>
-    <div class="s-contents">
+    <div>
       <slot></slot>
     </div>
   </div>
@@ -32,8 +32,7 @@ export default class OnboardingStep extends Vue {
 
 <style lang="less">
 @import "./../styles/Imports";
-
-.s-contents {
+.s-onboarding-step {
   .margin-top(4);
 }
 </style>

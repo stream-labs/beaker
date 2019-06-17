@@ -21,6 +21,7 @@
       </div>
     </div>
     <input
+      ref="input"
       :type="type"
       :placeholder="placeholder"
       @input="handleInput"
@@ -28,6 +29,7 @@
       :disabled="disabled"
       :readonly="readonly"
       @blur="$emit('blur')"
+      :autocomplete="autoComplete"
       v-model="content"
       :class="{
         's-form-field__input': true,
@@ -60,6 +62,10 @@ import { omit, isNil } from "lodash";
 
 @Component({})
 export default class TextInput extends Vue {
+  $refs!: {
+    input: HTMLInputElement;
+  };
+
   @Prop({ type: String })
   name!: string;
 
@@ -96,13 +102,20 @@ export default class TextInput extends Vue {
   @Prop({ type: Boolean })
   readonly!: boolean;
 
+  @Prop({ type: String, default: "off" })
+  autoComplete!: string;
+
   content: string = "";
 
   created() {
     this.content =
-      this.value !== undefined || this.value !== null
+      this.value !== undefined && this.value !== null
         ? this.value.toString()
         : "";
+  }
+
+  focus() {
+    this.$refs.input.focus();
   }
 
   get filteredListeners() {

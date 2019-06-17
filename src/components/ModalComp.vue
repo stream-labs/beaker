@@ -25,6 +25,7 @@
         :notes="notes"
         :width="width"
         :minWidth="minWidth"
+        :scrollable="scrollable"
         :proBadge="proBadge"
         :customPreview="customPreview"
         :buttonTitle="buttonTitle"
@@ -95,6 +96,9 @@ export default class ModalComp extends Vue {
 
   @Prop({ default: 600 })
   minWidth!: number;
+
+  @Prop()
+  scrollable!: boolean;
 
   @Prop()
   type!: string;

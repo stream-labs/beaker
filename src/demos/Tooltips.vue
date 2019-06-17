@@ -5,7 +5,7 @@
         <h1>Tooltips</h1>
         <pre>
           <code>
-Import { Tooltip } from 'streamlabs-beaker';
+Import { BeakerTooltip } from 'streamlabs-beaker';
 
 directives: {
   's-tooltip': Tooltip
@@ -178,7 +178,7 @@ directives: {
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 
-import Tooltip from "./../directives/Tooltip";
+import BeakerTooltip from "./../directives/BeakerTooltip";
 import Button from "./../components/Button.vue";
 import Toggle from "./../components/Toggle.vue";
 import Slider from "./../components/Slider.vue";
@@ -196,7 +196,7 @@ import PaneDropdown from "./../components/PaneDropdown.vue";
     PaneDropdown
   },
   directives: {
-    "s-tooltip": Tooltip
+    "s-tooltip": BeakerTooltip
   }
 })
 export default class Tooltips extends Vue {
