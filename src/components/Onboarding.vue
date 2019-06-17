@@ -21,18 +21,41 @@
         <p v-show="currentStep !== 1" @click="previousStep">Back</p>
       </div>
       <div class="s-nextStep">
-        <p v-if="skip  && currentStep !== stepObjects.length" @click="nextStep">Skip</p>
+        <p v-if="skip && currentStep !== stepObjects.length" @click="nextStep">
+          Skip
+        </p>
+
         <Button
           v-if="currentStep !== steps"
           :variation="'action'"
           :title="'Continue'"
           @click="continueProcess"
         ></Button>
-        <Button v-if="isCompleted" :variation="'action'" :title="'Complete'" @click="onComplete"></Button>
         <Button
-          v-if="!isCompleted && currentStep === steps"
-          :variation="'default'"
-          :title="'continue'"
+          v-if="isCompleted"
+          :variation="'action'"
+          :title="'Complete'"
+          @click="onComplete"
+        ></Button>
+        <Button
+          v-if="!isCompleted && currentStep === steps && completeOnSkip"
+          :variation="'action'"
+          :title="'Complete'"
+          @click="onComplete"
+        ></Button>
+        <div
+          v-if="
+            skip && currentStep === steps && !isCompleted && !completeOnSkip
+          "
+          class="s-onboarding-skip__warning"
+        >
+          You skipped a step
+        </div>
+        <Button
+          v-if="!isCompleted && currentStep === steps && !completeOnSkip"
+          :variation="'action'"
+          :state="'disabled'"
+          :title="'Complete'"
         ></Button>
       </div>
     </div>
@@ -68,6 +91,9 @@ export default class Onboarding extends Vue {
 
   @Prop()
   skip!: boolean;
+
+  @Prop({ default: false })
+  completeOnSkip!: boolean;
 
   currentStep: number = this.current;
   stepObjects: any[] = [];
@@ -179,6 +205,10 @@ export default class Onboarding extends Vue {
       width: 400px;
       min-height: 24px;
     }
+  }
+
+  .s-onboarding-skip__warning {
+    .margin-right();
   }
 
   .s-onboarding-progress__line {
