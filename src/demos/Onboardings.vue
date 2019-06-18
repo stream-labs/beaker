@@ -11,11 +11,10 @@ components: {
     </div>
 
     <div class="section">
-      <h2>Onboarding</h2>
-      <p>Used for onboarding.</p>
+      <h2>Onboarding - Named Steps</h2>
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-          <pre><code>&lt;Onboarding :steps=&quot;4&quot; :current=&quot;1&quot; :skip=&quot;true&quot; :continueFunc=&quot;continue&quot; :completeFunc=&quot;complete&quot;&gt;
+          <pre><code>&lt;Onboarding :steps=&quot;3&quot; :stepNames=&quot;['one', 'two', 'three']&quot; :current=&quot;1&quot; :skip=&quot;true&quot; :continueFunc=&quot;continue&quot; :completeFunc=&quot;complete&quot;&gt;
   &lt;OnboardingStep slot=&quot;1&quot;&gt;
     &lt;template slot=&quot;title&quot;&gt;Setup Donations&lt;/template&gt;
     &lt;template slot=&quot;desc&quot;&gt;Connect your Paypal account&lt;/template&gt;
@@ -36,9 +35,151 @@ components: {
 &lt;/Onboarding&gt;</code></pre>
         </div>
       </Accordion>
-      <div class="row" style="padding-top: 96px; margin-bottom: 96px;">
+      <div class="row">
         <Onboarding
           :steps="3"
+          :stepLocation="'top'"
+          :stepNames="['one', 'two', 'three']"
+          :current="1"
+          :skip="true"
+          :continueFunc="continueFunc"
+          :completeFunc="completeFunc"
+        >
+          <OnboardingStep slot="1">
+            <template slot="title">Getting Started</template>
+            <template slot="desc">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut
+              luctus nibh. Sed quis velit vitae leo sagittis rutrum. In hac
+              habitasse platea dictumst. Fusce eget tempus risus, posuere
+              tincidunt mauris. Mauris faucibus felis vitae.
+            </template>
+            <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
+          </OnboardingStep>
+          <OnboardingStep slot="2">
+            <template slot="title">A Few More Things</template>
+            <template slot="desc">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+              tincidunt convallis felis non dapibus. Vestibulum ante ipsum
+              primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+              Morbi sit amet commodo neque. Aliquam et sem nec velit eleifend
+              sollicitudin quis eget ligula.
+            </template>
+            <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
+          </OnboardingStep>
+          <OnboardingStep slot="3">
+            <template slot="title">Almost There</template>
+            <template slot="desc">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+              convallis purus id ligula dictum accumsan. Donec non posuere
+              neque.
+            </template>
+            <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
+          </OnboardingStep>
+        </Onboarding>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Onboarding - Left Progress Bar</h2>
+      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+        <div slot="content">
+          <pre><code>&lt;Onboarding :steps=&quot;4&quot; :stepLocation=&quot;'top'&quot; :current=&quot;1&quot; :skip=&quot;true&quot; :continueFunc=&quot;continue&quot; :completeFunc=&quot;complete&quot;&gt;
+  &lt;OnboardingStep slot=&quot;1&quot;&gt;
+    &lt;template slot=&quot;title&quot;&gt;Setup Donations&lt;/template&gt;
+    &lt;template slot=&quot;desc&quot;&gt;Connect your Paypal account&lt;/template&gt;
+    &lt;SSProSimulator :username=&quot;username&quot; :domain=&quot;domain&quot;&gt;&lt;/SSProSimulator&gt;
+  &lt;/OnboardingStep&gt;
+  &lt;OnboardingStep slot=&quot;2&quot;&gt;
+    &lt;template slot=&quot;title&quot;&gt;Enable Cloudbot&lt;/template&gt;
+    &lt;template
+      slot=&quot;desc&quot;
+    &gt;Streamlabs Cloudbot is a chatbot that provides entertainment and moderation features for your stream.&lt;/template&gt;
+    &lt;SSProSimulator :username=&quot;username&quot; :domain=&quot;domain&quot;&gt;&lt;/SSProSimulator&gt;
+  &lt;/OnboardingStep&gt;
+  &lt;OnboardingStep slot=&quot;3&quot;&gt;
+    &lt;template slot=&quot;title&quot;&gt;Let’s setup your custom streamer website&lt;/template&gt;
+    &lt;template slot=&quot;desc&quot;&gt;This is where your viewers will go to engage with you.&lt;/template&gt;
+    &lt;SSProSimulator :username=&quot;username&quot; :domain=&quot;domain&quot;&gt;&lt;/SSProSimulator&gt;
+  &lt;/OnboardingStep&gt;
+&lt;/Onboarding&gt;</code></pre>
+        </div>
+      </Accordion>
+      <div class="row">
+        <Onboarding
+          :steps="3"
+          :stepLocation="'left'"
+          :current="1"
+          :skip="true"
+          :continueFunc="continueFunc"
+          :completeFunc="completeFunc"
+        >
+          <OnboardingStep slot="1">
+            <template slot="title">Getting Started</template>
+            <template slot="desc">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut
+              luctus nibh. Sed quis velit vitae leo sagittis rutrum. In hac
+              habitasse platea dictumst. Fusce eget tempus risus, posuere
+              tincidunt mauris. Mauris faucibus felis vitae.
+            </template>
+            <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
+          </OnboardingStep>
+          <OnboardingStep slot="2">
+            <template slot="title">A Few More Things</template>
+            <template slot="desc">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+              tincidunt convallis felis non dapibus. Vestibulum ante ipsum
+              primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+              Morbi sit amet commodo neque. Aliquam et sem nec velit eleifend
+              sollicitudin quis eget ligula.
+            </template>
+            <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
+          </OnboardingStep>
+          <OnboardingStep slot="3">
+            <template slot="title">Almost There</template>
+            <template slot="desc">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+              convallis purus id ligula dictum accumsan. Donec non posuere
+              neque.
+            </template>
+            <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
+          </OnboardingStep>
+        </Onboarding>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Onboarding - Top Progress Bar</h2>
+      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+        <div slot="content">
+          <pre><code>&lt;Onboarding :steps=&quot;4&quot; :stepLocation=&quot;'top'&quot; :current=&quot;1&quot; :skip=&quot;true&quot; :continueFunc=&quot;continue&quot; :completeFunc=&quot;complete&quot;&gt;
+  &lt;OnboardingStep slot=&quot;1&quot;&gt;
+    &lt;template slot=&quot;title&quot;&gt;Setup Donations&lt;/template&gt;
+    &lt;template slot=&quot;desc&quot;&gt;Connect your Paypal account&lt;/template&gt;
+    &lt;SSProSimulator :username=&quot;username&quot; :domain=&quot;domain&quot;&gt;&lt;/SSProSimulator&gt;
+  &lt;/OnboardingStep&gt;
+  &lt;OnboardingStep slot=&quot;2&quot;&gt;
+    &lt;template slot=&quot;title&quot;&gt;Enable Cloudbot&lt;/template&gt;
+    &lt;template
+      slot=&quot;desc&quot;
+    &gt;Streamlabs Cloudbot is a chatbot that provides entertainment and moderation features for your stream.&lt;/template&gt;
+    &lt;SSProSimulator :username=&quot;username&quot; :domain=&quot;domain&quot;&gt;&lt;/SSProSimulator&gt;
+  &lt;/OnboardingStep&gt;
+  &lt;OnboardingStep slot=&quot;3&quot;&gt;
+    &lt;template slot=&quot;title&quot;&gt;Let’s setup your custom streamer website&lt;/template&gt;
+    &lt;template slot=&quot;desc&quot;&gt;This is where your viewers will go to engage with you.&lt;/template&gt;
+    &lt;SSProSimulator :username=&quot;username&quot; :domain=&quot;domain&quot;&gt;&lt;/SSProSimulator&gt;
+  &lt;/OnboardingStep&gt;
+    &lt;OnboardingStep slot=&quot;4&quot;&gt;
+    &lt;template slot=&quot;title&quot;&gt;Setup Donations&lt;/template&gt;
+    &lt;template slot=&quot;desc&quot;&gt;Connect your Paypal account&lt;/template&gt;
+    &lt;SSProSimulator :username=&quot;username&quot; :domain=&quot;domain&quot;&gt;&lt;/SSProSimulator&gt;
+  &lt;/OnboardingStep&gt;
+&lt;/Onboarding&gt;</code></pre>
+        </div>
+      </Accordion>
+      <div class="row" style="padding-top: 96px; margin-bottom: 96px;">
+        <Onboarding
+          :steps="4"
           :stepLocation="'top'"
           :current="1"
           :skip="true"
@@ -46,53 +187,49 @@ components: {
           :completeFunc="completeFunc"
         >
           <OnboardingStep slot="1">
-            <template slot="title"
-              >Getting Started</template
-            >
-            <template slot="desc"
-              >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut
+            <template slot="title">Getting Started</template>
+            <template slot="desc">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut
               luctus nibh. Sed quis velit vitae leo sagittis rutrum. In hac
               habitasse platea dictumst. Fusce eget tempus risus, posuere
-              tincidunt mauris. Mauris faucibus felis vitae.</template
-            >
-            <SSProSimulator
-              :username="username"
-              :domain="domain"
-            ></SSProSimulator>
+              tincidunt mauris. Mauris faucibus felis vitae.
+            </template>
+            <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
           </OnboardingStep>
           <OnboardingStep slot="2">
-            <template slot="title"
-              >A Few More Things</template
-            >
-            <template slot="desc"
-              >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+            <template slot="title">A Few More Things</template>
+            <template slot="desc">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
               tincidunt convallis felis non dapibus. Vestibulum ante ipsum
               primis in faucibus orci luctus et ultrices posuere cubilia Curae;
               Morbi sit amet commodo neque. Aliquam et sem nec velit eleifend
-              sollicitudin quis eget ligula.</template
-            >
-            <SSProSimulator
-              :username="username"
-              :domain="domain"
-            ></SSProSimulator>
+              sollicitudin quis eget ligula.
+            </template>
+            <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
           </OnboardingStep>
           <OnboardingStep slot="3">
-            <template slot="title"
-              >Almost There</template
-            >
-            <template slot="desc"
-              >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+            <template slot="title">Almost There</template>
+            <template slot="desc">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
               convallis purus id ligula dictum accumsan. Donec non posuere
-              neque.</template
-            >
-            <SSProSimulator
-              :username="username"
-              :domain="domain"
-            ></SSProSimulator>
+              neque.
+            </template>
+            <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
+          </OnboardingStep>
+          <OnboardingStep slot="4">
+            <template slot="title">Getting Started</template>
+            <template slot="desc">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut
+              luctus nibh. Sed quis velit vitae leo sagittis rutrum. In hac
+              habitasse platea dictumst. Fusce eget tempus risus, posuere
+              tincidunt mauris. Mauris faucibus felis vitae.
+            </template>
+            <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
           </OnboardingStep>
         </Onboarding>
       </div>
     </div>
+
     <table class="docs-table">
       <thead>
         <tr>
@@ -117,6 +254,15 @@ components: {
             Location of progress steps,
             <code>'left'</code> or
             <code>'top'</code>
+          </td>
+        </tr>
+        <tr>
+          <td>stepsNames</td>
+          <td>array</td>
+          <td>null</td>
+          <td>
+            Name of steps,
+            <code>['one','two','three']</code>
           </td>
         </tr>
         <tr>
