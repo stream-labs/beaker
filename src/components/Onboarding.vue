@@ -13,7 +13,9 @@
             class="s-name-step"
             :class="{ 'current-step': currentStepStyle(Math.floor(idx / 2)) }"
             v-else
-          >{{ name }}</div>
+          >
+            {{ name }}
+          </div>
         </div>
       </div>
       <div class="s-onboarding-progress" :class="location" v-else>
@@ -36,7 +38,9 @@
         <p v-show="currentStep !== 1" @click="previousStep">Back</p>
       </div>
       <div class="s-nextStep">
-        <p v-if="skip && currentStep !== stepObjects.length" @click="nextStep">Skip</p>
+        <p v-if="skip && currentStep !== stepObjects.length" @click="nextStep">
+          Skip
+        </p>
 
         <Button
           v-if="currentStep !== steps"
@@ -44,7 +48,12 @@
           :title="'Continue'"
           @click="continueProcess"
         ></Button>
-        <Button v-if="isCompleted" :variation="'action'" :title="'Complete'" @click="onComplete"></Button>
+        <Button
+          v-if="isCompleted"
+          :variation="'action'"
+          :title="'Complete'"
+          @click="onComplete"
+        ></Button>
         <Button
           v-if="!isCompleted && currentStep === steps && completeOnSkip"
           :variation="'action'"
@@ -56,7 +65,9 @@
             skip && currentStep === steps && !isCompleted && !completeOnSkip
           "
           class="s-onboarding-skip__warning"
-        >You skipped a step</div>
+        >
+          You skipped a step
+        </div>
         <Button
           v-if="!isCompleted && currentStep === steps && !completeOnSkip"
           :variation="'action'"
@@ -80,7 +91,6 @@ import Button from "./../components/Button.vue";
   }
 })
 export default class Onboarding extends Vue {
-
   @Prop()
   steps!: number;
 
