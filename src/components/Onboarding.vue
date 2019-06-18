@@ -262,6 +262,7 @@ export default class Onboarding extends Vue {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    width: 500px;
   }
 
   .s-name-caret {
