@@ -1,7 +1,24 @@
 <template>
   <div class="s-onboarding">
     <div class="s-onboarding-main" :class="location">
-      <div class="s-onboarding-progress" :class="location">
+      <div
+        class="s-onboarding-progress s-onboarding__top s-step-name__cont"
+        v-if="stepNames != null"
+      >
+        <div v-for="(name, idx) in namedSteps" :key="idx">
+          <div class="s-name-caret" v-if="name == '>'">
+            <i class="icon-back"></i>
+          </div>
+          <div
+            class="s-name-step"
+            :class="{ 'current-step': currentStepStyle(Math.floor(idx / 2)) }"
+            v-else
+          >
+            {{ name }}
+          </div>
+        </div>
+      </div>
+      <div class="s-onboarding-progress" :class="location" v-else>
         <div class="s-onboarding-progress__line" :class="location"></div>
         <div
           v-for="(key, index) in steps"
@@ -80,6 +97,9 @@ export default class Onboarding extends Vue {
   @Prop({ default: "left" })
   stepLocation!: string;
 
+  @Prop({ default: null })
+  stepNames!: [any];
+
   @Prop()
   current!: number;
 
@@ -97,6 +117,7 @@ export default class Onboarding extends Vue {
 
   currentStep: number = this.current;
   stepObjects: any[] = [];
+  namedSteps: any[] = [];
 
   get countStepObjects() {
     for (let i = 0; i < this.steps; i++) {
@@ -118,6 +139,13 @@ export default class Onboarding extends Vue {
   get location() {
     if (this.stepLocation === "left") return "s-onboarding__left";
     if (this.stepLocation === "top") return "s-onboarding__top";
+  }
+
+  prepareNamedProgress() {
+    for (let i = 0; i < this.stepNames.length; i++) {
+      this.namedSteps.push(this.stepNames[i]);
+      if (i != this.stepNames.length - 1) this.namedSteps.push(">");
+    }
   }
 
   currentStepStyle(index) {
@@ -161,6 +189,7 @@ export default class Onboarding extends Vue {
 
   beforeMount() {
     this.countStepObjects;
+    this.prepareNamedProgress();
   }
 }
 </script>
@@ -226,6 +255,31 @@ export default class Onboarding extends Vue {
       width: 100%;
       height: 4px;
       top: 10px;
+    }
+  }
+
+  .s-step-name__cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 500px;
+  }
+
+  .s-name-caret {
+    color: @dark-5;
+
+    > i {
+      display: block;
+      transform: rotate(180deg);
+    }
+  }
+
+  .s-name-step {
+    color: @day-paragraph;
+
+    &.current-step {
+      color: @day-title;
+      font-weight: @medium;
     }
   }
 
@@ -295,6 +349,18 @@ export default class Onboarding extends Vue {
 
     .s-onboarding-progress__line {
       background: @dark-2;
+    }
+
+    .s-name-caret {
+      color: @dark-5;
+    }
+
+    .s-name-step {
+      color: @night-paragraph;
+
+      &.current-step {
+        color: @night-title;
+      }
     }
 
     .s-bullet {
