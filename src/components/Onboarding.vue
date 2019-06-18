@@ -261,12 +261,14 @@ export default class Onboarding extends Vue {
   .s-step-name__cont {
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     width: 500px;
   }
 
   .s-name-caret {
     color: @dark-5;
+    font-size: 10px;
 
     > i {
       display: block;
