@@ -378,7 +378,7 @@ export default class Onboarding extends Vue {
     }
 
     .s-onboarding-footer {
-      border-top: 1px solid @dark-5;
+      border-top: 1px solid @dark-4;
     }
   }
 }
