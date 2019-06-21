@@ -21,17 +21,16 @@
       <span>
         <i v-if="iconClass && iconPosition === 'left'" :class="iconClass"></i>
         <i v-if="iconImg" class="icon-img">
-          <img :src="iconImg" :alt="`${title} Icon Image`" />
+          <img :src="iconImg" :alt="`${title} Icon Image`">
         </i>
         {{ title }}
       </span>
-      <span v-if="description" class="s-button__description">{{
+      <span v-if="description" class="s-button__description">
+        {{
         description
-      }}</span>
-      <i
-        v-if="iconClass && iconPosition === 'right'"
-        :class="['icon--right', iconClass]"
-      ></i>
+        }}
+      </span>
+      <i v-if="iconClass && iconPosition === 'right'" :class="['icon--right', iconClass]"></i>
     </span>
     <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
     <span v-if="price">{{ price }}</span>
@@ -58,11 +57,8 @@ export default class Button extends Vue {
     type: string;
   };
 
-  @Prop()
-  icon!: {
-    type: String;
-    default: null;
-  };
+  @Prop(String)
+  icon!: string;
 
   @Prop({ default: "left" })
   iconPosition!: {
@@ -169,7 +165,11 @@ export default class Button extends Vue {
     const classes: any = [];
 
     if (this.icon) {
-      classes.push(`icon-${this.icon}`);
+      if (this.icon.indexOf("fa-") !== -1) {
+        classes.push(this.icon);
+      } else {
+        classes.push(`icon-${this.icon}`);
+      }
     }
 
     return classes.join(" ");
