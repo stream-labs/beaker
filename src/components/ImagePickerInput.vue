@@ -8,10 +8,10 @@
       :key="option.value"
       class="s-image-picker-input__option"
       :class="[value === option.value ? 'active' : '']"
-      :style="{width: width, height: height}"
+      :style="{ width: width, height: height }"
       @click="emitInput(option.value)"
     >
-      <img :src="option.image">
+      <img :src="option.image" />
     </div>
   </div>
 </template>

@@ -21,16 +21,17 @@
       <span>
         <i v-if="iconClass && iconPosition === 'left'" :class="iconClass"></i>
         <i v-if="iconImg" class="icon-img">
-          <img :src="iconImg" :alt="`${title} Icon Image`">
+          <img :src="iconImg" :alt="`${title} Icon Image`" />
         </i>
         {{ title }}
       </span>
       <span v-if="description" class="s-button__description">
-        {{
-        description
-        }}
+        {{ description }}
       </span>
-      <i v-if="iconClass && iconPosition === 'right'" :class="['icon--right', iconClass]"></i>
+      <i
+        v-if="iconClass && iconPosition === 'right'"
+        :class="['icon--right', iconClass]"
+      ></i>
     </span>
     <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
     <span v-if="price">{{ price }}</span>
