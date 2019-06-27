@@ -316,10 +316,16 @@ export default class SiteSearch extends Vue {
   border: 1px solid @day-input-border;
   border-radius: @radius;
   height: 40px;
+  min-width: 300px;
   max-width: 500px;
   position: relative;
   transform-origin: top;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.s-sitesearch--is-open {
+    min-width: 300px;
+    max-width: 500px;
+  }
 
   &.s-sitesearch--phase-one {
     background-color: @day-bg;
@@ -347,6 +353,7 @@ export default class SiteSearch extends Vue {
   }
 
   .s-sitesearch__result--title {
+    width: 100%;
     font-size: 14px;
     color: @day-paragraph;
     font-weight: @medium;
@@ -380,12 +387,14 @@ export default class SiteSearch extends Vue {
 
   .s-sitesearch-results__cont {
     display: flex;
+    width: 100%;
     flex-direction: column;
     overflow: hidden;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
     .s-sitesearch-quicklinks {
       display: flex;
+      width: 100%;
       align-items: center;
       height: 32px;
       font-size: 12px;
@@ -397,6 +406,7 @@ export default class SiteSearch extends Vue {
   .s-sitesearch-status__cont {
     font-size: 14px;
     white-space: nowrap;
+    width: 100%;
     color: @icon;
     .margin-left();
   }

@@ -30,6 +30,7 @@
       :readonly="readonly"
       @blur="$emit('blur')"
       :autocomplete="autoComplete"
+      :autofocus="autofocus"
       v-model="content"
       :class="{
         's-form-field__input': true,
@@ -37,7 +38,7 @@
       }"
       v-on="filteredListeners"
       @mousewheel="mouseWheel"
-    />
+    >
     <label
       :class="{
         's-form-field__label--top': value !== '',
@@ -45,8 +46,7 @@
       }"
       class="s-form-field__label"
       v-if="label"
-      >{{ label }}</label
-    >
+    >{{ label }}</label>
 
     <transition name="slide">
       <p v-show="error" class="s-form-field__error-text">{{ error }}</p>
@@ -104,6 +104,9 @@ export default class TextInput extends Vue {
 
   @Prop({ type: String, default: "off" })
   autoComplete!: string;
+
+  @Prop({ type: Boolean })
+  autofocus!: boolean;
 
   content: string = "";
 
