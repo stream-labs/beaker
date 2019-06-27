@@ -44,6 +44,7 @@ export default class Slider extends Vue {
   @Watch("value")
   updateLocalValue() {
     this.displayValue = this.value;
+    this.$refs.slider.refresh();
   }
 
   @Prop()
