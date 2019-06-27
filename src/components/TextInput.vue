@@ -38,7 +38,7 @@
       }"
       v-on="filteredListeners"
       @mousewheel="mouseWheel"
-    >
+    />
     <label
       :class="{
         's-form-field__label--top': value !== '',
@@ -46,7 +46,8 @@
       }"
       class="s-form-field__label"
       v-if="label"
-    >{{ label }}</label>
+      >{{ label }}</label
+    >
 
     <transition name="slide">
       <p v-show="error" class="s-form-field__error-text">{{ error }}</p>
