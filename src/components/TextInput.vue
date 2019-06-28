@@ -30,6 +30,7 @@
       :readonly="readonly"
       @blur="$emit('blur')"
       :autocomplete="autoComplete"
+      :autofocus="autofocus"
       v-model="content"
       :class="{
         's-form-field__input': true,
@@ -104,6 +105,9 @@ export default class TextInput extends Vue {
 
   @Prop({ type: String, default: "off" })
   autoComplete!: string;
+
+  @Prop({ type: Boolean })
+  autofocus!: boolean;
 
   content: string = "";
 
