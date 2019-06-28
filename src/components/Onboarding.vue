@@ -142,9 +142,11 @@ export default class Onboarding extends Vue {
   }
 
   prepareNamedProgress() {
-    for (let i = 0; i < this.stepNames.length; i++) {
-      this.namedSteps.push(this.stepNames[i]);
-      if (i != this.stepNames.length - 1) this.namedSteps.push(">");
+    if (this.stepNames != null) {
+      for (let i = 0; i < this.stepNames.length; i++) {
+        this.namedSteps.push(this.stepNames[i]);
+        if (i != this.stepNames.length - 1) this.namedSteps.push(">");
+      }
     }
   }
 
