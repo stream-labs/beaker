@@ -25,5 +25,10 @@ yarn run test
 yarn run lint
 ```
 
+### Publish docs to GitHub Pages
+```
+yarn build-deploy-gh-pages
+```
+
 - Base folder should be included first in every project.
 -

@@ -9,6 +9,9 @@
       :bgColor="'#FFFFFF'"
       :textColor="'#7289DA'"
       v-on="$listeners"
+      :tag="'a'"
+      :href="'https://discord.gg/stream'"
+      :target="'_blank'"
     ></Button>
   </div>
 </template>

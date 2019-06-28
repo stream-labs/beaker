@@ -25,9 +25,9 @@
         </i>
         {{ title }}
       </span>
-      <span v-if="description" class="s-button__description">{{
-        description
-      }}</span>
+      <span v-if="description" class="s-button__description">
+        {{ description }}
+      </span>
       <i
         v-if="iconClass && iconPosition === 'right'"
         :class="['icon--right', iconClass]"
@@ -58,11 +58,8 @@ export default class Button extends Vue {
     type: string;
   };
 
-  @Prop()
-  icon!: {
-    type: String;
-    default: null;
-  };
+  @Prop(String)
+  icon!: string;
 
   @Prop({ default: "left" })
   iconPosition!: {
@@ -169,7 +166,11 @@ export default class Button extends Vue {
     const classes: any = [];
 
     if (this.icon) {
-      classes.push(`icon-${this.icon}`);
+      if (this.icon.indexOf("fa-") !== -1) {
+        classes.push(this.icon);
+      } else {
+        classes.push(`icon-${this.icon}`);
+      }
     }
 
     return classes.join(" ");
@@ -192,8 +193,8 @@ export default class Button extends Vue {
       "; background-color:" +
       this.bgColor +
       "; color:" +
-      this.textColor
-      ";";
+      this.textColor;
+    ";";
     return s;
   }
 

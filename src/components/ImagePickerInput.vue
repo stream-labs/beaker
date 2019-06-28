@@ -8,6 +8,7 @@
       :key="option.value"
       class="s-image-picker-input__option"
       :class="[value === option.value ? 'active' : '']"
+      :style="{ width: width, height: height }"
       @click="emitInput(option.value)"
     >
       <img :src="option.image" />
@@ -28,6 +29,12 @@ interface IOption {
 export default class ImagePickerInput extends Vue {
   @Prop({ default: "above" })
   value!: string;
+
+  @Prop(String)
+  width!: string;
+
+  @Prop(String)
+  height!: string;
 
   @Prop({
     default: () => [
@@ -61,13 +68,13 @@ export default class ImagePickerInput extends Vue {
 
 .s-image-picker-input {
   width: 100%;
-  max-width: 370px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 64px);
-  grid-gap: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .s-image-picker-input__option {
+  margin: 0 8px 8px 0;
   width: 64px;
   height: 64px;
   border: 1px solid @day-solid-input;
@@ -92,6 +99,7 @@ export default class ImagePickerInput extends Vue {
   }
 }
 
+.night,
 .night-theme {
   .s-image-picker-input__option {
     border-color: @night-border;

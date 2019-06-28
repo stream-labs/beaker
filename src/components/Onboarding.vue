@@ -1,7 +1,24 @@
 <template>
   <div class="s-onboarding">
     <div class="s-onboarding-main" :class="location">
-      <div class="s-onboarding-progress" :class="location">
+      <div
+        class="s-onboarding-progress s-onboarding__top s-step-name__cont"
+        v-if="stepNames != null"
+      >
+        <div v-for="(name, idx) in namedSteps" :key="idx">
+          <div class="s-name-caret" v-if="name == '>'">
+            <i class="icon-back"></i>
+          </div>
+          <div
+            class="s-name-step"
+            :class="{ 'current-step': currentStepStyle(Math.floor(idx / 2)) }"
+            v-else
+          >
+            {{ name }}
+          </div>
+        </div>
+      </div>
+      <div class="s-onboarding-progress" :class="location" v-else>
         <div class="s-onboarding-progress__line" :class="location"></div>
         <div
           v-for="(key, index) in steps"
@@ -21,18 +38,41 @@
         <p v-show="currentStep !== 1" @click="previousStep">Back</p>
       </div>
       <div class="s-nextStep">
-        <p v-if="skip  && currentStep !== stepObjects.length" @click="nextStep">Skip</p>
+        <p v-if="skip && currentStep !== stepObjects.length" @click="nextStep">
+          Skip
+        </p>
+
         <Button
           v-if="currentStep !== steps"
           :variation="'action'"
           :title="'Continue'"
           @click="continueProcess"
         ></Button>
-        <Button v-if="isCompleted" :variation="'action'" :title="'Complete'" @click="onComplete"></Button>
         <Button
-          v-if="!isCompleted && currentStep === steps"
-          :variation="'default'"
-          :title="'continue'"
+          v-if="isCompleted"
+          :variation="'action'"
+          :title="'Complete'"
+          @click="onComplete"
+        ></Button>
+        <Button
+          v-if="!isCompleted && currentStep === steps && completeOnSkip"
+          :variation="'action'"
+          :title="'Complete'"
+          @click="onComplete"
+        ></Button>
+        <div
+          v-if="
+            skip && currentStep === steps && !isCompleted && !completeOnSkip
+          "
+          class="s-onboarding-skip__warning"
+        >
+          You skipped a step
+        </div>
+        <Button
+          v-if="!isCompleted && currentStep === steps && !completeOnSkip"
+          :variation="'action'"
+          :state="'disabled'"
+          :title="'Complete'"
         ></Button>
       </div>
     </div>
@@ -57,6 +97,9 @@ export default class Onboarding extends Vue {
   @Prop({ default: "left" })
   stepLocation!: string;
 
+  @Prop({ default: null })
+  stepNames!: [any];
+
   @Prop()
   current!: number;
 
@@ -69,8 +112,12 @@ export default class Onboarding extends Vue {
   @Prop()
   skip!: boolean;
 
+  @Prop({ default: false })
+  completeOnSkip!: boolean;
+
   currentStep: number = this.current;
   stepObjects: any[] = [];
+  namedSteps: any[] = [];
 
   get countStepObjects() {
     for (let i = 0; i < this.steps; i++) {
@@ -92,6 +139,13 @@ export default class Onboarding extends Vue {
   get location() {
     if (this.stepLocation === "left") return "s-onboarding__left";
     if (this.stepLocation === "top") return "s-onboarding__top";
+  }
+
+  prepareNamedProgress() {
+    for (let i = 0; i < this.stepNames.length; i++) {
+      this.namedSteps.push(this.stepNames[i]);
+      if (i != this.stepNames.length - 1) this.namedSteps.push(">");
+    }
   }
 
   currentStepStyle(index) {
@@ -135,6 +189,7 @@ export default class Onboarding extends Vue {
 
   beforeMount() {
     this.countStepObjects;
+    this.prepareNamedProgress();
   }
 }
 </script>
@@ -181,6 +236,10 @@ export default class Onboarding extends Vue {
     }
   }
 
+  .s-onboarding-skip__warning {
+    .margin-right();
+  }
+
   .s-onboarding-progress__line {
     background: @light-3;
     z-index: 1;
@@ -196,6 +255,33 @@ export default class Onboarding extends Vue {
       width: 100%;
       height: 4px;
       top: 10px;
+    }
+  }
+
+  .s-step-name__cont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 500px;
+  }
+
+  .s-name-caret {
+    color: @dark-5;
+    font-size: 10px;
+
+    > i {
+      display: block;
+      transform: rotate(180deg);
+    }
+  }
+
+  .s-name-step {
+    color: @day-paragraph;
+
+    &.current-step {
+      color: @day-title;
+      font-weight: @medium;
     }
   }
 
@@ -267,6 +353,18 @@ export default class Onboarding extends Vue {
       background: @dark-2;
     }
 
+    .s-name-caret {
+      color: @dark-5;
+    }
+
+    .s-name-step {
+      color: @night-paragraph;
+
+      &.current-step {
+        color: @night-title;
+      }
+    }
+
     .s-bullet {
       background-color: @dark-2;
 
@@ -280,7 +378,7 @@ export default class Onboarding extends Vue {
     }
 
     .s-onboarding-footer {
-      border-top: 1px solid @dark-5;
+      border-top: 1px solid @dark-4;
     }
   }
 }
