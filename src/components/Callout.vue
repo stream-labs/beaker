@@ -6,7 +6,7 @@
   >
     <span>
       <i v-if="icon" :class="[calloutIcon]"></i>
-      <span class="s-callout-slot">
+      <span>
         <slot />
       </span>
       <i
