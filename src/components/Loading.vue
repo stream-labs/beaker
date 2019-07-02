@@ -1,5 +1,4 @@
 <template>
-  <transition name="fade">
     <div class="s-loader" :swapMode="swapMode">
       <div
         :class="{
@@ -19,7 +18,6 @@
         </div>
       </div>
     </div>
-  </transition>
 </template>
 
 <script lang="ts">
