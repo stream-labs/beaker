@@ -157,6 +157,15 @@ components: {
                 Sites.
               </td>
             </tr>
+            <tr>
+              <td>fixedBackground</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>
+                Allows loader to take dimensions of parent if set to
+                <code>false</code>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
