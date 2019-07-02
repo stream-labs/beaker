@@ -94,8 +94,7 @@ export default class Loading extends Vue {
 @import "./../styles/Imports";
 
 .s-loader__bg {
-  //position: fixed;
-  position: absolute;
+  position: relative;
   box-sizing: border-box;
   top: 0;
   left: 0;
