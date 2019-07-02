@@ -131,6 +131,7 @@ export default class Onboarding extends Vue {
 
   @Watch('current')
   updateCurrentStep() {
+    this.addCheckmark();
     this.currentStep = this.current;
   }
 
@@ -202,8 +203,8 @@ export default class Onboarding extends Vue {
 
   continueProcess() {
     this.addCheckmark();
-    this.nextStep();
     this.continueFunc();
+    this.nextStep();
   }
 
   onComplete() {
