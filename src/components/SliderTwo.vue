@@ -86,8 +86,8 @@ export default class SliderTwo extends Vue {
   @Prop({ default: 100 })
   max!: number;
 
-  @Prop({ default: true })
-  tooltip!: boolean;
+  @Prop({ default: "always" })
+  tooltip!: "always" | false;
 
   @Prop({ default: null })
   suffix!: string;
@@ -419,6 +419,7 @@ export default class SliderTwo extends Vue {
       let resetVal = this.limitValue(val);
       this.val = resetVal;
       this.syncValue();
+      this.refresh(this.$refs.elem);
     }
   }
 
