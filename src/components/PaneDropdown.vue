@@ -12,7 +12,7 @@
     </a>
 
     <transition
-      name="expand-general"
+      name="expand-dropdown"
       @enter="open"
       @after-enter="afterOpen"
       @leave="close"
