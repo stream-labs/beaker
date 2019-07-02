@@ -527,6 +527,7 @@ export default class SliderTwo extends Vue {
   position: relative;
   box-sizing: content-box;
   user-select: none;
+  width: 100%;
 
   .s-slider-bar {
     width: 100%;
