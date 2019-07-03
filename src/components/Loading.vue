@@ -1,25 +1,19 @@
 <template>
-  <transition name="fade">
-    <div class="s-loader" :swapMode="swapMode">
-      <div
-        :class="{
-          's-loader__bg--semi': semiOpaque,
-          's-loader--modeswap': swapMode,
-          's-loader--fixed': fixedBackground
-        }"
-        class="s-loader__bg"
-      >
-        <div class="s-loader__inner">
-          <Spinner
-            :swap="swapMode"
-            class="s-spinner__overlay"
-            :size="'large'"
-          />
-          <div class="s-loader__text">{{ loaderText }}</div>
-        </div>
+  <div class="s-loader" :swapMode="swapMode">
+    <div
+      :class="{
+        's-loader__bg--semi': semiOpaque,
+        's-loader--modeswap': swapMode,
+        's-loader--fixed': fixedBackground
+      }"
+      class="s-loader__bg"
+    >
+      <div class="s-loader__inner">
+        <Spinner :swap="swapMode" class="s-spinner__overlay" :size="'large'" />
+        <div class="s-loader__text">{{ loaderText }}</div>
       </div>
     </div>
-  </transition>
+  </div>
 </template>
 
 <script lang="ts">

@@ -31,7 +31,7 @@
       >
     </div>
 
-    <transition name="slide">
+    <transition name="fadeX-from-left">
       <p v-show="error" class="s-form-area__error-text">{{ error }}</p>
     </transition>
 
@@ -202,19 +202,19 @@ export default class TextArea extends Vue {
   }
 
   .s-form-area__input:focus::-webkit-input-placeholder {
-    transition: color 1s ease;
+    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     color: @light-5;
   }
   .s-form-area__input:focus:-moz-placeholder {
-    transition: color 1s ease;
+    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     color: @light-5;
   } /* FF 4-18 */
   .s-form-area__input:focus::-moz-placeholder {
-    transition: color 1s ease;
+    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     color: @light-5;
   } /* FF 19+ */
   .s-form-area__input:focus:-ms-input-placeholder {
-    transition: color 1s ease;
+    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     color: @light-5;
   } /* IE 10+ */
 
@@ -238,22 +238,22 @@ export default class TextArea extends Vue {
 
   ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
-    transition: color 0.5s ease;
+    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     color: transparent;
   }
   ::-moz-placeholder {
     /* Firefox 19+ */
-    transition: color 0.5s ease;
+    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     color: transparent;
   }
   :-ms-input-placeholder {
     /* IE 10+ */
-    transition: color 0.5s ease;
+    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     color: transparent;
   }
   :-moz-placeholder {
     /* Firefox 18- */
-    transition: color 0.5s ease;
+    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     color: transparent;
   }
 }
