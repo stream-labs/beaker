@@ -129,12 +129,12 @@ export default class Onboarding extends Vue {
     return;
   }
 
-  @Watch('current')
+  @Watch("current")
   updateCurrentStep() {
     this.currentStep = this.current;
   }
 
-  @Watch('steps')
+  @Watch("steps")
   updateStepObjects() {
     if (this.steps < this.stepObjects.length) {
       while (this.steps !== this.stepObjects.length) {

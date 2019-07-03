@@ -20,7 +20,12 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import demos from "../demos";
 
-const excludeFromComponentDemos = ["installation", "assets"];
+const excludeFromComponentDemos = [
+  "installation",
+  "assets",
+  "left-navigation",
+  "navigations"
+];
 
 @Component({})
 export default class LeftNavigation extends Vue {
