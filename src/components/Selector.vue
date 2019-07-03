@@ -134,7 +134,7 @@ export default {
     color: @selected;
     padding: 0 0 0 5px;
     width: 100%;
-    transition: border 0.1s ease;
+    transition: border 0.1s cubic-bezier(0.4, 0, 0.2, 1);
     box-sizing: border-box;
     margin-bottom: 8px;
     vertical-align: top;
@@ -215,7 +215,7 @@ export default {
     width: 22px;
     text-align: center;
     line-height: 22px;
-    transition: all 0.2s ease;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 5px;
   }
 
@@ -262,7 +262,7 @@ export default {
     top: 1px;
     padding: 4px 8px;
     text-align: center;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .multiselect__select:before {
@@ -424,7 +424,7 @@ export default {
 
   .multiselect-enter-active,
   .multiselect-leave-active {
-    transition: all 0.15s ease;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .multiselect-enter,

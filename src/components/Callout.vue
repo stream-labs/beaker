@@ -136,10 +136,11 @@ export default class Callout extends Vue {
   }
 
   &.callout--closed {
-    height: 0;
+    line-height: 0;
     margin: 0;
     padding: 0;
     opacity: 0;
+    transform: translateY(-15px);
   }
 
   &--cookies {

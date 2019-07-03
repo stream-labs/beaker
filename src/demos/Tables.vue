@@ -1,23 +1,31 @@
 <template>
-  <div>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Date</th>
-          <th>Event</th>
-          <th>Amout</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="user in users" :key="user.id">
-          <td>{{ user.name }}</td>
-          <td>{{ user.date }}</td>
-          <td>{{ user.event }}</td>
-          <td>{{ user.amount }}</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="section">
+    <div class="row">
+      <h1>Tables</h1>
+      <p>
+        Tables should automatically style themselves to look like the one below
+      </p>
+    </div>
+    <div class="row">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Event</th>
+            <th>Amout</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="user in users" :key="user.id">
+            <td>{{ user.name }}</td>
+            <td>{{ user.date }}</td>
+            <td>{{ user.event }}</td>
+            <td>{{ user.amount }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
