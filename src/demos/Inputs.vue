@@ -71,6 +71,8 @@
           :maxLength="1000"
           :maxHeight="100"
           slot="input"
+          :variableSearch="true"
+          :variableDataJson="variableData"
         ></text-area>
       </FormGroup>
 
@@ -471,6 +473,7 @@ import TextInput from "./../components/TextInput.vue";
 import FormGroup from "./../components/FormGroup.vue";
 import TaggingInput from "./../components/TaggingInput.vue";
 import TextArea from "./../components/TextArea.vue";
+import * as searchData from "./../components/cloudbotvariables.json";
 
 @Component({
   components: {
@@ -518,6 +521,8 @@ export default class Inputs extends Vue {
   passwordInputValue = "";
   errorTextInputValue = "";
   textAreaInputValue = "";
+
+  variableData = (searchData as any);
 
   textInputPlaceholder = "Placeholder";
   emailInputPlaceholder = "Placeholder";

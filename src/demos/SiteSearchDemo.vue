@@ -3,7 +3,7 @@
     <div class="section">
       <h1>Site Search</h1>
       <p>
-        This site search is in very early beta stages, it is not ready for prod
+        This site search is ready to go and on live, it can also be used with other json files. as long as they are structured properly.
       </p>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
@@ -52,7 +52,42 @@
           ]"
         ></site-search>
       </div>
-
+      <div class="row">
+        <accordion :title="'How to use a custom .json'">
+          <div slot="content">
+          <p>The .json file must be structured as below</p>
+          <pre>
+            <code>
+{
+  "data": [
+    {
+      "name": "contact",
+      "title": "Contact Us",
+      "route": "/contact",
+      "keywords": [
+        "contact",
+        "business",
+        "inquiries",
+        "social",
+        "media"
+      ],
+      "description": "Need to get a hold of Streamlabs?",
+      "keymatches": [
+        "howto",
+        "faq"
+      ],
+      "image": "icon-phone-case",
+      "howto": "null",
+      "weight": 4
+    },
+  ]
+}
+            </code>
+          </pre>
+          <p><code>keymatches</code> and <code>howto</code> are not used right now, but will be used in the future</p>
+          <p>import the json and component as normal above</p>
+        </div>
+      </accordion>
       <table class="docs-table">
         <thead>
           <tr>
@@ -80,6 +115,7 @@
         </tbody>
       </table>
     </div>
+    </div>
   </div>
 </template>
 
@@ -101,7 +137,7 @@ export default class SiteSearchDemo extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .topnav {
   height: 40px;
