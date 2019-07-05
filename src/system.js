@@ -50,6 +50,7 @@ import Step from "./components/Step.vue";
 import Tabs from "./components/Tabs.vue";
 // import TabDevelop from "./components/TabDevelop.vue";
 import TextInput from "./components/TextInput.vue";
+import TextPicker from "./components/TextPicker.vue";
 import TooltipNotice from "./components/TooltipNotice.vue";
 import Toggle from "./components/Toggle.vue";
 import Pagination from "./components/Pagination.vue";
@@ -108,6 +109,7 @@ export {
   TaggingInput,
   TextArea,
   TextInput,
+  TextPicker,
   Toggle,
   TooltipNotice,
   UrlBar,

@@ -173,6 +173,235 @@
     ]
   },
   {
+    "variable": "{streamlabels.<filename>}",
+    "description": "Replaces {streamlabels.<filename>} with the data from the streamlabels file.",
+    "example": "Session Top Donator: {streamlabels.session_top_donator}",
+    "result": "Session Top Donator: AnkhHeart",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{count <name>}",
+    "description": "Increments the counter by one and displays it.",
+    "example": "Deaths: {count deaths}",
+    "result": "Deaths: 2",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{count <name> +<value>}",
+    "description": "Increments the counter by your value and displays it.",
+    "example": "Deaths: {count deaths +5}",
+    "result": "Deaths: 7",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{count <name> -<value>}",
+    "description": "Decrements the counter by your value and displays it.",
+    "example": "Deaths: {count deaths -5}",
+    "result": "Deaths: 2",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{count <name> <value>}",
+    "description": "Sets the counter to your value and displays it.",
+    "example": "Deaths: {count deaths 100}",
+    "result": "Deaths: 100",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{getcount <name>}",
+    "description": "Displays the specified counter.",
+    "example": "Deaths: {count deaths}",
+    "result": "Deaths: 100",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{channel.subpoints}",
+    "description": "Replaces {channel.subpoints} with channel's sub points.",
+    "example": "Sub Count: {channel.subpoints}",
+    "result": "Sub Count: 100",
+    "tags": [
+      "Custom Commands",
+      "Twitch"
+    ]
+  },
+  {
+    "variable": "{user.followage}",
+    "description": "Replaces {user.followage} with the amount of time the user has been following the channel.",
+    "example": "{user.name} has been following the channel for {user.followage}",
+    "result": "AnkhHeart has been following the channel for 2 days 3 weeks",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{target.followage}",
+    "description": "Replaces {target.followage} with the amount of time the target has been following the channel.",
+    "example": "{target.name} has been following the channel for {target.followage}",
+    "result": "AnkhHeart has been following the channel for 2 days 3 weeks",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{channel.title}",
+    "description": "Replaces {channel.title} with the title of the stream.",
+    "example": "The title is {channel.title}",
+    "result": "The title is Playing Apex Legends o.o",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{user.title}",
+    "description": "Replaces {user.title} with the user's stream title.",
+    "example": "The title is {user.title}",
+    "result": "The title is Playing Apex Legends o.o",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{target.title}",
+    "description": "Replaces {target.title} with the target's stream title.",
+    "example": "The title is {target.title}",
+    "result": "The title is Playing Apex Legends o.o",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{touser.title}",
+    "description": "Replaces {touser.title} with the target's or user's stream title.",
+    "example": "The title is {touser.title}",
+    "result": "The title is Playing Apex Legends o.o",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{channel.game}",
+    "description": "Replaces {channel.game} with the currently played game.",
+    "example": "The game is {channel.game}",
+    "result": "The game is Apex Legends",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{user.game}",
+    "description": "Replaces {user.game} with user's last played game.",
+    "example": "The game is {user.game}",
+    "result": "The game is Apex Legends",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{target.game}",
+    "description": "Replaces {target.game} with target's last played game.",
+    "example": "The game is {target.game}",
+    "result": "The game is Apex Legends",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{touser.game}",
+    "description": "Replaces {touser.game} with target's or user's last played game.",
+    "example": "The game is {touser.game}",
+    "result": "The game is Apex Legends",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{channel.followers}",
+    "description": "Replaces {channel.followers} with channel's follower count.",
+    "example": "Follower Count: {channel.followers}",
+    "result": "Follower Count: 123",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{user.followers}",
+    "description": "Replaces {user.followers} with user's follower count.",
+    "example": "Follower Count: {user.followers}",
+    "result": "Follower Count: 123",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{target.followers}",
+    "description": "Replaces {target.followers} with target's follower count.",
+    "example": "Follower Count: {target.followers}",
+    "result": "Follower Count: 123",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{touser.followers}",
+    "description": "Replaces {touser.followers} with target's or user's follower count.",
+    "example": "Follower Count: {touser.followers}",
+    "result": "Follower Count: 123",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{channel.subs}",
+    "description": "Replaces {channel.subs} with channel's sub count.",
+    "example": "Sub Count: {channel.subs}",
+    "result": "Sub Count: 100",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
     "variable": "{reward}",
     "description": "Replaces {reward} with the amount of currency you have earned through gamble.",
     "example": "Rolled {amount}, @{user.name} won {reward} {loyalty.name} and now has {user.points} {loyalty.name}",

@@ -114,6 +114,13 @@
           </tr>
         </tbody>
       </table>
+
+      <div class="row">
+        <text-picker :jsonSearch="varData">
+        </text-picker>
+        </div>
+
+
     </div>
     </div>
   </div>
@@ -122,17 +129,21 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import SiteSearch from "./../components/SiteSearch.vue";
+import TextPicker from "./../components/TextPicker.vue";
 import Accordion from "./../components/Accordion.vue";
 import * as searchData from "./../components/sitesearchdata.json";
+import varSearch from "./../components/cloudbotvariables.json";
 
 @Component({
   components: {
     SiteSearch,
+    TextPicker,
     Accordion
   }
 })
 export default class SiteSearchDemo extends Vue {
   jsonSearch = (searchData as any).data;
+  varData = varSearch;
 }
 </script>
 
