@@ -419,7 +419,7 @@ export default class SliderTwo extends Vue {
       let resetVal = this.limitValue(val);
       this.val = resetVal;
       this.syncValue();
-      this.refresh(this.$refs.elem);
+      //this.refresh(this.$refs.elem);
     }
   }
 
@@ -524,6 +524,7 @@ export default class SliderTwo extends Vue {
 
 .s-slider {
   display: flex;
+  flex-flow: column nowrap;
   padding: 4px 0px !important;
   position: relative;
   box-sizing: content-box;
