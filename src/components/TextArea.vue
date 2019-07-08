@@ -4,32 +4,6 @@
       <p v-if="maxLength" class="s-form-area__characters">
         {{ currentLength }}/{{ maxLength }}
       </p>
-      <div>wtf</div>
-      <div v-if="result.length >= 1">
-        <div>
-          <div v-for="(variableResult) in result" :key="variableResult.variable">
-            Once
-            {{ variableResult.variable }}
-          </div>
-          </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      </div>
       <textarea
         :class="{
           's-form-area__input': true,
@@ -67,7 +41,6 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-import Fuse from "fuse.js";
 import { omit } from "lodash";
 
 @Component({})
@@ -75,13 +48,6 @@ export default class TextArea extends Vue {
   $refs!: {
     textArea: HTMLTextAreaElement;
   };
-
-  result: any = [];
-  private resultLimit: Number = 7;
-  private fuse: any = null;
-  private keyEvents: any = [];
-  private currentResult: number = 0;
-
 
   @Prop()
   name!: string;
@@ -116,54 +82,12 @@ export default class TextArea extends Vue {
   @Prop()
   maxHeight!: number;
 
-  @Prop({ default: false})
-  variableSearch!: boolean;
-
-  @Prop()
-  variableDataJson!: any;
-  variableData = this.variableDataJson;
-
-  @Prop({ default: "" })
-  search!: string;
-
-  @Prop({ default: "fuseResultsUpdated" })
-  eventName!: string;
-
-  @Prop({ default: "fuseInputChanged" })
-  inputChangeEventName!: string;
-
   mounted() {
     this.updateSize();
-    this.initFuse();
-  }
-
-  updated() {
-    console.log(this.value);
-    console.log(this.search)
-    console.log(this.result);
   }
 
   focus() {
     this.$refs.textArea.focus();
-  }
-
-  get options() {
-    let options = {
-      caseSensitive: false,
-      includeScore: true,
-      includeMatches: false,
-      tokenize: false,
-      matchAllTokens: false,
-      findAllMatches: false,
-      shouldSort: true,
-      threshold: 0.2,
-      location: 0,
-      distance: 0.9,
-      maxPatternLength: 16,
-      minMatchCharLength: 1,
-      keys: ["variable"]
-    };
-    return options;
   }
 
   get filteredListeners() {
@@ -172,64 +96,6 @@ export default class TextArea extends Vue {
 
   get currentLength() {
     return this.value.length;
-  }
-
-    get noResults() {
-    if (this.result.length === 0 && this.value != "") {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  @Watch("variableData")
-  watchVariableData() {
-    this.fuse.variableData = this.variableData;
-    this.fuseSearch();
-  }
-
-  @Watch("search")
-  watchSearch() {
-    this.value = this.search;
-    console.log('search change')
-  }
-
-  @Watch("value")
-  watchValue() {
-    this.$parent.$emit(this.inputChangeEventName, this.value);
-    this.$emit(this.inputChangeEventName, this.value);
-    this.fuseSearch();
-    console.log('value change')
-  }
-
-  @Watch("result")
-  watchResult(val: [], oldVal: []) {
-    if (this.noResults || this.value == "" || val.length != oldVal.length) {
-      this.currentResult = 0;
-    }
-    this.$emit(this.eventName, this.result);
-    this.$parent.$emit(this.eventName, this.result);
-  }
-
-   initFuse() {
-    this.fuse = new Fuse(this.variableData, this.options);
-    if (this.search) {
-      this.value = this.search;
-    }
-  }
-
-  blurSearch() {
-    this.value = "";
-    this.$refs.textArea.blur();
-    this.currentResult = 0;
-  }
-
-  fuseSearch() {
-    if (this.value.trim() === "") {
-      this.result = [];
-    } else {
-      this.result = this.fuse.search(this.value.trim());
-    }
   }
 
   onValueChange(event: { target: HTMLTextAreaElement }) {

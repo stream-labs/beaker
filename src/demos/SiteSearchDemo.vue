@@ -116,7 +116,7 @@
       </table>
 
       <div class="row">
-        <text-picker :jsonSearch="varData">
+        <text-picker :jsonSearch="varData" :rows="1">
         </text-picker>
         </div>
 
