@@ -38,7 +38,7 @@
       }"
       v-on="filteredListeners"
       @mousewheel="mouseWheel"
-    >
+    />
     <label
       :class="{
         's-form-field__label--top': value !== '',
@@ -144,6 +144,7 @@ export default class TextInput extends Vue {
   @Watch("value")
   valueChanged(newValue: string) {
     this.content = newValue.toString();
+    this.$emit("onChange", newValue);
   }
 
   handleInput(event: { target: HTMLInputElement }) {
