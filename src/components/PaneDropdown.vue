@@ -12,7 +12,7 @@
     </a>
 
     <transition
-      name="expand"
+      name="expand-dropdown"
       @enter="open"
       @after-enter="afterOpen"
       @leave="close"
@@ -292,18 +292,6 @@ export default class PaneDropdown extends Vue {
       color: @dark-2;
     }
   }
-}
-
-.expand-enter-active,
-.expand-leave-active {
-  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-}
-.expand-enter,
-.expand-leave-to {
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  height: 0;
-  opacity: 0;
 }
 
 .night {

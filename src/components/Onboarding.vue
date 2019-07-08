@@ -33,7 +33,7 @@
         <slot :name="currentStep"></slot>
       </div>
     </div>
-    <div class="s-onboarding-footer">
+    <div v-if="!hideControls" class="s-onboarding-footer">
       <div class="s-previousStep">
         <p v-show="currentStep !== 1" @click="previousStep">Back</p>
       </div>
@@ -80,7 +80,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import OnboardingStep from "./../components/OnboardingStep.vue";
 import Button from "./../components/Button.vue";
 
@@ -115,15 +115,37 @@ export default class Onboarding extends Vue {
   @Prop({ default: false })
   completeOnSkip!: boolean;
 
+  @Prop({ default: false })
+  hideControls!: boolean;
+
   currentStep: number = this.current;
   stepObjects: any[] = [];
   namedSteps: any[] = [];
 
-  get countStepObjects() {
+  countStepObjects() {
     for (let i = 0; i < this.steps; i++) {
       this.stepObjects.push({ isChecked: false });
     }
     return;
+  }
+
+  @Watch("current")
+  updateCurrentStep() {
+    this.addCheckmark();
+    this.currentStep = this.current;
+  }
+
+  @Watch("steps")
+  updateStepObjects() {
+    if (this.steps < this.stepObjects.length) {
+      while (this.steps !== this.stepObjects.length) {
+        this.stepObjects.pop();
+      }
+    } else if (this.steps > this.stepObjects.length) {
+      while (this.steps !== this.stepObjects.length) {
+        this.stepObjects.push({ isChecked: false });
+      }
+    }
   }
 
   get isCompleted() {
@@ -142,9 +164,11 @@ export default class Onboarding extends Vue {
   }
 
   prepareNamedProgress() {
-    for (let i = 0; i < this.stepNames.length; i++) {
-      this.namedSteps.push(this.stepNames[i]);
-      if (i != this.stepNames.length - 1) this.namedSteps.push(">");
+    if (this.stepNames != null) {
+      for (let i = 0; i < this.stepNames.length; i++) {
+        this.namedSteps.push(this.stepNames[i]);
+        if (i != this.stepNames.length - 1) this.namedSteps.push(">");
+      }
     }
   }
 
@@ -179,8 +203,8 @@ export default class Onboarding extends Vue {
 
   continueProcess() {
     this.addCheckmark();
-    this.nextStep();
     this.continueFunc();
+    this.nextStep();
   }
 
   onComplete() {
@@ -188,7 +212,7 @@ export default class Onboarding extends Vue {
   }
 
   beforeMount() {
-    this.countStepObjects;
+    this.countStepObjects();
     this.prepareNamedProgress();
   }
 }

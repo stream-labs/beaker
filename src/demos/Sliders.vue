@@ -214,7 +214,7 @@ components: {
       :value="localValueTwo"
       @input="value => updateLocalValueTwo(value)"
       :data="data"
-      :simpleTheme="true"
+      :marks="true"
     />
   </div>
 </template>

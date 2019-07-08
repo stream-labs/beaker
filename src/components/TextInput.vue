@@ -49,7 +49,7 @@
       >{{ label }}</label
     >
 
-    <transition name="slide">
+    <transition name="fadeX-from-left">
       <p v-show="error" class="s-form-field__error-text">{{ error }}</p>
     </transition>
 
@@ -270,7 +270,7 @@ export default class TextInput extends Vue {
 
   label {
     order: -1;
-    transition: all 0.275s ease-in-out;
+    .transition();
     transform: translateY(0px);
     pointer-events: none;
     background-color: @white;

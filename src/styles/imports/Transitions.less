@@ -83,3 +83,15 @@
   transform: translateY(-10px);
 }
 
+// Expand
+.expand-dropdown-enter-active,
+.expand-dropdown-leave-active {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+.expand-dropdown-enter,
+.expand-dropdown-leave-to {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 0;
+  opacity: 0;
+}

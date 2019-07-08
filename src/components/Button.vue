@@ -293,6 +293,7 @@ export default class Button extends Vue {
   .icon-img {
     display: flex;
     align-items: center;
+    width: 14px;
   }
 
   .icon--right {
