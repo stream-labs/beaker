@@ -11,7 +11,7 @@
       :style="{ width: width, height: height }"
       @click="emitInput(option.value)"
     >
-      <img :src="option.image" />
+      <img :src="option.image">
     </div>
   </div>
 </template>
@@ -35,7 +35,7 @@ export default class ImagePickerInput extends Vue {
 
   @Prop(String)
   height!: string;
-
+  
   @Prop({
     default: () => [
       {
@@ -85,8 +85,10 @@ export default class ImagePickerInput extends Vue {
   cursor: pointer;
 
   img {
-    height: 48px;
     width: auto;
+    height: auto;
+    max-width: 80%;
+    max-height: 80%;
     position: absolute;
     top: 50%;
     left: 50%;
