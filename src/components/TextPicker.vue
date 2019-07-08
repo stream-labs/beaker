@@ -23,8 +23,12 @@
             @mousedown="mergeValues"
             @mouseup="blurSearch"
           >
-            <div class="s-textpicker__result--title">{{ searchResult.item.variable }}</div>
-            <div class="s-textpicker__result--desc">{{ searchResult.item.description }}</div>
+            <div class="s-textpicker__result--title">
+              {{ searchResult.item.variable }}
+            </div>
+            <div class="s-textpicker__result--desc">
+              {{ searchResult.item.description }}
+            </div>
           </div>
         </transition-group>
       </div>

@@ -3,7 +3,8 @@
     <div class="section">
       <h1>Site Search</h1>
       <p>
-        This site search is ready to go and on live, it can also be used with other json files. as long as they are structured properly.
+        This site search is ready to go and on live, it can also be used with
+        other json files. as long as they are structured properly.
       </p>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
@@ -55,8 +56,8 @@
       <div class="row">
         <accordion :title="'How to use a custom .json'">
           <div slot="content">
-          <p>The .json file must be structured as below</p>
-          <pre>
+            <p>The .json file must be structured as below</p>
+            <pre>
             <code>
 {
   "data": [
@@ -84,44 +85,44 @@
 }
             </code>
           </pre>
-          <p><code>keymatches</code> and <code>howto</code> are not used right now, but will be used in the future</p>
-          <p>import the json and component as normal above</p>
+            <p>
+              <code>keymatches</code> and <code>howto</code> are not used right
+              now, but will be used in the future
+            </p>
+            <p>import the json and component as normal above</p>
+          </div>
+        </accordion>
+        <table class="docs-table">
+          <thead>
+            <tr>
+              <th>Props</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>jsonSearch</td>
+              <td>String</td>
+              <td>null</td>
+              <td>Name of the imported json (must be imported in parent)</td>
+            </tr>
+            <tr>
+              <td>quickLinks</td>
+              <td>Array</td>
+              <td>null</td>
+              <td>
+                max of 6 links, each must match name of entry in search json
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="row">
+          <text-picker :jsonSearch="varData" :rows="1"> </text-picker>
         </div>
-      </accordion>
-      <table class="docs-table">
-        <thead>
-          <tr>
-            <th>Props</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>jsonSearch</td>
-            <td>String</td>
-            <td>null</td>
-            <td>Name of the imported json (must be imported in parent)</td>
-          </tr>
-          <tr>
-            <td>quickLinks</td>
-            <td>Array</td>
-            <td>null</td>
-            <td>
-              max of 6 links, each must match name of entry in search json
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="row">
-        <text-picker :jsonSearch="varData" :rows="1">
-        </text-picker>
-        </div>
-
-
-    </div>
+      </div>
     </div>
   </div>
 </template>
