@@ -309,11 +309,13 @@
           <Button
             slot="button"
             :type="'button'"
-            :size="'fixed-width'"
+            :size="'fixgit checked-width'"
             :variation="'action'"
             :title="'Join'"
           ></Button>
         </notice>
+        <br />
+        <br />
 
         <notice
           :bgColor="'warning'"
