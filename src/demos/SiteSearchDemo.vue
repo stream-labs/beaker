@@ -120,7 +120,7 @@
         </table>
 
         <div class="row">
-          <text-picker :jsonSearch="varData" :rows="1"> </text-picker>
+          <text-picker :jsonSearch="varData" :rows="3" :maxLength="15" :label="'Cloudbot Variable'"> </text-picker>
         </div>
       </div>
     </div>
