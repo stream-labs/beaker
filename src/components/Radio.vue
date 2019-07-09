@@ -8,7 +8,7 @@
       :value="val"
       @input="$emit('input', val)"
       @click="$emit('onClick')"
-    >
+    />
     <label :for="id">{{ label }}</label>
   </div>
 </template>

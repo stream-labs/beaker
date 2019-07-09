@@ -67,7 +67,6 @@ export default class Notice extends Vue {
 @import "./../styles/Imports";
 
 .s-notice {
-  .margin-bottom(3);
   overflow: hidden;
 }
 
@@ -104,6 +103,10 @@ export default class Notice extends Vue {
 p {
   .margin-bottom(0);
   .margin-top(2);
+}
+
+.s-notice__desc {
+  .margin-bottom(0);
 }
 
 .s-bg-default {

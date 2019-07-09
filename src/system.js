@@ -33,6 +33,7 @@ import ModalRedirect from "./components/ModalRedirect.vue";
 import ModalSubscribe from "./components/ModalSubscribe.vue";
 import NavCallToAction from "./components/NavCallToAction.vue";
 import NewFeatureOverlay from "./components/NewFeatureOverlay.vue";
+import Notice from "./components/Notice.vue";
 import Onboarding from "./components/Onboarding.vue";
 import OnboardingStep from "./components/OnboardingStep.vue";
 import PaneDropdown from "./components/PaneDropdown.vue";
@@ -88,6 +89,7 @@ export {
   ModalSubscribe,
   NavCallToAction,
   NewFeatureOverlay,
+  Notice,
   Onboarding,
   OnboardingStep,
   Pagination,
