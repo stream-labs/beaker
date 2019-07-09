@@ -23,12 +23,8 @@
             @mousedown="mergeValues"
             @mouseup="blurSearch"
           >
-            <div class="s-textpicker__result--title">
-              {{ searchResult.item.variable }}
-            </div>
-            <div class="s-textpicker__result--desc">
-              {{ searchResult.item.description }}
-            </div>
+            <div class="s-textpicker__result--title">{{ searchResult.item.variable }}</div>
+            <div class="s-textpicker__result--desc">{{ searchResult.item.description }}</div>
           </div>
         </transition-group>
       </div>
@@ -43,6 +39,10 @@
         :placeholder="placeholder"
         :maxlength="maxLength"
         v-model="value"
+        @input="updateCursorPos"
+        @keydown="updateCursorPos"
+        @click="updateCursorPos"
+        @focus="updateCursorPos"
         @blur.stop.prevent="playClosingSequence"
         @keyup.stop.prevent="keyEvent"
         @keydown.enter.prevent
@@ -72,7 +72,8 @@ export default class TextPicker extends Vue {
   private quickLinkLoc: any = [];
   private keyEvents: any = [];
   private currentResult: number = 0;
-  
+  private cursorPos: number = 0;
+
   @Prop()
   jsonSearch!: any;
   searchData = this.jsonSearch;
@@ -188,16 +189,24 @@ export default class TextPicker extends Vue {
     this.noResults ? this.playClosingSequence() : this.playOpeningSequence();
   }
 
+  updateCursorPos(e: { target: HTMLInputElement }){
+    this.cursorPos = Number(e.target.selectionStart);
+    this.watchValue();
+  }
+
   getSearchString() {
     if (this.value.trim() === "") {
       this.result = [];
     } else {
-      const cursorPos = this.$refs.textArea.selectionStart;
-      const bracketOpen = this.value.substring(0, cursorPos).lastIndexOf("{");
-      const searchValue = this.value.substring(bracketOpen, cursorPos);
+      const bracketOpen = this.value.substring(0, this.cursorPos).lastIndexOf("{");
+      const searchValue = this.value.substring(bracketOpen, this.cursorPos);
       const bracketClose = searchValue.lastIndexOf("}");
 
-      if (cursorPos > bracketOpen && bracketClose === -1 && bracketOpen !== -1) {
+      if (
+        this.cursorPos > bracketOpen &&
+        bracketClose === -1 &&
+        bracketOpen !== -1
+      ) {
         this.result = this.fuse.search(searchValue);
         this.queryLength = searchValue.length;
       }
@@ -231,8 +240,10 @@ export default class TextPicker extends Vue {
   }
 
   mergeValues() {
-    const cursor = this.$refs.textArea.selectionStart;
-    this.value = this.value.substring(0,cursor) + this.selectedResult.substring(this.queryLength) + this.value.substring(cursor);
+    this.value =
+      this.value.substring(0, this.cursorPos) +
+      this.selectedResult.substring(this.queryLength) +
+      this.value.substring(this.cursorPos);
 
     this.result = [];
   }
