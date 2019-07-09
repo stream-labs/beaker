@@ -72,7 +72,7 @@ export default class TextPicker extends Vue {
   private quickLinkLoc: any = [];
   private keyEvents: any = [];
   private currentResult: number = 0;
-
+  
   @Prop()
   jsonSearch!: any;
   searchData = this.jsonSearch;
@@ -192,37 +192,16 @@ export default class TextPicker extends Vue {
     if (this.value.trim() === "") {
       this.result = [];
     } else {
-      if (this.value.includes("{") && this.curlyStart - this.curlyEnd === 1) {
-        let startingSplits = this.value.split("{");
-        this.result = this.fuse.search(
-          "{" + startingSplits[this.curlyStart].trim()
-        );
-        this.queryLength = startingSplits[this.curlyStart].length + 1;
-      }
-      if (this.value.includes("}")) {
-        let endingSplits = this.value.split("}");
-      }
-    }
-  }
+      const cursorPos = this.$refs.textArea.selectionStart;
+      const bracketOpen = this.value.substring(0, cursorPos).lastIndexOf("{");
+      const searchValue = this.value.substring(bracketOpen, cursorPos);
+      const bracketClose = searchValue.lastIndexOf("}");
 
-  get curlyStart() {
-    let c = 0;
-    for (let i = 0; i < this.value.length; i++) {
-      if (this.value[i] === "{") {
-        c++;
+      if (cursorPos > bracketOpen && bracketClose === -1 && bracketOpen !== -1) {
+        this.result = this.fuse.search(searchValue);
+        this.queryLength = searchValue.length;
       }
     }
-    return c;
-  }
-
-  get curlyEnd() {
-    let c = 0;
-    for (let i = 0; i < this.value.length; i++) {
-      if (this.value[i] === "}") {
-        c++;
-      }
-    }
-    return c;
   }
 
   keyEvent(event) {
@@ -252,7 +231,9 @@ export default class TextPicker extends Vue {
   }
 
   mergeValues() {
-    this.value = this.value + this.selectedResult.substring(this.queryLength);
+    const cursor = this.$refs.textArea.selectionStart;
+    this.value = this.value.substring(0,cursor) + this.selectedResult.substring(this.queryLength) + this.value.substring(cursor);
+
     this.result = [];
   }
 
