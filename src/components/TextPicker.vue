@@ -12,6 +12,7 @@
         :key="limitedResult.length"
         v-if="phaseTwo && limitedResult.length >= 1"
         :style="calcTransform"
+        ref="resultArea"
       >
         <transition-group name="s-textpicker--fadeX">
           <div
@@ -23,12 +24,8 @@
             @mousedown="mergeValues"
             @mouseup="blurSearch"
           >
-            <div class="s-textpicker__result--title">
-              {{ searchResult.item.variable }}
-            </div>
-            <div class="s-textpicker__result--desc">
-              {{ searchResult.item.description }}
-            </div>
+            <div class="s-textpicker__result--title">{{ searchResult.item.variable }}</div>
+            <div class="s-textpicker__result--desc">{{ searchResult.item.description }}</div>
           </div>
         </transition-group>
       </div>
@@ -59,6 +56,7 @@ import Fuse from "fuse.js";
 export default class TextPicker extends Vue {
   $refs!: {
     textArea: HTMLTextAreaElement;
+    resultArea: HTMLDivElement;
   };
 
   result: any = [];
@@ -86,7 +84,6 @@ export default class TextPicker extends Vue {
   @Prop({ default: "fuseInputChanged" })
   inputChangeEventName!: string;
 
-  // import these from textarea
   @Prop()
   name!: string;
   @Prop()
@@ -117,12 +114,12 @@ export default class TextPicker extends Vue {
       matchAllTokens: false,
       findAllMatches: true,
       shouldSort: true,
-      threshold: 0.1,
+      threshold: 0.6,
       location: 1,
-      distance: 10,
-      maxPatternLength: 16,
+      distance: 2,
+      maxPatternLength: 12,
       minMatchCharLength: 0,
-      keys: ["variable", "example"]
+      keys: ["variable"]
     };
     return options;
   }
@@ -136,9 +133,7 @@ export default class TextPicker extends Vue {
   }
 
   get limitedResult() {
-    return this.resultLimit
-      ? this.result.slice(0, this.resultLimit).reverse()
-      : this.result;
+    return this.result.reverse();
   }
 
   get selectedResult() {
@@ -163,7 +158,7 @@ export default class TextPicker extends Vue {
       let y = parseInt(this.limitedResult.length) * 32;
       return "transform: translateY(-" + y + "px);";
     } else {
-      return "transform: translateY(0);";
+      return "transform: translateY(-224px);";
     }
   }
 
@@ -192,15 +187,14 @@ export default class TextPicker extends Vue {
     if (this.value.trim() === "") {
       this.result = [];
     } else {
-      if (this.value.includes("{") && this.curlyStart - this.curlyEnd === 1) {
-        let startingSplits = this.value.split("{");
-        this.result = this.fuse.search(
-          "{" + startingSplits[this.curlyStart].trim()
-        );
-        this.queryLength = startingSplits[this.curlyStart].length + 1;
-      }
-      if (this.value.includes("}")) {
-        let endingSplits = this.value.split("}");
+      const cursorPos = this.$refs.textArea.selectionStart;
+      const bracket = this.value.substring(0, cursorPos).lastIndexOf("{");
+      const searchValue = this.value.substring(bracket, cursorPos);
+      const bracketClose = searchValue.lastIndexOf("}");
+
+      if (cursorPos > bracket && bracketClose === -1 && bracket !== -1) {
+        this.result = this.fuse.search(searchValue);
+        this.queryLength = searchValue.length;
       }
     }
   }
@@ -228,17 +222,20 @@ export default class TextPicker extends Vue {
   keyEvent(event) {
     // KEYPRESS UP
     if (event.keyCode === 38 && this.currentResult > 0) {
+      if (this.currentResult <= this.limitedResult.length - 7) {
+        this.$refs.resultArea.scrollBy(0, -32);
+      }
       this.currentResult--;
     }
     // KEYPRESS DOWN
-    if (this.result.length === 0) {
-      if (event.keyCode === 40 && this.currentResult < 5) {
-        this.currentResult++;
+    if (
+      event.keyCode === 40 &&
+      this.currentResult < this.limitedResult.length - 1
+    ) {
+      if (this.currentResult >= 6) {
+        this.$refs.resultArea.scrollBy(0, 32);
       }
-    } else {
-      if (event.keyCode === 40 && this.currentResult < 6) {
-        this.currentResult++;
-      }
+      this.currentResult++;
     }
     // KEYPRESS ENTER
     if (event.keyCode === 13 && this.phaseOne) {
@@ -252,7 +249,11 @@ export default class TextPicker extends Vue {
   }
 
   mergeValues() {
-    this.value = this.value + this.selectedResult.substring(this.queryLength);
+    const cursor = this.$refs.textArea.selectionStart;
+    this.value =
+      this.value.substring(0, cursor) +
+      this.selectedResult.substring(this.queryLength) +
+      this.value.substring(cursor);
     this.result = [];
   }
 
@@ -348,14 +349,42 @@ export default class TextPicker extends Vue {
   .s-textpicker-results__cont {
     display: flex;
     width: 100%;
+    max-height: 224px;
     flex-direction: column-reverse;
-    overflow: hidden;
+    overflow-y: scroll;
+    overflow-x: hidden;
     position: absolute;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid @day-input-border;
     z-index: 9;
     background-color: @day-bg;
     .radius();
+  }
+
+  .s-textpicker-results__cont::-webkit-scrollbar-corner {
+    background-color: rgba(0, 0, 0, 0.04);
+    background-image: none;
+  }
+
+  .s-textpicker-results__cont::-webkit-scrollbar {
+    width: 1em;
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+
+  .s-textpicker-results__cont::-webkit-scrollbar {
+    width: 16px;
+    height: 9px;
+  }
+
+  .s-textpicker-results__cont::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    height: 10px;
+    background-color: @dark-5;
+    border: 4px solid rgba(0, 0, 0, 0.04);
+    background-clip: padding-box;
+    -webkit-box-shadow: inset -1px -1px 0px @dark-5, inset 1px 1px 0px @dark-5;
+    box-shadow: inset -1px -1px 0px @dark-5, inset 1px 1px 0px @dark-5;
   }
 
   .s-textpicker-results {
