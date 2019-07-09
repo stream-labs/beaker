@@ -46,7 +46,8 @@
       }"
       class="s-form-field__label"
       v-if="label"
-    >{{ label }}</label>
+      >{{ label }}</label
+    >
 
     <transition name="fadeX-from-left">
       <p v-show="error" class="s-form-field__error-text">{{ error }}</p>
