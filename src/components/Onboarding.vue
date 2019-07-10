@@ -33,7 +33,7 @@
         <slot :name="currentStep"></slot>
       </div>
     </div>
-    <div v-if="!hideControls" class="s-onboarding-footer">
+    <div class="s-onboarding-footer">
       <div class="s-previousStep">
         <p v-show="currentStep !== 1" @click="previousStep">Back</p>
       </div>
@@ -47,18 +47,21 @@
           :variation="'action'"
           :title="'Continue'"
           @click="continueProcess"
+          :disabled="disableControls"
         ></Button>
         <Button
           v-if="isCompleted"
           :variation="'action'"
           :title="'Complete'"
           @click="onComplete"
+          :disabled="disableControls"
         ></Button>
         <Button
           v-if="!isCompleted && currentStep === steps && completeOnSkip"
           :variation="'action'"
           :title="'Complete'"
           @click="onComplete"
+          :disabled="disableControls"
         ></Button>
         <div
           v-if="
@@ -91,32 +94,16 @@ import Button from "./../components/Button.vue";
   }
 })
 export default class Onboarding extends Vue {
-  @Prop()
-  steps!: number;
-
-  @Prop({ default: "left" })
-  stepLocation!: string;
-
-  @Prop({ default: null })
-  stepNames!: [any];
-
-  @Prop()
-  current!: number;
-
-  @Prop()
-  continueFunc!: Function;
-
-  @Prop()
-  completeFunc!: Function;
-
-  @Prop()
-  skip!: boolean;
-
-  @Prop({ default: false })
-  completeOnSkip!: boolean;
-
-  @Prop({ default: false })
-  hideControls!: boolean;
+  @Prop() steps!: number;
+  @Prop({ default: "left" }) stepLocation!: string;
+  @Prop({ default: null }) stepNames!: [any];
+  @Prop() current!: number;
+  @Prop() continueFunc!: Function;
+  @Prop() completeFunc!: Function;
+  @Prop() skip!: boolean;
+  @Prop({ default: false }) completeOnSkip!: boolean;
+  @Prop({ default: false }) disableControls!: boolean;
+  @Prop() goToNextStep!: boolean;
 
   currentStep: number = this.current;
   stepObjects: any[] = [];
@@ -129,10 +116,11 @@ export default class Onboarding extends Vue {
     return;
   }
 
-  @Watch("current")
+  @Watch('goToNextStep')
   updateCurrentStep() {
-    this.addCheckmark();
-    this.currentStep = this.current;
+    if (this.goToNextStep) {
+      this.nextStep();
+    }
   }
 
   @Watch("steps")
@@ -181,6 +169,7 @@ export default class Onboarding extends Vue {
   }
 
   nextStep() {
+    if (this.disableControls) return;
     if (this.currentStep < this.steps) {
       this.currentStep++;
     }
