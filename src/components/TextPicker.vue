@@ -44,9 +44,8 @@
         :placeholder="placeholder"
         :maxlength="maxLength"
         v-model="value"
-        v-on="filteredListeners"
-        @keydown="blockKeyDown"
-        @keyup="updateCursorPos"
+        @input="updateCursorPos"
+        @keydown="updateCursorPos"
         @click="updateCursorPos"
         @focus="updateCursorPos"
         @blur.stop.prevent="playClosingSequence"
@@ -94,6 +93,7 @@ export default class TextPicker extends Vue {
   private quickLinkLoc: any = [];
   private keyEvents: any = [];
   private currentResult: number = 0;
+  private cursorPos: number = 0;
 
   @Prop()
   jsonSearch!: any;
@@ -138,9 +138,9 @@ export default class TextPicker extends Vue {
       matchAllTokens: false,
       findAllMatches: true,
       shouldSort: true,
-      threshold: 0.1,
+      threshold: 0.6,
       location: 1,
-      distance: 100,
+      distance: 2,
       maxPatternLength: 12,
       minMatchCharLength: 0,
       keys: ["variable"]
@@ -215,37 +215,26 @@ export default class TextPicker extends Vue {
     this.noResults ? this.playClosingSequence() : this.playOpeningSequence();
   }
 
-  updateCursorPos(e) {
+  updateCursorPos(e: { target: HTMLInputElement }){
+    this.cursorPos = Number(e.target.selectionStart);
     this.watchValue();
-  }
-
-  blockKeyDown(event) {
-    if (event.type === "keydown" && this.phaseTwo) {
-      const codes = ["ArrowUp", "ArrowDown"];
-      if (codes.includes(event.key)) {
-        event.preventDefault();
-      }
-    }
   }
 
   getSearchString() {
     if (this.value.trim() === "") {
       this.result = [];
     } else {
-      const cursorPos = this.$refs.textArea.selectionStart;
-      const bracketOpen = this.value.substring(0, cursorPos).lastIndexOf("{");
-      const searchValue = this.value.substring(bracketOpen, cursorPos);
+      const bracketOpen = this.value.substring(0, this.cursorPos).lastIndexOf("{");
+      const searchValue = this.value.substring(bracketOpen, this.cursorPos);
       const bracketClose = searchValue.lastIndexOf("}");
 
       if (
-        cursorPos > bracketOpen &&
+        this.cursorPos > bracketOpen &&
         bracketClose === -1 &&
         bracketOpen !== -1
       ) {
         this.result = this.fuse.search(searchValue);
         this.queryLength = searchValue.length;
-      } else {
-        this.playClosingSequence();
       }
     }
   }
@@ -280,22 +269,12 @@ export default class TextPicker extends Vue {
   }
 
   mergeValues() {
-    const cursorPos = this.$refs.textArea.selectionStart;
-    if (this.value.length === cursorPos) {
-      this.value =
-        this.value.substring(0, cursorPos) +
-        this.selectedResult.substring(this.queryLength) +
-        this.value.substring(cursorPos) +
-        "}";
-    } else {
-      this.value =
-        this.value.substring(0, cursorPos) +
-        this.selectedResult.substring(this.queryLength) +
-        this.value.substring(cursorPos);
-    }
+    const cursor = this.$refs.textArea.selectionStart;
+    this.value =
+      this.value.substring(0, cursor) +
+      this.selectedResult.substring(this.queryLength) +
+      this.value.substring(cursor);
     this.result = [];
-    this.currentResult = 0;
-    this.playClosingSequence();
   }
 
   playClosingSequence() {
