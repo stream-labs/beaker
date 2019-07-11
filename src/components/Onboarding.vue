@@ -11,7 +11,7 @@
           </div>
           <div
             class="s-name-step"
-            :class="{ 'current-step': currentStepStyle(Math.floor(idx / 2)) }"
+            :class="{ 'current-step': currentStepStyle(idx) }"
           >
             {{ name }}
           </div>
@@ -34,10 +34,10 @@
     </div>
     <div class="s-onboarding-footer">
       <div class="s-previousStep">
-        <p v-show="currentStep !== 1" @click="onPrevious">Back</p>
+        <p v-show="currentStep !== 1" @click="prevHandler">Back</p>
       </div>
       <div class="s-nextStep">
-        <p v-if="skippable && currentStep !== steps.length" @click="onSkip">
+        <p v-if="skippable && currentStep !== steps.length" @click="skipHandler">
           Skip
         </p>
 
@@ -45,11 +45,11 @@
           v-if="currentStep !== steps.length"
           :variation="'action'"
           :title="'Continue'"
-          @click="onContinue"
+          @click="continueHandler"
           :disabled="disableControls"
         ></Button>
         <div
-          v-if="skip && currentStep === steps && !isCompleted"
+          v-if="skippable && currentStep === steps && !isCompleted"
           class="s-onboarding-skip__warning"
         >
           You skipped a step
@@ -58,7 +58,7 @@
           v-if="currentStep === steps.length"
           :variation="'action'"
           :title="'Complete'"
-          @click="onComplete"
+          @click="completeHandler"
           :state="disableControls || !isCompleted ? 'disabled' : null"
         ></Button>
       </div>
@@ -81,10 +81,10 @@ export default class Onboarding extends Vue {
   @Prop() steps!: { name?: string; complete: boolean }[];
   @Prop({ default: "left" }) stepLocation!: string;
   @Prop() currentStep!: number;
-  @Prop() onComplete!: Function;
-  @Prop() onContinue!: Function;
-  @Prop() onSkip!: Function;
-  @Prop() onPrevious!: Function;
+  @Prop() completeHandler!: Function;
+  @Prop() continueHandler!: Function;
+  @Prop() skipHandler!: Function;
+  @Prop() prevHandler!: Function;
   @Prop() skippable!: boolean;
   @Prop({ default: false }) disableControls!: boolean;
 
