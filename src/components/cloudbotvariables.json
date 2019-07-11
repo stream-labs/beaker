@@ -1,0 +1,619 @@
+[
+  {
+    "variable": "{min}",
+    "description": "Replaces {min} with the minimum amount of loyalty that has to be bet.",
+    "example": "Betting is open for \"{title}\" use {command} <{options}> <{min}-{max}> to register your bet. ",
+    "result": "Betting is open for \"How many tries will this boss take me?\" use !bet <1 | 2 | 3 | 4 | 5+> <10-1000> to register your bet",
+    "tags": [
+      "Betting"
+    ]
+  },
+  {
+    "variable": "{max}",
+    "description": "Replaces {max} with the maximum amount of loyalty that can be bet.",
+    "example": "Betting is open for \"{title}\" use {command} <{options}> <{min}-{max}> to register your bet. ",
+    "result": "Betting is open for \"How many tries will this boss take me?\" use !bet <1 | 2 | 3 | 4 | 5+> <10-1000> to register your bet",
+    "tags": [
+      "Betting"
+    ]
+  },
+  {
+    "variable": "{option}",
+    "description": "Replaces {option} the winning option of a poll or betting.",
+    "example": "{option} was the most voted option of the poll with {amount}% of the votes.",
+    "result": "Legend of Zelda was the most voted option of the poll with 56% of the votes.",
+    "tags": [
+      "Betting",
+      "Poll"
+    ]
+  },
+  {
+    "variable": "{options}",
+    "description": "Replaces {options} with all the available options for a poll or betting.",
+    "example": "A poll has opened for \"Which started should I pick?\" use !vote <{options}> to vote.",
+    "result": "A poll has opened for \"Which started should I pick?\" use !vote <Pikachu | Squirtle | Charmander> to vote.",
+    "tags": [
+      "Betting",
+      "Poll"
+    ]
+  },
+  {
+    "variable": "{cooldown}",
+    "description": "Replaces {cooldown} variable with command's remaining cooldown.",
+    "example": "{user.name} -> {command} is on cooldown for {cooldown} seconds.",
+    "result": "Streamlabs -> !test is on cooldown for 20 seconds.",
+    "tags": [
+      "Command Settings"
+    ]
+  },
+  {
+    "variable": "{command}",
+    "description": "Replaces {command} with current command that's being used.",
+    "example": "This command is called {command}",
+    "result": "This command is called !test",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{user.id}",
+    "description": "Replaces {user.id} variable with the id of the current user.",
+    "example": "My Youtube Channel Id is https://youtube.com/channel/{user.id}",
+    "result": "My Youtube Channel Id is https://youtube.com/channel/UCNL8jaJ9hId96P13QmQXNtA",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{user.name}",
+    "description": "Replaces {user.name} variable with the viewers name.",
+    "example": "My name is {user.name}",
+    "result": "My name is Streamlabs",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{randnum.<min>-<max>}",
+    "description": "Replaces {randnum.<min>-<max>} variable the random number between min & max.",
+    "example": "{user.name}, you have rolled {randnum.1-100}.",
+    "result": "Streamlabs, you have rolled 100.",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{target.name}",
+    "description": "Replaces {target.name} variable with the target's name.",
+    "example": "{user.name} gives {target.name} a hug!",
+    "result": "Streamlabs gives RedUnicornCat38745 a hug!",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{arg}",
+    "description": "Replaced by a word in a specific position, arg is denoted by a number.",
+    "example": "Your first three words: {1} {2} {3}",
+    "result": "Your first three words: I am going",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{start:end}",
+    "description": "Replaced with all the words between the start and end.",
+    "example": "The colors you picked are: {1:3}",
+    "result": "he colors you picked are: Red Green Blue",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{uptime}",
+    "description": "Replaces {uptime} with how long the stream has been live for. (Twitch/Mixer only)",
+    "example": "The stream has been live for {uptime}",
+    "result": "The stream has been live for 10 minutes 50 seconds",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{time.<continent>/<city>}",
+    "description": "Replaces {time.<continent>/<city>} variable with the current time for that specific continent/city.",
+    "example": "Right now it is {time.Australia/Sydney} in Sydney.",
+    "result": "Right now it is 12:00 in Sydney.",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{readapi.<url_here>}",
+    "description": "Replaces {readapi.<url_here>} variable with the data from the API endpoint.",
+    "example": "The stream has been live for {readapi.https://decapi.me/twitch/uptime?channel=streamlabs}",
+    "result": "The stream has been live for 17 hours, 50 minutes, 55 seconds",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{merch.link}",
+    "description": "Replaces {merch.link} with your Streamlabs Merch link.",
+    "example": "You can checkout my merch store over at {merch.link}",
+    "result": "You can checkout my merch store over at https://streamlabs.com/streamlabs#/merch",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{donation.link}",
+    "description": "Replaces {donation.link} with your Streamlabs donation link.",
+    "example": "Do you want to support the stream? You can do so by going to {donation.link}",
+    "result": "Do you want to support the stream? You can do so by going to https://streamlabs.com/streamlabs",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{facemask.link}",
+    "description": "Replaces {facemask.link} with your Streamlabs Facemask Donation link.",
+    "example": "Do you want to put awesome masks on my face? Go to {facemask.link}",
+    "result": "Do you want to put awesome masks on my face? Go to https://streamlabs.com/streamlabs/masks",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{channel.name}",
+    "description": "Replaces {channel.name} with your Channel name.",
+    "example": "Our channel is {channel.name}",
+    "result": "Our channel is Streamlabs",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{streamlabels.<filename>}",
+    "description": "Replaces {streamlabels.<filename>} with the data from the streamlabels file.",
+    "example": "Session Top Donator: {streamlabels.session_top_donator}",
+    "result": "Session Top Donator: AnkhHeart",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{count <name>}",
+    "description": "Increments the counter by one and displays it.",
+    "example": "Deaths: {count deaths}",
+    "result": "Deaths: 2",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{count <name> +<value>}",
+    "description": "Increments the counter by your value and displays it.",
+    "example": "Deaths: {count deaths +5}",
+    "result": "Deaths: 7",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{count <name> -<value>}",
+    "description": "Decrements the counter by your value and displays it.",
+    "example": "Deaths: {count deaths -5}",
+    "result": "Deaths: 2",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{count <name> <value>}",
+    "description": "Sets the counter to your value and displays it.",
+    "example": "Deaths: {count deaths 100}",
+    "result": "Deaths: 100",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{getcount <name>}",
+    "description": "Displays the specified counter.",
+    "example": "Deaths: {count deaths}",
+    "result": "Deaths: 100",
+    "tags": [
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{channel.subpoints}",
+    "description": "Replaces {channel.subpoints} with channel's sub points.",
+    "example": "Sub Count: {channel.subpoints}",
+    "result": "Sub Count: 100",
+    "tags": [
+      "Custom Commands",
+      "Twitch"
+    ]
+  },
+  {
+    "variable": "{user.followage}",
+    "description": "Replaces {user.followage} with the amount of time the user has been following the channel.",
+    "example": "{user.name} has been following the channel for {user.followage}",
+    "result": "AnkhHeart has been following the channel for 2 days 3 weeks",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{target.followage}",
+    "description": "Replaces {target.followage} with the amount of time the target has been following the channel.",
+    "example": "{target.name} has been following the channel for {target.followage}",
+    "result": "AnkhHeart has been following the channel for 2 days 3 weeks",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{channel.title}",
+    "description": "Replaces {channel.title} with the title of the stream.",
+    "example": "The title is {channel.title}",
+    "result": "The title is Playing Apex Legends o.o",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{user.title}",
+    "description": "Replaces {user.title} with the user's stream title.",
+    "example": "The title is {user.title}",
+    "result": "The title is Playing Apex Legends o.o",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{target.title}",
+    "description": "Replaces {target.title} with the target's stream title.",
+    "example": "The title is {target.title}",
+    "result": "The title is Playing Apex Legends o.o",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{touser.title}",
+    "description": "Replaces {touser.title} with the target's or user's stream title.",
+    "example": "The title is {touser.title}",
+    "result": "The title is Playing Apex Legends o.o",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{channel.game}",
+    "description": "Replaces {channel.game} with the currently played game.",
+    "example": "The game is {channel.game}",
+    "result": "The game is Apex Legends",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{user.game}",
+    "description": "Replaces {user.game} with user's last played game.",
+    "example": "The game is {user.game}",
+    "result": "The game is Apex Legends",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{target.game}",
+    "description": "Replaces {target.game} with target's last played game.",
+    "example": "The game is {target.game}",
+    "result": "The game is Apex Legends",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{touser.game}",
+    "description": "Replaces {touser.game} with target's or user's last played game.",
+    "example": "The game is {touser.game}",
+    "result": "The game is Apex Legends",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{channel.followers}",
+    "description": "Replaces {channel.followers} with channel's follower count.",
+    "example": "Follower Count: {channel.followers}",
+    "result": "Follower Count: 123",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{user.followers}",
+    "description": "Replaces {user.followers} with user's follower count.",
+    "example": "Follower Count: {user.followers}",
+    "result": "Follower Count: 123",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{target.followers}",
+    "description": "Replaces {target.followers} with target's follower count.",
+    "example": "Follower Count: {target.followers}",
+    "result": "Follower Count: 123",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{touser.followers}",
+    "description": "Replaces {touser.followers} with target's or user's follower count.",
+    "example": "Follower Count: {touser.followers}",
+    "result": "Follower Count: 123",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{channel.subs}",
+    "description": "Replaces {channel.subs} with channel's sub count.",
+    "example": "Sub Count: {channel.subs}",
+    "result": "Sub Count: 100",
+    "tags": [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    "variable": "{reward}",
+    "description": "Replaces {reward} with the amount of currency you have earned through gamble.",
+    "example": "Rolled {amount}, @{user.name} won {reward} {loyalty.name} and now has {user.points} {loyalty.name}",
+    "result": "Rolled 100, @Streamlabs won 200 points and now has 500 points.",
+    "tags": [
+      "Gamble"
+    ]
+  },
+  {
+    "variable": "{prize}",
+    "description": "Replaces {prize} with the giveaway prize. Only works with giveaways.",
+    "example": "A {prize} raffle has started for {permission}. Use {command} to enter the raffle.",
+    "result": "A t-shirt raffle has started for everyone. Use !raffle to enter the raffle.",
+    "tags": [
+      "Giveaways"
+    ]
+  },
+  {
+    "variable": "{permission}",
+    "description": "Replaces {permission} with the permission required to join a Giveaway.",
+    "example": "A {prize} raffle has started for {permission}. Use {command} to enter the raffle.",
+    "result": "A t-shirt raffle has started for everyone. Use !raffle to enter the raffle.",
+    "tags": [
+      "Giveaways"
+    ]
+  },
+  {
+    "variable": "{amount}",
+    "description": "Replaces {amount} variable with donation amount, tickets, months, etc..",
+    "example": "@{user.name}, you received {amount} ticket(s)!",
+    "result": "@Streamlabs, you received 10 ticket(s)!",
+    "tags": [
+      "Giveaways"
+    ]
+  },
+  {
+    "variable": "{link}",
+    "description": "Replaces {link} with your Merch giveaway redemption link.",
+    "example": "You can redeem your giveaway prize over at {link}",
+    "result": "You can redeem your giveaway prize over at https://streamlabs.com/streamlabs?redemption=true#/merch",
+    "tags": [
+      "Giveaways"
+    ]
+  },
+  {
+    "variable": "{timer}",
+    "description": "Replaces {timer} with the remaining time of a giveaway/poll/betting countdown timer. Only available in the repeat message.",
+    "example": "A Poll is going on for \"{title}\" use {command} <{options}> to vote. You have {timer} seconds left to join.",
+    "result": "A Poll is going on for \"What starter should I pick?\" use !vote <Squirtle | Charmander | Bulbasaur> to vote. You have 600 seconds left to join.",
+    "tags": [
+      "Giveaways",
+      "Betting",
+      "Poll"
+    ]
+  },
+  {
+    "variable": "{results}",
+    "description": "Replaces {results} with the names of the survivors or a heist or poll results.",
+    "example": "A few managed to survive: {results}",
+    "result": "A few managed to survive: SOWHOYOUdotCOM (200), AnkhHeart (200)",
+    "tags": [
+      "Heist",
+      "Poll"
+    ]
+  },
+  {
+    "variable": "{duration}",
+    "description": "Replaces {duration} with the duration of the permit.",
+    "example": "@{target.name}, You have been given {duration} seconds to post a link!",
+    "result": "@AnkhHeart, You have 60 seconds to post a link!",
+    "tags": [
+      "Link Protection"
+    ]
+  },
+  {
+    "variable": "{loyalty.toppoints}",
+    "description": "Replaces {loyalty.toppoints} with a list of the top 10 users by points.",
+    "example": "Top {amount} Points: {loyalty.toppoints}.",
+    "result": "Top 10 Points: 1. AnkhHeart (1000), 2. H4rsh4 (999), 3. MissBlackBear (990), 4. Raichu (989), ... ",
+    "tags": [
+      "Loyalty"
+    ]
+  },
+  {
+    "variable": "{loyalty.tophours}",
+    "description": "Replaces {loyalty.tophours} with a list of the top 10 users by hours.",
+    "example": "Top {amount} Points: {loyalty.tophours}.",
+    "result": "Top 10 Points: 1. AnkhHeart (5.8), 2. H4rsh4 (4.2), 3. MissBlackBear (3.5), 4. Raichu (3.4), ... ",
+    "tags": [
+      "Loyalty"
+    ]
+  },
+  {
+    "variable": "{user.points}",
+    "description": "Replaces {user.points} with the user's loyalty.",
+    "example": "@{user.name}, you have {user.points} {loyalty.name}.",
+    "result": "@Streamlabs, you have 1000 points.",
+    "tags": [
+      "Loyalty",
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{user.time}",
+    "description": "Replaces {user.time} with the user's time watched.",
+    "example": "@{user.name} has watched the stream for {user.time} minutes.",
+    "result": "@Streamlabs has watched the stream for 2 hours.",
+    "tags": [
+      "Loyalty",
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{loyalty.name}",
+    "description": "Replaces {loyalty.name} with the loyalty name.",
+    "example": "My loyalty is called {loyalty.name}.",
+    "result": "My loyalty is called points.",
+    "tags": [
+      "Loyalty",
+      "Custom Commands"
+    ]
+  },
+  {
+    "variable": "{media.name}",
+    "description": "Replaces {media.name} with the media requests title.",
+    "example": "@{user.name}, \"{media.name}\" has been added to the queue.",
+    "result": "@Streamlabs, \"Electric Swing Circus - Golden Hour\" has been added to the queue.",
+    "tags": [
+      "Media Share"
+    ]
+  },
+  {
+    "variable": "{media.requestedby}",
+    "description": "Replaces {media.requestedby} with the name of who requested the media.",
+    "example": "@{user.name}, currently \"{media.name}\" is playing which was requested by {media.requestedby}.",
+    "result": "@Streamlabs, currently \"Electric Swing Circus - Golden Hour\" is playing which was requested by AnkhHeart.",
+    "tags": [
+      "Media Share"
+    ]
+  },
+  {
+    "variable": "{currency}",
+    "description": "Replaces {currency} with current selected currency.",
+    "example": "@{user.name} just tipped {amount} {currency}!",
+    "result": "@Streamlabs just tipped 20 USD!",
+    "tags": [
+      "Notifications"
+    ]
+  },
+  {
+    "variable": "{position}",
+    "description": "Replaces {position} with the queue position of the user.",
+    "example": "@{user.name}, you have joined the queue at position #{position}.",
+    "result": "@Streamlabs, you have joined the queue at position #1.",
+    "tags": [
+      "Queue"
+    ]
+  },
+  {
+    "variable": "{users}",
+    "description": "Replaces {users} with all the users that are up next in the queue.",
+    "example": "Next up: {users}",
+    "result": "Next up: sowhoyoudotcom, ankhheart",
+    "tags": [
+      "Queue"
+    ]
+  },
+  {
+    "variable": "{title}",
+    "description": "Replaces {title} with the title of the Poll, Bet or Queue.",
+    "example": "A queue has opened for {title}. Type {command} <note> to join!",
+    "result": "A queue has opened for Warframe. Type !join <note> to join!",
+    "tags": [
+      "Queue",
+      "Poll",
+      "Betting"
+    ]
+  },
+  {
+    "variable": "{quote.id}",
+    "description": "Replaces {quote.id} with the id of the quote.",
+    "example": "Quote #{quote.id} {quote.msg} [{quote.game}] [{quote.date}]",
+    "result": "Quote #1 \"I am a cat! Meow!\" [Final Fantasy XIV] [01/04/2019]",
+    "tags": [
+      "Quotes"
+    ]
+  },
+  {
+    "variable": "{quote.game}",
+    "description": "Replaces {quote.game} with the game of the quote.",
+    "example": "Quote #{quote.id} {quote.msg} [{quote.game}] [{quote.date}]",
+    "result": "Quote #1 \"I am a cat! Meow!\" [Final Fantasy XIV] [01/04/2019]",
+    "tags": [
+      "Quotes"
+    ]
+  },
+  {
+    "variable": "{quote.msg}",
+    "description": "Replaces {quote.msg} with quote itself.",
+    "example": "Quote #{quote.id} {quote.msg} [{quote.game}] [{quote.date}]",
+    "result": "Quote #1 \"I am a cat! Meow!\" [Final Fantasy XIV] [01/04/2019]",
+    "tags": [
+      "Quotes"
+    ]
+  },
+  {
+    "variable": "{quote.date}",
+    "description": "Replaces {quote.date} with quote's  date.",
+    "example": "Quote #{quote.id} {quote.msg} [{quote.game}] [{quote.date}]",
+    "result": "Quote #1 \"I am a cat! Meow!\" [Final Fantasy XIV] [01/04/2019]",
+    "tags": [
+      "Quotes"
+    ]
+  }
+]
