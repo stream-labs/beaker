@@ -2,8 +2,60 @@
   <div>
     <div class="section">
       <h1>Onboarding</h1>
-      <p>Documentation for this will have to be redone.</p>
+      <p>Onboarding component - now with all logic outside of component!</p>
+    </div>
+    <div class="section">
+      <h2>Onboarding - Named Steps</h2>
+      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+        <div slot="content">
+          <pre>
+            <code>
+import { Onboarding, OnboardingStep } from "streamlabs-beaker"
 
+@Component({
+  components: {
+    Onboarding,
+    OnboardingStep,
+  }
+})
+
+data() {
+  return {
+    currentStep: 1,
+    steps: [
+      { name: &quot;Step One&quot;, complete: false},
+      { name: &quot;Step Two&quot;, complete: false},
+      { name: &quot;Step Three&quot;, complete: false}
+    ]
+  }
+}
+
+&lt;Onboarding
+  :steps=&quot;steps&quot;
+  :skippable=&quot;true&quot;
+  :currentStep=&quot;currentStep&quot;
+  :stepLocation=&quot;'top'&quot;
+  :skipHandler=&quot;skipFunc&quot;
+  :prevHandler=&quot;previousFunc&quot;
+  :continueHandler=&quot;continueFunc&quot;
+  :completeHandler=&quot;completeFunc&quot;
+&gt;
+  &lt;OnboardingStep slot=&quot;1&quot;&gt;
+    &lt;div&gt;Slot One&lt;/div&gt;
+  &lt;/OnboardingStep&gt;
+  &lt;OnboardingStep slot=&quot;2&quot;&gt;
+    &lt;div&gt;Slot Two&lt;/div&gt;
+  &lt;/OnboardingStep&gt;
+  &lt;OnboardingStep slot=&quot;3&quot;&gt;
+    &lt;div&gt;Slot Three&lt;/div&gt;
+  &lt;/OnboardingStep&gt;
+&lt;/Onboarding&gt;
+
+
+            </code>
+          </pre>
+        </div>
+      </Accordion>
       <div class="row" style="padding-top: 96px; margin-bottom: 96px;">
         <Onboarding
           :steps="steps"
@@ -79,6 +131,56 @@
       </div>
 
       <div class="row" style="padding-top: 96px; margin-bottom: 96px;">
+        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+          <div slot="content">
+            <pre>
+            <code>
+import { Onboarding, OnboardingStep } from "streamlabs-beaker"
+
+@Component({
+  components: {
+    Onboarding,
+    OnboardingStep,
+  }
+})
+
+data() {
+  return {
+    currentStep: 1,
+    steps: [
+      { complete: false},
+      { complete: false},
+      { complete: false}
+    ]
+  }
+}
+
+&lt;Onboarding
+  :steps=&quot;steps&quot;
+  :skippable=&quot;true&quot;
+  :currentStep=&quot;currentStep&quot;
+  :stepLocation=&quot;'top'&quot;
+  :skipHandler=&quot;skipFunc&quot;
+  :prevHandler=&quot;previousFunc&quot;
+  :continueHandler=&quot;continueFunc&quot;
+  :completeHandler=&quot;completeFunc&quot;
+&gt;
+  &lt;OnboardingStep slot=&quot;1&quot;&gt;
+    &lt;div&gt;Slot One&lt;/div&gt;
+  &lt;/OnboardingStep&gt;
+  &lt;OnboardingStep slot=&quot;2&quot;&gt;
+    &lt;div&gt;Slot Two&lt;/div&gt;
+  &lt;/OnboardingStep&gt;
+  &lt;OnboardingStep slot=&quot;3&quot;&gt;
+    &lt;div&gt;Slot Three&lt;/div&gt;
+  &lt;/OnboardingStep&gt;
+&lt;/Onboarding&gt;
+
+
+            </code>
+          </pre>
+          </div>
+        </Accordion>
         <Onboarding
           :steps="stepsTest"
           :skippable="true"
@@ -151,6 +253,80 @@
           </OnboardingStep>
         </Onboarding>
       </div>
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>steps</td>
+            <td>Object</td>
+            <td>null</td>
+            <td><code>[{name: "Step Name", complete: Boolean}]</code></td>
+          </tr>
+          <tr>
+            <td>stepLocation</td>
+            <td>string</td>
+            <td>'left'</td>
+            <td>
+              Location of Progress Bar: <code>left</code> or <code>top</code>
+            </td>
+          </tr>
+          <tr>
+            <td>currentStep</td>
+            <td>number</td>
+            <td>null</td>
+            <td>The number of the step you are on</td>
+          </tr>
+          <tr>
+            <td>completeHandler</td>
+            <td>Function</td>
+            <td>null</td>
+            <td>
+              Function to perform when <code>complete</code> button is clicked
+            </td>
+          </tr>
+          <tr>
+            <td>continueHandler</td>
+            <td>Function</td>
+            <td>null</td>
+            <td>
+              Function to perform when <code>continue</code> button is clicked
+            </td>
+          </tr>
+          <tr>
+            <td>skipHandler</td>
+            <td>Function</td>
+            <td>null</td>
+            <td>Function to perform when <code>skip</code> is clicked</td>
+          </tr>
+          <tr>
+            <td>previousHandler</td>
+            <td>Function</td>
+            <td>null</td>
+            <td>
+              Function to perform when <code>previous</code> button is clicked
+            </td>
+          </tr>
+          <tr>
+            <td>skippable</td>
+            <td>boolean</td>
+            <td>null</td>
+            <td>make steps skippable</td>
+          </tr>
+          <tr>
+            <td>disableControls</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>to disable controls</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
@@ -188,6 +364,7 @@ export default class Onboardings extends Vue {
   ];
 
   continueFunc() {
+    this.stepsTest[this.currentStep - 1].complete = true;
     this.currentStep++;
   }
 
