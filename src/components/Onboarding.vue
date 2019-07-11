@@ -11,7 +11,7 @@
           </div>
           <div
             class="s-name-step"
-            :class="{ 'current-step': currentStepStyle(Math.floor(idx / 2)) }"
+            :class="{ 'current-step': currentStepStyle(idx) }"
           >
             {{ name }}
           </div>
