@@ -6,7 +6,7 @@
         v-if="namedSteps"
       >
         <div v-for="(step, idx) in steps" :key="idx">
-          <div class="s-name-caret" v-if="idx > 0 && idx < steps.length - 1">
+          <div class="s-name-caret" v-if="idx > 0">
             <i class="icon-back"></i>
           </div>
           <div
