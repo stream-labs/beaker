@@ -78,7 +78,7 @@ import Button from "./../components/Button.vue";
   }
 })
 export default class Onboarding extends Vue {
-  @Prop() steps!: { name?: string, complete: boolean }[];
+  @Prop() steps!: { name?: string; complete: boolean }[];
   @Prop({ default: "left" }) stepLocation!: string;
   @Prop() currentStep!: number;
   @Prop() onComplete!: Function;

@@ -314,8 +314,8 @@
             :title="'Join'"
           ></Button>
         </notice>
-        <br>
-        <br>
+        <br />
+        <br />
 
         <notice
           :bgColor="'warning'"
