@@ -582,7 +582,6 @@ components: {
           </div>
         </Accordion>
         <Button
-          tag="a"
           :variation="'slobs-download'"
           :title="'Download Streamlabs OBS'"
           :description="'Windows 7+ 245.8MB'"
