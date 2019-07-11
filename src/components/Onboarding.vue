@@ -2,10 +2,10 @@
   <div class="s-onboarding">
     <div class="s-onboarding-main" :class="location">
       <div
-        class="s-onboarding-progress s-onboarding__top s-step-name__cont"
+        class="s-onboarding-progress s-onboarding__top s-step__cont"
         v-if="namedSteps"
       >
-        <div v-for="(step, idx) in steps" :key="idx">
+        <div v-for="(step, idx) in steps" :key="idx" class="s-step-name__cont">
           <div class="s-name-caret" v-if="idx > 0">
             <i class="icon-back"></i>
           </div>
@@ -13,7 +13,7 @@
             class="s-name-step"
             :class="{ 'current-step': currentStepStyle(idx) }"
           >
-            {{ name }}
+            {{ step.name }}
           </div>
         </div>
       </div>
@@ -37,7 +37,10 @@
         <p v-show="currentStep !== 1" @click="prevHandler">Back</p>
       </div>
       <div class="s-nextStep">
-        <p v-if="skippable && currentStep !== steps.length" @click="skipHandler">
+        <p
+          v-if="skippable && currentStep !== steps.length"
+          @click="skipHandler"
+        >
           Skip
         </p>
 
@@ -148,7 +151,7 @@ export default class Onboarding extends Vue {
 
     &.s-onboarding__top {
       flex-direction: row;
-      width: 400px;
+      width: 60%;
       min-height: 24px;
     }
   }
@@ -175,18 +178,31 @@ export default class Onboarding extends Vue {
     }
   }
 
-  .s-step-name__cont {
+  .s-step__cont {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 500px;
+
+    .s-step-name__cont:first-child {
+      width: auto;
+    }
+  }
+
+  .s-step-name__cont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
   }
 
   .s-name-caret {
     color: @dark-5;
     font-size: 10px;
-
+    width: 50%;
+    display: flex;
+    justify-content: center;
     > i {
       display: block;
       transform: rotate(180deg);
@@ -194,6 +210,8 @@ export default class Onboarding extends Vue {
   }
 
   .s-name-step {
+    display: flex;
+    justify-content: space-around;
     color: @day-paragraph;
 
     &.current-step {
