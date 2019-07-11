@@ -1,7 +1,10 @@
 <template>
   <div class="s-onboarding">
     <div class="s-onboarding-main" :class="location">
-      <div class="s-onboarding-progress s-onboarding__top s-step__cont" v-if="namedSteps">
+      <div
+        class="s-onboarding-progress s-onboarding__top s-step__cont"
+        v-if="namedSteps"
+      >
         <div v-for="(step, idx) in steps" :key="idx" class="s-step-name__cont">
           <div class="s-name-caret" v-if="idx > 0">
             <i class="icon-back"></i>
@@ -9,7 +12,9 @@
           <div
             class="s-name-step"
             :class="{ 'current-step': currentStepStyle(idx) }"
-          >{{ step.name }}</div>
+          >
+            {{ step.name }}
+          </div>
         </div>
       </div>
       <div class="s-onboarding-progress" :class="location" v-else>
@@ -32,7 +37,12 @@
         <p v-show="currentStep !== 1" @click="prevHandler">Back</p>
       </div>
       <div class="s-nextStep">
-        <p v-if="skippable && currentStep !== steps.length" @click="skipHandler">Skip</p>
+        <p
+          v-if="skippable && currentStep !== steps.length"
+          @click="skipHandler"
+        >
+          Skip
+        </p>
 
         <Button
           v-if="currentStep !== steps.length"
@@ -44,7 +54,9 @@
         <div
           v-if="skippable && currentStep === steps && !isCompleted"
           class="s-onboarding-skip__warning"
-        >You skipped a step</div>
+        >
+          You skipped a step
+        </div>
         <Button
           v-if="currentStep === steps.length"
           :variation="'action'"
