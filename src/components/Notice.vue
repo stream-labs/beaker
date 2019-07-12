@@ -1,7 +1,10 @@
 <template>
   <div class="s-notice" :class="`s-bg-${bgColor}`">
     <div class="s-notice__wrapper">
-      <div class="s-notice__icon-bg" :class="`s-bg-image__${bgColor}`"></div>
+      <i
+        class="s-notice__icon-bg"
+        :class="`s-notice__icon-${icon} icon-${icon}`"
+      ></i>
       <div class="s-notice__body">
         <div class="s-notice__icon">
           <i class="s-icon" :class="`s-notice__icon-${icon} icon-${icon}`"></i>
@@ -67,7 +70,6 @@ export default class Notice extends Vue {
 @import (reference) "./../styles/Imports";
 
 .s-notice {
-  .margin-bottom(3);
   overflow: hidden;
 }
 
@@ -85,6 +87,8 @@ export default class Notice extends Vue {
   left: 0;
   width: 140px;
   height: 140px;
+  font-size: 140px;
+  opacity: 0.08;
 }
 
 .s-notice__body {
@@ -104,6 +108,10 @@ export default class Notice extends Vue {
 p {
   .margin-bottom(0);
   .margin-top(2);
+}
+
+.s-notice__desc {
+  .margin-bottom(0);
 }
 
 .s-bg-default {

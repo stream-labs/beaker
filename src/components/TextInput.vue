@@ -145,6 +145,7 @@ export default class TextInput extends Vue {
   @Watch("value")
   valueChanged(newValue: string) {
     this.content = newValue.toString();
+    this.$emit("onChange", newValue);
   }
 
   handleInput(event: { target: HTMLInputElement }) {

@@ -6,7 +6,7 @@
       :name="name"
       :checked="val == value"
       :value="val"
-      @input="$emit('input', $event.target.value)"
+      @input="$emit('input', val)"
       @click="$emit('onClick')"
     />
     <label :for="id">{{ label }}</label>
@@ -18,20 +18,20 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Radio extends Vue {
-  @Prop()
+  @Prop(String)
   label!: string;
 
-  @Prop()
+  @Prop(String)
   id!: string;
 
-  @Prop()
+  @Prop(String)
   name!: string;
 
-  @Prop()
-  value!: string;
+  @Prop([String, Boolean])
+  value!: string | boolean;
 
-  @Prop()
-  val!: boolean;
+  @Prop([String, Boolean])
+  val!: string | boolean;
 }
 </script>
 

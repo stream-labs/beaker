@@ -85,8 +85,10 @@ export default class ImagePickerInput extends Vue {
   cursor: pointer;
 
   img {
-    height: 48px;
     width: auto;
+    height: auto;
+    max-width: 80%;
+    max-height: 80%;
     position: absolute;
     top: 50%;
     left: 50%;
