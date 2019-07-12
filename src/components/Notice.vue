@@ -53,22 +53,6 @@ export default class Notice extends Vue {
 
 <style lang="less">
 @import (reference) "./../styles/Imports";
-.notice-colors(@color, @amount: 8%, @textColor: @color) {
-  .s-notice {
-    &__wrapper {
-      background-color: fade(@color, @amount);
-    }
-
-    &__icon-bg,
-    &__icon {
-      color: @color;
-    }
-
-    &__title {
-      color: @textColor;
-    }
-  }
-}
 
 .s-notice {
   overflow: hidden;

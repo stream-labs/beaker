@@ -72,15 +72,6 @@ export default class Callout extends Vue {
 
 <style lang="less">
 @import (reference) "./../styles/Imports";
-.callout-colors(@color, @strongColor: @white) {
-  background-color: fade(@color, 8%);
-  color: @color;
-
-  &.strong {
-    background-color: @color;
-    color: @strongColor;
-  }
-}
 
 .s-callout {
   position: relative;

@@ -102,6 +102,7 @@ export default class Badge extends Vue {
 
 <style lang="less">
 @import (reference) "./../styles/Imports";
+<<<<<<< HEAD
 
 .badge-colors(@color, @bg: @color, @amount: 8%, @alt-color: @color) {
   background-color: fade(@bg, @amount);
@@ -118,6 +119,8 @@ export default class Badge extends Vue {
 .night-badge-colors(@color: @dark-3, @bg, @amount: 100%, @alt-color: @bg) {
   .badge-colors(@color, @bg, @amount, @alt-color);
 }
+=======
+>>>>>>> merge master
 
 // Standout labels, used for 'New', 'Beta', 'Pro', etc
 .s-badge {

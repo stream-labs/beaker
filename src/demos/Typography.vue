@@ -1,8 +1,6 @@
 <template>
-  <div class="s-typography">
-    <h1>Typography</h1>
-
-    <div class="row section">
+  <div class="section s-typography">
+    <div class="row bottom-space">
       <h4 class="s-typography__header">FONTS</h4>
       <h1>Barlow</h1>
       <div class="font-style barlow">Barlow</div>
@@ -17,7 +15,7 @@
       </div>
     </div>
 
-    <div class="row section">
+    <div class="row bottom-space">
       <h4 class="s-typography__header">TYPOGRAPHY</h4>
       <div class="side-by-side">
         <div class="subtitle">Letter Spacing</div>
@@ -33,26 +31,18 @@
       </div>
     </div>
 
-    <h4 class="s-typography__header">TYPE SCALE</h4>
-    <span class="subtitle">Marketing</span>
-    <FormGroup>
-      <div slot="input" class="section">
-        <div class="type-scale barlow extrabold s48">
-          H1: Barlow ExtraBold 48px
-        </div>
-        <div class="type-scale barlow bold s32">
-          H2: Barlow Bold 32px
-        </div>
-      </div>
+    <div class="row bottom-space">
+      <h4 class="s-typography__header">TYPE SCALE</h4>
+      <span class="subtitle">Marketing</span>
 
-      <span slot="input" class="subtitle">Dashboard and Marketing</span>
-      <div slot="input" class="type-scale bold s22">
-        Marketing Title: Roboto Bold 22px
+      <div class="type-scale barlow extrabold s48">
+        H1: Barlow ExtraBold 48px
       </div>
-      <div slot="input" class="type-scale bold s20">
-        Title: Roboto Bold 20px
-      </div>
-      <div slot="input" class="type-scale medium s18">
+      <div class="type-scale barlow bold s32">H2: Barlow Bold 32px</div>
+
+      <div class="type-scale bold s22">Marketing Title: Roboto Bold 22px</div>
+      <div class="type-scale bold s20">Title: Roboto Bold 20px</div>
+      <div class="type-scale medium s18">
         Marketing Subtitle: Roboto Medium 18px
       </div>
       <div slot="input" class="type-scale medium s16">

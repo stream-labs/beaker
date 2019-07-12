@@ -130,3 +130,11 @@ export default class SiteSearchDemo extends Vue {
   jsonSearch = (searchData as any).data;
 }
 </script>
+
+<style lang="less">
+@import (reference) "./../styles/Imports";
+
+.topnav {
+  height: 40px;
+}
+</style>
