@@ -7,10 +7,15 @@
     @keyup="watchCursor($event)"
     @keydown="keyEvent"
   >
-    <transition-group name="s-textpicker--fadeY">
+    <transition
+      name="expand"
+      @enter="open"
+      @after-enter="afterOpen"
+      @leave="close"
+      tag="div"
+    >
       <div
         class="s-textpicker-results__cont"
-        :key="limitedResult.length"
         v-if="phaseTwo && limitedResult.length >= 1"
         :style="calcTransform"
         ref="resultArea"
@@ -34,7 +39,7 @@
           </div>
         </transition-group>
       </div>
-    </transition-group>
+    </transition>
     <div class="s-textpicker--searchbar__cont" ref="inputCont">
       <slot name="input"></slot>
     </div>
@@ -90,9 +95,9 @@ export default class TextPicker extends Vue {
       matchAllTokens: false,
       findAllMatches: true,
       shouldSort: true,
-      threshold: 0.1,
+      threshold: 0.2,
       location: 1,
-      distance: 100,
+      distance: 10,
       maxPatternLength: 12,
       minMatchCharLength: 0,
       keys: ["variable"]
@@ -127,19 +132,40 @@ export default class TextPicker extends Vue {
   }
 
   get calcTransform() {
-    if (this.phaseOne === false) {
-      return "transform: translateY(0);";
-    }
-    if (
-      this.limitedResult.length >= 1 &&
-      this.limitedResult.length <= 7 &&
-      this.phaseOne == true
-    ) {
-      let y = parseInt(this.limitedResult.length) * 32;
-      return "transform: translateY(-" + y + "px);";
-    } else {
-      return "transform: translateY(-224px);";
-    }
+    let nudge = this.$refs.inputCont.offsetHeight / 2;
+    console.log(nudge);
+
+    return "transform: translateY(-" + nudge + "px);";
+  }
+
+  afterOpen(element) {
+    element.style.height = "auto";
+  }
+
+  open(element) {
+    let width = getComputedStyle(element).width;
+    element.style.width = width;
+    element.style.position = `absolute`;
+    element.style.visibility = `hidden`;
+    element.style.height = `auto`;
+    let height = getComputedStyle(element).height;
+    element.style.width = null;
+    element.style.position = null;
+    element.style.visibility = null;
+    element.style.height = 0;
+    getComputedStyle(element).height;
+    setTimeout(() => {
+      element.style.height = height;
+    });
+  }
+
+  close(element) {
+    let height = getComputedStyle(element).height;
+    element.style.height = height;
+    getComputedStyle(element).height;
+    setTimeout(() => {
+      element.style.height = 0;
+    });
   }
 
   watchCursor(val) {
@@ -150,7 +176,7 @@ export default class TextPicker extends Vue {
     this.value = val.target.value;
   }
 
-  @Watch("value")
+  @Watch("value", { immediate: true })
   watchValue() {
     this.$parent.$emit(this.inputChangeEventName, this.value);
     this.$emit(this.inputChangeEventName, this.value);
@@ -159,6 +185,7 @@ export default class TextPicker extends Vue {
       if (this.noResults) this.playClosingSequence();
       if (this.value.length <= 0) this.playClosingSequence();
     }
+    if (this.value === "") this.result = [];
   }
 
   @Watch("result")
@@ -175,10 +202,11 @@ export default class TextPicker extends Vue {
     if (this.value.trim() === "") {
       this.result = [];
     } else {
-      const cursorPos = this.cursorPos;
-      const bracketOpen = this.value.substring(0, cursorPos).lastIndexOf("{");
+      const cursorPos = this.cursorPos + 1;
+      const bracketOpen = this.value.lastIndexOf("{");
       const searchValue = this.value.substring(bracketOpen, cursorPos);
       const bracketClose = searchValue.lastIndexOf("}");
+      console.log(searchValue);
       if (
         cursorPos > bracketOpen &&
         bracketClose === -1 &&
@@ -235,7 +263,6 @@ export default class TextPicker extends Vue {
       this.value.substring(0, cursor) +
       this.selectedResult.substring(this.queryLength) +
       this.value.substring(cursor);
-
     this.result = [];
     this.$emit("update", this.value);
   }
@@ -294,30 +321,6 @@ export default class TextPicker extends Vue {
     background-color: @day-bg;
   }
 
-  ::placeholder {
-    color: #91979a;
-    opacity: 1;
-  }
-
-  .s-textpicker-textarea {
-    border: 1px solid @day-input-border;
-    border-radius: @radius;
-    margin: 0;
-  }
-
-  .s-textpicker-area__input--error {
-    border-color: @red;
-  }
-
-  .s-textpicker-area__input--count {
-    .padding-bottom(4) !important;
-  }
-
-  .s-textpicker-area__characters {
-    .absolute(auto, 20px, 15px, auto);
-    margin: 0;
-  }
-
   .s-textpicker__result--title {
     font-size: 12px;
     color: @day-title;
@@ -341,6 +344,7 @@ export default class TextPicker extends Vue {
     display: flex;
     width: 100%;
     max-height: 224px;
+    bottom: 0;
     flex-direction: column-reverse;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -380,7 +384,7 @@ export default class TextPicker extends Vue {
 
   .s-textpicker-results {
     display: flex;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    //transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     height: 32px;
     transform-origin: bottom;
     flex-direction: row;
@@ -403,19 +407,6 @@ export default class TextPicker extends Vue {
     }
   }
 
-  .s-textpicker-area__label {
-    position: absolute;
-    color: @dark-5;
-    left: 8px;
-    top: 12px;
-    .radius();
-  }
-
-  .s-textpicker-area__label--error,
-  .s-textpicker-area__error-text {
-    color: @red;
-  }
-
   .s-textpicker--fadeX-enter-active {
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 1;
@@ -429,116 +420,31 @@ export default class TextPicker extends Vue {
 
   .s-textpicker--fadeX-enter {
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: translateX(10px);
+    //transform: translateX(10px);
     opacity: 0;
   }
 
   .s-textpicker--fadeX-leave-to {
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
-    transform: translateX(10px);
+    //transform: translateX(10px);
   }
 
   .s-textpicker--fadeX-move {
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .s-textpicker--fadeY-enter-active {
-    transition: all 0.25s 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 1;
-  }
-
-  .s-textpicker--fadeY-leave-active {
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    position: absolute;
-    opacity: 0;
-  }
-
-  .s-textpicker--fadeY-enter {
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: translateY(-10px);
-    opacity: 0;
-  }
-
-  .s-textpicker--fadeY-leave-to {
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-
-  .s-textpicker--fadeY-move {
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.125s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
-.s-textpicker-area--with-label {
-  position: relative;
-
-  label {
-    order: -1;
-    transition: all 0.275s ease-in-out;
-    transform: translateY(0px);
-    pointer-events: none;
-    background-color: @white;
-    padding: 0 4px;
-    line-height: 130%;
-  }
-
-  .s-textpicker-area__input:focus::-webkit-input-placeholder {
-    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    color: @light-5;
-  }
-  .s-textpicker-area__input:focus:-moz-placeholder {
-    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    color: @light-5;
-  } /* FF 4-18 */
-  .s-textpicker-area__input:focus::-moz-placeholder {
-    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    color: @light-5;
-  } /* FF 19+ */
-  .s-textpicker-area__input:focus:-ms-input-placeholder {
-    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    color: @light-5;
-  } /* IE 10+ */
-
-  .s-textpicker-area__input:focus + label,
-  .s-textpicker-area__label--top {
-    transform: translateY(-20px);
-    font-size: 12px;
-  }
-
-  .s-textpicker-area__input:focus + label {
-    color: @day-title;
-  }
-
-  .s-textpicker-area__input:focus + .s-form-area__label--error {
-    color: green;
-  }
-
-  .s-textpicker-area--top {
-    color: @day-paragraph;
-  }
-
-  ::-webkit-input-placeholder {
-    /* Chrome/Opera/Safari */
-    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    color: transparent;
-  }
-  ::-moz-placeholder {
-    /* Firefox 19+ */
-    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    color: transparent;
-  }
-  :-ms-input-placeholder {
-    /* IE 10+ */
-    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    color: transparent;
-  }
-  :-moz-placeholder {
-    /* Firefox 18- */
-    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    color: transparent;
-  }
+.expand-enter-active,
+.expand-leave-active {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+.expand-enter,
+.expand-leave-to {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 0;
+  opacity: 0;
 }
 
 .night {
