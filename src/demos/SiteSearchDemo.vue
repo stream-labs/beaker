@@ -120,7 +120,20 @@
         </table>
 
         <div class="row">
-          <text-picker :jsonSearch="varData" :rows="3" :maxLength="15" :label="'Cloudbot Variable'"> </text-picker>
+          <text-picker :jsonSearch="varData">
+            <text-area
+              name="myarea"
+              ref="textArea"
+              v-model="value"
+              autoResize="true"
+              label="Text input"
+              placeholder="This is where you put some cool stuff"
+              :maxLength="1000"
+              :maxHeight="100"
+              slot="input"
+            >
+            </text-area>
+          </text-picker>
         </div>
       </div>
     </div>
@@ -131,6 +144,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import SiteSearch from "./../components/SiteSearch.vue";
 import TextPicker from "./../components/TextPicker.vue";
+import TextArea from "./../components/TextArea.vue";
 import Accordion from "./../components/Accordion.vue";
 import * as searchData from "./../components/sitesearchdata.json";
 import varSearch from "./../components/cloudbotvariables.json";
@@ -138,6 +152,7 @@ import varSearch from "./../components/cloudbotvariables.json";
 @Component({
   components: {
     SiteSearch,
+    TextArea,
     TextPicker,
     Accordion
   }
@@ -145,6 +160,7 @@ import varSearch from "./../components/cloudbotvariables.json";
 export default class SiteSearchDemo extends Vue {
   jsonSearch = (searchData as any).data;
   varData = varSearch;
+  value = "";
 }
 </script>
 
