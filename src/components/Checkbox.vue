@@ -31,7 +31,7 @@ export default class Checkbox extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-checkbox {
   position: relative;

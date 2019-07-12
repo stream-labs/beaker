@@ -83,7 +83,7 @@ export default class ColorPicker extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-colorpicker {
   left: 0;

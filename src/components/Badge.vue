@@ -99,7 +99,7 @@ export default class Badge extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 // Standout labels, used for 'New', 'Beta', 'Pro', etc
 .s-badge {

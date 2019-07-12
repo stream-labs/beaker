@@ -121,7 +121,7 @@ export default class PrimeComponents extends Vue {
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .cs-section {
   position: relative;

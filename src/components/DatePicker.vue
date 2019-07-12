@@ -124,7 +124,7 @@ export default class DatePicker extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-date-picker {
   &__title {

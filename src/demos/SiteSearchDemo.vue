@@ -101,7 +101,7 @@ export default class SiteSearchDemo extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .topnav {
   height: 40px;

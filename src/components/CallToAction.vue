@@ -171,7 +171,7 @@ export default class CallToAction extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-call-to-action-mq {
   flex-direction: column !important;

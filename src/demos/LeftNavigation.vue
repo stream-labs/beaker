@@ -43,7 +43,7 @@ export default class LeftNavigation extends Vue {
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .left-navigation {
   display: flex;

@@ -126,7 +126,7 @@ export default class TaggingInput extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 .s-tagging-input {
   .s-tagging-input__container {
     display: flex;

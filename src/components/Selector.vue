@@ -61,7 +61,7 @@ export default {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-selector {
   fieldset[disabled] .multiselect {

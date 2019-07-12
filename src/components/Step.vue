@@ -50,7 +50,7 @@ export default class Step extends Vue {
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-step {
   display: flex;

@@ -85,7 +85,7 @@ export default class Loading extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-loader__bg {
   position: relative;
