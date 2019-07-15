@@ -202,7 +202,7 @@ export default class VariableMenu extends Vue {
       this.result = [];
     } else {
       const cursorPos = this.cursorPos;
-      const bracketOpen = this.value.lastIndexOf("{");
+      const bracketOpen = this.value.lastIndexOf("{", cursorPos - 1);
       const searchValue = this.value.substring(bracketOpen, cursorPos);
       const bracketClose = searchValue.lastIndexOf("}");
       if (
