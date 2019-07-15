@@ -18,6 +18,9 @@
         :maxlength="maxLength"
         :value="value"
         @input="onValueChange"
+        @focus="onFocus"
+        @click="onClick"
+        @keyup="onKeyUp"
         v-on="filteredListeners"
       />
       <label
@@ -82,6 +85,12 @@ export default class TextArea extends Vue {
   @Prop()
   maxHeight!: number;
 
+  private localValue: string = "";
+
+  created() {
+    this.$parent.$on("update", this.updateValue);
+  }
+
   mounted() {
     this.updateSize();
   }
@@ -101,6 +110,20 @@ export default class TextArea extends Vue {
   onValueChange(event: { target: HTMLTextAreaElement }) {
     this.$emit("input", event.target.value);
     this.updateSize();
+  }
+
+  onKeyUp(event: { target: HTMLTextAreaElement }) {
+    this.$emit("keyup", event.target.selectionStart);
+  }
+  onFocus(event: { target: HTMLTextAreaElement }) {
+    this.$emit("focus", event.target.selectionStart);
+  }
+  onClick(event: { target: HTMLTextAreaElement }) {
+    this.$emit("click", event.target.selectionStart);
+  }
+
+  updateValue(val) {
+    this.$refs.textArea.value = val;
   }
 
   updateSize() {

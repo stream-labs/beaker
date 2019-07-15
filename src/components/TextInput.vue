@@ -29,6 +29,9 @@
       :disabled="disabled"
       :readonly="readonly"
       @blur="$emit('blur')"
+      @focus="onFocus"
+      @click="onClick"
+      @keyup="onKeyUp"
       :autocomplete="autoComplete"
       :autofocus="autofocus"
       v-model="content"
@@ -116,6 +119,7 @@ export default class TextInput extends Vue {
       this.value !== undefined && this.value !== null
         ? this.value.toString()
         : "";
+    this.$parent.$on("update", this.updateValue);
   }
 
   focus() {
@@ -152,6 +156,20 @@ export default class TextInput extends Vue {
     this.update(
       this.type === "number" ? Number(event.target.value) : event.target.value
     );
+  }
+
+  updateValue(val) {
+    this.$refs.input.value = val;
+  }
+
+  onKeyUp(event: { target: HTMLTextAreaElement }) {
+    this.$emit("keyup", event.target.selectionStart);
+  }
+  onFocus(event: { target: HTMLTextAreaElement }) {
+    this.$emit("focus", event.target.selectionStart);
+  }
+  onClick(event: { target: HTMLTextAreaElement }) {
+    this.$emit("click", event.target.selectionStart);
   }
 
   increment() {
