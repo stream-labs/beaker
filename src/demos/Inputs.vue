@@ -17,7 +17,7 @@
           :placeholder="textInputPlaceholder"
           v-model="textInputValue"
           name="textExample"
-          autoComplete="on"
+          autocomplete="on"
           slot="input"
         ></text-input>
 
@@ -73,7 +73,63 @@
           slot="input"
         ></text-area>
       </FormGroup>
+      <h1>Text Inputs with Variable Menu Wrapper</h1>
+      <p>
+        A new way to navigate variables, just wrap your input with the Variable
+        Menu. This is not work with FormGroup preformatting.
+      </p>
+      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+        <div slot="content">
+          <pre>
+              <code>
+import { VariableMenu } from &quot;streamlabs-beaker&quot;
+import varSearch from &quot;../external.json&quot;
 
+
+/* *** Minimum fields for variable search json *** */
+
+[
+ {
+   &quot;variable&quot;: &quot;{variableName}&quot;,
+   &quot;description&quot;: &quot;Describe what the variable does&quot;
+ }
+]
+
+
+&lt;variable-search :jsonSearch=&quot;someJson&quot;&gt;
+  &lt;text-input
+    type=&quot;text&quot;
+    v-model=&quot;value&quot;
+    name=&quot;a-name&quot;
+    slot=&quot;input&quot;
+  /&gt;
+&lt;/variable-search&gt;
+              </code>
+            </pre>
+        </div>
+      </Accordion>
+      <variable-menu :jsonSearch="varData">
+        <text-input
+          type="text"
+          :placeholder="'w/ Variable Menu'"
+          v-model="variTextValue"
+          name="textExample"
+          slot="input"
+        ></text-input>
+      </variable-menu>
+
+      <variable-menu :jsonSearch="varData">
+        <text-area
+          name="myarea"
+          ref="textArea"
+          v-model="variAreaValue"
+          placeholder="w/ Variable Menu"
+          :maxLength="1000"
+          :maxHeight="100"
+          slot="input"
+          rows="3"
+        ></text-area>
+      </variable-menu>
       <table class="docs-table">
         <thead>
           <tr>
@@ -471,6 +527,8 @@ import TextInput from "./../components/TextInput.vue";
 import FormGroup from "./../components/FormGroup.vue";
 import TaggingInput from "./../components/TaggingInput.vue";
 import TextArea from "./../components/TextArea.vue";
+import VariableMenu from "./../components/VariableMenu.vue";
+import varSearch from "./../components/cloudbotvariables.json";
 
 @Component({
   components: {
@@ -483,7 +541,8 @@ import TextArea from "./../components/TextArea.vue";
     TextInput,
     FormGroup,
     TaggingInput,
-    TextArea
+    TextArea,
+    VariableMenu
   }
 })
 export default class Inputs extends Vue {
@@ -510,6 +569,11 @@ export default class Inputs extends Vue {
 
   layoutValue = "above";
   jarValue = "glass-pint";
+
+  // For Variable Menu
+  varData = varSearch;
+  variAreaValue = "";
+  variTextValue = "";
 
   // Text inputs
   textInputValue = "test";

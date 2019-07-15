@@ -1,12 +1,12 @@
 <template>
   <div
-    class="s-textpicker"
+    class="s-variablemenu"
     @input="watchInput($event)"
     @focus="watchCursor($event)"
     @click="watchCursor($event)"
     @keyup="watchCursor($event)"
     @keydown="keyEvent"
-    ref="picker"
+    ref="variableMenu"
   >
     <transition
       name="expand"
@@ -16,14 +16,14 @@
       tag="div"
     >
       <div
-        class="s-textpicker-results__cont"
+        class="s-variablemenu-results__cont"
         v-if="phaseTwo && limitedResult.length >= 1"
         :style="calcTransform"
         ref="resultArea"
       >
-        <transition-group name="s-textpicker--fadeX">
+        <transition-group name="s-variablemenu--fadeX">
           <div
-            class="s-textpicker-results"
+            class="s-variablemenu-results"
             v-for="(searchResult, i) in limitedResult"
             :key="searchResult.item.variable"
             :class="{ 's-active-result': currentResult === i }"
@@ -31,17 +31,17 @@
             @mousedown="mergeValues"
             @mouseup="blurSearch"
           >
-            <div class="s-textpicker__result--title">
+            <div class="s-variablemenu__result--title">
               {{ searchResult.item.variable }}
             </div>
-            <div class="s-textpicker__result--desc">
+            <div class="s-variablemenu__result--desc">
               {{ searchResult.item.description }}
             </div>
           </div>
         </transition-group>
       </div>
     </transition>
-    <div class="s-textpicker--searchbar__cont" ref="inputCont">
+    <div class="s-variablemenu--searchbar__cont" ref="inputCont">
       <slot name="input"></slot>
     </div>
   </div>
@@ -56,7 +56,7 @@ export default class VariableMenu extends Vue {
   $refs!: {
     resultArea: HTMLDivElement;
     inputCont: HTMLDivElement;
-    picker: HTMLDivElement;
+    variableMenu: HTMLDivElement;
   };
 
   result: any = [];
@@ -125,7 +125,7 @@ export default class VariableMenu extends Vue {
   }
 
   get calcTransform() {
-    let nudge = this.$refs.picker.offsetHeight;
+    let nudge = this.$refs.variableMenu.offsetHeight;
     return "transform: translateY(-" + nudge + "px);";
   }
 
@@ -159,17 +159,12 @@ export default class VariableMenu extends Vue {
     });
   }
 
-  // watchCursor(val) {
-  //   this.cursorPos = val.target.selectionStart;
-  // }
-
   watchCursor(val) {
     this.cursorPos = val.target.selectionStart;
     this.getSearchString();
     if (this.noResults) this.playClosingSequence();
     if (this.value.length <= 0) this.playClosingSequence();
   }
-
 
   watchInput(val) {
     this.value = val.target.value;
@@ -212,7 +207,6 @@ export default class VariableMenu extends Vue {
       ) {
         this.result = this.fuse.search(searchValue);
         this.queryLength = searchValue.length;
-        console.log(searchValue);
       } else {
         this.playClosingSequence();
       }
@@ -227,7 +221,6 @@ export default class VariableMenu extends Vue {
       }
       event.preventDefault();
       event.stopPropagation();
-
       this.currentResult--;
     }
     // KEYPRESS DOWN
@@ -316,20 +309,18 @@ export default class VariableMenu extends Vue {
 <style lang="less">
 @import "./../styles/Imports";
 
-.s-textpicker {
-  z-index: 15;
+.s-variablemenu {
   position: relative;
-  max-height: 51px;
+  display: block;
   transform-origin: bottom;
-  padding: 0;
-  margin: 0;
+  .margin-bottom(2);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
-  &.s-textpicker--phase-one {
+  &.s-variablemenu--phase-one {
     background-color: @day-bg;
   }
 
-  .s-textpicker__result--title {
+  .s-variablemenu__result--title {
     font-size: 12px;
     color: @day-title;
     background-color: @day-input-border;
@@ -342,13 +333,13 @@ export default class VariableMenu extends Vue {
     white-space: nowrap;
   }
 
-  .s-textpicker__result--desc {
+  .s-variablemenu__result--desc {
     width: 100%;
     font-size: 12px;
     color: @dark-5;
   }
 
-  .s-textpicker-results__cont {
+  .s-variablemenu-results__cont {
     display: flex;
     width: 100%;
     max-height: 224px;
@@ -364,22 +355,22 @@ export default class VariableMenu extends Vue {
     .radius();
   }
 
-  .s-textpicker-results__cont::-webkit-scrollbar-corner {
+  .s-variablemenu-results__cont::-webkit-scrollbar-corner {
     background-color: rgba(0, 0, 0, 0.04);
     background-image: none;
   }
 
-  .s-textpicker-results__cont::-webkit-scrollbar {
+  .s-variablemenu-results__cont::-webkit-scrollbar {
     width: 1em;
     background-color: rgba(0, 0, 0, 0.04);
   }
 
-  .s-textpicker-results__cont::-webkit-scrollbar {
+  .s-variablemenu-results__cont::-webkit-scrollbar {
     width: 16px;
     height: 9px;
   }
 
-  .s-textpicker-results__cont::-webkit-scrollbar-thumb {
+  .s-variablemenu-results__cont::-webkit-scrollbar-thumb {
     border-radius: 10px;
     -webkit-border-radius: 10px;
     height: 10px;
@@ -390,7 +381,7 @@ export default class VariableMenu extends Vue {
     box-shadow: inset -1px -1px 0px @dark-5, inset 1px 1px 0px @dark-5;
   }
 
-  .s-textpicker-results {
+  .s-variablemenu-results {
     display: flex;
     height: 32px;
     transform-origin: bottom;
@@ -403,8 +394,8 @@ export default class VariableMenu extends Vue {
 
     &.s-active-result {
       background-color: @day-dropdown-bg;
-      .s-textpicker__result--image,
-      .s-textpicker__result--title {
+      .s-variablemenu__result--image,
+      .s-variablemenu__result--title {
         color: @day-title;
       }
     }
@@ -414,28 +405,28 @@ export default class VariableMenu extends Vue {
     }
   }
 
-  .s-textpicker--fadeX-enter-active {
+  .s-variablemenu--fadeX-enter-active {
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 1;
   }
 
-  .s-textpicker--fadeX-leave-active {
+  .s-variablemenu--fadeX-leave-active {
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     position: absolute;
     opacity: 0;
   }
 
-  .s-textpicker--fadeX-enter {
+  .s-variablemenu--fadeX-enter {
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
   }
 
-  .s-textpicker--fadeX-leave-to {
+  .s-variablemenu--fadeX-leave-to {
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
   }
 
-  .s-textpicker--fadeX-move {
+  .s-variablemenu--fadeX-move {
     transition: transform 0.125s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
@@ -453,35 +444,35 @@ export default class VariableMenu extends Vue {
 }
 
 .night {
-  .s-textpicker {
-    &.s-textpicker--phase-one {
+  .s-variablemenu {
+    &.s-variablemenu--phase-one {
       background-color: @night-bg;
     }
 
-    .s-textpicker-textarea {
+    .s-variablemenu-textarea {
       border: 1px solid @night-input-border;
     }
 
-    .s-textpicker__result--title {
+    .s-variablemenu__result--title {
       color: @night-title;
       background-color: @night-input-border;
     }
 
-    .s-textpicker__result--desc {
+    .s-variablemenu__result--desc {
       color: @night-paragraph;
     }
 
-    .s-textpicker-results__cont {
+    .s-variablemenu-results__cont {
       border: 1px solid @night-input-border;
 
       background-color: @night-bg;
     }
 
-    .s-textpicker-results {
+    .s-variablemenu-results {
       &.s-active-result {
         background-color: @night-dropdown-bg;
-        .s-textpicker__result--image,
-        .s-textpicker__result--title {
+        .s-variablemenu__result--image,
+        .s-variablemenu__result--title {
           color: @night-title;
         }
       }

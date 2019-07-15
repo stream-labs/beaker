@@ -118,39 +118,6 @@
             </tr>
           </tbody>
         </table>
-
-        <div class="row" style="height: 40px;"></div>
-        <div class="row">
-          <h1>Temporary home for variable picker</h1>
-          <p>Variable picker still in production, this is for testing only</p>
-
-          <variable-menu :jsonSearch="varData">
-            <text-area
-              name="myarea"
-              ref="textArea"
-              v-model="value"
-              placeholder="This is where you put some cool stuff"
-              :maxLength="1000"
-              :maxHeight="100"
-              slot="input"
-              rows="3"
-            >
-            </text-area>
-          </variable-menu>
-        </div>
-        <div class="row" style="height: 40px;"></div>
-        <div class="row">
-          <variable-menu :jsonSearch="varData">
-            <text-input
-              type="text"
-              :placeholder="textInputPlaceholder"
-              v-model="textInputValue"
-              name="textExample"
-              slot="input"
-            >
-            </text-input>
-          </variable-menu>
-        </div>
       </div>
     </div>
   </div>
@@ -160,12 +127,10 @@
 import { Component, Vue } from "vue-property-decorator";
 import FormGroup from "./../components/FormGroup.vue";
 import SiteSearch from "./../components/SiteSearch.vue";
-import VariableMenu from "./../components/VariableMenu.vue";
 import TextArea from "./../components/TextArea.vue";
 import TextInput from "./../components/TextInput.vue";
 import Accordion from "./../components/Accordion.vue";
 import * as searchData from "./../components/sitesearchdata.json";
-import varSearch from "./../components/cloudbotvariables.json";
 
 @Component({
   components: {
@@ -173,16 +138,12 @@ import varSearch from "./../components/cloudbotvariables.json";
     SiteSearch,
     TextArea,
     TextInput,
-    VariableMenu,
     Accordion
   }
 })
 export default class SiteSearchDemo extends Vue {
   jsonSearch = (searchData as any).data;
-  varData = varSearch;
   value = "";
-  textInputValue = "";
-  textInputPlaceholder = "test";
 }
 </script>
 
