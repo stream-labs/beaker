@@ -2,19 +2,18 @@
   <div class="s-onboarding">
     <div class="s-onboarding-main" :class="location">
       <div
-        class="s-onboarding-progress s-onboarding__top s-step-name__cont"
-        v-if="stepNames != null"
+        class="s-onboarding-progress s-onboarding__top s-step__cont"
+        v-if="namedSteps"
       >
-        <div v-for="(name, idx) in namedSteps" :key="idx">
-          <div class="s-name-caret" v-if="name == '>'">
+        <div v-for="(step, idx) in steps" :key="idx" class="s-step-name__cont">
+          <div class="s-name-caret" v-if="idx > 0">
             <i class="icon-back"></i>
           </div>
           <div
             class="s-name-step"
-            :class="{ 'current-step': currentStepStyle(Math.floor(idx / 2)) }"
-            v-else
+            :class="{ 'current-step': currentStepStyle(idx) }"
           >
-            {{ name }}
+            {{ step.name }}
           </div>
         </div>
       </div>
@@ -33,46 +32,37 @@
         <slot :name="currentStep"></slot>
       </div>
     </div>
-    <div v-if="!hideControls" class="s-onboarding-footer">
+    <div class="s-onboarding-footer">
       <div class="s-previousStep">
-        <p v-show="currentStep !== 1" @click="previousStep">Back</p>
+        <p v-show="currentStep !== 1" @click="prevHandler">Back</p>
       </div>
       <div class="s-nextStep">
-        <p v-if="skip && currentStep !== stepObjects.length" @click="nextStep">
+        <p
+          v-if="skippable && currentStep !== steps.length"
+          @click="skipHandler"
+        >
           Skip
         </p>
 
         <Button
-          v-if="currentStep !== steps"
+          v-if="currentStep !== steps.length"
           :variation="'action'"
           :title="'Continue'"
-          @click="continueProcess"
-        ></Button>
-        <Button
-          v-if="isCompleted"
-          :variation="'action'"
-          :title="'Complete'"
-          @click="onComplete"
-        ></Button>
-        <Button
-          v-if="!isCompleted && currentStep === steps && completeOnSkip"
-          :variation="'action'"
-          :title="'Complete'"
-          @click="onComplete"
+          @click="continueHandler"
+          :disabled="disableControls"
         ></Button>
         <div
-          v-if="
-            skip && currentStep === steps && !isCompleted && !completeOnSkip
-          "
+          v-if="skippable && currentStep === steps && !isCompleted"
           class="s-onboarding-skip__warning"
         >
           You skipped a step
         </div>
         <Button
-          v-if="!isCompleted && currentStep === steps && !completeOnSkip"
+          v-if="currentStep === steps.length"
           :variation="'action'"
-          :state="'disabled'"
           :title="'Complete'"
+          @click="completeHandler"
+          :state="disableControls || !isCompleted ? 'disabled' : null"
         ></Button>
       </div>
     </div>
@@ -91,85 +81,27 @@ import Button from "./../components/Button.vue";
   }
 })
 export default class Onboarding extends Vue {
-  @Prop()
-  steps!: number;
-
-  @Prop({ default: "left" })
-  stepLocation!: string;
-
-  @Prop({ default: null })
-  stepNames!: [any];
-
-  @Prop()
-  current!: number;
-
-  @Prop()
-  continueFunc!: Function;
-
-  @Prop()
-  completeFunc!: Function;
-
-  @Prop()
-  skip!: boolean;
-
-  @Prop({ default: false })
-  completeOnSkip!: boolean;
-
-  @Prop({ default: false })
-  hideControls!: boolean;
-
-  currentStep: number = this.current;
-  stepObjects: any[] = [];
-  namedSteps: any[] = [];
-
-  countStepObjects() {
-    for (let i = 0; i < this.steps; i++) {
-      this.stepObjects.push({ isChecked: false });
-    }
-    return;
-  }
-
-  @Watch("current")
-  updateCurrentStep() {
-    this.addCheckmark();
-    this.currentStep = this.current;
-  }
-
-  @Watch("steps")
-  updateStepObjects() {
-    if (this.steps < this.stepObjects.length) {
-      while (this.steps !== this.stepObjects.length) {
-        this.stepObjects.pop();
-      }
-    } else if (this.steps > this.stepObjects.length) {
-      while (this.steps !== this.stepObjects.length) {
-        this.stepObjects.push({ isChecked: false });
-      }
-    }
-  }
-
-  get isCompleted() {
-    let checkedCount = 0;
-    for (let i = 0; i < this.steps; i++) {
-      if (this.stepObjects[i].isChecked) {
-        checkedCount++;
-      }
-    }
-    return this.currentStep === this.steps && checkedCount === this.steps - 1;
-  }
+  @Prop() steps!: { name?: string; complete: boolean }[];
+  @Prop({ default: "left" }) stepLocation!: string;
+  @Prop() currentStep!: number;
+  @Prop() completeHandler!: Function;
+  @Prop() continueHandler!: Function;
+  @Prop() skipHandler!: Function;
+  @Prop() prevHandler!: Function;
+  @Prop() skippable!: boolean;
+  @Prop({ default: false }) disableControls!: boolean;
 
   get location() {
     if (this.stepLocation === "left") return "s-onboarding__left";
     if (this.stepLocation === "top") return "s-onboarding__top";
   }
 
-  prepareNamedProgress() {
-    if (this.stepNames != null) {
-      for (let i = 0; i < this.stepNames.length; i++) {
-        this.namedSteps.push(this.stepNames[i]);
-        if (i != this.stepNames.length - 1) this.namedSteps.push(">");
-      }
-    }
+  get namedSteps() {
+    return this.steps.every(step => !!step.name);
+  }
+
+  get isCompleted() {
+    return this.steps.every(step => step.complete);
   }
 
   currentStepStyle(index) {
@@ -177,43 +109,7 @@ export default class Onboarding extends Vue {
   }
 
   checkmarkStyle(index) {
-    return this.stepObjects[index].isChecked;
-  }
-
-  nextStep() {
-    if (this.currentStep < this.steps) {
-      this.currentStep++;
-    }
-  }
-
-  previousStep() {
-    if (this.currentStep > 1) {
-      this.currentStep--;
-      this.removeCheckmark();
-    }
-  }
-
-  addCheckmark() {
-    this.stepObjects[this.currentStep - 1].isChecked = true;
-  }
-
-  removeCheckmark() {
-    this.stepObjects[this.currentStep - 1].isChecked = false;
-  }
-
-  continueProcess() {
-    this.addCheckmark();
-    this.continueFunc();
-    this.nextStep();
-  }
-
-  onComplete() {
-    this.completeFunc();
-  }
-
-  beforeMount() {
-    this.countStepObjects();
-    this.prepareNamedProgress();
+    return this.steps[index].complete;
   }
 }
 </script>
@@ -255,7 +151,7 @@ export default class Onboarding extends Vue {
 
     &.s-onboarding__top {
       flex-direction: row;
-      width: 400px;
+      width: 60%;
       min-height: 24px;
     }
   }
@@ -282,18 +178,31 @@ export default class Onboarding extends Vue {
     }
   }
 
-  .s-step-name__cont {
+  .s-step__cont {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 500px;
+
+    .s-step-name__cont:first-child {
+      width: auto;
+    }
+  }
+
+  .s-step-name__cont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
   }
 
   .s-name-caret {
     color: @dark-5;
     font-size: 10px;
-
+    width: 50%;
+    display: flex;
+    justify-content: center;
     > i {
       display: block;
       transform: rotate(180deg);
@@ -301,6 +210,8 @@ export default class Onboarding extends Vue {
   }
 
   .s-name-step {
+    display: flex;
+    justify-content: space-around;
     color: @day-paragraph;
 
     &.current-step {

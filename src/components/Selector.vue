@@ -44,7 +44,9 @@ export default {
 
   computed: {
     styleObject() {
-      return { width: this.multiple ? "100%" : "176px" };
+      return {
+        width: this.multiple ? "100%" : this.width ? this.width : "176px"
+      };
     }
   },
 

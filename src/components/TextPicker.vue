@@ -60,15 +60,11 @@ export default class TextPicker extends Vue {
   };
 
   result: any = [];
-  queryStart: any = [];
   private queryLength: number = 0;
   private phaseOne: Boolean = false;
   private phaseTwo: Boolean = false;
-  private resultLimit: Number = 7;
   private fuse: any = null;
   value: String = "";
-  private quickLinkLoc: any = [];
-  private keyEvents: any = [];
   private currentResult: number = 0;
   private cursorPos: number = 0;
 
@@ -380,7 +376,6 @@ export default class TextPicker extends Vue {
 
   .s-textpicker-results {
     display: flex;
-    //transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     height: 32px;
     transform-origin: bottom;
     flex-direction: row;
@@ -416,14 +411,12 @@ export default class TextPicker extends Vue {
 
   .s-textpicker--fadeX-enter {
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    //transform: translateX(10px);
     opacity: 0;
   }
 
   .s-textpicker--fadeX-leave-to {
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
-    //transform: translateX(10px);
   }
 
   .s-textpicker--fadeX-move {
