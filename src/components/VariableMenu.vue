@@ -52,7 +52,7 @@ import { Component, Prop, Watch, Vue } from "vue-property-decorator";
 import Fuse from "fuse.js";
 
 @Component({})
-export default class TextPicker extends Vue {
+export default class VariableMenu extends Vue {
   $refs!: {
     resultArea: HTMLDivElement;
     inputCont: HTMLDivElement;
@@ -63,6 +63,7 @@ export default class TextPicker extends Vue {
   private queryLength: number = 0;
   private phaseOne: Boolean = false;
   private phaseTwo: Boolean = false;
+  private searchFromClick: Boolean = false;
   private fuse: any = null;
   value: String = "";
   private currentResult: number = 0;
@@ -158,9 +159,17 @@ export default class TextPicker extends Vue {
     });
   }
 
+  // watchCursor(val) {
+  //   this.cursorPos = val.target.selectionStart;
+  // }
+
   watchCursor(val) {
     this.cursorPos = val.target.selectionStart;
+    this.getSearchString();
+    if (this.noResults) this.playClosingSequence();
+    if (this.value.length <= 0) this.playClosingSequence();
   }
+
 
   watchInput(val) {
     this.value = val.target.value;
@@ -192,11 +201,10 @@ export default class TextPicker extends Vue {
     if (this.value.trim() === "") {
       this.result = [];
     } else {
-      const cursorPos = this.cursorPos + 1;
+      const cursorPos = this.cursorPos;
       const bracketOpen = this.value.lastIndexOf("{");
       const searchValue = this.value.substring(bracketOpen, cursorPos);
       const bracketClose = searchValue.lastIndexOf("}");
-      console.log(searchValue);
       if (
         cursorPos > bracketOpen &&
         bracketClose === -1 &&
@@ -204,6 +212,7 @@ export default class TextPicker extends Vue {
       ) {
         this.result = this.fuse.search(searchValue);
         this.queryLength = searchValue.length;
+        console.log(searchValue);
       } else {
         this.playClosingSequence();
       }
@@ -230,7 +239,6 @@ export default class TextPicker extends Vue {
         this.$refs.resultArea.scrollBy(0, 32);
       }
       event.stopPropagation();
-
       this.currentResult++;
     }
     // KEYPRESS ENTER
@@ -245,6 +253,14 @@ export default class TextPicker extends Vue {
     if (event.keyCode === 27 && this.phaseOne) {
       this.blurSearch();
     }
+    // KEYPRESS TAB
+    if (event.keyCode === 9 && this.phaseOne) {
+      if (this.result != []) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.mergeValues();
+      }
+    }
   }
 
   mergeValues() {
@@ -257,6 +273,7 @@ export default class TextPicker extends Vue {
       this.result = [];
     });
     this.$emit("update", this.value);
+    if (this.searchFromClick) !this.searchFromClick;
   }
 
   playClosingSequence() {
@@ -301,7 +318,6 @@ export default class TextPicker extends Vue {
 
 .s-textpicker {
   z-index: 15;
-
   position: relative;
   max-height: 51px;
   transform-origin: bottom;

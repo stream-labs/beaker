@@ -51,12 +51,12 @@ import Step from "./components/Step.vue";
 import Tabs from "./components/Tabs.vue";
 // import TabDevelop from "./components/TabDevelop.vue";
 import TextInput from "./components/TextInput.vue";
-import TextPicker from "./components/TextPicker.vue";
 import TooltipNotice from "./components/TooltipNotice.vue";
 import Toggle from "./components/Toggle.vue";
 import Pagination from "./components/Pagination.vue";
 import ProgressBar from "./components/ProgressBar.vue";
 import UrlBar from "./components/UrlBar.vue";
+import VariableMenu from "./components/VariableMenu.vue";
 import VirtualItem from "./components/VirtualItem.vue";
 import TaggingInput from "./components/TaggingInput.vue";
 import TextArea from "./components/TextArea.vue";
@@ -111,9 +111,9 @@ export {
   TaggingInput,
   TextArea,
   TextInput,
-  TextPicker,
   Toggle,
   TooltipNotice,
   UrlBar,
+  VariableMenu,
   VirtualItem
 };

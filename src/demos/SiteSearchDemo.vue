@@ -124,7 +124,7 @@
           <h1>Temporary home for variable picker</h1>
           <p>Variable picker still in production, this is for testing only</p>
 
-          <text-picker :jsonSearch="varData">
+          <variable-menu :jsonSearch="varData">
             <text-area
               name="myarea"
               ref="textArea"
@@ -136,11 +136,11 @@
               rows="3"
             >
             </text-area>
-          </text-picker>
+          </variable-menu>
         </div>
         <div class="row" style="height: 40px;"></div>
         <div class="row">
-          <text-picker :jsonSearch="varData">
+          <variable-menu :jsonSearch="varData">
             <text-input
               type="text"
               :placeholder="textInputPlaceholder"
@@ -149,7 +149,7 @@
               slot="input"
             >
             </text-input>
-          </text-picker>
+          </variable-menu>
         </div>
       </div>
     </div>
@@ -160,7 +160,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import FormGroup from "./../components/FormGroup.vue";
 import SiteSearch from "./../components/SiteSearch.vue";
-import TextPicker from "./../components/TextPicker.vue";
+import VariableMenu from "./../components/VariableMenu.vue";
 import TextArea from "./../components/TextArea.vue";
 import TextInput from "./../components/TextInput.vue";
 import Accordion from "./../components/Accordion.vue";
@@ -173,7 +173,7 @@ import varSearch from "./../components/cloudbotvariables.json";
     SiteSearch,
     TextArea,
     TextInput,
-    TextPicker,
+    VariableMenu,
     Accordion
   }
 })
