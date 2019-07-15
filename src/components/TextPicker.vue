@@ -6,6 +6,7 @@
     @click="watchCursor($event)"
     @keyup="watchCursor($event)"
     @keydown="keyEvent"
+    ref="picker"
   >
     <transition
       name="expand"
@@ -55,6 +56,7 @@ export default class TextPicker extends Vue {
   $refs!: {
     resultArea: HTMLDivElement;
     inputCont: HTMLDivElement;
+    picker: HTMLDivElement;
   };
 
   result: any = [];
@@ -125,16 +127,8 @@ export default class TextPicker extends Vue {
     return this.value.length;
   }
 
-  get calcMaxHeight() {
-    if (this.phaseOne === false) {
-      return "max-height: 51px;";
-    }
-  }
-
   get calcTransform() {
-    let nudge = this.$refs.inputCont.offsetHeight / 2;
-    console.log(nudge);
-
+    let nudge = this.$refs.picker.offsetHeight;
     return "transform: translateY(-" + nudge + "px);";
   }
 
@@ -263,7 +257,9 @@ export default class TextPicker extends Vue {
       this.value.substring(0, cursor) +
       this.selectedResult.substring(this.queryLength) +
       this.value.substring(cursor);
-    this.result = [];
+    setTimeout(() => {
+      this.result = [];
+    });
     this.$emit("update", this.value);
   }
 
