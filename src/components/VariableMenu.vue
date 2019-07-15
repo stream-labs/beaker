@@ -1,22 +1,29 @@
 <template>
   <div
-    class="s-textpicker"
-    :class="[
-      { 's-textpicker--phase-one': phaseOne },
-      { 's-textpicker--phase-two': phaseTwo }
-    ]"
+    class="s-variablemenu"
+    @input="watchInput($event)"
+    @focus="watchCursor($event)"
+    @click="watchCursor($event)"
+    @keyup="watchCursor($event)"
+    @keydown="keyEvent"
+    ref="variableMenu"
   >
-    <transition-group name="s-textpicker--fadeY">
+    <transition
+      name="expand"
+      @enter="open"
+      @after-enter="afterOpen"
+      @leave="close"
+      tag="div"
+    >
       <div
-        class="s-textpicker-results__cont"
-        :key="limitedResult.length"
+        class="s-variablemenu-results__cont"
         v-if="phaseTwo && limitedResult.length >= 1"
         :style="calcTransform"
         ref="resultArea"
       >
-        <transition-group name="s-textpicker--fadeX">
+        <transition-group name="s-variablemenu--fadeX">
           <div
-            class="s-textpicker-results"
+            class="s-variablemenu-results"
             v-for="(searchResult, i) in limitedResult"
             :key="searchResult.item.variable"
             :class="{ 's-active-result': currentResult === i }"
@@ -24,30 +31,18 @@
             @mousedown="mergeValues"
             @mouseup="blurSearch"
           >
-            <div class="s-textpicker__result--title">{{ searchResult.item.variable }}</div>
-            <div class="s-textpicker__result--desc">{{ searchResult.item.description }}</div>
+            <div class="s-variablemenu__result--title">
+              {{ searchResult.item.variable }}
+            </div>
+            <div class="s-variablemenu__result--desc">
+              {{ searchResult.item.description }}
+            </div>
           </div>
         </transition-group>
       </div>
-    </transition-group>
-    <div class="s-textpicker--searchbar__cont">
-      <textarea
-        ref="textArea"
-        class="s-textpicker-textarea"
-        :name="name"
-        :cols="cols"
-        :rows="rows"
-        :placeholder="placeholder"
-        :maxlength="maxLength"
-        v-model="value"
-        @input="updateCursorPos"
-        @keydown="updateCursorPos"
-        @click="updateCursorPos"
-        @focus="updateCursorPos"
-        @blur.stop.prevent="playClosingSequence"
-        @keyup.stop.prevent="keyEvent"
-        @keydown.enter.prevent
-      />
+    </transition>
+    <div class="s-variablemenu--searchbar__cont" ref="inputCont">
+      <slot name="input"></slot>
     </div>
   </div>
 </template>
@@ -57,24 +52,25 @@ import { Component, Prop, Watch, Vue } from "vue-property-decorator";
 import Fuse from "fuse.js";
 
 @Component({})
-export default class TextPicker extends Vue {
+export default class VariableMenu extends Vue {
   $refs!: {
-    textArea: HTMLTextAreaElement;
     resultArea: HTMLDivElement;
+    inputCont: HTMLDivElement;
+    variableMenu: HTMLDivElement;
   };
 
   result: any = [];
-  queryStart: any = [];
   private queryLength: number = 0;
   private phaseOne: Boolean = false;
   private phaseTwo: Boolean = false;
-  private resultLimit: Number = 7;
+  private searchFromClick: Boolean = false;
   private fuse: any = null;
-  private value: String = "";
-  private quickLinkLoc: any = [];
-  private keyEvents: any = [];
+  value: String = "";
   private currentResult: number = 0;
   private cursorPos: number = 0;
+
+  @Prop()
+  input_cursor!: number;
 
   @Prop()
   jsonSearch!: any;
@@ -89,27 +85,6 @@ export default class TextPicker extends Vue {
   @Prop({ default: "fuseInputChanged" })
   inputChangeEventName!: string;
 
-  @Prop()
-  name!: string;
-  @Prop()
-  label!: string;
-  @Prop()
-  placeholder!: string;
-  @Prop()
-  error!: string;
-  @Prop()
-  helpText!: string;
-  @Prop({ default: 100 })
-  cols!: number;
-  @Prop({ default: 3 })
-  rows!: number;
-  @Prop()
-  maxLength!: number;
-  @Prop()
-  autoResize!: boolean;
-  @Prop()
-  maxHeight!: number;
-
   get options() {
     let options = {
       caseSensitive: false,
@@ -119,9 +94,9 @@ export default class TextPicker extends Vue {
       matchAllTokens: false,
       findAllMatches: true,
       shouldSort: true,
-      threshold: 0.6,
+      threshold: 0.2,
       location: 1,
-      distance: 2,
+      distance: 10,
       maxPatternLength: 12,
       minMatchCharLength: 0,
       keys: ["variable"]
@@ -145,29 +120,57 @@ export default class TextPicker extends Vue {
     return this.limitedResult[this.currentResult].item.variable;
   }
 
-  get calcMaxHeight() {
-    if (this.phaseOne === false) {
-      return "max-height: 51px;";
-    }
+  get currentLength() {
+    return this.value.length;
   }
 
   get calcTransform() {
-    if (this.phaseOne === false) {
-      return "transform: translateY(0);";
-    }
-    if (
-      this.limitedResult.length >= 1 &&
-      this.limitedResult.length <= 7 &&
-      this.phaseOne == true
-    ) {
-      let y = parseInt(this.limitedResult.length) * 32;
-      return "transform: translateY(-" + y + "px);";
-    } else {
-      return "transform: translateY(-224px);";
-    }
+    let nudge = this.$refs.variableMenu.offsetHeight;
+    return "transform: translateY(-" + nudge + "px);";
   }
 
-  @Watch("value")
+  afterOpen(element) {
+    element.style.height = "auto";
+  }
+
+  open(element) {
+    let width = getComputedStyle(element).width;
+    element.style.width = width;
+    element.style.position = `absolute`;
+    element.style.visibility = `hidden`;
+    element.style.height = `auto`;
+    let height = getComputedStyle(element).height;
+    element.style.width = null;
+    element.style.position = null;
+    element.style.visibility = null;
+    element.style.height = 0;
+    getComputedStyle(element).height;
+    setTimeout(() => {
+      element.style.height = height;
+    });
+  }
+
+  close(element) {
+    let height = getComputedStyle(element).height;
+    element.style.height = height;
+    getComputedStyle(element).height;
+    setTimeout(() => {
+      element.style.height = 0;
+    });
+  }
+
+  watchCursor(val) {
+    this.cursorPos = val.target.selectionStart;
+    this.getSearchString();
+    if (this.noResults) this.playClosingSequence();
+    if (this.value.length <= 0) this.playClosingSequence();
+  }
+
+  watchInput(val) {
+    this.value = val.target.value;
+  }
+
+  @Watch("value", { immediate: true })
   watchValue() {
     this.$parent.$emit(this.inputChangeEventName, this.value);
     this.$emit(this.inputChangeEventName, this.value);
@@ -176,6 +179,7 @@ export default class TextPicker extends Vue {
       if (this.noResults) this.playClosingSequence();
       if (this.value.length <= 0) this.playClosingSequence();
     }
+    if (this.value === "") this.result = [];
   }
 
   @Watch("result")
@@ -188,26 +192,23 @@ export default class TextPicker extends Vue {
     this.noResults ? this.playClosingSequence() : this.playOpeningSequence();
   }
 
-  updateCursorPos(e: { target: HTMLInputElement }){
-    this.cursorPos = Number(e.target.selectionStart);
-    this.watchValue();
-  }
-
   getSearchString() {
     if (this.value.trim() === "") {
       this.result = [];
     } else {
-      const bracketOpen = this.value.substring(0, this.cursorPos).lastIndexOf("{");
-      const searchValue = this.value.substring(bracketOpen, this.cursorPos);
+      const cursorPos = this.cursorPos;
+      const bracketOpen = this.value.lastIndexOf("{", cursorPos - 1);
+      const searchValue = this.value.substring(bracketOpen, cursorPos);
       const bracketClose = searchValue.lastIndexOf("}");
-
       if (
-        this.cursorPos > bracketOpen &&
+        cursorPos > bracketOpen &&
         bracketClose === -1 &&
         bracketOpen !== -1
       ) {
         this.result = this.fuse.search(searchValue);
         this.queryLength = searchValue.length;
+      } else {
+        this.playClosingSequence();
       }
     }
   }
@@ -218,6 +219,8 @@ export default class TextPicker extends Vue {
       if (this.currentResult <= this.limitedResult.length - 7) {
         this.$refs.resultArea.scrollBy(0, -32);
       }
+      event.preventDefault();
+      event.stopPropagation();
       this.currentResult--;
     }
     // KEYPRESS DOWN
@@ -228,26 +231,42 @@ export default class TextPicker extends Vue {
       if (this.currentResult >= 6) {
         this.$refs.resultArea.scrollBy(0, 32);
       }
+      event.stopPropagation();
       this.currentResult++;
     }
     // KEYPRESS ENTER
     if (event.keyCode === 13 && this.phaseOne) {
-      event.preventDefault();
-      this.mergeValues();
+      if (this.result != []) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.mergeValues();
+      }
     }
     // KEYPRESS ESC
     if (event.keyCode === 27 && this.phaseOne) {
       this.blurSearch();
     }
+    // KEYPRESS TAB
+    if (event.keyCode === 9 && this.phaseOne) {
+      if (this.result != []) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.mergeValues();
+      }
+    }
   }
 
   mergeValues() {
-    const cursor = this.$refs.textArea.selectionStart;
+    const cursor = this.cursorPos;
     this.value =
       this.value.substring(0, cursor) +
       this.selectedResult.substring(this.queryLength) +
       this.value.substring(cursor);
-    this.result = [];
+    setTimeout(() => {
+      this.result = [];
+    });
+    this.$emit("update", this.value);
+    if (this.searchFromClick) !this.searchFromClick;
   }
 
   playClosingSequence() {
@@ -278,16 +297,11 @@ export default class TextPicker extends Vue {
   }
 
   blurSearch() {
-    this.$refs.textArea.blur();
     this.currentResult = 0;
   }
 
   mounted() {
     this.initFuse();
-  }
-
-  updated() {
-    console.log(this.currentResult);
   }
 }
 </script>
@@ -295,32 +309,18 @@ export default class TextPicker extends Vue {
 <style lang="less">
 @import "./../styles/Imports";
 
-.s-textpicker {
-  z-index: 15;
-
+.s-variablemenu {
   position: relative;
-  max-height: 51px;
+  display: block;
   transform-origin: bottom;
-  padding: 0;
-  margin: 0;
+  .margin-bottom(2);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
-  &.s-textpicker--phase-one {
+  &.s-variablemenu--phase-one {
     background-color: @day-bg;
   }
 
-  ::placeholder {
-    color: #91979a;
-    opacity: 1;
-  }
-
-  .s-textpicker-textarea {
-    border: 1px solid @day-input-border;
-    border-radius: @radius;
-    margin: 0;
-  }
-
-  .s-textpicker__result--title {
+  .s-variablemenu__result--title {
     font-size: 12px;
     color: @day-title;
     background-color: @day-input-border;
@@ -333,16 +333,17 @@ export default class TextPicker extends Vue {
     white-space: nowrap;
   }
 
-  .s-textpicker__result--desc {
+  .s-variablemenu__result--desc {
     width: 100%;
     font-size: 12px;
     color: @dark-5;
   }
 
-  .s-textpicker-results__cont {
+  .s-variablemenu-results__cont {
     display: flex;
     width: 100%;
     max-height: 224px;
+    bottom: 0;
     flex-direction: column-reverse;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -354,22 +355,22 @@ export default class TextPicker extends Vue {
     .radius();
   }
 
-  .s-textpicker-results__cont::-webkit-scrollbar-corner {
+  .s-variablemenu-results__cont::-webkit-scrollbar-corner {
     background-color: rgba(0, 0, 0, 0.04);
     background-image: none;
   }
 
-  .s-textpicker-results__cont::-webkit-scrollbar {
+  .s-variablemenu-results__cont::-webkit-scrollbar {
     width: 1em;
     background-color: rgba(0, 0, 0, 0.04);
   }
 
-  .s-textpicker-results__cont::-webkit-scrollbar {
+  .s-variablemenu-results__cont::-webkit-scrollbar {
     width: 16px;
     height: 9px;
   }
 
-  .s-textpicker-results__cont::-webkit-scrollbar-thumb {
+  .s-variablemenu-results__cont::-webkit-scrollbar-thumb {
     border-radius: 10px;
     -webkit-border-radius: 10px;
     height: 10px;
@@ -380,9 +381,8 @@ export default class TextPicker extends Vue {
     box-shadow: inset -1px -1px 0px @dark-5, inset 1px 1px 0px @dark-5;
   }
 
-  .s-textpicker-results {
+  .s-variablemenu-results {
     display: flex;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     height: 32px;
     transform-origin: bottom;
     flex-direction: row;
@@ -394,8 +394,8 @@ export default class TextPicker extends Vue {
 
     &.s-active-result {
       background-color: @day-dropdown-bg;
-      .s-textpicker__result--image,
-      .s-textpicker__result--title {
+      .s-variablemenu__result--image,
+      .s-variablemenu__result--title {
         color: @day-title;
       }
     }
@@ -405,91 +405,74 @@ export default class TextPicker extends Vue {
     }
   }
 
-  .s-textpicker--fadeX-enter-active {
+  .s-variablemenu--fadeX-enter-active {
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 1;
   }
 
-  .s-textpicker--fadeX-leave-active {
+  .s-variablemenu--fadeX-leave-active {
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     position: absolute;
     opacity: 0;
   }
 
-  .s-textpicker--fadeX-enter {
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: translateX(10px);
-    opacity: 0;
-  }
-
-  .s-textpicker--fadeX-leave-to {
+  .s-variablemenu--fadeX-enter {
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
-    transform: translateX(10px);
   }
 
-  .s-textpicker--fadeX-move {
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .s-textpicker--fadeY-enter-active {
-    transition: all 0.25s 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 1;
-  }
-
-  .s-textpicker--fadeY-leave-active {
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    position: absolute;
-    opacity: 0;
-  }
-
-  .s-textpicker--fadeY-enter {
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: translateY(-10px);
-    opacity: 0;
-  }
-
-  .s-textpicker--fadeY-leave-to {
+  .s-variablemenu--fadeX-leave-to {
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
-    transform: translateY(-10px);
   }
 
-  .s-textpicker--fadeY-move {
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  .s-variablemenu--fadeX-move {
+    transition: transform 0.125s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
+.expand-enter-active,
+.expand-leave-active {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+.expand-enter,
+.expand-leave-to {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 0;
+  opacity: 0;
+}
+
 .night {
-  .s-textpicker {
-    &.s-textpicker--phase-one {
+  .s-variablemenu {
+    &.s-variablemenu--phase-one {
       background-color: @night-bg;
     }
 
-    .s-textpicker-textarea {
+    .s-variablemenu-textarea {
       border: 1px solid @night-input-border;
     }
 
-    .s-textpicker__result--title {
+    .s-variablemenu__result--title {
       color: @night-title;
       background-color: @night-input-border;
     }
 
-    .s-textpicker__result--desc {
+    .s-variablemenu__result--desc {
       color: @night-paragraph;
     }
 
-    .s-textpicker-results__cont {
+    .s-variablemenu-results__cont {
       border: 1px solid @night-input-border;
 
       background-color: @night-bg;
     }
 
-    .s-textpicker-results {
+    .s-variablemenu-results {
       &.s-active-result {
         background-color: @night-dropdown-bg;
-        .s-textpicker__result--image,
-        .s-textpicker__result--title {
+        .s-variablemenu__result--image,
+        .s-variablemenu__result--title {
           color: @night-title;
         }
       }
