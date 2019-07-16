@@ -200,7 +200,6 @@ export default class Onboarding extends Vue {
   .s-name-caret {
     color: @dark-5;
     font-size: 10px;
-    width: 50%;
     display: flex;
     justify-content: center;
     > i {
@@ -212,6 +211,8 @@ export default class Onboarding extends Vue {
   .s-name-step {
     display: flex;
     justify-content: space-around;
+    word-wrap: none;
+    white-space: nowrap;
     color: @day-paragraph;
 
     &.current-step {
