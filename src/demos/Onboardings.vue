@@ -350,10 +350,10 @@ export default class Onboardings extends Vue {
   currentStep: number = 1;
 
   steps: Object = [
-    { name: "one", complete: false },
-    { name: "two", complete: false },
-    { name: "three", complete: false },
-    { name: "four", complete: false }
+    { name: "Donations", complete: false },
+    { name: "Cloudbot", complete: false },
+    { name: "Streamlabs OBS", complete: false },
+    { name: "Alert Box", complete: false }
   ];
 
   stepsTest: Object = [
