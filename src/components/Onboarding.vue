@@ -32,25 +32,18 @@
         <slot :name="currentStep"></slot>
       </div>
     </div>
-    <div class="s-onboarding-footer">
+    <div class="s-onboarding-footer" v-if="!hideButton || !hideSkip || !hideBack">
       <div class="s-previousStep">
-        <p v-show="currentStep !== 1" @click="prevHandler">Back</p>
+        <p v-show="currentStep !== 1 && !hideBack" @click="prevHandler">Back</p>
       </div>
       <div class="s-nextStep">
         <p
-          v-if="skippable && currentStep !== steps.length"
+          v-if="skippable && !hideSkip"
           @click="skipHandler"
         >
           Skip
         </p>
 
-        <Button
-          v-if="currentStep !== steps.length"
-          :variation="'action'"
-          :title="'Continue'"
-          @click="continueHandler"
-          :disabled="disableControls"
-        ></Button>
         <div
           v-if="skippable && currentStep === steps && !isCompleted"
           class="s-onboarding-skip__warning"
@@ -58,11 +51,11 @@
           You skipped a step
         </div>
         <Button
-          v-if="currentStep === steps.length"
+          v-if="!hideButton"
           :variation="'action'"
-          :title="'Complete'"
-          @click="completeHandler"
-          :state="disableControls || !isCompleted ? 'disabled' : null"
+          :title="currentStep === steps.length ? 'Complete' : 'Continue'"
+          @click="currentStep === steps.length ? completeHandler : continueHandler"
+          :state="disableControls || (currentStep === steps.length && !isCompleted) ? 'disabled' : null"
         ></Button>
       </div>
     </div>
@@ -90,6 +83,9 @@ export default class Onboarding extends Vue {
   @Prop() prevHandler!: Function;
   @Prop() skippable!: boolean;
   @Prop({ default: false }) disableControls!: boolean;
+  @Prop({ default: false }) hideSkip!: boolean;
+  @Prop({ default: false }) hideBack!: boolean;
+  @Prop({ default: false }) hideButton!: boolean;
 
   get location() {
     if (this.stepLocation === "left") return "s-onboarding__left";
