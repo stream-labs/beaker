@@ -1,5 +1,5 @@
 <template>
-  <div class="s-call-to-action" :class="callToActionMq" :style="callToActionBg">
+  <div class="s-call-to-action" :class="[callToActionMq, buttonClasses]" :style="callToActionBg">
     <div
       v-if="hasThumbnail"
       class="s-call-to-action__thumb"
@@ -9,12 +9,8 @@
       <img :src="thumbnail" />
     </div>
     <div class="s-call-to-action__description" :class="callToActionDescMq">
-      <div class="s-title" :class="titleMq" :style="callToActiontitleColor">
-        {{ title }}
-      </div>
-      <div class="s-subtitle" :style="callToActionSubTitleColor">
-        {{ description }}
-      </div>
+      <div class="s-title" :class="titleMq" :style="callToActiontitleColor">{{ title }}</div>
+      <div class="s-subtitle" :style="callToActionSubTitleColor">{{ description }}</div>
     </div>
     <slot v-if="customButtonSlot"></slot>
     <div v-else class="s-button-container s-button-container--right">
@@ -132,6 +128,9 @@ export default class CallToAction extends Vue {
   @Prop({ default: false })
   customButtonSlot!: Boolean;
 
+  @Prop({ default: false })
+  bgPrime!: Boolean;
+
   $mq: any;
 
   callToActiontitleColor: object = {
@@ -167,11 +166,45 @@ export default class CallToAction extends Vue {
   get titleMq() {
     return this.$mq === "sm" ? "s-title-mq" : "";
   }
+
+  get buttonClasses() {
+    const classes: any = [];
+
+    if (this.bgPrime) {
+      classes.push(`s-call-to-action-prime`);
+    }
+
+    return classes.join(" ");
+  }
 }
 </script>
 
 <style lang="less">
 @import "./../styles/Imports";
+
+.s-call-to-action-prime {
+  position: relative;
+  overflow: hidden;
+  
+  &:before {
+    content: "\e9bc";
+    font-family: "icomoon";
+    position: absolute;
+    left: -30px;
+    bottom: 5px;
+    font-size: 157px;
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    transform: rotate(20deg);
+    font-style: normal;
+    display: inline-block;
+    opacity: 0.1;
+    color: @white;
+    .weight(@normal);
+  }
+}
 
 .s-call-to-action-mq {
   flex-direction: column !important;

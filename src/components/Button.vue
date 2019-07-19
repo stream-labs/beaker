@@ -839,7 +839,6 @@ export default class Button extends Vue {
 
   .s-button--default {
     color: @night-title;
-    border-color: @night-button;
     background: @night-button;
 
     &:focus,
