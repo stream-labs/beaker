@@ -1,5 +1,9 @@
 <template>
-  <div class="s-call-to-action" :class="[callToActionMq, buttonClasses]" :style="callToActionBg">
+  <div
+    class="s-call-to-action"
+    :class="[callToActionMq, buttonClasses]"
+    :style="callToActionBg"
+  >
     <div
       v-if="hasThumbnail"
       class="s-call-to-action__thumb"
@@ -9,8 +13,12 @@
       <img :src="thumbnail" />
     </div>
     <div class="s-call-to-action__description" :class="callToActionDescMq">
-      <div class="s-title" :class="titleMq" :style="callToActiontitleColor">{{ title }}</div>
-      <div class="s-subtitle" :style="callToActionSubTitleColor">{{ description }}</div>
+      <div class="s-title" :class="titleMq" :style="callToActiontitleColor">
+        {{ title }}
+      </div>
+      <div class="s-subtitle" :style="callToActionSubTitleColor">
+        {{ description }}
+      </div>
     </div>
     <slot v-if="customButtonSlot"></slot>
     <div v-else class="s-button-container s-button-container--right">
@@ -185,7 +193,7 @@ export default class CallToAction extends Vue {
 .s-call-to-action-prime {
   position: relative;
   overflow: hidden;
-  
+
   &:before {
     content: "\e9bc";
     font-family: "icomoon";
