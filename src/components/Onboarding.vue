@@ -32,15 +32,15 @@
         <slot :name="currentStep"></slot>
       </div>
     </div>
-    <div class="s-onboarding-footer" v-if="!hideButton || !hideSkip || !hideBack">
+    <div
+      class="s-onboarding-footer"
+      v-if="!hideButton || !hideSkip || !hideBack"
+    >
       <div class="s-previousStep">
         <p v-show="currentStep !== 1 && !hideBack" @click="prevHandler">Back</p>
       </div>
       <div class="s-nextStep">
-        <p
-          v-if="skippable && !hideSkip"
-          @click="skipHandler"
-        >
+        <p v-if="skippable && !hideSkip" @click="skipHandler">
           Skip
         </p>
 
@@ -54,8 +54,14 @@
           v-if="!hideButton"
           :variation="'action'"
           :title="currentStep === steps.length ? 'Complete' : 'Continue'"
-          @click="currentStep === steps.length ? completeHandler : continueHandler"
-          :state="disableControls || (currentStep === steps.length && !isCompleted) ? 'disabled' : null"
+          @click="
+            currentStep === steps.length ? completeHandler() : continueHandler()
+          "
+          :state="
+            disableControls || (currentStep === steps.length && !isCompleted)
+              ? 'disabled'
+              : null
+          "
         ></Button>
       </div>
     </div>
