@@ -282,9 +282,13 @@ export default {
   }
 
   .multiselect__placeholder {
-    color: #adadad;
     display: inline-block;
+    width: 100%;
     margin-bottom: 10px;
+    color: #adadad;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .multiselect--active .multiselect__placeholder {
@@ -524,6 +528,10 @@ export default {
     .multiselect__single {
       background: @night-dropdown-bg;
       color: @white;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .multiselect__tag {
