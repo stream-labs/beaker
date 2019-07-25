@@ -12,9 +12,12 @@
       @input="val => emitInput(val)"
       :track-by="trackBy"
       :label="label"
-      ><template v-if="label" slot="singleLabel" slot-scope="{ option }">{{
+    >
+      <template v-if="label" slot="singleLabel" slot-scope="{ option }">
+        {{
         option[label]
-      }}</template>
+        }}
+      </template>
     </multiselect>
   </div>
 </template>
@@ -173,6 +176,10 @@ export default {
     background: @light-3;
     color: @selected;
     font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
   }
 
   .multiselect__tags-wrap {
@@ -282,9 +289,13 @@ export default {
   }
 
   .multiselect__placeholder {
-    color: #adadad;
     display: inline-block;
+    width: 100%;
     margin-bottom: 10px;
+    color: #adadad;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .multiselect--active .multiselect__placeholder {
@@ -524,6 +535,10 @@ export default {
     .multiselect__single {
       background: @night-dropdown-bg;
       color: @white;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .multiselect__tag {
