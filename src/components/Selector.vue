@@ -1,22 +1,15 @@
 <template>
   <div class="s-selector">
     <multiselect
+      v-bind="{ ...$props }"
       :style="styleObject"
-      :value="value"
       :options="options"
-      :searchable="searchable"
-      :multiple="multiple"
-      :placeholder="placeholder"
-      :disabled="disabled"
       :max-height="200"
+      v-on="$listeners"
       @input="val => emitInput(val)"
-      :track-by="trackBy"
-      :label="label"
     >
       <template v-if="label" slot="singleLabel" slot-scope="{ option }">
-        {{
-        option[label]
-        }}
+        {{ option[label] }}
       </template>
     </multiselect>
   </div>
@@ -35,7 +28,10 @@ export default {
     Selector
   },
 
-  props: ["width"],
+  props: {
+    ...Selector.props,
+    width: String
+  },
 
   created() {
     this.$on("input", this.setValue);
@@ -292,6 +288,7 @@ export default {
     display: inline-block;
     width: 100%;
     margin-bottom: 10px;
+    padding-left: 5px;
     color: #adadad;
     white-space: nowrap;
     overflow: hidden;
