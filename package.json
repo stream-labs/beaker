@@ -4,6 +4,7 @@
   "main": "./dist/beaker.common.js",
   "module": "./dist/beaker.esm.js",
   "sideEffects": false,
+  "license": "MIT",
   "scripts": {
     "build": "rollup --config",
     "build-bundle": "rollup --config",
