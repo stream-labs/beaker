@@ -1,12 +1,21 @@
 <template>
   <div class="icons">
-    <div v-for="icon in Object.keys(iconList).sort()" :key="icon" class="glyph fs1">
+    <div
+      v-for="icon in Object.keys(iconList).sort()"
+      :key="icon"
+      class="glyph fs1"
+    >
       <div class="clearfix bshadow0 pbs">
         <span :class="icon"></span>
         <span class="mls">{{ icon }}</span>
       </div>
       <fieldset class="fs0 size1of1 clearfix hidden-false">
-        <input type="text" readonly :value="iconList[icon]" class="unit size1of2" />
+        <input
+          type="text"
+          readonly
+          :value="iconList[icon]"
+          class="unit size1of2"
+        />
         <input
           type="text"
           maxlength="1"
@@ -223,7 +232,7 @@ export default class Icons extends Vue {
     "icon-face-masks-2": "e9bf",
     "icon-face-masks-3": "e9c0",
     "icon-ideas": "e9c1",
-    "icon-creator-site": "e9c2",
+    "icon-creator-site": "e9c2"
   };
 }
 </script>
