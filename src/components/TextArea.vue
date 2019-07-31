@@ -124,7 +124,7 @@ export default class TextArea extends Vue {
 
   updateValue(val) {
     this.$refs.textArea.value = val;
-    this.$emit('input',val);
+    this.$emit("input", val);
   }
 
   updateSize() {
