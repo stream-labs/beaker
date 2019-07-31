@@ -288,6 +288,7 @@ export default {
     display: inline-block;
     width: 100%;
     margin-bottom: 10px;
+    padding-left: 5px;
     color: #adadad;
     white-space: nowrap;
     overflow: hidden;
