@@ -19,19 +19,20 @@
   >
     <span>
       <span>
+        <span v-if="variation === 'prime-simple' && this.primeTitle">{{primeTitle}}</span>
+        <span v-else-if="variation === 'prime-simple'" class="prime-simple">
+          Free with
+          <span class="prime-simple__italic">Prime</span>
+        </span>
         <i v-if="iconClass && iconPosition === 'left'" :class="iconClass"></i>
+        <i v-if="variation === 'prime'" class="icon-prime"></i>
         <i v-if="iconImg" class="icon-img">
           <img :src="iconImg" :alt="`${title} Icon Image`" />
         </i>
         {{ title }}
       </span>
-      <span v-if="description" class="s-button__description">
-        {{ description }}
-      </span>
-      <i
-        v-if="iconClass && iconPosition === 'right'"
-        :class="['icon--right', iconClass]"
-      ></i>
+      <span v-if="description" class="s-button__description">{{ description }}</span>
+      <i v-if="iconClass && iconPosition === 'right'" :class="['icon--right', iconClass]"></i>
     </span>
     <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
     <span v-if="price">{{ price }}</span>
@@ -136,6 +137,18 @@ export default class Button extends Vue {
     default: "default";
   };
 
+  @Prop()
+  primeBgColor!: {
+    type: String;
+    default: null;
+  };
+
+  @Prop()
+  primeTitle!: {
+    type: String;
+    default: null;
+  };
+
   private rippleStartX = 0;
   private rippleStartY = 0;
   private rippleSize = 0;
@@ -157,6 +170,10 @@ export default class Button extends Vue {
 
     if (this.state) {
       classes.push(`is-${this.state}`);
+    }
+
+    if (this.primeBgColor) {
+      classes.push(`prime--${this.primeBgColor}`);
     }
 
     return classes.join(" ");
@@ -766,28 +783,75 @@ export default class Button extends Vue {
   background-color: @prime;
   color: @white;
   border-radius: 100px;
-  padding: 0 12px 0 30px;
+  .padding-h-sides(3);
   border: 0;
+  font-weight: 900;
+  font-style: italic;
 
-  &:before {
-    content: "\e9bb";
-    font-family: "icomoon";
-    position: absolute;
-    left: -16px;
-    bottom: -8px;
-    font-size: 38px;
-    -webkit-transform: rotate(20deg);
-    -moz-transform: rotate(20deg);
-    -o-transform: rotate(20deg);
-    -ms-transform: rotate(20deg);
-    transform: rotate(20deg);
-    font-style: normal;
-    display: inline-block;
-    .weight(@normal);
+  &:focus,
+  &.is-focused,
+  &:hover {
+    background-color: darken(@prime, 4%);
   }
 
-  &:focus {
-    background-color: @prime;
+  .icon-prime {
+    font-size: 20px;
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+
+    &::before {
+      color: @white;
+    }
+  }
+}
+
+.prime--white {
+  background: @white;
+  color: @prime;
+
+  &:focus,
+  &.is-focused,
+  &:hover {
+    background-color: darken(@white, 4%);
+  }
+
+  .icon-prime {
+    &::before {
+      color: @prime;
+    }
+  }
+}
+
+.s-button--prime-simple {
+  background: @prime;
+  color: @white;
+
+  &:focus,
+  &.is-focused,
+  &:hover {
+    background-color: darken(@prime, 4%);
+  }
+
+  .prime-simple {
+    text-transform: none;
+  }
+
+  .prime-simple__italic {
+    font-weight: 900;
+    font-style: italic;
+    .margin-left(0.5);
+  }
+}
+
+.s-button--prime.s-button--large {
+  padding: 0px 64px;
+
+  .icon-prime {
+    font-size: 41px;
+    position: absolute;
+    left: -6px;
+    bottom: -9px;
   }
 }
 
@@ -972,11 +1036,26 @@ export default class Button extends Vue {
   }
 
   .s-button--prime {
-    background-color: @prime;
-    color: @white;
+    &:focus,
+    &.is-focused,
+    &:hover {
+      background-color: lighten(@prime, 4%);
+    }
+  }
 
-    &:focus {
-      background-color: @prime;
+  .s-button--prime-simple {
+    &:focus,
+    &.is-focused,
+    &:hover {
+      background-color: lighten(@prime, 4%);
+    }
+  }
+
+  .prime--white {
+    &:focus,
+    &.is-focused,
+    &:hover {
+      background-color: lighten(@white, 4%);
     }
   }
 
