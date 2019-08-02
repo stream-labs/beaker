@@ -25,7 +25,6 @@
           <span class="prime-simple__italic">Prime</span>
         </span>
         <i v-if="iconClass && iconPosition === 'left'" :class="iconClass"></i>
-        <i v-if="variation === 'prime'" class="icon-prime"></i>
         <i v-if="iconImg" class="icon-img">
           <img :src="iconImg" :alt="`${title} Icon Image`" />
         </i>

@@ -57,12 +57,14 @@ components: {
 
   &lt;Button
     :variation=&quot;'prime'&quot; 
-    :title=&quot;'Join Prime'&quot;&gt;
+    :title=&quot;'Join Prime'&quot;
+    :icon=&quot;'prime'&quot;&gt;
   &lt;/Button&gt;
 
   &lt;Button
     :variation=&quot;'prime'&quot; 
-    :title=&quot;'Join Prime'&quot;&gt;
+    :title=&quot;'Join Prime'&quot;
+    :icon=&quot;'prime'&quot;
     :primeBgColor=&quot;'white'&quot;&gt;
   &lt;/Button&gt;
 
@@ -91,8 +93,13 @@ components: {
             :textColor="'red'"
           ></Button>
 
-          <Button :variation="'prime'" :title="'Join Prime'"></Button>
-          <Button :variation="'prime'" :title="'Join Prime'" :primeBgColor="'white'"></Button>
+          <Button :variation="'prime'" :title="'Join Prime'" :icon="'prime'"></Button>
+          <Button
+            :variation="'prime'"
+            :title="'Join Prime'"
+            :icon="'prime'"
+            :primeBgColor="'white'"
+          ></Button>
         </div>
       </div>
       <div class="section">
@@ -349,13 +356,15 @@ components: {
   &lt;Button 
     :size=&quot;'large'&quot; 
     :variation=&quot;'prime'&quot; 
-    :title=&quot;'Join Prime'&quot;&gt;
+    :title=&quot;'Join Prime'&quot;
+    :icon=&quot;'prime'&quot;&gt;
   &lt;/Button&gt;
 
   &lt;Button 
     :size=&quot;'large'&quot; 
     :variation=&quot;'prime'&quot; 
-    :title=&quot;'Join Prime'&quot;&gt;
+    :title=&quot;'Join Prime'&quot;
+    :icon=&quot;'prime'&quot;
     :primeBgColor=&quot;'white'&quot;&gt;
   &lt;/Button&gt;
 &lt;/div&gt;
@@ -377,8 +386,14 @@ components: {
           :icon="'image'"
         ></Button>
 
-        <Button :size="'large'" :variation="'prime'" :title="'Join Prime'"></Button>
-        <Button :size="'large'" :variation="'prime'" :title="'Join Prime'" :primeBgColor="'white'"></Button>
+        <Button :size="'large'" :variation="'prime'" :title="'Join Prime'" :icon="'prime'"></Button>
+        <Button
+          :size="'large'"
+          :variation="'prime'"
+          :title="'Join Prime'"
+          :icon="'prime'"
+          :primeBgColor="'white'"
+        ></Button>
       </div>
     </div>
     <div class="section">
