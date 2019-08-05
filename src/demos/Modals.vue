@@ -106,6 +106,7 @@ components: {
 
       <ModalComp
         :type="'subscribe'"
+        :scrollable="true"
         :title="'Streamlabs'"
         :subTitle="'Never pay for GIFs and effects again!'"
         :text="
