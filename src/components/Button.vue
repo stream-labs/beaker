@@ -22,7 +22,7 @@
         <span v-if="variation === 'prime-simple' && this.primeTitle">{{primeTitle}}</span>
         <span v-else-if="variation === 'prime-simple'" class="prime-simple">
           Free with
-          <span class="prime-simple__italic">Prime</span>
+          <span class="prime-simple__bold">Prime</span>
         </span>
         <i v-if="iconClass && iconPosition === 'left'" :class="iconClass"></i>
         <i v-if="iconImg" class="icon-img">
@@ -169,10 +169,6 @@ export default class Button extends Vue {
 
     if (this.state) {
       classes.push(`is-${this.state}`);
-    }
-
-    if (this.primeBgColor) {
-      classes.push(`prime--${this.primeBgColor}`);
     }
 
     return classes.join(" ");
@@ -778,14 +774,14 @@ export default class Button extends Vue {
   float: right;
 }
 
-.s-button--prime {
+.s-button--prime,
+.s-button--prime-white {
   background-color: @prime;
   color: @white;
   border-radius: 100px;
   .padding-h-sides(3);
   border: 0;
   font-weight: 900;
-  font-style: italic;
 
   &:focus,
   &.is-focused,
@@ -805,7 +801,7 @@ export default class Button extends Vue {
   }
 }
 
-.prime--white {
+.s-button--prime-white {
   background: @white;
   color: @prime;
 
@@ -836,21 +832,23 @@ export default class Button extends Vue {
     text-transform: none;
   }
 
-  .prime-simple__italic {
+  .prime-simple__bold {
     font-weight: 900;
-    font-style: italic;
     .margin-left(0.5);
   }
 }
 
-.s-button--prime.s-button--large {
-  padding: 0px 64px;
+.s-button--prime,
+.s-button--prime-white {
+  &.s-button--large {
+    padding: 0px 64px;
 
-  .icon-prime {
-    font-size: 41px;
-    position: absolute;
-    left: -6px;
-    bottom: -9px;
+    .icon-prime {
+      font-size: 41px;
+      position: absolute;
+      left: -6px;
+      bottom: -9px;
+    }
   }
 }
 
@@ -1042,19 +1040,19 @@ export default class Button extends Vue {
     }
   }
 
+  .s-button--prime-white {
+    &:focus,
+    &.is-focused,
+    &:hover {
+      background-color: lighten(@white, 4%);
+    }
+  }
+
   .s-button--prime-simple {
     &:focus,
     &.is-focused,
     &:hover {
       background-color: lighten(@prime, 4%);
-    }
-  }
-
-  .prime--white {
-    &:focus,
-    &.is-focused,
-    &:hover {
-      background-color: lighten(@white, 4%);
     }
   }
 
