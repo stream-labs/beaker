@@ -95,10 +95,9 @@ components: {
 
           <Button :variation="'prime'" :title="'Join Prime'" :icon="'prime'"></Button>
           <Button
-            :variation="'prime'"
+            :variation="'prime-white'"
             :title="'Join Prime'"
             :icon="'prime'"
-            :primeBgColor="'white'"
           ></Button>
         </div>
       </div>
@@ -389,10 +388,9 @@ components: {
         <Button :size="'large'" :variation="'prime'" :title="'Join Prime'" :icon="'prime'"></Button>
         <Button
           :size="'large'"
-          :variation="'prime'"
+          :variation="'prime-white'"
           :title="'Join Prime'"
           :icon="'prime'"
-          :primeBgColor="'white'"
         ></Button>
       </div>
     </div>

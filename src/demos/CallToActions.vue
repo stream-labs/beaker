@@ -88,7 +88,7 @@ components: {
 
       <div class="row">
         <call-to-action
-          :bgColor="'#42C9D2'"
+          :bgColor="'#CAA368'"
           :titleColor="'#fff'"
           :subTitleColor="'#fff'"
           :hasThumbnail="false"
@@ -96,11 +96,10 @@ components: {
           :description="
             'Our premium tool-set for professional content creators.'
           "
-          :buttonVariation="'default'"
+          :buttonVariation="'prime-white'"
           :buttonTitle="'Sign Up'"
           :buttonDescription="''"
-          :buttonBg="'#fff'"
-          :buttonTextColor="'#42C9D2'"
+          :buttonIcon="'prime'"
           :bgPrime="true"
         ></call-to-action>
       </div>
