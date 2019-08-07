@@ -4,7 +4,10 @@
     :class="{ enabled: !!value }"
     @click="$emit('input', !value)"
   >
-    <div class="s-status-switch__paddle"></div>
+    <div
+      class="s-status-switch__paddle"
+      :class="{ 's-status-switch__paddle--small': size === 'small' }"
+    ></div>
     <label v-if="label">{{ label }}</label>
     <slot></slot>
   </div>
@@ -17,6 +20,9 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 export default class StatusSwitch extends Vue {
   @Prop()
   label?: string;
+
+  @Prop()
+  size?: string;
 
   @Prop({ default: false })
   value?: boolean;
@@ -34,27 +40,40 @@ export default class StatusSwitch extends Vue {
   label {
     .margin-left(1);
     color: @day-paragraph;
+    transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .s-status-switch__paddle {
-    height: 1em;
-    width: 2em;
-    background: @day-switch-bg;
-    border-radius: 1em;
-    display: inline-flex;
-    align-items: center;
     position: relative;
-    padding: 2px;
-    box-sizing: content-box;
+    height: 24px;
+    width: 40px;
+    padding: 4px;
+    border-radius: 20px;
+    background: @day-switch-bg;
     cursor: pointer;
+    transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
     &:before {
       content: "";
-      width: 1em;
-      height: 1em;
-      background: #fff;
-      border-radius: 1em;
       position: absolute;
+      width: 16px;
+      height: 16px;
+      .radius(4);
+      background: #fff;
       transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &--small {
+      height: 16px;
+      width: 28px;
+      padding: 2px;
+      .radius(3.5);
+
+      &::before {
+        width: 12px;
+        height: 12px;
+        .radius(3);
+      }
     }
   }
 

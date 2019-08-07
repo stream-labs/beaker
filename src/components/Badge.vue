@@ -10,7 +10,9 @@
         )`,
         color: textColor
       }"
-    >{{ `${current}${separator}${total} ${suffix}` }}</div>
+    >
+      {{ `${current}${separator}${total} ${suffix}` }}
+    </div>
     <div v-if="variant === 'prime' || variant === 'prime-alt'">
       <i v-if="variant === 'prime'" class="icon-prime"></i>Prime
     </div>

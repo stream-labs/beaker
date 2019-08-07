@@ -404,32 +404,6 @@ components: {
 
     <div class="section">
       <h2>Status Switch</h2>
-      <div class="section">
-        <status-switch
-          v-model="statusValue"
-          :label="'Status Label'"
-        ></status-switch>
-      </div>
-      <div class="section">
-        <small>
-          <status-switch v-model="statusValue">
-            <label>Small Switch</label>
-          </status-switch>
-        </small>
-      </div>
-      <div class="section">
-        <h1>
-          <status-switch v-model="statusValue">
-            <label>H1 Switch</label>
-          </status-switch>
-        </h1>
-      </div>
-
-      <div class="section">
-        <status-switch v-model="statusValue" />
-        <status-switch v-model="statusValue" />
-        <status-switch v-model="statusValue" />
-      </div>
 
       <Accordion
         :openedTitle="'Hide Code'"
@@ -437,25 +411,64 @@ components: {
         class="docs-code"
       >
         <div slot="content">
-          <pre><code>&lt;status-switch v-model="statusValue" :label="'Status Label'"&gt;&lt;/status-switch&gt;
+          <pre><code>&lt;status-switch
+  v-model="statusValue"
+  :label="'Status Label'"
+/&gt;
 
-&lt;small&gt;
-  &lt;status-switch v-model="statusValue"&gt;
-    &lt;label&gt;Small Switch&lt;/label&gt;
-  &lt;/status-switch&gt;
-&lt;/small&gt;
-
-&lt;h1&gt;
-  &lt;status-switch v-model="statusValue"&gt;
-    &lt;label&gt;H1 Switch&lt;/label&gt;
-  &lt;/status-switch&gt;
-&lt;/h1&gt;
-
-&lt;status-switch v-model="statusValue" /&gt;
-&lt;status-switch v-model="statusValue" /&gt;
-&lt;status-switch v-model="statusValue" /&gt;</code></pre>
+&lt;status-switch
+  small="true"
+  v-model="statusValue"
+  label="Small Switch"
+/&gt;</code></pre>
         </div>
       </Accordion>
+
+      <div class="section">
+        <status-switch v-model="statusValue" :label="'Switch Label'" />
+      </div>
+
+      <div class="section">
+        <status-switch
+          size="small"
+          v-model="statusValue"
+          label="Small Switch"
+        />
+      </div>
+
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>value</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>Available for v-model 2-way data binding.</td>
+          </tr>
+          <tr>
+            <td>label</td>
+            <td>string</td>
+            <td>null</td>
+            <td>Optional label for the input.</td>
+          </tr>
+          <tr>
+            <td>size</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>
+              Other available sizes. Current alternate size option:
+              <code>small</code>.
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <div class="section">
