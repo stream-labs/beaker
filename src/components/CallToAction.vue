@@ -1,5 +1,5 @@
 <template>
-  <div class="s-call-to-action" :class="[callToActionMq, buttonClasses]" :style="callToActionBg">
+  <div class="s-call-to-action" :class="callToActionMq" :style="callToActionBg">
     <i
       v-if="buttonVariation === 'prime' | buttonVariation ==='prime-white'"
       class="icon-prime prime-bg"
