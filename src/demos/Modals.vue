@@ -57,25 +57,12 @@ components: {
         :text="
           'Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.'
         "
-        >hey there</ModalComp
-      >
+      >hey there</ModalComp>
 
       <div class="s-button-container--left">
-        <Button
-          :variation="'default'"
-          :title="'modal basic1'"
-          @click="$modal.show('modal-basic')"
-        ></Button>
-        <Button
-          :variation="'default'"
-          :title="'modal basic2'"
-          @click="$modal.show('modal-basic2')"
-        ></Button>
-        <Button
-          :variation="'default'"
-          :title="'modal basic3'"
-          @click="$modal.show('modal-basic3')"
-        ></Button>
+        <Button :variation="'default'" :title="'modal basic1'" @click="$modal.show('modal-basic')"></Button>
+        <Button :variation="'default'" :title="'modal basic2'" @click="$modal.show('modal-basic2')"></Button>
+        <Button :variation="'default'" :title="'modal basic3'" @click="$modal.show('modal-basic3')"></Button>
       </div>
     </div>
 
@@ -207,6 +194,36 @@ components: {
       </div>
     </div>
 
+    <div class="section">
+      <h2>Modal Confirm</h2>
+      <p>Used when needed to let the user confirm.</p>
+
+      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+        <div slot="content">
+          <pre><code>&lt;ModalComp
+  :name=&quot;'confirmation'&quot;
+  :type=&quot;'confirmation'&quot;
+  :width=&quot;400&quot;
+  :subTitle=&quot;'Delete ‘Streamlabs Pillow’'&quot;
+  :text=&quot;'Are you sure you want to delete the merch item ‘Streamlabs Pillow’? This action cannot be undone.'&quot;&gt;
+&lt;/ModalComp&gt;
+
+&lt;Button
+  :variation=&quot;'warning'&quot;
+  :title=&quot;'modal confirmation'&quot;
+  @click=&quot;$modal.show('confirmation')&quot;&gt;
+&lt;/Button&gt;
+</code></pre>
+        </div>
+      </Accordion>
+
+      <ModalComp :type="'prime'" :minWidth="900" @onClickPrime="test" :hasPrimeCloseButton="true"></ModalComp>
+
+      <div class="button-container button-container--left">
+        <Button :variation="'default'" :title="'modal prime'" @click="$modal.show('modal-prime')"></Button>
+      </div>
+    </div>
+
     <table class="docs-table">
       <thead>
         <tr>
@@ -316,7 +333,8 @@ components: {
             Pass in
             <code>action</code> if it's a confirmation that doesn't warrant a
             warning (only in Modal Confirmation). In Modal Subscribe default is
-            <code>subscribe</code>. Can be set to <code>paypal</code> and
+            <code>subscribe</code>. Can be set to
+            <code>paypal</code> and
             <code>paypal-blue</code> variations.
           </td>
         </tr>
@@ -348,9 +366,7 @@ components: {
           <td>
             Allows for custom preview above modal text. Uses
             <code>preview</code> slot.
-            <code>
-              &lt;template #preview&gt;Custom Preview HTML&lt;template&gt;
-            </code>
+            <code>&lt;template #preview&gt;Custom Preview HTML&lt;template&gt;</code>
             (only in Modal Subscribe).
           </td>
         </tr>
@@ -384,5 +400,11 @@ import Button from "./../components/Button.vue";
     Button
   }
 })
-export default class Modals extends Vue {}
+export default class Modals extends Vue {
+  test() {
+    console.log("test");
+  }
+
+  featureList = ["test", "test", "test", "test", "test"];
+}
 </script>
