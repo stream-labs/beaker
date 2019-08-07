@@ -19,7 +19,9 @@
   >
     <span>
       <span>
-        <span v-if="variation === 'prime-simple' && this.primeTitle">{{primeTitle}}</span>
+        <span v-if="variation === 'prime-simple' && this.primeTitle">{{
+          primeTitle
+        }}</span>
         <span v-else-if="variation === 'prime-simple'" class="prime-simple">
           Free with
           <span class="prime-simple__bold">Prime</span>
@@ -30,8 +32,13 @@
         </i>
         {{ title }}
       </span>
-      <span v-if="description" class="s-button__description">{{ description }}</span>
-      <i v-if="iconClass && iconPosition === 'right'" :class="['icon--right', iconClass]"></i>
+      <span v-if="description" class="s-button__description">{{
+        description
+      }}</span>
+      <i
+        v-if="iconClass && iconPosition === 'right'"
+        :class="['icon--right', iconClass]"
+      ></i>
     </span>
     <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
     <span v-if="price">{{ price }}</span>
