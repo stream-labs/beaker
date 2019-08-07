@@ -1,7 +1,7 @@
 <template>
   <div class="s-call-to-action" :class="callToActionMq" :style="callToActionBg">
     <i
-      v-if="buttonVariation === 'prime' | buttonVariation ==='prime-white'"
+      v-if="(buttonVariation === 'prime') | (buttonVariation === 'prime-white')"
       class="icon-prime prime-bg"
     ></i>
     <div
@@ -13,8 +13,12 @@
       <img :src="thumbnail" />
     </div>
     <div class="s-call-to-action__description" :class="callToActionDescMq">
-      <div class="s-title" :class="titleMq" :style="callToActiontitleColor">{{ title }}</div>
-      <div class="s-subtitle" :style="callToActionSubTitleColor">{{ description }}</div>
+      <div class="s-title" :class="titleMq" :style="callToActiontitleColor">
+        {{ title }}
+      </div>
+      <div class="s-subtitle" :style="callToActionSubTitleColor">
+        {{ description }}
+      </div>
     </div>
     <slot v-if="customButtonSlot"></slot>
     <div v-else class="s-button-container s-button-container--right">
