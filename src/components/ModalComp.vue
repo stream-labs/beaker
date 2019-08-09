@@ -65,14 +65,15 @@
       ></ModalConfirmation>
     </div>
 
-    <div v-if="type === 'prime'">
+    <div v-if="type === 'welcome-prime'">
       <ModalPrime
         :name="modalName"
+        :width="width"
         :minWidth="minWidth"
         :primeDesc="primeDesc"
         :primeFeatureHeading="primeFeatureHeading"
         :primeFeatureList="primeFeatureList"
-        :primeButtonTitle="primeButtonTitle"
+        :primeButtonText="primeButtonText"
         :hasPrimeCloseButton="hasPrimeCloseButton"
         v-on="$listeners"
       ></ModalPrime>
@@ -167,7 +168,7 @@ export default class ModalComp extends Vue {
   primeFeatureList!: string;
 
   @Prop()
-  primeButtonTitle!: string;
+  primeButtonText!: string;
 
   @Prop()
   hasPrimeCloseButton!: boolean;
@@ -212,11 +213,11 @@ export default class ModalComp extends Vue {
         }
         break;
 
-      case "prime":
+      case "welcome-prime":
         if (this.name) {
           this.modalName = this.name;
         } else {
-          this.modalName = "modal-prime";
+          this.modalName = "modal-welcome-prime";
         }
         break;
     }

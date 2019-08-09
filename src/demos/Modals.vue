@@ -195,32 +195,40 @@ components: {
     </div>
 
     <div class="section">
-      <h2>Modal Confirm</h2>
-      <p>Used when needed to let the user confirm.</p>
+      <h2>Modal Welcome Prime</h2>
+      <p>Used for welcome prime</p>
 
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-          <pre><code>&lt;ModalComp
-  :name=&quot;'confirmation'&quot;
-  :type=&quot;'confirmation'&quot;
-  :width=&quot;400&quot;
-  :subTitle=&quot;'Delete ‘Streamlabs Pillow’'&quot;
-  :text=&quot;'Are you sure you want to delete the merch item ‘Streamlabs Pillow’? This action cannot be undone.'&quot;&gt;
+          <pre><code>&lt;ModalComp 
+  :type=&quot;'welcome-prime'&quot; 
+  :minWidth=&quot;900&quot; 
+  @onClickPrime=&quot;test&quot; 
+  :hasPrimeCloseButton=&quot;true&quot;&gt;
 &lt;/ModalComp&gt;
 
 &lt;Button
-  :variation=&quot;'warning'&quot;
-  :title=&quot;'modal confirmation'&quot;
-  @click=&quot;$modal.show('confirmation')&quot;&gt;
+  :variation=&quot;'default'&quot;
+  :title=&quot;'modal welcome prime'&quot;
+  @click=&quot;$modal.show('modal-welcome-prime')&quot;&gt;
 &lt;/Button&gt;
 </code></pre>
         </div>
       </Accordion>
 
-      <ModalComp :type="'prime'" :minWidth="900" @onClickPrime="test" :hasPrimeCloseButton="true"></ModalComp>
+      <ModalComp
+        :type="'welcome-prime'"
+        :minWidth="900"
+        @onClickPrime="test"
+        :hasPrimeCloseButton="true"
+      ></ModalComp>
 
       <div class="button-container button-container--left">
-        <Button :variation="'default'" :title="'modal prime'" @click="$modal.show('modal-prime')"></Button>
+        <Button
+          :variation="'default'"
+          :title="'modal welcome prime'"
+          @click="$modal.show('modal-welcome-prime')"
+        ></Button>
       </div>
     </div>
 

@@ -15,7 +15,7 @@
       <div class="modal-prime">
         <video loop muted autoplay class="modal-prime__video">
           <source
-            src="https://cdn.streamlabs.com/videos/Welcome_Confetti_Gold.webm"
+            src="https://cdn.streamlabs.com/videos/Welcome_Confetti_Gold_1.webm"
             type="video/webm"
           />
         </video>
@@ -35,7 +35,7 @@
         <div class="modal-prime__button">
           <Button
             :size="'large'"
-            :title="primeButtonTitle"
+            :title="primeButtonText"
             @click="onPrimeButtonHandler"
             :bgColor="'#CAA368'"
             :textColor="'#fff'"
@@ -56,13 +56,13 @@ import Button from "./../components/Button.vue";
   }
 })
 export default class ModalPrime extends Vue {
-  @Prop({ default: "modal-prime" })
+  @Prop({ default: "modal-welcome-prime" })
   name!: string;
 
-  @Prop({ default: 600 })
+  @Prop({ default: 900 })
   width!: number;
 
-  @Prop({ default: 600 })
+  @Prop({ default: 900 })
   minWidth!: number;
 
   @Prop({ default: "You just unlocked a TON of benefits" })
@@ -75,7 +75,7 @@ export default class ModalPrime extends Vue {
   primeFeatureList!: string[];
 
   @Prop({ default: "Continue" })
-  primeButtonTitle!: string;
+  primeButtonText!: string;
 
   @Prop({ default: false })
   hasPrimeCloseButton!: boolean;
@@ -104,6 +104,12 @@ export default class ModalPrime extends Vue {
 <style lang="less">
 @import "./../styles/Imports";
 @import "./../styles/components/Modals";
+
+.v--modal-box {
+  @media (max-width: 768px) {
+    width: 100% !important;
+  }
+}
 
 .s-modal-container {
   .padding(0);
@@ -143,6 +149,7 @@ export default class ModalPrime extends Vue {
     font-weight: 800;
     text-align: center;
     color: #ffffff;
+    line-height: 40px;
 
     span {
       color: #caa368;
@@ -155,6 +162,7 @@ export default class ModalPrime extends Vue {
     font-weight: 800;
     .margin-top(4);
     text-align: center;
+    line-height: 24px;
   }
 
   .modal-prime__images {
@@ -191,6 +199,7 @@ export default class ModalPrime extends Vue {
       color: @white;
       font-size: 18px;
       text-align: left;
+      line-height: 24px;
     }
 
     ul {
