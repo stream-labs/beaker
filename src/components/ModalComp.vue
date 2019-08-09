@@ -64,6 +64,17 @@
         v-on="$listeners"
       ></ModalConfirmation>
     </div>
+
+    <div v-if="type === 'welcome-prime'">
+      <ModalPrime
+        :name="modalName"
+        :width="width"
+        :minWidth="minWidth"
+        :primeButtonText="primeButtonText"
+        :hasPrimeCloseButton="hasPrimeCloseButton"
+        v-on="$listeners"
+      ></ModalPrime>
+    </div>
   </div>
 </template>
 
@@ -74,6 +85,7 @@ import ModalBasic from "./../components/ModalBasic.vue";
 import ModalSubscribe from "./../components/ModalSubscribe.vue";
 import ModalRedirect from "./../components/ModalRedirect.vue";
 import ModalConfirmation from "./../components/ModalConfirmation.vue";
+import ModalPrime from "./../components/ModalPrime.vue";
 import VModal from "vue-js-modal";
 
 Vue.use(VModal);
@@ -84,7 +96,8 @@ Vue.use(VModal);
     ModalBasic,
     ModalSubscribe,
     ModalRedirect,
-    ModalConfirmation
+    ModalConfirmation,
+    ModalPrime
   }
 })
 export default class ModalComp extends Vue {
@@ -142,6 +155,12 @@ export default class ModalComp extends Vue {
   @Prop()
   cancelTitle!: string;
 
+  @Prop()
+  primeButtonText!: string;
+
+  @Prop()
+  hasPrimeCloseButton!: boolean;
+
   modalName: string = "";
 
   mounted() {
@@ -179,6 +198,14 @@ export default class ModalComp extends Vue {
           this.modalName = this.name;
         } else {
           this.modalName = "modal-confirmation";
+        }
+        break;
+
+      case "welcome-prime":
+        if (this.name) {
+          this.modalName = this.name;
+        } else {
+          this.modalName = "modal-welcome-prime";
         }
         break;
     }
