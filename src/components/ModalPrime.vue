@@ -2,13 +2,13 @@
   <modal
     :name="name"
     :classes="'s-modal-wrapper'"
-    :maxWidth="width"
+    :width="width"
     :minWidth="minWidth"
     height="auto"
     :adaptive="true"
     v-on="$listeners"
   >
-    <div class="s-modal-container">
+    <div class="s-modal-container s-modal-welcome-prime">
       <div class="modal-prime__close" v-if="hasPrimeCloseButton">
         <i class="icon-close" @click="$modal.hide(name)"></i>
       </div>
@@ -24,11 +24,11 @@
           <span>Prime</span>
           !
         </div>
-        <p class="modal-prime__desc">{{primeDesc}}</p>
+        <p class="modal-prime__desc">You just unlocked a TON of benefits</p>
         <div class="modal-prime__images"></div>
         <div class="modal-prime__features">
-          <p>{{primeFeatureHeading}}</p>
-          <ul v-for="(feature, index) in selectPrimeFeatureList" :key="index">
+          <p>Just a few of your exclusive features and services.</p>
+          <ul v-for="(feature, index) in primeFeatureListDefault" :key="index">
             <li>{{feature}}</li>
           </ul>
         </div>
@@ -59,20 +59,11 @@ export default class ModalPrime extends Vue {
   @Prop({ default: "modal-welcome-prime" })
   name!: string;
 
-  @Prop({ default: 900 })
+  @Prop()
   width!: number;
 
-  @Prop({ default: 900 })
-  minWidth!: number;
-
-  @Prop({ default: "You just unlocked a TON of benefits" })
-  primeDesc!: string;
-
-  @Prop({ default: "Just a few of your exclusive features and services." })
-  primeFeatureHeading!: string;
-
   @Prop()
-  primeFeatureList!: string[];
+  minWidth!: number;
 
   @Prop({ default: "Continue" })
   primeButtonText!: string;
@@ -89,29 +80,17 @@ export default class ModalPrime extends Vue {
     "Priority Support + More"
   ];
 
-  get selectPrimeFeatureList() {
-    return this.primeFeatureList
-      ? this.primeFeatureList
-      : this.primeFeatureListDefault;
-  }
-
   onPrimeButtonHandler() {
     this.$emit("onClickPrime");
   }
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import "./../styles/Imports";
 @import "./../styles/components/Modals";
 
-.v--modal-box {
-  @media (max-width: 768px) {
-    width: 100% !important;
-  }
-}
-
-.s-modal-container {
+.s-modal-welcome-prime {
   .padding(0);
 }
 

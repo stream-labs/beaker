@@ -202,7 +202,7 @@ components: {
         <div slot="content">
           <pre><code>&lt;ModalComp 
   :type=&quot;'welcome-prime'&quot; 
-  :minWidth=&quot;900&quot; 
+  :width=&quot;900&quot; 
   @onClickPrime=&quot;test&quot; 
   :hasPrimeCloseButton=&quot;true&quot;&gt;
 &lt;/ModalComp&gt;
@@ -218,7 +218,7 @@ components: {
 
       <ModalComp
         :type="'welcome-prime'"
-        :minWidth="900"
+        :width="900"
         @onClickPrime="test"
         :hasPrimeCloseButton="true"
       ></ModalComp>
@@ -389,6 +389,24 @@ components: {
           <td>string</td>
           <td>$5.99</td>
           <td>Set subscribe button title (only in Modal Subscribe).</td>
+        </tr>
+        <tr>
+          <td>primeButtonText</td>
+          <td>string</td>
+          <td>Continue</td>
+          <td>Set button text below (only in Modal Welcom Prime).</td>
+        </tr>
+        <tr>
+          <td>hasPrimeCloseButton</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>Set the close button right top (only in Modal Welcom Prime).</td>
+        </tr>
+        <tr>
+          <td>@onClickPrime</td>
+          <td>Function</td>
+          <td>null</td>
+          <td>Callback function when click the button below (only in Modal Welcom Prime).</td>
         </tr>
       </tbody>
     </table>

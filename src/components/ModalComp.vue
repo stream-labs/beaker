@@ -70,9 +70,6 @@
         :name="modalName"
         :width="width"
         :minWidth="minWidth"
-        :primeDesc="primeDesc"
-        :primeFeatureHeading="primeFeatureHeading"
-        :primeFeatureList="primeFeatureList"
         :primeButtonText="primeButtonText"
         :hasPrimeCloseButton="hasPrimeCloseButton"
         v-on="$listeners"
@@ -157,15 +154,6 @@ export default class ModalComp extends Vue {
 
   @Prop()
   cancelTitle!: string;
-
-  @Prop()
-  primeDesc!: string;
-
-  @Prop()
-  primeFeatureHeading!: string;
-
-  @Prop()
-  primeFeatureList!: string;
 
   @Prop()
   primeButtonText!: string;
