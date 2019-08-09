@@ -158,18 +158,17 @@ export default class ModalPrime extends Vue {
 
   .modal-prime__features {
     background: rgba(43, 56, 63, 0.7);
-    padding: 16px;
     border-radius: 8px;
-    margin-bottom: 24px;
+    .margin-bottom(3);
     width: 100%;
-    padding: 16px;
-    margin-top: 20px;
+    .padding(2);
+    .margin-top(2.5);
 
     @media (min-width: 768px) {
       width: 516px;
       margin: 0 auto;
-      margin-bottom: 24px;
-      margin-top: 0;
+      .margin-bottom(3);
+      .margin-top(0);
       .padding-v-sides(3);
       .padding-h-sides(4);
     }
