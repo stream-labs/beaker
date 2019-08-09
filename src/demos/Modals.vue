@@ -430,7 +430,5 @@ export default class Modals extends Vue {
   test() {
     console.log("test");
   }
-
-  featureList = ["test", "test", "test", "test", "test"];
 }
 </script>
