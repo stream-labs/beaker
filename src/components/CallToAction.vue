@@ -114,7 +114,7 @@ export default class CallToAction extends Vue {
   @Prop({ default: "Download Streamlabs OBS" })
   buttonTitle!: String;
 
-  @Prop({ default: "Windows 7+ 245.8MB" })
+  @Prop()
   buttonDescription!: String;
 
   @Prop()

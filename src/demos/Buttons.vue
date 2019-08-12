@@ -630,7 +630,6 @@ components: {
         <Button
           :variation="'slobs-download'"
           :title="'Download Streamlabs OBS'"
-          :description="'Windows 7+ 245.8MB'"
         ></Button>
       </div>
     </div>

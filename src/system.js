@@ -31,6 +31,7 @@ import ModalComp from "./components/ModalComp.vue";
 import ModalConfirmation from "./components/ModalConfirmation.vue";
 import ModalRedirect from "./components/ModalRedirect.vue";
 import ModalSubscribe from "./components/ModalSubscribe.vue";
+import ModalPrime from "./components/ModalPrime.vue";
 import NavCallToAction from "./components/NavCallToAction.vue";
 import NewFeatureOverlay from "./components/NewFeatureOverlay.vue";
 import Notice from "./components/Notice.vue";
@@ -88,6 +89,7 @@ export {
   ModalConfirmation,
   ModalRedirect,
   ModalSubscribe,
+  ModalPrime,
   NavCallToAction,
   NewFeatureOverlay,
   Notice,
