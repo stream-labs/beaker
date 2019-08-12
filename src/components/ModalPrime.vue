@@ -29,7 +29,7 @@
         <div class="modal-prime__features">
           <p>Just a few of your exclusive features and services.</p>
           <ul v-for="(feature, index) in primeFeatureListDefault" :key="index">
-            <li>{{feature}}</li>
+            <li>{{ feature }}</li>
           </ul>
         </div>
         <div class="modal-prime__button">
