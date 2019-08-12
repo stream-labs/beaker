@@ -127,16 +127,16 @@ export default class ModalPrime extends Vue {
     font-size: 32px !important;
     font-weight: 800;
     text-align: center;
-    color: #ffffff;
+    color: @dark-2;
     line-height: 40px;
 
     span {
-      color: #caa368;
+      color: @prime;
     }
   }
 
   .modal-prime__desc {
-    color: @white;
+    color: @dark-2;
     font-size: 20px;
     font-weight: 800;
     .margin-top(4);
@@ -157,7 +157,7 @@ export default class ModalPrime extends Vue {
   }
 
   .modal-prime__features {
-    background: rgba(43, 56, 63, 0.7);
+    background: @light-2;
     border-radius: 8px;
     .margin-bottom(3);
     width: 100%;
@@ -174,13 +174,14 @@ export default class ModalPrime extends Vue {
     }
 
     p {
-      color: @white;
+      color: @dark-2;
       font-size: 18px;
       text-align: left;
       line-height: 24px;
     }
 
     ul {
+      color: @dark-5;
       line-height: 30px;
       .padding-left(2);
       .margin(0);
@@ -191,8 +192,29 @@ export default class ModalPrime extends Vue {
     text-align: center;
 
     .s-button {
-      font-style: italic;
       font-weight: bold;
+    }
+  }
+}
+
+.night,
+.night-theme {
+  .modal-prime {
+    .modal-prime__heading {
+      color: @white;
+    }
+
+    .modal-prime__desc {
+      color: @white;
+    }
+
+    .modal-prime__features {
+      background: rgba(43, 56, 63, 0.7);
+
+      p,
+      ul {
+        color: @white;
+      }
     }
   }
 }

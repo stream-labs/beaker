@@ -220,8 +220,7 @@ export default class Badge extends Vue {
     color: @white;
     .padding-h-sides();
     border-radius: 50px;
-    font-style: italic;
-    .weight(@bold);
+    font-weight: 900;
 
     .icon-prime {
       display: inline-block;
@@ -239,8 +238,7 @@ export default class Badge extends Vue {
     background-color: transparent;
     color: @prime;
     .padding-h-sides(@0);
-    font-style: italic;
-    .weight(@bold);
+    font-weight: 900;
     font-size: inherit;
 
     &::before {
