@@ -1,7 +1,7 @@
 <template>
   <div class="s-selector">
     <multiselect
-      v-bind="{ ...$props }"
+      v-bind="multiselectProps"
       :style="styleObject"
       :options="options"
       :max-height="200"
@@ -46,6 +46,10 @@ export default {
       return {
         width: this.multiple ? "100%" : this.width ? this.width : "176px"
       };
+    },
+
+    multiselectProps() {
+      return { ...this.$props };
     }
   },
 
@@ -62,7 +66,7 @@ export default {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-selector {
   fieldset[disabled] .multiselect {
