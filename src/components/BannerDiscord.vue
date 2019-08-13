@@ -60,6 +60,7 @@ export default class BannerDiscord extends Vue {
   }
 
   &__title {
+    color: @white;
     margin-bottom: 0;
     .weight(@normal);
 
