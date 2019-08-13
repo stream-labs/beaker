@@ -49,7 +49,7 @@ export default {
     },
 
     multiselectProps() {
-      return { ...this.$props };
+      return this.$props;
     }
   },
 
