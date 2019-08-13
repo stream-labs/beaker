@@ -231,7 +231,7 @@ components: {
 
       <ModalComp
         :type="'welcome-prime'"
-        :width="900"
+        :width="600"
         @onClickPrime="test"
         :hasPrimeCloseButton="true"
       ></ModalComp>
