@@ -35,10 +35,10 @@
         <div class="modal-prime__button">
           <Button
             :size="'large'"
+            :variation="'prime'"
+            :icon="'prime'"
             :title="primeButtonText"
             @click="onPrimeButtonHandler"
-            :bgColor="'#CAA368'"
-            :textColor="'#fff'"
           ></Button>
         </div>
       </div>
@@ -91,24 +91,25 @@ export default class ModalPrime extends Vue {
 @import "./../styles/components/Modals";
 
 .s-modal-welcome-prime {
-  .padding(0);
+  position: relative;
+  overflow: hidden;
 }
 
 .modal-prime__close {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  .padding(3);
-  .padding-bottom(0);
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 100;
 
   .icon-close {
-    z-index: 100;
     cursor: pointer;
+    color: @light-5;
   }
 }
 
 .modal-prime {
-  .padding(5);
+  .padding-v-sides(5);
+  .padding-h-sides(2);
 
   .modal-prime__video {
     display: none;
@@ -117,7 +118,7 @@ export default class ModalPrime extends Vue {
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
+      height: auto;
       display: block;
     }
   }
@@ -176,12 +177,15 @@ export default class ModalPrime extends Vue {
     p {
       color: @dark-2;
       font-size: 18px;
+      font-weight: 500;
       text-align: left;
-      line-height: 24px;
+      line-height: 21px;
     }
 
     ul {
       color: @dark-5;
+      font-size: 16px;
+      font-weight: 500;
       line-height: 30px;
       .padding-left(2);
       .margin(0);
@@ -199,6 +203,12 @@ export default class ModalPrime extends Vue {
 
 .night,
 .night-theme {
+  .modal-prime__close {
+    .icon-close {
+      color: @light-4;
+    }
+  }
+
   .modal-prime {
     .modal-prime__heading {
       color: @white;
