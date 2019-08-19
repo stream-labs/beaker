@@ -2,7 +2,10 @@
   <div>
     <div class="section">
       <h1>Prime Components</h1>
+    </div>
 
+    <div class="section">
+      <h2>Standard Badges & Alt Badges</h2>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre>
@@ -14,7 +17,9 @@
         <Badge :variant="'prime'"></Badge>
         <Badge :variant="'prime-alt'"></Badge>
       </div>
+    </div>
 
+    <div class="section">
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre>
@@ -47,9 +52,10 @@
       </div>
     </div>
 
-    <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-      <div slot="content">
-        <pre>
+    <div class="section">
+      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+        <div slot="content">
+          <pre>
 <code>&lt;NavCallToAction
   :description=&quot;
     'Forward email from your custom domain name to your current mailbox.'
@@ -69,28 +75,66 @@
     &lt;div&gt;Advanced SEO &amp; Analytics&lt;/div&gt;
   &lt;/div&gt;
 &lt;/NavCallToAction&gt;</code></pre>
-      </div>
-    </accordion>
+        </div>
+      </accordion>
 
-    <NavCallToAction
-      :description="
+      <NavCallToAction
+        :description="
         'Forward email from your custom domain name to your current mailbox.'
       "
-      :buttonTitle="'Join Prime'"
-      :buttonVariation="'prime'"
-      @click="testNavClick"
-    >
-      <div slot="title">
-        Unlock unlimited themes with
-        <Badge :variant="'prime-alt'"></Badge>
+        :buttonTitle="'Join Prime'"
+        :buttonVariation="'prime'"
+        @click="testNavClick"
+      >
+        <div slot="title">
+          Unlock unlimited themes with
+          <Badge :variant="'prime-alt'"></Badge>
+        </div>
+        <div slot="extras">
+          <div>Prime also includes:</div>
+          <div>Custom Domain Name</div>
+          <div>30+ Professional Themes</div>
+          <div>Advanced SEO & Analytics</div>
+        </div>
+      </NavCallToAction>
+    </div>
+
+    <div class="section">
+      <h2>Modal Welcome Prime</h2>
+      <p>Used for welcome prime</p>
+      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+        <div slot="content">
+          <pre><code>&lt;ModalComp 
+  :type=&quot;'welcome-prime'&quot; 
+  :width=&quot;900&quot; 
+  @onClickPrime=&quot;testWelcomePrime&quot; 
+  :hasPrimeCloseButton=&quot;true&quot;&gt;
+&lt;/ModalComp&gt;
+
+&lt;Button
+  :variation=&quot;'default'&quot;
+  :title=&quot;'modal welcome prime'&quot;
+  @click=&quot;$modal.show('modal-welcome-prime')&quot;&gt;
+&lt;/Button&gt;
+</code></pre>
+        </div>
+      </Accordion>
+
+      <ModalComp
+        :type="'welcome-prime'"
+        :width="600"
+        @onClickPrime="testWelcomePrime"
+        :hasPrimeCloseButton="true"
+      ></ModalComp>
+
+      <div class="button-container button-container--left">
+        <Button
+          :variation="'default'"
+          :title="'modal welcome prime'"
+          @click="$modal.show('modal-welcome-prime')"
+        ></Button>
       </div>
-      <div slot="extras">
-        <div>Prime also includes:</div>
-        <div>Custom Domain Name</div>
-        <div>30+ Professional Themes</div>
-        <div>Advanced SEO & Analytics</div>
-      </div>
-    </NavCallToAction>
+    </div>
   </div>
 </template>
 
@@ -100,13 +144,17 @@ import Accordion from "./../components/Accordion.vue";
 import Badge from "./../components/Badge.vue";
 import PrimeSection from "./../components/PrimeSection.vue";
 import NavCallToAction from "./../components/NavCallToAction.vue";
+import ModalComp from "./../components/ModalComp.vue";
+import Button from "./../components/Button.vue";
 
 @Component({
   components: {
     Accordion,
     Badge,
     PrimeSection,
-    NavCallToAction
+    NavCallToAction,
+    ModalComp,
+    Button
   }
 })
 export default class PrimeComponents extends Vue {
@@ -116,6 +164,10 @@ export default class PrimeComponents extends Vue {
 
   testNavClick() {
     console.log("test prime nav click");
+  }
+
+  testWelcomePrime() {
+    console.log("test welcome prime click");
   }
 }
 </script>
