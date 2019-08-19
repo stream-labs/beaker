@@ -117,6 +117,7 @@ export default class Accordian extends Vue {
       return;
     }
     this.isOpen = !this.isOpen;
+    this.$emit("content-opened", { isOpen: this.isOpen, event });
   }
 
   afterOpen(element) {
@@ -138,7 +139,6 @@ export default class Accordian extends Vue {
     setTimeout(() => {
       element.style.height = height;
     });
-    this.$emit("content-opened", true);
   }
 
   close(element) {
@@ -148,7 +148,6 @@ export default class Accordian extends Vue {
     setTimeout(() => {
       element.style.height = 0;
     });
-    this.$emit("content-opened", false);
   }
 
   mounted() {
