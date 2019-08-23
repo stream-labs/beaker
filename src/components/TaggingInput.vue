@@ -17,7 +17,7 @@
       <Button
         :variation="buttonVariation"
         :title="buttonText"
-        @click="onAdd"
+        @click.prevent="onAdd"
         :disabled="value.length >= maxItems"
       ></Button>
     </div>
