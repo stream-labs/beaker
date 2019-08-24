@@ -903,6 +903,8 @@ export default class Button extends Vue {
       color: @dark-5!important;
       border-color: @dark-4;
     }
+
+    cursor: pointer;
   }
 
   .s-button--default {
