@@ -11,7 +11,7 @@
         slot="input"
         :error="errors.first(name)"
         v-on="filteredListeners"
-        @keyup="onAdd"
+        @keyup.enter.prevent="onAdd"
       ></text-input>
 
       <Button
@@ -88,11 +88,7 @@ export default class TaggingInput extends Vue {
     return omit(this.$listeners, ["input"]);
   }
 
-  onAdd(event) {
-    if(event && event.key !== 'Enter') {
-      return;
-    }
-
+  onAdd() {
     if (
       this.$validator.errors.items.length !== 0 ||
       this.value.length >= this.maxItems
