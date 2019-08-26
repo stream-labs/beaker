@@ -76,7 +76,7 @@ export default class ModalPrime extends Vue {
     "Custom Branded Website and Tip Page",
     "Custom Web Domain and Email Address",
     "Automatic Gold All-Star Status",
-    "Protected Mobile Streaming",
+    "Protected Mobile Streaming (coming soon)",
     "Priority Support + More"
   ];
 
