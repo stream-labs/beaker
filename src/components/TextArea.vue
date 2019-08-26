@@ -141,7 +141,7 @@ export default class TextArea extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-form-area {
   .s-form-area__container {

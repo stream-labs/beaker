@@ -29,7 +29,7 @@ export default class FakeAlert extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-fake-alert {
   height: 146px;

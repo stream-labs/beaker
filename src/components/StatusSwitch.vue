@@ -30,7 +30,7 @@ export default class StatusSwitch extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-status-switch {
   user-select: none;

@@ -87,7 +87,7 @@ export default class ContentRow extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-content-row-mq {
   flex-direction: column;

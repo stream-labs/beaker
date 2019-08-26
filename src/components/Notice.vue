@@ -67,7 +67,7 @@ export default class Notice extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-notice {
   overflow: hidden;

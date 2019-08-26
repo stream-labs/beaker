@@ -134,7 +134,7 @@ export default class TransitionsDemo extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .flip-cont {
   padding: 0;

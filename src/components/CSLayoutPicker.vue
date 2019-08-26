@@ -48,7 +48,7 @@ export default class CSLayoutPicker extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-cs-layout-picker {
   overflow: hidden;

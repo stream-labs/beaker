@@ -67,8 +67,8 @@ export default class ModalBasic extends Vue {
 }
 </script>
 
-<style lang="less">
-@import "./../styles/Imports";
+<style lang="less" scoped>
+@import (reference) "./../styles/Imports";
 @import "./../styles/components/Modals";
 
 .s-modal-body {

@@ -50,7 +50,7 @@ export default class PrimeSection extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .prime-section {
   background: rgba(255, 255, 255, 0.88);

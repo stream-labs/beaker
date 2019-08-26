@@ -105,7 +105,7 @@ export default class Accordions extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .guard-margin {
   margin-bottom: 10px;

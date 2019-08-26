@@ -153,7 +153,7 @@ export default class Steps extends Vue {}
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .info {
   display: flex;

@@ -158,7 +158,7 @@ export default class Tabs extends Vue {
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 a {
   text-decoration: none;

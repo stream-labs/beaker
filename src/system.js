@@ -26,6 +26,7 @@ import ImagePicker from "./components/ImagePicker.vue";
 import ImagePickerInput from "./components/ImagePickerInput.vue";
 import ItemGrid from "./components/ItemGrid.vue";
 import Loading from "./components/Loading.vue";
+import MediaPicker from "./components/MediaPicker.vue";
 import ModalBasic from "./components/ModalBasic.vue";
 import ModalComp from "./components/ModalComp.vue";
 import ModalConfirmation from "./components/ModalConfirmation.vue";
@@ -84,6 +85,7 @@ export {
   ImagePickerInput,
   ItemGrid,
   Loading,
+  MediaPicker,
   ModalBasic,
   ModalComp,
   ModalConfirmation,

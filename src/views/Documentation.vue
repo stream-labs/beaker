@@ -30,7 +30,7 @@ export default class Documentation extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .documentation {
   display: grid;

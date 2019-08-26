@@ -159,7 +159,7 @@ export default class Accordian extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-accordion {
   .radius();

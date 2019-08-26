@@ -112,7 +112,7 @@ export default class AppsNav extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-apps-nav {
   display: flex;

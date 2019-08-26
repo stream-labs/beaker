@@ -1,12 +1,12 @@
 {
   "name": "streamlabs-beaker",
-  "version": "0.7.19",
+  "version": "0.10.12",
   "main": "./dist/beaker.common.js",
   "module": "./dist/beaker.esm.js",
   "sideEffects": false,
   "license": "MIT",
   "scripts": {
-    "build": "rollup --config",
+    "build": "rollup --config && yarn build-deploy-gh-pages",
     "build-bundle": "rollup --config",
     "prepare": "rollup --config",
     "serve": "vue-cli-service serve",

@@ -253,7 +253,7 @@ export default class Sliders extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .flex-row {
   display: flex;

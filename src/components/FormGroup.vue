@@ -21,7 +21,7 @@ export default class FormGroup extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-form-group {
   .margin-bottom(3);

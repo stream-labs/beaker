@@ -171,7 +171,7 @@ export default class Spinner extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-spinner {
   width: 100%;

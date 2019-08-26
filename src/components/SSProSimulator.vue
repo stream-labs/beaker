@@ -80,7 +80,7 @@ export default class ScsroSimulator extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 @import "./../styles/components/CustomFonts";
 
 .s-cs-simulator {
