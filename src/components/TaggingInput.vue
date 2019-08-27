@@ -11,7 +11,7 @@
         slot="input"
         :error="errors.first(name)"
         v-on="filteredListeners"
-        @keyup.enter="onAdd"
+        @keydown.enter.prevent="onAdd"
       ></text-input>
 
       <Button
@@ -78,9 +78,6 @@ export default class TaggingInput extends Vue {
   @Prop({ default: 25 })
   maxItems!: number;
 
-  @Prop({ default: "false" })
-  preventInputSubmit!: string;
-
   textInputValue: string = "";
 
   get tagClasses() {
@@ -94,8 +91,7 @@ export default class TaggingInput extends Vue {
   onAdd() {
     if (
       this.$validator.errors.items.length !== 0 ||
-      this.value.length >= this.maxItems ||
-      this.preventInputSubmit.toLowerCase() === 'true'
+      this.value.length >= this.maxItems
     ) {
       return;
     }
