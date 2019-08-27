@@ -12,7 +12,7 @@
         :error="errors.first(name)"
         v-on="filteredListeners"
         @keydown.enter.prevent="onAdd"
-      ></text-input>
+      />
 
       <Button
         :variation="buttonVariation"
