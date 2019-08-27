@@ -11,7 +11,7 @@
         slot="input"
         :error="errors.first(name)"
         v-on="filteredListeners"
-        @keyup="onAdd"
+        @keydown.enter.prevent="onAdd"
       ></text-input>
 
       <Button
@@ -89,7 +89,7 @@ export default class TaggingInput extends Vue {
   }
 
   onAdd(event) {
-    if(event && event.key !== 'Enter') {
+    if (event && event.key !== "Enter") {
       return;
     }
 
