@@ -185,6 +185,9 @@ export default class TaggingInput extends Vue {
     .s-tagging-input__tag--warning {
       background-color: @warning;
     }
+
+    max-height: 300px;
+    overflow-y: auto;
   }
 }
 
