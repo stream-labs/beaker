@@ -107,14 +107,9 @@ export default class ImagePicker extends Vue {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: @light-5;
   background-color: @light-3;
   width: 40px;
   height: 40px;
-
-  i {
-    font-size: 24px;
-  }
 }
 
 .s-image-picker__thumb {
@@ -155,10 +150,11 @@ export default class ImagePicker extends Vue {
 .night-theme {
   .s-upload-icon,
   .s-image-picker__thumb {
-    background-color: @dark-4;
+    background-color: @dark-5;
+    color: @white;
   }
   .s-image-picker__filename {
-    background-color: @night-section;
+    background-color: @night-solid-input;
     color: @night-paragraph;
   }
 }

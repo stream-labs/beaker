@@ -4,8 +4,8 @@
       type="checkbox"
       :id="id"
       :name="name"
-      v-model="checkboxValue"
-      @change="handleInput"
+      :checked="value"
+      @change="$emit('input', $event.target.checked)"
     />
     <label :for="id">{{ label }}</label>
   </div>
@@ -16,23 +16,17 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Checkbox extends Vue {
-  @Prop()
+  @Prop({ type: String, required: true })
   label!: string;
 
-  @Prop()
+  @Prop({ type: String, required: true })
   id!: string;
 
-  @Prop()
+  @Prop({ type: String })
   name!: string;
 
-  @Prop()
+  @Prop({ type: Boolean, required: true })
   value!: boolean;
-
-  checkboxValue: boolean = this.value;
-
-  handleInput() {
-    this.$emit("update-value", this.checkboxValue);
-  }
 }
 </script>
 
@@ -52,18 +46,19 @@ export default class Checkbox extends Vue {
   min-width: 16px;
 
   label {
-    margin: 0;
-    line-height: 16px;
-    cursor: default;
+    box-sizing: border-box;
     position: relative;
     display: inline-block;
     width: auto;
+    min-height: 16px;
     .padding-left(3);
+    margin: 0;
+    .weight(@normal);
+    line-height: 16px;
+    color: @day-paragraph;
+    cursor: default;
     outline: 0;
     .transition();
-    color: @day-paragraph;
-    .weight(@normal);
-    box-sizing: border-box;
 
     &:before {
       position: absolute;
@@ -96,8 +91,8 @@ export default class Checkbox extends Vue {
     opacity: 0 !important;
     outline: 0;
     z-index: 3;
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     margin: 0;
   }
 

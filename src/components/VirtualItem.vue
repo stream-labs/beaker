@@ -8,16 +8,25 @@
     :value="value"
     @click="$emit('click')"
   >
-    <span v-if="selectionCount" class="s-virtual-item__selection-count">{{
-      selectionCount
-    }}</span>
+    <span v-if="selectionCount" class="s-virtual-item__selection-count">
+      {{ selectionCount }}
+    </span>
+    <span
+      v-if="remainingTime"
+      class="s-virtual-item__selection-remaining"
+      :class="{ warning: hasWarning }"
+      >{{ remainingTime }}</span
+    >
     <span v-if="type" class="s-virtual-item__label">{{ type }}</span>
     <span v-if="quantity" class="s-virtual-item__label">{{ quantity }}</span>
     <div class="s-virtual-item__img">
       <img :src="preview" />
     </div>
     <h3 class="s-virtual-item__name">{{ name }}</h3>
-    <span class="s-virtual-item__rarity">{{ rarity }}</span>
+    <span class="s-virtual-item__rarity" :class="{ entered: isGiveaway }">
+      <i class="icon-check-mark" v-if="isGiveaway"></i>
+      {{ rarity }}
+    </span>
   </div>
 </template>
 
@@ -26,29 +35,46 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class VitualItem extends Vue {
-  @Prop()
-  name!: String;
+  @Prop(String)
+  name!: string;
 
-  @Prop()
-  value!: String;
+  @Prop(String)
+  value!: string;
 
-  @Prop()
-  preview!: String;
+  @Prop(String)
+  preview!: string;
 
-  @Prop()
-  quantity!: Number;
+  @Prop(Number)
+  quantity!: number;
 
-  @Prop()
-  rarity!: String;
+  @Prop(String)
+  rarity!: string;
 
   @Prop({ default: false })
-  selected!: Boolean;
+  selected!: boolean;
 
-  @Prop()
-  selectionCount!: String;
+  @Prop(String)
+  selectionCount!: string;
 
-  @Prop()
-  type!: String;
+  @Prop(String)
+  remainingTime!: string;
+
+  @Prop({ default: false })
+  hasWarning!: boolean;
+
+  @Prop({ default: false })
+  isGiveaway!: boolean;
+
+  @Prop(String)
+  type!: string;
+
+  isClickable: boolean = false;
+
+  mounted() {
+    if (this.$listeners.click) {
+      this.isClickable = true;
+    }
+  }
 
   get virtualItemClasses() {
     const classes: any = [];
@@ -59,6 +85,10 @@ export default class VitualItem extends Vue {
 
     if (this.selected) {
       classes.push("is-selected");
+    }
+
+    if (this.isClickable) {
+      classes.push("clickable");
     }
 
     return classes.join(" ");
@@ -92,7 +122,7 @@ export default class VitualItem extends Vue {
     }
   }
 
-  &:hover {
+  .clickable&:hover {
     cursor: pointer;
   }
 }
@@ -105,6 +135,14 @@ export default class VitualItem extends Vue {
 
 .s-virtual-item__rarity {
   .margin-top();
+
+  .icon-check-mark {
+    .margin-right();
+  }
+
+  &.entered {
+    color: @teal;
+  }
 }
 
 .s-virtual-item__selection-count {
@@ -122,7 +160,22 @@ export default class VitualItem extends Vue {
   .flex-centered();
 }
 
+.s-virtual-item__selection-remaining {
+  position: absolute;
+  top: 16px;
+  right: 12px;
+  background: @dark-5;
+  color: @white;
+  .radius();
+  .padding(0.5);
+
+  &.warning {
+    background: @red;
+  }
+}
+
 .s-virtual-item__img {
+  margin: 0 auto;
   .margin-bottom(2);
   width: 96px;
 }

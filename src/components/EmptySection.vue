@@ -2,9 +2,19 @@
   <div class="s-empty-section">
     <i class="icon-search" v-if="this.variation === 'search'"></i>
     <i class="icon-empty" v-if="this.variation === 'text'"></i>
-    <div class="s-empty-section__title">{{ title }}</div>
+    <i class="icon-lock" v-if="this.variation === 'prime'"></i>
+    <i class="icon-error" v-if="this.variation === 'warning'"></i>
+
+    <div v-if="titleSlot" class="s-empty-section__title">
+      <slot name="title"></slot>
+    </div>
+    <div v-else class="s-empty-section__title">{{ title }}</div>
     <div class="s-empty-section__subtitle">{{ subtitle }}</div>
     <slot></slot>
+
+    <div v-if="hasLink">
+      <slot name="link"></slot>
+    </div>
   </div>
 </template>
 
@@ -21,6 +31,12 @@ export default class Spinner extends Vue {
 
   @Prop({ default: "" })
   subtitle!: String;
+
+  @Prop({ default: false })
+  titleSlot!: Boolean;
+
+  @Prop({ default: false })
+  hasLink!: Boolean;
 }
 </script>
 

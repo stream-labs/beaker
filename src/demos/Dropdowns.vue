@@ -9,7 +9,13 @@
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre>
-<code>&lt;pane-dropdown&gt;
+<code>import { Accordion } from 'streamlabs-beaker';
+
+components: {
+  Accordion
+}
+
+&lt;pane-dropdown&gt;
   &lt;template slot=&quot;title&quot;&gt;Trending&lt;/template&gt;
   &lt;a href=&quot;#&quot;&gt;Add&lt;/a&gt;
   &lt;a href=&quot;#&quot;&gt;Update&lt;/a&gt;
@@ -17,7 +23,6 @@
 &lt;/pane-dropdown&gt;</code></pre>
         </div>
       </Accordion>
-
       <pane-dropdown>
         <template slot="title"
           >Trending</template
@@ -27,10 +32,8 @@
         <a href="#">Trending</a>
       </pane-dropdown>
     </div>
-
     <div class="section">
       <h3>Menu Align</h3>
-
       <pane-dropdown :menuAlign="'right'">
         <span slot="title">Right Dropdown Menu</span>
         <a href="#">Hey I'm a longer link here</a>
@@ -55,6 +58,24 @@
           <br />
           <b>put whatever you want in here</b>
         </div>
+      </pane-dropdown>
+    </div>
+    <div class="section">
+      <h3>Relative Menu</h3>
+      <pane-dropdown :relativeMenu="true">
+        <span slot="title">Relative Menu</span>
+        <a href="#">Hey I'm a longer link here</a>
+        <a href="#">Let's see how this looks</a>
+        <a href="#">I'm in a pane dropdown aligned to the right</a>
+      </pane-dropdown>
+    </div>
+    <div class="section">
+      <h3>Simple Menu</h3>
+      <pane-dropdown :relativeMenu="true" :simpleMenu="true">
+        <span slot="title">Simple Menu</span>
+        <a href="#">Hey I'm a longer link here</a>
+        <a href="#">Let's see how this looks</a>
+        <a href="#">I'm in a pane dropdown aligned to the right</a>
       </pane-dropdown>
     </div>
 
@@ -85,6 +106,33 @@
               <code>right</code> or <code>center</code> to align the dropdown
               menu to the right or center of its toggle.
             </td>
+          </tr>
+          <tr>
+            <td>closeOnSelect</td>
+            <td>boolean</td>
+            <td>true</td>
+            <td>Close the dropdown when a link is clicked.</td>
+          </tr>
+          <tr>
+            <td>autoHeight</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>No max height</td>
+          </tr>
+          <tr>
+            <td>relativeMenu</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>
+              Change the menu from position absolute to relative so it pushes
+              the content below it down.
+            </td>
+          </tr>
+          <tr>
+            <td>simpleMenu</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>Removes menues bg colors, box shadow and paddinga.</td>
           </tr>
         </tbody>
       </table>

@@ -40,7 +40,9 @@ export default class Callout extends Vue {
 
   closeCallout() {
     this.calloutClosedClass = "callout--closed";
-    typeof this.onClose === "function" && this.onClose();
+    setTimeout(() => {
+      typeof this.onClose === "function" && this.onClose();
+    }, 275);
   }
 
   get calloutClass() {
@@ -70,13 +72,13 @@ export default class Callout extends Vue {
 .s-callout {
   position: relative;
   display: flex;
+  justify-content: center;
   align-items: center;
   .margin-bottom(3);
   .padding-h-sides(2);
-  line-height: 40px;
   .radius();
+  line-height: 40px;
   .transition();
-  justify-content: center;
 
   [class^="icon-"] {
     &:first-child {
@@ -134,10 +136,11 @@ export default class Callout extends Vue {
   }
 
   &.callout--closed {
-    height: 0;
+    line-height: 0;
     margin: 0;
     padding: 0;
     opacity: 0;
+    transform: translateY(-15px);
   }
 
   &--cookies {
@@ -174,6 +177,15 @@ export default class Callout extends Vue {
       position: relative;
       top: 0;
       right: 0;
+    }
+  }
+}
+
+.night,
+.night-theme {
+  .s-callout {
+    a {
+      color: inherit;
     }
   }
 }

@@ -85,6 +85,25 @@ components: {
           </div>
         </call-to-action>
       </div>
+
+      <div class="row">
+        <call-to-action
+          :bgColor="'#CAA368'"
+          :titleColor="'#fff'"
+          :subTitleColor="'#fff'"
+          :hasThumbnail="false"
+          :title="'Join Prime today!'"
+          :description="
+            'Our premium tool-set for professional content creators.'
+          "
+          :buttonVariation="'prime-white'"
+          :buttonTitle="'Sign Up'"
+          :buttonDescription="''"
+          :buttonIcon="'prime'"
+          :bgPrime="true"
+        ></call-to-action>
+      </div>
+
       <table class="docs-table">
         <thead>
           <tr>

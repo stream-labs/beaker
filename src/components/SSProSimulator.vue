@@ -180,7 +180,7 @@ export default class ScsroSimulator extends Vue {
 .s-cs-simulator__section {
   .padding(2);
   .radius(2);
-  min-height: 100px;
+  min-height: 160px;
   background-color: darken(@night-bg, 8%);
 }
 

@@ -1,6 +1,7 @@
 <template>
   <component
     :icon="icon"
+    :icon-img="iconImg"
     :title="title"
     :price="price"
     :description="description"
@@ -10,20 +11,34 @@
     :type="type"
     class="s-button ripple"
     :class="[buttonClasses, { 'ripple-animate': rippleAnimate }]"
-    :disabled="state === 'disabled'"
+    :disabled="state === 'disabled' || state === 'loading'"
     @click="$emit('click')"
     :target="target"
     @mousedown="pressDown"
-    :style="rippleStyle"
+    :style="buttonStyle"
   >
     <span>
       <span>
-        <i v-if="iconClass" :class="iconClass"></i>
+        <span v-if="variation === 'prime-simple' && this.primeTitle">{{
+          primeTitle
+        }}</span>
+        <span v-else-if="variation === 'prime-simple'" class="prime-simple">
+          Free with
+          <span class="prime-simple__bold">Prime</span>
+        </span>
+        <i v-if="iconClass && iconPosition === 'left'" :class="iconClass"></i>
+        <i v-if="iconImg" class="icon-img">
+          <img :src="iconImg" :alt="`${title} Icon Image`" />
+        </i>
         {{ title }}
       </span>
       <span v-if="description" class="s-button__description">{{
         description
       }}</span>
+      <i
+        v-if="iconClass && iconPosition === 'right'"
+        :class="['icon--right', iconClass]"
+      ></i>
     </span>
     <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
     <span v-if="price">{{ price }}</span>
@@ -50,8 +65,16 @@ export default class Button extends Vue {
     type: string;
   };
 
+  @Prop(String)
+  icon!: string;
+
+  @Prop({ default: "left" })
+  iconPosition!: {
+    type: String;
+  };
+
   @Prop()
-  icon!: {
+  iconImg!: {
     type: String;
     default: null;
   };
@@ -120,9 +143,16 @@ export default class Button extends Vue {
     default: "default";
   };
 
-  buttonStyles: object = {
-    backgroundColor: this.bgColor,
-    color: this.textColor
+  @Prop()
+  primeBgColor!: {
+    type: String;
+    default: null;
+  };
+
+  @Prop()
+  primeTitle!: {
+    type: String;
+    default: null;
   };
 
   private rippleStartX = 0;
@@ -155,13 +185,17 @@ export default class Button extends Vue {
     const classes: any = [];
 
     if (this.icon) {
-      classes.push(`icon-${this.icon}`);
+      if (this.icon.indexOf("fa-") !== -1) {
+        classes.push(this.icon);
+      } else {
+        classes.push(`icon-${this.icon}`);
+      }
     }
 
     return classes.join(" ");
   }
 
-  get rippleStyle() {
+  get buttonStyle() {
     let s =
       "--ripple-x:" +
       this.rippleStartX +
@@ -175,7 +209,11 @@ export default class Button extends Vue {
       this.rippleOpacity +
       "; --ripple-duration:" +
       this.rippleDuration +
-      ";";
+      "; background-color:" +
+      this.bgColor +
+      "; color:" +
+      this.textColor;
+    ";";
     return s;
   }
 
@@ -239,28 +277,28 @@ export default class Button extends Vue {
 @import "./../styles/Imports";
 
 .s-button {
+  position: relative;
+  display: inline-block;
+  height: 40px;
   .input-padding();
+  border: 1px solid transparent;
+  .radius();
+  font-family: "Roboto";
   font-size: 14px;
+  .weight(@medium);
+  text-align: center;
+  line-height: 38px;
+  text-decoration: none !important;
   text-transform: capitalize;
   background: @day-button;
   color: @day-paragraph;
-  text-align: center;
   vertical-align: middle;
   -webkit-user-select: none;
   -ms-user-select: none;
   white-space: nowrap;
   overflow: hidden;
-  display: inline-block;
-  height: 40px;
-  line-height: 38px;
   .transition();
-  .weight(@medium);
-  .radius();
-  font-family: "Roboto";
-  border: 1px solid transparent;
-  text-decoration: none;
-  position: relative;
-  outline: transparent dotted 2px;
+  outline: none !important;
 
   * {
     z-index: 5;
@@ -269,6 +307,17 @@ export default class Button extends Vue {
   i {
     .margin-right();
     color: inherit;
+  }
+
+  .icon-img {
+    display: flex;
+    align-items: center;
+    width: 14px;
+  }
+
+  .icon--right {
+    .margin-right(0);
+    .margin-left(3);
   }
 
   span {
@@ -280,14 +329,11 @@ export default class Button extends Vue {
   }
 
   &:focus,
-  &.is-focused,
-  &:hover,
-  &.is-hovered {
-    background-color: darken(@day-button, 4%);
-    text-decoration: none;
+  &.is-focused {
+    outline: transparent dotted 2px;
   }
 
-  &[disabled],
+  &[disabled]:not(.is-loading),
   &.is-disabled {
     background-color: @day-button!important;
     color: @light-4!important;
@@ -295,6 +341,8 @@ export default class Button extends Vue {
   }
 
   &.is-loading {
+    cursor: not-allowed;
+
     &:before {
       display: block;
       content: "\f1ce";
@@ -475,17 +523,6 @@ export default class Button extends Vue {
   }
 }
 
-.s-button--paypal-blue {
-  background-color: @paypal;
-  color: @white;
-
-  &:focus,
-  &.is-focused,
-  &:hover {
-    background-color: darken(@paypal, 4%);
-  }
-}
-
 .s-button--warning {
   color: @warning;
   background-color: rgba(251, 72, 76, 0.16);
@@ -542,7 +579,8 @@ export default class Button extends Vue {
 }
 
 .s-button--subscribe,
-.s-button--paypal {
+.s-button--paypal,
+.s-button--paypal-blue {
   display: flex;
   justify-content: space-between;
   text-transform: unset;
@@ -552,7 +590,8 @@ export default class Button extends Vue {
   .padding-h-sides(4);
 }
 
-.s-button--paypal {
+.s-button--paypal,
+.s-button--paypal-blue {
   background-color: @paypal-yellow;
 
   &:before {
@@ -579,6 +618,17 @@ export default class Button extends Vue {
         }
       }
     }
+  }
+}
+
+.s-button--paypal-blue {
+  background-color: @paypal;
+  color: @white;
+
+  &:focus,
+  &.is-focused,
+  &:hover {
+    background-color: darken(@paypal, 4%);
   }
 }
 
@@ -681,6 +731,20 @@ export default class Button extends Vue {
   }
 }
 
+.s-button--link {
+  background-color: transparent;
+  padding: 0;
+  text-decoration: underline !important;
+  height: auto;
+  line-height: inherit;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    outline: none;
+  }
+}
+
 .s-button--hidden {
   display: none;
 }
@@ -717,6 +781,115 @@ export default class Button extends Vue {
   float: right;
 }
 
+.s-button--prime,
+.s-button--prime-white {
+  background-color: @prime;
+  color: @white;
+  border-radius: 100px;
+  .padding-h-sides(3);
+  border: 0;
+  font-weight: 900;
+
+  &:focus,
+  &.is-focused,
+  &:hover {
+    background-color: darken(@prime, 4%);
+  }
+
+  .icon-prime {
+    font-size: 20px;
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+
+    &::before {
+      color: @white;
+    }
+  }
+}
+
+.s-button--prime-white {
+  background: @white;
+  color: @prime;
+
+  &:focus,
+  &.is-focused,
+  &:hover {
+    background-color: darken(@white, 4%);
+  }
+
+  .icon-prime {
+    &::before {
+      color: @prime;
+    }
+  }
+}
+
+.s-button--prime-simple {
+  background: @prime;
+  color: @white;
+
+  &:focus,
+  &.is-focused,
+  &:hover {
+    background-color: darken(@prime, 4%);
+  }
+
+  .prime-simple {
+    text-transform: none;
+  }
+
+  .prime-simple__bold {
+    font-weight: 900;
+    .margin-left(0.5);
+  }
+}
+
+.s-button--prime,
+.s-button--prime-white {
+  &.s-button--large {
+    padding: 0px 64px;
+
+    .icon-prime {
+      font-size: 41px;
+      position: absolute;
+      left: -6px;
+      bottom: -9px;
+    }
+  }
+}
+
+.s-button--rewards-standard,
+.s-button--rewards-silver,
+.s-button--rewards-gold,
+.s-button--rewards-platinum,
+.s-button--rewards-diamond,
+.s-button--rewards-legend {
+  background-color: transparent;
+  border: 1px solid @day-all-stars-gold;
+  color: @day-all-stars-gold !important;
+}
+
+.s-button--rewards-silver {
+  border-color: @day-all-stars-silver;
+  color: @dark-5 !important;
+}
+
+.s-button--rewards-platinum {
+  border-color: @day-all-stars-platinum;
+  color: @dark-4 !important;
+}
+
+.s-button--rewards-diamond {
+  border-color: @day-all-stars-diamond;
+  color: @day-all-stars-diamond !important;
+}
+
+.s-button--rewards-legend {
+  border-color: @day-all-stars-legend;
+  color: @day-all-stars-legend !important;
+}
+
 .night {
   .s-button {
     &:focus,
@@ -724,7 +897,7 @@ export default class Button extends Vue {
       background: lighten(@night-button, 4%);
     }
 
-    &[disabled],
+    &[disabled]:not(.is-loading),
     &.is-disabled {
       background-color: @dark-4!important;
       color: @dark-5!important;
@@ -734,7 +907,6 @@ export default class Button extends Vue {
 
   .s-button--default {
     color: @night-title;
-    border-color: @night-button;
     background: @night-button;
 
     &:focus,
@@ -865,6 +1037,55 @@ export default class Button extends Vue {
       background-color: lighten(@picarto, 4%);
       color: @night-title;
     }
+  }
+
+  .s-button--prime {
+    &:focus,
+    &.is-focused,
+    &:hover {
+      background-color: lighten(@prime, 4%);
+    }
+  }
+
+  .s-button--prime-white {
+    &:focus,
+    &.is-focused,
+    &:hover {
+      background-color: lighten(@white, 4%);
+    }
+  }
+
+  .s-button--prime-simple {
+    &:focus,
+    &.is-focused,
+    &:hover {
+      background-color: lighten(@prime, 4%);
+    }
+  }
+
+  .s-button--link {
+    color: @night-paragraph;
+  }
+
+  .s-button--rewards-standard,
+  .s-button--rewards-silver,
+  .s-button--rewards-gold,
+  .s-button--rewards-platinum,
+  .s-button--rewards-diamond,
+  .s-button--rewards-legend {
+    &:focus {
+      background-color: transparent;
+    }
+  }
+
+  .s-button--rewards-silver {
+    border-color: @night-all-stars-silver;
+    color: @night-all-stars-silver !important;
+  }
+
+  .s-button--rewards-platinum {
+    border-color: @night-all-stars-platinum;
+    color: @night-all-stars-platinum !important;
   }
 }
 

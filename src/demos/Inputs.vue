@@ -9,6 +9,7 @@
         <code>FormGroup</code> component. This will put 16px of margin between
         form fields and 24px margin between form groups.
       </p>
+
       <FormGroup>
         <text-input
           label="Text input"
@@ -16,7 +17,21 @@
           :placeholder="textInputPlaceholder"
           v-model="textInputValue"
           name="textExample"
+          autoComplete="on"
           slot="input"
+        ></text-input>
+
+        <text-input
+          label="Number input"
+          type="number"
+          :placeholder="textInputPlaceholder"
+          v-model="numberInputValue"
+          v-validate="'required|between:-1,100'"
+          :min="-1"
+          :max="100"
+          name="numberinputExample"
+          slot="input"
+          :error="errors.first('numberinputExample')"
         ></text-input>
 
         <text-input
@@ -46,8 +61,75 @@
           slot="input"
           :error="'Hello, I am an error message'"
         ></text-input>
-      </FormGroup>
 
+        <text-area
+          name="myarea"
+          v-model="textAreaInputValue"
+          autoResize="true"
+          label="Text input"
+          placeholder="This is where you put some cool stuff"
+          :maxLength="1000"
+          :maxHeight="100"
+          slot="input"
+        ></text-area>
+      </FormGroup>
+      <h1>Text Inputs with Variable Menu Wrapper</h1>
+      <p>
+        A new way to navigate variables, just wrap your input with the Variable
+        Menu. This is not work with FormGroup preformatting.
+      </p>
+      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+        <div slot="content">
+          <pre>
+              <code>
+import { VariableMenu } from &quot;streamlabs-beaker&quot;
+import varSearch from &quot;../external.json&quot;
+
+
+/* *** Minimum fields for variable search json *** */
+
+[
+ {
+   &quot;variable&quot;: &quot;{variableName}&quot;,
+   &quot;description&quot;: &quot;Describe what the variable does&quot;
+ }
+]
+
+
+&lt;variable-search :jsonSearch=&quot;someJson&quot;&gt;
+  &lt;text-input
+    type=&quot;text&quot;
+    v-model=&quot;value&quot;
+    name=&quot;a-name&quot;
+    slot=&quot;input&quot;
+  /&gt;
+&lt;/variable-search&gt;
+              </code>
+            </pre>
+        </div>
+      </Accordion>
+      <variable-menu :jsonSearch="varData">
+        <text-input
+          type="text"
+          :placeholder="'w/ Variable Menu'"
+          v-model="variTextValue"
+          name="textExample"
+          slot="input"
+        ></text-input>
+      </variable-menu>
+
+      <variable-menu :jsonSearch="varData">
+        <text-area
+          name="myarea"
+          ref="textArea"
+          v-model="variAreaValue"
+          placeholder="w/ Variable Menu"
+          :maxLength="1000"
+          :maxHeight="100"
+          slot="input"
+          rows="3"
+        ></text-area>
+      </variable-menu>
       <table class="docs-table">
         <thead>
           <tr>
@@ -60,7 +142,7 @@
         <tbody>
           <tr>
             <td>disabled</td>
-            <td>Boolean</td>
+            <td>boolean</td>
             <td>null</td>
             <td>
               Puts a disabled class on the form field and disables the input.
@@ -108,6 +190,12 @@
             <td>null</td>
             <td>Input value using v-model.</td>
           </tr>
+          <tr>
+            <td>readonly</td>
+            <td>boolean</td>
+            <td>null</td>
+            <td>Specifies that an input field is read-only.</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -146,10 +234,10 @@ components: {
 &gt;&lt;/selector&gt;</code></pre>
         </div>
       </Accordion>
-      <selector
+      <Selector
         v-model="selected"
         :options="['Option A', 'Option B', 'Option C']"
-      ></selector>
+      ></Selector>
       <br />
       <selector
         v-model="selected"
@@ -175,6 +263,7 @@ components: {
           'Option F'
         ]"
         multiple
+        :searchable="false"
       ></selector>
       <br />
       <selector
@@ -190,6 +279,15 @@ components: {
         disabled
         multiple
       ></selector>
+      <br />
+
+      <selector
+        v-model="objectSelected"
+        :options="options"
+        :label="'title'"
+        :trackBy="'title'"
+      ></selector>
+      <br />
 
       <table class="docs-table">
         <thead>
@@ -202,12 +300,10 @@ components: {
         </thead>
         <tbody>
           <tr>
-            <td>disabled</td>
-            <td>Boolean</td>
-            <td>false</td>
-            <td>
-              Puts a disabled class on the form field and disables the input.
-            </td>
+            <td>value</td>
+            <td>string</td>
+            <td>null</td>
+            <td>Current selected value.</td>
           </tr>
           <tr>
             <td>options</td>
@@ -234,10 +330,12 @@ components: {
             <td>Optional label for the input.</td>
           </tr>
           <tr>
-            <td>value</td>
-            <td>string</td>
-            <td>null</td>
-            <td>Current selected value.</td>
+            <td>disabled</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>
+              Puts a disabled class on the form field and disables the input.
+            </td>
           </tr>
         </tbody>
       </table>
@@ -252,8 +350,7 @@ components: {
           :id="'checkbox1'"
           :name="'checkbox1'"
           :label="'Checkbox label'"
-          :value="checkboxValue1"
-          @update-value="checkboxValue1 = $event"
+          v-model="checkboxValue1"
         ></checkbox>
       </div>
 
@@ -263,23 +360,20 @@ components: {
           <checkbox
             :id="'checkbox2'"
             :name="'checkbox2'"
-            :label="'Checkbox label'"
-            :value="checkboxValue2"
-            @update-value="checkboxValue1 = $event"
+            :label="'Checkbox labe2'"
+            v-model="checkboxValue2"
           ></checkbox>
           <checkbox
             :id="'checkbox3'"
             :name="'checkbox3'"
             :label="'Checkbox label'"
-            :value="checkboxValue3"
-            @update-value="checkboxValue1 = $event"
+            v-model="checkboxValue3"
           ></checkbox>
           <checkbox
             :id="'checkbox4'"
             :name="'checkbox4'"
             :label="'Checkbox label'"
-            :value="checkboxValue4"
-            @update-value="checkboxValue1 = $event"
+            v-model="checkboxValue4"
           ></checkbox>
         </div>
       </div>
@@ -292,50 +386,24 @@ components: {
           <radio
             :id="'radio1'"
             :name="'radio-group'"
-            :value="'value1'"
-            :label="'Enable'"
-            v-model="radioValue1"
-            :isChecked="true"
+            :label="'Enabled'"
+            :val="true"
+            v-model="radioValue"
           ></radio>
           <radio
             :id="'radio2'"
             :name="'radio-group'"
-            :value="'value2'"
-            :label="'Disable'"
-            v-model="radioValue2"
+            :label="'Disabled'"
+            :val="false"
+            v-model="radioValue"
           ></radio>
+          <span>Picked: {{ radioValue }}</span>
         </div>
       </div>
     </div>
 
     <div class="section">
       <h2>Status Switch</h2>
-      <div class="section">
-        <status-switch
-          v-model="statusValue"
-          :label="'Status Label'"
-        ></status-switch>
-      </div>
-      <div class="section">
-        <small>
-          <status-switch v-model="statusValue">
-            <label>Small Switch</label>
-          </status-switch>
-        </small>
-      </div>
-      <div class="section">
-        <h1>
-          <status-switch v-model="statusValue">
-            <label>H1 Switch</label>
-          </status-switch>
-        </h1>
-      </div>
-
-      <div class="section">
-        <status-switch v-model="statusValue" />
-        <status-switch v-model="statusValue" />
-        <status-switch v-model="statusValue" />
-      </div>
 
       <Accordion
         :openedTitle="'Hide Code'"
@@ -343,25 +411,64 @@ components: {
         class="docs-code"
       >
         <div slot="content">
-          <pre><code>&lt;status-switch v-model="statusValue" :label="'Status Label'"&gt;&lt;/status-switch&gt;
+          <pre><code>&lt;status-switch
+  v-model="statusValue"
+  :label="'Status Label'"
+/&gt;
 
-&lt;small&gt;
-  &lt;status-switch v-model="statusValue"&gt;
-    &lt;label&gt;Small Switch&lt;/label&gt;
-  &lt;/status-switch&gt;
-&lt;/small&gt;
-
-&lt;h1&gt;
-  &lt;status-switch v-model="statusValue"&gt;
-    &lt;label&gt;H1 Switch&lt;/label&gt;
-  &lt;/status-switch&gt;
-&lt;/h1&gt;
-
-&lt;status-switch v-model="statusValue" /&gt;
-&lt;status-switch v-model="statusValue" /&gt;
-&lt;status-switch v-model="statusValue" /&gt;</code></pre>
+&lt;status-switch
+  small="true"
+  v-model="statusValue"
+  label="Small Switch"
+/&gt;</code></pre>
         </div>
       </Accordion>
+
+      <div class="section">
+        <status-switch v-model="statusValue" :label="'Switch Label'" />
+      </div>
+
+      <div class="section">
+        <status-switch
+          size="small"
+          v-model="statusValue"
+          label="Small Switch"
+        />
+      </div>
+
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>value</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>Available for v-model 2-way data binding.</td>
+          </tr>
+          <tr>
+            <td>label</td>
+            <td>string</td>
+            <td>null</td>
+            <td>Optional label for the input.</td>
+          </tr>
+          <tr>
+            <td>size</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>
+              Other available sizes. Current alternate size option:
+              <code>small</code>.
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <div class="section">
@@ -406,6 +513,17 @@ components: {
         ></image-picker-input>
       </div>
     </div>
+
+    <div class="section">
+      <h3>Tagging Input</h3>
+      <TaggingInput
+        name="aliases"
+        placeholder="!hello"
+        maxItems="10"
+        inputValidation="required"
+        @keydown.space.prevent
+      />
+    </div>
   </div>
 </template>
 
@@ -420,6 +538,10 @@ import Radio from "./../components/Radio.vue";
 import StatusSwitch from "./../components/StatusSwitch.vue";
 import TextInput from "./../components/TextInput.vue";
 import FormGroup from "./../components/FormGroup.vue";
+import TaggingInput from "./../components/TaggingInput.vue";
+import TextArea from "./../components/TextArea.vue";
+import VariableMenu from "./../components/VariableMenu.vue";
+import varSearch from "./../components/cloudbotvariables.json";
 
 @Component({
   components: {
@@ -430,16 +552,29 @@ import FormGroup from "./../components/FormGroup.vue";
     Radio,
     StatusSwitch,
     TextInput,
-    FormGroup
+    FormGroup,
+    TaggingInput,
+    TextArea,
+    VariableMenu
   }
 })
 export default class Inputs extends Vue {
+  data = "";
+
+  radioValue = true;
+
   checkboxValue1 = true;
   checkboxValue2 = false;
   checkboxValue3 = true;
   checkboxValue4 = false;
   selected = "Option A";
   multipleSelected = ["Option B", "Option D"];
+  optionSelected = ["Glass Pint", "Glass Beer"];
+  objectSelected = {
+    value: "glass-pint",
+    title: "Glass Pint",
+    image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-pint.png"
+  };
   radioValue1 = true;
   radioValue2 = false;
   statusValue = true;
@@ -448,11 +583,18 @@ export default class Inputs extends Vue {
   layoutValue = "above";
   jarValue = "glass-pint";
 
+  // For Variable Menu
+  varData = varSearch;
+  variAreaValue = "";
+  variTextValue = "";
+
   // Text inputs
   textInputValue = "test";
+  numberInputValue = 0;
   emailInputValue = "";
   passwordInputValue = "";
   errorTextInputValue = "";
+  textAreaInputValue = "";
 
   textInputPlaceholder = "Placeholder";
   emailInputPlaceholder = "Placeholder";
@@ -541,6 +683,24 @@ export default class Inputs extends Vue {
       title: "Glass Snowman",
       image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-snowman.png"
     }
+  ];
+
+  show = [
+    "Bounce",
+    "Bounce In",
+    "Bounce In Down",
+    "Bounce In Left",
+    "Bounce In Right",
+    "Bounce In Up",
+    "Fade In",
+    "Fade In Down",
+    "Fade In Down Big",
+    "Fade In Left",
+    "Fade In Left Big",
+    "Fade In Right",
+    "Fade In",
+    "Fade In Up",
+    "Fade In Up Big"
   ];
 }
 </script>

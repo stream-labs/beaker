@@ -41,7 +41,7 @@ components: {
         <div slot="content">
           <pre><code>&lt;callout :variation=&quot;'success'&quot;&gt;Success callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;
 
-&lt;callout :variation=&quot;'warning' :icon=&quot;'warning'&quot;&gt;Warning callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;
+&lt;callout :variation=&quot;'warning'&quot; :icon=&quot;'warning'&quot;&gt;Warning callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;
 
 &lt;callout :variation=&quot;'info'&quot;&gt;Info callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;</code></pre>
         </div>
@@ -75,7 +75,7 @@ components: {
         <div slot="content">
           <pre><code>&lt;callout :variation=&quot;'success strong'&quot;&gt;Success callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;
 
-&lt;callout :variation=&quot;'warning' :icon=&quot;'warning strong'&quot;&gt;Warning callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;
+&lt;callout :variation=&quot;'warning'&quot; :icon=&quot;'warning strong'&quot;&gt;Warning callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;
 
 &lt;callout :variation=&quot;'info strong'&quot;&gt;Info callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;</code></pre>
         </div>
@@ -100,7 +100,7 @@ components: {
         <div slot="content">
           <pre><code>&lt;callout :variation=&quot;'success'&quot;&gt;Success callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;
 
-&lt;callout :variation=&quot;'warning' :icon=&quot;'warning'&quot;&gt;Warning callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;
+&lt;callout :variation=&quot;'warning'&quot; :icon=&quot;'warning'&quot;&gt;Warning callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;
 
 &lt;callout :variation=&quot;'info'&quot;&gt;Info callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;</code></pre>
         </div>

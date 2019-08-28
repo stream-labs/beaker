@@ -314,6 +314,8 @@
             :title="'Join'"
           ></Button>
         </notice>
+        <br />
+        <br />
 
         <notice
           :bgColor="'warning'"
@@ -385,6 +387,43 @@
           </tbody>
         </table>
       </div>
+
+      <div slot="discord">
+        <h2>Discord Banner</h2>
+        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+          <div slot="content">
+            <pre>
+<code>&lt;banner-discord&gt;&lt;/banner-discord&gt;</code></pre>
+          </div>
+        </Accordion>
+
+        <banner-discord></banner-discord>
+
+        <table class="docs-table">
+          <thead>
+            <tr>
+              <th>Prop</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>title</td>
+              <td>string</td>
+              <td>
+                Join the Streamlabs OBS Discussion on
+                &lt;span&gt;Discord&lt;/span&gt;
+              </td>
+              <td>
+                Set the title of the banner. You can wrap text in
+                <code>&lt;span&gt;</code> tags to give them medium font weight.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </Tabs>
   </div>
 </template>
@@ -394,6 +433,7 @@ import { Component, Vue } from "vue-property-decorator";
 import Accordion from "./../components/Accordion.vue";
 import BannerMarketing from "./../components/BannerMarketing.vue";
 import BannerSale from "./../components/BannerSale.vue";
+import BannerDiscord from "./../components/BannerDiscord.vue";
 import Button from "./../components/Button.vue";
 import Tabs from "./../components/Tabs.vue";
 import Notice from "./../components/Notice.vue";
@@ -403,6 +443,7 @@ import Notice from "./../components/Notice.vue";
     Accordion,
     BannerMarketing,
     BannerSale,
+    BannerDiscord,
     Button,
     Tabs,
     Notice
@@ -421,6 +462,10 @@ export default class Banners extends Vue {
     {
       name: "Notice",
       value: "notice"
+    },
+    {
+      name: "Discord",
+      value: "discord"
     }
   ];
 

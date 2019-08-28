@@ -52,6 +52,20 @@ components: {
     :bgColor=&quot;'#000'&quot;
     :textColor=&quot;'#fff'&quot;&gt;
   &lt;/Button&gt;
+
+  &lt;Button
+    :variation=&quot;'prime'&quot; 
+    :title=&quot;'Join Prime'&quot;
+    :icon=&quot;'prime'&quot;&gt;
+  &lt;/Button&gt;
+
+  &lt;Button
+    :variation=&quot;'prime'&quot; 
+    :title=&quot;'Join Prime'&quot;
+    :icon=&quot;'prime'&quot;
+    :primeBgColor=&quot;'white'&quot;&gt;
+  &lt;/Button&gt;
+
 &lt;/div&gt;</code></pre>
           </div>
         </Accordion>
@@ -81,8 +95,19 @@ components: {
           <Button
             :variation="'default'"
             :title="'Color Change'"
-            :bgColor="'#000'"
-            :textColor="'#fff'"
+            :bgColor="'pink'"
+            :textColor="'red'"
+          ></Button>
+
+          <Button
+            :variation="'prime'"
+            :title="'Join Prime'"
+            :icon="'prime'"
+          ></Button>
+          <Button
+            :variation="'prime-white'"
+            :title="'Join Prime'"
+            :icon="'prime'"
           ></Button>
         </div>
       </div>
@@ -312,6 +337,13 @@ components: {
     :title=&quot;'With Icon'&quot;
     :icon=&quot;'image'&quot;&gt;
   &lt;/Button&gt;
+
+  &lt;Button
+    :variation="'rewards-gold'"
+    :icon-img="'https://cdn.streamlabs.com/streamer-loyalty/gold-status-circle.svg'"
+    :size="'small'"
+    :title="'Rewards'"&gt;
+  &lt;/Button&gt;
 &lt;/div&gt;</code></pre>
         </div>
       </Accordion>
@@ -343,6 +375,12 @@ components: {
           :variation="'default'"
           :title="'With Icon'"
           :icon="'image'"
+        ></Button>
+
+        <Button
+          :variation="'rewards-standard'"
+          :size="'small'"
+          :title="'Rewards'"
         ></Button>
       </div>
     </div>
@@ -384,7 +422,23 @@ components: {
     :title=&quot;'With Icon'&quot;
     :icon=&quot;'image'&quot;&gt;
   &lt;/Button&gt;
-&lt;/div&gt;</code></pre>
+
+  &lt;Button 
+    :size=&quot;'large'&quot; 
+    :variation=&quot;'prime'&quot; 
+    :title=&quot;'Join Prime'&quot;
+    :icon=&quot;'prime'&quot;&gt;
+  &lt;/Button&gt;
+
+  &lt;Button 
+    :size=&quot;'large'&quot; 
+    :variation=&quot;'prime'&quot; 
+    :title=&quot;'Join Prime'&quot;
+    :icon=&quot;'prime'&quot;
+    :primeBgColor=&quot;'white'&quot;&gt;
+  &lt;/Button&gt;
+&lt;/div&gt;
+</code></pre>
         </div>
       </Accordion>
       <div class="s-button-container s-button-container--left">
@@ -415,6 +469,19 @@ components: {
           :variation="'default'"
           :title="'With Icon'"
           :icon="'image'"
+        ></Button>
+
+        <Button
+          :size="'large'"
+          :variation="'prime'"
+          :title="'Join Prime'"
+          :icon="'prime'"
+        ></Button>
+        <Button
+          :size="'large'"
+          :variation="'prime-white'"
+          :title="'Join Prime'"
+          :icon="'prime'"
         ></Button>
       </div>
     </div>
@@ -563,7 +630,6 @@ components: {
         <Button
           :variation="'slobs-download'"
           :title="'Download Streamlabs OBS'"
-          :description="'Windows 7+ 245.8MB'"
         ></Button>
       </div>
     </div>
@@ -671,6 +737,30 @@ components: {
         :title="'Back to Listings'"
       ></Button>
     </div>
+
+    <div class="section">
+      <h2>Prime Button Text</h2>
+      <p>Used for prime button with text.</p>
+      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+        <div slot="content">
+          <pre>
+<code>&lt;div class=&quot;s-button-container s-button-container--left&quot;&gt;
+  &lt;Button
+    :variation=&quot;'prime-simple'&quot;
+  &lt;/Button&gt;
+  &lt;Button
+    :variation=&quot;'prime-simple'&quot;
+    :primeTitle=&quot;'test'&quot;
+  &lt;/Button&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </Accordion>
+      <div class="s-button-container s-button-container--left">
+        <Button :variation="'prime-simple'"></Button>
+        <Button :variation="'prime-simple'" :primeTitle="'test'"></Button>
+      </div>
+    </div>
+
     <table class="docs-table">
       <thead>
         <tr>
@@ -711,6 +801,24 @@ components: {
             Use the endings of our custom icons. For example 'icon-settings'
             would be 'settings'. See icons page of the design system for a full
             list.
+          </td>
+        </tr>
+        <tr>
+          <td>iconPosition</td>
+          <td>String</td>
+          <td>left</td>
+          <td>
+            Positions the icon left or right. If positioned right, the icon will
+            have a left margin of 24px.
+          </td>
+        </tr>
+        <tr>
+          <td>iconImg</td>
+          <td>String</td>
+          <td>null</td>
+          <td>
+            Takes image source string to use an image as an icon. Icon image
+            will have a 14px width.
           </td>
         </tr>
         <tr>
@@ -802,16 +910,39 @@ components: {
           </td>
         </tr>
         <tr>
+          <td>primeBgColor</td>
+          <td>String</td>
+          <td>null</td>
+          <td>
+            You can use this prop when you set variation as
+            <code>prime</code>. Option is only <code>white</code>.
+          </td>
+        </tr>
+        <tr>
+          <td>primeTitle</td>
+          <td>String</td>
+          <td>null</td>
+          <td>
+            Used for prime button text. You can use this prop when you set
+            variation as
+            <code>prime-simple</code>
+          </td>
+        </tr>
+        <tr>
           <td>variation</td>
           <td>String</td>
           <td>default</td>
           <td>
             The variation style of a button. Primary options are
-            <code>default</code>, <code>action</code> and <code>warning</code>.
-            Other options are <code>subscribe</code>, <code>paypal</code>,
-            <code>download</code> and <code>navigation</code>. Platform options
-            are <code>facebook</code>, <code>mixer</code>, <code>twitch</code>,
-            <code>youtube</code>, <code>periscope</code>,
+            <code>default</code>, <code>action</code>, <code>prime</code> and
+            <code>warning</code>. Other options are <code>subscribe</code>,
+            <code>paypal</code>, <code>download</code>, and
+            <code>navigation</code>. Reward options are
+            <code>rewards-standard</code>, <code>rewards-silver</code>,
+            <code>rewards-gold</code>, <code>rewards-platinum</code>,
+            <code>rewards-diamond</code>, and <code>rewards-legend</code>.
+            Platform options are <code>facebook</code>, <code>mixer</code>,
+            <code>twitch</code>, <code>youtube</code>, <code>periscope</code>,
             <code>picarto</code>and <code>paypal-blue</code>.
           </td>
         </tr>

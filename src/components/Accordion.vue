@@ -1,34 +1,65 @@
 <template>
   <div class="s-accordion" :class="[accordionClasses]">
-    <div class="s-accordion__toggle" @click.capture="toggleAccordion">
-      <slot name="toggle">
-        <span v-show="defaultOpen">{{ title || openedTitle }}</span>
-        <span v-show="!defaultOpen">{{ title || closedTitle }}</span>
-      </slot>
+    <div
+      class="s-accordion__head"
+      :class="{ 'is-open': isOpen }"
+      @click="openContent"
+    >
+      <div class="s-accordion__button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px">
+          <path
+            class="s-accordion__svg--back"
+            d="M13 14H1a1 1 0 0 1-1-1V1c0-.6.5-1 1-1h12c.6 0 1 .5 1 1v12c0 .6-.4 1-1 1z"
+            fill="#e3e8eb"
+          ></path>
+          <transition name="twist-h">
+            <g v-if="!isOpen">
+              <path
+                class="s-accordion__svg--line"
+                d="M10 8H4a1 1 0 0 1-1-1c0-.6.5-1 1-1h6c.6 0 1 .5 1 1s-.4 1-1 1z"
+              ></path>
+              <path
+                class="s-accordion__svg--line"
+                d="M8 4v6c0 .6-.5 1-1 1a1 1 0 0 1-1-1V4c0-.6.5-1 1-1s1 .5 1 1z"
+              ></path>
+            </g>
+          </transition>
+          <transition name="twist-v">
+            <path
+              class="s-accordion__svg--line"
+              d="M10 8H4a1 1 0 0 1-1-1c0-.6.5-1 1-1h6c.6 0 1 .5 1 1s-.4 1-1 1z"
+              v-if="isOpen"
+            ></path>
+          </transition>
+        </svg>
+      </div>
+      <div class="s-accordion--title" v-if="hasTitleSlot">
+        <slot name="title" />
+      </div>
+      <div class="s-accordion--title" v-else>{{ accordionTitle }}</div>
     </div>
-
-    <div class="s-accordion__menu" ref="menu">
-      <slot name="content"></slot>
-    </div>
+    <transition
+      name="expand"
+      @enter="open"
+      @after-enter="afterOpen"
+      @leave="close"
+    >
+      <div
+        class="s-accordion__content"
+        :class="[{ 'is-open': isOpen }, { 'left-nav': leftNav }]"
+        v-if="isOpen"
+      >
+        <slot name="content" />
+      </div>
+    </transition>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import ResizeObserver from "resize-observer-polyfill";
 
 @Component({})
-export default class Accordion extends Vue {
-  $refs!: {
-    menu: HTMLDivElement;
-  };
-
-  @Prop()
-  isOpen!: boolean;
-
-  @Prop()
-  noBorder!: boolean;
-
+export default class Accordian extends Vue {
   @Prop()
   openedTitle!: string;
 
@@ -38,76 +69,91 @@ export default class Accordion extends Vue {
   @Prop()
   title!: string;
 
-  defaultOpen = false;
-  defaultBorder = false;
+  @Prop()
+  isOpened!: boolean;
 
-  created() {
-    this.defaultOpen = this.isOpen;
-    this.defaultBorder = this.noBorder;
-  }
+  @Prop()
+  noBorder!: boolean;
 
-  toggleAccordion(event: any) {
-    const blockedNodes = ["INPUT", "BUTTON", "LABEL"];
-    if (blockedNodes.indexOf(event.target.nodeName) !== -1) {
-      return;
-    }
+  @Prop()
+  leftNav!: boolean;
 
-    const parent: any = this.$parent;
-    const parentMenu: any = this.$parent.$refs.menu;
-    const menu = this.$refs.menu;
+  private isOpen = false;
+  private defaultBorder = false;
 
-    this.defaultOpen = !this.defaultOpen;
-    menu.style.transition = "all .275s";
-
-    if (parent.$el.classList.contains("s-accordion") && parent.defaultOpen) {
-      parentMenu.style.maxHeight = "none";
-    }
-
-    if (menu.style.maxHeight === "none" && !this.defaultOpen) {
-      menu.style.maxHeight = `${menu.children[0].scrollHeight + 16}px`;
-    }
-
-    menu.style.maxHeight = this.calculateHeight(menu);
-  }
-
-  calculateHeight(element: Element) {
-    const newHeight = element.children[0].scrollHeight;
-    const padding = (this.$el.classList[0].length + 1) * 16;
-    if (!this.defaultOpen) {
-      return "0";
+  get accordionTitle() {
+    if (this.title !== undefined) {
+      return this.title;
     } else {
-      return `${newHeight + padding}px`;
+      if (this.isOpen) {
+        return this.openedTitle;
+      } else {
+        return this.closedTitle;
+      }
     }
   }
 
-  mounted() {
-    const menu = this.$refs.menu;
-    const ro = new ResizeObserver((entries, observer) => {
-      menu.style.maxHeight = this.calculateHeight(menu);
-    });
-
-    ro.observe(menu);
-  }
-
-  updated() {
-    this.$nextTick(() => {
-      const menu = this.$refs.menu;
-      menu.style.maxHeight = this.calculateHeight(menu);
-    });
+  get hasTitleSlot() {
+    return !!this.$slots.title;
   }
 
   get accordionClasses() {
-    const classes: any = [];
-
-    if (this.defaultBorder) {
-      classes.push("s-accordion--no-border");
+    let classes: any = [];
+    if (this.noBorder) {
+      classes.push("no-border");
     }
-
-    if (!this.defaultOpen) {
-      classes.push("is-closed");
+    if (this.leftNav) {
+      classes.push("left-nav");
     }
-
     return classes.join(" ");
+  }
+
+  openContent(event: any) {
+    let blockedNodes = ["INPUT", "BUTTON", "LABEL"];
+    if (
+      blockedNodes.indexOf(event.target.nodeName) !== -1 ||
+      blockedNodes.indexOf(event.target.parentNode.parentNode.nodeName) !== -1
+    ) {
+      return;
+    }
+    this.isOpen = !this.isOpen;
+    this.$emit("content-opened", { isOpen: this.isOpen, event });
+  }
+
+  afterOpen(element) {
+    element.style.height = "auto";
+  }
+
+  open(element) {
+    let width = getComputedStyle(element).width;
+    element.style.width = width;
+    element.style.position = `absolute`;
+    element.style.visibility = `hidden`;
+    element.style.height = `auto`;
+    let height = getComputedStyle(element).height;
+    element.style.width = null;
+    element.style.position = null;
+    element.style.visibility = null;
+    element.style.height = 0;
+    getComputedStyle(element).height;
+    setTimeout(() => {
+      element.style.height = height;
+    });
+  }
+
+  close(element) {
+    let height = getComputedStyle(element).height;
+    element.style.height = height;
+    getComputedStyle(element).height;
+    setTimeout(() => {
+      element.style.height = 0;
+    });
+  }
+
+  mounted() {
+    if (this.isOpened) {
+      this.isOpen = true;
+    }
   }
 }
 </script>
@@ -115,116 +161,88 @@ export default class Accordion extends Vue {
 <style lang="less">
 @import "./../styles/Imports";
 
-.s-accordions {
-  .s-accordion {
-    &:last-child {
-      .margin-bottom(@0);
-    }
-
-    .s-accordion__menu {
-      .transition();
-    }
-  }
-}
-
 .s-accordion {
   .radius();
   background-color: @day-bg;
   border: 1px solid @day-input-border;
   .margin-bottom(3);
+
+  .padding(2);
+
   text-align: left;
+
+  &.no-border {
+    border: 1px solid transparent;
+  }
 
   &:last-child {
     margin-bottom: 0;
   }
 
-  &.is-closed {
-    .s-accordion__menu {
-      max-height: 0;
-      .padding-v-sides(@0);
-      opacity: 0;
+  &.left-nav {
+    border: none;
+    .padding(0);
+    .margin-bottom(0);
+
+    .s-accordion__content {
+      .padding-left(0);
     }
 
-    & > .s-accordion__toggle {
-      &:before {
-        content: "\e957";
+    .s-accordion__head {
+      &.is-open {
+        .margin-bottom(0);
       }
     }
-  }
 
-  &:not(.is-closed) {
-    & > .s-accordion__menu {
-      overflow: visible;
-      opacity: 1;
-    }
-  }
-}
-
-.s-accordion--no-border {
-  border: 0;
-  background-color: transparent;
-
-  .s-accordion__toggle {
-    .padding(@0);
-    padding-left: 24px;
-
-    &:before {
-      left: 0;
-      top: 2px;
+    .s-accordion__button {
+      .margin-right(1.5);
     }
   }
 
-  .s-accordion__menu {
-    .padding(@0);
-    .padding-top();
-  }
-}
+  .s-accordion__head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
-.s-accordion__toggle,
-.s-accordion__menu {
-  width: 100%;
-}
-
-.s-accordion__toggle {
-  .weight(@medium);
-  color: @day-title;
-  position: relative;
-  .padding(2);
-  .padding-left(5);
-  cursor: default;
-  user-select: none;
-
-  &:before {
-    content: "\e958";
-    color: @icon;
-    border: none;
-    position: absolute;
-    left: 16px;
-    height: 15px;
-    width: 15px;
-    line-height: 16px;
-    background-color: @light-3;
-    border-radius: 2px;
-    text-align: center;
-    top: 18px;
-    font-size: 10px;
-    font-family: "icomoon";
-    font-weight: 900;
-  }
-}
-
-.s-accordion__menu {
-  .transition();
-  overflow: hidden;
-  .padding(2);
-  .padding-top(@0);
-}
-
-.s-accordions {
-  .s-accordion {
-    &:last-child {
-      margin-bottom: 0px;
+    &.is-open {
+      .margin-bottom(2);
     }
+
+    .s-accordion--title {
+      width: 100%;
+      color: @day-title;
+      transform: translateY(1px); // for better visual alignment;
+    }
+
+    &:hover {
+      cursor: default;
+    }
+  }
+
+  .s-accordion__button {
+    display: inline-flex;
+    .margin-right(2);
+  }
+
+  svg,
+  g,
+  path {
+    transform-origin: 7px 7px;
+  }
+
+  .s-accordion__svg--back {
+    fill: @light-3;
+  }
+
+  .s-accordion__svg--line {
+    fill: @light-5;
+    transform-origin: 7px 7px;
+  }
+
+  .s-accordion--title {
+    font-weight: @medium;
+    font-size: 14px;
   }
 }
 
@@ -233,18 +251,60 @@ export default class Accordion extends Vue {
   .s-accordion {
     border-color: @night-input-border;
     background-color: @night-bg;
-  }
 
-  .s-accordion--no-border {
-    background-color: transparent;
-  }
+    &.no-border {
+      border: 1px solid transparent;
+    }
+    .s-accordion__head {
+      .s-accordion--title {
+        color: @night-title;
+      }
+    }
+    .s-accordion__svg--back {
+      fill: @dark-5;
+    }
 
-  .s-accordion__toggle {
-    color: @night-title;
-
-    &:before {
-      background-color: @dark-4;
+    .s-accordion__svg--line {
+      fill: @light-4;
     }
   }
+}
+
+.expand-enter-active,
+.expand-leave-active {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+.expand-enter,
+.expand-leave-to {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 0;
+  opacity: 0;
+}
+
+.twist-h-enter-active,
+.twist-h-leave-active {
+  transition: all 0.25s ease-in-out;
+  transform: rotate(-90deg);
+  opacity: 1;
+}
+.twist-h-enter,
+.twist-h-leave-to {
+  transition: all 0.25s ease-in-out;
+  transform: rotate(-90deg);
+  opacity: 0;
+}
+
+.twist-v-enter-active,
+.twist-v-leave-active {
+  transition: all 0.25s ease-in-out;
+  transform: rotate(-180deg);
+  opacity: 1;
+}
+.twist-v-enter,
+.twist-v-leave-to {
+  transition: all 0.25s ease-in-out;
+  transform: rotate(-180deg);
+  opacity: 0;
 }
 </style>

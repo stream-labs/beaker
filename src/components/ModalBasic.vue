@@ -6,13 +6,15 @@
     :minWidth="minWidth"
     height="auto"
     :adaptive="true"
+    v-on="$listeners"
   >
     <div class="s-modal-container">
       <div class="s-modal-body">
         <div class="s-normal-upper">
-          <h1 class="s-modal-title">{{ title }}</h1>
-          <h2 class="s-modal-sub-title">{{ subTitle }}</h2>
-          <p class="s-modal-text">{{ text }}</p>
+          <h1 v-if="!!title" class="s-modal-title">{{ title }}</h1>
+          <h2 v-if="!!subTitle" class="s-modal-sub-title">{{ subTitle }}</h2>
+          <p v-if="!!text" class="s-modal-text">{{ text }}</p>
+          <slot></slot>
         </div>
       </div>
       <div class="s-modal-footer">
@@ -27,6 +29,7 @@
             :variation="'action'"
             :title="'Confirm'"
             :size="'fixed-width'"
+            @click="$emit('confirm')"
           ></Button>
         </div>
       </div>
@@ -64,7 +67,7 @@ export default class ModalBasic extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 @import "./../styles/components/Modals";
 

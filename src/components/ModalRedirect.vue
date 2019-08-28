@@ -6,6 +6,7 @@
     :minWidth="minWidth"
     height="auto"
     :adaptive="true"
+    v-on="$listeners"
   >
     <div class="s-modal-container">
       <div class="s-redirect">
@@ -48,7 +49,7 @@ export default class ModalRedirect extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./../styles/Imports";
 @import "./../styles/components/Modals";
 

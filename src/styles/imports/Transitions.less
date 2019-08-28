@@ -1,0 +1,97 @@
+
+// FadeX from Left
+.fadeX-from-left-enter-active {
+  transition: all 0.25s 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+}
+.fadeX-from-left-leave-active {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  opacity: 0;
+}
+.fadeX-from-left-enter {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-10px);
+  opacity: 0;
+}
+.fadeX-from-left-leave-to {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+// FadeX from Right
+.fadeX-from-right-enter-active {
+  transition: all 0.25s 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+}
+.fadeX-from-right-leave-active {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  opacity: 0;
+}
+.fadeX-from-right-enter {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(10px);
+  opacity: 0;
+}
+.fadeX-from-right-leave-to {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+// FadeY from Top
+.fadeY-from-top-enter-active {
+  transition: all 0.25s 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+}
+.fadeY-from-top-leave-active {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  opacity: 0;
+}
+.fadeY-from-top-enter {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(-10px);
+  opacity: 0;
+}
+.fadeY-from-top-leave-to {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+// FadeY from Bottom
+.fadeY-from-bottom-enter-active {
+  transition: all 0.25s 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+}
+.fadeY-from-bottom-leave-active {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  opacity: 0;
+}
+.fadeY-from-bottom-enter {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(10px);
+  opacity: 0;
+}
+.fadeY-from-bottom-leave-to {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+// Expand
+.expand-dropdown-enter-active,
+.expand-dropdown-leave-active {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+.expand-dropdown-enter,
+.expand-dropdown-leave-to {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 0;
+  opacity: 0;
+}

@@ -8,7 +8,10 @@
         :text="text"
         :width="width"
         :minWidth="minWidth"
-      ></ModalBasic>
+        v-on="$listeners"
+      >
+        <slot></slot>
+      </ModalBasic>
     </div>
 
     <div v-if="type === 'subscribe'">
@@ -22,7 +25,20 @@
         :notes="notes"
         :width="width"
         :minWidth="minWidth"
-      ></ModalSubscribe>
+        :scrollable="scrollable"
+        :proBadge="proBadge"
+        :customPreview="customPreview"
+        :buttonTitle="buttonTitle"
+        :buttonPrice="buttonPrice"
+        :buttonVariation="buttonVariation"
+        :cancelTitle="cancelTitle"
+        v-on="$listeners"
+      >
+        <template #preview>
+          <slot name="preview"></slot>
+        </template>
+        <slot></slot>
+      </ModalSubscribe>
     </div>
 
     <div v-if="type === 'redirect'">
@@ -32,6 +48,7 @@
         :text="text"
         :width="width"
         :minWidth="minWidth"
+        v-on="$listeners"
       ></ModalRedirect>
     </div>
 
@@ -42,10 +59,21 @@
         :text="text"
         :width="width"
         :minWidth="minWidth"
-        @confirm="$emit('confirm')"
         :confirmButtonText="confirmButtonText"
         :buttonVariation="buttonVariation"
+        v-on="$listeners"
       ></ModalConfirmation>
+    </div>
+
+    <div v-if="type === 'welcome-prime'">
+      <ModalPrime
+        :name="modalName"
+        :width="width"
+        :minWidth="minWidth"
+        :primeButtonText="primeButtonText"
+        :hasPrimeCloseButton="hasPrimeCloseButton"
+        v-on="$listeners"
+      ></ModalPrime>
     </div>
   </div>
 </template>
@@ -57,6 +85,7 @@ import ModalBasic from "./../components/ModalBasic.vue";
 import ModalSubscribe from "./../components/ModalSubscribe.vue";
 import ModalRedirect from "./../components/ModalRedirect.vue";
 import ModalConfirmation from "./../components/ModalConfirmation.vue";
+import ModalPrime from "./../components/ModalPrime.vue";
 import VModal from "vue-js-modal";
 
 Vue.use(VModal);
@@ -67,7 +96,8 @@ Vue.use(VModal);
     ModalBasic,
     ModalSubscribe,
     ModalRedirect,
-    ModalConfirmation
+    ModalConfirmation,
+    ModalPrime
   }
 })
 export default class ModalComp extends Vue {
@@ -79,6 +109,9 @@ export default class ModalComp extends Vue {
 
   @Prop({ default: 600 })
   minWidth!: number;
+
+  @Prop()
+  scrollable!: boolean;
 
   @Prop()
   type!: string;
@@ -102,10 +135,31 @@ export default class ModalComp extends Vue {
   notes!: string;
 
   @Prop()
+  proBadge!: boolean;
+
+  @Prop()
+  customPreview!: boolean;
+
+  @Prop()
   confirmButtonText!: string;
 
   @Prop()
   buttonVariation!: string;
+
+  @Prop()
+  buttonTitle!: string;
+
+  @Prop()
+  buttonPrice!: string;
+
+  @Prop()
+  cancelTitle!: string;
+
+  @Prop()
+  primeButtonText!: string;
+
+  @Prop()
+  hasPrimeCloseButton!: boolean;
 
   modalName: string = "";
 
@@ -144,6 +198,14 @@ export default class ModalComp extends Vue {
           this.modalName = this.name;
         } else {
           this.modalName = "modal-confirmation";
+        }
+        break;
+
+      case "welcome-prime":
+        if (this.name) {
+          this.modalName = this.name;
+        } else {
+          this.modalName = "modal-welcome-prime";
         }
         break;
     }

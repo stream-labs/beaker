@@ -4,8 +4,10 @@
       type="radio"
       :id="id"
       :name="name"
-      :value="value"
-      @click="onClickAction"
+      :checked="val == value"
+      :value="val"
+      @input="$emit('input', val)"
+      @click="$emit('onClick')"
     />
     <label :for="id">{{ label }}</label>
   </div>
@@ -16,27 +18,20 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Radio extends Vue {
-  @Prop()
+  @Prop(String)
   label!: string;
 
-  @Prop()
+  @Prop(String)
   id!: string;
 
-  @Prop()
+  @Prop(String)
   name!: string;
 
-  @Prop()
-  value!: string;
+  @Prop([String, Boolean])
+  value!: string | boolean;
 
-  @Prop()
-  isChecked!: boolean;
-
-  @Prop()
-  onClick!: Function;
-
-  onClickAction() {
-    typeof this.onClick === "function" && this.onClick();
-  }
+  @Prop([String, Boolean])
+  val!: string | boolean;
 }
 </script>
 

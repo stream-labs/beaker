@@ -6,6 +6,7 @@
     :minWidth="minWidth"
     height="auto"
     :adaptive="true"
+    v-on="$listeners"
   >
     <div class="s-modal-container">
       <div class="s-confirmation">
@@ -40,7 +41,7 @@ import Button from "./../components/Button.vue";
   }
 })
 export default class ModalConfirmation extends Vue {
-  @Prop()
+  @Prop({ default: "modal-confirmation" })
   name!: string;
 
   @Prop({ default: 600 })
@@ -63,7 +64,7 @@ export default class ModalConfirmation extends Vue {
 
   onConfirmHandler() {
     this.$emit("confirm");
-    this.$modal.hide("modal-confirmation");
+    this.$modal.hide(this.name);
   }
 }
 </script>

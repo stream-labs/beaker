@@ -1,24 +1,19 @@
 <template>
-  <transition name="fade">
-    <div class="s-loader" :swapMode="swapMode">
-      <div
-        :class="{
-          's-loader__bg--semi': semiOpaque,
-          's-loader--modeswap': swapMode
-        }"
-        class="s-loader__bg"
-      >
-        <div class="s-loader__inner">
-          <Spinner
-            :swap="swapMode"
-            class="s-spinner__overlay"
-            :size="'large'"
-          />
-          <div class="s-loader__text">{{ loaderText }}</div>
-        </div>
+  <div class="s-loader" :swapMode="swapMode">
+    <div
+      :class="{
+        's-loader__bg--semi': semiOpaque,
+        's-loader--modeswap': swapMode,
+        's-loader--fixed': fixedBackground
+      }"
+      class="s-loader__bg"
+    >
+      <div class="s-loader__inner">
+        <Spinner :swap="swapMode" class="s-spinner__overlay" :size="'large'" />
+        <div class="s-loader__text">{{ loaderText }}</div>
       </div>
     </div>
-  </transition>
+  </div>
 </template>
 
 <script lang="ts">
@@ -30,7 +25,7 @@ import Button from "./../components/Button.vue";
   components: { Spinner, Button }
 })
 export default class Loading extends Vue {
-  @Prop()
+  @Prop({ default: [] })
   loadingStrs!: any[] | string;
 
   @Prop({ default: false })
@@ -41,6 +36,9 @@ export default class Loading extends Vue {
 
   @Prop({ default: false })
   swapMode!: Boolean;
+
+  @Prop({ default: true })
+  fixedBackground!: boolean;
 
   loaderText: string = "";
   index: number = 0;
@@ -90,7 +88,7 @@ export default class Loading extends Vue {
 @import "./../styles/Imports";
 
 .s-loader__bg {
-  position: fixed;
+  position: relative;
   box-sizing: border-box;
   top: 0;
   left: 0;
@@ -101,6 +99,10 @@ export default class Loading extends Vue {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  &.s-loader--fixed {
+    position: fixed;
+  }
 }
 
 .s-loader__bg--semi {

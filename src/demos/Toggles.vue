@@ -17,8 +17,7 @@ components: {
     'show': `&lt;i class='icon-view'&gt;&lt;/i&gt;`,
     'hide': `&lt;i class='icon-hide'&gt;&lt;/i&gt;`
   }&quot;
-  :selected.sync=&quot;selectedOption&quot;
-  :default=&quot;'show'&quot;&gt;
+  v-model=&quot;selectedOption&quot;
 &lt;/toggle&gt;</code></pre>
         </div>
       </accordion>
@@ -28,8 +27,7 @@ components: {
           show: `<i class='icon-view'></i>`,
           hide: `<i class='icon-hide'></i>`
         }"
-        :selected.sync="selectedOption"
-        :default="'show'"
+        v-model="selectedOption"
       ></toggle>
     </div>
 
@@ -41,8 +39,7 @@ components: {
     'revenue': 'Revenue',
     'growth': 'Growth'
   }&quot;
-  :selected.sync=&quot;selectedOption&quot;
-  :default=&quot;'revenue'&quot;&gt;
+  v-model=&quot;selectedOption&quot;
   :variation=&quot;'text'&quot;
 &lt;/toggle&gt;</code></pre>
         </div>
@@ -53,8 +50,7 @@ components: {
           revenue: 'Revenue',
           growth: 'Growth'
         }"
-        :selected.sync="selectedTextOption"
-        :default="'revenue'"
+        v-model="selectedTextOption"
         :variation="'text'"
       ></toggle>
     </div>
@@ -79,16 +75,10 @@ components: {
           </td>
         </tr>
         <tr>
-          <td>selected.sync</td>
+          <td>v-model</td>
           <td>string</td>
           <td>null</td>
           <td>Use as a bind to the currently selected toggle option.</td>
-        </tr>
-        <tr>
-          <td>default</td>
-          <td>string</td>
-          <td>null</td>
-          <td>Set to have a preselected toggle option when created.</td>
         </tr>
         <tr>
           <td>variation</td>
@@ -117,7 +107,7 @@ import Toggle from "./../components/Toggle.vue";
   }
 })
 export default class Toggles extends Vue {
-  selectedOption = "";
-  selectedTextOption = "";
+  selectedOption = "show";
+  selectedTextOption = "revenue";
 }
 </script>

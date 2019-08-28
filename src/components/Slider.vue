@@ -1,6 +1,10 @@
 <template>
   <vue-slider-component
     class="s-slider"
+    :class="{
+      's-slider--simple': simpleTheme,
+      's-slider--has-tooltip': tooltip === 'always'
+    }"
     :width="width"
     :height="8"
     :dotHeight="16"
@@ -15,13 +19,17 @@
     :suffix="suffix"
     :formatter="prefix + '{value}' + suffix"
     :data="data"
+    :disabled="disabled"
     @callback="value => emitInput(value)"
+    :simpleTheme="simpleTheme"
+    ref="slider"
   ></vue-slider-component>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Watch, Vue } from "vue-property-decorator";
 import VueSliderComponent from "vue-slider-component";
+import ResizeObserver from "resize-observer-polyfill";
 
 @Component({
   components: {
@@ -29,6 +37,15 @@ import VueSliderComponent from "vue-slider-component";
   }
 })
 export default class Slider extends Vue {
+  $refs!: {
+    slider: any;
+  };
+
+  @Watch("value")
+  updateLocalValue() {
+    this.displayValue = this.value;
+  }
+
   @Prop()
   width!: number | string;
 
@@ -53,13 +70,40 @@ export default class Slider extends Vue {
   @Prop({ default: "" })
   suffix!: string;
 
+  @Prop({ default: false })
+  disabled!: boolean;
+
   @Prop()
   data!: Array<number> | Array<string>;
 
+  @Prop({ default: false })
+  simpleTheme!: boolean;
+
   displayValue: number | string | Array<number> | Array<string> = this.value;
+  private debounced: boolean = false;
+  private ro = new ResizeObserver((entries, observer) => {
+    for (let entry of entries) {
+      let { left, top, width, height } = entry.contentRect;
+      if (!this.debounced) {
+        this.debounce().then(() => {
+          if (this.$refs.slider) {
+            this.$refs.slider.refresh();
+          }
+        });
+      }
+    }
+  });
 
   created() {
     this.$on("input", this.setValue);
+  }
+
+  mounted() {
+    this.ro.observe(this.$refs.slider.$el);
+  }
+
+  beforeDestroy() {
+    this.ro.unobserve(this.$refs.slider.$el);
   }
 
   destroyed() {
@@ -73,6 +117,18 @@ export default class Slider extends Vue {
   setValue(val) {
     this.displayValue = val;
   }
+
+  debounce() {
+    return new Promise(resolve => {
+      if (!this.debounced) {
+        this.debounced = true;
+        setTimeout(() => {
+          this.debounced = false;
+          resolve();
+        }, 500);
+      }
+    });
+  }
 }
 </script>
 
@@ -81,6 +137,7 @@ export default class Slider extends Vue {
 .s-slider {
   width: 100%;
   flex: 1;
+  padding: 4px 0px !important;
 
   .vue-slider {
     background-color: @light-3;
@@ -135,9 +192,19 @@ export default class Slider extends Vue {
   }
 }
 
+.s-slider--simple {
+  .vue-slider-process {
+    background-color: @selected;
+  }
+}
+
+.s-slider--has-tooltip {
+  padding: 4px 0px 26px !important;
+}
+
 .night,
 .night-theme {
-  .vue-slider-component {
+  .s-slider {
     .vue-slider {
       background-color: @dark-4;
     }
@@ -154,6 +221,12 @@ export default class Slider extends Vue {
 
     .vue-slider-tooltip {
       color: @night-title;
+    }
+  }
+
+  .s-slider--simple {
+    .vue-slider-process {
+      background-color: @dark-5;
     }
   }
 }

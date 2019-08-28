@@ -1,11 +1,11 @@
 // Inputs
 
-input[type="text"],
-input[type="password"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
+input[type='text'],
+input[type='password'],
+input[type='number'],
+input[type='email'],
+input[type='url'],
+input[type='search'],
 select {
   .radius();
   border: 1px solid @day-input-border;
@@ -14,7 +14,7 @@ select {
   font-size: 14px;
   .padding--input();
   background: @day-input-bg;
-  font-family: "Roboto";
+  font-family: 'Roboto';
   color: @day-title;
   width: 100%;
   transition: all 0.275s ease-in-out;
@@ -32,6 +32,20 @@ select {
   :-ms-input-placeholder {
     color: @light-5;
   }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 30px @day-input-bg inset !important;
+  -webkit-text-fill-color: @day-title !important;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 input[readonly] {
@@ -116,7 +130,7 @@ input[readonly] {
   }
 }
 
-input[type="file"] {
+input[type='file'] {
   width: auto;
   display: inline-block;
   vertical-align: middle;
@@ -146,8 +160,8 @@ textarea {
   color: @day-title;
   width: 100%;
   resize: vertical;
-  .padding();
-  font-family: "Roboto";
+  .padding(2);
+  font-family: 'Roboto';
   font-size: 14px;
 
   &:active,
@@ -173,12 +187,12 @@ textarea {
 
 .night,
 .night-theme {
-  input[type="email"],
-  input[type="number"],
-  input[type="password"],
-  input[type="text"],
-  input[type="url"],
-  input[type="search"],
+  input[type='email'],
+  input[type='number'],
+  input[type='password'],
+  input[type='text'],
+  input[type='url'],
+  input[type='search'],
   select,
   textarea {
     border-color: @night-input-border;
@@ -191,5 +205,12 @@ textarea {
       border-color: @light-5;
       background: @night-input-bg;
     }
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px @night-input-bg inset !important;
+    -webkit-text-fill-color: @night-title !important;
   }
 }

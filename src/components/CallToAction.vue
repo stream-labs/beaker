@@ -1,5 +1,9 @@
 <template>
   <div class="s-call-to-action" :class="callToActionMq" :style="callToActionBg">
+    <i
+      v-if="(buttonVariation === 'prime') | (buttonVariation === 'prime-white')"
+      class="icon-prime prime-bg"
+    ></i>
     <div
       v-if="hasThumbnail"
       class="s-call-to-action__thumb"
@@ -28,6 +32,7 @@
         :to="buttonTo"
         :tag="buttonTag"
         :bgColor="buttonBg"
+        :icon="buttonIcon"
         :textColor="buttonTextColor"
         @click="buttonClick"
       ></Button>
@@ -41,6 +46,7 @@
         :href="buttonHref"
         :to="buttonTo"
         :tag="buttonTag"
+        :icon="buttonIcon"
         :bgColor="buttonBg"
         :textColor="buttonTextColor"
       ></Button>
@@ -108,7 +114,7 @@ export default class CallToAction extends Vue {
   @Prop({ default: "Download Streamlabs OBS" })
   buttonTitle!: String;
 
-  @Prop({ default: "Windows 7+ 245.8MB" })
+  @Prop()
   buttonDescription!: String;
 
   @Prop()
@@ -131,6 +137,12 @@ export default class CallToAction extends Vue {
 
   @Prop({ default: false })
   customButtonSlot!: Boolean;
+
+  @Prop({ default: false })
+  bgPrime!: Boolean;
+
+  @Prop()
+  buttonIcon!: String;
 
   $mq: any;
 
@@ -204,6 +216,17 @@ export default class CallToAction extends Vue {
   background-color: @day-section;
   .padding(3);
   .radius(2);
+  position: relative;
+  overflow: hidden;
+
+  .prime-bg {
+    position: absolute;
+    font-size: 144px;
+    color: @white;
+    left: -51px;
+    bottom: -69px;
+    opacity: 0.16;
+  }
 }
 
 .s-call-to-action__thumb {

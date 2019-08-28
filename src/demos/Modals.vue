@@ -49,6 +49,17 @@ components: {
         "
       ></ModalComp>
 
+      <ModalComp
+        :name="'modal-basic3'"
+        :type="'basic'"
+        :title="'UI Modal3'"
+        :subTitle="'Subtitle3'"
+        :text="
+          'Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.'
+        "
+        >hey there</ModalComp
+      >
+
       <div class="s-button-container--left">
         <Button
           :variation="'default'"
@@ -59,6 +70,11 @@ components: {
           :variation="'default'"
           :title="'modal basic2'"
           @click="$modal.show('modal-basic2')"
+        ></Button>
+        <Button
+          :variation="'default'"
+          :title="'modal basic3'"
+          @click="$modal.show('modal-basic3')"
         ></Button>
       </div>
     </div>
@@ -90,6 +106,7 @@ components: {
 
       <ModalComp
         :type="'subscribe'"
+        :scrollable="true"
         :title="'Streamlabs'"
         :subTitle="'Never pay for GIFs and effects again!'"
         :text="
@@ -186,6 +203,44 @@ components: {
           :variation="'warning'"
           :title="'modal confirmation'"
           @click="$modal.show('modal-confirmation')"
+        ></Button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Modal Welcome Prime</h2>
+      <p>Used for welcome prime</p>
+
+      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+        <div slot="content">
+          <pre><code>&lt;ModalComp 
+  :type=&quot;'welcome-prime'&quot; 
+  :width=&quot;900&quot; 
+  @onClickPrime=&quot;test&quot; 
+  :hasPrimeCloseButton=&quot;true&quot;&gt;
+&lt;/ModalComp&gt;
+
+&lt;Button
+  :variation=&quot;'default'&quot;
+  :title=&quot;'modal welcome prime'&quot;
+  @click=&quot;$modal.show('modal-welcome-prime')&quot;&gt;
+&lt;/Button&gt;
+</code></pre>
+        </div>
+      </Accordion>
+
+      <ModalComp
+        :type="'welcome-prime'"
+        :width="600"
+        @onClickPrime="test"
+        :hasPrimeCloseButton="true"
+      ></ModalComp>
+
+      <div class="button-container button-container--left">
+        <Button
+          :variation="'default'"
+          :title="'modal welcome prime'"
+          @click="$modal.show('modal-welcome-prime')"
         ></Button>
       </div>
     </div>
@@ -298,7 +353,77 @@ components: {
           <td>
             Pass in
             <code>action</code> if it's a confirmation that doesn't warrant a
-            warning (only in Modal Confirmation)
+            warning (only in Modal Confirmation). In Modal Subscribe default is
+            <code>subscribe</code>. Can be set to <code>paypal</code> and
+            <code>paypal-blue</code> variations.
+          </td>
+        </tr>
+        <tr>
+          <td>buttonTitle</td>
+          <td>string</td>
+          <td>Subscribe with PayPal</td>
+          <td>Set subscribe button title (only in Modal Subscribe).</td>
+        </tr>
+        <tr>
+          <td>buttonPrice</td>
+          <td>string</td>
+          <td>$5.99</td>
+          <td>Set subscribe button title (only in Modal Subscribe).</td>
+        </tr>
+        <tr>
+          <td>proBadge</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>
+            Displays
+            <code>Pro</code> badge in modal header (only in Modal Subscribe).
+          </td>
+        </tr>
+        <tr>
+          <td>customPreview</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>
+            Allows for custom preview above modal text. Uses
+            <code>preview</code> slot.
+            <code
+              >&lt;template #preview&gt;Custom Preview
+              HTML&lt;template&gt;</code
+            >
+            (only in Modal Subscribe).
+          </td>
+        </tr>
+        <tr>
+          <td>buttonTitle</td>
+          <td>string</td>
+          <td>Subscribe with PayPal</td>
+          <td>Set subscribe button title (only in Modal Subscribe).</td>
+        </tr>
+        <tr>
+          <td>buttonTitle</td>
+          <td>string</td>
+          <td>$5.99</td>
+          <td>Set subscribe button title (only in Modal Subscribe).</td>
+        </tr>
+        <tr>
+          <td>primeButtonText</td>
+          <td>string</td>
+          <td>Continue</td>
+          <td>Set button text below (only in Modal Welcom Prime).</td>
+        </tr>
+        <tr>
+          <td>hasPrimeCloseButton</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>Set the close button right top (only in Modal Welcom Prime).</td>
+        </tr>
+        <tr>
+          <td>@onClickPrime</td>
+          <td>Function</td>
+          <td>null</td>
+          <td>
+            Callback function when click the button below (only in Modal Welcom
+            Prime).
           </td>
         </tr>
       </tbody>
@@ -319,5 +444,9 @@ import Button from "./../components/Button.vue";
     Button
   }
 })
-export default class Modals extends Vue {}
+export default class Modals extends Vue {
+  test() {
+    console.log("test");
+  }
+}
 </script>

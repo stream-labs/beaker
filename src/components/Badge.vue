@@ -13,6 +13,9 @@
     >
       {{ `${current}${separator}${total} ${suffix}` }}
     </div>
+    <div v-if="variant === 'prime' || variant === 'prime-alt'">
+      <i v-if="variant === 'prime'" class="icon-prime"></i>Prime
+    </div>
     <slot v-else />
   </div>
 </template>
@@ -143,8 +146,20 @@ export default class Badge extends Vue {
     color: @day-paragraph;
   }
 
+  &--tag-alt {
+    background-color: transparent;
+    color: @day-paragraph;
+    .padding-h-sides(@0);
+  }
+
   &--pro {
     background-color: @light-5;
+  }
+
+  &--pro-alt {
+    background-color: transparent;
+    color: @light-5;
+    .padding-h-sides(@0);
   }
 
   &--beta {
@@ -152,9 +167,21 @@ export default class Badge extends Vue {
     color: @yellow;
   }
 
+  &--beta-alt {
+    background-color: transparent;
+    color: @yellow;
+    .padding-h-sides(@0);
+  }
+
   &--warning {
     background-color: @red-semi;
     color: @warning;
+  }
+
+  &--warning-alt {
+    background-color: transparent;
+    color: @warning;
+    .padding-h-sides(@0);
   }
 
   &--count {
@@ -185,6 +212,37 @@ export default class Badge extends Vue {
       padding: 0 4px;
       .radius();
       line-height: 18px;
+    }
+  }
+
+  &--prime {
+    background-color: @prime;
+    color: @white;
+    .padding-h-sides();
+    border-radius: 50px;
+    font-weight: 900;
+
+    .icon-prime {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 4px;
+      font-size: 13px;
+
+      &::before {
+        color: @white;
+      }
+    }
+  }
+
+  &--prime-alt {
+    background-color: transparent;
+    color: @prime;
+    .padding-h-sides(@0);
+    font-weight: 900;
+    font-size: inherit;
+
+    &::before {
+      display: none;
     }
   }
 }
