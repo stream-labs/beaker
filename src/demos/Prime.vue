@@ -80,8 +80,8 @@
 
       <NavCallToAction
         :description="
-        'Forward email from your custom domain name to your current mailbox.'
-      "
+          'Forward email from your custom domain name to your current mailbox.'
+        "
         :buttonTitle="'Join Prime'"
         :buttonVariation="'prime'"
         @click="testNavClick"

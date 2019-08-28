@@ -78,6 +78,9 @@ export default class TaggingInput extends Vue {
   @Prop({ default: 25 })
   maxItems!: number;
 
+  @Prop({ default: "false" })
+  preventInputSubmit!: string;
+
   textInputValue: string = "";
 
   get tagClasses() {
