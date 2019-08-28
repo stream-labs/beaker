@@ -12,7 +12,7 @@
         :error="errors.first(name)"
         v-on="filteredListeners"
         @keydown.enter.prevent="onAdd"
-      ></text-input>
+      />
 
       <Button
         :variation="buttonVariation"
@@ -77,9 +77,6 @@ export default class TaggingInput extends Vue {
 
   @Prop({ default: 25 })
   maxItems!: number;
-
-  @Prop({ default: "false" })
-  preventInputSubmit!: string;
 
   textInputValue: string = "";
 
