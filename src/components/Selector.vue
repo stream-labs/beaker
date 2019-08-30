@@ -5,12 +5,11 @@
       :style="styleObject"
       :options="options"
       :max-height="200"
+      :allow-empty="false"
       v-on="$listeners"
       @input="val => emitInput(val)"
     >
-      <template v-if="label" slot="singleLabel" slot-scope="{ option }">
-        {{ option[label] }}
-      </template>
+      <template v-if="label" slot="singleLabel" slot-scope="{ option }">{{ option[label] }}</template>
     </multiselect>
   </div>
 </template>
