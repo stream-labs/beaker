@@ -312,7 +312,7 @@ export default class MediaPicker extends Vue {
   }
 
   .fade-slow-leave-active {
-    transition: all .375s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.375s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
   }
 }
