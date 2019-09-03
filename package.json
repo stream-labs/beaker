@@ -6,8 +6,8 @@
   "sideEffects": false,
   "license": "MIT",
   "scripts": {
-    "build": "rollup --config && yarn build-deploy-gh-pages",
-    "build-bundle": "rollup --config",
+    "build": "rollup --config",
+    "build-bundle": "rollup --config && yarn build-deploy-gh-pages",
     "prepare": "rollup --config",
     "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
