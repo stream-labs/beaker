@@ -13,11 +13,11 @@
             key="thumb-sound"
             class="icon-music"
           >
-          <audio
-            key="thumb-audio"
-            :src="media.url"
-            @error="setBrokenMedia(true)"
-          ></audio>
+            <audio
+              key="thumb-audio"
+              :src="media.url"
+              @error="setBrokenMedia(true)"
+            ></audio>
           </i>
           <img
             v-if="media.selected && variation === 'image'"
