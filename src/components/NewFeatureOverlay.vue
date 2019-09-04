@@ -161,7 +161,7 @@ export default class NewFeatureOverlay extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 ::-webkit-media-controls {
   display: none !important;
 }
@@ -271,7 +271,7 @@ export default class NewFeatureOverlay extends Vue {
 </style>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-overlay__text {
   line-height: 21px;

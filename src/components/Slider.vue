@@ -133,7 +133,7 @@ export default class Slider extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 .s-slider {
   width: 100%;
   flex: 1;

@@ -67,7 +67,7 @@ export default class Callout extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-callout {
   position: relative;

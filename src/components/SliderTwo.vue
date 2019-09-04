@@ -519,8 +519,8 @@ export default class SliderTwo extends Vue {
 }
 </script>
 
-<style lang="less">
-@import "./../styles/Imports";
+<style lang="less" scoped>
+@import (reference) "./../styles/Imports";
 
 .s-slider {
   display: flex;

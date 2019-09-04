@@ -62,7 +62,7 @@ export default class Assets extends Vue {}
 </script>
 
 <style lang="less" scoped>
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .logo-demos {
   display: grid;

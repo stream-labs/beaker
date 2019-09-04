@@ -169,7 +169,7 @@ export default class PaneDropdown extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-pane-dropdown {
   position: relative;

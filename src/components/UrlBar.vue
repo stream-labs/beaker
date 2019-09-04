@@ -22,7 +22,7 @@ export default class UrlBar extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-cs-simulator__web-bar {
   height: 40px;

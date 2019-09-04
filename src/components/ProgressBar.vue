@@ -17,7 +17,7 @@ export default class ProgressBar extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 .s-progress {
   display: inline-block;
   height: 8px;

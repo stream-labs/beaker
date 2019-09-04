@@ -1,7 +1,8 @@
 <template>
-  <div class="section">
+  <div class="section s-typography">
     <div class="row bottom-space">
-      <h2>FONTS</h2>
+      <h4 class="s-typography__header">FONTS</h4>
+      <h1>Barlow</h1>
       <div class="font-style barlow">Barlow</div>
       <div class="side-by-side">
         <div class="subtitle">Marketing Headings</div>
@@ -15,14 +16,14 @@
     </div>
 
     <div class="row bottom-space">
-      <h2>TYPOGRAPHY</h2>
+      <h4 class="s-typography__header">TYPOGRAPHY</h4>
       <div class="side-by-side">
         <div class="subtitle">Letter Spacing</div>
         <p>0%</p>
       </div>
       <div class="side-by-side">
         <div class="subtitle">Line Height</div>
-        <p>h1, h2: 110% -- everything else: 150%</p>
+        <p>110% (H1, H2), 150% (Everything Else)</p>
       </div>
       <div class="side-by-side">
         <div class="subtitle">Paragraph Spacing</div>
@@ -31,11 +32,14 @@
     </div>
 
     <div class="row bottom-space">
-      <h2>TYPE SCALE</h2>
+      <h4 class="s-typography__header">TYPE SCALE</h4>
+      <span class="subtitle">Marketing</span>
+
       <div class="type-scale barlow extrabold s48">
-        head1: Barlow ExtraBold 48px
+        H1: Barlow ExtraBold 48px
       </div>
-      <div class="type-scale barlow bold s32">head2: Barlow Bold 32px</div>
+      <div class="type-scale barlow bold s32">H2: Barlow Bold 32px</div>
+
       <div class="type-scale bold s22">Marketing Title: Roboto Bold 22px</div>
       <div class="type-scale bold s20">Title: Roboto Bold 20px</div>
       <div class="type-scale medium s18">
@@ -108,7 +112,7 @@ export default class Typography extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .row {
   width: 700px;

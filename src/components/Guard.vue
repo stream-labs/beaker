@@ -69,7 +69,7 @@ export default class Guard extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 //  Input Guard Css
 .s-input-guard {
   position: relative;
