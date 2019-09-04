@@ -9,8 +9,8 @@
             class="icon-upload-image"
           ></i>
           <i
-            v-if="media.selected && variation === 'sound'"
-            key="thumb-sound"
+            v-if="media.selected && variation === 'audio'"
+            key="thumb-audio"
             class="icon-music"
           >
             <audio
@@ -70,7 +70,7 @@
             </a>
 
             <a
-              v-if="variation === 'sound' && media.selected && !mediaBroken"
+              v-if="variation === 'audio' && media.selected && !mediaBroken"
               key="media-selected-zoom"
               class="s-media-picker__play-icon"
               @click.stop="$emit('play-media')"
@@ -143,8 +143,8 @@ export default class MediaPicker extends Vue {
   mediaBroken = false;
 
   get mediaInputPlaceholder() {
-    return this.variation === "sound"
-      ? `example-sound.mp3`
+    return this.variation === "audio"
+      ? `example-audio.mp3`
       : `example-image.jpg`;
   }
 
