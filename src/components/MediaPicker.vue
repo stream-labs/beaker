@@ -16,14 +16,14 @@
             <audio
               key="thumb-audio"
               :src="media.url"
-              @error="setBrokenMedia(true)"
+              @error="setBrokenMedia"
             ></audio>
           </i>
           <img
             v-if="media.selected && variation === 'image'"
             key="thumb-image"
             :src="media.url"
-            @error="setBrokenMedia(true)"
+            @error="setBrokenMedia"
           />
         </transition>
         <transition
@@ -162,7 +162,7 @@ export default class MediaPicker extends Vue {
 
   @Watch("value")
   watchValue() {
-    this.setBrokenMedia(false);
+    this.setBrokenMedia(null);
   }
 
   mounted() {
@@ -176,8 +176,8 @@ export default class MediaPicker extends Vue {
     ro.observe(this.$refs.mediaPicker);
   }
 
-  setBrokenMedia(val) {
-    this.mediaBroken = val;
+  setBrokenMedia(event) {
+    this.mediaBroken = event ? true : false;
   }
 
   selectMedia() {
