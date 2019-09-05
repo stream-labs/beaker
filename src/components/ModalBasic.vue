@@ -17,7 +17,7 @@
           <slot></slot>
         </div>
       </div>
-      <div class="s-modal-footer" v-if="showButtons.toLowerCase() === 'true'">
+      <div class="s-modal-footer" v-if="!hideActionButtons && hideActionButtons !== ''">
         <div class="s-modal-footer-inner s-button-container">
           <Button
             :variation="'default'"
@@ -65,8 +65,8 @@ export default class ModalBasic extends Vue {
   @Prop()
   text!: string;
 
-  @Prop({ default: 'true' })
-  showButtons!: string;
+  @Prop()
+  hideActionButtons!: string;
 }
 </script>
 
