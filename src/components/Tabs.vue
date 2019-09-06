@@ -151,8 +151,8 @@ export default class Tabs extends Vue {
   }
 
   showTab(tab: string) {
-    console.log(tab);
     this.selectedTab = tab;
+    this.$emit("tab-selected", tab);
   }
 }
 </script>
