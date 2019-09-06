@@ -9,21 +9,21 @@
             class="icon-upload-image"
           ></i>
           <i
-            v-if="media.selected && variation === 'sound'"
-            key="thumb-sound"
+            v-if="media.selected && variation === 'audio'"
+            key="thumb-audio"
             class="icon-music"
           >
             <audio
               key="thumb-audio"
               :src="media.url"
-              @error="setBrokenMedia(true)"
+              @error="setBrokenMedia"
             ></audio>
           </i>
           <img
             v-if="media.selected && variation === 'image'"
             key="thumb-image"
             :src="media.url"
-            @error="setBrokenMedia(true)"
+            @error="setBrokenMedia"
           />
         </transition>
         <transition
@@ -70,7 +70,7 @@
             </a>
 
             <a
-              v-if="variation === 'sound' && media.selected && !mediaBroken"
+              v-if="variation === 'audio' && media.selected && !mediaBroken"
               key="media-selected-zoom"
               class="s-media-picker__play-icon"
               @click.stop="$emit('play-media')"
@@ -143,8 +143,8 @@ export default class MediaPicker extends Vue {
   mediaBroken = false;
 
   get mediaInputPlaceholder() {
-    return this.variation === "sound"
-      ? `example-sound.mp3`
+    return this.variation === "audio"
+      ? `example-audio.mp3`
       : `example-image.jpg`;
   }
 
@@ -162,7 +162,7 @@ export default class MediaPicker extends Vue {
 
   @Watch("value")
   watchValue() {
-    this.setBrokenMedia(false);
+    this.setBrokenMedia(null);
   }
 
   mounted() {
@@ -176,8 +176,8 @@ export default class MediaPicker extends Vue {
     ro.observe(this.$refs.mediaPicker);
   }
 
-  setBrokenMedia(val) {
-    this.mediaBroken = val;
+  setBrokenMedia(event) {
+    this.mediaBroken = event ? true : false;
   }
 
   selectMedia() {
