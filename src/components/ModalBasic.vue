@@ -17,7 +17,10 @@
           <slot></slot>
         </div>
       </div>
-      <div class="s-modal-footer" v-if="!hideActionButtons && hideActionButtons !== ''">
+      <div
+        class="s-modal-footer"
+        v-if="!hideActionButtons && hideActionButtons !== ''"
+      >
         <div class="s-modal-footer-inner s-button-container">
           <Button
             :variation="'default'"
