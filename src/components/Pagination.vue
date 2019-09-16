@@ -78,7 +78,7 @@ export default class Pagination extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-pagination {
   display: flex;

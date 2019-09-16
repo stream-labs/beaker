@@ -163,13 +163,13 @@ export default class TextInput extends Vue {
   }
 
   onKeyUp(event: { target: HTMLTextAreaElement }) {
-    this.$emit("keyup", event.target.selectionStart);
+    this.$emit("keyup", event);
   }
   onFocus(event: { target: HTMLTextAreaElement }) {
-    this.$emit("focus", event.target.selectionStart);
+    this.$emit("focus", event);
   }
   onClick(event: { target: HTMLTextAreaElement }) {
-    this.$emit("click", event.target.selectionStart);
+    this.$emit("click", event);
   }
 
   increment() {
@@ -200,7 +200,7 @@ export default class TextInput extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-form-field {
   position: relative;

@@ -291,7 +291,7 @@ export default class Accordions extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .fake-nav {
   width: 300px;

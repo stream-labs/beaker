@@ -274,7 +274,7 @@ export default class Button extends Vue {
 </style>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-button {
   position: relative;

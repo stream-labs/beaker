@@ -11,14 +11,15 @@
         slot="input"
         :error="errors.first(name)"
         v-on="filteredListeners"
-        @keyup.enter="onAdd"
-      ></text-input>
+        @keydown.enter.prevent="onAdd"
+      />
 
       <Button
         :variation="buttonVariation"
         :title="buttonText"
         @click="onAdd"
         :disabled="value.length >= maxItems"
+        type="button"
       ></Button>
     </div>
 
@@ -126,7 +127,7 @@ export default class TaggingInput extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 .s-tagging-input {
   .s-tagging-input__container {
     display: flex;
@@ -184,6 +185,9 @@ export default class TaggingInput extends Vue {
     .s-tagging-input__tag--warning {
       background-color: @warning;
     }
+
+    max-height: 300px;
+    overflow-y: auto;
   }
 }
 

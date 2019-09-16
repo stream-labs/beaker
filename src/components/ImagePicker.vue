@@ -26,8 +26,8 @@
       <Button v-if="imageSelected" :variation="'action'" :title="'Upload'" />
       <Button
         v-if="imageSelected"
-        :variation="'warning'"
-        :title="'Delete'"
+        variation="default"
+        title="Remove"
         @click="deleteImage"
       />
     </div>
@@ -84,7 +84,7 @@ export default class ImagePicker extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-image-picker {
   display: flex;

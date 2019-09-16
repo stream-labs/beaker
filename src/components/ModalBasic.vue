@@ -17,7 +17,10 @@
           <slot></slot>
         </div>
       </div>
-      <div class="s-modal-footer">
+      <div
+        class="s-modal-footer"
+        v-if="!hideActionButtons && hideActionButtons !== ''"
+      >
         <div class="s-modal-footer-inner s-button-container">
           <Button
             :variation="'default'"
@@ -64,11 +67,14 @@ export default class ModalBasic extends Vue {
 
   @Prop()
   text!: string;
+
+  @Prop()
+  hideActionButtons!: string;
 }
 </script>
 
-<style lang="less">
-@import "./../styles/Imports";
+<style lang="less" scoped>
+@import (reference) "./../styles/Imports";
 @import "./../styles/components/Modals";
 
 .s-modal-body {

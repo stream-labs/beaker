@@ -97,7 +97,7 @@ export default class VitualItem extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-virtual-item {
   background-color: @day-section;

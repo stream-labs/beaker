@@ -310,7 +310,7 @@ export default class SiteSearch extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-sitesearch {
   border: 1px solid @day-input-border;

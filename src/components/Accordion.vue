@@ -117,6 +117,7 @@ export default class Accordian extends Vue {
       return;
     }
     this.isOpen = !this.isOpen;
+    this.$emit("content-opened", { isOpen: this.isOpen, event });
   }
 
   afterOpen(element) {
@@ -158,7 +159,7 @@ export default class Accordian extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-accordion {
   .radius();

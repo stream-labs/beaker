@@ -48,7 +48,7 @@ export default class Toggle extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-toggle {
   display: inline-flex;

@@ -34,7 +34,7 @@ export default class BannerDiscord extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 
 .s-banner-discord {
   position: relative;
@@ -60,6 +60,7 @@ export default class BannerDiscord extends Vue {
   }
 
   &__title {
+    color: @white;
     margin-bottom: 0;
     .weight(@normal);
 

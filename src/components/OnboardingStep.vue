@@ -31,7 +31,7 @@ export default class OnboardingStep extends Vue {
 </script>
 
 <style lang="less">
-@import "./../styles/Imports";
+@import (reference) "./../styles/Imports";
 .s-onboarding-step {
   .margin-top(4);
 }
