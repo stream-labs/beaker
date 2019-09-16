@@ -29,7 +29,6 @@ export default {
   },
 
   props: {
-    ...Selector.props,
     width: String
   },
 
