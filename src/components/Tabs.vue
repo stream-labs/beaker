@@ -49,8 +49,12 @@
     </div>
 
     <div class="s-tab-content" v-if="!hideContent">
-      <div v-for="(tab, index) in tabs" :key="index">
-        <slot :name="tab.value" v-if="tab.value === selectedTab" />
+      <div
+        v-for="(tab, index) in tabs"
+        :key="index"
+        v-show="tab.value === selectedTab"
+      >
+        <slot :name="tab.value" />
       </div>
     </div>
   </div>
