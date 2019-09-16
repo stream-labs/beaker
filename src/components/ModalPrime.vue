@@ -28,8 +28,8 @@
         <div class="modal-prime__images"></div>
         <div class="modal-prime__features">
           <p>Just a few of your exclusive features and services.</p>
-          <ul v-for="(feature, index) in primeFeatureListDefault" :key="index">
-            <li>{{ feature }}</li>
+          <ul>
+            <li v-for="(feature, index) in primeFeatureListDefault" :key="index">{{ feature }}</li>
           </ul>
         </div>
         <div class="modal-prime__button">
@@ -45,11 +45,9 @@
     </div>
   </modal>
 </template>
-
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import Button from "./../components/Button.vue";
-
 @Component({
   components: {
     Button
@@ -58,59 +56,50 @@ import Button from "./../components/Button.vue";
 export default class ModalPrime extends Vue {
   @Prop({ default: "modal-welcome-prime" })
   name!: string;
-
   @Prop()
   width!: number;
-
   @Prop()
   minWidth!: number;
-
   @Prop({ default: "Continue" })
   primeButtonText!: string;
-
   @Prop({ default: false })
   hasPrimeCloseButton!: boolean;
-
   primeFeatureListDefault: string[] = [
-    "Merch Store with Wholesale Pricing",
+    "100s of Stunning Themes",
+    "Every App is FREE",
     "Custom Branded Website and Tip Page",
+    "Merch Store with Wholesale Pricing",
     "Custom Web Domain and Email Address",
     "Automatic Gold All-Star Status",
-    "Protected Mobile Streaming (coming soon)",
-    "Priority Support + More"
+    "Priority Support",
+    "Protected Mobile Streaming (Coming Soon)",
+    "Much More"
   ];
-
   onPrimeButtonHandler() {
     this.$emit("onClickPrime");
   }
 }
 </script>
-
 <style lang="less" scoped>
 @import "./../styles/Imports";
 @import "./../styles/components/Modals";
-
 .s-modal-welcome-prime {
   position: relative;
   overflow: hidden;
 }
-
 .modal-prime__close {
   position: absolute;
   top: 24px;
   right: 24px;
   z-index: 100;
-
   .icon-close {
     cursor: pointer;
     color: @light-5;
   }
 }
-
 .modal-prime {
   .padding-v-sides(5);
   .padding-h-sides(2);
-
   .modal-prime__video {
     display: none;
     @media (min-width: 768px) {
@@ -122,7 +111,6 @@ export default class ModalPrime extends Vue {
       display: block;
     }
   }
-
   .modal-prime__heading {
     font-family: "Barlow", sans-serif;
     font-size: 32px !important;
@@ -130,12 +118,10 @@ export default class ModalPrime extends Vue {
     text-align: center;
     color: @dark-2;
     line-height: 40px;
-
     span {
       color: @prime;
     }
   }
-
   .modal-prime__desc {
     color: @dark-2;
     font-size: 20px;
@@ -144,10 +130,8 @@ export default class ModalPrime extends Vue {
     text-align: center;
     line-height: 24px;
   }
-
   .modal-prime__images {
     display: none;
-
     @media (min-width: 768px) {
       display: block;
       background: url("https://cdn.streamlabs.com/static/welcome-prime.png")
@@ -156,7 +140,6 @@ export default class ModalPrime extends Vue {
       height: 238px;
     }
   }
-
   .modal-prime__features {
     background: @light-2;
     border-radius: 8px;
@@ -164,7 +147,6 @@ export default class ModalPrime extends Vue {
     width: 100%;
     .padding(2);
     .margin-top(2.5);
-
     @media (min-width: 768px) {
       width: 516px;
       margin: 0 auto;
@@ -173,7 +155,6 @@ export default class ModalPrime extends Vue {
       .padding-v-sides(3);
       .padding-h-sides(4);
     }
-
     p {
       color: @dark-2;
       font-size: 18px;
@@ -181,26 +162,22 @@ export default class ModalPrime extends Vue {
       text-align: left;
       line-height: 21px;
     }
-
     ul {
       color: @dark-5;
       font-size: 16px;
-      font-weight: 500;
+      font-weight: normal;
       line-height: 30px;
       .padding-left(2);
       .margin(0);
     }
   }
-
   .modal-prime__button {
     text-align: center;
-
     .s-button {
       font-weight: bold;
     }
   }
 }
-
 .night,
 .night-theme {
   .modal-prime__close {
@@ -208,24 +185,30 @@ export default class ModalPrime extends Vue {
       color: @light-4;
     }
   }
-
   .modal-prime {
     .modal-prime__heading {
       color: @white;
     }
-
     .modal-prime__desc {
       color: @white;
     }
-
     .modal-prime__features {
       background: rgba(43, 56, 63, 0.7);
-
-      p,
-      ul {
+      p {
         color: @white;
+      }
+      ul {
+        color: @light-4;
       }
     }
   }
 }
 </style>
+折りたたむ
+
+
+
+
+
+
+
