@@ -204,8 +204,6 @@ export default class ModalPrime extends Vue {
   }
 }
 </style>
-折りたたむ
-
 
 
 
