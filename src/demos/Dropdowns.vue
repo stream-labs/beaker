@@ -34,7 +34,7 @@ components: {
     </div>
     <div class="section">
       <h3>Menu Align</h3>
-      <pane-dropdown :menuAlign="'right'">
+      <pane-dropdown :menuAlign="'right'" :hoverOption="true">
         <span slot="title">Right Dropdown Menu</span>
         <a href="#">Hey I'm a longer link here</a>
         <a href="#">Let's see how this looks</a>
