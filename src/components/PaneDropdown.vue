@@ -1,5 +1,10 @@
 <template>
-  <div class="s-pane-dropdown" ref="paneMenu" @blur.stop.prevent="close">
+  <div
+    class="s-pane-dropdown"
+    :class="{'s-pane-dropdown--open': paneMenuOpen}"
+    ref="paneMenu"
+    @blur.stop.prevent="close"
+  >
     <a
       ref="paneTitle"
       class="s-pane-dropdown__toggle"
@@ -189,7 +194,10 @@ export default class PaneDropdown extends Vue {
 .s-pane-dropdown {
   position: relative;
   display: inline-block;
-  padding-bottom: 6px;
+
+  &--open {
+    padding-bottom: 6px;
+  }
 
   &__slot-list {
     display: none;
