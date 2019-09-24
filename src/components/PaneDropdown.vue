@@ -194,10 +194,7 @@ export default class PaneDropdown extends Vue {
 .s-pane-dropdown {
   position: relative;
   display: inline-block;
-
-  &--open {
-    padding-bottom: 6px;
-  }
+  padding: 3px 0;
 
   &__slot-list {
     display: none;
