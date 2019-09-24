@@ -1,7 +1,6 @@
 <template>
   <div
     class="s-pane-dropdown"
-    :class="{'s-pane-dropdown--open': paneMenuOpen}"
     ref="paneMenu"
     @blur.stop.prevent="close"
   >
