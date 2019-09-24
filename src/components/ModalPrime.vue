@@ -29,7 +29,12 @@
         <div class="modal-prime__features">
           <p>Just a few of your exclusive features and services.</p>
           <ul>
-            <li v-for="(feature, index) in primeFeatureListDefault" :key="index">{{ feature }}</li>
+            <li
+              v-for="(feature, index) in primeFeatureListDefault"
+              :key="index"
+            >
+              {{ feature }}
+            </li>
           </ul>
         </div>
         <div class="modal-prime__button">
@@ -204,9 +209,3 @@ export default class ModalPrime extends Vue {
   }
 }
 </style>
-
-
-
-
-
-
