@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="s-pane-dropdown"
-    ref="paneMenu"
-    @blur.stop.prevent="close"
-  >
+  <div class="s-pane-dropdown" ref="paneMenu" @blur.stop.prevent="close">
     <a
       ref="paneTitle"
       class="s-pane-dropdown__toggle"
