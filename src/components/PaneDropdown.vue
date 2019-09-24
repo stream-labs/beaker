@@ -1,26 +1,35 @@
 <template>
   <div class="s-pane-dropdown" ref="paneMenu" @blur.stop.prevent="close">
     <a
+      ref="paneTitle"
       class="s-pane-dropdown__toggle"
       :class="{ 's-pane-dropdown__toggle--active': paneMenuOpen }"
       @click="paneMenuOpen = !paneMenuOpen"
-      @mouseover="hoverOption && (paneMenuOpen = true)"
-      @mouseleave="hoverOption && (paneMenuOpen = false)"
     >
       <span>
         <slot name="title"></slot>
         <i v-if="dropdownIcon" class="icon-dropdown"></i>
       </span>
-      <transition name="expand-dropdown" @enter="open" @after-enter="afterOpen" @leave="close">
-        <div :class="menuClasses" class="s-pane-dropdown__menu" v-show="paneMenuOpen">
-          <slot v-if="custom"></slot>
-          <div v-else class="s-pane-dropdown__list">
-            <slot></slot>
-          </div>
-        </div>
-      </transition>
     </a>
 
+    <transition
+      name="expand-dropdown"
+      @enter="open"
+      @after-enter="afterOpen"
+      @leave="close"
+    >
+      <div
+        :class="menuClasses"
+        class="s-pane-dropdown__menu"
+        @mouseup="onMenuClick"
+        v-show="paneMenuOpen"
+      >
+        <slot v-if="custom"></slot>
+        <div v-else class="s-pane-dropdown__list">
+          <slot></slot>
+        </div>
+      </div>
+    </transition>
     <span v-if="!custom" ref="panelinks" class="s-pane-dropdown__slot-list">
       <slot></slot>
     </span>
@@ -34,6 +43,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 export default class PaneDropdown extends Vue {
   $refs!: {
     paneMenu: HTMLDivElement;
+    paneTitle: HTMLLinkElement;
     panelinks: HTMLSpanElement;
   };
 
@@ -48,6 +58,9 @@ export default class PaneDropdown extends Vue {
 
   @Prop({ default: false })
   autoHeight!: boolean;
+
+  @Prop({ default: true })
+  closeOnSelect!: boolean;
 
   @Prop({ default: false })
   custom!: boolean;
@@ -68,8 +81,26 @@ export default class PaneDropdown extends Vue {
     document.addEventListener("click", this.documentClick);
   }
 
+  mounted() {
+    if (!this.custom) {
+      let links: any = this.$refs.panelinks;
+      let [...list] = links.children;
+      this.paneList = list;
+    }
+
+    if (this.hoverOption) {
+      this.$refs.paneTitle.addEventListener("mouseover", this.show);
+      this.$refs.paneMenu.addEventListener("mouseleave", this.hide);
+    }
+  }
+
   destroyed() {
     document.removeEventListener("click", this.documentClick);
+
+    if (this.hoverOption) {
+      this.$refs.paneTitle.removeEventListener("mouseover", this.show);
+      this.$refs.paneMenu.removeEventListener("mouseleave", this.hide);
+    }
   }
 
   get menuClasses() {
@@ -92,6 +123,10 @@ export default class PaneDropdown extends Vue {
     }
 
     return classes;
+  }
+
+  openContent() {
+    this.paneMenuOpen = !this.paneMenuOpen;
   }
 
   afterOpen(element) {
@@ -126,20 +161,24 @@ export default class PaneDropdown extends Vue {
     });
   }
 
-  mounted() {
-    if (!this.custom) {
-      let links: any = this.$refs.panelinks;
-      let [...list] = links.children;
-      this.paneList = list;
-    }
-  }
-
   documentClick(e: Event) {
     let el: any = this.$refs.paneMenu;
     let target = e.target;
     if (el !== target && !el.contains(target)) {
       this.paneMenuOpen = false;
     }
+  }
+
+  onMenuClick() {
+    this.closeOnSelect ? (this.paneMenuOpen = !this.paneMenuOpen) : null;
+  }
+
+  hide() {
+    this.paneMenuOpen = false;
+  }
+
+  show() {
+    this.paneMenuOpen = true;
   }
 }
 </script>
@@ -150,6 +189,7 @@ export default class PaneDropdown extends Vue {
 .s-pane-dropdown {
   position: relative;
   display: inline-block;
+  padding: 3px 0;
 
   &__slot-list {
     display: none;
@@ -157,6 +197,7 @@ export default class PaneDropdown extends Vue {
 
   &__menu {
     position: absolute;
+    top: 24px;
     z-index: 100;
     width: auto;
     max-height: 300px;
@@ -251,13 +292,12 @@ export default class PaneDropdown extends Vue {
     span {
       display: flex;
       align-items: center;
-      .padding-bottom(0.4);
     }
 
     i {
       color: @icon;
       .margin-left();
-      .margin-top(-0.3);
+      margin-top: -2px;
     }
   }
 
@@ -266,7 +306,6 @@ export default class PaneDropdown extends Vue {
 
     i {
       color: @dark-2;
-      .margin-top(-0.3);
     }
   }
 }
