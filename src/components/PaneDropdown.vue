@@ -12,17 +12,12 @@
       </span>
     </a>
 
-    <transition
-      name="expand-dropdown"
-      @enter="open"
-      @after-enter="afterOpen"
-      @leave="close"
-    >
+    <transition name="expand-dropdown" @enter="open" @after-enter="afterOpen" @leave="close">
       <div
         :class="menuClasses"
         class="s-pane-dropdown__menu"
         @mouseup="onMenuClick"
-        v-show="paneMenuOpen"
+        v-if="paneMenuOpen"
       >
         <slot v-if="custom"></slot>
         <div v-else class="s-pane-dropdown__list">
@@ -340,6 +335,19 @@ export default class PaneDropdown extends Vue {
         color: @night-title;
       }
     }
+  }
+}
+
+.expand-dropdown-enter-active {
+  animation: dropdown-fadein 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes dropdown-fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 </style>
