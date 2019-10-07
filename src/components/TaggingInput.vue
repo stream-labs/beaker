@@ -1,7 +1,8 @@
 <template>
   <div class="s-tagging-input">
     <div class="s-tagging-input__container">
-      <text-input
+      <component
+        :is="inputComponent"
         :label="label"
         :placeholder="placeholder"
         :name="name"
@@ -12,7 +13,7 @@
         :error="errors.first(name)"
         v-on="filteredListeners"
         @keydown.enter.prevent="onAdd"
-      />
+      ></component>
 
       <Button
         :variation="buttonVariation"
@@ -38,12 +39,14 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import TextInput from "./TextInput.vue";
+import TextArea from "./TextArea.vue";
 import Button from "./Button.vue";
 import { omit } from "lodash";
 
 @Component({
   components: {
     TextInput,
+    TextArea,
     Button
   }
 })
@@ -78,6 +81,9 @@ export default class TaggingInput extends Vue {
   @Prop({ default: 25 })
   maxItems!: number;
 
+  @Prop({ default: "text-input" })
+  inputType!: string;
+
   textInputValue: string = "";
 
   get tagClasses() {
@@ -86,6 +92,10 @@ export default class TaggingInput extends Vue {
 
   get filteredListeners() {
     return omit(this.$listeners, ["input"]);
+  }
+
+  get inputComponent() {
+    return this.inputType === "text-area" ? TextArea : TextInput;
   }
 
   onAdd() {

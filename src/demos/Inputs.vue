@@ -517,6 +517,7 @@ components: {
     <div class="section">
       <h3>Tagging Input</h3>
       <TaggingInput
+        input-type="text-area"
         name="aliases"
         placeholder="!hello"
         maxItems="10"
