@@ -1,11 +1,6 @@
 <template>
   <div class="s-tagging-input">
-    <div
-      class="s-tagging-input__container"
-      :class="{
-        's-tagging-input__container--column': this.layout === 'column'
-      }"
-    >
+    <div class="s-tagging-input__container">
       <text-input
         :label="label"
         :placeholder="placeholder"
@@ -85,9 +80,6 @@ export default class TaggingInput extends Vue {
   @Prop({ default: 25 })
   maxItems!: number;
 
-  @Prop({ default: "row" })
-  layout!: string;
-
   textInputValue: string = "";
 
   get tagClasses() {
@@ -145,19 +137,6 @@ export default class TaggingInput extends Vue {
     .s-form-field {
       flex: 1;
       .margin-right(2);
-    }
-
-    &--column {
-      flex-direction: column;
-
-      .s-form-field {
-        .margin-right(0);
-        .margin-bottom(2);
-      }
-
-      .s-button {
-        align-self: flex-end;
-      }
     }
   }
 
