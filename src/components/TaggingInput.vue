@@ -177,6 +177,10 @@ export default class TaggingInput extends Vue {
       font-size: 14px;
       line-height: 1.14;
       color: white;
+
+      &:last-of-type {
+        .margin-right(0);
+      }
     }
 
     .s-tagging-input__tag-icon {
