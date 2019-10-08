@@ -1,8 +1,10 @@
 <template>
   <div class="s-tagging-input">
-    <div class="s-tagging-input__container">
-      <component
-        :is="inputComponent"
+    <div
+      class="s-tagging-input__container"
+      :class="{'s-tagging-input__container--column': this.layout === 'column'}"
+    >
+      <text-input
         :label="label"
         :placeholder="placeholder"
         :name="name"
@@ -13,7 +15,7 @@
         :error="errors.first(name)"
         v-on="filteredListeners"
         @keydown.enter.prevent="onAdd"
-      ></component>
+      />
 
       <Button
         :variation="buttonVariation"
@@ -81,8 +83,8 @@ export default class TaggingInput extends Vue {
   @Prop({ default: 25 })
   maxItems!: number;
 
-  @Prop({ default: "text-input" })
-  inputType!: string;
+  @Prop({ default: "row" })
+  layout!: string;
 
   textInputValue: string = "";
 
@@ -92,10 +94,6 @@ export default class TaggingInput extends Vue {
 
   get filteredListeners() {
     return omit(this.$listeners, ["input"]);
-  }
-
-  get inputComponent() {
-    return this.inputType === "text-area" ? TextArea : TextInput;
   }
 
   onAdd() {
@@ -145,6 +143,20 @@ export default class TaggingInput extends Vue {
     .s-form-field {
       flex: 1;
       .margin-right(2);
+    }
+
+    &--column {
+      flex-direction: column;
+
+      .s-form-field {
+        .margin-right(0);
+        .margin-bottom(2);
+
+      }
+
+      .s-button {
+        align-self: flex-end;
+      }
     }
   }
 
