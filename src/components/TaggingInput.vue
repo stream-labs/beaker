@@ -164,14 +164,14 @@ export default class TaggingInput extends Vue {
   .s-tagging-input__tags {
     display: flex;
     flex-wrap: wrap;
-    .margin-top(2);
+    .margin-top();
 
     .s-tagging-input__tag {
       display: flex;
       align-items: center;
       height: 24px;
       .margin-right();
-      .margin-bottom();
+      .margin-top();
       padding: 0 4px;
       border-radius: 2px;
       font-size: 14px;
