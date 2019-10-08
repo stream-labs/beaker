@@ -265,6 +265,14 @@ components: {
         multiple
         :searchable="false"
       ></selector>
+      <br>
+      <selector
+        v-model="groupSelected"
+        :options="optionGroups"
+        group-values="items"
+        group-label="group"
+        :searchable="false"
+      ></selector>
       <br />
       <selector
         v-model="multipleSelected"
@@ -568,7 +576,25 @@ export default class Inputs extends Vue {
   checkboxValue3 = true;
   checkboxValue4 = false;
   selected = "Option A";
+  selectedGroup = {
+    group: "Group A",
+    items: ["Option A", "Option B", "Option C",]
+  }
   multipleSelected = ["Option B", "Option D"];
+  optionGroups = [
+    {
+      group: "Group A",
+      items: ["Option A", "Option B", "Option C",]
+    },
+    {
+      group: "Group B",
+      items: ["Option A", "Option B", "Option C",]
+    },
+    {
+      group: "Group C",
+      items: ["Option A", "Option B", "Option C",]
+    },
+  ]
   optionSelected = ["Glass Pint", "Glass Beer"];
   objectSelected = {
     value: "glass-pint",

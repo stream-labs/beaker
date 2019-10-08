@@ -59,7 +59,7 @@ components: {
             <td>string</td>
             <td>null</td>
             <td>
-              Available variations include `image` and `sound`. Video is under
+              Available variations include `image` and `audio`. Video is under
               the `image` variation.
             </td>
           </tr>
