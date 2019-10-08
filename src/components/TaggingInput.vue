@@ -30,11 +30,11 @@
 
     <div class="s-tagging-input__tags">
       <div v-for="(tag, index) in value" :key="index" :class="tagClasses">
+        <div class="s-tagging-input__tag-text">{{ tag }}</div>
         <i
           class="s-tagging-input__tag-icon icon-close"
           @click="onRemove(index)"
         ></i>
-        <div class="s-tagging-input__tag-text">{{ tag }}</div>
       </div>
     </div>
   </div>
@@ -162,33 +162,32 @@ export default class TaggingInput extends Vue {
   }
 
   .s-tagging-input__tags {
-    .margin-top();
-    & > * {
-      display: inline-block;
-      vertical-align: middle;
-      .margin-top(1);
-      .margin-bottom(1);
-    }
+    display: flex;
+    flex-wrap: wrap;
+    .margin-top(2);
 
     .s-tagging-input__tag {
-      margin-right: 10px;
-      padding: 6px 12px;
-      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      height: 24px;
+      .margin-right();
+      .margin-bottom();
+      padding: 0 4px;
+      border-radius: 2px;
+      font-size: 14px;
+      line-height: 1.14;
       color: white;
-
-      & > * {
-        display: inline-block;
-        vertical-align: middle;
-      }
     }
 
     .s-tagging-input__tag-icon {
-      font-size: 14px;
-      .margin-right();
+      margin-left: 4px;
+      font-size: 10px;
+      color: @light-5;
       cursor: pointer;
     }
 
     .s-tagging-input__tag-text {
+      font-weight: 500;
       -webkit-user-select: none; /* Safari */
       -moz-user-select: none; /* Firefox */
       -ms-user-select: none; /* IE10+/Edge */

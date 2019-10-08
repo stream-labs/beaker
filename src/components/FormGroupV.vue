@@ -3,7 +3,6 @@
     <!-- title -->
     <div class="s-form-group-v__title">
       <label>{{ title }}</label>
-      <!-- <i v-if="tooltip" class="s-tooltip icon-question" /> -->
       <slot name="header"></slot>
     </div>
 
@@ -24,9 +23,6 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 export default class FormGroupV extends Vue {
   @Prop()
   helpText!: string;
-
-  @Prop()
-  tooltip!: string;
 
   @Prop()
   title!: string;
