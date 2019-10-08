@@ -571,7 +571,8 @@ export default {
     }
 
     .multiselect__option--group {
-      background: @dark-4;
+      background: darken(@dark-5, 10%);
+      color: @white;
     }
   }
 }
