@@ -423,8 +423,8 @@ export default {
   }
 
   .multiselect__option--group {
-    background: #ededed;
-    color: @light-4;
+    background: @light-4;
+    .weight(@medium);
   }
 
   .multiselect__option--disabled.multiselect__option--highlight {
@@ -563,6 +563,10 @@ export default {
 
     .multiselect__option--highlight {
       background: @night-selector-selected;
+    }
+
+    .multiselect__option--group {
+      background: @dark-4;
     }
   }
 }
