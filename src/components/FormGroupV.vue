@@ -3,7 +3,8 @@
     <!-- title -->
     <div class="s-form-group-v__title">
       <label>{{ title }}</label>
-      <i v-if="tooltip" class="s-tooltip icon-question" />
+      <!-- <i v-if="tooltip" class="s-tooltip icon-question" /> -->
+      <slot name="header"></slot>
     </div>
 
     <div class="s-form-group-v__input-wrapper">
@@ -37,10 +38,6 @@ export default class FormGroupV extends Vue {
 
 .s-form-group-v {
   .margin-bottom(2);
-  display: grid;
-  grid-template-columns: repeat(12, [col-start] 1fr);
-  grid-column-gap: 16px;
-  grid-row-gap: @spacing;
 
   .s-tooltip {
     .margin-left();
@@ -48,7 +45,10 @@ export default class FormGroupV extends Vue {
 }
 
 .s-form-group-v__title {
-  grid-column: col-start / span 12;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .margin-bottom();
   font-size: 12px;
 }
 
