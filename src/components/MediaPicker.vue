@@ -93,9 +93,15 @@
           @mouseleave="showMediaControls = false"
           class="s-media-picker__controls s-media-picker__controls--small"
         >
-          <i v-if="mediaPickerSmall && !showMediaControls" class="icon-more"></i>
+          <i
+            v-if="mediaPickerSmall && !showMediaControls"
+            class="icon-more"
+          ></i>
 
-          <div v-if="!mediaPickerSmall || showMediaControls" class="s-media-picker__controls-group">
+          <div
+            v-if="!mediaPickerSmall || showMediaControls"
+            class="s-media-picker__controls-group"
+          >
             <a
               v-if="mediaLink"
               class="s-media-picker__link-icon"
