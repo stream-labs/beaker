@@ -80,36 +80,28 @@
 
           <transition mode="out-in" name="fade">
             <a
-              v-if="mediaPickerSmall && media.selected"
-              key="media-selected-close"
+              v-if="media.selected"
               class="s-media-picker__small-remove"
               @click.stop="removeMedia"
               ><i class="icon-close"></i>
             </a>
-            <a
-              v-if="mediaPickerSmall && !media.selected"
-              key="media-selected-add"
-              class="s-media-picker__small-remove"
-              @click.stop="selectMedia"
-              ><i class="icon-add"></i>
-            </a>
           </transition>
+
+          <a
+            v-if="mediaPickerSmall"
+            class="s-media-picker__small-remove"
+            @click.stop="selectMedia"
+            ><i class="icon-add"></i>
+          </a>
         </div>
       </div>
     </div>
 
     <div v-if="!mediaPickerSmall" class="s-button-container">
       <Button
-        v-if="!media.selected"
         variation="default"
         :title="buttonTitle"
         @click="$emit('select-media')"
-      />
-      <Button
-        v-if="media.selected"
-        variation="default"
-        title="Remove"
-        @click="removeMedia"
       />
     </div>
   </div>
