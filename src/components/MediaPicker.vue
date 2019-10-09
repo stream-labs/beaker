@@ -336,6 +336,7 @@ export default class MediaPicker extends Vue {
 
     .icon-more {
       transform: rotate(90deg);
+      color: @dark-2;
       cursor: pointer;
     }
   }
@@ -410,6 +411,12 @@ export default class MediaPicker extends Vue {
     &__text-placeholder,
     &__small-remove {
       color: @light-4;
+    }
+
+    &__controls {
+      .icon-more {
+        color: @white;
+      }
     }
   }
 }
