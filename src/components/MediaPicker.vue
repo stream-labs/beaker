@@ -100,6 +100,7 @@
               v-if="mediaLink"
               class="s-media-picker__link-icon"
               @click.stop="$emit('link-media')"
+              :title="`Link ${variationTitle}`"
               ><i class="icon-link"></i>
             </a>
 
@@ -108,7 +109,8 @@
                 v-if="variation === 'image' && media.selected && !mediaBroken"
                 key="media-selected-play"
                 class="s-media-picker__zoom-icon"
-                @click.stop="$emit('zoom-media')"
+                @click.stop="$emit('preview-media')"
+                :title="`Preview ${variationTitle}`"
                 ><i class="icon-zoom"></i>
               </a>
 
@@ -116,7 +118,8 @@
                 v-if="variation === 'audio' && media.selected && !mediaBroken"
                 key="media-selected-zoom"
                 class="s-media-picker__play-icon"
-                @click.stop="$emit('play-media')"
+                @click.stop="$emit('preview-media')"
+                :title="`Preview ${variationTitle}`"
                 ><i class="icon-media-share-2"></i>
               </a>
             </transition>
@@ -126,6 +129,7 @@
                 v-if="media.selected"
                 class="s-media-picker__small-remove"
                 @click.stop="removeMedia"
+                :title="`Remove ${variationTitle}`"
                 ><i class="icon-close"></i>
               </a>
             </transition>
@@ -133,6 +137,7 @@
             <a
               class="s-media-picker__small-remove"
               @click.stop="selectMedia"
+              :title="`Select ${variationTitle}`"
               ><i class="icon-add"></i>
             </a>
           </div>
@@ -186,6 +191,10 @@ export default class MediaPicker extends Vue {
 
   get buttonTitle() {
     return this.variation ? `Select ${this.variation}` : "Select Media";
+  }
+
+  get variationTitle() {
+    return this.variation === "image" ? "Image" : "Audio";
   }
 
   get media() {
