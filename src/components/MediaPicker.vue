@@ -52,7 +52,7 @@
           </div>
         </transition>
 
-        <div class="s-media-picker__controls">
+        <div v-if="!mediaPickerSmall" class="s-media-picker__controls">
           <a
             v-if="mediaLink"
             class="s-media-picker__link-icon"
@@ -86,13 +86,58 @@
               ><i class="icon-close"></i>
             </a>
           </transition>
+        </div>
 
-          <a
-            v-if="mediaPickerSmall"
-            class="s-media-picker__small-remove"
-            @click.stop="selectMedia"
-            ><i class="icon-add"></i>
-          </a>
+        <div
+          v-if="mediaPickerSmall"
+          @mouseenter="showMediaControls = true"
+          @mouseleave="showMediaControls = false"
+          class="s-media-picker__controls s-media-picker__controls--small"
+        >
+          <i v-if="!showMediaControls" class="icon-more"></i>
+
+          <div v-if="showMediaControls" class="s-media-picker__controls-group">
+            <a
+              v-if="mediaLink"
+              class="s-media-picker__link-icon"
+              @click.stop="$emit('link-media')"
+              ><i class="icon-link"></i>
+            </a>
+
+            <transition mode="out-in" name="fade">
+              <a
+                v-if="variation === 'image' && media.selected && !mediaBroken"
+                key="media-selected-play"
+                class="s-media-picker__zoom-icon"
+                @click.stop="$emit('zoom-media')"
+                ><i class="icon-zoom"></i>
+              </a>
+
+              <a
+                v-if="variation === 'audio' && media.selected && !mediaBroken"
+                key="media-selected-zoom"
+                class="s-media-picker__play-icon"
+                @click.stop="$emit('play-media')"
+                ><i class="icon-media-share-2"></i>
+              </a>
+            </transition>
+
+            <transition mode="out-in" name="fade">
+              <a
+                v-if="media.selected"
+                class="s-media-picker__small-remove"
+                @click.stop="removeMedia"
+                ><i class="icon-close"></i>
+              </a>
+            </transition>
+
+            <a
+              v-if="mediaPickerSmall"
+              class="s-media-picker__small-remove"
+              @click.stop="selectMedia"
+              ><i class="icon-add"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -133,6 +178,7 @@ export default class MediaPicker extends Vue {
 
   mediaPickerSmall = false;
   mediaBroken = false;
+  showMediaControls = false;
 
   get mediaInputPlaceholder() {
     return this.variation === "audio"
@@ -277,6 +323,21 @@ export default class MediaPicker extends Vue {
         .margin-right(0);
       }
     }
+
+    &--small {
+      height: 40px;
+    }
+
+    &-group {
+      display: flex;
+      align-items: center;
+      height: 40px;
+    }
+
+    .icon-more {
+      transform: rotate(90deg);
+      cursor: pointer;
+    }
   }
 
   .s-button {
@@ -305,6 +366,26 @@ export default class MediaPicker extends Vue {
 
   .fade-slow-leave-active {
     transition: all 0.375s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+  }
+
+  .fade-fast-enter-active {
+    transition: all 0.125s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+  }
+
+  .fade-fast-leave-active {
+    transition: all 0.125s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+  }
+
+  .fade-fast-enter {
+    transition: all 0.125s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+  }
+
+  .fade-fast-leave-to {
+    transition: all 0.125s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
   }
 }
