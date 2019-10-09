@@ -52,7 +52,7 @@
           </div>
         </transition>
 
-        <div v-if="!mediaPickerSmall" class="s-media-picker__controls">
+        <!-- <div v-if="!mediaPickerSmall" class="s-media-picker__controls">
           <a
             v-if="mediaLink"
             class="s-media-picker__link-icon"
@@ -86,17 +86,16 @@
               ><i class="icon-close"></i>
             </a>
           </transition>
-        </div>
+        </div> -->
 
         <div
-          v-if="mediaPickerSmall"
           @mouseenter="showMediaControls = true"
           @mouseleave="showMediaControls = false"
           class="s-media-picker__controls s-media-picker__controls--small"
         >
-          <i v-if="!showMediaControls" class="icon-more"></i>
+          <i v-if="mediaPickerSmall && !showMediaControls" class="icon-more"></i>
 
-          <div v-if="showMediaControls" class="s-media-picker__controls-group">
+          <div v-if="!mediaPickerSmall || showMediaControls" class="s-media-picker__controls-group">
             <a
               v-if="mediaLink"
               class="s-media-picker__link-icon"
@@ -132,7 +131,6 @@
             </transition>
 
             <a
-              v-if="mediaPickerSmall"
               class="s-media-picker__small-remove"
               @click.stop="selectMedia"
               ><i class="icon-add"></i>
@@ -142,13 +140,13 @@
       </div>
     </div>
 
-    <div v-if="!mediaPickerSmall" class="s-button-container">
+    <!-- <div v-if="!mediaPickerSmall" class="s-button-container">
       <Button
         variation="default"
         :title="buttonTitle"
         @click="$emit('select-media')"
       />
-    </div>
+    </div> -->
   </div>
 </template>
 
