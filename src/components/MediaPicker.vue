@@ -52,65 +52,67 @@
           </div>
         </transition>
 
-        <div class="s-media-picker__controls">
-          <a
-            v-if="mediaLink"
-            class="s-media-picker__link-icon"
-            @click.stop="$emit('link-media')"
-            ><i class="icon-link"></i>
-          </a>
+        <div
+          @mouseenter="showMediaControls = true"
+          @mouseleave="showMediaControls = false"
+          class="s-media-picker__controls s-media-picker__controls--small"
+        >
+          <i
+            v-if="mediaPickerSmall && !showMediaControls"
+            class="icon-more"
+          ></i>
 
-          <transition mode="out-in" name="fade">
+          <div
+            v-if="!mediaPickerSmall || showMediaControls"
+            class="s-media-picker__controls-group"
+          >
             <a
-              v-if="variation === 'image' && media.selected && !mediaBroken"
-              key="media-selected-play"
-              class="s-media-picker__zoom-icon"
-              @click.stop="$emit('zoom-media')"
-              ><i class="icon-zoom"></i>
+              v-if="mediaLink"
+              class="s-media-picker__link-icon"
+              @click.stop="$emit('link-media')"
+              :title="`Link ${variationTitle}`"
+              ><i class="icon-link"></i>
             </a>
 
-            <a
-              v-if="variation === 'audio' && media.selected && !mediaBroken"
-              key="media-selected-zoom"
-              class="s-media-picker__play-icon"
-              @click.stop="$emit('play-media')"
-              ><i class="icon-media-share-2"></i>
-            </a>
-          </transition>
+            <transition mode="out-in" name="fade">
+              <a
+                v-if="variation === 'image' && media.selected && !mediaBroken"
+                key="media-selected-play"
+                class="s-media-picker__zoom-icon"
+                @click.stop="$emit('preview-media')"
+                :title="`Preview ${variationTitle}`"
+                ><i class="icon-zoom"></i>
+              </a>
 
-          <transition mode="out-in" name="fade">
+              <a
+                v-if="variation === 'audio' && media.selected && !mediaBroken"
+                key="media-selected-zoom"
+                class="s-media-picker__play-icon"
+                @click.stop="$emit('preview-media')"
+                :title="`Preview ${variationTitle}`"
+                ><i class="icon-media-share-2"></i>
+              </a>
+            </transition>
+
+            <transition mode="out-in" name="fade">
+              <a
+                v-if="media.selected"
+                class="s-media-picker__small-remove"
+                @click.stop="removeMedia"
+                :title="`Remove ${variationTitle}`"
+                ><i class="icon-close"></i>
+              </a>
+            </transition>
+
             <a
-              v-if="mediaPickerSmall && media.selected"
-              key="media-selected-close"
-              class="s-media-picker__small-remove"
-              @click.stop="removeMedia"
-              ><i class="icon-close"></i>
-            </a>
-            <a
-              v-if="mediaPickerSmall && !media.selected"
-              key="media-selected-add"
               class="s-media-picker__small-remove"
               @click.stop="selectMedia"
+              :title="`Select ${variationTitle}`"
               ><i class="icon-add"></i>
             </a>
-          </transition>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div v-if="!mediaPickerSmall" class="s-button-container">
-      <Button
-        v-if="!media.selected"
-        variation="default"
-        :title="buttonTitle"
-        @click="$emit('select-media')"
-      />
-      <Button
-        v-if="media.selected"
-        variation="default"
-        title="Remove"
-        @click="removeMedia"
-      />
     </div>
   </div>
 </template>
@@ -141,6 +143,7 @@ export default class MediaPicker extends Vue {
 
   mediaPickerSmall = false;
   mediaBroken = false;
+  showMediaControls = false;
 
   get mediaInputPlaceholder() {
     return this.variation === "audio"
@@ -150,6 +153,10 @@ export default class MediaPicker extends Vue {
 
   get buttonTitle() {
     return this.variation ? `Select ${this.variation}` : "Select Media";
+  }
+
+  get variationTitle() {
+    return this.variation === "image" ? "Image" : "Audio";
   }
 
   get media() {
@@ -285,6 +292,22 @@ export default class MediaPicker extends Vue {
         .margin-right(0);
       }
     }
+
+    &--small {
+      height: 40px;
+    }
+
+    &-group {
+      display: flex;
+      align-items: center;
+      height: 40px;
+    }
+
+    .icon-more {
+      transform: rotate(90deg);
+      color: @dark-2;
+      cursor: pointer;
+    }
   }
 
   .s-button {
@@ -337,6 +360,12 @@ export default class MediaPicker extends Vue {
     &__text-placeholder,
     &__small-remove {
       color: @light-4;
+    }
+
+    &__controls {
+      .icon-more {
+        color: @white;
+      }
     }
   }
 }

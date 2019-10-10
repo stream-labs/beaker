@@ -416,19 +416,19 @@ export default {
   }
 
   .multiselect__option--disabled {
-    background: #ededed !important;
-    color: @light-4;
+    background: @light-4;
+    color: @light-5;
     cursor: text;
     pointer-events: none;
   }
 
   .multiselect__option--group {
-    background: #ededed;
-    color: @light-4;
+    background: @light-4;
+    .weight(@bold);
   }
 
   .multiselect__option--disabled.multiselect__option--highlight {
-    background: #dedede;
+    background: @light-4;
   }
 
   .multiselect__option--group-selected.multiselect__option--highlight:after {
@@ -563,6 +563,16 @@ export default {
 
     .multiselect__option--highlight {
       background: @night-selector-selected;
+    }
+
+    .multiselect__option--disabled {
+      background: @dark-4;
+      color: @dark-5;
+    }
+
+    .multiselect__option--group {
+      background: shade(@dark-5, 10%);
+      color: @white;
     }
   }
 }
