@@ -52,42 +52,6 @@
           </div>
         </transition>
 
-        <!-- <div v-if="!mediaPickerSmall" class="s-media-picker__controls">
-          <a
-            v-if="mediaLink"
-            class="s-media-picker__link-icon"
-            @click.stop="$emit('link-media')"
-            ><i class="icon-link"></i>
-          </a>
-
-          <transition mode="out-in" name="fade">
-            <a
-              v-if="variation === 'image' && media.selected && !mediaBroken"
-              key="media-selected-play"
-              class="s-media-picker__zoom-icon"
-              @click.stop="$emit('zoom-media')"
-              ><i class="icon-zoom"></i>
-            </a>
-
-            <a
-              v-if="variation === 'audio' && media.selected && !mediaBroken"
-              key="media-selected-zoom"
-              class="s-media-picker__play-icon"
-              @click.stop="$emit('play-media')"
-              ><i class="icon-media-share-2"></i>
-            </a>
-          </transition>
-
-          <transition mode="out-in" name="fade">
-            <a
-              v-if="media.selected"
-              class="s-media-picker__small-remove"
-              @click.stop="removeMedia"
-              ><i class="icon-close"></i>
-            </a>
-          </transition>
-        </div> -->
-
         <div
           @mouseenter="showMediaControls = true"
           @mouseleave="showMediaControls = false"
@@ -150,14 +114,6 @@
         </div>
       </div>
     </div>
-
-    <!-- <div v-if="!mediaPickerSmall" class="s-button-container">
-      <Button
-        variation="default"
-        :title="buttonTitle"
-        @click="$emit('select-media')"
-      />
-    </div> -->
   </div>
 </template>
 
@@ -380,26 +336,6 @@ export default class MediaPicker extends Vue {
 
   .fade-slow-leave-active {
     transition: all 0.375s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0;
-  }
-
-  .fade-fast-enter-active {
-    transition: all 0.125s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 1;
-  }
-
-  .fade-fast-leave-active {
-    transition: all 0.125s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0;
-  }
-
-  .fade-fast-enter {
-    transition: all 0.125s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0;
-  }
-
-  .fade-fast-leave-to {
-    transition: all 0.125s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
   }
 }
