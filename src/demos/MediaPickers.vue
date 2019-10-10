@@ -16,34 +16,42 @@ components: {
   variation=&quot;image&quot;
   :media-link=&quot;true&quot;
   @select-media=&quot;log&quot;
-  @zoom-media=&quot;zoomMedia&quot;
+  @preview-media=&quot;previewMedia&quot;
   @remove-media=&quot;removeMedia&quot;
-  v-model=&quot;media&quot;
+  v-model=&quot;imageMedia&quot;
+&lt;/media-picker&gt;
+
+&lt;media-picker&gt;
+  variation=&quot;audio&quot;
+  :media-link=&quot;true&quot;
+  @select-media=&quot;log&quot;
+  @preview-media=&quot;previewMedia&quot;
+  @remove-media=&quot;removeMedia&quot;
+  v-model=&quot;audioMedia&quot;
 &lt;/media-picker&gt;</code></pre>
         </div>
       </accordion>
       <media-picker
         variation="image"
         :media-link="true"
-        @select-media="log"
-        @zoom-media="zoomMedia"
-        @remove-media="removeMedia"
-        v-model="media"
+        @select-media="selectImageMedia"
+        @preview-media="previewImageMedia"
+        @remove-media="removeImageMedia"
+        v-model="imageMedia"
       />
     </div>
 
     <div class="section">
-      <!-- <h2>Image Picker</h2>
-      <p>A basic image picker</p>
-      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre><code>&lt;image-picker&gt;&lt;/image-picker&gt;</code></pre>
-        </div>
-      </accordion>
-      <div class="row">
-        <image-picker />
-      </div> -->
+      <media-picker
+        variation="audio"
+        :media-link="true"
+        @select-media="selectAudioMedia"
+        @remove-media="removeAudioMedia"
+        v-model="audioMedia"
+      />
+    </div>
 
+    <div class="section">
       <table class="docs-table">
         <thead>
           <tr>
@@ -59,7 +67,7 @@ components: {
             <td>string</td>
             <td>null</td>
             <td>
-              Available variations include `image` and `sound`. Video is under
+              Available variations include `image` and `audio`. Video is under
               the `image` variation.
             </td>
           </tr>
@@ -85,16 +93,12 @@ components: {
             <td>Event emitted when the link icon is clicked</td>
           </tr>
           <tr>
-            <td>zoom-media</td>
+            <td>preview-media</td>
             <td>event</td>
             <td>null</td>
-            <td>Event emitted when the magnifiy glass icon is clicked</td>
-          </tr>
-          <tr>
-            <td>play-media</td>
-            <td>event</td>
-            <td>null</td>
-            <td>Event emitted when the play icon is clicked</td>
+            <td>
+              Event emitted when the magnifiy glass or play icons are clicked
+            </td>
           </tr>
           <tr>
             <td>remove-media</td>
@@ -122,31 +126,39 @@ components: {
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import MediaPicker from "./../components/MediaPicker.vue";
-// import ImagePicker from "./../components/ImagePicker.vue";
 import Accordion from "./../components/Accordion.vue";
+
 @Component({
   components: {
     MediaPicker,
-    // ImagePicker,
     Accordion
   }
 })
 export default class ImagePickers extends Vue {
   msg = "Hi!";
-  media = "";
+  audioMedia = "";
+  imageMedia = "";
 
-  log() {
-    this.media =
+  selectImageMedia() {
+    this.imageMedia =
       "https://uploads.twitchalerts.com/000/045/005/127/foolofsoul-design-1521842129-0.png";
-    // this.media = "https://cdn1.twitchalerts.com/twitch-bits/sounds/bits.ogg";
   }
 
-  removeMedia() {
-    this.media = "";
+  selectAudioMedia() {
+    this.audioMedia =
+      "https://cdn1.twitchalerts.com/twitch-bits/sounds/bits.ogg";
   }
 
-  zoomMedia() {
-    window.open(this.media);
+  removeImageMedia() {
+    this.imageMedia = "";
+  }
+
+  removeAudioMedia() {
+    this.audioMedia = "";
+  }
+
+  previewImageMedia() {
+    window.open(this.imageMedia);
   }
 }
 </script>
