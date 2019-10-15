@@ -8,8 +8,12 @@
       ></text-input>
     </form-group-h>
 
-    <form-group-v :title="title" :tooltip="true" :helpText="helpText">
-      <i slot="header" class="icon-question"></i>
+    <form-group-v
+      :title="title"
+      titleLayout="flex-start"
+      tooltip="Here is a tooltip"
+      :helpText="helpText"
+    >
       <text-input
         slot="input"
         :type="textInputType"
