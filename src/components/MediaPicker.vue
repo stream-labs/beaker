@@ -3,7 +3,12 @@
     <div class="s-media-picker__input-wrapper">
       <div class="s-media-picker__thumb">
         <transition name="fade" mode="out-in">
-          <i v-if="!media.selected" key="thumb-upload" class="s-media-picker__no-media" :class="noMediaIcon"></i>
+          <i
+            v-if="!media.selected"
+            key="thumb-upload"
+            class="s-media-picker__no-media"
+            :class="noMediaIcon"
+          ></i>
           <i
             v-if="media.selected && variation === 'audio'"
             key="thumb-audio"
@@ -231,7 +236,7 @@ export default class MediaPicker extends Vue {
   }
 
   &__no-media {
-    opacity: .5;
+    opacity: 0.5;
   }
 
   &__broken-image {
@@ -305,7 +310,6 @@ export default class MediaPicker extends Vue {
     }
 
     .icon-more {
-      // transform: rotate(90deg);
       color: @dark-2;
       cursor: pointer;
     }
