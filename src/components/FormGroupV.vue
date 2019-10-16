@@ -1,8 +1,13 @@
 <template>
   <div class="s-form-group-v">
     <!-- title -->
-    <div class="s-form-group-v__title">
+    <div class="s-form-group-v__title" :style="titleLayoutStyle">
       <label>{{ title }}</label>
+      <i
+        v-if="tooltip"
+        v-tooltip.auto="tooltip"
+        class="tooltip icon-question"
+      ></i>
       <slot name="header"></slot>
     </div>
 
@@ -26,6 +31,18 @@ export default class FormGroupV extends Vue {
 
   @Prop()
   title!: string;
+
+  @Prop({ default: "" })
+  tooltip!: string;
+
+  @Prop({ default: "space-between" })
+  titleLayout!: string;
+
+  get titleLayoutStyle() {
+    return {
+      "justify-content": this.titleLayout
+    };
+  }
 }
 </script>
 
@@ -46,6 +63,10 @@ export default class FormGroupV extends Vue {
   align-items: center;
   .margin-bottom();
   font-size: 12px;
+
+  label {
+    .margin-right();
+  }
 }
 
 .s-form-group-v__input-wrapper {
