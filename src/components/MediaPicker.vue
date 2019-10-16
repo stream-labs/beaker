@@ -3,11 +3,7 @@
     <div class="s-media-picker__input-wrapper">
       <div class="s-media-picker__thumb">
         <transition name="fade" mode="out-in">
-          <i
-            v-if="!media.selected"
-            key="thumb-upload"
-            class="icon-upload-image"
-          ></i>
+          <i v-if="!media.selected" key="thumb-upload" :class="noMediaIcon"></i>
           <i
             v-if="media.selected && variation === 'audio'"
             key="thumb-audio"
@@ -57,10 +53,7 @@
           @mouseleave="showMediaControls = false"
           class="s-media-picker__controls s-media-picker__controls--small"
         >
-          <i
-            v-if="mediaPickerSmall && !showMediaControls"
-            class="icon-more"
-          ></i>
+          <i v-if="mediaPickerSmall && !showMediaControls" class="icon-add"></i>
 
           <div
             v-if="!mediaPickerSmall || showMediaControls"
@@ -108,7 +101,7 @@
               class="s-media-picker__small-remove"
               @click.stop="selectMedia"
               :title="`Select ${variationTitle}`"
-              ><i class="icon-add"></i>
+              ><i class="icon-upload-image"></i>
             </a>
           </div>
         </div>
@@ -165,6 +158,10 @@ export default class MediaPicker extends Vue {
       fileName: this.value ? this.value.split("/").pop() : "",
       url: this.value
     };
+  }
+
+  get noMediaIcon() {
+    return this.variation === "image" ? "icon-image" : "icon-music";
   }
 
   @Watch("value")
@@ -304,7 +301,7 @@ export default class MediaPicker extends Vue {
     }
 
     .icon-more {
-      transform: rotate(90deg);
+      // transform: rotate(90deg);
       color: @dark-2;
       cursor: pointer;
     }

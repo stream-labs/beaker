@@ -15,7 +15,7 @@ components: {
           <pre><code>&lt;media-picker&gt;
   variation=&quot;image&quot;
   :media-link=&quot;true&quot;
-  @select-media=&quot;log&quot;
+  @select-media=&quot;selectImageMedia&quot;
   @preview-media=&quot;previewMedia&quot;
   @remove-media=&quot;removeMedia&quot;
   v-model=&quot;imageMedia&quot;
@@ -24,7 +24,7 @@ components: {
 &lt;media-picker&gt;
   variation=&quot;audio&quot;
   :media-link=&quot;true&quot;
-  @select-media=&quot;log&quot;
+  @select-media=&quot;selectAudioMedia&quot;
   @preview-media=&quot;previewMedia&quot;
   @remove-media=&quot;removeMedia&quot;
   v-model=&quot;audioMedia&quot;

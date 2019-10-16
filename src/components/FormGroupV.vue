@@ -41,7 +41,7 @@ export default class FormGroupV extends Vue {
   get titleLayoutStyle() {
     return {
       "justify-content": this.titleLayout
-    }
+    };
   }
 }
 </script>
