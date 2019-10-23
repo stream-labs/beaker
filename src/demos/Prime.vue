@@ -137,27 +137,15 @@
     </div>
 
     <div class="section">
-      <h2>Modal Welcome Prime</h2>
-      <p>Used for welcome prime</p>
+      <h2>Welcome Prime</h2>
+      <p>welcome prime</p>
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-          <pre><code>&lt;ModalComp 
-  :type=&quot;'welcome-prime'&quot; 
-  :width=&quot;900&quot; 
-  @onClickPrime=&quot;testWelcomePrime&quot; 
-  :hasPrimeCloseButton=&quot;true&quot;&gt;
-&lt;/ModalComp&gt;
-
-&lt;Button
-  :variation=&quot;'default'&quot;
-  :title=&quot;'modal welcome prime'&quot;
-  @click=&quot;$modal.show('modal-welcome-prime')&quot;&gt;
-&lt;/Button&gt;
+          <pre><code>&lt;welcome-prime class=&quot;welcome-prime&quot; @onClickPrime=&quot;testClick&quot;&gt;&lt;/welcome-prime&gt;
 </code></pre>
         </div>
       </Accordion>
-
-      <welcome-prime class="welcome-prime"></welcome-prime>
+      <welcome-prime class="welcome-prime" @onClickPrime="testClick"></welcome-prime>
     </div>
   </div>
 </template>
