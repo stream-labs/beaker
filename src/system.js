@@ -62,6 +62,7 @@ import VariableMenu from "./components/VariableMenu.vue";
 import VirtualItem from "./components/VirtualItem.vue";
 import TaggingInput from "./components/TaggingInput.vue";
 import TextArea from "./components/TextArea.vue";
+import WelcomePrime from "./components/WelcomePrime.vue";
 
 export {
   Accordion,
@@ -119,5 +120,6 @@ export {
   TooltipNotice,
   UrlBar,
   VariableMenu,
-  VirtualItem
+  VirtualItem,
+  WelcomePrime
 };
