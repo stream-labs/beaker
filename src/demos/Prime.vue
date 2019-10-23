@@ -135,6 +135,18 @@
         ></Button>
       </div>
     </div>
+
+    <div class="section">
+      <h2>Welcome Prime</h2>
+      <p>welcome prime</p>
+      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+        <div slot="content">
+          <pre><code>&lt;welcome-prime class=&quot;welcome-prime&quot; @onClickPrime=&quot;testClick&quot;&gt;&lt;/welcome-prime&gt;
+</code></pre>
+        </div>
+      </Accordion>
+      <welcome-prime class="welcome-prime" @onClickPrime="testClick"></welcome-prime>
+    </div>
   </div>
 </template>
 
@@ -146,6 +158,7 @@ import PrimeSection from "./../components/PrimeSection.vue";
 import NavCallToAction from "./../components/NavCallToAction.vue";
 import ModalComp from "./../components/ModalComp.vue";
 import Button from "./../components/Button.vue";
+import WelcomePrime from "./../components/WelcomePrime.vue";
 
 @Component({
   components: {
@@ -154,7 +167,8 @@ import Button from "./../components/Button.vue";
     PrimeSection,
     NavCallToAction,
     ModalComp,
-    Button
+    Button,
+    WelcomePrime
   }
 })
 export default class PrimeComponents extends Vue {
@@ -178,5 +192,9 @@ export default class PrimeComponents extends Vue {
 .cs-section {
   position: relative;
   width: 260px;
+}
+
+.welcome-prime {
+  width: 600px;
 }
 </style>
