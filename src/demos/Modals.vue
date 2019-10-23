@@ -222,13 +222,6 @@ components: {
         @onClickPrime="test"
         :hasPrimeCloseButton="true"
       >
-        <!-- <template slot>
-          <Button
-            :variation="'default'"
-            :title="'modal welcome prime'"
-            @click="$modal.show('modal-welcome-prime')"
-          ></Button>
-        </template> -->
       </ModalComp>
 
       <div class="button-container button-container--left">
