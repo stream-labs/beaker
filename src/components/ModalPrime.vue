@@ -11,7 +11,9 @@
     <div class="modal-prime__close" v-if="hasPrimeCloseButton">
       <i class="icon-close" @click="$modal.hide(name)"></i>
     </div>
-    <welcome-prime :primeButtonText="primeButtonText" v-on="$listeners"></welcome-prime>
+    <welcome-prime :primeButtonText="primeButtonText" v-on="$listeners">
+      <slot></slot>
+    </welcome-prime>
   </modal>
 </template>
 
@@ -24,7 +26,6 @@ import WelcomePrime from "./../components/WelcomePrime.vue";
     WelcomePrime
   }
 })
-
 export default class ModalPrime extends Vue {
   @Prop({ default: "modal-welcome-prime" })
   name!: string;

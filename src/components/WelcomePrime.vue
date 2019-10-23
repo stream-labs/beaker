@@ -1,5 +1,5 @@
 <template>
-  <div class="s-modal-container s-modal-welcome-prime">
+  <div class="s-modal-welcome-prime">
     <div class="modal-prime">
       <video loop muted autoplay class="modal-prime__video">
         <source
@@ -21,7 +21,9 @@
         </ul>
       </div>
       <div class="modal-prime__button">
+        <slot v-if="hasSlot"></slot>
         <s-button
+          v-else
           size="large"
           variation="prime"
           icon="prime"
@@ -39,10 +41,9 @@ import Button from "./../components/Button.vue";
 
 @Component({
   components: {
-    's-button': Button
+    "s-button": Button
   }
 })
-
 export default class WelcomePrime extends Vue {
   @Prop({ default: "Continue" })
   primeButtonText!: string;
@@ -57,6 +58,10 @@ export default class WelcomePrime extends Vue {
 
   onPrimeButtonHandler() {
     this.$emit("onClickPrime");
+  }
+
+  get hasSlot() {
+    return !(typeof this.$slots.default === "undefined");
   }
 }
 </script>

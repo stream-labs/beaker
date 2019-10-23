@@ -74,7 +74,9 @@
         :primeButtonText="primeButtonText"
         :hasPrimeCloseButton="hasPrimeCloseButton"
         v-on="$listeners"
-      ></ModalPrime>
+      >
+        <slot></slot>
+      </ModalPrime>
     </div>
   </div>
 </template>
