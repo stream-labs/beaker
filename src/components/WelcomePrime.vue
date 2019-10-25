@@ -1,12 +1,14 @@
 <template>
   <div class="s-modal-welcome-prime">
     <div class="modal-prime">
-      <video loop muted autoplay class="modal-prime__video">
-        <source
-          src="https://cdn.streamlabs.com/videos/Welcome_Confetti_Gold_1.webm"
-          type="video/webm"
-        />
-      </video>
+      <div v-if="!isUserAgentEdge">
+        <video loop muted autoplay class="modal-prime__video">
+          <source
+            src="https://cdn.streamlabs.com/videos/Welcome_Confetti_Gold_1.webm"
+            type="video/webm"
+          />
+        </video>
+      </div>
       <div class="modal-prime__heading">
         Welcome to
         <span>Prime</span>
@@ -17,7 +19,9 @@
       <div class="modal-prime__features">
         <p>Just a few of your exclusive features and services:</p>
         <ul>
-          <li v-for="(feature, index) in primeFeatureListDefault" :key="index">{{ feature }}</li>
+          <li v-for="(feature, index) in primeFeatureListDefault" :key="index">
+            {{ feature }}
+          </li>
         </ul>
       </div>
       <div class="modal-prime__button">
@@ -56,8 +60,16 @@ export default class WelcomePrime extends Vue {
     "Automatic Gold All-Star Status"
   ];
 
+  isUserAgentEdge: boolean = false;
+
   onPrimeButtonHandler() {
     this.$emit("onClickPrime");
+  }
+
+  mounted() {
+    navigator.userAgent.indexOf("Edge") !== -1
+      ? (this.isUserAgentEdge = true)
+      : (this.isUserAgentEdge = false);
   }
 
   get hasSlot() {
