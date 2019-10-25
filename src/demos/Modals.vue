@@ -57,12 +57,25 @@ components: {
         :text="
           'Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.'
         "
-      >hey there</ModalComp>
+        >hey there</ModalComp
+      >
 
       <div class="s-button-container--left">
-        <Button :variation="'default'" :title="'modal basic1'" @click="$modal.show('modal-basic')"></Button>
-        <Button :variation="'default'" :title="'modal basic2'" @click="$modal.show('modal-basic2')"></Button>
-        <Button :variation="'default'" :title="'modal basic3'" @click="$modal.show('modal-basic3')"></Button>
+        <Button
+          :variation="'default'"
+          :title="'modal basic1'"
+          @click="$modal.show('modal-basic')"
+        ></Button>
+        <Button
+          :variation="'default'"
+          :title="'modal basic2'"
+          @click="$modal.show('modal-basic2')"
+        ></Button>
+        <Button
+          :variation="'default'"
+          :title="'modal basic3'"
+          @click="$modal.show('modal-basic3')"
+        ></Button>
       </div>
     </div>
 
@@ -342,8 +355,7 @@ components: {
             Pass in
             <code>action</code> if it's a confirmation that doesn't warrant a
             warning (only in Modal Confirmation). In Modal Subscribe default is
-            <code>subscribe</code>. Can be set to
-            <code>paypal</code> and
+            <code>subscribe</code>. Can be set to <code>paypal</code> and
             <code>paypal-blue</code> variations.
           </td>
         </tr>
@@ -376,8 +388,7 @@ components: {
             Allows for custom preview above modal text. Uses
             <code>preview</code> slot.
             <code>
-              &lt;template #preview&gt;Custom Preview
-              HTML&lt;template&gt;
+              &lt;template #preview&gt;Custom Preview HTML&lt;template&gt;
             </code>
             (only in Modal Subscribe).
           </td>

@@ -145,7 +145,10 @@
 </code></pre>
         </div>
       </Accordion>
-      <welcome-prime class="welcome-prime" @onClickPrime="testClick"></welcome-prime>
+      <welcome-prime
+        class="welcome-prime"
+        @onClickPrime="testClick"
+      ></welcome-prime>
     </div>
   </div>
 </template>
