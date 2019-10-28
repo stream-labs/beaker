@@ -25,11 +25,11 @@
 
     <div class="s-tagging-input__tags">
       <div v-for="(tag, index) in value" :key="index" :class="tagClasses">
+        <div class="s-tagging-input__tag-text">{{ tag }}</div>
         <i
           class="s-tagging-input__tag-icon icon-close"
           @click="onRemove(index)"
         ></i>
-        <div class="s-tagging-input__tag-text">{{ tag }}</div>
       </div>
     </div>
   </div>
@@ -38,12 +38,14 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import TextInput from "./TextInput.vue";
+import TextArea from "./TextArea.vue";
 import Button from "./Button.vue";
 import { omit } from "lodash";
 
 @Component({
   components: {
     TextInput,
+    TextArea,
     Button
   }
 })
@@ -139,33 +141,36 @@ export default class TaggingInput extends Vue {
   }
 
   .s-tagging-input__tags {
+    display: flex;
+    flex-wrap: wrap;
     .margin-top();
-    & > * {
-      display: inline-block;
-      vertical-align: middle;
-      .margin-top(1);
-      .margin-bottom(1);
-    }
 
     .s-tagging-input__tag {
-      margin-right: 10px;
-      padding: 6px 12px;
-      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      height: 24px;
+      .margin-right();
+      .margin-top();
+      padding: 0 4px;
+      border-radius: 2px;
+      font-size: 14px;
+      line-height: 1.14;
       color: white;
 
-      & > * {
-        display: inline-block;
-        vertical-align: middle;
+      &:last-of-type {
+        .margin-right(0);
       }
     }
 
     .s-tagging-input__tag-icon {
-      font-size: 14px;
-      .margin-right();
+      margin-left: 4px;
+      font-size: 10px;
+      color: @light-5;
       cursor: pointer;
     }
 
     .s-tagging-input__tag-text {
+      font-weight: 500;
       -webkit-user-select: none; /* Safari */
       -moz-user-select: none; /* Firefox */
       -ms-user-select: none; /* IE10+/Edge */
@@ -185,6 +190,9 @@ export default class TaggingInput extends Vue {
     .s-tagging-input__tag--warning {
       background-color: @warning;
     }
+
+    max-height: 300px;
+    overflow-y: auto;
   }
 }
 

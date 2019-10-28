@@ -1,9 +1,14 @@
 <template>
   <div class="s-form-group-v">
     <!-- title -->
-    <div class="s-form-group-v__title">
+    <div class="s-form-group-v__title" :style="titleLayoutStyle">
       <label>{{ title }}</label>
-      <i v-if="tooltip" class="s-tooltip icon-question" />
+      <i
+        v-if="tooltip"
+        v-tooltip.auto="tooltip"
+        class="tooltip icon-question"
+      ></i>
+      <slot name="header"></slot>
     </div>
 
     <div class="s-form-group-v__input-wrapper">
@@ -25,10 +30,19 @@ export default class FormGroupV extends Vue {
   helpText!: string;
 
   @Prop()
+  title!: string;
+
+  @Prop({ default: "" })
   tooltip!: string;
 
-  @Prop()
-  title!: string;
+  @Prop({ default: "space-between" })
+  titleLayout!: string;
+
+  get titleLayoutStyle() {
+    return {
+      "justify-content": this.titleLayout
+    };
+  }
 }
 </script>
 
@@ -37,10 +51,6 @@ export default class FormGroupV extends Vue {
 
 .s-form-group-v {
   .margin-bottom(2);
-  display: grid;
-  grid-template-columns: repeat(12, [col-start] 1fr);
-  grid-column-gap: 16px;
-  grid-row-gap: @spacing;
 
   .s-tooltip {
     .margin-left();
@@ -48,8 +58,15 @@ export default class FormGroupV extends Vue {
 }
 
 .s-form-group-v__title {
-  grid-column: col-start / span 12;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .margin-bottom();
   font-size: 12px;
+
+  label {
+    .margin-right();
+  }
 }
 
 .s-form-group-v__input-wrapper {

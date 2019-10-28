@@ -416,19 +416,17 @@ export default {
   }
 
   .multiselect__option--disabled {
-    background: #ededed !important;
-    color: @light-4;
+    color: @dark-5;
     cursor: text;
     pointer-events: none;
   }
 
   .multiselect__option--group {
-    background: #ededed;
-    color: @light-4;
+    font-size: 12px;
   }
 
   .multiselect__option--disabled.multiselect__option--highlight {
-    background: #dedede;
+    background: @light-4;
   }
 
   .multiselect__option--group-selected.multiselect__option--highlight:after {
@@ -563,6 +561,10 @@ export default {
 
     .multiselect__option--highlight {
       background: @night-selector-selected;
+    }
+
+    .multiselect__option--disabled {
+      color: @light-4;
     }
   }
 }

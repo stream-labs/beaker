@@ -8,7 +8,12 @@
       ></text-input>
     </form-group-h>
 
-    <form-group-v :title="title" :helpText="helpText">
+    <form-group-v
+      :title="title"
+      titleLayout="flex-start"
+      tooltip="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis lorem quis purus sollicitudin scelerisque. Donec eu auctor magna. Nullam pellentesque ullamcorper ante in maximus. Nunc elit lorem, consequat in."
+      :helpText="helpText"
+    >
       <text-input
         slot="input"
         :type="textInputType"

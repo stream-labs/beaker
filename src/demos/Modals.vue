@@ -234,7 +234,8 @@ components: {
         :width="600"
         @onClickPrime="test"
         :hasPrimeCloseButton="true"
-      ></ModalComp>
+      >
+      </ModalComp>
 
       <div class="button-container button-container--left">
         <Button
@@ -386,10 +387,9 @@ components: {
           <td>
             Allows for custom preview above modal text. Uses
             <code>preview</code> slot.
-            <code
-              >&lt;template #preview&gt;Custom Preview
-              HTML&lt;template&gt;</code
-            >
+            <code>
+              &lt;template #preview&gt;Custom Preview HTML&lt;template&gt;
+            </code>
             (only in Modal Subscribe).
           </td>
         </tr>

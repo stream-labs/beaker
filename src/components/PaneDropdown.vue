@@ -1,6 +1,7 @@
 <template>
   <div class="s-pane-dropdown" ref="paneMenu" @blur.stop.prevent="close">
     <a
+      ref="paneTitle"
       class="s-pane-dropdown__toggle"
       :class="{ 's-pane-dropdown__toggle--active': paneMenuOpen }"
       @click="paneMenuOpen = !paneMenuOpen"
@@ -21,7 +22,7 @@
         :class="menuClasses"
         class="s-pane-dropdown__menu"
         @mouseup="onMenuClick"
-        v-show="paneMenuOpen"
+        v-if="paneMenuOpen"
       >
         <slot v-if="custom"></slot>
         <div v-else class="s-pane-dropdown__list">
@@ -42,6 +43,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 export default class PaneDropdown extends Vue {
   $refs!: {
     paneMenu: HTMLDivElement;
+    paneTitle: HTMLLinkElement;
     panelinks: HTMLSpanElement;
   };
 
@@ -69,6 +71,9 @@ export default class PaneDropdown extends Vue {
   @Prop({ default: false })
   simpleMenu!: boolean;
 
+  @Prop({ default: false })
+  hoverOption!: boolean;
+
   paneMenuOpen = false;
   paneList = null;
 
@@ -76,8 +81,26 @@ export default class PaneDropdown extends Vue {
     document.addEventListener("click", this.documentClick);
   }
 
+  mounted() {
+    if (!this.custom) {
+      let links: any = this.$refs.panelinks;
+      let [...list] = links.children;
+      this.paneList = list;
+    }
+
+    if (this.hoverOption) {
+      this.$refs.paneTitle.addEventListener("mouseover", this.show);
+      this.$refs.paneMenu.addEventListener("mouseleave", this.hide);
+    }
+  }
+
   destroyed() {
     document.removeEventListener("click", this.documentClick);
+
+    if (this.hoverOption) {
+      this.$refs.paneTitle.removeEventListener("mouseover", this.show);
+      this.$refs.paneMenu.removeEventListener("mouseleave", this.hide);
+    }
   }
 
   get menuClasses() {
@@ -138,14 +161,6 @@ export default class PaneDropdown extends Vue {
     });
   }
 
-  mounted() {
-    if (!this.custom) {
-      let links: any = this.$refs.panelinks;
-      let [...list] = links.children;
-      this.paneList = list;
-    }
-  }
-
   documentClick(e: Event) {
     let el: any = this.$refs.paneMenu;
     let target = e.target;
@@ -174,6 +189,7 @@ export default class PaneDropdown extends Vue {
 .s-pane-dropdown {
   position: relative;
   display: inline-block;
+  padding: 3px 0;
 
   &__slot-list {
     display: none;
@@ -181,7 +197,7 @@ export default class PaneDropdown extends Vue {
 
   &__menu {
     position: absolute;
-    top: 25px;
+    top: 24px;
     z-index: 100;
     width: auto;
     max-height: 300px;
@@ -324,6 +340,19 @@ export default class PaneDropdown extends Vue {
         color: @night-title;
       }
     }
+  }
+}
+
+.expand-dropdown-enter-active {
+  animation: dropdown-fadein 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes dropdown-fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 </style>

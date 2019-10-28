@@ -8,6 +8,7 @@
         :text="text"
         :width="width"
         :minWidth="minWidth"
+        :hideActionButtons="hideActionButtons"
         v-on="$listeners"
       >
         <slot></slot>
@@ -73,7 +74,9 @@
         :primeButtonText="primeButtonText"
         :hasPrimeCloseButton="hasPrimeCloseButton"
         v-on="$listeners"
-      ></ModalPrime>
+      >
+        <slot></slot>
+      </ModalPrime>
     </div>
   </div>
 </template>
@@ -160,6 +163,9 @@ export default class ModalComp extends Vue {
 
   @Prop()
   hasPrimeCloseButton!: boolean;
+
+  @Prop()
+  hideActionButtons!: string;
 
   modalName: string = "";
 

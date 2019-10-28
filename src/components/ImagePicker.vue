@@ -26,8 +26,8 @@
       <Button v-if="imageSelected" :variation="'action'" :title="'Upload'" />
       <Button
         v-if="imageSelected"
-        :variation="'warning'"
-        :title="'Delete'"
+        variation="default"
+        title="Remove"
         @click="deleteImage"
       />
     </div>

@@ -6,8 +6,8 @@
   "sideEffects": false,
   "license": "MIT",
   "scripts": {
-    "build": "rollup --config && yarn build-deploy-gh-pages",
-    "build-bundle": "rollup --config",
+    "build": "rollup --config",
+    "build-bundle": "rollup --config && yarn build-deploy-gh-pages",
     "prepare": "rollup --config",
     "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
@@ -71,5 +71,8 @@
     "vue-slider-component": "^2.8",
     "vuejs-paginate": "^2.1.0"
   },
-  "types": "./index.d.ts"
+  "types": "./index.d.ts",
+  "dependencies": {
+    "v-tooltip": "^2.0.2"
+  }
 }
