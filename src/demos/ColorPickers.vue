@@ -8,11 +8,11 @@
       <h2>Default Color Picker</h2>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-          <pre><code>&lt;color-picker :v-model=&quot;color&quot;&gt;&lt;/color-picker&gt;</code></pre>
+          <pre><code>&lt;color-picker :v-model=&quot;color&quot; placeholder=&quot;test&quot; :hasAlpha=&quot;true&quot;&gt;&lt;/color-picker&gt;</code></pre>
         </div>
       </accordion>
       <div class="row">
-        <color-picker v-model="color" :placeholder="'test'"></color-picker>
+        <color-picker v-model="color" placeholder="test" :hasAlpha="true"></color-picker>
       </div>
       <table class="docs-table">
         <thead>
@@ -35,6 +35,12 @@
             <td>String</td>
             <td>null</td>
             <td>It shows as a placeholder in case of blank</td>
+          </tr>
+          <tr>
+            <td>hasAlpha</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>Option to add alpha setting for the color picker</td>
           </tr>
         </tbody>
       </table>
