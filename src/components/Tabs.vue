@@ -61,7 +61,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Watch, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Tabs extends Vue {
@@ -73,6 +73,11 @@ export default class Tabs extends Vue {
       icon: string;
     }
   ];
+
+  @Watch('tabs', { deep: true })
+  onTabsChange() {
+    this.calculateScrolls();
+  }
 
   @Prop()
   size!: string;
