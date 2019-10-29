@@ -76,7 +76,6 @@ export default class Tabs extends Vue {
 
   @Watch('tabs', { deep: true })
   onTabsChange() {
-    console.log("TCL: Tabs -> onTabsChange -> this.tabs", this.tabs)
     this.$nextTick(() => this.calculateScrolls());
   }
 
@@ -150,7 +149,6 @@ export default class Tabs extends Vue {
 
   calculateScrolls() {
     if (!this.isMounted) return false;
-    console.log(this.tabsContainer.scrollWidth, this.tabsContainer.clientWidth)
     this.canScroll =
       this.tabsContainer.scrollWidth > this.tabsContainer.clientWidth;
     this.hasPrev = this.tabsContainer.scrollLeft > 0;
