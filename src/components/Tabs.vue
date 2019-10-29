@@ -150,6 +150,7 @@ export default class Tabs extends Vue {
 
   calculateScrolls() {
     if (!this.isMounted) return false;
+    console.log("TCL: Tabs -> calculateScrolls -> calculateScrolls", "calculating")
     this.canScroll =
       this.tabsContainer.scrollWidth > this.tabsContainer.clientWidth;
     this.hasPrev = this.tabsContainer.scrollLeft > 0;
