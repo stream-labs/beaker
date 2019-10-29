@@ -76,6 +76,7 @@ export default class Tabs extends Vue {
 
   @Watch('tabs', { deep: true })
   onTabsChange() {
+    console.log("TCL: Tabs -> onTabsChange -> this.tabs", this.tabs)
     this.calculateScrolls();
   }
 
