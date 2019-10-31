@@ -7,17 +7,14 @@
       @click="showPicker()"
       @input="updateFromInput"
     />
-    <div
-      class="s-colorpicker__preview"
-      :style="{ backgroundColor: value }"
-      @click="showPicker()"
-    ></div>
+    <div class="s-colorpicker__preview" :style="{ backgroundColor: value }" @click="showPicker()"></div>
     <picker
       class="s-colorpicker"
+      :class="alphaClass"
       :value="colors"
       v-if="displayPicker"
-      :disable-alpha="true"
-      :disable-fields="true"
+      :disable-alpha="!hasAlpha"
+      :disable-fields="!hasAlpha"
       @input="updateFromPicker"
     ></picker>
   </div>
@@ -43,10 +40,21 @@ export default class ColorPicker extends Vue {
   @Prop()
   placeholder!: string;
 
+  @Prop({ default: false })
+  hasAlpha!: boolean;
+
   private displayPicker: Boolean = false;
   private backgroundColor: String = "";
 
   colors: object = {};
+
+  get alphaClass() {
+    return this.hasAlpha
+      ? this.colors["a"] === 1
+        ? "nonAlpha"
+        : "alpha"
+      : false;
+  }
 
   created() {
     this.colors = Object.assign({}, this.colors, { hex: this.value });
@@ -109,5 +117,22 @@ export default class ColorPicker extends Vue {
   position: relative;
   width: 176px;
   display: inline-block;
+}
+
+.alpha,
+.nonAlpha {
+  .vc-chrome-toggle-btn {
+    display: none;
+  }
+}
+
+.alpha {
+  .vc-chrome-fields:not(:nth-child(2)) {
+    display: none !important;
+  }
+
+  .vc-chrome-fields:nth-child(2) {
+    display: flex !important;
+  }
 }
 </style>
