@@ -7,7 +7,11 @@
       @click="showPicker()"
       @input="updateFromInput"
     />
-    <div class="s-colorpicker__preview" :style="{ backgroundColor: value }" @click="showPicker()"></div>
+    <div
+      class="s-colorpicker__preview"
+      :style="{ backgroundColor: value }"
+      @click="showPicker()"
+    ></div>
     <picker
       class="s-colorpicker"
       :class="alphaClass"
