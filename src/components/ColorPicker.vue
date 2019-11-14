@@ -7,7 +7,11 @@
       @click="showPicker()"
       @input="updateFromInput"
     />
-    <div class="s-colorpicker__preview" :style="{ backgroundColor: value }" @click="showPicker()"></div>
+    <div
+      class="s-colorpicker__preview"
+      :style="{ backgroundColor: value }"
+      @click="showPicker()"
+    ></div>
     <picker
       class="s-colorpicker"
       :class="alphaClass"
@@ -62,7 +66,16 @@ export default class ColorPicker extends Vue {
 
   updateFromPicker(value: any) {
     this.colors = value;
-    this.$emit("input", value.hex);
+    if (this.alphaClass === "alpha") {
+      this.showRgba(value.rgba);
+    } else {
+      this.$emit("input", value.hex);
+    }
+  }
+
+  showRgba(rgba) {
+    const rgbaData = `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${rgba.a})`;
+    this.$emit("input", rgbaData);
   }
 
   updateFromInput(event: any) {
