@@ -8,9 +8,9 @@
       v-on="$listeners"
       @input="val => emitInput(val)"
     >
-      <template v-if="label" slot="singleLabel" slot-scope="{ option }">
+      <!-- <template v-if="label" slot="singleLabel" slot-scope="{ option }">
         {{ option[label] }}
-      </template>
+      </template> -->
     </multiselect>
   </div>
 </template>
