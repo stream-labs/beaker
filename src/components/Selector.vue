@@ -9,9 +9,11 @@
       @input="val => emitInput(val)"
     >
      <template #singleLabel="{ option }">
+        <slot name="singleLabel" :option="option"></slot>
+      </template>
+      <template #option="{ option }">
         <slot name="option" :option="option"></slot>
       </template>
-
     </multiselect>
   </div>
 </template>
