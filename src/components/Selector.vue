@@ -11,6 +11,7 @@
       <!-- <template v-if="label" slot="singleLabel" slot-scope="{ option }">
         {{ option[label] }}
       </template> -->
+      <slot name="option"></slot>
     </multiselect>
   </div>
 </template>
