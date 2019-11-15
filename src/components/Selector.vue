@@ -8,7 +8,7 @@
       v-on="$listeners"
       @input="val => emitInput(val)"
     >
-     <template v-if="label" #singleLabel="{ option }">
+     <template #singleLabel="{ option }">
         <slot name="option" :option="option"></slot>
       </template>
 
