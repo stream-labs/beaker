@@ -128,7 +128,7 @@ export default class ColorPicker extends Vue {
 
 .s-colorpicker-container {
   position: relative;
-  width: 176px;
+  width: 225px;
   display: inline-block;
 }
 
@@ -147,5 +147,9 @@ export default class ColorPicker extends Vue {
   .vc-chrome-fields:nth-child(2) {
     display: flex !important;
   }
+}
+
+.vc-chrome-fields-wrap {
+  display: none !important;  
 }
 </style>
