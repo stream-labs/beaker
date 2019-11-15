@@ -12,7 +12,11 @@
         </div>
       </accordion>
       <div class="row">
-        <color-picker v-model="color" placeholder="test" :hasAlpha="true"></color-picker>
+        <color-picker
+          v-model="color"
+          placeholder="test"
+          :hasAlpha="true"
+        ></color-picker>
       </div>
       <table class="docs-table">
         <thead>
