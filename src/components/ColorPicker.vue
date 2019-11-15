@@ -150,6 +150,6 @@ export default class ColorPicker extends Vue {
 }
 
 .vc-chrome-fields-wrap {
-  display: none !important;  
+  display: none !important;
 }
 </style>
