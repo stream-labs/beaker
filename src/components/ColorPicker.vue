@@ -67,17 +67,12 @@ export default class ColorPicker extends Vue {
   updateFromPicker(value: any) {
     this.colors = value;
     if (this.alphaClass === "alpha") {
-      this.showRgba(value.rgba);
+      this.$emit("input", value.hex8);
     } else {
       this.$emit("input", value.hex);
     }
   }
-
-  showRgba(rgba) {
-    const rgbaData = `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${rgba.a})`;
-    this.$emit("input", rgbaData);
-  }
-
+  
   updateFromInput(event: any) {
     this.colors = event.target.value;
     this.$emit("input", event.target.value);
