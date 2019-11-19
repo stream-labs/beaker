@@ -74,7 +74,7 @@ export default class Tabs extends Vue {
     }
   ];
 
-  @Watch('tabs', { deep: true })
+  @Watch("tabs", { deep: true })
   onTabsChange() {
     this.$nextTick(() => this.calculateScrolls());
   }

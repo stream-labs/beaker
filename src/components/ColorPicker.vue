@@ -7,7 +7,11 @@
       @click="showPicker()"
       @input="updateFromInput"
     />
-    <div class="s-colorpicker__preview" :style="{ backgroundColor: value }" @click="showPicker()"></div>
+    <div
+      class="s-colorpicker__preview"
+      :style="{ backgroundColor: value }"
+      @click="showPicker()"
+    ></div>
     <picker
       class="s-colorpicker"
       :class="alphaClass"
@@ -62,9 +66,13 @@ export default class ColorPicker extends Vue {
 
   updateFromPicker(value: any) {
     this.colors = value;
-    this.$emit("input", value.hex);
+    if (this.alphaClass === "alpha") {
+      this.$emit("input", value.hex8);
+    } else {
+      this.$emit("input", value.hex);
+    }
   }
-
+  
   updateFromInput(event: any) {
     this.colors = event.target.value;
     this.$emit("input", event.target.value);
@@ -115,7 +123,7 @@ export default class ColorPicker extends Vue {
 
 .s-colorpicker-container {
   position: relative;
-  width: 176px;
+  width: 225px;
   display: inline-block;
 }
 
@@ -134,5 +142,9 @@ export default class ColorPicker extends Vue {
   .vc-chrome-fields:nth-child(2) {
     display: flex !important;
   }
+}
+
+.vc-chrome-fields-wrap {
+  display: none !important;
 }
 </style>
