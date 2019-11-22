@@ -162,6 +162,10 @@ export default class NewFeatureOverlay extends Vue {
 
 <style lang="less">
 @import (reference) "./../styles/Imports";
+::-webkit-media-controls {
+  display: none !important;
+}
+
 .s-overlay__container--mq {
   display: block !important;
 }
