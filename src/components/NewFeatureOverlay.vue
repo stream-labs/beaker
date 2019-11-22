@@ -41,6 +41,7 @@
       <div class="s-overlay__image-block" :class="overlay__imageBlockMq">
         <img v-if="isImage" :src="overlayImage" class="s-overlay__image" />
         <video
+          :controls="videoControls"
           autoplay
           loop
           v-if="!isImage"
@@ -119,6 +120,9 @@ export default class NewFeatureOverlay extends Vue {
 
   @Prop()
   onAction!: Function;
+
+  @Prop({ default: false })
+  videoControls!: boolean;
 
   isImage: boolean = true;
 
