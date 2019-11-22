@@ -41,7 +41,6 @@
       <div class="s-overlay__image-block" :class="overlay__imageBlockMq">
         <img v-if="isImage" :src="overlayImage" class="s-overlay__image" />
         <video
-          controls="false"
           autoplay
           loop
           v-if="!isImage"
