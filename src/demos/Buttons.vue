@@ -54,13 +54,13 @@ components: {
   &lt;/Button&gt;
 
   &lt;Button
-    :variation=&quot;'prime'&quot; 
+    :variation=&quot;'prime'&quot;
     :title=&quot;'Join Prime'&quot;
     :icon=&quot;'prime'&quot;&gt;
   &lt;/Button&gt;
 
   &lt;Button
-    :variation=&quot;'prime'&quot; 
+    :variation=&quot;'prime'&quot;
     :title=&quot;'Join Prime'&quot;
     :icon=&quot;'prime'&quot;
     :primeBgColor=&quot;'white'&quot;&gt;
@@ -423,16 +423,16 @@ components: {
     :icon=&quot;'image'&quot;&gt;
   &lt;/Button&gt;
 
-  &lt;Button 
-    :size=&quot;'large'&quot; 
-    :variation=&quot;'prime'&quot; 
+  &lt;Button
+    :size=&quot;'large'&quot;
+    :variation=&quot;'prime'&quot;
     :title=&quot;'Join Prime'&quot;
     :icon=&quot;'prime'&quot;&gt;
   &lt;/Button&gt;
 
-  &lt;Button 
-    :size=&quot;'large'&quot; 
-    :variation=&quot;'prime'&quot; 
+  &lt;Button
+    :size=&quot;'large'&quot;
+    :variation=&quot;'prime'&quot;
     :title=&quot;'Join Prime'&quot;
     :icon=&quot;'prime'&quot;
     :primeBgColor=&quot;'white'&quot;&gt;

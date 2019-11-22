@@ -217,6 +217,10 @@ export default class Button extends Vue {
     return s;
   }
 
+  // get _variation() {
+  //   return this.bgColor ? "custom" : this.variation;
+  // }
+
   rippleAnimation() {
     return new Promise(resolve => {
       this.rippleAnimate = true;
@@ -297,8 +301,8 @@ export default class Button extends Vue {
   -ms-user-select: none;
   white-space: nowrap;
   overflow: hidden;
-  .transition();
-  outline: none !important;
+  .transition(background-color);
+  // outline: none !important;
 
   * {
     z-index: 5;
@@ -330,13 +334,14 @@ export default class Button extends Vue {
 
   &:focus,
   &.is-focused {
-    outline: transparent dotted 2px;
+    outline: 2px solid @dark-2;
+    outline-offset: 1px;
   }
 
   &[disabled]:not(.is-loading),
   &.is-disabled {
-    background-color: @day-button!important;
-    color: @light-4!important;
+    background-color: @day-button;
+    color: @light-4;
     cursor: not-allowed;
   }
 
@@ -424,114 +429,43 @@ export default class Button extends Vue {
 }
 
 .s-button--default {
-  background-color: @day-button;
-  color: @day-paragraph;
-
-  &:focus,
-  &.is-focused,
-  &:hover {
-    background-color: darken(@day-button, 4%);
-    color: @day-title;
-  }
+  .btn-variant(@day-button, @day-paragraph);
 }
 
 .s-button--action {
-  background-color: @teal;
-  color: @white;
-
-  &:focus,
-  &.is-focused,
-  &:hover {
-    background-color: darken(@teal, 4%);
-    color: @white;
-  }
+  .btn-variant(@dark-teal);
 }
 
 .s-button--action-alt {
-  background-color: @dark-2;
-
-  &:focus,
-  &.is-focused,
-  &:hover {
-    background-color: darken(@dark-2, 4%);
-  }
+  .btn-variant(@dark-2);
 }
 
 .s-button--twitch {
-  background-color: @twitch;
-  color: @white;
-
-  &:focus,
-  &.is-focused,
-  &:hover {
-    background-color: darken(@twitch, 4%);
-  }
+  .btn-variant(@twitch);
 }
 
 .s-button--youtube {
-  background-color: @youtube;
-  color: @white;
-
-  &:focus,
-  &.is-focused,
-  &:hover {
-    background-color: darken(@youtube, 4%);
-  }
+  .btn-variant(@youtube);
 }
 
 .s-button--mixer {
-  background-color: @mixer;
-  color: @white;
-
-  &:focus,
-  &.is-focused,
-  &:hover {
-    background-color: darken(@mixer, 4%);
-  }
+  .btn-variant(@mixer);
 }
 
 .s-button--facebook {
-  background-color: @facebook;
-  color: @white;
-
-  &:focus,
-  &.is-focused,
-  &:hover {
-    background-color: darken(@facebook, 4%);
-  }
+  .btn-variant(@facebook);
 }
 
 .s-button--periscope {
-  background-color: @periscope;
-  color: @white;
-
-  &:focus,
-  &.is-focused,
-  &:hover {
-    background-color: darken(@periscope, 4%);
-  }
+  .btn-variant(@periscope);
 }
 
 .s-button--picarto {
-  background-color: @picarto;
-  color: @white;
-
-  &:focus,
-  &.is-focused,
-  &:hover {
-    background-color: darken(@picarto, 4%);
-  }
+  .btn-variant(@picarto);
 }
 
 .s-button--warning {
-  color: @warning;
-  background-color: rgba(251, 72, 76, 0.16);
-
-  &:focus,
-  &.is-focused,
-  &:hover {
-    background-color: rgba(251, 72, 76, 0.32);
-  }
+  .btn-variant(@dark-red);
 }
 
 .s-button--slobs-download {
@@ -592,7 +526,7 @@ export default class Button extends Vue {
 
 .s-button--paypal,
 .s-button--paypal-blue {
-  background-color: @paypal-yellow;
+  .btn-variant(@paypal-yellow);
 
   &:before {
     content: "\f1ed";
@@ -600,12 +534,6 @@ export default class Button extends Vue {
     font-family: "Font Awesome 5 Brands";
     font-size: 24px;
     color: @white;
-  }
-
-  &:focus,
-  &.is-focused,
-  &:hover {
-    background-color: darken(@paypal-yellow, 5%);
   }
 
   & > span {
@@ -622,14 +550,7 @@ export default class Button extends Vue {
 }
 
 .s-button--paypal-blue {
-  background-color: @paypal;
-  color: @white;
-
-  &:focus,
-  &.is-focused,
-  &:hover {
-    background-color: darken(@paypal, 4%);
-  }
+  .btn-variant(@paypal);
 }
 
 .s-button--fixed-width {
@@ -637,16 +558,10 @@ export default class Button extends Vue {
 }
 
 .s-button--navigation {
-  background: @day-section;
-  color: @day-title;
+  .btn-variant(@day-section, @day-title);
   height: auto;
   line-height: 22px;
   height: 24px;
-
-  &:hover {
-    background: darken(@day-section, 4%);
-    color: @day-title;
-  }
 
   .icon-back {
     font-size: 12px;
@@ -654,11 +569,7 @@ export default class Button extends Vue {
 }
 
 .s-button--allstars {
-  background-color: @yellow;
-
-  &:hover {
-    background-color: @yellow;
-  }
+  .btn-variant(@yellow);
 }
 
 .s-login-button {
@@ -783,18 +694,12 @@ export default class Button extends Vue {
 
 .s-button--prime,
 .s-button--prime-white {
-  background-color: @prime;
+  .btn-variant(@dark-prime);
   color: @white;
   border-radius: 100px;
   .padding-h-sides(3);
   border: 0;
   font-weight: 900;
-
-  &:focus,
-  &.is-focused,
-  &:hover {
-    background-color: darken(@prime, 4%);
-  }
 
   .icon-prime {
     font-size: 20px;
@@ -803,37 +708,23 @@ export default class Button extends Vue {
     bottom: -4px;
 
     &::before {
-      color: @white;
+      color: fade(@white, 16%);
     }
   }
 }
 
 .s-button--prime-white {
-  background: @white;
-  color: @prime;
-
-  &:focus,
-  &.is-focused,
-  &:hover {
-    background-color: darken(@white, 4%);
-  }
+  .btn-variant(@white, @dark-2, @amount: 8%);
 
   .icon-prime {
     &::before {
-      color: @prime;
+      color: fade(@dark-prime, 32%);
     }
   }
 }
 
 .s-button--prime-simple {
-  background: @prime;
-  color: @white;
-
-  &:focus,
-  &.is-focused,
-  &:hover {
-    background-color: darken(@prime, 4%);
-  }
+  .btn-variant(@dark-prime);
 
   .prime-simple {
     text-transform: none;
@@ -894,62 +785,36 @@ export default class Button extends Vue {
   .s-button {
     &:focus,
     &.is-focused {
-      background: lighten(@night-button, 4%);
+      outline-color: @white;
     }
 
     &[disabled]:not(.is-loading),
     &.is-disabled {
-      background-color: @dark-4!important;
-      color: @dark-5!important;
+      background-color: @dark-4;
+      color: @light-5;
       border-color: @dark-4;
     }
   }
 
   .s-button--default {
-    color: @night-title;
-    background: @night-button;
-
-    &:focus,
-    &.is-focused,
-    &:hover {
-      background: lighten(@night-button, 4%);
-      color: @night-title;
-    }
+    .night-btn-variant(@night-button, @white);
   }
 
   .s-button--action,
   .s-button--slobs-download {
-    color: @night-title;
-
-    &:focus,
-    &.is-focused,
-    &:hover {
-      background: lighten(@teal, 4%);
-      color: @night-title;
-    }
+    .night-btn-variant(@teal);
   }
 
   .s-button--warning {
-    color: @warning;
+    .night-btn-variant(@warning);
+  }
 
-    &:focus,
-    &.is-focused,
-    &:hover {
-      background-color: rgba(251, 72, 76, 0.32);
-      color: @warning;
-    }
+  .s-button--subscribe {
+    .s-button--action;
   }
 
   .s-button--navigation {
-    background: @night-button;
-    color: @night-title;
-
-    &:focus,
-    &.is-focused,
-    &:hover {
-      background: lighten(@night-button, 4%);
-      color: @night-title;
-    }
+    .night-btn-variant(@night-button, @white);
   }
 
   .s-button-group {
@@ -968,99 +833,51 @@ export default class Button extends Vue {
   }
 
   .s-button--twitch {
-    background-color: @twitch;
-    color: @night-title;
-
-    &:focus,
-    &.is-focused,
-    &:hover {
-      background-color: lighten(@twitch, 4%);
-      color: @night-title;
-    }
+    .night-btn-variant(@twitch);
   }
 
   .s-button--youtube {
-    background-color: @youtube;
-    color: @night-title;
-
-    &:focus,
-    &.is-focused,
-    &:hover {
-      background-color: lighten(@youtube, 4%);
-      color: @night-title;
-    }
+    .night-btn-variant(@youtube);
   }
 
   .s-button--mixer {
-    background-color: @mixer;
-    color: @night-title;
-
-    &:focus,
-    &.is-focused,
-    &:hover {
-      background-color: lighten(@mixer, 4%);
-      color: @night-title;
-    }
+    .night-btn-variant(@mixer);
   }
 
   .s-button--fb {
-    background-color: @facebook;
-    color: @night-title;
-
-    &:focus,
-    &.is-focused,
-    &:hover {
-      background-color: lighten(@facebook, 4%);
-      color: @night-title;
-    }
+    .night-btn-variant(@facebook);
   }
 
   .s-button--periscope {
-    background-color: @periscope;
-    color: @night-title;
-
-    &:focus,
-    &.is-focused,
-    &:hover {
-      background-color: lighten(@periscope, 4%);
-      color: @night-title;
-    }
+    .night-btn-variant(@periscope);
   }
 
   .s-button--picarto {
-    background-color: @picarto;
-    color: @night-title;
-
-    &:focus,
-    &.is-focused,
-    &:hover {
-      background-color: lighten(@picarto, 4%);
-      color: @night-title;
-    }
+    .night-btn-variant(@picarto);
   }
 
   .s-button--prime {
-    &:focus,
-    &.is-focused,
-    &:hover {
-      background-color: lighten(@prime, 4%);
+    .night-btn-variant(@prime);
+
+    .icon-prime {
+      &::before {
+        color: fade(@dark-2, 16%);
+      }
     }
   }
 
   .s-button--prime-white {
-    &:focus,
-    &.is-focused,
-    &:hover {
-      background-color: lighten(@white, 4%);
+    .night-btn-variant(@white);
+
+    .icon-prime {
+      &::before {
+        color: fade(@prime, 32%);
+      }
     }
   }
 
   .s-button--prime-simple {
-    &:focus,
-    &.is-focused,
-    &:hover {
-      background-color: lighten(@prime, 4%);
-    }
+    .night-btn-variant(@prime);
   }
 
   .s-button--link {
