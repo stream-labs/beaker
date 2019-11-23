@@ -103,6 +103,17 @@ export default class Badge extends Vue {
 <style lang="less">
 @import (reference) "./../styles/Imports";
 
+.badge-colors(@color, @bg: @color, @amount: 8%, @alt-color: @color) {
+  background-color: fade(@bg, @amount);
+  color: @color;
+
+  &-alt {
+    background-color: transparent;
+    color: @alt-color;
+    .padding-h-sides(@0);
+  }
+}
+
 // Standout labels, used for 'New', 'Beta', 'Pro', etc
 .s-badge {
   display: inline-block;
@@ -131,58 +142,61 @@ export default class Badge extends Vue {
 
   &--new,
   &--success {
-    background-color: @teal-semi;
-    color: @teal;
+    .badge-colors(@dark-teal);
   }
 
-  &--new-alt {
-    background-color: transparent;
-    color: @teal;
-    .padding-h-sides(@0);
-  }
+  // &--new-alt {
+  //   background-color: transparent;
+  //   color: @teal;
+  //   .padding-h-sides(@0);
+  // }
 
   &--tag {
-    background-color: fade(@day-paragraph, 8%);
-    color: @day-paragraph;
+    .badge-colors(@dark-5);
+    // background-color: fade(@day-paragraph, 8%);
+    // color: @day-paragraph;
   }
 
-  &--tag-alt {
-    background-color: transparent;
-    color: @day-paragraph;
-    .padding-h-sides(@0);
-  }
+  // &--tag-alt {
+  //   background-color: transparent;
+  //   color: @day-paragraph;
+  //   .padding-h-sides(@0);
+  // }
 
   &--pro {
-    background-color: @light-5;
+    .badge-colors(@white, @light-5, 100%, @light-5);
+    // background-color: @light-5;
   }
 
-  &--pro-alt {
-    background-color: transparent;
-    color: @light-5;
-    .padding-h-sides(@0);
-  }
+  // &--pro-alt {
+  //   background-color: transparent;
+  //   color: @light-5;
+  //   .padding-h-sides(@0);
+  // }
 
   &--beta {
-    background-color: @yellow-semi;
-    color: @yellow;
+    .badge-colors(@dark-yellow);
+    // background-color: @yellow-semi;
+    // color: @yellow;
   }
 
-  &--beta-alt {
-    background-color: transparent;
-    color: @yellow;
-    .padding-h-sides(@0);
-  }
+  // &--beta-alt {
+  //   background-color: transparent;
+  //   color: @yellow;
+  //   .padding-h-sides(@0);
+  // }
 
   &--warning {
-    background-color: @red-semi;
-    color: @warning;
+    .badge-colors(@dark-red);
+    // background-color: @red-semi;
+    // color: @warning;
   }
 
-  &--warning-alt {
-    background-color: transparent;
-    color: @warning;
-    .padding-h-sides(@0);
-  }
+  // &--warning-alt {
+  //   background-color: transparent;
+  //   color: @warning;
+  //   .padding-h-sides(@0);
+  // }
 
   &--count {
     padding: 1px 4px 0;
