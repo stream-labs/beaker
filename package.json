@@ -1,9 +1,8 @@
 {
   "name": "streamlabs-beaker",
-  "version": "0.10.31",
+  "version": "0.10.32",
   "main": "./dist/beaker.common.js",
   "module": "./dist/beaker.esm.js",
-  "sideEffects": false,
   "license": "MIT",
   "scripts": {
     "build": "rollup --config",
