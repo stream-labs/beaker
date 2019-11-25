@@ -15,6 +15,7 @@ components: {
 <code>&lt;tabs
   :tabs=&quot;tabs&quot;
   :size=&quot;'small'&quot;
+  :update-route=&quot;false&quot;
   :selected=&quot;advanced&quot;&gt;
   &lt;div slot=&quot;general&quot;&gt;general&lt;/div&gt;
   &lt;div slot=&quot;advanced&quot;&gt;advanced&lt;/div&gt;
