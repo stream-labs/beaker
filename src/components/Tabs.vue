@@ -27,10 +27,14 @@
             :style="selectTabSize"
             @click="showTab(tab.value)"
           >
-            <router-link :to="`#/${tab.value}`" class="s-tab-link">
+            <router-link v-if="updateRoute" :to="`#/${tab.value}`" class="s-tab-link">
               <i v-if="tab.icon" :class="`icon-${tab.icon}`"></i>
               {{ tab.name }}
             </router-link>
+            <div v-else class="s-tab-link">
+              <i v-if="tab.icon" :class="`icon-${tab.icon}`"></i>
+              {{ tab.name }}
+            </div>
             <!-- <div>
               {{ tab.name }}
               <span :class="`icon-${tab.icon}`"></span>
@@ -90,6 +94,9 @@ export default class Tabs extends Vue {
 
   @Prop()
   hideContent!: boolean;
+
+  @Prop({ default: true })
+  updateRoute!: boolean;
 
   $refs!: {
     scrollable_tabs: HTMLDivElement;
