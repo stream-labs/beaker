@@ -5,7 +5,7 @@
       :style="{
         'background-image': `linear-gradient(
           to right,
-          ${backgroundColor} ${parseInt((100 * current) / total)}%,
+          ${backgroundColor} ${parseInt((current / total) * 100)}%,
           rgba(0,0,0,0) 0%
         )`,
         color: textColor
@@ -71,7 +71,7 @@ export default class Badge extends Vue {
   get badgeStyles() {
     const styles: any = [];
 
-    if (this.backgroundColor) {
+    if (this.backgroundColor && this.variant !== "progress") {
       styles.push(this.badgeProRewrite);
     }
 
@@ -114,17 +114,22 @@ export default class Badge extends Vue {
   }
 }
 
+.night-badge-colors(@color: @dark-3, @bg, @amount: 100%, @alt-color: @bg) {
+  .badge-colors(@color, @bg, @amount, @alt-color);
+}
+
 // Standout labels, used for 'New', 'Beta', 'Pro', etc
 .s-badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
   margin: 0 0 0 8px;
   padding: 0 5px;
   .radius();
   font-size: 14px;
   .weight(@medium);
   color: @white;
-  vertical-align: text-bottom;
-  line-height: 24px;
+  line-height: 1;
   box-sizing: border-box;
 
   &--left {
@@ -136,83 +141,50 @@ export default class Badge extends Vue {
   }
 
   &--small {
-    line-height: 16px;
+    height: 16px;
     font-size: 12px;
   }
 
-  &--new,
+  &--teal,
   &--success {
     .badge-colors(@dark-teal);
   }
 
-  // &--new-alt {
-  //   background-color: transparent;
-  //   color: @teal;
-  //   .padding-h-sides(@0);
-  // }
-
   &--tag {
     .badge-colors(@dark-5);
-    // background-color: fade(@day-paragraph, 8%);
-    // color: @day-paragraph;
   }
-
-  // &--tag-alt {
-  //   background-color: transparent;
-  //   color: @day-paragraph;
-  //   .padding-h-sides(@0);
-  // }
 
   &--pro {
     .badge-colors(@white, @light-5, 100%, @light-5);
-    // background-color: @light-5;
   }
-
-  // &--pro-alt {
-  //   background-color: transparent;
-  //   color: @light-5;
-  //   .padding-h-sides(@0);
-  // }
 
   &--beta {
     .badge-colors(@dark-yellow);
-    // background-color: @yellow-semi;
-    // color: @yellow;
   }
-
-  // &--beta-alt {
-  //   background-color: transparent;
-  //   color: @yellow;
-  //   .padding-h-sides(@0);
-  // }
 
   &--warning {
     .badge-colors(@dark-red);
-    // background-color: @red-semi;
-    // color: @warning;
   }
 
-  // &--warning-alt {
-  //   background-color: transparent;
-  //   color: @warning;
-  //   .padding-h-sides(@0);
-  // }
+  &--new {
+    .badge-colors(@purple);
+  }
 
   &--count {
-    padding: 1px 4px 0;
-    border-radius: 16px;
-    font-size: 10px;
-    line-height: 14px;
-    .weight(@medium);
-    background-color: @red;
+    height: 13px;
     .margin(0);
+    padding: 0 3.66px;
+    border-radius: 7px;
+    font-size: 10px;
+    .weight(@medium);
+    line-height: 13px;
+    background-color: @dark-red;
   }
 
   &--mod {
-    color: @yellow;
+    color: @dark-yellow;
     background-color: @white;
     .margin-h-sides();
-    vertical-align: middle;
   }
 
   &--progress {
@@ -230,17 +202,19 @@ export default class Badge extends Vue {
   }
 
   &--prime {
-    background-color: @prime;
-    color: @white;
-    .padding-h-sides();
+    .badge-colors(@white, @dark-prime, 100%, @dark-prime);
+    padding: 0 7px;
     border-radius: 50px;
+    font-size: 13px;
     font-weight: 900;
 
     .icon-prime {
+      position: relative;
+      top: 1px;
       display: inline-block;
-      vertical-align: middle;
       margin-right: 4px;
-      font-size: 13px;
+      font-size: 12px;
+      line-height: 0.9;
 
       &::before {
         color: @white;
@@ -249,9 +223,6 @@ export default class Badge extends Vue {
   }
 
   &--prime-alt {
-    background-color: transparent;
-    color: @prime;
-    .padding-h-sides(@0);
     font-weight: 900;
     font-size: inherit;
 
@@ -264,33 +235,51 @@ export default class Badge extends Vue {
 .night,
 .night-theme {
   .s-badge {
-    &--tag {
-      background-color: @dark-5;
-      color: @white;
+    &--teal,
+    &--success {
+      .night-badge-colors(@bg: @teal);
     }
 
     &--beta {
-      background-color: @info;
-      color: @white;
-    }
-
-    &--success,
-    &--new {
-      background-color: @teal;
-      color: @white;
+      .night-badge-colors(@bg: @yellow);
     }
 
     &--warning {
-      background-color: @red;
-      color: @white;
+      .night-badge-colors(@bg: @red);
+    }
+
+    &--tag {
+      .night-badge-colors(@white, @dark-5);
+    }
+
+    &--new {
+      .night-badge-colors(@white, @purple);
+    }
+
+    &--pro {
+      .night-badge-colors(@bg: @light-5);
+    }
+
+    &--count {
+      .night-badge-colors(@bg: @red);
     }
 
     &--mod {
-      background-color: @dark-3;
+      .night-badge-colors(@yellow, @dark-3);
     }
 
     &--progress {
       background-color: @dark-5;
+    }
+
+    &--prime {
+      .night-badge-colors(@bg: @prime);
+
+      .icon-prime {
+        &::before {
+          color: @dark-3;
+        }
+      }
     }
   }
 }
