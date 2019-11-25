@@ -15,6 +15,7 @@ components: {
 <code>&lt;tabs
   :tabs=&quot;tabs&quot;
   :size=&quot;'small'&quot;
+  :update-route=&quot;false&quot;
   :selected=&quot;advanced&quot;&gt;
   &lt;div slot=&quot;general&quot;&gt;general&lt;/div&gt;
   &lt;div slot=&quot;advanced&quot;&gt;advanced&lt;/div&gt;
@@ -34,7 +35,7 @@ components: {
       </div>
     </Accordion>
 
-    <tabs :tabs="tabs" :size="'small'" :selected="'advanced'">
+    <tabs :tabs="tabs" :size="'small'" :update-route="false" :selected="'advanced'">
       <div slot="general">general</div>
       <div slot="advanced">advanced</div>
       <div slot="account">account</div>
@@ -83,6 +84,12 @@ components: {
           <td>string</td>
           <td>null</td>
           <td>default selected tab</td>
+        </tr>
+        <tr>
+          <td>updateRoute</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>Updates current URL with "#/{selected Tab}". Set to false if you don't want to update the URL.</td>
         </tr>
       </tbody>
     </table>
