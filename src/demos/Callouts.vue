@@ -24,26 +24,41 @@ components: {
         and limit the text to 1 line. You can link to more info in a modal or
         another page if needed.
       </p>
-      <callout :variation="'success'">
+      <callout variation="success">
         Success callout.
         <a href="#0">Link</a>
       </callout>
-      <callout :variation="'warning'">
+      <callout variation="warning">
         Warning callout.
         <a href="#0">Link</a>
       </callout>
-      <callout :variation="'info'">
+      <callout variation="info">
         Info callout.
+        <a href="#0">Link</a>
+      </callout>
+
+      <callout variation="success" custom-icon="icon-settings">
+        Custom Icon callout.
         <a href="#0">Link</a>
       </callout>
 
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-          <pre><code>&lt;callout :variation=&quot;'success'&quot;&gt;Success callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;
+          <pre><code>&lt;callout variation=&quot;success&quot;&gt;
+  Success callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;
+&lt;/callout&gt;
 
-&lt;callout :variation=&quot;'warning'&quot; :icon=&quot;'warning'&quot;&gt;Warning callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;
+&lt;callout variation=&quot;warning&quot;&gt;
+  Warning callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;
+&lt;/callout&gt;
 
-&lt;callout :variation=&quot;'info'&quot;&gt;Info callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;</code></pre>
+&lt;callout variation=&quot;info&quot;&gt;
+  Info callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;
+&lt;/callout&gt;
+
+&lt;callout variation=&quot;success&quot; custom-icon=&quot;icon-settings&quot;&gt;
+  Custom Icon callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;
+&lt;/callout&gt;</code></pre>
         </div>
       </accordion>
     </div>
@@ -58,26 +73,29 @@ components: {
       </p>
 
       <p>There are 3 strong callout variations: success, warning, and info.</p>
-      <callout :variation="'success strong'">
-        Success callout.
-        <a href="#0">Link</a>
+      <callout variation="success strong">
+        Success callout. <a href="#0">Link</a>
       </callout>
-      <callout :variation="'warning strong'" :icon="'warning'">
-        Warning callout.
-        <a href="#0">Link</a>
+      <callout variation="warning strong">
+        Warning callout. <a href="#0">Link</a>
       </callout>
-      <callout :variation="'info strong'">
-        Info callout.
-        <a href="#0">Link</a>
+      <callout variation="info strong">
+        Info callout. <a href="#0">Link</a>
       </callout>
 
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-          <pre><code>&lt;callout :variation=&quot;'success strong'&quot;&gt;Success callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;
+          <pre><code>&lt;callout :variation=&quot;'success strong'&quot;&gt;
+  Success callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;
+&lt;/callout&gt;
 
-&lt;callout :variation=&quot;'warning'&quot; :icon=&quot;'warning strong'&quot;&gt;Warning callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;
+&lt;callout :variation=&quot;'warning strong'&quot;&gt;
+  Warning callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;
+&lt;/callout&gt;
 
-&lt;callout :variation=&quot;'info strong'&quot;&gt;Info callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;</code></pre>
+&lt;callout :variation=&quot;'info strong'&quot;&gt;
+  Info callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;
+&lt;/callout&gt;</code></pre>
         </div>
       </accordion>
     </div>
@@ -89,20 +107,20 @@ components: {
       </p>
       <callout
         :variation="'cookies'"
-        :icon="'info'"
         :closeable="true"
         :onClose="cookieCalloutClosed"
       >
-        Cookies callout.
-        <a href="#0">Link</a>
+        Cookies callout. <a href="#0">Link</a>
       </callout>
       <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
-          <pre><code>&lt;callout :variation=&quot;'success'&quot;&gt;Success callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;
-
-&lt;callout :variation=&quot;'warning'&quot; :icon=&quot;'warning'&quot;&gt;Warning callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;
-
-&lt;callout :variation=&quot;'info'&quot;&gt;Info callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;</code></pre>
+          <pre><code>&lt;callout
+  variation=&quot;cookies&quot;
+  :closeable=&quot;true&quot;
+  :onClose=&quot;cookieCalloutClosed&quot;
+&gt;
+  Cookies callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;
+&lt;/callout&gt;</code></pre>
         </div>
       </accordion>
     </div>
@@ -123,41 +141,9 @@ components: {
         </callout>
         <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
           <div slot="content">
-            <pre><code>&lt;callout :variation=&quot;'success'&quot; :closeable=&quot;true&quot;&gt;Success-alt callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;</code></pre>
-          </div>
-        </accordion>
-      </div>
-      <div class="section">
-        <h3>With Icon</h3>
-        <p>
-          You can use the
-          <code>icon</code> prop to set it to 'success', 'warning', or 'info'
-          for most common cases. If you need a different icon you can simply use
-          it inline.
-        </p>
-        <callout :icon="'success'" :variation="'success'" :closeable="true">
-          Success callout.
-          <a href="#0">Link</a>
-        </callout>
-
-        <callout :icon="'warning'" :variation="'warning'" :closeable="true">
-          Warning callout.
-          <a href="#0">Link</a>
-        </callout>
-
-        <callout :icon="'info'" :variation="'info'" :closeable="true">
-          Info callout.
-          <a href="#0">Link</a>
-        </callout>
-
-        <callout :variation="'info'" :closeable="true">
-          <i class="icon-settings"></i> Settings have moved. Visit them
-          <a href="#0">here</a>.
-        </callout>
-
-        <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-          <div slot="content">
-            <pre><code>&lt;callout :variation=&quot;'success'&quot; :closeable=&quot;true&quot;&gt;Success-alt callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;&lt;/callout&gt;</code></pre>
+            <pre><code>&lt;callout :variation=&quot;'success'&quot; :closeable=&quot;true&quot;&gt;
+  Success-alt callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;
+&lt;/callout&gt;</code></pre>
           </div>
         </accordion>
       </div>
@@ -192,12 +178,10 @@ components: {
           </tr>
           <tr>
             <td>icon</td>
-            <td>string</td>
-            <td>-</td>
+            <td>boolean</td>
+            <td>true</td>
             <td>
-              Use
-              <code>'success'</code>, <code>'warning'</code> or
-              <code>'info'</code>.
+              Set to false if you don't want an icon before the callout content.
             </td>
           </tr>
           <tr>

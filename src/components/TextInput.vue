@@ -215,7 +215,13 @@ export default class TextInput extends Vue {
   position: relative;
 
   &--disabled {
+    user-select: none;
     cursor: not-allowed;
+
+    & + label {
+      border-color: @light-3;
+      background-color: @light-3;
+    }
   }
 
   .s-form-field__input {
@@ -233,15 +239,21 @@ export default class TextInput extends Vue {
     }
 
     &--error {
+      border-color: @dark-red;
+
       &:focus {
         border-color: @dark-red;
+      }
+
+      &:hover {
+        border-color: mix(@dark-2, @dark-red, 24%);
       }
     }
 
     &--disabled {
-      &:hover {
-        border-color: @light-3;
+      & + label {
         background-color: @light-3;
+        color: @light-5;
       }
     }
   }
@@ -335,24 +347,6 @@ export default class TextInput extends Vue {
     line-height: 130%;
   }
 
-  .s-form-field__input {
-    &--disabled {
-      // pointer-events: none;
-      // cursor: not-allowed;
-
-      & + label,
-      &:focus,
-      &:focus + label {
-        border-color: @light-3;
-        background-color: @light-3;
-
-        // & + label {
-        //   background-color: @light-3;
-        // }
-      }
-    }
-  }
-
   .s-form-field__input:focus + label,
   .s-form-field__label--top {
     transform: translateY(-20px);
@@ -418,13 +412,22 @@ export default class TextInput extends Vue {
       &--error {
         border-color: @red;
 
-        &:focus,
-        &:active {
+        &:focus {
           border-color: @red;
+
+          & + .s-form-field__label {
+            color: @red;
+          }
         }
 
-        &:focus + .s-form-field__label {
-          color: @red;
+        &:hover {
+          border-color: mix(@white, @red, 12%);
+        }
+      }
+
+      &--disabled {
+        & + label {
+          background-color: @dark-4;
         }
       }
     }
