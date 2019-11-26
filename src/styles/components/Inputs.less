@@ -27,6 +27,18 @@ select {
     outline: none;
   }
 
+  &[disabled] {
+    display: block;
+    border-color: @light-3;
+    background-color: @light-3;
+    pointer-events: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    // cursor: not-allowed;
+  }
+
   ::placeholder,
   ::-webkit-input-placeholder,
   :-ms-input-placeholder {

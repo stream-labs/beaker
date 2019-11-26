@@ -70,7 +70,9 @@ components: {
         <Badge variant="tag" :align-left="true">Tag</Badge>
         <Badge variant="pro" :align-left="true">Pro</Badge>
         <Badge variant="prime" :align-left="true"></Badge>
-        <Badge :align-left="true" backgroundColor='pink' textColor='#ffffff'>Custom</Badge>
+        <Badge :align-left="true" backgroundColor="pink" textColor="#ffffff"
+          >Custom</Badge
+        >
       </div>
 
       <div class="section">
@@ -160,9 +162,13 @@ components: {
 &gt;Pro&lt;/Badge&gt;</code></pre>
           </div>
         </Accordion>
-        <Badge :small="true" variant="success" :align-left="true">Success</Badge>
+        <Badge :small="true" variant="success" :align-left="true"
+          >Success</Badge
+        >
         <Badge :small="true" variant="beta" :align-left="true">Beta</Badge>
-        <Badge :small="true" variant="warning" :align-left="true">Warning</Badge>
+        <Badge :small="true" variant="warning" :align-left="true"
+          >Warning</Badge
+        >
         <Badge :small="true" variant="tag" :align-left="true">Tag</Badge>
         <Badge :small="true" variant="pro" :align-left="true">Pro</Badge>
       </div>
