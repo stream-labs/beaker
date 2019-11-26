@@ -62,6 +62,16 @@
           :error="'Hello, I am an error message'"
         ></text-input>
 
+        <text-input
+          label="Disabled Input"
+          type="text"
+          :placeholder="textInputPlaceholder"
+          value="Some input text"
+          name="disabledExample"
+          :disabled="true"
+          slot="input"
+        ></text-input>
+
         <text-area
           name="myarea"
           v-model="textAreaInputValue"
