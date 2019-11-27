@@ -19,15 +19,11 @@
           >.
         </p>
       </div>
-      <pre>
-          <code>
-import { Slider } from 'streamlabs-beaker';
+      <pre><code>import { Slider } from 'streamlabs-beaker';
 
 components: {
   Slider
-}
-          </code>
-        </pre>
+}</code></pre>
     </div>
 
     <!-- Custom Data -->
@@ -36,9 +32,7 @@ components: {
         <h2>With custom data</h2>
         <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
           <div slot="content">
-            <pre>
-              <code>
-&lt;slider
+            <pre><code>&lt;slider
   :value=&quot;value&quot;
   @input=&quot;value =&gt; updateValue(value)&quot;
   :max=&quot;100&quot;
@@ -46,9 +40,7 @@ components: {
   :interval=&quot;1&quot;
   :tooltip=&quot;'always'&quot;
   :suffix=&quot;'%'&quot;
-/&gt;
-              </code>
-            </pre>
+/&gt;</code></pre>
           </div>
         </accordion>
       </div>
