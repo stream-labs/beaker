@@ -1,21 +1,16 @@
 <template>
-  <div class="s-notice" :class="`s-bg-${bgColor}`">
+  <div class="s-notice" :class="`s-notice--${iconType}`">
     <div class="s-notice__wrapper">
-      <i
-        class="s-notice__icon-bg"
-        :class="`s-notice__icon-${icon} icon-${icon}`"
-      ></i>
+      <i class="s-notice__icon-bg" :class="[iconClass]"></i>
+
       <div class="s-notice__body">
-        <div class="s-notice__icon">
-          <i class="s-icon" :class="`s-notice__icon-${icon} icon-${icon}`"></i>
-        </div>
+        <i class="s-notice__icon" :class="[iconClass]"></i>
         <div class="s-notice__detail">
-          <h2 class="s-notice__title" :class="`s-notice__title--${titleColor}`">
-            {{ title }}
-          </h2>
+          <h2 class="s-notice__title">{{ title }}</h2>
           <p class="s-notice__desc">{{ desc }}</p>
         </div>
       </div>
+
       <div class="s-notice__button">
         <slot name="button"></slot>
       </div>
@@ -28,129 +23,123 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Notice extends Vue {
-  @Prop({ default: "default" })
-  bgColor!: {
-    type: string;
-    required: true;
-  };
+  @Prop({
+    default: "default",
+    required: true
+  })
+  variation!: string;
 
-  @Prop()
-  bgIcon!: {
-    type: string;
-    required: true;
-  };
+  @Prop({ required: true })
+  title!: string;
 
-  @Prop()
-  title!: {
-    type: string;
-    required: true;
-  };
+  @Prop({ required: true })
+  desc!: string;
 
-  @Prop()
-  titleColor!: {
-    type: string;
-    required: true;
-  };
+  @Prop({ required: true })
+  icon!: string;
 
-  @Prop()
-  desc!: {
-    type: string;
-    required: true;
-  };
+  get iconType() {
+    switch (this.variation) {
+      case "default":
+        return "information";
+      case "warning":
+        return "error";
+    }
+  }
 
-  @Prop()
-  icon!: {
-    type: string;
-    required: true;
-  };
+  get iconClass() {
+    const iconSrc = this.icon ? this.icon : this.iconType;
+    return `icon-${iconSrc}`;
+  }
 }
 </script>
 
 <style lang="less">
 @import (reference) "./../styles/Imports";
+.notice-colors(@color, @amount: 8%, @textColor: @color) {
+  .s-notice {
+    &__wrapper {
+      background-color: fade(@color, @amount);
+    }
 
-.s-notice {
-  overflow: hidden;
-}
+    &__icon-bg,
+    &__icon {
+      color: @color;
+    }
 
-.s-notice__wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  .padding(3);
-  .max-width();
-  position: relative;
-}
-
-.s-notice__icon-bg {
-  position: absolute;
-  left: 0;
-  width: 140px;
-  height: 140px;
-  font-size: 140px;
-  opacity: 0.08;
-}
-
-.s-notice__body {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  position: relative;
-}
-
-.s-notice__detail {
-  .padding-h-sides(2);
-  .s-notice__title--warning {
-    color: @warning;
+    &__title {
+      color: @textColor;
+    }
   }
 }
 
-p {
-  .margin-bottom(0);
-  .margin-top(2);
-}
+.s-notice {
+  overflow: hidden;
 
-.s-notice__desc {
-  .margin-bottom(0);
-}
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .padding(3);
+    .max-width();
+    position: relative;
+  }
 
-.s-bg-default {
-  background: @light-2;
-}
+  &__icon-bg {
+    position: absolute;
+    left: -22px;
+    width: 140px;
+    height: 140px;
+    font-size: 140px;
+    opacity: 0.08;
+  }
 
-.s-bg-warning {
-  background: @notice-bg-warning;
-}
+  &__body {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+  }
 
-.s-bg-image__default,
-.s-bg-image__warning {
-  opacity: 0.04;
-}
+  &__title {
+    .margin-bottom(1.5);
+  }
 
-.s-bg-image__default {
-  background: url("../assets/imgs/information-icon.svg") no-repeat;
-  background-position: center left;
-  background-size: contain;
-}
+  &__icon {
+    .margin-right(1.5);
+  }
 
-.s-bg-image__warning {
-  background: url("../assets/imgs/error-icon.svg") no-repeat;
-  background-position: center left;
-  background-size: contain;
-}
+  &__desc {
+    .margin-bottom(0);
+  }
 
-.s-notice__icon-information {
-  color: @light-5;
-}
+  &--default {
+    .notice-colors(@light-5, @textColor: @dark-2);
 
-.s-notice__icon-error {
-  color: @warning;
+    .s-notice__icon {
+      margin-top: 2px;
+    }
+  }
+
+  &--error {
+    .notice-colors(@dark-red);
+
+    .s-notice__body {
+      align-items: center;
+    }
+  }
 }
 
 .night,
 .night-theme {
-  .s-bg-default {
-    background: @dark-4;
+  .s-notice {
+    &--default {
+      .notice-colors(@light-5, 17%, @white);
+    }
+
+    &--error {
+      .notice-colors(@red);
+    }
   }
 }
 </style>

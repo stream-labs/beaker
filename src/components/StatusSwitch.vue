@@ -82,7 +82,7 @@ export default class StatusSwitch extends Vue {
       color: @day-title;
     }
     .s-status-switch__paddle {
-      background: @teal;
+      background: @dark-teal;
 
       &:before {
         transform: translateX(100%);

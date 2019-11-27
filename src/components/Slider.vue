@@ -144,7 +144,7 @@ export default class Slider extends Vue {
   }
 
   .vue-slider-process {
-    background-color: @teal;
+    background-color: @dark-teal;
   }
 
   .vue-slider-dot {
@@ -207,6 +207,10 @@ export default class Slider extends Vue {
   .s-slider {
     .vue-slider {
       background-color: @dark-4;
+    }
+
+    .vue-slider-process {
+      background-color: @teal;
     }
 
     .vue-slider-dot {

@@ -282,58 +282,62 @@
           <div slot="content">
             <pre>
 <code>&lt;notice
-  :bgColor=&quot;'default'&quot;
-  :title=&quot;'Join affiliates and earn $1 for each Streamlabs OBS referral'&quot;
-  :desc=&quot;'Share your unique referral link with friends and get paid directly into your PayPal each month.'&quot;
-  :icon=&quot;'information'&quot;&gt;
+  title=&quot;Join affiliates and earn $1 for each Streamlabs OBS referral&quot;
+  desc=&quot;Share your unique referral link with friends and get paid directly into your PayPal each month.&quot;
   &lt;Button
     slot=&quot;button&quot;
-    :type=&quot;'button'&quot;
-    :size=&quot;'fixed-width'&quot;
-    :variation=&quot;'action'&quot;
-    :title=&quot;'Join'&quot;&gt;
-  &lt;/Button&gt;
+    type=&quot;button&quot;
+    size=&quot;fixed-width&quot;
+    variation=&quot;action&quot;
+    title=&quot;Join&quot;
+  &gt;&lt;/Button&gt;
+&lt;/notice&gt;
+
+&lt;notice
+  variation=&quot;warning&quot;
+  title=&quot;Your donation link has expired&quot;
+  desc=&quot;Copy your new donation link and replace all instances containing twitchalerts.com.&quot;
+  &lt;Button
+    slot=&quot;button&quot;
+    type=&quot;button&quot;
+    size=&quot;fixed-width&quot;
+    variation=&quot;default&quot;
+    title=&quot;Copy Link&quot;
+  &gt;&lt;/Button&gt;
 &lt;/notice&gt;</code></pre>
           </div>
         </Accordion>
 
-        <notice
-          :title="
-            'Join affiliates and earn $1 for each Streamlabs OBS referral'
-          "
-          :desc="
-            'Share your unique referral link with friends and get paid directly into your PayPal each month.'
-          "
-          :icon="'information'"
-        >
-          <Button
-            slot="button"
-            :type="'button'"
-            :size="'fixed-width'"
-            :variation="'action'"
-            :title="'Join'"
-          ></Button>
-        </notice>
-        <br />
-        <br />
+        <div class="section">
+          <notice
+            title="Join affiliates and earn $1 for each Streamlabs OBS referral"
+            desc="Share your unique referral link with friends and get paid directly into your PayPal each month."
+          >
+            <Button
+              slot="button"
+              type="button"
+              size="fixed-width"
+              variation="action"
+              title="Join"
+            ></Button>
+          </notice>
+          <br />
+          <br />
 
-        <notice
-          :bgColor="'warning'"
-          :title="'Your donation link has expired'"
-          :titleColor="'warning'"
-          :desc="
-            'Copy your new donation link and replace all instances containing twitchalerts.com.'
-          "
-          :icon="'error'"
-        >
-          <Button
-            slot="button"
-            :type="'button'"
-            :size="'fixed-width'"
-            :variation="'default'"
-            :title="'Copy Link'"
-          ></Button>
-        </notice>
+          <notice
+            variation="warning"
+            title="Your donation link has expired"
+            desc="Copy your new donation link and replace all instances containing twitchalerts.com."
+          >
+            <Button
+              slot="button"
+              type="button"
+              size="fixed-width"
+              variation="default"
+              title="Copy Link"
+            ></Button>
+          </notice>
+        </div>
 
         <table class="docs-table">
           <thead>
@@ -347,13 +351,13 @@
           </thead>
           <tbody>
             <tr>
-              <td>bgColor</td>
+              <td>variation</td>
               <td>string</td>
               <td>true</td>
               <td>default</td>
               <td>
-                Background color that will display. Options are "default" and
-                "warning". if default It's already set as default props.
+                Variation style that will be displayed. Options are "default"
+                and "warning".
               </td>
             </tr>
             <tr>
@@ -362,13 +366,6 @@
               <td>true</td>
               <td>null</td>
               <td>Banner title</td>
-            </tr>
-            <tr>
-              <td>titleColor</td>
-              <td>string</td>
-              <td>true</td>
-              <td>null</td>
-              <td>Banner title color</td>
             </tr>
             <tr>
               <td>desc</td>
@@ -382,7 +379,10 @@
               <td>string</td>
               <td>true</td>
               <td>null</td>
-              <td>Icon next to title. Use icon name from icon list.</td>
+              <td>
+                Icon next to title and in background. Will override selected
+                variation icon. Use icon name from icon list.
+              </td>
             </tr>
           </tbody>
         </table>
