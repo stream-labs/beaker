@@ -328,6 +328,7 @@ export default class SiteSearch extends Vue {
   }
 
   &.s-sitesearch--phase-one {
+    border: 2px solid @dark-2;
     background-color: @day-bg;
   }
 
@@ -495,6 +496,7 @@ export default class SiteSearch extends Vue {
     border: 1px solid @night-input-border;
 
     &.s-sitesearch--phase-one {
+      border-color: @white;
       background-color: @night-bg;
     }
 

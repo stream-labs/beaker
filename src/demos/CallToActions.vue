@@ -22,7 +22,7 @@ components: {
 &lt;/call-to-action&gt;</code></pre>
         </div>
       </accordion>
-      <div class="row">
+      <div class="section">
         <call-to-action :buttonClick="test" />
       </div>
       <h2>Custom Call to Action</h2>
@@ -48,7 +48,7 @@ components: {
 &lt;/call-to-action&gt;</code></pre>
         </div>
       </accordion>
-      <div class="row">
+      <div class="section">
         <call-to-action
           :bgColor="'#31c3a2'"
           :titleColor="'#fff'"
@@ -69,7 +69,7 @@ components: {
         ></call-to-action>
       </div>
 
-      <div class="row">
+      <div class="section">
         <call-to-action
           :bgColor="'#31c3a2'"
           :titleColor="'#fff'"
@@ -86,7 +86,7 @@ components: {
         </call-to-action>
       </div>
 
-      <div class="row">
+      <div class="section">
         <call-to-action
           :bgColor="'#CAA368'"
           :titleColor="'#fff'"
