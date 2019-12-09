@@ -476,7 +476,7 @@ export default class Button extends Vue {
   .line-height();
   border-radius: 100px;
   font-size: 16px;
-  height: 72px;
+  height: 80px;
   .s-button--action;
 
   > span {
