@@ -185,7 +185,16 @@ export default class TextArea extends Vue {
   margin: 0;
 }
 .s-form-area__input--error {
-  border-color: @red;
+  border-color: @dark-red;
+
+  &:focus,
+  &:active {
+    border-color: @dark-red;
+  }
+
+  // &:focus + .s-form-area__label {
+  //   color: @red;
+  // }
 }
 
 .s-form-area__input--count {
@@ -202,7 +211,7 @@ export default class TextArea extends Vue {
 
 .s-form-area__label--error,
 .s-form-area__error-text {
-  color: @red;
+  color: @dark-red;
 }
 
 .s-form-area__error-text,
@@ -246,6 +255,7 @@ export default class TextArea extends Vue {
   .s-form-area__label--top {
     transform: translateY(-20px);
     font-size: 12px;
+    font-weight: 500;
   }
 
   .s-form-area__input:focus + label {
@@ -253,7 +263,7 @@ export default class TextArea extends Vue {
   }
 
   .s-form-area__input:focus + .s-form-area__label--error {
-    color: green;
+    color: @dark-red;
   }
 
   .s-form-area--top {
@@ -289,6 +299,10 @@ export default class TextArea extends Vue {
 
     .s-form-area__input:focus + label {
       color: @night-title;
+    }
+
+    .s-form-area__input:focus + .s-form-area__label--error {
+      color: @red;
     }
   }
 
