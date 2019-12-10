@@ -59,7 +59,7 @@
           v-model="errorTextInputValue"
           name="textExample"
           slot="input"
-          :error="'Hello, I am an error message'"
+          error="Hello, I am an error message"
         ></text-input>
 
         <text-input
@@ -80,6 +80,7 @@
           placeholder="This is where you put some cool stuff"
           :maxLength="1000"
           :maxHeight="100"
+          error="Hello, I am an error message"
           slot="input"
         ></text-area>
       </FormGroup>

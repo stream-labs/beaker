@@ -98,7 +98,9 @@ export default {
   }
 
   .multiselect:focus {
-    outline: none;
+    // outline: none;
+    outline: 2px solid @dark-2;
+    outline-offset: 1px;
   }
 
   .multiselect--disabled {
@@ -169,7 +171,9 @@ export default {
   .multiselect__input:focus,
   .multiselect__single:focus {
     border-color: #a8a8a8;
-    outline: none;
+    // outline: none;
+    // outline: 2px solid @dark-2;
+    // outline-offset: 1px;
   }
 
   .multiselect__single {
@@ -392,7 +396,7 @@ export default {
   }
 
   .multiselect__option--highlight {
-    outline: none;
+    // outline: none;
     background: linear-gradient(
         0deg,
         rgba(9, 22, 29, 0.08),
