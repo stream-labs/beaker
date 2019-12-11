@@ -35,7 +35,9 @@
     </div>
 
     <transition name="fadeX-from-left">
-      <p v-show="error" class="s-form-area__error-text">{{ error }}</p>
+      <p v-show="error" class="s-form-area__error-text">
+        {{ error }}<i class="icon-error"></i>
+      </p>
     </transition>
 
     <p v-show="helpText" class="s-form-area__help-text">{{ helpText }}</p>
@@ -149,7 +151,7 @@ export default class TextArea extends Vue {
   }
 
   .s-form-area__input {
-    .area-padding();
+    // .area-padding();
     resize: vertical;
   }
 
@@ -169,11 +171,11 @@ export default class TextArea extends Vue {
   }
 
   .s-form-area__input::-webkit-scrollbar-thumb {
+    height: 10px;
+    border: 4px solid rgba(0, 0, 0, 0.04);
     border-radius: 10px;
     -webkit-border-radius: 10px;
-    height: 10px;
     background-color: @dark-5;
-    border: 4px solid rgba(0, 0, 0, 0.04);
     background-clip: padding-box;
     -webkit-box-shadow: inset -1px -1px 0px @dark-5, inset 1px 1px 0px @dark-5;
     box-shadow: inset -1px -1px 0px @dark-5, inset 1px 1px 0px @dark-5;
@@ -198,7 +200,7 @@ export default class TextArea extends Vue {
 }
 
 .s-form-area__input--count {
-  .padding-bottom(4) !important;
+  .padding-bottom(4);
 }
 
 .s-form-area__label {
@@ -214,7 +216,18 @@ export default class TextArea extends Vue {
   color: @dark-red;
 }
 
-.s-form-area__error-text,
+.s-form-area__error-text {
+  position: absolute;
+  bottom: 0;
+  right: 12px;
+  display: flex;
+  align-items: center;
+
+  .icon-error {
+    .margin-left();
+  }
+}
+
 .s-form-area__help-text {
   .small-type();
   .margin-bottom(0);
@@ -226,7 +239,7 @@ export default class TextArea extends Vue {
 
   label {
     order: -1;
-    transition: all 0.275s ease-in-out;
+    .transition();
     transform: translateY(0px);
     pointer-events: none;
     background-color: @white;
