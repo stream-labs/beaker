@@ -139,10 +139,10 @@ input[readonly] {
 }
 
 input[type='file'] {
-  width: auto;
   display: inline-block;
-  vertical-align: middle;
+  width: auto;
   margin-bottom: 0;
+  vertical-align: middle;
 
   &.file-input--wide {
     width: 100%;
@@ -158,26 +158,25 @@ input[type='file'] {
 }
 
 textarea {
-  .radius();
-  box-shadow: none;
-  border: 1px solid @day-input-border;
-  box-shadow: none;
-  background: @day-input-bg;
-  margin-bottom: 0px;
-  vertical-align: middle;
-  color: @day-title;
   width: 100%;
-  resize: vertical;
-  .padding(2);
+  margin-bottom: 0px;
+  .padding(1.5);
+  border: 1px solid @day-input-border;
+  .radius();
   font-family: 'Roboto';
   font-size: 14px;
+  background: @day-input-bg;
+  color: @day-title;
+  box-shadow: none;
+  vertical-align: middle;
+  resize: vertical;
   transition: all 0.275s ease-in-out;
 
   &:active,
   &:focus {
     border: 2px solid @dark-2;
-    box-shadow: none;
     background-color: @day-input-bg;
+    box-shadow: none;
     outline: none;
   }
 }
