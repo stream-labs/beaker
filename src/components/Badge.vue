@@ -108,9 +108,10 @@ export default class Badge extends Vue {
   color: @color;
 
   &-alt {
+    height: 14px;
+    .padding-h-sides(@0);
     background-color: transparent;
     color: @alt-color;
-    .padding-h-sides(@0);
   }
 }
 

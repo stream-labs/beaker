@@ -278,7 +278,7 @@ components: {
       ></selector>
       <br />
       <selector
-        v-model="groupSelected"
+        v-model="selectedGroup"
         :options="optionGroups"
         group-values="items"
         group-label="group"
