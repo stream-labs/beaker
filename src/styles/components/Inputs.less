@@ -1,11 +1,11 @@
 // Inputs
 
-input[type='text'],
-input[type='password'],
-input[type='number'],
-input[type='email'],
-input[type='url'],
-input[type='search'],
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
 select {
   .radius();
   border: 1px solid @day-input-border;
@@ -14,10 +14,10 @@ select {
   font-size: 14px;
   .padding--input();
   background: @day-input-bg;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   color: @day-title;
   width: 100%;
-  transition: all 0.275s ease-in-out;
+  transition: all 0.275s ease-out;
 
   &:active,
   &:focus {
@@ -138,7 +138,7 @@ input[readonly] {
   }
 }
 
-input[type='file'] {
+input[type="file"] {
   display: inline-block;
   width: auto;
   margin-bottom: 0;
@@ -163,7 +163,7 @@ textarea {
   .padding(1.5);
   border: 1px solid @day-input-border;
   .radius();
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-size: 14px;
   background: @day-input-bg;
   color: @day-title;
@@ -195,12 +195,12 @@ textarea {
 
 .night,
 .night-theme {
-  input[type='email'],
-  input[type='number'],
-  input[type='password'],
-  input[type='text'],
-  input[type='url'],
-  input[type='search'],
+  input[type="email"],
+  input[type="number"],
+  input[type="password"],
+  input[type="text"],
+  input[type="url"],
+  input[type="search"],
   select,
   textarea {
     border-color: @night-input-border;

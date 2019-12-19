@@ -502,6 +502,10 @@ export default {
 .night,
 .night-theme {
   .s-selector {
+    .multiselect:focus {
+      outline-color: @white;
+    }
+
     .multiselect__tags {
       background: @night-dropdown-bg;
       border: @night-dropdown-border;
