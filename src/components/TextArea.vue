@@ -219,6 +219,10 @@ export default class TextArea extends Vue {
       color: transparent;
     }
 
+    &:hover {
+      border-color: @light-5;
+    }
+
     &:focus {
       & + .s-form-area__label {
         color: @day-title;
@@ -240,6 +244,10 @@ export default class TextArea extends Vue {
     &--error {
       border-color: @dark-red;
       color: @dark-red;
+
+      &:hover {
+        border-color: mix(@dark-2, @dark-red, 24%);
+      }
 
       &:focus,
       &:active {
@@ -332,6 +340,10 @@ export default class TextArea extends Vue {
 
       &--error {
         border-color: @red;
+
+        &:hover {
+          border-color: mix(@white, @red, 12%);
+        }
 
         &:focus,
         &:active {
