@@ -241,12 +241,12 @@ export default class TextInput extends Vue {
     &--error {
       border-color: @dark-red;
 
-      &:focus {
-        border-color: @dark-red;
-      }
-
       &:hover {
         border-color: mix(@dark-2, @dark-red, 24%);
+      }
+
+      &:focus {
+        border-color: @dark-red;
       }
     }
 

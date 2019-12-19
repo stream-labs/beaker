@@ -80,7 +80,6 @@
           placeholder="This is where you put some cool stuff"
           :maxLength="1000"
           :maxHeight="100"
-          error="Hello, I am an error message"
           slot="input"
         ></text-area>
       </FormGroup>
