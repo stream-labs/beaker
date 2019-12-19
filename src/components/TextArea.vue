@@ -163,6 +163,58 @@ export default class TextArea extends Vue {
 @import (reference) "./../styles/Imports";
 
 .s-form-area {
+  &--with-label {
+    .s-form-area__input {
+      &:focus {
+        &::placeholder {
+          transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          color: @light-5;
+        }
+
+        &::-webkit-input-placeholder {
+          /* Chrome/Opera/Safari */
+          transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          color: @light-5;
+        }
+
+        &::-moz-placeholder {
+          /* Firefox 19+ */
+          transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          color: @light-5;
+        }
+
+        &:-ms-input-placeholder {
+          /* IE 10+ */
+          transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          color: @light-5;
+        }
+      }
+
+      &::placeholder {
+        transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        color: transparent;
+      }
+
+      &::-webkit-input-placeholder {
+        /* Chrome/Opera/Safari */
+        transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        color: transparent;
+      }
+
+      &::-moz-placeholder {
+        /* Firefox 19+ */
+        transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        color: transparent;
+      }
+
+      &:-ms-input-placeholder {
+        /* IE 10+ */
+        transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        color: transparent;
+      }
+    }
+  }
+
   &__container {
     position: relative;
   }
@@ -194,29 +246,6 @@ export default class TextArea extends Vue {
       background-clip: padding-box;
       -webkit-box-shadow: inset -1px -1px 0px @dark-5, inset 1px 1px 0px @dark-5;
       box-shadow: inset -1px -1px 0px @dark-5, inset 1px 1px 0px @dark-5;
-    }
-
-    &::placeholder {
-      transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      color: transparent;
-    }
-
-    &::-webkit-input-placeholder {
-      /* Chrome/Opera/Safari */
-      transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      color: transparent;
-    }
-
-    &::-moz-placeholder {
-      /* Firefox 19+ */
-      transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      color: transparent;
-    }
-
-    &:-ms-input-placeholder {
-      /* IE 10+ */
-      transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      color: transparent;
     }
 
     &:hover {
