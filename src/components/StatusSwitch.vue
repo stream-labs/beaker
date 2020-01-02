@@ -3,6 +3,9 @@
     class="s-status-switch"
     :class="{ enabled: !!value }"
     @click="$emit('input', !value)"
+    tabindex="0"
+    @keyup.space="$emit('input', !value)"
+    @keyup.enter="$emit('input', !value)"
   >
     <div
       class="s-status-switch__paddle"
@@ -36,6 +39,11 @@ export default class StatusSwitch extends Vue {
   user-select: none;
   display: inline-flex;
   align-items: center;
+
+  &:focus {
+    outline: 2px solid @dark-2;
+    outline-offset: 1.5px;
+  }
 
   label {
     .margin-left(1);
@@ -93,6 +101,10 @@ export default class StatusSwitch extends Vue {
 
 .night {
   .s-status-switch {
+    &:focus {
+      outline-color: @white;
+    }
+
     label {
       color: @night-paragraph;
     }

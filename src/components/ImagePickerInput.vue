@@ -10,6 +10,12 @@
       :class="[value === option.value ? 'active' : '']"
       :style="{ width: width, height: height }"
       @click="emitInput(option.value)"
+      @keydown.up.prevent="setValueByKeyPress('UP')"
+      @keydown.down.prevent="setValueByKeyPress('DOWN')"
+      @keydown.left.prevent="setValueByKeyPress('LEFT')"
+      @keydown.right.prevent="setValueByKeyPress('RIGHT')"
+      :tabindex="value === option.value ? '0' : '-1'"
+      ref="imagePickerItem"
     >
       <img :src="option.image" />
     </div>
@@ -18,6 +24,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
+import ResizeObserver from "resize-observer-polyfill";
 
 interface IOption {
   value: string;
@@ -27,6 +34,10 @@ interface IOption {
 
 @Component({})
 export default class ImagePickerInput extends Vue {
+  $refs!: {
+    imagePickerItem: HTMLDivElement;
+  };
+
   @Prop({ default: "above" })
   value!: string;
 
@@ -57,8 +68,136 @@ export default class ImagePickerInput extends Vue {
   })
   options!: Array<IOption>;
 
+  containerWidth: number = 0;
+
+  get selectedItemIndex(): number {
+    return this.options.findIndex(option => option.value === this.value);
+  }
+
+  get totalRows(): number {
+    const items = this.options.length;
+    const itemsWidth = (parseInt(this.width, 10) || 64) + 8;
+    const total = items * itemsWidth;
+    return Math.ceil(total / this.containerWidth);
+  }
+
+  get itemsPerRow(): number {
+    const itemsWidth = (parseInt(this.width, 10) || 64) + 8;
+    return Math.floor(this.containerWidth / itemsWidth);
+  }
+
+  get itemsInFinalRow(): number {
+    return this.options.length % this.itemsPerRow;
+  }
+
+  get itemPosMatrix(): Array<number[]> {
+    let itemMap: Array<number[]> = [];
+    let currentRow = 1;
+    let currentColumn = 1;
+    let totalItems = this.options.length;
+    let count = 0;
+
+    while (count < totalItems) {
+      itemMap.push([currentRow, currentColumn]);
+      currentColumn++;
+
+      if (currentColumn > this.itemsPerRow) {
+        currentColumn = 1;
+        currentRow++;
+      }
+
+      count++;
+    }
+
+    return itemMap;
+  }
+
+  mounted() {
+    this.$nextTick(() => {
+      const imagePickerInput = document.querySelector(
+        ".s-image-picker-input"
+      ) as Element;
+
+      const ro = new ResizeObserver((entries, observer) => {
+        for (const entry of entries) {
+          const { left, top, width, height } = entry.contentRect;
+          this.containerWidth = width;
+        }
+      });
+
+      ro.observe(imagePickerInput);
+      this.containerWidth = imagePickerInput.clientWidth;
+    });
+  }
+
   emitInput(val: string) {
     this.$emit("input", val);
+  }
+
+  setValueByKeyPress(direction) {
+    let currentPosition = [...this.itemPosMatrix[this.selectedItemIndex]];
+    let posIndex = this.selectedItemIndex;
+    let value = "";
+
+    if (direction === "UP") {
+      if (currentPosition[0] <= 1) {
+        currentPosition[0] = 1;
+      } else {
+        currentPosition[0]--;
+      }
+    }
+
+    if (direction === "DOWN") {
+      if (currentPosition[0] >= this.totalRows) {
+        currentPosition[0] = this.totalRows;
+      } else {
+        currentPosition[0]++;
+
+        if (currentPosition[1] > this.itemsInFinalRow) {
+          currentPosition[1] = this.itemsInFinalRow;
+        }
+      }
+    }
+
+    if (direction === "LEFT") {
+      if (currentPosition[0] <= 1 && currentPosition[1] <= 1) {
+        currentPosition[1] = 1;
+      } else if (currentPosition[0] > 1 && currentPosition[1] === 1) {
+        currentPosition[0]--;
+        currentPosition[1] = this.itemsPerRow;
+      } else {
+        currentPosition[1]--;
+      }
+    }
+
+    if (direction === "RIGHT") {
+      if (
+        this.options.length < this.itemsPerRow &&
+        currentPosition[1] >= this.options.length
+      ) {
+        currentPosition[1] = this.options.length;
+      } else if (
+        currentPosition[1] >= this.itemsInFinalRow &&
+        currentPosition[0] === this.totalRows
+      ) {
+        currentPosition[1] = this.itemsInFinalRow;
+      } else if (
+        currentPosition[1] === this.itemsPerRow &&
+        currentPosition[0] < this.totalRows
+      ) {
+        currentPosition[0]++;
+        currentPosition[1] = 1;
+      } else {
+        currentPosition[1]++;
+      }
+    }
+
+    posIndex = this.itemPosMatrix.findIndex(
+      pos => pos[0] === currentPosition[0] && pos[1] === currentPosition[1]
+    );
+
+    this.$refs.imagePickerItem[posIndex].focus();
+    this.emitInput(this.options[posIndex].value);
   }
 }
 </script>
@@ -98,6 +237,11 @@ export default class ImagePickerInput extends Vue {
   &.active {
     background-color: @dark-2;
     border-color: @dark-2;
+
+    &:focus {
+      outline: 2px solid @dark-2;
+      outline-offset: 2px;
+    }
   }
 }
 
@@ -110,6 +254,10 @@ export default class ImagePickerInput extends Vue {
     &.active {
       background-color: @dark-2;
       border-color: @dark-2;
+
+      &:focus {
+        outline-color: @white;
+      }
     }
   }
 }

@@ -586,10 +586,7 @@ export default class Inputs extends Vue {
   checkboxValue3 = true;
   checkboxValue4 = false;
   selected = "Option A";
-  selectedGroup = {
-    group: "Group A",
-    items: ["Option A", "Option B", "Option C"]
-  };
+  selectedGroup = "Option A";
   multipleSelected = ["Option B", "Option D"];
   optionGroups = [
     {
