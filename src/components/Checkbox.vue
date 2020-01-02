@@ -58,7 +58,7 @@ export default class Checkbox extends Vue {
     color: @day-paragraph;
     cursor: default;
     outline: 0;
-    .transition();
+    .transition(border, background-color);
 
     &:before {
       position: absolute;
@@ -94,6 +94,11 @@ export default class Checkbox extends Vue {
     width: 16px;
     height: 16px;
     margin: 0;
+
+    &:focus + label {
+      outline: 2px solid @dark-2;
+      outline-offset: 1.5px;
+    }
   }
 
   input:checked ~ label {
@@ -154,6 +159,14 @@ export default class Checkbox extends Vue {
 
 .night {
   .s-checkbox {
+    input[type="checkbox"],
+    input[type="radio"] {
+      &:focus + label {
+        outline-color: @white;
+        outline-offset: 1.5px;
+      }
+    }
+
     label {
       color: @night-paragraph;
 

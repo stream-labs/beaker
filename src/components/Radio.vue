@@ -59,7 +59,7 @@ export default class Radio extends Vue {
     width: auto;
     .padding-left(3);
     outline: 0;
-    .transition();
+    // .transition();
     color: @day-paragraph;
     .weight(@normal);
     box-sizing: border-box;

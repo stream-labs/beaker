@@ -98,9 +98,9 @@ export default {
   }
 
   .multiselect:focus {
-    // outline: none;
-    outline: 2px solid @dark-2;
-    outline-offset: 1px;
+    outline: none;
+    // outline: 2px solid @dark-2;
+    // outline-offset: 1px;
   }
 
   .multiselect--disabled {
@@ -502,10 +502,6 @@ export default {
 .night,
 .night-theme {
   .s-selector {
-    .multiselect:focus {
-      outline-color: @white;
-    }
-
     .multiselect__tags {
       background: @night-dropdown-bg;
       border: @night-dropdown-border;
