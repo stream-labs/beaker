@@ -73,6 +73,7 @@
   },
   "types": "./index.d.ts",
   "dependencies": {
-    "v-tooltip": "^2.0.2"
+    "v-tooltip": "^2.0.2",
+    "what-input": "^5.2.6"
   }
 }

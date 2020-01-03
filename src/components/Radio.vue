@@ -39,65 +39,72 @@ export default class Radio extends Vue {
 @import (reference) "./../styles/Imports";
 
 .s-checkbox {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  backface-visibility: hidden;
-  outline: 0;
-  vertical-align: baseline;
-  font-style: normal;
-  min-height: 16px;
-  line-height: 16px;
-  min-width: 16px;
+  // position: relative;
+  // display: inline-block;
+  // width: 100%;
+  // backface-visibility: hidden;
+  // outline: 0;
+  // vertical-align: baseline;
+  // font-style: normal;
+  // min-height: 16px;
+  // line-height: 16px;
+  // min-width: 16px;
 
-  label {
-    margin: 0;
-    line-height: 16px;
-    cursor: default;
-    position: relative;
-    display: inline-block;
-    width: auto;
-    .padding-left(3);
-    outline: 0;
-    // .transition();
-    color: @day-paragraph;
-    .weight(@normal);
-    box-sizing: border-box;
+  // label {
+  //   margin: 0;
+  //   line-height: 16px;
+  //   cursor: default;
+  //   position: relative;
+  //   display: inline-block;
+  //   width: auto;
+  //   .padding-left(3);
+  //   outline: 0;
+  //   // .transition();
+  //   color: @day-paragraph;
+  //   .weight(@normal);
+  //   box-sizing: border-box;
 
-    &:before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 16px;
-      height: 16px;
-      content: "";
-      background: transparent;
-      .radius();
-      -webkit-transition: border 0.1s ease, opacity 0.1s ease,
-        box-shadow 0.1s ease, -webkit-transform 0.1s ease;
-      transition: border 0.1s ease, opacity 0.1s ease, box-shadow 0.1s ease,
-        -webkit-transform 0.1s ease;
-      transition: border 0.1s ease, opacity 0.1s ease, transform 0.1s ease,
-        box-shadow 0.1s ease;
-      transition: border 0.1s ease, opacity 0.1s ease, transform 0.1s ease,
-        box-shadow 0.1s ease, -webkit-transform 0.1s ease;
-      border: 1px solid @light-4;
-      box-sizing: border-box;
-    }
-  }
+  //   &:before {
+  //     position: absolute;
+  //     top: 0;
+  //     left: 0;
+  //     width: 16px;
+  //     height: 16px;
+  //     content: "";
+  //     background: transparent;
+  //     .radius();
+  //     -webkit-transition: border 0.1s ease, opacity 0.1s ease,
+  //       box-shadow 0.1s ease, -webkit-transform 0.1s ease;
+  //     transition: border 0.1s ease, opacity 0.1s ease, box-shadow 0.1s ease,
+  //       -webkit-transform 0.1s ease;
+  //     transition: border 0.1s ease, opacity 0.1s ease, transform 0.1s ease,
+  //       box-shadow 0.1s ease;
+  //     transition: border 0.1s ease, opacity 0.1s ease, transform 0.1s ease,
+  //       box-shadow 0.1s ease, -webkit-transform 0.1s ease;
+  //     border: 1px solid @light-4;
+  //     box-sizing: border-box;
+  //   }
+  // }
 
   input[type="checkbox"],
   input[type="radio"] {
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0 !important;
-    outline: 0;
-    z-index: 3;
-    width: 20px;
-    height: 20px;
-    margin: 0;
+    // cursor: pointer;
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // opacity: 0 !important;
+    // outline: 0;
+    // z-index: 3;
+    // width: 20px;
+    // height: 20px;
+    // margin: 0;
+
+    // &:focus {
+    //   & + label {
+    //     outline: 2px solid @dark-2;
+    //     outline-offset: 1.5px;
+    //   }
+    // }
   }
 
   input:checked ~ label {
@@ -165,6 +172,15 @@ export default class Radio extends Vue {
         border-color: @night-input-border;
       }
     }
+
+    // input[type="checkbox"],
+    // input[type="radio"] {
+    //   &:focus {
+    //     & + label {
+    //       outline-color: @white;
+    //     }
+    //   }
+    // }
 
     input:checked ~ label {
       color: @night-title;
