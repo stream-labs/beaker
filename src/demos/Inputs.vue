@@ -17,7 +17,7 @@
           :placeholder="textInputPlaceholder"
           v-model="textInputValue"
           name="textExample"
-          autoComplete="on"
+          autocomplete="on"
           slot="input"
         ></text-input>
 
@@ -365,9 +365,9 @@ components: {
       <div class="section">
         <h3>Single Checkbox</h3>
         <checkbox
-          :id="'checkbox1'"
-          :name="'checkbox1'"
-          :label="'Checkbox label'"
+          id="checkbox1"
+          name="checkbox1"
+          label="Checkbox Label"
           v-model="checkboxValue1"
         ></checkbox>
       </div>
@@ -376,21 +376,21 @@ components: {
         <h3>Checkbox Group</h3>
         <div class="s-checkbox-group">
           <checkbox
-            :id="'checkbox2'"
-            :name="'checkbox2'"
-            :label="'Checkbox labe2'"
+            id="checkbox2"
+            name="checkbox2"
+            label="Checkbox Label 1"
             v-model="checkboxValue2"
           ></checkbox>
           <checkbox
-            :id="'checkbox3'"
-            :name="'checkbox3'"
-            :label="'Checkbox label'"
+            id="checkbox3"
+            name="checkbox3"
+            label="Checkbox Label 2"
             v-model="checkboxValue3"
           ></checkbox>
           <checkbox
-            :id="'checkbox4'"
-            :name="'checkbox4'"
-            :label="'Checkbox label'"
+            id="checkbox4"
+            name="checkbox4"
+            label="Checkbox Label 3"
             v-model="checkboxValue4"
           ></checkbox>
         </div>

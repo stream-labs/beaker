@@ -68,7 +68,9 @@ data() {
           :completeHandler="completeFunc"
         >
           <OnboardingStep slot="1">
-            <template slot="title">Getting Started</template>
+            <template slot="title"
+              >Getting Started</template
+            >
             <template slot="desc">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut
               luctus nibh. Sed quis velit vitae leo sagittis rutrum. In hac
@@ -81,7 +83,9 @@ data() {
             ></SSProSimulator>
           </OnboardingStep>
           <OnboardingStep slot="2">
-            <template slot="title">A Few More Things</template>
+            <template slot="title"
+              >A Few More Things</template
+            >
             <template slot="desc">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
               tincidunt convallis felis non dapibus. Vestibulum ante ipsum
@@ -95,7 +99,9 @@ data() {
             ></SSProSimulator>
           </OnboardingStep>
           <OnboardingStep slot="3">
-            <template slot="title">Almost There</template>
+            <template slot="title"
+              >Almost There</template
+            >
             <template slot="desc">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
               convallis purus id ligula dictum accumsan. Donec non posuere
@@ -107,7 +113,9 @@ data() {
             ></SSProSimulator>
           </OnboardingStep>
           <OnboardingStep slot="4">
-            <template slot="title">Getting Started</template>
+            <template slot="title"
+              >Getting Started</template
+            >
             <template slot="desc">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut
               luctus nibh. Sed quis velit vitae leo sagittis rutrum. In hac
@@ -184,7 +192,9 @@ data() {
           :completeHandler="completeFunc"
         >
           <OnboardingStep slot="1">
-            <template slot="title">Getting Started</template>
+            <template slot="title"
+              >Getting Started</template
+            >
             <template slot="desc">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut
               luctus nibh. Sed quis velit vitae leo sagittis rutrum. In hac
@@ -197,7 +207,9 @@ data() {
             ></SSProSimulator>
           </OnboardingStep>
           <OnboardingStep slot="2">
-            <template slot="title">A Few More Things</template>
+            <template slot="title"
+              >A Few More Things</template
+            >
             <template slot="desc">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
               tincidunt convallis felis non dapibus. Vestibulum ante ipsum
@@ -211,7 +223,9 @@ data() {
             ></SSProSimulator>
           </OnboardingStep>
           <OnboardingStep slot="3">
-            <template slot="title">Almost There</template>
+            <template slot="title"
+              >Almost There</template
+            >
             <template slot="desc">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
               convallis purus id ligula dictum accumsan. Donec non posuere
@@ -223,7 +237,9 @@ data() {
             ></SSProSimulator>
           </OnboardingStep>
           <OnboardingStep slot="4">
-            <template slot="title">Getting Started</template>
+            <template slot="title"
+              >Getting Started</template
+            >
             <template slot="desc">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut
               luctus nibh. Sed quis velit vitae leo sagittis rutrum. In hac

@@ -24,7 +24,9 @@ components: {
         </div>
       </Accordion>
       <pane-dropdown>
-        <template slot="title">Trending</template>
+        <template slot="title"
+          >Trending</template
+        >
         <a href="#"> <i class="icon-check"></i>Most Installed </a>
         <a href="#"> <i class="icon-delete"></i>Newly Added </a>
         <a href="#">Trending</a>

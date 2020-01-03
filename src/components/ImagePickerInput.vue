@@ -218,7 +218,7 @@ export default class ImagePickerInput extends Vue {
   height: 64px;
   border: 1px solid @day-solid-input;
   background-color: @day-solid-input;
-  .transition();
+  .transition(background-color);
   position: relative;
   .radius();
   cursor: pointer;
@@ -237,11 +237,6 @@ export default class ImagePickerInput extends Vue {
   &.active {
     background-color: @dark-2;
     border-color: @dark-2;
-
-    &:focus {
-      outline: 2px solid @dark-2;
-      outline-offset: 2px;
-    }
   }
 }
 
@@ -254,10 +249,6 @@ export default class ImagePickerInput extends Vue {
     &.active {
       background-color: @dark-2;
       border-color: @dark-2;
-
-      &:focus {
-        outline-color: @white;
-      }
     }
   }
 }
