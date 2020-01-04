@@ -21,7 +21,12 @@
     >
       <div class="s-banner__wrapper">
         <div class="s-banner__label">{{ label }}</div>
-        <i @click="toggleBanner()" class="icon-down"></i>
+        <i
+          @click="toggleBanner()"
+          tabindex="0"
+          @keydown.space.prevent="toggleBanner()"
+          class="icon-down"
+        ></i>
       </div>
 
       <div class="s-banner__wrapper" ref="bottomWrapper">
@@ -40,7 +45,12 @@
         </div>
 
         <div @click.stop class="s-banner__download-wrapper">
-          <i @click="toggleBanner()" class="icon-down"></i>
+          <i
+            @click="toggleBanner()"
+            tabindex="0"
+            @keydown.space.prevent="toggleBanner()"
+            class="icon-down"
+          ></i>
           <slot name="link"></slot>
           <div class="s-banner__link-desc">{{ linkDesc }}</div>
         </div>
@@ -119,6 +129,21 @@ export default class BannerMarketing extends Vue {
     typeof this.onToggle === "function" && this.onToggle();
     this.closed = !this.closed;
     this.updateBannerHeight();
+    if (this.$whatInput.ask() === "keyboard") {
+      const icons = document.querySelectorAll(".icon-down");
+      let icon!: HTMLLIElement;
+
+      if (this.closed) {
+        icon = icons[1] as HTMLLIElement;
+      } else {
+        icon = icons[0] as HTMLLIElement;
+      }
+
+      let tabindex = parseInt(icon.getAttribute("tabindex") as string);
+      console.log(icon);
+      icon.focus();
+      // icon.tabIndex = tabindex;
+    }
   }
 
   updateBannerHeight() {
@@ -179,9 +204,9 @@ export default class BannerMarketing extends Vue {
     align-items: center;
 
     .icon-down {
-      width: 32px;
-      height: 32px;
-      line-height: 32px;
+      // width: 32px;
+      // height: 32px;
+      // line-height: 32px;
       transform: rotate(180deg);
     }
   }

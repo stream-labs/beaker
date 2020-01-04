@@ -23,10 +23,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Notice extends Vue {
-  @Prop({
-    default: "default",
-    required: true
-  })
+  @Prop({ default: "default" })
   variation!: string;
 
   @Prop({ required: true })
@@ -35,7 +32,7 @@ export default class Notice extends Vue {
   @Prop({ required: true })
   desc!: string;
 
-  @Prop({ required: true })
+  @Prop()
   icon!: string;
 
   get iconType() {
