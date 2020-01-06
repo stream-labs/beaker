@@ -45,13 +45,13 @@
         </div>
 
         <div @click.stop class="s-banner__download-wrapper">
+          <slot name="link"></slot>
           <i
             @click="toggleBanner()"
             tabindex="0"
             @keydown.space.prevent="toggleBanner()"
             class="icon-down"
           ></i>
-          <slot name="link"></slot>
           <div class="s-banner__link-desc">{{ linkDesc }}</div>
         </div>
       </div>
@@ -64,6 +64,11 @@ import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 
 @Component({})
 export default class BannerMarketing extends Vue {
+  $refs!: {
+    banner: HTMLDivElement;
+    bottomWrapper: HTMLDivElement;
+  };
+
   @Prop()
   bgImageNight!: {
     type: string;
@@ -129,8 +134,9 @@ export default class BannerMarketing extends Vue {
     typeof this.onToggle === "function" && this.onToggle();
     this.closed = !this.closed;
     this.updateBannerHeight();
+
     if (this.$whatInput.ask() === "keyboard") {
-      const icons = document.querySelectorAll(".icon-down");
+      const icons = this.$refs.banner.querySelectorAll(".icon-down");
       let icon!: HTMLLIElement;
 
       if (this.closed) {
@@ -140,15 +146,13 @@ export default class BannerMarketing extends Vue {
       }
 
       let tabindex = parseInt(icon.getAttribute("tabindex") as string);
-      console.log(icon);
-      icon.focus();
-      // icon.tabIndex = tabindex;
+      this.$nextTick(() => icon.focus());
     }
   }
 
   updateBannerHeight() {
-    let banner: any = this.$refs.banner;
-    let bannerWrapper: any = this.$refs.bottomWrapper;
+    let banner = this.$refs.banner;
+    let bannerWrapper = this.$refs.bottomWrapper;
 
     if (!this.closed) {
       banner.style.maxHeight = "240px";
@@ -301,7 +305,7 @@ export default class BannerMarketing extends Vue {
   }
 
   .s-banner__download-wrapper {
-    flex-direction: row-reverse;
+    flex-direction: row;
   }
 
   .s-banner__title {
