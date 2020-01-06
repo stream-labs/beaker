@@ -494,7 +494,7 @@ export default class Banners extends Vue {
   }
 
   test() {
-    console.log("test");
+    // console.log("test");
   }
 }
 </script>
