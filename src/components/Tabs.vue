@@ -1,5 +1,5 @@
 <template>
-  <div class="s-tabs-wrapper">
+  <div class="s-tabs-wrapper" ref="tabsWrapper">
     <div class="s-tabs-nav-wrapper">
       <div class="s-tabs-nav" :class="className">
         <div
@@ -26,18 +26,32 @@
             :class="{ 'is-active': tab.value === selectedTab }"
             :style="selectTabSize"
             @click="showTab(tab.value)"
+            :aria-controls="`${tab.value}-tab`"
           >
             <router-link
               v-if="updateRoute"
               :to="`#/${tab.value}`"
               class="s-tab-link"
+              tabindex="-1"
             >
               <i v-if="tab.icon" :class="`icon-${tab.icon}`"></i>
-              {{ tab.name }}
+              <span
+                @keydown.left.prevent="highlightTab(tab.value, 'LEFT')"
+                @keydown.right.prevent="highlightTab(tab.value)"
+                tabindex="-1"
+                class="s-tab-title"
+                >{{ tab.name }}</span
+              >
             </router-link>
-            <div v-else class="s-tab-link">
+            <div v-else class="s-tab-link" tabindex="-1">
               <i v-if="tab.icon" :class="`icon-${tab.icon}`"></i>
-              {{ tab.name }}
+              <span
+                @keydown.left.prevent="highlightTab(tab.value, 'LEFT')"
+                @keydown.right.prevent="highlightTab(tab.value)"
+                tabindex="-1"
+                class="s-tab-title"
+                >{{ tab.name }}</span
+              >
             </div>
             <!-- <div>
               {{ tab.name }}
@@ -70,6 +84,7 @@
 
 <script lang="ts">
 import { Component, Watch, Prop, Vue } from "vue-property-decorator";
+import { debounce } from "lodash";
 
 @Component({})
 export default class Tabs extends Vue {
@@ -103,6 +118,7 @@ export default class Tabs extends Vue {
   updateRoute!: boolean;
 
   $refs!: {
+    tabsWrapper: HTMLDivElement;
     scrollable_tabs: HTMLDivElement;
   };
 
@@ -111,6 +127,7 @@ export default class Tabs extends Vue {
   canScroll = false;
   hasNext = false;
   hasPrev = false;
+  hightlightedTabIndex = 0;
   private scrollIncrement = 100;
 
   selectedTab: string = "";
@@ -129,23 +146,33 @@ export default class Tabs extends Vue {
     }
   }
 
-  created() {
-    window.addEventListener("resize", this.calculateScrolls);
-  }
+  created() {}
 
   destroyed() {
-    window.removeEventListener("resize", this.calculateScrolls);
+    window.removeEventListener("resize", this.debouncedScroll);
   }
 
   mounted() {
+    window.addEventListener("resize", this.debouncedScroll);
     this.isMounted = true;
     this.tabsContainer = this.$refs.scrollable_tabs;
+
     this.calculateScrolls();
+
     if (this.selected) {
       this.selectedTab = this.selected;
     } else {
       this.selectedTab = this.tabs[0].value;
     }
+
+    this.$nextTick(() => {
+      const activeTab = this.tabsContainer.querySelector(
+        ".is-active > .s-tab-link span"
+      ) as HTMLSpanElement;
+
+      activeTab.tabIndex = 0;
+      activeTab.focus();
+    });
   }
 
   scrollLeft() {
@@ -158,7 +185,42 @@ export default class Tabs extends Vue {
       this.tabsContainer.scrollLeft + this.scrollIncrement;
   }
 
+  highlightTab(current, direction = "RIGHT") {
+    const currentIndex = this.tabs.findIndex(tab => current === tab.value);
+    const tabs = this.tabsContainer.children;
+    let newTabIndex = 0;
+
+    if (direction === "LEFT") {
+      newTabIndex =
+        currentIndex === 0 ? this.tabs.length - 1 : currentIndex - 1;
+    } else {
+      newTabIndex =
+        currentIndex === this.tabs.length - 1 ? 0 : currentIndex + 1;
+    }
+
+    let currentTab = tabs[currentIndex].querySelector(
+      ".s-tab-title"
+    ) as HTMLSpanElement;
+    let newTab = tabs[newTabIndex] as HTMLDivElement;
+    let newTabTitle = tabs[newTabIndex].querySelector(
+      ".s-tab-title"
+    ) as HTMLSpanElement;
+
+    this.$nextTick(() => {
+      currentTab.tabIndex = -1;
+      newTabTitle.tabIndex = 0;
+      newTabTitle.focus();
+      // this.calculateScrolls();
+      this.showTab(this.tabs[newTabIndex].value);
+      console.log(
+        newTab.offsetLeft + newTab.clientWidth >
+          this.tabsContainer.scrollLeft + this.tabsContainer.clientWidth
+      );
+    });
+  }
+
   calculateScrolls() {
+    // console.log("TCL: Tabs -> calculateScrolls -> calculateScrolls");
     if (!this.isMounted) return false;
     this.canScroll =
       this.tabsContainer.scrollWidth > this.tabsContainer.clientWidth;
@@ -169,6 +231,8 @@ export default class Tabs extends Vue {
 
     this.hasNext = scrollRight > 0;
   }
+
+  debouncedScroll = debounce(this.calculateScrolls, 500);
 
   showTab(tab: string) {
     this.selectedTab = tab;
@@ -190,7 +254,7 @@ a {
 
 .s-tabs-nav-wrapper {
   position: relative;
-  height: 34px;
+  height: 30px;
 }
 
 .s-tabs-nav {
@@ -305,11 +369,11 @@ a {
 .s-tab {
   color: @day-paragraph;
   border-bottom: 2px solid transparent;
-  .margin-right(2.5);
+  .margin-right(2);
   cursor: pointer;
   display: inline-block;
   position: relative;
-  .transition();
+  .transition(border);
   .weight(@medium);
 
   &.is-active {
@@ -326,7 +390,8 @@ a {
 }
 
 .s-tab-link {
-  .padding-bottom(1.375);
+  padding-top: 4px;
+  padding-bottom: 11px;
   display: flex;
   text-decoration: none;
 }
