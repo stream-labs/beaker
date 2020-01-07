@@ -135,6 +135,9 @@ export default class BannerMarketing extends Vue {
     this.closed = !this.closed;
     this.updateBannerHeight();
 
+    /*
+      For keyboard accessibility
+    */
     if (this.$whatInput.ask() === "keyboard") {
       const icons = this.$refs.banner.querySelectorAll(".icon-down");
       let icon!: HTMLLIElement;

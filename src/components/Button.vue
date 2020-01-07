@@ -335,7 +335,7 @@ export default class Button extends Vue {
   &:focus,
   &.is-focused {
     outline: 2px solid @dark-2;
-    outline-offset: 1.5px;
+    outline-offset: 2px;
   }
 
   &[disabled]:not(.is-loading),
