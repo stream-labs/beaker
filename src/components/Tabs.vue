@@ -38,7 +38,7 @@
               <span
                 @keydown.left.prevent="highlightTab(tab.value, 'LEFT')"
                 @keydown.right.prevent="highlightTab(tab.value)"
-                tabindex="-1"
+                :tabindex="tab.value === selectedTab ? 0 : -1"
                 class="s-tab-title"
                 >{{ tab.name }}</span
               >
@@ -48,7 +48,7 @@
               <span
                 @keydown.left.prevent="highlightTab(tab.value, 'LEFT')"
                 @keydown.right.prevent="highlightTab(tab.value)"
-                tabindex="-1"
+                :tabindex="tab.value === selectedTab ? 0 : -1"
                 class="s-tab-title"
                 >{{ tab.name }}</span
               >
@@ -84,6 +84,7 @@
 
 <script lang="ts">
 import { Component, Watch, Prop, Vue } from "vue-property-decorator";
+import ResizeObserver from "resize-observer-polyfill";
 import { debounce } from "lodash";
 
 @Component({})
@@ -146,18 +147,15 @@ export default class Tabs extends Vue {
     }
   }
 
-  created() {}
-
   destroyed() {
-    window.removeEventListener("resize", this.debouncedScroll);
+    // window.removeEventListener("resize", this.debouncedScroll);
   }
 
   mounted() {
-    window.addEventListener("resize", this.debouncedScroll);
     this.isMounted = true;
-    this.tabsContainer = this.$refs.scrollable_tabs;
-
-    this.calculateScrolls();
+    // this.tabsContainer = this.$refs.scrollable_tabs;
+    this.tabsContainer = document.querySelector(".s-tabs") as HTMLDivElement;
+    this.loadResizeObserver();
 
     if (this.selected) {
       this.selectedTab = this.selected;
@@ -165,14 +163,16 @@ export default class Tabs extends Vue {
       this.selectedTab = this.tabs[0].value;
     }
 
-    this.$nextTick(() => {
-      const activeTab = this.tabsContainer.querySelector(
-        ".is-active > .s-tab-link span"
-      ) as HTMLSpanElement;
+    this.$whatInput.registerOnChange(this.calculateScrolls, "input");
+  }
 
-      activeTab.tabIndex = 0;
-      activeTab.focus();
+  loadResizeObserver() {
+    const ro = new ResizeObserver(entries => {
+      entries.forEach(entry => {
+        this.calculateScrolls("resizeObserver");
+      });
     });
+    ro.observe(this.tabsContainer);
   }
 
   scrollLeft() {
@@ -187,7 +187,8 @@ export default class Tabs extends Vue {
 
   highlightTab(current, direction = "RIGHT") {
     const currentIndex = this.tabs.findIndex(tab => current === tab.value);
-    const tabs = this.tabsContainer.children;
+    const tabsContainer = document.querySelector(".s-tabs") as HTMLDivElement;
+    const tabs = tabsContainer.children;
     let newTabIndex = 0;
 
     if (direction === "LEFT") {
@@ -206,22 +207,50 @@ export default class Tabs extends Vue {
       ".s-tab-title"
     ) as HTMLSpanElement;
 
-    this.$nextTick(() => {
+    const viewport = tabsContainer.clientWidth;
+    const viewportOffset = tabsContainer.scrollLeft;
+    const viewportPosition = viewportOffset + viewport;
+    const maxScroll = tabsContainer.scrollWidth - viewport;
+    const tabPosition = newTab.offsetLeft;
+    const tabWidth = newTab.clientWidth;
+    let scrollReqiuired = true;
+
+    // check if scroll is required
+    if (
+      tabPosition > viewportOffset &&
+      tabPosition + tabWidth < viewportOffset + viewport
+    ) {
+      scrollReqiuired = false;
+    }
+
+    if (
+      scrollReqiuired &&
+      tabPosition > viewportOffset &&
+      tabPosition + tabWidth > viewportOffset + viewport
+    ) {
+      tabsContainer.scrollLeft = tabPosition + tabWidth - viewport + 30;
+    }
+
+    setTimeout(() => {
       currentTab.tabIndex = -1;
       newTabTitle.tabIndex = 0;
       newTabTitle.focus();
-      // this.calculateScrolls();
       this.showTab(this.tabs[newTabIndex].value);
-      console.log(
-        newTab.offsetLeft + newTab.clientWidth >
-          this.tabsContainer.scrollLeft + this.tabsContainer.clientWidth
-      );
-    });
+    }, 0);
   }
 
-  calculateScrolls() {
-    // console.log("TCL: Tabs -> calculateScrolls -> calculateScrolls");
+  calculateScrolls(caller = "intent") {
+    console.log("TCL: Tabs -> calculateScrolls -> caller", caller);
     if (!this.isMounted) return false;
+    if (this.$whatInput.ask() === "keyboard") {
+      this.hasNext = this.hasPrev = false;
+      return false;
+    }
+
+    console.log(
+      "TCL: Tabs -> calculateScrolls -> this.tabsContainer",
+      this.tabsContainer
+    );
     this.canScroll =
       this.tabsContainer.scrollWidth > this.tabsContainer.clientWidth;
     this.hasPrev = this.tabsContainer.scrollLeft > 0;
