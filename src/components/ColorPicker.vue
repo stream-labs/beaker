@@ -72,7 +72,7 @@ export default class ColorPicker extends Vue {
       this.$emit("input", value.hex);
     }
   }
-  
+
   updateFromInput(event: any) {
     this.colors = event.target.value;
     this.$emit("input", event.target.value);
