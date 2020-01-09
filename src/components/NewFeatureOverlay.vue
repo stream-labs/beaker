@@ -41,7 +41,7 @@
       <div class="s-overlay__image-block" :class="overlay__imageBlockMq">
         <img v-if="isImage" :src="overlayImage" class="s-overlay__image" />
         <video
-          controls="false"
+          :controls="videoControls"
           autoplay
           loop
           v-if="!isImage"
@@ -121,6 +121,9 @@ export default class NewFeatureOverlay extends Vue {
   @Prop()
   onAction!: Function;
 
+  @Prop({ default: false })
+  videoControls!: boolean;
+
   isImage: boolean = true;
 
   get overlayImage() {
@@ -160,12 +163,8 @@ export default class NewFeatureOverlay extends Vue {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import (reference) "./../styles/Imports";
-::-webkit-media-controls {
-  display: none !important;
-}
-
 .s-overlay__container--mq {
   display: block !important;
 }
