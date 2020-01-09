@@ -27,7 +27,11 @@
             :style="selectTabSize"
             @click="showTab(tab.value)"
           >
-            <router-link v-if="updateRoute" :to="`#/${tab.value}`" class="s-tab-link">
+            <router-link
+              v-if="updateRoute"
+              :to="`#/${tab.value}`"
+              class="s-tab-link"
+            >
               <i v-if="tab.icon" :class="`icon-${tab.icon}`"></i>
               {{ tab.name }}
             </router-link>
