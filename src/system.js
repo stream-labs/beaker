@@ -18,6 +18,7 @@ import ContentRow from "./components/ContentRow.vue";
 import CSLayoutPicker from "./components/CSLayoutPicker.vue";
 // import DatePicker from "./components/DatePicker.vue";
 import EmptySection from "./components/EmptySection.vue";
+import FormGroup from "./components/FormGroup.vue";
 import FormGroupH from "./components/FormGroupH.vue";
 import FormGroupV from "./components/FormGroupV.vue";
 import Guard from "./components/Guard.vue";
@@ -78,6 +79,7 @@ export {
   CSLayoutPicker,
   // DatePicker,
   EmptySection,
+  FormGroup,
   FormGroupH,
   FormGroupV,
   Guard,
