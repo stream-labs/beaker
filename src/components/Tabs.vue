@@ -32,7 +32,6 @@
               v-if="updateRoute"
               :to="`#/${tab.value}`"
               class="s-tab-link"
-              tabindex="-1"
             >
               <i v-if="tab.icon" :class="`icon-${tab.icon}`"></i>
               <span
