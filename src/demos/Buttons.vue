@@ -15,544 +15,333 @@ components: {
   Button
 }</code></pre>
     </div>
+
     <div class="section">
       <h2>Standard Buttons</h2>
       <p>Used throughout website Dashboard.</p>
       <div class="section">
         <h3>Active</h3>
-        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-          <div slot="content">
-            <pre>
-<code>&lt;div class=&quot;s-button-container s-button-container--left&quot;&gt;
-  &lt;Button
-    :variation=&quot;'default'&quot;
-    :title=&quot;'Default'&quot;&gt;
-    @click=&quot;'buttonClick'&quot;&gt;
-  &lt;/Button&gt;
+        <DemoSection title="Active" :code="demoCode">
+          <template #components>
+            <div class="s-button-container s-button-container--left">
+              <Button
+                variation="default"
+                title="Default"
+                tag="a"
+                href="https://laravel.com/docs/5.8/routing"
+                @click="reportSlobsDownloads"
+              />
 
-  &lt;Button
-    :variation=&quot;'action'&quot;
-    :title=&quot;'Action'&quot;&gt;
-  &lt;/Button&gt;
+              <Button
+                variation="action"
+                title="Action"
+                @click="buttonActionClick"
+              />
 
-  &lt;Button
-    :variation=&quot;'warning'&quot;
-    :title=&quot;'Warning'&quot;&gt;
-  &lt;/Button&gt;
+              <Button
+                variation="warning"
+                title="Warning"
+                @click="buttonActionClick"
+              />
 
-  &lt;Button
-    :variation=&quot;'default'&quot;
-    :title=&quot;'with icon'&quot;
-    :icon=&quot;'settings'&quot;&gt;
-  &lt;/Button&gt;
+              <Button
+                variation="default"
+                title="with icon"
+                icon="add-circle"
+                @click="buttonActionClick"
+              />
 
-  &lt;Button
-    :variation=&quot;'default'&quot;
-    :title=&quot;'Color Change'&quot;
-    :bgColor=&quot;'#000'&quot;
-    :textColor=&quot;'#fff'&quot;&gt;
-  &lt;/Button&gt;
+              <Button
+                variation="default"
+                title="Custom Colors"
+                bg-color="pink"
+                text-color="red"
+                @click="buttonActionClick"
+              />
 
-  &lt;Button
-    :variation=&quot;'prime'&quot; 
-    :title=&quot;'Join Prime'&quot;
-    :icon=&quot;'prime'&quot;&gt;
-  &lt;/Button&gt;
+              <Button
+                variation="prime"
+                title="Join Prime"
+                icon="prime"
+                @click="buttonActionClick"
+              />
 
-  &lt;Button
-    :variation=&quot;'prime'&quot; 
-    :title=&quot;'Join Prime'&quot;
-    :icon=&quot;'prime'&quot;
-    :primeBgColor=&quot;'white'&quot;&gt;
-  &lt;/Button&gt;
+              <Button
+                variation="prime-white"
+                title="Join Prime"
+                icon="prime"
+                @click="buttonActionClick"
+              />
 
-&lt;/div&gt;</code></pre>
-          </div>
-        </Accordion>
-        <div class="s-button-container s-button-container--left">
-          <Button
-            :variation="'default'"
-            :title="'Default'"
-            :tag="'a'"
-            :href="'https://laravel.com/docs/5.8/routing'"
-            @click="reportSlobsDownloads"
-          ></Button>
-
-          <Button
-            :variation="'action'"
-            :title="'Action'"
-            @click="buttonActionClick"
-          ></Button>
-
-          <Button :variation="'warning'" :title="'Warning'"></Button>
-
-          <Button
-            :variation="'default'"
-            :title="'with icon'"
-            :icon="'settings'"
-          ></Button>
-
-          <Button
-            :variation="'default'"
-            :title="'Color Change'"
-            :bgColor="'pink'"
-            :textColor="'red'"
-          ></Button>
-
-          <Button
-            :variation="'prime'"
-            :title="'Join Prime'"
-            :icon="'prime'"
-          ></Button>
-          <Button
-            :variation="'prime-white'"
-            :title="'Join Prime'"
-            :icon="'prime'"
-          ></Button>
-        </div>
+              <Button variation="action">
+                <div slot="custom" class="custom-html">
+                  <i class="icon-add-circle"></i>
+                  <span>Custom Slot</span>
+                </div>
+              </Button>
+            </div>
+          </template>
+        </DemoSection>
       </div>
+
       <div class="section">
         <h3>Disabled</h3>
-        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-          <div slot="content">
-            <pre>
-<code>&lt;div class=&quot;s-button-container s-button-container--left&quot;&gt;
-  &lt;Button
-    :variation=&quot;'default'&quot;
-    :state=&quot;'disabled'&quot;
-    :title=&quot;'Default'&quot;&gt;
-  &lt;/Button&gt;
+        <DemoSection title="Disabled" :code="demoCode">
+          <template #components>
+            <div class="s-button-container s-button-container--left">
+              <Button
+                :variation="'default'"
+                :state="'disabled'"
+                :title="'Default'"
+              />
 
-  &lt;Button
-    :variation=&quot;'action'&quot;
-    :state=&quot;'disabled'&quot;
-    :title=&quot;'Action'&quot;&gt;
-  &lt;/Button&gt;
+              <Button
+                :variation="'action'"
+                :state="'disabled'"
+                :title="'Action'"
+              />
 
-  &lt;Button
-    :variation=&quot;'warning'&quot;
-    :state=&quot;'disabled'&quot;
-    :title=&quot;'Warning'&quot;&gt;
-  &lt;/Button&gt;
+              <Button
+                :variation="'warning'"
+                :state="'disabled'"
+                :title="'Warning'"
+              />
 
-  &lt;Button
-    :variation=&quot;'default'&quot;
-    :state=&quot;'disabled'&quot;
-    :title=&quot;'with icon'&quot;
-    :icon=&quot;'edit'&quot;&gt;
-  &lt;/Button&gt;
-&lt;/div&gt;</code></pre>
-          </div>
-        </Accordion>
-        <div class="s-button-container s-button-container--left">
-          <Button
-            :variation="'default'"
-            :state="'disabled'"
-            :title="'Default'"
-          ></Button>
-
-          <Button
-            :variation="'action'"
-            :state="'disabled'"
-            :title="'Action'"
-          ></Button>
-
-          <Button
-            :variation="'warning'"
-            :state="'disabled'"
-            :title="'Warning'"
-          ></Button>
-
-          <Button
-            :variation="'default'"
-            :state="'disabled'"
-            :title="'with icon'"
-            :icon="'edit'"
-          ></Button>
-        </div>
+              <Button
+                :variation="'default'"
+                :state="'disabled'"
+                :title="'with icon'"
+                :icon="'edit'"
+              />
+            </div>
+          </template>
+        </DemoSection>
       </div>
+
       <div class="section">
         <h3>Focus</h3>
-        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-          <div slot="content">
-            <pre>
-<code>&lt;div class=&quot;s-button-container s-button-container--left&quot;&gt;
-  &lt;Button
-    :variation=&quot;'default'&quot;
-    :state=&quot;'focused'&quot;
-    :title=&quot;'Default'&quot;&gt;
-  &lt;/Button&gt;
+        <DemoSection title="Focus" :code="demoCode">
+          <template #components>
+            <div class="s-button-container s-button-container--left">
+              <Button
+                :variation="'default'"
+                :state="'focused'"
+                :title="'Default'"
+              />
 
-  &lt;Button
-    :variation=&quot;'action'&quot;
-    :state=&quot;'focused'&quot;
-    :title=&quot;'Action'&quot;&gt;
-  &lt;/Button&gt;
+              <Button
+                :variation="'action'"
+                :state="'focused'"
+                :title="'Action'"
+              />
 
-  &lt;Button
-    :variation=&quot;'warning'&quot;
-    :state=&quot;'focused'&quot;
-    :title=&quot;'Warning'&quot;&gt;
-  &lt;/Button&gt;
+              <Button
+                :variation="'warning'"
+                :state="'focused'"
+                :title="'Warning'"
+              />
 
-  &lt;Button
-    :variation=&quot;'default'&quot;
-    :state=&quot;'focused'&quot;
-    :title=&quot;'with icon'&quot;
-    :icon=&quot;'edit'&quot;&gt;
-  &lt;/Button&gt;
-&lt;/div&gt;</code></pre>
-          </div>
-        </Accordion>
-        <div class="s-button-container s-button-container--left">
-          <Button
-            :variation="'default'"
-            :state="'focused'"
-            :title="'Default'"
-          ></Button>
-
-          <Button
-            :variation="'action'"
-            :state="'focused'"
-            :title="'Action'"
-          ></Button>
-
-          <Button
-            :variation="'warning'"
-            :state="'focused'"
-            :title="'Warning'"
-          ></Button>
-
-          <Button
-            :variation="'default'"
-            :state="'focused'"
-            :title="'with icon'"
-            :icon="'edit'"
-          ></Button>
-        </div>
+              <Button
+                :variation="'default'"
+                :state="'focused'"
+                :title="'with icon'"
+                :icon="'edit'"
+              />
+            </div>
+          </template>
+        </DemoSection>
       </div>
+
       <div class="section">
         <h3>Loading</h3>
-        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-          <div slot="content">
-            <pre>
-<code>&lt;div class=&quot;s-button-container s-button-container--left&quot;&gt;
-  &lt;Button
-    :variation=&quot;'default'&quot;
-    :state=&quot;'loading'&quot;
-    :title=&quot;'Default'&quot;&gt;
-  &lt;/Button&gt;
+        <DemoSection title="Loading" :code="demoCode">
+          <template #components>
+            <div class="s-button-container s-button-container--left">
+              <Button
+                :variation="'default'"
+                :state="'loading'"
+                :title="'Default'"
+              />
 
-  &lt;Button
-    :variation=&quot;'action'&quot;
-    :state=&quot;'loading'&quot;
-    :title=&quot;'Action'&quot;&gt;
-  &lt;/Button&gt;
+              <Button
+                :variation="'action'"
+                :state="'loading'"
+                :title="'Action'"
+              />
 
-  &lt;Button
-    :variation=&quot;'warning'&quot;
-    :state=&quot;'loading'&quot;
-    :title=&quot;'Warning'&quot;&gt;
-  &lt;/Button&gt;
+              <Button
+                :variation="'warning'"
+                :state="'loading'"
+                :title="'Warning'"
+              />
 
-  &lt;Button
-    :variation=&quot;'default'&quot;
-    :state=&quot;'loading'&quot;
-    :title=&quot;'with icon'&quot;
-    :icon=&quot;'edit'&quot;&gt;
-  &lt;/Button&gt;
-&lt;/div&gt;</code></pre>
-          </div>
-        </Accordion>
-        <div class="s-button-container s-button-container--left">
-          <Button
-            :variation="'default'"
-            :state="'loading'"
-            :title="'Default'"
-          ></Button>
+              <Button
+                :variation="'default'"
+                :state="'loading'"
+                :title="'with icon'"
+                :icon="'recent-events'"
+              />
+            </div>
+          </template>
+        </DemoSection>
 
-          <Button :variation="'action'" :state="'loading'" :title="'Action'"
-            >Action</Button
-          >
-
-          <Button :variation="'warning'" :state="'loading'" :title="'Warning'"
-            >Warning</Button
-          >
-
-          <Button
-            :variation="'default'"
-            :state="'loading'"
-            :title="'with icon'"
-            :icon="'recent-events'"
-          ></Button>
-        </div>
         <p>
           Click
           <a @click="isLoadingExample = !isLoadingExample">here</a> to test.
         </p>
+
         <Button
           :class="{ 'is-loading': isLoadingExample }"
           :type="'button'"
           :variation="'default'"
           :title="'with icon'"
           :icon="'pop-out-1'"
-        ></Button>
+        />
       </div>
     </div>
+
     <div class="section">
       <h2>Small Buttons</h2>
       <p>
         Small is the size used on Streamlabs OBS. It is slightly smaller than
         our standard button.
       </p>
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre>
-<code>&lt;div class=&quot;s-button-container s-button-container--left&quot;&gt;
-  &lt;Button
-    :type=&quot;'button'&quot;
-    :size=&quot;'small'&quot;
-    :variation=&quot;'default'&quot;
-    :title=&quot;'Default'&quot;&gt;
-  &lt;/Button&gt;
 
-  &lt;Button
-    :type=&quot;'button'&quot;
-    :size=&quot;'small'&quot;
-    :variation=&quot;'action'&quot;
-    :title=&quot;'Action'&quot;&gt;
-  &lt;/Button&gt;
+      <DemoSection title="Small Buttons" :code="demoCode">
+        <template #components>
+          <div class="s-button-container s-button-container--left">
+            <Button
+              :type="'button'"
+              :size="'small'"
+              :variation="'default'"
+              :title="'Default'"
+            />
 
-  &lt;Button
-    :type=&quot;'button'&quot;
-    :size=&quot;'small'&quot;
-    :variation=&quot;'warning'&quot;
-    :title=&quot;'Warning'&quot;&gt;
-  &lt;/Button&gt;
+            <Button
+              :type="'button'"
+              :size="'small'"
+              :variation="'action'"
+              :title="'Action'"
+            />
 
-  &lt;Button
-    :type=&quot;'button'&quot;
-    :size=&quot;'small'&quot;
-    :variation=&quot;'default'&quot;
-    :title=&quot;'With Icon'&quot;
-    :icon=&quot;'image'&quot;&gt;
-  &lt;/Button&gt;
+            <Button
+              :type="'button'"
+              :size="'small'"
+              :variation="'warning'"
+              :title="'Warning'"
+            />
 
-  &lt;Button
-    :variation="'rewards-gold'"
-    :icon-img="'https://cdn.streamlabs.com/streamer-loyalty/gold-status-circle.svg'"
-    :size="'small'"
-    :title="'Rewards'"&gt;
-  &lt;/Button&gt;
-&lt;/div&gt;</code></pre>
-        </div>
-      </Accordion>
-      <div class="s-button-container s-button-container--left">
-        <Button
-          :type="'button'"
-          :size="'small'"
-          :variation="'default'"
-          :title="'Default'"
-        ></Button>
+            <Button
+              :type="'button'"
+              :size="'small'"
+              :variation="'default'"
+              :title="'With Icon'"
+              :icon="'image'"
+            />
 
-        <Button
-          :type="'button'"
-          :size="'small'"
-          :variation="'action'"
-          :title="'Action'"
-        ></Button>
-
-        <Button
-          :type="'button'"
-          :size="'small'"
-          :variation="'warning'"
-          :title="'Warning'"
-        ></Button>
-
-        <Button
-          :type="'button'"
-          :size="'small'"
-          :variation="'default'"
-          :title="'With Icon'"
-          :icon="'image'"
-        ></Button>
-
-        <Button
-          :variation="'rewards-standard'"
-          :size="'small'"
-          :title="'Rewards'"
-        ></Button>
-      </div>
+            <Button
+              :variation="'rewards-standard'"
+              :size="'small'"
+              :title="'Rewards'"
+            />
+          </div>
+        </template>
+      </DemoSection>
     </div>
+
     <div class="section">
       <h2>Large Buttons</h2>
       <p>
         Used on website marketing pages and for the Donate button on the tip
         page.
       </p>
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre>
-<code>&lt;div class=&quot;s-button-container s-button-container--left&quot;&gt;
-  &lt;Button
-    :type=&quot;'button'&quot;
-    :size=&quot;'large'&quot;
-    :variation=&quot;'default'&quot;
-    :title=&quot;'Default'&quot;&gt;
-  &lt;/Button&gt;
+      <DemoSection title="Large Buttons" :code="demoCode">
+        <template #components>
+          <div class="s-button-container s-button-container--left">
+            <Button
+              :type="'button'"
+              :size="'large'"
+              :variation="'default'"
+              :title="'Default'"
+            />
 
-  &lt;Button
-    :type=&quot;'button'&quot;
-    :size=&quot;'large'&quot;
-    :variation=&quot;'action'&quot;
-    :title=&quot;'Action'&quot;&gt;
-  &lt;/Button&gt;
+            <Button
+              :type="'button'"
+              :size="'large'"
+              :variation="'action'"
+              :title="'Action'"
+            />
 
-  &lt;Button
-    :type=&quot;'button'&quot;
-    :size=&quot;'large'&quot;
-    :variation=&quot;'warning'&quot;
-    :title=&quot;'Warning'&quot;&gt;
-  &lt;/Button&gt;
+            <Button
+              :type="'button'"
+              :size="'large'"
+              :variation="'warning'"
+              :title="'Warning'"
+            />
 
-  &lt;Button
-    :type=&quot;'button'&quot;
-    :size=&quot;'large'&quot;
-    :variation=&quot;'default'&quot;
-    :title=&quot;'With Icon'&quot;
-    :icon=&quot;'image'&quot;&gt;
-  &lt;/Button&gt;
+            <Button
+              :type="'button'"
+              :size="'large'"
+              :variation="'default'"
+              :title="'With Icon'"
+              :icon="'image'"
+            />
 
-  &lt;Button 
-    :size=&quot;'large'&quot; 
-    :variation=&quot;'prime'&quot; 
-    :title=&quot;'Join Prime'&quot;
-    :icon=&quot;'prime'&quot;&gt;
-  &lt;/Button&gt;
-
-  &lt;Button 
-    :size=&quot;'large'&quot; 
-    :variation=&quot;'prime'&quot; 
-    :title=&quot;'Join Prime'&quot;
-    :icon=&quot;'prime'&quot;
-    :primeBgColor=&quot;'white'&quot;&gt;
-  &lt;/Button&gt;
-&lt;/div&gt;
-</code></pre>
-        </div>
-      </Accordion>
-      <div class="s-button-container s-button-container--left">
-        <Button
-          :type="'button'"
-          :size="'large'"
-          :variation="'default'"
-          :title="'Default'"
-        ></Button>
-
-        <Button
-          :type="'button'"
-          :size="'large'"
-          :variation="'action'"
-          :title="'Action'"
-        ></Button>
-
-        <Button
-          :type="'button'"
-          :size="'large'"
-          :variation="'warning'"
-          :title="'Warning'"
-        ></Button>
-
-        <Button
-          :type="'button'"
-          :size="'large'"
-          :variation="'default'"
-          :title="'With Icon'"
-          :icon="'image'"
-        ></Button>
-
-        <Button
-          :size="'large'"
-          :variation="'prime'"
-          :title="'Join Prime'"
-          :icon="'prime'"
-        ></Button>
-        <Button
-          :size="'large'"
-          :variation="'prime-white'"
-          :title="'Join Prime'"
-          :icon="'prime'"
-        ></Button>
-      </div>
+            <Button
+              :size="'large'"
+              :variation="'prime'"
+              :title="'Join Prime'"
+              :icon="'prime'"
+            />
+            <Button
+              :size="'large'"
+              :variation="'prime-white'"
+              :title="'Join Prime'"
+              :icon="'prime'"
+            />
+          </div>
+        </template>
+      </DemoSection>
     </div>
+
     <div class="section">
       <h2>Fixed Width Buttons</h2>
       <p>Used throughout website Dashboard. Width is fixed at 96px.</p>
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre>
-<code>&lt;div class=&quot;s-button-container s-button-container--left&quot;&gt;
-  &lt;Button
-    :type=&quot;'button'&quot;
-    :size=&quot;'fixed-width'&quot;
-    :variation=&quot;'default'&quot;
-    :title=&quot;'Default'&quot;&gt;
-  &lt;/Button&gt;
 
-  &lt;Button
-    :type=&quot;'button'&quot;
-    :size=&quot;'fixed-width'&quot;
-    :variation=&quot;'action'&quot;
-    :title=&quot;'Action'&quot;&gt;
-  &lt;/Button&gt;
+      <DemoSection title="Fixed Width Buttons" :code="demoCode">
+        <template #components>
+          <div class="s-button-container s-button-container--left">
+            <Button
+              type="button"
+              size="fixed-width"
+              variation="default"
+              title="Default"
+            />
 
-  &lt;Button
-    :type=&quot;'button'&quot;
-    :size=&quot;'fixed-width'&quot;
-    :variation=&quot;'warning'&quot;
-    :title=&quot;'Warning'&quot;&gt;
-  &lt;/Button&gt;
+            <Button
+              type="button"
+              size="fixed-width"
+              variation="action"
+              title="Action"
+            />
 
-  &lt;Button
-    :type=&quot;'button'&quot;
-    :size=&quot;'fixed-width'&quot;
-    :variation=&quot;'default'&quot;
-    :title=&quot;'With Icon'&quot;
-    :icon=&quot;'image'&quot;&gt;
-  &lt;/Button&gt;
-&lt;/div&gt;</code></pre>
-        </div>
-      </Accordion>
-      <div class="s-button-container s-button-container--left">
-        <Button
-          :type="'button'"
-          :size="'fixed-width'"
-          :variation="'default'"
-          :title="'Default'"
-        ></Button>
+            <Button
+              type="button"
+              size="fixed-width"
+              variation="warning"
+              title="Warning"
+            />
 
-        <Button
-          :type="'button'"
-          :size="'fixed-width'"
-          :variation="'action'"
-          :title="'Action'"
-        ></Button>
-
-        <Button
-          :type="'button'"
-          :size="'fixed-width'"
-          :variation="'warning'"
-          :title="'Warning'"
-        ></Button>
-
-        <Button
-          :type="'button'"
-          :size="'fixed-width'"
-          :variation="'default'"
-          :title="'With Icon'"
-          :icon="'image'"
-        ></Button>
-      </div>
+            <Button
+              type="button"
+              size="fixed-width"
+              variation="default"
+              title="'WithIcon"
+              icon="image"
+            />
+          </div>
+        </template>
+      </DemoSection>
     </div>
 
     <div class="section">
@@ -560,205 +349,133 @@ components: {
       <div class="section">
         <h3>Default</h3>
         <p>Used within cards and panels in the Dashboard.</p>
-        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-          <div slot="content">
-            <pre>
-<code>&lt;Button
-  :size=&quot;'full-width'&quot;
-  :variation=&quot;'default'&quot;
-  :title=&quot;'Start Giveaway'&quot;&gt;
-&lt;/Button&gt;</code></pre>
-          </div>
-        </Accordion>
-        <Button
-          :size="'full-width'"
-          :variation="'default'"
-          :title="'Start Giveaway'"
-        ></Button>
+        <DemoSection title="Default" :code="demoCode">
+          <template #components>
+            <Button
+              size="full-width"
+              variation="default"
+              title="Start Giveaway"
+            />
+          </template>
+        </DemoSection>
       </div>
+
       <div class="section">
         <h3>Subscribe</h3>
         <p>Used on the App Platform for Subscribing to Apps.</p>
-        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-          <div slot="content">
-            <pre>
-<code>&lt;Button
-  :variation=&quot;'subscribe'&quot;
-  :title=&quot;'Subscribe'&quot;
-  :price=&quot;'$4.99'&quot;&gt;
-&lt;/Button&gt;</code></pre>
-          </div>
-        </Accordion>
-        <Button
-          :variation="'subscribe'"
-          :title="'Subscribe'"
-          :price="'$4.99'"
-        ></Button>
+        <DemoSection title="Subscribe" :code="demoCode">
+          <template #components>
+            <Button variation="subscribe" title="Subscribe" price="$4.99" />
+          </template>
+        </DemoSection>
       </div>
+
       <div class="section">
         <h3>Paypal</h3>
         <p>Used on the Tip Page for Subscribing to Pro.</p>
-        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-          <div slot="content">
-            <pre>
-<code>&lt;Button
-  :variation=&quot;'paypal'&quot;
-  :title=&quot;'Subscribe with PayPal'&quot;
-  :price=&quot;'$4.99'&quot;&gt;
-&lt;/Button&gt;</code></pre>
-          </div>
-        </Accordion>
-        <Button
-          :variation="'paypal'"
-          :title="'Subscribe with PayPal'"
-          :price="'$4.99'"
-        ></Button>
+        <DemoSection title="Paypal" :code="demoCode">
+          <template #components>
+            <Button
+              variation="paypal"
+              title="Subscribe with PayPal"
+              price="$4.99"
+            />
+          </template>
+        </DemoSection>
       </div>
+
       <div class="section">
         <h3>Download</h3>
         <p>Used for Download Streamlabs OBS buttons.</p>
-        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-          <div slot="content">
-            <pre>
-<code>&lt;Button
-  :variation=&quot;'slobs-download'&quot;
-  :title=&quot;'Download Streamlabs OBS'&quot;
-  :description=&quot;'Windows 7+ 245.8MB'&quot;&gt;
-&lt;/Button&gt;</code></pre>
-          </div>
-        </Accordion>
-        <Button
-          :variation="'slobs-download'"
-          :title="'Download Streamlabs OBS'"
-        ></Button>
+        <DemoSection title="Download" :code="demoCode">
+          <template #components>
+            <Button
+              variation="slobs-download"
+              title="Download Streamlabs OBS"
+            />
+          </template>
+        </DemoSection>
       </div>
     </div>
     <div class="section">
       <h2>Square Buttons</h2>
       <p>Used for add and subtract number inputs as well as login buttons.</p>
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre>
-<code>&lt;div class=&quot;s-button-container s-button-container--left&quot;&gt;
-  &lt;Button
-    :type=&quot;'button'&quot;
-    :size=&quot;'square'&quot;
-    :variation=&quot;'default'&quot;
-    :icon=&quot;'add'&quot;&gt;
-  &lt;/Button&gt;
-  &lt;Button
-    :type=&quot;'button'&quot;
-    :size=&quot;'square'&quot;
-    :variation=&quot;'default'&quot;
-    :icon=&quot;'subtract'&quot;&gt;
-  &lt;/Button&gt;
-  &lt;Button
-    :type=&quot;'button'&quot;
-    :variation=&quot;'facebook'&quot;
-    :size=&quot;'square'&quot;
-    :icon=&quot;'facebook'&quot;&gt;
-  &lt;/Button&gt;
-  &lt;Button
-    :type=&quot;'button'&quot;
-    :variation=&quot;'periscope'&quot;
-    :size=&quot;'square'&quot;
-    :icon=&quot;'periscope'&quot;&gt;
-  &lt;/Button&gt;
-  &lt;Button
-    :type=&quot;'button'&quot;
-    :variation=&quot;'mixer'&quot;
-    :size=&quot;'square'&quot;
-    :icon=&quot;'mixer'&quot;&gt;
-  &lt;/Button&gt;
-  &lt;Button
-    :type=&quot;'button'&quot;
-    :variation=&quot;'picarto'&quot;
-    :size=&quot;'square'&quot;
-    ::icon=&quot;'picarto'&quot;&gt;
-  &lt;/Button&gt;
-&lt;/div&gt;</code></pre>
-        </div>
-      </Accordion>
-      <div class="s-button-container s-button-container--left">
-        <Button
-          :type="'button'"
-          :size="'square'"
-          :variation="'default'"
-          :icon="'add'"
-        ></Button>
-        <Button
-          :type="'button'"
-          :size="'square'"
-          :variation="'default'"
-          :icon="'subtract'"
-        ></Button>
-        <Button
-          :type="'button'"
-          :variation="'facebook'"
-          :size="'square'"
-          :icon="'facebook'"
-        ></Button>
-        <Button
-          :type="'button'"
-          :variation="'periscope'"
-          :size="'square'"
-          :icon="'periscope'"
-        ></Button>
-        <Button
-          :type="'button'"
-          :variation="'mixer'"
-          :size="'square'"
-          :icon="'mixer'"
-        ></Button>
-        <Button
-          :type="'button'"
-          :variation="'picarto'"
-          :size="'square'"
-          :icon="'picarto'"
-        ></Button>
-      </div>
+      <DemoSection title="Square Buttons" :code="demoCode">
+        <template #components>
+          <div class="s-button-container s-button-container--left">
+            <Button
+              type="button"
+              size="square"
+              variation="default"
+              icon="add"
+            />
+
+            <Button
+              type="button"
+              size="square"
+              variation="default"
+              icon="subtract"
+            />
+
+            <Button
+              type="button"
+              variation="facebook"
+              size="square"
+              icon="facebook"
+            />
+
+            <Button
+              type="button"
+              variation="periscope"
+              size="square"
+              icon="periscope"
+            />
+
+            <Button
+              type="button"
+              variation="mixer"
+              size="square"
+              icon="mixer"
+            />
+
+            <Button
+              type="button"
+              variation="picarto"
+              size="square"
+              icon="picarto"
+            />
+          </div>
+        </template>
+      </DemoSection>
     </div>
+
     <div class="section">
       <h2>Navigation Buttons</h2>
       <p>Used to bring you between different page states.</p>
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre>
-<code>&lt;Button
-  :variation=&quot;'navigation'&quot;
-  :icon=&quot;'back'&quot;
-  :title=&quot;'Back to Listings'&quot;&gt;
-&lt;/Button&gt;</code></pre>
-        </div>
-      </Accordion>
-      <Button
-        :variation="'navigation'"
-        :icon="'back-alt'"
-        :title="'Back to Listings'"
-      ></Button>
+
+      <DemoSection title="Navigation Buttons" :code="demoCode">
+        <template #components>
+          <Button
+            variation="navigation"
+            icon="back-alt"
+            title="Back to Listings"
+          />
+        </template>
+      </DemoSection>
     </div>
 
     <div class="section">
       <h2>Prime Button Text</h2>
       <p>Used for prime button with text.</p>
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre>
-<code>&lt;div class=&quot;s-button-container s-button-container--left&quot;&gt;
-  &lt;Button
-    :variation=&quot;'prime-simple'&quot;
-  &lt;/Button&gt;
-  &lt;Button
-    :variation=&quot;'prime-simple'&quot;
-    :primeTitle=&quot;'test'&quot;
-  &lt;/Button&gt;
-&lt;/div&gt;</code></pre>
-        </div>
-      </Accordion>
-      <div class="s-button-container s-button-container--left">
-        <Button :variation="'prime-simple'"></Button>
-        <Button :variation="'prime-simple'" :primeTitle="'test'"></Button>
-      </div>
+
+      <DemoSection title="Prime Button Text" :code="demoCode">
+        <template #components>
+          <div class="s-button-container s-button-container--left">
+            <Button variation="prime-simple" />
+            <Button variation="prime-simple" primeTitle="test" />
+          </div>
+        </template>
+      </DemoSection>
     </div>
 
     <table class="docs-table">
@@ -955,27 +672,32 @@ components: {
 import { Component, Vue } from "vue-property-decorator";
 import Accordion from "./../components/Accordion.vue";
 import Button from "./../components/Button.vue";
+import DemoSection from "./../components/DemoSection.vue";
+import ButtonCode from "!!raw-loader!./Buttons.vue";
 
 @Component({
   components: {
     Accordion,
-    Button
+    Button,
+    DemoSection
   }
 })
 export default class Forms extends Vue {
   isLoading = true;
   isLoadingExample = false;
+  demoCode = ButtonCode;
 
   buttonClick() {
     alert("Button clicked");
   }
-
-  reportSlobsDownloads() {
-    console.log("test");
-  }
-
-  buttonActionClick() {
-    alert("Button clicked");
-  }
 }
 </script>
+
+<style lang="less" scoped>
+.custom-html {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 150px;
+}
+</style>
