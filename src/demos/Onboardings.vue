@@ -19,17 +19,7 @@
       <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
         <div slot="content">
           <pre>
-            <code>
-import { Onboarding, OnboardingStep } from "streamlabs-beaker"
-
-@Component({
-  components: {
-    Onboarding,
-    OnboardingStep,
-  }
-})
-
-data() {
+            <code>data() {
   return {
     currentStep: 1,
     steps: [
