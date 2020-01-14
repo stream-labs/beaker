@@ -1,8 +1,12 @@
 <template>
   <div class="s-form-group-v">
     <!-- title -->
-    <div class="s-form-group-v__title" :style="titleLayoutStyle">
-      <label>{{ title }}</label>
+    <div
+      class="s-form-group-v__title"
+      :class="{ 's-form-group-v__title--hidden': !title && !tooltip }"
+      :style="titleLayoutStyle"
+    >
+      <label v-if="title">{{ title }}</label>
       <i
         v-if="tooltip"
         v-tooltip.auto="tooltip"
@@ -63,6 +67,10 @@ export default class FormGroupV extends Vue {
   align-items: center;
   .margin-bottom();
   font-size: 12px;
+
+  &--hidden {
+    margin-bottom: 0;
+  }
 
   label {
     .margin-right();

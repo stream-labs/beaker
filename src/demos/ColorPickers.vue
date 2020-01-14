@@ -3,6 +3,12 @@
     <div class="section">
       <h1>Color Picker</h1>
       <p>This color picker uses a chrome style picker</p>
+
+      <pre><code>import { ColorPicker } from "streamlabs-beaker"
+
+components: {
+  ColorPicker
+}</code></pre>
     </div>
 
     <div class="section">
@@ -52,14 +58,13 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Accordion from "./../components/Accordion.vue";
+
 import ColorPicker from "./../components/ColorPicker.vue";
 import ColorPickersCode from "!!raw-loader!./ColorPickers.vue";
 import DemoSection from "./../components/DemoSection.vue";
 
 @Component({
   components: {
-    Accordion,
     ColorPicker,
     DemoSection
   }

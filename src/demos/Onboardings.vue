@@ -170,7 +170,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Accordion from "./../components/Accordion.vue";
+
 import DemoSection from "./../components/DemoSection.vue";
 import Onboarding from "./../components/Onboarding.vue";
 import OnboardingStep from "./../components/OnboardingStep.vue";
@@ -179,7 +179,6 @@ import SSProSimulator from "./../components/SSProSimulator.vue";
 
 @Component({
   components: {
-    Accordion,
     DemoSection,
     Onboarding,
     OnboardingStep,
