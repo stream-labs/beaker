@@ -4,20 +4,18 @@
       <h1>Color Picker</h1>
       <p>This color picker uses a chrome style picker</p>
     </div>
+
     <div class="section">
       <h2>Default Color Picker</h2>
-      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre><code>&lt;color-picker :v-model=&quot;color&quot; placeholder=&quot;test&quot; :hasAlpha=&quot;true&quot;&gt;&lt;/color-picker&gt;</code></pre>
-        </div>
-      </accordion>
-      <div class="row">
-        <color-picker
-          v-model="color"
-          placeholder="test"
-          :hasAlpha="true"
-        ></color-picker>
+
+      <div class="section">
+        <DemoSection title="Default" :code="demoCode">
+          <template #components>
+            <ColorPicker v-model="color" placeholder="test" :hasAlpha="true" />
+          </template>
+        </DemoSection>
       </div>
+
       <table class="docs-table">
         <thead>
           <tr>
@@ -56,14 +54,18 @@
 import { Component, Vue } from "vue-property-decorator";
 import Accordion from "./../components/Accordion.vue";
 import ColorPicker from "./../components/ColorPicker.vue";
+import ColorPickersCode from "!!raw-loader!./ColorPickers.vue";
+import DemoSection from "./../components/DemoSection.vue";
 
 @Component({
   components: {
     Accordion,
-    ColorPicker
+    ColorPicker,
+    DemoSection
   }
 })
 export default class ColorPickers extends Vue {
+  demoCode = ColorPickersCode;
   color = "#ccc";
 }
 </script>

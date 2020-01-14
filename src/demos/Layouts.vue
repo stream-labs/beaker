@@ -12,41 +12,29 @@ components: {
     <div class="section">
       <h2>Content Row</h2>
       <p>Used for content row.</p>
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre><code> &lt;ContentRow 
-  :icon=&quot;'desktop'&quot; 
-  :btnVariation=&quot;'default'&quot; 
-  :btnTitle=&quot;'Default'&quot;&gt;
-  &lt;template slot=&quot;title&quot;&gt;Tiltify&lt;/template&gt;
-  &lt;template slot=&quot;text&quot; &gt;Link your account and visit Alert Box to configure your Tiltify Events.&lt;/template&gt;
-&lt;/ContentRow&gt;
-  </code></pre>
-        </div>
-      </Accordion>
 
-      <ContentRow
-        :icon="'desktop'"
-        :btnVariation="'default'"
-        :btnTitle="'Default'"
-      >
-        <template slot="title"
-          >Tiltify</template
-        >
-        <template slot="text"
-          >Link your account and visit Alert Box to configure your Tiltify
-          Events.</template
-        >
-      </ContentRow>
+      <DemoSection title="Content Row" :code="demoCode">
+        <template #components>
+          <ContentRow
+            :icon="'desktop'"
+            :btnVariation="'default'"
+            :btnTitle="'Default'"
+          >
+            <span slot="title">Tiltify</span>
+            <span slot="text">
+              Link your account and visit Alert Box to configure your Tiltify
+              Events.
+            </span>
+          </ContentRow>
+        </template>
+      </DemoSection>
 
       <ContentRow
         :icon="'education'"
         :btnVariation="'action'"
         :btnTitle="'Action'"
       >
-        <template slot="title"
-          >Tiltify</template
-        >
+        <template slot="title">Tiltify</template>
         <template slot="text"
           >Link your account and visit Alert Box to configure your Tiltify
           Events.</template
@@ -127,14 +115,17 @@ components: {
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Accordion from "./../components/Accordion.vue";
 import ContentRow from "./../components/ContentRow.vue";
+import DemoSection from "./../components/DemoSection.vue";
+import LayoutsCode from "!!raw-loader!./Layouts.vue";
 
 @Component({
   components: {
-    Accordion,
-    ContentRow
+    ContentRow,
+    DemoSection
   }
 })
-export default class Layouts extends Vue {}
+export default class Layouts extends Vue {
+  demoCode = LayoutsCode;
+}
 </script>

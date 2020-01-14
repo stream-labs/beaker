@@ -1,12 +1,14 @@
 <template>
-  <div>
+  <div class="s-demo-section">
     <Accordion openedTitle="Hide Code" closedTitle="Show Code">
       <div slot="content">
         <pre><code v-html="escapedHtml"></code></pre>
       </div>
     </Accordion>
 
-    <slot name="components"></slot>
+    <div class="s-demo-section__content">
+      <slot name="components"></slot>
+    </div>
   </div>
 </template>
 
@@ -30,9 +32,7 @@ export default class DemoSection extends Vue {
 
   get escapedHtml() {
     const codeRegEx = new RegExp(
-      `title="${
-        this.title
-      }" :code="demoCode">\\s*<template #components>(.*?)<\\/template>`,
+      `title="${this.title}" :code="demoCode">\\s*<template #components>(.*?)<\\/template>`,
       "gsm"
     );
 
@@ -51,4 +51,10 @@ export default class DemoSection extends Vue {
 }
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.s-demo-section {
+  &__content {
+    position: relative;
+  }
+}
+</style>
