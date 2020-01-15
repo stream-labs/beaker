@@ -2,57 +2,44 @@
   <div>
     <div class="section">
       <h1>Toggles</h1>
-      <p>Toggle between two custom options such as show and hide.</p>
+      <p>Toggle between multiple custom options such as show and hide.</p>
 
       <pre><code>import { Toggle } from 'streamlabs-beaker';
 
 components: {
   Toggle
 }</code></pre>
-
-      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre><code>&lt;toggle
-  :values=&quot;{
-    'show': `&lt;i class='icon-view'&gt;&lt;/i&gt;`,
-    'hide': `&lt;i class='icon-hide'&gt;&lt;/i&gt;`
-  }&quot;
-  v-model=&quot;selectedOption&quot;
-&lt;/toggle&gt;</code></pre>
-        </div>
-      </accordion>
-
-      <toggle
-        :values="{
-          show: `<i class='icon-view'></i>`,
-          hide: `<i class='icon-hide'></i>`
-        }"
-        v-model="selectedOption"
-      ></toggle>
     </div>
 
     <div class="section">
-      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre><code>&lt;toggle
-  :values=&quot;{
-    'revenue': 'Revenue',
-    'growth': 'Growth'
-  }&quot;
-  v-model=&quot;selectedOption&quot;
-  :variation=&quot;'text'&quot;
-&lt;/toggle&gt;</code></pre>
-        </div>
-      </accordion>
+      <h2>Icon Toggles</h2>
+      <DemoSection title="Icon Toggles" :code="demoCode">
+        <template #components>
+          <Toggle
+            :values="{
+              show: `<i class='icon-view'></i>`,
+              hide: `<i class='icon-hide'></i>`
+            }"
+            v-model="selectedOption"
+          />
+        </template>
+      </DemoSection>
+    </div>
 
-      <toggle
-        :values="{
-          revenue: 'Revenue',
-          growth: 'Growth'
-        }"
-        v-model="selectedTextOption"
-        :variation="'text'"
-      ></toggle>
+    <div class="section">
+      <h2>Text Toggles</h2>
+      <DemoSection title="Text Toggles" :code="demoCode">
+        <template #components>
+          <Toggle
+            :values="{
+              revenue: 'Revenue',
+              growth: 'Growth'
+            }"
+            v-model="selectedTextOption"
+            :variation="'text'"
+          />
+        </template>
+      </DemoSection>
     </div>
 
     <table class="docs-table">
@@ -97,16 +84,18 @@ components: {
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 
-import Accordion from "./../components/Accordion.vue";
+import DemoSection from "./../components/DemoSection.vue";
 import Toggle from "./../components/Toggle.vue";
+import TogglesCode from "!!raw-loader!./Toggles.vue";
 
 @Component({
   components: {
-    Accordion,
+    DemoSection,
     Toggle
   }
 })
 export default class Toggles extends Vue {
+  demoCode = TogglesCode;
   selectedOption = "show";
   selectedTextOption = "revenue";
 }

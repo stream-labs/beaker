@@ -6,95 +6,52 @@
     </div>
     <div class="section">
       <h2>Tooltip Notice</h2>
-      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre><code>&lt;TooltipNotice
-  v-if=&quot;showTooltipNotice&quot;
-  @handle-tooltip=&quot;closeTooltip&quot;
-  :title=&quot;'Defaults'&quot;
-  :desc=&quot;'All your favorite widgets, just with a new view.'&quot;
-&gt;&lt;/TooltipNotice&gt;
 
-&lt;TooltipNotice
-  v-if=&quot;showTooltipNotice&quot;
-  @handle-tooltip=&quot;closeTooltip&quot;
-  :arrowPosition=&quot;'top'&quot;
-  :hasButton=&quot;false&quot;
-  :title=&quot;'Top arrow'&quot;
-  :desc=&quot;'All your favorite widgets, just with a new view.'&quot;
-&gt;&lt;/TooltipNotice&gt;
+      <DemoSection title="Default" :code="demoCode">
+        <template #components>
+          <TooltipNotice
+            v-if="showTooltipNotice"
+            title="Defaults"
+            desc="All your favorite widgets, just with a new view."
+            @handle-tooltip="closeTooltip"
+          />
 
-&lt;TooltipNotice
-  v-if=&quot;showTooltipNotice&quot;
-  @handle-tooltip=&quot;closeTooltip&quot;
-  :buttonTitle=&quot;'Get started'&quot;
-  :title=&quot;'Custom button title'&quot;
-  :desc=&quot;'All your favorite widgets, just with a new view.'&quot;
-&gt;&lt;/TooltipNotice&gt;
+          <TooltipNotice
+            v-if="showTooltipNotice"
+            title="Top arrow"
+            desc="All your favorite widgets, just with a new view."
+            :arrowPosition="'top'"
+            :hasButton="false"
+            @handle-tooltip="closeTooltip"
+          />
 
-&lt;TooltipNotice
-  v-if=&quot;showTooltipNotice&quot;
-  @handle-tooltip=&quot;closeTooltip&quot;
-  :width=&quot;300&quot;
-  :title=&quot;'Custom width'&quot;
-  :desc=&quot;'All your favorite widgets, just with a new view.'&quot;
-&gt;&lt;/TooltipNotice&gt;
+          <TooltipNotice
+            v-if="showTooltipNotice"
+            title="Custom button title"
+            desc="All your favorite widgets, just with a new view."
+            :buttonTitle="'Get started'"
+            @handle-tooltip="closeTooltip"
+          />
 
-&lt;TooltipNotice
-  v-if=&quot;showTooltipNotice&quot;
-  @handle-tooltip=&quot;alertTooltip&quot;
-  @handle-tooltip-secondary=&quot;closeTooltip&quot;
-  :title=&quot;'Secondary Action'&quot;
-  :desc=&quot;'All your favorite widgets, just with a new view.'&quot;
-  :hasSecondaryAction=&quot;true&quot;
-  :secondaryActionTitle=&quot;'No thanks'&quot;
-&gt;&lt;/TooltipNotice&gt;</code></pre>
-        </div>
-      </accordion>
+          <TooltipNotice
+            v-if="showTooltipNotice"
+            title="Custom width"
+            desc="All your favorite widgets, just with a new view."
+            :width="300"
+            @handle-tooltip="closeTooltip"
+          />
 
-      <div class="row">
-        <TooltipNotice
-          v-if="showTooltipNotice"
-          @handle-tooltip="closeTooltip"
-          :title="'Defaults'"
-          :desc="'All your favorite widgets, just with a new view.'"
-        ></TooltipNotice>
-
-        <TooltipNotice
-          v-if="showTooltipNotice"
-          @handle-tooltip="closeTooltip"
-          :arrowPosition="'top'"
-          :hasButton="false"
-          :title="'Top arrow'"
-          :desc="'All your favorite widgets, just with a new view.'"
-        ></TooltipNotice>
-
-        <TooltipNotice
-          v-if="showTooltipNotice"
-          @handle-tooltip="closeTooltip"
-          :buttonTitle="'Get started'"
-          :title="'Custom button title'"
-          :desc="'All your favorite widgets, just with a new view.'"
-        ></TooltipNotice>
-
-        <TooltipNotice
-          v-if="showTooltipNotice"
-          @handle-tooltip="closeTooltip"
-          :width="300"
-          :title="'Custom width'"
-          :desc="'All your favorite widgets, just with a new view.'"
-        ></TooltipNotice>
-
-        <TooltipNotice
-          v-if="showTooltipNotice"
-          @handle-tooltip="alertTooltip"
-          @handle-tooltip-secondary="closeTooltip"
-          :title="'Secondary Action'"
-          :desc="'All your favorite widgets, just with a new view.'"
-          :hasSecondaryAction="true"
-          :secondaryActionTitle="'No thanks'"
-        ></TooltipNotice>
-      </div>
+          <TooltipNotice
+            v-if="showTooltipNotice"
+            title="Secondary Action"
+            desc="All your favorite widgets, just with a new view."
+            :hasSecondaryAction="true"
+            secondaryActionTitle="No thanks"
+            @handle-tooltip="alertTooltip"
+            @handle-tooltip-secondary="closeTooltip"
+          />
+        </template>
+      </DemoSection>
 
       <table class="docs-table">
         <thead>
@@ -159,16 +116,19 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Accordion from "./../components/Accordion.vue";
+
+import DemoSection from "./../components/DemoSection.vue";
+import NoticesCode from "!!raw-loader!./Notices.vue";
 import TooltipNotice from "./../components/TooltipNotice.vue";
 
 @Component({
   components: {
-    Accordion,
+    DemoSection,
     TooltipNotice
   }
 })
 export default class Notices extends Vue {
+  demoCode = NoticesCode;
   showTooltipNotice = true;
 
   alertTooltip() {
@@ -182,32 +142,32 @@ export default class Notices extends Vue {
 </script>
 
 <style lang="less" scoped>
-.row {
-  position: relative;
+::v-deep .s-demo-section__content {
+  height: 330px;
 
   .s-tooltip-notice {
     &:nth-child(1) {
-      top: 250px;
+      top: 0px;
       left: 0px;
     }
 
     &:nth-child(2) {
-      top: 250px;
+      top: 0;
       left: 250px;
     }
 
     &:nth-child(3) {
-      top: 250px;
+      top: 0;
       left: 500px;
     }
 
     &:nth-child(4) {
-      top: 450px;
+      top: 169px;
       left: 0;
     }
 
     &:nth-child(5) {
-      top: 450px;
+      top: 169px;
       left: 350px;
     }
   }

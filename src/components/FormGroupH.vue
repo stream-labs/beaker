@@ -3,7 +3,11 @@
     <!-- title -->
     <div class="s-form-group-h__title">
       <label>{{ title }}</label>
-      <i v-if="tooltip" class="s-tooltip icon-question" />
+      <i
+        v-if="tooltip"
+        v-tooltip.auto="tooltip"
+        class="s-tooltip icon-question"
+      />
     </div>
 
     <div class="s-form-group-h__input-wrapper">
