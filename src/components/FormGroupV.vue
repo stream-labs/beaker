@@ -2,9 +2,9 @@
   <div class="s-form-group-v">
     <!-- title -->
     <div
+      :style="titleLayoutStyle"
       class="s-form-group-v__title"
       :class="{ 's-form-group-v__title--hidden': !title && !tooltip }"
-      :style="titleLayoutStyle"
     >
       <label v-if="title">{{ title }}</label>
       <i
