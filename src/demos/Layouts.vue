@@ -34,7 +34,9 @@ components: {
         :btnVariation="'action'"
         :btnTitle="'Action'"
       >
-        <template slot="title">Tiltify</template>
+        <template slot="title"
+          >Tiltify</template
+        >
         <template slot="text"
           >Link your account and visit Alert Box to configure your Tiltify
           Events.</template

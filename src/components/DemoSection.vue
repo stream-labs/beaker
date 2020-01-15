@@ -32,7 +32,9 @@ export default class DemoSection extends Vue {
 
   get escapedHtml() {
     const codeRegEx = new RegExp(
-      `title="${this.title}" :code="demoCode">\\s*<template #components>(.*?)<\\/template>`,
+      `title="${
+        this.title
+      }" :code="demoCode">\\s*<template #components>(.*?)<\\/template>`,
       "gsm"
     );
 
