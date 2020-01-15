@@ -17,7 +17,7 @@
     @mousedown="pressDown"
     :style="buttonStyle"
   >
-    <span>
+    <span v-if="!$slots.custom">
       <span>
         <span v-if="variation === 'prime-simple' && this.primeTitle">
           {{ primeTitle }}
@@ -40,6 +40,8 @@
         :class="['icon--right', iconClass]"
       ></i>
     </span>
+
+    <slot name="custom"></slot>
     <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
     <span v-if="price">{{ price }}</span>
   </component>

@@ -4,79 +4,58 @@
     <Tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler">
       <div slot="marketing">
         <h2>Marketing Banner</h2>
-        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-          <div slot="content">
-            <pre>
-<code>&lt;banner-marketing
-  :day-bg=&quot;'https://picsum.photos/1920/300/?image=926'&quot;
-  :night-bg=&quot;'https://picsum.photos/1920/300/?image=914'&quot;
-  :label=&quot;'Introducing Streamlabs OBS'&quot;
-  :icon=&quot;'themes'&quot;
-  :title=&quot;'Largest library of free themes in the world.'&quot;
-  :desc=&quot;'To access over 700+ themes for free, download Streamlabs OBS.'&quot;
-  :link-desc=&quot;'Win 7+  245.8 MB'&quot;
-  :onToggle=&quot;test&quot;&gt;
-  &lt;Button
-    slot=&quot;link&quot;
-    :type=&quot;'a'&quot;
-    :variation=&quot;'action'&quot;
-    :size=&quot;'standard'&quot;
-    :href=&quot;'#'&quot;
-    :title=&quot;'Download'&quot;
-    :icon=&quot;'overview'&quot;&gt;
-  &lt;/Button&gt;
-&lt;/banner-marketing&gt;</code></pre>
-          </div>
-        </Accordion>
+        <DemoSection title="Marketing Banner" :code="demoCode">
+          <template #components>
+            <banner-marketing
+              bg-image="
+                https://cdn.streamlabs.com/static/imgs/pretzel_dashboard_banner_bg.png
+              "
+              bg-image-night="
+                http://cdn.backgroundhost.com/backgrounds/subtlepatterns/cartographer.png
+              "
+              icon-name="themes"
+              label="Introducing Streamlabs OBS"
+              title="Largest library of free themes in the world."
+              desc="
+                To access over 700+ themes for free, download Streamlabs OBS.
+              "
+              link-desc="Win 7+  245.8 MB"
+              :onToggle="test"
+            >
+              <Button
+                slot="link"
+                type="a"
+                variation="action"
+                size="standard"
+                href="#"
+                title="Download"
+                icon="overview"
+              />
+            </banner-marketing>
+          </template>
+        </DemoSection>
 
         <banner-marketing
-          :bg-image="
-            'https://cdn.streamlabs.com/static/imgs/pretzel_dashboard_banner_bg.png'
+          bg-image="
+            https://cdn.streamlabs.com/static/imgs/pretzel_dashboard_banner_bg.png
           "
-          :bg-image-night="
-            'http://cdn.backgroundhost.com/backgrounds/subtlepatterns/cartographer.png'
+          icon-image="require(../assets/imgs/pretzel-icon.png)"
+          label="New Streamlabs OBS App"
+          title="Introducing Pretzel Rocks Music Player"
+          desc="
+            Stream-safe music for broadcasters with an ever-growing catalog of music. Currently 5k+ tracks.
           "
-          :icon-name="'themes'"
-          :label="'Introducing Streamlabs OBS'"
-          :title="'Largest library of free themes in the world.'"
-          :desc="
-            'To access over 700+ themes for free, download Streamlabs OBS.'
-          "
-          :link-desc="'Win 7+  245.8 MB'"
-          :onToggle="test"
-        >
-          <Button
-            slot="link"
-            :type="'a'"
-            :variation="'action'"
-            :size="'standard'"
-            :href="'#'"
-            :title="'Download'"
-            :icon="'overview'"
-          ></Button>
-        </banner-marketing>
-
-        <banner-marketing
-          :bg-image="
-            'https://cdn.streamlabs.com/static/imgs/pretzel_dashboard_banner_bg.png'
-          "
-          :icon-image="require('../assets/imgs/pretzel-icon.png')"
-          :label="'New Streamlabs OBS App'"
-          :title="'Introducing Pretzel Rocks Music Player'"
-          :desc="
-            'Stream-safe music for broadcasters with an ever-growing catalog of music. Currently 5k+ tracks.'
-          "
-          :link-desc="'$4.99/mo'"
+          link-desc="$4.99/mo"
           :banner-closed="bannerClosed"
         >
           <Button
             slot="link"
-            :type="'a'"
-            :variation="'action'"
-            :size="'standard'"
-            :href="'#'"
-            :title="'Try It Now'"
-          ></Button>
+            type="a"
+            variation="action"
+            size="standard"
+            href="#"
+            title="Try It Now"
+          />
         </banner-marketing>
 
         <table class="docs-table">
@@ -173,30 +152,19 @@
 
       <div slot="sale">
         <h2>Sale Banner</h2>
-        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-          <div slot="content">
-            <pre>
-<code>&lt;banner-sale
-  :title=&quot;'Flash Sale! 25% off everything!'&quot;
-  :desc=&quot;'All items are automatically discounted.'&quot;
-  :days=&quot;'00'&quot;
-  :hours=&quot;'12'&quot;
-  :minutes=&quot;'34'&quot;
-  :seconds=&quot;'56'&quot;
-  :time-desc=&quot;'Until flash sale ends. Hurry!'&quot;&gt;
-&lt;/banner-sale&gt;</code></pre>
-          </div>
-        </Accordion>
-
-        <banner-sale
-          :title="'Flash Sale! 25% off everything!'"
-          :desc="'All items are automatically discounted.'"
-          :days="'00'"
-          :hours="'00'"
-          :minutes="'00'"
-          :seconds="secs"
-          :time-desc="'Until flash sale ends. Hurry!'"
-        ></banner-sale>
+        <DemoSection title="Sale Banner" :code="demoCode">
+          <template #components>
+            <banner-sale
+              title="Flash Sale! 25% off everything!"
+              desc="All items are automatically discounted."
+              days="00"
+              hours="00"
+              minutes="00"
+              :seconds="secs"
+              time-desc="Until flash sale ends. Hurry!"
+            />
+          </template>
+        </DemoSection>
 
         <table class="docs-table">
           <thead>
@@ -278,66 +246,47 @@
 
       <div slot="notice">
         <h2>Notice Banner</h2>
-        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-          <div slot="content">
-            <pre>
-<code>&lt;notice
-  title=&quot;Join affiliates and earn $1 for each Streamlabs OBS referral&quot;
-  desc=&quot;Share your unique referral link with friends and get paid directly into your PayPal each month.&quot;
-  &lt;Button
-    slot=&quot;button&quot;
-    type=&quot;button&quot;
-    size=&quot;fixed-width&quot;
-    variation=&quot;action&quot;
-    title=&quot;Join&quot;
-  &gt;&lt;/Button&gt;
-&lt;/notice&gt;
+        <DemoSection title="Notice Banner" :code="demoCode">
+          <template #components>
+            <notice
+              title="
+                Join affiliates and earn $1 for each Streamlabs OBS referral
+              "
+              desc="
+                Share your unique referral link with friends and get paid directly into your PayPal each month.
+              "
+              icon="information"
+            >
+              <Button
+                slot="button"
+                type="button"
+                size="fixed-width"
+                variation="action"
+                title="Join"
+              />
+            </notice>
+          </template>
+        </DemoSection>
+        <br />
+        <br />
 
-&lt;notice
-  variation=&quot;warning&quot;
-  title=&quot;Your donation link has expired&quot;
-  desc=&quot;Copy your new donation link and replace all instances containing twitchalerts.com.&quot;
-  &lt;Button
-    slot=&quot;button&quot;
-    type=&quot;button&quot;
-    size=&quot;fixed-width&quot;
-    variation=&quot;default&quot;
-    title=&quot;Copy Link&quot;
-  &gt;&lt;/Button&gt;
-&lt;/notice&gt;</code></pre>
-          </div>
-        </Accordion>
-
-        <div class="section">
-          <notice
-            title="Join affiliates and earn $1 for each Streamlabs OBS referral"
-            desc="Share your unique referral link with friends and get paid directly into your PayPal each month."
-          >
-            <Button
-              slot="button"
-              type="button"
-              size="fixed-width"
-              variation="action"
-              title="Join"
-            ></Button>
-          </notice>
-          <br />
-          <br />
-
-          <notice
-            variation="warning"
-            title="Your donation link has expired"
-            desc="Copy your new donation link and replace all instances containing twitchalerts.com."
-          >
-            <Button
-              slot="button"
-              type="button"
-              size="fixed-width"
-              variation="default"
-              title="Copy Link"
-            ></Button>
-          </notice>
-        </div>
+        <notice
+          :bgColor="'warning'"
+          :title="'Your donation link has expired'"
+          :titleColor="'warning'"
+          :desc="
+            'Copy your new donation link and replace all instances containing twitchalerts.com.'
+          "
+          :icon="'error'"
+        >
+          <Button
+            slot="button"
+            :type="'button'"
+            :size="'fixed-width'"
+            :variation="'default'"
+            :title="'Copy Link'"
+          ></Button>
+        </notice>
 
         <table class="docs-table">
           <thead>
@@ -351,13 +300,13 @@
           </thead>
           <tbody>
             <tr>
-              <td>variation</td>
+              <td>bgColor</td>
               <td>string</td>
               <td>true</td>
               <td>default</td>
               <td>
-                Variation style that will be displayed. Options are "default"
-                and "warning".
+                Background color that will display. Options are "default" and
+                "warning". if default It's already set as default props.
               </td>
             </tr>
             <tr>
@@ -366,6 +315,13 @@
               <td>true</td>
               <td>null</td>
               <td>Banner title</td>
+            </tr>
+            <tr>
+              <td>titleColor</td>
+              <td>string</td>
+              <td>true</td>
+              <td>null</td>
+              <td>Banner title color</td>
             </tr>
             <tr>
               <td>desc</td>
@@ -379,10 +335,7 @@
               <td>string</td>
               <td>true</td>
               <td>null</td>
-              <td>
-                Icon next to title and in background. Will override selected
-                variation icon. Use icon name from icon list.
-              </td>
+              <td>Icon next to title. Use icon name from icon list.</td>
             </tr>
           </tbody>
         </table>
@@ -390,14 +343,11 @@
 
       <div slot="discord">
         <h2>Discord Banner</h2>
-        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-          <div slot="content">
-            <pre>
-<code>&lt;banner-discord&gt;&lt;/banner-discord&gt;</code></pre>
-          </div>
-        </Accordion>
-
-        <banner-discord></banner-discord>
+        <DemoSection title="Discord Banner" :code="demoCode">
+          <template #components>
+            <BannerDiscord />
+          </template>
+        </DemoSection>
 
         <table class="docs-table">
           <thead>
@@ -430,26 +380,28 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Accordion from "./../components/Accordion.vue";
+import BannersCode from "!!raw-loader!./Banners.vue";
+import BannerDiscord from "./../components/BannerDiscord.vue";
 import BannerMarketing from "./../components/BannerMarketing.vue";
 import BannerSale from "./../components/BannerSale.vue";
-import BannerDiscord from "./../components/BannerDiscord.vue";
 import Button from "./../components/Button.vue";
-import Tabs from "./../components/Tabs.vue";
+import DemoSection from "./../components/DemoSection.vue";
 import Notice from "./../components/Notice.vue";
+import Tabs from "./../components/Tabs.vue";
 
 @Component({
   components: {
-    Accordion,
+    BannerDiscord,
     BannerMarketing,
     BannerSale,
-    BannerDiscord,
     Button,
-    Tabs,
-    Notice
+    DemoSection,
+    Notice,
+    Tabs
   }
 })
 export default class Banners extends Vue {
+  demoCode = BannersCode;
   tabs = [
     {
       name: "Marketing",
@@ -494,7 +446,7 @@ export default class Banners extends Vue {
   }
 
   test() {
-    // console.log("test");
+    console.log("test");
   }
 }
 </script>

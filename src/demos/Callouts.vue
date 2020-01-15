@@ -24,43 +24,22 @@ components: {
         and limit the text to 1 line. You can link to more info in a modal or
         another page if needed.
       </p>
-      <callout variation="success">
-        Success callout.
-        <a href="#0">Link</a>
-      </callout>
-      <callout variation="warning">
-        Warning callout.
-        <a href="#0">Link</a>
-      </callout>
-      <callout variation="info">
-        Info callout.
-        <a href="#0">Link</a>
-      </callout>
 
-      <callout variation="success" custom-icon="icon-settings">
-        Custom Icon callout.
-        <a href="#0">Link</a>
-      </callout>
+      <DemoSection title="Default Callouts" :code="demoCode">
+        <template #components>
+          <Callout variation="success">
+            Success callout. <a href="#0">Link</a>
+          </Callout>
 
-      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre><code>&lt;callout variation=&quot;success&quot;&gt;
-  Success callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;
-&lt;/callout&gt;
+          <Callout variation="warning">
+            Warning callout. <a href="#0">Link</a>
+          </Callout>
 
-&lt;callout variation=&quot;warning&quot;&gt;
-  Warning callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;
-&lt;/callout&gt;
-
-&lt;callout variation=&quot;info&quot;&gt;
-  Info callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;
-&lt;/callout&gt;
-
-&lt;callout variation=&quot;success&quot; custom-icon=&quot;icon-settings&quot;&gt;
-  Custom Icon callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;
-&lt;/callout&gt;</code></pre>
-        </div>
-      </accordion>
+          <Callout variation="info">
+            Info callout. <a href="#0">Link</a>
+          </Callout>
+        </template>
+      </DemoSection>
     </div>
 
     <div class="section">
@@ -73,31 +52,22 @@ components: {
       </p>
 
       <p>There are 3 strong callout variations: success, warning, and info.</p>
-      <callout variation="success strong">
-        Success callout. <a href="#0">Link</a>
-      </callout>
-      <callout variation="warning strong">
-        Warning callout. <a href="#0">Link</a>
-      </callout>
-      <callout variation="info strong">
-        Info callout. <a href="#0">Link</a>
-      </callout>
 
-      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre><code>&lt;callout :variation=&quot;'success strong'&quot;&gt;
-  Success callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;
-&lt;/callout&gt;
+      <DemoSection title="Strong Callouts" :code="demoCode">
+        <template #components>
+          <Callout variation="success strong">
+            Success callout. <a href="#0">Link</a>
+          </Callout>
 
-&lt;callout :variation=&quot;'warning strong'&quot;&gt;
-  Warning callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;
-&lt;/callout&gt;
+          <Callout variation="warning strong" icon="warning">
+            Warning callout. <a href="#0">Link</a>
+          </Callout>
 
-&lt;callout :variation=&quot;'info strong'&quot;&gt;
-  Info callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;
-&lt;/callout&gt;</code></pre>
-        </div>
-      </accordion>
+          <Callout variation="info strong">
+            Info callout. <a href="#0">Link</a>
+          </Callout>
+        </template>
+      </DemoSection>
     </div>
 
     <div class="section">
@@ -105,24 +75,19 @@ components: {
       <p>
         Used on landing page to warn users about use of cookies on our site.
       </p>
-      <callout
-        :variation="'cookies'"
-        :closeable="true"
-        :onClose="cookieCalloutClosed"
-      >
-        Cookies callout. <a href="#0">Link</a>
-      </callout>
-      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre><code>&lt;callout
-  variation=&quot;cookies&quot;
-  :closeable=&quot;true&quot;
-  :onClose=&quot;cookieCalloutClosed&quot;
-&gt;
-  Cookies callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;
-&lt;/callout&gt;</code></pre>
-        </div>
-      </accordion>
+
+      <DemoSection title="Cookies Callouts" :code="demoCode">
+        <template #components>
+          <Callout
+            variation="cookies"
+            icon="info"
+            :closeable="true"
+            :onClose="cookieCalloutClosed"
+          >
+            Cookies callout. <a href="#0">Link</a>
+          </Callout>
+        </template>
+      </DemoSection>
     </div>
 
     <div class="section">
@@ -131,21 +96,48 @@ components: {
       <div class="section">
         <h3>Closable</h3>
         <p>
-          Use the
-          <strong>closeable</strong> prop to give the callout the ability to
-          close.
+          Use the <strong>closeable</strong> prop to give the callout the
+          ability to close.
         </p>
-        <callout :variation="'success'" :closeable="true">
-          Success callout.
-          <a href="#0">Link</a>
-        </callout>
-        <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-          <div slot="content">
-            <pre><code>&lt;callout :variation=&quot;'success'&quot; :closeable=&quot;true&quot;&gt;
-  Success-alt callout. &lt;a href=&quot;#0&quot;&gt;Link&lt;/a&gt;
-&lt;/callout&gt;</code></pre>
-          </div>
-        </accordion>
+
+        <DemoSection title="Closable Callouts" :code="demoCode">
+          <template #components>
+            <Callout variation="success" :closeable="true">
+              Success callout. <a href="#0">Link</a>
+            </Callout>
+          </template>
+        </DemoSection>
+      </div>
+
+      <div class="section">
+        <h3>With Icon</h3>
+        <p>
+          You can use the
+          <code>icon</code> prop to set it to 'success', 'warning', or 'info'
+          for most common cases. If you need a different icon you can simply use
+          it inline.
+        </p>
+
+        <DemoSection title="Icon Callouts" :code="demoCode">
+          <template #components>
+            <Callout icon="success" variation="success" :closeable="true">
+              Success callout. <a href="#0">Link</a>
+            </Callout>
+
+            <Callout icon="warning" variation="warning" :closeable="true">
+              Warning callout. <a href="#0">Link</a>
+            </Callout>
+
+            <Callout icon="info" variation="info" :closeable="true">
+              Info callout. <a href="#0">Link</a>
+            </Callout>
+
+            <Callout variation="info" :closeable="true">
+              <i class="icon-settings"></i> Settings have moved. Visit them
+              <a href="#0">here</a>.
+            </Callout>
+          </template>
+        </DemoSection>
       </div>
     </div>
 
@@ -178,10 +170,12 @@ components: {
           </tr>
           <tr>
             <td>icon</td>
-            <td>boolean</td>
-            <td>true</td>
+            <td>string</td>
+            <td>-</td>
             <td>
-              Set to false if you don't want an icon before the callout content.
+              Use
+              <code>'success'</code>, <code>'warning'</code> or
+              <code>'info'</code>.
             </td>
           </tr>
           <tr>
@@ -198,16 +192,18 @@ components: {
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Accordion from "./../components/Accordion.vue";
 import Callout from "./../components/Callout.vue";
+import CalloutsCode from "!!raw-loader!./Callouts.vue";
+import DemoSection from "./../components/DemoSection.vue";
 
 @Component({
   components: {
-    Accordion,
-    Callout
+    Callout,
+    DemoSection
   }
 })
 export default class Callouts extends Vue {
+  demoCode = CalloutsCode;
   cookieCalloutClosed() {
     console.log("cookie callout closed");
   }

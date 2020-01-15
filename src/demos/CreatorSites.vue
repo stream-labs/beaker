@@ -9,99 +9,103 @@ components: {
   SSProSimulator,
   UrlBar
 }</code></pre>
-      <div class="section">
-        <SSProSimulator :username="username" :domain="domain"></SSProSimulator>
-        <br />
-        <table class="docs-table">
-          <thead>
-            <tr>
-              <th>Prop</th>
-              <th>Type</th>
-              <th>Default</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>domain</td>
-              <td>string</td>
-              <td>-</td>
-              <td>Domain name for the Url Bar.</td>
-            </tr>
-            <tr>
-              <td>icon</td>
-              <td>string</td>
-              <td>
-                "https://live.kickstarter.com/images/avatar/medium/avatars4.png"
-              </td>
-              <td>Set this to users platform icon.</td>
-            </tr>
-            <tr>
-              <td>username</td>
-              <td>string</td>
-              <td>"Awkward_Raccoon"</td>
-              <td>Set this to users platform username.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <br />
-      <br />
-      <div class="section">
-        <UrlBar :domain="domain"></UrlBar>
-        <br />
-        <table class="docs-table">
-          <thead>
-            <tr>
-              <th>Prop</th>
-              <th>Type</th>
-              <th>Default</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>domain</td>
-              <td>string</td>
-              <td>-</td>
-              <td>Domain name for the Url Bar.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <br />
-      <br />
+    </div>
 
-      <div class="section">
-        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-          <div slot="content">
-            <pre>
-<code>&lt;CSLayoutPicker :layouts=&quot;webLayouts&quot;&gt;
-  &lt;div
-    slot=&quot;layouts&quot;
-    v-for=&quot;layout in webLayouts&quot;
-    :key=&quot;layout.id&quot;
-    class=&quot;s-cs-layout-picker__layout&quot;
-  &gt;
-    &lt;img :src=&quot;layout.src&quot;&gt;
-  &lt;/div&gt;
-&lt;/CSLayoutPicker&gt;</code></pre>
-          </div>
-        </Accordion>
+    <div class="section">
+      <h2>Creator Sites Simulator</h2>
 
-        <CSLayoutPicker>
-          <div
-            slot="layouts"
-            v-for="layout in webLayouts"
-            :key="layout.id"
-            class="s-cs-layout-picker__layout"
-          >
-            <div>
-              <img :src="layout.src" />
+      <DemoSection title="Creator Sites Simulator" :code="demoCode">
+        <template #components>
+          <SSProSimulator :username="username" :domain="domain" />
+        </template>
+      </DemoSection>
+    </div>
+
+    <div class="section">
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>domain</td>
+            <td>string</td>
+            <td>-</td>
+            <td>Domain name for the Url Bar.</td>
+          </tr>
+          <tr>
+            <td>icon</td>
+            <td>string</td>
+            <td>
+              "https://live.kickstarter.com/images/avatar/medium/avatars4.png"
+            </td>
+            <td>Set this to users platform icon.</td>
+          </tr>
+          <tr>
+            <td>username</td>
+            <td>string</td>
+            <td>"Awkward_Raccoon"</td>
+            <td>Set this to users platform username.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>URL Bar</h2>
+
+      <DemoSection title="URL Bar" :code="demoCode">
+        <template #components>
+          <UrlBar :domain="domain" />
+        </template>
+      </DemoSection>
+    </div>
+
+    <div class="section">
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>domain</td>
+            <td>string</td>
+            <td>-</td>
+            <td>Domain name for the Url Bar.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>Creator Sites Layout Picker</h2>
+
+      <DemoSection title="Layout Picker" :code="demoCode">
+        <template #components>
+          <CSLayoutPicker>
+            <div
+              slot="layouts"
+              v-for="layout in webLayouts"
+              :key="layout.id"
+              class="s-cs-layout-picker__layout"
+            >
+              <div>
+                <img :src="layout.src" />
+              </div>
             </div>
-          </div>
-        </CSLayoutPicker>
-      </div>
+          </CSLayoutPicker>
+        </template>
+      </DemoSection>
     </div>
   </div>
 </template>
@@ -110,19 +114,23 @@ components: {
 import { Component, Vue } from "vue-property-decorator";
 
 import Accordion from "./../components/Accordion.vue";
+import CreatorSitesCode from "!!raw-loader!./CreatorSites.vue";
+import CSLayoutPicker from "./../components/CSLayoutPicker.vue";
+import DemoSection from "./../components/DemoSection.vue";
 import SSProSimulator from "./../components/SSProSimulator.vue";
 import UrlBar from "./../components/UrlBar.vue";
-import CSLayoutPicker from "./../components/CSLayoutPicker.vue";
 
 @Component({
   components: {
     Accordion,
-    SSProSimulator,
+    CSLayoutPicker,
+    DemoSection,
     UrlBar,
-    CSLayoutPicker
+    SSProSimulator
   }
 })
 export default class CreatorSitesDemo extends Vue {
+  demoCode = CreatorSitesCode;
   username = "morganleee";
   icon =
     "https://static-cdn.jtvnw.net/jtv_user_pictures/9dfce03d-25cc-4737-96d2-2ecf6924bebe-profile_image-70x70.jpg";

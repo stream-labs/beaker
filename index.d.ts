@@ -4,6 +4,7 @@ declare module "vuejs-paginate";
 declare module "vue-color";
 declare module "vue-select";
 declare module "what-input";
+declare module "!!raw-loader!*";
 // declare module "vue-js-modal" {
 //   import { PluginFunction } from "vue";
 //   export const install: PluginFunction<{}>;
