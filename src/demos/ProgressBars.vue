@@ -3,6 +3,12 @@
     <div class="section">
       <h1>Progress Bars</h1>
 
+      <pre><code>import { ProgressBar } from "streamlabs-beaker"
+
+components: {
+  ProgressBar
+}</code></pre>
+
       <DemoSection title="Default" :code="demoCode">
         <template #components>
           <ProgressBar :progressComplete="50" />

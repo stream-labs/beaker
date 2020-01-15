@@ -46,27 +46,24 @@ components: {
 
     <!-- Simple Theme -->
     <div class="section">
-      <div class="row">
-        <h2>Simple Theme</h2>
-        <p>
-          Use in more compact places when you don't want the bright teal
-          present.
-        </p>
-        <DemoSection title="Simple Theme" :code="demoCode">
-          <template #components>
-            <slider
-              :value="value"
-              @input="value => updateValue(value)"
-              :max="100"
-              :min="1"
-              :interval="1"
-              tooltip="always"
-              suffix="%"
-              :simpleTheme="true"
-            />
-          </template>
-        </DemoSection>
-      </div>
+      <h2>Simple Theme</h2>
+      <p>
+        Use in more compact places when you don't want the bright teal present.
+      </p>
+      <DemoSection title="Simple Theme" :code="demoCode">
+        <template #components>
+          <slider
+            :value="value"
+            @input="value => updateValue(value)"
+            :max="100"
+            :min="1"
+            :interval="1"
+            tooltip="always"
+            suffix="%"
+            :simpleTheme="true"
+          />
+        </template>
+      </DemoSection>
     </div>
 
     <!-- Props Table -->

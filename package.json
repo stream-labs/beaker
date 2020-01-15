@@ -3,7 +3,6 @@
   "version": "0.10.33",
   "main": "./dist/beaker.common.js",
   "module": "./dist/beaker.esm.js",
-  "sideEffects": false,
   "license": "MIT",
   "scripts": {
     "build": "rollup --config",
