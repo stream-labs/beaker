@@ -1,32 +1,37 @@
 <template>
-  <div class="icons">
-    <div
-      v-for="icon in Object.keys(iconList).sort()"
-      :key="icon"
-      class="glyph fs1"
-    >
-      <div class="clearfix bshadow0 pbs">
-        <span :class="icon"></span>
-        <span class="mls">{{ icon }}</span>
-      </div>
-      <fieldset class="fs0 size1of1 clearfix hidden-false">
-        <input
-          type="text"
-          readonly
-          :value="iconList[icon]"
-          class="unit size1of2"
-        />
-        <input
-          type="text"
-          maxlength="1"
-          readonly
-          :value="`\&\#x${iconList[icon]};`"
-          class="unitRight size1of2 talign-right"
-        />
-      </fieldset>
-      <div class="fs0 bshadow0 clearfix hidden-true">
-        <span class="unit pvs fgc1">liga:</span>
-        <input type="text" readonly value class="liga unitRight" />
+  <div>
+    <h1>Icons</h1>
+    <div class="icons">
+      <div
+        v-for="icon in Object.keys(iconList).sort()"
+        :key="icon"
+        class="glyph fs1"
+      >
+        <div class="clearfix bshadow0 pbs">
+          <span :class="icon"></span>
+          <span class="mls">{{ icon }}</span>
+        </div>
+
+        <fieldset class="fs0 size1of1 clearfix hidden-false">
+          <input
+            type="text"
+            readonly
+            :value="iconList[icon]"
+            class="unit size1of2"
+          />
+          <input
+            type="text"
+            maxlength="1"
+            readonly
+            :value="`\&\#x${iconList[icon]};`"
+            class="unitRight size1of2 talign-right"
+          />
+        </fieldset>
+
+        <div class="fs0 bshadow0 clearfix hidden-true">
+          <span class="unit pvs fgc1">liga:</span>
+          <input type="text" readonly value class="liga unitRight" />
+        </div>
       </div>
     </div>
   </div>

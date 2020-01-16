@@ -5,141 +5,122 @@
     <div class="section">
       <h2>Text Inputs</h2>
       <p>
-        These 4 fields below are wrapped in a
+        These 6 fields below are wrapped in a
         <code>FormGroup</code> component. This will put 16px of margin between
         form fields and 24px margin between form groups.
       </p>
 
-      <FormGroup>
-        <text-input
-          label="Text input"
-          type="text"
-          :placeholder="textInputPlaceholder"
-          v-model="textInputValue"
-          name="textExample"
-          autocomplete="on"
-          slot="input"
-        ></text-input>
+      <pre><code>import { TextInput, TextArea, VariableMenu } from 'streamlabs-beaker';
 
-        <text-input
-          label="Number input"
-          type="number"
-          :placeholder="textInputPlaceholder"
-          v-model="numberInputValue"
-          v-validate="'required|between:-1,100'"
-          :min="-1"
-          :max="100"
-          name="numberinputExample"
-          slot="input"
-          :error="errors.first('numberinputExample')"
-        ></text-input>
+components: {
+  TextInput,
+  TextArea,
+  VariableMenu
+}</code></pre>
 
-        <text-input
-          label="Email input"
-          type="email"
-          :placeholder="emailInputPlaceholder"
-          v-model="emailInputValue"
-          name="emailExample"
-          slot="input"
-        ></text-input>
+      <DemoSection title="Text Inputs" :code="demoCode">
+        <template #components>
+          <FormGroup>
+            <TextInput
+              slot="input"
+              type="text"
+              label="Text Input"
+              v-model="textInputValue"
+              name="textExample"
+              :placeholder="textInputPlaceholder"
+              autocomplete="on"
+            />
 
-        <text-input
-          label="Password input"
-          type="password"
-          :placeholder="passwordInputPlaceholder"
-          v-model="passwordInputValue"
-          name="passwordExample"
-          slot="input"
-        ></text-input>
+            <TextInput
+              slot="input"
+              type="number"
+              label="Number Input"
+              v-model="numberInputValue"
+              name="numberinputExample"
+              :placeholder="textInputPlaceholder"
+              :min="0"
+              :max="100"
+              v-validate="'required|between:0,100'"
+              :error="errors.first('numberinputExample')"
+            />
 
-        <text-input
-          label="With error"
-          type="text"
-          :placeholder="textInputPlaceholder"
-          v-model="errorTextInputValue"
-          name="textExample"
-          slot="input"
-          error="Hello, I am an error message"
-        ></text-input>
+            <TextInput
+              slot="input"
+              type="email"
+              label="Email Input"
+              v-model="emailInputValue"
+              name="emailExample"
+              :placeholder="emailInputPlaceholder"
+            />
 
-        <text-input
-          label="Disabled Input"
-          type="text"
-          :placeholder="textInputPlaceholder"
-          value="Some input text"
-          name="disabledExample"
-          :disabled="true"
-          slot="input"
-        ></text-input>
+            <TextInput
+              slot="input"
+              type="password"
+              label="Password Input"
+              v-model="passwordInputValue"
+              name="passwordExample"
+              :placeholder="passwordInputPlaceholder"
+            />
 
-        <text-area
-          name="myarea"
-          v-model="textAreaInputValue"
-          autoResize="true"
-          label="Text input"
-          placeholder="This is where you put some cool stuff"
-          :maxLength="1000"
-          :maxHeight="100"
-          slot="input"
-        ></text-area>
-      </FormGroup>
-      <h1>Text Inputs with Variable Menu Wrapper</h1>
+            <TextInput
+              slot="input"
+              type="text"
+              label="Input With Error"
+              v-model="errorTextInputValue"
+              name="textExample"
+              :placeholder="textInputPlaceholder"
+              :error="'Hello, I am an error message'"
+            />
+
+            <TextArea
+              slot="input"
+              label="Text Area"
+              v-model="textAreaInputValue"
+              name="myarea"
+              placeholder="This is where you put some cool stuff"
+              autoResize="true"
+              :maxLength="1000"
+              :maxHeight="100"
+            />
+          </FormGroup>
+        </template>
+      </DemoSection>
+    </div>
+
+    <div class="section">
+      <h2>Text Inputs with Variable Menu Wrapper</h2>
       <p>
         A new way to navigate variables, just wrap your input with the Variable
         Menu. This is not work with FormGroup preformatting.
       </p>
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre>
-              <code>
-import { VariableMenu } from &quot;streamlabs-beaker&quot;
-import varSearch from &quot;../external.json&quot;
 
+      <DemoSection title="Variable Menu" :code="demoCode">
+        <template #components>
+          <VariableMenu :jsonSearch="varData">
+            <text-input
+              slot="input"
+              type="text"
+              v-model="variTextValue"
+              name="textExample"
+              :placeholder="'w/ Variable Menu'"
+            />
+          </VariableMenu>
 
-/* *** Minimum fields for variable search json *** */
+          <VariableMenu :jsonSearch="varData">
+            <TextArea
+              slot="input"
+              ref="textArea"
+              v-model="variAreaValue"
+              name="myarea"
+              placeholder="w/ Variable Menu"
+              rows="3"
+              :maxLength="1000"
+              :maxHeight="100"
+            />
+          </VariableMenu>
+        </template>
+      </DemoSection>
 
-[
- {
-   &quot;variable&quot;: &quot;{variableName}&quot;,
-   &quot;description&quot;: &quot;Describe what the variable does&quot;
- }
-]
-
-
-&lt;variable-search :jsonSearch=&quot;someJson&quot;&gt;
-  &lt;text-input
-    type=&quot;text&quot;
-    v-model=&quot;value&quot;
-    name=&quot;a-name&quot;
-    slot=&quot;input&quot;
-  /&gt;
-&lt;/variable-search&gt;
-              </code>
-            </pre>
-        </div>
-      </Accordion>
-      <variable-menu :jsonSearch="varData">
-        <text-input
-          type="text"
-          :placeholder="'w/ Variable Menu'"
-          v-model="variTextValue"
-          name="textExample"
-          slot="input"
-        ></text-input>
-      </variable-menu>
-
-      <variable-menu :jsonSearch="varData">
-        <text-area
-          name="myarea"
-          ref="textArea"
-          v-model="variAreaValue"
-          placeholder="w/ Variable Menu"
-          :maxLength="1000"
-          :maxHeight="100"
-          slot="input"
-          rows="3"
-        ></text-area>
-      </variable-menu>
       <table class="docs-table">
         <thead>
           <tr>
@@ -211,6 +192,27 @@ import varSearch from &quot;../external.json&quot;
     </div>
 
     <div class="section">
+      <h2>Tagging Input</h2>
+      <pre><code>import { TaggingInput } from 'streamlabs-beaker';
+
+components: {
+  TaggingInput
+}</code></pre>
+
+      <DemoSection title="Tagging Input" :code="demoCode">
+        <template #components>
+          <TaggingInput
+            name="aliases"
+            placeholder="!hello"
+            maxItems="10"
+            inputValidation="required"
+            @keydown.space.prevent
+          />
+        </template>
+      </DemoSection>
+    </div>
+
+    <div class="section">
       <h2>Selector</h2>
 
       <pre><code>import { Selector } from 'streamlabs-beaker';
@@ -219,93 +221,49 @@ components: {
   Selector
 }</code></pre>
 
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre>
-<code>&lt;selector v-model=&quot;selected&quot; :options=&quot;['Option A', 'Option B', 'Option C']&quot;&gt;&lt;/selector&gt;
+      <DemoSection title="Selector" :code="demoCode">
+        <template #components>
+          <FormGroup>
+            <Selector
+              slot="input"
+              v-model="selected"
+              :options="['Option A', 'Option B', 'Option C']"
+            />
 
-&lt;selector
-  v-model=&quot;selected&quot;
-  :options=&quot;['Option A', 'Option B', 'Option C', 'Option D', 'Option E', 'Option F']&quot;
-  disabled
-&gt;&lt;/selector&gt;
+            <Selector
+              slot="input"
+              v-model="selectedGroup"
+              :options="optionGroups"
+              group-values="items"
+              group-label="group"
+              :searchable="false"
+            />
 
-&lt;selector
-  v-model=&quot;multipleSelected&quot;
-  :options=&quot;['Option A', 'Option B', 'Option C', 'Option D', 'Option E', 'Option F']&quot;
-  multiple
-&gt;&lt;/selector&gt;
+            <Selector
+              slot="input"
+              v-model="selected"
+              :options="['Option A', 'Option B', 'Option C']"
+              disabled
+            />
 
-&lt;selector
-  v-model=&quot;multipleSelected&quot;
-  :options=&quot;['Option A', 'Option B', 'Option C', 'Option D', 'Option E', 'Option F']&quot;
-  disabled
-  multiple
-&gt;&lt;/selector&gt;</code></pre>
-        </div>
-      </Accordion>
-      <Selector
-        v-model="selected"
-        :options="['Option A', 'Option B', 'Option C']"
-      ></Selector>
-      <br />
-      <selector
-        v-model="selected"
-        :options="[
-          'Option A',
-          'Option B',
-          'Option C',
-          'Option D',
-          'Option E',
-          'Option F'
-        ]"
-        disabled
-      ></selector>
-      <br />
-      <selector
-        v-model="multipleSelected"
-        :options="[
-          'Option A',
-          'Option B',
-          'Option C',
-          'Option D',
-          'Option E',
-          'Option F'
-        ]"
-        multiple
-        :searchable="false"
-      ></selector>
-      <br />
-      <selector
-        v-model="selectedGroup"
-        :options="optionGroups"
-        group-values="items"
-        group-label="group"
-        :searchable="false"
-      ></selector>
-      <br />
-      <selector
-        v-model="multipleSelected"
-        :options="[
-          'Option A',
-          'Option B',
-          'Option C',
-          'Option D',
-          'Option E',
-          'Option F'
-        ]"
-        disabled
-        multiple
-      ></selector>
-      <br />
+            <Selector
+              slot="input"
+              multiple
+              v-model="multipleSelected"
+              :options="['Option A', 'Option B', 'Option C']"
+              :searchable="false"
+            />
 
-      <selector
-        v-model="objectSelected"
-        :options="options"
-        :label="'title'"
-        :trackBy="'title'"
-      ></selector>
-      <br />
+            <Selector
+              slot="input"
+              multiple
+              v-model="multipleSelected"
+              :options="['Option A', 'Option B', 'Option C']"
+              disabled
+            />
+          </FormGroup>
+        </template>
+      </DemoSection>
 
       <table class="docs-table">
         <thead>
@@ -360,98 +318,148 @@ components: {
     </div>
 
     <div class="section">
-      <h2>Checkboxes</h2>
+      <h2>Checkboxes and Radios</h2>
+      <pre><code>import { Checkbox, Radio } from 'streamlabs-beaker';
+
+components: {
+  Checkbox,
+  Radio
+}</code></pre>
 
       <div class="section">
-        <h3>Single Checkbox</h3>
-        <checkbox
-          id="checkbox1"
-          name="checkbox1"
-          label="Checkbox Label"
-          v-model="checkboxValue1"
-        ></checkbox>
+        <h2>Single Checkbox</h2>
+
+        <DemoSection title="Checkbox" :code="demoCode">
+          <template #components>
+            <Checkbox
+              v-model="checkboxValue1"
+              id="checkbox"
+              name="checkbox"
+              label="Checkbox Label"
+            />
+          </template>
+        </DemoSection>
       </div>
 
       <div class="section">
-        <h3>Checkbox Group</h3>
-        <div class="s-checkbox-group">
-          <checkbox
-            id="checkbox2"
-            name="checkbox2"
-            label="Checkbox Label 1"
-            v-model="checkboxValue2"
-          ></checkbox>
-          <checkbox
-            id="checkbox3"
-            name="checkbox3"
-            label="Checkbox Label 2"
-            v-model="checkboxValue3"
-          ></checkbox>
-          <checkbox
-            id="checkbox4"
-            name="checkbox4"
-            label="Checkbox Label 3"
-            v-model="checkboxValue4"
-          ></checkbox>
-        </div>
+        <h2>Checkbox Group</h2>
+
+        <DemoSection title="Checkbox Group" :code="demoCode">
+          <template #components>
+            <div class="s-checkbox-group">
+              <Checkbox
+                v-model="checkboxValue2"
+                id="checkbox1"
+                name="checkbox1"
+                label="Checkbox Label 1"
+              />
+              <Checkbox
+                v-model="checkboxValue3"
+                id="checkbox2"
+                name="checkbox2"
+                label="Checkbox Label 2"
+              />
+              <Checkbox
+                v-model="checkboxValue4"
+                id="checkbox3"
+                name="checkbox3"
+                label="Checkbox Label 3"
+              />
+            </div>
+          </template>
+        </DemoSection>
       </div>
     </div>
 
     <div class="section">
       <h2>Radios</h2>
-      <div class="section">
-        <div class="s-checkbox-group">
-          <radio
-            :id="'radio1'"
-            :name="'radio-group'"
-            :label="'Enabled'"
-            :val="true"
-            v-model="radioValue"
-          ></radio>
-          <radio
-            :id="'radio2'"
-            :name="'radio-group'"
-            :label="'Disabled'"
-            :val="false"
-            v-model="radioValue"
-          ></radio>
-          <span>Picked: {{ radioValue }}</span>
-        </div>
-      </div>
+
+      <DemoSection title="Radios" :code="demoCode">
+        <template #components>
+          <div class="s-checkbox-group">
+            <Radio
+              v-model="radioValue"
+              id="radio1"
+              name="radioGroup"
+              label="Enabled"
+              :val="true"
+            />
+            <Radio
+              v-model="radioValue"
+              id="radio2"
+              name="radioGroup"
+              label="Disabled"
+              :val="false"
+            />
+          </div>
+        </template>
+      </DemoSection>
+
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>id</td>
+            <td>string</td>
+            <td>""</td>
+            <td>Indentifier for associated label.</td>
+          </tr>
+          <tr>
+            <td>name</td>
+            <td>string</td>
+            <td>""</td>
+            <td>Name for radio group.</td>
+          </tr>
+          <tr>
+            <td>label</td>
+            <td>string</td>
+            <td>null</td>
+            <td>Optional label for the radio input.</td>
+          </tr>
+          <tr>
+            <td>val</td>
+            <td>string, boolean</td>
+            <td>""</td>
+            <td>Radio input value when selected</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <div class="section">
       <h2>Status Switch</h2>
+      <pre><code>import { Status } from 'streamlabs-beaker';
 
-      <Accordion
-        :openedTitle="'Hide Code'"
-        :closedTitle="'Show Code'"
-        class="docs-code"
-      >
-        <div slot="content">
-          <pre><code>&lt;status-switch
-  v-model="statusValue"
-  :label="'Status Label'"
-/&gt;
-
-&lt;status-switch
-  small="true"
-  v-model="statusValue"
-  label="Small Switch"
-/&gt;</code></pre>
-        </div>
-      </Accordion>
+components: {
+  Switch
+}</code></pre>
 
       <div class="section">
-        <status-switch v-model="statusValue" :label="'Switch Label'" />
-      </div>
+        <DemoSection title="Status Switch" :code="demoCode">
+          <template #components>
+            <FormGroup>
+              <StatusSwitch
+                slot="input"
+                v-model="statusValue"
+                label="Switch Label"
+              />
 
-      <div class="section">
-        <status-switch
-          size="small"
-          v-model="statusValue"
-          label="Small Switch"
-        />
+              <StatusSwitch
+                slot="input"
+                size="small"
+                v-model="statusValue"
+                label="Small Switch Label"
+              />
+            </FormGroup>
+          </template>
+        </DemoSection>
       </div>
 
       <table class="docs-table">
@@ -478,7 +486,7 @@ components: {
           </tr>
           <tr>
             <td>size</td>
-            <td>Boolean</td>
+            <td>boolean</td>
             <td>false</td>
             <td>
               Other available sizes. Current alternate size option:
@@ -491,56 +499,38 @@ components: {
 
     <div class="section">
       <h2>Image Input Picker</h2>
+      <pre><code>import { ImagePickerInput } from 'streamlabs-beaker';
+
+components: {
+  ImagePickerInput
+}</code></pre>
+
       <div class="section">
         <h3>Default</h3>
         <p>
           By default, the image input picker is setup to have our Alert Box
           layout styles as the options.
         </p>
-        <Accordion
-          :openedTitle="'Hide Code'"
-          :closedTitle="'Show Code'"
-          class="docs-code"
-        >
-          <div slot="content">
-            <pre>
-<code>&lt;image-picker-input v-model=&quot;layoutValue&quot;&gt;&lt;/image-picker-input&gt;</code></pre>
-          </div>
-        </Accordion>
-        <image-picker-input v-model="layoutValue"></image-picker-input>
+
+        <DemoSection title="Default Image Input Picker" :code="demoCode">
+          <template #components>
+            <ImagePickerInput v-model="layoutValue" />
+          </template>
+        </DemoSection>
       </div>
+
       <div class="section">
         <h3>Custom</h3>
         <p>
           You can pass in any options you'd like with the options prop. This is
           an example using our Jar options.
         </p>
-        <Accordion
-          :openedTitle="'Hide Code'"
-          :closedTitle="'Show Code'"
-          class="docs-code"
-        >
-          <div slot="content">
-            <pre>
-<code>&lt;image-picker-input v-model=&quot;jarValue&quot; :options=&quot;options&quot;&gt;&lt;/image-picker-input&gt;</code></pre>
-          </div>
-        </Accordion>
-        <image-picker-input
-          v-model="jarValue"
-          :options="options"
-        ></image-picker-input>
+        <DemoSection title="Custom Image Input Picker" :code="demoCode">
+          <template #components>
+            <ImagePickerInput v-model="jarValue" :options="options" />
+          </template>
+        </DemoSection>
       </div>
-    </div>
-
-    <div class="section">
-      <h3>Tagging Input</h3>
-      <TaggingInput
-        name="aliases"
-        placeholder="!hello"
-        maxItems="10"
-        inputValidation="required"
-        @keydown.space.prevent
-      />
     </div>
   </div>
 </template>
@@ -548,35 +538,37 @@ components: {
 <script lang="ts">
 import { Component, Watch, Vue } from "vue-property-decorator";
 
-import Accordion from "./../components/Accordion.vue";
-import Selector from "./../components/Selector.vue";
 import Checkbox from "./../components/Checkbox.vue";
-import ImagePickerInput from "./../components/ImagePickerInput.vue";
-import Radio from "./../components/Radio.vue";
-import StatusSwitch from "./../components/StatusSwitch.vue";
-import TextInput from "./../components/TextInput.vue";
+import DemoSection from "./../components/DemoSection.vue";
 import FormGroup from "./../components/FormGroup.vue";
+import ImagePickerInput from "./../components/ImagePickerInput.vue";
+import InputsCode from "!!raw-loader!./Inputs.vue";
+import Radio from "./../components/Radio.vue";
+import Selector from "./../components/Selector.vue";
+import StatusSwitch from "./../components/StatusSwitch.vue";
 import TaggingInput from "./../components/TaggingInput.vue";
 import TextArea from "./../components/TextArea.vue";
-import VariableMenu from "./../components/VariableMenu.vue";
+import TextInput from "./../components/TextInput.vue";
 import varSearch from "./../components/cloudbotvariables.json";
+import VariableMenu from "./../components/VariableMenu.vue";
 
 @Component({
   components: {
-    Accordion,
-    Selector,
     Checkbox,
+    DemoSection,
+    FormGroup,
     ImagePickerInput,
     Radio,
+    Selector,
     StatusSwitch,
-    TextInput,
-    FormGroup,
     TaggingInput,
     TextArea,
+    TextInput,
     VariableMenu
   }
 })
 export default class Inputs extends Vue {
+  demoCode = InputsCode;
   data = "";
 
   radioValue = true;
@@ -587,7 +579,7 @@ export default class Inputs extends Vue {
   checkboxValue4 = false;
   selected = "Option A";
   selectedGroup = "Option A";
-  multipleSelected = ["Option B", "Option D"];
+  multipleSelected = ["Option B", "Option C"];
   optionGroups = [
     {
       group: "Group A",
@@ -608,8 +600,6 @@ export default class Inputs extends Vue {
     title: "Glass Pint",
     image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-pint.png"
   };
-  radioValue1 = true;
-  radioValue2 = false;
   statusValue = true;
   testingInput = null;
 

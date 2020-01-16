@@ -3,52 +3,38 @@
     <div class="section">
       <h1>Media Pickers</h1>
 
-      <h2>Media Picker</h2>
       <pre><code>import { MediaPicker } from 'streamlabs-beaker';
 
 components: {
   MediaPicker
 }</code></pre>
-
-      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre><code>&lt;media-picker&gt;
-  variation=&quot;image&quot;
-  :media-link=&quot;true&quot;
-  @select-media=&quot;selectImageMedia&quot;
-  @preview-media=&quot;previewMedia&quot;
-  @remove-media=&quot;removeMedia&quot;
-  v-model=&quot;imageMedia&quot;
-&lt;/media-picker&gt;
-
-&lt;media-picker&gt;
-  variation=&quot;audio&quot;
-  :media-link=&quot;true&quot;
-  @select-media=&quot;selectAudioMedia&quot;
-  @preview-media=&quot;previewMedia&quot;
-  @remove-media=&quot;removeMedia&quot;
-  v-model=&quot;audioMedia&quot;
-&lt;/media-picker&gt;</code></pre>
-        </div>
-      </accordion>
-      <media-picker
-        variation="image"
-        :media-link="true"
-        @select-media="selectImageMedia"
-        @preview-media="previewImageMedia"
-        @remove-media="removeImageMedia"
-        v-model="imageMedia"
-      />
     </div>
 
     <div class="section">
-      <media-picker
-        variation="audio"
-        :media-link="true"
-        @select-media="selectAudioMedia"
-        @remove-media="removeAudioMedia"
-        v-model="audioMedia"
-      />
+      <DemoSection title="Default" :code="demoCode">
+        <template #components>
+          <FormGroup>
+            <media-picker
+              slot="input"
+              variation="image"
+              :media-link="true"
+              @select-media="selectImageMedia"
+              @preview-media="previewImageMedia"
+              @remove-media="removeImageMedia"
+              v-model="imageMedia"
+            />
+
+            <media-picker
+              slot="input"
+              variation="audio"
+              :media-link="true"
+              @select-media="selectAudioMedia"
+              @remove-media="removeAudioMedia"
+              v-model="audioMedia"
+            />
+          </FormGroup>
+        </template>
+      </DemoSection>
     </div>
 
     <div class="section">
@@ -125,16 +111,21 @@ components: {
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+
+import FormGroup from "./../components/FormGroup.vue";
 import MediaPicker from "./../components/MediaPicker.vue";
-import Accordion from "./../components/Accordion.vue";
+import MediaPickersCode from "!!raw-loader!./MediaPickers";
+import DemoSection from "./../components/DemoSection.vue";
 
 @Component({
   components: {
-    MediaPicker,
-    Accordion
+    DemoSection,
+    FormGroup,
+    MediaPicker
   }
 })
 export default class ImagePickers extends Vue {
+  demoCode = MediaPickersCode;
   msg = "Hi!";
   audioMedia = "";
   imageMedia = "";

@@ -17,97 +17,78 @@ components: {
 }</code></pre>
 
         <div class="section">
-          <h4>Full Page Loading - Standard</h4>
+          <h2>Standard</h2>
 
-          <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-            <div slot="content">
-              <pre><code>&lt;Loading v-if=&quot;isLoading&quot; :loadingStrs=&quot;string&quot; @closeLoading=&quot;isLoading = false&quot;&gt;&lt;/Loading&gt;</code></pre>
-            </div>
-          </accordion>
+          <div class="section">
+            <DemoSection title="Standard" :code="demoCode">
+              <template #components>
+                <Loading
+                  v-if="isLoading"
+                  :loadingStrs="string"
+                  @closeLoading="isLoading = false"
+                />
+              </template>
+            </DemoSection>
+          </div>
 
-          <Loading
-            v-if="isLoading"
-            :loadingStrs="string"
-            @closeLoading="isLoading = false"
-          ></Loading>
-
-          <div class="row">
-            <div class="s-button-container s-button-container--left">
-              <Button
-                :variation="'default'"
-                :title="'loading default'"
-                @click="isLoading = true"
-              ></Button>
-            </div>
+          <div class="s-button-container s-button-container--left">
+            <Button
+              variation="default"
+              title="loading default"
+              @click="isLoading = true"
+            />
           </div>
         </div>
 
         <div class="section">
-          <h4>Full Page Loading - Semi-Opaque Background</h4>
-          <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-            <div slot="content">
-              <pre><code>&lt;Loading
-  v-if=&quot;isLoadingSemi&quot;
-  :semiOpaque=&quot;true&quot;
-  :loadingStrs=&quot;array&quot;
-  :isRandom=&quot;true&quot;
-  @closeLoading=&quot;isLoadingSemi = false&quot;&gt;
-&lt;/Loading&gt;
-</code></pre>
-            </div>
-          </accordion>
+          <h2>Semi-Opaque Background</h2>
 
-          <Loading
-            v-if="isLoadingSemi"
-            :semiOpaque="true"
-            :loadingStrs="array"
-            :isRandom="true"
-            @closeLoading="isLoadingSemi = false"
-          ></Loading>
+          <div class="section">
+            <DemoSection title="Semi-Opaque Background" :code="demoCode">
+              <template #components>
+                <Loading
+                  v-if="isLoadingSemi"
+                  :semiOpaque="true"
+                  :loadingStrs="array"
+                  :isRandom="true"
+                  @closeLoading="isLoadingSemi = false"
+                />
+              </template>
+            </DemoSection>
+          </div>
 
-          <div class="row">
-            <div class="s-button-container s-button-container--left">
-              <Button
-                :variation="'default'"
-                :title="'loading semi opaque'"
-                @click="isLoadingSemi = true"
-              ></Button>
-            </div>
+          <div class="s-button-container s-button-container--left">
+            <Button
+              variation="default"
+              title="loading semi opaque"
+              @click="isLoadingSemi = true"
+            />
           </div>
         </div>
 
         <div class="section">
-          <h4>Full Page Loading - Semi-Opaque Background</h4>
+          <h2>Full Page Loading - Swapped</h2>
 
-          <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-            <div slot="content">
-              <pre><code>&lt;Loading
-      v-if=&quot;isLoadingSwapped&quot;
-      :semiOpaque=&quot;true&quot;
-      :loadingStrs=&quot;array&quot;
-      :isRandom=&quot;true&quot;
-      @closeLoading=&quot;isLoadingSwapped = false&quot;&gt;
-    &lt;/Loading&gt;
-    </code></pre>
-            </div>
-          </accordion>
+          <div class="section">
+            <DemoSection title="Full Page Loading - Swapped" :code="demoCode">
+              <template #components>
+                <Loading
+                  v-if="isLoadingSwapped"
+                  :loadingStrs="array"
+                  :isRandom="true"
+                  :swapMode="true"
+                  @closeLoading="isLoadingSwapped = false"
+                />
+              </template>
+            </DemoSection>
+          </div>
 
-          <Loading
-            v-if="isLoadingSwapped"
-            :loadingStrs="array"
-            :isRandom="true"
-            :swapMode="true"
-            @closeLoading="isLoadingSwapped = false"
-          ></Loading>
-
-          <div class="row">
-            <div class="s-button-container s-button-container--left">
-              <Button
-                :variation="'default'"
-                :title="'loading swapped option'"
-                @click="isLoadingSwapped = true"
-              ></Button>
-            </div>
+          <div class="s-button-container s-button-container--left">
+            <Button
+              variation="default"
+              title="loading swapped option"
+              @click="isLoadingSwapped = true"
+            />
           </div>
         </div>
 
@@ -183,13 +164,12 @@ components: {
       <h3>Loading Spinner</h3>
       <p>This is the standard size for sections within a page layout.</p>
 
-      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre><code>&lt;Spinner>&lt;/Spinner&gt;</code></pre>
-        </div>
-      </accordion>
-      <div class="row">
-        <Spinner :size="'small'" />
+      <div class="section">
+        <DemoSection title="Loading Spinner" :code="demoCode">
+          <template #components>
+            <Spinner size="small" />
+          </template>
+        </DemoSection>
       </div>
 
       <h3>Loading Spinner Large</h3>
@@ -198,14 +178,14 @@ components: {
         or full page transitions.
       </p>
 
-      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre><code>&lt;Spinner :size=&quot;'large'&quot;&gt;&lt;/Spinner&gt;</code></pre>
-        </div>
-      </accordion>
-      <div class="row">
-        <Spinner :size="'large'" />
+      <div class="section">
+        <DemoSection title="Loading Spinner Large" :code="demoCode">
+          <template #components>
+            <Spinner size="large" />
+          </template>
+        </DemoSection>
       </div>
+
       <table class="docs-table">
         <thead>
           <tr>
@@ -238,20 +218,25 @@ components: {
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Spinner from "./../components/Spinner.vue";
-import Loading from "./../components/Loading.vue";
+
 import Accordion from "./../components/Accordion.vue";
 import Button from "./../components/Button.vue";
+import LoadersCode from "!!raw-loader!./Loaders.vue";
+import DemoSection from "./../components/DemoSection.vue";
+import Loading from "./../components/Loading.vue";
+import Spinner from "./../components/Spinner.vue";
 
 @Component({
   components: {
-    Spinner,
-    Loading,
     Accordion,
-    Button
+    Button,
+    DemoSection,
+    Loading,
+    Spinner
   }
 })
 export default class Loaders extends Vue {
+  demoCode = LoadersCode;
   isLoading = false;
   isLoadingSemi = false;
   isLoadingSwapped = false;
