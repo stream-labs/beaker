@@ -1,6 +1,6 @@
 <template>
   <div class="s-tabs" ref="tabsWrapper">
-    <div class="s-tabs__nav" ref="tabs" :class="className">
+    <div class="s-tabs__nav" ref="tabsNav" :class="className">
       <!-- <div ref="tabs" class="s-tabs"> -->
       <div
         v-for="tab in tabs"
@@ -14,7 +14,7 @@
         <component
           :is="tabLinkTag"
           v-bind="tabLinkOptions(tab.value)"
-          class="s-tab__link"
+          class="s-tabs__link"
           tabindex="-1"
         >
           <i v-if="tab.icon" :class="`icon-${tab.icon}`"></i>
@@ -26,22 +26,23 @@
           >{{ tab.name }}</span>
         </component>
       </div>
-      <PaneDropdown ref="overflowDropdown" v-if="hasOverflowTabs" menuAlign="right">
-        <template slot="title">More</template>
-        <a v-for="tab in overflowTabs" :key="`overflow-${tab.value}`">{{ tab.name }}</a>
-      </PaneDropdown>
-      <!-- <div
-            class="s-tabs-nav__control"
-            :style="{'background-color': overflowIsActive ? 'red' : 'transparent'}"
-            @mouseenter="showOverflowTabs(true)"
-            @mouseleave="showOverflowTabs(false)"
-          >
-            More
-            <i class="icon-dropdown"></i>
-      </div>-->
-      <!-- </div> -->
 
-      <!--  -->
+      <PaneDropdown
+        ref="overflowDropdown"
+        v-if="hasOverflowTabs"
+        menuAlign="right"
+        :dropdown-icon="false"
+      >
+        <template slot="title">
+          <i class="icon-back"></i>
+        </template>
+        <a
+          v-for="tab in overflowTabs"
+          :key="`overflow-${tab.value}`"
+          @click="showTab(tab.value)"
+          :class="{ 'is-active': tab.value === selectedTab }"
+        >{{ tab.name }}</a>
+      </PaneDropdown>
     </div>
 
     <div class="s-tab-content" v-if="!hideContent">
@@ -95,9 +96,8 @@ export default class TabsNew extends Vue {
   updateRoute!: boolean;
 
   $refs!: {
-    tabs: HTMLDivElement;
+    tabsNav: HTMLDivElement;
     tabsWrapper: HTMLDivElement;
-    overflowDropdown: Vue;
   };
 
   isMounted = false;
@@ -105,8 +105,9 @@ export default class TabsNew extends Vue {
   overflowIsActive = false;
 
   selectedTab: string = "";
-  tabsContainer: HTMLDivElement = null as any;
-  overflowDropdown = null as any;
+  tabsNav: HTMLDivElement = null as any;
+  tabsNavHeight = 0;
+  overflowDropdown: HTMLDivElement = null as any;
   selectTabSize = {
     fontSize: this.tabSize
   };
@@ -125,9 +126,9 @@ export default class TabsNew extends Vue {
 
   mounted() {
     this.isMounted = true;
-    this.tabsContainer = this.$refs.tabs;
+    this.tabsNav = this.$refs.tabsNav;
+    this.overflowDropdown = this.$refs.tabsNav;
     this.selectedTab = this.selected || this.tabs[0].value;
-    this.overflowDropdown = this.$refs.overflowDropdown;
     this.loadResizeObserver();
 
     // this.$whatInput.registerOnChange(this.calculateScrolls, "input");
@@ -136,36 +137,39 @@ export default class TabsNew extends Vue {
   loadResizeObserver() {
     const ro = new ResizeObserver(entries => {
       entries.forEach(entry => {
-        console.log(entry);
+        const { height } = entry.contentRect;
+        // this.tabsNav.offsetHeight, height
+        // if (this.tabsNavHeight !== height) return;
         this.setOverflowTabs();
+        this.tabsNavHeight = height;
       });
     });
-    ro.observe(this.tabsContainer);
+    ro.observe(this.tabsNav);
   }
 
   setOverflowTabs() {
     if (!this.isMounted) return false;
 
-    const allTabs: NodeListOf<HTMLDivElement> = this.tabsContainer.querySelectorAll(
+    const allTabs: NodeListOf<HTMLDivElement> = this.tabsNav.querySelectorAll(
       ".s-tabs__tab"
     );
-    let tabsWidth: number = this.overflowDropdown.$el.offsetWidth;
-    const tabsContainerWidth = this.tabsContainer.offsetWidth;
-    console.log(
-      "TCL: TabsNew -> setOverflowTabs -> tabsContainerWidth",
-      tabsContainerWidth
-    );
+
+    const overflowTab = Array.from(
+      this.overflowDropdown.children
+    ).pop() as HTMLDivElement;
+    let totalTabsWidth = overflowTab.offsetWidth;
+    const tabsNavWidth = this.tabsNav.offsetWidth;
+    this.overflowTabs = [];
 
     allTabs.forEach(tab => {
       tab.classList.remove("is-hidden");
     });
 
     allTabs.forEach((tab, index) => {
-      // tabsWidth += tab.offsetWidth + 16;
-
-      if (tabsContainerWidth >= tabsWidth + tab.offsetWidth) {
-        tabsWidth += tab.offsetWidth;
+      if (tabsNavWidth >= totalTabsWidth + tab.offsetWidth + 17) {
+        totalTabsWidth += tab.offsetWidth + 16;
       } else {
+        totalTabsWidth += tab.offsetWidth + 16;
         tab.classList.add("is-hidden");
         this.overflowTabs.push(this.tabs[index]);
       }
@@ -194,7 +198,12 @@ export default class TabsNew extends Vue {
   height: 100%;
 
   a {
-    text-decoration: none;
+    cursor: pointer;
+    .transition(color);
+  }
+
+  .is-active {
+    color: @day-title;
   }
 
   .is-hidden {
@@ -207,7 +216,7 @@ export default class TabsNew extends Vue {
     background: transparent;
     position: relative;
     // width: 100%;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid @day-border;
   }
 
   &__tab {
@@ -242,7 +251,6 @@ export default class TabsNew extends Vue {
 
     &.is-active {
       border-color: @dark-2;
-      color: @day-title;
 
       &::after {
         background-color: @dark-2;
@@ -255,8 +263,6 @@ export default class TabsNew extends Vue {
   }
 
   &__link {
-    padding-top: 4px;
-    padding-bottom: 11px;
     display: flex;
     text-decoration: none;
   }
@@ -265,9 +271,18 @@ export default class TabsNew extends Vue {
     padding-top: 4px;
     padding-bottom: 12px;
 
-    .icon-dropdown {
+    &__toggle i {
       height: 14px;
-      .margin-left();
+      margin-top: 2px;
+      .margin-left(0);
+      color: @day-paragraph;
+      transform: rotate(180deg);
+      .transition(color);
+
+      &:hover,
+      &--active {
+        color: @day-title;
+      }
     }
   }
 }
@@ -281,6 +296,10 @@ export default class TabsNew extends Vue {
 .night,
 .night-theme {
   .s-tabs {
+    .is-active {
+      color: @night-title;
+    }
+
     &__nav {
       border-color: @night-border;
     }
@@ -295,55 +314,20 @@ export default class TabsNew extends Vue {
       &.is-active {
         border-color: @light-1;
 
-        // .s-tab__link {
-        color: @night-title;
-        // }
-
         &::after {
           background-color: @white;
         }
       }
     }
-  }
 
-  .s-tabs-nav__control {
-    &.s-has-next {
-      &:before {
-        background: -moz-linear-gradient(
-          left,
-          rgba(23, 36, 45, 0) 0%,
-          rgba(23, 36, 45, 1) 100%
-        ); /* FF3.6-15 */
-        background: -webkit-linear-gradient(
-          left,
-          rgba(23, 36, 45, 0) 0%,
-          rgba(23, 36, 45, 1) 100%
-        ); /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(
-          to right,
-          rgba(23, 36, 45, 0) 0%,
-          rgba(23, 36, 45, 1) 100%
-        ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-      }
-    }
+    ::v-deep .s-pane-dropdown {
+      &__toggle i {
+        color: @night-paragraph;
 
-    &.s-has-prev {
-      &:before {
-        background: -moz-linear-gradient(
-          left,
-          rgba(23, 36, 45, 1) 0%,
-          rgba(23, 36, 45, 0) 100%
-        ); /* FF3.6-15 */
-        background: -webkit-linear-gradient(
-          left,
-          rgba(23, 36, 45, 1) 0%,
-          rgba(23, 36, 45, 0) 100%
-        ); /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(
-          to right,
-          rgba(23, 36, 45, 1) 0%,
-          rgba(23, 36, 45, 0) 100%
-        ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        &:hover,
+        &--active {
+          color: @night-title;
+        }
       }
     }
   }
