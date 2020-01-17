@@ -2,11 +2,7 @@
   <div class="s-tabs-wrapper" ref="tabsWrapper">
     <div class="s-tabs-nav-wrapper">
       <div class="s-tabs-nav" :class="className">
-        <div
-          v-if="hasPrev"
-          @click="scrollLeft"
-          class="s-tabs-nav__control s-has-prev"
-        >
+        <div v-if="hasPrev" @click="scrollLeft" class="s-tabs-nav__control s-has-prev">
           <i class="icon-back"></i>
         </div>
 
@@ -28,20 +24,14 @@
             @click="showTab(tab.value)"
             :aria-controls="`${tab.value}-tab`"
           >
-            <router-link
-              v-if="updateRoute"
-              :to="`#/${tab.value}`"
-              class="s-tab-link"
-              tabindex="-1"
-            >
+            <router-link v-if="updateRoute" :to="`#/${tab.value}`" class="s-tab-link" tabindex="-1">
               <i v-if="tab.icon" :class="`icon-${tab.icon}`"></i>
               <span
                 @keydown.left.prevent="highlightTab(tab.value, 'LEFT')"
                 @keydown.right.prevent="highlightTab(tab.value)"
                 :tabindex="tab.value === selectedTab ? 0 : -1"
                 class="s-tab-title"
-                >{{ tab.name }}</span
-              >
+              >{{ tab.name }}</span>
             </router-link>
             <div v-else class="s-tab-link" tabindex="-1">
               <i v-if="tab.icon" :class="`icon-${tab.icon}`"></i>
@@ -50,8 +40,7 @@
                 @keydown.right.prevent="highlightTab(tab.value)"
                 :tabindex="tab.value === selectedTab ? 0 : -1"
                 class="s-tab-title"
-                >{{ tab.name }}</span
-              >
+              >{{ tab.name }}</span>
             </div>
             <!-- <div>
               {{ tab.name }}
@@ -60,22 +49,14 @@
           </div>
         </div>
 
-        <div
-          v-if="hasNext"
-          @click="scrollRight"
-          class="s-tabs-nav__control s-has-next"
-        >
+        <div v-if="hasNext" @click="scrollRight" class="s-tabs-nav__control s-has-next">
           <i class="icon-back"></i>
         </div>
       </div>
     </div>
 
     <div class="s-tab-content" v-if="!hideContent">
-      <div
-        v-for="(tab, index) in tabs"
-        :key="index"
-        v-show="tab.value === selectedTab"
-      >
+      <div v-for="(tab, index) in tabs" :key="index" v-show="tab.value === selectedTab">
         <slot :name="tab.value" />
       </div>
     </div>
@@ -240,17 +221,17 @@ export default class Tabs extends Vue {
   }
 
   calculateScrolls(caller = "intent") {
-    console.log("TCL: Tabs -> calculateScrolls -> caller", caller);
+    // console.log("TCL: Tabs -> calculateScrolls -> caller", caller);
     if (!this.isMounted) return false;
     if (this.$whatInput.ask() === "keyboard") {
       this.hasNext = this.hasPrev = false;
       return false;
     }
 
-    console.log(
-      "TCL: Tabs -> calculateScrolls -> this.tabsContainer",
-      this.tabsContainer
-    );
+    // console.log(
+    //   "TCL: Tabs -> calculateScrolls -> this.tabsContainer",
+    //   this.tabsContainer
+    // );
     this.canScroll =
       this.tabsContainer.scrollWidth > this.tabsContainer.clientWidth;
     this.hasPrev = this.tabsContainer.scrollLeft > 0;

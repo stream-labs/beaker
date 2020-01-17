@@ -26,7 +26,7 @@
           >{{ tab.name }}</span>
         </component>
       </div>
-      <PaneDropdown v-if="hasOverflowTabs" menuAlign="right">
+      <PaneDropdown ref="overflowDropdown" v-if="hasOverflowTabs" menuAlign="right">
         <template slot="title">More</template>
         <a v-for="tab in overflowTabs" :key="`overflow-${tab.value}`">{{ tab.name }}</a>
       </PaneDropdown>
@@ -59,6 +59,12 @@ import { debounce } from "lodash";
 
 import PaneDropdown from "./PaneDropdown.vue";
 
+interface ITabs {
+  name: string;
+  value: string;
+  icon: string;
+}
+
 @Component({
   components: {
     PaneDropdown
@@ -66,13 +72,7 @@ import PaneDropdown from "./PaneDropdown.vue";
 })
 export default class TabsNew extends Vue {
   @Prop()
-  tabs!: [
-    {
-      name: string;
-      value: string;
-      icon: string;
-    }
-  ];
+  tabs!: ITabs[];
 
   @Watch("tabs", { deep: true })
   onTabsChange() {
@@ -97,14 +97,16 @@ export default class TabsNew extends Vue {
   $refs!: {
     tabs: HTMLDivElement;
     tabsWrapper: HTMLDivElement;
+    overflowDropdown: Vue;
   };
 
   isMounted = false;
-
+  overflowTabs: ITabs[] = [];
   overflowIsActive = false;
 
   selectedTab: string = "";
   tabsContainer: HTMLDivElement = null as any;
+  overflowDropdown = null as any;
   selectTabSize = {
     fontSize: this.tabSize
   };
@@ -117,23 +119,16 @@ export default class TabsNew extends Vue {
     return this.size === "large" ? "16px" : "14px";
   }
 
-  get overflowTabs() {
-    return this.tabs;
-  }
-
   get hasOverflowTabs() {
     return !!this.overflowTabs.length;
-  }
-
-  destroyed() {
-    // window.removeEventListener("resize", this.debouncedScroll);
   }
 
   mounted() {
     this.isMounted = true;
     this.tabsContainer = this.$refs.tabs;
-    this.loadResizeObserver();
     this.selectedTab = this.selected || this.tabs[0].value;
+    this.overflowDropdown = this.$refs.overflowDropdown;
+    this.loadResizeObserver();
 
     // this.$whatInput.registerOnChange(this.calculateScrolls, "input");
   }
@@ -141,6 +136,7 @@ export default class TabsNew extends Vue {
   loadResizeObserver() {
     const ro = new ResizeObserver(entries => {
       entries.forEach(entry => {
+        console.log(entry);
         this.setOverflowTabs();
       });
     });
@@ -149,6 +145,31 @@ export default class TabsNew extends Vue {
 
   setOverflowTabs() {
     if (!this.isMounted) return false;
+
+    const allTabs: NodeListOf<HTMLDivElement> = this.tabsContainer.querySelectorAll(
+      ".s-tabs__tab"
+    );
+    let tabsWidth: number = this.overflowDropdown.$el.offsetWidth;
+    const tabsContainerWidth = this.tabsContainer.offsetWidth;
+    console.log(
+      "TCL: TabsNew -> setOverflowTabs -> tabsContainerWidth",
+      tabsContainerWidth
+    );
+
+    allTabs.forEach(tab => {
+      tab.classList.remove("is-hidden");
+    });
+
+    allTabs.forEach((tab, index) => {
+      // tabsWidth += tab.offsetWidth + 16;
+
+      if (tabsContainerWidth >= tabsWidth + tab.offsetWidth) {
+        tabsWidth += tab.offsetWidth;
+      } else {
+        tab.classList.add("is-hidden");
+        this.overflowTabs.push(this.tabs[index]);
+      }
+    });
   }
 
   showOverflowTabs(val: boolean) {
@@ -169,18 +190,23 @@ export default class TabsNew extends Vue {
 <style lang="less" scoped>
 @import (reference) "./../styles/Imports";
 
-a {
-  text-decoration: none;
-}
-
 .s-tabs {
   height: 100%;
 
+  a {
+    text-decoration: none;
+  }
+
+  .is-hidden {
+    display: none;
+  }
+
   &__nav {
     display: flex;
+    flex-wrap: wrap;
     background: transparent;
     position: relative;
-    width: 100%;
+    // width: 100%;
     border-bottom: 1px solid #000;
   }
 
@@ -188,11 +214,16 @@ a {
     position: relative;
     display: inline-block;
     .margin-right(2);
-    // border-bottom: 2px solid transparent;
+    padding-top: 4px;
+    padding-bottom: 12px;
     .weight(@medium);
     color: @day-paragraph;
     cursor: pointer;
     .transition(color);
+
+    &:last-child {
+      margin-right: 0;
+    }
 
     &:hover {
       color: @day-title;
