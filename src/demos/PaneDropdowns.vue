@@ -17,8 +17,12 @@ components: {
         <template #components>
           <PaneDropdown>
             <span slot="title">Trending</span>
-            <a href="#"> <i class="icon-check"></i>Most Installed </a>
-            <a href="#"> <i class="icon-delete"></i>Newly Added </a>
+            <a href="#">
+              <i class="icon-check"></i>Most Installed
+            </a>
+            <a href="#">
+              <i class="icon-delete"></i>Newly Added
+            </a>
             <a href="#">Trending</a>
           </PaneDropdown>
         </template>
@@ -122,7 +126,8 @@ components: {
             <td>null</td>
             <td>
               Default will align the menu to the left side of the toggle. Use
-              <code>right</code> or <code>center</code> to align the dropdown
+              <code>right</code> or
+              <code>center</code> to align the dropdown
               menu to the right or center of its toggle.
             </td>
           </tr>

@@ -1,45 +1,44 @@
 <template>
   <div class="s-tabs" ref="tabsWrapper">
     <div class="s-tabs__nav" ref="tabsNav" :class="className">
-      <!-- <div ref="tabs" class="s-tabs"> -->
       <div
-        v-for="tab in tabs"
+        v-for="tab in modifiedTabs"
         :key="tab.value"
         class="s-tabs__tab"
-        :class="{ 'is-active': tab.value === selectedTab }"
+        :class="{
+          'is-active': tab.value === selectedTab,
+          'is-hidden': tab.hidden
+        }"
         :style="selectTabSize"
         @click="showTab(tab.value)"
         :aria-controls="`${tab.value}-tab`"
+        tabindex="-1"
       >
         <component
           :is="tabLinkTag"
           v-bind="tabLinkOptions(tab.value)"
           class="s-tabs__link"
-          tabindex="-1"
+          :tabindex="tab.value === selectedTab ? 0 : -1"
+          @keydown.left.prevent="setTabOnKeyDown(tab.value, 'LEFT')"
+          @keydown.up.prevent="setTabOnKeyDown(tab.value, 'LEFT')"
+          @keydown.right.prevent="setTabOnKeyDown(tab.value)"
+          @keydown.down.prevent="setTabOnKeyDown(tab.value)"
         >
           <i v-if="tab.icon" :class="`icon-${tab.icon}`"></i>
-          <span
-            @keydown.left.prevent="highlightTab(tab.value, 'LEFT')"
-            @keydown.right.prevent="highlightTab(tab.value)"
-            :tabindex="tab.value === selectedTab ? 0 : -1"
-            class="s-tab-title"
-            >{{ tab.name }}</span
-          >
+          <span class="s-tabs__title">{{ tab.name }}</span>
         </component>
       </div>
-      <PaneDropdown
-        ref="overflowDropdown"
-        v-if="hasOverflowTabs"
-        menuAlign="right"
-        :dropdown-icon="false"
-      >
-        <template slot="title">
-          <i class="icon-back"></i>
-        </template>
+
+      <PaneDropdown v-if="hasHiddenTabs" menuAlign="right">
+        <template slot="title">More</template>
         <a
-          v-for="tab in overflowTabs"
-          :key="`overflow-${tab.value}`"
+          v-for="tab in hiddenTabs"
+          :key="`hidden-${tab.value}`"
           @click="showTab(tab.value)"
+          @keydown.left.prevent="setTabOnKeyDown(tab.value, 'LEFT')"
+          @keydown.up.prevent="setTabOnKeyDown(tab.value, 'LEFT')"
+          @keydown.right.prevent="setTabOnKeyDown(tab.value)"
+          @keydown.down.prevent="setTabOnKeyDown(tab.value)"
           :class="{ 'is-active': tab.value === selectedTab }"
           >{{ tab.name }}</a
         >
@@ -61,7 +60,7 @@
 <script lang="ts">
 import { Component, Watch, Prop, Vue } from "vue-property-decorator";
 import ResizeObserver from "resize-observer-polyfill";
-import { debounce } from "lodash";
+import { debounce, cloneDeep } from "lodash-es";
 
 import PaneDropdown from "./PaneDropdown.vue";
 
@@ -69,6 +68,11 @@ interface ITabs {
   name: string;
   value: string;
   icon: string;
+}
+
+interface IModifiedTabs extends ITabs {
+  hidden: boolean;
+  active: boolean;
 }
 
 @Component({
@@ -80,10 +84,10 @@ export default class TabsNew extends Vue {
   @Prop()
   tabs!: ITabs[];
 
-  @Watch("tabs", { deep: true })
-  onTabsChange() {
-    this.$nextTick(() => this.setOverflowTabs());
-  }
+  // @Watch("modifiedTabs", { deep: true })
+  // onTabsChange() {
+  //   this.$nextTick(() => this.setHiddenTabs());
+  // }
 
   @Prop()
   size!: string;
@@ -106,16 +110,16 @@ export default class TabsNew extends Vue {
   };
 
   isMounted = false;
-  overflowTabs: ITabs[] = [];
-  overflowIsActive = false;
-
+  hasHiddenTabs = true;
+  modifiedTabs: IModifiedTabs[] = [];
+  dropdownIsActive = false;
   selectedTab: string = "";
+  selectTabSize = { fontSize: this.tabSize };
+  prevWidth = 0;
+  prevHeight = 0;
+
   tabsNav: HTMLDivElement = null as any;
-  tabsNavHeight = 0;
-  overflowDropdown: HTMLDivElement = null as any;
-  selectTabSize = {
-    fontSize: this.tabSize
-  };
+  allTabs: NodeListOf<HTMLDivElement> = null as any;
 
   get tabLinkTag() {
     return this.updateRoute ? "router-link" : "span";
@@ -125,64 +129,140 @@ export default class TabsNew extends Vue {
     return this.size === "large" ? "16px" : "14px";
   }
 
-  get hasOverflowTabs() {
-    return !!this.overflowTabs.length;
+  get hiddenTabs() {
+    return this.modifiedTabs.filter(tab => tab.hidden);
   }
 
+  // get hasHiddenTabs() {
+  //   return !!this.hiddenTabs.length;
+  // }
+
   mounted() {
+    this.loadTabProperties();
     this.isMounted = true;
     this.tabsNav = this.$refs.tabsNav;
-    this.overflowDropdown = this.$refs.tabsNav;
-    this.selectedTab = this.selected || this.tabs[0].value;
-    this.loadResizeObserver();
+
+    this.$nextTick(() => {
+      this.allTabs = this.tabsNav.querySelectorAll(".s-tabs__tab");
+      this.selectedTab = this.selected || this.tabs[0].value;
+      this.loadResizeObserver();
+      this.setHiddenTabs();
+    });
 
     // this.$whatInput.registerOnChange(this.calculateScrolls, "input");
+  }
+
+  loadTabProperties() {
+    this.modifiedTabs = cloneDeep(this.tabs).map(tab => {
+      return {
+        ...tab,
+        hidden: false,
+        active: false
+      };
+    });
   }
 
   loadResizeObserver() {
     const ro = new ResizeObserver(entries => {
       entries.forEach(entry => {
-        const { height } = entry.contentRect;
-        // this.tabsNav.offsetHeight, height
-        // if (this.tabsNavHeight !== height) return;
-        this.setOverflowTabs();
-        this.tabsNavHeight = height;
+        const { width, height } = entry.contentRect;
+        if (this.prevWidth !== width) {
+          this.setHiddenTabs();
+          this.prevWidth = width;
+        }
       });
     });
     ro.observe(this.tabsNav);
   }
 
-  setOverflowTabs() {
+  setHiddenTabs() {
     if (!this.isMounted) return false;
 
-    const allTabs: NodeListOf<HTMLDivElement> = this.tabsNav.querySelectorAll(
-      ".s-tabs__tab"
-    );
-
-    const overflowTab = Array.from(
-      this.overflowDropdown.children
-    ).pop() as HTMLDivElement;
-    let totalTabsWidth = overflowTab.offsetWidth;
+    const moreTab = Array.from(this.tabsNav.children).pop() as HTMLDivElement;
+    let totalTabsWidth = moreTab.offsetWidth;
     const tabsNavWidth = this.tabsNav.offsetWidth;
-    this.overflowTabs = [];
+    let startedHiding = false;
 
-    allTabs.forEach(tab => {
-      tab.classList.remove("is-hidden");
-    });
+    this.modifiedTabs.forEach(tab => (tab.hidden = false));
 
-    allTabs.forEach((tab, index) => {
-      if (tabsNavWidth >= totalTabsWidth + tab.offsetWidth + 17) {
-        totalTabsWidth += tab.offsetWidth + 16;
+    this.allTabs.forEach((tab, index) => {
+      if (
+        tabsNavWidth >= totalTabsWidth + tab.offsetWidth + 17 &&
+        !startedHiding
+      ) {
+        totalTabsWidth += tab.offsetWidth + 17;
       } else {
-        totalTabsWidth += tab.offsetWidth + 16;
-        tab.classList.add("is-hidden");
-        this.overflowTabs.push(this.tabs[index]);
+        this.modifiedTabs[index].hidden = true;
+        startedHiding = true;
+        console.log(
+          "TCL: TabsNew -> setHiddenTabs -> totalTabsWidth",
+          tab,
+          totalTabsWidth,
+          tabsNavWidth,
+          this.modifiedTabs[index]
+        );
       }
     });
+
+    if (this.modifiedTabs.some(tab => tab.hidden)) this.hasHiddenTabs = true;
   }
 
-  showOverflowTabs(val: boolean) {
-    this.overflowIsActive = val;
+  setTabOnKeyDown(current, direction = "RIGHT") {
+    const currentIndex = this.tabs.findIndex(tab => current === tab.value);
+    const paneDropdown = this.tabsNav.querySelector(
+      ".s-pane-dropdown"
+    ) as HTMLDivElement;
+    const paneDropdownToggle = paneDropdown.querySelector(
+      ".s-pane-dropdown__toggle"
+    ) as HTMLDivElement;
+    // const paneDropdownFirstItem = paneDropdownList
+    //   .children[0] as HTMLAnchorElement;
+
+    let newTabIndex = 0;
+
+    if (direction === "LEFT") {
+      newTabIndex =
+        currentIndex === 0 ? this.tabs.length - 1 : currentIndex - 1;
+    } else {
+      newTabIndex =
+        currentIndex === this.tabs.length - 1 ? 0 : currentIndex + 1;
+    }
+
+    if (
+      this.hiddenTabs.find(tab => this.tabs[newTabIndex].value === tab.value) &&
+      !this.dropdownIsActive
+    ) {
+      paneDropdownToggle.click();
+      setTimeout(() => {
+        const paneDropdownList = paneDropdown.querySelector(
+          ".s-pane-dropdown__list"
+        ) as HTMLDivElement;
+        const paneDropdownFirstItem = paneDropdownList
+          .children[0] as HTMLAnchorElement;
+        console.log(
+          "TCL: TabsNew -> setTabOnKeyDown -> paneDropdownFirstItem",
+          paneDropdownFirstItem
+        );
+        paneDropdownFirstItem.tabIndex = 0;
+        paneDropdownFirstItem.focus();
+        this.dropdownIsActive = true;
+      }, 250);
+    }
+
+    let currentTab = this.allTabs[currentIndex].querySelector(
+      ".s-tabs__link"
+    ) as HTMLSpanElement;
+    let newTab = this.allTabs[newTabIndex] as HTMLDivElement;
+    let newTabLink = newTab.querySelector(".s-tabs__link") as HTMLSpanElement;
+
+    currentTab.tabIndex = -1;
+    newTabLink.tabIndex = 0;
+    newTabLink.focus();
+    this.showTab(this.tabs[newTabIndex].value);
+  }
+
+  showHiddenTabs(val: boolean) {
+    this.dropdownIsActive = val;
   }
 
   tabLinkOptions(tabValue) {
@@ -220,7 +300,6 @@ export default class TabsNew extends Vue {
     flex-wrap: wrap;
     background: transparent;
     position: relative;
-    // width: 100%;
     border-bottom: 1px solid @day-border;
   }
 
@@ -276,19 +355,19 @@ export default class TabsNew extends Vue {
     padding-top: 4px;
     padding-bottom: 12px;
 
-    &__toggle i {
-      height: 14px;
-      margin-top: 2px;
-      .margin-left(0);
-      color: @day-paragraph;
-      transform: rotate(180deg);
-      .transition(color);
+    // &__toggle i {
+    //   height: 14px;
+    //   margin-top: 2px;
+    //   .margin-left(0);
+    //   color: @day-paragraph;
+    //   transform: rotate(180deg);
+    //   .transition(color);
 
-      &:hover,
-      &--active {
-        color: @day-title;
-      }
-    }
+    //   &:hover,
+    //   &--active {
+    //     color: @day-title;
+    //   }
+    // }
   }
 }
 
@@ -326,14 +405,14 @@ export default class TabsNew extends Vue {
     }
 
     ::v-deep .s-pane-dropdown {
-      &__toggle i {
-        color: @night-paragraph;
+      // &__toggle i {
+      //   color: @night-paragraph;
 
-        &:hover,
-        &--active {
-          color: @night-title;
-        }
-      }
+      //   &:hover,
+      //   &--active {
+      //     color: @night-title;
+      //   }
+      // }
     }
   }
 }

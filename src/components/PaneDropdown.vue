@@ -5,6 +5,8 @@
       class="s-pane-dropdown__toggle"
       :class="{ 's-pane-dropdown__toggle--active': paneMenuOpen }"
       @click="paneMenuOpen = !paneMenuOpen"
+      @keydown.space.prevent="paneMenuOpen = !paneMenuOpen"
+      @keydown.enter.prevent="paneMenuOpen = !paneMenuOpen"
     >
       <span>
         <slot name="title"></slot>
@@ -12,12 +14,7 @@
       </span>
     </a>
 
-    <transition
-      name="expand-dropdown"
-      @enter="open"
-      @after-enter="afterOpen"
-      @leave="close"
-    >
+    <transition name="expand-dropdown" @enter="open" @after-enter="afterOpen" @leave="close">
       <div
         :class="menuClasses"
         class="s-pane-dropdown__menu"
