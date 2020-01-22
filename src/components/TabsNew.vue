@@ -12,17 +12,16 @@
         :style="selectTabSize"
         @click="showTab(tab.value)"
         :aria-controls="`${tab.value}-tab`"
-        tabindex="-1"
       >
         <component
           :is="tabLinkTag"
           v-bind="tabLinkOptions(tab.value)"
           class="s-tabs__link"
-          :tabindex="tab.value === selectedTab ? 0 : -1"
-          @keydown.left.prevent="setTabOnKeyDown(tab.value, 'LEFT')"
-          @keydown.up.prevent="setTabOnKeyDown(tab.value, 'LEFT')"
-          @keydown.right.prevent="setTabOnKeyDown(tab.value)"
-          @keydown.down.prevent="setTabOnKeyDown(tab.value)"
+          :tabindex="tab.value !== selectedTab ? '-1' : undefined"
+          @keydown.left.prevent="setTabOnKeyDown($event, tab.value, 'LEFT')"
+          @keydown.up.prevent="setTabOnKeyDown($event, tab.value, 'LEFT')"
+          @keydown.right.prevent="setTabOnKeyDown($event, tab.value)"
+          @keydown.down.prevent="setTabOnKeyDown($event, tab.value)"
         >
           <i v-if="tab.icon" :class="`icon-${tab.icon}`"></i>
           <span class="s-tabs__title">{{ tab.name }}</span>
@@ -33,21 +32,21 @@
         v-show="hasHiddenTabs"
         ref="hiddenTabsDropdown"
         menuAlign="right"
-        tabindex="-1"
         @focus="openPaneDropdown"
       >
         <template slot="title">More</template>
-        <a
+        <component
+          :is="tabLinkTag"
           v-for="tab in hiddenTabs"
           :key="`hidden-${tab.value}`"
           @click="showTab(tab.value)"
-          @keydown.left.prevent="setTabOnKeyDown(tab.value, 'LEFT')"
-          @keydown.up.prevent="setTabOnKeyDown(tab.value, 'LEFT')"
-          @keydown.right.prevent="setTabOnKeyDown(tab.value)"
-          @keydown.down.prevent="setTabOnKeyDown(tab.value)"
+          @keydown.left.prevent="setTabOnKeyDown($event, tab.value, 'LEFT')"
+          @keydown.up.prevent="setTabOnKeyDown($event, tab.value, 'LEFT')"
+          @keydown.right.prevent="setTabOnKeyDown($event, tab.value)"
+          @keydown.down.prevent="setTabOnKeyDown($event, tab.value)"
           class="s-tabs__link"
           :class="{ 'is-active': tab.value === selectedTab }"
-          >{{ tab.name }}</a
+          >{{ tab.name }}</component
         >
       </PaneDropdown>
     </div>
@@ -78,7 +77,9 @@ interface ITabs {
 }
 
 interface IModifiedTabs extends ITabs {
+  active: boolean;
   hidden: boolean;
+  width: number;
 }
 
 @Component({
@@ -112,19 +113,19 @@ export default class TabsNew extends Vue {
   };
 
   isMounted = false;
-  hasHiddenTabs = false;
+  hasHiddenTabs = true;
   modifiedTabs: IModifiedTabs[] = [];
   dropdownIsActive = false;
-  selectedTab: string = "";
+  // selectedTab: string = "";
   selectTabSize = { fontSize: this.tabSize };
   prevWidth = 0;
-  prevHeight = 0;
+  tabWidthsSet = false;
 
   tabsNav: HTMLDivElement = null as any;
   allTabs: NodeListOf<HTMLDivElement> = null as any;
 
   get tabLinkTag() {
-    return this.updateRoute ? "router-link" : "span";
+    return this.updateRoute ? "router-link" : "button";
   }
 
   get tabSize() {
@@ -135,6 +136,15 @@ export default class TabsNew extends Vue {
     return this.modifiedTabs.filter(tab => tab.hidden);
   }
 
+  get selectedTab() {
+    if (this.modifiedTabs.every(tab => tab.active)) {
+      return this.selected || this.modifiedTabs[0].value;
+    }
+
+    const activeTab = this.modifiedTabs.filter(tab => tab.active);
+    return activeTab.value;
+  }
+
   mounted() {
     this.loadTabProperties();
     this.isMounted = true;
@@ -142,7 +152,8 @@ export default class TabsNew extends Vue {
 
     this.$nextTick(() => {
       this.allTabs = this.tabsNav.querySelectorAll(".s-tabs__tab");
-      this.selectedTab = this.selected || this.tabs[0].value;
+      // this.selectedTab = this.selected || this.tabs[0].value;
+      this.setTabWidths();
       this.loadResizeObserver();
     });
   }
@@ -151,8 +162,20 @@ export default class TabsNew extends Vue {
     this.modifiedTabs = cloneDeep(this.tabs).map(tab => {
       return {
         ...tab,
-        hidden: false
+        active: false,
+        hidden: false,
+        width: 0
       };
+    });
+  }
+
+  setTabWidths() {
+    Array.from(this.allTabs).forEach((tab, idx) => {
+      let tabLink = tab.querySelector(".s-tabs__link") as HTMLDivElement;
+      this.modifiedTabs[idx].width =
+        idx !== this.modifiedTabs.length - 1
+          ? tabLink.offsetWidth + 16
+          : tabLink.offsetWidth;
     });
   }
 
@@ -162,7 +185,7 @@ export default class TabsNew extends Vue {
         const { width, height } = entry.contentRect;
 
         if (this.prevWidth !== width) {
-          this.setHiddenTabs();
+          this.$nextTick(() => this.setHiddenTabs());
           this.prevWidth = width;
         }
       });
@@ -173,31 +196,29 @@ export default class TabsNew extends Vue {
   setHiddenTabs() {
     if (!this.isMounted) return false;
 
-    const moreTab = Array.from(this.tabsNav.children).pop() as HTMLDivElement;
-    let totalTabsWidth = moreTab.offsetWidth;
-    const tabsNavWidth = this.tabsNav.offsetWidth;
-    this.hasHiddenTabs = false;
-
-    this.modifiedTabs.forEach(tab => (tab.hidden = false));
-
+    this.hasHiddenTabs = true;
     this.$nextTick(() => {
-      this.allTabs.forEach((tab, index) => {
-        if (
-          tabsNavWidth >= totalTabsWidth + tab.offsetWidth + 16 &&
-          !this.hasHiddenTabs
-        ) {
-          totalTabsWidth += tab.offsetWidth + 16;
+      const moreTab = Array.from(this.tabsNav.children).pop() as HTMLDivElement;
+      let totalTabsWidth = moreTab.offsetWidth;
+      const tabsNavWidth = this.tabsNav.offsetWidth;
+      this.hasHiddenTabs = false;
+
+      this.modifiedTabs.forEach(tab => (tab.hidden = false));
+
+      this.modifiedTabs.forEach((tab, index) => {
+        if (tabsNavWidth >= totalTabsWidth + tab.width && !this.hasHiddenTabs) {
+          totalTabsWidth += tab.width;
         } else {
           this.modifiedTabs[index].hidden = true;
           if (!this.hasHiddenTabs) this.hasHiddenTabs = true;
         }
       });
-    });
 
-    if (this.modifiedTabs.some(tab => tab.hidden)) this.hasHiddenTabs = true;
+      if (this.modifiedTabs.some(tab => tab.hidden)) this.hasHiddenTabs = true;
+    });
   }
 
-  setTabOnKeyDown(current, direction = "RIGHT") {
+  setTabOnKeyDown(event, current, direction = "RIGHT") {
     const paneDropdown = this.$refs.hiddenTabsDropdown;
     const currentIndex = this.modifiedTabs.findIndex(
       tab => current === tab.value
@@ -274,10 +295,6 @@ export default class TabsNew extends Vue {
   }
 
   openPaneDropdown() {
-    const paneDropdownEl = this.$refs.hiddenTabsDropdown.$el as HTMLDivElement;
-    this.$nextTick(() => {
-      if (paneDropdownEl.tabIndex === 0) paneDropdownEl.tabIndex = -1;
-    });
     this.$refs.hiddenTabsDropdown.show();
     this.dropdownIsActive = true;
   }
@@ -298,7 +315,10 @@ export default class TabsNew extends Vue {
   }
 
   tabLinkOptions(tabValue) {
-    return this.updateRoute ? { to: `#/${tabValue}` } : {};
+    // return this.updateRoute ? { to: `#/${tabValue}` } : {};
+    return {
+      to: this.updateRoute ? `#/${tabValue}` : undefined
+    };
   }
 
   showTab(tab: string) {
@@ -378,17 +398,35 @@ export default class TabsNew extends Vue {
     }
   }
 
-  // &__link {
-  //   display: flex;
-  //   text-decoration: none;
-  // }
+  &__link {
+    padding: 0;
+    border: none;
+    font-size: 14px;
+    .weight(@medium);
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+    .transition(color);
+  }
 
   ::v-deep .s-pane-dropdown {
     padding-top: 4px;
     padding-bottom: 12px;
 
-    &__toggle {
-      transition: none;
+    .s-tabs__link {
+      width: 100%;
+      .margin-bottom();
+      font-family: "Roboto", sans-serif;
+      .weight(@medium);
+      text-align: left;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &:hover {
+        color: @dark-2;
+      }
     }
   }
 }
@@ -427,14 +465,11 @@ export default class TabsNew extends Vue {
     }
 
     ::v-deep .s-pane-dropdown {
-      // &__toggle i {
-      //   color: @night-paragraph;
-
-      //   &:hover,
-      //   &--active {
-      //     color: @night-title;
-      //   }
-      // }
+      .s-tabs__link {
+        &:hover {
+          color: @white;
+        }
+      }
     }
   }
 }
