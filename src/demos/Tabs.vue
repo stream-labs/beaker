@@ -51,10 +51,7 @@ components: {
           <td>
             tabs information to display. you can make array like below
             <br />
-            <code>
-              tabs = [ { name: "General", value: "general", icon: "information"
-              }
-            </code>
+            <code>tabs = [ { name: "General", value: "general", icon: "information" }, ... ];</code>
           </td>
         </tr>
         <tr>
