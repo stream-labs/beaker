@@ -32,7 +32,7 @@
         v-show="hasHiddenTabs"
         ref="hiddenTabsDropdown"
         menuAlign="right"
-        :tabindex="dropdownIsActive ? 0 : -1"
+        :tabindex="hiddenActiveTab && !hiddenTabFocused ? 0 : -1"
       >
         <template slot="title">More</template>
         <component
@@ -46,6 +46,7 @@
           @keydown.right.prevent="setTabOnKeyDown($event, tab.value)"
           @keydown.down.prevent="setTabOnKeyDown($event, tab.value)"
           @blur="blurPaneDropDown"
+          @focus="hiddenTabFocused = true"
           class="s-tabs__link"
           :class="{ 'is-active': tab.active }"
           >{{ tab.name }}</component
@@ -116,15 +117,15 @@ export default class TabsNew extends Vue {
 
   isMounted = false;
   hasHiddenTabs = true;
+  hiddenTabFocused = false;
   modifiedTabs: IModifiedTab[] = [];
   dropdownIsActive = false;
-  // selectedTab: string = "";
   selectTabSize = { fontSize: this.tabSize };
   prevWidth = 0;
   tabWidthsSet = false;
 
   tabsNav: HTMLDivElement = null as any;
-  allTabs: NodeListOf<HTMLDivElement> = null as any;
+  allTabElements: NodeListOf<HTMLDivElement> = null as any;
 
   get tabLinkTag() {
     return this.updateRoute ? "router-link" : "button";
@@ -146,22 +147,22 @@ export default class TabsNew extends Vue {
     return this.modifiedTabs.find(tab => tab.active);
   }
 
+  get hiddenActiveTab() {
+    return this.hiddenTabs.find(tab => tab.active);
+  }
+
   mounted() {
     this.$refs.hiddenTabsDropdown.$el.addEventListener(
       "focus",
       this.focusActiveTab
     );
-    // this.$refs.hiddenTabsDropdown.$el.addEventListener(
-    //   "blur",
-    //   this.blurPaneDropDown
-    // );
 
     this.loadTabProperties();
     this.isMounted = true;
     this.tabsNav = this.$refs.tabsNav;
 
     this.$nextTick(() => {
-      this.allTabs = this.tabsNav.querySelectorAll(".s-tabs__tab");
+      this.allTabElements = this.tabsNav.querySelectorAll(".s-tabs__tab");
       if (this.selected) {
         const activeTab =
           this.modifiedTabs.find(tab => this.selected === tab.value) ||
@@ -179,10 +180,6 @@ export default class TabsNew extends Vue {
       "focus",
       this.focusActiveTab
     );
-    // this.$refs.hiddenTabsDropdown.$el.removeEventListener(
-    //   "blur",
-    //   this.blurPaneDropDown
-    // );
   }
 
   loadTabProperties() {
@@ -197,7 +194,7 @@ export default class TabsNew extends Vue {
   }
 
   setTabWidths() {
-    Array.from(this.allTabs).forEach((tab, idx) => {
+    Array.from(this.allTabElements).forEach((tab, idx) => {
       let tabLink = tab.querySelector(".s-tabs__link") as HTMLDivElement;
       this.modifiedTabs[idx].width =
         idx !== this.modifiedTabs.length - 1
@@ -266,22 +263,7 @@ export default class TabsNew extends Vue {
       this.modifiedTabs[newIndex].hidden
     );
 
-    let currentTab: HTMLSpanElement | HTMLAnchorElement = null as any;
     let newTab: HTMLSpanElement | HTMLAnchorElement = null as any;
-
-    if (this.modifiedTabs[currentIndex].hidden) {
-      const currentHiddenIndex = this.hiddenTabs.findIndex(
-        tab => this.modifiedTabs[currentIndex].value === tab.value
-      );
-      let currnetHiddenList = paneDropdown.$el.querySelectorAll(
-        ".s-pane-dropdown__list .s-tabs__link"
-      );
-      currentTab = currnetHiddenList[currentHiddenIndex] as HTMLAnchorElement;
-    } else {
-      currentTab = this.allTabs[currentIndex].querySelector(".s-tabs__link") as
-        | HTMLSpanElement
-        | HTMLAnchorElement;
-    }
 
     if (this.modifiedTabs[newIndex].hidden) {
       const newHiddenIndex = this.hiddenTabs.findIndex(
@@ -297,14 +279,12 @@ export default class TabsNew extends Vue {
       });
       const newHiddenTab = this.hiddenTabs[newHiddenIndex];
     } else {
-      newTab = this.allTabs[newIndex].querySelector(".s-tabs__link") as
+      newTab = this.allTabElements[newIndex].querySelector(".s-tabs__link") as
         | HTMLSpanElement
         | HTMLAnchorElement;
     }
 
     this.$nextTick(() => {
-      currentTab.tabIndex = -1;
-      newTab.tabIndex = 0;
       newTab.focus();
       this.showTab(this.modifiedTabs[newIndex]);
     });
@@ -354,6 +334,7 @@ export default class TabsNew extends Vue {
       ) {
         return;
       }
+      this.hiddenTabFocused = false;
       this.closePaneDropdown();
     });
   }
@@ -376,7 +357,6 @@ export default class TabsNew extends Vue {
   }
 
   showTab(tab: IModifiedTab) {
-    // this.selectedTab = tab;
     this.modifiedTabs.forEach(tab => (tab.active = false));
     tab.active = true;
     this.$emit("tab-selected", tab.value);
