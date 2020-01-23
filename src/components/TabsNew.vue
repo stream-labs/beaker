@@ -222,9 +222,9 @@ export default class TabsNew extends Vue {
       const tabsNavWidth = this.tabsNav.offsetWidth;
       this.hasHiddenTabs = false;
 
-      this.modifiedTabs.forEach(tab => (tab.hidden = false));
-
       this.modifiedTabs.forEach((tab, index) => {
+        tab.hidden = false;
+
         if (tabsNavWidth >= totalTabsWidth + tab.width && !this.hasHiddenTabs) {
           totalTabsWidth += tab.width;
         } else {
@@ -336,19 +336,20 @@ export default class TabsNew extends Vue {
 
   focusActiveTab() {
     this.openPaneDropdown();
-    const activeTabIndex = this.hiddenTabs.findIndex(tab => tab.active);
-    const paneDropdown = this.$refs.hiddenTabsDropdown;
-
-    this.$nextTick(() => {
-      const currnetHiddenList = paneDropdown.$el.querySelectorAll(
-        ".s-pane-dropdown__list .s-tabs__link"
-      );
-
-      const activeTab = currnetHiddenList[activeTabIndex] as
-        | HTMLButtonElement
-        | HTMLAnchorElement;
-      activeTab.focus();
-    });
+    // Only use activeTabIndex when whatInput.ask() === "keyboard".
+    if (this.$whatInput.ask("intent") === "keyboard") {
+      const activeTabIndex = this.hiddenTabs.findIndex(tab => tab.active);
+      const paneDropdown = this.$refs.hiddenTabsDropdown;
+      this.$nextTick(() => {
+        const currnetHiddenList: NodeListOf<
+          HTMLButtonElement | HTMLAnchorElement
+        > = paneDropdown.$el.querySelectorAll(
+          ".s-pane-dropdown__list .s-tabs__link"
+        );
+        const activeTab = currnetHiddenList[activeTabIndex];
+        activeTab.focus();
+      });
+    }
   }
 
   showTab(tab: IModifiedTab) {
