@@ -9,30 +9,39 @@ components: {
   Tabs
 }</code></pre>
 
-    <DemoSection title="Default" :code="demoCode">
-      <template #components>
-        <tabs
-          :tabs="tabs"
-          size="small"
-          :update-route="false"
-          selected="advanced"
-        >
-          <div slot="general">general</div>
-          <div slot="advanced">advanced</div>
-          <div slot="account">account</div>
-          <div slot="integrations">integrations</div>
-          <div slot="payments">payments</div>
-          <div slot="donations">donations</div>
-          <div slot="subscriptions">subscriptions</div>
-          <div slot="preferences">preferences</div>
-          <div slot="apps">apps</div>
-          <div slot="merch">merch</div>
-          <div slot="api">api</div>
-          <div slot="moderators">moderators</div>
-          <div slot="themes">themes</div>
-        </tabs>
-      </template>
-    </DemoSection>
+    <div class="section">
+      <DemoSection title="Default" :code="demoCode">
+        <template #components>
+          <Tabs
+            :tabs="tabs"
+            size="small"
+            :update-route="false"
+            selected="advanced"
+          >
+            <div :slot="tab.value" v-for="tab in tabs" :key="tab.value">
+              {{ tab.name }}
+            </div>
+          </Tabs>
+        </template>
+      </DemoSection>
+    </div>
+
+    <div class="section">
+      <DemoSection title="New Tabs" :code="demoCode">
+        <template #components>
+          <TabsNew
+            :tabs="tabs"
+            size="small"
+            :update-route="false"
+            selected="advanced"
+          >
+            <div :slot="tab.value" v-for="tab in tabs" :key="tab.value">
+              {{ tab.name }}
+            </div>
+          </TabsNew>
+        </template>
+      </DemoSection>
+    </div>
 
     <table class="docs-table">
       <thead>
@@ -51,7 +60,10 @@ components: {
           <td>
             tabs information to display. you can make array like below
             <br />
-            <code>tabs = [ { name: "General", value: "general", icon: "information" }, ... ];</code>
+            <code
+              >tabs = [ { name: "General", value: "general", icon: "information"
+              }, ... ];</code
+            >
           </td>
         </tr>
         <tr>
