@@ -9,52 +9,31 @@ components: {
   Tabs
 }</code></pre>
 
-    <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-      <div slot="content">
-        <pre>
-<code>&lt;tabs
-  :tabs=&quot;tabs&quot;
-  :size=&quot;'small'&quot;
-  :update-route=&quot;false&quot;
-  :selected=&quot;advanced&quot;&gt;
-  &lt;div slot=&quot;general&quot;&gt;general&lt;/div&gt;
-  &lt;div slot=&quot;advanced&quot;&gt;advanced&lt;/div&gt;
-  &lt;div slot=&quot;account&quot;&gt;account&lt;/div&gt;
-  &lt;div slot=&quot;integrations&quot;&gt;integrations&lt;/div&gt;
-  &lt;div slot=&quot;payments&quot;&gt;payments&lt;/div&gt;
-  &lt;div slot=&quot;donations&quot;&gt;donations&lt;/div&gt;
-  &lt;div slot=&quot;subscriptions&quot;&gt;subscriptions&lt;/div&gt;
-  &lt;div slot=&quot;preferences&quot;&gt;preferences&lt;/div&gt;
-  &lt;div slot=&quot;apps&quot;&gt;apps&lt;/div&gt;
-  &lt;div slot=&quot;merch&quot;&gt;merch&lt;/div&gt;
-  &lt;div slot=&quot;api&quot;&gt;api&lt;/div&gt;
-  &lt;div slot=&quot;moderators&quot;&gt;moderators&lt;/div&gt;
-  &lt;div slot=&quot;themes&quot;&gt;themes&lt;/div&gt;
-&lt;/tabs&gt;
-</code></pre>
-      </div>
-    </Accordion>
+    <DemoSection title="Default" :code="demoCode">
+      <template #components>
+        <tabs
+          :tabs="tabs"
+          size="small"
+          :update-route="false"
+          selected="advanced"
+        >
+          <div slot="general">general</div>
+          <div slot="advanced">advanced</div>
+          <div slot="account">account</div>
+          <div slot="integrations">integrations</div>
+          <div slot="payments">payments</div>
+          <div slot="donations">donations</div>
+          <div slot="subscriptions">subscriptions</div>
+          <div slot="preferences">preferences</div>
+          <div slot="apps">apps</div>
+          <div slot="merch">merch</div>
+          <div slot="api">api</div>
+          <div slot="moderators">moderators</div>
+          <div slot="themes">themes</div>
+        </tabs>
+      </template>
+    </DemoSection>
 
-    <tabs
-      :tabs="tabs"
-      :size="'small'"
-      :update-route="false"
-      :selected="'advanced'"
-    >
-      <div slot="general">general</div>
-      <div slot="advanced">advanced</div>
-      <div slot="account">account</div>
-      <div slot="integrations">integrations</div>
-      <div slot="payments">payments</div>
-      <div slot="donations">donations</div>
-      <div slot="subscriptions">subscriptions</div>
-      <div slot="preferences">preferences</div>
-      <div slot="apps">apps</div>
-      <div slot="merch">merch</div>
-      <div slot="api">api</div>
-      <div slot="moderators">moderators</div>
-      <div slot="themes">themes</div>
-    </tabs>
     <table class="docs-table">
       <thead>
         <tr>
@@ -106,57 +85,21 @@ components: {
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Accordion from "./../components/Accordion.vue";
+
+import DemoSection from "./../components/DemoSection.vue";
 import ScrollNav from "./../components/ScrollNav.vue";
 import Tabs from "./../components/Tabs.vue";
+import TabsCode from "!!raw-loader!./Tabs.vue";
 
 @Component({
   components: {
-    Accordion,
+    DemoSection,
     ScrollNav,
     Tabs
   }
 })
 export default class TabsDemo extends Vue {
-  // test = [
-  //   {
-  //     tabLabel: "General",
-  //     tabTo: "#",
-  //     tabId: "tab1",
-  //     tabIcon: "information"
-  //   },
-  //   {
-  //     tabLabel: "Advanced",
-  //     tabTo: "#",
-  //     tabId: "tab2",
-  //     tabIcon: "information"
-  //   },
-  //   {
-  //     tabLabel: "Account",
-  //     tabTo: "#",
-  //     tabId: "tab3",
-  //     tabIcon: "information"
-  //   },
-  //   {
-  //     tabLabel: "Integrations",
-  //     tabTo: "#",
-  //     tabId: "tab4",
-  //     tabIcon: "information"
-  //   },
-  //   {
-  //     tabLabel: "Payments",
-  //     tabTo: "#",
-  //     tabId: "tab5",
-  //     tabIcon: "information"
-  //   },
-  //   {
-  //     tabLabel: "Apps",
-  //     tabTo: "#",
-  //     tabId: "tab6",
-  //     tabIcon: "information"
-  //   }
-  // ];
-
+  demoCode = TabsCode;
   tabs = [
     {
       name: "General",

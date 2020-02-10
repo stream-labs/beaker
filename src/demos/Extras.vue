@@ -7,21 +7,22 @@
         make your lives easier.
       </p>
     </div>
+
     <div class="section">
-      <h2>Fake Alert</h2>
-      <pre><code>import { FakeAlert } from 'streamlabs-beaker';
+      <div class="section">
+        <h2>Fake Alert</h2>
+        <pre><code>import { FakeAlert } from 'streamlabs-beaker';
 
-components: {
-  FakeAlert
-}</code></pre>
-
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content"></div>
-      </Accordion>
-
-      <div class="section section__components">
-        <FakeAlert :username="'SalmanSux19'"></FakeAlert>
+  components: {
+    FakeAlert
+  }</code></pre>
       </div>
+
+      <DemoSection title="Fake Alert" :code="demoCode">
+        <template #components>
+          <FakeAlert username="SalmanSux19" />
+        </template>
+      </DemoSection>
     </div>
 
     <table class="docs-table">
@@ -60,14 +61,17 @@ components: {
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 
-import Accordion from "./../components/Accordion.vue";
+import DemoSection from "./../components/DemoSection.vue";
+import ExtrasCode from "!!raw-loader!./Extras.vue";
 import FakeAlert from "./../components/FakeAlert.vue";
 
 @Component({
   components: {
-    Accordion,
+    DemoSection,
     FakeAlert
   }
 })
-export default class Extras extends Vue {}
+export default class Extras extends Vue {
+  demoCode = ExtrasCode;
+}
 </script>

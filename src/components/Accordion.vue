@@ -57,6 +57,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import { escape } from "lodash-es";
 
 @Component({})
 export default class Accordian extends Vue {

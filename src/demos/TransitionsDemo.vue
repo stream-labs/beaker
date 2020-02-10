@@ -11,13 +11,9 @@
         <code>&lt;transition&gt;</code> or
         <code>&lt;transition-group&gt;</code>.
       </p>
-      <pre>
-        <code>
-&lt;transition name="fadeY-from-left"&gt;
+      <pre><code>&lt;transition name="fadeY-from-left"&gt;
   &lt;div v-if="boolean"&gt;&lt;/div&gt;
-&lt;/transition&gt;
-        </code>
-      </pre>
+&lt;/transition&gt;</code></pre>
     </div>
     <div class="section">
       <div class="flip-cont">

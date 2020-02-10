@@ -1,68 +1,119 @@
 <template>
   <div>
-    <form-group-h :title="title" :helpText="helpText" :tooltip="tooltip">
-      <text-input
-        slot="input"
-        :type="textInputType"
-        :placeholder="textInputPlaceholder"
-      ></text-input>
-    </form-group-h>
+    <div class="section">
+      <h1>Forms</h1>
+      <p>
+        Wrap input components in form groups for different input and label
+        layouts.
+      </p>
 
-    <form-group-v
-      :title="title"
-      titleLayout="flex-start"
-      tooltip="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis lorem quis purus sollicitudin scelerisque. Donec eu auctor magna. Nullam pellentesque ullamcorper ante in maximus. Nunc elit lorem, consequat in."
-      :helpText="helpText"
-    >
-      <text-input
-        slot="input"
-        :type="textInputType"
-        :placeholder="textInputPlaceholder"
-      ></text-input>
-    </form-group-v>
+      <pre><code>import { FormGroup, FormGroupH, FormGroupV } from 'streamlabs-beaker';
 
-    <form-group-v :title="title">
-      <selector
-        slot="input"
-        v-model="selected"
-        :options="[
-          'Option A',
-          'Option B',
-          'Option C',
-          'Option D',
-          'Option E',
-          'Option F'
-        ]"
-      ></selector>
-    </form-group-v>
+components: {
+  FormGroup,
+  FormGroupH,
+  FormGroupV
+}</code></pre>
+    </div>
 
-    <payment-form></payment-form>
+    <div class="section">
+      <h2>Form Group</h2>
+
+      <DemoSection title="Form Group" :code="demoCode">
+        <template #components>
+          <FormGroup>
+            <TextInput
+              slot="input"
+              :type="textInputType"
+              :placeholder="textInputPlaceholder"
+              :label="title"
+              v-model="inputValue"
+            />
+          </FormGroup>
+        </template>
+      </DemoSection>
+    </div>
+
+    <div class="section">
+      <h2>Horizontal Form Group</h2>
+
+      <DemoSection title="Horizontal Form Group" :code="demoCode">
+        <template #components>
+          <FormGroupH :title="title" :helpText="helpText" :tooltip="tooltip">
+            <TextInput
+              slot="input"
+              :type="textInputType"
+              :placeholder="textInputPlaceholder"
+              v-model="inputValue"
+            />
+          </FormGroupH>
+        </template>
+      </DemoSection>
+    </div>
+
+    <div class="section">
+      <h2>Vertical Form Group</h2>
+
+      <DemoSection title="Vertical Form Group" :code="demoCode">
+        <template #components>
+          <FormGroupV
+            :title="title"
+            label="Vertical Form Group Input"
+            titleLayout="flex-start"
+            :tooltip="tooltip"
+            :helpText="helpText"
+          >
+            <TextInput
+              slot="input"
+              :type="textInputType"
+              :placeholder="textInputPlaceholder"
+              v-model="inputValue"
+            />
+          </FormGroupV>
+        </template>
+      </DemoSection>
+    </div>
+
+    <!-- <div class="section">
+      <h2>Payment Form</h2>
+
+      <DemoSection title="Payment Form" :code="demoCode">
+        <template #components>
+          <PaymentForm />
+        </template>
+      </DemoSection>
+    </div>-->
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import PaymentForm from "./../components/PaymentForm.vue";
+
+import DemoSection from "./../components/DemoSection.vue";
+import FormsCode from "!!raw-loader!./Forms.vue";
+import FormGroup from "./../components/FormGroup.vue";
 import FormGroupH from "./../components/FormGroupH.vue";
 import FormGroupV from "./../components/FormGroupV.vue";
-import Selector from "./../components/Selector.vue";
-
+import PaymentForm from "./../components/PaymentForm.vue";
 import TextInput from "./../components/TextInput.vue";
 
 @Component({
   components: {
-    PaymentForm,
+    DemoSection,
+    FormGroup,
     FormGroupH,
     FormGroupV,
-    Selector,
+    PaymentForm,
     TextInput
   }
 })
 export default class Forms extends Vue {
+  demoCode = FormsCode;
   title = "Text Input";
   tooltip = "Input tooltip message.";
   helpText = "This is help text";
   textInputPlaceholder = "Text input placeholder";
   textInputType = "text";
+  inputValue = "";
 }
 </script>

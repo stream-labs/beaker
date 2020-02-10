@@ -11,156 +11,87 @@ components: {
 
     <div class="section">
       <h2>Modal Basic</h2>
-      <p>Used for basic modal.</p>
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre><code>&lt;ModalComp
-  :type=&quot;'basic'&quot;
-  :title=&quot;'UI Modal'&quot;
-  :subTitle=&quot;'Subtitle'&quot;
-  :text=&quot;'Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.'&quot;&gt;
-&lt;/ModalComp&gt;
-
-&lt;Button
-:variation=&quot;'default'&quot;
-:title=&quot;'basic1'&quot;
- @click=&quot;$modal.show('modal-basic')&quot;&gt;
-&lt;/Button&gt;
-</code></pre>
-        </div>
-      </Accordion>
-
-      <ModalComp
-        :type="'basic'"
-        :title="'UI Modal'"
-        :subTitle="'Subtitle'"
-        :text="
-          'Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.'
-        "
-      ></ModalComp>
-
-      <ModalComp
-        :name="'modal-basic2'"
-        :type="'basic'"
-        :title="'UI Modal2'"
-        :subTitle="'Subtitle2'"
-        :text="
-          'Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.'
-        "
-      ></ModalComp>
-
-      <ModalComp
-        :name="'modal-basic3'"
-        :type="'basic'"
-        :title="'UI Modal3'"
-        :subTitle="'Subtitle3'"
-        :text="
-          'Save combining multiple windows like Streamlabels, Twitch Chat, Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a live view.'
-        "
-        >hey there</ModalComp
-      >
+      <DemoSection title="Modal Basic" :code="demoCode">
+        <template #components>
+          <ModalComp
+            name="modal-basic"
+            type="basic"
+            title="UI Modal"
+            subTitle="Subtitle"
+            text="
+              Save combining multiple windows like Streamlabels, Twitch Chat,
+              Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a
+              live view.
+            "
+            >Slots Available!</ModalComp
+          >
+        </template>
+      </DemoSection>
 
       <div class="s-button-container--left">
         <Button
-          :variation="'default'"
-          :title="'modal basic1'"
+          variation="default"
+          title="modal basic"
           @click="$modal.show('modal-basic')"
-        ></Button>
-        <Button
-          :variation="'default'"
-          :title="'modal basic2'"
-          @click="$modal.show('modal-basic2')"
-        ></Button>
-        <Button
-          :variation="'default'"
-          :title="'modal basic3'"
-          @click="$modal.show('modal-basic3')"
-        ></Button>
+        />
       </div>
     </div>
 
     <div class="section">
       <h2>Modal Subscribe</h2>
       <p>Used once subscribe.</p>
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre><code>&lt;ModalComp
-  :name=&quot;'subscribe'&quot;
-  :type=&quot;'subscribe'&quot;
-  :title=&quot;'Streamlabs'&quot;
-  :subTitle=&quot;'Never pay for GIFs and effects again!'&quot;
-  :text=&quot;'Get unlimited free GIFs and effects that will show up on all alerts on all channels! You’ll also get a fancy ‘Pro’ badge next to your username on your donations.'&quot;
-  :subscribeText=&quot;'galazy83 donated $50.00!'&quot;
-  :subscribeMessage=&quot;'Thanks for the stream. Go CivRyan!'&quot;
-  :notes=&quot;'You may cancel your subscription at any time.'&quot;&gt;
-&lt;/ModalComp&gt;
 
-&lt;Button
-  :variation=&quot;'default'&quot;
-  :title=&quot;'modal subscribe'&quot;
-  @click=&quot;$modal.show('subscribe')&quot;&gt;
-&lt;/Button&gt;
-</code></pre>
-        </div>
-      </Accordion>
-
-      <ModalComp
-        :type="'subscribe'"
-        :scrollable="true"
-        :title="'Streamlabs'"
-        :subTitle="'Never pay for GIFs and effects again!'"
-        :text="
-          'Get unlimited free GIFs and effects that will show up on all alerts on all channels! You’ll also get a fancy ‘Pro’ badge next to your username on your donations.'
-        "
-        :subscribeText="'galazy83 donated $50.00!'"
-        :subscribeMessage="'Thanks for the stream. Go CivRyan!'"
-        :notes="'You may cancel your subscription at any time.'"
-      ></ModalComp>
+      <DemoSection title="Modal Subscribe" :code="demoCode">
+        <template #components>
+          <ModalComp
+            type="subscribe"
+            :scrollable="true"
+            title="Streamlabs"
+            subTitle="Never pay for GIFs and effects again!"
+            text="
+              Get unlimited free GIFs and effects that will show up on all
+              alerts on all channels! You’ll also get a fancy ‘Pro’ badge next
+              to your username on your donations.
+            "
+            subscribe-text="galazy83 donated $50.00!"
+            subscribe-message="Thanks for the stream. Go CivRyan!"
+            notes="You may cancel your subscription at any time."
+          />
+        </template>
+      </DemoSection>
 
       <div class="button-container button-container--left">
         <Button
-          :variation="'default'"
-          :title="'modal subscribe'"
+          variation="default"
+          title="modal subscribe"
           @click="$modal.show('modal-subscribe')"
-        ></Button>
+        />
       </div>
     </div>
 
     <div class="section">
       <h2>Modal Redirect</h2>
       <p>Used for redirect.</p>
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre><code>&lt;ModalComp
-  :name=&quot;'redirect'&quot;
-  :type=&quot;'redirect'&quot;
-  :title=&quot;'Redirecting ...'&quot;
-  :text=&quot;'Redirecting you to PayPal to update your method of payment. Click here if you have been waiting longer than 5 seconds.'&quot;&gt;
-&lt;/ModalComp&gt;
 
-&lt;Button
-  :variation=&quot;'default'&quot;
-  :title=&quot;'modal redirect'&quot;
-  @click=&quot;$modal.show('redirect')&quot;&gt;
-&lt;/Button&gt;
-</code></pre>
-        </div>
-      </Accordion>
-
-      <ModalComp
-        :type="'redirect'"
-        :title="'Redirecting ...'"
-        :text="
-          'Redirecting you to PayPal to update your method of payment. Click here if you have been waiting longer than 5 seconds.'
-        "
-      ></ModalComp>
+      <DemoSection title="Modal Redirect" :code="demoCode">
+        <template #components>
+          <ModalComp
+            type="redirect"
+            title="Redirecting..."
+            text="
+              Redirecting you to PayPal to update your method of payment.
+              Click here if you have been waiting longer than 5 seconds.
+            "
+          />
+        </template>
+      </DemoSection>
 
       <div class="button-container button-container--left">
         <Button
-          :variation="'default'"
-          :title="'modal redirect'"
+          variation="default"
+          title="modal redirect"
           @click="$modal.show('modal-redirect')"
-        ></Button>
+        />
       </div>
     </div>
 
@@ -168,35 +99,21 @@ components: {
       <h2>Modal Confirm</h2>
       <p>Used when needed to let the user confirm.</p>
 
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre><code>&lt;ModalComp
-  :name=&quot;'confirmation'&quot;
-  :type=&quot;'confirmation'&quot;
-  :width=&quot;400&quot;
-  :subTitle=&quot;'Delete ‘Streamlabs Pillow’'&quot;
-  :text=&quot;'Are you sure you want to delete the merch item ‘Streamlabs Pillow’? This action cannot be undone.'&quot;&gt;
-&lt;/ModalComp&gt;
-
-&lt;Button
-  :variation=&quot;'warning'&quot;
-  :title=&quot;'modal confirmation'&quot;
-  @click=&quot;$modal.show('confirmation')&quot;&gt;
-&lt;/Button&gt;
-</code></pre>
-        </div>
-      </Accordion>
-
-      <ModalComp
-        :type="'confirmation'"
-        :width="400"
-        :subTitle="'Delete ‘Streamlabs Pillow’'"
-        :text="
-          'Are you sure you want to delete the merch item ‘Streamlabs Pillow’? This action cannot be undone.'
-        "
-        @confirm="() => {}"
-        :confirmButtonText="'Delete'"
-      ></ModalComp>
+      <DemoSection title="Modal Confirm" :code="demoCode">
+        <template #components>
+          <ModalComp
+            type="confirmation"
+            :width="400"
+            subTitle="Delete ‘Streamlabs Pillow'"
+            text="
+              Are you sure you want to delete the merch item ‘Streamlabs
+              Pillow’? This action cannot be undone.
+            "
+            @confirm="() => {}"
+            confirmButtonText="Delete"
+          />
+        </template>
+      </DemoSection>
 
       <div class="button-container button-container--left">
         <Button
@@ -211,38 +128,23 @@ components: {
       <h2>Modal Welcome Prime</h2>
       <p>Used for welcome prime</p>
 
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre><code>&lt;ModalComp 
-  :type=&quot;'welcome-prime'&quot; 
-  :width=&quot;900&quot; 
-  @onClickPrime=&quot;test&quot; 
-  :hasPrimeCloseButton=&quot;true&quot;&gt;
-&lt;/ModalComp&gt;
-
-&lt;Button
-  :variation=&quot;'default'&quot;
-  :title=&quot;'modal welcome prime'&quot;
-  @click=&quot;$modal.show('modal-welcome-prime')&quot;&gt;
-&lt;/Button&gt;
-</code></pre>
-        </div>
-      </Accordion>
-
-      <ModalComp
-        :type="'welcome-prime'"
-        :width="600"
-        @onClickPrime="test"
-        :hasPrimeCloseButton="true"
-      >
-      </ModalComp>
+      <DemoSection title="Modal Welcome Prime" :code="demoCode">
+        <template #components>
+          <ModalComp
+            type="welcome-prime"
+            :width="600"
+            :hasPrimeCloseButton="true"
+            @onClickPrime="test"
+          />
+        </template>
+      </DemoSection>
 
       <div class="button-container button-container--left">
         <Button
-          :variation="'default'"
-          :title="'modal welcome prime'"
+          variation="default"
+          title="modal welcome prime"
           @click="$modal.show('modal-welcome-prime')"
-        ></Button>
+        />
       </div>
     </div>
 
@@ -433,18 +335,20 @@ components: {
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Accordion from "./../components/Accordion.vue";
-import ModalComp from "./../components/ModalComp.vue";
 import Button from "./../components/Button.vue";
+import DemoSection from "./../components/DemoSection.vue";
+import ModalComp from "./../components/ModalComp.vue";
+import ModalsCode from "!!raw-loader!./Modals.vue";
 
 @Component({
   components: {
-    Accordion,
-    ModalComp,
-    Button
+    Button,
+    DemoSection,
+    ModalComp
   }
 })
 export default class Modals extends Vue {
+  demoCode = ModalsCode;
   test() {
     console.log("test");
   }
