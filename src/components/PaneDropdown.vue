@@ -77,8 +77,20 @@ export default class PaneDropdown extends Vue {
     document.addEventListener("click", this.documentClick);
   }
 
+  mounted() {
+    if (this.hoverOption) {
+      this.$refs.paneTitle.addEventListener("mouseover", this.show);
+      this.$refs.paneMenu.addEventListener("mouseleave", this.hide);
+    }
+  }
+
   destroyed() {
     document.removeEventListener("click", this.documentClick);
+
+    if (this.hoverOption) {
+      this.$refs.paneTitle.removeEventListener("mouseover", this.show);
+      this.$refs.paneMenu.removeEventListener("mouseleave", this.hide);
+    }
   }
 
   get menuClasses() {
