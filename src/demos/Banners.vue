@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Banners</h1>
-    <Tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler">
+    <TabsNew :tabs="tabs" :update-route="false" :selected="selectedTab">
       <div slot="marketing">
         <h2>Marketing Banner</h2>
         <DemoSection title="Marketing Banner" :code="demoCode">
@@ -374,7 +374,7 @@
           </tbody>
         </table>
       </div>
-    </Tabs>
+    </TabsNew>
   </div>
 </template>
 
@@ -388,6 +388,7 @@ import Button from "./../components/Button.vue";
 import DemoSection from "./../components/DemoSection.vue";
 import Notice from "./../components/Notice.vue";
 import Tabs from "./../components/Tabs.vue";
+import TabsNew from "./../components/TabsNew.vue";
 
 @Component({
   components: {
@@ -397,7 +398,8 @@ import Tabs from "./../components/Tabs.vue";
     Button,
     DemoSection,
     Notice,
-    Tabs
+    Tabs,
+    TabsNew
   }
 })
 export default class Banners extends Vue {

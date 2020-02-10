@@ -29,12 +29,7 @@ components: {
     <div class="section">
       <DemoSection title="New Tabs" :code="demoCode">
         <template #components>
-          <TabsNew
-            :tabs="tabs"
-            size="small"
-            :update-route="false"
-            selected="advanced"
-          >
+          <TabsNew :tabs="tabs" size="small" selected="advanced">
             <div :slot="tab.value" v-for="tab in tabs" :key="tab.value">
               {{ tab.name }}
             </div>
