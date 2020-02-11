@@ -47,10 +47,10 @@
         <div @click.stop class="s-banner__download-wrapper">
           <slot name="link"></slot>
           <i
-            @click="toggleBanner()"
             tabindex="0"
-            @keydown.space.prevent="toggleBanner()"
             class="icon-down"
+            @click="toggleBanner()"
+            @keydown.space.prevent="toggleBanner()"
           ></i>
           <div class="s-banner__link-desc">{{ linkDesc }}</div>
         </div>
@@ -211,9 +211,6 @@ export default class BannerMarketing extends Vue {
     align-items: center;
 
     .icon-down {
-      // width: 32px;
-      // height: 32px;
-      // line-height: 32px;
       transform: rotate(180deg);
     }
   }

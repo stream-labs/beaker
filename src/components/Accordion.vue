@@ -254,7 +254,7 @@ export default class Accordian extends Vue {
     transform-origin: 7px 7px;
   }
 
-  &n--title {
+  &--title {
     font-weight: @medium;
     font-size: 14px;
   }
