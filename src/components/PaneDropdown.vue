@@ -14,22 +14,23 @@
       </span>
     </a>
 
-    <transition name="expand-dropdown" @enter="open" @after-enter="afterOpen" @leave="close">
+    <transition
+      name="expand-dropdown"
+      @enter="open"
+      @after-enter="afterOpen"
+      @leave="close"
+    >
       <div
         :class="menuClasses"
         class="s-pane-dropdown__menu"
-        @mouseup="onMenuClick"
         v-if="paneMenuOpen"
       >
         <slot v-if="custom"></slot>
-        <div v-else class="s-pane-dropdown__list">
+        <div v-else @mouseup="onMenuClick" class="s-pane-dropdown__list">
           <slot></slot>
         </div>
       </div>
     </transition>
-    <span v-if="!custom" ref="panelinks" class="s-pane-dropdown__slot-list">
-      <slot></slot>
-    </span>
   </div>
 </template>
 
@@ -79,12 +80,6 @@ export default class PaneDropdown extends Vue {
   }
 
   mounted() {
-    if (!this.custom) {
-      let links: any = this.$refs.panelinks;
-      let [...list] = links.children;
-      this.paneList = list;
-    }
-
     if (this.hoverOption) {
       this.$refs.paneTitle.addEventListener("mouseover", this.show);
       this.$refs.paneMenu.addEventListener("mouseleave", this.hide);
@@ -150,6 +145,8 @@ export default class PaneDropdown extends Vue {
   }
 
   close(element) {
+    if ("target" in element) return;
+
     let height = getComputedStyle(element).height;
     element.style.height = height;
     getComputedStyle(element).height;
