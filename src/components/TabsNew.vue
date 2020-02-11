@@ -36,7 +36,9 @@
         menuAlign="right"
         :tabindex="hiddenActiveTab && !hiddenTabFocused ? 0 : -1"
       >
-        <template slot="title">More</template>
+        <template slot="title"
+          >More</template
+        >
         <div
           v-for="tab in hiddenTabs"
           :key="`hidden-${tab.value}`"
