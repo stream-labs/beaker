@@ -55,13 +55,18 @@
             tag="button"
             :tabindex="!tab.active ? '-1' : undefined"
             class="s-tabs__link"
-          >{{ tab.name }}</component>
+            >{{ tab.name }}</component
+          >
         </div>
       </PaneDropdown>
     </div>
 
     <div class="s-tab-content" v-if="!hideContent">
-      <div v-for="(tab, index) in modifiedTabs" :key="index" v-show="tab.active">
+      <div
+        v-for="(tab, index) in modifiedTabs"
+        :key="index"
+        v-show="tab.active"
+      >
         <slot :name="tab.value" />
       </div>
     </div>
@@ -157,8 +162,6 @@ export default class TabsNew extends Vue {
     this.tabsNav = this.$refs.tabsNav;
 
     this.$nextTick(() => {
-      this.allTabElements = this.tabsNav.querySelectorAll(".s-tabs__tab");
-
       if (this.selected) {
         const activeTab =
           this.modifiedTabs.find(tab => this.selected === tab.value) ||
@@ -166,6 +169,11 @@ export default class TabsNew extends Vue {
         activeTab.active = true;
       }
 
+      this.allTabElements = this.tabsNav.querySelectorAll(".s-tabs__tab");
+      this.setTabWidths();
+    });
+
+    this.$nextTick(() => {
       this.setTabWidths();
       this.loadResizeObserver();
     });
@@ -190,22 +198,17 @@ export default class TabsNew extends Vue {
   }
 
   setTabWidths() {
-    this.$nextTick(() => {
-      Array.from(this.allTabElements).forEach((tab, idx) => {
-        // let tabLink = tab.querySelector(".s-tabs__link") as HTMLDivElement;
-        this.modifiedTabs[idx].width =
-          idx !== this.modifiedTabs.length - 1
-            ? tab.offsetWidth + 16
-            : tab.offsetWidth;
-
-        console.log(
-          "TCL: TabsNew -> setTabWidths -> this.modifiedTabs[idx].width",
-          this.modifiedTabs[idx].width,
-          // tabLink.offsetWidth,
-          tab.offsetWidth
-        );
-      });
-    });
+    Array.from(this.tabsNav.querySelectorAll(".s-tabs__tab")).forEach(
+      (tab, idx) => {
+        this.$nextTick(() => {
+          let tabLink = tab.querySelector(".s-tabs__link") as HTMLDivElement;
+          this.modifiedTabs[idx].width =
+            idx !== this.modifiedTabs.length - 1
+              ? tabLink.offsetWidth + 16
+              : tabLink.offsetWidth;
+        });
+      }
+    );
   }
 
   loadResizeObserver() {
@@ -228,11 +231,6 @@ export default class TabsNew extends Vue {
     this.$nextTick(() => {
       const moreTab = Array.from(this.tabsNav.children).pop() as HTMLDivElement;
       let totalTabsWidth = moreTab.offsetWidth;
-
-      console.log(
-        "TCL: TabsNew -> setHiddenTabs -> totalTabsWidth",
-        totalTabsWidth
-      );
       const tabsNavWidth = this.tabsNav.offsetWidth;
       this.hasHiddenTabs = false;
 
@@ -304,6 +302,7 @@ export default class TabsNew extends Vue {
 
     if (newHidden && this.dropdownIsActive) return;
     if (newHidden) {
+      this.$refs.hiddenTabsDropdown.show();
       this.openPaneDropdown();
     } else {
       this.closePaneDropdown();
@@ -311,7 +310,6 @@ export default class TabsNew extends Vue {
   }
 
   openPaneDropdown() {
-    this.$refs.hiddenTabsDropdown.show();
     this.dropdownIsActive = true;
   }
 
@@ -458,17 +456,20 @@ export default class TabsNew extends Vue {
     padding-top: 4px;
     padding-bottom: 12px;
 
-    .s-tabs__link {
-      width: 100%;
+    &__list > div {
       .margin-bottom();
-      font-family: "Roboto", sans-serif;
-      .weight(@medium);
-      text-align: left;
-      .transition(color);
 
       &:last-child {
         margin-bottom: 0;
       }
+    }
+
+    .s-tabs__link {
+      width: 100%;
+      font-family: "Roboto", sans-serif;
+      .weight(@medium);
+      text-align: left;
+      .transition(color);
 
       &:hover {
         color: @dark-2;

@@ -12,8 +12,15 @@ components: {
     <div class="section">
       <DemoSection title="Default" :code="demoCode">
         <template #components>
-          <Tabs :tabs="tabs" size="small" :update-route="false" selected="advanced">
-            <div :slot="tab.value" v-for="tab in tabs" :key="tab.value">{{ tab.name }}</div>
+          <Tabs
+            :tabs="tabs"
+            size="small"
+            :update-route="false"
+            selected="advanced"
+          >
+            <div :slot="tab.value" v-for="tab in tabs" :key="tab.value">
+              {{ tab.name }}
+            </div>
           </Tabs>
         </template>
       </DemoSection>
@@ -23,7 +30,9 @@ components: {
       <DemoSection title="New Tabs" :code="demoCode">
         <template #components>
           <TabsNew :tabs="tabs" size="small" selected="advanced">
-            <div :slot="tab.value" v-for="tab in tabs" :key="tab.value">{{ tab.name }}</div>
+            <div :slot="tab.value" v-for="tab in tabs" :key="tab.value">
+              {{ tab.name }}
+            </div>
           </TabsNew>
         </template>
       </DemoSection>
@@ -46,7 +55,10 @@ components: {
           <td>
             tabs information to display. you can make array like below
             <br />
-            <code>tabs = [ { name: "General", value: "general", icon: "information" }, ... ];</code>
+            <code
+              >tabs = [ { name: "General", value: "general", icon: "information"
+              }, ... ];</code
+            >
           </td>
         </tr>
         <tr>
