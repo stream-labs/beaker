@@ -1,5 +1,5 @@
 <template>
-  <div class="s-tabs-wrapper" ref="tabsWrapper">
+  <div class="s-tabs-wrapper">
     <div class="s-tabs-nav-wrapper">
       <div class="s-tabs-nav" :class="className">
         <div
@@ -26,37 +26,19 @@
             :class="{ 'is-active': tab.value === selectedTab }"
             :style="selectTabSize"
             @click="showTab(tab.value)"
-            :aria-controls="`${tab.value}-tab`"
           >
             <router-link
               v-if="updateRoute"
               :to="`#/${tab.value}`"
               class="s-tab-link"
-              tabindex="-1"
             >
               <i v-if="tab.icon" :class="`icon-${tab.icon}`"></i>
-              <span
-                @keydown.left.prevent="highlightTab(tab.value, 'LEFT')"
-                @keydown.right.prevent="highlightTab(tab.value)"
-                :tabindex="tab.value === selectedTab ? 0 : -1"
-                class="s-tab-title"
-                >{{ tab.name }}</span
-              >
-            </router-link>
-            <div v-else class="s-tab-link" tabindex="-1">
-              <i v-if="tab.icon" :class="`icon-${tab.icon}`"></i>
-              <span
-                @keydown.left.prevent="highlightTab(tab.value, 'LEFT')"
-                @keydown.right.prevent="highlightTab(tab.value)"
-                :tabindex="tab.value === selectedTab ? 0 : -1"
-                class="s-tab-title"
-                >{{ tab.name }}</span
-              >
-            </div>
-            <!-- <div>
               {{ tab.name }}
-              <span :class="`icon-${tab.icon}`"></span>
-            </div>-->
+            </router-link>
+            <div v-else class="s-tab-link">
+              <i v-if="tab.icon" :class="`icon-${tab.icon}`"></i>
+              {{ tab.name }}
+            </div>
           </div>
         </div>
 
@@ -84,9 +66,6 @@
 
 <script lang="ts">
 import { Component, Watch, Prop, Vue } from "vue-property-decorator";
-import ResizeObserver from "resize-observer-polyfill";
-import { debounce } from "lodash";
-
 @Component({})
 export default class Tabs extends Vue {
   @Prop()
@@ -119,7 +98,6 @@ export default class Tabs extends Vue {
   updateRoute!: boolean;
 
   $refs!: {
-    tabsWrapper: HTMLDivElement;
     scrollable_tabs: HTMLDivElement;
   };
 
@@ -128,11 +106,8 @@ export default class Tabs extends Vue {
   canScroll = false;
   hasNext = false;
   hasPrev = false;
-  hightlightedTabIndex = 0;
   private scrollIncrement = 100;
-
   selectedTab: string = "";
-
   selectTabSize = {
     fontSize: this.tabSize
   };
@@ -147,32 +122,23 @@ export default class Tabs extends Vue {
     }
   }
 
+  created() {
+    window.addEventListener("resize", this.calculateScrolls);
+  }
+
   destroyed() {
-    // window.removeEventListener("resize", this.debouncedScroll);
+    window.removeEventListener("resize", this.calculateScrolls);
   }
 
   mounted() {
     this.isMounted = true;
-    // this.tabsContainer = this.$refs.scrollable_tabs;
-    this.tabsContainer = document.querySelector(".s-tabs") as HTMLDivElement;
-    this.loadResizeObserver();
-
+    this.tabsContainer = this.$refs.scrollable_tabs;
+    this.calculateScrolls();
     if (this.selected) {
       this.selectedTab = this.selected;
     } else {
       this.selectedTab = this.tabs[0].value;
     }
-
-    this.$whatInput.registerOnChange(this.calculateScrolls, "input");
-  }
-
-  loadResizeObserver() {
-    const ro = new ResizeObserver(entries => {
-      entries.forEach(entry => {
-        this.calculateScrolls("resizeObserver");
-      });
-    });
-    ro.observe(this.tabsContainer);
   }
 
   scrollLeft() {
@@ -185,83 +151,16 @@ export default class Tabs extends Vue {
       this.tabsContainer.scrollLeft + this.scrollIncrement;
   }
 
-  highlightTab(current, direction = "RIGHT") {
-    const currentIndex = this.tabs.findIndex(tab => current === tab.value);
-    const tabsContainer = document.querySelector(".s-tabs") as HTMLDivElement;
-    const tabs = tabsContainer.children;
-    let newTabIndex = 0;
-
-    if (direction === "LEFT") {
-      newTabIndex =
-        currentIndex === 0 ? this.tabs.length - 1 : currentIndex - 1;
-    } else {
-      newTabIndex =
-        currentIndex === this.tabs.length - 1 ? 0 : currentIndex + 1;
-    }
-
-    let currentTab = tabs[currentIndex].querySelector(
-      ".s-tab-title"
-    ) as HTMLSpanElement;
-    let newTab = tabs[newTabIndex] as HTMLDivElement;
-    let newTabTitle = tabs[newTabIndex].querySelector(
-      ".s-tab-title"
-    ) as HTMLSpanElement;
-
-    const viewport = tabsContainer.clientWidth;
-    const viewportOffset = tabsContainer.scrollLeft;
-    const viewportPosition = viewportOffset + viewport;
-    const maxScroll = tabsContainer.scrollWidth - viewport;
-    const tabPosition = newTab.offsetLeft;
-    const tabWidth = newTab.clientWidth;
-    let scrollReqiuired = true;
-
-    // check if scroll is required
-    if (
-      tabPosition > viewportOffset &&
-      tabPosition + tabWidth < viewportOffset + viewport
-    ) {
-      scrollReqiuired = false;
-    }
-
-    if (
-      scrollReqiuired &&
-      tabPosition > viewportOffset &&
-      tabPosition + tabWidth > viewportOffset + viewport
-    ) {
-      tabsContainer.scrollLeft = tabPosition + tabWidth - viewport + 30;
-    }
-
-    setTimeout(() => {
-      currentTab.tabIndex = -1;
-      newTabTitle.tabIndex = 0;
-      newTabTitle.focus();
-      this.showTab(this.tabs[newTabIndex].value);
-    }, 0);
-  }
-
-  calculateScrolls(caller = "intent") {
-    // console.log("TCL: Tabs -> calculateScrolls -> caller", caller);
+  calculateScrolls() {
     if (!this.isMounted) return false;
-    if (this.$whatInput.ask() === "keyboard") {
-      this.hasNext = this.hasPrev = false;
-      return false;
-    }
-
-    // console.log(
-    //   "TCL: Tabs -> calculateScrolls -> this.tabsContainer",
-    //   this.tabsContainer
-    // );
     this.canScroll =
       this.tabsContainer.scrollWidth > this.tabsContainer.clientWidth;
     this.hasPrev = this.tabsContainer.scrollLeft > 0;
     const scrollRight =
       this.tabsContainer.scrollWidth -
       (this.tabsContainer.scrollLeft + this.tabsContainer.clientWidth);
-
     this.hasNext = scrollRight > 0;
   }
-
-  debouncedScroll = debounce(this.calculateScrolls, 500);
 
   showTab(tab: string) {
     this.selectedTab = tab;
@@ -283,7 +182,7 @@ a {
 
 .s-tabs-nav-wrapper {
   position: relative;
-  height: 30px;
+  height: 34px;
 }
 
 .s-tabs-nav {
@@ -398,16 +297,15 @@ a {
 .s-tab {
   color: @day-paragraph;
   border-bottom: 2px solid transparent;
-  .margin-right(2);
+  .margin-right(2.5);
   cursor: pointer;
   display: inline-block;
   position: relative;
-  .transition(border);
+  .transition();
   .weight(@medium);
 
   &.is-active {
     border-color: @dark-2;
-
     .s-tab-link {
       color: @day-title;
     }
@@ -419,8 +317,7 @@ a {
 }
 
 .s-tab-link {
-  padding-top: 4px;
-  padding-bottom: 11px;
+  .padding-bottom(1.375);
   display: flex;
   text-decoration: none;
 }
@@ -441,10 +338,8 @@ a {
 
   .s-tab {
     color: @night-paragraph;
-
     &.is-active {
       border-color: @light-1;
-
       .s-tab-link {
         color: @night-title;
       }
