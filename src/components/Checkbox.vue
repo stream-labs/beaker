@@ -1,11 +1,12 @@
 <template>
-  <div class="s-checkbox">
+  <div class="s-checkbox" tabindex="0" @keydown.space.prevent="toggleCheck">
     <input
       type="checkbox"
       :id="id"
       :name="name"
       :checked="value"
       @change="$emit('input', $event.target.checked)"
+      tabindex="-1"
     />
     <label :for="id">{{ label }}</label>
   </div>
@@ -27,6 +28,10 @@ export default class Checkbox extends Vue {
 
   @Prop({ type: Boolean, required: true })
   value!: boolean;
+
+  toggleCheck() {
+    this.$emit("input", !this.value);
+  }
 }
 </script>
 
@@ -37,13 +42,14 @@ export default class Checkbox extends Vue {
   position: relative;
   display: inline-block;
   width: 100%;
-  backface-visibility: hidden;
-  outline: 0;
-  vertical-align: baseline;
-  font-style: normal;
-  min-height: 16px;
-  line-height: 16px;
   min-width: 16px;
+  min-height: 16px;
+  font-style: normal;
+  line-height: 16px;
+  vertical-align: baseline;
+  backface-visibility: hidden;
+  pointer-events: none;
+  outline: none;
 
   label {
     box-sizing: border-box;
@@ -51,14 +57,14 @@ export default class Checkbox extends Vue {
     display: inline-block;
     width: auto;
     min-height: 16px;
-    .padding-left(3);
     margin: 0;
+    .padding-left(3);
     .weight(@normal);
     line-height: 16px;
     color: @day-paragraph;
     cursor: default;
-    outline: 0;
-    .transition();
+    .transition(border, background-color);
+    pointer-events: all;
 
     &:before {
       position: absolute;
@@ -89,11 +95,11 @@ export default class Checkbox extends Vue {
     top: 0;
     left: 0;
     opacity: 0 !important;
-    outline: 0;
     z-index: 3;
     width: 16px;
     height: 16px;
     margin: 0;
+    pointer-events: all;
   }
 
   input:checked ~ label {

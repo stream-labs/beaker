@@ -170,12 +170,10 @@ components: {
           </tr>
           <tr>
             <td>icon</td>
-            <td>string</td>
-            <td>-</td>
+            <td>boolean</td>
+            <td>true</td>
             <td>
-              Use
-              <code>'success'</code>, <code>'warning'</code> or
-              <code>'info'</code>.
+              Set to false if you don't want an icon before the callout content.
             </td>
           </tr>
           <tr>

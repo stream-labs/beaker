@@ -39,10 +39,6 @@
               <i v-if="tab.icon" :class="`icon-${tab.icon}`"></i>
               {{ tab.name }}
             </div>
-            <!-- <div>
-              {{ tab.name }}
-              <span :class="`icon-${tab.icon}`"></span>
-            </div>-->
           </div>
         </div>
 
@@ -70,7 +66,6 @@
 
 <script lang="ts">
 import { Component, Watch, Prop, Vue } from "vue-property-decorator";
-
 @Component({})
 export default class Tabs extends Vue {
   @Prop()
@@ -112,9 +107,7 @@ export default class Tabs extends Vue {
   hasNext = false;
   hasPrev = false;
   private scrollIncrement = 100;
-
   selectedTab: string = "";
-
   selectTabSize = {
     fontSize: this.tabSize
   };
@@ -166,7 +159,6 @@ export default class Tabs extends Vue {
     const scrollRight =
       this.tabsContainer.scrollWidth -
       (this.tabsContainer.scrollLeft + this.tabsContainer.clientWidth);
-
     this.hasNext = scrollRight > 0;
   }
 
@@ -314,7 +306,6 @@ a {
 
   &.is-active {
     border-color: @dark-2;
-
     .s-tab-link {
       color: @day-title;
     }
@@ -347,10 +338,8 @@ a {
 
   .s-tab {
     color: @night-paragraph;
-
     &.is-active {
       border-color: @light-1;
-
       .s-tab-link {
         color: @night-title;
       }

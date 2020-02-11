@@ -127,8 +127,10 @@
 }
 
 // Transitions
-.transition() {
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+.transition(@property: all; @rest...) {
+  each(@arguments, {
+    transition+: @value 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  });
 }
 
 .spin() {
@@ -168,4 +170,18 @@
 
 .small-type() {
   font-size: 12px;
+}
+
+// Buttons
+.btn-variant(@bgc, @color: @white, @mix: @dark-2, @amount: 12%) {
+  background-color: @bgc;
+  color: @color;
+
+  &:hover {
+    background-color: mix(@mix, @bgc, @amount);
+  }
+}
+
+.night-btn-variant(@bgc, @color: @dark-2, @mix: @white, @amount: 16%) {
+  .btn-variant(@bgc, @color, @mix, @amount);
 }
