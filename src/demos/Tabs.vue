@@ -93,13 +93,15 @@ import { Component, Vue } from "vue-property-decorator";
 import DemoSection from "./../components/DemoSection.vue";
 import ScrollNav from "./../components/ScrollNav.vue";
 import Tabs from "./../components/Tabs.vue";
+import TabsNew from "./../components/TabsNew.vue";
 import TabsCode from "!!raw-loader!./Tabs.vue";
 
 @Component({
   components: {
     DemoSection,
     ScrollNav,
-    Tabs
+    Tabs,
+    TabsNew
   }
 })
 export default class TabsDemo extends Vue {
