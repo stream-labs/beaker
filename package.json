@@ -1,6 +1,6 @@
 {
   "name": "streamlabs-beaker",
-  "version": "0.10.34",
+  "version": "0.10.35",
   "main": "./dist/beaker.common.js",
   "module": "./dist/beaker.esm.js",
   "license": "MIT",
@@ -73,8 +73,8 @@
   },
   "types": "./index.d.ts",
   "dependencies": {
+    "lodash-es": "^4.17.15",
     "v-tooltip": "^2.0.2",
-    "what-input": "^5.2.6",
-    "lodash-es": "^4.17.15"
+    "what-input": "^5.2.6"
   }
 }
