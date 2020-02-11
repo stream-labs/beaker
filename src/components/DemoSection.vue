@@ -34,8 +34,8 @@ export default class DemoSection extends Vue {
     const codeRegEx = new RegExp(
       `title="${
         this.title
-      }" :code="demoCode">\\s*<template #components>(.*?)<\\/template>`,
-      "gsm"
+      }" :code="demoCode">\\s*<template #components>([\\S\\s]*?)<\\/template>`,
+      "gm"
     );
 
     const codeMatch = codeRegEx.exec(this.code) as string[];

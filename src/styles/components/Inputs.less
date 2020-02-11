@@ -1,11 +1,11 @@
 // Inputs
 
-input[type='text'],
-input[type='password'],
-input[type='number'],
-input[type='email'],
-input[type='url'],
-input[type='search'],
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
 select {
   .radius();
   border: 1px solid @day-input-border;
@@ -14,10 +14,10 @@ select {
   font-size: 14px;
   .padding--input();
   background: @day-input-bg;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   color: @day-title;
   width: 100%;
-  transition: all 0.275s ease-in-out;
+  transition: border 0.275s ease-out;
 
   &:active,
   &:focus {
@@ -25,6 +25,14 @@ select {
     border-color: @light-5;
     background-color: @day-input-bg;
     outline: none;
+  }
+
+  &[disabled] {
+    display: block;
+    border-color: @light-3;
+    background-color: @light-3;
+    color: transparent;
+    pointer-events: none;
   }
 
   ::placeholder,
@@ -130,11 +138,11 @@ input[readonly] {
   }
 }
 
-input[type='file'] {
-  width: auto;
+input[type="file"] {
   display: inline-block;
-  vertical-align: middle;
+  width: auto;
   margin-bottom: 0;
+  vertical-align: middle;
 
   &.file-input--wide {
     width: 100%;
@@ -150,25 +158,25 @@ input[type='file'] {
 }
 
 textarea {
-  .radius();
-  box-shadow: none;
-  border: 1px solid @day-input-border;
-  box-shadow: none;
-  background: @day-input-bg;
-  margin-bottom: 0px;
-  vertical-align: middle;
-  color: @day-title;
   width: 100%;
-  resize: vertical;
-  .padding(2);
-  font-family: 'Roboto';
+  margin-bottom: 0px;
+  .padding(1.5);
+  border: 1px solid @day-input-border;
+  .radius();
+  font-family: "Roboto";
   font-size: 14px;
+  background: @day-input-bg;
+  color: @day-title;
+  box-shadow: none;
+  vertical-align: middle;
+  resize: vertical;
+  transition: all 0.275s ease-in-out;
 
   &:active,
   &:focus {
-    box-shadow: none;
-    border-color: @light-5;
+    border: 2px solid @dark-2;
     background-color: @day-input-bg;
+    box-shadow: none;
     outline: none;
   }
 }
@@ -187,12 +195,12 @@ textarea {
 
 .night,
 .night-theme {
-  input[type='email'],
-  input[type='number'],
-  input[type='password'],
-  input[type='text'],
-  input[type='url'],
-  input[type='search'],
+  input[type="email"],
+  input[type="number"],
+  input[type="password"],
+  input[type="text"],
+  input[type="url"],
+  input[type="search"],
   select,
   textarea {
     border-color: @night-input-border;
@@ -202,8 +210,14 @@ textarea {
     &:active,
     &:focus {
       box-shadow: none;
-      border-color: @light-5;
+      border-color: @white;
       background: @night-input-bg;
+    }
+
+    &[disabled] {
+      border-color: @dark-4;
+      background-color: @dark-4;
+      color: transparent;
     }
   }
 

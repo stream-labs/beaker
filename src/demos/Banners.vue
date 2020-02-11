@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Banners</h1>
-    <Tabs :tabs="tabs" :value="selectedTab" @input="onSelectTabHandler">
+    <TabsNew :tabs="tabs" :update-route="false" :selected="selectedTab">
       <div slot="marketing">
         <h2>Marketing Banner</h2>
         <DemoSection title="Marketing Banner" :code="demoCode">
@@ -248,7 +248,7 @@
         <h2>Notice Banner</h2>
         <DemoSection title="Notice Banner" :code="demoCode">
           <template #components>
-            <notice
+            <Notice
               title="
                 Join affiliates and earn $1 for each Streamlabs OBS referral
               "
@@ -264,29 +264,26 @@
                 variation="action"
                 title="Join"
               />
-            </notice>
+            </Notice>
           </template>
         </DemoSection>
+
         <br />
         <br />
 
-        <notice
-          :bgColor="'warning'"
-          :title="'Your donation link has expired'"
-          :titleColor="'warning'"
-          :desc="
-            'Copy your new donation link and replace all instances containing twitchalerts.com.'
-          "
-          :icon="'error'"
+        <Notice
+          variation="warning"
+          title="Your donation link has expired"
+          desc="Copy your new donation link and replace all instances containing twitchalerts.com."
         >
           <Button
             slot="button"
-            :type="'button'"
-            :size="'fixed-width'"
-            :variation="'default'"
-            :title="'Copy Link'"
-          ></Button>
-        </notice>
+            type="button"
+            size="fixed-width"
+            variation="default"
+            title="Copy Link"
+          />
+        </Notice>
 
         <table class="docs-table">
           <thead>
@@ -300,13 +297,13 @@
           </thead>
           <tbody>
             <tr>
-              <td>bgColor</td>
+              <td>variation</td>
               <td>string</td>
               <td>true</td>
               <td>default</td>
               <td>
-                Background color that will display. Options are "default" and
-                "warning". if default It's already set as default props.
+                Variation style that will be displayed. Options are "default"
+                and "warning".
               </td>
             </tr>
             <tr>
@@ -315,13 +312,6 @@
               <td>true</td>
               <td>null</td>
               <td>Banner title</td>
-            </tr>
-            <tr>
-              <td>titleColor</td>
-              <td>string</td>
-              <td>true</td>
-              <td>null</td>
-              <td>Banner title color</td>
             </tr>
             <tr>
               <td>desc</td>
@@ -335,7 +325,10 @@
               <td>string</td>
               <td>true</td>
               <td>null</td>
-              <td>Icon next to title. Use icon name from icon list.</td>
+              <td>
+                Icon next to title and in background. Will override selected
+                variation icon. Use icon name from icon list.
+              </td>
             </tr>
           </tbody>
         </table>
@@ -374,7 +367,7 @@
           </tbody>
         </table>
       </div>
-    </Tabs>
+    </TabsNew>
   </div>
 </template>
 
@@ -388,6 +381,7 @@ import Button from "./../components/Button.vue";
 import DemoSection from "./../components/DemoSection.vue";
 import Notice from "./../components/Notice.vue";
 import Tabs from "./../components/Tabs.vue";
+import TabsNew from "./../components/TabsNew.vue";
 
 @Component({
   components: {
@@ -397,7 +391,8 @@ import Tabs from "./../components/Tabs.vue";
     Button,
     DemoSection,
     Notice,
-    Tabs
+    Tabs,
+    TabsNew
   }
 })
 export default class Banners extends Vue {

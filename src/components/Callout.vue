@@ -4,7 +4,7 @@
     class="s-callout"
     :class="[calloutClass, calloutClosedClass]"
   >
-    <span>
+    <span class="s-callout__content">
       <i v-if="icon" :class="[calloutIcon]"></i>
       <span>
         <slot />
@@ -26,8 +26,11 @@ export default class Callout extends Vue {
   @Prop({ default: "success" })
   variation!: string;
 
+  @Prop({ default: true })
+  icon!: boolean;
+
   @Prop()
-  icon!: String;
+  customIcon!: string;
 
   @Prop({ default: false })
   closeable!: boolean;
@@ -50,13 +53,14 @@ export default class Callout extends Vue {
   }
 
   get calloutIcon() {
+    if (this.customIcon) return this.customIcon;
     switch (this.variation) {
       case "success":
       case "success-alt":
         return "icon-check";
       case "warning":
       case "warning-alt":
-        return "icon-delete";
+        return "icon-error";
       case "info":
         return "icon-information";
       case "cookies":
@@ -68,6 +72,15 @@ export default class Callout extends Vue {
 
 <style lang="less">
 @import (reference) "./../styles/Imports";
+.callout-colors(@color, @strongColor: @white) {
+  background-color: fade(@color, 8%);
+  color: @color;
+
+  &.strong {
+    background-color: @color;
+    color: @strongColor;
+  }
+}
 
 .s-callout {
   position: relative;
@@ -77,8 +90,13 @@ export default class Callout extends Vue {
   .margin-bottom(3);
   .padding-h-sides(2);
   .radius();
-  line-height: 40px;
+  height: 40px;
   .transition();
+
+  &__content {
+    display: flex;
+    align-items: center;
+  }
 
   [class^="icon-"] {
     &:first-child {
@@ -109,34 +127,19 @@ export default class Callout extends Vue {
   }
 
   &--success {
-    background-color: @teal-semi;
-    color: @teal;
+    .callout-colors(@dark-teal);
   }
 
   &--warning {
-    background-color: @red-semi;
-    color: @red;
+    .callout-colors(@dark-red);
   }
 
   &--info {
-    background-color: @yellow-semi;
-    color: @info;
-  }
-
-  &--success.strong {
-    background-color: @teal;
-  }
-
-  &--info.strong {
-    background-color: @info;
-  }
-
-  &--warning.strong {
-    background-color: @warning;
+    .callout-colors(@dark-yellow);
   }
 
   &.callout--closed {
-    line-height: 0;
+    height: 0;
     margin: 0;
     padding: 0;
     opacity: 0;
@@ -186,6 +189,18 @@ export default class Callout extends Vue {
   .s-callout {
     a {
       color: inherit;
+    }
+
+    &--success {
+      .callout-colors(@teal, @dark-2);
+    }
+
+    &--warning {
+      .callout-colors(@red, @dark-2);
+    }
+
+    &--info {
+      .callout-colors(@yellow, @dark-2);
     }
   }
 }

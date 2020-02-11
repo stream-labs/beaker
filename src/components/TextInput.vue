@@ -1,5 +1,11 @@
 <template>
-  <div class="s-form-field" :class="{ 's-form-field--with-label': label }">
+  <div
+    class="s-form-field"
+    :class="{
+      's-form-field--with-label': label,
+      's-form-field--disabled': disabled
+    }"
+  >
     <div v-if="type === 'number'" class="s-arrows">
       <div
         :class="{
@@ -37,14 +43,15 @@
       v-model="content"
       :class="{
         's-form-field__input': true,
-        's-form-field__input--error': !!error
+        's-form-field__input--error': !!error,
+        's-form-field__input--disabled': disabled
       }"
       v-on="filteredListeners"
       @mousewheel="mouseWheel"
     />
     <label
       :class="{
-        's-form-field__label--top': value !== '',
+        's-form-field__label--top': value !== '' && !disabled,
         's-form-field__label--error': !!error
       }"
       class="s-form-field__label"
@@ -53,7 +60,9 @@
     >
 
     <transition name="fadeX-from-left">
-      <p v-show="error" class="s-form-field__error-text">{{ error }}</p>
+      <p v-show="error" class="s-form-field__error-text">
+        {{ error }}<i class="icon-error"></i>
+      </p>
     </transition>
 
     <p v-show="helpText" class="s-form-field__help-text">{{ helpText }}</p>
@@ -205,12 +214,48 @@ export default class TextInput extends Vue {
 .s-form-field {
   position: relative;
 
-  .s-form-field__input {
-    border: 1px solid @light-4;
+  &--disabled {
+    user-select: none;
+    cursor: not-allowed;
+
+    & + label {
+      border-color: @light-3;
+      background-color: @light-3;
+    }
   }
 
   .s-form-field__input {
     height: 40px;
+    border: 1px solid @light-4;
+    transition: border-color 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+      border-width 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      border-color: @light-5;
+    }
+
+    &:focus {
+      border: 2px solid @dark-2;
+    }
+
+    &--error {
+      border-color: @dark-red;
+
+      &:hover {
+        border-color: mix(@dark-2, @dark-red, 24%);
+      }
+
+      &:focus {
+        border-color: @dark-red;
+      }
+    }
+
+    &--disabled {
+      & + label {
+        background-color: @light-3;
+        color: @light-5;
+      }
+    }
   }
 
   .s-form-field__input::-webkit-outer-spin-button,
@@ -260,10 +305,6 @@ export default class TextInput extends Vue {
   }
 }
 
-.s-form-field__input--error {
-  border-color: @red !important;
-}
-
 .s-form-field__label {
   position: absolute;
   color: @dark-5;
@@ -274,14 +315,23 @@ export default class TextInput extends Vue {
 
 .s-form-field__label--error,
 .s-form-field__error-text {
-  color: @red;
+  color: @dark-red;
 }
 
 .s-form-field__error-text,
 .s-form-field__help-text {
-  .small-type();
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
   .margin-bottom(0);
-  .margin-top();
+  .margin-top(0);
+
+  .icon-error {
+    .margin-left();
+  }
 }
 
 .s-form-field--with-label {
@@ -305,10 +355,11 @@ export default class TextInput extends Vue {
 
   .s-form-field__input:focus + label {
     color: @day-title;
+    font-weight: 500;
   }
 
   .s-form-field__input:focus + .s-form-field__label--error {
-    color: green;
+    color: @dark-red;
   }
 
   .s-form-field--top {
@@ -352,24 +403,41 @@ export default class TextInput extends Vue {
 
 .night,
 .night-theme {
+  .s-form-field {
+    .s-form-field__input {
+      &:focus {
+        border: 2px solid @white;
+      }
+
+      &--error {
+        border-color: @red;
+
+        &:focus {
+          border-color: @red;
+
+          & + .s-form-field__label {
+            color: @red;
+          }
+        }
+
+        &:hover {
+          border-color: mix(@white, @red, 12%);
+        }
+      }
+
+      &--disabled {
+        & + label {
+          background-color: @dark-4;
+        }
+      }
+    }
+  }
+
   .s-form-field--with-label {
     position: relative;
 
     .s-form-field__input:focus + label {
       color: @night-title;
-    }
-  }
-
-  .s-form-field__input--error {
-    border-color: @red;
-
-    &:focus,
-    &:active {
-      border-color: @red;
-    }
-
-    &:focus + .s-form-field__label {
-      color: @red;
     }
   }
 

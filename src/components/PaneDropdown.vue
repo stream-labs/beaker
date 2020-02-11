@@ -5,6 +5,8 @@
       class="s-pane-dropdown__toggle"
       :class="{ 's-pane-dropdown__toggle--active': paneMenuOpen }"
       @click="paneMenuOpen = !paneMenuOpen"
+      @keydown.space.prevent="paneMenuOpen = !paneMenuOpen"
+      @keydown.enter.prevent="paneMenuOpen = !paneMenuOpen"
     >
       <span>
         <slot name="title"></slot>
@@ -143,6 +145,8 @@ export default class PaneDropdown extends Vue {
   }
 
   close(element) {
+    if ("target" in element) return;
+
     let height = getComputedStyle(element).height;
     element.style.height = height;
     getComputedStyle(element).height;

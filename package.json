@@ -73,7 +73,8 @@
   },
   "types": "./index.d.ts",
   "dependencies": {
-    "lodash-es": "^4.17.15",
-    "v-tooltip": "^2.0.2"
+    "v-tooltip": "^2.0.2",
+    "what-input": "^5.2.6",
+    "lodash-es": "^4.17.15"
   }
 }
