@@ -182,15 +182,6 @@ export default class Accordian extends Vue {
   .transition(border);
   outline: none;
 
-  // &:focus,
-  // &__container:focus {
-  //   outline: none;
-  // }
-
-  // &:focus > &__container {
-  //   border: 2px solid @dark-2;
-  // }
-
   &.no-border {
     border: 1px solid transparent;
   }
