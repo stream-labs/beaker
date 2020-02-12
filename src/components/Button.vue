@@ -19,9 +19,7 @@
   >
     <span v-if="!$slots.custom">
       <span>
-        <span v-if="variation === 'prime-simple' && this.primeTitle">
-          {{ primeTitle }}
-        </span>
+        <span v-if="variation === 'prime-simple' && this.primeTitle">{{ primeTitle }}</span>
         <span v-else-if="variation === 'prime-simple'" class="prime-simple">
           Free with
           <span class="prime-simple__bold">Prime</span>
@@ -32,13 +30,8 @@
         </i>
         {{ title }}
       </span>
-      <span v-if="description" class="s-button__description">
-        {{ description }}
-      </span>
-      <i
-        v-if="iconClass && iconPosition === 'right'"
-        :class="['icon--right', iconClass]"
-      ></i>
+      <span v-if="description" class="s-button__description">{{ description }}</span>
+      <i v-if="iconClass && iconPosition === 'right'" :class="['icon--right', iconClass]"></i>
     </span>
 
     <slot name="custom"></slot>
@@ -832,14 +825,6 @@ export default class Button extends Vue {
   .s-button--sqr {
     background: @night-button;
     color: @night-title;
-  }
-
-  .s-button--twitch {
-    .night-btn-variant(@twitch);
-  }
-
-  .s-button--youtube {
-    .night-btn-variant(@youtube);
   }
 
   .s-button--mixer {
