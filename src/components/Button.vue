@@ -834,13 +834,13 @@ export default class Button extends Vue {
     color: @night-title;
   }
 
-  .s-button--twitch {
-    .night-btn-variant(@twitch);
-  }
+  // .s-button--twitch {
+  //   .night-btn-variant(@twitch);
+  // }
 
-  .s-button--youtube {
-    .night-btn-variant(@youtube);
-  }
+  // .s-button--youtube {
+  //   .night-btn-variant(@youtube);
+  // }
 
   .s-button--mixer {
     .night-btn-variant(@mixer);
