@@ -1,17 +1,15 @@
 <template>
   <div class="s-form-group-v">
     <!-- title -->
-    <div
-      :style="titleLayoutStyle"
-      class="s-form-group-v__title"
-      :class="{ 's-form-group-v__title--hidden': !title && !tooltip }"
-    >
-      <label v-if="title">{{ title }}</label>
-      <i
-        v-if="tooltip"
-        v-tooltip.auto="tooltip"
-        class="tooltip icon-question"
-      ></i>
+    <div :style="titleLayoutStyle" class="s-form-group-v__title">
+      <template v-if="!this.$slots.header">
+        <label v-if="title">{{ title }}</label>
+        <i
+          v-if="tooltip"
+          v-tooltip.auto="tooltip"
+          class="tooltip icon-question"
+        ></i>
+      </template>
       <slot name="header"></slot>
     </div>
 
