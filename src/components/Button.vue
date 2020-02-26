@@ -334,11 +334,11 @@ export default class Button extends Vue {
     transition: opacity 275ms ease;
   }
 
-  &:focus,
-  &.is-focused {
-    outline: 2px solid @dark-2;
-    outline-offset: 2px;
-  }
+  // &:focus,
+  // &.is-focused {
+  //   outline: 2px solid @dark-2;
+  //   outline-offset: 2px;
+  // }
 
   &[disabled]:not(.is-loading),
   &.is-disabled {
@@ -654,7 +654,7 @@ export default class Button extends Vue {
   &:hover,
   &:focus {
     background-color: transparent;
-    outline: none;
+    // outline: none;
   }
 }
 
@@ -785,10 +785,10 @@ export default class Button extends Vue {
 
 .night {
   .s-button {
-    &:focus,
-    &.is-focused {
-      outline-color: @white;
-    }
+    // &:focus,
+    // &.is-focused {
+    //   outline-color: @white;
+    // }
 
     &[disabled]:not(.is-loading),
     &.is-disabled {
