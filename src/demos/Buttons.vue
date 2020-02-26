@@ -39,18 +39,6 @@ components: {
               />
 
               <Button
-                variation="youtube"
-                title="YouTube"
-                @click="buttonActionClick"
-              />
-
-              <Button
-                variation="twitch"
-                title="Twitch"
-                @click="buttonActionClick"
-              />
-
-              <Button
                 variation="warning"
                 title="Warning"
                 @click="buttonActionClick"
