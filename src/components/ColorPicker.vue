@@ -6,21 +6,27 @@
       :placeholder="placeholder"
       @click="showPicker()"
       @input="updateFromInput"
+      :class="{ 's-colorpicker__input--error': error }"
     />
-    <div
-      class="s-colorpicker__preview"
-      :style="{ backgroundColor: value }"
-      @click="showPicker()"
-    ></div>
-    <picker
-      class="s-colorpicker"
-      :class="alphaClass"
-      :value="colors"
-      v-if="displayPicker"
-      :disable-alpha="!hasAlpha"
-      :disable-fields="!hasAlpha"
-      @input="updateFromPicker"
-    ></picker>
+    <div v-if="error" class="s-colorpicker____input-error">
+      <i class="icon-error"></i>
+      {{ error }}
+    </div>
+
+    <div class="s-colorpicker__preview" :style="{ backgroundColor: value }" @click="showPicker()"></div>
+    <div class="s-colorpicker__preview--alpha"></div>
+
+    <transition name="fade">
+      <picker
+        class="s-colorpicker"
+        :class="alphaClass"
+        :value="colors"
+        v-if="displayPicker"
+        :disable-alpha="!hasAlpha"
+        :disable-fields="!hasAlpha"
+        @input="updateFromPicker"
+      />
+    </transition>
   </div>
 </template>
 
@@ -41,11 +47,14 @@ export default class ColorPicker extends Vue {
   @Prop()
   value!: any;
 
-  @Prop()
+  @Prop({ default: "#31c3a2" })
   placeholder!: string;
 
   @Prop({ default: false })
   hasAlpha!: boolean;
+
+  @Prop()
+  error!: string;
 
   private displayPicker: Boolean = false;
   private backgroundColor: String = "";
@@ -90,6 +99,7 @@ export default class ColorPicker extends Vue {
 
   documentClick(e: any) {
     let el = this.$refs.colorpicker;
+    console.log(el);
     let target = e.target;
     if (el !== target && !el.contains(target)) {
       this.hidePicker();
@@ -102,49 +112,97 @@ export default class ColorPicker extends Vue {
 @import (reference) "./../styles/Imports";
 
 .s-colorpicker {
-  left: 0;
-  top: 0;
-  position: relative !important;
-  .radius !important;
-  .day-shadow !important;
-}
+  &-container {
+    position: relative;
+    display: inline-block;
+    width: 225px;
+  }
 
-.s-colorpicker__preview {
-  height: 20px;
-  width: 20px;
-  .radius(0.5);
-  box-sizing: border-box;
-  position: absolute;
-  top: 10px;
-  right: 8px;
-  border: 1px solid fade(@day-input-border, 12%);
-  border-style: inset;
-}
+  &__preview {
+    box-sizing: border-box;
+    position: absolute;
+    top: 10px;
+    right: 8px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid fade(@dark-2, 12%);
+    .radius(0.5);
+    z-index: 1;
 
-.s-colorpicker-container {
-  position: relative;
-  width: 225px;
-  display: inline-block;
-}
+    &--alpha {
+      position: absolute;
+      top: 11px;
+      right: 9px;
+      z-index: 0;
+      width: 18px;
+      height: 18px;
+      .radius(0.5);
+      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMElEQVQ4T2N89uzZfwY8QFJSEp80A+OoAcMiDP7//483HTx//hx/Ohg1gIFx6IcBALl+VXknOCvFAAAAAElFTkSuQmCC");
+    }
+  }
 
-.alpha,
-.nonAlpha {
-  .vc-chrome-toggle-btn {
+  &.vc-chrome {
+    position: relative;
+    left: 0;
+    top: 0;
+    border-radius: 4px 4px 5px 5px;
+    .day-shadow();
+  }
+
+  .vc-chrome-active-color {
+    border: 1px solid fade(@dark-2, 12%);
+    .radius();
+  }
+
+  .vc-chrome-body {
+    padding: 12px;
+    border-radius: 0 0 4px 4px;
+  }
+
+  .vc-chrome-toggle-btn,
+  .vc-chrome-fields-wrap {
     display: none;
   }
-}
 
-.alpha {
-  .vc-chrome-fields:not(:nth-child(2)) {
-    display: none !important;
+  &.alpha {
+    .vc-chrome-fields:not(:nth-child(2)) {
+      display: none;
+    }
+
+    .vc-chrome-fields:nth-child(2) {
+      display: flex;
+    }
+
+    .vc-alpha-checkboard-wrap {
+      border-radius: 2px 4px 4px 2px;
+    }
   }
 
-  .vc-chrome-fields:nth-child(2) {
-    display: flex !important;
+  &.alpha,
+  &.nonAlpha {
+    .vc-chrome-color-wrap {
+      width: 42px;
+
+      .vc-checkerboard {
+        .radius();
+      }
+    }
   }
 }
 
-.vc-chrome-fields-wrap {
-  display: none !important;
+.night {
+  .s-colorpicker {
+    &__preview {
+      border-color: fade(@white, 16%);
+    }
+
+    .vc-chrome-body {
+      background-color: @dark-4;
+    }
+
+    .vc-chrome-active-color {
+      border-color: fade(@white, 16%);
+    }
+  }
 }
 </style>
