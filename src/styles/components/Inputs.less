@@ -235,11 +235,19 @@ input[type="file"] {
     background: @night-input-bg;
     color: @night-title;
 
+    &:hover {
+      border-color: @light-5;
+    }
+
     &:active,
     &:focus {
       box-shadow: none;
       border-color: @white;
       background: @night-input-bg;
+
+      & + label {
+        color: @white;
+      }
     }
 
     &[disabled] {

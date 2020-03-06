@@ -13,7 +13,11 @@
       {{ error }}
     </div>
 
-    <div class="s-colorpicker__preview" :style="{ backgroundColor: value }" @click="showPicker()"></div>
+    <div
+      class="s-colorpicker__preview"
+      :style="{ backgroundColor: value }"
+      @click="showPicker()"
+    ></div>
     <div class="s-colorpicker__preview--alpha"></div>
 
     <transition name="fade">

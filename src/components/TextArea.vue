@@ -27,7 +27,8 @@
         }"
         class="s-form-area__label"
         v-if="label"
-      >{{ label }}</label>
+        >{{ label }}</label
+      >
 
       <div v-if="error" class="s-form-area__input-error">
         <i class="icon-error"></i>
@@ -38,7 +39,9 @@
         class="s-form-area__characters"
         :class="{ 's-form-area__characters--scrollbar': hasScroll }"
       >
-        <span v-if="maxLength" class="s-form-area__char-count">{{ currentLength }}/{{ maxLength }}</span>
+        <span v-if="maxLength" class="s-form-area__char-count"
+          >{{ currentLength }}/{{ maxLength }}</span
+        >
       </div>
     </div>
 

@@ -72,6 +72,8 @@ export default {
 @import (reference) "./../styles/Imports";
 
 .s-selector {
+  display: inline-block;
+
   fieldset[disabled] .multiselect {
     pointer-events: none;
   }

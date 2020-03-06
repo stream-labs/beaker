@@ -55,7 +55,8 @@
       }"
       class="s-form-field__label"
       v-if="label"
-    >{{ label }}</label>
+      >{{ label }}</label
+    >
 
     <div v-show="error" class="s-form-field__input-error">
       <i class="icon-error"></i>
