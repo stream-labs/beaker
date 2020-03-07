@@ -40,7 +40,7 @@ components: {
         <h2>Alt Badges</h2>
         <DemoSection title="Alt Badges" :code="demoCode">
           <template #components>
-            <Badge variant="new-alt" :align-left="true">New Alt</Badge>
+            <Badge variant="teal-alt" :align-left="true">New Alt</Badge>
             <Badge variant="tag-alt" :align-left="true">Tag Alt</Badge>
             <Badge variant="beta-alt" :align-left="true">Beta Alt</Badge>
             <Badge variant="warning-alt" :align-left="true">Warning Alt</Badge>
