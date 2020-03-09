@@ -26,24 +26,22 @@
             class="color-square"
             :style="'background-color:' + color.hex + ';'"
           ></div>
-          <div class="subtitle">{{ color.color }}</div>
+          <div class="subtitle">{{ color.color }}<i class="icon-copy"></i></div>
         </div>
         <span class="hex">{{ color.hex }}</span>
       </div>
     </div>
 
-    <div class="notifications">
-      <transition-group name="fadeX-from-right" tag="div">
-        <div
-          v-for="{ id, msg, status } in visibleMessages"
-          :key="`msg-${id}`"
-          class="notification-msg"
-          :class="{ 'notification-msg--error': status === 'error' }"
-        >
-          {{ msg }}
-        </div>
-      </transition-group>
-    </div>
+    <transition-group name="fadeX-from-right" tag="div" class="notifications">
+      <div
+        v-for="{ id, msg, status } in visibleMessages"
+        :key="`msg-${id}`"
+        class="notification-msg"
+        :class="{ 'notification-msg--error': status === 'error' }"
+      >
+        {{ msg }}
+      </div>
+    </transition-group>
   </div>
 </template>
 
@@ -163,12 +161,12 @@ export default class Colors extends Vue {
   padding: 4px;
   .radius();
   font-size: 12px;
-  background-color: transparent;
-  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 
   &:hover {
-    background-color: @light-2;
+    .icon-copy {
+      opacity: 1;
+    }
   }
 }
 
@@ -202,12 +200,19 @@ export default class Colors extends Vue {
   .radius();
 }
 
+.icon-copy {
+  margin-left: 6px;
+  opacity: 0;
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .notifications {
   position: absolute;
   top: 24px;
   right: 32px;
   display: flex;
   flex-direction: column;
+  min-width: 182px;
 }
 
 .notification-msg {
@@ -229,12 +234,6 @@ export default class Colors extends Vue {
 }
 
 .night {
-  .side-by-side {
-    &:hover {
-      background-color: @dark-4;
-    }
-  }
-
   .subtitle {
     color: @white;
   }
