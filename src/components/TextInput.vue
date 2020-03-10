@@ -287,11 +287,6 @@ export default class TextInput extends Vue {
   .radius();
 }
 
-// .s-form-field__label--error,
-// .s-form-field__error-text {
-//   color: @dark-red;
-// }
-
 .s-form-field__error-text,
 .s-form-field__help-text {
   position: absolute;
@@ -331,10 +326,6 @@ export default class TextInput extends Vue {
   .s-form-field__input:not(".s-form-field__input--error"):focus + label {
     color: @day-title;
   }
-
-  // .s-form-field__input:focus + .s-form-field__label--error {
-  //   color: @dark-red;
-  // }
 
   .s-form-field--top {
     color: @day-paragraph;
