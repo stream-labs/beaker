@@ -15,28 +15,7 @@ components: {
 
       <DemoSection title="Text Guard" :code="demoCode">
         <template #components>
-          <Guard class="guard-margin" type="alt" value="Text" />
-        </template>
-      </DemoSection>
-    </div>
-
-    <div class="section">
-      <h2>Input Guard</h2>
-
-      <DemoSection title="Input Guard" :code="demoCode">
-        <template #components>
-          <Guard type="input">
-            <div slot="content">
-              <TextInput
-                slot="input"
-                label="Text input"
-                type="text"
-                :placeholder="textInputPlaceholder"
-                v-model="textInputValue"
-                name="textExample"
-              />
-            </div>
-          </Guard>
+          <GuardNew :value="textInputValue" />
         </template>
       </DemoSection>
     </div>
@@ -61,9 +40,7 @@ components: {
           <td>type</td>
           <td>string</td>
           <td>text</td>
-          <td>
-            This can be either text or input (supply content slot for input)
-          </td>
+          <td>This can be either text or input (supply content slot for input)</td>
         </tr>
       </tbody>
     </table>
@@ -75,6 +52,7 @@ import { Component, Vue } from "vue-property-decorator";
 
 import DemoSection from "./../components/DemoSection.vue";
 import Guard from "./../components/Guard.vue";
+import GuardNew from "./../components/GuardNew.vue";
 import GuardsCode from "!!raw-loader!./Guards.vue";
 import TextInput from "./../components/TextInput.vue";
 
@@ -82,6 +60,7 @@ import TextInput from "./../components/TextInput.vue";
   components: {
     DemoSection,
     Guard,
+    GuardNew,
     TextInput
   }
 })
