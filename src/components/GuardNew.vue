@@ -49,29 +49,40 @@ export default class GuardNew extends Vue {
   min-width: 150px;
   height: 40px;
   border: 1px solid @light-4;
-  border-radius: 4px;
+  .radius();
   overflow: hidden;
   cursor: unset;
 
   &__placeholder {
     position: absolute;
+    display: flex;
     width: 100%;
-    text-align: center;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    color: @dark-2;
     opacity: 0;
     user-select: none;
     transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
     .icon-lock {
-      margin-right: 4px;
+      .margin-right();
     }
   }
 
   &__text {
-    color: @white;
-    user-select: initial;
     filter: blur(0);
     transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
       filter 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    .s-form-field__input {
+      border: none;
+      pointer-events: initial;
+
+      &:focus {
+        border: none;
+      }
+    }
   }
 
   &--hidden {
@@ -82,18 +93,12 @@ export default class GuardNew extends Vue {
       }
 
       &__text {
-        color: @dark-5;
-        user-select: none;
         filter: blur(4px);
+
+        .s-form-field__input {
+          pointer-events: none;
+        }
       }
-    }
-  }
-
-  .s-form-field__input {
-    border: none;
-
-    &:focus {
-      border: none;
     }
   }
 }
@@ -101,6 +106,10 @@ export default class GuardNew extends Vue {
 .night {
   .s-guard {
     border-color: @dark-5;
+
+    &__placeholder {
+      color: @white;
+    }
 
     .s-form-field__input {
       border: none;
