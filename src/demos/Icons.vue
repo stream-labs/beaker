@@ -1,37 +1,17 @@
 <template>
   <div>
     <h1>Icons</h1>
+
     <div class="icons">
       <div
         v-for="icon in Object.keys(iconList).sort()"
         :key="icon"
-        class="glyph fs1"
+        class="icon"
+        :title="`${icon} | ${iconList[icon]}`"
       >
-        <div class="clearfix bshadow0 pbs">
-          <span :class="icon"></span>
-          <span class="mls">{{ icon }}</span>
-        </div>
-
-        <fieldset class="fs0 size1of1 clearfix hidden-false">
-          <input
-            type="text"
-            readonly
-            :value="iconList[icon]"
-            class="unit size1of2"
-          />
-          <input
-            type="text"
-            maxlength="1"
-            readonly
-            :value="`\&\#x${iconList[icon]};`"
-            class="unitRight size1of2 talign-right"
-          />
-        </fieldset>
-
-        <div class="fs0 bshadow0 clearfix hidden-true">
-          <span class="unit pvs fgc1">liga:</span>
-          <input type="text" readonly value class="liga unitRight" />
-        </div>
+        <i class="icon__glyph" :class="icon"></i>
+        <span class="icon__label">{{ icon }}</span>
+        <!-- <span class="icon__liga">{{iconList[icon]}}</span> -->
       </div>
     </div>
   </div>
@@ -245,40 +225,53 @@ export default class Icons extends Vue {
 <style lang="less" scoped>
 @import (reference) "./../styles/Imports";
 
-fieldset {
-  border: 0;
-  padding: 0;
-  margin: 0px;
-  width: 60px;
-}
-
-.hidden-true,
-.unitRight {
-  display: none;
-}
-
 .icons {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  grid-gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-column-gap: 24px;
+  grid-row-gap: 48px;
   color: @icon;
 }
 
-.mls {
-  color: @day-paragraph;
-  margin: 0 8px;
-}
-
-.glyph {
+.icon {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  .radius();
+
+  &__glyph {
+    .margin-bottom(0.5);
+    font-size: 32px;
+    color: @dark-2;
+  }
+
+  &__label {
+    width: 100%;
+    font-size: 12px;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  &__liga {
+    font-size: 10px;
+  }
 }
 
 .night,
 .night-theme {
-  .mls {
-    color: @night-paragraph;
+  .icon {
+    &__glyph {
+      color: @white;
+    }
+
+    &__label {
+      color: @light-5;
+    }
+
+    &__liga {
+      color: @dark-5;
+    }
   }
 }
 </style>

@@ -6,6 +6,7 @@
       <router-link to="assets">Assets</router-link>
       <!-- <a class="left-navigation__link" @click="changeSection('colors')">Colors</a> -->
       <!-- <a class="left-navigation__link" @click="changeSection('typography')">Typography</a> -->
+      <router-link to="icons">Icons</router-link>
     </div>
     <div class="left-navigation-section">
       <h4>Components</h4>
@@ -24,7 +25,8 @@ const excludeFromComponentDemos = [
   "installation",
   "assets",
   "left-navigation",
-  "navigations"
+  "navigations",
+  "icons"
 ];
 
 @Component({})
