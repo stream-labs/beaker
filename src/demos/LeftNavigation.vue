@@ -4,6 +4,8 @@
       <h4>Essentials</h4>
       <router-link to="installation">Installation</router-link>
       <router-link to="assets">Assets</router-link>
+      <router-link to="colors">Colors</router-link>
+      <router-link to="typography">Typography</router-link>
       <!-- <a class="left-navigation__link" @click="changeSection('colors')">Colors</a> -->
       <!-- <a class="left-navigation__link" @click="changeSection('typography')">Typography</a> -->
     </div>
@@ -21,10 +23,12 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import demos from "../demos";
 
 const excludeFromComponentDemos = [
-  "installation",
   "assets",
+  "colors",
+  "installation",
   "left-navigation",
-  "navigations"
+  "navigations",
+  "typography"
 ];
 
 @Component({})

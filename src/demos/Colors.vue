@@ -1,51 +1,187 @@
 <template>
-  <div class="s-colors section">
-    <h2>Colors</h2>
-
-    <div v-for="color in colors" :key="color.color" class="side-by-side">
-      <div class="nospace-flex">
-        <div
-          class="color-square"
-          :style="'background-color:' + color.hex + ';'"
-        ></div>
-        <div class="subtitle">{{ color.color }}</div>
-      </div>
-      <p>{{ color.hex }}</p>
+  <div class="s-colors">
+    <div class="section">
+      <h1>Colors</h1>
+      <p>
+        Colors used on Streamlabs platforms. Click on a color to copy its hex
+        code to the clipboard.
+      </p>
     </div>
+
+    <div
+      class="section"
+      v-for="(colorGroup, index) in colors"
+      :key="`color-group-${index}`"
+    >
+      <div
+        v-for="color in colorGroup"
+        :key="color.color"
+        class="side-by-side"
+        v-clipboard:copy="color.hex"
+        v-clipboard:success="onCopy"
+        v-clipboard:error="onCopyError"
+      >
+        <div class="nospace-flex">
+          <div
+            class="color-square"
+            :style="'background-color:' + color.hex + ';'"
+          ></div>
+          <div class="subtitle">{{ color.color }}<i class="icon-copy"></i></div>
+        </div>
+        <span class="hex">{{ color.hex }}</span>
+      </div>
+    </div>
+
+    <transition-group name="fadeX-from-right" tag="div" class="notifications">
+      <div
+        v-for="{ id, msg, status } in visibleMessages"
+        :key="`msg-${id}`"
+        class="notification-msg"
+        :class="{ 'notification-msg--error': status === 'error' }"
+      >
+        {{ msg }}
+      </div>
+    </transition-group>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Watch } from "vue-property-decorator";
+
+interface INotificationMsg {
+  id: number;
+  status: string;
+  msg: string;
+  timerStarted: boolean;
+}
 
 @Component({})
 export default class Colors extends Vue {
+  readonly MAX_COPY_MESSAGE_COUNT = 5;
+  messages: INotificationMsg[] = [];
+
   private colors: object = [
-    { color: "Teal (primary)", hex: "#31C3A2" },
-    { color: "Red (count badges, warnings, errors", hex: "#F85640" },
-    { color: "Yellow (info)", hex: "#E3973E" },
-    { color: "Dark 1 (app store icons, bg", hex: "#000000" },
-    { color: "Dark 2 (day title, subtitle, selected)", hex: "#09161D" },
-    { color: "Dark 3 (night bg)", hex: "#17242D" },
-    { color: "Dark 4 (night cards/sections bg", hex: "#2B383F" },
-    { color: "Dark 5 (day p, night button, night cards", hex: "#4F5E65" },
-    { color: "Light 1 (day title, bg", hex: "#FFFFFF" },
-    { color: "Light 2 (day tip page bg, cards", hex: "#F5F8FA" },
-    { color: "Light 3 (day button)", hex: "#E3E8EB" },
-    { color: "Light 4 (night paragraph)", hex: "#BDC2C4" },
-    { color: "Light 5 (day/night icons, captions", hex: "#91979A" },
-    { color: "Blue", hex: "#36ADE0" },
-    { color: "Pink", hex: "#EB7777" },
-    { color: "Purple", hex: "#5E3BEC" },
-    { color: "Streamlabs Prime", hex: "#42C9D2" }
+    [
+      { color: "Teal (Night primary)", hex: "#31C3A2" },
+      { color: "Dark Teal (Day primary)", hex: "#128079" },
+      { color: "Red (Count Badges, Warnings, Errors)", hex: "#F85640" },
+      {
+        color: "Dark Red (Day Count Badges, Warnings, Errors)",
+        hex: "#B14334"
+      },
+      { color: "Yellow (Night Info)", hex: "#E3973E" },
+      { color: "Dark Yellow (Day Info)", hex: "#A96311" }
+    ],
+    [
+      { color: "Dark 1 (App Store Icons BG)", hex: "#000000" },
+      { color: "Dark 2 (Day Title, Subtitle, Selected)", hex: "#09161D" },
+      { color: "Dark 3 (Night BG)", hex: "#17242D" },
+      { color: "Dark 4 (Night Cards/Sections BG)", hex: "#2B383F" },
+      { color: "Dark 5 (Day P, Night Button, Night Cards)", hex: "#4F5E65" }
+    ],
+    [
+      { color: "Light 1 (Day Title + BG)", hex: "#FFFFFF" },
+      { color: "Light 2 (Day Tip Page BG, Cards)", hex: "#F5F8FA" },
+      { color: "Light 3 (Day Button)", hex: "#E3E8EB" },
+      { color: "Light 4 (Night P)", hex: "#BDC2C4" },
+      { color: "Light 5 (Day + Night Icons, Captions)", hex: "#91979A" }
+    ],
+    [
+      { color: "Blue", hex: "#36ADE0" },
+      { color: "Pink", hex: "#EB7777" },
+      { color: "Purple", hex: "#5E3BEC" },
+      { color: "Navy", hex: "#233A4A" }
+    ],
+    [
+      { color: "Prime", hex: "#CAA368" },
+      { color: "Dark Prime", hex: "#8F6F3F" }
+    ]
   ];
+
+  get visibleMessages() {
+    const msgs = this.messages.filter((msg, idx) => idx < 5);
+
+    msgs.forEach(msg => {
+      if (!msg.timerStarted) {
+        msg.timerStarted = true;
+
+        setTimeout(() => {
+          const idx = this.messages.findIndex(message => msg.id === message.id);
+          this.messages.splice(idx, 1);
+        }, 5000);
+      }
+    });
+
+    return msgs;
+  }
+
+  onCopy(e) {
+    this.setCopyMsg({
+      id: this.setCopyMsgId(),
+      msg: `Copied "${e.text}" to clipboard`,
+      status: "success",
+      timerStarted: false
+    });
+  }
+
+  onCopyError(e) {
+    this.setCopyMsg({
+      id: this.setCopyMsgId(),
+      msg: "Failed to copy to clipboard",
+      status: "error",
+      timerStarted: false
+    });
+  }
+
+  setCopyMsgId() {
+    return Math.ceil(Math.random() * 10000);
+  }
+
+  setCopyMsg({ id, msg, status, timerStarted }) {
+    const message: INotificationMsg = { id, msg, status, timerStarted };
+    this.messages.push(message);
+  }
 }
 </script>
 
 <style lang="less" scoped>
 @import (reference) "./../styles/Imports";
 .s-colors {
-  width: 400px;
+  max-width: 500px;
+
+  .section {
+    .margin-bottom(2);
+  }
+}
+
+.side-by-side {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px;
+  .radius();
+  font-size: 12px;
+  cursor: pointer;
+
+  &:hover {
+    .icon-copy {
+      opacity: 1;
+    }
+  }
+}
+
+.subtitle {
+  width: 100%;
+  min-width: 0;
+  white-space: nowrap;
+  font-weight: 500;
+  color: @dark-2;
+  overflow: hidden;
+}
+
+.hex {
+  .margin-left(2);
+  color: @light-5;
 }
 
 .nospace-flex {
@@ -55,9 +191,63 @@ export default class Colors extends Vue {
 }
 
 .color-square {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  min-width: 16px;
+  height: 16px;
+  min-height: 16px;
+  .margin-right();
+  border: 1px solid fade(@day-input-border, 12%);
   .radius();
-  .margin-right(2);
+}
+
+.icon-copy {
+  margin-left: 6px;
+  opacity: 0;
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.notifications {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  display: flex;
+  flex-direction: column;
+  min-width: 182px;
+}
+
+.notification-msg {
+  .margin-bottom();
+  padding: 4px 8px;
+  .radius();
+  font-size: 12px;
+  font-weight: 500;
+  background-color: @dark-teal;
+  color: @white;
+
+  &--error {
+    background-color: @dark-red;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.night {
+  .subtitle {
+    color: @white;
+  }
+
+  .hex {
+    color: @light-4;
+  }
+
+  .notification-msg {
+    background-color: @teal;
+
+    &--error {
+      background-color: @red;
+    }
+  }
 }
 </style>
