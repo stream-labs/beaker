@@ -6,7 +6,13 @@
     </div>
 
     <div class="s-guard__text">
-      <TextInput :readonly="true" type="text" v-model="value" />
+      <TextInput
+        readonly
+        type="text"
+        v-model="value"
+        @focus="checkSelectedText"
+        @keydown.space.prevent="showText"
+      />
     </div>
   </div>
 </template>
@@ -29,12 +35,24 @@ export default class GuardNew extends Vue {
 
   visible = false;
 
-  showText() {
+  showText(e) {
     if (!this.visible) {
       this.visible = true;
     } else {
       this.$emit("click");
     }
+
+    if (e.type === "keydown") {
+      setTimeout(() => e.target.select(), 200);
+    }
+  }
+
+  checkSelectedText(e) {
+    const target = e.target;
+
+    if (!this.visible) target.setSelectionRange(0, 0);
+
+    target.focus();
   }
 }
 </script>
@@ -55,33 +73,43 @@ export default class GuardNew extends Vue {
 
   &__placeholder {
     position: absolute;
+    z-index: 0;
     display: flex;
     width: 100%;
-    height: 100%;
     justify-content: center;
-    align-items: center;
+    text-align: center;
     color: @dark-2;
     opacity: 0;
     user-select: none;
     transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
     .icon-lock {
-      .margin-right();
+      margin-right: 4px;
     }
   }
 
   &__text {
-    filter: blur(0);
-    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-      filter 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+
+    &::before {
+      content: unset;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      z-index: 1;
+      width: ~"calc(100% - 4px)";
+      height: ~"calc(100% - 4px)";
+      backdrop-filter: blur(0);
+      transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+        backdrop-filter 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
     .s-form-field__input {
-      border: none;
+      //   border: none;
       pointer-events: initial;
-
-      &:focus {
-        border: none;
-      }
+      //   &:focus {
+      //     border: none;
+      //   }
     }
   }
 
@@ -90,13 +118,18 @@ export default class GuardNew extends Vue {
     .s-guard {
       &__placeholder {
         opacity: 1;
+        z-index: 2;
       }
 
       &__text {
-        filter: blur(4px);
+        &::before {
+          content: "";
+          backdrop-filter: blur(4px);
+        }
 
         .s-form-field__input {
           pointer-events: none;
+          user-select: none;
         }
       }
     }
@@ -112,10 +145,10 @@ export default class GuardNew extends Vue {
     }
 
     .s-form-field__input {
-      border: none;
+      // border: none;
 
       &:focus {
-        border: none;
+        // border: none;
       }
     }
   }
