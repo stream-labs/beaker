@@ -3,20 +3,23 @@
     <left-navigation
       @update-section="changeSection"
       :active-section="activeSection"
-    ></left-navigation>
+    />
 
     <div class="content">
       <router-view />
     </div>
+    <copy-notification />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import CopyNotification from "../components/CopyNotification.vue";
 import LeftNavigation from "../demos/LeftNavigation.vue";
 
 @Component({
   components: {
+    CopyNotification,
     LeftNavigation
   }
 })

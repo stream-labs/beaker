@@ -1,17 +1,37 @@
 <template>
-  <div>
-    <h1>Icons</h1>
+  <div class="icons">
+    <div class="section">
+      <h1>Icons</h1>
 
-    <div class="icons">
+      <p>
+        In order to gain access to the icons add the following link tag to your
+        main HTML file:
+        <code
+          >&lt;link href=&quot;https://cdn.streamlabs.com/icons/style.css&quot;
+          rel=&quot;stylesheet&quot; /&gt;</code
+        >
+        <br />Clicking on an icon copies the icon class name to the clipboard.
+        Hovering over an icon will display the full icon name and icon code.
+      </p>
+    </div>
+
+    <div
+      class="icon__grid"
+      v-clipboard:copy="selectedIcon"
+      v-clipboard:success="emitCopySuccess"
+      v-clipboard:error="emitCopyError"
+    >
       <div
         v-for="icon in Object.keys(iconList).sort()"
         :key="icon"
         class="icon"
         :title="`${icon} | ${iconList[icon]}`"
+        @click="selectIconData(`.${icon}`)"
       >
-        <i class="icon__glyph" :class="icon"></i>
+        <i class="icon__glyph" :class="icon">
+          <i class="icon-copy"></i>
+        </i>
         <span class="icon__label">{{ icon }}</span>
-        <!-- <span class="icon__liga">{{iconList[icon]}}</span> -->
       </div>
     </div>
   </div>
@@ -19,9 +39,11 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { EventBus } from "./../plugins/event-bus";
 
 @Component({})
 export default class Icons extends Vue {
+  selectedIcon = "";
   iconList = {
     "icon-periscope": "e9ba",
     "icon-windows": "e9b9",
@@ -219,6 +241,18 @@ export default class Icons extends Vue {
     "icon-ideas": "e9c1",
     "icon-creator-site": "e9c2"
   };
+
+  selectIconData(icon) {
+    this.selectedIcon = icon;
+  }
+
+  emitCopySuccess(e) {
+    EventBus.$emit("copy-success", e);
+  }
+
+  emitCopyError(e) {
+    EventBus.$emit("copy-copy", e);
+  }
 }
 </script>
 
@@ -226,22 +260,38 @@ export default class Icons extends Vue {
 @import (reference) "./../styles/Imports";
 
 .icons {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  grid-column-gap: 24px;
-  grid-row-gap: 48px;
-  color: @icon;
+  position: relative;
 }
 
 .icon {
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-column-gap: 24px;
+    grid-row-gap: 48px;
+    max-width: 1200px;
+    color: @icon;
+  }
 
   &__glyph {
+    position: relative;
     .margin-bottom(0.5);
     font-size: 32px;
     color: @dark-2;
+
+    .icon-copy {
+      position: absolute;
+      top: -18px;
+      right: -18px;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
   }
 
   &__label {
@@ -251,6 +301,14 @@ export default class Icons extends Vue {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+  }
+
+  &:hover {
+    .icon__glyph {
+      .icon-copy {
+        opacity: 0.5;
+      }
+    }
   }
 
   &__liga {

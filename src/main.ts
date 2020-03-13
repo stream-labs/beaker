@@ -1,13 +1,17 @@
 /// <reference path="./../index.d.ts" />
 import Vue from "vue";
-import VTooltip from "v-tooltip";
 import App from "./App.vue";
 import router from "./router";
+
+import VTooltip from "v-tooltip";
+import VueClipboard from "vue-clipboard2";
 import WhatInput from "./plugins/WhatInput/index";
+
 Vue.config.productionTip = false;
 
-Vue.use(WhatInput);
 Vue.use(VTooltip);
+Vue.use(VueClipboard);
+Vue.use(WhatInput);
 
 new Vue({
   router,
