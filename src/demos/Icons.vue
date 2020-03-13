@@ -6,12 +6,15 @@
       <p>
         In order to gain access to the icons add the following link tag to your
         main HTML file:
-        <code
-          >&lt;link href=&quot;https://cdn.streamlabs.com/icons/style.css&quot;
-          rel=&quot;stylesheet&quot; /&gt;</code
-        >
-        <br />Clicking on an icon copies the icon class name to the clipboard.
-        Hovering over an icon will display the full icon name and icon code.
+        <code>
+          &lt;link href=&quot;https://cdn.streamlabs.com/icons/style.css&quot;
+          rel=&quot;stylesheet&quot; /&gt;
+        </code>
+      </p>
+
+      <p>
+        Click on an icon to copy the icon class name to the clipboard.
+        Hover over an icon to display the full icon name and icon code.
       </p>
     </div>
 
@@ -261,6 +264,7 @@ export default class Icons extends Vue {
 
 .icons {
   position: relative;
+  max-width: 1200px;
 }
 
 .icon {
@@ -271,16 +275,15 @@ export default class Icons extends Vue {
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
     grid-column-gap: 24px;
     grid-row-gap: 48px;
-    max-width: 1200px;
     color: @icon;
   }
 
   &__glyph {
     position: relative;
-    .margin-bottom(0.5);
+    .margin-bottom();
     font-size: 32px;
     color: @dark-2;
 
@@ -300,13 +303,14 @@ export default class Icons extends Vue {
     text-align: center;
     white-space: nowrap;
     text-overflow: ellipsis;
+    color: @light-5;
     overflow: hidden;
   }
 
   &:hover {
     .icon__glyph {
       .icon-copy {
-        opacity: 0.5;
+        opacity: 1;
       }
     }
   }
@@ -324,7 +328,7 @@ export default class Icons extends Vue {
     }
 
     &__label {
-      color: @light-5;
+      color: @light-4;
     }
 
     &__liga {

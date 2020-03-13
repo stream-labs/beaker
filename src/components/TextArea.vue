@@ -20,27 +20,28 @@
         @keyup="onKeyUp"
         v-on="filteredListeners"
       />
+
       <label
         :class="{
-          's-form-area__label--top': value !== '',
-          's-form-area__label--error': !!error
+          's-form-area__label--top': value !== ''
         }"
         class="s-form-area__label"
         v-if="label"
         >{{ label }}</label
       >
+
+      <div v-if="error" class="s-form-area__input-error">
+        <i class="icon-error"></i>
+        {{ error }}
+      </div>
+
       <div
         class="s-form-area__characters"
         :class="{ 's-form-area__characters--scrollbar': hasScroll }"
       >
-        <transition name="fadeX-from-left">
-          <p v-if="error" class="s-form-area__error-text">
-            {{ error }}<i class="icon-error"></i>
-          </p>
-        </transition>
-        <span v-if="maxLength" class="s-form-area__char-count">
-          {{ currentLength }}/{{ maxLength }}
-        </span>
+        <span v-if="maxLength" class="s-form-area__char-count"
+          >{{ currentLength }}/{{ maxLength }}</span
+        >
       </div>
     </div>
 
@@ -248,40 +249,8 @@ export default class TextArea extends Vue {
       box-shadow: inset -1px -1px 0px @dark-5, inset 1px 1px 0px @dark-5;
     }
 
-    &:hover {
-      border-color: @light-5;
-    }
-
-    &:focus {
-      & + .s-form-area__label {
-        color: @day-title;
-
-        &--error {
-          color: @dark-red;
-        }
-      }
-
-      & ~ .s-form-area__characters {
-        bottom: 2px;
-      }
-    }
-
     &--top {
       color: @day-paragraph;
-    }
-
-    &--error {
-      border-color: @dark-red;
-      color: @dark-red;
-
-      &:hover {
-        border-color: mix(@dark-2, @dark-red, 24%);
-      }
-
-      &:focus,
-      &:active {
-        border-color: @dark-red;
-      }
     }
 
     &--count {
@@ -312,12 +281,8 @@ export default class TextArea extends Vue {
   }
 
   &__characters {
-    .absolute(auto, 12px, 1.5px, auto);
-    display: flex;
-    align-items: center;
-    margin: 0;
-    .padding();
-    border-top-left-radius: 4px;
+    .absolute(unset, 12px, 12px, unset);
+    line-height: 1;
     background-color: @white;
     transition: right 0.15s ease-out, bottom 0.275s ease-out;
 
@@ -326,20 +291,8 @@ export default class TextArea extends Vue {
     }
   }
 
-  &__error-text {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0;
-    font-size: 12px;
-    color: @dark-red;
-
-    .icon-error {
-      .margin-left();
-    }
-
-    & + .s-form-area__char-count {
-      .margin-left(1.5);
-    }
+  &__input--error ~ &__characters {
+    bottom: 36px;
   }
 
   &__help-text {
@@ -357,13 +310,9 @@ export default class TextArea extends Vue {
     }
 
     &__input {
-      &:focus {
+      &:not("[class*=__input--error]"):focus {
         & + label {
           color: @night-title;
-        }
-
-        & + .s-form-area__label--error {
-          color: @red;
         }
       }
 
