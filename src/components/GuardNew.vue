@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="s-guard"
-    :class="{ 's-guard--hidden': !visible }"
-    @click="showText"
-  >
+  <div class="s-guard" :class="{ 's-guard--hidden': !visible }" @click="showText">
     <div class="s-guard__placeholder">
       <i class="icon-lock"></i>
       {{ placeholder }}
@@ -109,11 +105,7 @@ export default class GuardNew extends Vue {
     }
 
     .s-form-field__input {
-      //   border: none;
       pointer-events: initial;
-      //   &:focus {
-      //     border: none;
-      //   }
     }
   }
 
@@ -146,14 +138,6 @@ export default class GuardNew extends Vue {
 
     &__placeholder {
       color: @white;
-    }
-
-    .s-form-field__input {
-      // border: none;
-
-      &:focus {
-        // border: none;
-      }
     }
   }
 }

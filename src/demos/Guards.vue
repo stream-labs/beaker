@@ -15,10 +15,41 @@ components: {
 
       <DemoSection title="Text Guard" :code="demoCode">
         <template #components>
-          <GuardNew :value="textInputValue" />
+          <Guard class="guard-margin" type="alt" value="Text" />
         </template>
       </DemoSection>
     </div>
+
+    <div class="section">
+      <h2>Input Guard</h2>
+
+      <DemoSection title="Input Guard" :code="demoCode">
+        <template #components>
+          <Guard type="input">
+            <div slot="content">
+              <TextInput
+                slot="input"
+                label="Text input"
+                type="text"
+                :placeholder="textInputPlaceholder"
+                v-model="textInputValue"
+                name="textExample"
+              />
+            </div>
+          </Guard>
+        </template>
+      </DemoSection>
+    </div>
+
+    <!-- <div class="section">
+      <h2>Text Guard</h2>
+
+      <DemoSection title="Text Guard" :code="demoCode">
+        <template #components>
+          <GuardNew :value="textInputValue" />
+        </template>
+      </DemoSection>
+    </div>-->
 
     <table class="docs-table">
       <thead>
@@ -40,9 +71,7 @@ components: {
           <td>type</td>
           <td>string</td>
           <td>text</td>
-          <td>
-            This can be either text or input (supply content slot for input)
-          </td>
+          <td>This can be either text or input (supply content slot for input)</td>
         </tr>
       </tbody>
     </table>
