@@ -5,9 +5,8 @@
       <router-link to="installation">Installation</router-link>
       <router-link to="assets">Assets</router-link>
       <router-link to="colors">Colors</router-link>
+      <router-link to="icons">Icons</router-link>
       <router-link to="typography">Typography</router-link>
-      <!-- <a class="left-navigation__link" @click="changeSection('colors')">Colors</a> -->
-      <!-- <a class="left-navigation__link" @click="changeSection('typography')">Typography</a> -->
     </div>
     <div class="left-navigation-section">
       <h4>Components</h4>
@@ -28,6 +27,7 @@ const excludeFromComponentDemos = [
   "installation",
   "left-navigation",
   "navigations",
+  "icons",
   "typography"
 ];
 

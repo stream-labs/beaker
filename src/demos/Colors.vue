@@ -8,45 +8,31 @@
       </p>
     </div>
 
-    <div
-      class="section"
-      v-for="(colorGroup, index) in colors"
-      :key="`color-group-${index}`"
-    >
+    <div class="section" v-for="(colorGroup, index) in colors" :key="`color-group-${index}`">
       <div
         v-for="color in colorGroup"
         :key="color.color"
         class="side-by-side"
         v-clipboard:copy="color.hex"
-        v-clipboard:success="onCopy"
-        v-clipboard:error="onCopyError"
+        v-clipboard:success="emitCopySuccess"
+        v-clipboard:error="emitCopyError"
       >
         <div class="nospace-flex">
-          <div
-            class="color-square"
-            :style="'background-color:' + color.hex + ';'"
-          ></div>
-          <div class="subtitle">{{ color.color }}<i class="icon-copy"></i></div>
+          <div class="color-square" :style="'background-color:' + color.hex + ';'"></div>
+          <div class="subtitle">
+            {{ color.color }}
+            <i class="icon-copy"></i>
+          </div>
         </div>
         <span class="hex">{{ color.hex }}</span>
       </div>
     </div>
-
-    <transition-group name="fadeX-from-right" tag="div" class="notifications">
-      <div
-        v-for="{ id, msg, status } in visibleMessages"
-        :key="`msg-${id}`"
-        class="notification-msg"
-        :class="{ 'notification-msg--error': status === 'error' }"
-      >
-        {{ msg }}
-      </div>
-    </transition-group>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator";
+import { EventBus } from "./../plugins/event-bus";
 
 interface INotificationMsg {
   id: number;
@@ -57,7 +43,6 @@ interface INotificationMsg {
 
 @Component({})
 export default class Colors extends Vue {
-  readonly MAX_COPY_MESSAGE_COUNT = 5;
   messages: INotificationMsg[] = [];
 
   private colors: object = [
@@ -115,31 +100,12 @@ export default class Colors extends Vue {
     return msgs;
   }
 
-  onCopy(e) {
-    this.setCopyMsg({
-      id: this.setCopyMsgId(),
-      msg: `Copied "${e.text}" to clipboard`,
-      status: "success",
-      timerStarted: false
-    });
+  emitCopySuccess(e) {
+    EventBus.$emit("copy-success", e);
   }
 
-  onCopyError(e) {
-    this.setCopyMsg({
-      id: this.setCopyMsgId(),
-      msg: "Failed to copy to clipboard",
-      status: "error",
-      timerStarted: false
-    });
-  }
-
-  setCopyMsgId() {
-    return Math.ceil(Math.random() * 10000);
-  }
-
-  setCopyMsg({ id, msg, status, timerStarted }) {
-    const message: INotificationMsg = { id, msg, status, timerStarted };
-    this.messages.push(message);
+  emitCopyError(e) {
+    EventBus.$emit("copy-copy", e);
   }
 }
 </script>
