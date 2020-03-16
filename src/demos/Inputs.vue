@@ -60,6 +60,7 @@ components: {
               v-model="passwordInputValue"
               name="passwordExample"
               :placeholder="passwordInputPlaceholder"
+              disabled
             />
 
             <TextInput
@@ -69,7 +70,7 @@ components: {
               v-model="errorTextInputValue"
               name="textExample"
               :placeholder="textInputPlaceholder"
-              :error="'Hello, I am an error message'"
+              :error="'Enter a number'"
             />
 
             <TextArea
@@ -135,9 +136,7 @@ components: {
             <td>disabled</td>
             <td>boolean</td>
             <td>null</td>
-            <td>
-              Puts a disabled class on the form field and disables the input.
-            </td>
+            <td>Puts a disabled class on the form field and disables the input.</td>
           </tr>
           <tr>
             <td>error</td>
@@ -172,7 +171,9 @@ components: {
             <td>text</td>
             <td>
               Input type:
-              <code>text</code>, <code>email</code>, <code>password</code>.
+              <code>text</code>,
+              <code>email</code>,
+              <code>password</code>.
             </td>
           </tr>
           <tr>
@@ -309,9 +310,7 @@ components: {
             <td>disabled</td>
             <td>Boolean</td>
             <td>false</td>
-            <td>
-              Puts a disabled class on the form field and disables the input.
-            </td>
+            <td>Puts a disabled class on the form field and disables the input.</td>
           </tr>
         </tbody>
       </table>
@@ -377,13 +376,7 @@ components: {
       <DemoSection title="Radios" :code="demoCode">
         <template #components>
           <div class="s-checkbox-group">
-            <Radio
-              v-model="radioValue"
-              id="radio1"
-              name="radioGroup"
-              label="Enabled"
-              :val="true"
-            />
+            <Radio v-model="radioValue" id="radio1" name="radioGroup" label="Enabled" :val="true" />
             <Radio
               v-model="radioValue"
               id="radio2"
@@ -445,11 +438,7 @@ components: {
         <DemoSection title="Status Switch" :code="demoCode">
           <template #components>
             <FormGroup>
-              <StatusSwitch
-                slot="input"
-                v-model="statusValue"
-                label="Switch Label"
-              />
+              <StatusSwitch slot="input" v-model="statusValue" label="Switch Label" />
 
               <StatusSwitch
                 slot="input"

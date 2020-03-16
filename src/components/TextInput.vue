@@ -51,19 +51,17 @@
     />
     <label
       :class="{
-        's-form-field__label--top': value !== '' && !disabled,
-        's-form-field__label--error': !!error
+        's-form-field__label--top': value !== '' && !disabled
       }"
       class="s-form-field__label"
       v-if="label"
       >{{ label }}</label
     >
 
-    <transition name="fadeX-from-left">
-      <p v-show="error" class="s-form-field__error-text">
-        {{ error }}<i class="icon-error"></i>
-      </p>
-    </transition>
+    <div v-show="error" class="s-form-field__input-error">
+      <i class="icon-error"></i>
+      {{ error }}
+    </div>
 
     <p v-show="helpText" class="s-form-field__help-text">{{ helpText }}</p>
   </div>
@@ -225,31 +223,6 @@ export default class TextInput extends Vue {
   }
 
   .s-form-field__input {
-    height: 40px;
-    border: 1px solid @light-4;
-    transition: border-color 0.15s cubic-bezier(0.4, 0, 0.2, 1),
-      border-width 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-
-    &:hover {
-      border-color: @light-5;
-    }
-
-    &:focus {
-      border: 2px solid @dark-2;
-    }
-
-    &--error {
-      border-color: @dark-red;
-
-      &:hover {
-        border-color: mix(@dark-2, @dark-red, 24%);
-      }
-
-      &:focus {
-        border-color: @dark-red;
-      }
-    }
-
     &--disabled {
       & + label {
         background-color: @light-3;
@@ -281,6 +254,7 @@ export default class TextInput extends Vue {
     &:hover {
       opacity: 1;
     }
+
     .s-arrow {
       display: flex !important;
       .fas {
@@ -311,11 +285,6 @@ export default class TextInput extends Vue {
   left: 8px;
   top: 12px;
   .radius();
-}
-
-.s-form-field__label--error,
-.s-form-field__error-text {
-  color: @dark-red;
 }
 
 .s-form-field__error-text,
@@ -351,15 +320,11 @@ export default class TextInput extends Vue {
   .s-form-field__label--top {
     transform: translateY(-20px);
     font-size: 12px;
-  }
-
-  .s-form-field__input:focus + label {
-    color: @day-title;
     font-weight: 500;
   }
 
-  .s-form-field__input:focus + .s-form-field__label--error {
-    color: @dark-red;
+  .s-form-field__input:not(".s-form-field__input--error"):focus + label {
+    color: @day-title;
   }
 
   .s-form-field--top {
@@ -405,26 +370,6 @@ export default class TextInput extends Vue {
 .night-theme {
   .s-form-field {
     .s-form-field__input {
-      &:focus {
-        border: 2px solid @white;
-      }
-
-      &--error {
-        border-color: @red;
-
-        &:focus {
-          border-color: @red;
-
-          & + .s-form-field__label {
-            color: @red;
-          }
-        }
-
-        &:hover {
-          border-color: mix(@white, @red, 12%);
-        }
-      }
-
       &--disabled {
         & + label {
           background-color: @dark-4;
@@ -436,7 +381,7 @@ export default class TextInput extends Vue {
   .s-form-field--with-label {
     position: relative;
 
-    .s-form-field__input:focus + label {
+    .s-form-field__input:not("[class*=__input--error]"):focus + label {
       color: @night-title;
     }
   }
