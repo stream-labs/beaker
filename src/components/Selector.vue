@@ -6,7 +6,6 @@
       :options="options"
       :max-height="200"
       v-on="$listeners"
-      @input="val => emitInput(val)"
     >
       <template #singleLabel="{ option }">
         <slot name="singleLabel" :option="option"></slot>
