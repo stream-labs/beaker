@@ -120,7 +120,7 @@ export default class MediaPicker extends Vue {
   mediaBroken = false;
   showMediaControls = false;
   focused = 0;
-  controls = [
+  controlData = [
     {
       key: "media-link",
       available: !!this.mediaLink,
@@ -166,7 +166,7 @@ export default class MediaPicker extends Vue {
   ];
 
   get mediaControls() {
-    return this.controls.filter(control => control.available);
+    return this.controlData.filter(control => control.available);
   }
 
   get mediaInputPlaceholder() {
