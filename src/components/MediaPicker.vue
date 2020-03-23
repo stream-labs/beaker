@@ -54,17 +54,25 @@
         </transition>
 
         <div
-          @mouseenter="showMediaControls = true"
-          @mouseleave="showMediaControls = false"
+          @mouseenter="mediaControlsVisible = true"
+          @mouseleave="mediaControlsVisible = false"
           class="s-media-picker__controls s-media-picker__controls--small"
         >
-          <i v-if="mediaPickerSmall && !showMediaControls" class="icon-add"></i>
+          <i
+            v-if="mediaPickerSmall && !mediaControlsVisible"
+            class="icon-add"
+            :tabindex="mediaPickerSmall && !mediaControlsVisible ? 0 : -1"
+            v-focus="focused === -1"
+            @focus="focused = -1"
+            @keydown.space.prevent="showMediaControls"
+            @keydown.enter.prevent="showMediaControls"
+          ></i>
 
           <transition-group
+            v-if="!mediaPickerSmall || mediaControlsVisible"
             tag="div"
             mode="out-in"
             name="fade"
-            v-if="!mediaPickerSmall || showMediaControls"
             class="s-media-picker__controls-group"
           >
             <a
@@ -76,6 +84,7 @@
               :tabindex="focused === index ? 0 : -1"
               @focus="focused = index"
               @click.stop="$emit(control.emit)"
+              @keydown.tab="onTabOut"
               @keydown.space.prevent="$emit(control.emit)"
               @keydown.enter.prevent="$emit(control.emit)"
               @keydown.left.prevent="moveLeft()"
@@ -118,55 +127,59 @@ export default class MediaPicker extends Vue {
 
   mediaPickerSmall = false;
   mediaBroken = false;
-  showMediaControls = false;
+  mediaControlsVisible = false;
   focused = 0;
-  controlData = [
-    {
-      key: "media-link",
-      available: !!this.mediaLink,
-      class: "s-media-picker__link-icon",
-      emit: "link-media",
-      title: `Link ${this.variationTitle}`,
-      icon: "icon-link"
-    },
-    {
-      key: "media-selected-zoom",
-      available:
-        this.variation === "image" && this.media.selected && !this.mediaBroken,
-      class: "s-media-picker__zoom-icon",
-      emit: "preivew-media",
-      title: `Preview ${this.variationTitle}`,
-      icon: "icon-zoom"
-    },
-    {
-      key: "media-selected-play",
-      available:
-        this.variation === "audio" && this.media.selected && !this.mediaBroken,
-      class: "s-media-picker__play-icon",
-      emit: "preview-media",
-      title: `preview ${this.variationTitle}`,
-      icon: "icon-media-share-2"
-    },
-    {
-      key: "media-remove",
-      available: this.media.selected,
-      class: "s-media-picker__small-remove",
-      emit: "remove-media",
-      title: `Remove ${this.variationTitle}`,
-      icon: "icon-close"
-    },
-    {
-      key: "media-select",
-      available: true,
-      class: "s-media-picker__small-remove",
-      emit: "select-media",
-      title: `Select ${this.variationTitle}`,
-      icon: "icon-upload-image"
-    }
-  ];
 
   get mediaControls() {
-    return this.controlData.filter(control => control.available);
+    const controlData = [
+      {
+        key: "media-link",
+        available: !!this.mediaLink,
+        class: "s-media-picker__link-icon",
+        emit: "link-media",
+        title: `Link ${this.variationTitle}`,
+        icon: "icon-link"
+      },
+      {
+        key: "media-selected-zoom",
+        available:
+          this.variation === "image" &&
+          this.media.selected &&
+          !this.mediaBroken,
+        class: "s-media-picker__zoom-icon",
+        emit: "preivew-media",
+        title: `Preview ${this.variationTitle}`,
+        icon: "icon-zoom"
+      },
+      {
+        key: "media-selected-play",
+        available:
+          !this.mediaBroken &&
+          this.variation === "audio" &&
+          this.media.selected,
+        class: "s-media-picker__play-icon",
+        emit: "preview-media",
+        title: `preview ${this.variationTitle}`,
+        icon: "icon-media-share-2"
+      },
+      {
+        key: "media-remove",
+        available: this.media.selected,
+        class: "s-media-picker__small-remove",
+        emit: "remove-media",
+        title: `Remove ${this.variationTitle}`,
+        icon: "icon-close"
+      },
+      {
+        key: "media-select",
+        available: true,
+        class: "s-media-picker__small-remove",
+        emit: "select-media",
+        title: `Select ${this.variationTitle}`,
+        icon: "icon-upload-image"
+      }
+    ];
+    return controlData.filter(control => control.available);
   }
 
   get mediaInputPlaceholder() {
@@ -200,6 +213,13 @@ export default class MediaPicker extends Vue {
     this.setBrokenMedia(null);
   }
 
+  @Watch("mediaControlsVisible")
+  watchMediaControlsVisible() {
+    if (this.mediaPickerSmall && !this.mediaControlsVisible) {
+      this.focused = -1;
+    }
+  }
+
   @Watch("mediaControls")
   watchMediaControls(newVal) {
     this.focused = newVal.length - 1;
@@ -221,12 +241,21 @@ export default class MediaPicker extends Vue {
     this.mediaBroken = event ? true : false;
   }
 
+  onTabOut() {
+    if (this.mediaPickerSmall) this.mediaControlsVisible = false;
+  }
+
   moveRight() {
     this.focused = Math.min(this.focused + 1, this.mediaControls.length - 1);
   }
 
   moveLeft() {
     this.focused = Math.max(this.focused - 1, 0);
+  }
+
+  showMediaControls() {
+    this.mediaControlsVisible = true;
+    this.focused = this.mediaControls.length - 1;
   }
 }
 </script>
