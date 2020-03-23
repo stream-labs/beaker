@@ -69,7 +69,7 @@
           ></i>
 
           <transition-group
-            v-if="!mediaPickerSmall || mediaControlsVisible"
+            v-else
             tag="div"
             mode="out-in"
             name="fade"
