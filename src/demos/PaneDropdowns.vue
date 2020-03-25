@@ -185,8 +185,7 @@ components: {
             <td>null</td>
             <td>
               Default will align the menu to the left side of the toggle. Use
-              <code>right</code> or
-              <code>center</code> to align the dropdown
+              <code>right</code> or <code>center</code> to align the dropdown
               menu to the right or center of its toggle.
             </td>
           </tr>

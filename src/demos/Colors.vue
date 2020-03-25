@@ -8,7 +8,11 @@
       </p>
     </div>
 
-    <div class="section" v-for="(colorGroup, index) in colors" :key="`color-group-${index}`">
+    <div
+      class="section"
+      v-for="(colorGroup, index) in colors"
+      :key="`color-group-${index}`"
+    >
       <div
         v-for="color in colorGroup"
         :key="color.color"
@@ -18,7 +22,10 @@
         v-clipboard:error="emitCopyError"
       >
         <div class="nospace-flex">
-          <div class="color-square" :style="'background-color:' + color.hex + ';'"></div>
+          <div
+            class="color-square"
+            :style="'background-color:' + color.hex + ';'"
+          ></div>
           <div class="subtitle">
             {{ color.color }}
             <i class="icon-copy"></i>

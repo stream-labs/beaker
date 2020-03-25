@@ -36,7 +36,9 @@
         menuAlign="right"
         :tabindex="hiddenActiveTab && !hiddenTabFocused ? 0 : -1"
       >
-        <template slot="title">More</template>
+        <template slot="title"
+          >More</template
+        >
         <div
           v-for="tab in hiddenTabs"
           :key="`hidden-${tab.value}`"
@@ -55,13 +57,18 @@
             tag="button"
             :tabindex="!tab.active ? '-1' : undefined"
             class="s-tabs__link"
-          >{{ tab.name }}</component>
+            >{{ tab.name }}</component
+          >
         </div>
       </PaneDropdown>
     </div>
 
     <div class="s-tab-content" v-if="!hideContent">
-      <div v-for="(tab, index) in modifiedTabs" :key="index" v-show="tab.active">
+      <div
+        v-for="(tab, index) in modifiedTabs"
+        :key="index"
+        v-show="tab.active"
+      >
         <slot :name="tab.value" />
       </div>
     </div>

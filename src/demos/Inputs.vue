@@ -136,7 +136,9 @@ components: {
             <td>disabled</td>
             <td>boolean</td>
             <td>null</td>
-            <td>Puts a disabled class on the form field and disables the input.</td>
+            <td>
+              Puts a disabled class on the form field and disables the input.
+            </td>
           </tr>
           <tr>
             <td>error</td>
@@ -171,9 +173,7 @@ components: {
             <td>text</td>
             <td>
               Input type:
-              <code>text</code>,
-              <code>email</code>,
-              <code>password</code>.
+              <code>text</code>, <code>email</code>, <code>password</code>.
             </td>
           </tr>
           <tr>
@@ -310,7 +310,9 @@ components: {
             <td>disabled</td>
             <td>Boolean</td>
             <td>false</td>
-            <td>Puts a disabled class on the form field and disables the input.</td>
+            <td>
+              Puts a disabled class on the form field and disables the input.
+            </td>
           </tr>
         </tbody>
       </table>
@@ -376,7 +378,13 @@ components: {
       <DemoSection title="Radios" :code="demoCode">
         <template #components>
           <div class="s-checkbox-group">
-            <Radio v-model="radioValue" id="radio1" name="radioGroup" label="Enabled" :val="true" />
+            <Radio
+              v-model="radioValue"
+              id="radio1"
+              name="radioGroup"
+              label="Enabled"
+              :val="true"
+            />
             <Radio
               v-model="radioValue"
               id="radio2"
@@ -428,17 +436,21 @@ components: {
 
     <div class="section">
       <h2>Status Switch</h2>
-      <pre><code>import { Status } from 'streamlabs-beaker';
+      <pre><code>import { StatusSwitch } from 'streamlabs-beaker';
 
 components: {
-  Switch
+  StatusSwitch
 }</code></pre>
 
       <div class="section">
         <DemoSection title="Status Switch" :code="demoCode">
           <template #components>
             <FormGroup>
-              <StatusSwitch slot="input" v-model="statusValue" label="Switch Label" />
+              <StatusSwitch
+                slot="input"
+                v-model="statusValue"
+                label="Switch Label"
+              />
 
               <StatusSwitch
                 slot="input"
