@@ -15,11 +15,74 @@ components: {
 
       <DemoSection title="With Dropdown Icon" :code="demoCode">
         <template #components>
-          <PaneDropdown>
+          <PaneDropdown
+            :closeOnSelect="false"
+            :links="[
+              {
+                label: 'Pane Dropdown Recursion',
+                paneDropdownLinks: [
+                  {
+                    href: '#',
+                    icon: 'icon-check',
+                    label: 'Most Installed'
+                  },
+                  {
+                    href: '#',
+                    icon: 'icon-delete',
+                    label: 'Newly Added'
+                  },
+                  {
+                    href: '#',
+                    label: 'Trending'
+                  }
+                ]
+              },
+              {
+                label: 'Pane Dropdown Recursion 2',
+                paneDropdownLinks: [
+                  {
+                    href: '#',
+                    icon: 'icon-check',
+                    label: 'Most Installed'
+                  },
+                  {
+                    href: '#',
+                    icon: 'icon-delete',
+                    label: 'Newly Added'
+                  },
+                  {
+                    href: '#',
+                    label: 'Trending'
+                  }
+                ]
+              },
+              {
+                separator: true
+              },
+              {
+                href: '#',
+                icon: 'icon-check',
+                label: 'Most Installed'
+              },
+              {
+                href: '#',
+                icon: 'icon-delete',
+                label: 'Newly Added'
+              },
+              {
+                href: '#',
+                label: 'Trending'
+              }
+            ]"
+          >
             <span slot="title">Trending</span>
-            <a href="#"> <i class="icon-check"></i>Most Installed </a>
-            <a href="#"> <i class="icon-delete"></i>Newly Added </a>
-            <a href="#">Trending</a>
+            <!-- <a href="#">
+              <i class="icon-check"></i>Most Installed
+            </a>
+            <a href="#">
+              <i class="icon-delete"></i>Newly Added
+            </a>
+            <a href="#">Trending</a>-->
           </PaneDropdown>
         </template>
       </DemoSection>
@@ -122,7 +185,8 @@ components: {
             <td>null</td>
             <td>
               Default will align the menu to the left side of the toggle. Use
-              <code>right</code> or <code>center</code> to align the dropdown
+              <code>right</code> or
+              <code>center</code> to align the dropdown
               menu to the right or center of its toggle.
             </td>
           </tr>

@@ -5,8 +5,6 @@
       class="s-pane-dropdown__toggle"
       :class="{ 's-pane-dropdown__toggle--active': paneMenuOpen }"
       @click="paneMenuOpen = !paneMenuOpen"
-      @keydown.space.prevent="paneMenuOpen = !paneMenuOpen"
-      @keydown.enter.prevent="paneMenuOpen = !paneMenuOpen"
     >
       <span>
         <slot name="title"></slot>
@@ -21,13 +19,37 @@
       @leave="close"
     >
       <div
+        v-if="paneMenuOpen"
         :class="menuClasses"
         class="s-pane-dropdown__menu"
-        v-if="paneMenuOpen"
       >
         <slot v-if="custom"></slot>
         <div v-else @mouseup="onMenuClick" class="s-pane-dropdown__list">
-          <slot></slot>
+          <slot v-if="this.$slots.default && !this.$props.links"></slot>
+
+          <ul
+            class="s-pane-dropdown__list-props"
+            v-if="!this.$slots.default && this.$props.links && !custom"
+          >
+            <li v-for="item in links" :key="item.title">
+              <a
+                v-if="!item.paneDropdownLinks && !item.separator"
+                :href="item.href"
+              >
+                <i v-if="item.icon" :class="item.icon"></i>
+                <img v-if="item.imgIcon" :src="item.imgIcon" />
+                {{ item.label }}
+              </a>
+
+              <pane-dropdown
+                v-if="item.paneDropdownLinks && !item.separator"
+                :links="item.paneDropdownLinks"
+              >
+                <span slot="title">{{ item.label }}</span>
+              </pane-dropdown>
+              <hr v-if="item.separator" />
+            </li>
+          </ul>
         </div>
       </div>
     </transition>
@@ -36,14 +58,30 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import { mixin as vFocus } from "vue-focus";
 
-@Component({})
+interface ILinkItem {
+  icon?: string;
+  imgIcon?: string;
+  label?: string;
+  href: string;
+  separator?: boolean;
+  paneDropdownLinks?: ILinkItem[];
+}
+
+@Component({
+  name: "PaneDropdown",
+  mixins: [vFocus]
+})
 export default class PaneDropdown extends Vue {
   $refs!: {
     paneMenu: HTMLDivElement;
     paneTitle: HTMLLinkElement;
     panelinks: HTMLSpanElement;
   };
+
+  @Prop()
+  links!: ILinkItem[];
 
   @Prop()
   icons!: string[];
@@ -74,9 +112,13 @@ export default class PaneDropdown extends Vue {
 
   paneMenuOpen = false;
   paneList = null;
+  listItemCount = 0;
+  focused = 0;
 
   created() {
     document.addEventListener("click", this.documentClick);
+    console.log(this.$slots);
+    this.listItemCount = this.$slots.default ? this.$slots.default.length : 0;
   }
 
   mounted() {
@@ -93,6 +135,10 @@ export default class PaneDropdown extends Vue {
       this.$refs.paneTitle.removeEventListener("mouseover", this.show);
       this.$refs.paneMenu.removeEventListener("mouseleave", this.hide);
     }
+  }
+
+  get listLength() {
+    return this.$slots.default ? this.$slots.default.length : 0;
   }
 
   get menuClasses() {
@@ -173,6 +219,14 @@ export default class PaneDropdown extends Vue {
 
   show() {
     this.paneMenuOpen = true;
+  }
+
+  moveDown() {
+    this.focused = Math.min(this.focused + 1, this.listItemCount - 1);
+  }
+
+  moveUp() {
+    this.focused = Math.max(this.focused - 1, 0);
   }
 }
 </script>
@@ -275,6 +329,44 @@ export default class PaneDropdown extends Vue {
 
     i {
       .margin-right();
+    }
+
+    &-props {
+      padding: 0;
+      margin: 0;
+
+      li {
+        display: block;
+      }
+
+      a {
+        display: flex;
+        margin-bottom: 0;
+      }
+
+      .s-pane-dropdown {
+        padding-bottom: 0;
+
+        &__toggle {
+          margin-bottom: 0;
+        }
+
+        &__menu {
+          position: relative;
+          top: 0;
+          box-shadow: none;
+        }
+
+        &__list {
+          margin: 16px 8px 0;
+        }
+      }
+
+      hr {
+        margin-bottom: 12px;
+        border: none;
+        border-bottom: 1px solid @white;
+      }
     }
   }
 
