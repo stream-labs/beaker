@@ -136,7 +136,9 @@ components: {
             <td>disabled</td>
             <td>boolean</td>
             <td>null</td>
-            <td>Puts a disabled class on the form field and disables the input.</td>
+            <td>
+              Puts a disabled class on the form field and disables the input.
+            </td>
           </tr>
           <tr>
             <td>error</td>
@@ -171,9 +173,7 @@ components: {
             <td>text</td>
             <td>
               Input type:
-              <code>text</code>,
-              <code>email</code>,
-              <code>password</code>.
+              <code>text</code>, <code>email</code>, <code>password</code>.
             </td>
           </tr>
           <tr>
@@ -310,7 +310,9 @@ components: {
             <td>disabled</td>
             <td>Boolean</td>
             <td>false</td>
-            <td>Puts a disabled class on the form field and disables the input.</td>
+            <td>
+              Puts a disabled class on the form field and disables the input.
+            </td>
           </tr>
         </tbody>
       </table>
@@ -376,7 +378,13 @@ components: {
       <DemoSection title="Radios" :code="demoCode">
         <template #components>
           <div class="s-checkbox-group">
-            <Radio v-model="radioValue" id="radio1" name="radioGroup" label="Enabled" :val="true" />
+            <Radio
+              v-model="radioValue"
+              id="radio1"
+              name="radioGroup"
+              label="Enabled"
+              :val="true"
+            />
             <Radio
               v-model="radioValue"
               id="radio2"
@@ -428,17 +436,21 @@ components: {
 
     <div class="section">
       <h2>Status Switch</h2>
-      <pre><code>import { Status } from 'streamlabs-beaker';
+      <pre><code>import { StatusSwitch } from 'streamlabs-beaker';
 
 components: {
-  Switch
+  StatusSwitch
 }</code></pre>
 
       <div class="section">
         <DemoSection title="Status Switch" :code="demoCode">
           <template #components>
             <FormGroup>
-              <StatusSwitch slot="input" v-model="statusValue" label="Switch Label" />
+              <StatusSwitch
+                slot="input"
+                v-model="statusValue"
+                label="Switch Label"
+              />
 
               <StatusSwitch
                 slot="input"
@@ -553,8 +565,8 @@ import VariableMenu from "./../components/VariableMenu.vue";
     TaggingInput,
     TextArea,
     TextInput,
-    VariableMenu
-  }
+    VariableMenu,
+  },
 })
 export default class Inputs extends Vue {
   demoCode = InputsCode;
@@ -572,22 +584,22 @@ export default class Inputs extends Vue {
   optionGroups = [
     {
       group: "Group A",
-      items: ["Option A", "Option B", "Option C"]
+      items: ["Option A", "Option B", "Option C"],
     },
     {
       group: "Group B",
-      items: ["Option A", "Option B", "Option C"]
+      items: ["Option A", "Option B", "Option C"],
     },
     {
       group: "Group C",
-      items: ["Option A", "Option B", "Option C"]
-    }
+      items: ["Option A", "Option B", "Option C"],
+    },
   ];
   optionSelected = ["Glass Pint", "Glass Beer"];
   objectSelected = {
     value: "glass-pint",
     title: "Glass Pint",
-    image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-pint.png"
+    image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-pint.png",
   };
   statusValue = true;
   testingInput = null;
@@ -616,85 +628,86 @@ export default class Inputs extends Vue {
     {
       value: "glass-pint",
       title: "Glass Pint",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-pint.png"
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-pint.png",
     },
     {
       value: "glass-beer",
       title: "Glass Beer",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-beer.png"
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-beer.png",
     },
     {
       value: "glass-beer-2",
       title: "Glass Beer 2",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-beer2.png"
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-beer2.png",
     },
     {
       value: "glass-coffee",
       title: "Glass Coffee",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-coffee.png"
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-coffee.png",
     },
     {
       value: "glass-fancy",
       title: "Glass Fancy",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-fancy.png"
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-fancy.png",
     },
     {
       value: "glass-whiskey",
       title: "Glass Whiskey",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-whiskey.png"
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-whiskey.png",
     },
     {
       value: "glass-burbon",
       title: "Glass Burbon",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-burbon.png"
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-burbon.png",
     },
     {
       value: "glass-martini",
       title: "Glass Martini",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-martini.png"
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-martini.png",
     },
     {
       value: "glass-beer-3",
       title: "Glass Beer 3",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-beer3.png"
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-beer3.png",
     },
     {
       value: "glass-wine",
       title: "Glass Wine",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-wine.png"
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-wine.png",
     },
     {
       value: "glass-baileys",
       title: "Glass Baileys",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-baileys.png"
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-baileys.png",
     },
     {
       value: "glass-champagne",
       title: "Glass Champagne",
       image:
-        "https://cdn.streamlabs.com/static/tip-jar/jars/glass-champagne.png"
+        "https://cdn.streamlabs.com/static/tip-jar/jars/glass-champagne.png",
     },
     {
       value: "glass-coffee-no-handle",
       title: "Glass Coffee No Handle",
       image:
-        "https://cdn.streamlabs.com/static/tip-jar/jars/glass-coffee-no-handle.png"
+        "https://cdn.streamlabs.com/static/tip-jar/jars/glass-coffee-no-handle.png",
     },
     {
       value: "glass-plinko",
       title: "Glass Plinko",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-plinko.png"
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-plinko.png",
     },
     {
       value: "glass-stocking",
       title: "Glass Stocking",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-stocking.png"
+      image:
+        "https://cdn.streamlabs.com/static/tip-jar/jars/glass-stocking.png",
     },
     {
       value: "glass-snowman",
       title: "Glass Snowman",
-      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-snowman.png"
-    }
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-snowman.png",
+    },
   ];
 
   show = [
@@ -712,7 +725,7 @@ export default class Inputs extends Vue {
     "Fade In Right",
     "Fade In",
     "Fade In Up",
-    "Fade In Up Big"
+    "Fade In Up Big",
   ];
 }
 </script>
