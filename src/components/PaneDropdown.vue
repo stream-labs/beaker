@@ -1,55 +1,39 @@
 <template>
-  <div class="s-pane-dropdown" ref="paneMenu" @blur.stop.prevent="close">
-    <a
-      ref="paneTitle"
+  <div
+    ref="paneMenu"
+    class="s-pane-dropdown"
+    @blur.stop.prevent="close"
+    v-on="hoverOption ? { mouseleave: hide } : {}"
+  >
+    <div
+      ref="paneToggle"
       class="s-pane-dropdown__toggle"
       :class="{ 's-pane-dropdown__toggle--active': paneMenuOpen }"
       @click="paneMenuOpen = !paneMenuOpen"
+      v-on="hoverOption ? { mouseover: show } : {}"
+      :tabindex="0"
+      @keydown.space.prevent="paneMenuOpen = !paneMenuOpen"
+      @keydown.enter.prevent="paneMenuOpen = !paneMenuOpen"
+      @keydown.esc.prevent="hide"
+      @keydown.tab.shift="hide"
     >
       <span>
         <slot name="title"></slot>
         <i v-if="dropdownIcon" class="icon-dropdown"></i>
       </span>
-    </a>
+    </div>
 
-    <transition
-      name="expand-dropdown"
-      @enter="open"
-      @after-enter="afterOpen"
-      @leave="close"
-    >
-      <div
-        v-if="paneMenuOpen"
-        :class="menuClasses"
-        class="s-pane-dropdown__menu"
-      >
+    <transition name="expand-dropdown" @enter="open" @after-enter="afterOpen" @leave="close">
+      <div v-if="paneMenuOpen" :class="menuClasses" class="s-pane-dropdown__menu">
         <slot v-if="custom"></slot>
-        <div v-else @mouseup="onMenuClick" class="s-pane-dropdown__list">
-          <slot v-if="this.$slots.default && !this.$props.links"></slot>
-
-          <ul
-            class="s-pane-dropdown__list-props"
-            v-if="!this.$slots.default && this.$props.links && !custom"
-          >
-            <li v-for="item in links" :key="item.title">
-              <a
-                v-if="!item.paneDropdownLinks && !item.separator"
-                :href="item.href"
-              >
-                <i v-if="item.icon" :class="item.icon"></i>
-                <img v-if="item.imgIcon" :src="item.imgIcon" />
-                {{ item.label }}
-              </a>
-
-              <pane-dropdown
-                v-if="item.paneDropdownLinks && !item.separator"
-                :links="item.paneDropdownLinks"
-              >
-                <span slot="title">{{ item.label }}</span>
-              </pane-dropdown>
-              <hr v-if="item.separator" />
-            </li>
-          </ul>
+        <div
+          ref="paneList"
+          v-else
+          @mouseup="onMenuClick"
+          @keydown.esc.prevent="hide"
+          class="s-pane-dropdown__list"
+        >
+          <slot></slot>
         </div>
       </div>
     </transition>
@@ -57,17 +41,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Watch, Vue } from "vue-property-decorator";
 import { mixin as vFocus } from "vue-focus";
-
-interface ILinkItem {
-  icon?: string;
-  imgIcon?: string;
-  label?: string;
-  href: string;
-  separator?: boolean;
-  paneDropdownLinks?: ILinkItem[];
-}
 
 @Component({
   name: "PaneDropdown",
@@ -76,15 +51,8 @@ interface ILinkItem {
 export default class PaneDropdown extends Vue {
   $refs!: {
     paneMenu: HTMLDivElement;
-    paneTitle: HTMLLinkElement;
-    panelinks: HTMLSpanElement;
+    paneList: HTMLDivElement;
   };
-
-  @Prop()
-  links!: ILinkItem[];
-
-  @Prop()
-  icons!: string[];
 
   @Prop({ default: true })
   dropdownIcon!: boolean;
@@ -110,35 +78,17 @@ export default class PaneDropdown extends Vue {
   @Prop({ default: false })
   hoverOption!: boolean;
 
+  @Prop({ default: false })
+  nested!: boolean;
+
   paneMenuOpen = false;
-  paneList = null;
-  listItemCount = 0;
-  focused = 0;
 
   created() {
     document.addEventListener("click", this.documentClick);
-    console.log(this.$slots);
-    this.listItemCount = this.$slots.default ? this.$slots.default.length : 0;
-  }
-
-  mounted() {
-    if (this.hoverOption) {
-      this.$refs.paneTitle.addEventListener("mouseover", this.show);
-      this.$refs.paneMenu.addEventListener("mouseleave", this.hide);
-    }
   }
 
   destroyed() {
     document.removeEventListener("click", this.documentClick);
-
-    if (this.hoverOption) {
-      this.$refs.paneTitle.removeEventListener("mouseover", this.show);
-      this.$refs.paneMenu.removeEventListener("mouseleave", this.hide);
-    }
-  }
-
-  get listLength() {
-    return this.$slots.default ? this.$slots.default.length : 0;
   }
 
   get menuClasses() {
@@ -161,6 +111,21 @@ export default class PaneDropdown extends Vue {
     }
 
     return classes;
+  }
+
+  @Watch("paneMenuOpen")
+  watchPaneMenuOpen(newVal) {
+    if (newVal) {
+      this.$nextTick(() => {
+        const list = this.$refs.paneList;
+        const lastSlotItem = list.lastElementChild as HTMLElement;
+        const onTab = e => {
+          if (e.keyCode === 9 && !e.shiftKey) this.hide();
+        };
+
+        lastSlotItem.addEventListener("keydown", onTab);
+      });
+    }
   }
 
   openContent() {
@@ -220,14 +185,6 @@ export default class PaneDropdown extends Vue {
   show() {
     this.paneMenuOpen = true;
   }
-
-  moveDown() {
-    this.focused = Math.min(this.focused + 1, this.listItemCount - 1);
-  }
-
-  moveUp() {
-    this.focused = Math.max(this.focused - 1, 0);
-  }
 }
 </script>
 
@@ -235,6 +192,7 @@ export default class PaneDropdown extends Vue {
 @import (reference) "./../styles/Imports";
 
 .s-pane-dropdown {
+  box-sizing: border-box;
   position: relative;
   display: inline-block;
   padding: 3px 0;
@@ -257,14 +215,6 @@ export default class PaneDropdown extends Vue {
     background-color: @white;
     box-shadow: 0 6px 14px rgba(55, 71, 79, 0.1);
     overflow-y: auto;
-
-    li {
-      .margin-bottom();
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
 
     &--auto-height {
       max-height: initial;
@@ -294,18 +244,6 @@ export default class PaneDropdown extends Vue {
     }
   }
 
-  &__link {
-    width: 100%;
-    margin-left: 0;
-    text-decoration: none;
-    white-space: nowrap;
-    color: @day-paragraph;
-
-    &:hover {
-      color: @day-title;
-    }
-  }
-
   &__icon {
     .margin-right();
   }
@@ -315,69 +253,57 @@ export default class PaneDropdown extends Vue {
     padding: 0;
     list-style-type: none;
 
-    li {
-      display: flex;
-      align-items: center;
+    .s-pane-dropdown {
+      &__toggle {
+        margin-bottom: 0;
+      }
+
+      &__menu {
+        position: relative;
+        top: 4px;
+        box-shadow: none;
+      }
+
+      &__list {
+        margin: 8px 8px 0;
+      }
+    }
+
+    hr {
+      width: 100%;
+      margin: 12px 0 16px;
+      border: none;
+      border-bottom: 1px solid @light-3;
     }
 
     a {
+      display: flex;
+      align-items: center;
       text-decoration: none;
       white-space: nowrap;
-      display: block;
       .margin-bottom();
+
+      &:last-of-type {
+        margin-bottom: 4px;
+      }
     }
 
     i {
       .margin-right();
     }
-
-    &-props {
-      padding: 0;
-      margin: 0;
-
-      li {
-        display: block;
-      }
-
-      a {
-        display: flex;
-        margin-bottom: 0;
-      }
-
-      .s-pane-dropdown {
-        padding-bottom: 0;
-
-        &__toggle {
-          margin-bottom: 0;
-        }
-
-        &__menu {
-          position: relative;
-          top: 0;
-          box-shadow: none;
-        }
-
-        &__list {
-          margin: 16px 8px 0;
-        }
-      }
-
-      hr {
-        margin-bottom: 12px;
-        border: none;
-        border-bottom: 1px solid @white;
-      }
-    }
   }
 
   &__toggle {
+    display: flex;
+    .weight(@medium);
     .transition();
     text-decoration: none;
     cursor: pointer;
 
-    span {
+    & span {
       display: flex;
       align-items: center;
+      white-space: nowrap;
     }
 
     i {
@@ -420,7 +346,12 @@ export default class PaneDropdown extends Vue {
       background-color: transparent;
     }
 
-    &__link,
+    &__list {
+      hr {
+        border-bottom-color: @dark-5;
+      }
+    }
+
     a {
       &:hover {
         color: @night-title;
