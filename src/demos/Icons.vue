@@ -13,8 +13,8 @@
       </p>
 
       <p>
-        Click on an icon to copy the icon class name to the clipboard.
-        Hover over an icon to display the full icon name and icon code.
+        Click on an icon to copy the icon class name to the clipboard. Hover
+        over an icon to display the full icon name and icon code.
       </p>
     </div>
 
