@@ -1,5 +1,9 @@
 <template>
-  <div class="s-guard" :class="{ 's-guard--hidden': !visible }" @click="showText">
+  <div
+    class="s-guard"
+    :class="{ 's-guard--hidden': !visible }"
+    @click="showText"
+  >
     <div class="s-guard__placeholder">
       <i class="icon-lock"></i>
       {{ placeholder }}

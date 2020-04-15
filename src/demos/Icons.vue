@@ -13,8 +13,8 @@
       </p>
 
       <p>
-        Click on an icon to copy the icon class name to the clipboard.
-        Hover over an icon to display the full icon name and icon code.
+        Click on an icon to copy the icon class name to the clipboard. Hover
+        over an icon to display the full icon name and icon code.
       </p>
     </div>
 
@@ -29,7 +29,7 @@
         :key="icon"
         class="icon"
         :title="`${icon} | ${iconList[icon]}`"
-        @click="selectIconData(`.${icon}`)"
+        @click="selectIconData(`${icon}`)"
       >
         <i class="icon__glyph" :class="icon">
           <i class="icon-copy"></i>
@@ -242,7 +242,24 @@ export default class Icons extends Vue {
     "icon-face-masks-2": "e9bf",
     "icon-face-masks-3": "e9c0",
     "icon-ideas": "e9c1",
-    "icon-creator-site": "e9c2"
+    "icon-creator-site": "e9c2",
+    "icon-embroidery": "e9c3",
+    "icon-twitch": "e9c4",
+    "icon-collectibles": "e9c5",
+    "icon-collectibles-2": "e9c6",
+    "icon-dust-2": "e9c7",
+    "icon-collectibles-closed": "e9c8",
+    "icon-collectibles-2-closed": "e9c9",
+    "icon-prime": "e9cb",
+    "icon-prize-disabled": "e9cc",
+    "icon-live-support": "e9cd",
+    "icon-enter": "e9ce",
+    "icon-design": "e9cf",
+    "icon-email": "e9d0",
+    "icon-smart-record": "e9ca",
+    "icon-broadcast": "e9d1",
+    "icon-replay-buffer": "e9d3",
+    "icon-disconnected": "e9d2"
   };
 
   selectIconData(icon) {
