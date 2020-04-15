@@ -23,8 +23,17 @@
       </span>
     </div>
 
-    <transition name="expand-dropdown" @enter="open" @after-enter="afterOpen" @leave="close">
-      <div v-if="paneMenuOpen" :class="menuClasses" class="s-pane-dropdown__menu">
+    <transition
+      name="expand-dropdown"
+      @enter="open"
+      @after-enter="afterOpen"
+      @leave="close"
+    >
+      <div
+        v-if="paneMenuOpen"
+        :class="menuClasses"
+        class="s-pane-dropdown__menu"
+      >
         <slot v-if="custom"></slot>
         <div
           ref="paneList"
