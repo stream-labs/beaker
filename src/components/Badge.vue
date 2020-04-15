@@ -10,9 +10,7 @@
         )`,
         color: textColor
       }"
-    >
-      {{ `${current}${separator}${total} ${suffix}` }}
-    </div>
+    >{{ `${current}${separator}${total} ${suffix}` }}</div>
     <div v-if="variant === 'prime' || variant === 'prime-alt'">
       <i v-if="variant === 'prime'" class="icon-prime"></i>Prime
     </div>
@@ -115,7 +113,7 @@ export default class Badge extends Vue {
   }
 }
 
-.night-badge-colors(@color: @dark-3, @bg, @amount: 100%, @alt-color: @bg) {
+.night-badge-colors(@color: @dark-2, @bg, @amount: 100%, @alt-color: @bg) {
   .badge-colors(@color, @bg, @amount, @alt-color);
 }
 
@@ -160,7 +158,7 @@ export default class Badge extends Vue {
   }
 
   &--beta {
-    .badge-colors(@dark-yellow);
+    .badge-colors(@day-beta-badge);
   }
 
   &--warning {
@@ -242,7 +240,7 @@ export default class Badge extends Vue {
     }
 
     &--beta {
-      .night-badge-colors(@bg: @yellow);
+      .night-badge-colors(@bg: @night-beta-badge);
     }
 
     &--warning {
