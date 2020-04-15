@@ -55,7 +55,7 @@ import { mixin as vFocus } from "vue-focus";
 
 @Component({
   name: "PaneDropdown",
-  mixins: [vFocus],
+  mixins: [vFocus]
 })
 export default class PaneDropdown extends Vue {
   $refs!: {
@@ -124,11 +124,11 @@ export default class PaneDropdown extends Vue {
 
   @Watch("paneMenuOpen")
   watchPaneMenuOpen(newVal) {
-    if (newVal) {
+    if (newVal && !this.custom) {
       this.$nextTick(() => {
         const list = this.$refs.paneList;
         const lastSlotItem = list.lastElementChild as HTMLElement;
-        const onTab = (e) => {
+        const onTab = e => {
           if (e.keyCode === 9 && !e.shiftKey) this.hide();
         };
 

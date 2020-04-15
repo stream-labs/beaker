@@ -62,49 +62,49 @@ export default class Colors extends Vue {
       {
         color: "Red (Count Badges, Warnings, Errors)",
         hex: "#F85640",
-        name: "@red",
+        name: "@red"
       },
       {
         color: "Dark Red (Day Count Badges, Warnings, Errors)",
         hex: "#B14334",
-        name: "@red-dark",
+        name: "@red-dark"
       },
       { color: "Yellow (Night Info)", hex: "#E3973E", name: "@yellow" },
-      { color: "Dark Yellow (Day Info)", hex: "#A96311", name: "@yellow-dark" },
+      { color: "Dark Yellow (Day Info)", hex: "#A96311", name: "@yellow-dark" }
     ],
     [
       { color: "Dark 1 (App Store Icons BG)", hex: "#000000", name: "@dark-1" },
       {
         color: "Dark 2 (Day Title, Subtitle, Selected)",
         hex: "#09161D",
-        name: "@dark-2",
+        name: "@dark-2"
       },
       { color: "Dark 3 (Night BG)", hex: "#17242D", name: "@dark-3" },
       {
         color: "Dark 4 (Night Cards/Sections BG)",
         hex: "#2B383F",
-        name: "@dark-4",
+        name: "@dark-4"
       },
       {
         color: "Dark 5 (Day P, Night Button, Night Cards)",
         hex: "#4F5E65",
-        name: "@dark-5",
-      },
+        name: "@dark-5"
+      }
     ],
     [
       { color: "Light 1 (Day Title + BG)", hex: "#FFFFFF", name: "@light-1" },
       {
         color: "Light 2 (Day Tip Page BG, Cards)",
         hex: "#F5F8FA",
-        name: "@light-2",
+        name: "@light-2"
       },
       { color: "Light 3 (Day Button)", hex: "#E3E8EB", name: "@light-3" },
       { color: "Light 4 (Night P)", hex: "#BDC2C4", name: "@light-4" },
       {
         color: "Light 5 (Day + Night Icons, Captions)",
         hex: "#91979A",
-        name: "@light-5",
-      },
+        name: "@light-5"
+      }
     ],
     [
       { color: "Blue", hex: "#36ADE0", name: "@blue" },
@@ -113,25 +113,23 @@ export default class Colors extends Vue {
       { color: "Dark Pink (Day", hex: "#C22571", name: "@pink-dark" },
       { color: "Purple", hex: "#C57BFF", name: "@purple" },
       { color: "Dark Purple (Day", hex: "#5E3BEC", name: "@purple-dark" },
-      { color: "Navy", hex: "#233A4A", name: "@navy" },
+      { color: "Navy", hex: "#233A4A", name: "@navy" }
     ],
     [
       { color: "Prime", hex: "#CAA368", name: "@prime" },
-      { color: "Dark Prime", hex: "#8F6F3F", name: "@prime-dark" },
-    ],
+      { color: "Dark Prime", hex: "#8F6F3F", name: "@prime-dark" }
+    ]
   ];
 
   get visibleMessages() {
     const msgs = this.messages.filter((msg, idx) => idx < 5);
 
-    msgs.forEach((msg) => {
+    msgs.forEach(msg => {
       if (!msg.timerStarted) {
         msg.timerStarted = true;
 
         setTimeout(() => {
-          const idx = this.messages.findIndex(
-            (message) => msg.id === message.id
-          );
+          const idx = this.messages.findIndex(message => msg.id === message.id);
           this.messages.splice(idx, 1);
         }, 5000);
       }
