@@ -16,6 +16,7 @@ components: {
       <DemoSection title="With Dropdown Icon" :code="demoCode">
         <template #components>
           <PaneDropdown :close-on-select="false">
+            <i slot="icon" class="icon-check-mark"></i>
             <span slot="title">Trending</span>
             <PaneDropdown :menuAlign="'center'">
               <span slot="title">Inner Dropdown</span>
@@ -24,9 +25,15 @@ components: {
               <a href="#">Item 3</a>
             </PaneDropdown>
             <hr />
-            <a href="#"> <i class="icon-leaderboard-4"></i>Most Installed </a>
-            <a href="#"> <i class="icon-loyalty"></i>Newly Added </a>
-            <a href="#"> <i class="icon-graph"></i>Trending </a>
+            <a href="#">
+              <i class="icon-leaderboard-4"></i>Most Installed
+            </a>
+            <a href="#">
+              <i class="icon-loyalty"></i>Newly Added
+            </a>
+            <a href="#">
+              <i class="icon-graph"></i>Trending
+            </a>
           </PaneDropdown>
         </template>
       </DemoSection>
@@ -131,7 +138,8 @@ components: {
             <td>null</td>
             <td>
               Default will align the menu to the left side of the toggle. Use
-              <code>right</code> or <code>center</code> to align the dropdown
+              <code>right</code> or
+              <code>center</code> to align the dropdown
               menu to the right or center of its toggle.
             </td>
           </tr>

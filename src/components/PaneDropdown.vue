@@ -18,22 +18,14 @@
       @keydown.tab.shift="hide"
     >
       <span>
+        <slot name="icon"></slot>
         <slot name="title"></slot>
         <i v-if="dropdownIcon" class="icon-dropdown"></i>
       </span>
     </div>
 
-    <transition
-      name="expand-dropdown"
-      @enter="open"
-      @after-enter="afterOpen"
-      @leave="close"
-    >
-      <div
-        v-if="paneMenuOpen"
-        :class="menuClasses"
-        class="s-pane-dropdown__menu"
-      >
+    <transition name="expand-dropdown" @enter="open" @after-enter="afterOpen" @leave="close">
+      <div v-if="paneMenuOpen" :class="menuClasses" class="s-pane-dropdown__menu">
         <slot v-if="custom"></slot>
         <div
           ref="paneList"
@@ -312,6 +304,10 @@ export default class PaneDropdown extends Vue {
     }
 
     i {
+      .margin-right();
+    }
+
+    .icon-dropdown {
       color: @icon;
       .margin-left();
       margin-top: -2px;
