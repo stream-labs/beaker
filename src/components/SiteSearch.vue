@@ -337,15 +337,20 @@ export default class SiteSearch extends Vue {
   }
 
   .s-sitesearch__input {
-    margin: 0;
-    border: none;
+    flex: 1 0 100%;
+    width: 100%;
     height: 39px;
-    font-size: 14px;
+    margin: 0;
     .padding--input();
-    background: @day-input-bg;
+    border: none;
+    font-size: 14px;
     font-family: "Roboto";
     color: @day-title;
-    width: 100%;
+    background: @day-input-bg;
+
+    &:focus {
+      border: none;
+    }
   }
 
   ::placeholder {
