@@ -4,7 +4,7 @@
     :class="[
       { 's-sitesearch--is-open': isOpen },
       { 's-sitesearch--phase-one': phaseOne },
-      { 's-sitesearch--phase-two': phaseTwo }
+      { 's-sitesearch--phase-two': phaseTwo },
     ]"
     :style="calcHeight"
   >
@@ -122,9 +122,9 @@ export default class SiteSearch extends Vue {
   quickLinks!: any[];
 
   get suggestedLinks() {
-    return this.quickLinks.filter(i => {
+    return this.quickLinks.filter((i) => {
       let findResult: any = this.searchData.find(
-        data => data.name === i.item.name
+        (data) => data.name === i.item.name
       );
       let suggestResult: any = this.searchData.indexOf(findResult);
       this.quickLinkLoc.push(suggestResult);
@@ -149,13 +149,13 @@ export default class SiteSearch extends Vue {
       keys: [
         {
           name: "keywords",
-          weight: 0.9
+          weight: 0.9,
         },
         {
           name: "title",
-          weight: 0.1
-        }
-      ]
+          weight: 0.1,
+        },
+      ],
     };
     return options;
   }
@@ -298,8 +298,12 @@ export default class SiteSearch extends Vue {
   }
 
   sortWeight(a, b) {
-    let aResult: any = this.result.find(data => data.item.name === a.item.name);
-    let bResult: any = this.result.find(data => data.item.name === b.item.name);
+    let aResult: any = this.result.find(
+      (data) => data.item.name === a.item.name
+    );
+    let bResult: any = this.result.find(
+      (data) => data.item.name === b.item.name
+    );
     return b.item.weight * bResult.score - a.item.weight * aResult.score;
   }
 
@@ -337,7 +341,7 @@ export default class SiteSearch extends Vue {
   }
 
   .s-sitesearch__input {
-    flex: 1 0 100%;
+    flex: 1 0 ~"calc(100% - 2px)";
     width: 100%;
     height: 39px;
     margin: 0;
