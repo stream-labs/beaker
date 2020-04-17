@@ -54,61 +54,44 @@
         </transition>
 
         <div
-          @mouseenter="showMediaControls = true"
-          @mouseleave="showMediaControls = false"
+          @mouseenter="mediaControlsVisible = true"
+          @mouseleave="mediaControlsVisible = false"
           class="s-media-picker__controls s-media-picker__controls--small"
         >
-          <i v-if="mediaPickerSmall && !showMediaControls" class="icon-add"></i>
+          <i
+            v-if="mediaPickerSmall && !mediaControlsVisible"
+            class="icon-add"
+            :tabindex="mediaPickerSmall && !mediaControlsVisible ? 0 : -1"
+            v-focus="focused === -1"
+            @focus="focused = -1"
+            @keydown.space.prevent="showMediaControls"
+            @keydown.enter.prevent="showMediaControls"
+          ></i>
 
-          <div
-            v-if="!mediaPickerSmall || showMediaControls"
+          <transition-group
+            v-else
+            tag="div"
+            mode="out-in"
+            name="fade"
             class="s-media-picker__controls-group"
           >
             <a
-              v-if="mediaLink"
-              class="s-media-picker__link-icon"
-              @click.stop="$emit('link-media')"
-              :title="`Link ${variationTitle}`"
-              ><i class="icon-link"></i>
+              v-for="(control, index) in mediaControls"
+              :key="control.key"
+              :class="control.class"
+              :title="control.title"
+              v-focus="focused === index"
+              :tabindex="focused === index ? 0 : -1"
+              @focus="focused = index"
+              @click.stop="$emit(control.emit)"
+              @keydown.tab="onTabOut"
+              @keydown.space.prevent="$emit(control.emit)"
+              @keydown.enter.prevent="$emit(control.emit)"
+              @keydown.left.prevent="moveLeft()"
+              @keydown.right.prevent="moveRight()"
+              ><i :class="control.icon"></i>
             </a>
-
-            <transition mode="out-in" name="fade">
-              <a
-                v-if="variation === 'image' && media.selected && !mediaBroken"
-                key="media-selected-play"
-                class="s-media-picker__zoom-icon"
-                @click.stop="$emit('preview-media')"
-                :title="`Preview ${variationTitle}`"
-                ><i class="icon-zoom"></i>
-              </a>
-
-              <a
-                v-if="variation === 'audio' && media.selected && !mediaBroken"
-                key="media-selected-zoom"
-                class="s-media-picker__play-icon"
-                @click.stop="$emit('preview-media')"
-                :title="`Preview ${variationTitle}`"
-                ><i class="icon-media-share-2"></i>
-              </a>
-            </transition>
-
-            <transition mode="out-in" name="fade">
-              <a
-                v-if="media.selected"
-                class="s-media-picker__small-remove"
-                @click.stop="removeMedia"
-                :title="`Remove ${variationTitle}`"
-                ><i class="icon-close"></i>
-              </a>
-            </transition>
-
-            <a
-              class="s-media-picker__small-remove"
-              @click.stop="selectMedia"
-              :title="`Select ${variationTitle}`"
-              ><i class="icon-upload-image"></i>
-            </a>
-          </div>
+          </transition-group>
         </div>
       </div>
     </div>
@@ -117,13 +100,16 @@
 
 <script lang="ts">
 import { Component, Watch, Prop, Vue, Emit } from "vue-property-decorator";
+import { mixin as vFocus } from "vue-focus";
 import ResizeObserver from "resize-observer-polyfill";
 import Button from "./../components/Button.vue";
 
 @Component({
   components: {
     Button
-  }
+  },
+
+  mixins: [vFocus]
 })
 export default class MediaPicker extends Vue {
   $refs!: {
@@ -141,7 +127,60 @@ export default class MediaPicker extends Vue {
 
   mediaPickerSmall = false;
   mediaBroken = false;
-  showMediaControls = false;
+  mediaControlsVisible = false;
+  focused = 0;
+
+  get mediaControls() {
+    const controlData = [
+      {
+        key: "media-link",
+        available: !!this.mediaLink,
+        class: "s-media-picker__link-icon",
+        emit: "link-media",
+        title: `Link ${this.variationTitle}`,
+        icon: "icon-link"
+      },
+      {
+        key: "media-selected-zoom",
+        available:
+          this.variation === "image" &&
+          this.media.selected &&
+          !this.mediaBroken,
+        class: "s-media-picker__zoom-icon",
+        emit: "preivew-media",
+        title: `Preview ${this.variationTitle}`,
+        icon: "icon-zoom"
+      },
+      {
+        key: "media-selected-play",
+        available:
+          !this.mediaBroken &&
+          this.variation === "audio" &&
+          this.media.selected,
+        class: "s-media-picker__play-icon",
+        emit: "preview-media",
+        title: `preview ${this.variationTitle}`,
+        icon: "icon-media-share-2"
+      },
+      {
+        key: "media-remove",
+        available: this.media.selected,
+        class: "s-media-picker__small-remove",
+        emit: "remove-media",
+        title: `Remove ${this.variationTitle}`,
+        icon: "icon-close"
+      },
+      {
+        key: "media-select",
+        available: true,
+        class: "s-media-picker__small-remove",
+        emit: "select-media",
+        title: `Select ${this.variationTitle}`,
+        icon: "icon-upload-image"
+      }
+    ];
+    return controlData.filter(control => control.available);
+  }
 
   get mediaInputPlaceholder() {
     return this.variation === "audio"
@@ -174,6 +213,18 @@ export default class MediaPicker extends Vue {
     this.setBrokenMedia(null);
   }
 
+  @Watch("mediaControlsVisible")
+  watchMediaControlsVisible() {
+    if (this.mediaPickerSmall && !this.mediaControlsVisible) {
+      this.focused = -1;
+    }
+  }
+
+  @Watch("mediaControls")
+  watchMediaControls(newVal) {
+    this.focused = newVal.length - 1;
+  }
+
   mounted() {
     const ro = new ResizeObserver((entries, observer) => {
       for (const entry of entries) {
@@ -183,18 +234,28 @@ export default class MediaPicker extends Vue {
     });
 
     ro.observe(this.$refs.mediaPicker);
+    this.focused = this.mediaControls.length - 1;
   }
 
   setBrokenMedia(event) {
     this.mediaBroken = event ? true : false;
   }
 
-  selectMedia() {
-    this.$emit("select-media");
+  onTabOut() {
+    if (this.mediaPickerSmall) this.mediaControlsVisible = false;
   }
 
-  removeMedia() {
-    this.$emit("remove-media");
+  moveRight() {
+    this.focused = Math.min(this.focused + 1, this.mediaControls.length - 1);
+  }
+
+  moveLeft() {
+    this.focused = Math.max(this.focused - 1, 0);
+  }
+
+  showMediaControls() {
+    this.mediaControlsVisible = true;
+    this.focused = this.mediaControls.length - 1;
   }
 }
 </script>

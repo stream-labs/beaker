@@ -71,7 +71,9 @@ components: {
           <td>type</td>
           <td>string</td>
           <td>text</td>
-          <td>This can be either text or input (supply content slot for input)</td>
+          <td>
+            This can be either text or input (supply content slot for input)
+          </td>
         </tr>
       </tbody>
     </table>
