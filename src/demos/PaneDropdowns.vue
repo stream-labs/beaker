@@ -2,6 +2,7 @@
   <div>
     <div class="section">
       <h1>Pane Dropdowns</h1>
+      <p>Dropdown menu used on Streamlabs.com</p>
 
       <pre><code>import { PaneDropdown } from 'streamlabs-beaker';
 
@@ -11,15 +12,21 @@ components: {
     </div>
 
     <div class="section">
-      <h2>With Dropdown Icon</h2>
-
+      <h2>Using Slots</h2>
       <DemoSection title="With Dropdown Icon" :code="demoCode">
         <template #components>
-          <PaneDropdown>
+          <PaneDropdown :close-on-select="false">
             <span slot="title">Trending</span>
-            <a href="#"> <i class="icon-check"></i>Most Installed </a>
-            <a href="#"> <i class="icon-delete"></i>Newly Added </a>
-            <a href="#">Trending</a>
+            <PaneDropdown :menuAlign="'center'">
+              <span slot="title">Inner Dropdown</span>
+              <a href="#">Item 1</a>
+              <a href="#">Item 2</a>
+              <a href="#">Item 3</a>
+            </PaneDropdown>
+            <hr />
+            <a href="#"> <i class="icon-leaderboard-4"></i>Most Installed </a>
+            <a href="#"> <i class="icon-loyalty"></i>Newly Added </a>
+            <a href="#"> <i class="icon-graph"></i>Trending </a>
           </PaneDropdown>
         </template>
       </DemoSection>
@@ -104,21 +111,23 @@ components: {
           <tr>
             <th>Prop</th>
             <th>Type</th>
+            <th>Required</th>
             <th>Default</th>
             <th>Description</th>
           </tr>
         </thead>
         <tbody>
-          <tr></tr>
           <tr>
             <td>dropdownIcon</td>
             <td>boolean</td>
+            <td>false</td>
             <td>true</td>
             <td>Show or hide dropdown icon.</td>
           </tr>
           <tr>
             <td>menuAlign</td>
             <td>string</td>
+            <td>false</td>
             <td>null</td>
             <td>
               Default will align the menu to the left side of the toggle. Use
@@ -129,6 +138,7 @@ components: {
           <tr>
             <td>closeOnSelect</td>
             <td>boolean</td>
+            <td>false</td>
             <td>true</td>
             <td>Close the dropdown when a link is clicked.</td>
           </tr>
@@ -136,11 +146,13 @@ components: {
             <td>autoHeight</td>
             <td>boolean</td>
             <td>false</td>
+            <td>false</td>
             <td>No max height</td>
           </tr>
           <tr>
             <td>relativeMenu</td>
             <td>boolean</td>
+            <td>false</td>
             <td>false</td>
             <td>
               Change the menu from position absolute to relative so it pushes
@@ -150,6 +162,7 @@ components: {
           <tr>
             <td>simpleMenu</td>
             <td>boolean</td>
+            <td>false</td>
             <td>false</td>
             <td>Removes menues bg colors, box shadow and paddinga.</td>
           </tr>

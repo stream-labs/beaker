@@ -3,8 +3,8 @@
     <div class="section">
       <h1>Colors</h1>
       <p>
-        Colors used on Streamlabs platforms. Click on a color to copy its hex
-        code to the clipboard.
+        Colors used on Streamlabs platforms. Click on a color to copy its
+        variable code to the clipboard.
       </p>
     </div>
 
@@ -17,7 +17,7 @@
         v-for="color in colorGroup"
         :key="color.color"
         class="side-by-side"
-        v-clipboard:copy="color.hex"
+        v-clipboard:copy="color.name"
         v-clipboard:success="emitCopySuccess"
         v-clipboard:error="emitCopyError"
       >
@@ -31,7 +31,10 @@
             <i class="icon-copy"></i>
           </div>
         </div>
-        <span class="hex">{{ color.hex }}</span>
+        <div>
+          <span class="name">{{ color.name }}</span>
+          <span class="hex">{{ color.hex }}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -52,41 +55,69 @@ interface INotificationMsg {
 export default class Colors extends Vue {
   messages: INotificationMsg[] = [];
 
-  private colors: object = [
+  private colors = [
     [
-      { color: "Teal (Night primary)", hex: "#31C3A2" },
-      { color: "Dark Teal (Day primary)", hex: "#128079" },
-      { color: "Red (Count Badges, Warnings, Errors)", hex: "#F85640" },
+      { color: "Teal (Night primary)", hex: "#31C3A2", name: "@teal" },
+      { color: "Dark Teal (Day primary)", hex: "#128079", name: "@teal-dark" },
+      {
+        color: "Red (Count Badges, Warnings, Errors)",
+        hex: "#F85640",
+        name: "@red"
+      },
       {
         color: "Dark Red (Day Count Badges, Warnings, Errors)",
-        hex: "#B14334"
+        hex: "#B14334",
+        name: "@red-dark"
       },
-      { color: "Yellow (Night Info)", hex: "#E3973E" },
-      { color: "Dark Yellow (Day Info)", hex: "#A96311" }
+      { color: "Yellow (Night Info)", hex: "#E3973E", name: "@yellow" },
+      { color: "Dark Yellow (Day Info)", hex: "#A96311", name: "@yellow-dark" }
     ],
     [
-      { color: "Dark 1 (App Store Icons BG)", hex: "#000000" },
-      { color: "Dark 2 (Day Title, Subtitle, Selected)", hex: "#09161D" },
-      { color: "Dark 3 (Night BG)", hex: "#17242D" },
-      { color: "Dark 4 (Night Cards/Sections BG)", hex: "#2B383F" },
-      { color: "Dark 5 (Day P, Night Button, Night Cards)", hex: "#4F5E65" }
+      { color: "Dark 1 (App Store Icons BG)", hex: "#000000", name: "@dark-1" },
+      {
+        color: "Dark 2 (Day Title, Subtitle, Selected)",
+        hex: "#09161D",
+        name: "@dark-2"
+      },
+      { color: "Dark 3 (Night BG)", hex: "#17242D", name: "@dark-3" },
+      {
+        color: "Dark 4 (Night Cards/Sections BG)",
+        hex: "#2B383F",
+        name: "@dark-4"
+      },
+      {
+        color: "Dark 5 (Day P, Night Button, Night Cards)",
+        hex: "#4F5E65",
+        name: "@dark-5"
+      }
     ],
     [
-      { color: "Light 1 (Day Title + BG)", hex: "#FFFFFF" },
-      { color: "Light 2 (Day Tip Page BG, Cards)", hex: "#F5F8FA" },
-      { color: "Light 3 (Day Button)", hex: "#E3E8EB" },
-      { color: "Light 4 (Night P)", hex: "#BDC2C4" },
-      { color: "Light 5 (Day + Night Icons, Captions)", hex: "#91979A" }
+      { color: "Light 1 (Day Title + BG)", hex: "#FFFFFF", name: "@light-1" },
+      {
+        color: "Light 2 (Day Tip Page BG, Cards)",
+        hex: "#F5F8FA",
+        name: "@light-2"
+      },
+      { color: "Light 3 (Day Button)", hex: "#E3E8EB", name: "@light-3" },
+      { color: "Light 4 (Night P)", hex: "#BDC2C4", name: "@light-4" },
+      {
+        color: "Light 5 (Day + Night Icons, Captions)",
+        hex: "#91979A",
+        name: "@light-5"
+      }
     ],
     [
-      { color: "Blue", hex: "#36ADE0" },
-      { color: "Pink", hex: "#EB7777" },
-      { color: "Purple", hex: "#5E3BEC" },
-      { color: "Navy", hex: "#233A4A" }
+      { color: "Blue", hex: "#36ADE0", name: "@blue" },
+      { color: "Dark Blue (Day", hex: "#2B5BD7", name: "@blue-dark" },
+      { color: "Pink", hex: "#EB7777", name: "@pink" },
+      { color: "Dark Pink (Day", hex: "#C22571", name: "@pink-dark" },
+      { color: "Purple", hex: "#C57BFF", name: "@purple" },
+      { color: "Dark Purple (Day", hex: "#5E3BEC", name: "@purple-dark" },
+      { color: "Navy", hex: "#233A4A", name: "@navy" }
     ],
     [
-      { color: "Prime", hex: "#CAA368" },
-      { color: "Dark Prime", hex: "#8F6F3F" }
+      { color: "Prime", hex: "#CAA368", name: "@prime" },
+      { color: "Dark Prime", hex: "#8F6F3F", name: "@prime-dark" }
     ]
   ];
 
