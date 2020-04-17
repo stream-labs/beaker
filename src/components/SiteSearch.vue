@@ -22,9 +22,9 @@
         @blur.stop.prevent="playClosingSequence"
         @keyup.stop.prevent="keyEvent"
       />
-      <div class="s-sitesearch-status__cont">
+      <!-- <div class="s-sitesearch-status__cont">
         <div v-if="noResults">No Results</div>
-      </div>
+      </div> -->
     </div>
     <transition-group name="s-sitesearch--fadeY">
       <div
@@ -337,7 +337,7 @@ export default class SiteSearch extends Vue {
   }
 
   .s-sitesearch__input {
-    flex: 1 0 100%;
+    flex: 1 0 ~"calc(100% - 2px)";
     width: 100%;
     height: 39px;
     margin: 0;
