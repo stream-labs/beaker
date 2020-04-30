@@ -134,6 +134,42 @@
         </template>
       </DemoSection>
     </div>
+
+    <div class="section">
+      <h2>Modal Prime Intro</h2>
+      <pre><code>import { ModalComp } from "streamlabs-beaker"
+
+@Component({
+  components: {
+    ModalComp
+  }
+})</code></pre>
+
+      <DemoSection title="Prime Intro Modal" :code="demoCode">
+        <template #components>
+          <ModalComp
+            type="prime-intro"
+            :width="680"
+            @onClickPrime="testPrimeIntro"
+            :hasPrimeCloseButton="true"
+          >
+            <div slot="title">to publish your website!</div>
+            <div slot="subtitle">
+              You will get
+              <u>nulllive.net</u> domain along with
+            </div>
+          </ModalComp>
+
+          <div class="button-container button-container--left">
+            <Button
+              variation="default"
+              title="Modal Prime Intro"
+              @click="$modal.show('modal-prime-intro')"
+            />
+          </div>
+        </template>
+      </DemoSection>
+    </div>
   </div>
 </template>
 
@@ -173,6 +209,10 @@ export default class PrimeComponents extends Vue {
 
   testWelcomePrime() {
     console.log("test welcome prime click");
+  }
+
+  testPrimeIntro() {
+    console.log("test prime info click");
   }
 }
 </script>
