@@ -38,8 +38,8 @@
         <li class="modal-prime-intro__list__item">
           <i class="icon-phone-case" /> Stream on mobile
         </li>
-        <span class="modal-prime-intro__list__price">...only from $12/month</span>
       </ul>
+      <span class="modal-prime-intro__price">...only from $12/month</span>
       <div class="modal-prime-intro__button">
         <s-button
           size="large"
@@ -121,8 +121,8 @@ export default class PrimeIntro extends Vue {
   &__heading {
     font-size: 48px;
     font-weight: 800;
-    line-height: 58px;
     .margin-bottom(2.5);
+    line-height: normal;
 
     &--subtitle {
       .margin-top(5);
@@ -144,21 +144,21 @@ export default class PrimeIntro extends Vue {
     &__item {
       font-weight: 500;
       font-size: 20px;
-      line-height: 23px;
       .margin-bottom(1.5);
       color: @dark-6;
       .flex();
       align-items: center;
+      line-height: normal;
 
       i {
         .margin-right(2);
       }
     }
+  }
 
-    &__price {
-      font-size: 12px;
-      font-weight: 500;
-    }
+  &__price {
+    font-size: 12px;
+    font-weight: 500;
   }
 
   &__button {
