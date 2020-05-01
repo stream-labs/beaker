@@ -10,7 +10,8 @@
     />
     <div class="modal-prime-intro">
       <div class="modal-prime-intro__heading">
-        Join Prime
+        Join
+        <span class="modal-prime-intro__heading--bold">Prime</span>
         <br />
 
         <slot v-if="hasTitleSlot" name="title"></slot>
@@ -21,24 +22,24 @@
           <span v-else>You will get your domain along with</span>
         </div>
       </div>
-      <div class="modal-prime-intro__list">
-        <div class="modal-prime-intro__list__item">
+      <ul class="modal-prime-intro__list">
+        <li class="modal-prime-intro__list__item">
           <i class="icon-themes" /> Overlay, widget & site themes
-        </div>
-        <div class="modal-prime-intro__list__item">
+        </li>
+        <li class="modal-prime-intro__list__item">
           <i class="icon-store" /> FREE apps
-        </div>
-        <div class="modal-prime-intro__list__item">
+        </li>
+        <li class="modal-prime-intro__list__item">
           <i class="icon-upperwear" /> Custom merch store
-        </div>
-        <div class="modal-prime-intro__list__item">
+        </li>
+        <li class="modal-prime-intro__list__item">
           <i class="icon-loyalty" /> Gold status + FREE t-shirt
-        </div>
-        <div class="modal-prime-intro__list__item">
-          <i class="icon-phone" /> Stream on mobile
-        </div>
-        <span>...only from $12/month</span>
-      </div>
+        </li>
+        <li class="modal-prime-intro__list__item">
+          <i class="icon-phone-case" /> Stream on mobile
+        </li>
+        <span class="modal-prime-intro__list__price">...only from $12/month</span>
+      </ul>
       <div class="modal-prime-intro__button">
         <s-button
           size="large"
@@ -108,7 +109,7 @@ export default class PrimeIntro extends Vue {
 
     &--components {
       width: 386px;
-      bottom: 0;
+      bottom: 27px;
       right: 0;
 
       @media (max-width: 680px) {
@@ -121,31 +122,48 @@ export default class PrimeIntro extends Vue {
     font-size: 48px;
     font-weight: 800;
     line-height: 58px;
-    .margin-bottom(3);
+    .margin-bottom(2.5);
 
     &--subtitle {
       .margin-top(5);
       font-weight: bold;
       font-size: 20px;
     }
+
+    &--bold {
+      font-family: "Barlow";
+      font-weight: 900;
+    }
   }
 
   &__list {
-    font-size: 12px;
+    list-style: none;
+    margin-block-start: 0;
+    padding-inline-start: 0;
+
     &__item {
       font-weight: 500;
       font-size: 20px;
       line-height: 23px;
       .margin-bottom(1.5);
+      color: @dark-6;
+      .flex();
+      align-items: center;
 
       i {
         .margin-right(2);
       }
     }
+
+    &__price {
+      font-size: 12px;
+      font-weight: 500;
+    }
   }
 
   &__button {
     .margin-top(5);
+    width: 176px;
   }
 }
 </style>

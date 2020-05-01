@@ -48,8 +48,8 @@ export default class ModalPrimeIntro extends Vue {
 
 .modal-prime__close {
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 26px;
+  right: 30px;
   z-index: 100;
 
   .icon-close {
