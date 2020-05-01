@@ -92,6 +92,10 @@ export default class PrimeIntro extends Vue {
   .radius();
   position: relative;
   color: @dark-2;
+
+  @media (max-width: 680px) {
+    .padding-h-sides(2);
+  }
 }
 
 .modal-prime-intro {
@@ -113,8 +117,7 @@ export default class PrimeIntro extends Vue {
       right: 0;
 
       @media (max-width: 680px) {
-        width: 30%;
-        bottom: 20%;
+        display: none;
       }
     }
   }
