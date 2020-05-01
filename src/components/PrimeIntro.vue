@@ -166,7 +166,13 @@ export default class PrimeIntro extends Vue {
 
   &__button {
     .margin-top(5);
-    width: 176px;
+  }
+}
+
+.s-button {
+  width: 176px;
+  @media (max-width: 680px) {
+    width: 100%;
   }
 }
 </style>
