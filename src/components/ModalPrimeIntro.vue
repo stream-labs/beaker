@@ -12,7 +12,7 @@
     <div class="modal-prime__close" v-if="hasPrimeCloseButton">
       <i class="icon-close" @click="$modal.hide(name)"></i>
     </div>
-    <PrimeIntro>
+    <PrimeIntro v-on="$listeners">
       <slot v-for="(_, name) in $slots" :name="name" :slot="name" />
     </PrimeIntro>
   </modal>
