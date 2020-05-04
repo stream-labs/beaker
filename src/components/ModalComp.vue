@@ -78,6 +78,19 @@
         <slot></slot>
       </ModalPrime>
     </div>
+
+    <div v-if="type === 'prime-intro'">
+      <ModalPrimeIntro
+        :name="modalName"
+        :width="680"
+        :minWidth="minWidth"
+        :primeButtonText="primeButtonText"
+        :hasPrimeCloseButton="hasPrimeCloseButton"
+        v-on="$listeners"
+      >
+        <slot v-for="(_, name) in $slots" :name="name" :slot="name" />
+      </ModalPrimeIntro>
+    </div>
   </div>
 </template>
 
@@ -89,6 +102,7 @@ import ModalSubscribe from "./../components/ModalSubscribe.vue";
 import ModalRedirect from "./../components/ModalRedirect.vue";
 import ModalConfirmation from "./../components/ModalConfirmation.vue";
 import ModalPrime from "./../components/ModalPrime.vue";
+import ModalPrimeIntro from "./../components/ModalPrimeIntro.vue";
 import VModal from "vue-js-modal";
 
 Vue.use(VModal);
@@ -100,7 +114,8 @@ Vue.use(VModal);
     ModalSubscribe,
     ModalRedirect,
     ModalConfirmation,
-    ModalPrime
+    ModalPrime,
+    ModalPrimeIntro
   }
 })
 export default class ModalComp extends Vue {
@@ -212,6 +227,14 @@ export default class ModalComp extends Vue {
           this.modalName = this.name;
         } else {
           this.modalName = "modal-welcome-prime";
+        }
+        break;
+
+      case "prime-intro":
+        if (this.name) {
+          this.modalName = this.name;
+        } else {
+          this.modalName = "modal-prime-intro";
         }
         break;
     }
