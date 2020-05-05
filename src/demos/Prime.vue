@@ -152,13 +152,7 @@
             :width="680"
             @onClickPrime="testPrimeIntro"
             :hasPrimeCloseButton="true"
-          >
-            <div slot="title">to publish your website!</div>
-            <div slot="subtitle">
-              You will get
-              <u>nulllive.net</u> domain along with
-            </div>
-          </ModalComp>
+          />
 
           <div class="button-container button-container--left">
             <Button
