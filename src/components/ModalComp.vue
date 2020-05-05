@@ -88,7 +88,7 @@
         :hasPrimeCloseButton="hasPrimeCloseButton"
         v-on="$listeners"
       >
-        <slot v-for="(_, name) in $slots" :name="name" :slot="name" />
+        <slot></slot>
       </ModalPrimeIntro>
     </div>
   </div>

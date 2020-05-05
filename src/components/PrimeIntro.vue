@@ -14,12 +14,14 @@
         <span class="modal-prime-intro__heading--bold">Prime</span>
         <br />
 
-        <slot v-if="hasTitleSlot" name="title"></slot>
-        <span v-else>to publish your website!</span>
+        <slot v-if="hasSlot"></slot>
+        <div v-else>
+          <span>to publish your website!</span>
 
-        <div class="modal-prime-intro__heading--subtitle">
-          <slot v-if="hasSubtitleSlot" name="subtitle"></slot>
-          <span v-else>You will get your domain along with</span>
+          <div class="modal-prime-intro__heading--subtitle">
+            <slot v-if="hasSubtitleSlot" name="subtitle"></slot>
+            <span v-else>You will get your domain along with</span>
+          </div>
         </div>
       </div>
       <ul class="modal-prime-intro__list">
@@ -65,8 +67,6 @@ export default class PrimeIntro extends Vue {
   @Prop({ default: "Join Prime" })
   primeButtonText!: string;
 
-  isUserAgentEdge: boolean = false;
-
   onPrimeButtonHandler() {
     this.$emit("onClickPrime");
   }
@@ -77,6 +77,10 @@ export default class PrimeIntro extends Vue {
 
   get hasSubtitleSlot() {
     return !(typeof this.$slots.subtitle === "undefined");
+  }
+
+  get hasSlot() {
+    return !(typeof this.$slots.default === "undefined");
   }
 }
 </script>
