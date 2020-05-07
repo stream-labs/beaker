@@ -19,9 +19,7 @@
   >
     <span v-if="!$slots.custom">
       <span>
-        <span v-if="variation === 'prime-simple' && this.primeTitle">
-          {{ primeTitle }}
-        </span>
+        <span v-if="variation === 'prime-simple' && this.primeTitle">{{ primeTitle }}</span>
         <span v-else-if="variation === 'prime-simple'" class="prime-simple">
           Free with
           <span class="prime-simple__bold">Prime</span>
@@ -32,18 +30,27 @@
         </i>
         {{ title }}
       </span>
-      <span v-if="description" class="s-button__description">
-        {{ description }}
-      </span>
-      <i
-        v-if="iconClass && iconPosition === 'right'"
-        :class="['icon--right', iconClass]"
-      ></i>
+      <span v-if="description" class="s-button__description">{{ description }}</span>
+      <i v-if="iconClass && iconPosition === 'right'" :class="['icon--right', iconClass]"></i>
     </span>
 
     <slot name="custom"></slot>
     <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
     <span v-if="price">{{ price }}</span>
+    <div v-if="variation === 'slobs-download-landing'" class="slobs-download-landing">
+      <div class="slobs-download-landing__upper">
+        <i
+          class="slobs-download-landing__icon"
+          :class="osType === 'windows' ? 'icon-windows' : 'icon-app-store'"
+        />
+        <p class="slobs-download-landing__title">{{slobsDownloadTitle}}</p>
+      </div>
+      <div class="slobs-download-landing__bottom">
+        <p class="slobs-download-landing__subtitle">
+          <slot name="slobs-download-detail" />
+        </p>
+      </div>
+    </div>
   </component>
 </template>
 
@@ -155,6 +162,16 @@ export default class Button extends Vue {
   primeTitle!: {
     type: String;
     default: null;
+  };
+
+  @Prop({ default: "Download Streamlabs" })
+  slobsDownloadTitle!: {
+    type: String;
+  };
+
+  @Prop({ default: "windows" })
+  osType!: {
+    type: String;
   };
 
   private rippleStartX = 0;
@@ -491,6 +508,60 @@ export default class Button extends Vue {
     font-size: 16px;
     color: @white;
     margin-left: 40px;
+  }
+}
+
+.s-button--slobs-download-landing {
+  .btn-variant(@dark-4);
+  background: @dark-2;
+  height: 88px;
+  border-radius: 100px;
+}
+
+.slobs-download-landing {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-row-gap: 12px;
+  padding: 18px 24px;
+  justify-content: center;
+
+  &__upper {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 12px;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &__icon {
+    color: @white !important;
+    .margin-right(0) !important;
+  }
+
+  &__title {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: @white !important;
+    .margin-bottom(0);
+  }
+
+  &__subtitle {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: @white !important;
+    opacity: 0.8;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: flex-start;
+    grid-column-gap: 12px;
+    .margin-bottom(0);
+    word-spacing: 8px;
   }
 }
 
@@ -897,6 +968,10 @@ export default class Button extends Vue {
   .s-button--rewards-platinum {
     border-color: @night-all-stars-platinum;
     color: @night-all-stars-platinum !important;
+  }
+
+  .s-button--slobs-download-landing {
+    .night-btn-variant(@dark-5);
   }
 }
 
