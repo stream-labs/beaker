@@ -280,10 +280,12 @@ components: {
         <p>Used for Download Streamlabs OBS buttons.</p>
         <DemoSection title="Download" :code="demoCode">
           <template #components>
-            <Button variation="slobs-download" title="Download Streamlabs OBS" />
-            <Button variation="slobs-download-landing" osType="mac">
-              <template slot="slobs-download-detail">Free Mac ~240MB</template>
-            </Button>
+            <div class="s-button-container s-button-container--left">
+              <Button variation="slobs-download" title="Download Streamlabs OBS" />
+              <Button variation="slobs-download-landing" osType="mac">
+                <template slot="slobs-download-detail">Free Mac ~240MB</template>
+              </Button>
+            </div>
           </template>
         </DemoSection>
       </div>
