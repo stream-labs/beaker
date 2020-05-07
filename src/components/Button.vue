@@ -523,6 +523,7 @@ export default class Button extends Vue {
   grid-template-rows: auto auto;
   grid-row-gap: 12px;
   padding: 18px 24px;
+  justify-content: center;
 
   &__upper {
     display: grid;
