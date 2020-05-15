@@ -19,7 +19,9 @@
   >
     <span v-if="!$slots.custom">
       <span>
-        <span v-if="variation === 'prime-simple' && this.primeTitle">{{ primeTitle }}</span>
+        <span v-if="variation === 'prime-simple' && this.primeTitle">{{
+          primeTitle
+        }}</span>
         <span v-else-if="variation === 'prime-simple'" class="prime-simple">
           Free with
           <span class="prime-simple__bold">Prime</span>
@@ -30,20 +32,28 @@
         </i>
         {{ title }}
       </span>
-      <span v-if="description" class="s-button__description">{{ description }}</span>
-      <i v-if="iconClass && iconPosition === 'right'" :class="['icon--right', iconClass]"></i>
+      <span v-if="description" class="s-button__description">{{
+        description
+      }}</span>
+      <i
+        v-if="iconClass && iconPosition === 'right'"
+        :class="['icon--right', iconClass]"
+      ></i>
     </span>
 
     <slot name="custom"></slot>
     <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
     <span v-if="price">{{ price }}</span>
-    <div v-if="variation === 'slobs-download-landing'" class="slobs-download-landing">
+    <div
+      v-if="variation === 'slobs-download-landing'"
+      class="slobs-download-landing"
+    >
       <div class="slobs-download-landing__upper">
         <i
           class="slobs-download-landing__icon"
           :class="osType === 'windows' ? 'icon-windows' : 'icon-app-store'"
         />
-        <p class="slobs-download-landing__title">{{slobsDownloadTitle}}</p>
+        <p class="slobs-download-landing__title">{{ slobsDownloadTitle }}</p>
       </div>
       <div class="slobs-download-landing__bottom">
         <p class="slobs-download-landing__subtitle">

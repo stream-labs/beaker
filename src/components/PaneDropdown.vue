@@ -30,7 +30,7 @@
       @leave="close"
     >
       <div
-        v-if="paneMenuOpen"
+        v-show="paneMenuOpen"
         :class="menuClasses"
         class="s-pane-dropdown__menu"
       >
