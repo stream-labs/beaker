@@ -19,9 +19,11 @@
   >
     <span v-if="!$slots.custom">
       <span>
-        <span v-if="variation === 'prime-simple' && this.primeTitle">{{
+        <span v-if="variation === 'prime-simple' && this.primeTitle">
+          {{
           primeTitle
-        }}</span>
+          }}
+        </span>
         <span v-else-if="variation === 'prime-simple'" class="prime-simple">
           Free with
           <span class="prime-simple__bold">Prime</span>
@@ -32,32 +34,25 @@
         </i>
         {{ title }}
       </span>
-      <span v-if="description" class="s-button__description">{{
+      <span v-if="description" class="s-button__description">
+        {{
         description
-      }}</span>
-      <i
-        v-if="iconClass && iconPosition === 'right'"
-        :class="['icon--right', iconClass]"
-      ></i>
+        }}
+      </span>
+      <i v-if="iconClass && iconPosition === 'right'" :class="['icon--right', iconClass]"></i>
     </span>
 
     <slot name="custom"></slot>
     <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
     <span v-if="price">{{ price }}</span>
-    <div
-      v-if="variation === 'slobs-download-landing'"
-      class="slobs-download-landing"
-    >
+    <div v-if="variation === 'slobs-download-landing'" class="slobs-download-landing">
       <div class="slobs-download-landing__upper">
-        <i
-          class="slobs-download-landing__icon"
-          :class="osType === 'windows' ? 'icon-windows' : 'icon-app-store'"
-        />
+        <i class="slobs-download-landing__icon" :class="slobsDownloadIconClass" />
         <p class="slobs-download-landing__title">{{ slobsDownloadTitle }}</p>
       </div>
       <div class="slobs-download-landing__bottom">
         <p class="slobs-download-landing__subtitle">
-          <slot name="slobs-download-detail" />
+          <span v-for="text in slobsDownloadText" :key="text" v-text="text"></span>
         </p>
       </div>
     </div>
@@ -180,9 +175,7 @@ export default class Button extends Vue {
   };
 
   @Prop({ default: "windows" })
-  osType!: {
-    type: String;
-  };
+  osType!: string;
 
   private rippleStartX = 0;
   private rippleStartY = 0;
@@ -222,6 +215,20 @@ export default class Button extends Vue {
     }
 
     return classes.join(" ");
+  }
+
+  get slobsDownloadIconClass() {
+    return this.osType === "windows" ? "icon-windows" : "icon-app-store";
+  }
+
+  get slobsDownloadText() {
+    const tests: any = [];
+
+    tests.push("Free");
+    tests.push(this.osType === "windows" ? "Win" : "macOS 10.14+");
+    tests.push(this.osType === "windows" ? "~240MB" : "309MB");
+
+    return tests;
   }
 
   get buttonStyle() {
@@ -572,6 +579,14 @@ export default class Button extends Vue {
     grid-column-gap: 12px;
     .margin-bottom(0);
     word-spacing: 8px;
+
+    span {
+      text-transform: none;
+
+      &:nth-child(2) {
+        word-spacing: 1px;
+      }
+    }
   }
 }
 
