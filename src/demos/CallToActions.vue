@@ -15,62 +15,43 @@ components: {
     </div>
     <div class="section">
       <h2>Default Call to Action</h2>
-      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre><code>&lt;call-to-action
-  :buttonClick=&quot;test&quot;&gt;
-&lt;/call-to-action&gt;</code></pre>
-        </div>
-      </accordion>
-      <div class="row">
-        <call-to-action :buttonClick="test" />
-      </div>
+      <DemoSection title="Default" :code="demoCode">
+        <template #components>
+          <CallToAction :buttonClick="test" />
+        </template>
+      </DemoSection>
+    </div>
+
+    <div class="section">
       <h2>Custom Call to Action</h2>
-      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre><code>&lt;call-to-action
-  :bgColor=&quot;'#31c3a2'&quot;
-  :titleColor=&quot;'#fff'&quot;
-  :subTitleColor=&quot;'#fff'&quot;
-  :thumbnail=&quot;require('./../assets/imgs/logo.svg')&quot;
-  :thumbnailWidth=&quot;120&quot;
-  :thumbnailHeight=&quot;80&quot;
-  :thumbnailBg=&quot;'#fff'&quot;
-  :title=&quot;'This is a Custom Call To Action'&quot;
-  :description=&quot;'A Custom Description'&quot;
-  :buttonVariation=&quot;'action'&quot;
-  :buttonTitle=&quot;'Click Me'&quot;
-  :buttonDescription=&quot;''&quot;
-  :buttonTag=&quot;'a'&quot;
-  :buttonHref=&quot;'https://google.com'&quot;
-  :buttonBg=&quot;'#fff'&quot;
-  :buttonTextColor=&quot;'#000'&quot;
-&lt;/call-to-action&gt;</code></pre>
-        </div>
-      </accordion>
-      <div class="row">
-        <call-to-action
-          :bgColor="'#31c3a2'"
-          :titleColor="'#fff'"
-          :subTitleColor="'#fff'"
-          :thumbnail="require('./../assets/imgs/logo.svg')"
-          :thumbnailWidth="120"
-          :thumbnailHeight="80"
-          :thumbnailBg="'#fff'"
-          :title="'This is a Custom Call To Action'"
-          :description="'A Custom Description'"
-          :buttonVariation="'default'"
-          :buttonTitle="'Click Me'"
-          :buttonDescription="''"
-          :buttonTag="'a'"
-          :buttonHref="'https://google.com'"
-          :buttonBg="'#fff'"
-          :buttonTextColor="'#000'"
-        ></call-to-action>
+
+      <div class="section">
+        <DemoSection title="Custom" :code="demoCode">
+          <template #components>
+            <CallToAction
+              bgcolor="#31c3a2"
+              titleColor="#ffffff"
+              subTitleColor="#ffffff"
+              :thumbnail="require('./../assets/imgs/logo.svg')"
+              :thumbnailWidth="120"
+              :thumbnailHeight="80"
+              thumbnailBg="#ffffff"
+              title="This is a Custom Call To Action"
+              description="A Custom Description"
+              buttonVariation="default"
+              buttonTitle="Click Me"
+              buttonDescription
+              buttonTag="a"
+              buttonHref="https://google.com"
+              buttonBg="#ffffff"
+              buttonTextColor="#000000"
+            />
+          </template>
+        </DemoSection>
       </div>
 
-      <div class="row">
-        <call-to-action
+      <div class="section">
+        <CallToAction
           :bgColor="'#31c3a2'"
           :titleColor="'#fff'"
           :subTitleColor="'#fff'"
@@ -83,11 +64,11 @@ components: {
             <Button :title="'Using slot'"></Button>
             <Button :title="'Using slot'"></Button>
           </div>
-        </call-to-action>
+        </CallToAction>
       </div>
 
-      <div class="row">
-        <call-to-action
+      <div class="section">
+        <CallToAction
           :bgColor="'#CAA368'"
           :titleColor="'#fff'"
           :subTitleColor="'#fff'"
@@ -101,7 +82,7 @@ components: {
           :buttonDescription="''"
           :buttonIcon="'prime'"
           :bgPrime="true"
-        ></call-to-action>
+        />
       </div>
 
       <table class="docs-table">
@@ -145,9 +126,7 @@ components: {
             <td>thumbnailBg</td>
             <td>String</td>
             <td>#31C3A2</td>
-            <td>
-              A Thumbnail background color, default color is @teal (#31C3A2)
-            </td>
+            <td>A Thumbnail background color, default color is @teal (#31C3A2)</td>
           </tr>
 
           <tr>
@@ -162,6 +141,13 @@ components: {
             <td>Number</td>
             <td>80</td>
             <td>A Thumbnail height</td>
+          </tr>
+
+          <tr>
+            <td>thumbnailAlt</td>
+            <td>String</td>
+            <td>Get started by downloading Streamlabs OBS</td>
+            <td>A Thumbnail alt</td>
           </tr>
 
           <tr>
@@ -219,7 +205,8 @@ components: {
             <td>null</td>
             <td>
               Used if the the
-              <code>type</code> is an <code>a</code> element (links).
+              <code>type</code> is an
+              <code>a</code> element (links).
             </td>
           </tr>
           <tr>
@@ -228,7 +215,8 @@ components: {
             <td>null</td>
             <td>
               Used if the the
-              <code>type</code> is a <code>router-link</code>. Define the path.
+              <code>type</code> is a
+              <code>router-link</code>. Define the path.
             </td>
           </tr>
           <tr>
@@ -237,7 +225,8 @@ components: {
             <td>null</td>
             <td>
               What type of element the component is. Options are
-              <code>button</code>, <code>a</code>,
+              <code>button</code>,
+              <code>a</code>,
               <code>router-link</code>
             </td>
           </tr>
@@ -255,18 +244,19 @@ components: {
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import CallToAction from "./../components/CallToAction.vue";
-import Accordion from "./../components/Accordion.vue";
 import Button from "./../components/Button.vue";
+import CallToAction from "./../components/CallToAction.vue";
+import CallToActionCode from "!!raw-loader!./CallToActions.vue";
+import DemoSection from "./../components/DemoSection.vue";
 @Component({
   components: {
+    Button,
     CallToAction,
-    Accordion,
-    Button
+    DemoSection
   }
 })
 export default class CallToActions extends Vue {
-  value = 50;
+  demoCode = CallToActionCode;
 
   test() {
     alert("test");

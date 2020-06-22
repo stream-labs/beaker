@@ -19,88 +19,51 @@
           >.
         </p>
       </div>
-      <pre>
-          <code>
-import { Slider } from 'streamlabs-beaker';
+      <pre><code>import { Slider } from 'streamlabs-beaker';
 
 components: {
   Slider
-}
-          </code>
-        </pre>
+}</code></pre>
     </div>
 
     <!-- Custom Data -->
     <div class="section">
-      <div class="row">
-        <h2>With custom data</h2>
-        <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-          <div slot="content">
-            <pre>
-              <code>
-&lt;slider
-  :value=&quot;value&quot;
-  @input=&quot;value =&gt; updateValue(value)&quot;
-  :max=&quot;100&quot;
-  :min=&quot;1&quot;
-  :interval=&quot;1&quot;
-  :tooltip=&quot;'always'&quot;
-  :suffix=&quot;'%'&quot;
-/&gt;
-              </code>
-            </pre>
-          </div>
-        </accordion>
-      </div>
-      <slider
-        :value="value"
-        @input="value => updateValue(value)"
-        :max="100"
-        :min="1"
-        :interval="1"
-        :tooltip="'always'"
-        :suffix="'%'"
-      />
+      <h2>Default Slider</h2>
+      <DemoSection title="Default Slider" :code="demoCode">
+        <template #components>
+          <slider
+            :value="value"
+            @input="value => updateValue(value)"
+            :max="100"
+            :min="1"
+            :interval="1"
+            tooltip="always"
+            suffix="%"
+          />
+        </template>
+      </DemoSection>
     </div>
 
     <!-- Simple Theme -->
     <div class="section">
-      <div class="row">
-        <h2>Simple Theme</h2>
-        <p>
-          Use in more compact places when you don't want the bright teal
-          present.
-        </p>
-        <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-          <div slot="content">
-            <pre>
-              <code>
-  &lt;slider
-    :value=&quot;value&quot;
-    @input=&quot;value =&gt; updateValue(value)&quot;
-    :max=&quot;100&quot;
-    :min=&quot;1&quot;
-    :interval=&quot;1&quot;
-    :tooltip=&quot;'false'&quot;
-    :suffix=&quot;'%'&quot;
-    :simpleTheme=&quot;true&quot;
-  /&gt;
-              </code>
-            </pre>
-          </div>
-        </accordion>
-        <slider
-          :value="value"
-          @input="value => updateValue(value)"
-          :max="100"
-          :min="1"
-          :interval="1"
-          :tooltip="'always'"
-          :suffix="'%'"
-          :simpleTheme="true"
-        />
-        <i class="fas fa-question-circle"></i>
-      </div>
+      <h2>Simple Theme</h2>
+      <p>
+        Use in more compact places when you don't want the bright teal present.
+      </p>
+      <DemoSection title="Simple Theme" :code="demoCode">
+        <template #components>
+          <slider
+            :value="value"
+            @input="value => updateValue(value)"
+            :max="100"
+            :min="1"
+            :interval="1"
+            tooltip="always"
+            suffix="%"
+            :simpleTheme="true"
+          />
+        </template>
+      </DemoSection>
     </div>
 
     <!-- Props Table -->
@@ -192,7 +155,7 @@ components: {
         </tbody>
       </table>
     </div>
-    <div class="section">
+    <!-- <div class="section">
       <div class="row">
         <h1>NEW SLIDER</h1>
         <p>Dont use this yet.</p>
@@ -215,7 +178,7 @@ components: {
       @input="value => updateLocalValueTwo(value)"
       :data="data"
       :marks="true"
-    />
+    /> -->
   </div>
 </template>
 
@@ -224,14 +187,18 @@ import { Component, Vue } from "vue-property-decorator";
 import Slider from "./../components/Slider.vue";
 import SliderTwo from "./../components/SliderTwo.vue";
 import Accordion from "./../components/Accordion.vue";
+import SlidersCode from "!!raw-loader!./Sliders.vue";
+import DemoSection from "./../components/DemoSection.vue";
 @Component({
   components: {
-    "slider-two": SliderTwo,
-    slider: Slider,
-    Accordion
+    Accordion,
+    DemoSection,
+    Slider,
+    SliderTwo
   }
 })
 export default class Sliders extends Vue {
+  demoCode = SlidersCode;
   localValue: number | string = 15;
 
   updateLocalValue(value) {

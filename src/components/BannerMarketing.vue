@@ -21,7 +21,12 @@
     >
       <div class="s-banner__wrapper">
         <div class="s-banner__label">{{ label }}</div>
-        <i @click="toggleBanner()" class="icon-down"></i>
+        <i
+          @click="toggleBanner()"
+          tabindex="0"
+          @keydown.space.prevent="toggleBanner()"
+          class="icon-down"
+        ></i>
       </div>
 
       <div class="s-banner__wrapper" ref="bottomWrapper">
@@ -40,8 +45,13 @@
         </div>
 
         <div @click.stop class="s-banner__download-wrapper">
-          <i @click="toggleBanner()" class="icon-down"></i>
           <slot name="link"></slot>
+          <i
+            tabindex="0"
+            class="icon-down"
+            @click="toggleBanner()"
+            @keydown.space.prevent="toggleBanner()"
+          ></i>
           <div class="s-banner__link-desc">{{ linkDesc }}</div>
         </div>
       </div>
@@ -54,6 +64,11 @@ import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 
 @Component({})
 export default class BannerMarketing extends Vue {
+  $refs!: {
+    banner: HTMLDivElement;
+    bottomWrapper: HTMLDivElement;
+  };
+
   @Prop()
   bgImageNight!: {
     type: string;
@@ -119,11 +134,28 @@ export default class BannerMarketing extends Vue {
     typeof this.onToggle === "function" && this.onToggle();
     this.closed = !this.closed;
     this.updateBannerHeight();
+
+    /*
+      For keyboard accessibility
+    */
+    if (this.$whatInput.ask() === "keyboard") {
+      const icons = this.$refs.banner.querySelectorAll(".icon-down");
+      let icon!: HTMLLIElement;
+
+      if (this.closed) {
+        icon = icons[1] as HTMLLIElement;
+      } else {
+        icon = icons[0] as HTMLLIElement;
+      }
+
+      let tabindex = parseInt(icon.getAttribute("tabindex") as string);
+      this.$nextTick(() => icon.focus());
+    }
   }
 
   updateBannerHeight() {
-    let banner: any = this.$refs.banner;
-    let bannerWrapper: any = this.$refs.bottomWrapper;
+    let banner = this.$refs.banner;
+    let bannerWrapper = this.$refs.bottomWrapper;
 
     if (!this.closed) {
       banner.style.maxHeight = "240px";
@@ -179,9 +211,6 @@ export default class BannerMarketing extends Vue {
     align-items: center;
 
     .icon-down {
-      width: 32px;
-      height: 32px;
-      line-height: 32px;
       transform: rotate(180deg);
     }
   }
@@ -276,7 +305,7 @@ export default class BannerMarketing extends Vue {
   }
 
   .s-banner__download-wrapper {
-    flex-direction: row-reverse;
+    flex-direction: row;
   }
 
   .s-banner__title {

@@ -1,5 +1,10 @@
 <template>
-  <div class="s-accordion" :class="[accordionClasses]">
+  <div
+    class="s-accordion"
+    :class="[accordionClasses]"
+    tabindex="0"
+    @keydown.space.self.prevent="openContent"
+  >
     <div
       class="s-accordion__head"
       :class="{ 'is-open': isOpen }"
@@ -11,17 +16,17 @@
             class="s-accordion__svg--back"
             d="M13 14H1a1 1 0 0 1-1-1V1c0-.6.5-1 1-1h12c.6 0 1 .5 1 1v12c0 .6-.4 1-1 1z"
             fill="#e3e8eb"
-          ></path>
+          />
           <transition name="twist-h">
             <g v-if="!isOpen">
               <path
                 class="s-accordion__svg--line"
                 d="M10 8H4a1 1 0 0 1-1-1c0-.6.5-1 1-1h6c.6 0 1 .5 1 1s-.4 1-1 1z"
-              ></path>
+              />
               <path
                 class="s-accordion__svg--line"
                 d="M8 4v6c0 .6-.5 1-1 1a1 1 0 0 1-1-1V4c0-.6.5-1 1-1s1 .5 1 1z"
-              ></path>
+              />
             </g>
           </transition>
           <transition name="twist-v">
@@ -29,7 +34,7 @@
               class="s-accordion__svg--line"
               d="M10 8H4a1 1 0 0 1-1-1c0-.6.5-1 1-1h6c.6 0 1 .5 1 1s-.4 1-1 1z"
               v-if="isOpen"
-            ></path>
+            />
           </transition>
         </svg>
       </div>
@@ -57,6 +62,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import { escape } from "lodash-es";
 
 @Component({})
 export default class Accordian extends Vue {
@@ -79,6 +85,7 @@ export default class Accordian extends Vue {
   leftNav!: boolean;
 
   private isOpen = false;
+  private focused = false;
   private defaultBorder = false;
 
   get accordionTitle() {
@@ -106,6 +113,10 @@ export default class Accordian extends Vue {
       classes.push("left-nav");
     }
     return classes.join(" ");
+  }
+
+  isKeyFocused(event) {
+    console.log("TCL: Accordian -> isKeyFocused -> event", event);
   }
 
   openContent(event: any) {
@@ -162,14 +173,14 @@ export default class Accordian extends Vue {
 @import (reference) "./../styles/Imports";
 
 .s-accordion {
-  .radius();
-  background-color: @day-bg;
-  border: 1px solid @day-input-border;
   .margin-bottom(3);
-
   .padding(2);
-
+  border: 1px solid @day-input-border;
+  .radius();
   text-align: left;
+  background-color: @day-bg;
+  .transition(border);
+  outline: none;
 
   &.no-border {
     border: 1px solid transparent;
@@ -199,7 +210,10 @@ export default class Accordian extends Vue {
     }
   }
 
-  .s-accordion__head {
+  &__container {
+  }
+
+  &__head {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -220,7 +234,7 @@ export default class Accordian extends Vue {
     }
   }
 
-  .s-accordion__button {
+  &__button {
     display: inline-flex;
     .margin-right(2);
   }
@@ -231,16 +245,16 @@ export default class Accordian extends Vue {
     transform-origin: 7px 7px;
   }
 
-  .s-accordion__svg--back {
+  &__svg--back {
     fill: @light-3;
   }
 
-  .s-accordion__svg--line {
+  &__svg--line {
     fill: @light-5;
     transform-origin: 7px 7px;
   }
 
-  .s-accordion--title {
+  &--title {
     font-weight: @medium;
     font-size: 14px;
   }
@@ -252,19 +266,25 @@ export default class Accordian extends Vue {
     border-color: @night-input-border;
     background-color: @night-bg;
 
+    &:focus > .s-accordion {
+      border-color: @white;
+    }
+
     &.no-border {
       border: 1px solid transparent;
     }
-    .s-accordion__head {
+
+    &__head {
       .s-accordion--title {
         color: @night-title;
       }
     }
-    .s-accordion__svg--back {
+
+    &__svg--back {
       fill: @dark-5;
     }
 
-    .s-accordion__svg--line {
+    &__svg--line {
       fill: @light-4;
     }
   }

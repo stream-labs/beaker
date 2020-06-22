@@ -1,13 +1,15 @@
 <template>
   <div class="s-form-group-v">
     <!-- title -->
-    <div class="s-form-group-v__title" :style="titleLayoutStyle">
-      <label>{{ title }}</label>
-      <i
-        v-if="tooltip"
-        v-tooltip.auto="tooltip"
-        class="tooltip icon-question"
-      ></i>
+    <div :style="titleLayoutStyle" class="s-form-group-v__title">
+      <template v-if="!this.$slots.header">
+        <label v-if="title">{{ title }}</label>
+        <i
+          v-if="tooltip"
+          v-tooltip.auto="tooltip"
+          class="tooltip icon-question"
+        ></i>
+      </template>
       <slot name="header"></slot>
     </div>
 
@@ -63,6 +65,10 @@ export default class FormGroupV extends Vue {
   align-items: center;
   .margin-bottom();
   font-size: 12px;
+
+  &--hidden {
+    margin-bottom: 0;
+  }
 
   label {
     .margin-right();

@@ -18,179 +18,91 @@ components: {
 
       <div class="section">
         <h2>Standard Badges</h2>
-        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-          <div slot="content">
-            <pre>
-<code>&lt;Badge
-  :variant=&quot;new&quot;
-  :align-left=&quot;true&quot;
-&gt;New&lt;/Badge&gt;
-
-&lt;Badge
-  :variant=&quot;tag&quot;
-  :align-left=&quot;true&quot;
-&gt;Tag&lt;/Badge&gt;
-
-&lt;Badge
-  :variant=&quot;beta&quot;
-  :align-left=&quot;true&quot;
-&gt;Beta&lt;/Badge&gt;
-
-&lt;Badge
-  :variant=&quot;warning&quot;
-  :align-left=&quot;true&quot;
-&gt;Warn&lt;/Badge&gt;
-
-&lt;Badge
-  :variant=&quot;pro&quot;
-  :align-left=&quot;true&quot;
-&gt;Pro&lt;/Badge&gt;
-
-&lt;Badge
-  :align-left=&quot;true&quot;
-  :backgroundColor=&quot;'pink'&quot;
-&gt;Custom&lt;/Badge&gt;</code></pre>
-          </div>
-        </Accordion>
-        <Badge :variant="'new'" :align-left="true">New</Badge>
-        <Badge :variant="'tag'" :align-left="true">Tag</Badge>
-        <Badge :variant="'beta'" :align-left="true">Beta</Badge>
-        <Badge :variant="'warning'" :align-left="true">Warning</Badge>
-        <Badge :variant="'pro'" :align-left="true">Pro</Badge>
-        <Badge :align-left="true" :backgroundColor="'pink'" :textColor="'#fff'"
-          >Custom</Badge
-        >
-        <Badge :variant="'prime'" :align-left="true"></Badge>
+        <DemoSection title="Standard Badges" :code="demoCode">
+          <template #components>
+            <Badge variant="new" :align-left="true">New</Badge>
+            <Badge variant="tag" :align-left="true">Tag</Badge>
+            <Badge variant="beta" :align-left="true">Beta</Badge>
+            <Badge variant="warning" :align-left="true">Warning</Badge>
+            <Badge variant="pro" :align-left="true">Pro</Badge>
+            <Badge
+              :align-left="true"
+              background-color="pink"
+              text-color="#ffffff"
+              >Custom</Badge
+            >
+            <Badge variant="prime" :align-left="true" />
+          </template>
+        </DemoSection>
       </div>
 
       <div class="section">
         <h2>Alt Badges</h2>
-        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-          <div slot="content">
-            <pre>
-<code>&lt;Badge
-  :variant=&quot;new-alt&quot;
-  :align-left=&quot;true&quot;
-&gt;New Alt&lt;/Badge&gt;
-
-&lt;Badge
-  :variant=&quot;tag-alt&quot;
-  :align-left=&quot;true&quot;
-&gt;Tag Alt&lt;/Badge&gt;
-
-&lt;Badge
-  :variant=&quot;beta-alt&quot;
-  :align-left=&quot;true&quot;
-&gt;Beta Alt&lt;/Badge&gt;
-
-&lt;Badge
-  :variant=&quot;warning-alt&quot;
-  :align-left=&quot;true&quot;
-&gt;Warn Alt&lt;/Badge&gt;
-
-&lt;Badge
-  :variant=&quot;pro-alt&quot;
-  :align-left=&quot;true&quot;
-&gt;Pro Alt&lt;/Badge&gt;</code></pre>
-          </div>
-        </Accordion>
-
-        <Badge :variant="'new-alt'" :align-left="true">New Alt</Badge>
-        <Badge :variant="'tag-alt'" :align-left="true">Tag Alt</Badge>
-        <Badge :variant="'beta-alt'" :align-left="true">Beta Alt</Badge>
-        <Badge :variant="'warning-alt'" :align-left="true">Warning Alt</Badge>
-        <Badge :variant="'pro-alt'" :align-left="true">Pro Alt</Badge>
-        <Badge :variant="'prime-alt'" :align-left="true"></Badge>
+        <DemoSection title="Alt Badges" :code="demoCode">
+          <template #components>
+            <Badge variant="teal-alt" :align-left="true">New Alt</Badge>
+            <Badge variant="tag-alt" :align-left="true">Tag Alt</Badge>
+            <Badge variant="beta-alt" :align-left="true">Beta Alt</Badge>
+            <Badge variant="warning-alt" :align-left="true">Warning Alt</Badge>
+            <Badge variant="pro-alt" :align-left="true">Pro Alt</Badge>
+            <Badge variant="prime-alt" :align-left="true"></Badge>
+          </template>
+        </DemoSection>
       </div>
 
       <div class="section">
         <h2>Small Badges</h2>
-        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-          <div slot="content">
-            <pre>
-<code>&lt;Badge
-  :small=&quot;true&quot;
-  :variant=&quot;tag&quot;
-  :align-left=&quot;true&quot;
-&gt;Tag&lt;/Badge&gt;
-
-&lt;Badge
-  :small=&quot;true&quot;
-  :variant=&quot;beta&quot;
-  :align-left=&quot;true&quot;
-&gt;Beta&lt;/Badge&gt;
-
-&lt;Badge
-  :small=&quot;true&quot;
-  :variant=&quot;warning&quot;
-  :align-left=&quot;true&quot;
-&gt;Warn&lt;/Badge&gt;
-
-&lt;Badge
-  :small=&quot;true&quot;
-  :variant=&quot;pro&quot;
-  :align-left=&quot;true&quot;
-&gt;Pro&lt;/Badge&gt;</code></pre>
-          </div>
-        </Accordion>
-        <Badge :small="true" :variant="'tag'" :align-left="true">Tag</Badge>
-        <Badge :small="true" :variant="'beta'" :align-left="true">Beta</Badge>
-        <Badge :small="true" :variant="'warning'" :align-left="true"
-          >Warning</Badge
-        >
-        <Badge :small="true" :variant="'pro'" :align-left="true">Pro</Badge>
+        <DemoSection title="Small Badges" :code="demoCode">
+          <template #components>
+            <Badge :small="true" variant="tag" :align-left="true">Tag</Badge>
+            <Badge :small="true" variant="beta" :align-left="true">Beta</Badge>
+            <Badge :small="true" variant="warning" :align-left="true"
+              >Warning</Badge
+            >
+            <Badge :small="true" variant="pro" :align-left="true">Pro</Badge>
+          </template>
+        </DemoSection>
       </div>
 
       <div class="section">
         <h2>Progress Badge</h2>
         <p>Used to show amount of items sold in merch.</p>
-        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-          <div slot="content">
-            <pre>
-<code>&lt;Badge
-  :variant=&quot;'progress'&quot;
-  :bar-color=&quot;'#8736e0'&quot;
-  :current=&quot;17&quot;
-  :total=&quot;25&quot;
-  :suffix=&quot;'Sold'&quot;&gt;
-&lt;/Badge&gt;</code></pre>
-          </div>
-        </Accordion>
-        <Badge
-          :align-left="true"
-          :variant="'progress'"
-          :backgroundColor="'#8736e0'"
-          :current="17"
-          :total="25"
-          :suffix="'Sold'"
-        ></Badge>
+        <DemoSection title="Progress Badge" :code="demoCode">
+          <template #components>
+            <Badge
+              :align-left="true"
+              variant="progress"
+              backgroundColor="#8736e0"
+              :current="17"
+              :total="25"
+              suffix="Sold"
+            />
+          </template>
+        </DemoSection>
       </div>
 
       <div class="section">
         <h2>Count Badge</h2>
         <p>Used to show amount of items sold in merch.</p>
-        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-          <div slot="content">
-            <pre>
-<code>&lt;Badge :variant=&quot;count&quot;&gt;3&lt;/Badge&gt;</code></pre>
-          </div>
-        </Accordion>
-        <Badge :variant="'count'">3</Badge>
+        <DemoSection title="Count Badge" :code="demoCode">
+          <template #components>
+            <Badge variant="count">3</Badge>
+          </template>
+        </DemoSection>
       </div>
 
       <div class="section">
         <h2>Mod Badge</h2>
         <p>Used in an info callout.</p>
-        <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-          <div slot="content">
-            <pre>
-<code>&lt;Badge :variant=&quot;mod&quot;&gt;/mod Streamlabs&lt;/Badge&gt;</code></pre>
-          </div>
-        </Accordion>
-        <Callout :variation="'info'">
-          Remember to
-          <Badge :variant="'mod'">/mod Streamlabs</Badge>to initiate Cloudbot.
-        </Callout>
+        <DemoSection title="Mod Badge" :code="demoCode">
+          <template #components>
+            <Callout variation="info">
+              Remember to
+              <Badge variant="mod">/mod Streamlabs</Badge>
+              to initiate Cloudbot.
+            </Callout>
+          </template>
+        </DemoSection>
       </div>
     </div>
 
@@ -296,16 +208,21 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 import Accordion from "./../components/Accordion.vue";
 import Badge from "./../components/Badge.vue";
+import BadgesCode from "!!raw-loader!./Badges.vue";
 import Callout from "./../components/Callout.vue";
+import DemoSection from "./../components/DemoSection.vue";
 
 @Component({
   components: {
     Accordion,
     Badge,
-    Callout
+    Callout,
+    DemoSection
   }
 })
-export default class Badges extends Vue {}
+export default class Badges extends Vue {
+  demoCode = BadgesCode;
+}
 </script>
 
 <style lang="less" scoped>

@@ -1,5 +1,11 @@
 <template>
-  <div class="s-form-field" :class="{ 's-form-field--with-label': label }">
+  <div
+    class="s-form-field"
+    :class="{
+      's-form-field--with-label': label,
+      's-form-field--disabled': disabled
+    }"
+  >
     <div v-if="type === 'number'" class="s-arrows">
       <div
         :class="{
@@ -37,24 +43,25 @@
       v-model="content"
       :class="{
         's-form-field__input': true,
-        's-form-field__input--error': !!error
+        's-form-field__input--error': !!error,
+        's-form-field__input--disabled': disabled
       }"
       v-on="filteredListeners"
       @mousewheel="mouseWheel"
     />
     <label
       :class="{
-        's-form-field__label--top': value !== '',
-        's-form-field__label--error': !!error
+        's-form-field__label--top': value !== '' && !disabled
       }"
       class="s-form-field__label"
       v-if="label"
       >{{ label }}</label
     >
 
-    <transition name="fadeX-from-left">
-      <p v-show="error" class="s-form-field__error-text">{{ error }}</p>
-    </transition>
+    <div v-show="error" class="s-form-field__input-error">
+      <i class="icon-error"></i>
+      {{ error }}
+    </div>
 
     <p v-show="helpText" class="s-form-field__help-text">{{ helpText }}</p>
   </div>
@@ -205,12 +212,23 @@ export default class TextInput extends Vue {
 .s-form-field {
   position: relative;
 
-  .s-form-field__input {
-    border: 1px solid @light-4;
+  &--disabled {
+    user-select: none;
+    cursor: not-allowed;
+
+    & + label {
+      border-color: @light-3;
+      background-color: @light-3;
+    }
   }
 
   .s-form-field__input {
-    height: 40px;
+    &--disabled {
+      & + label {
+        background-color: @light-3;
+        color: @light-5;
+      }
+    }
   }
 
   .s-form-field__input::-webkit-outer-spin-button,
@@ -236,6 +254,7 @@ export default class TextInput extends Vue {
     &:hover {
       opacity: 1;
     }
+
     .s-arrow {
       display: flex !important;
       .fas {
@@ -260,10 +279,6 @@ export default class TextInput extends Vue {
   }
 }
 
-.s-form-field__input--error {
-  border-color: @red !important;
-}
-
 .s-form-field__label {
   position: absolute;
   color: @dark-5;
@@ -272,16 +287,20 @@ export default class TextInput extends Vue {
   .radius();
 }
 
-.s-form-field__label--error,
-.s-form-field__error-text {
-  color: @red;
-}
-
 .s-form-field__error-text,
 .s-form-field__help-text {
-  .small-type();
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
   .margin-bottom(0);
-  .margin-top();
+  .margin-top(0);
+
+  .icon-error {
+    .margin-left();
+  }
 }
 
 .s-form-field--with-label {
@@ -301,14 +320,11 @@ export default class TextInput extends Vue {
   .s-form-field__label--top {
     transform: translateY(-20px);
     font-size: 12px;
+    font-weight: 500;
   }
 
-  .s-form-field__input:focus + label {
+  .s-form-field__input:not(".s-form-field__input--error"):focus + label {
     color: @day-title;
-  }
-
-  .s-form-field__input:focus + .s-form-field__label--error {
-    color: green;
   }
 
   .s-form-field--top {
@@ -352,24 +368,21 @@ export default class TextInput extends Vue {
 
 .night,
 .night-theme {
-  .s-form-field--with-label {
-    position: relative;
-
-    .s-form-field__input:focus + label {
-      color: @night-title;
+  .s-form-field {
+    .s-form-field__input {
+      &--disabled {
+        & + label {
+          background-color: @dark-4;
+        }
+      }
     }
   }
 
-  .s-form-field__input--error {
-    border-color: @red;
+  .s-form-field--with-label {
+    position: relative;
 
-    &:focus,
-    &:active {
-      border-color: @red;
-    }
-
-    &:focus + .s-form-field__label {
-      color: @red;
+    .s-form-field__input:not("[class*=__input--error]"):focus + label {
+      color: @night-title;
     }
   }
 

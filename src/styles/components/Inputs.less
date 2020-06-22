@@ -1,30 +1,46 @@
 // Inputs
-
-input[type='text'],
-input[type='password'],
-input[type='number'],
-input[type='email'],
-input[type='url'],
-input[type='search'],
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+textarea,
 select {
-  .radius();
-  border: 1px solid @day-input-border;
-  box-shadow: none;
-  height: 40px;
-  font-size: 14px;
-  .padding--input();
-  background: @day-input-bg;
-  font-family: 'Roboto';
-  color: @day-title;
   width: 100%;
-  transition: all 0.275s ease-in-out;
+  height: 40px;
+  .padding--input();
+  border: 1px solid @light-4;
+  .radius();
+  font-family: "Roboto";
+  font-size: 14px;
+  background: @day-input-bg;
+  color: @day-title;
+  box-shadow: none;
+  transition: border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    border-width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    border-color: @light-5;
+  }
 
   &:active,
   &:focus {
     box-shadow: none;
-    border-color: @light-5;
-    background-color: @day-input-bg;
+    border: 2px solid @dark-2;
     outline: none;
+
+    & + label {
+      color: @dark-2;
+    }
+  }
+
+  &[disabled] {
+    display: block;
+    border-color: @light-3;
+    background-color: @light-3;
+    color: transparent;
+    pointer-events: none;
   }
 
   ::placeholder,
@@ -32,6 +48,14 @@ select {
   :-ms-input-placeholder {
     color: @light-5;
   }
+}
+
+textarea {
+  height: unset;
+  margin-bottom: 0px;
+  .padding(1.5);
+  vertical-align: middle;
+  resize: vertical;
 }
 
 input:-webkit-autofill,
@@ -50,6 +74,41 @@ select:-webkit-autofill:focus {
 
 input[readonly] {
   cursor: auto;
+}
+
+input[class*="__input--error"],
+textarea[class*="__input--error"] {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-color: @dark-red;
+
+  &:hover {
+    border-color: mix(@dark-2, @dark-red, 24%);
+  }
+
+  & + label {
+    color: @dark-red;
+  }
+
+  &:focus {
+    border-color: @dark-red;
+
+    + label {
+      color: @dark-red;
+    }
+  }
+
+  & ~ [class*="__input-error"] {
+    display: block;
+    margin-top: -1px;
+    padding: 3px 0;
+    border-radius: 0 0 4px 4px;
+    font-size: 12px;
+    .weight(@medium);
+    text-align: center;
+    background-color: @dark-red;
+    color: @white;
+  }
 }
 
 .s-input--search {
@@ -130,11 +189,11 @@ input[readonly] {
   }
 }
 
-input[type='file'] {
-  width: auto;
+input[type="file"] {
   display: inline-block;
-  vertical-align: middle;
+  width: auto;
   margin-bottom: 0;
+  vertical-align: middle;
 
   &.file-input--wide {
     width: 100%;
@@ -147,30 +206,6 @@ input[type='file'] {
 
 .s-input--points {
   width: 130px;
-}
-
-textarea {
-  .radius();
-  box-shadow: none;
-  border: 1px solid @day-input-border;
-  box-shadow: none;
-  background: @day-input-bg;
-  margin-bottom: 0px;
-  vertical-align: middle;
-  color: @day-title;
-  width: 100%;
-  resize: vertical;
-  .padding(2);
-  font-family: 'Roboto';
-  font-size: 14px;
-
-  &:active,
-  &:focus {
-    box-shadow: none;
-    border-color: @light-5;
-    background-color: @day-input-bg;
-    outline: none;
-  }
 }
 
 .s-input-wrapper--search {
@@ -187,23 +222,37 @@ textarea {
 
 .night,
 .night-theme {
-  input[type='email'],
-  input[type='number'],
-  input[type='password'],
-  input[type='text'],
-  input[type='url'],
-  input[type='search'],
+  input[type="email"],
+  input[type="number"],
+  input[type="password"],
+  input[type="text"],
+  input[type="url"],
+  input[type="search"],
   select,
   textarea {
     border-color: @night-input-border;
     background: @night-input-bg;
     color: @night-title;
 
+    &:hover {
+      border-color: @light-5;
+    }
+
     &:active,
     &:focus {
       box-shadow: none;
-      border-color: @light-5;
+      border-color: @white;
       background: @night-input-bg;
+
+      & + label {
+        color: @white;
+      }
+    }
+
+    &[disabled] {
+      border-color: @dark-4;
+      background-color: @dark-4;
+      color: transparent;
     }
   }
 
@@ -212,5 +261,31 @@ textarea {
   input:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0 30px @night-input-bg inset !important;
     -webkit-text-fill-color: @night-title !important;
+  }
+
+  input[class*="__input--error"],
+  textarea[class*="__input--error"] {
+    border-color: @red;
+
+    & + label {
+      color: @red;
+    }
+
+    &:hover {
+      border-color: mix(@white, @red, 12%);
+    }
+
+    &:focus {
+      border-color: @red;
+
+      & + label {
+        color: @red;
+      }
+    }
+
+    & ~ [class*="__input-error"] {
+      background-color: @red;
+      color: @dark-3;
+    }
   }
 }

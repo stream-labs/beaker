@@ -6,10 +6,12 @@
       :options="options"
       :max-height="200"
       v-on="$listeners"
-      @input="val => emitInput(val)"
     >
-      <template v-if="label" slot="singleLabel" slot-scope="{ option }">
-        {{ option[label] }}
+      <template #singleLabel="{ option }">
+        <slot name="singleLabel" :option="option"></slot>
+      </template>
+      <template #option="{ option }">
+        <slot name="option" :option="option"></slot>
       </template>
     </multiselect>
   </div>
@@ -166,7 +168,6 @@ export default {
   .multiselect__input:focus,
   .multiselect__single:focus {
     border-color: #a8a8a8;
-    outline: none;
   }
 
   .multiselect__single {
@@ -389,7 +390,6 @@ export default {
   }
 
   .multiselect__option--highlight {
-    outline: none;
     background: linear-gradient(
         0deg,
         rgba(9, 22, 29, 0.08),

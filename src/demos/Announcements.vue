@@ -19,46 +19,37 @@ components: {
     <div class="section">
       <h2>New Feature Overlay</h2>
       <p>Used for new feature overlay.</p>
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
-        <div slot="content">
-          <pre><code>&lt;NewFeatureOverlay
-  :label=&quot;'Introducing Merch Stores'&quot;
-  :title=&quot;'Increase Your Revenue'&quot;
-  :media=&quot;'https://cdn.streamlabs.com/cloudbot/prototype_cloudbot_800x300.webm'&quot;
-  :buttonTitle=&quot;'Go To Store'&quot;
-  :onOpen=&quot;trackingCodeComponent&quot;
-  :onAction=&quot;trackingCodeButton&quot;&gt;
-  &lt;p&gt;We’ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level.&lt;/p&gt;
-  &lt;p&gt;We’ve automatically credited $15.00 to your account so you can start trying them out today.&lt;/p&gt;
-&lt;/NewFeatureOverlay&gt;</code></pre>
-        </div>
-      </Accordion>
+      <DemoSection title="New Feature Overlay" :code="demoCode">
+        <template #components>
+          <NewFeatureOverlay
+            label="Introducing Merch Stores"
+            title="Increase Your Revenue"
+            media="
+              https://cdn.streamlabs.com/cloudbot/prototype_cloudbot_800x300.webm
+            "
+            buttonTitle="Go To Store"
+            :onOpen="trackingCodeComponent"
+            :onAction="trackingCodeButton"
+            buttonTag="a"
+            buttonHref="
+              https://www.twitch.tv/ext/xab8h6nj36fc2wtn71yikw9hqjd6v4-0.0.1
+            "
+            buttonTarget="_blank"
+          >
+            <p>
+              We’ve worked with some of the best developers in the industry to
+              bring you the tools to take your stream to the next level.
+            </p>
+            <p>
+              We’ve automatically credited $15.00 to your account so you can
+              start trying them out today.
+            </p>
+          </NewFeatureOverlay>
+        </template>
+      </DemoSection>
+    </div>
 
-      <NewFeatureOverlay
-        :label="'Introducing Merch Stores'"
-        :title="'Increase Your Revenue'"
-        :media="
-          'https://cdn.streamlabs.com/cloudbot/prototype_cloudbot_800x300.webm'
-        "
-        :buttonTitle="'Go To Store'"
-        :onOpen="trackingCodeComponent"
-        :onAction="trackingCodeButton"
-        :buttonTag="'a'"
-        :buttonHref="
-          'https://www.twitch.tv/ext/xab8h6nj36fc2wtn71yikw9hqjd6v4-0.0.1'
-        "
-        :buttonTarget="'_blank'"
-      >
-        <p>
-          We’ve worked with some of the best developers in the industry to bring
-          you the tools to take your stream to the next level.
-        </p>
-        <p>
-          We’ve automatically credited $15.00 to your account so you can start
-          trying them out today.
-        </p>
-      </NewFeatureOverlay>
-
+    <div class="section">
       <div class="s-button-container s-button-container--left">
         <Button
           :variation="'default'"
@@ -176,18 +167,20 @@ components: {
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Accordion from "./../components/Accordion.vue";
-import NewFeatureOverlay from "./../components/NewFeatureOverlay.vue";
+import AnnouncementsCode from "!!raw-loader!./Announcements.vue";
 import Button from "./../components/Button.vue";
+import DemoSection from "./../components/DemoSection.vue";
+import NewFeatureOverlay from "./../components/NewFeatureOverlay.vue";
 
 @Component({
   components: {
-    Accordion,
-    NewFeatureOverlay,
-    Button
+    Button,
+    DemoSection,
+    NewFeatureOverlay
   }
 })
 export default class AnnoucementsDemo extends Vue {
+  demoCode = AnnouncementsCode;
   trackingCodeComponent() {
     console.log("componentEventTracking");
     // ga('send','event', 'newfeatureoverlay', 'modal_shown', 'component');

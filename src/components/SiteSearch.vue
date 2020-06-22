@@ -22,9 +22,9 @@
         @blur.stop.prevent="playClosingSequence"
         @keyup.stop.prevent="keyEvent"
       />
-      <div class="s-sitesearch-status__cont">
+      <!-- <div class="s-sitesearch-status__cont">
         <div v-if="noResults">No Results</div>
-      </div>
+      </div> -->
     </div>
     <transition-group name="s-sitesearch--fadeY">
       <div
@@ -328,6 +328,7 @@ export default class SiteSearch extends Vue {
   }
 
   &.s-sitesearch--phase-one {
+    border: 2px solid @dark-2;
     background-color: @day-bg;
   }
 
@@ -336,15 +337,20 @@ export default class SiteSearch extends Vue {
   }
 
   .s-sitesearch__input {
-    margin: 0;
-    border: none;
+    flex: 1 0 ~"calc(100% - 2px)";
+    width: 100%;
     height: 39px;
-    font-size: 14px;
+    margin: 0;
     .padding--input();
-    background: @day-input-bg;
+    border: none;
+    font-size: 14px;
     font-family: "Roboto";
     color: @day-title;
-    width: 100%;
+    background: @day-input-bg;
+
+    &:focus {
+      border: none;
+    }
   }
 
   ::placeholder {
@@ -495,6 +501,7 @@ export default class SiteSearch extends Vue {
     border: 1px solid @night-input-border;
 
     &.s-sitesearch--phase-one {
+      border-color: @white;
       background-color: @night-bg;
     }
 

@@ -1,32 +1,40 @@
 <template>
   <div class="icons">
+    <div class="section">
+      <h1>Icons</h1>
+
+      <p>
+        In order to gain access to the icons add the following link tag to your
+        main HTML file:
+        <code>
+          &lt;link href=&quot;https://cdn.streamlabs.com/icons/style.css&quot;
+          rel=&quot;stylesheet&quot; /&gt;
+        </code>
+      </p>
+
+      <p>
+        Click on an icon to copy the icon class name to the clipboard. Hover
+        over an icon to display the full icon name and icon code.
+      </p>
+    </div>
+
     <div
-      v-for="icon in Object.keys(iconList).sort()"
-      :key="icon"
-      class="glyph fs1"
+      class="icon__grid"
+      v-clipboard:copy="selectedIcon"
+      v-clipboard:success="emitCopySuccess"
+      v-clipboard:error="emitCopyError"
     >
-      <div class="clearfix bshadow0 pbs">
-        <span :class="icon"></span>
-        <span class="mls">{{ icon }}</span>
-      </div>
-      <fieldset class="fs0 size1of1 clearfix hidden-false">
-        <input
-          type="text"
-          readonly
-          :value="iconList[icon]"
-          class="unit size1of2"
-        />
-        <input
-          type="text"
-          maxlength="1"
-          readonly
-          :value="`\&\#x${iconList[icon]};`"
-          class="unitRight size1of2 talign-right"
-        />
-      </fieldset>
-      <div class="fs0 bshadow0 clearfix hidden-true">
-        <span class="unit pvs fgc1">liga:</span>
-        <input type="text" readonly value class="liga unitRight" />
+      <div
+        v-for="icon in Object.keys(iconList).sort()"
+        :key="icon"
+        class="icon"
+        :title="`${icon} | ${iconList[icon]}`"
+        @click="selectIconData(`${icon}`)"
+      >
+        <i class="icon__glyph" :class="icon">
+          <i class="icon-copy"></i>
+        </i>
+        <span class="icon__label">{{ icon }}</span>
       </div>
     </div>
   </div>
@@ -34,9 +42,11 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { EventBus } from "./../plugins/event-bus";
 
 @Component({})
 export default class Icons extends Vue {
+  selectedIcon = "";
   iconList = {
     "icon-periscope": "e9ba",
     "icon-windows": "e9b9",
@@ -232,48 +242,115 @@ export default class Icons extends Vue {
     "icon-face-masks-2": "e9bf",
     "icon-face-masks-3": "e9c0",
     "icon-ideas": "e9c1",
-    "icon-creator-site": "e9c2"
+    "icon-creator-site": "e9c2",
+    "icon-embroidery": "e9c3",
+    "icon-twitch": "e9c4",
+    "icon-collectibles": "e9c5",
+    "icon-collectibles-2": "e9c6",
+    "icon-dust-2": "e9c7",
+    "icon-collectibles-closed": "e9c8",
+    "icon-collectibles-2-closed": "e9c9",
+    "icon-prime": "e9cb",
+    "icon-prize-disabled": "e9cc",
+    "icon-live-support": "e9cd",
+    "icon-enter": "e9ce",
+    "icon-design": "e9cf",
+    "icon-email": "e9d0",
+    "icon-smart-record": "e9ca",
+    "icon-broadcast": "e9d1",
+    "icon-replay-buffer": "e9d3",
+    "icon-disconnected": "e9d2"
   };
+
+  selectIconData(icon) {
+    this.selectedIcon = icon;
+  }
+
+  emitCopySuccess(e) {
+    EventBus.$emit("copy-success", e);
+  }
+
+  emitCopyError(e) {
+    EventBus.$emit("copy-copy", e);
+  }
 }
 </script>
 
 <style lang="less" scoped>
 @import (reference) "./../styles/Imports";
 
-fieldset {
-  border: 0;
-  padding: 0;
-  margin: 0px;
-  width: 60px;
-}
-
-.hidden-true,
-.unitRight {
-  display: none;
-}
-
 .icons {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  grid-gap: 16px;
-  color: @icon;
+  position: relative;
+  max-width: 1200px;
 }
 
-.mls {
-  color: @day-paragraph;
-  margin: 0 8px;
-}
-
-.glyph {
+.icon {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  .radius();
+  cursor: pointer;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    grid-column-gap: 24px;
+    grid-row-gap: 48px;
+    color: @icon;
+  }
+
+  &__glyph {
+    position: relative;
+    .margin-bottom();
+    font-size: 32px;
+    color: @dark-2;
+
+    .icon-copy {
+      position: absolute;
+      top: -18px;
+      right: -18px;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  }
+
+  &__label {
+    width: 100%;
+    font-size: 12px;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: @light-5;
+    overflow: hidden;
+  }
+
+  &:hover {
+    .icon__glyph {
+      .icon-copy {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__liga {
+    font-size: 10px;
+  }
 }
 
 .night,
 .night-theme {
-  .mls {
-    color: @night-paragraph;
+  .icon {
+    &__glyph {
+      color: @white;
+    }
+
+    &__label {
+      color: @light-4;
+    }
+
+    &__liga {
+      color: @dark-5;
+    }
   }
 }
 </style>

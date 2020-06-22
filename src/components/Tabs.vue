@@ -27,14 +27,18 @@
             :style="selectTabSize"
             @click="showTab(tab.value)"
           >
-            <router-link :to="`#/${tab.value}`" class="s-tab-link">
+            <router-link
+              v-if="updateRoute"
+              :to="`#/${tab.value}`"
+              class="s-tab-link"
+            >
               <i v-if="tab.icon" :class="`icon-${tab.icon}`"></i>
               {{ tab.name }}
             </router-link>
-            <!-- <div>
+            <div v-else class="s-tab-link">
+              <i v-if="tab.icon" :class="`icon-${tab.icon}`"></i>
               {{ tab.name }}
-              <span :class="`icon-${tab.icon}`"></span>
-            </div>-->
+            </div>
           </div>
         </div>
 
@@ -62,7 +66,6 @@
 
 <script lang="ts">
 import { Component, Watch, Prop, Vue } from "vue-property-decorator";
-
 @Component({})
 export default class Tabs extends Vue {
   @Prop()
@@ -74,7 +77,7 @@ export default class Tabs extends Vue {
     }
   ];
 
-  @Watch('tabs', { deep: true })
+  @Watch("tabs", { deep: true })
   onTabsChange() {
     this.$nextTick(() => this.calculateScrolls());
   }
@@ -91,6 +94,9 @@ export default class Tabs extends Vue {
   @Prop()
   hideContent!: boolean;
 
+  @Prop({ default: true })
+  updateRoute!: boolean;
+
   $refs!: {
     scrollable_tabs: HTMLDivElement;
   };
@@ -101,9 +107,7 @@ export default class Tabs extends Vue {
   hasNext = false;
   hasPrev = false;
   private scrollIncrement = 100;
-
   selectedTab: string = "";
-
   selectTabSize = {
     fontSize: this.tabSize
   };
@@ -155,7 +159,6 @@ export default class Tabs extends Vue {
     const scrollRight =
       this.tabsContainer.scrollWidth -
       (this.tabsContainer.scrollLeft + this.tabsContainer.clientWidth);
-
     this.hasNext = scrollRight > 0;
   }
 
@@ -303,7 +306,6 @@ a {
 
   &.is-active {
     border-color: @dark-2;
-
     .s-tab-link {
       color: @day-title;
     }
@@ -336,10 +338,8 @@ a {
 
   .s-tab {
     color: @night-paragraph;
-
     &.is-active {
       border-color: @light-1;
-
       .s-tab-link {
         color: @night-title;
       }
