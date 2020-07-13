@@ -79,6 +79,26 @@ components: {
       <DemoSection title="Cookies Callouts" :code="demoCode">
         <template #components>
           <Callout
+            variation="cookies"
+            icon="info"
+            :closeable="true"
+            :onClose="cookieCalloutClosed"
+          >
+            Cookies callout. <a href="#0">Link</a>
+          </Callout>
+        </template>
+      </DemoSection>
+    </div>
+
+    <div class="section">
+      <h2>Prime Callout</h2>
+      <p>
+        Prime Callout.
+      </p>
+
+      <DemoSection title="Prime Callouts" :code="demoCode">
+        <template #components>
+          <Callout
             variation="prime"
             :closeable="true"
             @onClick="cookieCalloutClosed"
@@ -158,8 +178,9 @@ components: {
             <td>'success'</td>
             <td>
               Use
-              <code>'success'</code>, <code>'warning'</code> or
-              <code>'info'</code>. Add <code>'strong'</code> when necessary.
+              <code>'success'</code>, <code>'warning'</code>,
+              <code>'info'</code>, <code>'cookies'</code> or
+              <code>'prime'</code>. Add <code>'strong'</code> when necessary.
             </td>
           </tr>
           <tr>

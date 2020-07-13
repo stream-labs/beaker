@@ -175,10 +175,6 @@ export default class Callout extends Vue {
     .padding-v-sides(2);
     height: auto;
 
-    @media screen and (max-width: 767px) {
-      .padding-v-sides(3);
-    }
-
     .s-callout__content {
       @media screen and (max-width: 767px) {
         display: flex;
@@ -196,10 +192,18 @@ export default class Callout extends Vue {
       font-weight: 500;
       font-size: 14px;
       line-height: 16px;
+
+      @media screen and (max-width: 767px) {
+        .margin-top(1.5);
+      }
     }
 
     .s-callout__close-button {
-      top: 22px;
+      top: 25px;
+
+      @media screen and (max-width: 767px) {
+        top: 14px;
+      }
     }
 
     .s-callout__more {
@@ -212,6 +216,10 @@ export default class Callout extends Vue {
       text-decoration: none;
       .btn-variant(rgba(9, 22, 29, 0.08), @dark-2);
       .margin-left(2);
+
+      @media screen and (max-width: 767px) {
+        margin: 12px 0 0 0;
+      }
     }
   }
 
