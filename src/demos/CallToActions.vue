@@ -85,14 +85,6 @@ components: {
         />
       </div>
 
-      <div class="section">
-        <PrimeFooterCallToAction
-          :closeable="true"
-          @onClick="test"
-          @onClose="test"
-        />
-      </div>
-
       <table class="docs-table">
         <thead>
           <tr>
@@ -255,14 +247,12 @@ import Button from "./../components/Button.vue";
 import CallToAction from "./../components/CallToAction.vue";
 import CallToActionCode from "!!raw-loader!./CallToActions.vue";
 import DemoSection from "./../components/DemoSection.vue";
-import PrimeFooterCallToAction from "./../components/PrimeFooterCallToAction.vue";
 
 @Component({
   components: {
     Button,
     CallToAction,
-    DemoSection,
-    PrimeFooterCallToAction
+    DemoSection
   }
 })
 export default class CallToActions extends Vue {

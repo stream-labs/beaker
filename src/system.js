@@ -64,7 +64,6 @@ import VirtualItem from "./components/VirtualItem.vue";
 import TaggingInput from "./components/TaggingInput.vue";
 import TextArea from "./components/TextArea.vue";
 import WelcomePrime from "./components/WelcomePrime.vue";
-import PrimeFooterCallToAction from "./components/PrimeFooterCallToAction.vue";
 
 export {
   Accordion,
@@ -124,6 +123,5 @@ export {
   UrlBar,
   VariableMenu,
   VirtualItem,
-  WelcomePrime,
-  PrimeFooterCallToAction
+  WelcomePrime
 };
