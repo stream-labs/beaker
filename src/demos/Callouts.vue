@@ -79,12 +79,12 @@ components: {
       <DemoSection title="Cookies Callouts" :code="demoCode">
         <template #components>
           <Callout
-            variation="cookies"
-            icon="info"
+            variation="prime"
             :closeable="true"
+            @onClick="cookieCalloutClosed"
             :onClose="cookieCalloutClosed"
           >
-            Cookies callout. <a href="#0">Link</a>
+            Themes, apps, website, merch and more. All included with Prime.
           </Callout>
         </template>
       </DemoSection>
