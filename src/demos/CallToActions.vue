@@ -126,7 +126,9 @@ components: {
             <td>thumbnailBg</td>
             <td>String</td>
             <td>#31C3A2</td>
-            <td>A Thumbnail background color, default color is @teal (#31C3A2)</td>
+            <td>
+              A Thumbnail background color, default color is @teal (#31C3A2)
+            </td>
           </tr>
 
           <tr>
@@ -205,8 +207,7 @@ components: {
             <td>null</td>
             <td>
               Used if the the
-              <code>type</code> is an
-              <code>a</code> element (links).
+              <code>type</code> is an <code>a</code> element (links).
             </td>
           </tr>
           <tr>
@@ -215,8 +216,7 @@ components: {
             <td>null</td>
             <td>
               Used if the the
-              <code>type</code> is a
-              <code>router-link</code>. Define the path.
+              <code>type</code> is a <code>router-link</code>. Define the path.
             </td>
           </tr>
           <tr>
@@ -225,8 +225,7 @@ components: {
             <td>null</td>
             <td>
               What type of element the component is. Options are
-              <code>button</code>,
-              <code>a</code>,
+              <code>button</code>, <code>a</code>,
               <code>router-link</code>
             </td>
           </tr>
@@ -248,6 +247,7 @@ import Button from "./../components/Button.vue";
 import CallToAction from "./../components/CallToAction.vue";
 import CallToActionCode from "!!raw-loader!./CallToActions.vue";
 import DemoSection from "./../components/DemoSection.vue";
+
 @Component({
   components: {
     Button,
