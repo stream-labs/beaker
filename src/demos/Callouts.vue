@@ -91,6 +91,26 @@ components: {
     </div>
 
     <div class="section">
+      <h2>Prime Callout</h2>
+      <p>
+        Prime Callout.
+      </p>
+
+      <DemoSection title="Prime Callouts" :code="demoCode">
+        <template #components>
+          <Callout
+            variation="prime"
+            :closeable="true"
+            @onClick="cookieCalloutClosed"
+            :onClose="cookieCalloutClosed"
+          >
+            Themes, apps, website, merch and more. All included with Prime.
+          </Callout>
+        </template>
+      </DemoSection>
+    </div>
+
+    <div class="section">
       <h2>Callout Options</h2>
 
       <div class="section">
@@ -158,8 +178,9 @@ components: {
             <td>'success'</td>
             <td>
               Use
-              <code>'success'</code>, <code>'warning'</code> or
-              <code>'info'</code>. Add <code>'strong'</code> when necessary.
+              <code>'success'</code>, <code>'warning'</code>,
+              <code>'info'</code>, <code>'cookies'</code> or
+              <code>'prime'</code>. Add <code>'strong'</code> when necessary.
             </td>
           </tr>
           <tr>
