@@ -122,6 +122,9 @@ export default class MediaPicker extends Vue {
   @Prop({ default: false })
   mediaLink!: boolean;
 
+  @Prop({ default: true })
+  mediaPreview!: boolean;
+
   @Prop()
   value!: string;
 
@@ -143,17 +146,19 @@ export default class MediaPicker extends Vue {
       {
         key: "media-selected-zoom",
         available:
+          this.mediaPreview &&
           this.variation === "image" &&
           this.media.selected &&
           !this.mediaBroken,
         class: "s-media-picker__zoom-icon",
-        emit: "preivew-media",
+        emit: "preview-media",
         title: `Preview ${this.variationTitle}`,
         icon: "icon-zoom"
       },
       {
         key: "media-selected-play",
         available:
+          this.mediaPreview &&
           !this.mediaBroken &&
           this.variation === "audio" &&
           this.media.selected,
