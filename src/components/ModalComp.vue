@@ -9,6 +9,7 @@
         :width="width"
         :minWidth="minWidth"
         :hideActionButtons="hideActionButtons"
+        :confirmButtonText="confirmButtonText"
         v-on="$listeners"
       >
         <slot></slot>

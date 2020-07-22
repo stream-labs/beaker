@@ -30,7 +30,7 @@
           ></Button>
           <Button
             :variation="'action'"
-            :title="'Confirm'"
+            :title="confirmButtonText"
             :size="'fixed-width'"
             @click="$emit('confirm')"
           ></Button>
@@ -70,6 +70,9 @@ export default class ModalBasic extends Vue {
 
   @Prop()
   hideActionButtons!: string;
+
+  @Prop({ default: "Confirm" })
+  confirmButtonText!: string;
 }
 </script>
 

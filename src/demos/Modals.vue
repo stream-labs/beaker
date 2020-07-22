@@ -241,13 +241,16 @@ components: {
           <td>@confirm</td>
           <td>Function</td>
           <td>null</td>
-          <td>Callback function when confirmed (only in Modal Confirmation)</td>
+          <td>
+            Callback function when confirmed (in Modal Basic, Modal
+            Confirmation)
+          </td>
         </tr>
         <tr>
           <td>confirmButtonText</td>
           <td>string</td>
           <td>Confirm</td>
-          <td>Confirm button text (only in Modal Confirmation)</td>
+          <td>Confirm button text (in Modal Basic, Modal Confirmation)</td>
         </tr>
         <tr>
           <td>buttonVariation</td>
