@@ -10,6 +10,7 @@
         :minWidth="minWidth"
         :hideActionButtons="hideActionButtons"
         :confirmButtonText="confirmButtonText"
+        :clickToClose="clickToClose"
         v-on="$listeners"
       >
         <slot></slot>
@@ -182,6 +183,9 @@ export default class ModalComp extends Vue {
 
   @Prop()
   hideActionButtons!: string;
+
+  @Prop()
+  clickToClose!: boolean;
 
   modalName: string = "";
 
