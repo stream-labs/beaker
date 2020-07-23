@@ -7,6 +7,7 @@
     height="auto"
     :adaptive="true"
     v-on="$listeners"
+    :clickToClose="clickToClose"
   >
     <div class="s-modal-container">
       <div class="s-modal-body">
@@ -73,6 +74,9 @@ export default class ModalBasic extends Vue {
 
   @Prop({ default: "Confirm" })
   confirmButtonText!: string;
+
+  @Prop({ default: true })
+  clickToClose!: boolean;
 }
 </script>
 

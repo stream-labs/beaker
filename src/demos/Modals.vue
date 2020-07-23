@@ -18,6 +18,7 @@ components: {
             type="basic"
             title="UI Modal"
             subTitle="Subtitle"
+            :clickToClose="false"
             text="
               Save combining multiple windows like Streamlabels, Twitch Chat,
               Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a
@@ -329,6 +330,15 @@ components: {
           <td>
             Callback function when click the button below (only in Modal Welcom
             Prime).
+          </td>
+        </tr>
+        <tr>
+          <td>clickToClose</td>
+          <td>Boolean</td>
+          <td>true</td>
+          <td>
+            If set to false, it will not be possible to close modal by clicking
+            on the background or by pressing Esc key. (only in Modal Basic).
           </td>
         </tr>
       </tbody>
