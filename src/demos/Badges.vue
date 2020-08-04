@@ -20,10 +20,10 @@ components: {
         <h2>Standard Badges</h2>
         <DemoSection title="Standard Badges" :code="demoCode">
           <template #components>
-            <Badge variant="new" :align-left="true">New</Badge>
-            <Badge variant="tag" :align-left="true">Tag</Badge>
             <Badge variant="beta" :align-left="true">Beta</Badge>
-            <Badge variant="warning" :align-left="true">Warning</Badge>
+            <Badge variant="new" :align-left="true">New</Badge>
+            <Badge variant="warning" :align-left="true">Error</Badge>
+            <Badge variant="tag" :align-left="true">Tag</Badge>
             <Badge variant="pro" :align-left="true">Pro</Badge>
             <Badge
               :align-left="true"
@@ -40,11 +40,11 @@ components: {
         <h2>Alt Badges</h2>
         <DemoSection title="Alt Badges" :code="demoCode">
           <template #components>
-            <Badge variant="teal-alt" :align-left="true">New Alt</Badge>
-            <Badge variant="tag-alt" :align-left="true">Tag Alt</Badge>
-            <Badge variant="beta-alt" :align-left="true">Beta Alt</Badge>
-            <Badge variant="warning-alt" :align-left="true">Warning Alt</Badge>
-            <Badge variant="pro-alt" :align-left="true">Pro Alt</Badge>
+            <Badge variant="beta-alt" :align-left="true">Beta</Badge>
+            <Badge variant="new-alt" :align-left="true">New</Badge>
+            <Badge variant="warning-alt" :align-left="true">Error</Badge>
+            <Badge variant="tag-alt" :align-left="true">Tag</Badge>
+            <Badge variant="pro-alt" :align-left="true">Pro</Badge>
             <Badge variant="prime-alt" :align-left="true"></Badge>
           </template>
         </DemoSection>
@@ -54,11 +54,12 @@ components: {
         <h2>Small Badges</h2>
         <DemoSection title="Small Badges" :code="demoCode">
           <template #components>
-            <Badge :small="true" variant="tag" :align-left="true">Tag</Badge>
             <Badge :small="true" variant="beta" :align-left="true">Beta</Badge>
-            <Badge :small="true" variant="warning" :align-left="true"
-              >Warning</Badge
-            >
+            <Badge :small="true" variant="new" :align-left="true">New</Badge>
+            <Badge :small="true" variant="warning" :align-left="true">
+              Error
+            </Badge>
+            <Badge :small="true" variant="tag" :align-left="true">Tag</Badge>
             <Badge :small="true" variant="pro" :align-left="true">Pro</Badge>
           </template>
         </DemoSection>
