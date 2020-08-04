@@ -160,7 +160,7 @@ export default class Badge extends Vue {
   }
 
   &--beta {
-    .badge-colors(@dark-yellow);
+    .badge-colors(@dark-blue);
   }
 
   &--warning {
@@ -242,7 +242,7 @@ export default class Badge extends Vue {
     }
 
     &--beta {
-      .night-badge-colors(@bg: @yellow);
+      .night-badge-colors(@bg: @blue);
     }
 
     &--warning {
@@ -258,7 +258,7 @@ export default class Badge extends Vue {
     }
 
     &--pro {
-      .night-badge-colors(@bg: @light-5);
+      .night-badge-colors(@bg: @light-3);
     }
 
     &--count {

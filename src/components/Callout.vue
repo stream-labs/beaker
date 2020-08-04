@@ -178,7 +178,7 @@ export default class Callout extends Vue {
     .s-callout__content {
       @media screen and (max-width: 767px) {
         display: flex;
-        align-items: start;
+        align-items: flex-start;
         flex-direction: column;
       }
     }
