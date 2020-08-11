@@ -15,7 +15,14 @@ components: {
       <h3>Default Settings</h3>
       <DemoSection title="Default Settings" :code="demoCode">
         <template #components>
-          <Accordion opened-title="Hide Content" closed-title="Show Content">
+          <div @click="openAccordion(true)">Open Accordion</div>
+          <div @click="openAccordion(false)">Close Accordion</div>
+
+          <Accordion
+            opened-title="Hide Content"
+            closed-title="Show Content"
+            v-model="isOpened"
+          >
             <div slot="content">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             </div>
@@ -78,6 +85,7 @@ components: {
               <Accordion
                 opened-title="Hide Content"
                 closed-title="Show Content"
+                v-model="isOpened"
               >
                 <div slot="content">
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -138,6 +146,12 @@ components: {
         </thead>
         <tbody>
           <tr>
+            <td>v-model</td>
+            <td>boolean</td>
+            <td>null</td>
+            <td>Use to sync accordion being open/closed</td>
+          </tr>
+          <tr>
             <td>openedTitle</td>
             <td>string</td>
             <td>null</td>
@@ -194,6 +208,11 @@ import DemoSection from "./../components/DemoSection.vue";
 })
 export default class Accordions extends Vue {
   demoCode = AccordionCode;
+  isOpened: boolean | null = true;
+
+  openAccordion(bool) {
+    this.isOpened = bool;
+  }
 }
 </script>
 

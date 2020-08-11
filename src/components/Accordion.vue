@@ -54,14 +54,14 @@
         :class="[{ 'is-open': isOpen }, { 'left-nav': leftNav }]"
         v-if="isOpen"
       >
-        <slot name="content" />
+        <slot name="content" :is-open="isOpen" />
       </div>
     </transition>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import { escape } from "lodash-es";
 
 @Component({})
@@ -84,9 +84,22 @@ export default class Accordian extends Vue {
   @Prop()
   leftNav!: boolean;
 
+  @Prop()
+  value!: boolean;
+
   private isOpen = false;
   private focused = false;
   private defaultBorder = false;
+
+  @Watch("value")
+  handleIsOpened(val) {
+    this.isOpen = val;
+  }
+
+  @Watch("isOpen")
+  handleIsOpen(val) {
+    this.$emit("input", val);
+  }
 
   get accordionTitle() {
     if (this.title !== undefined) {
@@ -162,8 +175,8 @@ export default class Accordian extends Vue {
   }
 
   mounted() {
-    if (this.isOpened) {
-      this.isOpen = true;
+    if (this.value) {
+      this.isOpen = this.value;
     }
   }
 }
