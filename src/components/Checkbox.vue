@@ -168,6 +168,10 @@ export default class Checkbox extends Vue {
       }
     }
 
+    input:checked ~ label:after {
+      color: @dark-2;
+    }
+
     input:checked ~ label {
       color: @night-title;
     }
