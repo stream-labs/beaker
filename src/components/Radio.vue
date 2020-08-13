@@ -7,7 +7,7 @@
       :checked="val == value"
       :value="val"
       @input="$emit('input', val)"
-      @click="$emit('onClick')"
+      @click="$emit('on-click')"
     />
     <label :for="id">{{ label }}</label>
   </div>
@@ -112,6 +112,12 @@ export default class Radio extends Vue {
         border-color: @teal;
         background-color: @teal;
       }
+    }
+  }
+
+  .s-radio.s-checkbox {
+    input:checked ~ label:after {
+      background: @dark-2;
     }
   }
 }
