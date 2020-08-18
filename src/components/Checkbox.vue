@@ -106,8 +106,8 @@ export default class Checkbox extends Vue {
     color: @day-title;
 
     &:before {
-      border-color: @teal;
-      background-color: @teal;
+      border-color: @dark-teal;
+      background-color: @dark-teal;
     }
   }
 
@@ -174,6 +174,11 @@ export default class Checkbox extends Vue {
 
     input:checked ~ label {
       color: @night-title;
+
+      &:before {
+        border-color: @teal;
+        background-color: @teal;
+      }
     }
   }
 }
