@@ -26,10 +26,6 @@ export default {
   name: "Selector",
   extends: Selector,
 
-  components: {
-    Selector
-  },
-
   props: {
     width: String
   },
