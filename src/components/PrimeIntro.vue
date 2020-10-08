@@ -16,17 +16,16 @@
 
         <slot v-if="hasSlot"></slot>
         <div v-else>
-          <span>to publish your website!</span>
+          <span>to customize your tip page!</span>
 
           <div class="modal-prime-intro__heading--subtitle">
             <slot v-if="hasSubtitleSlot" name="subtitle"></slot>
-            <span v-else>You will get your domain along with</span>
           </div>
         </div>
       </div>
       <ul class="modal-prime-intro__list">
         <li class="modal-prime-intro__list__item">
-          <i class="icon-themes" /> Overlay, widget & site themes
+          <i class="icon-themes" /> Overlay, widget & tip page themes
         </li>
         <li class="modal-prime-intro__list__item">
           <i class="icon-store" /> FREE apps
@@ -60,8 +59,8 @@ import Button from "./../components/Button.vue";
 
 @Component({
   components: {
-    "s-button": Button
-  }
+    "s-button": Button,
+  },
 })
 export default class PrimeIntro extends Vue {
   @Prop({ default: "Join Prime" })

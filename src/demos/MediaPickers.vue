@@ -18,6 +18,7 @@ components: {
               slot="input"
               variation="image"
               :media-link="true"
+              :media-preview="false"
               @select-media="selectImageMedia"
               @preview-media="previewImageMedia"
               @remove-media="removeImageMedia"
@@ -149,6 +150,7 @@ export default class ImagePickers extends Vue {
   }
 
   previewImageMedia() {
+    console.log("Previewing Media");
     window.open(this.imageMedia);
   }
 }

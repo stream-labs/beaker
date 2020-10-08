@@ -6,6 +6,7 @@
   >
     <span class="s-callout__content">
       <i v-if="icon" :class="[calloutIcon]"></i>
+      <Badge v-if="isPrime" variant="prime" :align-left="true" />
       <span>
         <slot />
       </span>
@@ -14,14 +15,22 @@
         class="icon-close s-callout__close-button"
         @click="closeCallout()"
       ></i>
+      <a v-if="isPrime" class="s-callout__more" @click="$emit('onClick')"
+        >Learn more</a
+      >
     </span>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import Badge from "./../components/Badge.vue";
 
-@Component({})
+@Component({
+  components: {
+    Badge
+  }
+})
 export default class Callout extends Vue {
   @Prop({ default: "success" })
   variation!: string;
@@ -66,6 +75,10 @@ export default class Callout extends Vue {
       case "cookies":
         return "icon-information";
     }
+  }
+
+  get isPrime() {
+    return this.variation === "prime";
   }
 }
 </script>
@@ -146,6 +159,70 @@ export default class Callout extends Vue {
     transform: translateY(-15px);
   }
 
+  &--cookies,
+  &--prime {
+    position: fixed;
+    bottom: 0;
+    right: calc(~"0% + 9px");
+    left: 0%;
+    z-index: 900;
+    .radius(0);
+    margin: 0 auto;
+  }
+
+  &--prime {
+    background-color: @prime;
+    .padding-v-sides(2);
+    height: auto;
+
+    .s-callout__content {
+      @media screen and (max-width: 767px) {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    .s-badge {
+      .margin-right(1.5);
+    }
+
+    span {
+      color: #000;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+
+      @media screen and (max-width: 767px) {
+        .margin-top(1.5);
+      }
+    }
+
+    .s-callout__close-button {
+      top: 25px;
+
+      @media screen and (max-width: 767px) {
+        top: 14px;
+      }
+    }
+
+    .s-callout__more {
+      background: rgba(9, 22, 29, 0.08);
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      .padding();
+      cursor: pointer;
+      text-decoration: none;
+      .btn-variant(rgba(9, 22, 29, 0.08), @dark-2);
+      .margin-left(2);
+
+      @media screen and (max-width: 767px) {
+        margin: 12px 0 0 0;
+      }
+    }
+  }
+
   &--cookies {
     background-color: @dark-5;
     color: @white;
@@ -201,6 +278,19 @@ export default class Callout extends Vue {
 
     &--info {
       .callout-colors(@yellow, @dark-2);
+    }
+
+    .s-badge {
+      &--prime {
+        background: @dark-prime;
+        color: @white;
+
+        .icon-prime {
+          &::before {
+            color: @white;
+          }
+        }
+      }
     }
   }
 }

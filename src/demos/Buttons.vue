@@ -4,9 +4,7 @@
       <h1>Buttons</h1>
       <p>
         Our button component is super flexible. It can act as type
-        <code>button</code>,
-        <code>a</code> tag or
-        <code>router-link</code>.
+        <code>button</code>, <code>a</code> tag or <code>router-link</code>.
         Please note that you may need to use 'ButtonInput' rather than 'Button'
         to avoid issues.
       </p>
@@ -34,9 +32,17 @@ components: {
                 @click="reportSlobsDownloads"
               />
 
-              <Button variation="action" title="Action" @click="buttonActionClick" />
+              <Button
+                variation="action"
+                title="Action"
+                @click="buttonActionClick"
+              />
 
-              <Button variation="warning" title="Warning" @click="buttonActionClick" />
+              <Button
+                variation="warning"
+                title="Warning"
+                @click="buttonActionClick"
+              />
 
               <Button
                 variation="default"
@@ -53,7 +59,12 @@ components: {
                 @click="buttonActionClick"
               />
 
-              <Button variation="prime" title="Join Prime" icon="prime" @click="buttonActionClick" />
+              <Button
+                variation="prime"
+                title="Join Prime"
+                icon="prime"
+                @click="buttonActionClick"
+              />
 
               <Button
                 variation="prime-white"
@@ -78,11 +89,23 @@ components: {
         <DemoSection title="Disabled" :code="demoCode">
           <template #components>
             <div class="s-button-container s-button-container--left">
-              <Button :variation="'default'" :state="'disabled'" :title="'Default'" />
+              <Button
+                :variation="'default'"
+                :state="'disabled'"
+                :title="'Default'"
+              />
 
-              <Button :variation="'action'" :state="'disabled'" :title="'Action'" />
+              <Button
+                :variation="'action'"
+                :state="'disabled'"
+                :title="'Action'"
+              />
 
-              <Button :variation="'warning'" :state="'disabled'" :title="'Warning'" />
+              <Button
+                :variation="'warning'"
+                :state="'disabled'"
+                :title="'Warning'"
+              />
 
               <Button
                 :variation="'default'"
@@ -100,11 +123,23 @@ components: {
         <DemoSection title="Focus" :code="demoCode">
           <template #components>
             <div class="s-button-container s-button-container--left">
-              <Button :variation="'default'" :state="'focused'" :title="'Default'" />
+              <Button
+                :variation="'default'"
+                :state="'focused'"
+                :title="'Default'"
+              />
 
-              <Button :variation="'action'" :state="'focused'" :title="'Action'" />
+              <Button
+                :variation="'action'"
+                :state="'focused'"
+                :title="'Action'"
+              />
 
-              <Button :variation="'warning'" :state="'focused'" :title="'Warning'" />
+              <Button
+                :variation="'warning'"
+                :state="'focused'"
+                :title="'Warning'"
+              />
 
               <Button
                 :variation="'default'"
@@ -122,11 +157,23 @@ components: {
         <DemoSection title="Loading" :code="demoCode">
           <template #components>
             <div class="s-button-container s-button-container--left">
-              <Button :variation="'default'" :state="'loading'" :title="'Default'" />
+              <Button
+                :variation="'default'"
+                :state="'loading'"
+                :title="'Default'"
+              />
 
-              <Button :variation="'action'" :state="'loading'" :title="'Action'" />
+              <Button
+                :variation="'action'"
+                :state="'loading'"
+                :title="'Action'"
+              />
 
-              <Button :variation="'warning'" :state="'loading'" :title="'Warning'" />
+              <Button
+                :variation="'warning'"
+                :state="'loading'"
+                :title="'Warning'"
+              />
 
               <Button
                 :variation="'default'"
@@ -163,11 +210,26 @@ components: {
       <DemoSection title="Small Buttons" :code="demoCode">
         <template #components>
           <div class="s-button-container s-button-container--left">
-            <Button :type="'button'" :size="'small'" :variation="'default'" :title="'Default'" />
+            <Button
+              :type="'button'"
+              :size="'small'"
+              :variation="'default'"
+              :title="'Default'"
+            />
 
-            <Button :type="'button'" :size="'small'" :variation="'action'" :title="'Action'" />
+            <Button
+              :type="'button'"
+              :size="'small'"
+              :variation="'action'"
+              :title="'Action'"
+            />
 
-            <Button :type="'button'" :size="'small'" :variation="'warning'" :title="'Warning'" />
+            <Button
+              :type="'button'"
+              :size="'small'"
+              :variation="'warning'"
+              :title="'Warning'"
+            />
 
             <Button
               :type="'button'"
@@ -177,7 +239,11 @@ components: {
               :icon="'image'"
             />
 
-            <Button :variation="'rewards-standard'" :size="'small'" :title="'Rewards'" />
+            <Button
+              :variation="'rewards-standard'"
+              :size="'small'"
+              :title="'Rewards'"
+            />
           </div>
         </template>
       </DemoSection>
@@ -192,11 +258,26 @@ components: {
       <DemoSection title="Large Buttons" :code="demoCode">
         <template #components>
           <div class="s-button-container s-button-container--left">
-            <Button :type="'button'" :size="'large'" :variation="'default'" :title="'Default'" />
+            <Button
+              :type="'button'"
+              :size="'large'"
+              :variation="'default'"
+              :title="'Default'"
+            />
 
-            <Button :type="'button'" :size="'large'" :variation="'action'" :title="'Action'" />
+            <Button
+              :type="'button'"
+              :size="'large'"
+              :variation="'action'"
+              :title="'Action'"
+            />
 
-            <Button :type="'button'" :size="'large'" :variation="'warning'" :title="'Warning'" />
+            <Button
+              :type="'button'"
+              :size="'large'"
+              :variation="'warning'"
+              :title="'Warning'"
+            />
 
             <Button
               :type="'button'"
@@ -206,7 +287,12 @@ components: {
               :icon="'image'"
             />
 
-            <Button :size="'large'" :variation="'prime'" :title="'Join Prime'" :icon="'prime'" />
+            <Button
+              :size="'large'"
+              :variation="'prime'"
+              :title="'Join Prime'"
+              :icon="'prime'"
+            />
             <Button
               :size="'large'"
               :variation="'prime-white'"
@@ -225,11 +311,26 @@ components: {
       <DemoSection title="Fixed Width Buttons" :code="demoCode">
         <template #components>
           <div class="s-button-container s-button-container--left">
-            <Button type="button" size="fixed-width" variation="default" title="Default" />
+            <Button
+              type="button"
+              size="fixed-width"
+              variation="default"
+              title="Default"
+            />
 
-            <Button type="button" size="fixed-width" variation="action" title="Action" />
+            <Button
+              type="button"
+              size="fixed-width"
+              variation="action"
+              title="Action"
+            />
 
-            <Button type="button" size="fixed-width" variation="warning" title="Warning" />
+            <Button
+              type="button"
+              size="fixed-width"
+              variation="warning"
+              title="Warning"
+            />
 
             <Button
               type="button"
@@ -250,7 +351,11 @@ components: {
         <p>Used within cards and panels in the Dashboard.</p>
         <DemoSection title="Default" :code="demoCode">
           <template #components>
-            <Button size="full-width" variation="default" title="Start Giveaway" />
+            <Button
+              size="full-width"
+              variation="default"
+              title="Start Giveaway"
+            />
           </template>
         </DemoSection>
       </div>
@@ -270,7 +375,11 @@ components: {
         <p>Used on the Tip Page for Subscribing to Pro.</p>
         <DemoSection title="Paypal" :code="demoCode">
           <template #components>
-            <Button variation="paypal" title="Subscribe with PayPal" price="$4.99" />
+            <Button
+              variation="paypal"
+              title="Subscribe with PayPal"
+              price="$4.99"
+            />
           </template>
         </DemoSection>
       </div>
@@ -281,8 +390,14 @@ components: {
         <DemoSection title="Download" :code="demoCode">
           <template #components>
             <div class="s-button-container s-button-container--left">
-              <Button variation="slobs-download" title="Download Streamlabs OBS" />
-              <Button variation="slobs-download-landing" osType="windows"></Button>
+              <Button
+                variation="slobs-download"
+                title="Download Streamlabs OBS"
+              />
+              <Button
+                variation="slobs-download-landing"
+                osType="windows"
+              ></Button>
               <Button variation="slobs-download-landing" osType="mac"></Button>
             </div>
           </template>
@@ -295,17 +410,47 @@ components: {
       <DemoSection title="Square Buttons" :code="demoCode">
         <template #components>
           <div class="s-button-container s-button-container--left">
-            <Button type="button" size="square" variation="default" icon="add" />
+            <Button
+              type="button"
+              size="square"
+              variation="default"
+              icon="add"
+            />
 
-            <Button type="button" size="square" variation="default" icon="subtract" />
+            <Button
+              type="button"
+              size="square"
+              variation="default"
+              icon="subtract"
+            />
 
-            <Button type="button" variation="facebook" size="square" icon="facebook" />
+            <Button
+              type="button"
+              variation="facebook"
+              size="square"
+              icon="facebook"
+            />
 
-            <Button type="button" variation="periscope" size="square" icon="periscope" />
+            <Button
+              type="button"
+              variation="periscope"
+              size="square"
+              icon="periscope"
+            />
 
-            <Button type="button" variation="mixer" size="square" icon="mixer" />
+            <Button
+              type="button"
+              variation="mixer"
+              size="square"
+              icon="mixer"
+            />
 
-            <Button type="button" variation="picarto" size="square" icon="picarto" />
+            <Button
+              type="button"
+              variation="picarto"
+              size="square"
+              icon="picarto"
+            />
           </div>
         </template>
       </DemoSection>
@@ -317,7 +462,11 @@ components: {
 
       <DemoSection title="Navigation Buttons" :code="demoCode">
         <template #components>
-          <Button variation="navigation" icon="back-alt" title="Back to Listings" />
+          <Button
+            variation="navigation"
+            icon="back-alt"
+            title="Back to Listings"
+          />
         </template>
       </DemoSection>
     </div>
@@ -352,8 +501,7 @@ components: {
           <td>null</td>
           <td>
             Emits a click function. If you are using an event modifier such as
-            <code>prevent</code>, use
-            <code>native</code>. For example
+            <code>prevent</code>, use <code>native</code>. For example
             <code>@click.native.prevent</code>.
           </td>
         </tr>
@@ -424,8 +572,7 @@ components: {
           <td>null</td>
           <td>
             Used if the the
-            <code>type</code> is an
-            <code>a</code> element (links).
+            <code>type</code> is an <code>a</code> element (links).
           </td>
         </tr>
         <tr>
@@ -434,9 +581,7 @@ components: {
           <td>standard</td>
           <td>
             Size of the button. Options are
-            <code>small</code>,
-            <code>large</code>,
-            <code>square</code>,
+            <code>small</code>, <code>large</code>, <code>square</code>,
             <code>fixed-width</code>, and
             <code>full-width</code>
           </td>
@@ -447,9 +592,7 @@ components: {
           <td>null</td>
           <td>
             State of the button. Options are
-            <code>hover</code>,
-            <code>focus</code>,
-            <code>loading</code> and
+            <code>hover</code>, <code>focus</code>, <code>loading</code> and
             <code>disabled</code>.
           </td>
         </tr>
@@ -465,8 +608,7 @@ components: {
           <td>null</td>
           <td>
             Used if the the
-            <code>type</code> is a
-            <code>router-link</code>. Define the path.
+            <code>type</code> is a <code>router-link</code>. Define the path.
           </td>
         </tr>
         <tr>
@@ -475,8 +617,7 @@ components: {
           <td>button</td>
           <td>
             What type of element the component is. Options are
-            <code>button</code>,
-            <code>a</code>,
+            <code>button</code>, <code>a</code>,
             <code>router-link</code>
           </td>
         </tr>
@@ -488,9 +629,7 @@ components: {
             Used to set different targets for
             <code>a</code>
             links,
-            <code>_self</code>,
-            <code>_blank</code>,
-            <code>_parent</code>,
+            <code>_self</code>, <code>_blank</code>, <code>_parent</code>,
             <code>_top</code>
           </td>
         </tr>
@@ -500,8 +639,7 @@ components: {
           <td>null</td>
           <td>
             You can use this prop when you set variation as
-            <code>prime</code>. Option is only
-            <code>white</code>.
+            <code>prime</code>. Option is only <code>white</code>.
           </td>
         </tr>
         <tr>
@@ -520,28 +658,16 @@ components: {
           <td>default</td>
           <td>
             The variation style of a button. Primary options are
-            <code>default</code>,
-            <code>action</code>,
-            <code>prime</code> and
-            <code>warning</code>. Other options are
-            <code>subscribe</code>,
-            <code>paypal</code>,
-            <code>download</code>, and
+            <code>default</code>, <code>action</code>, <code>prime</code> and
+            <code>warning</code>. Other options are <code>subscribe</code>,
+            <code>paypal</code>, <code>download</code>, and
             <code>navigation</code>. Reward options are
-            <code>rewards-standard</code>,
-            <code>rewards-silver</code>,
-            <code>rewards-gold</code>,
-            <code>rewards-platinum</code>,
-            <code>rewards-diamond</code>, and
-            <code>rewards-legend</code>.
-            Platform options are
-            <code>facebook</code>,
-            <code>mixer</code>,
-            <code>twitch</code>,
-            <code>youtube</code>,
-            <code>periscope</code>,
-            <code>picarto</code>and
-            <code>paypal-blue</code>.
+            <code>rewards-standard</code>, <code>rewards-silver</code>,
+            <code>rewards-gold</code>, <code>rewards-platinum</code>,
+            <code>rewards-diamond</code>, and <code>rewards-legend</code>.
+            Platform options are <code>facebook</code>, <code>mixer</code>,
+            <code>twitch</code>, <code>youtube</code>, <code>periscope</code>,
+            <code>picarto</code>and <code>paypal-blue</code>.
           </td>
         </tr>
         <tr>
@@ -556,8 +682,7 @@ components: {
           <td>windows</td>
           <td>
             Used for slobs download landing button icon. Options are
-            <code>windows</code> and
-            <code>mac</code>.
+            <code>windows</code> and <code>mac</code>.
           </td>
         </tr>
       </tbody>

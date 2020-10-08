@@ -152,7 +152,7 @@ export default class Badge extends Vue {
   }
 
   &--tag {
-    .badge-colors(@dark-5);
+    .badge-colors(@dark-4);
   }
 
   &--pro {
@@ -160,7 +160,7 @@ export default class Badge extends Vue {
   }
 
   &--beta {
-    .badge-colors(@dark-yellow);
+    .badge-colors(@dark-blue);
   }
 
   &--warning {
@@ -168,7 +168,7 @@ export default class Badge extends Vue {
   }
 
   &--new {
-    .badge-colors(@purple);
+    .badge-colors(@dark-purple);
   }
 
   &--count {
@@ -242,7 +242,7 @@ export default class Badge extends Vue {
     }
 
     &--beta {
-      .night-badge-colors(@bg: @yellow);
+      .night-badge-colors(@bg: @blue);
     }
 
     &--warning {
@@ -250,15 +250,15 @@ export default class Badge extends Vue {
     }
 
     &--tag {
-      .night-badge-colors(@white, @dark-5);
+      .night-badge-colors(@white, @dark-5, @alt-color: @light-5);
     }
 
     &--new {
-      .night-badge-colors(@white, @purple);
+      .night-badge-colors(@bg: @purple);
     }
 
     &--pro {
-      .night-badge-colors(@bg: @light-5);
+      .night-badge-colors(@bg: @light-3, @alt-color: @light-3);
     }
 
     &--count {
