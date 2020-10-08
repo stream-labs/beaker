@@ -5,7 +5,7 @@
     @click="showText"
   >
     <div class="s-guard__placeholder">
-      <i class="icon-lock"></i>
+      <i class="icon-lock" />
       {{ placeholder }}
     </div>
 
@@ -22,19 +22,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import TextInput from "./TextInput.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import TextInput from './TextInput.vue';
 
 @Component({
   components: {
-    TextInput
-  }
+    TextInput,
+  },
 })
-export default class GuardNew extends Vue {
+export default defineComponent({
   @Prop()
   value?: string;
 
-  @Prop({ default: "Click to show" })
+  @Prop({ default: 'Click to show' })
   placeholder!: string;
 
   visible = false;
@@ -43,22 +45,22 @@ export default class GuardNew extends Vue {
     if (!this.visible) {
       this.visible = true;
     } else {
-      this.$emit("click");
+      this.$emit('click');
     }
 
-    if (e.type === "keydown") {
+    if (e.type === 'keydown') {
       setTimeout(() => e.target.select(), 200);
     }
   }
 
   checkSelectedText(e) {
-    const target = e.target;
+    const { target } = e;
 
     if (!this.visible) target.setSelectionRange(0, 0);
 
     target.focus();
   }
-}
+})
 </script>
 
 <style lang="less">

@@ -1,19 +1,23 @@
 /// <reference path="./../index.d.ts" />
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
+import { createApp } from 'vue';
+import { createWebHistory, createRouter } from 'vue-router';
 
-import VTooltip from "v-tooltip";
-import VueClipboard from "vue-clipboard2";
-import WhatInput from "./plugins/WhatInput/index";
+import VTooltip from 'v-tooltip';
+import VueClipboard from 'vue-clipboard2';
+import VeeValidate from 'vee-validate';
+import routes from './router';
+import App from './App.vue';
 
-Vue.config.productionTip = false;
+const app = createApp(App);
 
-Vue.use(VTooltip);
-Vue.use(VueClipboard);
-Vue.use(WhatInput);
+app.use(VTooltip);
+app.use(VueClipboard);
+app.use(VeeValidate);
 
-new Vue({
-  router,
-  render: h => h(App)
-}).$mount("#app");
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+});
+
+app.use(router);
+app.mount('#app');

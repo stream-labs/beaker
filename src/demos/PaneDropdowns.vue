@@ -13,20 +13,23 @@ components: {
 
     <div class="section">
       <h2>Using Slots</h2>
-      <DemoSection title="With Dropdown Icon" :code="demoCode">
+      <DemoSection
+        title="With Dropdown Icon"
+        :code="demoCode"
+      >
         <template #components>
           <PaneDropdown :close-on-select="false">
-            <span slot="title">Trending</span>
-            <PaneDropdown :menuAlign="'center'">
-              <span slot="title">Inner Dropdown</span>
+            <template #title><span>Trending</span></template>
+            <PaneDropdown :menu-align="'center'">
+              <template #title><span>Inner Dropdown</span></template>
               <a href="#">Item 1</a>
               <a href="#">Item 2</a>
               <a href="#">Item 3</a>
             </PaneDropdown>
-            <hr />
-            <a href="#"> <i class="icon-leaderboard-4"></i>Most Installed </a>
-            <a href="#"> <i class="icon-loyalty"></i>Newly Added </a>
-            <a href="#"> <i class="icon-graph"></i>Trending </a>
+            <hr>
+            <a href="#"> <i class="icon-leaderboard-4" />Most Installed </a>
+            <a href="#"> <i class="icon-loyalty" />Newly Added </a>
+            <a href="#"> <i class="icon-graph" />Trending </a>
           </PaneDropdown>
         </template>
       </DemoSection>
@@ -35,11 +38,17 @@ components: {
     <div class="section">
       <h2>Menu Align</h2>
 
-      <DemoSection title="Menu Align" :code="demoCode">
+      <DemoSection
+        title="Menu Align"
+        :code="demoCode"
+      >
         <template #components>
           <div class="row">
-            <PaneDropdown :menuAlign="'right'" :hoverOption="true">
-              <span slot="title">Right Dropdown Menu</span>
+            <PaneDropdown
+              :menu-align="'right'"
+              :hover-option="true"
+            >
+              <template #title><span>Right Dropdown Menu</span></template>
               <a href="#">Hey I'm a longer link here</a>
               <a href="#">Let's see how this looks</a>
               <a href="#">I'm in a pane dropdown aligned to the right</a>
@@ -47,8 +56,8 @@ components: {
           </div>
 
           <div class="row">
-            <PaneDropdown :menuAlign="'center'">
-              <span slot="title">Center Dropdown Menu</span>
+            <PaneDropdown :menu-align="'center'">
+              <template #title><span>Center Dropdown Menu</span></template>
               <a href="#">Hey I'm a longer link here</a>
               <a href="#">Let's see how this looks</a>
               <a href="#">I'm in a pane dropdown aligned to the right</a>
@@ -61,13 +70,16 @@ components: {
     <div class="section">
       <h2>Custom Dropdown</h2>
 
-      <DemoSection title="Custom Dropdown" :code="demoCode">
+      <DemoSection
+        title="Custom Dropdown"
+        :code="demoCode"
+      >
         <template #components>
           <PaneDropdown :custom="true">
-            <span slot="title">Custom Dropdown Menu</span>
+            <template #title><span>Custom Dropdown Menu</span></template>
             <div>
               hey watsup
-              <br />
+              <br>
               <strong>put whatever you want in here</strong>
             </div>
           </PaneDropdown>
@@ -78,10 +90,13 @@ components: {
     <div class="section">
       <h2>Relative Menu</h2>
 
-      <DemoSection title="Relative Menu" :code="demoCode">
+      <DemoSection
+        title="Relative Menu"
+        :code="demoCode"
+      >
         <template #components>
-          <PaneDropdown :relativeMenu="true">
-            <span slot="title">Relative Menu</span>
+          <PaneDropdown :relative-menu="true">
+            <template #title><span>Relative Menu</span></template>
             <a href="#">Hey I'm a longer link here</a>
             <a href="#">Let's see how this looks</a>
             <a href="#">I'm in a pane dropdown aligned to the right</a>
@@ -93,10 +108,16 @@ components: {
     <div class="section">
       <h2>Simple Menu</h2>
 
-      <DemoSection title="Simple Menu" :code="demoCode">
+      <DemoSection
+        title="Simple Menu"
+        :code="demoCode"
+      >
         <template #components>
-          <PaneDropdown :relativeMenu="true" :simpleMenu="true">
-            <span slot="title">Simple Menu</span>
+          <PaneDropdown
+            :relative-menu="true"
+            :simple-menu="true"
+          >
+            <template #title><span>Simple Menu</span></template>
             <a href="#">Hey I'm a longer link here</a>
             <a href="#">Let's see how this looks</a>
             <a href="#">I'm in a pane dropdown aligned to the right</a>
@@ -173,18 +194,22 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import DemoSection from "./../components/DemoSection.vue";
-import PaneDropdown from "./../components/PaneDropdown.vue";
-import PaneDropdownsCode from "!!raw-loader!./PaneDropdowns.vue";
+import { defineComponent } from 'vue';
+import DemoSection from '../components/DemoSection.vue';
+import PaneDropdown from '../components/PaneDropdown.vue';
+import PaneDropdownsCode from '!!raw-loader!./PaneDropdowns.vue';
 
-@Component({
+export default defineComponent({
   components: {
     DemoSection,
-    PaneDropdown
-  }
-})
-export default class Dropdowns extends Vue {
-  demoCode = PaneDropdownsCode;
-}
+    PaneDropdown,
+  },
+  setup() {
+    const demoCode: string = PaneDropdownsCode;
+
+    return {
+      demoCode,
+    };
+  },
+});
 </script>

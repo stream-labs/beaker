@@ -7,8 +7,8 @@
     }"
     :width="width"
     :height="8"
-    :dotHeight="16"
-    :dotWidth="24"
+    :dot-height="16"
+    :dot-width="24"
     :tooltip="tooltip"
     :tooltip-dir="'bottom'"
     :min="min"
@@ -21,27 +21,31 @@
     :data="data"
     :disabled="disabled"
     @callback="value => emitInput(value)"
-    :simpleTheme="simpleTheme"
+    :simple-theme="simpleTheme"
     ref="slider"
-  ></vue-slider-component>
+  />
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from "vue-property-decorator";
-import VueSliderComponent from "vue-slider-component";
-import ResizeObserver from "resize-observer-polyfill";
+import {
+  Component, Prop, Watch, Vue,
+} from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import VueSliderComponent from 'vue-slider-component';
+import ResizeObserver from 'resize-observer-polyfill';
 
 @Component({
   components: {
-    VueSliderComponent
-  }
+    VueSliderComponent,
+  },
 })
-export default class Slider extends Vue {
+export default defineComponent({
   $refs!: {
     slider: any;
   };
 
-  @Watch("value")
+  @Watch('value')
   updateLocalValue() {
     this.displayValue = this.value;
   }
@@ -61,13 +65,13 @@ export default class Slider extends Vue {
   @Prop({ default: 1 })
   interval!: number;
 
-  @Prop({ default: "always" })
-  tooltip!: "always" | false;
+  @Prop({ default: 'always' })
+  tooltip!: 'always' | false;
 
-  @Prop({ default: "" })
+  @Prop({ default: '' })
   prefix!: string;
 
-  @Prop({ default: "" })
+  @Prop({ default: '' })
   suffix!: string;
 
   @Prop({ default: false })
@@ -80,10 +84,14 @@ export default class Slider extends Vue {
   simpleTheme!: boolean;
 
   displayValue: number | string | Array<number> | Array<string> = this.value;
-  private debounced: boolean = false;
+
+  private debounced = false;
+
   private ro = new ResizeObserver((entries, observer) => {
-    for (let entry of entries) {
-      let { left, top, width, height } = entry.contentRect;
+    for (const entry of entries) {
+      const {
+        left, top, width, height,
+      } = entry.contentRect;
       if (!this.debounced) {
         this.debounce().then(() => {
           if (this.$refs.slider) {
@@ -95,7 +103,7 @@ export default class Slider extends Vue {
   });
 
   created() {
-    this.$on("input", this.setValue);
+    this.$on('input', this.setValue);
   }
 
   mounted() {
@@ -107,11 +115,11 @@ export default class Slider extends Vue {
   }
 
   destroyed() {
-    this.$off("input", this.setValue);
+    this.$off('input', this.setValue);
   }
 
   emitInput(val) {
-    this.$emit("input", val);
+    this.$emit('input', val);
   }
 
   setValue(val) {
@@ -119,7 +127,7 @@ export default class Slider extends Vue {
   }
 
   debounce() {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       if (!this.debounced) {
         this.debounced = true;
         setTimeout(() => {
@@ -129,7 +137,7 @@ export default class Slider extends Vue {
       }
     });
   }
-}
+})
 </script>
 
 <style lang="less">

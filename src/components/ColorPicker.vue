@@ -1,5 +1,8 @@
 <template>
-  <div class="s-colorpicker-container" ref="colorpicker">
+  <div
+    class="s-colorpicker-container"
+    ref="colorpicker"
+  >
     <input
       type="text"
       :value="value"
@@ -7,9 +10,12 @@
       @click="showPicker()"
       @input="updateFromInput"
       :class="{ 's-colorpicker__input--error': error }"
-    />
-    <div v-if="error" class="s-colorpicker__input-error">
-      <i class="icon-error"></i>
+    >
+    <div
+      v-if="error"
+      class="s-colorpicker__input-error"
+    >
+      <i class="icon-error" />
       {{ error }}
     </div>
 
@@ -17,8 +23,8 @@
       class="s-colorpicker__preview"
       :style="{ backgroundColor: value }"
       @click="showPicker()"
-    ></div>
-    <div class="s-colorpicker__preview--alpha"></div>
+    />
+    <div class="s-colorpicker__preview--alpha" />
 
     <transition name="fade">
       <picker
@@ -35,15 +41,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import { Chrome } from "vue-color";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import { Chrome } from 'vue-color';
 
 @Component({
   components: {
-    picker: Chrome
-  }
+    picker: Chrome,
+  },
 })
-export default class ColorPicker extends Vue {
+export default defineComponent({
   $refs!: {
     colorpicker: HTMLElement;
   };
@@ -51,7 +59,7 @@ export default class ColorPicker extends Vue {
   @Prop()
   value!: any;
 
-  @Prop({ default: "#31c3a2" })
+  @Prop({ default: '#31c3a2' })
   placeholder!: string;
 
   @Prop({ default: false })
@@ -60,55 +68,56 @@ export default class ColorPicker extends Vue {
   @Prop()
   error!: string;
 
-  private displayPicker: Boolean = false;
-  private backgroundColor: String = "";
+  private displayPicker = false;
+
+  private backgroundColor = '';
 
   colors: object = {};
 
   get alphaClass() {
     return this.hasAlpha
-      ? this.colors["a"] === 1
-        ? "nonAlpha"
-        : "alpha"
+      ? this.colors.a === 1
+        ? 'nonAlpha'
+        : 'alpha'
       : false;
   }
 
   created() {
-    this.colors = Object.assign({}, this.colors, { hex: this.value });
+    this.colors = { ...this.colors, hex: this.value };
   }
 
   updateFromPicker(value: any) {
     this.colors = value;
-    if (this.alphaClass === "alpha") {
-      this.$emit("input", value.hex8);
+    if (this.alphaClass === 'alpha') {
+      this.$emit('input', value.hex8);
     } else {
-      this.$emit("input", value.hex);
+      this.$emit('input', value.hex);
     }
   }
 
   updateFromInput(event: any) {
     this.colors = event.target.value;
-    this.$emit("input", event.target.value);
+    this.$emit('input', event.target.value);
   }
 
   hidePicker() {
-    document.removeEventListener("click", this.documentClick);
+    document.removeEventListener('click', this.documentClick);
     this.displayPicker = false;
   }
 
   showPicker() {
-    document.addEventListener("click", this.documentClick);
+    document.addEventListener('click', this.documentClick);
     this.displayPicker = true;
   }
 
   documentClick(e: any) {
-    let el = this.$refs.colorpicker;
-    let target = e.target;
+    const el = this.$refs.colorpicker;
+    const { target } = e;
     if (el !== target && !el.contains(target)) {
       this.hidePicker();
     }
   }
-}
+})
 </script>
 
 <style lang="less">

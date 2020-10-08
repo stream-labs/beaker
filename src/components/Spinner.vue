@@ -1,6 +1,10 @@
 <template>
   <div class="s-spinner">
-    <div class="s-bars" :size="size" :swap="swap">
+    <div
+      class="s-bars"
+      :size="size"
+      :swap="swap"
+    >
       <svg
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
@@ -8,7 +12,10 @@
         :class="spinnerClass"
         viewBox="0 0 28 40"
       >
-        <path d="M0 0, l0 4, l0 -4" id="s-bar-y-path"></path>
+        <path
+          d="M0 0, l0 4, l0 -4"
+          id="s-bar-y-path"
+        />
         <rect
           width="4"
           height="40"
@@ -25,14 +32,14 @@
             begin="0s"
             dur="1.2s"
             repeatCount="indefinite"
-          ></animate>
+          />
           <animate
             attributeName="height"
             values="40; 32; 40"
             begin="0s"
             dur="1.2s"
             repeatCount="indefinite"
-          ></animate>
+          />
           <animateTransform
             v-if="firefox"
             attributeName="transform"
@@ -41,9 +48,13 @@
             begin="0s"
             dur="1.2s"
             repeatCount="indefinite"
-          ></animateTransform>
-          <animateMotion begin="0s" dur="1.2s" repeatCount="indefinite">
-            <mpath xlink:href="#s-bar-y-path"></mpath>
+          />
+          <animateMotion
+            begin="0s"
+            dur="1.2s"
+            repeatCount="indefinite"
+          >
+            <mpath xlink:href="#s-bar-y-path" />
           </animateMotion>
         </rect>
         <rect
@@ -61,21 +72,21 @@
             values=".24; .24; .24"
             begin="0s"
             dur="0.4s"
-          ></animate>
+          />
           <animate
             attributeName="opacity"
             values=".24; .08; .24"
             begin="0.4s"
             dur="1.2s"
             repeatCount="indefinite"
-          ></animate>
+          />
           <animate
             attributeName="height"
             values="40; 32; 40"
             begin="0.4s"
             dur="1.2s"
             repeatCount="indefinite"
-          ></animate>
+          />
           <animateTransform
             v-if="firefox"
             attributeName="transform"
@@ -84,9 +95,13 @@
             begin="0.4s"
             dur="1.2s"
             repeatCount="indefinite"
-          ></animateTransform>
-          <animateMotion begin="0.4s" dur="1.2s" repeatCount="indefinite">
-            <mpath xlink:href="#s-bar-y-path"></mpath>
+          />
+          <animateMotion
+            begin="0.4s"
+            dur="1.2s"
+            repeatCount="indefinite"
+          >
+            <mpath xlink:href="#s-bar-y-path" />
           </animateMotion>
         </rect>
         <rect
@@ -104,21 +119,21 @@
             values=".24; .24; .24"
             begin="0s"
             dur="0.8s"
-          ></animate>
+          />
           <animate
             attributeName="opacity"
             values=".24; .08; .24"
             begin="0.8s"
             dur="1.2s"
             repeatCount="indefinite"
-          ></animate>
+          />
           <animate
             attributeName="height"
             values="40; 32; 40"
             begin="0.8s"
             dur="1.2s"
             repeatCount="indefinite"
-          ></animate>
+          />
           <animateTransform
             v-if="firefox"
             attributeName="transform"
@@ -127,9 +142,13 @@
             begin="0.8s"
             dur="1.2s"
             repeatCount="indefinite"
-          ></animateTransform>
-          <animateMotion begin="0.8s" dur="1.2s" repeatCount="indefinite">
-            <mpath xlink:href="#s-bar-y-path"></mpath>
+          />
+          <animateMotion
+            begin="0.8s"
+            dur="1.2s"
+            repeatCount="indefinite"
+          >
+            <mpath xlink:href="#s-bar-y-path" />
           </animateMotion>
         </rect>
       </svg>
@@ -138,19 +157,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
 
 @Component({
-  name: "Spinner"
+  name: 'Spinner',
 })
-export default class Spinner extends Vue {
-  private firefox: Boolean = false;
+export default defineComponent({
+  private firefox = false;
 
-  @Prop({ default: "small" })
-  size!: String;
+  @Prop({ default: 'small' })
+  size!: string;
 
   @Prop({ default: false })
-  swap!: Boolean;
+  swap!: boolean;
 
   get spinnerClass() {
     return `s-spinner--${this.size}`;
@@ -158,16 +179,16 @@ export default class Spinner extends Vue {
 
   get swapMode() {
     if (this.swap === true) {
-      return "s-spinner--modeswap";
+      return 's-spinner--modeswap';
     }
   }
 
   mounted() {
-    if (navigator.userAgent.indexOf("Firefox") != -1) {
+    if (navigator.userAgent.indexOf('Firefox') != -1) {
       this.firefox = true;
     }
   }
-}
+})
 </script>
 
 <style lang="less">

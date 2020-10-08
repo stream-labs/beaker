@@ -17,8 +17,15 @@
     </div>
     <div class="section">
       <div class="flip-cont">
-        <transition-group name="fadeX-from-left" tag="div">
-          <div class="first" v-if="flip" key="fadeXFirstLeft">
+        <transition-group
+          name="fadeX-from-left"
+          tag="div"
+        >
+          <div
+            class="first"
+            v-if="flip"
+            key="fadeXFirstLeft"
+          >
             <h2>fadeX-from-left</h2>
             <p>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit.
@@ -28,7 +35,11 @@
               recusandae?
             </p>
           </div>
-          <div class="second" v-else key="fadeXSecondLeft">
+          <div
+            class="second"
+            v-else
+            key="fadeXSecondLeft"
+          >
             <h2>fadeX-from-left</h2>
             <p>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores
@@ -41,8 +52,15 @@
       </div>
 
       <div class="flip-cont">
-        <transition-group name="fadeX-from-right" tag="div">
-          <div class="first" v-if="flip" key="fadeXFirstRight">
+        <transition-group
+          name="fadeX-from-right"
+          tag="div"
+        >
+          <div
+            class="first"
+            v-if="flip"
+            key="fadeXFirstRight"
+          >
             <h2>fadeX-from-right</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
@@ -51,7 +69,11 @@
               asperiores eos, esse repellendus nemo?
             </p>
           </div>
-          <div class="second" v-else key="fadeXSecondRight">
+          <div
+            class="second"
+            v-else
+            key="fadeXSecondRight"
+          >
             <h2>fadeX-from-right</h2>
             <p>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores
@@ -64,8 +86,15 @@
       </div>
 
       <div class="flip-cont">
-        <transition-group name="fadeY-from-top" tag="div">
-          <div class="first" v-if="flip" key="fadeYFirstTop">
+        <transition-group
+          name="fadeY-from-top"
+          tag="div"
+        >
+          <div
+            class="first"
+            v-if="flip"
+            key="fadeYFirstTop"
+          >
             <h2>fadeY-from-top</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
@@ -74,7 +103,11 @@
               asperiores eos, esse repellendus nemo?
             </p>
           </div>
-          <div class="second" v-else key="fadeYSecondTop">
+          <div
+            class="second"
+            v-else
+            key="fadeYSecondTop"
+          >
             <h2>fadeY-from-top</h2>
             <p>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
@@ -87,8 +120,15 @@
       </div>
 
       <div class="flip-cont">
-        <transition-group name="fadeY-from-bottom" tag="div">
-          <div class="first" v-if="flip" key="fadeYFirstBottom">
+        <transition-group
+          name="fadeY-from-bottom"
+          tag="div"
+        >
+          <div
+            class="first"
+            v-if="flip"
+            key="fadeYFirstBottom"
+          >
             <h2>fadeY-from-bottom</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
@@ -97,7 +137,11 @@
               asperiores eos, esse repellendus nemo?
             </p>
           </div>
-          <div class="second" v-else key="fadeYSecondBottom">
+          <div
+            class="second"
+            v-else
+            key="fadeYSecondBottom"
+          >
             <h2>fadeY-from-bottom</h2>
             <p>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. At
@@ -113,20 +157,33 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import {
+  defineComponent, onMounted, onUnmounted, ref,
+} from 'vue';
 
-@Component({})
-export default class TransitionsDemo extends Vue {
-  private flip: boolean = true;
+export default defineComponent({
+  setup() {
+    const flip = ref(true);
+    let flipLoop = 0;
 
-  flipProc() {
-    this.flip = !this.flip;
-  }
+    function flipProc() {
+      flip.value = !flip.value;
+    }
 
-  mounted() {
-    var flipLoop = setInterval(this.flipProc, 2500);
-  }
-}
+    onMounted(() => {
+      flipLoop = setInterval(flipProc, 2500);
+    });
+
+    onUnmounted(() => {
+      clearInterval(flipLoop);
+    });
+
+    return {
+      flip,
+      flipProc,
+    };
+  },
+});
 </script>
 
 <style lang="less">

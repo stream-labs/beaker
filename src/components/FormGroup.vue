@@ -1,14 +1,16 @@
 <template>
   <div class="s-form-group">
-    <slot name="input"></slot>
+    <slot name="input" />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
 
 @Component({})
-export default class FormGroup extends Vue {
+export default defineComponent({
   @Prop()
   helpText!: string;
 
@@ -17,7 +19,7 @@ export default class FormGroup extends Vue {
 
   @Prop()
   title!: string;
-}
+})
 </script>
 
 <style lang="less">

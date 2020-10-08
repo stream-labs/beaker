@@ -18,7 +18,10 @@
   }</code></pre>
       </div>
 
-      <DemoSection title="Fake Alert" :code="demoCode">
+      <DemoSection
+        title="Fake Alert"
+        :code="demoCode"
+      >
         <template #components>
           <FakeAlert username="SalmanSux19" />
         </template>
@@ -59,19 +62,24 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { defineComponent } from 'vue';
 
-import DemoSection from "./../components/DemoSection.vue";
-import ExtrasCode from "!!raw-loader!./Extras.vue";
-import FakeAlert from "./../components/FakeAlert.vue";
+import DemoSection from '../components/DemoSection.vue';
+import ExtrasCode from '!!raw-loader!./Extras.vue';
+import FakeAlert from '../components/FakeAlert.vue';
 
-@Component({
+export default defineComponent({
   components: {
     DemoSection,
-    FakeAlert
-  }
-})
-export default class Extras extends Vue {
-  demoCode = ExtrasCode;
-}
+    FakeAlert,
+  },
+
+  setup() {
+    const demoCode: string = ExtrasCode;
+
+    return {
+      demoCode,
+    };
+  },
+});
 </script>

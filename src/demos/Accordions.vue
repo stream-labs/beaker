@@ -13,12 +13,18 @@ components: {
     <!-- Default Settings -->
     <div class="section">
       <h3>Default Settings</h3>
-      <DemoSection title="Default Settings" :code="demoCode">
+      <DemoSection
+        title="Default Settings"
+        :code="demoCode"
+      >
         <template #components>
-          <Accordion opened-title="Hide Content" closed-title="Show Content">
-            <div slot="content">
+          <Accordion
+            opened-title="Hide Content"
+            closed-title="Show Content"
+          >
+            <template #content>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            </div>
+            </template>
           </Accordion>
         </template>
       </DemoSection>
@@ -27,16 +33,19 @@ components: {
     <!-- Set to be open -->
     <div class="section">
       <h3>Set to be open</h3>
-      <DemoSection title="Set to be open" :code="demoCode">
+      <DemoSection
+        title="Set to be open"
+        :code="demoCode"
+      >
         <template #components>
           <Accordion
             opened-title="Hide Content"
             closed-title="Show Content"
-            :isOpened="true"
+            :is-opened="true"
           >
-            <div slot="content">
+            <template #content>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            </div>
+            </template>
           </Accordion>
         </template>
       </DemoSection>
@@ -45,16 +54,19 @@ components: {
     <!-- Alternative - No Border -->
     <div class="section">
       <h3>Alternative - No Border</h3>
-      <DemoSection title="Alternative - No Border" :code="demoCode">
+      <DemoSection
+        title="Alternative - No Border"
+        :code="demoCode"
+      >
         <template #components>
           <Accordion
             opened-title="Hide Content"
             closed-title="Show Content"
-            :noBorder="true"
+            :no-border="true"
           >
-            <div slot="content">
+            <template #content>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            </div>
+            </template>
           </Accordion>
         </template>
       </DemoSection>
@@ -63,13 +75,16 @@ components: {
     <!-- Accordion within an Accordion -->
     <div class="section">
       <h3>Accordion within an Accordion</h3>
-      <DemoSection title="Accordion within an Accordion" :code="demoCode">
+      <DemoSection
+        title="Accordion within an Accordion"
+        :code="demoCode"
+      >
         <template #components>
           <Accordion
             opened-title="Hide Inner Accordion"
             closed-title="Show Inner Accordion"
           >
-            <div slot="content">
+            <template #content>
               <div class="section">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -79,14 +94,14 @@ components: {
                 opened-title="Hide Content"
                 closed-title="Show Content"
               >
-                <div slot="content">
+                <template #content>
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
                   laboris nisi ut aliquip ex ea commodo consequat. Duis aute
                   irure dolor in reprehenderit in voluptate velit esse cillum
                   dolore eu fugiat nulla pariatur.
-                </div>
+                </template>
               </Accordion>
-            </div>
+            </template>
           </Accordion>
         </template>
       </DemoSection>
@@ -95,32 +110,46 @@ components: {
     <!-- Variant - Left Navigation -->
     <div class="section">
       <h3>Variant - Left Navigation</h3>
-      <DemoSection title="Left Navigation" :code="demoCode">
+      <DemoSection
+        title="Left Navigation"
+        :code="demoCode"
+      >
         <template #components>
-          <Accordion :leftNav="true">
-            <div slot="title">Left Navigation</div>
-            <div slot="content">
+          <Accordion :left-nav="true">
+            <div slot="title">
+              Left Navigation
+            </div>
+            <template #content>
               <div class="fake-nav">
-                <a href="#" class="fake-nav-item">
+                <a
+                  href="#"
+                  class="fake-nav-item"
+                >
                   <div class="fake-nav-icon">
-                    <i class="icon-community"></i>
+                    <i class="icon-community" />
                   </div>
                   <div class="fake-nav-title">Nav Item</div>
                 </a>
-                <a href="#" class="fake-nav-item">
+                <a
+                  href="#"
+                  class="fake-nav-item"
+                >
                   <div class="fake-nav-icon">
-                    <i class="icon-dashboard"></i>
+                    <i class="icon-dashboard" />
                   </div>
                   <div class="fake-nav-title">Styling Handled By</div>
                 </a>
-                <a href="#" class="fake-nav-item">
+                <a
+                  href="#"
+                  class="fake-nav-item"
+                >
                   <div class="fake-nav-icon">
-                    <i class="icon-earnings"></i>
+                    <i class="icon-earnings" />
                   </div>
                   <div class="fake-nav-title">Slot and navigation.less</div>
                 </a>
               </div>
-            </div>
+            </template>
           </Accordion>
         </template>
       </DemoSection>
@@ -180,21 +209,26 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { defineComponent } from 'vue';
 
-import Accordion from "./../components/Accordion.vue";
-import AccordionCode from "!!raw-loader!./Accordions.vue";
-import DemoSection from "./../components/DemoSection.vue";
+import Accordion from '../components/Accordion.vue';
+import AccordionCode from '!!raw-loader!./Accordions.vue';
+import DemoSection from '../components/DemoSection.vue';
 
-@Component({
+export default defineComponent({
   components: {
     Accordion,
-    DemoSection
-  }
-})
-export default class Accordions extends Vue {
-  demoCode = AccordionCode;
-}
+    DemoSection,
+  },
+
+  setup() {
+    const demoCode: string = AccordionCode;
+
+    return {
+      demoCode,
+    };
+  },
+});
 </script>
 
 <style lang="less">

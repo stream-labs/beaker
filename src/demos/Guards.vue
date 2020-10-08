@@ -13,9 +13,16 @@ components: {
     <div class="section">
       <h2>Text Guard</h2>
 
-      <DemoSection title="Text Guard" :code="demoCode">
+      <DemoSection
+        title="Text Guard"
+        :code="demoCode"
+      >
         <template #components>
-          <Guard class="guard-margin" type="alt" value="Text" />
+          <Guard
+            class="guard-margin"
+            type="alt"
+            value="Text"
+          />
         </template>
       </DemoSection>
     </div>
@@ -23,19 +30,23 @@ components: {
     <div class="section">
       <h2>Input Guard</h2>
 
-      <DemoSection title="Input Guard" :code="demoCode">
+      <DemoSection
+        title="Input Guard"
+        :code="demoCode"
+      >
         <template #components>
           <Guard type="input">
-            <div slot="content">
-              <TextInput
-                slot="input"
-                label="Text input"
-                type="text"
-                :placeholder="textInputPlaceholder"
-                v-model="textInputValue"
-                name="textExample"
-              />
-            </div>
+            <template #content>
+              <div>
+                <TextInput
+                  label="Text input"
+                  type="text"
+                  :placeholder="textInputPlaceholder"
+                  v-model="textInputValue"
+                  name="textExample"
+                />
+              </div>
+            </template>
           </Guard>
         </template>
       </DemoSection>
@@ -81,27 +92,34 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { defineComponent, ref } from 'vue';
 
-import DemoSection from "./../components/DemoSection.vue";
-import Guard from "./../components/Guard.vue";
-import GuardNew from "./../components/GuardNew.vue";
-import GuardsCode from "!!raw-loader!./Guards.vue";
-import TextInput from "./../components/TextInput.vue";
+import DemoSection from '../components/DemoSection.vue';
+import Guard from '../components/Guard.vue';
+// import GuardNew from '../components/GuardNew.vue';
+import GuardsCode from '!!raw-loader!./Guards.vue';
+import TextInput from '../components/TextInput.vue';
 
-@Component({
+export default defineComponent({
   components: {
     DemoSection,
     Guard,
-    GuardNew,
-    TextInput
-  }
-})
-export default class Accordions extends Vue {
-  demoCode = GuardsCode;
-  textInputPlaceholder = "placeholder";
-  textInputValue = "This is something super secret...";
-}
+    // GuardNew,
+    TextInput,
+  },
+
+  setup() {
+    const demoCode: string = GuardsCode;
+    const textInputPlaceholder = ref('placeholder');
+    const textInputValue = ref('This is something super secret...');
+
+    return {
+      demoCode,
+      textInputPlaceholder,
+      textInputValue,
+    };
+  },
+});
 </script>
 
 <style lang="less">

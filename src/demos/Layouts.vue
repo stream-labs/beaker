@@ -13,34 +13,43 @@ components: {
       <h2>Content Row</h2>
       <p>Used for content row.</p>
 
-      <DemoSection title="Content Row" :code="demoCode">
+      <DemoSection
+        title="Content Row"
+        :code="demoCode"
+      >
         <template #components>
-          <ContentRow
+          <content-row
             :icon="'desktop'"
-            :btnVariation="'default'"
-            :btnTitle="'Default'"
+            :btn-variation="'default'"
+            :btn-title="'Default'"
           >
-            <span slot="title">Tiltify</span>
-            <span slot="text">
-              Link your account and visit Alert Box to configure your Tiltify
-              Events.
-            </span>
-          </ContentRow>
+            <template #title><span>Tiltify</span></template>
+            <template #text>
+              <span>
+                Link your account and visit Alert Box to configure your Tiltify
+                Events.
+              </span>
+            </template>
+          </content-row>
         </template>
       </DemoSection>
 
       <ContentRow
         :icon="'education'"
-        :btnVariation="'action'"
-        :btnTitle="'Action'"
+        :btn-variation="'action'"
+        :btn-title="'Action'"
       >
-        <template slot="title"
-          >Tiltify</template
+        <template
+          #title
         >
-        <template slot="text"
-          >Link your account and visit Alert Box to configure your Tiltify
-          Events.</template
+          Tiltify
+        </template>
+        <template
+          #text
         >
+          Link your account and visit Alert Box to configure your Tiltify
+          Events.
+        </template>
       </ContentRow>
     </div>
 
@@ -116,18 +125,23 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import ContentRow from "./../components/ContentRow.vue";
-import DemoSection from "./../components/DemoSection.vue";
-import LayoutsCode from "!!raw-loader!./Layouts.vue";
+import { defineComponent } from 'vue';
+import ContentRow from '../components/ContentRow.vue';
+import DemoSection from '../components/DemoSection.vue';
+import LayoutsCode from '!!raw-loader!./Layouts.vue';
 
-@Component({
+export default defineComponent({
   components: {
     ContentRow,
-    DemoSection
-  }
-})
-export default class Layouts extends Vue {
-  demoCode = LayoutsCode;
-}
+    DemoSection,
+  },
+
+  setup() {
+    const demoCode: string = LayoutsCode;
+
+    return {
+      demoCode,
+    };
+  },
+});
 </script>

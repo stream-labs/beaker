@@ -2,8 +2,8 @@
   <modal
     :name="name"
     :classes="'s-modal-wrapper'"
-    :maxWidth="width"
-    :minWidth="minWidth"
+    :max-width="width"
+    :min-width="minWidth"
     height="auto"
     :adaptive="true"
     v-on="$listeners"
@@ -13,25 +13,31 @@
         <div class="s-spinner">
           <Spinner :variation="'bars'" />
         </div>
-        <h1 class="s-modal-title">{{ title }}</h1>
-        <p class="s-modal-text">{{ text }}</p>
+        <h1 class="s-modal-title">
+          {{ title }}
+        </h1>
+        <p class="s-modal-text">
+          {{ text }}
+        </p>
       </div>
     </div>
   </modal>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Button from "./../components/Button.vue";
-import Spinner from "./../components/Spinner.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import Button from './Button.vue';
+import Spinner from './Spinner.vue';
 
 @Component({
   components: {
     Button,
-    Spinner
-  }
+    Spinner,
+  },
 })
-export default class ModalRedirect extends Vue {
+export default defineComponent({
   @Prop()
   name!: string;
 
@@ -46,7 +52,7 @@ export default class ModalRedirect extends Vue {
 
   @Prop()
   text!: string;
-}
+})
 </script>
 
 <style lang="less" scoped>

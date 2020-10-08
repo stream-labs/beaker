@@ -23,7 +23,10 @@ components: {
       <p>Used throughout website Dashboard.</p>
       <div class="section">
         <h3>Active</h3>
-        <DemoSection title="Active" :code="demoCode">
+        <DemoSection
+          title="Active"
+          :code="demoCode"
+        >
           <template #components>
             <div class="s-button-container s-button-container--left">
               <Button
@@ -34,9 +37,17 @@ components: {
                 @click="reportSlobsDownloads"
               />
 
-              <Button variation="action" title="Action" @click="buttonActionClick" />
+              <Button
+                variation="action"
+                title="Action"
+                @click="buttonActionClick"
+              />
 
-              <Button variation="warning" title="Warning" @click="buttonActionClick" />
+              <Button
+                variation="warning"
+                title="Warning"
+                @click="buttonActionClick"
+              />
 
               <Button
                 variation="default"
@@ -53,7 +64,12 @@ components: {
                 @click="buttonActionClick"
               />
 
-              <Button variation="prime" title="Join Prime" icon="prime" @click="buttonActionClick" />
+              <Button
+                variation="prime"
+                title="Join Prime"
+                icon="prime"
+                @click="buttonActionClick"
+              />
 
               <Button
                 variation="prime-white"
@@ -63,8 +79,11 @@ components: {
               />
 
               <Button variation="action">
-                <div slot="custom" class="custom-html">
-                  <i class="icon-add-circle"></i>
+                <div
+                  slot="custom"
+                  class="custom-html"
+                >
+                  <i class="icon-add-circle" />
                   <span>Custom Slot</span>
                 </div>
               </Button>
@@ -75,14 +94,29 @@ components: {
 
       <div class="section">
         <h3>Disabled</h3>
-        <DemoSection title="Disabled" :code="demoCode">
+        <DemoSection
+          title="Disabled"
+          :code="demoCode"
+        >
           <template #components>
             <div class="s-button-container s-button-container--left">
-              <Button :variation="'default'" :state="'disabled'" :title="'Default'" />
+              <Button
+                :variation="'default'"
+                :state="'disabled'"
+                :title="'Default'"
+              />
 
-              <Button :variation="'action'" :state="'disabled'" :title="'Action'" />
+              <Button
+                :variation="'action'"
+                :state="'disabled'"
+                :title="'Action'"
+              />
 
-              <Button :variation="'warning'" :state="'disabled'" :title="'Warning'" />
+              <Button
+                :variation="'warning'"
+                :state="'disabled'"
+                :title="'Warning'"
+              />
 
               <Button
                 :variation="'default'"
@@ -97,14 +131,29 @@ components: {
 
       <div class="section">
         <h3>Focus</h3>
-        <DemoSection title="Focus" :code="demoCode">
+        <DemoSection
+          title="Focus"
+          :code="demoCode"
+        >
           <template #components>
             <div class="s-button-container s-button-container--left">
-              <Button :variation="'default'" :state="'focused'" :title="'Default'" />
+              <Button
+                :variation="'default'"
+                :state="'focused'"
+                :title="'Default'"
+              />
 
-              <Button :variation="'action'" :state="'focused'" :title="'Action'" />
+              <Button
+                :variation="'action'"
+                :state="'focused'"
+                :title="'Action'"
+              />
 
-              <Button :variation="'warning'" :state="'focused'" :title="'Warning'" />
+              <Button
+                :variation="'warning'"
+                :state="'focused'"
+                :title="'Warning'"
+              />
 
               <Button
                 :variation="'default'"
@@ -119,14 +168,29 @@ components: {
 
       <div class="section">
         <h3>Loading</h3>
-        <DemoSection title="Loading" :code="demoCode">
+        <DemoSection
+          title="Loading"
+          :code="demoCode"
+        >
           <template #components>
             <div class="s-button-container s-button-container--left">
-              <Button :variation="'default'" :state="'loading'" :title="'Default'" />
+              <Button
+                :variation="'default'"
+                :state="'loading'"
+                :title="'Default'"
+              />
 
-              <Button :variation="'action'" :state="'loading'" :title="'Action'" />
+              <Button
+                :variation="'action'"
+                :state="'loading'"
+                :title="'Action'"
+              />
 
-              <Button :variation="'warning'" :state="'loading'" :title="'Warning'" />
+              <Button
+                :variation="'warning'"
+                :state="'loading'"
+                :title="'Warning'"
+              />
 
               <Button
                 :variation="'default'"
@@ -160,14 +224,32 @@ components: {
         our standard button.
       </p>
 
-      <DemoSection title="Small Buttons" :code="demoCode">
+      <DemoSection
+        title="Small Buttons"
+        :code="demoCode"
+      >
         <template #components>
           <div class="s-button-container s-button-container--left">
-            <Button :type="'button'" :size="'small'" :variation="'default'" :title="'Default'" />
+            <Button
+              :type="'button'"
+              :size="'small'"
+              :variation="'default'"
+              :title="'Default'"
+            />
 
-            <Button :type="'button'" :size="'small'" :variation="'action'" :title="'Action'" />
+            <Button
+              :type="'button'"
+              :size="'small'"
+              :variation="'action'"
+              :title="'Action'"
+            />
 
-            <Button :type="'button'" :size="'small'" :variation="'warning'" :title="'Warning'" />
+            <Button
+              :type="'button'"
+              :size="'small'"
+              :variation="'warning'"
+              :title="'Warning'"
+            />
 
             <Button
               :type="'button'"
@@ -177,7 +259,11 @@ components: {
               :icon="'image'"
             />
 
-            <Button :variation="'rewards-standard'" :size="'small'" :title="'Rewards'" />
+            <Button
+              :variation="'rewards-standard'"
+              :size="'small'"
+              :title="'Rewards'"
+            />
           </div>
         </template>
       </DemoSection>
@@ -189,14 +275,32 @@ components: {
         Used on website marketing pages and for the Donate button on the tip
         page.
       </p>
-      <DemoSection title="Large Buttons" :code="demoCode">
+      <DemoSection
+        title="Large Buttons"
+        :code="demoCode"
+      >
         <template #components>
           <div class="s-button-container s-button-container--left">
-            <Button :type="'button'" :size="'large'" :variation="'default'" :title="'Default'" />
+            <Button
+              :type="'button'"
+              :size="'large'"
+              :variation="'default'"
+              :title="'Default'"
+            />
 
-            <Button :type="'button'" :size="'large'" :variation="'action'" :title="'Action'" />
+            <Button
+              :type="'button'"
+              :size="'large'"
+              :variation="'action'"
+              :title="'Action'"
+            />
 
-            <Button :type="'button'" :size="'large'" :variation="'warning'" :title="'Warning'" />
+            <Button
+              :type="'button'"
+              :size="'large'"
+              :variation="'warning'"
+              :title="'Warning'"
+            />
 
             <Button
               :type="'button'"
@@ -206,7 +310,12 @@ components: {
               :icon="'image'"
             />
 
-            <Button :size="'large'" :variation="'prime'" :title="'Join Prime'" :icon="'prime'" />
+            <Button
+              :size="'large'"
+              :variation="'prime'"
+              :title="'Join Prime'"
+              :icon="'prime'"
+            />
             <Button
               :size="'large'"
               :variation="'prime-white'"
@@ -222,14 +331,32 @@ components: {
       <h2>Fixed Width Buttons</h2>
       <p>Used throughout website Dashboard. Width is fixed at 96px.</p>
 
-      <DemoSection title="Fixed Width Buttons" :code="demoCode">
+      <DemoSection
+        title="Fixed Width Buttons"
+        :code="demoCode"
+      >
         <template #components>
           <div class="s-button-container s-button-container--left">
-            <Button type="button" size="fixed-width" variation="default" title="Default" />
+            <Button
+              type="button"
+              size="fixed-width"
+              variation="default"
+              title="Default"
+            />
 
-            <Button type="button" size="fixed-width" variation="action" title="Action" />
+            <Button
+              type="button"
+              size="fixed-width"
+              variation="action"
+              title="Action"
+            />
 
-            <Button type="button" size="fixed-width" variation="warning" title="Warning" />
+            <Button
+              type="button"
+              size="fixed-width"
+              variation="warning"
+              title="Warning"
+            />
 
             <Button
               type="button"
@@ -248,9 +375,16 @@ components: {
       <div class="section">
         <h3>Default</h3>
         <p>Used within cards and panels in the Dashboard.</p>
-        <DemoSection title="Default" :code="demoCode">
+        <DemoSection
+          title="Default"
+          :code="demoCode"
+        >
           <template #components>
-            <Button size="full-width" variation="default" title="Start Giveaway" />
+            <Button
+              size="full-width"
+              variation="default"
+              title="Start Giveaway"
+            />
           </template>
         </DemoSection>
       </div>
@@ -258,9 +392,16 @@ components: {
       <div class="section">
         <h3>Subscribe</h3>
         <p>Used on the App Platform for Subscribing to Apps.</p>
-        <DemoSection title="Subscribe" :code="demoCode">
+        <DemoSection
+          title="Subscribe"
+          :code="demoCode"
+        >
           <template #components>
-            <Button variation="subscribe" title="Subscribe" price="$4.99" />
+            <Button
+              variation="subscribe"
+              title="Subscribe"
+              price="$4.99"
+            />
           </template>
         </DemoSection>
       </div>
@@ -268,9 +409,16 @@ components: {
       <div class="section">
         <h3>Paypal</h3>
         <p>Used on the Tip Page for Subscribing to Pro.</p>
-        <DemoSection title="Paypal" :code="demoCode">
+        <DemoSection
+          title="Paypal"
+          :code="demoCode"
+        >
           <template #components>
-            <Button variation="paypal" title="Subscribe with PayPal" price="$4.99" />
+            <Button
+              variation="paypal"
+              title="Subscribe with PayPal"
+              price="$4.99"
+            />
           </template>
         </DemoSection>
       </div>
@@ -278,12 +426,24 @@ components: {
       <div class="section">
         <h3>Download</h3>
         <p>Used for Download Streamlabs OBS buttons.</p>
-        <DemoSection title="Download" :code="demoCode">
+        <DemoSection
+          title="Download"
+          :code="demoCode"
+        >
           <template #components>
             <div class="s-button-container s-button-container--left">
-              <Button variation="slobs-download" title="Download Streamlabs OBS" />
-              <Button variation="slobs-download-landing" osType="windows"></Button>
-              <Button variation="slobs-download-landing" osType="mac"></Button>
+              <Button
+                variation="slobs-download"
+                title="Download Streamlabs OBS"
+              />
+              <Button
+                variation="slobs-download-landing"
+                os-type="windows"
+              />
+              <Button
+                variation="slobs-download-landing"
+                os-type="mac"
+              />
             </div>
           </template>
         </DemoSection>
@@ -292,20 +452,53 @@ components: {
     <div class="section">
       <h2>Square Buttons</h2>
       <p>Used for add and subtract number inputs as well as login buttons.</p>
-      <DemoSection title="Square Buttons" :code="demoCode">
+      <DemoSection
+        title="Square Buttons"
+        :code="demoCode"
+      >
         <template #components>
           <div class="s-button-container s-button-container--left">
-            <Button type="button" size="square" variation="default" icon="add" />
+            <Button
+              type="button"
+              size="square"
+              variation="default"
+              icon="add"
+            />
 
-            <Button type="button" size="square" variation="default" icon="subtract" />
+            <Button
+              type="button"
+              size="square"
+              variation="default"
+              icon="subtract"
+            />
 
-            <Button type="button" variation="facebook" size="square" icon="facebook" />
+            <Button
+              type="button"
+              variation="facebook"
+              size="square"
+              icon="facebook"
+            />
 
-            <Button type="button" variation="periscope" size="square" icon="periscope" />
+            <Button
+              type="button"
+              variation="periscope"
+              size="square"
+              icon="periscope"
+            />
 
-            <Button type="button" variation="mixer" size="square" icon="mixer" />
+            <Button
+              type="button"
+              variation="mixer"
+              size="square"
+              icon="mixer"
+            />
 
-            <Button type="button" variation="picarto" size="square" icon="picarto" />
+            <Button
+              type="button"
+              variation="picarto"
+              size="square"
+              icon="picarto"
+            />
           </div>
         </template>
       </DemoSection>
@@ -315,9 +508,16 @@ components: {
       <h2>Navigation Buttons</h2>
       <p>Used to bring you between different page states.</p>
 
-      <DemoSection title="Navigation Buttons" :code="demoCode">
+      <DemoSection
+        title="Navigation Buttons"
+        :code="demoCode"
+      >
         <template #components>
-          <Button variation="navigation" icon="back-alt" title="Back to Listings" />
+          <Button
+            variation="navigation"
+            icon="back-alt"
+            title="Back to Listings"
+          />
         </template>
       </DemoSection>
     </div>
@@ -326,11 +526,17 @@ components: {
       <h2>Prime Button Text</h2>
       <p>Used for prime button with text.</p>
 
-      <DemoSection title="Prime Button Text" :code="demoCode">
+      <DemoSection
+        title="Prime Button Text"
+        :code="demoCode"
+      >
         <template #components>
           <div class="s-button-container s-button-container--left">
             <Button variation="prime-simple" />
-            <Button variation="prime-simple" primeTitle="test" />
+            <Button
+              variation="prime-simple"
+              prime-title="test"
+            />
           </div>
         </template>
       </DemoSection>
@@ -566,28 +772,35 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import Accordion from "./../components/Accordion.vue";
-import Button from "./../components/Button.vue";
-import DemoSection from "./../components/DemoSection.vue";
-import ButtonCode from "!!raw-loader!./Buttons.vue";
+import { defineComponent, ref } from 'vue';
+import Accordion from '../components/Accordion.vue';
+import Button from '../components/Button.vue';
+import DemoSection from '../components/DemoSection.vue';
+import ButtonCode from '!!raw-loader!./Buttons.vue';
 
-@Component({
+export default defineComponent({
   components: {
-    Accordion,
     Button,
-    DemoSection
-  }
-})
-export default class Forms extends Vue {
-  isLoading = true;
-  isLoadingExample = false;
-  demoCode = ButtonCode;
+    DemoSection,
+  },
 
-  buttonClick() {
-    alert("Button clicked");
-  }
-}
+  setup() {
+    const demoCode: string = ButtonCode;
+    const isLoading = ref(true);
+    const isLoadingExample = ref(false);
+
+    function buttonClick() {
+      alert('Button clicked');
+    }
+
+    return {
+      demoCode,
+      isLoading,
+      isLoadingExample,
+      buttonClick,
+    };
+  },
+});
 </script>
 
 <style lang="less" scoped>

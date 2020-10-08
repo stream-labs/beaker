@@ -18,8 +18,11 @@
       @keydown.tab.shift="hide"
     >
       <span>
-        <slot name="title"></slot>
-        <i v-if="dropdownIcon" class="icon-dropdown"></i>
+        <slot name="title" />
+        <i
+          v-if="dropdownIcon"
+          class="icon-dropdown"
+        />
       </span>
     </div>
 
@@ -34,7 +37,7 @@
         :class="menuClasses"
         class="s-pane-dropdown__menu"
       >
-        <slot v-if="custom"></slot>
+        <slot v-if="custom" />
         <div
           ref="paneList"
           v-else
@@ -42,7 +45,7 @@
           @keydown.esc.prevent="hide"
           class="s-pane-dropdown__list"
         >
-          <slot></slot>
+          <slot />
         </div>
       </div>
     </transition>
@@ -50,14 +53,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from "vue-property-decorator";
-import { mixin as vFocus } from "vue-focus";
+import {
+  Component, Prop, Watch, Vue,
+} from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import { mixin as vFocus } from 'vue-focus';
 
 @Component({
-  name: "PaneDropdown",
-  mixins: [vFocus]
+  name: 'PaneDropdown',
+  mixins: [vFocus],
 })
-export default class PaneDropdown extends Vue {
+export default defineComponent({
   $refs!: {
     paneMenu: HTMLDivElement;
     paneList: HTMLDivElement;
@@ -93,63 +100,63 @@ export default class PaneDropdown extends Vue {
   paneMenuOpen = false;
 
   created() {
-    document.addEventListener("click", this.documentClick);
+    document.addEventListener('click', this.documentClick);
   }
 
   destroyed() {
-    document.removeEventListener("click", this.documentClick);
+    document.removeEventListener('click', this.documentClick);
   }
 
   get menuClasses() {
-    let classes: string[] = [];
+    const classes: string[] = [];
 
     if (this.menuAlign) {
       classes.push(`s-pane-dropdown__menu--${this.menuAlign}`);
     }
 
     if (this.autoHeight) {
-      classes.push("s-pane-dropdown__menu--auto-height");
+      classes.push('s-pane-dropdown__menu--auto-height');
     }
 
     if (this.relativeMenu) {
-      classes.push("s-pane-dropdown__menu--relative");
+      classes.push('s-pane-dropdown__menu--relative');
     }
 
     if (this.simpleMenu) {
-      classes.push("s-pane-dropdown__menu--simple");
+      classes.push('s-pane-dropdown__menu--simple');
     }
 
     return classes;
   }
 
-  @Watch("paneMenuOpen")
+  @Watch('paneMenuOpen')
   watchPaneMenuOpen(newVal) {
     if (newVal && !this.custom) {
       this.$nextTick(() => {
         const list = this.$refs.paneList;
         const lastSlotItem = list.lastElementChild as HTMLElement;
-        const onTab = e => {
+        const onTab = (e) => {
           if (e.keyCode === 9 && !e.shiftKey) this.hide();
         };
 
-        lastSlotItem.addEventListener("keydown", onTab);
+        lastSlotItem.addEventListener('keydown', onTab);
       });
     }
   }
 
   afterOpen(element) {
-    element.style.height = "auto";
+    element.style.height = 'auto';
   }
 
   open(element) {
-    let width = getComputedStyle(element).width;
+    const { width } = getComputedStyle(element);
     element.style.width = width;
-    let maxWidth = getComputedStyle(element).width;
+    const maxWidth = getComputedStyle(element).width;
     element.style.maxWidth = maxWidth;
-    element.style.position = `absolute`;
-    element.style.visibility = `hidden`;
-    element.style.height = `auto`;
-    let height = getComputedStyle(element).height;
+    element.style.position = 'absolute';
+    element.style.visibility = 'hidden';
+    element.style.height = 'auto';
+    const { height } = getComputedStyle(element);
     element.style.width = null;
     element.style.position = null;
     element.style.visibility = null;
@@ -161,9 +168,9 @@ export default class PaneDropdown extends Vue {
   }
 
   close(element) {
-    if ("target" in element) return;
+    if ('target' in element) return;
 
-    let height = getComputedStyle(element).height;
+    const { height } = getComputedStyle(element);
     element.style.height = height;
     getComputedStyle(element).height;
     setTimeout(() => {
@@ -172,8 +179,8 @@ export default class PaneDropdown extends Vue {
   }
 
   documentClick(e: Event) {
-    let el: any = this.$refs.paneMenu;
-    let target = e.target;
+    const el: any = this.$refs.paneMenu;
+    const { target } = e;
     if (el !== target && !el.contains(target)) {
       this.paneMenuOpen = false;
     }
@@ -190,7 +197,7 @@ export default class PaneDropdown extends Vue {
   show() {
     this.paneMenuOpen = true;
   }
-}
+})
 </script>
 
 <style lang="less">

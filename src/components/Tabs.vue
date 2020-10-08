@@ -1,13 +1,16 @@
 <template>
   <div class="s-tabs-wrapper">
     <div class="s-tabs-nav-wrapper">
-      <div class="s-tabs-nav" :class="className">
+      <div
+        class="s-tabs-nav"
+        :class="className"
+      >
         <div
           v-if="hasPrev"
           @click="scrollLeft"
           class="s-tabs-nav__control s-has-prev"
         >
-          <i class="icon-back"></i>
+          <i class="icon-back" />
         </div>
 
         <div
@@ -32,11 +35,20 @@
               :to="`#/${tab.value}`"
               class="s-tab-link"
             >
-              <i v-if="tab.icon" :class="`icon-${tab.icon}`"></i>
+              <i
+                v-if="tab.icon"
+                :class="`icon-${tab.icon}`"
+              />
               {{ tab.name }}
             </router-link>
-            <div v-else class="s-tab-link">
-              <i v-if="tab.icon" :class="`icon-${tab.icon}`"></i>
+            <div
+              v-else
+              class="s-tab-link"
+            >
+              <i
+                v-if="tab.icon"
+                :class="`icon-${tab.icon}`"
+              />
               {{ tab.name }}
             </div>
           </div>
@@ -47,12 +59,15 @@
           @click="scrollRight"
           class="s-tabs-nav__control s-has-next"
         >
-          <i class="icon-back"></i>
+          <i class="icon-back" />
         </div>
       </div>
     </div>
 
-    <div class="s-tab-content" v-if="!hideContent">
+    <div
+      class="s-tab-content"
+      v-if="!hideContent"
+    >
       <div
         v-for="(tab, index) in tabs"
         :key="index"
@@ -65,9 +80,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Watch, Prop, Vue } from "vue-property-decorator";
+import {
+  Component, Watch, Prop, Vue,
+} from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+
 @Component({})
-export default class Tabs extends Vue {
+export default defineComponent({
   @Prop()
   tabs!: [
     {
@@ -77,7 +97,7 @@ export default class Tabs extends Vue {
     }
   ];
 
-  @Watch("tabs", { deep: true })
+  @Watch('tabs', { deep: true })
   onTabsChange() {
     this.$nextTick(() => this.calculateScrolls());
   }
@@ -102,32 +122,38 @@ export default class Tabs extends Vue {
   };
 
   isMounted = false;
+
   tabsContainer: HTMLDivElement = null as any;
+
   canScroll = false;
+
   hasNext = false;
+
   hasPrev = false;
+
   private scrollIncrement = 100;
-  selectedTab: string = "";
+
+  selectedTab = '';
+
   selectTabSize = {
-    fontSize: this.tabSize
+    fontSize: this.tabSize,
   };
 
   get tabSize() {
-    if (this.size === "small") {
-      return "14px";
-    } else if (this.size === "large") {
-      return "16px";
-    } else {
-      return "14px";
+    if (this.size === 'small') {
+      return '14px';
+    } if (this.size === 'large') {
+      return '16px';
     }
+    return '14px';
   }
 
   created() {
-    window.addEventListener("resize", this.calculateScrolls);
+    window.addEventListener('resize', this.calculateScrolls);
   }
 
   destroyed() {
-    window.removeEventListener("resize", this.calculateScrolls);
+    window.removeEventListener('resize', this.calculateScrolls);
   }
 
   mounted() {
@@ -142,31 +168,27 @@ export default class Tabs extends Vue {
   }
 
   scrollLeft() {
-    this.tabsContainer.scrollLeft =
-      this.tabsContainer.scrollLeft - this.scrollIncrement;
+    this.tabsContainer.scrollLeft = this.tabsContainer.scrollLeft - this.scrollIncrement;
   }
 
   scrollRight() {
-    this.tabsContainer.scrollLeft =
-      this.tabsContainer.scrollLeft + this.scrollIncrement;
+    this.tabsContainer.scrollLeft = this.tabsContainer.scrollLeft + this.scrollIncrement;
   }
 
   calculateScrolls() {
     if (!this.isMounted) return false;
-    this.canScroll =
-      this.tabsContainer.scrollWidth > this.tabsContainer.clientWidth;
+    this.canScroll = this.tabsContainer.scrollWidth > this.tabsContainer.clientWidth;
     this.hasPrev = this.tabsContainer.scrollLeft > 0;
-    const scrollRight =
-      this.tabsContainer.scrollWidth -
-      (this.tabsContainer.scrollLeft + this.tabsContainer.clientWidth);
+    const scrollRight = this.tabsContainer.scrollWidth
+      - (this.tabsContainer.scrollLeft + this.tabsContainer.clientWidth);
     this.hasNext = scrollRight > 0;
   }
 
   showTab(tab: string) {
     this.selectedTab = tab;
-    this.$emit("tab-selected", tab);
+    this.$emit('tab-selected', tab);
   }
-}
+})
 </script>
 
 <style lang="less" scoped>

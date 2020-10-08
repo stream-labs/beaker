@@ -4,31 +4,44 @@
     :class="{ 's-step--completed': isCompleted, checked: hasCheckmark }"
   >
     <div class="s-step__title">
-      <span class="s-step__icon" :class="icon" v-if="icon"></span>
-      <span class="s-step__icon icon-check-mark" v-if="hasCheckmark"></span>
-      <p class="s-step__title-text">{{ title }}</p>
+      <span
+        class="s-step__icon"
+        :class="icon"
+        v-if="icon"
+      />
+      <span
+        class="s-step__icon icon-check-mark"
+        v-if="hasCheckmark"
+      />
+      <p class="s-step__title-text">
+        {{ title }}
+      </p>
       <Badge
         class="s-step__badge"
         v-if="hasPrime"
         :variant="'prime-alt'"
         :align-left="true"
-      ></Badge>
+      />
     </div>
-    <slot v-if="!isCompleted"></slot>
-    <div v-if="isCompleted">{{ completedText }}</div>
+    <slot v-if="!isCompleted" />
+    <div v-if="isCompleted">
+      {{ completedText }}
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Badge from "./../components/Badge.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import Badge from './Badge.vue';
 
 @Component({
   components: {
-    Badge
-  }
+    Badge,
+  },
 })
-export default class Step extends Vue {
+export default defineComponent({
   @Prop(String)
   title!: string;
 
@@ -46,7 +59,7 @@ export default class Step extends Vue {
 
   @Prop({ default: false })
   hasPrime!: boolean;
-}
+})
 </script>
 
 <style lang="less" scoped>

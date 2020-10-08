@@ -1,12 +1,28 @@
 <template>
-  <div class="s-content-row" :class="contentRowMq">
-    <div class="s-content-box" :class="contentBoxMq">
-      <i class="s-banner__icon" :class="`icon-${icon}`" v-if="icon"></i>
-      <h2 class="s-content__title" :class="contentTitleMq">
-        <slot name="title"></slot>
+  <div
+    class="s-content-row"
+    :class="contentRowMq"
+  >
+    <div
+      class="s-content-box"
+      :class="contentBoxMq"
+    >
+      <i
+        class="s-banner__icon"
+        :class="`icon-${icon}`"
+        v-if="icon"
+      />
+      <h2
+        class="s-content__title"
+        :class="contentTitleMq"
+      >
+        <slot name="title" />
       </h2>
-      <p class="s-content__text" :class="contentTextMq">
-        <slot name="text"></slot>
+      <p
+        class="s-content__text"
+        :class="contentTextMq"
+      >
+        <slot name="text" />
       </p>
     </div>
     <div class="s-button-container">
@@ -14,76 +30,78 @@
         :size="'fixed-width'"
         :variation="btnVariation"
         :title="btnTitle"
-        :onClick="'buttonClick'"
+        :on-click="'buttonClick'"
         :href="buttonHref"
         :to="buttonTo"
         :tag="buttonTag"
-      ></Button>
+      />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Button from "./../components/Button.vue";
-import VueMq from "vue-mq";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import VueMq from 'vue-mq';
+import Button from './Button.vue';
 
 Vue.use(VueMq, {
   breakpoints: {
     // default breakpoints - customize this
     sm: 900,
     md: 1250,
-    lg: Infinity
+    lg: Infinity,
   },
-  defaultBreakpoint: "sm" // customize this for SSR
+  defaultBreakpoint: 'sm', // customize this for SSR
 });
 
 @Component({
   components: {
-    Button
-  }
+    Button,
+  },
 })
-export default class ContentRow extends Vue {
+export default defineComponent({
   @Prop()
   icon!: string;
 
-  @Prop({ default: "default" })
+  @Prop({ default: 'default' })
   btnVariation!: string;
 
-  @Prop({ default: "Default" })
+  @Prop({ default: 'Default' })
   btnTitle!: string;
 
   @Prop()
-  buttonHref!: String;
+  buttonHref!: string;
 
   @Prop()
-  buttonTo!: String;
+  buttonTo!: string;
 
-  @Prop({ default: "button" })
-  buttonTag!: String;
+  @Prop({ default: 'button' })
+  buttonTag!: string;
 
   $mq: any;
 
   get contentRowMq() {
-    return this.$mq === "sm" ? "s-content-row-mq" : "";
+    return this.$mq === 'sm' ? 's-content-row-mq' : '';
   }
 
   get contentBoxMq() {
-    return this.$mq === "sm" ? "s-content-box-mq" : "";
+    return this.$mq === 'sm' ? 's-content-box-mq' : '';
   }
 
   get bannerIconMq() {
-    return this.$mq === "sm" ? "s-banner__icon-mq" : "";
+    return this.$mq === 'sm' ? 's-banner__icon-mq' : '';
   }
 
   get contentTitleMq() {
-    return this.$mq === "sm" ? "s-content__title-mq" : "";
+    return this.$mq === 'sm' ? 's-content__title-mq' : '';
   }
 
   get contentTextMq() {
-    return this.$mq === "sm" ? "s-content__text-mq" : "";
+    return this.$mq === 'sm' ? 's-content__text-mq' : '';
   }
-}
+})
 </script>
 
 <style lang="less">

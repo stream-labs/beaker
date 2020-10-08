@@ -15,7 +15,10 @@ components: {
       <h2>Default Color Picker</h2>
 
       <div class="section">
-        <DemoSection title="Default" :code="demoCode">
+        <DemoSection
+          title="Default"
+          :code="demoCode"
+        >
           <template #components>
             <ColorPicker v-model="color" />
           </template>
@@ -24,9 +27,15 @@ components: {
 
       <div class="section">
         <h3>With Alpha</h3>
-        <DemoSection title="Alpha" :code="demoCode">
+        <DemoSection
+          title="Alpha"
+          :code="demoCode"
+        >
           <template #components>
-            <ColorPicker v-model="alphaColor" :hasAlpha="true" />
+            <ColorPicker
+              v-model="alphaColor"
+              :has-alpha="true"
+            />
           </template>
         </DemoSection>
       </div>
@@ -66,21 +75,28 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { defineComponent, ref } from 'vue';
 
-import ColorPicker from "./../components/ColorPicker.vue";
-import ColorPickersCode from "!!raw-loader!./ColorPickers.vue";
-import DemoSection from "./../components/DemoSection.vue";
+import ColorPicker from '../components/ColorPicker.vue';
+import ColorPickersCode from '!!raw-loader!./ColorPickers.vue';
+import DemoSection from '../components/DemoSection.vue';
 
-@Component({
+export default defineComponent({
   components: {
     ColorPicker,
-    DemoSection
-  }
-})
-export default class ColorPickers extends Vue {
-  demoCode = ColorPickersCode;
-  color = "#5E3BEC";
-  alphaColor = "#EB7777";
-}
+    DemoSection,
+  },
+
+  setup() {
+    const demoCode: string = ColorPickersCode;
+    const color = ref('#5E3BEC');
+    const alphaColor = ref('#EB7777');
+
+    return {
+      demoCode,
+      color,
+      alphaColor,
+    };
+  },
+});
 </script>

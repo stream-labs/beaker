@@ -20,36 +20,44 @@
         @click="onAdd"
         :disabled="value.length >= maxItems"
         type="button"
-      ></Button>
+      />
     </div>
 
     <div class="s-tagging-input__tags">
-      <div v-for="(tag, index) in value" :key="index" :class="tagClasses">
-        <div class="s-tagging-input__tag-text">{{ tag }}</div>
+      <div
+        v-for="(tag, index) in value"
+        :key="index"
+        :class="tagClasses"
+      >
+        <div class="s-tagging-input__tag-text">
+          {{ tag }}
+        </div>
         <i
           class="s-tagging-input__tag-icon icon-close"
           @click="onRemove(index)"
-        ></i>
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import TextInput from "./TextInput.vue";
-import TextArea from "./TextArea.vue";
-import Button from "./Button.vue";
-import { omit } from "lodash";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import { omit } from 'lodash';
+import TextInput from './TextInput.vue';
+import TextArea from './TextArea.vue';
+import Button from './Button.vue';
 
 @Component({
   components: {
     TextInput,
     TextArea,
-    Button
-  }
+    Button,
+  },
 })
-export default class TaggingInput extends Vue {
+export default defineComponent({
   @Prop()
   name!: string;
 
@@ -59,10 +67,10 @@ export default class TaggingInput extends Vue {
   @Prop()
   placeholder!: string;
 
-  @Prop({ default: "Add Tag" })
+  @Prop({ default: 'Add Tag' })
   buttonText!: string;
 
-  @Prop({ default: "default" })
+  @Prop({ default: 'default' })
   buttonVariation!: string;
 
   @Prop({ default: () => [] })
@@ -74,41 +82,40 @@ export default class TaggingInput extends Vue {
   @Prop()
   prefix!: string;
 
-  @Prop({ default: "default" })
+  @Prop({ default: 'default' })
   tagVariation!: string;
 
   @Prop({ default: 25 })
   maxItems!: number;
 
-  textInputValue: string = "";
+  textInputValue = '';
 
   get tagClasses() {
     return `s-tagging-input__tag s-tagging-input__tag--${this.tagVariation}`;
   }
 
   get filteredListeners() {
-    return omit(this.$listeners, ["input"]);
+    return omit(this.$listeners, ['input']);
   }
 
   onAdd() {
     if (
-      this.$validator.errors.items.length !== 0 ||
-      this.value.length >= this.maxItems
+      this.$validator.errors.items.length !== 0
+      || this.value.length >= this.maxItems
     ) {
       return;
     }
 
     this.textInputValue = this.textInputValue.trim();
 
-    const found = this.value.find(v => {
+    const found = this.value.find((v) => {
       if (this.prefix && !this.textInputValue.startsWith(this.prefix)) {
         return (
-          v.toLowerCase() ===
-          this.prefix + this.textInputValue.trim().toLowerCase()
+          v.toLowerCase()
+          === this.prefix + this.textInputValue.trim().toLowerCase()
         );
-      } else {
-        return v.toLowerCase() === this.textInputValue.trim().toLowerCase();
       }
+      return v.toLowerCase() === this.textInputValue.trim().toLowerCase();
     });
 
     if (!found && this.textInputValue.length !== 0) {
@@ -119,13 +126,13 @@ export default class TaggingInput extends Vue {
       this.value.push(this.textInputValue);
     }
 
-    this.textInputValue = "";
+    this.textInputValue = '';
   }
 
   onRemove(index) {
     this.value.splice(index, 1);
   }
-}
+})
 </script>
 
 <style lang="less">

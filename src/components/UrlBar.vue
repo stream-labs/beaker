@@ -1,24 +1,32 @@
 <template>
   <div class="s-cs-simulator__web-bar">
     <div class="s-cs-simulator__web-bar-dots">
-      <div class="s-cs-simulator__web-bar-dot"></div>
-      <div class="s-cs-simulator__web-bar-dot"></div>
-      <div class="s-cs-simulator__web-bar-dot"></div>
+      <div class="s-cs-simulator__web-bar-dot" />
+      <div class="s-cs-simulator__web-bar-dot" />
+      <div class="s-cs-simulator__web-bar-dot" />
     </div>
-    <div class="s-cs-simulator__url-container">{{ domain }}</div>
+    <div class="s-cs-simulator__url-container">
+      {{ domain }}
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { defineComponent, ref } from 'vue';
 
-@Component({})
-export default class UrlBar extends Vue {
-  @Prop({
-    default: "https://awkwardraccoon.com"
-  })
-  domain!: String;
-}
+export default defineComponent({
+  props: {
+    default: {
+      type: String,
+      default: 'https://awkwardraccoon.com',
+    },
+  },
+  setup() {
+    const domain = ref('');
+
+    return { domain };
+  },
+});
 </script>
 
 <style lang="less">

@@ -62,7 +62,10 @@ export default {
 
     <div class="section">
       <h2>Seach Demo</h2>
-      <DemoSection title="Default" :code="demoCode">
+      <DemoSection
+        title="Default"
+        :code="demoCode"
+      >
         <template #components>
           <SiteSearch
             :json-search="jsonSearch"
@@ -109,24 +112,30 @@ export default {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { defineComponent } from 'vue';
 
-import Accordion from "./../components/Accordion.vue";
-import DemoSection from "./../components/DemoSection.vue";
-import SiteSearch from "./../components/SiteSearch.vue";
-import SiteSearchDemoCode from "!!raw-loader!./SiteSearchDemo.vue";
+import Accordion from '../components/Accordion.vue';
+import DemoSection from '../components/DemoSection.vue';
+import SiteSearch from '../components/SiteSearch.vue';
+import SiteSearchDemoCode from '!!raw-loader!./SiteSearchDemo.vue';
 
-import * as searchData from "./../components/sitesearchdata.json";
+import * as searchData from '../components/sitesearchdata.json';
 
-@Component({
+export default defineComponent({
   components: {
     Accordion,
     DemoSection,
-    SiteSearch
-  }
-})
-export default class SiteSearchDemo extends Vue {
-  demoCode = SiteSearchDemoCode;
-  jsonSearch = (searchData as any).data;
-}
+    SiteSearch,
+  },
+
+  setup() {
+    const demoCode = SiteSearchDemoCode;
+    const jsonSearch = (searchData as any).data;
+
+    return {
+      demoCode,
+      jsonSearch,
+    };
+  },
+});
 </script>

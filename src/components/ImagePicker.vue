@@ -1,9 +1,18 @@
 <template>
   <div class="s-image-picker">
-    <div class="s-image-picker__thumb" @click="chooseImage">
-      <img :src="this.imageThumb" v-if="imageSelected" />
-      <div class="s-upload-icon" v-if="!imageSelected">
-        <i class="icon-upload-image"></i>
+    <div
+      class="s-image-picker__thumb"
+      @click="chooseImage"
+    >
+      <img
+        :src="this.imageThumb"
+        v-if="imageSelected"
+      >
+      <div
+        class="s-upload-icon"
+        v-if="!imageSelected"
+      >
+        <i class="icon-upload-image" />
       </div>
     </div>
     <div class="s-image-picker__filename">
@@ -13,7 +22,7 @@
         type="file"
         accept=".jpg, .jpeg, .png, .gif, .svg"
         @change="onSelectFile"
-      />
+      >
       {{ this.imageFileName }}
     </div>
     <div class="s-button-container s-button-container--right">
@@ -23,7 +32,11 @@
         :title="'Select Image'"
         @click="chooseImage"
       />
-      <Button v-if="imageSelected" :variation="'action'" :title="'Upload'" />
+      <Button
+        v-if="imageSelected"
+        :variation="'action'"
+        :title="'Upload'"
+      />
       <Button
         v-if="imageSelected"
         variation="default"
@@ -35,23 +48,30 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Emit } from "vue-property-decorator";
-import Button from "./../components/Button.vue";
+import {
+  Component, Prop, Vue, Emit,
+} from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import Button from './Button.vue';
 
 @Component({
   components: {
-    Button
-  }
+    Button,
+  },
 })
-export default class ImagePicker extends Vue {
+export default defineComponent({
   $refs!: {
     fileInput: HTMLElement;
   };
 
   private imageData: any = null;
-  private imageFileName: any = "Click here to add image...";
+
+  private imageFileName: any = 'Click here to add image...';
+
   private imageThumb: any = null;
-  private imageSelected: Boolean = false;
+
+  private imageSelected = false;
 
   chooseImage() {
     if (!this.imageSelected) {
@@ -60,18 +80,18 @@ export default class ImagePicker extends Vue {
   }
 
   deleteImage() {
-    this.imageFileName = "Click here to add image...";
+    this.imageFileName = 'Click here to add image...';
     this.imageThumb = null;
     this.imageSelected = false;
   }
 
   uploadImage() {
-    this.$emit("upload", this.imageData);
+    this.$emit('upload', this.imageData);
   }
 
   onSelectFile(event: any) {
-    var files = event.target.files;
-    var output: any = [];
+    const { files } = event.target;
+    const output: any = [];
     for (var i = 0, f; (f = files[i]); i++) {
       output.push(f.name, f.size);
     }
@@ -80,7 +100,7 @@ export default class ImagePicker extends Vue {
     this.imageThumb = URL.createObjectURL(files[0]);
     this.imageSelected = true;
   }
-}
+})
 </script>
 
 <style lang="less">

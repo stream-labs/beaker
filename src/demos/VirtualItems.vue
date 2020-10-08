@@ -13,23 +13,26 @@ components: {
 
       <div class="section">
         <h2>Giveaway Items</h2>
-        <DemoSection title="Giveaway Items" :code="demoCode">
+        <DemoSection
+          title="Giveaway Items"
+          :code="demoCode"
+        >
           <template #components>
             <div class="container">
               <VirtualItem
                 preview="https://streamlabs.com/imgs/facemasks/robot-mask.png"
                 rarity="Enter Giveaway"
                 name="4x VIP Tickets to PAX, TwitchCon and SXSW"
-                remainingTime="2h left"
-                :hasWarning="true"
+                remaining-time="2h left"
+                :has-warning="true"
               />
 
               <VirtualItem
                 preview="https://streamlabs.com/imgs/facemasks/robot-mask.png"
                 rarity="Entered"
                 name="$5K Custom High-Spec Streaming Desktop PC"
-                remainingTime="5d left"
-                :isGiveaway="true"
+                remaining-time="5d left"
+                :is-giveaway="true"
               />
             </div>
           </template>
@@ -37,7 +40,10 @@ components: {
       </div>
 
       <h2>Face Masks</h2>
-      <DemoSection title="Face Masks" :code="demoCode">
+      <DemoSection
+        title="Face Masks"
+        :code="demoCode"
+      >
         <template #components>
           <ItemGrid>
             <VirtualItem
@@ -46,7 +52,7 @@ components: {
               :preview="mask.preview"
               :rarity="mask.rarity"
               :name="mask.name"
-              :selectionCount="mask.selectionCount"
+              :selection-count="mask.selectionCount"
               :selected="mask.selected"
               @click="clickEvent"
             />
@@ -143,75 +149,82 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { defineComponent, ref } from 'vue';
 
-import DemoSection from "./../components/DemoSection.vue";
-import ItemGrid from "./../components/ItemGrid.vue";
-import VirtualItem from "./../components/VirtualItem.vue";
-import VirtualItemsCode from "!!raw-loader!./VirtualItems.vue";
+import DemoSection from '../components/DemoSection.vue';
+import ItemGrid from '../components/ItemGrid.vue';
+import VirtualItem from '../components/VirtualItem.vue';
+import VirtualItemsCode from '!!raw-loader!./VirtualItems.vue';
 
-@Component({
+export default defineComponent({
   components: {
     DemoSection,
     ItemGrid,
-    VirtualItem
-  }
-})
-export default class VirtualItems extends Vue {
-  demoCode = VirtualItemsCode;
-  masks = [
-    {
-      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
-      name: "Robot",
-      rarity: "Common",
-      selectionCount: "1",
-      selected: true
-    },
-    {
-      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
-      name: "Robot",
-      rarity: "Common",
-      selectionCount: "2",
-      selected: true
-    },
-    {
-      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
-      name: "Robot",
-      rarity: "Common",
-      selectionCount: "3",
-      selected: true
-    },
-    {
-      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
-      name: "Robot",
-      rarity: "Common"
-    },
-    {
-      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
-      name: "Robot",
-      rarity: "Common"
-    },
-    {
-      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
-      name: "Robot",
-      rarity: "Common"
-    },
-    {
-      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
-      name: "Robot",
-      rarity: "Common"
-    },
-    {
-      preview: "https://streamlabs.com/imgs/facemasks/robot-mask.png",
-      name: "Robot",
-      rarity: "Common"
-    }
-  ];
+    VirtualItem,
+  },
 
-  clickEvent() {
-    console.log("Hey you clicked me!");
-  }
-}
+  setup() {
+    const demoCode = VirtualItemsCode;
+    const masks = ref([
+      {
+        preview: 'https://streamlabs.com/imgs/facemasks/robot-mask.png',
+        name: 'Robot',
+        rarity: 'Common',
+        selectionCount: '1',
+        selected: true,
+      },
+      {
+        preview: 'https://streamlabs.com/imgs/facemasks/robot-mask.png',
+        name: 'Robot',
+        rarity: 'Common',
+        selectionCount: '2',
+        selected: true,
+      },
+      {
+        preview: 'https://streamlabs.com/imgs/facemasks/robot-mask.png',
+        name: 'Robot',
+        rarity: 'Common',
+        selectionCount: '3',
+        selected: true,
+      },
+      {
+        preview: 'https://streamlabs.com/imgs/facemasks/robot-mask.png',
+        name: 'Robot',
+        rarity: 'Common',
+      },
+      {
+        preview: 'https://streamlabs.com/imgs/facemasks/robot-mask.png',
+        name: 'Robot',
+        rarity: 'Common',
+      },
+      {
+        preview: 'https://streamlabs.com/imgs/facemasks/robot-mask.png',
+        name: 'Robot',
+        rarity: 'Common',
+      },
+      {
+        preview: 'https://streamlabs.com/imgs/facemasks/robot-mask.png',
+        name: 'Robot',
+        rarity: 'Common',
+      },
+      {
+        preview: 'https://streamlabs.com/imgs/facemasks/robot-mask.png',
+        name: 'Robot',
+        rarity: 'Common',
+      },
+    ]);
+
+    function clickEvent() {
+      console.log('Hey you clicked me!');
+    }
+
+    return {
+      demoCode,
+      masks,
+      clickEvent,
+    };
+  },
+});
 </script>
 
 <style lang="less" scoped>

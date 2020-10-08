@@ -1,59 +1,71 @@
 <template>
   <div class="s-cs-simulator">
-    <UrlBar :domain="domain"></UrlBar>
-    <div class="s-cs-simulator__web-page" :class="themeClass">
+    <UrlBar :domain="domain" />
+    <div
+      class="s-cs-simulator__web-page"
+      :class="themeClass"
+    >
       <div class="s-cs-simulator__heading">
-        <img class="s-cs-simulator__icon" :src="icon" />
+        <img
+          class="s-cs-simulator__icon"
+          :src="icon"
+        >
         <div class="s-cs-simulator__header-text">
-          <h1 class="s-cs-simulator__username">{{ username }}</h1>
-          <div class="s-cs-simulator__desc"></div>
+          <h1 class="s-cs-simulator__username">
+            {{ username }}
+          </h1>
+          <div class="s-cs-simulator__desc" />
         </div>
       </div>
 
       <div class="s-cs-simulator__section">
         <div class="s-cs-simulator__video">
-          <i class="icon-media-share-2"></i>
+          <i class="icon-media-share-2" />
         </div>
       </div>
 
       <div class="s-cs-simulator__section">
-        <div class="s-cs-simulator__fake-input"></div>
-        <div class="s-cs-simulator__fake-input"></div>
-        <div class="s-cs-simulator__fake-input"></div>
-        <div class="s-cs-simulator__fake-button"></div>
+        <div class="s-cs-simulator__fake-input" />
+        <div class="s-cs-simulator__fake-input" />
+        <div class="s-cs-simulator__fake-input" />
+        <div class="s-cs-simulator__fake-button" />
       </div>
 
-      <div class="s-cs-simulator__section"></div>
-      <div class="s-cs-simulator__section"></div>
-      <div class="s-cs-simulator__section"></div>
-      <div class="s-cs-simulator__section"></div>
+      <div class="s-cs-simulator__section" />
+      <div class="s-cs-simulator__section" />
+      <div class="s-cs-simulator__section" />
+      <div class="s-cs-simulator__section" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import UrlBar from "./../components/UrlBar.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import UrlBar from './UrlBar.vue';
 
 @Component({
   components: {
-    UrlBar
-  }
+    UrlBar,
+  },
 })
-export default class ScsroSimulator extends Vue {
-  @Prop({ default: "Awkward__Raccoon" })
+export default defineComponent({
+  @Prop({ default: 'Awkward__Raccoon' })
   username!: string;
 
   @Prop({
-    default: "https://live.kickstarter.com/images/avatar/medium/avatars4.png"
+    default: 'https://live.kickstarter.com/images/avatar/medium/avatars4.png',
   })
-  icon!: String;
+  icon!: string;
 
-  @Prop({ default: "https://awkwardraccoon.tv" })
+  @Prop({ default: 'https://awkwardraccoon.tv' })
   domain!: string;
 
-  themeClasses = ["teal", "orange", "purple", "electric-blue", "red", "lime"];
-  themeClass = "";
+  themeClasses = ['teal', 'orange', 'purple', 'electric-blue', 'red', 'lime'];
+
+  themeClass = '';
+
   myInt!: number;
 
   rotateClasses() {
@@ -62,7 +74,7 @@ export default class ScsroSimulator extends Vue {
       // time interval
       const next = it.next();
       if (!next.done) {
-        this.themeClass = "s-cs-simulator__web-page--" + next.value;
+        this.themeClass = `s-cs-simulator__web-page--${next.value}`;
       } else {
         it = this.themeClasses[Symbol.iterator]();
       }
@@ -76,7 +88,7 @@ export default class ScsroSimulator extends Vue {
   mounted() {
     this.rotateClasses();
   }
-}
+})
 </script>
 
 <style lang="less">

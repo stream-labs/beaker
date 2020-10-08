@@ -1,29 +1,44 @@
 <template>
-  <div class="s-notice" :class="`s-notice--${iconType}`">
+  <div
+    class="s-notice"
+    :class="`s-notice--${iconType}`"
+  >
     <div class="s-notice__wrapper">
-      <i class="s-notice__icon-bg" :class="[iconClass]"></i>
+      <i
+        class="s-notice__icon-bg"
+        :class="[iconClass]"
+      />
 
       <div class="s-notice__body">
-        <i class="s-notice__icon" :class="[iconClass]"></i>
+        <i
+          class="s-notice__icon"
+          :class="[iconClass]"
+        />
         <div class="s-notice__detail">
-          <h2 class="s-notice__title">{{ title }}</h2>
-          <p class="s-notice__desc">{{ desc }}</p>
+          <h2 class="s-notice__title">
+            {{ title }}
+          </h2>
+          <p class="s-notice__desc">
+            {{ desc }}
+          </p>
         </div>
       </div>
 
       <div class="s-notice__button">
-        <slot name="button"></slot>
+        <slot name="button" />
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
 
 @Component({})
-export default class Notice extends Vue {
-  @Prop({ default: "default" })
+export default defineComponent({
+  @Prop({ default: 'default' })
   variation!: string;
 
   @Prop({ required: true })
@@ -37,10 +52,10 @@ export default class Notice extends Vue {
 
   get iconType() {
     switch (this.variation) {
-      case "default":
-        return "information";
-      case "warning":
-        return "error";
+      case 'default':
+        return 'information';
+      case 'warning':
+        return 'error';
     }
   }
 
@@ -48,7 +63,7 @@ export default class Notice extends Vue {
     const iconSrc = this.icon ? this.icon : this.iconType;
     return `icon-${iconSrc}`;
   }
-}
+})
 </script>
 
 <style lang="less">

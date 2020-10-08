@@ -1,7 +1,13 @@
 <template>
-  <div :class="guardClasses" @click="showText">
-    <div v-if="visible" :class="`${prefix}__text`">
-      <i class="fas fa-lock"></i>
+  <div
+    :class="guardClasses"
+    @click="showText"
+  >
+    <div
+      v-if="visible"
+      :class="`${prefix}__text`"
+    >
+      <i class="fas fa-lock" />
       {{ placeholder }}
     </div>
     <div
@@ -11,43 +17,50 @@
           : `${prefix}-wrapper ${prefix}-wrapper--readable`
       "
     >
-      <slot v-if="$slots.content" name="content" />
-      <div v-else>{{ value }}</div>
+      <slot
+        v-if="$slots.content"
+        name="content"
+      />
+      <div v-else>
+        {{ value }}
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
 
 @Component({})
-export default class Guard extends Vue {
+export default defineComponent({
   @Prop()
   value?: string;
 
-  @Prop({ default: "Click to show" })
+  @Prop({ default: 'Click to show' })
   placeholder!: string;
 
   @Prop({ default: true })
   showOnClick!: boolean;
 
-  @Prop({ default: "normal" })
+  @Prop({ default: 'normal' })
   variation!: string;
 
-  @Prop({ default: "text" })
+  @Prop({ default: 'text' })
   type!: string;
 
-  visible: boolean = true;
+  visible = true;
 
   get prefix() {
-    return this.type === "input" ? "s-input-guard" : "s-text-guard";
+    return this.type === 'input' ? 's-input-guard' : 's-text-guard';
   }
 
   showText() {
     if (this.showOnClick) {
       this.visible = false;
     } else {
-      this.$emit("click");
+      this.$emit('click');
     }
   }
 
@@ -59,13 +72,13 @@ export default class Guard extends Vue {
       classes.push(`${this.prefix}--readable`);
     }
 
-    if (this.variation === "alt") {
+    if (this.variation === 'alt') {
       classes.push(`${this.prefix}--alt`);
     }
 
     return classes;
   }
-}
+})
 </script>
 
 <style lang="less">

@@ -1,14 +1,20 @@
 <template>
-  <div class="s-media-picker" ref="mediaPicker">
+  <div
+    class="s-media-picker"
+    ref="mediaPicker"
+  >
     <div class="s-media-picker__input-wrapper">
       <div class="s-media-picker__thumb">
-        <transition name="fade" mode="out-in">
+        <transition
+          name="fade"
+          mode="out-in"
+        >
           <i
             v-if="!media.selected"
             key="thumb-upload"
             class="s-media-picker__no-media"
             :class="noMediaIcon"
-          ></i>
+          />
           <i
             v-if="media.selected && variation === 'audio'"
             key="thumb-audio"
@@ -18,14 +24,14 @@
               key="thumb-audio"
               :src="media.url"
               @error="setBrokenMedia"
-            ></audio>
+            />
           </i>
           <img
             v-if="media.selected && variation === 'image'"
             key="thumb-image"
             :src="media.url"
             @error="setBrokenMedia"
-          />
+          >
         </transition>
         <transition
           name="custom-classes-transition"
@@ -35,13 +41,20 @@
           <div
             v-if="media.selected && mediaBroken"
             class="s-media-picker__broken-image"
-          ></div>
+          />
         </transition>
       </div>
 
       <div class="s-media-picker__filename">
-        <transition mode="out-in" name="fade">
-          <div v-if="value" key="media-selected" class="s-media-picker__text">
+        <transition
+          mode="out-in"
+          name="fade"
+        >
+          <div
+            v-if="value"
+            key="media-selected"
+            class="s-media-picker__text"
+          >
             {{ media.fileName }}
           </div>
           <div
@@ -66,7 +79,7 @@
             @focus="focused = -1"
             @keydown.space.prevent="showMediaControls"
             @keydown.enter.prevent="showMediaControls"
-          ></i>
+          />
 
           <transition-group
             v-else
@@ -89,7 +102,7 @@
               @keydown.enter.prevent="$emit(control.emit)"
               @keydown.left.prevent="moveLeft()"
               @keydown.right.prevent="moveRight()"
-              ><i :class="control.icon"></i>
+            ><i :class="control.icon" />
             </a>
           </transition-group>
         </div>
@@ -99,19 +112,23 @@
 </template>
 
 <script lang="ts">
-import { Component, Watch, Prop, Vue, Emit } from "vue-property-decorator";
-import { mixin as vFocus } from "vue-focus";
-import ResizeObserver from "resize-observer-polyfill";
-import Button from "./../components/Button.vue";
+import {
+  Component, Watch, Prop, Vue, Emit,
+} from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import { mixin as vFocus } from 'vue-focus';
+import ResizeObserver from 'resize-observer-polyfill';
+import Button from './Button.vue';
 
 @Component({
   components: {
-    Button
+    Button,
   },
 
-  mixins: [vFocus]
+  mixins: [vFocus],
 })
-export default class MediaPicker extends Vue {
+export default defineComponent({
   $refs!: {
     mediaPicker: HTMLElement;
   };
@@ -126,101 +143,104 @@ export default class MediaPicker extends Vue {
   value!: string;
 
   mediaPickerSmall = false;
+
   mediaBroken = false;
+
   mediaControlsVisible = false;
+
   focused = 0;
 
   get mediaControls() {
     const controlData = [
       {
-        key: "media-link",
+        key: 'media-link',
         available: !!this.mediaLink,
-        class: "s-media-picker__link-icon",
-        emit: "link-media",
+        class: 's-media-picker__link-icon',
+        emit: 'link-media',
         title: `Link ${this.variationTitle}`,
-        icon: "icon-link"
+        icon: 'icon-link',
       },
       {
-        key: "media-selected-zoom",
+        key: 'media-selected-zoom',
         available:
-          this.variation === "image" &&
-          this.media.selected &&
-          !this.mediaBroken,
-        class: "s-media-picker__zoom-icon",
-        emit: "preivew-media",
+          this.variation === 'image'
+          && this.media.selected
+          && !this.mediaBroken,
+        class: 's-media-picker__zoom-icon',
+        emit: 'preivew-media',
         title: `Preview ${this.variationTitle}`,
-        icon: "icon-zoom"
+        icon: 'icon-zoom',
       },
       {
-        key: "media-selected-play",
+        key: 'media-selected-play',
         available:
-          !this.mediaBroken &&
-          this.variation === "audio" &&
-          this.media.selected,
-        class: "s-media-picker__play-icon",
-        emit: "preview-media",
+          !this.mediaBroken
+          && this.variation === 'audio'
+          && this.media.selected,
+        class: 's-media-picker__play-icon',
+        emit: 'preview-media',
         title: `preview ${this.variationTitle}`,
-        icon: "icon-media-share-2"
+        icon: 'icon-media-share-2',
       },
       {
-        key: "media-remove",
+        key: 'media-remove',
         available: this.media.selected,
-        class: "s-media-picker__small-remove",
-        emit: "remove-media",
+        class: 's-media-picker__small-remove',
+        emit: 'remove-media',
         title: `Remove ${this.variationTitle}`,
-        icon: "icon-close"
+        icon: 'icon-close',
       },
       {
-        key: "media-select",
+        key: 'media-select',
         available: true,
-        class: "s-media-picker__small-remove",
-        emit: "select-media",
+        class: 's-media-picker__small-remove',
+        emit: 'select-media',
         title: `Select ${this.variationTitle}`,
-        icon: "icon-upload-image"
-      }
+        icon: 'icon-upload-image',
+      },
     ];
-    return controlData.filter(control => control.available);
+    return controlData.filter((control) => control.available);
   }
 
   get mediaInputPlaceholder() {
-    return this.variation === "audio"
-      ? `example-audio.mp3`
-      : `example-image.jpg`;
+    return this.variation === 'audio'
+      ? 'example-audio.mp3'
+      : 'example-image.jpg';
   }
 
   get buttonTitle() {
-    return this.variation ? `Select ${this.variation}` : "Select Media";
+    return this.variation ? `Select ${this.variation}` : 'Select Media';
   }
 
   get variationTitle() {
-    return this.variation === "image" ? "Image" : "Audio";
+    return this.variation === 'image' ? 'Image' : 'Audio';
   }
 
   get media() {
     return {
-      selected: this.value ? true : false,
-      fileName: this.value ? this.value.split("/").pop() : "",
-      url: this.value
+      selected: !!this.value,
+      fileName: this.value ? this.value.split('/').pop() : '',
+      url: this.value,
     };
   }
 
   get noMediaIcon() {
-    return this.variation === "image" ? "icon-image" : "icon-music";
+    return this.variation === 'image' ? 'icon-image' : 'icon-music';
   }
 
-  @Watch("value")
+  @Watch('value')
   watchValue() {
     this.setBrokenMedia(null);
   }
 
-  @Watch("mediaControlsVisible")
+  @Watch('mediaControlsVisible')
   watchMediaControlsVisible() {
     if (this.mediaPickerSmall && !this.mediaControlsVisible) {
       this.focused = -1;
     }
   }
 
-  @Watch("mediaControls")
+  @Watch('mediaControls')
   watchMediaControls(newVal) {
     this.focused = newVal.length - 1;
   }
@@ -228,8 +248,10 @@ export default class MediaPicker extends Vue {
   mounted() {
     const ro = new ResizeObserver((entries, observer) => {
       for (const entry of entries) {
-        const { left, top, width, height } = entry.contentRect;
-        this.mediaPickerSmall = width < 500 ? true : false;
+        const {
+          left, top, width, height,
+        } = entry.contentRect;
+        this.mediaPickerSmall = width < 500;
       }
     });
 
@@ -238,7 +260,7 @@ export default class MediaPicker extends Vue {
   }
 
   setBrokenMedia(event) {
-    this.mediaBroken = event ? true : false;
+    this.mediaBroken = !!event;
   }
 
   onTabOut() {
@@ -257,7 +279,7 @@ export default class MediaPicker extends Vue {
     this.mediaControlsVisible = true;
     this.focused = this.mediaControls.length - 1;
   }
-}
+})
 </script>
 
 <style lang="less">

@@ -9,17 +9,19 @@
         <a
           target="_blank"
           href="https://github.com/charliekassel/vuejs-datepicker"
-          >Vue Date Picker</a
-        >.
+        >Vue Date Picker</a>.
       </p>
 
-      <Accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+      <Accordion
+        :opened-title="'Hide Code'"
+        :closed-title="'Show Code'"
+      >
         <div slot="content">
           <pre>
 <code>import { DatePicker } from 'streamlabs-beaker';
 
 components: {
-  &quot;s-date-picker&quot;: DatePicker
+  &quot;date-picker&quot;: DatePicker
 }
 
 &lt;s-date-picker
@@ -28,28 +30,28 @@ components: {
   :placeholder=&quot;'Select Date'&quot;
   :start-date=&quot;tomorrow&quot;
   @selected=&quot;logDate&quot;
-&gt;&lt;/s-date-picker&gt;</code></pre>
+/&gt;</code></pre>
         </div>
       </Accordion>
 
-      <s-date-picker
+      <date-picker
         :disabled-dates="state.disabledDates"
         :full-month-name="true"
         :placeholder="'Select Date'"
         :start-date="tomorrow"
         @selected="logDate"
-      ></s-date-picker>
+      />
     </div>
 
     <div class="section">
       <h2>Toggle Style Variant</h2>
-      <s-date-picker
+      <date-picker
         :variant="'toggle'"
         :disabled-dates="state.disabledDates"
         :placeholder="'Select Date'"
         :view="'month'"
         @selected="logDate"
-      ></s-date-picker>
+      />
     </div>
 
     <div class="section">
@@ -59,8 +61,7 @@ components: {
         <a
           href="https://www.npmjs.com/package/vuejs-datepicker#available-props"
           target="_blank"
-          >here</a
-        >. Though, only the <code>selected</code> event is available.
+        >here</a>. Though, only the <code>selected</code> event is available.
       </p>
 
       <table class="docs-table">
@@ -73,7 +74,7 @@ components: {
           </tr>
         </thead>
         <tbody>
-          <tr></tr>
+          <tr />
           <tr>
             <td>placeholder</td>
             <td>string</td>
@@ -105,33 +106,34 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { defineComponent, reactive } from 'vue';
 
-import moment from "moment";
-import Accordion from "./../components/Accordion.vue";
-import DatePicker from "./../components/DatePicker.vue";
+import moment from 'moment';
+import Accordion from '../components/Accordion.vue';
+import DatePicker from '../components/DatePicker.vue';
 
-@Component({
+export default defineComponent({
   components: {
     Accordion,
-    "s-date-picker": DatePicker
-  }
-})
-export default class Calendars extends Vue {
-  state = {
-    disabledDates: {
-      dates: [new Date()]
-    }
-  };
+    DatePicker,
+  },
 
-  tomorrow = moment()
-    .add(1, "days")
-    .format();
+  setup() {
+    const state = reactive({
+      disabledDates: {
+        dates: [new Date()],
+      },
+    });
 
-  logDate(date) {
-    console.log(date);
-  }
-}
+    const tomorrow = moment().add(1, 'days').format();
+
+    return {
+      state,
+      tomorrow,
+    };
+  },
+
+});
 </script>
 
 <style lang="less" scoped></style>

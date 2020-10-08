@@ -2,8 +2,8 @@
   <modal
     :name="name"
     :classes="'s-modal-wrapper'"
-    :maxWidth="width"
-    :minWidth="minWidth"
+    :max-width="width"
+    :min-width="minWidth"
     height="auto"
     :adaptive="true"
     v-on="$listeners"
@@ -11,10 +11,25 @@
     <div class="s-modal-container">
       <div class="s-modal-body">
         <div class="s-normal-upper">
-          <h1 v-if="!!title" class="s-modal-title">{{ title }}</h1>
-          <h2 v-if="!!subTitle" class="s-modal-sub-title">{{ subTitle }}</h2>
-          <p v-if="!!text" class="s-modal-text">{{ text }}</p>
-          <slot></slot>
+          <h1
+            v-if="!!title"
+            class="s-modal-title"
+          >
+            {{ title }}
+          </h1>
+          <h2
+            v-if="!!subTitle"
+            class="s-modal-sub-title"
+          >
+            {{ subTitle }}
+          </h2>
+          <p
+            v-if="!!text"
+            class="s-modal-text"
+          >
+            {{ text }}
+          </p>
+          <slot />
         </div>
       </div>
       <div
@@ -27,13 +42,13 @@
             :title="'Close'"
             :size="'fixed-width'"
             @click="$modal.hide(name)"
-          ></Button>
+          />
           <Button
             :variation="'action'"
             :title="'Confirm'"
             :size="'fixed-width'"
             @click="$emit('confirm')"
-          ></Button>
+          />
         </div>
       </div>
     </div>
@@ -41,15 +56,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Button from "./../components/Button.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import Button from './Button.vue';
 
 @Component({
   components: {
-    Button
-  }
+    Button,
+  },
 })
-export default class ModalBasic extends Vue {
+export default defineComponent({
   @Prop()
   name!: string;
 
@@ -70,7 +87,7 @@ export default class ModalBasic extends Vue {
 
   @Prop()
   hideActionButtons!: string;
-}
+})
 </script>
 
 <style lang="less" scoped>

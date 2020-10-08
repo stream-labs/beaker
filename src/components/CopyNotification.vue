@@ -1,6 +1,10 @@
 <template>
   <div>
-    <transition-group name="fadeX-from-right" tag="div" class="notifications">
+    <transition-group
+      name="fadeX-from-right"
+      tag="div"
+      class="notifications"
+    >
       <div
         v-for="{ id, msg, status } in visibleMessages"
         :key="`msg-${id}`"
@@ -14,8 +18,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import { EventBus } from "./../plugins/event-bus";
+import {
+  defineComponent, reactive, toRefs, computed, onUnmounted,
+} from 'vue';
+import { eventBus } from '../plugins/event-bus';
 
 interface INotificationMsg {
   id: number;
@@ -24,63 +30,69 @@ interface INotificationMsg {
   timerStarted: boolean;
 }
 
-@Component({})
-export default class Icons extends Vue {
-  messages: INotificationMsg[] = [];
+export default defineComponent({
+  setup() {
+    const messages: INotificationMsg[] = [];
 
-  get visibleMessages() {
-    const msgs = this.messages.filter((msg, idx) => idx < 5);
+    const visibleMessages = computed(() => {
+      const msgs = messages.filter((msg, idx) => idx < 5);
 
-    msgs.forEach(msg => {
-      if (!msg.timerStarted) {
-        msg.timerStarted = true;
-        setTimeout(() => {
-          const idx = this.messages.findIndex(message => msg.id === message.id);
-          this.messages.splice(idx, 1);
-        }, 5000);
-      }
+      msgs.forEach((msg) => {
+        if (!msg.timerStarted) {
+          msg.timerStarted = true;
+          setTimeout(() => {
+            const idx = messages.findIndex((message) => msg.id === message.id);
+            messages.splice(idx, 1);
+          }, 5000);
+        }
+      });
+
+      return msgs;
     });
 
-    return msgs;
-  }
+    function setCopyMsgId() {
+      return Math.ceil(Math.random() * 10000);
+    }
 
-  created() {
-    EventBus.$on("copy-success", this.onCopySuccess);
-    EventBus.$on("copy-error", this.onCopyError);
-  }
+    function setCopyMsg(copiedMsg: INotificationMsg) {
+      const message = {
+        ...copiedMsg,
+      };
+      messages.push(message);
+    }
 
-  destroyed() {
-    EventBus.$off("copy-success");
-    EventBus.$off("copy-error");
-  }
+    function onCopySuccess(e) {
+      setCopyMsg({
+        id: setCopyMsgId(),
+        msg: `Copied "${e.text}" to clipboard`,
+        status: 'success',
+        timerStarted: false,
+      });
+    }
 
-  onCopySuccess(e) {
-    this.setCopyMsg({
-      id: this.setCopyMsgId(),
-      msg: `Copied "${e.text}" to clipboard`,
-      status: "success",
-      timerStarted: false
+    function onCopyError(e) {
+      setCopyMsg({
+        id: setCopyMsgId(),
+        msg: 'Failed to copy to clipboard',
+        status: 'error',
+        timerStarted: false,
+      });
+    }
+
+    eventBus.on('copy-success', onCopySuccess);
+    eventBus.on('copy-error', onCopyError);
+
+    onUnmounted(() => {
+      eventBus.off('copy-success', onCopySuccess);
+      eventBus.off('copy-error', onCopyError);
     });
-  }
 
-  onCopyError(e) {
-    this.setCopyMsg({
-      id: this.setCopyMsgId(),
-      msg: "Failed to copy to clipboard",
-      status: "error",
-      timerStarted: false
-    });
-  }
-
-  setCopyMsgId() {
-    return Math.ceil(Math.random() * 10000);
-  }
-
-  setCopyMsg({ id, msg, status, timerStarted }) {
-    const message: INotificationMsg = { id, msg, status, timerStarted };
-    this.messages.push(message);
-  }
-}
+    return {
+      messages,
+      visibleMessages,
+    };
+  },
+});
 </script>
 
 <style lang="less" scoped>

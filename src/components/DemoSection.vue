@@ -1,56 +1,59 @@
 <template>
   <div class="s-demo-section">
-    <Accordion openedTitle="Hide Code" closedTitle="Show Code">
-      <div slot="content">
-        <pre><code v-html="escapedHtml"></code></pre>
-      </div>
+    <Accordion
+      opened-title="Hide Code"
+      closed-title="Show Code"
+    >
+      <slot name="content">
+        <pre><code v-html="escapedHtml" /></pre>
+      </slot>
     </Accordion>
 
     <div class="s-demo-section__content">
-      <slot name="components"></slot>
+      <slot name="components" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Watch, Prop, Vue } from "vue-property-decorator";
-import Accordion from "./Accordion.vue";
-import { escape } from "lodash-es";
-import { VNode } from "vue";
+import { defineComponent } from 'vue';
+import { escape } from 'lodash-es';
 
-@Component({
+import Accordion from './Accordion.vue';
+
+export default defineComponent({
   components: {
-    Accordion
-  }
-})
-export default class DemoSection extends Vue {
-  @Prop()
-  title!: string;
+    Accordion,
+  },
 
-  @Prop({ required: true })
-  code!: string;
+  props: {
+    title: { type: String },
+    code: { type: String, required: true },
+  },
 
-  get escapedHtml() {
-    const codeRegEx = new RegExp(
-      `title="${
-        this.title
-      }" :code="demoCode">\\s*<template #components>([\\S\\s]*?)<\\/template>`,
-      "gm"
-    );
+  computed: {
+    escapedHtml() {
+      const codeRegEx = new RegExp(
+        `title="${
+          this.title
+        }" :code="demoCode">\\s*<template #components>([\\S\\s]*?)<\\/template>`,
+        'gm',
+      );
 
-    const codeMatch = codeRegEx.exec(this.code) as string[];
-    const lines = codeMatch[1].split("\n");
-    const matches = /^\s+/.exec(lines[1]);
-    const indentation = matches != null ? matches[0] : null;
-    let indentedLines: string[] = [];
+      const codeMatch = codeRegEx.exec(this.code) as string[];
+      const lines = codeMatch[1].split('\n');
+      const matches = /^\s+/.exec(lines[1]);
+      const indentation = matches != null ? matches[0] : null;
+      let indentedLines: string[] = [];
 
-    if (indentation) {
-      indentedLines = lines.map(line => line.replace(indentation, ""));
-    }
+      if (indentation) {
+        indentedLines = lines.map((line) => line.replace(indentation, ''));
+      }
 
-    return escape(indentedLines.join("\n").trim());
-  }
-}
+      return escape(indentedLines.join('\n').trim());
+    },
+  },
+});
 </script>
 
 <style lang="less" scoped>

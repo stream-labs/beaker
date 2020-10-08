@@ -1,5 +1,9 @@
 <template>
-  <div class="s-checkbox" tabindex="0" @keydown.space.prevent="toggleCheck">
+  <div
+    class="s-checkbox"
+    tabindex="0"
+    @keydown.space.prevent="toggleCheck"
+  >
     <input
       type="checkbox"
       :id="id"
@@ -7,16 +11,18 @@
       :checked="value"
       @change="$emit('input', $event.target.checked)"
       tabindex="-1"
-    />
+    >
     <label :for="id">{{ label }}</label>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
 
 @Component({})
-export default class Checkbox extends Vue {
+export default defineComponent({
   @Prop({ type: String, required: true })
   label!: string;
 
@@ -30,9 +36,9 @@ export default class Checkbox extends Vue {
   value!: boolean;
 
   toggleCheck() {
-    this.$emit("input", !this.value);
+    this.$emit('input', !this.value);
   }
-}
+})
 </script>
 
 <style lang="less">

@@ -1,14 +1,26 @@
 <template>
-  <div id="app" :class="[isNightTheme ? nightClasses : '', appClass]">
+  <div
+    id="app"
+    :class="[isNightTheme ? nightClasses : '', appClass]"
+  >
     <div id="nav">
       <div class="logo">
-        <img v-if="isNightTheme" src="./assets/imgs/beaker-full-night.svg" />
-        <img v-else src="./assets/imgs/beaker-full.svg" />
+        <img
+          v-if="isNightTheme"
+          src="./assets/imgs/beaker-full-night.svg"
+        >
+        <img
+          v-else
+          src="./assets/imgs/beaker-full.svg"
+        >
       </div>
-      <toggle :values="themes" v-model="theme"></toggle>
+      <toggle
+        v-model="theme"
+        :values="themes"
+      />
     </div>
 
-    <documentation></documentation>
+    <documentation />
 
     <div class="floating-links">
       <a
@@ -16,44 +28,55 @@
         target="_blank"
         href="https://github.com/mbiemiller/beaker"
       >
-        <img src="./assets/imgs/github.png" />
+        <img src="./assets/imgs/github.png">
       </a>
       <a
         class="floating-link"
         target="_blank"
         href="https://www.npmjs.com/package/streamlabs-beaker"
       >
-        <img src="./assets/imgs/npm.svg" />
+        <img src="./assets/imgs/npm.svg">
       </a>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import Toggle from "./components/Toggle.vue";
-import Documentation from "./views/Documentation.vue";
+// import { Component, Vue } from "vue-property-decorator";
+import { defineComponent, ref, computed } from 'vue';
+import whatInput from 'what-input';
+import { provideWhatInput } from './plugins/WhatInput';
+import Toggle from './components/Toggle.vue';
+import Documentation from './views/Documentation.vue';
 
-@Component({
+export default defineComponent({
+  name: 'App',
+
   components: {
     Toggle,
-    Documentation
-  }
-})
-export default class App extends Vue {
-  appClass = "app-wrapper";
-  nightClasses = ["night", "night-theme"];
-  theme = "night";
+    Documentation,
+  },
+  setup() {
+    provideWhatInput(whatInput);
+    const appClass = ref('app-wrapper');
+    const nightClasses = ref(['night', 'night-theme']);
+    const theme = ref('night');
+    const themes = ref({
+      day: 'Day',
+      night: 'Night',
+    });
 
-  themes = {
-    day: "Day",
-    night: "Night"
-  };
+    const isNightTheme = computed(() => theme.value === 'night');
 
-  get isNightTheme() {
-    return this.theme === "night";
-  }
-}
+    return {
+      appClass,
+      nightClasses,
+      theme,
+      themes,
+      isNightTheme,
+    };
+  },
+});
 </script>
 
 <style lang="less">

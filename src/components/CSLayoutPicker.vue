@@ -5,29 +5,32 @@
       v-if="addLayout"
       class="s-cs-layout-picker__add-bar"
     >
-      <i class="icon-add"></i>
+      <i class="icon-add" />
     </div>
     <div
       v-if="chooseLayout"
       v-click-outside="showAddLayout"
       class="s-cs-layout-picker__layouts-bar"
     >
-      <slot name="layouts"></slot>
+      <slot name="layouts" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import ClickOutside from "vue-click-outside";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import ClickOutside from 'vue-click-outside';
 
 @Component({
   directives: {
-    ClickOutside
-  }
+    ClickOutside,
+  },
 })
-export default class CSLayoutPicker extends Vue {
+export default defineComponent({
   addLayout = true;
+
   chooseLayout = false;
 
   showChooseLayout() {
@@ -44,7 +47,7 @@ export default class CSLayoutPicker extends Vue {
     this.chooseLayout = false;
     this.addLayout = true;
   }
-}
+})
 </script>
 
 <style lang="less">

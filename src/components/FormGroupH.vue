@@ -11,9 +11,12 @@
     </div>
 
     <div class="s-form-group-h__input-wrapper">
-      <slot name="input"></slot>
+      <slot name="input" />
 
-      <div class="s-form-group-h__help-text" v-if="helpText">
+      <div
+        class="s-form-group-h__help-text"
+        v-if="helpText"
+      >
         {{ helpText }}
       </div>
     </div>
@@ -21,10 +24,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
 
 @Component({})
-export default class FormGroupH extends Vue {
+export default defineComponent({
   @Prop()
   helpText!: string;
 
@@ -33,7 +38,7 @@ export default class FormGroupH extends Vue {
 
   @Prop()
   title!: string;
-}
+})
 </script>
 
 <style lang="less">

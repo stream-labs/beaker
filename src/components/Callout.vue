@@ -5,7 +5,10 @@
     :class="[calloutClass, calloutClosedClass]"
   >
     <span class="s-callout__content">
-      <i v-if="icon" :class="[calloutIcon]"></i>
+      <i
+        v-if="icon"
+        :class="[calloutIcon]"
+      />
       <span>
         <slot />
       </span>
@@ -13,17 +16,19 @@
         v-if="closeable"
         class="icon-close s-callout__close-button"
         @click="closeCallout()"
-      ></i>
+      />
     </span>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
 
 @Component({})
-export default class Callout extends Vue {
-  @Prop({ default: "success" })
+export default defineComponent({
+  @Prop({ default: 'success' })
   variation!: string;
 
   @Prop({ default: true })
@@ -38,13 +43,14 @@ export default class Callout extends Vue {
   @Prop()
   onClose!: Function;
 
-  closed: boolean = false;
-  calloutClosedClass: string = "";
+  closed = false;
+
+  calloutClosedClass = '';
 
   closeCallout() {
-    this.calloutClosedClass = "callout--closed";
+    this.calloutClosedClass = 'callout--closed';
     setTimeout(() => {
-      typeof this.onClose === "function" && this.onClose();
+      typeof this.onClose === 'function' && this.onClose();
     }, 275);
   }
 
@@ -55,19 +61,19 @@ export default class Callout extends Vue {
   get calloutIcon() {
     if (this.customIcon) return this.customIcon;
     switch (this.variation) {
-      case "success":
-      case "success-alt":
-        return "icon-check";
-      case "warning":
-      case "warning-alt":
-        return "icon-error";
-      case "info":
-        return "icon-information";
-      case "cookies":
-        return "icon-information";
+      case 'success':
+      case 'success-alt':
+        return 'icon-check';
+      case 'warning':
+      case 'warning-alt':
+        return 'icon-error';
+      case 'info':
+        return 'icon-information';
+      case 'cookies':
+        return 'icon-information';
     }
   }
-}
+})
 </script>
 
 <style lang="less">

@@ -13,23 +13,31 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import CopyNotification from "../components/CopyNotification.vue";
-import LeftNavigation from "../demos/LeftNavigation.vue";
+import { defineComponent, ref, computed } from 'vue';
+import CopyNotification from '../components/CopyNotification.vue';
+import LeftNavigation from '../demos/LeftNavigation.vue';
 
-@Component({
+export default defineComponent({
   components: {
     CopyNotification,
-    LeftNavigation
-  }
-})
-export default class Documentation extends Vue {
-  activeSection = "installation";
+    LeftNavigation,
+  },
 
-  changeSection(activeSection: string) {
-    this.activeSection = activeSection;
+  setup() {
+    const activeSection = ref('installation');
+
+    function changeSection(newActiveSection: string) {
+      activeSection.value = newActiveSection;
+    }
+
+    return {
+      activeSection,
+      changeSection
+    };
   }
-}
+
+
+})
 </script>
 
 <style lang="less">

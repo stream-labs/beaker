@@ -1,11 +1,14 @@
 <template>
-  <div class="s-call-to-action s-call-to-action--nav" :style="callToActionBg">
+  <div
+    class="s-call-to-action s-call-to-action--nav"
+    :style="callToActionBg"
+  >
     <div class="s-title">
-      <slot name="title"></slot>
+      <slot name="title" />
     </div>
     <div>{{ description }}</div>
     <div class="s-call-to-action__extras">
-      <slot name="extras"></slot>
+      <slot name="extras" />
     </div>
     <Button
       :variation="buttonVariation"
@@ -15,43 +18,45 @@
       :to="buttonTo"
       :tag="buttonTag"
       @click="$emit('click')"
-    ></Button>
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Button from "./../components/Button.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import Button from './Button.vue';
 
 @Component({
   components: {
-    Button
-  }
+    Button,
+  },
 })
-export default class NavCallToAction extends Vue {
+export default defineComponent({
   @Prop()
-  bgColor!: String;
+  bgColor!: string;
 
   @Prop({
     default:
-      "Over 800k creators use Streamlabs OBS daily, delivering entertainment."
+      'Over 800k creators use Streamlabs OBS daily, delivering entertainment.',
   })
-  description!: String;
+  description!: string;
 
-  @Prop({ default: "slobs-download" })
-  buttonVariation!: String;
+  @Prop({ default: 'slobs-download' })
+  buttonVariation!: string;
 
-  @Prop({ default: "Download Streamlabs OBS" })
-  buttonTitle!: String;
-
-  @Prop()
-  buttonHref!: String;
+  @Prop({ default: 'Download Streamlabs OBS' })
+  buttonTitle!: string;
 
   @Prop()
-  buttonTo!: String;
+  buttonHref!: string;
 
   @Prop()
-  buttonTag!: String;
+  buttonTo!: string;
+
+  @Prop()
+  buttonTag!: string;
 
   @Prop()
   onClick!: {
@@ -59,9 +64,9 @@ export default class NavCallToAction extends Vue {
   };
 
   callToActionBg: object = {
-    backgroundColor: this.bgColor
+    backgroundColor: this.bgColor,
   };
-}
+})
 </script>
 
 <style lang="less">

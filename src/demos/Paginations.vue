@@ -17,7 +17,10 @@
     </div>
 
     <div class="section">
-      <DemoSection title="Pagination" :code="demoCode">
+      <DemoSection
+        title="Pagination"
+        :code="demoCode"
+      >
         <template #components>
           <Pagination
             :night-bg="true"
@@ -81,23 +84,29 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { defineComponent } from 'vue';
 
-import Pagination from "./../components/Pagination.vue";
-import PaginationsCode from "!!raw-loader!./Paginations.vue";
-import DemoSection from "./../components/DemoSection.vue";
+import Pagination from '../components/Pagination.vue';
+import PaginationsCode from '!!raw-loader!./Paginations.vue';
+import DemoSection from '../components/DemoSection.vue';
 
-@Component({
+export default defineComponent({
   components: {
     DemoSection,
-    Pagination
-  }
-})
-export default class Paginations extends Vue {
-  demoCode = PaginationsCode;
+    Pagination,
+  },
 
-  consolePage(page: number) {
-    let groupStart = page * 4 - 4;
-  }
-}
+  setup() {
+    const demoCode: string = PaginationsCode;
+
+    function consolePage(page: number) {
+      const groupStart = page * 4 - 4;
+    }
+
+    return {
+      demoCode,
+      consolePage,
+    };
+  },
+});
 </script>

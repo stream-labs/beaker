@@ -1,26 +1,22 @@
-import _Vue from "vue";
-import whatInput from "what-input";
+import { provide, inject } from 'vue';
 
-const plugin = {
-  install(Vue: typeof _Vue) {
-    Vue.prototype.$whatInput = whatInput;
-  }
-};
+const WhatInputSymbol = Symbol();
+
+export function provideWhatInput(plugin: IWhatInput) {
+  provide(WhatInputSymbol, plugin);
+}
+
+export function useWhatInput() {
+  const whatInput = inject(WhatInputSymbol);
+  return whatInput;
+}
 
 interface IWhatInput {
   ask(intent?: string): string;
   element(): string;
   ignoreKeys(keyCodes: number[]): void;
   specificKeys(keyCodes: number[]): void;
-  registerOnChange(callback: () => void, option?: string);
-  unRegisterOnChange(callback: () => void);
+  registerOnChange(callback: () => void, option?: string): void;
+  unRegisterOnChange(callback: () => void): void;
   clearStorage(): void;
 }
-
-declare module "vue/types/vue" {
-  interface Vue {
-    $whatInput: IWhatInput;
-  }
-}
-
-export default plugin;

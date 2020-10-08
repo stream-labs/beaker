@@ -7,33 +7,36 @@
     <div class="section">
       <h2>Tooltip Notice</h2>
 
-      <DemoSection title="Default" :code="demoCode">
+      <DemoSection
+        title="Default"
+        :code="demoCode"
+      >
         <template #components>
-          <TooltipNotice
+          <tooltip-notice
             v-if="showTooltipNotice"
             title="Defaults"
             desc="All your favorite widgets, just with a new view."
             @handle-tooltip="closeTooltip"
           />
 
-          <TooltipNotice
+          <tooltip-notice
             v-if="showTooltipNotice"
             title="Top arrow"
             desc="All your favorite widgets, just with a new view."
-            :arrowPosition="'top'"
-            :hasButton="false"
+            :arrow-position="'top'"
+            :has-button="false"
             @handle-tooltip="closeTooltip"
           />
 
-          <TooltipNotice
+          <tooltip-notice
             v-if="showTooltipNotice"
             title="Custom button title"
             desc="All your favorite widgets, just with a new view."
-            :buttonTitle="'Get started'"
+            :button-title="'Get started'"
             @handle-tooltip="closeTooltip"
           />
 
-          <TooltipNotice
+          <tooltip-notice
             v-if="showTooltipNotice"
             title="Custom width"
             desc="All your favorite widgets, just with a new view."
@@ -41,12 +44,12 @@
             @handle-tooltip="closeTooltip"
           />
 
-          <TooltipNotice
+          <tooltip-notice
             v-if="showTooltipNotice"
             title="Secondary Action"
             desc="All your favorite widgets, just with a new view."
-            :hasSecondaryAction="true"
-            secondaryActionTitle="No thanks"
+            :has-secondary-action="true"
+            secondary-action-title="No thanks"
             @handle-tooltip="alertTooltip"
             @handle-tooltip-secondary="closeTooltip"
           />
@@ -115,30 +118,38 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { defineComponent, ref } from 'vue';
 
-import DemoSection from "./../components/DemoSection.vue";
-import NoticesCode from "!!raw-loader!./Notices.vue";
-import TooltipNotice from "./../components/TooltipNotice.vue";
+import DemoSection from '../components/DemoSection.vue';
+import NoticesCode from '!!raw-loader!./Notices.vue';
+import TooltipNotice from '../components/TooltipNotice.vue';
 
-@Component({
+export default defineComponent({
   components: {
     DemoSection,
-    TooltipNotice
-  }
-})
-export default class Notices extends Vue {
-  demoCode = NoticesCode;
-  showTooltipNotice = true;
+    TooltipNotice,
+  },
 
-  alertTooltip() {
-    window.alert("tooltip clicked");
-  }
+  setup() {
+    const demoCode: string = NoticesCode;
+    const showTooltipNotice = ref(true);
 
-  closeTooltip() {
-    this.showTooltipNotice = false;
-  }
-}
+    function alertTooltip() {
+      window.alert('tooltip clicked');
+    }
+
+    function closeTooltip() {
+      showTooltipNotice.value = false;
+    }
+
+    return {
+      demoCode,
+      showTooltipNotice,
+      alertTooltip,
+      closeTooltip,
+    };
+  },
+});
 </script>
 
 <style lang="less" scoped>

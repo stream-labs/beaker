@@ -12,7 +12,10 @@ components: {
     <div class="section">
       <h2>Search Variation</h2>
 
-      <DemoSection title="Search Variation" :code="demoCode">
+      <DemoSection
+        title="Search Variation"
+        :code="demoCode"
+      >
         <template #components>
           <EmptySection
             variation="search"
@@ -26,7 +29,10 @@ components: {
     <div class="section">
       <h2>Text Variation</h2>
 
-      <DemoSection title="Text Variation" :code="demoCode">
+      <DemoSection
+        title="Text Variation"
+        :code="demoCode"
+      >
         <template #components>
           <EmptySection
             title="You don’t have any pending users yet"
@@ -39,7 +45,10 @@ components: {
     <div class="section">
       <h2>Warning Variation</h2>
 
-      <DemoSection title="Warning Variation" :code="demoCode">
+      <DemoSection
+        title="Warning Variation"
+        :code="demoCode"
+      >
         <template #components>
           <EmptySection
             variation="warning"
@@ -84,20 +93,26 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { defineComponent, ref } from 'vue';
 
-import EmptySection from "./../components/EmptySection.vue";
-import EmptySectionsCode from "!!raw-loader!./EmptySections.vue";
-import DemoSection from "./../components/DemoSection.vue";
+import EmptySection from '../components/EmptySection.vue';
+import EmptySectionsCode from '!!raw-loader!./EmptySections.vue';
+import DemoSection from '../components/DemoSection.vue';
 
-@Component({
+export default defineComponent({
   components: {
     DemoSection,
-    EmptySection
-  }
-})
-export default class EmptySections extends Vue {
-  demoCode = EmptySectionsCode;
-  value = "hi";
-}
+    EmptySection,
+  },
+
+  setup() {
+    const demoCode: string = EmptySectionsCode;
+    const value = ref('hi');
+
+    return {
+      demoCode,
+      value,
+    };
+  },
+});
 </script>

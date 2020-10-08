@@ -21,38 +21,71 @@
       <span>
         <span v-if="variation === 'prime-simple' && this.primeTitle">
           {{
-          primeTitle
+            primeTitle
           }}
         </span>
-        <span v-else-if="variation === 'prime-simple'" class="prime-simple">
+        <span
+          v-else-if="variation === 'prime-simple'"
+          class="prime-simple"
+        >
           Free with
           <span class="prime-simple__bold">Prime</span>
         </span>
-        <i v-if="iconClass && iconPosition === 'left'" :class="iconClass"></i>
-        <i v-if="iconImg" class="icon-img">
-          <img :src="iconImg" :alt="`${title} Icon Image`" />
+        <i
+          v-if="iconClass && iconPosition === 'left'"
+          :class="iconClass"
+        />
+        <i
+          v-if="iconImg"
+          class="icon-img"
+        >
+          <img
+            :src="iconImg"
+            :alt="`${title} Icon Image`"
+          >
         </i>
         {{ title }}
       </span>
-      <span v-if="description" class="s-button__description">
+      <span
+        v-if="description"
+        class="s-button__description"
+      >
         {{
-        description
+          description
         }}
       </span>
-      <i v-if="iconClass && iconPosition === 'right'" :class="['icon--right', iconClass]"></i>
+      <i
+        v-if="iconClass && iconPosition === 'right'"
+        :class="['icon--right', iconClass]"
+      />
     </span>
 
-    <slot name="custom"></slot>
-    <i v-if="variation === 'slobs-download'" class="icon-windows"></i>
+    <slot name="custom" />
+    <i
+      v-if="variation === 'slobs-download'"
+      class="icon-windows"
+    />
     <span v-if="price">{{ price }}</span>
-    <div v-if="variation === 'slobs-download-landing'" class="slobs-download-landing">
+    <div
+      v-if="variation === 'slobs-download-landing'"
+      class="slobs-download-landing"
+    >
       <div class="slobs-download-landing__upper">
-        <i class="slobs-download-landing__icon" :class="slobsDownloadIconClass" />
-        <p class="slobs-download-landing__title">{{ slobsDownloadTitle }}</p>
+        <i
+          class="slobs-download-landing__icon"
+          :class="slobsDownloadIconClass"
+        />
+        <p class="slobs-download-landing__title">
+          {{ slobsDownloadTitle }}
+        </p>
       </div>
       <div class="slobs-download-landing__bottom">
         <p class="slobs-download-landing__subtitle">
-          <span v-for="text in slobsDownloadText" :key="text" v-text="text"></span>
+          <span
+            v-for="text in slobsDownloadText"
+            :key="text"
+            v-text="text"
+          />
         </p>
       </div>
     </div>
@@ -60,10 +93,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
 
 @Component({})
-export default class Button extends Vue {
+export default defineComponent({
   @Prop()
   onClick!: {
     type: Function;
@@ -82,107 +117,113 @@ export default class Button extends Vue {
   @Prop(String)
   icon!: string;
 
-  @Prop({ default: "left" })
+  @Prop({ default: 'left' })
   iconPosition!: {
-    type: String;
+    type: string;
   };
 
   @Prop()
   iconImg!: {
-    type: String;
+    type: string;
     default: null;
   };
 
   @Prop()
   title!: {
-    type: String;
+    type: string;
     default: null;
   };
 
   @Prop()
   price!: {
-    type: String;
+    type: string;
     default: null;
   };
 
   @Prop()
   description!: {
-    type: String;
+    type: string;
     default: null;
   };
 
   @Prop()
   href!: {
-    type: String;
+    type: string;
     default: null;
   };
 
-  @Prop({ default: "_self" })
-  target!: String;
+  @Prop({ default: '_self' })
+  target!: string;
 
   // standard, medium, large, square
   @Prop()
   size!: {
-    type: String;
+    type: string;
     size: null;
   };
 
   // hover, focus, loading, disabled
   @Prop()
   state!: {
-    type: String;
+    type: string;
     default: null;
   };
 
   // set buttons type to "submit"
   @Prop()
   type!: {
-    type: String;
+    type: string;
     default: null;
   };
 
   @Prop()
   to!: {
-    type: String;
+    type: string;
     default: null;
   };
 
   // button, a, router-link
-  @Prop({ default: "button" })
-  tag!: String;
+  @Prop({ default: 'button' })
+  tag!: string;
 
   @Prop()
   variation!: {
-    type: String;
-    default: "default";
+    type: string;
+    default: 'default';
   };
 
   @Prop()
   primeBgColor!: {
-    type: String;
+    type: string;
     default: null;
   };
 
   @Prop()
   primeTitle!: {
-    type: String;
+    type: string;
     default: null;
   };
 
-  @Prop({ default: "Download Streamlabs" })
+  @Prop({ default: 'Download Streamlabs' })
   slobsDownloadTitle!: {
-    type: String;
+    type: string;
   };
 
-  @Prop({ default: "windows" })
+  @Prop({ default: 'windows' })
   osType!: string;
 
   private rippleStartX = 0;
+
   private rippleStartY = 0;
+
   private rippleSize = 0;
-  private rippleColor = "#000000";
+
+  private rippleColor = '#000000';
+
   private rippleOpacity = 0.075;
-  private rippleDuration = "";
+
+  private rippleDuration = '';
+
   private rippleAnimate = false;
 
   get buttonClasses() {
@@ -200,56 +241,55 @@ export default class Button extends Vue {
       classes.push(`is-${this.state}`);
     }
 
-    return classes.join(" ");
+    return classes.join(' ');
   }
 
   get iconClass() {
     const classes: any = [];
 
     if (this.icon) {
-      if (this.icon.indexOf("fa-") !== -1) {
+      if (this.icon.indexOf('fa-') !== -1) {
         classes.push(this.icon);
       } else {
         classes.push(`icon-${this.icon}`);
       }
     }
 
-    return classes.join(" ");
+    return classes.join(' ');
   }
 
   get slobsDownloadIconClass() {
-    return this.osType === "windows" ? "icon-windows" : "icon-app-store";
+    return this.osType === 'windows' ? 'icon-windows' : 'icon-app-store';
   }
 
   get slobsDownloadText() {
     const tests: any = [];
 
-    tests.push("Free");
-    tests.push(this.osType === "windows" ? "Win" : "macOS 10.14+");
-    tests.push(this.osType === "windows" ? "~240MB" : "309MB");
+    tests.push('Free');
+    tests.push(this.osType === 'windows' ? 'Win' : 'macOS 10.14+');
+    tests.push(this.osType === 'windows' ? '~240MB' : '309MB');
 
     return tests;
   }
 
   get buttonStyle() {
-    let s =
-      "--ripple-x:" +
-      this.rippleStartX +
-      "px; --ripple-y:" +
-      this.rippleStartY +
-      "px; --ripple-size:" +
-      this.rippleSize +
-      "px; --ripple-color:" +
-      this.rippleColor +
-      "; --ripple-opacity:" +
-      this.rippleOpacity +
-      "; --ripple-duration:" +
-      this.rippleDuration +
-      "; background-color:" +
-      this.bgColor +
-      "; color:" +
-      this.textColor;
-    ";";
+    const s = `--ripple-x:${
+      this.rippleStartX
+    }px; --ripple-y:${
+      this.rippleStartY
+    }px; --ripple-size:${
+      this.rippleSize
+    }px; --ripple-color:${
+      this.rippleColor
+    }; --ripple-opacity:${
+      this.rippleOpacity
+    }; --ripple-duration:${
+      this.rippleDuration
+    }; background-color:${
+      this.bgColor
+    }; color:${
+      this.textColor}`;
+    ';';
     return s;
   }
 
@@ -258,52 +298,52 @@ export default class Button extends Vue {
   // }
 
   rippleAnimation() {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       this.rippleAnimate = true;
-      let animationEnded = e => {
-        this.$el.removeEventListener("animationnend", animationEnded);
+      const animationEnded = (e) => {
+        this.$el.removeEventListener('animationnend', animationEnded);
         resolve();
       };
-      this.$el.addEventListener("animationend", animationEnded);
+      this.$el.addEventListener('animationend', animationEnded);
     });
   }
 
   pressDown(e) {
-    let buttonRect = this.$el.getBoundingClientRect();
-    let clickLoc = { x: e.pageX, y: e.pageY };
-    let buttonVar = JSON.stringify(this.variation);
-    let buttonSize = JSON.stringify(this.size);
+    const buttonRect = this.$el.getBoundingClientRect();
+    const clickLoc = { x: e.pageX, y: e.pageY };
+    const buttonVar = JSON.stringify(this.variation);
+    const buttonSize = JSON.stringify(this.size);
     this.rippleSize = Math.floor(buttonRect.width * 2);
     this.rippleStartX = Math.floor(
-      Math.abs(buttonRect.left - clickLoc.x) - this.rippleSize / 2
+      Math.abs(buttonRect.left - clickLoc.x) - this.rippleSize / 2,
     );
     this.rippleStartY = Math.floor(
-      Math.abs(buttonRect.top - clickLoc.y) - this.rippleSize / 2
+      Math.abs(buttonRect.top - clickLoc.y) - this.rippleSize / 2,
     );
 
     if (buttonVar === '"paypal"') {
-      this.rippleColor = "#e3b63b";
-      this.rippleDuration = "800ms";
+      this.rippleColor = '#e3b63b';
+      this.rippleDuration = '800ms';
       this.rippleOpacity = 0.5;
     }
     if (buttonVar === '"warning"') {
-      this.rippleColor = "#ce4a38";
+      this.rippleColor = '#ce4a38';
     }
     if (
-      buttonVar === '"subscribe"' ||
-      buttonSize === '"full-width"' ||
-      buttonVar === '"paypal"'
+      buttonVar === '"subscribe"'
+      || buttonSize === '"full-width"'
+      || buttonVar === '"paypal"'
     ) {
-      this.rippleDuration = "800ms";
+      this.rippleDuration = '800ms';
     } else {
-      this.rippleDuration = "400ms";
+      this.rippleDuration = '400ms';
     }
 
     if (!this.rippleAnimate) {
       this.rippleAnimation().then(() => (this.rippleAnimate = false));
     }
   }
-}
+})
 </script>
 
 <style lang="less">

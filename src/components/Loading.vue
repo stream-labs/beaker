@@ -1,5 +1,8 @@
 <template>
-  <div class="s-loader" :swapMode="swapMode">
+  <div
+    class="s-loader"
+    :swapMode="swapMode"
+  >
     <div
       :class="{
         's-loader__bg--semi': semiOpaque,
@@ -9,22 +12,30 @@
       class="s-loader__bg"
     >
       <div class="s-loader__inner">
-        <Spinner :swap="swapMode" class="s-spinner__overlay" :size="'large'" />
-        <div class="s-loader__text">{{ loaderText }}</div>
+        <Spinner
+          :swap="swapMode"
+          class="s-spinner__overlay"
+          :size="'large'"
+        />
+        <div class="s-loader__text">
+          {{ loaderText }}
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Spinner from "./../components/Spinner.vue";
-import Button from "./../components/Button.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import Spinner from './Spinner.vue';
+import Button from './Button.vue';
 
 @Component({
-  components: { Spinner, Button }
+  components: { Spinner, Button },
 })
-export default class Loading extends Vue {
+export default defineComponent({
   @Prop({ default: [] })
   loadingStrs!: any[] | string;
 
@@ -35,16 +46,17 @@ export default class Loading extends Vue {
   isRandom!: boolean;
 
   @Prop({ default: false })
-  swapMode!: Boolean;
+  swapMode!: boolean;
 
   @Prop({ default: true })
   fixedBackground!: boolean;
 
-  loaderText: string = "";
-  index: number = 0;
+  loaderText = '';
+
+  index = 0;
 
   mounted() {
-    if (typeof this.loadingStrs === "string") {
+    if (typeof this.loadingStrs === 'string') {
       this.loaderText = this.loadingStrs;
     } else {
       this.distinguishNumberOfArrays();
@@ -81,7 +93,7 @@ export default class Loading extends Vue {
       setTimeout(this.loopRandomText, 4000);
     }
   }
-}
+})
 </script>
 
 <style lang="less">

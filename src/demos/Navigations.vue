@@ -7,10 +7,12 @@
         <a
           target="_blank"
           href="https://github.com/NightCatSama/vue-slider-component"
-          >Vue Slider Component</a
-        >
+        >Vue Slider Component</a>
       </p>
-      <accordion :openedTitle="'Hide Code'" :closedTitle="'Show Code'">
+      <accordion
+        :opened-title="'Hide Code'"
+        :closed-title="'Show Code'"
+      >
         <div slot="content">
           <pre>
 <code>&lt;slider
@@ -23,7 +25,7 @@
       </accordion>
 
       <div class="row">
-        <scroll-nav></scroll-nav>
+        <scroll-nav />
       </div>
 
       <table class="docs-table">
@@ -82,15 +84,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import Accordion from "./../components/Accordion.vue";
-import ScrollNav from "./../components/ScrollNav.vue";
+import { defineComponent } from 'vue';
+import Accordion from '../components/Accordion.vue';
+import ScrollNav from '../components/ScrollNav.vue';
 
-@Component({
+export default defineComponent({
   components: {
     ScrollNav,
-    Accordion
-  }
-})
-export default class Navigations extends Vue {}
+    Accordion,
+  },
+});
 </script>

@@ -3,23 +3,26 @@
     <img
       class="modal-prime-intro__bg modal-prime-intro__bg--components"
       src="https://cdn.streamlabs.com/static/imgs/prime/prime-intro-modal-bg-components.png"
-    />
+    >
     <img
       class="modal-prime-intro__bg modal-prime-intro__bg--star"
       src="https://cdn.streamlabs.com/static/imgs/prime/prime-intro-modal-bg-star.png"
-    />
+    >
     <div class="modal-prime-intro">
       <div class="modal-prime-intro__heading">
         Join
         <span class="modal-prime-intro__heading--bold">Prime</span>
-        <br />
+        <br>
 
-        <slot v-if="hasSlot"></slot>
+        <slot v-if="hasSlot" />
         <div v-else>
           <span>to publish your website!</span>
 
           <div class="modal-prime-intro__heading--subtitle">
-            <slot v-if="hasSubtitleSlot" name="subtitle"></slot>
+            <slot
+              v-if="hasSubtitleSlot"
+              name="subtitle"
+            />
             <span v-else>You will get your domain along with</span>
           </div>
         </div>
@@ -48,41 +51,43 @@
           variation="prime-white"
           :title="primeButtonText"
           @click="onPrimeButtonHandler"
-        ></s-button>
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Button from "./../components/Button.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import Button from './Button.vue';
 
 @Component({
   components: {
-    "s-button": Button
-  }
+    's-button': Button,
+  },
 })
-export default class PrimeIntro extends Vue {
-  @Prop({ default: "Join Prime" })
+export default defineComponent({
+  @Prop({ default: 'Join Prime' })
   primeButtonText!: string;
 
   onPrimeButtonHandler() {
-    this.$emit("onClickPrime");
+    this.$emit('onClickPrime');
   }
 
   get hasTitleSlot() {
-    return !(typeof this.$slots.title === "undefined");
+    return !(typeof this.$slots.title === 'undefined');
   }
 
   get hasSubtitleSlot() {
-    return !(typeof this.$slots.subtitle === "undefined");
+    return !(typeof this.$slots.subtitle === 'undefined');
   }
 
   get hasSlot() {
-    return !(typeof this.$slots.default === "undefined");
+    return !(typeof this.$slots.default === 'undefined');
   }
-}
+})
 </script>
 
 <style lang="less" scoped>

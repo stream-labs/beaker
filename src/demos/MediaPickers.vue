@@ -11,28 +11,31 @@ components: {
     </div>
 
     <div class="section">
-      <DemoSection title="Default" :code="demoCode">
+      <DemoSection
+        title="Default"
+        :code="demoCode"
+      >
         <template #components>
-          <FormGroup>
-            <media-picker
-              slot="input"
-              variation="image"
-              :media-link="true"
-              @select-media="selectImageMedia"
-              @preview-media="previewImageMedia"
-              @remove-media="removeImageMedia"
-              v-model="imageMedia"
-            />
+          <form-group>
+            <template #input>
+              <media-picker
+                variation="image"
+                :media-link="true"
+                @select-media="selectImageMedia"
+                @preview-media="previewImageMedia"
+                @remove-media="removeImageMedia"
+                v-model="imageMedia"
+              />
 
-            <media-picker
-              slot="input"
-              variation="audio"
-              :media-link="true"
-              @select-media="selectAudioMedia"
-              @remove-media="removeAudioMedia"
-              v-model="audioMedia"
-            />
-          </FormGroup>
+              <media-picker
+                variation="audio"
+                :media-link="true"
+                @select-media="selectAudioMedia"
+                @remove-media="removeAudioMedia"
+                v-model="audioMedia"
+              />
+            </template>
+          </form-group>
         </template>
       </DemoSection>
     </div>
@@ -110,46 +113,57 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { defineComponent, ref } from 'vue';
 
-import FormGroup from "./../components/FormGroup.vue";
-import MediaPicker from "./../components/MediaPicker.vue";
-import MediaPickersCode from "!!raw-loader!./MediaPickers";
-import DemoSection from "./../components/DemoSection.vue";
+import FormGroup from '../components/FormGroup.vue';
+import MediaPicker from '../components/MediaPicker.vue';
+import MediaPickersCode from '!!raw-loader!./MediaPickers';
+import DemoSection from '../components/DemoSection.vue';
 
-@Component({
+export default defineComponent({
   components: {
     DemoSection,
     FormGroup,
-    MediaPicker
-  }
-})
-export default class ImagePickers extends Vue {
-  demoCode = MediaPickersCode;
-  msg = "Hi!";
-  audioMedia = "";
-  imageMedia = "";
+    MediaPicker,
+  },
 
-  selectImageMedia() {
-    this.imageMedia =
-      "https://uploads.twitchalerts.com/000/045/005/127/foolofsoul-design-1521842129-0.png";
-  }
+  setup() {
+    const demoCode: string = MediaPickersCode;
+    const msg = ref(50);
+    const audioMedia = ref('');
+    const imageMedia = ref('');
 
-  selectAudioMedia() {
-    this.audioMedia =
-      "https://cdn1.twitchalerts.com/twitch-bits/sounds/bits.ogg";
-  }
+    function selectImageMedia() {
+      imageMedia.value = 'https://uploads.twitchalerts.com/000/045/005/127/foolofsoul-design-1521842129-0.png';
+    }
 
-  removeImageMedia() {
-    this.imageMedia = "";
-  }
+    function selectAudioMedia() {
+      audioMedia.value = 'https://cdn1.twitchalerts.com/twitch-bits/sounds/bits.ogg';
+    }
 
-  removeAudioMedia() {
-    this.audioMedia = "";
-  }
+    function removeImageMedia() {
+      imageMedia.value = '';
+    }
 
-  previewImageMedia() {
-    window.open(this.imageMedia);
-  }
-}
+    function removeAudioMedia() {
+      audioMedia.value = '';
+    }
+
+    function previewImageMedia() {
+      window.open(imageMedia.value);
+    }
+
+    return {
+      demoCode,
+      msg,
+      audioMedia,
+      imageMedia,
+      selectImageMedia,
+      selectAudioMedia,
+      removeImageMedia,
+      removeAudioMedia,
+      previewImageMedia,
+    };
+  },
+});
 </script>

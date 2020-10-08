@@ -8,16 +8,18 @@
       :value="val"
       @input="$emit('input', val)"
       @click="$emit('onClick')"
-    />
+    >
     <label :for="id">{{ label }}</label>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
 
 @Component({})
-export default class Radio extends Vue {
+export default defineComponent({
   @Prop(String)
   label!: string;
 
@@ -32,7 +34,7 @@ export default class Radio extends Vue {
 
   @Prop([String, Boolean])
   val!: string | boolean;
-}
+})
 </script>
 
 <style lang="less">

@@ -1,22 +1,28 @@
 <template>
   <div class="s-form-group-v">
     <!-- title -->
-    <div :style="titleLayoutStyle" class="s-form-group-v__title">
+    <div
+      :style="titleLayoutStyle"
+      class="s-form-group-v__title"
+    >
       <template v-if="!this.$slots.header">
         <label v-if="title">{{ title }}</label>
         <i
           v-if="tooltip"
           v-tooltip.auto="tooltip"
           class="tooltip icon-question"
-        ></i>
+        />
       </template>
-      <slot name="header"></slot>
+      <slot name="header" />
     </div>
 
     <div class="s-form-group-v__input-wrapper">
-      <slot name="input"></slot>
+      <slot name="input" />
 
-      <div class="s-form-group-v__help-text" v-if="helpText">
+      <div
+        class="s-form-group-v__help-text"
+        v-if="helpText"
+      >
         {{ helpText }}
       </div>
     </div>
@@ -24,28 +30,30 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
 
 @Component({})
-export default class FormGroupV extends Vue {
+export default defineComponent({
   @Prop()
   helpText!: string;
 
   @Prop()
   title!: string;
 
-  @Prop({ default: "" })
+  @Prop({ default: '' })
   tooltip!: string;
 
-  @Prop({ default: "space-between" })
+  @Prop({ default: 'space-between' })
   titleLayout!: string;
 
   get titleLayoutStyle() {
     return {
-      "justify-content": this.titleLayout
+      'justify-content': this.titleLayout,
     };
   }
-}
+})
 </script>
 
 <style lang="less">

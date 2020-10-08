@@ -1,36 +1,41 @@
 <template>
   <div class="s-banner-discord">
-    <h2 class="s-banner-discord__title" v-html="title"></h2>
+    <h2
+      class="s-banner-discord__title"
+      v-html="title"
+    />
     <Button
       title="Open Discord"
       icon="discord"
-      :iconPosition="'right'"
+      :icon-position="'right'"
       :variation="'custom'"
-      :bgColor="'#FFFFFF'"
-      :textColor="'#7289DA'"
+      :bg-color="'#FFFFFF'"
+      :text-color="'#7289DA'"
       v-on="$listeners"
       :tag="'a'"
       :href="'https://discord.gg/stream'"
       :target="'_blank'"
-    ></Button>
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Button from "./../components/Button.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import Button from './Button.vue';
 
 @Component({
   components: {
-    Button
-  }
+    Button,
+  },
 })
-export default class BannerDiscord extends Vue {
+export default defineComponent({
   @Prop({
-    default: "Join the Streamlabs OBS Discussion on <span>Discord</span>"
+    default: 'Join the Streamlabs OBS Discussion on <span>Discord</span>',
   })
   title!: string;
-}
+})
 </script>
 
 <style lang="less">

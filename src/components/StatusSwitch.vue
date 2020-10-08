@@ -10,17 +10,19 @@
     <div
       class="s-status-switch__paddle"
       :class="{ 's-status-switch__paddle--small': size === 'small' }"
-    ></div>
+    />
     <label v-if="label">{{ label }}</label>
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
 
 @Component({})
-export default class StatusSwitch extends Vue {
+export default defineComponent({
   @Prop()
   label?: string;
 
@@ -29,7 +31,7 @@ export default class StatusSwitch extends Vue {
 
   @Prop({ default: false })
   value?: boolean;
-}
+})
 </script>
 
 <style lang="less">

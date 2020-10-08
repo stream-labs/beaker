@@ -9,9 +9,12 @@ components: {
   ProgressBar
 }</code></pre>
 
-      <DemoSection title="Default" :code="demoCode">
+      <DemoSection
+        title="Default"
+        :code="demoCode"
+      >
         <template #components>
-          <ProgressBar :progressComplete="50" />
+          <ProgressBar :progress-complete="50" />
         </template>
       </DemoSection>
     </div>
@@ -38,18 +41,25 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import ProgressBar from "./../components/ProgressBar.vue";
-import ProgressBarsCode from "!!raw-loader!./ProgressBars.vue";
-import DemoSection from "./../components/DemoSection.vue";
-@Component({
+import { defineComponent, ref } from 'vue';
+import ProgressBar from '../components/ProgressBar.vue';
+import ProgressBarsCode from '!!raw-loader!./ProgressBars.vue';
+import DemoSection from '../components/DemoSection.vue';
+
+export default defineComponent({
   components: {
     DemoSection,
-    ProgressBar
-  }
-})
-export default class ProgressBars extends Vue {
-  demoCode = ProgressBarsCode;
-  value = 50;
-}
+    ProgressBar,
+  },
+
+  setup() {
+    const demoCode: string = ProgressBarsCode;
+    const value = ref(50);
+
+    return {
+      demoCode,
+      value,
+    };
+  },
+});
 </script>

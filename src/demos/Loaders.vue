@@ -20,11 +20,14 @@ components: {
           <h2>Standard</h2>
 
           <div class="section">
-            <DemoSection title="Standard" :code="demoCode">
+            <DemoSection
+              title="Standard"
+              :code="demoCode"
+            >
               <template #components>
                 <Loading
                   v-if="isLoading"
-                  :loadingStrs="string"
+                  :loading-strs="string"
                   @closeLoading="isLoading = false"
                 />
               </template>
@@ -44,13 +47,16 @@ components: {
           <h2>Semi-Opaque Background</h2>
 
           <div class="section">
-            <DemoSection title="Semi-Opaque Background" :code="demoCode">
+            <DemoSection
+              title="Semi-Opaque Background"
+              :code="demoCode"
+            >
               <template #components>
                 <Loading
                   v-if="isLoadingSemi"
-                  :semiOpaque="true"
-                  :loadingStrs="array"
-                  :isRandom="true"
+                  :semi-opaque="true"
+                  :loading-strs="array"
+                  :is-random="true"
                   @closeLoading="isLoadingSemi = false"
                 />
               </template>
@@ -70,13 +76,16 @@ components: {
           <h2>Full Page Loading - Swapped</h2>
 
           <div class="section">
-            <DemoSection title="Full Page Loading - Swapped" :code="demoCode">
+            <DemoSection
+              title="Full Page Loading - Swapped"
+              :code="demoCode"
+            >
               <template #components>
                 <Loading
                   v-if="isLoadingSwapped"
-                  :loadingStrs="array"
-                  :isRandom="true"
-                  :swapMode="true"
+                  :loading-strs="array"
+                  :is-random="true"
+                  :swap-mode="true"
                   @closeLoading="isLoadingSwapped = false"
                 />
               </template>
@@ -165,7 +174,10 @@ components: {
       <p>This is the standard size for sections within a page layout.</p>
 
       <div class="section">
-        <DemoSection title="Loading Spinner" :code="demoCode">
+        <DemoSection
+          title="Loading Spinner"
+          :code="demoCode"
+        >
           <template #components>
             <Spinner size="small" />
           </template>
@@ -179,7 +191,10 @@ components: {
       </p>
 
       <div class="section">
-        <DemoSection title="Loading Spinner Large" :code="demoCode">
+        <DemoSection
+          title="Loading Spinner Large"
+          :code="demoCode"
+        >
           <template #components>
             <Spinner size="large" />
           </template>
@@ -217,36 +232,43 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { defineComponent, ref } from 'vue';
 
-import Accordion from "./../components/Accordion.vue";
-import Button from "./../components/Button.vue";
-import LoadersCode from "!!raw-loader!./Loaders.vue";
-import DemoSection from "./../components/DemoSection.vue";
-import Loading from "./../components/Loading.vue";
-import Spinner from "./../components/Spinner.vue";
+import Button from '../components/Button.vue';
+import LoadersCode from '!!raw-loader!./Loaders.vue';
+import DemoSection from '../components/DemoSection.vue';
+import Loading from '../components/Loading.vue';
+import Spinner from '../components/Spinner.vue';
 
-@Component({
+export default defineComponent({
   components: {
-    Accordion,
     Button,
     DemoSection,
     Loading,
-    Spinner
-  }
-})
-export default class Loaders extends Vue {
-  demoCode = LoadersCode;
-  isLoading = false;
-  isLoadingSemi = false;
-  isLoadingSwapped = false;
+    Spinner,
+  },
 
-  array = [
-    "This loader is using an array of strings...",
-    "Syncing all files to our cloud...",
-    "Lorem ipsum dolor sit amet, consectetur...",
-    "Sed do eiusmod tempor incididunt ut labore..."
-  ];
-  string = "This loader is using a single string...";
-}
+  setup() {
+    const demoCode: string = LoadersCode;
+    const isLoading = ref(false);
+    const isLoadingSemi = ref(false);
+    const isLoadingSwapped = ref(false);
+    const string = 'This loader is using a single string...';
+    const array = [
+      'This loader is using an array of strings...',
+      'Syncing all files to our cloud...',
+      'Lorem ipsum dolor sit amet, consectetur...',
+      'Sed do eiusmod tempor incididunt ut labore...',
+    ];
+
+    return {
+      demoCode,
+      isLoading,
+      isLoadingSemi,
+      isLoadingSwapped,
+      array,
+      string,
+    };
+  },
+});
 </script>

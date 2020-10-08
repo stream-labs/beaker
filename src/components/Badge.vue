@@ -1,5 +1,9 @@
 <template>
-  <div class="s-badge" :class="badgeClasses" :style="badgeStyles">
+  <div
+    class="s-badge"
+    :class="badgeClasses"
+    :style="badgeStyles"
+  >
     <div
       v-if="variant === 'progress'"
       :style="{
@@ -14,17 +18,22 @@
       {{ `${current}${separator}${total} ${suffix}` }}
     </div>
     <div v-if="variant === 'prime' || variant === 'prime-alt'">
-      <i v-if="variant === 'prime'" class="icon-prime"></i>Prime
+      <i
+        v-if="variant === 'prime'"
+        class="icon-prime"
+      />Prime
     </div>
     <slot v-else />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
 
 @Component({})
-export default class Badge extends Vue {
+export default defineComponent({
   /*
     backgroundColor: STRING - pass in color name, rgba or hex code to set the color of the progress bar. Default is #31c3a2 (teal)
     textColor: STRING - pass in color name, rgba or hex code to set the color of the bar text. Default is #fff (white)
@@ -33,7 +42,7 @@ export default class Badge extends Vue {
     separator: STRING - whatever you want to separate the current and total e.g. 'out of' in '5 out of 10.' Could be '/', 'of', etc. Default is '/'
     suffix: STRING - whatever you want to include at the end of the progress string. e.g. 'sold' in '5 out of 10 sold.'
   */
-  @Prop({ default: "success" })
+  @Prop({ default: 'success' })
   variant!: string;
 
   @Prop({ default: false })
@@ -45,7 +54,7 @@ export default class Badge extends Vue {
   @Prop()
   backgroundColor!: string;
 
-  @Prop({ default: "#ffffff" })
+  @Prop({ default: '#ffffff' })
   textColor!: string;
 
   @Prop()
@@ -54,24 +63,24 @@ export default class Badge extends Vue {
   @Prop()
   total!: number;
 
-  @Prop({ default: "/" })
+  @Prop({ default: '/' })
   separator!: string;
 
   @Prop()
   suffix!: string;
 
   @Prop()
-  small!: Boolean;
+  small!: boolean;
 
   badgeProRewrite: any = {
     background: this.backgroundColor,
-    color: this.textColor
+    color: this.textColor,
   };
 
   get badgeStyles() {
     const styles: any = [];
 
-    if (this.backgroundColor && this.variant !== "progress") {
+    if (this.backgroundColor && this.variant !== 'progress') {
       styles.push(this.badgeProRewrite);
     }
 
@@ -84,20 +93,20 @@ export default class Badge extends Vue {
     classes.push(`s-badge--${this.variant}`);
 
     if (this.alignLeft) {
-      classes.push(`s-badge--left`);
+      classes.push('s-badge--left');
     }
 
     if (this.noMargin) {
-      classes.push("s-badge--no-margin");
+      classes.push('s-badge--no-margin');
     }
 
     if (this.small) {
-      classes.push("s-badge--small");
+      classes.push('s-badge--small');
     }
 
     return classes;
   }
-}
+})
 </script>
 
 <style lang="less">

@@ -3,100 +3,133 @@
     <h1>Typography</h1>
 
     <div class="row section">
-      <h4 class="s-typography__header">FONTS</h4>
+      <h4 class="s-typography__header">
+        FONTS
+      </h4>
       <h1>Barlow</h1>
-      <div class="font-style barlow">Barlow</div>
+      <div class="font-style barlow">
+        Barlow
+      </div>
       <div class="side-by-side">
-        <div class="subtitle">Marketing Headings</div>
+        <div class="subtitle">
+          Marketing Headings
+        </div>
         <p>Bold, ExtraBold</p>
       </div>
-      <div class="font-style roboto">Roboto</div>
+      <div class="font-style roboto">
+        Roboto
+      </div>
       <div class="side-by-side">
-        <div class="subtitle">UI &amp; Content</div>
+        <div class="subtitle">
+          UI &amp; Content
+        </div>
         <p>Regular, Medium, Bold</p>
       </div>
     </div>
 
     <div class="row section">
-      <h4 class="s-typography__header">TYPOGRAPHY</h4>
+      <h4 class="s-typography__header">
+        TYPOGRAPHY
+      </h4>
       <div class="side-by-side">
-        <div class="subtitle">Letter Spacing</div>
+        <div class="subtitle">
+          Letter Spacing
+        </div>
         <p>0%</p>
       </div>
       <div class="side-by-side">
-        <div class="subtitle">Line Height</div>
+        <div class="subtitle">
+          Line Height
+        </div>
         <p>110% (H1, H2), 150% (Everything Else)</p>
       </div>
       <div class="side-by-side">
-        <div class="subtitle">Paragraph Spacing</div>
+        <div class="subtitle">
+          Paragraph Spacing
+        </div>
         <p>8px</p>
       </div>
     </div>
 
-    <h4 class="s-typography__header">TYPE SCALE</h4>
+    <h4 class="s-typography__header">
+      TYPE SCALE
+    </h4>
     <span class="subtitle">Marketing</span>
-    <FormGroup>
-      <div slot="input" class="section">
-        <div class="type-scale barlow extrabold s48">
-          H1: Barlow ExtraBold 48px
-        </div>
-        <div class="type-scale barlow bold s32">
-          H2: Barlow Bold 32px
-        </div>
-      </div>
 
-      <span slot="input" class="subtitle">Dashboard and Marketing</span>
-      <div slot="input" class="type-scale bold s22">
-        Marketing Title: Roboto Bold 22px
-      </div>
-      <div slot="input" class="type-scale bold s20">
-        Title: Roboto Bold 20px
-      </div>
-      <div slot="input" class="type-scale medium s18">
-        Marketing Subtitle: Roboto Medium 18px
-      </div>
-      <div slot="input" class="type-scale medium s16">
-        Subtitle: Roboto Medium 16px
-      </div>
-      <div slot="input" class="type-scale gray s16">
-        Marketing Paragraph: Roboto Regular 16px
-      </div>
-      <div slot="input" class="type-scale gray s14">
-        Subtitle: Roboto Regular 14px
-      </div>
-      <div slot="input" class="type-scale gray medium underline s16">
-        Marketing Link: Roboto Medium 16px
-      </div>
-      <div slot="input" class="type-scale gray medium underline s14">
-        Link: Roboto Medium 14px
-      </div>
-      <div slot="input" class="type-scale teal medium s16">
-        Marketing Label: Roboto Medium 16px
-      </div>
-      <div slot="input" class="type-scale teal medium s14">
-        Label: Roboto Medium 14px
-      </div>
-      <div slot="input" class="type-scale gray s14">
-        Marketing Caption: Roboto Regular 14px
-      </div>
-      <div slot="input" class="type-scale gray s12">
-        Caption: Roboto Regular 12px
-      </div>
-    </FormGroup>
+    <form-group>
+      <template v-slot:input>
+        <div class="section">
+          <div class="type-scale barlow extrabold s48">
+            H1: Barlow ExtraBold 48px
+          </div>
+          <div class="type-scale barlow bold s32">
+            H2: Barlow Bold 32px
+          </div>
+        </div>
+
+        <span class="subtitle">Dashboard and Marketing</span>
+
+        <div class="type-scale bold s22">
+          Marketing Title: Roboto Bold 22px
+        </div>
+
+        <div class="type-scale bold s20">
+          Title: Roboto Bold 20px
+        </div>
+
+        <div class="type-scale medium s18">
+          Marketing Subtitle: Roboto Medium 18px
+        </div>
+
+        <div class="type-scale medium s16">
+          Subtitle: Roboto Medium 16px
+        </div>
+
+        <div class="type-scale gray s16">
+          Marketing Paragraph: Roboto Regular 16px
+        </div>
+
+        <div class="type-scale gray s14">
+          Subtitle: Roboto Regular 14px
+        </div>
+
+        <div class="type-scale gray medium underline s16">
+          Marketing Link: Roboto Medium 16px
+        </div>
+
+        <div class="type-scale gray medium underline s14">
+          Link: Roboto Medium 14px
+        </div>
+
+        <div class="type-scale teal medium s16">
+          Marketing Label: Roboto Medium 16px
+        </div>
+
+        <div class="type-scale teal medium s14">
+          Label: Roboto Medium 14px
+        </div>
+
+        <div class="type-scale gray s14">
+          Marketing Caption: Roboto Regular 14px
+        </div>
+
+        <div class="type-scale gray s12">
+          Caption: Roboto Regular 12px
+        </div>
+      </template>
+    </form-group>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { defineComponent } from 'vue';
+import FormGroup from '../components/FormGroup.vue';
 
-import FormGroup from "./../components/FormGroup.vue";
-
-@Component({
+export default defineComponent({
   components: {
-    FormGroup
-  }
-})
-export default class Typography extends Vue {}
+    FormGroup,
+  },
+});
 </script>
 
 <style lang="less">

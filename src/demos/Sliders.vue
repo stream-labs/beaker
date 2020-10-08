@@ -9,14 +9,12 @@
           <a
             target="_blank"
             href="https://github.com/NightCatSama/vue-slider-component"
-            >Vue Slider Component</a
-          >
+          >Vue Slider Component</a>
           and makes use of
           <a
             target="_blank"
             href="https://github.com/que-etc/resize-observer-polyfill"
-            >Resize Observer Polyfill</a
-          >.
+          >Resize Observer Polyfill</a>.
         </p>
       </div>
       <pre><code>import { Slider } from 'streamlabs-beaker';
@@ -29,7 +27,10 @@ components: {
     <!-- Custom Data -->
     <div class="section">
       <h2>Default Slider</h2>
-      <DemoSection title="Default Slider" :code="demoCode">
+      <DemoSection
+        title="Default Slider"
+        :code="demoCode"
+      >
         <template #components>
           <slider
             :value="value"
@@ -50,7 +51,10 @@ components: {
       <p>
         Use in more compact places when you don't want the bright teal present.
       </p>
-      <DemoSection title="Simple Theme" :code="demoCode">
+      <DemoSection
+        title="Simple Theme"
+        :code="demoCode"
+      >
         <template #components>
           <slider
             :value="value"
@@ -60,7 +64,7 @@ components: {
             :interval="1"
             tooltip="always"
             suffix="%"
-            :simpleTheme="true"
+            :simple-theme="true"
           />
         </template>
       </DemoSection>
@@ -183,40 +187,54 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import Slider from "./../components/Slider.vue";
-import SliderTwo from "./../components/SliderTwo.vue";
-import Accordion from "./../components/Accordion.vue";
-import SlidersCode from "!!raw-loader!./Sliders.vue";
-import DemoSection from "./../components/DemoSection.vue";
-@Component({
+import { defineComponent, ref } from 'vue';
+import Slider from '../components/Slider.vue';
+// import SliderTwo from '../components/SliderTwo.vue';
+import SlidersCode from '!!raw-loader!./Sliders.vue';
+import DemoSection from '../components/DemoSection.vue';
+
+export default defineComponent({
   components: {
-    Accordion,
     DemoSection,
     Slider,
-    SliderTwo
-  }
-})
-export default class Sliders extends Vue {
-  demoCode = SlidersCode;
-  localValue: number | string = 15;
+    // SliderTwo,
+  },
 
-  updateLocalValue(value) {
-    this.localValue = value;
-  }
+  setup() {
+    const demoCode: string = SlidersCode;
+    const localValue = ref(15);
+    const localValueTwo = ref(15);
+    const value = ref(50);
+    const data = ref(['one', 'two', 'three', 'four', 'five', 'six']);
 
-  localValueTwo: number | string = 15;
+    function updateLocalValue(val: number) {
+      localValue.value = val;
+    }
 
-  updateLocalValueTwo(value) {
-    this.localValueTwo = value;
-  }
+    function updateLocalValueTwo(val: number) {
+      localValueTwo.value = val;
+    }
 
-  value = 50;
-  data = ["one", "two", "three", "four", "five", "six"];
-  updateValue(value) {
-    console.log(value); // this function is required, it doesn't have to do anything, it just needs to exist.
-  }
-}
+    function updateValue(val: number) {
+      /*
+        this function is required, it doesn't have
+         to do anything, it just needs to exist.
+      */
+      console.log(val);
+    }
+
+    return {
+      demoCode,
+      localValue,
+      localValueTwo,
+      value,
+      data,
+      updateLocalValue,
+      updateLocalValueTwo,
+      updateValue,
+    };
+  },
+});
 </script>
 
 <style lang="less">

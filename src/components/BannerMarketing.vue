@@ -1,18 +1,21 @@
 <template>
-  <div class="s-banner" ref="banner">
+  <div
+    class="s-banner"
+    ref="banner"
+  >
     <div
       class="s-banner__bg"
       :style="{
         background: `linear-gradient(to bottom left, rgba(227, 232, 235, 0.72), rgba(227, 232, 235, 0.72)), url('${bgImage}') center center no-repeat`
       }"
-    ></div>
+    />
 
     <div
       class="s-banner__bg s-banner__bg--night"
       :style="{
         background: `linear-gradient(to bottom left, rgba(9, 22, 29, 0.72), rgba(9, 22, 29, 0.72)), url('${bgImageNight}') center center no-repeat`
       }"
-    ></div>
+    />
 
     <div
       class="s-banner__body"
@@ -20,39 +23,59 @@
       key="banner-open"
     >
       <div class="s-banner__wrapper">
-        <div class="s-banner__label">{{ label }}</div>
+        <div class="s-banner__label">
+          {{ label }}
+        </div>
         <i
           @click="toggleBanner()"
           tabindex="0"
           @keydown.space.prevent="toggleBanner()"
           class="icon-down"
-        ></i>
+        />
       </div>
 
-      <div class="s-banner__wrapper" ref="bottomWrapper">
+      <div
+        class="s-banner__wrapper"
+        ref="bottomWrapper"
+      >
         <div class="s-banner__title">
-          <div class="s-banner__icon" v-if="iconName">
-            <i :class="`icon-${iconName}`"></i>
+          <div
+            class="s-banner__icon"
+            v-if="iconName"
+          >
+            <i :class="`icon-${iconName}`" />
           </div>
-          <div class="s-banner__icon" v-if="iconImage">
-            <img :src="iconImage" />
+          <div
+            class="s-banner__icon"
+            v-if="iconImage"
+          >
+            <img :src="iconImage">
           </div>
 
           <div class="s-banner__details">
-            <h2 class="s-banner__name">{{ title }}</h2>
-            <p class="s-banner__desc">{{ desc }}</p>
+            <h2 class="s-banner__name">
+              {{ title }}
+            </h2>
+            <p class="s-banner__desc">
+              {{ desc }}
+            </p>
           </div>
         </div>
 
-        <div @click.stop class="s-banner__download-wrapper">
-          <slot name="link"></slot>
+        <div
+          @click.stop
+          class="s-banner__download-wrapper"
+        >
+          <slot name="link" />
           <i
             tabindex="0"
             class="icon-down"
             @click="toggleBanner()"
             @keydown.space.prevent="toggleBanner()"
-          ></i>
-          <div class="s-banner__link-desc">{{ linkDesc }}</div>
+          />
+          <div class="s-banner__link-desc">
+            {{ linkDesc }}
+          </div>
         </div>
       </div>
     </div>
@@ -60,10 +83,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from "vue-property-decorator";
+import {
+  Component, Prop, Vue, Watch,
+} from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
 
 @Component({})
-export default class BannerMarketing extends Vue {
+export default defineComponent({
   $refs!: {
     banner: HTMLDivElement;
     bottomWrapper: HTMLDivElement;
@@ -117,13 +144,13 @@ export default class BannerMarketing extends Vue {
   @Prop()
   onToggle!: Function;
 
-  @Watch("bannerClosed")
+  @Watch('bannerClosed')
   onBannerCloseStateChanged(val: boolean, oldVal: boolean) {
     this.closed = val;
     this.updateBannerHeight();
   }
 
-  closed: boolean = false;
+  closed = false;
 
   mounted() {
     this.closed = this.bannerClosed;
@@ -131,15 +158,15 @@ export default class BannerMarketing extends Vue {
   }
 
   toggleBanner() {
-    typeof this.onToggle === "function" && this.onToggle();
+    typeof this.onToggle === 'function' && this.onToggle();
     this.closed = !this.closed;
     this.updateBannerHeight();
 
     /*
       For keyboard accessibility
     */
-    if (this.$whatInput.ask() === "keyboard") {
-      const icons = this.$refs.banner.querySelectorAll(".icon-down");
+    if (this.$whatInput.ask() === 'keyboard') {
+      const icons = this.$refs.banner.querySelectorAll('.icon-down');
       let icon!: HTMLLIElement;
 
       if (this.closed) {
@@ -148,24 +175,24 @@ export default class BannerMarketing extends Vue {
         icon = icons[0] as HTMLLIElement;
       }
 
-      let tabindex = parseInt(icon.getAttribute("tabindex") as string);
+      const tabindex = parseInt(icon.getAttribute('tabindex') as string);
       this.$nextTick(() => icon.focus());
     }
   }
 
   updateBannerHeight() {
-    let banner = this.$refs.banner;
-    let bannerWrapper = this.$refs.bottomWrapper;
+    const { banner } = this.$refs;
+    const bannerWrapper = this.$refs.bottomWrapper;
 
     if (!this.closed) {
-      banner.style.maxHeight = "240px";
+      banner.style.maxHeight = '240px';
     } else {
       setTimeout(() => {
         banner.style.maxHeight = `${bannerWrapper.scrollHeight + 32}px`;
       }, 1);
     }
   }
-}
+})
 </script>
 
 <style lang="less">

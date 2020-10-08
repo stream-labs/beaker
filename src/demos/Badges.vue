@@ -18,48 +18,136 @@ components: {
 
       <div class="section">
         <h2>Standard Badges</h2>
-        <DemoSection title="Standard Badges" :code="demoCode">
+        <DemoSection
+          title="Standard Badges"
+          :code="demoCode"
+        >
           <template #components>
-            <Badge variant="new" :align-left="true">New</Badge>
-            <Badge variant="tag" :align-left="true">Tag</Badge>
-            <Badge variant="beta" :align-left="true">Beta</Badge>
-            <Badge variant="warning" :align-left="true">Warning</Badge>
-            <Badge variant="pro" :align-left="true">Pro</Badge>
+            <Badge
+              variant="new"
+              :align-left="true"
+            >
+              New
+            </Badge>
+            <Badge
+              variant="tag"
+              :align-left="true"
+            >
+              Tag
+            </Badge>
+            <Badge
+              variant="beta"
+              :align-left="true"
+            >
+              Beta
+            </Badge>
+            <Badge
+              variant="warning"
+              :align-left="true"
+            >
+              Warning
+            </Badge>
+            <Badge
+              variant="pro"
+              :align-left="true"
+            >
+              Pro
+            </Badge>
             <Badge
               :align-left="true"
               background-color="pink"
               text-color="#ffffff"
-              >Custom</Badge
             >
-            <Badge variant="prime" :align-left="true" />
+              Custom
+            </Badge>
+            <Badge
+              variant="prime"
+              :align-left="true"
+            />
           </template>
         </DemoSection>
       </div>
 
       <div class="section">
         <h2>Alt Badges</h2>
-        <DemoSection title="Alt Badges" :code="demoCode">
+        <DemoSection
+          title="Alt Badges"
+          :code="demoCode"
+        >
           <template #components>
-            <Badge variant="teal-alt" :align-left="true">New Alt</Badge>
-            <Badge variant="tag-alt" :align-left="true">Tag Alt</Badge>
-            <Badge variant="beta-alt" :align-left="true">Beta Alt</Badge>
-            <Badge variant="warning-alt" :align-left="true">Warning Alt</Badge>
-            <Badge variant="pro-alt" :align-left="true">Pro Alt</Badge>
-            <Badge variant="prime-alt" :align-left="true"></Badge>
+            <Badge
+              variant="teal-alt"
+              :align-left="true"
+            >
+              New Alt
+            </Badge>
+            <Badge
+              variant="tag-alt"
+              :align-left="true"
+            >
+              Tag Alt
+            </Badge>
+            <Badge
+              variant="beta-alt"
+              :align-left="true"
+            >
+              Beta Alt
+            </Badge>
+            <Badge
+              variant="warning-alt"
+              :align-left="true"
+            >
+              Warning Alt
+            </Badge>
+            <Badge
+              variant="pro-alt"
+              :align-left="true"
+            >
+              Pro Alt
+            </Badge>
+            <Badge
+              variant="prime-alt"
+              :align-left="true"
+            />
           </template>
         </DemoSection>
       </div>
 
       <div class="section">
         <h2>Small Badges</h2>
-        <DemoSection title="Small Badges" :code="demoCode">
+        <DemoSection
+          title="Small Badges"
+          :code="demoCode"
+        >
           <template #components>
-            <Badge :small="true" variant="tag" :align-left="true">Tag</Badge>
-            <Badge :small="true" variant="beta" :align-left="true">Beta</Badge>
-            <Badge :small="true" variant="warning" :align-left="true"
-              >Warning</Badge
+            <Badge
+              :small="true"
+              variant="tag"
+              :align-left="true"
             >
-            <Badge :small="true" variant="pro" :align-left="true">Pro</Badge>
+              Tag
+            </Badge>
+            <Badge
+              :small="true"
+              variant="beta"
+              :align-left="true"
+            >
+              Beta
+            </Badge>
+            <Badge
+              :small="true"
+              variant="warning"
+              :align-left="true"
+            >
+              Warning
+            </Badge>
+            <Badge
+              :small="true"
+              variant="pro"
+              :align-left="true"
+            >
+              Pro
+            </Badge>
           </template>
         </DemoSection>
       </div>
@@ -67,12 +155,15 @@ components: {
       <div class="section">
         <h2>Progress Badge</h2>
         <p>Used to show amount of items sold in merch.</p>
-        <DemoSection title="Progress Badge" :code="demoCode">
+        <DemoSection
+          title="Progress Badge"
+          :code="demoCode"
+        >
           <template #components>
             <Badge
               :align-left="true"
               variant="progress"
-              backgroundColor="#8736e0"
+              background-color="#8736e0"
               :current="17"
               :total="25"
               suffix="Sold"
@@ -84,9 +175,14 @@ components: {
       <div class="section">
         <h2>Count Badge</h2>
         <p>Used to show amount of items sold in merch.</p>
-        <DemoSection title="Count Badge" :code="demoCode">
+        <DemoSection
+          title="Count Badge"
+          :code="demoCode"
+        >
           <template #components>
-            <Badge variant="count">3</Badge>
+            <Badge variant="count">
+              3
+            </Badge>
           </template>
         </DemoSection>
       </div>
@@ -94,11 +190,16 @@ components: {
       <div class="section">
         <h2>Mod Badge</h2>
         <p>Used in an info callout.</p>
-        <DemoSection title="Mod Badge" :code="demoCode">
+        <DemoSection
+          title="Mod Badge"
+          :code="demoCode"
+        >
           <template #components>
             <Callout variation="info">
               Remember to
-              <Badge variant="mod">/mod Streamlabs</Badge>
+              <Badge variant="mod">
+                /mod Streamlabs
+              </Badge>
               to initiate Cloudbot.
             </Callout>
           </template>
@@ -125,7 +226,7 @@ components: {
             <code>success</code>, <code>tag</code>*, <code>new</code>*,
             <code>beta</code>*, <code>warning</code>*, <code>pro</code>*,
             <code>progress</code>, <code>mod</code>, and <code>count</code>.
-            <br />
+            <br>
             <small>
               *Alternate style available by adding
               <code>-alt</code> to variant string.
@@ -204,25 +305,28 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { defineComponent } from 'vue';
 
-import Accordion from "./../components/Accordion.vue";
-import Badge from "./../components/Badge.vue";
-import BadgesCode from "!!raw-loader!./Badges.vue";
-import Callout from "./../components/Callout.vue";
-import DemoSection from "./../components/DemoSection.vue";
+import Badge from '../components/Badge.vue';
+import BadgesCode from '!!raw-loader!./Badges.vue';
+import Callout from '../components/Callout.vue';
+import DemoSection from '../components/DemoSection.vue';
 
-@Component({
+export default defineComponent({
   components: {
-    Accordion,
     Badge,
     Callout,
-    DemoSection
-  }
-})
-export default class Badges extends Vue {
-  demoCode = BadgesCode;
-}
+    DemoSection,
+  },
+
+  setup() {
+    const demoCode: string = BadgesCode;
+
+    return {
+      demoCode,
+    };
+  },
+});
 </script>
 
 <style lang="less" scoped>

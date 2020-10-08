@@ -6,7 +6,10 @@
       's-form-field--disabled': disabled
     }"
   >
-    <div v-if="type === 'number'" class="s-arrows">
+    <div
+      v-if="type === 'number'"
+      class="s-arrows"
+    >
       <div
         :class="{
           's-arrow arrow-up': true,
@@ -14,7 +17,7 @@
         }"
         @click="increment"
       >
-        <i class="fas fa-caret-up"></i>
+        <i class="fas fa-caret-up" />
       </div>
       <div
         :class="{
@@ -23,7 +26,7 @@
         }"
         @click="decrement"
       >
-        <i class="fas fa-caret-down"></i>
+        <i class="fas fa-caret-down" />
       </div>
     </div>
     <input
@@ -48,162 +51,198 @@
       }"
       v-on="filteredListeners"
       @mousewheel="mouseWheel"
-    />
+    >
     <label
       :class="{
         's-form-field__label--top': value !== '' && !disabled
       }"
       class="s-form-field__label"
       v-if="label"
-      >{{ label }}</label
-    >
+    >{{ label }}</label>
 
-    <div v-show="error" class="s-form-field__input-error">
-      <i class="icon-error"></i>
+    <div
+      v-show="error"
+      class="s-form-field__input-error"
+    >
+      <i class="icon-error" />
       {{ error }}
     </div>
 
-    <p v-show="helpText" class="s-form-field__help-text">{{ helpText }}</p>
+    <p
+      v-show="helpText"
+      class="s-form-field__help-text"
+    >
+      {{ helpText }}
+    </p>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-import { omit, isNil } from "lodash";
+import {
+  Component, Prop, Vue, Watch,
+} from 'vue-property-decorator';
 
-@Component({})
-export default class TextInput extends Vue {
+import { computed, defineComponent, ref, watch, watchEffect } from 'vue';
+import { omit, isNil } from 'lodash';
+
+export default defineComponent({
   $refs!: {
     input: HTMLInputElement;
   };
 
-  @Prop({ type: String })
-  name!: string;
+  props: {
+    name: {
+      type: String
+    },
 
-  @Prop({ type: [String, Number] })
-  value!: string;
+    value: {
+      type: [ String, Number ]
+    },
 
-  @Prop({ type: String })
-  error!: string;
+    error: {
+      type: String
+    },
 
-  @Prop({ type: Number })
-  min!: number;
+    min: {
+      type: Number
+    },
 
-  @Prop({ type: Number })
-  max!: number;
+    max: {
+      type: Number
+    },
 
-  @Prop({ type: Number, default: 1 })
-  step!: number;
+    step: {
+      type: Number,
+      default: 1
+    },
 
-  @Prop({ type: String })
-  helpText!: string;
+    helpText: {
+      type: String
+    },
 
-  @Prop({ type: String, default: "text" })
-  type!: string;
+    type: {
+      type: String,
+      default: 'text'
+    },
 
-  @Prop({ type: String })
-  placeholder!: string;
+    placeholder: {
+      type: String
+    },
 
-  @Prop({ type: Boolean })
-  disabled!: boolean;
+    disabled: {
+      type: Boolean
+    },
 
-  @Prop({ type: String })
-  label!: string;
+    label: {
+      type: String
+    },
 
-  @Prop({ type: Boolean })
-  readonly!: boolean;
+    readonly: {
+      type: Boolean
+    },
 
-  @Prop({ type: String, default: "off" })
-  autoComplete!: string;
+    autoComplete: {
+      type: String,
+      default: 'off'
+    },
 
-  @Prop({ type: Boolean })
-  autofocus!: boolean;
+    autofocus: {
+      type: Boolean
+    },
+  },
 
-  content: string = "";
+  setup(props, { attrs, emit }) {
+    const input = ref<HTMLInputElement | null>(null);
+    let content = '';
 
-  created() {
-    this.content =
-      this.value !== undefined && this.value !== null
-        ? this.value.toString()
-        : "";
-    this.$parent.$on("update", this.updateValue);
-  }
+    content = props.value !== undefined && props.value !== null
+      ? props.value.toString()
+      : '';
+    ///////   Update to work in Vue 3 Compostion API   ///////
+    this.$parent.$on('update', updateValue);
+    //////////////////////////////////////////////////////////
 
-  focus() {
-    this.$refs.input.focus();
-  }
+    function focus() {
+      if (input.value) {
+        input.value.focus();
+      }
+    }
 
-  get filteredListeners() {
-    return omit(this.$listeners, ["input"]);
-  }
+    const filteredListeners = computed(() => {
+      return omit(attrs, ['input']);
+    });
 
-  get isMaxReached() {
-    return (
-      this.type === "number" &&
-      !isNil(this.max) &&
-      Number(this.value) >= this.max
-    );
-  }
+    const isMaxReached = computed(() => {
+      return (
+        props.type === 'number'
+        && !isNil(props.max)
+        && Number(props.value) >= props.max
+      );
+    });
 
-  get isMinReached() {
-    return (
-      this.type === "number" &&
-      !isNil(this.min) &&
-      Number(this.value) <= this.min
-    );
-  }
+    const isMinReached = computed(() => {
+      return (
+        props.type === 'number'
+        && !isNil(props.min)
+        && Number(props.value) <= props.min
+      );
+    });
 
-  @Watch("value")
-  valueChanged(newValue: string) {
-    this.content = newValue.toString();
-    this.$emit("onChange", newValue);
-  }
+    watchEffect(() => {
+      if (props.value) {
+        content = props.value.toString();
+        emit('onChange', props.value);
+      }
+    });
 
-  handleInput(event: { target: HTMLInputElement }) {
-    this.update(
-      this.type === "number" ? Number(event.target.value) : event.target.value
-    );
-  }
+    function handleInput(event: { target: HTMLInputElement }) {
+      update(
+        props.type === 'number' ? Number(event.target.value) : event.target.value,
+      );
+    }
 
-  updateValue(val) {
-    this.$refs.input.value = val;
-  }
+    function updateValue(val: string) {
+      if (input.value) input.value.value = val;
+    }
 
-  onKeyUp(event: { target: HTMLTextAreaElement }) {
-    this.$emit("keyup", event);
-  }
-  onFocus(event: { target: HTMLTextAreaElement }) {
-    this.$emit("focus", event);
-  }
-  onClick(event: { target: HTMLTextAreaElement }) {
-    this.$emit("click", event);
-  }
+    function onKeyUp(event: { target: HTMLTextAreaElement }) {
+      emit('keyup', event);
+    }
 
-  increment() {
-    if (this.isMaxReached) return;
+    function onFocus(event: { target: HTMLTextAreaElement }) {
+      emit('focus', event);
+    }
 
-    this.update(Number(this.content) + this.step);
-  }
+    function onClick(event: { target: HTMLTextAreaElement }) {
+      emit('click', event);
+    }
 
-  decrement() {
-    if (this.isMinReached) return;
+    function increment() {
+      if (this.isMaxReached) return;
 
-    this.update(Number(this.content) - this.step);
-  }
+      this.update(Number(this.content) + this.step);
+    }
 
-  mouseWheel(event: WheelEvent) {
-    if (this.type === "number") {
-      if (event.deltaY > 0) this.decrement();
-      else this.increment();
+    function decrement() {
+      if (this.isMinReached) return;
 
-      event.preventDefault();
+      this.update(Number(this.content) - this.step);
+    }
+
+    function mouseWheel(event: WheelEvent) {
+      if (this.type === 'number') {
+        if (event.deltaY > 0) this.decrement();
+        else this.increment();
+
+        event.preventDefault();
+      }
+    }
+
+    function update(value: string | number) {
+      emit('input', value);
     }
   }
-
-  update(value) {
-    this.$emit("input", value);
-  }
-}
+})
 </script>
 
 <style lang="less">

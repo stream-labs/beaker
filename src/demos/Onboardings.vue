@@ -16,76 +16,122 @@
 
     <div class="section">
       <h2>Onboarding - Named Steps</h2>
-      <DemoSection title="Onboarding - Named Steps" :code="demoCode">
+      <DemoSection
+        title="Onboarding - Named Steps"
+        :code="demoCode"
+      >
         <template #components>
-          <Onboarding
+          <onboarding
             :steps="steps"
             :skippable="true"
-            :currentStep="currentStep"
-            :stepLocation="'top'"
-            :skipHandler="skipFunc"
-            :prevHandler="previousFunc"
-            :continueHandler="continueFunc"
-            :completeHandler="completeFunc"
+            :current-step="currentStep"
+            :step-location="'top'"
+            :skip-handler="skipFunc"
+            :prev-handler="previousFunc"
+            :continue-handler="continueFunc"
+            :complete-handler="completeFunc"
           >
-            <OnboardingStep slot="1">
-              <span slot="title">Getting Started</span>
-              <span slot="desc">Slot 1</span>
-              <SSProSimulator :username="username" :domain="domain" />
-            </OnboardingStep>
-            <OnboardingStep slot="2">
-              <span slot="title">A Few More Things</span>
-              <span slot="desc">Slot 2</span>
-              <SSProSimulator :username="username" :domain="domain" />
-            </OnboardingStep>
-            <OnboardingStep slot="3">
-              <span slot="title">Almost There</span>
-              <span slot="desc">Slot 3</span>
-              <SSProSimulator :username="username" :domain="domain" />
-            </OnboardingStep>
-            <OnboardingStep slot="4">
-              <span slot="title">Getting Started</span>
-              <span slot="desc">Slot 4</span>
-              <SSProSimulator :username="username" :domain="domain" />
-            </OnboardingStep>
-          </Onboarding>
+            <template #1>
+              <onboarding-step>
+                <template #title><span>Getting Started</span></template>
+                <template #desc><span>Slot 1</span></template>
+                <SSProSimulator
+                  :username="username"
+                  :domain="domain"
+                />
+              </onboarding-step>
+            </template>
+            <template #2>
+              <onboarding-step>
+                <template #title><span>A Few More Things</span></template>
+                <template #desc><span>Slot 2</span></template>
+                <SSProSimulator
+                  :username="username"
+                  :domain="domain"
+                />
+              </onboarding-step>
+            </template>
+            <template #3>
+              <onboarding-step>
+                <template #title><span>Almost There</span></template>
+                <template #desc><span>Slot 3</span></template>
+                <SSProSimulator
+                  :username="username"
+                  :domain="domain"
+                />
+              </onboarding-step>
+            </template>
+            <template #4>
+              <onboarding-step>
+                <template #title><span>Getting Started</span></template>
+                <template #desc><span>Slot 4</span></template>
+                <SSProSimulator
+                  :username="username"
+                  :domain="domain"
+                />
+              </onboarding-step>
+            </template>
+          </onboarding>
         </template>
       </DemoSection>
     </div>
 
     <div class="section">
-      <DemoSection title="Default" :code="demoCode">
+      <DemoSection
+        title="Default"
+        :code="demoCode"
+      >
         <template #components>
           <Onboarding
             :steps="stepsTest"
             :skippable="true"
-            :currentStep="currentStep"
-            :stepLocation="'top'"
-            :skipHandler="skipFunc"
-            :prevHandler="previousFunc"
-            :continueHandler="continueFunc"
-            :completeHandler="completeFunc"
+            :current-step="currentStep"
+            :step-location="'top'"
+            :skip-handler="skipFunc"
+            :prev-handler="previousFunc"
+            :continue-handler="continueFunc"
+            :complete-handler="completeFunc"
           >
-            <OnboardingStep slot="1">
-              <span slot="title">Getting Started</span>
-              <span slot="desc">Slot 1</span>
-              <SSProSimulator :username="username" :domain="domain" />
-            </OnboardingStep>
-            <OnboardingStep slot="2">
-              <span slot="title">A Few More Things</span>
-              <span slot="desc">Slot 2</span>
-              <SSProSimulator :username="username" :domain="domain" />
-            </OnboardingStep>
-            <OnboardingStep slot="3">
-              <span slot="title">Almost There</span>
-              <span slot="desc">Slot 3</span>
-              <SSProSimulator :username="username" :domain="domain" />
-            </OnboardingStep>
-            <OnboardingStep slot="4">
-              <span slot="title">Getting Started</span>
-              <span slot="desc">Slot 4</span>
-              <SSProSimulator :username="username" :domain="domain" />
-            </OnboardingStep>
+            <template #1>
+              <onboarding-step>
+                <template #title><span>Getting Started</span></template>
+                <template #desc><span>Slot 1</span></template>
+                <SSProSimulator
+                  :username="username"
+                  :domain="domain"
+                />
+              </onboarding-step>
+            </template>
+            <template #2>
+              <onboarding-step>
+                <template #title><span>A Few More Things</span></template>
+                <template #desc><span>Slot 2</span></template>
+                <SSProSimulator
+                  :username="username"
+                  :domain="domain"
+                />
+              </onboarding-step>
+            </template>
+            <template #3>
+              <onboarding-step>
+                <template #title><span>Almost There</span></template>
+                <template #desc><span>Slot 3</span></template>
+                <SSProSimulator
+                  :username="username"
+                  :domain="domain"
+                />
+              </onboarding-step>
+            </template>
+            <template #4>
+              <onboarding-step>
+                <template #title><span>Getting Started</span></template>
+                <template #desc><span>Slot 4</span></template>
+                <SSProSimulator
+                  :username="username"
+                  :domain="domain"
+                />
+              </onboarding-step>
+            </template>
           </Onboarding>
         </template>
       </DemoSection>
@@ -169,62 +215,72 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { defineComponent, ref } from 'vue';
 
-import DemoSection from "./../components/DemoSection.vue";
-import Onboarding from "./../components/Onboarding.vue";
-import OnboardingStep from "./../components/OnboardingStep.vue";
-import OnboardingsCode from "!!raw-loader!./Onboardings.vue";
-import SSProSimulator from "./../components/SSProSimulator.vue";
+import DemoSection from '../components/DemoSection.vue';
+import Onboarding from '../components/Onboarding.vue';
+import OnboardingStep from '../components/OnboardingStep.vue';
+import OnboardingsCode from '!!raw-loader!./Onboardings.vue';
+import SSProSimulator from '../components/SSProSimulator.vue';
 
-@Component({
+export default defineComponent({
   components: {
     DemoSection,
     Onboarding,
     OnboardingStep,
-    OnboardingsCode,
-    SSProSimulator
-  }
-})
-export default class Onboardings extends Vue {
-  demoCode = OnboardingsCode;
-  currentStep: number = 1;
+    SSProSimulator,
+  },
+  setup() {
+    const demoCode: string = OnboardingsCode;
+    const currentStep = ref(1);
 
-  steps: Object = [
-    { name: "Donations", complete: false },
-    { name: "Cloudbot", complete: false },
-    { name: "Streamlabs OBS", complete: false },
-    { name: "Alert Box", complete: false }
-  ];
+    const steps = ref([
+      { name: 'Donations', complete: false },
+      { name: 'Cloudbot', complete: false },
+      { name: 'Streamlabs OBS', complete: false },
+      { name: 'Alert Box', complete: false },
+    ]);
 
-  stepsTest: Object = [
-    { complete: false },
-    { complete: false },
-    { complete: false },
-    { complete: false }
-  ];
+    const stepsTest = ref([
+      { complete: false },
+      { complete: false },
+      { complete: false },
+      { complete: false },
+    ]);
 
-  continueFunc() {
-    this.stepsTest[this.currentStep - 1].complete = true;
-    this.currentStep++;
-  }
+    const username = 'morganleee';
+    const icon = 'https://static-cdn.jtvnw.net/jtv_user_pictures/9dfce03d-25cc-4737-96d2-2ecf6924bebe-profile_image-70x70.jpg';
+    const domain = 'morganleeeeeeeeeee.com';
 
-  skipFunc() {
-    this.currentStep++;
-  }
+    function continueFunc() {
+      stepsTest.value[currentStep.value - 1].complete = true;
+      currentStep.value += 1;
+    }
 
-  previousFunc() {
-    this.currentStep--;
-  }
+    function skipFunc() {
+      currentStep.value += 1;
+    }
 
-  completeFunc() {
-    console.log("complete clicked");
-  }
+    function previousFunc() {
+      currentStep.value -= 1;
+    }
 
-  username = "morganleee";
-  icon =
-    "https://static-cdn.jtvnw.net/jtv_user_pictures/9dfce03d-25cc-4737-96d2-2ecf6924bebe-profile_image-70x70.jpg";
+    function completeFunc() {
+      console.log('complete clicked');
+    }
 
-  domain = "morganleeeeeeeeeee.com";
-}
+    return {
+      demoCode,
+      steps,
+      stepsTest,
+      username,
+      icon,
+      domain,
+      continueFunc,
+      skipFunc,
+      previousFunc,
+      completeFunc,
+    };
+  },
+});
 </script>

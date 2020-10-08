@@ -2,8 +2,8 @@
   <modal
     :name="name"
     :classes="'s-modal-wrapper'"
-    :maxWidth="width"
-    :minWidth="minWidth"
+    :max-width="width"
+    :min-width="minWidth"
     height="auto"
     :adaptive="true"
     :scrollable="scrollable"
@@ -11,66 +11,96 @@
   >
     <div class="s-modal-container">
       <div class="s-subscribe-icon-box">
-        <i class="icon-close" @click="$modal.hide(name)"></i>
+        <i
+          class="icon-close"
+          @click="$modal.hide(name)"
+        />
       </div>
       <div class="s-subscribe-upper">
         <div class="s-subscribe-title-box">
-          <h1 class="s-modal-title">{{ title }}</h1>
-          <badge v-if="proBadge" :align-left="true">Pro</badge>
+          <h1 class="s-modal-title">
+            {{ title }}
+          </h1>
+          <badge
+            v-if="proBadge"
+            :align-left="true"
+          >
+            Pro
+          </badge>
         </div>
-        <h2 class="s-modal-sub-title">{{ subTitle }}</h2>
+        <h2 class="s-modal-sub-title">
+          {{ subTitle }}
+        </h2>
       </div>
 
       <div class="s-subscribe-body">
-        <div v-if="customPreview" class="s-subscribe-box">
-          <slot name="preview"></slot>
+        <div
+          v-if="customPreview"
+          class="s-subscribe-box"
+        >
+          <slot name="preview" />
         </div>
-        <div v-else class="s-subscribe-box">
-          <p class="s-subscribe-text">{{ subscribeText }}</p>
+        <div
+          v-else
+          class="s-subscribe-box"
+        >
+          <p class="s-subscribe-text">
+            {{ subscribeText }}
+          </p>
           <p class="s-subscribe-message">
             {{ subscribeMessage }}
             <span class="s-subscribe-icon">
-              <img src="../assets/imgs/girl.svg" />
+              <img src="../assets/imgs/girl.svg">
             </span>
           </p>
         </div>
       </div>
 
       <div class="s-subscribe-bottom">
-        <p v-if="text" class="s-modal-text s-modal-text-subscribe">
+        <p
+          v-if="text"
+          class="s-modal-text s-modal-text-subscribe"
+        >
           {{ text }}
         </p>
-        <slot v-else></slot>
+        <slot v-else />
         <div class="s-button-subscribe">
           <Button
             :variation="buttonVariation"
             :title="buttonTitle"
             :price="buttonPrice"
             @click="$emit('subscribe-click')"
-          ></Button>
+          />
 
-          <span class="s-button-cancel" @click="$emit('cancel-click')">{{
+          <span
+            class="s-button-cancel"
+            @click="$emit('cancel-click')"
+          >{{
             cancelTitle
           }}</span>
         </div>
-        <p class="s-modal-notes">{{ notes }}</p>
+        <p class="s-modal-notes">
+          {{ notes }}
+        </p>
       </div>
     </div>
   </modal>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Button from "./../components/Button.vue";
-import Badge from "./../components/Badge.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import Button from './Button.vue';
+import Badge from './Badge.vue';
 
 @Component({
   components: {
     Button,
-    Badge
-  }
+    Badge,
+  },
 })
-export default class ModalSubscribe extends Vue {
+export default defineComponent({
   @Prop()
   name!: string;
 
@@ -107,18 +137,18 @@ export default class ModalSubscribe extends Vue {
   @Prop({ default: false })
   customPreview!: boolean;
 
-  @Prop({ default: "Subscribe with PayPal" })
+  @Prop({ default: 'Subscribe with PayPal' })
   buttonTitle!: string;
 
-  @Prop({ default: "$5.99/mo" })
+  @Prop({ default: '$5.99/mo' })
   buttonPrice!: string;
 
-  @Prop({ default: "subscribe" })
+  @Prop({ default: 'subscribe' })
   buttonVariation!: string;
 
-  @Prop({ default: "Cancel" })
+  @Prop({ default: 'Cancel' })
   cancelTitle!: string;
-}
+})
 </script>
 
 <style lang="less" scoped>

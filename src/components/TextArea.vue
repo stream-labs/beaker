@@ -1,5 +1,8 @@
 <template>
-  <div class="s-form-area" :class="{ 's-form-area--with-label': label }">
+  <div
+    class="s-form-area"
+    :class="{ 's-form-area--with-label': label }"
+  >
     <div class="s-form-area__container">
       <textarea
         :class="{
@@ -27,11 +30,13 @@
         }"
         class="s-form-area__label"
         v-if="label"
-        >{{ label }}</label
-      >
+      >{{ label }}</label>
 
-      <div v-if="error" class="s-form-area__input-error">
-        <i class="icon-error"></i>
+      <div
+        v-if="error"
+        class="s-form-area__input-error"
+      >
+        <i class="icon-error" />
         {{ error }}
       </div>
 
@@ -39,22 +44,32 @@
         class="s-form-area__characters"
         :class="{ 's-form-area__characters--scrollbar': hasScroll }"
       >
-        <span v-if="maxLength" class="s-form-area__char-count"
-          >{{ currentLength }}/{{ maxLength }}</span
-        >
+        <span
+          v-if="maxLength"
+          class="s-form-area__char-count"
+        >{{ currentLength }}/{{ maxLength }}</span>
       </div>
     </div>
 
-    <p v-show="helpText" class="s-form-area__help-text">{{ helpText }}</p>
+    <p
+      v-show="helpText"
+      class="s-form-area__help-text"
+    >
+      {{ helpText }}
+    </p>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-import { omit } from "lodash";
+import {
+  Component, Prop, Vue, Watch,
+} from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import { omit } from 'lodash';
 
 @Component({})
-export default class TextArea extends Vue {
+export default defineComponent({
   $refs!: {
     textArea: HTMLTextAreaElement;
   };
@@ -92,11 +107,12 @@ export default class TextArea extends Vue {
   @Prop()
   maxHeight!: number;
 
-  private localValue: string = "";
-  private hasScroll: boolean = false;
+  private localValue = '';
+
+  private hasScroll = false;
 
   created() {
-    this.$parent.$on("update", this.updateValue);
+    this.$parent.$on('update', this.updateValue);
   }
 
   mounted() {
@@ -109,7 +125,7 @@ export default class TextArea extends Vue {
   }
 
   get filteredListeners() {
-    return omit(this.$listeners, ["input"]);
+    return omit(this.$listeners, ['input']);
   }
 
   get currentLength() {
@@ -121,43 +137,44 @@ export default class TextArea extends Vue {
   }
 
   onValueChange(event: { target: HTMLTextAreaElement }) {
-    this.$emit("input", event.target.value);
+    this.$emit('input', event.target.value);
     this.updateSize();
   }
 
   onKeyUp(event: { target: HTMLTextAreaElement }) {
-    this.$emit("keyup", event.target.selectionStart);
+    this.$emit('keyup', event.target.selectionStart);
   }
+
   onFocus(event: { target: HTMLTextAreaElement }) {
-    this.$emit("focus", event.target.selectionStart);
+    this.$emit('focus', event.target.selectionStart);
   }
+
   onClick(event: { target: HTMLTextAreaElement }) {
-    this.$emit("click", event.target.selectionStart);
+    this.$emit('click', event.target.selectionStart);
   }
 
   updateValue(val) {
     this.$refs.textArea.value = val;
-    this.$emit("input", val);
+    this.$emit('input', val);
   }
 
   updateSize() {
     if (this.autoResize) {
-      this.$refs.textArea.style.cssText = "height:auto;";
-      const newHeight =
-        this.$refs.textArea.scrollHeight > this.maxHeight && this.maxHeight
-          ? this.maxHeight + 2
-          : this.$refs.textArea.scrollHeight + 2;
-      this.$refs.textArea.style.cssText = "height:" + newHeight + "px";
+      this.$refs.textArea.style.cssText = 'height:auto;';
+      const newHeight = this.$refs.textArea.scrollHeight > this.maxHeight && this.maxHeight
+        ? this.maxHeight + 2
+        : this.$refs.textArea.scrollHeight + 2;
+      this.$refs.textArea.style.cssText = `height:${newHeight}px`;
     }
   }
 
   updateCountPos() {
     this.$nextTick(() => {
-      const textArea = this.$refs.textArea;
+      const { textArea } = this.$refs;
       this.hasScroll = textArea.scrollHeight > textArea.clientHeight;
     });
   }
-}
+})
 </script>
 
 <style lang="less">

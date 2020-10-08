@@ -11,20 +11,24 @@ components: {
 
     <div class="section">
       <h2>Modal Basic</h2>
-      <DemoSection title="Modal Basic" :code="demoCode">
+      <DemoSection
+        title="Modal Basic"
+        :code="demoCode"
+      >
         <template #components>
           <ModalComp
             name="modal-basic"
             type="basic"
             title="UI Modal"
-            subTitle="Subtitle"
+            sub-title="Subtitle"
             text="
               Save combining multiple windows like Streamlabels, Twitch Chat,
               Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a
               live view.
             "
-            >Slots Available!</ModalComp
           >
+            Slots Available!
+          </ModalComp>
         </template>
       </DemoSection>
 
@@ -41,13 +45,16 @@ components: {
       <h2>Modal Subscribe</h2>
       <p>Used once subscribe.</p>
 
-      <DemoSection title="Modal Subscribe" :code="demoCode">
+      <DemoSection
+        title="Modal Subscribe"
+        :code="demoCode"
+      >
         <template #components>
           <ModalComp
             type="subscribe"
             :scrollable="true"
             title="Streamlabs"
-            subTitle="Never pay for GIFs and effects again!"
+            sub-title="Never pay for GIFs and effects again!"
             text="
               Get unlimited free GIFs and effects that will show up on all
               alerts on all channels! You’ll also get a fancy ‘Pro’ badge next
@@ -73,7 +80,10 @@ components: {
       <h2>Modal Redirect</h2>
       <p>Used for redirect.</p>
 
-      <DemoSection title="Modal Redirect" :code="demoCode">
+      <DemoSection
+        title="Modal Redirect"
+        :code="demoCode"
+      >
         <template #components>
           <ModalComp
             type="redirect"
@@ -99,18 +109,21 @@ components: {
       <h2>Modal Confirm</h2>
       <p>Used when needed to let the user confirm.</p>
 
-      <DemoSection title="Modal Confirm" :code="demoCode">
+      <DemoSection
+        title="Modal Confirm"
+        :code="demoCode"
+      >
         <template #components>
           <ModalComp
             type="confirmation"
             :width="400"
-            subTitle="Delete ‘Streamlabs Pillow'"
+            sub-title="Delete ‘Streamlabs Pillow'"
             text="
               Are you sure you want to delete the merch item ‘Streamlabs
               Pillow’? This action cannot be undone.
             "
             @confirm="() => {}"
-            confirmButtonText="Delete"
+            confirm-button-text="Delete"
           />
         </template>
       </DemoSection>
@@ -120,7 +133,7 @@ components: {
           :variation="'warning'"
           :title="'modal confirmation'"
           @click="$modal.show('modal-confirmation')"
-        ></Button>
+        />
       </div>
     </div>
 
@@ -128,12 +141,15 @@ components: {
       <h2>Modal Welcome Prime</h2>
       <p>Used for welcome prime</p>
 
-      <DemoSection title="Modal Welcome Prime" :code="demoCode">
+      <DemoSection
+        title="Modal Welcome Prime"
+        :code="demoCode"
+      >
         <template #components>
           <ModalComp
             type="welcome-prime"
             :width="600"
-            :hasPrimeCloseButton="true"
+            :has-prime-close-button="true"
             @onClickPrime="test"
           />
         </template>
@@ -166,7 +182,7 @@ components: {
             name is optional. if you need specific name for the modal, use name
             prop. Also don't forget to change $modal.show() to the name you set
             as prop.
-            <br />ex.
+            <br>ex.
             <code>:name="'modal-basic2'"</code>
             <code>$modal.show('modal-basic2')</code>
           </td>
@@ -334,23 +350,30 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import Button from "./../components/Button.vue";
-import DemoSection from "./../components/DemoSection.vue";
-import ModalComp from "./../components/ModalComp.vue";
-import ModalsCode from "!!raw-loader!./Modals.vue";
+import { defineComponent } from 'vue';
+import Button from '../components/Button.vue';
+import DemoSection from '../components/DemoSection.vue';
+import ModalComp from '../components/ModalComp.vue';
+import ModalsCode from '!!raw-loader!./Modals.vue';
 
-@Component({
+export default defineComponent({
   components: {
     Button,
     DemoSection,
-    ModalComp
-  }
-})
-export default class Modals extends Vue {
-  demoCode = ModalsCode;
-  test() {
-    console.log("test");
-  }
-}
+    ModalComp,
+  },
+
+  setup() {
+    const demoCode: string = ModalsCode;
+
+    function test() {
+      console.log('test');
+    }
+
+    return {
+      demoCode,
+      test,
+    };
+  },
+});
 </script>

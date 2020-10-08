@@ -1,23 +1,47 @@
 <template>
-  <div class="s-call-to-action" :class="callToActionMq" :style="callToActionBg">
+  <div
+    class="s-call-to-action"
+    :class="callToActionMq"
+    :style="callToActionBg"
+  >
     <i
       v-if="(buttonVariation === 'prime') | (buttonVariation === 'prime-white')"
       class="icon-prime prime-bg"
-    ></i>
+    />
     <div
       v-if="hasThumbnail"
       class="s-call-to-action__thumb"
       :class="callToActionThumbMq"
       :style="callToActionThumb"
     >
-      <img :src="thumbnail" :alt="thumbnailAlt" />
+      <img
+        :src="thumbnail"
+        :alt="thumbnailAlt"
+      >
     </div>
-    <div class="s-call-to-action__description" :class="callToActionDescMq">
-      <div class="s-title" :class="titleMq" :style="callToActiontitleColor">{{ title }}</div>
-      <div class="s-subtitle" :style="callToActionSubTitleColor">{{ description }}</div>
+    <div
+      class="s-call-to-action__description"
+      :class="callToActionDescMq"
+    >
+      <div
+        class="s-title"
+        :class="titleMq"
+        :style="callToActiontitleColor"
+      >
+        {{ title }}
+      </div>
+      <div
+        class="s-subtitle"
+        :style="callToActionSubTitleColor"
+      >
+        {{ description }}
+      </div>
     </div>
-    <slot v-if="customButtonSlot"></slot>
-    <div v-else class="s-button-container s-button-container--right">
+    <slot v-if="customButtonSlot" />
+    <div
+      v-else
+      class="s-button-container s-button-container--right"
+    >
       <Button
         v-if="buttonClick"
         :variation="buttonVariation"
@@ -27,11 +51,11 @@
         :href="buttonHref"
         :to="buttonTo"
         :tag="buttonTag"
-        :bgColor="buttonBg"
+        :bg-color="buttonBg"
         :icon="buttonIcon"
-        :textColor="buttonTextColor"
+        :text-color="buttonTextColor"
         @click="buttonClick"
-      ></Button>
+      />
 
       <Button
         v-else
@@ -43,48 +67,50 @@
         :to="buttonTo"
         :tag="buttonTag"
         :icon="buttonIcon"
-        :bgColor="buttonBg"
-        :textColor="buttonTextColor"
-      ></Button>
+        :bg-color="buttonBg"
+        :text-color="buttonTextColor"
+      />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Button from "./../components/Button.vue";
-import VueMq from "vue-mq";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import VueMq from 'vue-mq';
+import Button from './Button.vue';
 
 Vue.use(VueMq, {
   breakpoints: {
     // default breakpoints - customize this
     sm: 900,
     md: 1250,
-    lg: Infinity
+    lg: Infinity,
   },
-  defaultBreakpoint: "sm" // customize this for SSR
+  defaultBreakpoint: 'sm', // customize this for SSR
 });
 
 @Component({
   components: {
-    Button
-  }
+    Button,
+  },
 })
-export default class CallToAction extends Vue {
+export default defineComponent({
   @Prop()
-  bgColor!: String;
+  bgColor!: string;
 
   @Prop()
-  titleColor!: String;
+  titleColor!: string;
 
   @Prop()
-  subTitleColor!: String;
+  subTitleColor!: string;
 
-  @Prop({ default: "https://cdn.streamlabs.com/static/kevin-standard.svg" })
-  thumbnail!: String;
+  @Prop({ default: 'https://cdn.streamlabs.com/static/kevin-standard.svg' })
+  thumbnail!: string;
 
   @Prop({ default: true })
-  hasThumbnail!: Boolean;
+  hasThumbnail!: boolean;
 
   @Prop({ default: 80 })
   thumbnailWidth!: number | string;
@@ -93,92 +119,92 @@ export default class CallToAction extends Vue {
   thumbnailHeight!: number | string;
 
   @Prop()
-  thumbnailBg!: String;
+  thumbnailBg!: string;
 
-  @Prop({ default: "Get started by downloading Streamlabs OBS" })
-  thumbnailAlt!: String;
+  @Prop({ default: 'Get started by downloading Streamlabs OBS' })
+  thumbnailAlt!: string;
 
-  @Prop({ default: "Get started by downloading Streamlabs OBS" })
-  title!: String;
+  @Prop({ default: 'Get started by downloading Streamlabs OBS' })
+  title!: string;
 
   @Prop({
     default:
-      "Over 800k creators use Streamlabs OBS daily, delivering entertainment."
+      'Over 800k creators use Streamlabs OBS daily, delivering entertainment.',
   })
-  description!: String;
+  description!: string;
 
-  @Prop({ default: "slobs-download" })
-  buttonVariation!: String;
+  @Prop({ default: 'slobs-download' })
+  buttonVariation!: string;
 
-  @Prop({ default: "Download Streamlabs OBS" })
-  buttonTitle!: String;
-
-  @Prop()
-  buttonDescription!: String;
+  @Prop({ default: 'Download Streamlabs OBS' })
+  buttonTitle!: string;
 
   @Prop()
-  buttonHref!: String;
+  buttonDescription!: string;
 
   @Prop()
-  buttonTo!: String;
+  buttonHref!: string;
 
   @Prop()
-  buttonTag!: String;
+  buttonTo!: string;
+
+  @Prop()
+  buttonTag!: string;
 
   @Prop()
   buttonClick!: Function;
 
   @Prop()
-  buttonBg!: String;
+  buttonBg!: string;
 
   @Prop()
-  buttonTextColor!: String;
+  buttonTextColor!: string;
 
   @Prop({ default: false })
-  customButtonSlot!: Boolean;
+  customButtonSlot!: boolean;
 
   @Prop({ default: false })
-  bgPrime!: Boolean;
+  bgPrime!: boolean;
 
   @Prop()
-  buttonIcon!: String;
+  buttonIcon!: string;
 
   $mq: any;
 
   callToActiontitleColor: object = {
-    color: this.titleColor
+    color: this.titleColor,
   };
 
   callToActionSubTitleColor: object = {
-    color: this.subTitleColor
+    color: this.subTitleColor,
   };
 
   callToActionBg: object = {
-    backgroundColor: this.bgColor
+    backgroundColor: this.bgColor,
   };
 
   callToActionThumb: object = {
     width: `${this.thumbnailWidth}px`,
     height: `${this.thumbnailHeight}px`,
-    backgroundColor: this.thumbnailBg
+    backgroundColor: this.thumbnailBg,
   };
 
   get callToActionMq() {
-    return this.$mq === "sm" ? "s-call-to-action-mq" : "";
+    return this.$mq === 'sm' ? 's-call-to-action-mq' : '';
   }
 
   get callToActionThumbMq() {
-    return this.$mq === "sm" ? "s-call-to-action__thumb-mq" : "";
+    return this.$mq === 'sm' ? 's-call-to-action__thumb-mq' : '';
   }
 
   get callToActionDescMq() {
-    return this.$mq === "sm" ? "s-call-to-action__description-mq" : "";
+    return this.$mq === 'sm' ? 's-call-to-action__description-mq' : '';
   }
 
   get titleMq() {
-    return this.$mq === "sm" ? "s-title-mq" : "";
+    return this.$mq === 'sm' ? 's-title-mq' : '';
   }
-}
+})
 </script>
 
 <style lang="less">

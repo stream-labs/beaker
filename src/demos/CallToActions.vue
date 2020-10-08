@@ -15,9 +15,12 @@ components: {
     </div>
     <div class="section">
       <h2>Default Call to Action</h2>
-      <DemoSection title="Default" :code="demoCode">
+      <DemoSection
+        title="Default"
+        :code="demoCode"
+      >
         <template #components>
-          <CallToAction :buttonClick="test" />
+          <CallToAction :button-click="test" />
         </template>
       </DemoSection>
     </div>
@@ -26,25 +29,28 @@ components: {
       <h2>Custom Call to Action</h2>
 
       <div class="section">
-        <DemoSection title="Custom" :code="demoCode">
+        <DemoSection
+          title="Custom"
+          :code="demoCode"
+        >
           <template #components>
             <CallToAction
               bgcolor="#31c3a2"
-              titleColor="#ffffff"
-              subTitleColor="#ffffff"
+              title-color="#ffffff"
+              sub-title-color="#ffffff"
               :thumbnail="require('./../assets/imgs/logo.svg')"
-              :thumbnailWidth="120"
-              :thumbnailHeight="80"
-              thumbnailBg="#ffffff"
+              :thumbnail-width="120"
+              :thumbnail-height="80"
+              thumbnail-bg="#ffffff"
               title="This is a Custom Call To Action"
               description="A Custom Description"
-              buttonVariation="default"
-              buttonTitle="Click Me"
-              buttonDescription
-              buttonTag="a"
-              buttonHref="https://google.com"
-              buttonBg="#ffffff"
-              buttonTextColor="#000000"
+              button-variation="default"
+              button-title="Click Me"
+              button-description
+              button-tag="a"
+              button-href="https://google.com"
+              button-bg="#ffffff"
+              button-text-color="#000000"
             />
           </template>
         </DemoSection>
@@ -52,36 +58,36 @@ components: {
 
       <div class="section">
         <CallToAction
-          :bgColor="'#31c3a2'"
-          :titleColor="'#fff'"
-          :subTitleColor="'#fff'"
+          :bg-color="'#31c3a2'"
+          :title-color="'#fff'"
+          :sub-title-color="'#fff'"
           :title="'This is a Custom Call To Action'"
           :description="'A Custom Description'"
-          :hasThumbnail="false"
-          :customButtonSlot="true"
+          :has-thumbnail="false"
+          :custom-button-slot="true"
         >
           <div class="s-button-container">
-            <Button :title="'Using slot'"></Button>
-            <Button :title="'Using slot'"></Button>
+            <Button :title="'Using slot'" />
+            <Button :title="'Using slot'" />
           </div>
         </CallToAction>
       </div>
 
       <div class="section">
         <CallToAction
-          :bgColor="'#CAA368'"
-          :titleColor="'#fff'"
-          :subTitleColor="'#fff'"
-          :hasThumbnail="false"
+          :bg-color="'#CAA368'"
+          :title-color="'#fff'"
+          :sub-title-color="'#fff'"
+          :has-thumbnail="false"
           :title="'Join Prime today!'"
           :description="
             'Our premium tool-set for professional content creators.'
           "
-          :buttonVariation="'prime-white'"
-          :buttonTitle="'Sign Up'"
-          :buttonDescription="''"
-          :buttonIcon="'prime'"
-          :bgPrime="true"
+          :button-variation="'prime-white'"
+          :button-title="'Sign Up'"
+          :button-description="''"
+          :button-icon="'prime'"
+          :bg-prime="true"
         />
       </div>
 
@@ -243,23 +249,29 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import Button from "./../components/Button.vue";
-import CallToAction from "./../components/CallToAction.vue";
-import CallToActionCode from "!!raw-loader!./CallToActions.vue";
-import DemoSection from "./../components/DemoSection.vue";
-@Component({
+import { defineComponent } from 'vue';
+import Button from '../components/Button.vue';
+import CallToAction from '../components/CallToAction.vue';
+import CallToActionCode from '!!raw-loader!./CallToActions.vue';
+import DemoSection from '../components/DemoSection.vue';
+
+export default defineComponent({
   components: {
     Button,
     CallToAction,
-    DemoSection
-  }
-})
-export default class CallToActions extends Vue {
-  demoCode = CallToActionCode;
+    DemoSection,
+  },
 
-  test() {
-    alert("test");
-  }
-}
+  setup() {
+    const demoCode: string = CallToActionCode;
+    function test() {
+      alert('test');
+    }
+
+    return {
+      demoCode,
+      test,
+    };
+  },
+});
 </script>

@@ -1,10 +1,17 @@
 <template>
   <div>
     <h1>Banners</h1>
-    <TabsNew :tabs="tabs" :update-route="false" :selected="selectedTab">
-      <div slot="marketing">
+    <TabsNew
+      :tabs="tabs"
+      :update-route="false"
+      :selected="selectedTab"
+    >
+      <template #marketing>
         <h2>Marketing Banner</h2>
-        <DemoSection title="Marketing Banner" :code="demoCode">
+        <DemoSection
+          title="Marketing Banner"
+          :code="demoCode"
+        >
           <template #components>
             <banner-marketing
               bg-image="
@@ -20,17 +27,18 @@
                 To access over 700+ themes for free, download Streamlabs OBS.
               "
               link-desc="Win 7+  245.8 MB"
-              :onToggle="test"
+              :on-toggle="test"
             >
-              <Button
-                slot="link"
-                type="a"
-                variation="action"
-                size="standard"
-                href="#"
-                title="Download"
-                icon="overview"
-              />
+              <template #link>
+                <Button
+                  type="a"
+                  variation="action"
+                  size="standard"
+                  href="#"
+                  title="Download"
+                  icon="overview"
+                />
+              </template>
             </banner-marketing>
           </template>
         </DemoSection>
@@ -48,14 +56,15 @@
           link-desc="$4.99/mo"
           :banner-closed="bannerClosed"
         >
-          <Button
-            slot="link"
-            type="a"
-            variation="action"
-            size="standard"
-            href="#"
-            title="Try It Now"
-          />
+          <template #link>
+            <Button
+              type="a"
+              variation="action"
+              size="standard"
+              href="#"
+              title="Try It Now"
+            />
+          </template>
         </banner-marketing>
 
         <table class="docs-table">
@@ -148,11 +157,14 @@
             </tr>
           </tbody>
         </table>
-      </div>
+      </template>
 
-      <div slot="sale">
+      <template #sale>
         <h2>Sale Banner</h2>
-        <DemoSection title="Sale Banner" :code="demoCode">
+        <DemoSection
+          title="Sale Banner"
+          :code="demoCode"
+        >
           <template #components>
             <banner-sale
               title="Flash Sale! 25% off everything!"
@@ -242,11 +254,14 @@
             </tr>
           </tbody>
         </table>
-      </div>
+      </template>
 
-      <div slot="notice">
+      <template #notice>
         <h2>Notice Banner</h2>
-        <DemoSection title="Notice Banner" :code="demoCode">
+        <DemoSection
+          title="Notice Banner"
+          :code="demoCode"
+        >
           <template #components>
             <Notice
               title="
@@ -257,32 +272,34 @@
               "
               icon="information"
             >
-              <Button
-                slot="button"
-                type="button"
-                size="fixed-width"
-                variation="action"
-                title="Join"
-              />
+              <template #button>
+                <Button
+                  type="button"
+                  size="fixed-width"
+                  variation="action"
+                  title="Join"
+                />
+              </template>
             </Notice>
           </template>
         </DemoSection>
 
-        <br />
-        <br />
+        <br>
+        <br>
 
         <Notice
           variation="warning"
           title="Your donation link has expired"
           desc="Copy your new donation link and replace all instances containing twitchalerts.com."
         >
-          <Button
-            slot="button"
-            type="button"
-            size="fixed-width"
-            variation="default"
-            title="Copy Link"
-          />
+          <template #button>
+            <Button
+              type="button"
+              size="fixed-width"
+              variation="default"
+              title="Copy Link"
+            />
+          </template>
         </Notice>
 
         <table class="docs-table">
@@ -332,11 +349,14 @@
             </tr>
           </tbody>
         </table>
-      </div>
+      </template>
 
-      <div slot="discord">
+      <template #discord>
         <h2>Discord Banner</h2>
-        <DemoSection title="Discord Banner" :code="demoCode">
+        <DemoSection
+          title="Discord Banner"
+          :code="demoCode"
+        >
           <template #components>
             <BannerDiscord />
           </template>
@@ -366,24 +386,26 @@
             </tr>
           </tbody>
         </table>
-      </div>
+      </template>
     </TabsNew>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import BannersCode from "!!raw-loader!./Banners.vue";
-import BannerDiscord from "./../components/BannerDiscord.vue";
-import BannerMarketing from "./../components/BannerMarketing.vue";
-import BannerSale from "./../components/BannerSale.vue";
-import Button from "./../components/Button.vue";
-import DemoSection from "./../components/DemoSection.vue";
-import Notice from "./../components/Notice.vue";
-import Tabs from "./../components/Tabs.vue";
-import TabsNew from "./../components/TabsNew.vue";
+import {
+  computed, defineComponent, onMounted, ref,
+} from 'vue';
+import BannersCode from '!!raw-loader!./Banners.vue';
+import BannerDiscord from '../components/BannerDiscord.vue';
+import BannerMarketing from '../components/BannerMarketing.vue';
+import BannerSale from '../components/BannerSale.vue';
+import Button from '../components/Button.vue';
+import DemoSection from '../components/DemoSection.vue';
+import Notice from '../components/Notice.vue';
+import Tabs from '../components/Tabs.vue';
+import TabsNew from '../components/TabsNew.vue';
 
-@Component({
+export default defineComponent({
   components: {
     BannerDiscord,
     BannerMarketing,
@@ -392,56 +414,63 @@ import TabsNew from "./../components/TabsNew.vue";
     DemoSection,
     Notice,
     Tabs,
-    TabsNew
-  }
-})
-export default class Banners extends Vue {
-  demoCode = BannersCode;
-  tabs = [
-    {
-      name: "Marketing",
-      value: "marketing"
-    },
-    {
-      name: "Sale",
-      value: "sale"
-    },
-    {
-      name: "Notice",
-      value: "notice"
-    },
-    {
-      name: "Discord",
-      value: "discord"
+    TabsNew,
+  },
+
+  setup() {
+    const demoCode: string = BannersCode;
+    const tabs = [
+      {
+        name: 'Marketing',
+        value: 'marketing',
+      },
+      {
+        name: 'Sale',
+        value: 'sale',
+      },
+      {
+        name: 'Notice',
+        value: 'notice',
+      },
+      {
+        name: 'Discord',
+        value: 'discord',
+      },
+    ];
+
+    const selectedTab = ref('marketing');
+    const remainingSecs = ref(10);
+    const bannerClosed = ref(false);
+
+    onMounted(() => {
+      setInterval(() => {
+        remainingSecs.value -= 1;
+        if (remainingSecs.value < 0) {
+          remainingSecs.value = 10;
+        }
+      }, 1000);
+    });
+
+    const secs = computed(() => (remainingSecs.value < 10 ? `0${remainingSecs.value}` : `${remainingSecs.value}`));
+
+    function onSelectTabHandler(tab: string) {
+      selectedTab.value = tab;
     }
-  ];
 
-  selectedTab = "marketing";
-  remainingSecs = 10;
+    function test() {
+      console.log('test');
+    }
 
-  bannerClosed = false;
-
-  mounted() {
-    setInterval(() => {
-      this.remainingSecs--;
-      if (this.remainingSecs < 0) {
-        this.remainingSecs = 10;
-      }
-    }, 1000);
-  }
-
-  onSelectTabHandler(tab: string) {
-    this.selectedTab = tab;
-  }
-
-  get secs() {
-    return this.remainingSecs < 10
-      ? `0${this.remainingSecs}`
-      : `${this.remainingSecs}`;
-  }
-
-  test() {
-    console.log("test");
-  }
-}
+    return {
+      demoCode,
+      tabs,
+      selectedTab,
+      remainingSecs,
+      bannerClosed,
+      secs,
+      onSelectTabHandler,
+      test,
+    };
+  },
+});
 </script>

@@ -1,5 +1,8 @@
 <template>
-  <div ref="pagination" class="pagination__container">
+  <div
+    ref="pagination"
+    class="pagination__container"
+  >
     <vue-paginate-component
       :class="{ 'pagination--bg': nightBg }"
       :page-count="pageCount"
@@ -18,22 +21,24 @@
       :break-view-link-class="'s-pagination__break-link'"
       :active-class="'s-pagination__active'"
       :disabled-class="'s-pagination__disabled'"
-    ></vue-paginate-component>
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import ResizeObserver from "resize-observer-polyfill";
-import VuePaginateComponent from "vuejs-paginate";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import ResizeObserver from 'resize-observer-polyfill';
+import VuePaginateComponent from 'vuejs-paginate';
 
 @Component({
   components: {
-    VuePaginateComponent
-  }
+    VuePaginateComponent,
+  },
 })
-export default class Pagination extends Vue {
-  pageRange: number = 3;
+export default defineComponent({
+  pageRange = 3;
 
   $refs!: {
     pagination: HTMLDivElement;
@@ -54,7 +59,9 @@ export default class Pagination extends Vue {
   mounted() {
     const ro = new ResizeObserver((entries, observer) => {
       for (const entry of entries) {
-        const { left, top, width, height } = entry.contentRect;
+        const {
+          left, top, width, height,
+        } = entry.contentRect;
 
         if (width < 456) this.pageRange = 1;
       }
@@ -64,17 +71,16 @@ export default class Pagination extends Vue {
   }
 
   get pageCount() {
-    if (this.totalPageCount && this.totalPageCount > 0)
-      return this.totalPageCount;
+    if (this.totalPageCount && this.totalPageCount > 0) { return this.totalPageCount; }
 
-    let remainder = this.totalItemCount % this.itemsPerPage > 0 ? 1 : 0;
+    const remainder = this.totalItemCount % this.itemsPerPage > 0 ? 1 : 0;
     return Math.floor(this.totalItemCount / this.itemsPerPage) + remainder;
   }
 
   selectPage(page: number) {
-    this.$emit("page-selected", page);
+    this.$emit('page-selected', page);
   }
-}
+})
 </script>
 
 <style lang="less">

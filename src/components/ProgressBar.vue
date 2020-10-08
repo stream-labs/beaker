@@ -1,19 +1,26 @@
 <template>
   <div class="s-progress">
-    <div class="s-progress-bar" :style="getProgress" />
+    <div
+      class="s-progress-bar"
+      :style="getProgress"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+
 @Component({})
-export default class ProgressBar extends Vue {
+export default defineComponent({
   @Prop()
-  progressComplete!: Number;
+  progressComplete!: number;
+
   get getProgress() {
-    return "width:" + this.progressComplete + "%";
+    return `width:${this.progressComplete}%`;
   }
-}
+})
 </script>
 
 <style lang="less">

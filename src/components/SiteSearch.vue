@@ -10,7 +10,7 @@
   >
     <div class="s-sitesearch--searchbar__cont">
       <div class="s-sitesearch--icon">
-        <i class="icon-search"></i>
+        <i class="icon-search" />
       </div>
       <input
         ref="search_input"
@@ -21,7 +21,7 @@
         @focus.stop.prevent="playOpeningSequence"
         @blur.stop.prevent="playClosingSequence"
         @keyup.stop.prevent="keyEvent"
-      />
+      >
       <!-- <div class="s-sitesearch-status__cont">
         <div v-if="noResults">No Results</div>
       </div> -->
@@ -32,7 +32,9 @@
         :key="limitedResult.length"
         v-if="phaseTwo && limitedResult.length <= 0"
       >
-        <div class="s-sitesearch-quicklinks">Quick Links</div>
+        <div class="s-sitesearch-quicklinks">
+          Quick Links
+        </div>
         <a
           :href="searchData[quickLinkLoc[i]].route"
           v-for="(suggested, i) in suggestedLinks"
@@ -46,7 +48,7 @@
             <i
               :class="searchData[quickLinkLoc[i]].image"
               class="s-sitesearch__result--image"
-            ></i>
+            />
           </div>
           <div class="s-sitesearch__result--title">
             {{ searchData[quickLinkLoc[i]].title }}
@@ -72,7 +74,7 @@
               <i
                 :class="searchResult.item.image"
                 class="s-sitesearch__result--image"
-              ></i>
+              />
             </div>
             <div class="s-sitesearch__result--title">
               {{ searchResult.item.title }}
@@ -85,55 +87,69 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from "vue-property-decorator";
-import Fuse from "fuse.js";
+import {
+  Component, Prop, Watch, Vue,
+} from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import Fuse from 'fuse.js';
 
 @Component({})
-export default class SiteSearch extends Vue {
+export default defineComponent({
   $refs!: {
     search_input: HTMLInputElement;
   };
 
   result: any = [];
-  private isOpen: Boolean = false;
-  private phaseOne: Boolean = false;
-  private phaseTwo: Boolean = false;
-  private resultLimit: Number = 7;
+
+  private isOpen = false;
+
+  private phaseOne = false;
+
+  private phaseTwo = false;
+
+  private resultLimit = 7;
+
   private fuse: any = null;
-  private value: String = "";
+
+  private value = '';
+
   private quickLinkLoc: any = [];
+
   private keyEvents: any = [];
-  private currentResult: number = 0;
+
+  private currentResult = 0;
 
   @Prop()
   jsonSearch!: any;
+
   searchData = this.jsonSearch;
 
-  @Prop({ default: "" })
-  search!: String;
+  @Prop({ default: '' })
+  search!: string;
 
-  @Prop({ default: "fuseResultsUpdated" })
+  @Prop({ default: 'fuseResultsUpdated' })
   eventName!: string;
 
-  @Prop({ default: "fuseInputChanged" })
+  @Prop({ default: 'fuseInputChanged' })
   inputChangeEventName!: string;
 
   @Prop()
   quickLinks!: any[];
 
   get suggestedLinks() {
-    return this.quickLinks.filter(i => {
-      let findResult: any = this.searchData.find(
-        data => data.name === i.item.name
+    return this.quickLinks.filter((i) => {
+      const findResult: any = this.searchData.find(
+        (data) => data.name === i.item.name,
       );
-      let suggestResult: any = this.searchData.indexOf(findResult);
+      const suggestResult: any = this.searchData.indexOf(findResult);
       this.quickLinkLoc.push(suggestResult);
       return suggestResult;
     });
   }
 
   get options() {
-    let options = {
+    const options = {
       caseSensitive: false,
       includeScore: true,
       includeMatches: false,
@@ -148,24 +164,23 @@ export default class SiteSearch extends Vue {
       minMatchCharLength: 1,
       keys: [
         {
-          name: "keywords",
-          weight: 0.9
+          name: 'keywords',
+          weight: 0.9,
         },
         {
-          name: "title",
-          weight: 0.1
-        }
-      ]
+          name: 'title',
+          weight: 0.1,
+        },
+      ],
     };
     return options;
   }
 
   get noResults() {
-    if (this.result.length === 0 && this.value != "") {
+    if (this.result.length === 0 && this.value != '') {
       return true;
-    } else {
-      return false;
     }
+    return false;
   }
 
   get fullSort() {
@@ -180,41 +195,40 @@ export default class SiteSearch extends Vue {
 
   get calcHeight() {
     if (this.phaseOne === false) {
-      return "height: 40px;";
+      return 'height: 40px;';
     }
     if (
-      this.result.length >= 1 &&
-      this.result.length <= 7 &&
-      this.phaseOne == true
+      this.result.length >= 1
+      && this.result.length <= 7
+      && this.phaseOne == true
     ) {
-      let x = parseInt(this.result.length) * 32 + 47;
-      return "height: " + x + "px;";
-    } else {
-      return "height: 271px;";
+      const x = parseInt(this.result.length) * 32 + 47;
+      return `height: ${x}px;`;
     }
+    return 'height: 271px;';
   }
 
-  @Watch("searchData")
+  @Watch('searchData')
   watchSearchData() {
     this.fuse.searchData = this.searchData;
     this.fuseSearch();
   }
 
-  @Watch("search")
+  @Watch('search')
   watchSearch() {
     this.value = this.search;
   }
 
-  @Watch("value")
+  @Watch('value')
   watchValue() {
     this.$parent.$emit(this.inputChangeEventName, this.value);
     this.$emit(this.inputChangeEventName, this.value);
     this.fuseSearch();
   }
 
-  @Watch("result")
+  @Watch('result')
   watchResult(val: [], oldVal: []) {
-    if (this.noResults || this.value == "" || val.length != oldVal.length) {
+    if (this.noResults || this.value == '' || val.length != oldVal.length) {
       this.currentResult = 0;
     }
     this.$emit(this.eventName, this.result);
@@ -231,10 +245,8 @@ export default class SiteSearch extends Vue {
       if (event.keyCode === 40 && this.currentResult < 5) {
         this.currentResult++;
       }
-    } else {
-      if (event.keyCode === 40 && this.currentResult < 6) {
-        this.currentResult++;
-      }
+    } else if (event.keyCode === 40 && this.currentResult < 6) {
+      this.currentResult++;
     }
     // KEYPRESS ENTER
     if (event.keyCode === 13 && this.phaseOne) {
@@ -284,13 +296,13 @@ export default class SiteSearch extends Vue {
   }
 
   blurSearch() {
-    this.value = "";
+    this.value = '';
     this.$refs.search_input.blur();
     this.currentResult = 0;
   }
 
   fuseSearch() {
-    if (this.value.trim() === "") {
+    if (this.value.trim() === '') {
       this.result = [];
     } else {
       this.result = this.fuse.search(this.value.trim());
@@ -298,15 +310,15 @@ export default class SiteSearch extends Vue {
   }
 
   sortWeight(a, b) {
-    let aResult: any = this.result.find(data => data.item.name === a.item.name);
-    let bResult: any = this.result.find(data => data.item.name === b.item.name);
+    const aResult: any = this.result.find((data) => data.item.name === a.item.name);
+    const bResult: any = this.result.find((data) => data.item.name === b.item.name);
     return b.item.weight * bResult.score - a.item.weight * aResult.score;
   }
 
   mounted() {
     this.initFuse();
   }
-}
+})
 </script>
 
 <style lang="less">

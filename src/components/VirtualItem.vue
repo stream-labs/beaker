@@ -8,92 +8,130 @@
     :value="value"
     @click="$emit('click')"
   >
-    <span v-if="selectionCount" class="s-virtual-item__selection-count">
+    <span
+      v-if="selectionCount"
+      class="s-virtual-item__selection-count"
+    >
       {{ selectionCount }}
     </span>
     <span
       v-if="remainingTime"
       class="s-virtual-item__selection-remaining"
       :class="{ warning: hasWarning }"
-      >{{ remainingTime }}</span
-    >
-    <span v-if="type" class="s-virtual-item__label">{{ type }}</span>
-    <span v-if="quantity" class="s-virtual-item__label">{{ quantity }}</span>
+    >{{ remainingTime }}</span>
+    <span
+      v-if="type"
+      class="s-virtual-item__label"
+    >{{ type }}</span>
+    <span
+      v-if="quantity"
+      class="s-virtual-item__label"
+    >{{ quantity }}</span>
     <div class="s-virtual-item__img">
-      <img :src="preview" />
+      <img :src="preview">
     </div>
-    <h3 class="s-virtual-item__name">{{ name }}</h3>
-    <span class="s-virtual-item__rarity" :class="{ entered: isGiveaway }">
-      <i class="icon-check-mark" v-if="isGiveaway"></i>
+    <h3 class="s-virtual-item__name">
+      {{ name }}
+    </h3>
+    <span
+      class="s-virtual-item__rarity"
+      :class="{ entered: isGiveaway }"
+    >
+      <i
+        class="icon-check-mark"
+        v-if="isGiveaway"
+      />
       {{ rarity }}
     </span>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import {
+  defineComponent, ref, onMounted, computed,
+} from 'vue';
 
-@Component({})
-export default class VitualItem extends Vue {
-  @Prop(String)
-  name!: string;
+export default defineComponent({
+  props: {
+    name: {
+      type: String,
+      default: '',
+    },
+    value: {
+      type: String,
+      default: '',
+    },
+    preview: {
+      type: String,
+      default: '',
+    },
+    quantity: {
+      type: Number,
+      default: 0,
+    },
+    rarity: {
+      type: String,
+      default: '',
+    },
+    selected: {
+      type: Boolean,
+      default: false,
+    },
+    selectionCount: {
+      type: String,
+      default: '',
+    },
+    remainingTime: {
+      type: String,
+      default: '',
+    },
+    hasWarning: {
+      type: Boolean,
+      default: false,
+    },
+    isGiveaway: {
+      type: Boolean,
+      default: false,
+    },
+    type: {
+      type: String,
+      default: '',
+    },
+  },
 
-  @Prop(String)
-  value!: string;
+  setup(props, { attrs }) {
+    const isClickable = ref(false);
 
-  @Prop(String)
-  preview!: string;
+    const virtualItemClasses = computed(() => {
+      const classes: string[] = [];
 
-  @Prop(Number)
-  quantity!: number;
+      if (props.rarity) {
+        classes.push(`s-virtual-item--${props.rarity}`);
+      }
 
-  @Prop(String)
-  rarity!: string;
+      if (props.selected) {
+        classes.push('is-selected');
+      }
 
-  @Prop({ default: false })
-  selected!: boolean;
+      if (isClickable.value) {
+        classes.push('clickable');
+      }
 
-  @Prop(String)
-  selectionCount!: string;
+      return classes.join(' ');
+    });
 
-  @Prop(String)
-  remainingTime!: string;
+    onMounted(() => {
+      if (attrs.click) {
+        isClickable.value = true;
+      }
+    });
 
-  @Prop({ default: false })
-  hasWarning!: boolean;
-
-  @Prop({ default: false })
-  isGiveaway!: boolean;
-
-  @Prop(String)
-  type!: string;
-
-  isClickable: boolean = false;
-
-  mounted() {
-    if (this.$listeners.click) {
-      this.isClickable = true;
-    }
-  }
-
-  get virtualItemClasses() {
-    const classes: any = [];
-
-    if (this.rarity) {
-      classes.push(`s-virtual-item--${this.rarity}`);
-    }
-
-    if (this.selected) {
-      classes.push("is-selected");
-    }
-
-    if (this.isClickable) {
-      classes.push("clickable");
-    }
-
-    return classes.join(" ");
-  }
-}
+    return {
+      isClickable,
+      virtualItemClasses,
+    };
+  },
+});
 </script>
 
 <style lang="less">

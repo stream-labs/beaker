@@ -1,10 +1,13 @@
 <template>
-  <div class="s-tooltip-notice" :style="{ width: width + 'px' }">
+  <div
+    class="s-tooltip-notice"
+    :style="{ width: width + 'px' }"
+  >
     <div class="s-tooltip-notice-content">
       <i
         :class="arrowClasses"
         class="icon-dropdown s-tooltip-notice__arrow"
-      ></i>
+      />
       <h3>{{ title }}</h3>
       <p>{{ desc }}</p>
       <Button
@@ -13,7 +16,7 @@
         :title="buttonTitle"
         :variation="'action'"
         :size="'small'"
-      ></Button>
+      />
 
       <Button
         class="s-tooltip-notice__secondary-action"
@@ -22,63 +25,88 @@
         :title="secondaryActionTitle"
         :variation="'link'"
         :size="'small'"
-      ></Button>
+      />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Button from "./Button.vue";
+import { computed, defineComponent } from 'vue';
+import Button from './Button.vue';
 
-@Component({
+export default defineComponent({
   components: {
-    Button
-  }
-})
-export default class TooltipNotice extends Vue {
-  @Prop({ required: true })
-  title!: string;
+    Button,
+  },
 
-  @Prop({ default: "Got it" })
-  buttonTitle!: string;
+  props: {
+    title: {
+      type: String,
+      required: true,
+    },
 
-  @Prop({ default: "Learn More" })
-  secondaryActionTitle!: string;
+    buttonTitle: {
+      type: String,
+      default: 'Got it',
+    },
 
-  @Prop({ required: true })
-  desc!: string;
+    secondaryActionTitle: {
+      type: String,
+      default: 'Learn More',
+    },
 
-  @Prop({ default: "left" })
-  arrowPosition!: string;
+    desc: {
+      type: String,
+      required: true,
+    },
 
-  @Prop({ default: true })
-  hasButton!: boolean;
+    arrowPosition: {
+      type: String,
+      default: 'left',
+    },
 
-  @Prop({ default: false })
-  hasSecondaryAction!: boolean;
+    hasButton: {
+      type: Boolean,
+      default: true,
+    },
 
-  @Prop({ default: 200 })
-  width!: number;
+    hasSecondaryAction: {
+      type: Boolean,
+      default: false,
+    },
 
-  clickHandler() {
-    this.$emit("handle-tooltip");
-  }
+    width: {
+      type: Number,
+      default: 200,
+    },
+  },
 
-  secondaryClickHandler() {
-    this.$emit("handle-tooltip-secondary");
-  }
-
-  get arrowClasses() {
-    let classes: string[] = [];
-
-    if (this.arrowPosition) {
-      classes.push(`s-tooltip-notice__arrow--${this.arrowPosition}`);
+  setup(props, { emit }) {
+    function clickHandler() {
+      emit('handle-tooltip');
     }
 
-    return classes;
-  }
-}
+    function secondaryClickHandler() {
+      emit('handle-tooltip-secondary');
+    }
+
+    const arrowClasses = computed(() => {
+      const classes: string[] = [];
+
+      if (props.arrowPosition) {
+        classes.push(`s-tooltip-notice__arrow--${props.arrowPosition}`);
+      }
+
+      return classes;
+    });
+
+    return {
+      clickHandler,
+      secondaryClickHandler,
+      arrowClasses,
+    };
+  },
+});
 </script>
 
 <style lang="less">

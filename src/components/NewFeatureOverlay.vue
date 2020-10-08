@@ -5,18 +5,31 @@
     :width="width"
     :height="height"
     classes="s-overlay__wrapper"
-    :clickToClose="true"
+    :click-to-close="true"
     @opened="opened"
   >
-    <div slot="top-right" class="s-overlay__icon">
-      <span class="s-icon icon-close" @click="onDismiss"></span>
+    <div
+      slot="top-right"
+      class="s-overlay__icon"
+    >
+      <span
+        class="s-icon icon-close"
+        @click="onDismiss"
+      />
     </div>
-    <div class="s-overlay__container" :class="containerMq">
+    <div
+      class="s-overlay__container"
+      :class="containerMq"
+    >
       <div class="s-overlay__body">
-        <p class="s-overlay__label">{{ label }}</p>
-        <h1 class="s-overlay__title">{{ title }}</h1>
+        <p class="s-overlay__label">
+          {{ label }}
+        </p>
+        <h1 class="s-overlay__title">
+          {{ title }}
+        </h1>
         <p class="s-overlay__text">
-          <slot></slot>
+          <slot />
         </p>
         <div class="s-overlay-links">
           <Button
@@ -28,18 +41,26 @@
             :target="buttonTarget"
             :title="buttonTitle"
             @click.native="onPrimaryAction"
-          ></Button>
+          />
           <router-link
             class="s-overlay__link"
             :to="dismissRoute"
             @click.native="onDismiss"
-            >{{ dismissText }}</router-link
           >
+            {{ dismissText }}
+          </router-link>
         </div>
       </div>
 
-      <div class="s-overlay__image-block" :class="overlay__imageBlockMq">
-        <img v-if="isImage" :src="overlayImage" class="s-overlay__image" />
+      <div
+        class="s-overlay__image-block"
+        :class="overlay__imageBlockMq"
+      >
+        <img
+          v-if="isImage"
+          :src="overlayImage"
+          class="s-overlay__image"
+        >
         <video
           :controls="videoControls"
           autoplay
@@ -47,7 +68,7 @@
           v-if="!isImage"
           class="s-overlay__image"
         >
-          <source :src="overlayImage" />
+          <source :src="overlayImage">
           Environment does not support video playback
         </video>
       </div>
@@ -56,10 +77,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Button from "./../components/Button.vue";
-import VueMq from "vue-mq";
-import VModal from "vue-js-modal";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import VueMq from 'vue-mq';
+import VModal from 'vue-js-modal';
+import Button from './Button.vue';
 
 Vue.use(VModal);
 
@@ -68,21 +91,21 @@ Vue.use(VueMq, {
     // default breakpoints - customize this
     sm: 900,
     md: 1250,
-    lg: Infinity
+    lg: Infinity,
   },
-  defaultBreakpoint: "sm" // customize this for SSR
+  defaultBreakpoint: 'sm', // customize this for SSR
 });
 
 @Component({
   components: {
-    Button
-  }
+    Button,
+  },
 })
-export default class NewFeatureOverlay extends Vue {
-  @Prop({ default: "100%" })
+export default defineComponent({
+  @Prop({ default: '100%' })
   width!: string | number;
 
-  @Prop({ default: "auto" })
+  @Prop({ default: 'auto' })
   height!: string | number;
 
   @Prop()
@@ -97,22 +120,22 @@ export default class NewFeatureOverlay extends Vue {
   @Prop()
   buttonTitle!: string;
 
-  @Prop({ default: "/" })
+  @Prop({ default: '/' })
   buttonRoute!: string;
 
-  @Prop({ default: "router-link" })
-  buttonTag!: String;
+  @Prop({ default: 'router-link' })
+  buttonTag!: string;
 
   @Prop()
-  buttonHref!: String;
+  buttonHref!: string;
 
   @Prop()
-  buttonTarget!: String;
+  buttonTarget!: string;
 
-  @Prop({ default: "/" })
+  @Prop({ default: '/' })
   dismissRoute!: string;
 
-  @Prop({ default: "Go to Dashboard" })
+  @Prop({ default: 'Go to Dashboard' })
   dismissText!: string;
 
   @Prop()
@@ -124,7 +147,7 @@ export default class NewFeatureOverlay extends Vue {
   @Prop({ default: false })
   videoControls!: boolean;
 
-  isImage: boolean = true;
+  isImage = true;
 
   get overlayImage() {
     return this.media;
@@ -133,15 +156,15 @@ export default class NewFeatureOverlay extends Vue {
   $mq!: string | string[];
 
   get containerMq() {
-    return this.$mq === "sm" ? "s-overlay__container--mq" : "";
+    return this.$mq === 'sm' ? 's-overlay__container--mq' : '';
   }
 
   get overlay__imageBlockMq() {
-    return this.$mq === "sm" ? "s-overlay__image-block--mq" : "";
+    return this.$mq === 'sm' ? 's-overlay__image-block--mq' : '';
   }
 
   mounted() {
-    if (this.media.includes("mp4") || this.media.includes("webm")) {
+    if (this.media.includes('mp4') || this.media.includes('webm')) {
       this.isImage = false;
     } else {
       this.isImage = true;
@@ -149,18 +172,18 @@ export default class NewFeatureOverlay extends Vue {
   }
 
   opened(event) {
-    typeof this.onOpen === "function" && this.onOpen();
+    typeof this.onOpen === 'function' && this.onOpen();
   }
 
   onPrimaryAction() {
-    typeof this.onAction === "function" && this.onAction();
+    typeof this.onAction === 'function' && this.onAction();
     this.onDismiss();
   }
 
   onDismiss() {
-    this.$modal.hide("new-feature");
+    this.$modal.hide('new-feature');
   }
-}
+})
 </script>
 
 <style lang="less" scoped>

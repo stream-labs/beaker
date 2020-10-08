@@ -1,43 +1,67 @@
 <template>
   <div class="s-empty-section">
-    <i class="icon-search" v-if="this.variation === 'search'"></i>
-    <i class="icon-empty" v-if="this.variation === 'text'"></i>
-    <i class="icon-lock" v-if="this.variation === 'prime'"></i>
-    <i class="icon-error" v-if="this.variation === 'warning'"></i>
+    <i
+      class="icon-search"
+      v-if="this.variation === 'search'"
+    />
+    <i
+      class="icon-empty"
+      v-if="this.variation === 'text'"
+    />
+    <i
+      class="icon-lock"
+      v-if="this.variation === 'prime'"
+    />
+    <i
+      class="icon-error"
+      v-if="this.variation === 'warning'"
+    />
 
-    <div v-if="titleSlot" class="s-empty-section__title">
-      <slot name="title"></slot>
+    <div
+      v-if="titleSlot"
+      class="s-empty-section__title"
+    >
+      <slot name="title" />
     </div>
-    <div v-else class="s-empty-section__title">{{ title }}</div>
-    <div class="s-empty-section__subtitle">{{ subtitle }}</div>
-    <slot></slot>
+    <div
+      v-else
+      class="s-empty-section__title"
+    >
+      {{ title }}
+    </div>
+    <div class="s-empty-section__subtitle">
+      {{ subtitle }}
+    </div>
+    <slot />
 
     <div v-if="hasLink">
-      <slot name="link"></slot>
+      <slot name="link" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
 
 @Component({})
-export default class Spinner extends Vue {
-  @Prop({ default: "text" })
-  variation!: String;
+export default defineComponent({
+  @Prop({ default: 'text' })
+  variation!: string;
 
-  @Prop({ default: "Streamlabs.com" })
-  title!: String;
+  @Prop({ default: 'Streamlabs.com' })
+  title!: string;
 
-  @Prop({ default: "" })
-  subtitle!: String;
-
-  @Prop({ default: false })
-  titleSlot!: Boolean;
+  @Prop({ default: '' })
+  subtitle!: string;
 
   @Prop({ default: false })
-  hasLink!: Boolean;
-}
+  titleSlot!: boolean;
+
+  @Prop({ default: false })
+  hasLink!: boolean;
+})
 </script>
 
 <style lang="less">

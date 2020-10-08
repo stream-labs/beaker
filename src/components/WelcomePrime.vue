@@ -2,11 +2,16 @@
   <div class="s-modal-welcome-prime">
     <div class="modal-prime">
       <div v-if="!isUserAgentEdge">
-        <video loop muted autoplay class="modal-prime__video">
+        <video
+          loop
+          muted
+          autoplay
+          class="modal-prime__video"
+        >
           <source
             src="https://cdn.streamlabs.com/videos/Welcome_Confetti_Gold_1.webm"
             type="video/webm"
-          />
+          >
         </video>
       </div>
       <div class="modal-prime__heading">
@@ -14,18 +19,23 @@
         <span>Prime</span>
         !
       </div>
-      <p class="modal-prime__desc">You just unlocked a TON of benefits</p>
-      <div class="modal-prime__images"></div>
+      <p class="modal-prime__desc">
+        You just unlocked a TON of benefits
+      </p>
+      <div class="modal-prime__images" />
       <div class="modal-prime__features">
         <p>Just a few of your exclusive features and services:</p>
         <ul>
-          <li v-for="(feature, index) in primeFeatureListDefault" :key="index">
+          <li
+            v-for="(feature, index) in primeFeatureListDefault"
+            :key="index"
+          >
             {{ feature }}
           </li>
         </ul>
       </div>
       <div class="modal-prime__button">
-        <slot v-if="hasSlot"></slot>
+        <slot v-if="hasSlot" />
         <s-button
           v-else
           size="large"
@@ -33,49 +43,57 @@
           icon="prime"
           :title="primeButtonText"
           @click="onPrimeButtonHandler"
-        ></s-button>
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Button from "./../components/Button.vue";
+import {
+  defineComponent, onMounted, computed, ref,
+} from 'vue';
+import Button from './Button.vue';
 
-@Component({
+export default defineComponent({
   components: {
-    "s-button": Button
-  }
-})
-export default class WelcomePrime extends Vue {
-  @Prop({ default: "Continue" })
-  primeButtonText!: string;
+    's-button': Button,
+  },
 
-  primeFeatureListDefault: string[] = [
-    "100s of Stunning Themes",
-    "Every App is FREE",
-    "Merch Store with Wholesale Pricing",
-    "Custom Web Domain and Email Address",
-    "Automatic Gold All-Star Status"
-  ];
+  props: {
+    primeButtonText: {
+      type: String,
+      default: 'Continue',
+    },
+  },
 
-  isUserAgentEdge: boolean = false;
+  setup(props, { slots, emit }) {
+    const primeFeatureListDefault = ref([
+      '100s of Stunning Themes',
+      'Every App is FREE',
+      'Merch Store with Wholesale Pricing',
+      'Custom Web Domain and Email Address',
+      'Automatic Gold All-Star Status',
+    ]);
+    const isUserAgentEdge = ref(false);
+    const hasSlot = computed(() => !(typeof slots.default === 'undefined'));
 
-  onPrimeButtonHandler() {
-    this.$emit("onClickPrime");
-  }
+    onMounted(() => {
+      isUserAgentEdge.value = navigator.userAgent.indexOf('Edge') !== -1;
+    });
 
-  mounted() {
-    navigator.userAgent.indexOf("Edge") !== -1
-      ? (this.isUserAgentEdge = true)
-      : (this.isUserAgentEdge = false);
-  }
+    function onPrimeButtonHandler() {
+      emit('onClickPrime');
+    }
 
-  get hasSlot() {
-    return !(typeof this.$slots.default === "undefined");
-  }
-}
+    return {
+      isUserAgentEdge,
+      hasSlot,
+      primeFeatureListDefault,
+      onPrimeButtonHandler,
+    };
+  },
+});
 </script>
 
 <style lang="less" scoped>

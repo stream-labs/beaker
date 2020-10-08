@@ -1,9 +1,9 @@
-const demos = require.context("../demos", true, /\.vue$/);
+const demos = require.context('../demos', true, /\.vue$/);
 
-export default demos.keys().map(key => {
+export default demos.keys().map((key) => {
   const componentName = key.slice(2, -4);
-  const label = componentName.split(/(?=[A-Z])/).join(" ");
-  const name = label.replace(/ /g, "-").toLowerCase();
+  const label = componentName.split(/(?=[A-Z])/).join(' ');
+  const name = label.replace(/ /g, '-').toLowerCase();
   const context = demos(key);
 
   return {
@@ -12,6 +12,6 @@ export default demos.keys().map(key => {
     component: context.default,
     name,
     componentName,
-    label
+    label,
   };
 });

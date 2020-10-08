@@ -4,14 +4,14 @@
       <ModalBasic
         :name="modalName"
         :title="title"
-        :subTitle="subTitle"
+        :sub-title="subTitle"
         :text="text"
         :width="width"
-        :minWidth="minWidth"
-        :hideActionButtons="hideActionButtons"
+        :min-width="minWidth"
+        :hide-action-buttons="hideActionButtons"
         v-on="$listeners"
       >
-        <slot></slot>
+        <slot />
       </ModalBasic>
     </div>
 
@@ -19,26 +19,26 @@
       <ModalSubscribe
         :name="modalName"
         :title="title"
-        :subTitle="subTitle"
+        :sub-title="subTitle"
         :text="text"
-        :subscribeText="subscribeText"
-        :subscribeMessage="subscribeMessage"
+        :subscribe-text="subscribeText"
+        :subscribe-message="subscribeMessage"
         :notes="notes"
         :width="width"
-        :minWidth="minWidth"
+        :min-width="minWidth"
         :scrollable="scrollable"
-        :proBadge="proBadge"
-        :customPreview="customPreview"
-        :buttonTitle="buttonTitle"
-        :buttonPrice="buttonPrice"
-        :buttonVariation="buttonVariation"
-        :cancelTitle="cancelTitle"
+        :pro-badge="proBadge"
+        :custom-preview="customPreview"
+        :button-title="buttonTitle"
+        :button-price="buttonPrice"
+        :button-variation="buttonVariation"
+        :cancel-title="cancelTitle"
         v-on="$listeners"
       >
         <template #preview>
-          <slot name="preview"></slot>
+          <slot name="preview" />
         </template>
-        <slot></slot>
+        <slot />
       </ModalSubscribe>
     </div>
 
@@ -48,34 +48,34 @@
         :title="title"
         :text="text"
         :width="width"
-        :minWidth="minWidth"
+        :min-width="minWidth"
         v-on="$listeners"
-      ></ModalRedirect>
+      />
     </div>
 
     <div v-if="type === 'confirmation'">
       <ModalConfirmation
         :name="modalName"
-        :subTitle="subTitle"
+        :sub-title="subTitle"
         :text="text"
         :width="width"
-        :minWidth="minWidth"
-        :confirmButtonText="confirmButtonText"
-        :buttonVariation="buttonVariation"
+        :min-width="minWidth"
+        :confirm-button-text="confirmButtonText"
+        :button-variation="buttonVariation"
         v-on="$listeners"
-      ></ModalConfirmation>
+      />
     </div>
 
     <div v-if="type === 'welcome-prime'">
       <ModalPrime
         :name="modalName"
         :width="width"
-        :minWidth="minWidth"
-        :primeButtonText="primeButtonText"
-        :hasPrimeCloseButton="hasPrimeCloseButton"
+        :min-width="minWidth"
+        :prime-button-text="primeButtonText"
+        :has-prime-close-button="hasPrimeCloseButton"
         v-on="$listeners"
       >
-        <slot></slot>
+        <slot />
       </ModalPrime>
     </div>
 
@@ -83,27 +83,29 @@
       <ModalPrimeIntro
         :name="modalName"
         :width="680"
-        :minWidth="minWidth"
-        :primeButtonText="primeButtonText"
-        :hasPrimeCloseButton="hasPrimeCloseButton"
+        :min-width="minWidth"
+        :prime-button-text="primeButtonText"
+        :has-prime-close-button="hasPrimeCloseButton"
         v-on="$listeners"
       >
-        <slot></slot>
+        <slot />
       </ModalPrimeIntro>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Button from "./../components/Button.vue";
-import ModalBasic from "./../components/ModalBasic.vue";
-import ModalSubscribe from "./../components/ModalSubscribe.vue";
-import ModalRedirect from "./../components/ModalRedirect.vue";
-import ModalConfirmation from "./../components/ModalConfirmation.vue";
-import ModalPrime from "./../components/ModalPrime.vue";
-import ModalPrimeIntro from "./../components/ModalPrimeIntro.vue";
-import VModal from "vue-js-modal";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import VModal from 'vue-js-modal';
+import Button from './Button.vue';
+import ModalBasic from './ModalBasic.vue';
+import ModalSubscribe from './ModalSubscribe.vue';
+import ModalRedirect from './ModalRedirect.vue';
+import ModalConfirmation from './ModalConfirmation.vue';
+import ModalPrime from './ModalPrime.vue';
+import ModalPrimeIntro from './ModalPrimeIntro.vue';
 
 Vue.use(VModal);
 
@@ -115,10 +117,10 @@ Vue.use(VModal);
     ModalRedirect,
     ModalConfirmation,
     ModalPrime,
-    ModalPrimeIntro
-  }
+    ModalPrimeIntro,
+  },
 })
-export default class ModalComp extends Vue {
+export default defineComponent({
   @Prop()
   name!: string;
 
@@ -182,7 +184,7 @@ export default class ModalComp extends Vue {
   @Prop()
   hideActionButtons!: string;
 
-  modalName: string = "";
+  modalName = '';
 
   mounted() {
     this.selectName();
@@ -190,54 +192,54 @@ export default class ModalComp extends Vue {
 
   selectName() {
     switch (this.type) {
-      case "basic":
+      case 'basic':
         if (this.name) {
           this.modalName = this.name;
         } else {
-          this.modalName = "modal-basic";
+          this.modalName = 'modal-basic';
         }
         break;
 
-      case "subscribe":
+      case 'subscribe':
         if (this.name) {
           this.modalName = this.name;
         } else {
-          this.modalName = "modal-subscribe";
+          this.modalName = 'modal-subscribe';
         }
         break;
 
-      case "redirect":
+      case 'redirect':
         if (this.name) {
           this.modalName = this.name;
         } else {
-          this.modalName = "modal-redirect";
+          this.modalName = 'modal-redirect';
         }
         break;
 
-      case "confirmation":
+      case 'confirmation':
         if (this.name) {
           this.modalName = this.name;
         } else {
-          this.modalName = "modal-confirmation";
+          this.modalName = 'modal-confirmation';
         }
         break;
 
-      case "welcome-prime":
+      case 'welcome-prime':
         if (this.name) {
           this.modalName = this.name;
         } else {
-          this.modalName = "modal-welcome-prime";
+          this.modalName = 'modal-welcome-prime';
         }
         break;
 
-      case "prime-intro":
+      case 'prime-intro':
         if (this.name) {
           this.modalName = this.name;
         } else {
-          this.modalName = "modal-prime-intro";
+          this.modalName = 'modal-prime-intro';
         }
         break;
     }
   }
-}
+})
 </script>

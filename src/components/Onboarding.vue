@@ -1,13 +1,23 @@
 <template>
   <div class="s-onboarding">
-    <div class="s-onboarding-main" :class="location">
+    <div
+      class="s-onboarding-main"
+      :class="location"
+    >
       <div
         class="s-onboarding-progress s-onboarding__top s-step__cont"
         v-if="namedSteps"
       >
-        <div v-for="(step, idx) in steps" :key="idx" class="s-step-name__cont">
-          <div class="s-name-caret" v-if="idx > 0">
-            <i class="icon-back"></i>
+        <div
+          v-for="(step, idx) in steps"
+          :key="idx"
+          class="s-step-name__cont"
+        >
+          <div
+            class="s-name-caret"
+            v-if="idx > 0"
+          >
+            <i class="icon-back" />
           </div>
           <div
             class="s-name-step"
@@ -17,19 +27,26 @@
           </div>
         </div>
       </div>
-      <div class="s-onboarding-progress" :class="location" v-else>
-        <div class="s-onboarding-progress__line" :class="location"></div>
+      <div
+        class="s-onboarding-progress"
+        :class="location"
+        v-else
+      >
+        <div
+          class="s-onboarding-progress__line"
+          :class="location"
+        />
         <div
           v-for="(key, index) in steps"
           :key="index"
           class="s-bullet"
           :class="{ 'current-step': currentStepStyle(index) }"
         >
-          <i :class="{ 'icon-check-mark': checkmarkStyle(index) }"></i>
+          <i :class="{ 'icon-check-mark': checkmarkStyle(index) }" />
         </div>
       </div>
       <div class="s-onboarding-body">
-        <slot :name="currentStep"></slot>
+        <slot :name="currentStep" />
       </div>
     </div>
     <div
@@ -37,10 +54,18 @@
       v-if="!hideButton || !hideSkip || !hideBack"
     >
       <div class="s-previousStep">
-        <p v-show="currentStep !== 1 && !hideBack" @click="prevHandler">Back</p>
+        <p
+          v-show="currentStep !== 1 && !hideBack"
+          @click="prevHandler"
+        >
+          Back
+        </p>
       </div>
       <div class="s-nextStep">
-        <p v-if="skippable && !hideSkip" @click="skipHandler">
+        <p
+          v-if="skippable && !hideSkip"
+          @click="skipHandler"
+        >
           Skip
         </p>
 
@@ -62,48 +87,63 @@
               ? 'disabled'
               : null
           "
-        ></Button>
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-import OnboardingStep from "./../components/OnboardingStep.vue";
-import Button from "./../components/Button.vue";
+import {
+  Component, Prop, Vue, Watch,
+} from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import OnboardingStep from './OnboardingStep.vue';
+import Button from './Button.vue';
 
 @Component({
   components: {
     OnboardingStep,
-    Button
-  }
+    Button,
+  },
 })
-export default class Onboarding extends Vue {
+export default defineComponent({
   @Prop() steps!: { name?: string; complete: boolean }[];
-  @Prop({ default: "left" }) stepLocation!: string;
+
+  @Prop({ default: 'left' }) stepLocation!: string;
+
   @Prop() currentStep!: number;
+
   @Prop() completeHandler!: Function;
+
   @Prop() continueHandler!: Function;
+
   @Prop() skipHandler!: Function;
+
   @Prop() prevHandler!: Function;
+
   @Prop() skippable!: boolean;
+
   @Prop({ default: false }) disableControls!: boolean;
+
   @Prop({ default: false }) hideSkip!: boolean;
+
   @Prop({ default: false }) hideBack!: boolean;
+
   @Prop({ default: false }) hideButton!: boolean;
 
   get location() {
-    if (this.stepLocation === "left") return "s-onboarding__left";
-    if (this.stepLocation === "top") return "s-onboarding__top";
+    if (this.stepLocation === 'left') return 's-onboarding__left';
+    if (this.stepLocation === 'top') return 's-onboarding__top';
   }
 
   get namedSteps() {
-    return this.steps.every(step => !!step.name);
+    return this.steps.every((step) => !!step.name);
   }
 
   get isCompleted() {
-    return this.steps.every(step => step.complete);
+    return this.steps.every((step) => step.complete);
   }
 
   currentStepStyle(index) {
@@ -113,7 +153,7 @@ export default class Onboarding extends Vue {
   checkmarkStyle(index) {
     return this.steps[index].complete;
   }
-}
+})
 </script>
 
 <style lang="less">

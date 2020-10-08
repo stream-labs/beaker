@@ -2,12 +2,15 @@
   <div class="prime-section">
     <empty-section
       :variation="'prime'"
-      :titleSlot="true"
+      :title-slot="true"
       :subtitle="subtitle"
-      :hasLink="true"
+      :has-link="true"
     >
       <div slot="title">
-        <Badge :align-left="true" :variant="'prime-alt'"></Badge>Feature
+        <Badge
+          :align-left="true"
+          :variant="'prime-alt'"
+        />Feature
       </div>
       <div slot="link">
         <Button
@@ -16,26 +19,28 @@
           :variation="'link'"
           :href="href"
           :title="'Try Prime Now'"
-        ></Button>
+        />
       </div>
     </empty-section>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Badge from "./Badge.vue";
-import Button from "./Button.vue";
-import EmptySection from "./EmptySection.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import Badge from './Badge.vue';
+import Button from './Button.vue';
+import EmptySection from './EmptySection.vue';
 
 @Component({
   components: {
     Badge,
     Button,
-    EmptySection
-  }
+    EmptySection,
+  },
 })
-export default class PrimeSection extends Vue {
+export default defineComponent({
   @Prop({})
   subtitle!: string;
 
@@ -46,7 +51,7 @@ export default class PrimeSection extends Vue {
   onClick!: {
     type: Function;
   };
-}
+})
 </script>
 
 <style lang="less">

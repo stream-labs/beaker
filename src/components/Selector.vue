@@ -8,57 +8,66 @@
       v-on="$listeners"
     >
       <template #singleLabel="{ option }">
-        <slot name="singleLabel" :option="option"></slot>
+        <slot
+          name="singleLabel"
+          :option="option"
+        />
       </template>
       <template #option="{ option }">
-        <slot name="option" :option="option"></slot>
+        <slot
+          name="option"
+          :option="option"
+        />
       </template>
     </multiselect>
   </div>
 </template>
 
 <script>
-import { Component, Vue } from "vue-property-decorator";
-import Selector from "vue-multiselect";
-Vue.component("multiselect", Selector);
+import { Component, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import Selector from 'vue-multiselect';
+
+Vue.component('Multiselect', Selector);
 
 export default {
-  name: "Selector",
+  name: 'Selector',
   extends: Selector,
 
   props: {
-    width: String
-  },
-
-  created() {
-    this.$on("input", this.setValue);
-  },
-
-  destroyed() {
-    this.$off("input", this.setValue);
+    width: String,
   },
 
   computed: {
     styleObject() {
       return {
-        width: this.multiple ? "100%" : this.width ? this.width : "176px"
+        width: this.multiple ? '100%' : this.width ? this.width : '176px',
       };
     },
 
     multiselectProps() {
       return this.$props;
-    }
+    },
+  },
+
+  created() {
+    this.$on('input', this.setValue);
+  },
+
+  destroyed() {
+    this.$off('input', this.setValue);
   },
 
   methods: {
     emitInput(val) {
-      this.$emit("input", val);
+      this.$emit('input', val);
     },
 
     setValue(val) {
       this.mutableValue = val;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -386,12 +395,7 @@ export default {
   }
 
   .multiselect__option--highlight {
-    background: linear-gradient(
-        0deg,
-        rgba(9, 22, 29, 0.08),
-        rgba(9, 22, 29, 0.08)
-      ),
-      #e3e8eb;
+    background: linear-gradient(0deg, rgba(9, 22, 29, 0.08), rgba(9, 22, 29, 0.08)), #e3e8eb;
   }
 
   .multiselect__option--highlight:after {

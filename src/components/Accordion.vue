@@ -11,7 +11,11 @@
       @click="openContent"
     >
       <div class="s-accordion__button">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14px"
+          height="14px"
+        >
           <path
             class="s-accordion__svg--back"
             d="M13 14H1a1 1 0 0 1-1-1V1c0-.6.5-1 1-1h12c.6 0 1 .5 1 1v12c0 .6-.4 1-1 1z"
@@ -38,10 +42,18 @@
           </transition>
         </svg>
       </div>
-      <div class="s-accordion--title" v-if="hasTitleSlot">
+      <div
+        class="s-accordion--title"
+        v-if="hasTitleSlot"
+      >
         <slot name="title" />
       </div>
-      <div class="s-accordion--title" v-else>{{ accordionTitle }}</div>
+      <div
+        class="s-accordion--title"
+        v-else
+      >
+        {{ accordionTitle }}
+      </div>
     </div>
     <transition
       name="expand"
@@ -61,112 +73,110 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import { escape } from "lodash-es";
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
-@Component({})
-export default class Accordian extends Vue {
-  @Prop()
-  openedTitle!: string;
+import {
+  defineComponent, defineComponent, ref, computed, onMounted,
+} from 'vue';
 
-  @Prop()
-  closedTitle!: string;
+import { escape } from 'lodash-es';
 
-  @Prop()
-  title!: string;
+export default defineComponent({
+  props: {
+    openedTitle: String,
+    closedTitle: String,
+    title: String,
+    isOpened: Boolean,
+    noBorder: Boolean,
+    leftNav: Boolean,
+  },
 
-  @Prop()
-  isOpened!: boolean;
+  setup(props, { slots, emit }) {
+    const isOpen = ref(false);
 
-  @Prop()
-  noBorder!: boolean;
-
-  @Prop()
-  leftNav!: boolean;
-
-  private isOpen = false;
-  private focused = false;
-  private defaultBorder = false;
-
-  get accordionTitle() {
-    if (this.title !== undefined) {
-      return this.title;
-    } else {
-      if (this.isOpen) {
-        return this.openedTitle;
-      } else {
-        return this.closedTitle;
+    const accordionTitle = computed(() => {
+      if (props.title !== undefined) {
+        return props.title;
       }
-    }
-  }
-
-  get hasTitleSlot() {
-    return !!this.$slots.title;
-  }
-
-  get accordionClasses() {
-    let classes: any = [];
-    if (this.noBorder) {
-      classes.push("no-border");
-    }
-    if (this.leftNav) {
-      classes.push("left-nav");
-    }
-    return classes.join(" ");
-  }
-
-  isKeyFocused(event) {
-    console.log("TCL: Accordian -> isKeyFocused -> event", event);
-  }
-
-  openContent(event: any) {
-    let blockedNodes = ["INPUT", "BUTTON", "LABEL"];
-    if (
-      blockedNodes.indexOf(event.target.nodeName) !== -1 ||
-      blockedNodes.indexOf(event.target.parentNode.parentNode.nodeName) !== -1
-    ) {
-      return;
-    }
-    this.isOpen = !this.isOpen;
-    this.$emit("content-opened", { isOpen: this.isOpen, event });
-  }
-
-  afterOpen(element) {
-    element.style.height = "auto";
-  }
-
-  open(element) {
-    let width = getComputedStyle(element).width;
-    element.style.width = width;
-    element.style.position = `absolute`;
-    element.style.visibility = `hidden`;
-    element.style.height = `auto`;
-    let height = getComputedStyle(element).height;
-    element.style.width = null;
-    element.style.position = null;
-    element.style.visibility = null;
-    element.style.height = 0;
-    getComputedStyle(element).height;
-    setTimeout(() => {
-      element.style.height = height;
+      if (isOpen.value) {
+        return props.openedTitle;
+      }
+      return props.closedTitle;
     });
-  }
 
-  close(element) {
-    let height = getComputedStyle(element).height;
-    element.style.height = height;
-    getComputedStyle(element).height;
-    setTimeout(() => {
+    const hasTitleSlot = computed(() => !!slots.title);
+
+    const accordionClasses = computed(() => {
+      const classes: any = [];
+      if (props.noBorder) {
+        classes.push('no-border');
+      }
+      if (props.leftNav) {
+        classes.push('left-nav');
+      }
+      return classes.join(' ');
+    });
+
+    function openContent(event: any) {
+      const blockedNodes = ['INPUT', 'BUTTON', 'LABEL'];
+      if (
+        blockedNodes.indexOf(event.target.nodeName) !== -1
+        || blockedNodes.indexOf(event.target.parentNode.parentNode.nodeName) !== -1
+      ) {
+        return;
+      }
+      isOpen.value = !isOpen.value;
+      emit('content-opened', { isOpen: isOpen.value, event });
+    }
+
+    function afterOpen(element) {
+      element.style.height = 'auto';
+    }
+
+    function open(element) {
+      const { width } = getComputedStyle(element);
+      element.style.width = width;
+      element.style.position = 'absolute';
+      element.style.visibility = 'hidden';
+      element.style.height = 'auto';
+      const { height } = getComputedStyle(element);
+      element.style.width = null;
+      element.style.position = null;
+      element.style.visibility = null;
       element.style.height = 0;
-    });
-  }
-
-  mounted() {
-    if (this.isOpened) {
-      this.isOpen = true;
+      getComputedStyle(element).height;
+      setTimeout(() => {
+        element.style.height = height;
+      });
     }
-  }
-}
+
+    function close(element) {
+      const { height } = getComputedStyle(element);
+      element.style.height = height;
+      getComputedStyle(element).height;
+      setTimeout(() => {
+        element.style.height = 0;
+      });
+    }
+
+    onMounted(() => {
+      if (props.isOpened) {
+        isOpen.value = true;
+      }
+    });
+
+    return {
+      isOpen,
+      accordionTitle,
+      hasTitleSlot,
+      accordionClasses,
+      openContent,
+      afterOpen,
+      open,
+      close,
+    };
+  },
+});
 </script>
 
 <style lang="less">
@@ -208,9 +218,6 @@ export default class Accordian extends Vue {
     .s-accordion__button {
       .margin-right(1.5);
     }
-  }
-
-  &__container {
   }
 
   &__head {

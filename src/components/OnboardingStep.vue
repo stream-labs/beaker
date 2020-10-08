@@ -1,33 +1,35 @@
 <template>
   <div class="s-onboarding-step">
     <h1>
-      <slot name="title"></slot>
+      <slot name="title" />
     </h1>
     <p>
-      <slot name="desc"></slot>
+      <slot name="desc" />
     </p>
     <div>
-      <slot></slot>
+      <slot />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Button from "./../components/Button.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import Button from './Button.vue';
 
 @Component({
   components: {
-    Button
-  }
+    Button,
+  },
 })
-export default class OnboardingStep extends Vue {
+export default defineComponent({
   @Prop()
   title!: string;
 
   @Prop()
   desc!: string;
-}
+})
 </script>
 
 <style lang="less">

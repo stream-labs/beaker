@@ -2,48 +2,68 @@
   <div class="left-navigation">
     <div class="left-navigation-section">
       <h4>Essentials</h4>
-      <router-link to="installation">Installation</router-link>
-      <router-link to="assets">Assets</router-link>
-      <router-link to="colors">Colors</router-link>
-      <router-link to="icons">Icons</router-link>
-      <router-link to="typography">Typography</router-link>
+      <router-link to="installation">
+        Installation
+      </router-link>
+      <router-link to="assets">
+        Assets
+      </router-link>
+      <router-link to="colors">
+        Colors
+      </router-link>
+      <router-link to="icons">
+        Icons
+      </router-link>
+      <router-link to="typography">
+        Typography
+      </router-link>
     </div>
+
     <div class="left-navigation-section">
       <h4>Components</h4>
-      <template v-for="{ name, label } in componentDemos">
-        <router-link :to="name" :key="name">{{ label }}</router-link>
+      <template v-for="{ name, label } in componentDemos" :key="name">
+        <router-link :to="name">
+          {{ label }}
+        </router-link>
       </template>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import demos from "../demos";
+import { defineComponent } from 'vue';
+import demos from '.';
 
-const excludeFromComponentDemos = [
-  "assets",
-  "colors",
-  "installation",
-  "left-navigation",
-  "navigations",
-  "icons",
-  "typography"
-];
+export default defineComponent({
+  props: {
+    activeSection: { type: String },
+  },
 
-@Component({})
-export default class LeftNavigation extends Vue {
-  componentDemos = demos.filter(
-    ({ name }) => !excludeFromComponentDemos.includes(name)
-  );
+  setup(props, { emit }) {
+    const excludeFromComponentDemos = [
+      'assets',
+      'colors',
+      'installation',
+      'left-navigation',
+      'navigations',
+      'icons',
+      'typography',
+    ];
 
-  @Prop()
-  activeSection!: string;
+    const componentDemos = demos.filter(
+      ({ name }) => !excludeFromComponentDemos.includes(name),
+    );
 
-  changeSection(activeSection: string) {
-    this.$emit("update-section", activeSection);
-  }
-}
+    function changeSection(activeSection: string) {
+      emit('update-section', activeSection);
+    }
+
+    return {
+      componentDemos,
+      changeSection,
+    };
+  },
+});
 </script>
 
 <style lang="less" scoped>

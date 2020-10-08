@@ -1,10 +1,21 @@
 <template>
-  <div ref="wrap" class="s-slider" @click="wrapClick">
-    <div ref="elem" class="s-slider-bar">
+  <div
+    ref="wrap"
+    class="s-slider"
+    @click="wrapClick"
+  >
+    <div
+      ref="elem"
+      class="s-slider-bar"
+    >
       <template>
-        <div ref="handle" class="s-slider-dot-cont" @mousedown="moveStart">
+        <div
+          ref="handle"
+          class="s-slider-dot-cont"
+          @mousedown="moveStart"
+        >
           <div class="s-slider-dot">
-            <div class="s-slider-dot-handle"></div>
+            <div class="s-slider-dot-handle" />
           </div>
           <div class="s-slider-dot-tooltip">
             {{ prefix }}{{ displayValue }}{{ suffix }}
@@ -15,9 +26,12 @@
         ref="process"
         class="s-slider-process"
         :class="{ 's-slider-simple': simpleTheme }"
-      ></div>
+      />
     </div>
-    <div class="s-slider-mark-cont" v-if="marks">
+    <div
+      class="s-slider-mark-cont"
+      v-if="marks"
+    >
       <transition-group
         name="s-slider--ani__ticks"
         v-for="(tick, index) in range"
@@ -29,7 +43,7 @@
           class="s-slider-tick"
           v-if="marks && value != range[index]"
           key="tick_lines"
-        ></div>
+        />
         <div
           v-if="labels && value != range[index]"
           class="s-slider-label"
@@ -43,10 +57,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from "vue-property-decorator";
+import {
+  Component, Prop, Watch, Vue,
+} from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
 
 @Component({})
-export default class SliderTwo extends Vue {
+export default defineComponent({
   $refs!: {
     elem: HTMLDivElement;
     process: HTMLDivElement;
@@ -54,16 +72,25 @@ export default class SliderTwo extends Vue {
     wrap: HTMLDivElement;
   };
 
-  private isDragging: boolean = false;
-  private size: number = 0;
+  private isDragging = false;
+
+  private size = 0;
+
   private currentValue: any = 0;
-  private lazy: boolean = false;
+
+  private lazy = false;
+
   private offset: any = null;
+
   private range: any[] = [];
-  private currentWidth: number = 0;
-  private currentHeight: number = 0;
-  private bounced: boolean = false;
-  private halt: boolean = false;
+
+  private currentWidth = 0;
+
+  private currentHeight = 0;
+
+  private bounced = false;
+
+  private halt = false;
 
   @Prop({ default: 1 })
   interval!: number;
@@ -86,8 +113,8 @@ export default class SliderTwo extends Vue {
   @Prop({ default: 100 })
   max!: number;
 
-  @Prop({ default: "always" })
-  tooltip!: "always" | false;
+  @Prop({ default: 'always' })
+  tooltip!: 'always' | false;
 
   @Prop({ default: null })
   suffix!: string;
@@ -115,13 +142,13 @@ export default class SliderTwo extends Vue {
       return this.data
         ? this.data.indexOf(this.data[this.currentValue])
         : this.currentValue;
-    } else {
-      return this.data ? this.data[this.currentValue] : this.currentValue;
     }
+    return this.data ? this.data[this.currentValue] : this.currentValue;
   }
+
   set val(newVal) {
     if (this.data) {
-      let index = this.data.indexOf(newVal);
+      const index = this.data.indexOf(newVal);
       if (index > -1) {
         this.currentValue = index;
       }
@@ -135,9 +162,8 @@ export default class SliderTwo extends Vue {
       return this.dataIndexing
         ? this.data[this.currentIndex]
         : this.currentValue;
-    } else {
-      return this.currentValue;
     }
+    return this.currentValue;
   }
 
   get currentIndex() {
@@ -161,20 +187,20 @@ export default class SliderTwo extends Vue {
   }
 
   get multiple() {
-    let decimals = `${this.interval}`.split(".")[1];
+    const decimals = `${this.interval}`.split('.')[1];
     return decimals ? Math.pow(10, decimals.length) : 1;
   }
 
   get total() {
     if (this.data) {
       return this.data.length - 1;
-    } else if (
-      Math.floor((this.maximum - this.minimum) * this.multiple) %
-        (this.interval * this.multiple) !==
-      0
+    } if (
+      Math.floor((this.maximum - this.minimum) * this.multiple)
+        % (this.interval * this.multiple)
+      !== 0
     ) {
       console.error(
-        "[ERROR]: Prop[interval] must be a divisor of [max] - [min]"
+        '[ERROR]: Prop[interval] must be a divisor of [max] - [min]',
       );
     }
     return (this.maximum - this.minimum) / this.interval;
@@ -196,13 +222,13 @@ export default class SliderTwo extends Vue {
     return [this.minimum, this.maximum];
   }
 
-  @Watch("value")
+  @Watch('value')
   watchValue(newVal) {
     this.setValue(newVal);
   }
 
   debounce() {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       if (!this.bounced) {
         this.bounced = true;
         setTimeout(() => {
@@ -215,9 +241,9 @@ export default class SliderTwo extends Vue {
 
   dnr() {
     this.debounce().then(() => {
-      let size = this.$refs.elem.getBoundingClientRect();
-      let newWidth = size.width;
-      let newHeight = size.height;
+      const size = this.$refs.elem.getBoundingClientRect();
+      const newWidth = size.width;
+      const newHeight = size.height;
       if (newWidth != this.currentWidth || newHeight != this.currentHeight) {
         this.currentWidth = newWidth;
         this.currentHeight = newHeight;
@@ -227,78 +253,78 @@ export default class SliderTwo extends Vue {
   }
 
   resizeSensor(el: HTMLDivElement) {
-    let expand = document.createElement("div");
-    expand.classList.add("s-slider-expand-watch");
-    expand.style.position = "absolute";
-    expand.style.left = "0px";
-    expand.style.top = "0px";
-    expand.style.right = "0px";
-    expand.style.bottom = "0px";
-    expand.style.overflow = "hidden";
-    expand.style.visibility = "hidden";
-    let expandChild = document.createElement("div");
-    expandChild.style.position = "absolute";
-    expandChild.style.left = "0px";
-    expandChild.style.top = "0px";
-    expandChild.style.width = "10000000px";
-    expandChild.style.height = "10000000px";
+    const expand = document.createElement('div');
+    expand.classList.add('s-slider-expand-watch');
+    expand.style.position = 'absolute';
+    expand.style.left = '0px';
+    expand.style.top = '0px';
+    expand.style.right = '0px';
+    expand.style.bottom = '0px';
+    expand.style.overflow = 'hidden';
+    expand.style.visibility = 'hidden';
+    const expandChild = document.createElement('div');
+    expandChild.style.position = 'absolute';
+    expandChild.style.left = '0px';
+    expandChild.style.top = '0px';
+    expandChild.style.width = '10000000px';
+    expandChild.style.height = '10000000px';
     expand.appendChild(expandChild);
-    let shrink = document.createElement("div");
-    shrink.classList.add("s-slider-shrink-watch");
-    shrink.style.position = "absolute";
-    shrink.style.left = "0px";
-    shrink.style.top = "0px";
-    shrink.style.right = "0px";
-    shrink.style.bottom = "0px";
-    shrink.style.overflow = "hidden";
-    shrink.style.visibility = "hidden";
-    let shrinkChild = document.createElement("div");
-    shrinkChild.style.position = "absolute";
-    shrinkChild.style.left = "0px";
-    shrinkChild.style.top = "0px";
-    shrinkChild.style.width = "200%";
-    shrinkChild.style.height = "200%";
+    const shrink = document.createElement('div');
+    shrink.classList.add('s-slider-shrink-watch');
+    shrink.style.position = 'absolute';
+    shrink.style.left = '0px';
+    shrink.style.top = '0px';
+    shrink.style.right = '0px';
+    shrink.style.bottom = '0px';
+    shrink.style.overflow = 'hidden';
+    shrink.style.visibility = 'hidden';
+    const shrinkChild = document.createElement('div');
+    shrinkChild.style.position = 'absolute';
+    shrinkChild.style.left = '0px';
+    shrinkChild.style.top = '0px';
+    shrinkChild.style.width = '200%';
+    shrinkChild.style.height = '200%';
     shrink.appendChild(shrinkChild);
     el.appendChild(expand);
     el.appendChild(shrink);
     this.setSensorScroll(this.$refs.elem);
-    let size = el.getBoundingClientRect();
+    const size = el.getBoundingClientRect();
     this.currentWidth = size.width;
     this.currentHeight = size.height;
   }
 
   setSensorScroll(el) {
-    el.querySelector(".s-slider-expand-watch").scrollLeft = 10000000;
-    el.querySelector(".s-slider-expand-watch").scrollTop = 10000000;
-    el.querySelector(".s-slider-shrink-watch").scrollLeft = 10000000;
-    el.querySelector(".s-slider-shrink-watch").scrollTop = 10000000;
+    el.querySelector('.s-slider-expand-watch').scrollLeft = 10000000;
+    el.querySelector('.s-slider-expand-watch').scrollTop = 10000000;
+    el.querySelector('.s-slider-shrink-watch').scrollLeft = 10000000;
+    el.querySelector('.s-slider-shrink-watch').scrollTop = 10000000;
   }
 
   bindEvents(el: any) {
-    document.addEventListener("mousemove", this.moving);
-    document.addEventListener("mouseup", this.moveEnd);
-    document.addEventListener("mouseleave", this.moveEnd);
-    el.querySelector(".s-slider-shrink-watch").addEventListener(
-      "scroll",
-      this.dnr
+    document.addEventListener('mousemove', this.moving);
+    document.addEventListener('mouseup', this.moveEnd);
+    document.addEventListener('mouseleave', this.moveEnd);
+    el.querySelector('.s-slider-shrink-watch').addEventListener(
+      'scroll',
+      this.dnr,
     );
-    el.querySelector(".s-slider-expand-watch").addEventListener(
-      "scroll",
-      this.dnr
+    el.querySelector('.s-slider-expand-watch').addEventListener(
+      'scroll',
+      this.dnr,
     );
   }
 
   unbindEvents(el: any) {
-    document.removeEventListener("mousemove", this.moving);
-    document.removeEventListener("mouseup", this.moveEnd);
-    document.removeEventListener("mouseleave", this.moveEnd);
-    el.querySelector(".s-slider-shrink-watch").removeEventListener(
-      "scroll",
-      this.dnr
+    document.removeEventListener('mousemove', this.moving);
+    document.removeEventListener('mouseup', this.moveEnd);
+    document.removeEventListener('mouseleave', this.moveEnd);
+    el.querySelector('.s-slider-shrink-watch').removeEventListener(
+      'scroll',
+      this.dnr,
     );
-    el.querySelector(".s-slider-expand-watch").removeEventListener(
-      "scroll",
-      this.dnr
+    el.querySelector('.s-slider-expand-watch').removeEventListener(
+      'scroll',
+      this.dnr,
     );
   }
 
@@ -308,7 +334,7 @@ export default class SliderTwo extends Vue {
 
   wrapClick(e) {
     if (this.isDisabled) return false;
-    let pos = this.getPos(e);
+    const pos = this.getPos(e);
     this.setValueOnPos(pos, false);
     if (!this.isDragging) this.setTransform(this.position);
   }
@@ -316,7 +342,7 @@ export default class SliderTwo extends Vue {
   moveStart() {
     if (!this.draggable) return false;
     this.isDragging = true;
-    this.$emit("dragStart", this);
+    this.$emit('dragStart', this);
   }
 
   moving(e) {
@@ -328,7 +354,7 @@ export default class SliderTwo extends Vue {
 
   moveEnd(e) {
     if (this.isDragging && this.draggable) {
-      this.$emit("dragEnd", this);
+      this.$emit('dragEnd', this);
       this.setValue(this.limitValue(this.value));
       this.setTransitionTime(0.125);
       this.setTransform(this.position);
@@ -342,23 +368,22 @@ export default class SliderTwo extends Vue {
   }
 
   setValueOnPos(pos, isDrag) {
-    let range = this.limit;
-    let valueRange = this.valueLimit;
+    const range = this.limit;
+    const valueRange = this.valueLimit;
     if (pos >= range[0] && pos <= range[1]) {
       this.halt = false;
-      let v =
-        (Math.round(pos / this.gap) * (this.spacing * this.multiple) +
-          this.minimum * this.multiple) /
-        this.multiple;
+      const v = (Math.round(pos / this.gap) * (this.spacing * this.multiple)
+          + this.minimum * this.multiple)
+        / this.multiple;
       this.setCurrentValue(v, isDrag);
     } else if (pos < range[0]) {
       this.halt = true;
-      console.log("overshoot1");
+      console.log('overshoot1');
       this.setTransform(range[0]);
       this.setCurrentValue(valueRange[0], true);
     } else {
       this.halt = true;
-      console.log("overshoot2");
+      console.log('overshoot2');
       this.setTransform(range[1]);
       this.setCurrentValue(valueRange[1], true);
     }
@@ -366,23 +391,23 @@ export default class SliderTwo extends Vue {
 
   createMarks() {
     if (this.data !== []) {
-      let ticks = this.data.length;
+      const ticks = this.data.length;
       for (let i = 0; i < ticks; i++) {
         this.range.push(this.data[i]);
       }
     } else if (
-      Math.floor((this.maximum - this.minimum) * this.multiple) %
-        (this.interval * this.multiple) !==
-      0
+      Math.floor((this.maximum - this.minimum) * this.multiple)
+        % (this.interval * this.multiple)
+      !== 0
     ) {
       console.error(
-        "[ERROR]: Prop[interval] must be a divisor of [max] - [min]"
+        '[ERROR]: Prop[interval] must be a divisor of [max] - [min]',
       );
     } else {
-      let ticks = (this.max - this.min) / this.interval;
+      const ticks = (this.max - this.min) / this.interval;
       let t = 0 - this.interval;
       for (let i = -1; i < ticks; i++) {
-        t = t + this.interval;
+        t += this.interval;
         this.range.push(t);
       }
     }
@@ -393,7 +418,7 @@ export default class SliderTwo extends Vue {
       Object.prototype.toString.call(a) !== Object.prototype.toString.call(b)
     ) {
       return true;
-    } else if (Array.isArray(a) && a.length === b.length) {
+    } if (Array.isArray(a) && a.length === b.length) {
       return a.some((v, i) => v !== b[i]);
     }
     return a !== b;
@@ -416,16 +441,16 @@ export default class SliderTwo extends Vue {
 
   setValue(val) {
     if (this.isDiff(this.val, val)) {
-      let resetVal = this.limitValue(val);
+      const resetVal = this.limitValue(val);
       this.val = resetVal;
       this.syncValue();
-      //this.refresh(this.$refs.elem);
+      // this.refresh(this.$refs.elem);
     }
   }
 
   setTransform(val) {
-    let value = val - (this.$refs.handle.scrollWidth - 2) / 2;
-    let translateValue = `translateX(${value}px)`;
+    const value = val - (this.$refs.handle.scrollWidth - 2) / 2;
+    const translateValue = `translateX(${value}px)`;
     this.$refs.handle.style.transform = translateValue;
     this.$refs.handle.style.webkitTransform = translateValue;
     this.$refs.handle.style.transform = translateValue;
@@ -443,10 +468,10 @@ export default class SliderTwo extends Vue {
     if (this.data) {
       return val;
     }
-    const inRange = v => {
+    const inRange = (v) => {
       if (v < this.min) {
         return this.min;
-      } else if (v > this.max) {
+      } if (v > this.max) {
         return this.max;
       }
       return v;
@@ -455,11 +480,11 @@ export default class SliderTwo extends Vue {
   }
 
   syncValue() {
-    let val = this.val;
+    const { val } = this;
     if (this.range) {
-      this.$emit("callbackRange", this.range[this.currentIndex]);
+      this.$emit('callbackRange', this.range[this.currentIndex]);
     }
-    this.$emit("input", val);
+    this.$emit('input', val);
   }
 
   getValue() {
@@ -488,7 +513,7 @@ export default class SliderTwo extends Vue {
   mounted() {
     if (this.steps !== 0) {
       console.error(
-        "[ERROR]: Prop[steps] has been replaced with Prop[interval]"
+        '[ERROR]: Prop[steps] has been replaced with Prop[interval]',
       );
     }
     this.getStaticData();
@@ -516,7 +541,7 @@ export default class SliderTwo extends Vue {
       this.unbindEvents(this.$refs.elem);
     }
   }
-}
+})
 </script>
 
 <style lang="less" scoped>

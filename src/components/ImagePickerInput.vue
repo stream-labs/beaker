@@ -17,14 +17,16 @@
       :tabindex="value === option.value ? '0' : '-1'"
       ref="imagePickerItem"
     >
-      <img :src="option.image" />
+      <img :src="option.image">
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
-import ResizeObserver from "resize-observer-polyfill";
+import { Vue, Component, Prop } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import ResizeObserver from 'resize-observer-polyfill';
 
 interface IOption {
   value: string;
@@ -33,12 +35,12 @@ interface IOption {
 }
 
 @Component({})
-export default class ImagePickerInput extends Vue {
+export default defineComponent({
   $refs!: {
     imagePickerItem: HTMLDivElement;
   };
 
-  @Prop({ default: "above" })
+  @Prop({ default: 'above' })
   value!: string;
 
   @Prop(String)
@@ -50,28 +52,28 @@ export default class ImagePickerInput extends Vue {
   @Prop({
     default: () => [
       {
-        value: "above",
-        title: "Above",
-        image: "https://cdn.streamlabs.com/layouts/img/above.png"
+        value: 'above',
+        title: 'Above',
+        image: 'https://cdn.streamlabs.com/layouts/img/above.png',
       },
       {
-        value: "banner",
-        title: "Banner",
-        image: "https://cdn.streamlabs.com/layouts/img/banner.png"
+        value: 'banner',
+        title: 'Banner',
+        image: 'https://cdn.streamlabs.com/layouts/img/banner.png',
       },
       {
-        value: "side",
-        title: "Side",
-        image: "https://cdn.streamlabs.com/layouts/img/side.png"
-      }
-    ]
+        value: 'side',
+        title: 'Side',
+        image: 'https://cdn.streamlabs.com/layouts/img/side.png',
+      },
+    ],
   })
   options!: Array<IOption>;
 
-  containerWidth: number = 0;
+  containerWidth = 0;
 
   get selectedItemIndex(): number {
-    return this.options.findIndex(option => option.value === this.value);
+    return this.options.findIndex((option) => option.value === this.value);
   }
 
   get totalRows(): number {
@@ -91,10 +93,10 @@ export default class ImagePickerInput extends Vue {
   }
 
   get itemPosMatrix(): Array<number[]> {
-    let itemMap: Array<number[]> = [];
+    const itemMap: Array<number[]> = [];
     let currentRow = 1;
     let currentColumn = 1;
-    let totalItems = this.options.length;
+    const totalItems = this.options.length;
     let count = 0;
 
     while (count < totalItems) {
@@ -115,12 +117,14 @@ export default class ImagePickerInput extends Vue {
   mounted() {
     this.$nextTick(() => {
       const imagePickerInput = document.querySelector(
-        ".s-image-picker-input"
+        '.s-image-picker-input',
       ) as Element;
 
       const ro = new ResizeObserver((entries, observer) => {
         for (const entry of entries) {
-          const { left, top, width, height } = entry.contentRect;
+          const {
+            left, top, width, height,
+          } = entry.contentRect;
           this.containerWidth = width;
         }
       });
@@ -131,15 +135,15 @@ export default class ImagePickerInput extends Vue {
   }
 
   emitInput(val: string) {
-    this.$emit("input", val);
+    this.$emit('input', val);
   }
 
   setValueByKeyPress(direction) {
-    let currentPosition = [...this.itemPosMatrix[this.selectedItemIndex]];
+    const currentPosition = [...this.itemPosMatrix[this.selectedItemIndex]];
     let posIndex = this.selectedItemIndex;
-    let value = "";
+    const value = '';
 
-    if (direction === "UP") {
+    if (direction === 'UP') {
       if (currentPosition[0] <= 1) {
         currentPosition[0] = 1;
       } else {
@@ -147,7 +151,7 @@ export default class ImagePickerInput extends Vue {
       }
     }
 
-    if (direction === "DOWN") {
+    if (direction === 'DOWN') {
       if (currentPosition[0] >= this.totalRows) {
         currentPosition[0] = this.totalRows;
       } else {
@@ -159,7 +163,7 @@ export default class ImagePickerInput extends Vue {
       }
     }
 
-    if (direction === "LEFT") {
+    if (direction === 'LEFT') {
       if (currentPosition[0] <= 1 && currentPosition[1] <= 1) {
         currentPosition[1] = 1;
       } else if (currentPosition[0] > 1 && currentPosition[1] === 1) {
@@ -170,20 +174,20 @@ export default class ImagePickerInput extends Vue {
       }
     }
 
-    if (direction === "RIGHT") {
+    if (direction === 'RIGHT') {
       if (
-        this.options.length < this.itemsPerRow &&
-        currentPosition[1] >= this.options.length
+        this.options.length < this.itemsPerRow
+        && currentPosition[1] >= this.options.length
       ) {
         currentPosition[1] = this.options.length;
       } else if (
-        currentPosition[1] >= this.itemsInFinalRow &&
-        currentPosition[0] === this.totalRows
+        currentPosition[1] >= this.itemsInFinalRow
+        && currentPosition[0] === this.totalRows
       ) {
         currentPosition[1] = this.itemsInFinalRow;
       } else if (
-        currentPosition[1] === this.itemsPerRow &&
-        currentPosition[0] < this.totalRows
+        currentPosition[1] === this.itemsPerRow
+        && currentPosition[0] < this.totalRows
       ) {
         currentPosition[0]++;
         currentPosition[1] = 1;
@@ -193,13 +197,13 @@ export default class ImagePickerInput extends Vue {
     }
 
     posIndex = this.itemPosMatrix.findIndex(
-      pos => pos[0] === currentPosition[0] && pos[1] === currentPosition[1]
+      (pos) => pos[0] === currentPosition[0] && pos[1] === currentPosition[1],
     );
 
     this.$refs.imagePickerItem[posIndex].focus();
     this.emitInput(this.options[posIndex].value);
   }
-}
+})
 </script>
 
 <style lang="less">

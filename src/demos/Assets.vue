@@ -3,51 +3,90 @@
     <h1>Assets</h1>
     <div class="logo-demos logo-demos--icons">
       <div class="logo-demo">
-        <a href="/img/kevin-standard.svg" download>
-          <img src="./../assets/imgs/kevin-standard.svg" />
+        <a
+          href="/img/kevin-standard.svg"
+          download
+        >
+          <img src="./../assets/imgs/kevin-standard.svg">
         </a>
       </div>
     </div>
     <div class="logo-demos">
       <div class="logo-demo logo-demo--day">
-        <a href="/img/kevin-day.svg" download>
-          <img src="./../assets/imgs/kevin-day.svg" />
+        <a
+          href="/img/kevin-day.svg"
+          download
+        >
+          <img src="./../assets/imgs/kevin-day.svg">
         </a>
 
-        <a href="/img/logo.svg" download>
-          <img src="./../assets/imgs/logo.svg" />
+        <a
+          href="/img/logo.svg"
+          download
+        >
+          <img src="./../assets/imgs/logo.svg">
         </a>
-        <a href="/img/logo-slobs.svg" download>
-          <img src="./../assets/imgs/logo-slobs.svg" />
+        <a
+          href="/img/logo-slobs.svg"
+          download
+        >
+          <img src="./../assets/imgs/logo-slobs.svg">
         </a>
-        <a href="/img/logo-merch.svg" download>
-          <img src="./../assets/imgs/logo-merch.svg" />
+        <a
+          href="/img/logo-merch.svg"
+          download
+        >
+          <img src="./../assets/imgs/logo-merch.svg">
         </a>
-        <a href="/img/logo-platform.svg" download>
-          <img src="./../assets/imgs/logo-platform.svg" />
+        <a
+          href="/img/logo-platform.svg"
+          download
+        >
+          <img src="./../assets/imgs/logo-platform.svg">
         </a>
-        <a href="/img/logo-mobile.svg" download>
-          <img src="./../assets/imgs/logo-mobile.svg" />
+        <a
+          href="/img/logo-mobile.svg"
+          download
+        >
+          <img src="./../assets/imgs/logo-mobile.svg">
         </a>
       </div>
       <div class="logo-demo logo-demo--night">
-        <a href="/img/kevin-night.svg" download>
-          <img src="./../assets/imgs/kevin-night.svg" />
+        <a
+          href="/img/kevin-night.svg"
+          download
+        >
+          <img src="./../assets/imgs/kevin-night.svg">
         </a>
-        <a href="/img/logo-night.svg" download>
-          <img src="./../assets/imgs/logo-night.svg" />
+        <a
+          href="/img/logo-night.svg"
+          download
+        >
+          <img src="./../assets/imgs/logo-night.svg">
         </a>
-        <a href="/img/logo-slobs-night.svg" download>
-          <img src="./../assets/imgs/logo-slobs-night.svg" />
+        <a
+          href="/img/logo-slobs-night.svg"
+          download
+        >
+          <img src="./../assets/imgs/logo-slobs-night.svg">
         </a>
-        <a href="/img/logo-merch-night.svg" download>
-          <img src="./../assets/imgs/logo-merch-night.svg" />
+        <a
+          href="/img/logo-merch-night.svg"
+          download
+        >
+          <img src="./../assets/imgs/logo-merch-night.svg">
         </a>
-        <a href="/img/logo-platform-night.svg" download>
-          <img src="./../assets/imgs/logo-platform-night.svg" />
+        <a
+          href="/img/logo-platform-night.svg"
+          download
+        >
+          <img src="./../assets/imgs/logo-platform-night.svg">
         </a>
-        <a href="/img/logo-mobile-night.svg" download>
-          <img src="./../assets/imgs/logo-mobile-night.svg" />
+        <a
+          href="/img/logo-mobile-night.svg"
+          download
+        >
+          <img src="./../assets/imgs/logo-mobile-night.svg">
         </a>
       </div>
     </div>
@@ -55,10 +94,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { defineComponent } from 'vue';
 
-@Component({})
-export default class Assets extends Vue {}
+export default defineComponent({});
 </script>
 
 <style lang="less" scoped>

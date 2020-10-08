@@ -19,7 +19,10 @@ components: {
     <div class="section">
       <h2>New Feature Overlay</h2>
       <p>Used for new feature overlay.</p>
-      <DemoSection title="New Feature Overlay" :code="demoCode">
+      <DemoSection
+        title="New Feature Overlay"
+        :code="demoCode"
+      >
         <template #components>
           <NewFeatureOverlay
             label="Introducing Merch Stores"
@@ -27,14 +30,14 @@ components: {
             media="
               https://cdn.streamlabs.com/cloudbot/prototype_cloudbot_800x300.webm
             "
-            buttonTitle="Go To Store"
-            :onOpen="trackingCodeComponent"
-            :onAction="trackingCodeButton"
-            buttonTag="a"
-            buttonHref="
+            button-title="Go To Store"
+            :on-open="trackingCodeComponent"
+            :on-action="trackingCodeButton"
+            button-tag="a"
+            button-href="
               https://www.twitch.tv/ext/xab8h6nj36fc2wtn71yikw9hqjd6v4-0.0.1
             "
-            buttonTarget="_blank"
+            button-target="_blank"
           >
             <p>
               We’ve worked with some of the best developers in the industry to
@@ -55,7 +58,7 @@ components: {
           :variation="'default'"
           :title="'New Feature Overlay'"
           @click="$modal.show('new-feature')"
-        ></Button>
+        />
       </div>
     </div>
 
@@ -166,29 +169,37 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import AnnouncementsCode from "!!raw-loader!./Announcements.vue";
-import Button from "./../components/Button.vue";
-import DemoSection from "./../components/DemoSection.vue";
-import NewFeatureOverlay from "./../components/NewFeatureOverlay.vue";
+import { defineComponent } from 'vue';
+import AnnouncementsCode from '!!raw-loader!./Announcements.vue';
+import Button from '../components/Button.vue';
+import DemoSection from '../components/DemoSection.vue';
+import NewFeatureOverlay from '../components/NewFeatureOverlay.vue';
 
-@Component({
+export default defineComponent({
   components: {
     Button,
     DemoSection,
-    NewFeatureOverlay
-  }
-})
-export default class AnnoucementsDemo extends Vue {
-  demoCode = AnnouncementsCode;
-  trackingCodeComponent() {
-    console.log("componentEventTracking");
-    // ga('send','event', 'newfeatureoverlay', 'modal_shown', 'component');
-  }
+    NewFeatureOverlay,
+  },
 
-  trackingCodeButton() {
-    console.log("buttonEventTracking");
-    // ga('send','event', 'newfeatureoverlay', 'modal_click', 'button');
-  }
-}
+  setup() {
+    const demoCode: string = AnnouncementsCode;
+
+    function trackingCodeComponent() {
+      console.log('componentEventTracking');
+      // ga('send','event', 'newfeatureoverlay', 'modal_shown', 'component');
+    }
+
+    function trackingCodeButton() {
+      console.log('buttonEventTracking');
+      // ga('send','event', 'newfeatureoverlay', 'modal_click', 'button');
+    }
+
+    return {
+      demoCode,
+      trackingCodeComponent,
+      trackingCodeButton,
+    };
+  },
+});
 </script>

@@ -2,29 +2,33 @@
   <modal
     :name="name"
     :classes="'s-modal-wrapper'"
-    :maxWidth="width"
-    :minWidth="minWidth"
+    :max-width="width"
+    :min-width="minWidth"
     height="auto"
     :adaptive="true"
     v-on="$listeners"
   >
     <div class="s-modal-container">
       <div class="s-confirmation">
-        <h2 class="s-modal-sub-title">{{ subTitle }}</h2>
-        <p class="s-modal-text">{{ text }}</p>
+        <h2 class="s-modal-sub-title">
+          {{ subTitle }}
+        </h2>
+        <p class="s-modal-text">
+          {{ text }}
+        </p>
         <div class="s-button-container">
           <Button
             :variation="'default'"
             :title="'Cancel'"
             :size="'fixed-width'"
             @click="$modal.hide(name)"
-          ></Button>
+          />
           <Button
             @click="onConfirmHandler"
             :variation="buttonVariation"
             :title="confirmButtonText"
             :size="'fixed-width'"
-          ></Button>
+          />
         </div>
       </div>
     </div>
@@ -32,16 +36,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Button from "./../components/Button.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import Button from './Button.vue';
 
 @Component({
   components: {
-    Button
-  }
+    Button,
+  },
 })
-export default class ModalConfirmation extends Vue {
-  @Prop({ default: "modal-confirmation" })
+export default defineComponent({
+  @Prop({ default: 'modal-confirmation' })
   name!: string;
 
   @Prop({ default: 600 })
@@ -56,17 +62,17 @@ export default class ModalConfirmation extends Vue {
   @Prop()
   text!: string;
 
-  @Prop({ default: "Confirm" })
+  @Prop({ default: 'Confirm' })
   confirmButtonText!: string;
 
-  @Prop({ default: "warning" })
+  @Prop({ default: 'warning' })
   buttonVariation!: string;
 
   onConfirmHandler() {
-    this.$emit("confirm");
+    this.$emit('confirm');
     this.$modal.hide(this.name);
   }
-}
+})
 </script>
 
 <style lang="less" scoped>

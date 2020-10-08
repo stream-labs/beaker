@@ -14,7 +14,10 @@
   }
 })</code></pre>
 
-      <DemoSection title="Badges" :code="demoCode">
+      <DemoSection
+        title="Badges"
+        :code="demoCode"
+      >
         <template #components>
           <Badge variant="prime" />
           <Badge variant="prime-alt" />
@@ -32,7 +35,10 @@
   }
 })</code></pre>
 
-      <DemoSection title="Prime Lock Overlay" :code="demoCode">
+      <DemoSection
+        title="Prime Lock Overlay"
+        :code="demoCode"
+      >
         <template #components>
           <div class="cs-section">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nisi
@@ -64,13 +70,16 @@
   }
 })</code></pre>
 
-      <DemoSection title="Prime Call to Action" :code="demoCode">
+      <DemoSection
+        title="Prime Call to Action"
+        :code="demoCode"
+      >
         <template #components>
           <NavCallToAction
             description="Forward email from your custom domain name to your current mailbox.
             "
-            buttonTitle="Join Prime"
-            buttonVariation="prime"
+            button-title="Join Prime"
+            button-variation="prime"
             @click="testNavClick"
           >
             <div slot="title">
@@ -98,13 +107,16 @@
   }
 })</code></pre>
 
-      <DemoSection title="Welcome Prime Modal" :code="demoCode">
+      <DemoSection
+        title="Welcome Prime Modal"
+        :code="demoCode"
+      >
         <template #components>
           <ModalComp
             type="welcome-prime"
             :width="600"
             @onClickPrime="testWelcomePrime"
-            :hasPrimeCloseButton="true"
+            :has-prime-close-button="true"
           />
 
           <div class="button-container button-container--left">
@@ -128,9 +140,15 @@
   }
 })</code></pre>
 
-      <DemoSection title="Welcome Prime" :code="demoCode">
+      <DemoSection
+        title="Welcome Prime"
+        :code="demoCode"
+      >
         <template #components>
-          <WelcomePrime class="welcome-prime" @onClickPrime="testClick" />
+          <WelcomePrime
+            class="welcome-prime"
+            @onClickPrime="testClick"
+          />
         </template>
       </DemoSection>
     </div>
@@ -145,13 +163,16 @@
   }
 })</code></pre>
 
-      <DemoSection title="Prime Intro Modal" :code="demoCode">
+      <DemoSection
+        title="Prime Intro Modal"
+        :code="demoCode"
+      >
         <template #components>
           <ModalComp
             type="prime-intro"
             :width="680"
             @onClickPrime="testPrimeIntro"
-            :hasPrimeCloseButton="true"
+            :has-prime-close-button="true"
           />
 
           <div class="button-container button-container--left">
@@ -168,18 +189,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { defineComponent } from 'vue';
 
-import Badge from "./../components/Badge.vue";
-import Button from "./../components/Button.vue";
-import DemoSection from "./../components/DemoSection.vue";
-import ModalComp from "./../components/ModalComp.vue";
-import NavCallToAction from "./../components/NavCallToAction.vue";
-import PrimeCode from "!!raw-loader!./Prime.vue";
-import PrimeSection from "./../components/PrimeSection.vue";
-import WelcomePrime from "./../components/WelcomePrime.vue";
+import Badge from '../components/Badge.vue';
+import Button from '../components/Button.vue';
+import DemoSection from '../components/DemoSection.vue';
+import ModalComp from '../components/ModalComp.vue';
+import NavCallToAction from '../components/NavCallToAction.vue';
+import PrimeCode from '!!raw-loader!./Prime.vue';
+import PrimeSection from '../components/PrimeSection.vue';
+import WelcomePrime from '../components/WelcomePrime.vue';
 
-@Component({
+export default defineComponent({
   components: {
     Badge,
     Button,
@@ -187,28 +208,37 @@ import WelcomePrime from "./../components/WelcomePrime.vue";
     ModalComp,
     NavCallToAction,
     PrimeSection,
-    WelcomePrime
-  }
-})
-export default class PrimeComponents extends Vue {
-  demoCode = PrimeCode;
+    WelcomePrime,
+  },
 
-  testClick() {
-    console.log("test prime section click");
-  }
+  setup() {
+    const demoCode: string = PrimeCode;
 
-  testNavClick() {
-    console.log("test prime nav click");
-  }
+    function testClick() {
+      console.log('test prime section click');
+    }
 
-  testWelcomePrime() {
-    console.log("test welcome prime click");
-  }
+    function testNavClick() {
+      console.log('test prime nav click');
+    }
 
-  testPrimeIntro() {
-    console.log("test prime info click");
-  }
-}
+    function testWelcomePrime() {
+      console.log('test welcome prime click');
+    }
+
+    function testPrimeIntro() {
+      console.log('test prime info click');
+    }
+
+    return {
+      demoCode,
+      testClick,
+      testNavClick,
+      testWelcomePrime,
+      testPrimeIntro,
+    };
+  },
+});
 </script>
 
 <style lang="less" scoped>

@@ -1,17 +1,19 @@
 <template>
   <div class="s-item-grid">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
 
 @Component({})
-export default class ItemGrid extends Vue {
+export default defineComponent({
   @Prop()
   items!: Object[];
-}
+})
 </script>
 
 <style lang="less">

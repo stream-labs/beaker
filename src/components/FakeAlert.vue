@@ -1,31 +1,35 @@
 <template>
   <div class="s-fake-alert">
-    <p class="s-fake-alert__text">{{ alertText }}</p>
+    <p class="s-fake-alert__text">
+      {{ alertText }}
+    </p>
     <div class="s-fake-alert__message">
       {{ alertMessage }}
       <span class="s-fake-alert__icon">
-        <img :src="alertImage" />
+        <img :src="alertImage">
       </span>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
 
 @Component({})
-export default class FakeAlert extends Vue {
-  @Prop({ default: "galazy83 donated $50.00" })
+export default defineComponent({
+  @Prop({ default: 'galazy83 donated $50.00' })
   alertText!: string;
 
-  @Prop({ default: "Thanks for the stream. Go CivRyan!" })
+  @Prop({ default: 'Thanks for the stream. Go CivRyan!' })
   alertMessage!: string;
 
   @Prop({
-    default: "https://thumbs.gfycat.com/PleasedIcyCod-size_restricted.gif"
+    default: 'https://thumbs.gfycat.com/PleasedIcyCod-size_restricted.gif',
   })
   alertImage!: string;
-}
+})
 </script>
 
 <style lang="less">

@@ -10,7 +10,10 @@ components: {
 }</code></pre>
 
     <div class="section">
-      <DemoSection title="Default" :code="demoCode">
+      <DemoSection
+        title="Default"
+        :code="demoCode"
+      >
         <template #components>
           <Tabs
             :tabs="tabs"
@@ -18,7 +21,11 @@ components: {
             :update-route="false"
             selected="advanced"
           >
-            <div :slot="tab.value" v-for="tab in tabs" :key="tab.value">
+            <div
+              :slot="tab.value"
+              v-for="tab in tabs"
+              :key="tab.value"
+            >
               {{ tab.name }}
             </div>
           </Tabs>
@@ -27,10 +34,21 @@ components: {
     </div>
 
     <div class="section">
-      <DemoSection title="New Tabs" :code="demoCode">
+      <DemoSection
+        title="New Tabs"
+        :code="demoCode"
+      >
         <template #components>
-          <TabsNew :tabs="tabs" size="small" selected="advanced">
-            <div :slot="tab.value" v-for="tab in tabs" :key="tab.value">
+          <TabsNew
+            :tabs="tabs"
+            size="small"
+            selected="advanced"
+          >
+            <div
+              :slot="tab.value"
+              v-for="tab in tabs"
+              :key="tab.value"
+            >
               {{ tab.name }}
             </div>
           </TabsNew>
@@ -54,11 +72,9 @@ components: {
           <td>null</td>
           <td>
             tabs information to display. you can make array like below
-            <br />
-            <code
-              >tabs = [ { name: "General", value: "general", icon: "information"
-              }, ... ];</code
-            >
+            <br>
+            <code>tabs = [ { name: "General", value: "general", icon: "information"
+              }, ... ];</code>
           </td>
         </tr>
         <tr>
@@ -88,90 +104,96 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { defineComponent } from 'vue';
 
-import DemoSection from "./../components/DemoSection.vue";
-import ScrollNav from "./../components/ScrollNav.vue";
-import Tabs from "./../components/Tabs.vue";
-import TabsNew from "./../components/TabsNew.vue";
-import TabsCode from "!!raw-loader!./Tabs.vue";
+import DemoSection from '../components/DemoSection.vue';
+// import ScrollNav from '../components/ScrollNav.vue';
+import Tabs from '../components/Tabs.vue';
+import TabsNew from '../components/TabsNew.vue';
+import TabsCode from '!!raw-loader!./Tabs.vue';
 
-@Component({
+export default defineComponent({
   components: {
     DemoSection,
-    ScrollNav,
+    // ScrollNav,
     Tabs,
-    TabsNew
-  }
-})
-export default class TabsDemo extends Vue {
-  demoCode = TabsCode;
-  tabs = [
-    {
-      name: "General",
-      value: "general",
-      icon: "information"
-    },
-    {
-      name: "Advanced",
-      value: "advanced",
-      icon: ""
-    },
-    {
-      name: "Account",
-      value: "account",
-      icon: ""
-    },
-    {
-      name: "Integrations",
-      value: "integrations",
-      icon: ""
-    },
-    {
-      name: "Payments",
-      value: "payments",
-      icon: ""
-    },
-    {
-      name: "Donations",
-      value: "donations",
-      icon: ""
-    },
-    {
-      name: "Subscriptions",
-      value: "subscriptions",
-      icon: ""
-    },
-    {
-      name: "Preferences",
-      value: "preferences",
-      icon: ""
-    },
-    {
-      name: "Apps",
-      value: "apps",
-      icon: ""
-    },
-    {
-      name: "Merch",
-      value: "merch",
-      icon: ""
-    },
-    {
-      name: "API",
-      value: "api",
-      icon: ""
-    },
-    {
-      name: "Moderators",
-      value: "moderators",
-      icon: ""
-    },
-    {
-      name: "Themes",
-      value: "themes",
-      icon: ""
-    }
-  ];
-}
+    TabsNew,
+  },
+
+  setup() {
+    const demoCode = TabsCode;
+    const tabs = [
+      {
+        name: 'General',
+        value: 'general',
+        icon: 'information',
+      },
+      {
+        name: 'Advanced',
+        value: 'advanced',
+        icon: '',
+      },
+      {
+        name: 'Account',
+        value: 'account',
+        icon: '',
+      },
+      {
+        name: 'Integrations',
+        value: 'integrations',
+        icon: '',
+      },
+      {
+        name: 'Payments',
+        value: 'payments',
+        icon: '',
+      },
+      {
+        name: 'Donations',
+        value: 'donations',
+        icon: '',
+      },
+      {
+        name: 'Subscriptions',
+        value: 'subscriptions',
+        icon: '',
+      },
+      {
+        name: 'Preferences',
+        value: 'preferences',
+        icon: '',
+      },
+      {
+        name: 'Apps',
+        value: 'apps',
+        icon: '',
+      },
+      {
+        name: 'Merch',
+        value: 'merch',
+        icon: '',
+      },
+      {
+        name: 'API',
+        value: 'api',
+        icon: '',
+      },
+      {
+        name: 'Moderators',
+        value: 'moderators',
+        icon: '',
+      },
+      {
+        name: 'Themes',
+        value: 'themes',
+        icon: '',
+      },
+    ];
+
+    return {
+      demoCode,
+      tabs,
+    };
+  },
+});
 </script>

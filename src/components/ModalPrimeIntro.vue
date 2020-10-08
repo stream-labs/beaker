@@ -3,30 +3,41 @@
     :name="name"
     classes="s-modal-wrapper"
     :width="width"
-    :minWidth="minWidth"
+    :min-width="minWidth"
     height="auto"
     :adaptive="true"
     v-on="$listeners"
     :scrollable="true"
   >
-    <div class="modal-prime__close" v-if="hasPrimeCloseButton">
-      <i class="icon-close" @click="$modal.hide(name)"></i>
+    <div
+      class="modal-prime__close"
+      v-if="hasPrimeCloseButton"
+    >
+      <i
+        class="icon-close"
+        @click="$modal.hide(name)"
+      />
     </div>
-    <PrimeIntro :primeButtonText="primeButtonText" v-on="$listeners">
-      <slot></slot>
+    <PrimeIntro
+      :prime-button-text="primeButtonText"
+      v-on="$listeners"
+    >
+      <slot />
     </PrimeIntro>
   </modal>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import PrimeIntro from "./PrimeIntro.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
+import PrimeIntro from './PrimeIntro.vue';
 
 @Component({
-  components: { PrimeIntro }
+  components: { PrimeIntro },
 })
-export default class ModalPrimeIntro extends Vue {
-  @Prop({ default: "modal-prime-intro" })
+export default defineComponent({
+  @Prop({ default: 'modal-prime-intro' })
   name!: string;
 
   @Prop()
@@ -38,9 +49,9 @@ export default class ModalPrimeIntro extends Vue {
   @Prop({ default: false })
   hasPrimeCloseButton!: boolean;
 
-  @Prop({ default: "Join Prime" })
+  @Prop({ default: 'Join Prime' })
   primeButtonText!: string;
-}
+})
 </script>
 
 <style lang="less" scoped>

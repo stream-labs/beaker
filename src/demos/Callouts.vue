@@ -7,7 +7,7 @@
         users.
       </p>
       <h4>Rules</h4>
-      <ul></ul>
+      <ul />
 
       <pre><code>import { Callout } from 'streamlabs-beaker';
 
@@ -25,7 +25,10 @@ components: {
         another page if needed.
       </p>
 
-      <DemoSection title="Default Callouts" :code="demoCode">
+      <DemoSection
+        title="Default Callouts"
+        :code="demoCode"
+      >
         <template #components>
           <Callout variation="success">
             Success callout. <a href="#0">Link</a>
@@ -53,13 +56,19 @@ components: {
 
       <p>There are 3 strong callout variations: success, warning, and info.</p>
 
-      <DemoSection title="Strong Callouts" :code="demoCode">
+      <DemoSection
+        title="Strong Callouts"
+        :code="demoCode"
+      >
         <template #components>
           <Callout variation="success strong">
             Success callout. <a href="#0">Link</a>
           </Callout>
 
-          <Callout variation="warning strong" icon="warning">
+          <Callout
+            variation="warning strong"
+            icon="warning"
+          >
             Warning callout. <a href="#0">Link</a>
           </Callout>
 
@@ -76,13 +85,16 @@ components: {
         Used on landing page to warn users about use of cookies on our site.
       </p>
 
-      <DemoSection title="Cookies Callouts" :code="demoCode">
+      <DemoSection
+        title="Cookies Callouts"
+        :code="demoCode"
+      >
         <template #components>
           <Callout
             variation="cookies"
             icon="info"
             :closeable="true"
-            :onClose="cookieCalloutClosed"
+            :on-close="cookieCalloutClosed"
           >
             Cookies callout. <a href="#0">Link</a>
           </Callout>
@@ -100,9 +112,15 @@ components: {
           ability to close.
         </p>
 
-        <DemoSection title="Closable Callouts" :code="demoCode">
+        <DemoSection
+          title="Closable Callouts"
+          :code="demoCode"
+        >
           <template #components>
-            <Callout variation="success" :closeable="true">
+            <Callout
+              variation="success"
+              :closeable="true"
+            >
               Success callout. <a href="#0">Link</a>
             </Callout>
           </template>
@@ -118,22 +136,40 @@ components: {
           it inline.
         </p>
 
-        <DemoSection title="Icon Callouts" :code="demoCode">
+        <DemoSection
+          title="Icon Callouts"
+          :code="demoCode"
+        >
           <template #components>
-            <Callout icon="success" variation="success" :closeable="true">
+            <Callout
+              icon="success"
+              variation="success"
+              :closeable="true"
+            >
               Success callout. <a href="#0">Link</a>
             </Callout>
 
-            <Callout icon="warning" variation="warning" :closeable="true">
+            <Callout
+              icon="warning"
+              variation="warning"
+              :closeable="true"
+            >
               Warning callout. <a href="#0">Link</a>
             </Callout>
 
-            <Callout icon="info" variation="info" :closeable="true">
+            <Callout
+              icon="info"
+              variation="info"
+              :closeable="true"
+            >
               Info callout. <a href="#0">Link</a>
             </Callout>
 
-            <Callout variation="info" :closeable="true">
-              <i class="icon-settings"></i> Settings have moved. Visit them
+            <Callout
+              variation="info"
+              :closeable="true"
+            >
+              <i class="icon-settings" /> Settings have moved. Visit them
               <a href="#0">here</a>.
             </Callout>
           </template>
@@ -189,23 +225,30 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import Callout from "./../components/Callout.vue";
-import CalloutsCode from "!!raw-loader!./Callouts.vue";
-import DemoSection from "./../components/DemoSection.vue";
+import { defineComponent } from 'vue';
+import Callout from '../components/Callout.vue';
+import CalloutsCode from '!!raw-loader!./Callouts.vue';
+import DemoSection from '../components/DemoSection.vue';
 
-@Component({
+export default defineComponent({
   components: {
     Callout,
-    DemoSection
-  }
-})
-export default class Callouts extends Vue {
-  demoCode = CalloutsCode;
-  cookieCalloutClosed() {
-    console.log("cookie callout closed");
-  }
-}
+    DemoSection,
+  },
+
+  setup() {
+    const demoCode: string = CalloutsCode;
+
+    function cookieCalloutClosed() {
+      console.log('cookie callout closed');
+    }
+
+    return {
+      demoCode,
+      cookieCalloutClosed,
+    };
+  },
+});
 </script>
 
 <style lang="less" scoped></style>

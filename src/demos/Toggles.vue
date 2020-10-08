@@ -13,7 +13,10 @@ components: {
 
     <div class="section">
       <h2>Icon Toggles</h2>
-      <DemoSection title="Icon Toggles" :code="demoCode">
+      <DemoSection
+        title="Icon Toggles"
+        :code="demoCode"
+      >
         <template #components>
           <Toggle
             :values="{
@@ -28,7 +31,10 @@ components: {
 
     <div class="section">
       <h2>Text Toggles</h2>
-      <DemoSection title="Text Toggles" :code="demoCode">
+      <DemoSection
+        title="Text Toggles"
+        :code="demoCode"
+      >
         <template #components>
           <Toggle
             :values="{
@@ -36,7 +42,7 @@ components: {
               growth: 'Growth'
             }"
             v-model="selectedTextOption"
-            :variation="'text'"
+            variation="text"
           />
         </template>
       </DemoSection>
@@ -82,21 +88,28 @@ components: {
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { defineComponent, ref } from 'vue';
 
-import DemoSection from "./../components/DemoSection.vue";
-import Toggle from "./../components/Toggle.vue";
-import TogglesCode from "!!raw-loader!./Toggles.vue";
+import DemoSection from '../components/DemoSection.vue';
+import Toggle from '../components/Toggle.vue';
+import TogglesCode from '!!raw-loader!./Toggles.vue';
 
-@Component({
+export default defineComponent({
   components: {
     DemoSection,
-    Toggle
-  }
-})
-export default class Toggles extends Vue {
-  demoCode = TogglesCode;
-  selectedOption = "show";
-  selectedTextOption = "revenue";
-}
+    Toggle,
+  },
+
+  setup() {
+    const demoCode: string = TogglesCode;
+    const selectedOption = ref('show');
+    const selectedTextOption = ref('revenue');
+
+    return {
+      demoCode,
+      selectedOption,
+      selectedTextOption,
+    };
+  },
+});
 </script>

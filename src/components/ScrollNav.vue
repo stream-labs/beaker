@@ -6,7 +6,7 @@
         @click="scrollLeft"
         class="s-apps-nav-control flex s-has-prev"
       >
-        <i class="icon-down icon-left"></i>
+        <i class="icon-down icon-left" />
         <span>...</span>
       </div>
       <div
@@ -34,18 +34,20 @@
         class="s-apps-nav-control flex s-has-next"
       >
         <span>...</span>
-        <i class="icon-down icon-right"></i>
+        <i class="icon-down icon-right" />
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import { Component, Prop } from "vue-property-decorator";
+import Vue from 'vue';
+import { Component, Prop } from 'vue-property-decorator';
+
+import { defineComponent } from 'vue';
 
 @Component({})
-export default class AppsNav extends Vue {
+export default defineComponent({
   $refs!: {
     scrollable_nav: HTMLDivElement;
   };
@@ -62,19 +64,23 @@ export default class AppsNav extends Vue {
   value!: string;
 
   isMounted = false;
+
   appTabsContainer!: HTMLDivElement;
+
   canScroll = false;
+
   hasNext = false;
+
   hasPrev = false;
 
   private scrollIncrement = 100;
 
   created() {
-    window.addEventListener("resize", this.calculateScrolls);
+    window.addEventListener('resize', this.calculateScrolls);
   }
 
   destroyed() {
-    window.removeEventListener("resize", this.calculateScrolls);
+    window.removeEventListener('resize', this.calculateScrolls);
   }
 
   mounted() {
@@ -84,31 +90,27 @@ export default class AppsNav extends Vue {
   }
 
   scrollLeft() {
-    this.appTabsContainer.scrollLeft =
-      this.appTabsContainer.scrollLeft - this.scrollIncrement;
+    this.appTabsContainer.scrollLeft = this.appTabsContainer.scrollLeft - this.scrollIncrement;
   }
 
   scrollRight() {
-    this.appTabsContainer.scrollLeft =
-      this.appTabsContainer.scrollLeft + this.scrollIncrement;
+    this.appTabsContainer.scrollLeft = this.appTabsContainer.scrollLeft + this.scrollIncrement;
   }
 
   calculateScrolls() {
     if (!this.isMounted) return false;
-    this.canScroll =
-      this.appTabsContainer.scrollWidth > this.appTabsContainer.clientWidth;
+    this.canScroll = this.appTabsContainer.scrollWidth > this.appTabsContainer.clientWidth;
     this.hasPrev = this.appTabsContainer.scrollLeft > 0;
-    let scrollRight =
-      this.appTabsContainer.scrollWidth -
-      (this.appTabsContainer.scrollLeft + this.appTabsContainer.clientWidth);
+    const scrollRight = this.appTabsContainer.scrollWidth
+      - (this.appTabsContainer.scrollLeft + this.appTabsContainer.clientWidth);
 
     this.hasNext = scrollRight > 0;
   }
 
   navigateItem(item: string) {
-    this.$emit("input", item);
+    this.$emit('input', item);
   }
-}
+})
 </script>
 
 <style lang="less">
