@@ -31,55 +31,74 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { computed, defineComponent } from 'vue';
 
-import { defineComponent } from 'vue';
-
-@Component({})
 export default defineComponent({
-  @Prop({ required: true })
-  title!: string;
+  props: {
+    title: {
+      type: String,
+      required: true,
+    },
 
-  @Prop({ required: true })
-  desc!: string;
+    desc: {
+      type: String,
+      required: true,
+    },
 
-  @Prop({ default: '00', required: true })
-  days!: string;
+    days: {
+      type: String,
+      default: '00',
+      required: true,
+    },
 
-  @Prop({ default: '00', required: true })
-  hours!: string;
+    hours: {
+      type: String,
+      default: '00',
+      required: true,
+    },
 
-  @Prop({ default: '00', required: true })
-  minutes!: string;
+    minutes: {
+      type: String,
+      default: '00',
+      required: true,
+    },
 
-  @Prop({ default: '00', required: true })
-  seconds!: string;
+    seconds: {
+      type: String,
+      default: '00',
+      required: true,
+    },
 
-  @Prop()
-  timeDesc!: string;
+    timeDesc: {
+      type: String,
+    },
 
-  @Prop({ default: 'rgba(248, 86, 64, 0.33)' })
-  borderColor!: string;
+    borderColor: {
+      type: String,
+      default: 'rgba(248, 86, 64, 0.33)',
+    },
 
-  @Prop({ default: 'rgba(248, 86, 64, 0.08)' })
-  backgroundColor!: string;
+    backgroundColor: {
+      type: String,
+      default: 'rgba(248, 86, 64, 0.08)',
+    },
+  },
 
-  get daysDone() {
-    return this.days === '00';
-  }
+  setup(props) {
+    const daysDone = computed(() => props.days === '00');
+    const hoursDone = computed(() => daysDone.value && props.hours === '00');
+    const minutesDone = computed(() => hoursDone.value && props.minutes === '00');
+    const secondsDone = computed(() => minutesDone.value && props.seconds === '00');
 
-  get hoursDone() {
-    return this.daysDone && this.hours === '00';
-  }
+    return {
+      daysDone,
+      hoursDone,
+      minutesDone,
+      secondsDone,
+    };
+  },
 
-  get minutesDone() {
-    return this.hoursDone && this.minutes === '00';
-  }
-
-  get secondsDone() {
-    return this.minutesDone && this.seconds === '00';
-  }
-})
+});
 </script>
 
 <style lang="less">

@@ -11,7 +11,7 @@
       :variation="'custom'"
       :bg-color="'#FFFFFF'"
       :text-color="'#7289DA'"
-      v-on="$listeners"
+      v-bing="$attrs"
       :tag="'a'"
       :href="'https://discord.gg/stream'"
       :target="'_blank'"
@@ -20,22 +20,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
 import { defineComponent } from 'vue';
 import Button from './Button.vue';
 
-@Component({
+export default defineComponent({
   components: {
     Button,
   },
-})
-export default defineComponent({
-  @Prop({
-    default: 'Join the Streamlabs OBS Discussion on <span>Discord</span>',
-  })
-  title!: string;
-})
+
+  props: {
+    title: {
+      type: String,
+      default: 'Join the Streamlabs OBS Discussion on <span>Discord</span>',
+    },
+  },
+});
 </script>
 
 <style lang="less">

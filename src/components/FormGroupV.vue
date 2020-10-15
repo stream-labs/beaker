@@ -30,30 +30,39 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { computed, defineComponent } from 'vue';
 
-import { defineComponent } from 'vue';
-
-@Component({})
 export default defineComponent({
-  @Prop()
-  helpText!: string;
+  props: {
+    helpText: {
+      type: String,
+    },
 
-  @Prop()
-  title!: string;
+    title: {
+      type: String,
+    },
 
-  @Prop({ default: '' })
-  tooltip!: string;
+    tooltip: {
+      type: String,
+      default: '',
+    },
 
-  @Prop({ default: 'space-between' })
-  titleLayout!: string;
+    titleLayout: {
+      type: String,
+      default: 'space-between',
+    },
+  },
 
-  get titleLayoutStyle() {
+  setup(props) {
+    const titleLayoutStyle = computed(() => ({
+      'justify-content': props.titleLayout,
+    }));
+
     return {
-      'justify-content': this.titleLayout,
+      titleLayoutStyle,
     };
-  }
-})
+  },
+});
 </script>
 
 <style lang="less">

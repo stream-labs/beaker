@@ -5,21 +5,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
 import { defineComponent } from 'vue';
 
-@Component({})
 export default defineComponent({
-  @Prop()
-  helpText!: string;
-
-  @Prop()
-  tooltip!: string;
-
-  @Prop()
-  title!: string;
-})
+  props: {
+    helpText: String,
+    tooltip: String,
+    title: String,
+  },
+});
 </script>
 
 <style lang="less">

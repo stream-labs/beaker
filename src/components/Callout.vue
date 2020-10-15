@@ -22,58 +22,74 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { computed, defineComponent, ref } from 'vue';
 
-import { defineComponent } from 'vue';
-
-@Component({})
 export default defineComponent({
-  @Prop({ default: 'success' })
-  variation!: string;
+  props: {
+    variation: {
+      type: String,
+      default: 'success',
+    },
 
-  @Prop({ default: true })
-  icon!: boolean;
+    icon: {
+      type: Boolean,
+      default: true,
+    },
 
-  @Prop()
-  customIcon!: string;
+    customIcon: {
+      type: String,
+    },
 
-  @Prop({ default: false })
-  closeable!: boolean;
+    closeable: {
+      type: Boolean,
+      default: false,
+    },
 
-  @Prop()
-  onClose!: Function;
+    onClose: {
+      type: Function,
+    },
+  },
 
-  closed = false;
+  setup(props) {
+    const closed = ref(false);
+    const calloutClosedClass = ref('');
 
-  calloutClosedClass = '';
-
-  closeCallout() {
-    this.calloutClosedClass = 'callout--closed';
-    setTimeout(() => {
-      typeof this.onClose === 'function' && this.onClose();
-    }, 275);
-  }
-
-  get calloutClass() {
-    return `s-callout--${this.variation}`;
-  }
-
-  get calloutIcon() {
-    if (this.customIcon) return this.customIcon;
-    switch (this.variation) {
-      case 'success':
-      case 'success-alt':
-        return 'icon-check';
-      case 'warning':
-      case 'warning-alt':
-        return 'icon-error';
-      case 'info':
-        return 'icon-information';
-      case 'cookies':
-        return 'icon-information';
+    function closeCallout() {
+      calloutClosedClass.value = 'callout--closed';
+      setTimeout(() => {
+        typeof props.onClose === 'function' && props.onClose();
+      }, 275);
     }
-  }
-})
+
+    const calloutClass = computed(() => `s-callout--${props.variation}`);
+
+    const calloutIcon = computed(() => {
+      if (props.customIcon) return props.customIcon;
+      switch (props.variation) {
+        case 'success':
+        case 'success-alt':
+          return 'icon-check';
+        case 'warning':
+        case 'warning-alt':
+          return 'icon-error';
+        case 'info':
+          return 'icon-information';
+        case 'cookies':
+          return 'icon-information';
+        default:
+          return 'icon-check';
+      }
+    });
+
+    return {
+      closed,
+      calloutClosedClass,
+      closeCallout,
+      calloutClass,
+      calloutIcon,
+    };
+  },
+});
 </script>
 
 <style lang="less">

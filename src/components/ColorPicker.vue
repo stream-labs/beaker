@@ -41,83 +41,103 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
-import { defineComponent } from 'vue';
+import { computed, defineComponent, ref } from 'vue';
 import { Chrome } from 'vue-color';
+import { PropType } from 'vue/types/options';
 
-@Component({
+interface IColorValue {
+  hex?: string;
+  hsl?: { h: number, s: number, l: number, a: number };
+  hsv?: { h: number, s: number, v: number, a: number };
+  rgba?: { r: number, g: number, b: number, a: number };
+  a?: number;
+}
+
+export default defineComponent({
   components: {
     picker: Chrome,
   },
-})
-export default defineComponent({
-  $refs!: {
-    colorpicker: HTMLElement;
-  };
 
-  @Prop()
-  value!: any;
+  props: {
+    value: {
+      type: String,
+    },
 
-  @Prop({ default: '#31c3a2' })
-  placeholder!: string;
+    placeholder: {
+      type: String,
+      default: '#31c3a2',
+    },
 
-  @Prop({ default: false })
-  hasAlpha!: boolean;
+    hasAlpha: {
+      type: Boolean,
+      default: false,
+    },
 
-  @Prop()
-  error!: string;
+    error: {
+      type: String,
+    },
+  },
 
-  private displayPicker = false;
+  setup(props, { emit }) {
+    const colorpicker = ref<HTMLDivElement | null>(null);
+    const displayPicker = ref(false);
+    const backgroundColor = ref('');
+    const colors = ref<IColorValue>({});
 
-  private backgroundColor = '';
+    const alphaClass = computed(() => {
+      if (props.hasAlpha) {
+        return colors.value.a === 1 ? 'nonAlpha' : 'alpha';
+      }
+      return false;
+    });
 
-  colors: object = {};
+    colors.value = { ...colors.value, hex: props.value };
 
-  get alphaClass() {
-    return this.hasAlpha
-      ? this.colors.a === 1
-        ? 'nonAlpha'
-        : 'alpha'
-      : false;
-  }
-
-  created() {
-    this.colors = { ...this.colors, hex: this.value };
-  }
-
-  updateFromPicker(value: any) {
-    this.colors = value;
-    if (this.alphaClass === 'alpha') {
-      this.$emit('input', value.hex8);
-    } else {
-      this.$emit('input', value.hex);
+    function updateFromPicker(value: any) {
+      colors.value = value;
+      if (alphaClass.value === 'alpha') {
+        emit('input', value.hex8);
+      } else {
+        emit('input', value.hex);
+      }
     }
-  }
 
-  updateFromInput(event: any) {
-    this.colors = event.target.value;
-    this.$emit('input', event.target.value);
-  }
-
-  hidePicker() {
-    document.removeEventListener('click', this.documentClick);
-    this.displayPicker = false;
-  }
-
-  showPicker() {
-    document.addEventListener('click', this.documentClick);
-    this.displayPicker = true;
-  }
-
-  documentClick(e: any) {
-    const el = this.$refs.colorpicker;
-    const { target } = e;
-    if (el !== target && !el.contains(target)) {
-      this.hidePicker();
+    function updateFromInput(event: any) {
+      colors.value = event.target.value;
+      emit('input', event.target.value);
     }
-  }
-})
+
+    function hidePicker() {
+      document.removeEventListener('click', documentClick);
+      displayPicker.value = false;
+    }
+
+    function showPicker() {
+      document.addEventListener('click', documentClick);
+      displayPicker.value = true;
+    }
+
+    function documentClick(e: MouseEvent) {
+      const el = colorpicker.value;
+      const { target } = e;
+      if (el && el !== target && !el.contains(target as Node)) {
+        hidePicker();
+      }
+    }
+
+    return {
+      displayPicker,
+      backgroundColor,
+      colors,
+      alphaClass,
+      updateFromPicker,
+      updateFromInput,
+      hidePicker,
+      showPicker,
+      documentClick,
+    };
+  },
+});
 </script>
 
 <style lang="less">

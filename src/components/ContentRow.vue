@@ -40,68 +40,73 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
-import { defineComponent } from 'vue';
+import { computed, defineComponent } from 'vue';
 import VueMq from 'vue-mq';
 import Button from './Button.vue';
 
-Vue.use(VueMq, {
-  breakpoints: {
-    // default breakpoints - customize this
-    sm: 900,
-    md: 1250,
-    lg: Infinity,
-  },
-  defaultBreakpoint: 'sm', // customize this for SSR
-});
+// Vue.use(VueMq, {
+//   breakpoints: {
+//     // default breakpoints - customize this
+//     sm: 900,
+//     md: 1250,
+//     lg: Infinity,
+//   },
+//   defaultBreakpoint: 'sm', // customize this for SSR
+// });
 
-@Component({
+export default defineComponent({
   components: {
     Button,
   },
-})
-export default defineComponent({
-  @Prop()
-  icon!: string;
 
-  @Prop({ default: 'default' })
-  btnVariation!: string;
+  props: {
+    icon: {
+      type: String,
+    },
 
-  @Prop({ default: 'Default' })
-  btnTitle!: string;
+    btnVariation: {
+      type: String,
+      default: 'default',
+    },
 
-  @Prop()
-  buttonHref!: string;
+    btnTitle: {
+      type: String,
+      default: 'Default',
+    },
 
-  @Prop()
-  buttonTo!: string;
+    buttonHref: {
+      type: String,
+    },
 
-  @Prop({ default: 'button' })
-  buttonTag!: string;
+    buttonTo: {
+      type: String,
+    },
 
-  $mq: any;
+    buttonTag: {
+      type: String,
+      default: 'button',
+    },
+  },
 
-  get contentRowMq() {
-    return this.$mq === 'sm' ? 's-content-row-mq' : '';
-  }
+  setup() {
+    let $mq: any;
 
-  get contentBoxMq() {
-    return this.$mq === 'sm' ? 's-content-box-mq' : '';
-  }
+    const contentRowMq = computed(() => ($mq === 'sm' ? 's-content-row-mq' : ''));
+    const contentBoxMq = computed(() => ($mq === 'sm' ? 's-content-box-mq' : ''));
+    const bannerIconMq = computed(() => ($mq === 'sm' ? 's-banner__icon-mq' : ''));
+    const contentTitleMq = computed(() => ($mq === 'sm' ? 's-content__title-mq' : ''));
+    const contentTextMq = computed(() => ($mq === 'sm' ? 's-content__text-mq' : ''));
 
-  get bannerIconMq() {
-    return this.$mq === 'sm' ? 's-banner__icon-mq' : '';
-  }
+    return {
+      contentRowMq,
+      contentBoxMq,
+      bannerIconMq,
+      contentTitleMq,
+      contentTextMq,
+    };
+  },
 
-  get contentTitleMq() {
-    return this.$mq === 'sm' ? 's-content__title-mq' : '';
-  }
-
-  get contentTextMq() {
-    return this.$mq === 'sm' ? 's-content__text-mq' : '';
-  }
-})
+});
 </script>
 
 <style lang="less">

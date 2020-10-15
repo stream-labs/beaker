@@ -4,6 +4,8 @@ declare module "vuejs-paginate";
 declare module "vue-color";
 declare module "vue-select";
 declare module "what-input";
+declare module "vue-mq";
+declare module "vue-click-outside";
 declare module "!!raw-loader!*";
 declare module "lodash-es"
 // declare module "vue-js-modal" {

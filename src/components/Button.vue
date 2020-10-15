@@ -16,6 +16,7 @@
     :target="target"
     @mousedown="pressDown"
     :style="buttonStyle"
+    ref="button"
   >
     <span v-if="!$slots.custom">
       <span>
@@ -93,257 +94,266 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { computed, defineComponent, ref } from 'vue';
 
-import { defineComponent } from 'vue';
-
-@Component({})
 export default defineComponent({
-  @Prop()
-  onClick!: {
-    type: Function;
-  };
+  props: {
+    onClick: {
+      type: Function,
+    },
 
-  @Prop()
-  bgColor!: {
-    type: string;
-  };
+    bgColor: {
+      type: String,
+    },
 
-  @Prop()
-  textColor!: {
-    type: string;
-  };
+    textColor: {
+      type: String,
+    },
 
-  @Prop(String)
-  icon!: string;
+    icon: {
+      type: String,
+    },
 
-  @Prop({ default: 'left' })
-  iconPosition!: {
-    type: string;
-  };
+    iconPosition: {
+      type: String,
+      default: 'left',
+    },
 
-  @Prop()
-  iconImg!: {
-    type: string;
-    default: null;
-  };
+    iconImg: {
+      type: String,
+      default: null,
+    },
 
-  @Prop()
-  title!: {
-    type: string;
-    default: null;
-  };
+    title: {
+      type: String,
+      default: null,
+    },
 
-  @Prop()
-  price!: {
-    type: string;
-    default: null;
-  };
+    price: {
+      type: String,
+      default: null,
+    },
 
-  @Prop()
-  description!: {
-    type: string;
-    default: null;
-  };
+    description: {
+      type: String,
+      default: null,
+    },
 
-  @Prop()
-  href!: {
-    type: string;
-    default: null;
-  };
+    href: {
+      type: String,
+      default: null,
+    },
 
-  @Prop({ default: '_self' })
-  target!: string;
+    target: {
+      type: String,
+      default: '_self',
+    },
 
-  // standard, medium, large, square
-  @Prop()
-  size!: {
-    type: string;
-    size: null;
-  };
+    // standard, medium, large, square
+    size: {
+      type: String,
+      size: null,
+    },
 
-  // hover, focus, loading, disabled
-  @Prop()
-  state!: {
-    type: string;
-    default: null;
-  };
+    // hover, focus, loading, disabled
+    state: {
+      type: String,
+      default: null,
+    },
 
-  // set buttons type to "submit"
-  @Prop()
-  type!: {
-    type: string;
-    default: null;
-  };
+    // set buttons type to "submit"
+    type: {
+      type: String,
+      default: null,
+    },
 
-  @Prop()
-  to!: {
-    type: string;
-    default: null;
-  };
+    to: {
+      type: String,
+      default: null,
+    },
 
-  // button, a, router-link
-  @Prop({ default: 'button' })
-  tag!: string;
+    // button, a, router-link
+    tag: {
+      type: String,
+      default: 'button',
+    },
 
-  @Prop()
-  variation!: {
-    type: string;
-    default: 'default';
-  };
+    variation: {
+      type: String,
+      default: 'default',
+    },
 
-  @Prop()
-  primeBgColor!: {
-    type: string;
-    default: null;
-  };
+    primeBgColor: {
+      type: String,
+      default: null,
+    },
 
-  @Prop()
-  primeTitle!: {
-    type: string;
-    default: null;
-  };
+    primeTitle: {
+      type: String,
+      default: null,
+    },
 
-  @Prop({ default: 'Download Streamlabs' })
-  slobsDownloadTitle!: {
-    type: string;
-  };
+    slobsDownloadTitle: {
+      type: String,
+      default: 'Download Streamlabs',
+    },
 
-  @Prop({ default: 'windows' })
-  osType!: string;
+    osType: {
+      type: String,
+      default: 'windows',
+    },
+  },
 
-  private rippleStartX = 0;
+  setup(props) {
+    const button = ref<HTMLDivElement | null>(null);
+    const rippleStartX = ref(0);
+    const rippleStartY = ref(0);
+    const rippleSize = ref(0);
+    const rippleColor = ref('#000000');
+    const rippleOpacity = ref(0.075);
+    const rippleDuration = ref('');
+    const rippleAnimate = ref(false);
 
-  private rippleStartY = 0;
+    const buttonClasses = computed(() => {
+      const classes: string[] = [];
 
-  private rippleSize = 0;
+      if (props.variation) {
+        classes.push(`s-button--${props.variation}`);
+      }
 
-  private rippleColor = '#000000';
+      if (props.size) {
+        classes.push(`s-button--${props.size}`);
+      }
 
-  private rippleOpacity = 0.075;
+      if (props.state) {
+        classes.push(`is-${props.state}`);
+      }
 
-  private rippleDuration = '';
+      return classes.join(' ');
+    });
 
-  private rippleAnimate = false;
+    const iconClass = computed(() => {
+      const classes: string[] = [];
 
-  get buttonClasses() {
-    const classes: any = [];
+      if (props.icon) {
+        if (props.icon.indexOf('fa-') !== -1) {
+          classes.push(props.icon);
+        } else {
+          classes.push(`icon-${props.icon}`);
+        }
+      }
 
-    if (this.variation) {
-      classes.push(`s-button--${this.variation}`);
+      return classes.join(' ');
+    });
+
+    const slobsDownloadIconClass = computed(() => (props.osType === 'windows' ? 'icon-windows' : 'icon-app-store'));
+
+    const slobsDownloadText = computed(() => {
+      const tests: string[] = [];
+
+      tests.push('Free');
+      tests.push(props.osType === 'windows' ? 'Win' : 'macOS 10.14+');
+      tests.push(props.osType === 'windows' ? '~240MB' : '309MB');
+
+      return tests;
+    });
+
+    const buttonStyle = computed(() => {
+      const s = `--ripple-x:${
+        rippleStartX.value
+      }px; --ripple-y:${
+        rippleStartY.value
+      }px; --ripple-size:${
+        rippleSize.value
+      }px; --ripple-color:${
+        rippleColor.value
+      }; --ripple-opacity:${
+        rippleOpacity.value
+      }; --ripple-duration:${
+        rippleDuration.value
+      }; background-color:${
+        props.bgColor
+      }; color:${
+        props.textColor};`;
+
+      return s;
+    });
+
+    // get _variation() {
+    //   return this.bgColor ? "custom" : this.variation;
+    // }
+
+    function rippleAnimation() {
+      return new Promise((resolve) => {
+        if (button.value) {
+          rippleAnimate.value = true;
+          const animationEnded = () => {
+            if (button.value) button.value.removeEventListener('animationnend', animationEnded);
+            resolve();
+          };
+          button.value.addEventListener('animationend', animationEnded);
+        }
+      });
     }
 
-    if (this.size) {
-      classes.push(`s-button--${this.size}`);
-    }
+    function pressDown(e: MouseEvent) {
+      if (button.value) {
+        const buttonRect = button.value.getBoundingClientRect();
+        const clickLoc = { x: e.pageX, y: e.pageY };
+        const buttonVar = JSON.stringify(props.variation);
+        const buttonSize = JSON.stringify(props.size);
+        rippleSize.value = Math.floor(buttonRect.width * 2);
+        rippleStartX.value = Math.floor(
+          Math.abs(buttonRect.left - clickLoc.x) - rippleSize.value / 2,
+        );
+        rippleStartY.value = Math.floor(
+          Math.abs(buttonRect.top - clickLoc.y) - rippleSize.value / 2,
+        );
 
-    if (this.state) {
-      classes.push(`is-${this.state}`);
-    }
+        if (buttonVar === '"paypal"') {
+          rippleColor.value = '#e3b63b';
+          rippleDuration.value = '800ms';
+          rippleOpacity.value = 0.5;
+        }
+        if (buttonVar === '"warning"') {
+          rippleColor.value = '#ce4a38';
+        }
+        if (
+          buttonVar === '"subscribe"'
+          || buttonSize === '"full-width"'
+          || buttonVar === '"paypal"'
+        ) {
+          rippleDuration.value = '800ms';
+        } else {
+          rippleDuration.value = '400ms';
+        }
 
-    return classes.join(' ');
-  }
-
-  get iconClass() {
-    const classes: any = [];
-
-    if (this.icon) {
-      if (this.icon.indexOf('fa-') !== -1) {
-        classes.push(this.icon);
-      } else {
-        classes.push(`icon-${this.icon}`);
+        if (!rippleAnimate.value) {
+          rippleAnimation().then(() => {
+            rippleAnimate.value = false;
+          });
+        }
       }
     }
 
-    return classes.join(' ');
-  }
-
-  get slobsDownloadIconClass() {
-    return this.osType === 'windows' ? 'icon-windows' : 'icon-app-store';
-  }
-
-  get slobsDownloadText() {
-    const tests: any = [];
-
-    tests.push('Free');
-    tests.push(this.osType === 'windows' ? 'Win' : 'macOS 10.14+');
-    tests.push(this.osType === 'windows' ? '~240MB' : '309MB');
-
-    return tests;
-  }
-
-  get buttonStyle() {
-    const s = `--ripple-x:${
-      this.rippleStartX
-    }px; --ripple-y:${
-      this.rippleStartY
-    }px; --ripple-size:${
-      this.rippleSize
-    }px; --ripple-color:${
-      this.rippleColor
-    }; --ripple-opacity:${
-      this.rippleOpacity
-    }; --ripple-duration:${
-      this.rippleDuration
-    }; background-color:${
-      this.bgColor
-    }; color:${
-      this.textColor}`;
-    ';';
-    return s;
-  }
-
-  // get _variation() {
-  //   return this.bgColor ? "custom" : this.variation;
-  // }
-
-  rippleAnimation() {
-    return new Promise((resolve) => {
-      this.rippleAnimate = true;
-      const animationEnded = (e) => {
-        this.$el.removeEventListener('animationnend', animationEnded);
-        resolve();
-      };
-      this.$el.addEventListener('animationend', animationEnded);
-    });
-  }
-
-  pressDown(e) {
-    const buttonRect = this.$el.getBoundingClientRect();
-    const clickLoc = { x: e.pageX, y: e.pageY };
-    const buttonVar = JSON.stringify(this.variation);
-    const buttonSize = JSON.stringify(this.size);
-    this.rippleSize = Math.floor(buttonRect.width * 2);
-    this.rippleStartX = Math.floor(
-      Math.abs(buttonRect.left - clickLoc.x) - this.rippleSize / 2,
-    );
-    this.rippleStartY = Math.floor(
-      Math.abs(buttonRect.top - clickLoc.y) - this.rippleSize / 2,
-    );
-
-    if (buttonVar === '"paypal"') {
-      this.rippleColor = '#e3b63b';
-      this.rippleDuration = '800ms';
-      this.rippleOpacity = 0.5;
-    }
-    if (buttonVar === '"warning"') {
-      this.rippleColor = '#ce4a38';
-    }
-    if (
-      buttonVar === '"subscribe"'
-      || buttonSize === '"full-width"'
-      || buttonVar === '"paypal"'
-    ) {
-      this.rippleDuration = '800ms';
-    } else {
-      this.rippleDuration = '400ms';
-    }
-
-    if (!this.rippleAnimate) {
-      this.rippleAnimation().then(() => (this.rippleAnimate = false));
-    }
-  }
-})
+    return {
+      rippleStartX,
+      rippleStartY,
+      rippleSize,
+      rippleColor,
+      rippleOpacity,
+      rippleDuration,
+      rippleAnimate,
+      buttonClasses,
+      iconClass,
+      slobsDownloadIconClass,
+      slobsDownloadText,
+      buttonStyle,
+      rippleAnimation,
+      pressDown,
+    };
+  },
+});
 </script>
 
 <style lang="less">

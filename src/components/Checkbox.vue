@@ -17,28 +17,38 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
 import { defineComponent } from 'vue';
 
-@Component({})
 export default defineComponent({
-  @Prop({ type: String, required: true })
-  label!: string;
+  props: {
+    label: {
+      type: String,
+      required: true,
+    },
 
-  @Prop({ type: String, required: true })
-  id!: string;
+    id: {
+      type: String,
+      required: true,
+    },
 
-  @Prop({ type: String })
-  name!: string;
+    name: {
+      type: String,
+    },
 
-  @Prop({ type: Boolean, required: true })
-  value!: boolean;
+    value: {
+      type: Boolean,
+      required: true,
+    },
+  },
 
-  toggleCheck() {
-    this.$emit('input', !this.value);
-  }
-})
+  setup(props, { emit }) {
+    function toggleCheck() {
+      emit('input', !props.value);
+    }
+
+    return { toggleCheck };
+  },
+});
 </script>
 
 <style lang="less">

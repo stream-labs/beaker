@@ -28,85 +28,105 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { computed, defineComponent, ref } from 'vue';
 
-import { defineComponent } from 'vue';
+interface IBadgeProRewrite {
+  background: string;
+  color: string;
+}
 
-@Component({})
 export default defineComponent({
-  /*
-    backgroundColor: STRING - pass in color name, rgba or hex code to set the color of the progress bar. Default is #31c3a2 (teal)
-    textColor: STRING - pass in color name, rgba or hex code to set the color of the bar text. Default is #fff (white)
-    current: INTEGER or FLOAT - indicates where the current progress should be. e.g. 5 in '5 out of 10.'
-    total: INTEGER or FLOAT - indicates what the maximum/completion value is. e.g. 10 in '5 out of 10.'
-    separator: STRING - whatever you want to separate the current and total e.g. 'out of' in '5 out of 10.' Could be '/', 'of', etc. Default is '/'
-    suffix: STRING - whatever you want to include at the end of the progress string. e.g. 'sold' in '5 out of 10 sold.'
-  */
-  @Prop({ default: 'success' })
-  variant!: string;
+  props: {
+    variant: {
+      type: String,
+      default: 'success',
+    },
 
-  @Prop({ default: false })
-  alignLeft!: boolean;
+    alignLeft: {
+      type: Boolean,
+      default: false,
+    },
 
-  @Prop({ default: false })
-  noMargin!: boolean;
+    noMargin: {
+      type: Boolean,
+      default: false,
+    },
 
-  @Prop()
-  backgroundColor!: string;
+    backgroundColor: {
+      type: String,
+      default: '',
+    },
 
-  @Prop({ default: '#ffffff' })
-  textColor!: string;
+    textColor: {
+      type: String,
+      default: '#ffffff',
+    },
 
-  @Prop()
-  current!: number;
+    current: {
+      type: Number,
+    },
 
-  @Prop()
-  total!: number;
+    total: {
+      type: Number,
+    },
 
-  @Prop({ default: '/' })
-  separator!: string;
+    separator: {
+      type: String,
+      default: '/',
+    },
 
-  @Prop()
-  suffix!: string;
+    suffix: {
+      type: String,
+    },
 
-  @Prop()
-  small!: boolean;
+    small: {
+      type: Boolean,
+    },
+  },
 
-  badgeProRewrite: any = {
-    background: this.backgroundColor,
-    color: this.textColor,
-  };
+  setup(props) {
+    const badgeProRewrite = ref<IBadgeProRewrite>({
+      background: props.backgroundColor,
+      color: props.textColor,
+    });
 
-  get badgeStyles() {
-    const styles: any = [];
+    const badgeStyles = computed(() => {
+      const styles: IBadgeProRewrite[] = [];
 
-    if (this.backgroundColor && this.variant !== 'progress') {
-      styles.push(this.badgeProRewrite);
-    }
+      if (props.backgroundColor && props.variant !== 'progress') {
+        styles.push(badgeProRewrite.value);
+      }
 
-    return styles;
-  }
+      return styles;
+    });
 
-  get badgeClasses() {
-    const classes: any = [];
+    const badgeClasses = computed(() => {
+      const classes: string[] = [];
 
-    classes.push(`s-badge--${this.variant}`);
+      classes.push(`s-badge--${props.variant}`);
 
-    if (this.alignLeft) {
-      classes.push('s-badge--left');
-    }
+      if (props.alignLeft) {
+        classes.push('s-badge--left');
+      }
 
-    if (this.noMargin) {
-      classes.push('s-badge--no-margin');
-    }
+      if (props.noMargin) {
+        classes.push('s-badge--no-margin');
+      }
 
-    if (this.small) {
-      classes.push('s-badge--small');
-    }
+      if (props.small) {
+        classes.push('s-badge--small');
+      }
 
-    return classes;
-  }
-})
+      return classes;
+    });
+
+    return {
+      badgeProRewrite,
+      badgeStyles,
+      badgeClasses,
+    };
+  },
+});
 </script>
 
 <style lang="less">

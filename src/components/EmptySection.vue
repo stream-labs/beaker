@@ -41,27 +41,36 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
 import { defineComponent } from 'vue';
 
-@Component({})
 export default defineComponent({
-  @Prop({ default: 'text' })
-  variation!: string;
+  props: {
+    variation: {
+      type: String,
+      default: 'text',
+    },
 
-  @Prop({ default: 'Streamlabs.com' })
-  title!: string;
+    title: {
+      type: String,
+      default: 'Streamlabs.com',
+    },
 
-  @Prop({ default: '' })
-  subtitle!: string;
+    subtitle: {
+      type: String,
+      default: '',
+    },
 
-  @Prop({ default: false })
-  titleSlot!: boolean;
+    titleSlot: {
+      type: Boolean,
+      default: false,
+    },
 
-  @Prop({ default: false })
-  hasLink!: boolean;
-})
+    hasLink: {
+      type: Boolean,
+      default: false,
+    },
+  },
+});
 </script>
 
 <style lang="less">

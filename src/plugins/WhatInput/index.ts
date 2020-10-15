@@ -7,7 +7,7 @@ export function provideWhatInput(plugin: IWhatInput) {
 }
 
 export function useWhatInput() {
-  const whatInput = inject(WhatInputSymbol);
+  const whatInput = inject(WhatInputSymbol) as IWhatInput;
   return whatInput;
 }
 

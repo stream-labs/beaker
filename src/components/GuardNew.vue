@@ -27,17 +27,25 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import { defineComponent } from 'vue';
 import TextInput from './TextInput.vue';
 
-@Component({
+export default defineComponent({
   components: {
     TextInput,
   },
-})
-export default defineComponent({
-  @Prop()
-  value?: string;
 
-  @Prop({ default: 'Click to show' })
-  placeholder!: string;
+  props: {
+    value: {
+      type: String,
+    },
+
+    placeholder: {
+      type: String,
+      default: 'Click to show',
+    },
+  },
+
+  setup() {
+
+  }
 
   visible = false;
 

@@ -84,115 +84,112 @@
 
 <script lang="ts">
 import {
-  Component, Prop, Vue, Watch,
-} from 'vue-property-decorator';
+  defineComponent, nextTick, onMounted, ref, watch,
+} from 'vue';
+import { useWhatInput } from '../plugins/WhatInput';
 
-import { defineComponent } from 'vue';
-
-@Component({})
 export default defineComponent({
-  $refs!: {
-    banner: HTMLDivElement;
-    bottomWrapper: HTMLDivElement;
-  };
+  props: {
+    bgImageNight: {
+      type: String,
+    },
 
-  @Prop()
-  bgImageNight!: {
-    type: string;
-  };
+    bgImage: {
+      type: String,
+      required: true,
+    },
 
-  @Prop()
-  bgImage!: {
-    type: string;
-    required: true;
-  };
+    label: {
+      type: String,
+      required: true,
+    },
 
-  @Prop()
-  label!: {
-    type: string;
-    required: true;
-  };
+    iconName: {
+      type: String,
+    },
 
-  @Prop()
-  iconName!: {
-    type: string;
-  };
+    iconImage: {
+      type: String,
+    },
 
-  @Prop()
-  iconImage!: {
-    type: string;
-  };
+    title: {
+      type: String,
+      required: true,
+    },
 
-  @Prop()
-  title!: {
-    type: string;
-    required: true;
-  };
+    desc: {
+      type: String,
+      required: false,
+    },
 
-  @Prop()
-  desc!: {
-    type: string;
-    required: false;
-  };
+    linkDesc: String,
 
-  @Prop()
-  linkDesc!: string;
+    bannerClosed: {
+      type: Boolean,
+      default: false,
+    },
 
-  @Prop({ default: false })
-  bannerClosed!: boolean;
+    onToggle: Function,
+  },
 
-  @Prop()
-  onToggle!: Function;
+  setup(props) {
+    const whatInput = useWhatInput();
+    const banner = ref<HTMLDivElement | null>(null);
+    const bottomWrapper = ref<HTMLDivElement | null>(null);
+    const closed = ref(false);
 
-  @Watch('bannerClosed')
-  onBannerCloseStateChanged(val: boolean, oldVal: boolean) {
-    this.closed = val;
-    this.updateBannerHeight();
-  }
-
-  closed = false;
-
-  mounted() {
-    this.closed = this.bannerClosed;
-    this.updateBannerHeight();
-  }
-
-  toggleBanner() {
-    typeof this.onToggle === 'function' && this.onToggle();
-    this.closed = !this.closed;
-    this.updateBannerHeight();
-
-    /*
-      For keyboard accessibility
-    */
-    if (this.$whatInput.ask() === 'keyboard') {
-      const icons = this.$refs.banner.querySelectorAll('.icon-down');
-      let icon!: HTMLLIElement;
-
-      if (this.closed) {
-        icon = icons[1] as HTMLLIElement;
+    function updateBannerHeight() {
+      if (!closed.value && banner.value) {
+        banner.value.style.maxHeight = '240px';
       } else {
-        icon = icons[0] as HTMLLIElement;
+        setTimeout(() => {
+          if (banner.value && bottomWrapper.value) {
+            banner.value.style.maxHeight = `${bottomWrapper.value.scrollHeight + 32}px`;
+          }
+        }, 1);
       }
-
-      const tabindex = parseInt(icon.getAttribute('tabindex') as string);
-      this.$nextTick(() => icon.focus());
     }
-  }
 
-  updateBannerHeight() {
-    const { banner } = this.$refs;
-    const bannerWrapper = this.$refs.bottomWrapper;
+    function toggleBanner() {
+      typeof props.onToggle === 'function' && props.onToggle();
+      closed.value = !closed.value;
+      updateBannerHeight();
 
-    if (!this.closed) {
-      banner.style.maxHeight = '240px';
-    } else {
-      setTimeout(() => {
-        banner.style.maxHeight = `${bannerWrapper.scrollHeight + 32}px`;
-      }, 1);
+      /*
+        For keyboard accessibility
+      */
+      if (whatInput.ask() === 'keyboard' && banner.value) {
+        const icons = banner.value.querySelectorAll('.icon-down');
+        let icon!: HTMLLIElement;
+
+        if (closed.value) {
+          icon = icons[1] as HTMLLIElement;
+        } else {
+          icon = icons[0] as HTMLLIElement;
+        }
+
+        const tabindex = parseInt(icon.getAttribute('tabindex') as string, 10);
+        nextTick(() => icon.focus());
+      }
     }
-  }
-})
+
+    onMounted(() => {
+      closed.value = props.bannerClosed;
+      updateBannerHeight();
+    });
+
+    watch(() => props.bannerClosed, (val) => {
+      closed.value = val;
+      updateBannerHeight();
+    });
+
+    return {
+      closed,
+      updateBannerHeight,
+      toggleBanner,
+    };
+  },
+});
 </script>
 
 <style lang="less">

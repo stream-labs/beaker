@@ -18,36 +18,43 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import ClickOutside from 'vue-click-outside';
 
-@Component({
+export default defineComponent({
   directives: {
     ClickOutside,
   },
-})
-export default defineComponent({
-  addLayout = true;
 
-  chooseLayout = false;
+  setup() {
+    const addLayout = ref(true);
+    const chooseLayout = ref(false);
 
-  showChooseLayout() {
-    this.chooseLayout = true;
-    this.addLayout = false;
-  }
+    function showChooseLayout() {
+      chooseLayout.value = true;
+      addLayout.value = false;
+    }
 
-  showAddLayout() {
-    this.chooseLayout = false;
-    this.addLayout = true;
-  }
+    function showAddLayout() {
+      chooseLayout.value = false;
+      addLayout.value = true;
+    }
 
-  closeChooseLayout() {
-    this.chooseLayout = false;
-    this.addLayout = true;
-  }
-})
+    function closeChooseLayout() {
+      chooseLayout.value = false;
+      addLayout.value = true;
+    }
+
+    return {
+      addLayout,
+      chooseLayout,
+      showChooseLayout,
+      showAddLayout,
+      closeChooseLayout,
+    };
+  },
+
+});
 </script>
 
 <style lang="less">

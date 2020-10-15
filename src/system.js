@@ -22,8 +22,6 @@ import FormGroup from './components/FormGroup.vue';
 import FormGroupH from './components/FormGroupH.vue';
 import FormGroupV from './components/FormGroupV.vue';
 import Guard from './components/Guard.vue';
-import HelloWorld from './components/HelloWorld.vue';
-import ImagePicker from './components/ImagePicker.vue';
 import ImagePickerInput from './components/ImagePickerInput.vue';
 import ItemGrid from './components/ItemGrid.vue';
 import Loading from './components/Loading.vue';
@@ -83,8 +81,6 @@ export {
   FormGroupH,
   FormGroupV,
   Guard,
-  HelloWorld,
-  ImagePicker,
   ImagePickerInput,
   ItemGrid,
   Loading,

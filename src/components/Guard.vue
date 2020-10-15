@@ -29,56 +29,72 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { computed, defineComponent, ref } from 'vue';
 
-import { defineComponent } from 'vue';
-
-@Component({})
 export default defineComponent({
-  @Prop()
-  value?: string;
+  props: {
+    value: {
+      type: String,
+    },
 
-  @Prop({ default: 'Click to show' })
-  placeholder!: string;
+    placeholder: {
+      type: String,
+      default: 'Click to show',
+    },
 
-  @Prop({ default: true })
-  showOnClick!: boolean;
+    showOnClick: {
+      type: Boolean,
+      default: true,
+    },
 
-  @Prop({ default: 'normal' })
-  variation!: string;
+    variation: {
+      type: String,
+      default: 'normal',
+    },
 
-  @Prop({ default: 'text' })
-  type!: string;
+    type: {
+      type: String,
+      default: 'text',
+    },
+  },
 
-  visible = true;
+  setup(props, { emit }) {
+    const visible = ref(true);
 
-  get prefix() {
-    return this.type === 'input' ? 's-input-guard' : 's-text-guard';
-  }
+    const prefix = computed(() => (props.type === 'input' ? 's-input-guard' : 's-text-guard'));
 
-  showText() {
-    if (this.showOnClick) {
-      this.visible = false;
-    } else {
-      this.$emit('click');
-    }
-  }
-
-  get guardClasses() {
-    const classes: string[] = [];
-    if (this.visible) {
-      classes.push(this.prefix);
-    } else {
-      classes.push(`${this.prefix}--readable`);
-    }
-
-    if (this.variation === 'alt') {
-      classes.push(`${this.prefix}--alt`);
+    function showText() {
+      if (props.showOnClick) {
+        visible.value = false;
+      } else {
+        emit('click');
+      }
     }
 
-    return classes;
-  }
-})
+    const guardClasses = computed(() => {
+      const classes: string[] = [];
+      if (visible.value) {
+        classes.push(prefix.value);
+      } else {
+        classes.push(`${prefix.value}--readable`);
+      }
+
+      if (props.variation === 'alt') {
+        classes.push(`${prefix.value}--alt`);
+      }
+
+      return classes;
+    });
+
+    return {
+      visible,
+      prefix,
+      showText,
+      guardClasses,
+    };
+  },
+
+});
 </script>
 
 <style lang="less">

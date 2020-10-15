@@ -13,23 +13,26 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
 import { defineComponent } from 'vue';
 
-@Component({})
 export default defineComponent({
-  @Prop({ default: 'galazy83 donated $50.00' })
-  alertText!: string;
+  props: {
+    alertText: {
+      type: String,
+      default: 'galazy83 donated $50.00',
+    },
 
-  @Prop({ default: 'Thanks for the stream. Go CivRyan!' })
-  alertMessage!: string;
+    alertMessage: {
+      type: String,
+      default: 'Thanks for the stream. Go CivRyan!',
+    },
 
-  @Prop({
-    default: 'https://thumbs.gfycat.com/PleasedIcyCod-size_restricted.gif',
-  })
-  alertImage!: string;
-})
+    alertImage: {
+      type: String,
+      default: 'https://thumbs.gfycat.com/PleasedIcyCod-size_restricted.gif',
+    },
+  },
+});
 </script>
 
 <style lang="less">

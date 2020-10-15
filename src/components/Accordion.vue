@@ -73,13 +73,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
 import {
-  defineComponent, defineComponent, ref, computed, onMounted,
+  defineComponent, ref, computed, onMounted,
 } from 'vue';
-
-import { escape } from 'lodash-es';
 
 export default defineComponent({
   props: {
@@ -107,7 +103,7 @@ export default defineComponent({
     const hasTitleSlot = computed(() => !!slots.title);
 
     const accordionClasses = computed(() => {
-      const classes: any = [];
+      const classes: string[] = [];
       if (props.noBorder) {
         classes.push('no-border');
       }
@@ -117,7 +113,7 @@ export default defineComponent({
       return classes.join(' ');
     });
 
-    function openContent(event: any) {
+    function openContent(event: MouseEvent) {
       const blockedNodes = ['INPUT', 'BUTTON', 'LABEL'];
       if (
         blockedNodes.indexOf(event.target.nodeName) !== -1
@@ -129,35 +125,37 @@ export default defineComponent({
       emit('content-opened', { isOpen: isOpen.value, event });
     }
 
-    function afterOpen(element) {
+    /* eslint-disable no-param-reassign */
+    function afterOpen(element: HTMLDivElement) {
       element.style.height = 'auto';
     }
 
-    function open(element) {
+    function open(element: HTMLDivElement) {
       const { width } = getComputedStyle(element);
       element.style.width = width;
       element.style.position = 'absolute';
       element.style.visibility = 'hidden';
       element.style.height = 'auto';
       const { height } = getComputedStyle(element);
-      element.style.width = null;
-      element.style.position = null;
-      element.style.visibility = null;
-      element.style.height = 0;
+      element.style.width = '';
+      element.style.position = '';
+      element.style.visibility = '';
+      element.style.height = '0';
       getComputedStyle(element).height;
       setTimeout(() => {
         element.style.height = height;
       });
     }
 
-    function close(element) {
+    function close(element: HTMLDivElement) {
       const { height } = getComputedStyle(element);
       element.style.height = height;
       getComputedStyle(element).height;
       setTimeout(() => {
-        element.style.height = 0;
+        element.style.height = '0';
       });
     }
+    /* eslint-enable no-param-reassign */
 
     onMounted(() => {
       if (props.isOpened) {
