@@ -6,7 +6,7 @@
     :min-width="minWidth"
     height="auto"
     :adaptive="true"
-    v-on="$listeners"
+    v-bind="$attrs"
   >
     <div class="s-modal-container">
       <div class="s-redirect">
@@ -25,34 +25,39 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
 import { defineComponent } from 'vue';
-import Button from './Button.vue';
 import Spinner from './Spinner.vue';
 
-@Component({
+export default defineComponent({
   components: {
-    Button,
     Spinner,
   },
-})
-export default defineComponent({
-  @Prop()
-  name!: string;
 
-  @Prop({ default: 600 })
-  width!: number;
+  props: {
+    name: {
+      type: String,
+    },
 
-  @Prop({ default: 600 })
-  minWidth!: number;
+    width: {
+      type: Number,
+      default: 600,
+    },
 
-  @Prop()
-  title!: string;
+    minWidth: {
+      type: Number,
+      default: 600,
+    },
 
-  @Prop()
-  text!: string;
-})
+    title: {
+      type: String,
+    },
+
+    text: {
+      type: String,
+    },
+  },
+
+});
 </script>
 
 <style lang="less" scoped>

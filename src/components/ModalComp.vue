@@ -9,7 +9,7 @@
         :width="width"
         :min-width="minWidth"
         :hide-action-buttons="hideActionButtons"
-        v-on="$listeners"
+        v-bind="$attrs"
       >
         <slot />
       </ModalBasic>
@@ -33,7 +33,7 @@
         :button-price="buttonPrice"
         :button-variation="buttonVariation"
         :cancel-title="cancelTitle"
-        v-on="$listeners"
+        v-bind="$attrs"
       >
         <template #preview>
           <slot name="preview" />
@@ -49,7 +49,7 @@
         :text="text"
         :width="width"
         :min-width="minWidth"
-        v-on="$listeners"
+        v-bind="$attrs"
       />
     </div>
 
@@ -62,7 +62,7 @@
         :min-width="minWidth"
         :confirm-button-text="confirmButtonText"
         :button-variation="buttonVariation"
-        v-on="$listeners"
+        v-bind="$attrs"
       />
     </div>
 
@@ -73,7 +73,7 @@
         :min-width="minWidth"
         :prime-button-text="primeButtonText"
         :has-prime-close-button="hasPrimeCloseButton"
-        v-on="$listeners"
+        v-bind="$attrs"
       >
         <slot />
       </ModalPrime>
@@ -86,7 +86,7 @@
         :min-width="minWidth"
         :prime-button-text="primeButtonText"
         :has-prime-close-button="hasPrimeCloseButton"
-        v-on="$listeners"
+        v-bind="$attrs"
       >
         <slot />
       </ModalPrimeIntro>
@@ -95,11 +95,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
-import { defineComponent } from 'vue';
-import VModal from 'vue-js-modal';
-import Button from './Button.vue';
+import { defineComponent, onMounted, ref } from 'vue';
 import ModalBasic from './ModalBasic.vue';
 import ModalSubscribe from './ModalSubscribe.vue';
 import ModalRedirect from './ModalRedirect.vue';
@@ -107,11 +103,8 @@ import ModalConfirmation from './ModalConfirmation.vue';
 import ModalPrime from './ModalPrime.vue';
 import ModalPrimeIntro from './ModalPrimeIntro.vue';
 
-Vue.use(VModal);
-
-@Component({
+export default defineComponent({
   components: {
-    Button,
     ModalBasic,
     ModalSubscribe,
     ModalRedirect,
@@ -119,127 +112,111 @@ Vue.use(VModal);
     ModalPrime,
     ModalPrimeIntro,
   },
-})
-export default defineComponent({
-  @Prop()
-  name!: string;
 
-  @Prop({ default: 600 })
-  width!: number;
+  props: {
+    name: {
+      type: String,
+    },
 
-  @Prop({ default: 600 })
-  minWidth!: number;
+    width: {
+      type: Number,
+      default: 600,
+    },
 
-  @Prop()
-  scrollable!: boolean;
+    minWidth: {
+      type: Number,
+      default: 600,
+    },
 
-  @Prop()
-  type!: string;
+    scrollable: {
+      type: Boolean,
+    },
 
-  @Prop()
-  title!: string;
+    type: {
+      type: String,
+      default: 'basic',
+    },
 
-  @Prop()
-  subTitle!: string;
+    title: {
+      type: String,
+    },
 
-  @Prop()
-  text!: string;
+    subTitle: {
+      type: String,
+    },
 
-  @Prop()
-  subscribeText!: string;
+    text: {
+      type: String,
+    },
 
-  @Prop()
-  subscribeMessage!: string;
+    subscribeText: {
+      type: String,
+    },
 
-  @Prop()
-  notes!: string;
+    subscribeMessage: {
+      type: String,
+    },
 
-  @Prop()
-  proBadge!: boolean;
+    notes: {
+      type: String,
+    },
 
-  @Prop()
-  customPreview!: boolean;
+    proBadge: {
+      type: Boolean,
+    },
 
-  @Prop()
-  confirmButtonText!: string;
+    customPreview: {
+      type: Boolean,
+    },
 
-  @Prop()
-  buttonVariation!: string;
+    confirmButtonText: {
+      type: String,
+    },
 
-  @Prop()
-  buttonTitle!: string;
+    buttonVariation: {
+      type: String,
+    },
 
-  @Prop()
-  buttonPrice!: string;
+    buttonTitle: {
+      type: String,
+    },
 
-  @Prop()
-  cancelTitle!: string;
+    buttonPrice: {
+      type: String,
+    },
 
-  @Prop()
-  primeButtonText!: string;
+    cancelTitle: {
+      type: String,
+    },
 
-  @Prop()
-  hasPrimeCloseButton!: boolean;
+    primeButtonText: {
+      type: String,
+    },
 
-  @Prop()
-  hideActionButtons!: string;
+    hasPrimeCloseButton: {
+      type: Boolean,
+    },
 
-  modalName = '';
+    hideActionButtons: {
+      type: String,
+    },
+  },
 
-  mounted() {
-    this.selectName();
-  }
+  setup(props) {
+    const modalName = ref('');
 
-  selectName() {
-    switch (this.type) {
-      case 'basic':
-        if (this.name) {
-          this.modalName = this.name;
-        } else {
-          this.modalName = 'modal-basic';
-        }
-        break;
-
-      case 'subscribe':
-        if (this.name) {
-          this.modalName = this.name;
-        } else {
-          this.modalName = 'modal-subscribe';
-        }
-        break;
-
-      case 'redirect':
-        if (this.name) {
-          this.modalName = this.name;
-        } else {
-          this.modalName = 'modal-redirect';
-        }
-        break;
-
-      case 'confirmation':
-        if (this.name) {
-          this.modalName = this.name;
-        } else {
-          this.modalName = 'modal-confirmation';
-        }
-        break;
-
-      case 'welcome-prime':
-        if (this.name) {
-          this.modalName = this.name;
-        } else {
-          this.modalName = 'modal-welcome-prime';
-        }
-        break;
-
-      case 'prime-intro':
-        if (this.name) {
-          this.modalName = this.name;
-        } else {
-          this.modalName = 'modal-prime-intro';
-        }
-        break;
+    function selectName() {
+      modalName.value = props.name || `modal-${props.type}`;
     }
-  }
-})
+
+    onMounted(() => {
+      selectName();
+    });
+
+    return {
+      modalName,
+    };
+  },
+
+});
 </script>

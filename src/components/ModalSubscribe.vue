@@ -7,7 +7,7 @@
     height="auto"
     :adaptive="true"
     :scrollable="scrollable"
-    v-on="$listeners"
+    v-bind="$attrs"
   >
     <div class="s-modal-container">
       <div class="s-subscribe-icon-box">
@@ -88,67 +88,91 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
 import { defineComponent } from 'vue';
 import Button from './Button.vue';
 import Badge from './Badge.vue';
 
-@Component({
+export default defineComponent({
   components: {
     Button,
     Badge,
   },
-})
-export default defineComponent({
-  @Prop()
-  name!: string;
 
-  @Prop({ default: 600 })
-  width!: number;
+  props: {
+    name: {
+      type: String,
+    },
 
-  @Prop({ default: 600 })
-  minWidth!: number;
+    width: {
+      type: Number,
+      default: 600,
+    },
 
-  @Prop({ default: false })
-  scrollable!: boolean;
+    minWidth: {
+      type: Number,
+      default: 600,
+    },
 
-  @Prop()
-  title!: string;
+    scrollable: {
+      type: Boolean,
+      default: false,
+    },
 
-  @Prop()
-  subTitle!: string;
+    title: {
+      type: String,
+    },
 
-  @Prop()
-  text!: string;
+    subTitle: {
+      type: String,
+    },
 
-  @Prop()
-  notes!: string;
+    text: {
+      type: String,
+    },
 
-  @Prop()
-  subscribeText!: string;
+    notes: {
+      type: String,
+    },
 
-  @Prop()
-  subscribeMessage!: string;
+    subscribeText: {
+      type: String,
+    },
 
-  @Prop({ default: true })
-  proBadge!: boolean;
+    subscribeMessage: {
+      type: String,
+    },
 
-  @Prop({ default: false })
-  customPreview!: boolean;
+    proBadge: {
+      type: Boolean,
+      default: true,
+    },
 
-  @Prop({ default: 'Subscribe with PayPal' })
-  buttonTitle!: string;
+    customPreview: {
+      type: Boolean,
+      default: false,
+    },
 
-  @Prop({ default: '$5.99/mo' })
-  buttonPrice!: string;
+    buttonTitle: {
+      type: String,
+      default: 'Subscribe with PayPal',
+    },
 
-  @Prop({ default: 'subscribe' })
-  buttonVariation!: string;
+    buttonPrice: {
+      type: String,
+      default: '$5.99/mo',
+    },
 
-  @Prop({ default: 'Cancel' })
-  cancelTitle!: string;
-})
+    buttonVariation: {
+      type: String,
+      default: 'subscribe',
+    },
+
+    cancelTitle: {
+      type: String,
+      default: 'Cancel',
+    },
+  },
+});
 </script>
 
 <style lang="less" scoped>

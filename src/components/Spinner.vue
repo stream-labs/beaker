@@ -157,38 +157,44 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import {
+  defineComponent, ref, computed, onMounted,
+} from 'vue';
 
-import { defineComponent } from 'vue';
-
-@Component({
-  name: 'Spinner',
-})
 export default defineComponent({
-  private firefox = false;
+  name: 'Spinner',
 
-  @Prop({ default: 'small' })
-  size!: string;
+  props: {
+    size: {
+      type: String,
+      default: 'small',
+    },
 
-  @Prop({ default: false })
-  swap!: boolean;
+    swap: {
+      type: Boolean,
+      default: false,
+    },
+  },
 
-  get spinnerClass() {
-    return `s-spinner--${this.size}`;
-  }
+  setup(props) {
+    const firefox = ref(false);
 
-  get swapMode() {
-    if (this.swap === true) {
-      return 's-spinner--modeswap';
-    }
-  }
+    const spinnerClass = computed(() => `s-spinner--${props.size}`);
+    const swapMode = computed(() => (props.swap === true ? 's-spinner--modeswap' : ''));
 
-  mounted() {
-    if (navigator.userAgent.indexOf('Firefox') != -1) {
-      this.firefox = true;
-    }
-  }
-})
+    onMounted(() => {
+      if (navigator.userAgent.indexOf('Firefox') !== -1) {
+        firefox.value = true;
+      }
+    });
+
+    return {
+      firefox,
+      spinnerClass,
+      swapMode,
+    };
+  },
+});
 </script>
 
 <style lang="less">

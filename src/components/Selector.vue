@@ -1,11 +1,10 @@
 <template>
   <div class="s-selector">
     <multiselect
-      v-bind="multiselectProps"
+      v-bind="$attrs"
       :style="styleObject"
       :options="options"
       :max-height="200"
-      v-on="$listeners"
     >
       <template #singleLabel="{ option }">
         <slot
@@ -24,51 +23,45 @@
 </template>
 
 <script>
-import { Component, Vue } from 'vue-property-decorator';
-
-import { defineComponent } from 'vue';
+import { defineComponent, computed, onUnmounted } from 'vue';
+import mitt from 'mitt';
 import Selector from 'vue-multiselect';
 
-Vue.component('Multiselect', Selector);
+const emitter = mitt();
 
-export default {
+export default defineComponent({
   name: 'Selector',
-  extends: Selector,
+  inheritAttrs: false,
+
+  components: {
+    Multiselect: Selector,
+  },
 
   props: {
-    width: String,
-  },
-
-  computed: {
-    styleObject() {
-      return {
-        width: this.multiple ? '100%' : this.width ? this.width : '176px',
-      };
-    },
-
-    multiselectProps() {
-      return this.$props;
+    width: {
+      type: String,
+      default: '176px',
     },
   },
 
-  created() {
-    this.$on('input', this.setValue);
-  },
-
-  destroyed() {
-    this.$off('input', this.setValue);
-  },
-
-  methods: {
-    emitInput(val) {
-      this.$emit('input', val);
-    },
-
-    setValue(val) {
+  setup(props, { attrs }) {
+    function setValue(val) {
       this.mutableValue = val;
-    },
+    }
+
+    const styleObject = computed(() => ({ width: attrs.multiple ? '100%' : props.width }));
+
+    emitter.on('input', setValue);
+
+    onUnmounted(() => {
+      emitter.off('input', setValue);
+    });
+
+    return {
+      styleObject,
+    };
   },
-};
+});
 </script>
 
 <style lang="less">

@@ -31,35 +31,43 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
 import { defineComponent } from 'vue';
 import Badge from './Badge.vue';
 
-@Component({
+export default defineComponent({
   components: {
     Badge,
   },
-})
-export default defineComponent({
-  @Prop(String)
-  title!: string;
 
-  @Prop(String)
-  icon!: string;
+  props: {
+    title: {
+      type: String,
+    },
 
-  @Prop({ default: false })
-  isCompleted!: boolean;
+    icon: {
+      type: String,
+    },
 
-  @Prop(String)
-  completedText!: string;
+    isCompleted: {
+      type: Boolean,
+      default: false,
+    },
 
-  @Prop({ default: false })
-  hasCheckmark!: boolean;
+    completedText: {
+      type: String,
+    },
 
-  @Prop({ default: false })
-  hasPrime!: boolean;
-})
+    hasCheckmark: {
+      type: Boolean,
+      default: false,
+    },
+
+    hasPrime: {
+      type: Boolean,
+      default: false,
+    },
+  },
+});
 </script>
 
 <style lang="less" scoped>

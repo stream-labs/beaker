@@ -7,8 +7,8 @@ module.exports = {
     mocha: true,
   },
   extends: [
-    '@vue/airbnb',
     'plugin:vue/vue3-essential',
+    '@vue/airbnb',
     '@vue/typescript/recommended',
   ],
   parserOptions: {

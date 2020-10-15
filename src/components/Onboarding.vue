@@ -94,66 +94,98 @@
 </template>
 
 <script lang="ts">
-import {
-  Component, Prop, Vue, Watch,
-} from 'vue-property-decorator';
-
-import { defineComponent } from 'vue';
-import OnboardingStep from './OnboardingStep.vue';
+import { computed, defineComponent, PropType } from 'vue';
 import Button from './Button.vue';
 
-@Component({
+interface IOnboardingStep {
+  name?: string;
+  complete: boolean
+}
+
+export default defineComponent({
   components: {
-    OnboardingStep,
     Button,
   },
-})
-export default defineComponent({
-  @Prop() steps!: { name?: string; complete: boolean }[];
 
-  @Prop({ default: 'left' }) stepLocation!: string;
+  props: {
+    steps: {
+      type: Array as PropType<IOnboardingStep[]>,
+      default: () => [],
+    },
 
-  @Prop() currentStep!: number;
+    stepLocation: {
+      type: String,
+      default: 'left',
+    },
 
-  @Prop() completeHandler!: Function;
+    currentStep: {
+      type: Number,
+    },
 
-  @Prop() continueHandler!: Function;
+    completeHandler: {
+      type: Function,
+    },
 
-  @Prop() skipHandler!: Function;
+    continueHandler: {
+      type: Function,
+    },
 
-  @Prop() prevHandler!: Function;
+    skipHandler: {
+      type: Function,
+    },
 
-  @Prop() skippable!: boolean;
+    prevHandler: {
+      type: Function,
+    },
 
-  @Prop({ default: false }) disableControls!: boolean;
+    skippable: {
+      type: Boolean,
+    },
 
-  @Prop({ default: false }) hideSkip!: boolean;
+    disableControls: {
+      type: Boolean,
+      default: false,
+    },
 
-  @Prop({ default: false }) hideBack!: boolean;
+    hideSkip: {
+      type: Boolean,
+      default: false,
+    },
 
-  @Prop({ default: false }) hideButton!: boolean;
+    hideBack: {
+      type: Boolean,
+      default: false,
+    },
 
-  get location() {
-    if (this.stepLocation === 'left') return 's-onboarding__left';
-    if (this.stepLocation === 'top') return 's-onboarding__top';
-  }
+    hideButton: {
+      type: Boolean,
+      default: false,
+    },
+  },
 
-  get namedSteps() {
-    return this.steps.every((step) => !!step.name);
-  }
+  setup(props) {
+    function currentStepStyle(index: number) {
+      return index + 1 === props.currentStep;
+    }
 
-  get isCompleted() {
-    return this.steps.every((step) => step.complete);
-  }
+    function checkmarkStyle(index: number) {
+      return props.steps[index].complete;
+    }
 
-  currentStepStyle(index) {
-    return index + 1 === this.currentStep;
-  }
+    const location = computed(() => (props.stepLocation ? `s-onboarding__${props.stepLocation}` : 's-onboarding__left'));
+    const namedSteps = computed(() => props.steps.every((step) => !!step.name));
+    const isCompleted = computed(() => props.steps.every((step) => step.complete));
 
-  checkmarkStyle(index) {
-    return this.steps[index].complete;
-  }
-})
+    return {
+      currentStepStyle,
+      checkmarkStyle,
+      location,
+      namedSteps,
+      isCompleted,
+    };
+  },
+
+});
 </script>
 
 <style lang="less">

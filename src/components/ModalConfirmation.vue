@@ -6,7 +6,7 @@
     :min-width="minWidth"
     height="auto"
     :adaptive="true"
-    v-on="$listeners"
+    v-bind="$attrs"
   >
     <div class="s-modal-container">
       <div class="s-confirmation">
@@ -36,43 +36,59 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
 import { defineComponent } from 'vue';
 import Button from './Button.vue';
 
-@Component({
+export default defineComponent({
   components: {
     Button,
   },
-})
-export default defineComponent({
-  @Prop({ default: 'modal-confirmation' })
-  name!: string;
 
-  @Prop({ default: 600 })
-  width!: number;
+  props: {
+    name: {
+      type: String,
+      default: 'modal-confirmation',
+    },
 
-  @Prop({ default: 600 })
-  minWidth!: number;
+    width: {
+      type: Number,
+      default: 600,
+    },
 
-  @Prop()
-  subTitle!: string;
+    minWidth: {
+      type: Number,
+      default: 600,
+    },
 
-  @Prop()
-  text!: string;
+    subTitle: { type: String },
 
-  @Prop({ default: 'Confirm' })
-  confirmButtonText!: string;
+    text: { type: String },
 
-  @Prop({ default: 'warning' })
-  buttonVariation!: string;
+    confirmButtonText: {
+      type: String,
+      default: 'Confirm',
+    },
 
-  onConfirmHandler() {
-    this.$emit('confirm');
-    this.$modal.hide(this.name);
-  }
-})
+    buttonVariation: {
+      type: String,
+      default: 'warning',
+    },
+  },
+
+  setup(props, { emit }) {
+    function onConfirmHandler() {
+      emit('confirm');
+
+      /* ******** Need custom Vue 3 Modal ******** */
+      // this.$modal.hide(props.name);
+    }
+
+    return {
+      onConfirmHandler,
+    };
+  },
+
+});
 </script>
 
 <style lang="less" scoped>

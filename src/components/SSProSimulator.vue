@@ -40,55 +40,64 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
-import { defineComponent } from 'vue';
+import {
+  defineComponent, onBeforeUnmount, onMounted, ref,
+} from 'vue';
 import UrlBar from './UrlBar.vue';
 
-@Component({
+export default defineComponent({
   components: {
     UrlBar,
   },
-})
-export default defineComponent({
-  @Prop({ default: 'Awkward__Raccoon' })
-  username!: string;
 
-  @Prop({
-    default: 'https://live.kickstarter.com/images/avatar/medium/avatars4.png',
-  })
-  icon!: string;
+  props: {
+    username: {
+      type: String,
+      default: 'Awkward__Raccoon',
+    },
 
-  @Prop({ default: 'https://awkwardraccoon.tv' })
-  domain!: string;
+    icon: {
+      type: String,
+      default: 'https://live.kickstarter.com/images/avatar/medium/avatars4.png',
+    },
 
-  themeClasses = ['teal', 'orange', 'purple', 'electric-blue', 'red', 'lime'];
+    domain: {
+      type: String,
+      default: 'https://awkwardraccoon.tv',
+    },
+  },
 
-  themeClass = '';
+  setup() {
+    const themeClasses = ['teal', 'orange', 'purple', 'electric-blue', 'red', 'lime'];
+    const themeClass = ref('');
+    let myInt!: number;
 
-  myInt!: number;
+    function rotateClasses() {
+      let it = themeClasses[Symbol.iterator]();
+      myInt = setInterval(() => {
+        // time interval
+        const next = it.next();
+        if (!next.done) {
+          themeClass.value = `s-cs-simulator__web-page--${next.value}`;
+        } else {
+          it = themeClasses[Symbol.iterator]();
+        }
+      }, 2000);
+    }
 
-  rotateClasses() {
-    let it = this.themeClasses[Symbol.iterator]();
-    this.myInt = setInterval(() => {
-      // time interval
-      const next = it.next();
-      if (!next.done) {
-        this.themeClass = `s-cs-simulator__web-page--${next.value}`;
-      } else {
-        it = this.themeClasses[Symbol.iterator]();
-      }
-    }, 2000);
-  }
+    onBeforeUnmount(() => {
+      clearInterval(myInt);
+    });
 
-  beforeDestroy() {
-    clearInterval(this.myInt);
-  }
+    onMounted(() => {
+      rotateClasses();
+    });
 
-  mounted() {
-    this.rotateClasses();
-  }
-})
+    return {
+      themeClass,
+    };
+  },
+});
 </script>
 
 <style lang="less">

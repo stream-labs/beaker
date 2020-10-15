@@ -6,7 +6,7 @@
     :min-width="minWidth"
     height="auto"
     :adaptive="true"
-    v-on="$listeners"
+    v-bind="$attrs"
   >
     <div class="s-modal-container">
       <div class="s-modal-body">
@@ -56,38 +56,46 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
 import { defineComponent } from 'vue';
 import Button from './Button.vue';
 
-@Component({
+export default defineComponent({
   components: {
     Button,
   },
-})
-export default defineComponent({
-  @Prop()
-  name!: string;
 
-  @Prop({ default: 600 })
-  width!: number;
+  props: {
+    name: {
+      type: String,
+    },
 
-  @Prop({ default: 600 })
-  minWidth!: number;
+    width: {
+      type: Number,
+      default: 600,
+    },
 
-  @Prop()
-  title!: string;
+    minWidth: {
+      type: Number,
+      default: 600,
+    },
 
-  @Prop()
-  subTitle!: string;
+    title: {
+      type: String,
+    },
 
-  @Prop()
-  text!: string;
+    subTitle: {
+      type: String,
+    },
 
-  @Prop()
-  hideActionButtons!: string;
-})
+    text: {
+      type: String,
+    },
+
+    hideActionButtons: {
+      type: String,
+    },
+  },
+});
 </script>
 
 <style lang="less" scoped>

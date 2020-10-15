@@ -13,23 +13,20 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
 import { defineComponent } from 'vue';
-import Button from './Button.vue';
 
-@Component({
-  components: {
-    Button,
-  },
-})
 export default defineComponent({
-  @Prop()
-  title!: string;
-
-  @Prop()
-  desc!: string;
-})
+  props: {
+    title: {
+      type: String,
+      default: '',
+    },
+    desc: {
+      type: String,
+      default: '',
+    },
+  },
+});
 </script>
 
 <style lang="less">

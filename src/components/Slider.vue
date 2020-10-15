@@ -27,117 +27,145 @@
 </template>
 
 <script lang="ts">
+import mitt from 'mitt';
 import {
-  Component, Prop, Watch, Vue,
-} from 'vue-property-decorator';
-
-import { defineComponent } from 'vue';
+  defineComponent, ref, onMounted, onBeforeUnmount, onUnmounted, PropType, watchEffect,
+} from 'vue';
 import VueSliderComponent from 'vue-slider-component';
 import ResizeObserver from 'resize-observer-polyfill';
 
-@Component({
+export default defineComponent({
   components: {
     VueSliderComponent,
   },
-})
-export default defineComponent({
-  $refs!: {
-    slider: any;
-  };
 
-  @Watch('value')
-  updateLocalValue() {
-    this.displayValue = this.value;
-  }
+  props: {
+    width: {
+      type: Number || String,
+    },
 
-  @Prop()
-  width!: number | string;
+    value: {
+      type: Number || String || Array as PropType<number[]> || Array as PropType<string[]>,
+      default: () => 1,
+    },
 
-  @Prop({ default: 1 })
-  value!: number | string | Array<number> | Array<string>;
+    min: {
+      type: Number,
+      default: () => 0,
+    },
 
-  @Prop({ default: 0 })
-  min!: number;
+    max: {
+      type: Number,
+      default: () => 100,
+    },
 
-  @Prop({ default: 100 })
-  max!: number;
+    interval: {
+      type: Number,
+      default: () => 1,
+    },
 
-  @Prop({ default: 1 })
-  interval!: number;
+    tooltip: {
+      type: String || Boolean,
+      default: 'always',
+    },
 
-  @Prop({ default: 'always' })
-  tooltip!: 'always' | false;
+    prefix: {
+      type: String,
+      default: () => '',
+    },
 
-  @Prop({ default: '' })
-  prefix!: string;
+    suffix: {
+      type: String,
+      default: () => '',
+    },
 
-  @Prop({ default: '' })
-  suffix!: string;
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
 
-  @Prop({ default: false })
-  disabled!: boolean;
+    data: {
+      type: Array as PropType<number[]> || Array as PropType<string[]>,
+    },
 
-  @Prop()
-  data!: Array<number> | Array<string>;
+    simpleTheme: {
+      type: Boolean,
+      default: false,
+    },
+  },
 
-  @Prop({ default: false })
-  simpleTheme!: boolean;
+  setup(props, { emit }) {
+    const emitter = mitt();
+    const slider = ref<any>(null);
+    const displayValue = ref(props.value);
+    let debounced = false;
 
-  displayValue: number | string | Array<number> | Array<string> = this.value;
-
-  private debounced = false;
-
-  private ro = new ResizeObserver((entries, observer) => {
-    for (const entry of entries) {
-      const {
-        left, top, width, height,
-      } = entry.contentRect;
-      if (!this.debounced) {
-        this.debounce().then(() => {
-          if (this.$refs.slider) {
-            this.$refs.slider.refresh();
-          }
-        });
-      }
+    function emitInput(val) {
+      emit('input', val);
     }
-  });
 
-  created() {
-    this.$on('input', this.setValue);
-  }
+    function setValue(val) {
+      displayValue.value = val;
+    }
 
-  mounted() {
-    this.ro.observe(this.$refs.slider.$el);
-  }
+    function debounce() {
+      return new Promise((resolve) => {
+        if (!debounced) {
+          debounced = true;
+          setTimeout(() => {
+            debounced = false;
+            resolve();
+          }, 500);
+        }
+      });
+    }
 
-  beforeDestroy() {
-    this.ro.unobserve(this.$refs.slider.$el);
-  }
+    emitter.on('input', setValue);
 
-  destroyed() {
-    this.$off('input', this.setValue);
-  }
-
-  emitInput(val) {
-    this.$emit('input', val);
-  }
-
-  setValue(val) {
-    this.displayValue = val;
-  }
-
-  debounce() {
-    return new Promise((resolve) => {
-      if (!this.debounced) {
-        this.debounced = true;
-        setTimeout(() => {
-          this.debounced = false;
-          resolve();
-        }, 500);
+    const ro = new ResizeObserver((entries, observer) => {
+      for (const entry of entries) {
+        const {
+          left, top, width, height,
+        } = entry.contentRect;
+        if (!debounced) {
+          debounce().then(() => {
+            if (this.$refs.slider) {
+              this.$refs.slider.refresh();
+            }
+          });
+        }
       }
     });
-  }
-})
+
+    watchEffect(() => {
+      displayValue.value = props.value;
+    });
+
+    onMounted(() => {
+      if (slider.value) {
+        ro.observe(slider.value);
+      }
+    });
+
+    onBeforeUnmount(() => {
+      if (slider.value) {
+        ro.unobserve(slider.value);
+      }
+    });
+
+    onUnmounted(() => {
+      emitter.off('input', setValue);
+    });
+
+    return {
+      slider,
+      displayValue,
+      emitInput,
+      setValue,
+      debounce,
+    };
+  },
+});
 </script>
 
 <style lang="less">

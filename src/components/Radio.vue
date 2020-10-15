@@ -14,27 +14,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
 import { defineComponent } from 'vue';
 
-@Component({})
 export default defineComponent({
-  @Prop(String)
-  label!: string;
-
-  @Prop(String)
-  id!: string;
-
-  @Prop(String)
-  name!: string;
-
-  @Prop([String, Boolean])
-  value!: string | boolean;
-
-  @Prop([String, Boolean])
-  val!: string | boolean;
-})
+  props: {
+    label: String,
+    name: String,
+    id: String,
+    value: String || Boolean,
+    val: String || Boolean,
+  },
+});
 </script>
 
 <style lang="less">

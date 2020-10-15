@@ -6,7 +6,7 @@
     :min-width="minWidth"
     height="auto"
     :adaptive="true"
-    v-on="$listeners"
+    v-bind="$attrs"
   >
     <div
       class="modal-prime__close"
@@ -19,7 +19,7 @@
     </div>
     <welcome-prime
       :prime-button-text="primeButtonText"
-      v-on="$listeners"
+      v-bind="$attrs"
     >
       <slot />
     </welcome-prime>
@@ -27,32 +27,39 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
 import { defineComponent } from 'vue';
 import WelcomePrime from './WelcomePrime.vue';
 
-@Component({
+export default defineComponent({
   components: {
     WelcomePrime,
   },
-})
-export default defineComponent({
-  @Prop({ default: 'modal-welcome-prime' })
-  name!: string;
 
-  @Prop()
-  width!: number;
+  props: {
+    name: {
+      type: String,
+      default: 'modal-welcome-prime',
+    },
 
-  @Prop()
-  minWidth!: number;
+    width: {
+      type: Number,
+    },
 
-  @Prop({ default: false })
-  hasPrimeCloseButton!: boolean;
+    minWidth: {
+      type: Number,
+    },
 
-  @Prop({ default: 'Continue' })
-  primeButtonText!: string;
-})
+    hasPrimeCloseButton: {
+      type: Boolean,
+      default: false,
+    },
+
+    primeButtonText: {
+      type: String,
+      default: 'Continue',
+    },
+  },
+});
 </script>
 
 <style lang="less" scoped>

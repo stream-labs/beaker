@@ -62,119 +62,142 @@
 
 <script lang="ts">
 import {
-  Component, Prop, Vue, Watch,
-} from 'vue-property-decorator';
+  computed, defineComponent, nextTick, onMounted, ref,
+} from 'vue';
+import { omit } from 'lodash-es';
 
-import { defineComponent } from 'vue';
-import { omit } from 'lodash';
-
-@Component({})
 export default defineComponent({
-  $refs!: {
-    textArea: HTMLTextAreaElement;
-  };
+  props: {
+    name: {
+      type: String,
+    },
 
-  @Prop()
-  name!: string;
+    label: {
+      type: String,
+    },
 
-  @Prop()
-  label!: string;
+    placeholder: {
+      type: String,
+    },
 
-  @Prop()
-  placeholder!: string;
+    value: {
+      type: String,
+    },
 
-  @Prop()
-  value!: string;
+    error: {
+      type: String,
+    },
 
-  @Prop()
-  error!: string;
+    helpText: {
+      type: String,
+    },
 
-  @Prop()
-  helpText!: string;
+    cols: {
+      type: Number,
+      default: 100,
+    },
 
-  @Prop({ default: 100 })
-  cols!: number;
+    rows: {
+      type: Number,
+      default: 3,
+    },
 
-  @Prop({ default: 3 })
-  rows!: number;
+    maxLength: {
+      type: Number,
+    },
 
-  @Prop()
-  maxLength!: number;
+    autoResize: {
+      type: Boolean,
+    },
 
-  @Prop()
-  autoResize!: boolean;
+    maxHeight: {
+      type: Number,
+    },
+  },
 
-  @Prop()
-  maxHeight!: number;
+  setup(props, { emit, attrs }) {
+    // const localValue = ref('');
+    const textArea = ref<HTMLTextAreaElement | null>(null);
+    const hasScroll = ref(false);
 
-  private localValue = '';
+    /// ////   Update to work in Vue 3 Compostion API   ///////
+    // this.$parent.$on('update', updateValue);
+    /// ///////////////////////////////////////////////////////
 
-  private hasScroll = false;
-
-  created() {
-    this.$parent.$on('update', this.updateValue);
-  }
-
-  mounted() {
-    this.updateSize();
-    this.updateCountPos();
-  }
-
-  focus() {
-    this.$refs.textArea.focus();
-  }
-
-  get filteredListeners() {
-    return omit(this.$listeners, ['input']);
-  }
-
-  get currentLength() {
-    return this.value.length;
-  }
-
-  updated() {
-    this.updateCountPos();
-  }
-
-  onValueChange(event: { target: HTMLTextAreaElement }) {
-    this.$emit('input', event.target.value);
-    this.updateSize();
-  }
-
-  onKeyUp(event: { target: HTMLTextAreaElement }) {
-    this.$emit('keyup', event.target.selectionStart);
-  }
-
-  onFocus(event: { target: HTMLTextAreaElement }) {
-    this.$emit('focus', event.target.selectionStart);
-  }
-
-  onClick(event: { target: HTMLTextAreaElement }) {
-    this.$emit('click', event.target.selectionStart);
-  }
-
-  updateValue(val) {
-    this.$refs.textArea.value = val;
-    this.$emit('input', val);
-  }
-
-  updateSize() {
-    if (this.autoResize) {
-      this.$refs.textArea.style.cssText = 'height:auto;';
-      const newHeight = this.$refs.textArea.scrollHeight > this.maxHeight && this.maxHeight
-        ? this.maxHeight + 2
-        : this.$refs.textArea.scrollHeight + 2;
-      this.$refs.textArea.style.cssText = `height:${newHeight}px`;
+    function onKeyUp(event: { target: HTMLTextAreaElement }) {
+      emit('keyup', event.target.selectionStart);
     }
-  }
 
-  updateCountPos() {
-    this.$nextTick(() => {
-      const { textArea } = this.$refs;
-      this.hasScroll = textArea.scrollHeight > textArea.clientHeight;
+    function onFocus(event: { target: HTMLTextAreaElement }) {
+      emit('focus', event.target.selectionStart);
+    }
+
+    function onClick(event: { target: HTMLTextAreaElement }) {
+      emit('click', event.target.selectionStart);
+    }
+
+    function updateValue(val: string) {
+      if (textArea.value) {
+        textArea.value.value = val;
+        emit('input', val);
+      }
+    }
+
+    function updateSize() {
+      if (props.autoResize && textArea.value) {
+        textArea.value.style.cssText = 'height:auto;';
+        const newHeight = props.maxHeight && textArea.value.scrollHeight > props.maxHeight
+          ? props.maxHeight + 2
+          : textArea.value.scrollHeight + 2;
+        textArea.value.style.cssText = `height:${newHeight}px`;
+      }
+    }
+
+    function updateCountPos() {
+      nextTick(() => {
+        if (textArea.value) {
+          hasScroll.value = textArea.value.scrollHeight > textArea.value.clientHeight;
+        }
+      });
+    }
+
+    function updated() {
+      updateCountPos();
+    }
+
+    function focus() {
+      if (textArea.value) textArea.value.focus();
+    }
+
+    function onValueChange(event: { target: HTMLTextAreaElement }) {
+      emit('input', event.target.value);
+      updateSize();
+    }
+
+    const filteredListeners = computed(() => omit(attrs, ['input']));
+    const currentLength = computed(() => (props.value ? props.value.length : 0));
+
+    onMounted(() => {
+      updateSize();
+      updateCountPos();
     });
-  }
-})
+
+    return {
+      hasScroll,
+      onKeyUp,
+      onFocus,
+      onClick,
+      updateValue,
+      updateSize,
+      updateCountPos,
+      updated,
+      focus,
+      onValueChange,
+      filteredListeners,
+      currentLength,
+    };
+  },
+});
 </script>
 
 <style lang="less">

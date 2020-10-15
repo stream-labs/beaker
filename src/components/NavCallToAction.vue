@@ -23,50 +23,62 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import Button from './Button.vue';
 
-@Component({
+export default defineComponent({
   components: {
     Button,
   },
-})
-export default defineComponent({
-  @Prop()
-  bgColor!: string;
 
-  @Prop({
-    default:
-      'Over 800k creators use Streamlabs OBS daily, delivering entertainment.',
-  })
-  description!: string;
+  props: {
+    bgColor: {
+      type: String,
+    },
 
-  @Prop({ default: 'slobs-download' })
-  buttonVariation!: string;
+    description: {
+      type: String,
+      default: 'Over 800k creators use Streamlabs OBS daily, delivering entertainment.',
+    },
 
-  @Prop({ default: 'Download Streamlabs OBS' })
-  buttonTitle!: string;
+    buttonVariation: {
+      type: String,
+      default: 'slobs-download',
+    },
 
-  @Prop()
-  buttonHref!: string;
+    buttonTitle: {
+      type: String,
+      default: 'Download Streamlabs OBS',
+    },
 
-  @Prop()
-  buttonTo!: string;
+    buttonHref: {
+      type: String,
+    },
 
-  @Prop()
-  buttonTag!: string;
+    buttonTo: {
+      type: String,
+    },
 
-  @Prop()
-  onClick!: {
-    type: Function;
-  };
+    buttonTag: {
+      type: String,
+    },
 
-  callToActionBg: object = {
-    backgroundColor: this.bgColor,
-  };
-})
+    onClick: {
+      type: Function,
+    },
+  },
+
+  setup(props) {
+    const callToActionBg = ref({
+      backgroundColor: props.bgColor,
+    });
+
+    return {
+      callToActionBg,
+    };
+  },
+
+});
 </script>
 
 <style lang="less">

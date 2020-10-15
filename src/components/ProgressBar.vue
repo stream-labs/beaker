@@ -8,19 +8,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { computed, defineComponent } from 'vue';
 
-import { defineComponent } from 'vue';
-
-@Component({})
 export default defineComponent({
-  @Prop()
-  progressComplete!: number;
+  props: {
+    progressComplete: {
+      type: Number,
+      default: 0,
+    },
+  },
 
-  get getProgress() {
-    return `width:${this.progressComplete}%`;
-  }
-})
+  setup(props) {
+    const getProgress = computed(() => `width:${props.progressComplete}%`);
+    return { getProgress };
+  },
+});
 </script>
 
 <style lang="less">

@@ -32,38 +32,44 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { computed, defineComponent } from 'vue';
 
-import { defineComponent } from 'vue';
-
-@Component({})
 export default defineComponent({
-  @Prop({ default: 'default' })
-  variation!: string;
+  props: {
+    variation: {
+      type: String,
+      default: 'default',
+    },
 
-  @Prop({ required: true })
-  title!: string;
+    title: {
+      type: String,
+      required: true,
+    },
 
-  @Prop({ required: true })
-  desc!: string;
+    desc: {
+      type: String,
+      required: true,
+    },
 
-  @Prop()
-  icon!: string;
+    icon: {
+      type: String,
+    },
+  },
 
-  get iconType() {
-    switch (this.variation) {
-      case 'default':
-        return 'information';
-      case 'warning':
-        return 'error';
-    }
-  }
+  setup(props) {
+    const iconType = computed(() => (props.variation === 'warning' ? 'error' : 'information'));
 
-  get iconClass() {
-    const iconSrc = this.icon ? this.icon : this.iconType;
-    return `icon-${iconSrc}`;
-  }
-})
+    const iconClass = computed(() => {
+      const iconSrc = props.icon || iconType.value;
+      return `icon-${iconSrc}`;
+    });
+
+    return {
+      iconType,
+      iconClass,
+    };
+  },
+});
 </script>
 
 <style lang="less">

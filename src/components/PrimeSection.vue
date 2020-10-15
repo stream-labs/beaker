@@ -6,52 +6,60 @@
       :subtitle="subtitle"
       :has-link="true"
     >
-      <div slot="title">
-        <Badge
-          :align-left="true"
-          :variant="'prime-alt'"
-        />Feature
-      </div>
-      <div slot="link">
-        <Button
-          @click="$emit('click')"
-          :tag="'a'"
-          :variation="'link'"
-          :href="href"
-          :title="'Try Prime Now'"
-        />
-      </div>
+      <template #title>
+        <div>
+          <Badge
+            :align-left="true"
+            :variant="'prime-alt'"
+          />Feature
+        </div>
+      </template>
+      <template #link>
+        <div>
+          <Button
+            @click="$emit('click')"
+            :tag="'a'"
+            :variation="'link'"
+            :href="href"
+            :title="'Try Prime Now'"
+          />
+        </div>
+      </template>
     </empty-section>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import Badge from './Badge.vue';
 import Button from './Button.vue';
 import EmptySection from './EmptySection.vue';
 
-@Component({
+interface IPrimeSectionClick {
+  type: () => void
+}
+
+export default defineComponent({
   components: {
     Badge,
     Button,
     EmptySection,
   },
-})
-export default defineComponent({
-  @Prop({})
-  subtitle!: string;
 
-  @Prop({})
-  href!: string;
-
-  @Prop()
-  onClick!: {
-    type: Function;
-  };
-})
+  props: {
+    subtitle: {
+      type: String,
+      default: '',
+    },
+    href: {
+      type: String,
+      default: '',
+    },
+    onClick: {
+      type: Object as PropType<IPrimeSectionClick>,
+    },
+  },
+});
 </script>
 
 <style lang="less">

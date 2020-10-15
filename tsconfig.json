@@ -20,6 +20,8 @@
       ]
     },
     "lib": [
+      "es5",
+      "es6",
       "esnext",
       "dom",
       "dom.iterable",

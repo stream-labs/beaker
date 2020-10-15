@@ -42,97 +42,117 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
-import { defineComponent } from 'vue';
-import { omit } from 'lodash';
+import {
+  computed, defineComponent, PropType, ref,
+} from 'vue';
+import { omit } from 'lodash-es';
 import TextInput from './TextInput.vue';
-import TextArea from './TextArea.vue';
 import Button from './Button.vue';
 
-@Component({
+export default defineComponent({
   components: {
     TextInput,
-    TextArea,
     Button,
   },
-})
-export default defineComponent({
-  @Prop()
-  name!: string;
 
-  @Prop()
-  label!: string;
+  props: {
+    name: {
+      type: String,
+    },
 
-  @Prop()
-  placeholder!: string;
+    label: {
+      type: String,
+    },
 
-  @Prop({ default: 'Add Tag' })
-  buttonText!: string;
+    placeholder: {
+      type: String,
+    },
 
-  @Prop({ default: 'default' })
-  buttonVariation!: string;
+    buttonText: {
+      type: String,
+      default: 'Add Tag',
+    },
 
-  @Prop({ default: () => [] })
-  value!: string[];
+    buttonVariation: {
+      type: String,
+      default: 'default',
+    },
 
-  @Prop()
-  inputValidation!: string;
+    value: {
+      type: Array as PropType<string[]>,
+      default: () => [],
+    },
 
-  @Prop()
-  prefix!: string;
+    inputValidation: {
+      type: String,
+    },
 
-  @Prop({ default: 'default' })
-  tagVariation!: string;
+    prefix: {
+      type: String,
+    },
 
-  @Prop({ default: 25 })
-  maxItems!: number;
+    tagVariation: {
+      type: String,
+      default: 'default',
+    },
 
-  textInputValue = '';
+    maxItems: {
+      type: Number,
+      default: 25,
+    },
+  },
 
-  get tagClasses() {
-    return `s-tagging-input__tag s-tagging-input__tag--${this.tagVariation}`;
-  }
+  setup(props, { attrs }) {
+    const textInputValue = ref('');
 
-  get filteredListeners() {
-    return omit(this.$listeners, ['input']);
-  }
-
-  onAdd() {
-    if (
-      this.$validator.errors.items.length !== 0
-      || this.value.length >= this.maxItems
-    ) {
-      return;
-    }
-
-    this.textInputValue = this.textInputValue.trim();
-
-    const found = this.value.find((v) => {
-      if (this.prefix && !this.textInputValue.startsWith(this.prefix)) {
-        return (
-          v.toLowerCase()
-          === this.prefix + this.textInputValue.trim().toLowerCase()
-        );
-      }
-      return v.toLowerCase() === this.textInputValue.trim().toLowerCase();
-    });
-
-    if (!found && this.textInputValue.length !== 0) {
-      if (this.prefix && !this.textInputValue.startsWith(this.prefix)) {
-        this.textInputValue = this.prefix + this.textInputValue;
+    function onAdd() {
+      if (
+        this.$validator.errors.items.length !== 0
+        || props.value.length >= props.maxItems
+      ) {
+        return;
       }
 
-      this.value.push(this.textInputValue);
+      textInputValue.value = textInputValue.value.trim();
+
+      const found = props.value.find((v) => {
+        if (props.prefix && !textInputValue.value.startsWith(props.prefix)) {
+          return (
+            v.toLowerCase()
+            === props.prefix + textInputValue.value.trim().toLowerCase()
+          );
+        }
+        return v.toLowerCase() === textInputValue.value.trim().toLowerCase();
+      });
+
+      if (!found && textInputValue.value.length !== 0) {
+        if (props.prefix && !textInputValue.value.startsWith(props.prefix)) {
+          textInputValue.value = props.prefix + textInputValue.value;
+        }
+
+        props.value.push(textInputValue.value);
+      }
+
+      textInputValue.value = '';
     }
 
-    this.textInputValue = '';
-  }
+    function onRemove(index: number) {
+      props.value.splice(index, 1);
+    }
 
-  onRemove(index) {
-    this.value.splice(index, 1);
-  }
-})
+    const tagClasses = computed(() => `s-tagging-input__tag s-tagging-input__tag--${props.tagVariation}`);
+
+    const filteredListeners = computed(() => omit(attrs, ['input']));
+
+    return {
+      textInputValue,
+      onAdd,
+      onRemove,
+      tagClasses,
+      filteredListeners,
+    };
+  },
+});
 </script>
 
 <style lang="less">

@@ -8,15 +8,14 @@
     :click-to-close="true"
     @opened="opened"
   >
-    <div
-      slot="top-right"
-      class="s-overlay__icon"
-    >
-      <span
-        class="s-icon icon-close"
-        @click="onDismiss"
-      />
-    </div>
+    <template #top-right>
+      <div class="s-overlay__icon">
+        <span
+          class="s-icon icon-close"
+          @click="onDismiss"
+        />
+      </div>
+    </template>
     <div
       class="s-overlay__container"
       :class="containerMq"
@@ -40,12 +39,12 @@
             :href="buttonHref"
             :target="buttonTarget"
             :title="buttonTitle"
-            @click.native="onPrimaryAction"
+            @click="onPrimaryAction"
           />
           <router-link
             class="s-overlay__link"
             :to="dismissRoute"
-            @click.native="onDismiss"
+            @click="onDismiss"
           >
             {{ dismissText }}
           </router-link>
@@ -54,7 +53,7 @@
 
       <div
         class="s-overlay__image-block"
-        :class="overlay__imageBlockMq"
+        :class="overlayImageBlockMq"
       >
         <img
           v-if="isImage"
@@ -77,113 +76,138 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
-import { defineComponent } from 'vue';
-import VueMq from 'vue-mq';
-import VModal from 'vue-js-modal';
+import {
+  computed, defineComponent, onMounted, ref,
+} from 'vue';
+// import VueMq from 'vue-mq';
+// import VModal from 'vue-js-modal';
 import Button from './Button.vue';
 
-Vue.use(VModal);
+// Vue.use(VueMq, {
+//   breakpoints: {
+//     // default breakpoints - customize this
+//     sm: 900,
+//     md: 1250,
+//     lg: Infinity,
+//   },
+//   defaultBreakpoint: 'sm', // customize this for SSR
+// });
 
-Vue.use(VueMq, {
-  breakpoints: {
-    // default breakpoints - customize this
-    sm: 900,
-    md: 1250,
-    lg: Infinity,
-  },
-  defaultBreakpoint: 'sm', // customize this for SSR
-});
-
-@Component({
+export default defineComponent({
   components: {
     Button,
   },
-})
-export default defineComponent({
-  @Prop({ default: '100%' })
-  width!: string | number;
 
-  @Prop({ default: 'auto' })
-  height!: string | number;
+  props: {
+    width: {
+      type: String || Number,
+      default: '100%',
+    },
 
-  @Prop()
-  label!: string;
+    height: {
+      type: String || Number,
+      default: 'auto',
+    },
 
-  @Prop()
-  title!: string;
+    label: {
+      type: String,
+    },
 
-  @Prop()
-  media!: string;
+    title: {
+      type: String,
+    },
 
-  @Prop()
-  buttonTitle!: string;
+    media: {
+      type: String,
+      default: 'example-file-name.png',
+    },
 
-  @Prop({ default: '/' })
-  buttonRoute!: string;
+    buttonTitle: {
+      type: String,
+    },
 
-  @Prop({ default: 'router-link' })
-  buttonTag!: string;
+    buttonRoute: {
+      type: String,
+      default: '/',
+    },
 
-  @Prop()
-  buttonHref!: string;
+    buttonTag: {
+      type: String,
+      default: 'router-link',
+    },
 
-  @Prop()
-  buttonTarget!: string;
+    buttonHref: {
+      type: String,
+    },
 
-  @Prop({ default: '/' })
-  dismissRoute!: string;
+    buttonTarget: {
+      type: String,
+    },
 
-  @Prop({ default: 'Go to Dashboard' })
-  dismissText!: string;
+    dismissRoute: {
+      type: String,
+      default: '/',
+    },
 
-  @Prop()
-  onOpen!: Function;
+    dismissText: {
+      type: String,
+      default: 'Go to Dashboard',
+    },
 
-  @Prop()
-  onAction!: Function;
+    onOpen: {
+      type: Function,
+    },
 
-  @Prop({ default: false })
-  videoControls!: boolean;
+    onAction: {
+      type: Function,
+    },
 
-  isImage = true;
+    videoControls: {
+      type: Boolean,
+      default: false,
+    },
+  },
 
-  get overlayImage() {
-    return this.media;
-  }
+  setup(props) {
+    const isImage = ref(true);
+    // const mq: string | string[];
 
-  $mq!: string | string[];
-
-  get containerMq() {
-    return this.$mq === 'sm' ? 's-overlay__container--mq' : '';
-  }
-
-  get overlay__imageBlockMq() {
-    return this.$mq === 'sm' ? 's-overlay__image-block--mq' : '';
-  }
-
-  mounted() {
-    if (this.media.includes('mp4') || this.media.includes('webm')) {
-      this.isImage = false;
-    } else {
-      this.isImage = true;
+    function opened() {
+      typeof props.onOpen === 'function' && props.onOpen();
     }
-  }
 
-  opened(event) {
-    typeof this.onOpen === 'function' && this.onOpen();
-  }
+    // Need to make custom vue 3 modal component.
+    function onDismiss() {
+      // this.$modal.hide('new-feature');
+    }
 
-  onPrimaryAction() {
-    typeof this.onAction === 'function' && this.onAction();
-    this.onDismiss();
-  }
+    function onPrimaryAction() {
+      typeof props.onAction === 'function' && props.onAction();
+      onDismiss();
+    }
 
-  onDismiss() {
-    this.$modal.hide('new-feature');
-  }
-})
+    const overlayImage = computed(() => props.media);
+    const containerMq = computed(() => ($mq === 'sm' ? 's-overlay__container--mq' : ''));
+    const overlayImageBlockMq = computed(() => ($mq === 'sm' ? 's-overlay__image-block--mq' : ''));
+
+    onMounted(() => {
+      if (props.media.includes('mp4') || props.media.includes('webm')) {
+        isImage.value = false;
+      } else {
+        isImage.value = true;
+      }
+    });
+
+    return {
+      opened,
+      onPrimaryAction,
+      overlayImage,
+      containerMq,
+      overlayImageBlockMq,
+    };
+  },
+
+});
 </script>
 
 <style lang="less" scoped>

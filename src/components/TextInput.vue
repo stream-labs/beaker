@@ -37,7 +37,7 @@
       :name="name"
       :disabled="disabled"
       :readonly="readonly"
-      @blur="$emit('blur')"
+      @blur="onBlur"
       @focus="onFocus"
       @click="onClick"
       @keyup="onKeyUp"
@@ -79,88 +79,82 @@
 
 <script lang="ts">
 import {
-  Component, Prop, Vue, Watch,
-} from 'vue-property-decorator';
-
-import { computed, defineComponent, ref, watch, watchEffect } from 'vue';
-import { omit, isNil } from 'lodash';
+  computed, defineComponent, ref, watchEffect,
+} from 'vue';
+import { omit, isNil } from 'lodash-es';
 
 export default defineComponent({
-  $refs!: {
-    input: HTMLInputElement;
-  };
-
   props: {
     name: {
-      type: String
+      type: String,
     },
 
     value: {
-      type: [ String, Number ]
+      type: [String, Number],
     },
 
     error: {
-      type: String
+      type: String,
     },
 
     min: {
-      type: Number
+      type: Number,
     },
 
     max: {
-      type: Number
+      type: Number,
     },
 
     step: {
       type: Number,
-      default: 1
+      default: 1,
     },
 
     helpText: {
-      type: String
+      type: String,
     },
 
     type: {
       type: String,
-      default: 'text'
+      default: 'text',
     },
 
     placeholder: {
-      type: String
+      type: String,
     },
 
     disabled: {
-      type: Boolean
+      type: Boolean,
     },
 
     label: {
-      type: String
+      type: String,
     },
 
     readonly: {
-      type: Boolean
+      type: Boolean,
     },
 
     autoComplete: {
       type: String,
-      default: 'off'
+      default: 'off',
     },
 
     autofocus: {
-      type: Boolean
+      type: Boolean,
     },
   },
 
   setup(props, { attrs, emit }) {
     const input = ref<HTMLInputElement | null>(null);
-    let content = '';
+    const content = ref('');
 
-    content = props.value !== undefined && props.value !== null
+    content.value = props.value !== undefined && props.value !== null
       ? props.value.toString()
       : '';
-    ///////   Update to work in Vue 3 Compostion API   ///////
-    this.$parent.$on('update', updateValue);
-    //////////////////////////////////////////////////////////
+    /// ////   Update to work in Vue 3 Compostion API   ///////
+    // this.$parent.$on('update', updateValue);
+    /// ///////////////////////////////////////////////////////
 
     function focus() {
       if (input.value) {
@@ -168,32 +162,32 @@ export default defineComponent({
       }
     }
 
-    const filteredListeners = computed(() => {
-      return omit(attrs, ['input']);
-    });
+    const filteredListeners = computed(() => omit(attrs, ['input']));
 
-    const isMaxReached = computed(() => {
-      return (
-        props.type === 'number'
+    const isMaxReached = computed(() => (
+      props.type === 'number'
+        && props.max
         && !isNil(props.max)
         && Number(props.value) >= props.max
-      );
-    });
+    ));
 
-    const isMinReached = computed(() => {
-      return (
-        props.type === 'number'
+    const isMinReached = computed(() => (
+      props.type === 'number'
+        && props.min
         && !isNil(props.min)
         && Number(props.value) <= props.min
-      );
-    });
+    ));
 
     watchEffect(() => {
       if (props.value) {
-        content = props.value.toString();
+        content.value = props.value.toString();
         emit('onChange', props.value);
       }
     });
+
+    function update(value: string | number) {
+      emit('input', value);
+    }
 
     function handleInput(event: { target: HTMLInputElement }) {
       update(
@@ -209,6 +203,10 @@ export default defineComponent({
       emit('keyup', event);
     }
 
+    function onBlur() {
+      emit('blur');
+    }
+
     function onFocus(event: { target: HTMLTextAreaElement }) {
       emit('focus', event);
     }
@@ -218,31 +216,46 @@ export default defineComponent({
     }
 
     function increment() {
-      if (this.isMaxReached) return;
+      if (isMaxReached.value) return;
 
-      this.update(Number(this.content) + this.step);
+      update(Number(content.value) + props.step);
     }
 
     function decrement() {
-      if (this.isMinReached) return;
+      if (isMinReached.value) return;
 
-      this.update(Number(this.content) - this.step);
+      update(Number(content.value) - props.step);
     }
 
     function mouseWheel(event: WheelEvent) {
-      if (this.type === 'number') {
-        if (event.deltaY > 0) this.decrement();
-        else this.increment();
+      if (props.type === 'number') {
+        if (event.deltaY > 0) decrement();
+        else increment();
 
         event.preventDefault();
       }
     }
 
-    function update(value: string | number) {
-      emit('input', value);
-    }
-  }
-})
+    return {
+      input,
+      content,
+      filteredListeners,
+      isMaxReached,
+      isMinReached,
+      focus,
+      handleInput,
+      updateValue,
+      onKeyUp,
+      onBlur,
+      onFocus,
+      onClick,
+      increment,
+      decrement,
+      mouseWheel,
+      update,
+    };
+  },
+});
 </script>
 
 <style lang="less">

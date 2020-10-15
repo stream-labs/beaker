@@ -26,61 +26,75 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
-import { defineComponent } from 'vue';
+import {
+  computed, defineComponent, onMounted, ref,
+} from 'vue';
 import ResizeObserver from 'resize-observer-polyfill';
 import VuePaginateComponent from 'vuejs-paginate';
 
-@Component({
+export default defineComponent({
   components: {
     VuePaginateComponent,
   },
-})
-export default defineComponent({
-  pageRange = 3;
 
-  $refs!: {
-    pagination: HTMLDivElement;
-  };
+  props: {
+    nightBg: {
+      type: Boolean,
+      default: false,
+    },
 
-  @Prop({ default: false })
-  nightBg!: boolean;
+    itemsPerPage: {
+      type: Number,
+      default: 12,
+    },
 
-  @Prop()
-  itemsPerPage!: number;
+    totalItemCount: {
+      type: Number,
+      default: 0,
+    },
 
-  @Prop()
-  totalItemCount!: number;
+    totalPageCount: {
+      type: Number,
+      default: 0,
+    },
+  },
 
-  @Prop({ default: 0 })
-  totalPageCount!: number;
+  setup(props, { emit }) {
+    const pagination = ref<HTMLDivElement | null>(null);
+    const pageRange = ref(3);
 
-  mounted() {
-    const ro = new ResizeObserver((entries, observer) => {
-      for (const entry of entries) {
-        const {
-          left, top, width, height,
-        } = entry.contentRect;
+    onMounted(() => {
+      const ro = new ResizeObserver((entries, observer) => {
+        for (const entry of entries) {
+          const {
+            left, top, width, height,
+          } = entry.contentRect;
 
-        if (width < 456) this.pageRange = 1;
-      }
+          if (width < 456) pageRange.value = 1;
+        }
+      });
+
+      if (pagination.value) ro.observe(pagination.value);
     });
 
-    ro.observe(this.$refs.pagination);
-  }
+    const pageCount = computed(() => {
+      if (props.totalPageCount && props.totalPageCount > 0) { return props.totalPageCount; }
 
-  get pageCount() {
-    if (this.totalPageCount && this.totalPageCount > 0) { return this.totalPageCount; }
+      const remainder = props.totalItemCount % props.itemsPerPage > 0 ? 1 : 0;
+      return Math.floor(props.totalItemCount / props.itemsPerPage) + remainder;
+    });
 
-    const remainder = this.totalItemCount % this.itemsPerPage > 0 ? 1 : 0;
-    return Math.floor(this.totalItemCount / this.itemsPerPage) + remainder;
-  }
+    function selectPage(page: number) {
+      emit('page-selected', page);
+    }
 
-  selectPage(page: number) {
-    this.$emit('page-selected', page);
-  }
-})
+    return {
+      pageRange,
+      pageCount,
+      selectPage,
+    };
+  },
+});
 </script>
 
 <style lang="less">

@@ -5,15 +5,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
 import { defineComponent } from 'vue';
 
-@Component({})
 export default defineComponent({
-  @Prop()
-  items!: Object[];
-})
+  props: {
+    item: Array,
+  },
+});
 </script>
 
 <style lang="less">

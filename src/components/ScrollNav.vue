@@ -41,76 +41,82 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import { Component, Prop } from 'vue-property-decorator';
+import {
+  defineComponent, PropType, ref, onMounted, onUnmounted,
+} from 'vue';
 
-import { defineComponent } from 'vue';
+interface IScrollNavItem {
+  name: string;
+  value: string;
+}
 
-@Component({})
 export default defineComponent({
-  $refs!: {
-    scrollable_nav: HTMLDivElement;
-  };
+  props: {
+    items: {
+      type: Array as PropType<IScrollNavItem[]>,
+      default: () => [],
+    },
 
-  @Prop()
-  items!: [
-    {
-      name: string;
-      value: string;
+    value: {
+      type: String,
+      default: '',
+    },
+  },
+
+  setup(props, { emit }) {
+    const scrollableNav = ref<HTMLDivElement | null>(null);
+    let isMounted = false;
+    const hasNext = ref(false);
+    const hasPrev = ref(false);
+    const scrollIncrement = 100;
+
+    function scrollLeft() {
+      if (scrollableNav.value) {
+        scrollableNav.value.scrollLeft -= scrollIncrement;
+      }
     }
-  ];
 
-  @Prop()
-  value!: string;
+    function scrollRight() {
+      if (scrollableNav.value) {
+        scrollableNav.value.scrollLeft += scrollIncrement;
+      }
+    }
 
-  isMounted = false;
+    function calculateScrolls() {
+      if (scrollableNav.value && isMounted) {
+        hasPrev.value = scrollableNav.value.scrollLeft > 0;
+        const availableRightScroll = scrollableNav.value.scrollWidth
+          - (scrollableNav.value.scrollLeft + scrollableNav.value.clientWidth);
 
-  appTabsContainer!: HTMLDivElement;
+        hasNext.value = availableRightScroll > 0;
+      }
+    }
 
-  canScroll = false;
+    function navigateItem(item: string) {
+      emit('input', item);
+    }
 
-  hasNext = false;
+    window.addEventListener('resize', calculateScrolls);
 
-  hasPrev = false;
+    onUnmounted(() => {
+      window.removeEventListener('resize', calculateScrolls);
+    });
 
-  private scrollIncrement = 100;
+    onMounted(() => {
+      isMounted = true;
+      calculateScrolls();
+    });
 
-  created() {
-    window.addEventListener('resize', this.calculateScrolls);
-  }
-
-  destroyed() {
-    window.removeEventListener('resize', this.calculateScrolls);
-  }
-
-  mounted() {
-    this.isMounted = true;
-    this.appTabsContainer = this.$refs.scrollable_nav;
-    this.calculateScrolls();
-  }
-
-  scrollLeft() {
-    this.appTabsContainer.scrollLeft = this.appTabsContainer.scrollLeft - this.scrollIncrement;
-  }
-
-  scrollRight() {
-    this.appTabsContainer.scrollLeft = this.appTabsContainer.scrollLeft + this.scrollIncrement;
-  }
-
-  calculateScrolls() {
-    if (!this.isMounted) return false;
-    this.canScroll = this.appTabsContainer.scrollWidth > this.appTabsContainer.clientWidth;
-    this.hasPrev = this.appTabsContainer.scrollLeft > 0;
-    const scrollRight = this.appTabsContainer.scrollWidth
-      - (this.appTabsContainer.scrollLeft + this.appTabsContainer.clientWidth);
-
-    this.hasNext = scrollRight > 0;
-  }
-
-  navigateItem(item: string) {
-    this.$emit('input', item);
-  }
-})
+    return {
+      hasNext,
+      hasPrev,
+      scrollLeft,
+      scrollRight,
+      navigateItem,
+      calculateScrolls,
+    };
+  },
+});
 </script>
 
 <style lang="less">

@@ -32,12 +32,11 @@ export default defineComponent({
 
     return {
       activeSection,
-      changeSection
+      changeSection,
     };
-  }
+  },
 
-
-})
+});
 </script>
 
 <style lang="less">

@@ -26,74 +26,91 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
-import { defineComponent } from 'vue';
+import {
+  defineComponent, onMounted, ref, PropType,
+} from 'vue';
 import Spinner from './Spinner.vue';
 import Button from './Button.vue';
 
-@Component({
-  components: { Spinner, Button },
-})
 export default defineComponent({
-  @Prop({ default: [] })
-  loadingStrs!: any[] | string;
+  components: { Spinner },
 
-  @Prop({ default: false })
-  semiOpaque!: boolean;
+  props: {
+    loadingStrs: {
+      type: Array as PropType<string[]> || String,
+      default: [],
+    },
 
-  @Prop({ default: false })
-  isRandom!: boolean;
+    semiOpaque: {
+      type: Boolean,
+      default: false,
+    },
 
-  @Prop({ default: false })
-  swapMode!: boolean;
+    isRandom: {
+      type: Boolean,
+      default: false,
+    },
 
-  @Prop({ default: true })
-  fixedBackground!: boolean;
+    swapMode: {
+      type: Boolean,
+      default: false,
+    },
 
-  loaderText = '';
+    fixedBackground: {
+      type: Boolean,
+      default: true,
+    },
+  },
 
-  index = 0;
+  setup(props) {
+    const loaderText = ref('');
+    const index = ref(0);
 
-  mounted() {
-    if (typeof this.loadingStrs === 'string') {
-      this.loaderText = this.loadingStrs;
-    } else {
-      this.distinguishNumberOfArrays();
-    }
-  }
-
-  distinguishNumberOfArrays() {
-    if (this.loadingStrs.length > 1) {
-      if (this.isRandom) {
-        this.loopRandomText();
-      } else {
-        this.loopText();
+    function loopText() {
+      loaderText.value = props.loadingStrs[index.value];
+      index.value += 1;
+      if (index.value === props.loadingStrs.length) {
+        index.value = 0;
       }
-    } else {
-      this.loaderText = this.loadingStrs[0];
+      setTimeout(loopText, 4000);
     }
-  }
 
-  loopText() {
-    this.loaderText = this.loadingStrs[this.index];
-    this.index++;
-    if (this.index === this.loadingStrs.length) {
-      this.index = 0;
+    function loopRandomText() {
+      const randomIndex = Math.floor(Math.random() * props.loadingStrs.length);
+      if (loaderText.value === props.loadingStrs[randomIndex]) {
+        loopRandomText();
+      } else {
+        loaderText.value = props.loadingStrs[randomIndex];
+        setTimeout(loopRandomText, 4000);
+      }
     }
-    setTimeout(this.loopText, 4000);
-  }
 
-  loopRandomText() {
-    const randomIndex = Math.floor(Math.random() * this.loadingStrs.length);
-    if (this.loaderText === this.loadingStrs[randomIndex]) {
-      this.loopRandomText();
-    } else {
-      this.loaderText = this.loadingStrs[randomIndex];
-      setTimeout(this.loopRandomText, 4000);
+    function distinguishNumberOfArrays() {
+      if (props.loadingStrs.length > 1) {
+        if (props.isRandom) {
+          loopRandomText();
+        } else {
+          loopText();
+        }
+      } else {
+        loaderText.value = props.loadingStrs[0];
+      }
     }
-  }
-})
+
+    onMounted(() => {
+      if (typeof props.loadingStrs === 'string') {
+        loaderText.value = props.loadingStrs;
+      } else {
+        distinguishNumberOfArrays();
+      }
+    });
+
+    return {
+      loaderText,
+      index,
+    };
+  },
+});
 </script>
 
 <style lang="less">

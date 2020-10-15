@@ -6,7 +6,7 @@
     :min-width="minWidth"
     height="auto"
     :adaptive="true"
-    v-on="$listeners"
+    v-bind="$attrs"
     :scrollable="true"
   >
     <div
@@ -20,7 +20,7 @@
     </div>
     <PrimeIntro
       :prime-button-text="primeButtonText"
-      v-on="$listeners"
+      v-bind="$attrs"
     >
       <slot />
     </PrimeIntro>
@@ -28,30 +28,37 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
 import { defineComponent } from 'vue';
 import PrimeIntro from './PrimeIntro.vue';
 
-@Component({
-  components: { PrimeIntro },
-})
 export default defineComponent({
-  @Prop({ default: 'modal-prime-intro' })
-  name!: string;
+  components: { PrimeIntro },
 
-  @Prop()
-  width!: number;
+  props: {
+    name: {
+      type: String,
+      default: 'modal-prime-intro',
+    },
 
-  @Prop()
-  minWidth!: number;
+    width: {
+      type: Number,
+    },
 
-  @Prop({ default: false })
-  hasPrimeCloseButton!: boolean;
+    minWidth: {
+      type: Number,
+    },
 
-  @Prop({ default: 'Join Prime' })
-  primeButtonText!: string;
-})
+    hasPrimeCloseButton: {
+      type: Boolean,
+      default: false,
+    },
+
+    primeButtonText: {
+      type: String,
+      default: 'Join Prime',
+    },
+  },
+});
 </script>
 
 <style lang="less" scoped>
