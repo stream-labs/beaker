@@ -189,8 +189,8 @@ export default class MediaPicker extends Vue {
 
   get mediaInputPlaceholder() {
     return this.variation === "audio"
-      ? `example-audio.mp3`
-      : `example-image.jpg`;
+      ? `Select Audio File`
+      : `Select Image/Video File`;
   }
 
   get buttonTitle() {
