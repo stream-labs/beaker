@@ -116,9 +116,11 @@ components: {
       >
         <template #components>
           <Accordion :left-nav="true">
-            <div slot="title">
-              Left Navigation
-            </div>
+            <template #title>
+              <div>
+                Left Navigation
+              </div>
+            </template>
             <template #content>
               <div class="fake-nav">
                 <a
