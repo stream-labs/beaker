@@ -122,8 +122,8 @@ components: {
               Are you sure you want to delete the merch item ‘Streamlabs
               Pillow’? This action cannot be undone.
             "
-            @confirm="() => {}"
             confirm-button-text="Delete"
+            @confirm="() => {}"
           />
         </template>
       </DemoSection>

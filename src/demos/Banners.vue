@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Banners</h1>
-    <TabsNew
+    <Tabs
       :tabs="tabs"
       :update-route="false"
       :selected="selectedTab"
@@ -387,7 +387,7 @@
           </tbody>
         </table>
       </template>
-    </TabsNew>
+    </Tabs>
   </div>
 </template>
 
@@ -403,7 +403,6 @@ import Button from '../components/Button.vue';
 import DemoSection from '../components/DemoSection.vue';
 import Notice from '../components/Notice.vue';
 import Tabs from '../components/Tabs.vue';
-import TabsNew from '../components/TabsNew.vue';
 
 export default defineComponent({
   components: {
@@ -414,7 +413,6 @@ export default defineComponent({
     DemoSection,
     Notice,
     Tabs,
-    TabsNew,
   },
 
   setup() {

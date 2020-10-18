@@ -7,20 +7,20 @@
       >
         <div
           v-if="hasPrev"
-          @click="scrollLeft"
           class="s-tabs-nav__control s-has-prev"
+          @click="scrollLeft"
         >
           <i class="icon-back" />
         </div>
 
         <div
           ref="scrollableTabs"
-          @scroll="calculateScrolls"
           class="s-tabs"
           :class="{
             's-has-next': hasNext,
             's-has-prev': hasPrev
           }"
+          @scroll="calculateScrolls"
         >
           <div
             v-for="tab in tabs"
@@ -56,8 +56,8 @@
 
         <div
           v-if="hasNext"
-          @click="scrollRight"
           class="s-tabs-nav__control s-has-next"
+          @click="scrollRight"
         >
           <i class="icon-back" />
         </div>
@@ -65,13 +65,13 @@
     </div>
 
     <div
-      class="s-tab-content"
       v-if="!hideContent"
+      class="s-tab-content"
     >
       <div
         v-for="(tab, index) in tabs"
-        :key="index"
         v-show="tab.value === selectedTab"
+        :key="index"
       >
         <slot :name="tab.value" />
       </div>

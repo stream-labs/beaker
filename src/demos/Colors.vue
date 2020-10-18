@@ -9,17 +9,17 @@
     </div>
 
     <div
-      class="section"
       v-for="(colorGroup, index) in colors"
       :key="`color-group-${index}`"
+      class="section"
     >
       <div
         v-for="color in colorGroup"
         :key="color.color"
-        class="side-by-side"
         v-clipboard:copy="color.name"
         v-clipboard:success="emitCopySuccess"
         v-clipboard:error="emitCopyError"
+        class="side-by-side"
       >
         <div class="nospace-flex">
           <div

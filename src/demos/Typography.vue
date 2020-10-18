@@ -57,7 +57,7 @@
     <span class="subtitle">Marketing</span>
 
     <form-group>
-      <template v-slot:input>
+      <template #input>
         <div class="section">
           <div class="type-scale barlow extrabold s48">
             H1: Barlow ExtraBold 48px

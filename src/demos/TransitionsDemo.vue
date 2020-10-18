@@ -22,9 +22,9 @@
           tag="div"
         >
           <div
-            class="first"
             v-if="flip"
             key="fadeXFirstLeft"
+            class="first"
           >
             <h2>fadeX-from-left</h2>
             <p>
@@ -36,9 +36,9 @@
             </p>
           </div>
           <div
-            class="second"
             v-else
             key="fadeXSecondLeft"
+            class="second"
           >
             <h2>fadeX-from-left</h2>
             <p>
@@ -57,9 +57,9 @@
           tag="div"
         >
           <div
-            class="first"
             v-if="flip"
             key="fadeXFirstRight"
+            class="first"
           >
             <h2>fadeX-from-right</h2>
             <p>
@@ -70,9 +70,9 @@
             </p>
           </div>
           <div
-            class="second"
             v-else
             key="fadeXSecondRight"
+            class="second"
           >
             <h2>fadeX-from-right</h2>
             <p>
@@ -91,9 +91,9 @@
           tag="div"
         >
           <div
-            class="first"
             v-if="flip"
             key="fadeYFirstTop"
+            class="first"
           >
             <h2>fadeY-from-top</h2>
             <p>
@@ -104,9 +104,9 @@
             </p>
           </div>
           <div
-            class="second"
             v-else
             key="fadeYSecondTop"
+            class="second"
           >
             <h2>fadeY-from-top</h2>
             <p>
@@ -125,9 +125,9 @@
           tag="div"
         >
           <div
-            class="first"
             v-if="flip"
             key="fadeYFirstBottom"
+            class="first"
           >
             <h2>fadeY-from-bottom</h2>
             <p>
@@ -138,9 +138,9 @@
             </p>
           </div>
           <div
-            class="second"
             v-else
             key="fadeYSecondBottom"
+            class="second"
           >
             <h2>fadeY-from-bottom</h2>
             <p>

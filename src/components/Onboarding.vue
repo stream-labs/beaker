@@ -5,8 +5,8 @@
       :class="location"
     >
       <div
-        class="s-onboarding-progress s-onboarding__top s-step__cont"
         v-if="namedSteps"
+        class="s-onboarding-progress s-onboarding__top s-step__cont"
       >
         <div
           v-for="(step, idx) in steps"
@@ -14,8 +14,8 @@
           class="s-step-name__cont"
         >
           <div
-            class="s-name-caret"
             v-if="idx > 0"
+            class="s-name-caret"
           >
             <i class="icon-back" />
           </div>
@@ -28,9 +28,9 @@
         </div>
       </div>
       <div
+        v-else
         class="s-onboarding-progress"
         :class="location"
-        v-else
       >
         <div
           class="s-onboarding-progress__line"
@@ -50,8 +50,8 @@
       </div>
     </div>
     <div
-      class="s-onboarding-footer"
       v-if="!hideButton || !hideSkip || !hideBack"
+      class="s-onboarding-footer"
     >
       <div class="s-previousStep">
         <p
@@ -79,13 +79,13 @@
           v-if="!hideButton"
           :variation="'action'"
           :title="currentStep === steps.length ? 'Complete' : 'Continue'"
-          @click="
-            currentStep === steps.length ? completeHandler() : continueHandler()
-          "
           :state="
             disableControls || (currentStep === steps.length && !isCompleted)
               ? 'disabled'
               : null
+          "
+          @click="
+            currentStep === steps.length ? completeHandler() : continueHandler()
           "
         />
       </div>

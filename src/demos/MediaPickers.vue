@@ -19,20 +19,20 @@ components: {
           <form-group>
             <template #input>
               <media-picker
+                v-model="imageMedia"
                 variation="image"
                 :media-link="true"
                 @select-media="selectImageMedia"
                 @preview-media="previewImageMedia"
                 @remove-media="removeImageMedia"
-                v-model="imageMedia"
               />
 
               <media-picker
+                v-model="audioMedia"
                 variation="audio"
                 :media-link="true"
                 @select-media="selectAudioMedia"
                 @remove-media="removeAudioMedia"
-                v-model="audioMedia"
               />
             </template>
           </form-group>

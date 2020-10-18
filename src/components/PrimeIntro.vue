@@ -73,9 +73,11 @@ export default defineComponent({
     },
   },
 
+  emits: ['onClickPrime'],
+
   setup(props, { emit, slots }) {
     function onPrimeButtonHandler() {
-      emit('onClickPrime');
+      emit('on-click-prime');
     }
 
     const hasTitleSlot = computed(() => !(typeof slots.title === 'undefined'));

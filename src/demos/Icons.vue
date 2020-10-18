@@ -19,10 +19,10 @@
     </div>
 
     <div
-      class="icon__grid"
       v-clipboard:copy="selectedIcon"
       v-clipboard:success="emitCopySuccess"
       v-clipboard:error="emitCopyError"
+      class="icon__grid"
     >
       <div
         v-for="icon in Object.keys(iconList).sort()"

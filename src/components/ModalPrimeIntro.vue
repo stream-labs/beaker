@@ -10,8 +10,8 @@
     :scrollable="true"
   >
     <div
-      class="modal-prime__close"
       v-if="hasPrimeCloseButton"
+      class="modal-prime__close"
     >
       <i
         class="icon-close"

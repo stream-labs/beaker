@@ -34,12 +34,12 @@ components: {
         <template #components>
           <slider
             :value="value"
-            @input="value => updateValue(value)"
             :max="100"
             :min="1"
             :interval="1"
             tooltip="always"
             suffix="%"
+            @input="value => updateValue(value)"
           />
         </template>
       </DemoSection>
@@ -58,13 +58,13 @@ components: {
         <template #components>
           <slider
             :value="value"
-            @input="value => updateValue(value)"
             :max="100"
             :min="1"
             :interval="1"
             tooltip="always"
             suffix="%"
             :simple-theme="true"
+            @input="value => updateValue(value)"
           />
         </template>
       </DemoSection>

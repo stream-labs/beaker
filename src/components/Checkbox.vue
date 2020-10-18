@@ -5,12 +5,12 @@
     @keydown.space.prevent="toggleCheck"
   >
     <input
-      type="checkbox"
       :id="id"
+      type="checkbox"
       :name="name"
       :checked="value"
-      @change="$emit('input', $event.target.checked)"
       tabindex="-1"
+      @change="$emit('input', $event.target.checked)"
     >
     <label :for="id">{{ label }}</label>
   </div>

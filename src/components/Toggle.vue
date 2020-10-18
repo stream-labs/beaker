@@ -1,15 +1,15 @@
 <template>
   <div :class="['s-toggle', toggleClass]">
     <button
-      type="button"
       v-for="(val, key) in values"
       :key="val.id"
+      type="button"
       :title="capitalize(key)"
-      @click="$emit('input', key)"
       :class="[
         's-toggle__option',
         { 's-toggle__option--active': value === key }
       ]"
+      @click="$emit('input', key)"
       v-html="val"
     >
       {{ val }}

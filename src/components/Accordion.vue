@@ -35,22 +35,22 @@
           </transition>
           <transition name="twist-v">
             <path
+              v-if="isOpen"
               class="s-accordion__svg--line"
               d="M10 8H4a1 1 0 0 1-1-1c0-.6.5-1 1-1h6c.6 0 1 .5 1 1s-.4 1-1 1z"
-              v-if="isOpen"
             />
           </transition>
         </svg>
       </div>
       <div
-        class="s-accordion--title"
         v-if="hasTitleSlot"
+        class="s-accordion--title"
       >
         <slot name="title" />
       </div>
       <div
-        class="s-accordion--title"
         v-else
+        class="s-accordion--title"
       >
         {{ accordionTitle }}
       </div>
@@ -62,9 +62,9 @@
       @leave="close"
     >
       <div
+        v-if="isOpen"
         class="s-accordion__content"
         :class="[{ 'is-open': isOpen }, { 'left-nav': leftNav }]"
-        v-if="isOpen"
       >
         <slot name="content" />
       </div>
@@ -115,10 +115,12 @@ export default defineComponent({
 
     function openContent(event: MouseEvent) {
       const blockedNodes = ['INPUT', 'BUTTON', 'LABEL'];
+      const target = event.target as Node;
+      const { nodeName } = target;
+      const { nodeName: grandparentNodeName } = target?.parentNode?.parentNode as Node;
+
       if (
-        blockedNodes.indexOf(event.target.nodeName) !== -1
-        || blockedNodes.indexOf(event.target.parentNode.parentNode.nodeName) !== -1
-      ) {
+        blockedNodes.indexOf(nodeName) !== -1 || blockedNodes.indexOf(grandparentNodeName) !== -1) {
         return;
       }
       isOpen.value = !isOpen.value;
@@ -141,7 +143,7 @@ export default defineComponent({
       element.style.position = '';
       element.style.visibility = '';
       element.style.height = '0';
-      getComputedStyle(element).height;
+      // getComputedStyle(element).height;
       setTimeout(() => {
         element.style.height = height;
       });
@@ -150,7 +152,7 @@ export default defineComponent({
     function close(element: HTMLDivElement) {
       const { height } = getComputedStyle(element);
       element.style.height = height;
-      getComputedStyle(element).height;
+      // getComputedStyle(element).height;
       setTimeout(() => {
         element.style.height = '0';
       });

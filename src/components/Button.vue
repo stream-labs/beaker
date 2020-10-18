@@ -1,22 +1,22 @@
 <template>
   <component
+    :is="tag"
     :icon="icon"
     :icon-img="iconImg"
     :title="title"
     :price="price"
     :description="description"
-    :is="tag"
     :to="to"
+    ref="button"
     :href="href"
     :type="type"
     class="s-button ripple"
     :class="[buttonClasses, { 'ripple-animate': rippleAnimate }]"
     :disabled="state === 'disabled' || state === 'loading'"
-    @click="$emit('click')"
     :target="target"
-    @mousedown="pressDown"
     :style="buttonStyle"
-    ref="button"
+    @click="$emit('click')"
+    @mousedown="pressDown"
   >
     <span v-if="!$slots.custom">
       <span>

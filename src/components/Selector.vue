@@ -31,11 +31,11 @@ const emitter = mitt();
 
 export default defineComponent({
   name: 'Selector',
-  inheritAttrs: false,
 
   components: {
     Multiselect: Selector,
   },
+  inheritAttrs: false,
 
   props: {
     width: {

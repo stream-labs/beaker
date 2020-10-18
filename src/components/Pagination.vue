@@ -65,13 +65,10 @@ export default defineComponent({
 
     onMounted(() => {
       const ro = new ResizeObserver((entries, observer) => {
-        for (const entry of entries) {
-          const {
-            left, top, width, height,
-          } = entry.contentRect;
-
+        entries.forEach((entry) => {
+          const { width } = entry.contentRect;
           if (width < 456) pageRange.value = 1;
-        }
+        });
       });
 
       if (pagination.value) ro.observe(pagination.value);

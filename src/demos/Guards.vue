@@ -39,10 +39,10 @@ components: {
             <template #content>
               <div>
                 <TextInput
+                  v-model="textInputValue"
                   label="Text input"
                   type="text"
                   :placeholder="textInputPlaceholder"
-                  v-model="textInputValue"
                   name="textExample"
                 />
               </div>

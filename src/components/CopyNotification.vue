@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import {
-  defineComponent, reactive, toRefs, computed, onUnmounted,
+  defineComponent, computed, onUnmounted,
 } from 'vue';
 import { eventBus } from '../plugins/event-bus';
 
@@ -39,6 +39,7 @@ export default defineComponent({
 
       msgs.forEach((msg) => {
         if (!msg.timerStarted) {
+          // eslint-disable-next-line no-param-reassign
           msg.timerStarted = true;
           setTimeout(() => {
             const idx = messages.findIndex((message) => msg.id === message.id);
@@ -70,7 +71,7 @@ export default defineComponent({
       });
     }
 
-    function onCopyError(e) {
+    function onCopyError() {
       setCopyMsg({
         id: setCopyMsgId(),
         msg: 'Failed to copy to clipboard',

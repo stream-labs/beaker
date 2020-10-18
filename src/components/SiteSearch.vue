@@ -14,8 +14,8 @@
       </div>
       <input
         ref="searchInput"
-        type="text"
         v-model="value"
+        type="text"
         placeholder="Search Streamlabs..."
         class="s-sitesearch__input"
         @focus.stop.prevent="playOpeningSequence"
@@ -28,17 +28,17 @@
     </div>
     <transition-group name="s-sitesearch--fadeY">
       <div
-        class="s-sitesearch-results__cont"
-        :key="limitedResult.length"
         v-if="phaseTwo && limitedResult.length <= 0"
+        :key="limitedResult.length"
+        class="s-sitesearch-results__cont"
       >
         <div class="s-sitesearch-quicklinks">
           Quick Links
         </div>
         <a
-          :href="searchData[quickLinkLoc[i]].route"
           v-for="(suggested, i) in suggestedLinks"
           :key="suggested.item.name"
+          :href="searchData[quickLinkLoc[i]].route"
           class="s-sitesearch-results"
           :class="{ 's-active-result': currentResult === i }"
           @mouseover="currentResult = i"
@@ -56,15 +56,15 @@
         </a>
       </div>
       <div
-        class="s-sitesearch-results__cont"
-        :key="limitedResult.length"
         v-if="phaseTwo && limitedResult.length >= 1"
+        :key="limitedResult.length"
+        class="s-sitesearch-results__cont"
       >
         <transition-group name="s-sitesearch--fadeX">
           <a
-            :href="searchResult.item.route"
             v-for="(searchResult, i) in limitedResult"
             :key="searchResult.item.name"
+            :href="searchResult.item.route"
             class="s-sitesearch-results"
             :class="{ 's-active-result': currentResult === i }"
             @mouseover="currentResult = i"

@@ -27,10 +27,10 @@ components: {
           <FormGroup>
             <template #input>
               <TextInput
+                v-model="inputValue"
                 :type="textInputType"
                 :placeholder="textInputPlaceholder"
                 :label="title"
-                v-model="inputValue"
               />
             </template>
           </FormGroup>
@@ -53,9 +53,9 @@ components: {
           >
             <template #input>
               <TextInput
+                v-model="inputValue"
                 :type="textInputType"
                 :placeholder="textInputPlaceholder"
-                v-model="inputValue"
               />
             </template>
           </FormGroupH>
@@ -80,9 +80,9 @@ components: {
           >
             <template #input>
               <TextInput
+                v-model="inputValue"
                 :type="textInputType"
                 :placeholder="textInputPlaceholder"
-                v-model="inputValue"
               />
             </template>
           </FormGroupV>

@@ -3,35 +3,35 @@
     <div class="s-apps-nav">
       <div
         v-if="hasPrev"
-        @click="scrollLeft"
         class="s-apps-nav-control flex s-has-prev"
+        @click="scrollLeft"
       >
         <i class="icon-down icon-left" />
         <span>...</span>
       </div>
       <div
         ref="scrollable_nav"
-        @scroll="calculateScrolls"
         class="s-apps-tab__container"
         :class="{
           's-has-next': hasNext,
           's-has-prev': hasPrev
         }"
+        @scroll="calculateScrolls"
       >
         <span
           v-for="item in items"
           :key="item.value"
-          @click="navigateItem(item.value)"
           class="s-app-tab"
           :class="{ 's-is-active': item.value === value }"
+          @click="navigateItem(item.value)"
         >
           <span>{{ item.name }}</span>
         </span>
       </div>
       <div
         v-if="hasNext"
-        @click="scrollRight"
         class="s-apps-nav-control flex s-has-next"
+        @click="scrollRight"
       >
         <span>...</span>
         <i class="icon-down icon-right" />

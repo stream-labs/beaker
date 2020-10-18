@@ -12,19 +12,19 @@
       <p>{{ desc }}</p>
       <Button
         v-if="hasButton"
-        @click="clickHandler"
         :title="buttonTitle"
         :variation="'action'"
         :size="'small'"
+        @click="clickHandler"
       />
 
       <Button
-        class="s-tooltip-notice__secondary-action"
         v-if="hasSecondaryAction"
-        @click="secondaryClickHandler"
+        class="s-tooltip-notice__secondary-action"
         :title="secondaryActionTitle"
         :variation="'link'"
         :size="'small'"
+        @click="secondaryClickHandler"
       />
     </div>
   </div>

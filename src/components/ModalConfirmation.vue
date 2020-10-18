@@ -24,10 +24,10 @@
             @click="$modal.hide(name)"
           />
           <Button
-            @click="onConfirmHandler"
             :variation="buttonVariation"
             :title="confirmButtonText"
             :size="'fixed-width'"
+            @click="onConfirmHandler"
           />
         </div>
       </div>

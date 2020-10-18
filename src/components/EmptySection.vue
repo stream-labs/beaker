@@ -1,20 +1,20 @@
 <template>
   <div class="s-empty-section">
     <i
-      class="icon-search"
       v-if="this.variation === 'search'"
+      class="icon-search"
     />
     <i
-      class="icon-empty"
       v-if="this.variation === 'text'"
+      class="icon-empty"
     />
     <i
-      class="icon-lock"
       v-if="this.variation === 'prime'"
+      class="icon-lock"
     />
     <i
-      class="icon-error"
       v-if="this.variation === 'warning'"
+      class="icon-error"
     />
 
     <div

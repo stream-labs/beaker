@@ -8,9 +8,9 @@
       :class="contentBoxMq"
     >
       <i
+        v-if="icon"
         class="s-banner__icon"
         :class="`icon-${icon}`"
-        v-if="icon"
       />
       <h2
         class="s-content__title"

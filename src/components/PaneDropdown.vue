@@ -9,9 +9,9 @@
       ref="paneToggle"
       class="s-pane-dropdown__toggle"
       :class="{ 's-pane-dropdown__toggle--active': paneMenuOpen }"
+      :tabindex="0"
       @click="paneMenuOpen = !paneMenuOpen"
       v-on="hoverOption ? { mouseover: show } : {}"
-      :tabindex="0"
       @keydown.space.prevent="paneMenuOpen = !paneMenuOpen"
       @keydown.enter.prevent="paneMenuOpen = !paneMenuOpen"
       @keydown.esc.prevent="hide"
@@ -39,11 +39,11 @@
       >
         <slot v-if="custom" />
         <div
-          ref="paneList"
           v-else
+          ref="paneList"
+          class="s-pane-dropdown__list"
           @mouseup="onMenuClick"
           @keydown.esc.prevent="hide"
-          class="s-pane-dropdown__list"
         >
           <slot />
         </div>
@@ -107,6 +107,8 @@ export default defineComponent({
     },
   },
 
+  emits: ['on-click', 'input'],
+
   setup(props) {
     const paneMenuOpen = ref(false);
     const paneMenu = ref<HTMLDivElement | null>(null);
@@ -130,7 +132,7 @@ export default defineComponent({
       element.style.position = '';
       element.style.visibility = '';
       element.style.height = '0';
-      getComputedStyle(element).height;
+      // getComputedStyle(element).height;
       setTimeout(() => {
         element.style.height = height;
       });
@@ -141,7 +143,7 @@ export default defineComponent({
 
       const { height } = getComputedStyle(element);
       element.style.height = height;
-      getComputedStyle(element).height;
+      // getComputedStyle(element).height;
       setTimeout(() => {
         element.style.height = '0';
       });

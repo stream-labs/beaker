@@ -33,8 +33,12 @@
           >
             <template #1>
               <onboarding-step>
-                <template #title><span>Getting Started</span></template>
-                <template #desc><span>Slot 1</span></template>
+                <template #title>
+                  <span>Getting Started</span>
+                </template>
+                <template #desc>
+                  <span>Slot 1</span>
+                </template>
                 <SSProSimulator
                   :username="username"
                   :domain="domain"
@@ -43,8 +47,12 @@
             </template>
             <template #2>
               <onboarding-step>
-                <template #title><span>A Few More Things</span></template>
-                <template #desc><span>Slot 2</span></template>
+                <template #title>
+                  <span>A Few More Things</span>
+                </template>
+                <template #desc>
+                  <span>Slot 2</span>
+                </template>
                 <SSProSimulator
                   :username="username"
                   :domain="domain"
@@ -53,8 +61,12 @@
             </template>
             <template #3>
               <onboarding-step>
-                <template #title><span>Almost There</span></template>
-                <template #desc><span>Slot 3</span></template>
+                <template #title>
+                  <span>Almost There</span>
+                </template>
+                <template #desc>
+                  <span>Slot 3</span>
+                </template>
                 <SSProSimulator
                   :username="username"
                   :domain="domain"
@@ -63,8 +75,12 @@
             </template>
             <template #4>
               <onboarding-step>
-                <template #title><span>Getting Started</span></template>
-                <template #desc><span>Slot 4</span></template>
+                <template #title>
+                  <span>Getting Started</span>
+                </template>
+                <template #desc>
+                  <span>Slot 4</span>
+                </template>
                 <SSProSimulator
                   :username="username"
                   :domain="domain"
@@ -94,8 +110,12 @@
           >
             <template #1>
               <onboarding-step>
-                <template #title><span>Getting Started</span></template>
-                <template #desc><span>Slot 1</span></template>
+                <template #title>
+                  <span>Getting Started</span>
+                </template>
+                <template #desc>
+                  <span>Slot 1</span>
+                </template>
                 <SSProSimulator
                   :username="username"
                   :domain="domain"
@@ -104,8 +124,12 @@
             </template>
             <template #2>
               <onboarding-step>
-                <template #title><span>A Few More Things</span></template>
-                <template #desc><span>Slot 2</span></template>
+                <template #title>
+                  <span>A Few More Things</span>
+                </template>
+                <template #desc>
+                  <span>Slot 2</span>
+                </template>
                 <SSProSimulator
                   :username="username"
                   :domain="domain"
@@ -114,8 +138,12 @@
             </template>
             <template #3>
               <onboarding-step>
-                <template #title><span>Almost There</span></template>
-                <template #desc><span>Slot 3</span></template>
+                <template #title>
+                  <span>Almost There</span>
+                </template>
+                <template #desc>
+                  <span>Slot 3</span>
+                </template>
                 <SSProSimulator
                   :username="username"
                   :domain="domain"
@@ -124,8 +152,12 @@
             </template>
             <template #4>
               <onboarding-step>
-                <template #title><span>Getting Started</span></template>
-                <template #desc><span>Slot 4</span></template>
+                <template #title>
+                  <span>Getting Started</span>
+                </template>
+                <template #desc>
+                  <span>Slot 4</span>
+                </template>
                 <SSProSimulator
                   :username="username"
                   :domain="domain"

@@ -33,8 +33,8 @@
         </div>
       </div>
       <div
-        class="s-modal-footer"
         v-if="!hideActionButtons && hideActionButtons !== ''"
+        class="s-modal-footer"
       >
         <div class="s-modal-footer-inner s-button-container">
           <Button

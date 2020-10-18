@@ -1,31 +1,31 @@
 <template>
   <div
+    ref="variableMenu"
     class="s-variablemenu"
     @input="watchInput($event)"
     @focus="watchCursor($event)"
     @click="watchCursor($event)"
     @keyup="watchCursor($event)"
     @keydown="keyEvent"
-    ref="variableMenu"
   >
     <transition
       name="expand"
+      tag="div"
       @enter="open"
       @after-enter="afterOpen"
       @leave="close"
-      tag="div"
     >
       <div
-        class="s-variablemenu-results__cont"
         v-if="phaseTwo && limitedResult.length >= 1"
-        :style="calcTransform"
         ref="resultArea"
+        class="s-variablemenu-results__cont"
+        :style="calcTransform"
       >
         <transition-group name="s-variablemenu--fadeX">
           <div
-            class="s-variablemenu-results"
             v-for="(searchResult, i) in limitedResult"
             :key="searchResult.item.variable"
+            class="s-variablemenu-results"
             :class="{ 's-active-result': currentResult === i }"
             @mouseover="currentResult = i"
             @mousedown="mergeValues"
@@ -42,8 +42,8 @@
       </div>
     </transition>
     <div
-      class="s-variablemenu--searchbar__cont"
       ref="inputCont"
+      class="s-variablemenu--searchbar__cont"
     >
       <slot name="input" />
     </div>

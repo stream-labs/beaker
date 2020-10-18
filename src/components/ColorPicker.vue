@@ -1,15 +1,15 @@
 <template>
   <div
-    class="s-colorpicker-container"
     ref="colorpicker"
+    class="s-colorpicker-container"
   >
     <input
       type="text"
       :value="value"
       :placeholder="placeholder"
+      :class="{ 's-colorpicker__input--error': error }"
       @click="showPicker()"
       @input="updateFromInput"
-      :class="{ 's-colorpicker__input--error': error }"
     >
     <div
       v-if="error"
@@ -28,10 +28,10 @@
 
     <transition name="fade">
       <picker
+        v-if="displayPicker"
         class="s-colorpicker"
         :class="alphaClass"
         :value="colors"
-        v-if="displayPicker"
         :disable-alpha="!hasAlpha"
         :disable-fields="!hasAlpha"
         @input="updateFromPicker"
@@ -43,10 +43,10 @@
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue';
 import { Chrome } from 'vue-color';
-import { PropType } from 'vue/types/options';
 
 interface IColorValue {
   hex?: string;
+  hex8?: string;
   hsl?: { h: number, s: number, l: number, a: number };
   hsv?: { h: number, s: number, v: number, a: number };
   rgba?: { r: number, g: number, b: number, a: number };
@@ -61,6 +61,7 @@ export default defineComponent({
   props: {
     value: {
       type: String,
+      default: '',
     },
 
     placeholder: {
@@ -75,8 +76,11 @@ export default defineComponent({
 
     error: {
       type: String,
+      default: '',
     },
   },
+
+  emits: ['input'],
 
   setup(props, { emit }) {
     const colorpicker = ref<HTMLDivElement | null>(null);
@@ -93,7 +97,7 @@ export default defineComponent({
 
     colors.value = { ...colors.value, hex: props.value };
 
-    function updateFromPicker(value: any) {
+    function updateFromPicker(value: IColorValue) {
       colors.value = value;
       if (alphaClass.value === 'alpha') {
         emit('input', value.hex8);
@@ -102,9 +106,19 @@ export default defineComponent({
       }
     }
 
-    function updateFromInput(event: any) {
-      colors.value = event.target.value;
-      emit('input', event.target.value);
+    function updateFromInput(event: InputEvent) {
+      const target = event?.target as HTMLInputElement;
+      colors.value = target?.value as IColorValue;
+      emit('input', target?.value);
+    }
+
+    function documentClick(e: MouseEvent) {
+      const el = colorpicker.value;
+      const { target } = e;
+      if (el && el !== target && !el.contains(target as Node)) {
+        // eslint-disable-next-line no-use-before-define
+        hidePicker();
+      }
     }
 
     function hidePicker() {
@@ -115,14 +129,6 @@ export default defineComponent({
     function showPicker() {
       document.addEventListener('click', documentClick);
       displayPicker.value = true;
-    }
-
-    function documentClick(e: MouseEvent) {
-      const el = colorpicker.value;
-      const { target } = e;
-      if (el && el !== target && !el.contains(target as Node)) {
-        hidePicker();
-      }
     }
 
     return {
@@ -169,7 +175,11 @@ export default defineComponent({
       width: 18px;
       height: 18px;
       .radius(0.5);
-      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMElEQVQ4T2N89uzZfwY8QFJSEp80A+OoAcMiDP7//483HTx//hx/Ohg1gIFx6IcBALl+VXknOCvFAAAAAElFTkSuQmCC");
+      /* eslint-disable-next-line max-len */
+      background-image: url(
+        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/
+        9hAAAAMElEQVQ4T2N89uzZfwY8QFJSEp80A+OoAcMiDP7//483HTx//hx/Ohg1gIFx
+        6IcBALl+VXknOCvFAAAAAElFTkSuQmCC');
     }
   }
 

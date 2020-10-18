@@ -2,10 +2,10 @@
   <div
     class="s-status-switch"
     :class="{ enabled: !!value }"
+    tabindex="0"
     @click="$emit('input', !value)"
     @keydown.prevent.space="$emit('input', !value)"
     @keydown.prevent.enter="$emit('input', !value)"
-    tabindex="0"
   >
     <div
       class="s-status-switch__paddle"

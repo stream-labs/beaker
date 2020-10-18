@@ -19,9 +19,13 @@ components: {
       >
         <template #components>
           <PaneDropdown :close-on-select="false">
-            <template #title><span>Trending</span></template>
+            <template #title>
+              <span>Trending</span>
+            </template>
             <PaneDropdown :menu-align="'center'">
-              <template #title><span>Inner Dropdown</span></template>
+              <template #title>
+                <span>Inner Dropdown</span>
+              </template>
               <a href="#">Item 1</a>
               <a href="#">Item 2</a>
               <a href="#">Item 3</a>
@@ -48,7 +52,9 @@ components: {
               :menu-align="'right'"
               :hover-option="true"
             >
-              <template #title><span>Right Dropdown Menu</span></template>
+              <template #title>
+                <span>Right Dropdown Menu</span>
+              </template>
               <a href="#">Hey I'm a longer link here</a>
               <a href="#">Let's see how this looks</a>
               <a href="#">I'm in a pane dropdown aligned to the right</a>
@@ -57,7 +63,9 @@ components: {
 
           <div class="row">
             <PaneDropdown :menu-align="'center'">
-              <template #title><span>Center Dropdown Menu</span></template>
+              <template #title>
+                <span>Center Dropdown Menu</span>
+              </template>
               <a href="#">Hey I'm a longer link here</a>
               <a href="#">Let's see how this looks</a>
               <a href="#">I'm in a pane dropdown aligned to the right</a>
@@ -76,7 +84,9 @@ components: {
       >
         <template #components>
           <PaneDropdown :custom="true">
-            <template #title><span>Custom Dropdown Menu</span></template>
+            <template #title>
+              <span>Custom Dropdown Menu</span>
+            </template>
             <div>
               hey watsup
               <br>
@@ -96,7 +106,9 @@ components: {
       >
         <template #components>
           <PaneDropdown :relative-menu="true">
-            <template #title><span>Relative Menu</span></template>
+            <template #title>
+              <span>Relative Menu</span>
+            </template>
             <a href="#">Hey I'm a longer link here</a>
             <a href="#">Let's see how this looks</a>
             <a href="#">I'm in a pane dropdown aligned to the right</a>
@@ -117,7 +129,9 @@ components: {
             :relative-menu="true"
             :simple-menu="true"
           >
-            <template #title><span>Simple Menu</span></template>
+            <template #title>
+              <span>Simple Menu</span>
+            </template>
             <a href="#">Hey I'm a longer link here</a>
             <a href="#">Let's see how this looks</a>
             <a href="#">I'm in a pane dropdown aligned to the right</a>

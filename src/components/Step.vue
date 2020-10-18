@@ -5,20 +5,20 @@
   >
     <div class="s-step__title">
       <span
+        v-if="icon"
         class="s-step__icon"
         :class="icon"
-        v-if="icon"
       />
       <span
-        class="s-step__icon icon-check-mark"
         v-if="hasCheckmark"
+        class="s-step__icon icon-check-mark"
       />
       <p class="s-step__title-text">
         {{ title }}
       </p>
       <Badge
-        class="s-step__badge"
         v-if="hasPrime"
+        class="s-step__badge"
         :variant="'prime-alt'"
         :align-left="true"
       />

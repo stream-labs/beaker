@@ -38,8 +38,8 @@
       :class="{ entered: isGiveaway }"
     >
       <i
-        class="icon-check-mark"
         v-if="isGiveaway"
+        class="icon-check-mark"
       />
       {{ rarity }}
     </span>

@@ -1,53 +1,53 @@
 <template>
   <div
-    class="s-banner"
     ref="banner"
+    class="s-banner"
   >
     <div
       class="s-banner__bg"
       :style="{
-        background: `linear-gradient(to bottom left, rgba(227, 232, 235, 0.72), rgba(227, 232, 235, 0.72)), url('${bgImage}') center center no-repeat`
+        background: bannerBgStyle
       }"
     />
 
     <div
       class="s-banner__bg s-banner__bg--night"
       :style="{
-        background: `linear-gradient(to bottom left, rgba(9, 22, 29, 0.72), rgba(9, 22, 29, 0.72)), url('${bgImageNight}') center center no-repeat`
+        background: bannerBgNightStyle
       }"
     />
 
     <div
+      key="banner-open"
       class="s-banner__body"
       :class="{ 's-banner__body--closed': closed }"
-      key="banner-open"
     >
       <div class="s-banner__wrapper">
         <div class="s-banner__label">
           {{ label }}
         </div>
         <i
-          @click="toggleBanner()"
           tabindex="0"
-          @keydown.space.prevent="toggleBanner()"
           class="icon-down"
+          @click="toggleBanner()"
+          @keydown.space.prevent="toggleBanner()"
         />
       </div>
 
       <div
-        class="s-banner__wrapper"
         ref="bottomWrapper"
+        class="s-banner__wrapper"
       >
         <div class="s-banner__title">
           <div
-            class="s-banner__icon"
             v-if="iconName"
+            class="s-banner__icon"
           >
             <i :class="`icon-${iconName}`" />
           </div>
           <div
-            class="s-banner__icon"
             v-if="iconImage"
+            class="s-banner__icon"
           >
             <img :src="iconImage">
           </div>
@@ -63,8 +63,8 @@
         </div>
 
         <div
-          @click.stop
           class="s-banner__download-wrapper"
+          @click.stop
         >
           <slot name="link" />
           <i
@@ -84,6 +84,7 @@
 
 <script lang="ts">
 import {
+  computed,
   defineComponent, nextTick, onMounted, ref, watch,
 } from 'vue';
 import { useWhatInput } from '../plugins/WhatInput';
@@ -138,6 +139,24 @@ export default defineComponent({
     const bottomWrapper = ref<HTMLDivElement | null>(null);
     const closed = ref(false);
 
+    const bannerBgStyle = computed(() => (
+      `linear-gradient(
+        to bottom left,
+        rgba(227, 232, 235, 0.72),
+        rgba(227, 232, 235, 0.72)
+      ),
+      url('${props.bgImage}') center center no-repeat`
+    ));
+
+    const bannerBgNightStyle = computed(() => (
+      `linear-gradient(
+        to bottom left,
+        rgba(9, 22, 29, 0.72),
+        rgba(9, 22, 29, 0.72)
+      ),
+      url('${props.bgImageNight}') center center no-repeat`
+    ));
+
     function updateBannerHeight() {
       if (!closed.value && banner.value) {
         banner.value.style.maxHeight = '240px';
@@ -151,7 +170,7 @@ export default defineComponent({
     }
 
     function toggleBanner() {
-      typeof props.onToggle === 'function' && props.onToggle();
+      if (typeof props.onToggle === 'function') props.onToggle();
       closed.value = !closed.value;
       updateBannerHeight();
 
@@ -185,6 +204,8 @@ export default defineComponent({
 
     return {
       closed,
+      bannerBgStyle,
+      bannerBgNightStyle,
       updateBannerHeight,
       toggleBanner,
     };

@@ -13,8 +13,8 @@
         viewBox="0 0 28 40"
       >
         <path
-          d="M0 0, l0 4, l0 -4"
           id="s-bar-y-path"
+          d="M0 0, l0 4, l0 -4"
         />
         <rect
           width="4"

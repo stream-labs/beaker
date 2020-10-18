@@ -61,10 +61,10 @@
           class="s-overlay__image"
         >
         <video
+          v-if="!isImage"
           :controls="videoControls"
           autoplay
           loop
-          v-if="!isImage"
           class="s-overlay__image"
         >
           <source :src="overlayImage">
@@ -170,10 +170,10 @@ export default defineComponent({
 
   setup(props) {
     const isImage = ref(true);
-    // const mq: string | string[];
+    const $mq: string | string[];
 
     function opened() {
-      typeof props.onOpen === 'function' && props.onOpen();
+      if (typeof props.onOpen === 'function') props.onOpen();
     }
 
     // Need to make custom vue 3 modal component.
@@ -182,7 +182,7 @@ export default defineComponent({
     }
 
     function onPrimaryAction() {
-      typeof props.onAction === 'function' && props.onAction();
+      if (typeof props.onAction === 'function') props.onAction();
       onDismiss();
     }
 

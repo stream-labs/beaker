@@ -1,13 +1,13 @@
 <template>
   <div class="s-radio s-checkbox">
     <input
-      type="radio"
       :id="id"
+      type="radio"
       :name="name"
       :checked="val == value"
       :value="val"
       @input="$emit('input', val)"
-      @click="$emit('onClick')"
+      @click="$emit('on-click')"
     >
     <label :for="id">{{ label }}</label>
   </div>
@@ -24,6 +24,8 @@ export default defineComponent({
     value: String || Boolean,
     val: String || Boolean,
   },
+
+  emits: ['input'],
 });
 </script>
 

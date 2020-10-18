@@ -30,7 +30,6 @@ import {
   defineComponent, onMounted, ref, PropType,
 } from 'vue';
 import Spinner from './Spinner.vue';
-import Button from './Button.vue';
 
 export default defineComponent({
   components: { Spinner },
@@ -93,6 +92,7 @@ export default defineComponent({
           loopText();
         }
       } else {
+        // eslint-disable-next-line prefer-destructuring
         loaderText.value = props.loadingStrs[0];
       }
     }

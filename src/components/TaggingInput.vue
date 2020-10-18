@@ -2,13 +2,12 @@
   <div class="s-tagging-input">
     <div class="s-tagging-input__container">
       <text-input
+        v-model="textInputValue"
+        v-validate="inputValidation"
         :label="label"
         :placeholder="placeholder"
         :name="name"
-        v-model="textInputValue"
-        v-validate="inputValidation"
         type="text"
-        slot="input"
         :error="errors.first(name)"
         v-on="filteredListeners"
         @keydown.enter.prevent="onAdd"
@@ -17,9 +16,9 @@
       <Button
         :variation="buttonVariation"
         :title="buttonText"
-        @click="onAdd"
         :disabled="value.length >= maxItems"
         type="button"
+        @click="onAdd"
       />
     </div>
 
@@ -102,7 +101,9 @@ export default defineComponent({
     },
   },
 
-  setup(props, { attrs }) {
+  emits: ['input'],
+
+  setup(props, { emit, attrs }) {
     const textInputValue = ref('');
 
     function onAdd() {
@@ -130,14 +131,16 @@ export default defineComponent({
           textInputValue.value = props.prefix + textInputValue.value;
         }
 
-        props.value.push(textInputValue.value);
+        // props.value.push(textInputValue.value);
+        emit('input', [...props.value, textInputValue.value]);
       }
 
       textInputValue.value = '';
     }
 
     function onRemove(index: number) {
-      props.value.splice(index, 1);
+      const newValue = props.value;
+      emit('input', newValue.splice(index, 1));
     }
 
     const tagClasses = computed(() => `s-tagging-input__tag s-tagging-input__tag--${props.tagVariation}`);

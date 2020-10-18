@@ -57,7 +57,7 @@ export default defineComponent({
     function closeCallout() {
       calloutClosedClass.value = 'callout--closed';
       setTimeout(() => {
-        typeof props.onClose === 'function' && props.onClose();
+        if (typeof props.onClose === 'function') props.onClose();
       }, 275);
     }
 

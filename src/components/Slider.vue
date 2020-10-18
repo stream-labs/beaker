@@ -1,5 +1,6 @@
 <template>
   <vue-slider-component
+    ref="slider"
     class="s-slider"
     :class="{
       's-slider--simple': simpleTheme,
@@ -20,9 +21,8 @@
     :formatter="prefix + '{value}' + suffix"
     :data="data"
     :disabled="disabled"
-    @callback="value => emitInput(value)"
     :simple-theme="simpleTheme"
-    ref="slider"
+    @callback="value => emitInput(value)"
   />
 </template>
 
@@ -122,19 +122,19 @@ export default defineComponent({
 
     emitter.on('input', setValue);
 
-    const ro = new ResizeObserver((entries, observer) => {
-      for (const entry of entries) {
+    const ro = new ResizeObserver((entries) => {
+      entries.forEach((entry) => {
         const {
           left, top, width, height,
         } = entry.contentRect;
         if (!debounced) {
           debounce().then(() => {
-            if (this.$refs.slider) {
-              this.$refs.slider.refresh();
+            if (slider.value) {
+              slider.value.refresh();
             }
           });
         }
-      }
+      });
     });
 
     watchEffect(() => {

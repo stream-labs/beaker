@@ -1,7 +1,7 @@
 <template>
   <div
-    class="s-media-picker"
     ref="mediaPicker"
+    class="s-media-picker"
   >
     <div class="s-media-picker__input-wrapper">
       <div class="s-media-picker__thumb">
@@ -67,15 +67,15 @@
         </transition>
 
         <div
+          class="s-media-picker__controls s-media-picker__controls--small"
           @mouseenter="mediaControlsVisible = true"
           @mouseleave="mediaControlsVisible = false"
-          class="s-media-picker__controls s-media-picker__controls--small"
         >
           <i
             v-if="mediaPickerSmall && !mediaControlsVisible"
+            v-focus="focused === -1"
             class="icon-add"
             :tabindex="mediaPickerSmall && !mediaControlsVisible ? 0 : -1"
-            v-focus="focused === -1"
             @focus="focused = -1"
             @keydown.space.prevent="showMediaControls"
             @keydown.enter.prevent="showMediaControls"
@@ -91,9 +91,9 @@
             <a
               v-for="(control, index) in mediaControls"
               :key="control.key"
+              v-focus="focused === index"
               :class="control.class"
               :title="control.title"
-              v-focus="focused === index"
               :tabindex="focused === index ? 0 : -1"
               @focus="focused = index"
               @click.stop="$emit(control.emit)"
@@ -124,6 +124,7 @@ export default defineComponent({
   props: {
     variation: {
       type: String,
+      default: '',
     },
 
     mediaLink: {
@@ -249,10 +250,10 @@ export default defineComponent({
 
     onMounted(() => {
       const ro = new ResizeObserver((entries) => {
-        for (const entry of entries) {
+        entries.forEach((entry) => {
           const { width } = entry.contentRect;
           mediaPickerSmall.value = width < 500;
-        }
+        });
       });
 
       if (mediaPicker.value) ro.observe(mediaPicker.value);

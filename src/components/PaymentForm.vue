@@ -36,8 +36,8 @@
         </div>
         <div class="s-form-group">
           <checkbox
-            label="Save this payment method for next time"
             v-model="savePaymentMethod"
+            label="Save this payment method for next time"
           />
         </div>
       </form>

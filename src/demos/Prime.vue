@@ -115,8 +115,8 @@
           <ModalComp
             type="welcome-prime"
             :width="600"
-            @onClickPrime="testWelcomePrime"
             :has-prime-close-button="true"
+            @onClickPrime="testWelcomePrime"
           />
 
           <div class="button-container button-container--left">
@@ -171,8 +171,8 @@
           <ModalComp
             type="prime-intro"
             :width="680"
-            @onClickPrime="testPrimeIntro"
             :has-prime-close-button="true"
+            @onClickPrime="testPrimeIntro"
           />
 
           <div class="button-container button-container--left">

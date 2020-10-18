@@ -22,8 +22,8 @@ components: {
             selected="advanced"
           >
             <div
-              :slot="tab.value"
               v-for="tab in tabs"
+              :slot="tab.value"
               :key="tab.value"
             >
               {{ tab.name }}
@@ -33,7 +33,7 @@ components: {
       </DemoSection>
     </div>
 
-    <div class="section">
+    <!-- <div class="section">
       <DemoSection
         title="New Tabs"
         :code="demoCode"
@@ -54,7 +54,7 @@ components: {
           </TabsNew>
         </template>
       </DemoSection>
-    </div>
+    </div> -->
 
     <table class="docs-table">
       <thead>
@@ -109,7 +109,7 @@ import { defineComponent } from 'vue';
 import DemoSection from '../components/DemoSection.vue';
 // import ScrollNav from '../components/ScrollNav.vue';
 import Tabs from '../components/Tabs.vue';
-import TabsNew from '../components/TabsNew.vue';
+// import TabsNew from '../components/TabsNew.vue';
 import TabsCode from '!!raw-loader!./Tabs.vue';
 
 export default defineComponent({
@@ -117,7 +117,7 @@ export default defineComponent({
     DemoSection,
     // ScrollNav,
     Tabs,
-    TabsNew,
+    // TabsNew,
   },
 
   setup() {

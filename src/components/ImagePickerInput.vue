@@ -1,21 +1,21 @@
 <template>
   <div class="s-image-picker-input">
     <div
+      v-for="option in options"
+      :key="option.value"
+      ref="imagePickerItem"
       :value="option.value"
       :title="option.title"
       :image="option.image"
-      v-for="option in options"
-      :key="option.value"
       class="s-image-picker-input__option"
       :class="[value === option.value ? 'active' : '']"
       :style="{ width: width, height: height }"
+      :tabindex="value === option.value ? '0' : '-1'"
       @click="emitInput(option.value)"
       @keydown.up.prevent="setValueByKeyPress('UP')"
       @keydown.down.prevent="setValueByKeyPress('DOWN')"
       @keydown.left.prevent="setValueByKeyPress('LEFT')"
       @keydown.right.prevent="setValueByKeyPress('RIGHT')"
-      :tabindex="value === option.value ? '0' : '-1'"
-      ref="imagePickerItem"
     >
       <img :src="option.image">
     </div>
@@ -48,6 +48,7 @@ export default defineComponent({
 
     height: {
       type: String,
+      default: '',
     },
 
     options: {
@@ -71,6 +72,8 @@ export default defineComponent({
       ],
     },
   },
+
+  emits: ['input'],
 
   setup(props, { emit }) {
     const imagePickerItem = props.options.map(() => ref<HTMLDivElement | null>(null));
@@ -123,10 +126,10 @@ export default defineComponent({
         ) as Element;
 
         const ro = new ResizeObserver((entries) => {
-          for (const entry of entries) {
+          entries.forEach((entry) => {
             const { width } = entry.contentRect;
             containerWidth.value = width;
-          }
+          });
         });
 
         ro.observe(imagePickerInput);

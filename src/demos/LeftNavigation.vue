@@ -21,7 +21,10 @@
 
     <div class="left-navigation-section">
       <h4>Components</h4>
-      <template v-for="{ name, label } in componentDemos" :key="name">
+      <template
+        v-for="{ name, label } in componentDemos"
+        :key="name"
+      >
         <router-link :to="name">
           {{ label }}
         </router-link>

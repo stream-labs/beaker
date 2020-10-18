@@ -26,55 +26,55 @@ components: {
           <FormGroup>
             <template #input>
               <TextInput
+                v-model="textInputValue"
                 type="text"
                 label="Text Input"
-                v-model="textInputValue"
                 name="textExample"
                 :placeholder="textInputPlaceholder"
                 autocomplete="on"
               />
 
               <TextInput
+                v-model="numberInputValue"
+                v-validate="'required|between:0,100'"
                 type="number"
                 label="Number Input"
-                v-model="numberInputValue"
                 name="numberinputExample"
                 :placeholder="textInputPlaceholder"
                 :min="0"
                 :max="100"
-                v-validate="'required|between:0,100'"
                 :error="errors.first('numberinputExample')"
               />
 
               <TextInput
+                v-model="emailInputValue"
                 type="email"
                 label="Email Input"
-                v-model="emailInputValue"
                 name="emailExample"
                 :placeholder="emailInputPlaceholder"
               />
 
               <TextInput
+                v-model="passwordInputValue"
                 type="password"
                 label="Password Input"
-                v-model="passwordInputValue"
                 name="passwordExample"
                 :placeholder="passwordInputPlaceholder"
                 disabled
               />
 
               <TextInput
+                v-model="errorTextInputValue"
                 type="text"
                 label="Input With Error"
-                v-model="errorTextInputValue"
                 name="textExample"
                 :placeholder="textInputPlaceholder"
                 :error="'Enter a number'"
               />
 
               <TextArea
-                label="Text Area"
                 v-model="textAreaInputValue"
+                label="Text Area"
                 name="myarea"
                 placeholder="This is where you put some cool stuff"
                 auto-resize="true"
@@ -254,15 +254,15 @@ components: {
               />
 
               <Selector
-                multiple
                 v-model="multipleSelected"
+                multiple
                 :options="['Option A', 'Option B', 'Option C']"
                 :searchable="false"
               />
 
               <Selector
-                multiple
                 v-model="multipleSelected"
+                multiple
                 :options="['Option A', 'Option B', 'Option C']"
                 disabled
               />
@@ -341,8 +341,8 @@ components: {
         >
           <template #components>
             <Checkbox
-              v-model="checkboxValue1"
               id="checkbox"
+              v-model="checkboxValue1"
               name="checkbox"
               label="Checkbox Label"
             />
@@ -360,20 +360,20 @@ components: {
           <template #components>
             <div class="s-checkbox-group">
               <Checkbox
-                v-model="checkboxValue2"
                 id="checkbox1"
+                v-model="checkboxValue2"
                 name="checkbox1"
                 label="Checkbox Label 1"
               />
               <Checkbox
-                v-model="checkboxValue3"
                 id="checkbox2"
+                v-model="checkboxValue3"
                 name="checkbox2"
                 label="Checkbox Label 2"
               />
               <Checkbox
-                v-model="checkboxValue4"
                 id="checkbox3"
+                v-model="checkboxValue4"
                 name="checkbox3"
                 label="Checkbox Label 3"
               />
@@ -393,15 +393,15 @@ components: {
         <template #components>
           <div class="s-checkbox-group">
             <Radio
-              v-model="radioValue"
               id="radio1"
+              v-model="radioValue"
               name="radioGroup"
               label="Enabled"
               :val="true"
             />
             <Radio
-              v-model="radioValue"
               id="radio2"
+              v-model="radioValue"
               name="radioGroup"
               label="Disabled"
               :val="false"
@@ -470,8 +470,8 @@ components: {
                 />
 
                 <StatusSwitch
-                  size="small"
                   v-model="statusValue"
+                  size="small"
                   label="Small Switch Label"
                 />
               </template>

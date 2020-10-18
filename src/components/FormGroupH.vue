@@ -14,8 +14,8 @@
       <slot name="input" />
 
       <div
-        class="s-form-group-h__help-text"
         v-if="helpText"
+        class="s-form-group-h__help-text"
       >
         {{ helpText }}
       </div>

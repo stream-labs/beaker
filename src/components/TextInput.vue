@@ -31,33 +31,33 @@
     </div>
     <input
       ref="input"
+      v-model="content"
       :type="type"
       :placeholder="placeholder"
-      @input="handleInput"
       :name="name"
       :disabled="disabled"
       :readonly="readonly"
-      @blur="onBlur"
-      @focus="onFocus"
-      @click="onClick"
-      @keyup="onKeyUp"
       :autocomplete="autoComplete"
       :autofocus="autofocus"
-      v-model="content"
       :class="{
         's-form-field__input': true,
         's-form-field__input--error': !!error,
         's-form-field__input--disabled': disabled
       }"
+      @input="handleInput"
+      @blur="onBlur"
+      @focus="onFocus"
+      @click="onClick"
+      @keyup="onKeyUp"
       v-on="filteredListeners"
       @mousewheel="mouseWheel"
     >
     <label
+      v-if="label"
       :class="{
         's-form-field__label--top': value !== '' && !disabled
       }"
       class="s-form-field__label"
-      v-if="label"
     >{{ label }}</label>
 
     <div
@@ -87,14 +87,17 @@ export default defineComponent({
   props: {
     name: {
       type: String,
+      default: '',
     },
 
     value: {
       type: [String, Number],
+      default: '',
     },
 
     error: {
       type: String,
+      default: '',
     },
 
     min: {
@@ -145,6 +148,8 @@ export default defineComponent({
     },
   },
 
+  emits: ['on-change', 'input', 'keyup', 'blur', 'focus', 'click'],
+
   setup(props, { attrs, emit }) {
     const input = ref<HTMLInputElement | null>(null);
     const content = ref('');
@@ -181,7 +186,7 @@ export default defineComponent({
     watchEffect(() => {
       if (props.value) {
         content.value = props.value.toString();
-        emit('onChange', props.value);
+        emit('on-change', props.value);
       }
     });
 

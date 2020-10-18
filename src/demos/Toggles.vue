@@ -19,11 +19,11 @@ components: {
       >
         <template #components>
           <Toggle
+            v-model="selectedOption"
             :values="{
               show: `<i class='icon-view'></i>`,
               hide: `<i class='icon-hide'></i>`
             }"
-            v-model="selectedOption"
           />
         </template>
       </DemoSection>
@@ -37,11 +37,11 @@ components: {
       >
         <template #components>
           <Toggle
+            v-model="selectedTextOption"
             :values="{
               revenue: 'Revenue',
               growth: 'Growth'
             }"
-            v-model="selectedTextOption"
             variation="text"
           />
         </template>

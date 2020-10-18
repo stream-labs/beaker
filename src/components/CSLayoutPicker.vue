@@ -1,9 +1,9 @@
 <template>
   <div class="s-cs-layout-picker">
     <div
-      @click="showChooseLayout"
       v-if="addLayout"
       class="s-cs-layout-picker__add-bar"
+      @click="showChooseLayout"
     >
       <i class="icon-add" />
     </div>

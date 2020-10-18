@@ -106,8 +106,8 @@ components: {
         <template #components>
           <CSLayoutPicker>
             <div
-              slot="layouts"
               v-for="layout in webLayouts"
+              slot="layouts"
               :key="layout.id"
               class="s-cs-layout-picker__layout"
             >

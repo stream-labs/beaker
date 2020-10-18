@@ -153,7 +153,7 @@ export default defineComponent({
 </script>
 
 <style lang="less" scoped>
-::v-deep .s-demo-section__content {
+::v-deep(.s-demo-section__content) {
   height: 330px;
 
   .s-tooltip-notice {

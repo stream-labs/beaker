@@ -5,12 +5,12 @@
   >
     <div class="s-form-area__container">
       <textarea
+        ref="textArea"
         :class="{
           's-form-area__input': true,
           's-form-area__input--error': !!error,
           's-form-area__input--count': !!maxLength
         }"
-        ref="textArea"
         :name="name"
         :cols="cols"
         :rows="rows"
@@ -25,11 +25,11 @@
       />
 
       <label
+        v-if="label"
         :class="{
           's-form-area__label--top': value !== ''
         }"
         class="s-form-area__label"
-        v-if="label"
       >{{ label }}</label>
 
       <div

@@ -23,7 +23,9 @@ components: {
             :btn-variation="'default'"
             :btn-title="'Default'"
           >
-            <template #title><span>Tiltify</span></template>
+            <template #title>
+              <span>Tiltify</span>
+            </template>
             <template #text>
               <span>
                 Link your account and visit Alert Box to configure your Tiltify

@@ -17,11 +17,11 @@
       <template #link>
         <div>
           <Button
-            @click="$emit('click')"
             :tag="'a'"
             :variation="'link'"
             :href="href"
             :title="'Try Prime Now'"
+            @click="$emit('click')"
           />
         </div>
       </template>

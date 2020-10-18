@@ -1,8 +1,8 @@
 <template>
   <div class="documentation">
     <left-navigation
-      @update-section="changeSection"
       :active-section="activeSection"
+      @update-section="changeSection"
     />
 
     <div class="content">

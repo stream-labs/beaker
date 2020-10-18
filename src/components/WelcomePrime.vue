@@ -67,6 +67,8 @@ export default defineComponent({
     },
   },
 
+  emits: ['on-click-prime'],
+
   setup(props, { slots, emit }) {
     const primeFeatureListDefault = ref([
       '100s of Stunning Themes',
@@ -83,7 +85,7 @@ export default defineComponent({
     });
 
     function onPrimeButtonHandler() {
-      emit('onClickPrime');
+      emit('on-click-prime');
     }
 
     return {
