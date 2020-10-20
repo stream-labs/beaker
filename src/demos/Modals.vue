@@ -20,8 +20,8 @@ components: {
             name="modal-basic"
             type="basic"
             title="UI Modal"
-            subTitle="Subtitle"
-            :clickToClose="false"
+            sub-title="Subtitle"
+            :click-to-close="false"
             text="
               Save combining multiple windows like Streamlabels, Twitch Chat,
               Twitch Dashboard, Video, Streamlabs Dashboard, OBS etc into a

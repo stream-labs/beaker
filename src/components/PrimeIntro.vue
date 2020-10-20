@@ -19,15 +19,11 @@
           <span>to customize your tip page!</span>
 
           <div class="modal-prime-intro__heading--subtitle">
-<<<<<<< HEAD
             <slot
               v-if="hasSubtitleSlot"
               name="subtitle"
             />
             <span v-else>You will get your domain along with</span>
-=======
-            <slot v-if="hasSubtitleSlot" name="subtitle"></slot>
->>>>>>> a7a6790c6cbb7e7e472be867d8f90c9d015435ba
           </div>
         </div>
       </div>

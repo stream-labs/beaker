@@ -66,7 +66,10 @@
         class="s-accordion__content"
         :class="[{ 'is-open': isOpen }, { 'left-nav': leftNav }]"
       >
-        <slot name="content" :is-open="isOpen" />
+        <slot
+          name="content"
+          :is-open="isOpen"
+        />
       </div>
     </transition>
   </div>

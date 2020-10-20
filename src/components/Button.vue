@@ -45,7 +45,10 @@
         </i>
         {{ title }}
       </span>
-      <span v-if="description" class="s-button__description">
+      <span
+        v-if="description"
+        class="s-button__description"
+      >
         {{ description }}
       </span>
       <i

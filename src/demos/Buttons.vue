@@ -77,13 +77,14 @@ components: {
               />
 
               <Button variation="action">
-                <div
-                  slot="custom"
-                  class="custom-html"
-                >
-                  <i class="icon-add-circle" />
-                  <span>Custom Slot</span>
-                </div>
+                <template #custom>
+                  <div
+                    class="custom-html"
+                  >
+                    <i class="icon-add-circle" />
+                    <span>Custom Slot</span>
+                  </div>
+                </template>
               </Button>
             </div>
           </template>
@@ -747,7 +748,6 @@ components: {
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import Accordion from '../components/Accordion.vue';
 import Button from '../components/Button.vue';
 import DemoSection from '../components/DemoSection.vue';
 import ButtonCode from '!!raw-loader!./Buttons.vue';

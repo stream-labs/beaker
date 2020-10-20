@@ -5,8 +5,15 @@
     :class="[calloutClass, calloutClosedClass]"
   >
     <span class="s-callout__content">
-      <i v-if="icon" :class="[calloutIcon]"></i>
-      <Badge v-if="isPrime" variant="prime" :align-left="true" />
+      <i
+        v-if="icon"
+        :class="[calloutIcon]"
+      />
+      <Badge
+        v-if="isPrime"
+        variant="prime"
+        :align-left="true"
+      />
       <span>
         <slot />
       </span>
@@ -14,10 +21,12 @@
         v-if="closeable"
         class="icon-close s-callout__close-button"
         @click="closeCallout()"
-      ></i>
-      <a v-if="isPrime" class="s-callout__more" @click="$emit('on-click')"
-        >Learn more</a
-      >
+      />
+      <a
+        v-if="isPrime"
+        class="s-callout__more"
+        @click="$emit('on-click')"
+      >Learn more</a>
     </span>
   </div>
 </template>

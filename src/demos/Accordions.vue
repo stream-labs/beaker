@@ -18,8 +18,12 @@ components: {
         :code="demoCode"
       >
         <template #components>
-          <div @click="openAccordion(true)">Open Accordion</div>
-          <div @click="openAccordion(false)">Close Accordion</div>
+          <div @click="openAccordion(true)">
+            Open Accordion
+          </div>
+          <div @click="openAccordion(false)">
+            Close Accordion
+          </div>
 
           <Accordion
             opened-title="Hide Content"
@@ -94,9 +98,9 @@ components: {
               </div>
 
               <Accordion
+                v-model="isOpened"
                 opened-title="Hide Content"
                 closed-title="Show Content"
-                v-model="isOpened"
               >
                 <template #content>
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -221,7 +225,7 @@ components: {
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 
 import Accordion from '../components/Accordion.vue';
 import AccordionCode from '!!raw-loader!./Accordions.vue';
@@ -230,31 +234,24 @@ import DemoSection from '../components/DemoSection.vue';
 export default defineComponent({
   components: {
     Accordion,
-<<<<<<< HEAD
     DemoSection,
   },
 
   setup() {
     const demoCode: string = AccordionCode;
+    const isOpened = ref<boolean | null>(true);
+
+    function openAccordion(bool: boolean) {
+      isOpened.value = bool;
+    }
 
     return {
       demoCode,
+      isOpened,
+      openAccordion,
     };
   },
 });
-=======
-    DemoSection
-  }
-})
-export default class Accordions extends Vue {
-  demoCode = AccordionCode;
-  isOpened: boolean | null = true;
-
-  openAccordion(bool) {
-    this.isOpened = bool;
-  }
-}
->>>>>>> a7a6790c6cbb7e7e472be867d8f90c9d015435ba
 </script>
 
 <style lang="less">

@@ -108,13 +108,16 @@ components: {
         Prime Callout.
       </p>
 
-      <DemoSection title="Prime Callouts" :code="demoCode">
+      <DemoSection
+        title="Prime Callouts"
+        :code="demoCode"
+      >
         <template #components>
           <Callout
             variation="prime"
             :closeable="true"
+            :on-close="cookieCalloutClosed"
             @onClick="cookieCalloutClosed"
-            :onClose="cookieCalloutClosed"
           >
             Themes, apps, website, merch and more. All included with Prime.
           </Callout>
