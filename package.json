@@ -1,6 +1,13 @@
 {
   "name": "streamlabs-beaker",
+<<<<<<< HEAD
   "version": "0.10.33",
+=======
+  "version": "0.10.54",
+  "main": "./dist/beaker.common.js",
+  "module": "./dist/beaker.esm.js",
+  "license": "MIT",
+>>>>>>> a7a6790c6cbb7e7e472be867d8f90c9d015435ba
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "rollup --config",

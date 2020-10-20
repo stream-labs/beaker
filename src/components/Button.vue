@@ -21,9 +21,7 @@
     <span v-if="!$slots.custom">
       <span>
         <span v-if="variation === 'prime-simple' && this.primeTitle">
-          {{
-            primeTitle
-          }}
+          {{ primeTitle }}
         </span>
         <span
           v-else-if="variation === 'prime-simple'"
@@ -47,13 +45,8 @@
         </i>
         {{ title }}
       </span>
-      <span
-        v-if="description"
-        class="s-button__description"
-      >
-        {{
-          description
-        }}
+      <span v-if="description" class="s-button__description">
+        {{ description }}
       </span>
       <i
         v-if="iconClass && iconPosition === 'right'"

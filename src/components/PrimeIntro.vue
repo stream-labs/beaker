@@ -16,20 +16,24 @@
 
         <slot v-if="hasSlot" />
         <div v-else>
-          <span>to publish your website!</span>
+          <span>to customize your tip page!</span>
 
           <div class="modal-prime-intro__heading--subtitle">
+<<<<<<< HEAD
             <slot
               v-if="hasSubtitleSlot"
               name="subtitle"
             />
             <span v-else>You will get your domain along with</span>
+=======
+            <slot v-if="hasSubtitleSlot" name="subtitle"></slot>
+>>>>>>> a7a6790c6cbb7e7e472be867d8f90c9d015435ba
           </div>
         </div>
       </div>
       <ul class="modal-prime-intro__list">
         <li class="modal-prime-intro__list__item">
-          <i class="icon-themes" /> Overlay, widget & site themes
+          <i class="icon-themes" /> Overlay, widget & tip page themes
         </li>
         <li class="modal-prime-intro__list__item">
           <i class="icon-store" /> FREE apps

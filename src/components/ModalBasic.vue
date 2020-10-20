@@ -7,6 +7,7 @@
     height="auto"
     :adaptive="true"
     v-bind="$attrs"
+    :clickToClose="clickToClose"
   >
     <div class="s-modal-container">
       <div class="s-modal-body">
@@ -45,7 +46,7 @@
           />
           <Button
             :variation="'action'"
-            :title="'Confirm'"
+            :title="confirmButtonText"
             :size="'fixed-width'"
             @click="$emit('confirm')"
           />
@@ -87,6 +88,7 @@ export default defineComponent({
       type: String,
     },
 
+<<<<<<< HEAD
     text: {
       type: String,
     },
@@ -96,6 +98,17 @@ export default defineComponent({
     },
   },
 });
+=======
+  @Prop()
+  hideActionButtons!: string;
+
+  @Prop({ default: "Confirm" })
+  confirmButtonText!: string;
+
+  @Prop({ default: true })
+  clickToClose!: boolean;
+}
+>>>>>>> a7a6790c6cbb7e7e472be867d8f90c9d015435ba
 </script>
 
 <style lang="less" scoped>

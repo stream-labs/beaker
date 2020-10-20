@@ -4,9 +4,7 @@
       <h1>Buttons</h1>
       <p>
         Our button component is super flexible. It can act as type
-        <code>button</code>,
-        <code>a</code> tag or
-        <code>router-link</code>.
+        <code>button</code>, <code>a</code> tag or <code>router-link</code>.
         Please note that you may need to use 'ButtonInput' rather than 'Button'
         to avoid issues.
       </p>
@@ -558,8 +556,7 @@ components: {
           <td>null</td>
           <td>
             Emits a click function. If you are using an event modifier such as
-            <code>prevent</code>, use
-            <code>native</code>. For example
+            <code>prevent</code>, use <code>native</code>. For example
             <code>@click.native.prevent</code>.
           </td>
         </tr>
@@ -630,8 +627,7 @@ components: {
           <td>null</td>
           <td>
             Used if the the
-            <code>type</code> is an
-            <code>a</code> element (links).
+            <code>type</code> is an <code>a</code> element (links).
           </td>
         </tr>
         <tr>
@@ -640,9 +636,7 @@ components: {
           <td>standard</td>
           <td>
             Size of the button. Options are
-            <code>small</code>,
-            <code>large</code>,
-            <code>square</code>,
+            <code>small</code>, <code>large</code>, <code>square</code>,
             <code>fixed-width</code>, and
             <code>full-width</code>
           </td>
@@ -653,9 +647,7 @@ components: {
           <td>null</td>
           <td>
             State of the button. Options are
-            <code>hover</code>,
-            <code>focus</code>,
-            <code>loading</code> and
+            <code>hover</code>, <code>focus</code>, <code>loading</code> and
             <code>disabled</code>.
           </td>
         </tr>
@@ -671,8 +663,7 @@ components: {
           <td>null</td>
           <td>
             Used if the the
-            <code>type</code> is a
-            <code>router-link</code>. Define the path.
+            <code>type</code> is a <code>router-link</code>. Define the path.
           </td>
         </tr>
         <tr>
@@ -681,8 +672,7 @@ components: {
           <td>button</td>
           <td>
             What type of element the component is. Options are
-            <code>button</code>,
-            <code>a</code>,
+            <code>button</code>, <code>a</code>,
             <code>router-link</code>
           </td>
         </tr>
@@ -694,9 +684,7 @@ components: {
             Used to set different targets for
             <code>a</code>
             links,
-            <code>_self</code>,
-            <code>_blank</code>,
-            <code>_parent</code>,
+            <code>_self</code>, <code>_blank</code>, <code>_parent</code>,
             <code>_top</code>
           </td>
         </tr>
@@ -706,8 +694,7 @@ components: {
           <td>null</td>
           <td>
             You can use this prop when you set variation as
-            <code>prime</code>. Option is only
-            <code>white</code>.
+            <code>prime</code>. Option is only <code>white</code>.
           </td>
         </tr>
         <tr>
@@ -726,28 +713,16 @@ components: {
           <td>default</td>
           <td>
             The variation style of a button. Primary options are
-            <code>default</code>,
-            <code>action</code>,
-            <code>prime</code> and
-            <code>warning</code>. Other options are
-            <code>subscribe</code>,
-            <code>paypal</code>,
-            <code>download</code>, and
+            <code>default</code>, <code>action</code>, <code>prime</code> and
+            <code>warning</code>. Other options are <code>subscribe</code>,
+            <code>paypal</code>, <code>download</code>, and
             <code>navigation</code>. Reward options are
-            <code>rewards-standard</code>,
-            <code>rewards-silver</code>,
-            <code>rewards-gold</code>,
-            <code>rewards-platinum</code>,
-            <code>rewards-diamond</code>, and
-            <code>rewards-legend</code>.
-            Platform options are
-            <code>facebook</code>,
-            <code>mixer</code>,
-            <code>twitch</code>,
-            <code>youtube</code>,
-            <code>periscope</code>,
-            <code>picarto</code>and
-            <code>paypal-blue</code>.
+            <code>rewards-standard</code>, <code>rewards-silver</code>,
+            <code>rewards-gold</code>, <code>rewards-platinum</code>,
+            <code>rewards-diamond</code>, and <code>rewards-legend</code>.
+            Platform options are <code>facebook</code>, <code>mixer</code>,
+            <code>twitch</code>, <code>youtube</code>, <code>periscope</code>,
+            <code>picarto</code>and <code>paypal-blue</code>.
           </td>
         </tr>
         <tr>
@@ -762,8 +737,7 @@ components: {
           <td>windows</td>
           <td>
             Used for slobs download landing button icon. Options are
-            <code>windows</code> and
-            <code>mac</code>.
+            <code>windows</code> and <code>mac</code>.
           </td>
         </tr>
       </tbody>

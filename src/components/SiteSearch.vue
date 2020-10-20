@@ -361,12 +361,13 @@ export default defineComponent({
 @import (reference) "./../styles/Imports";
 
 .s-sitesearch {
-  border: 1px solid @day-input-border;
-  border-radius: @radius;
+  position: relative;
   height: 40px;
   min-width: 300px;
   max-width: 500px;
-  position: relative;
+  border: 1px solid @light-2;
+  border-radius: @radius;
+  background-color: @light-2;
   transform-origin: top;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -546,7 +547,8 @@ export default defineComponent({
 
 .night {
   .s-sitesearch {
-    border: 1px solid @night-input-border;
+    border: 1px solid @dark-4;
+    background-color: @dark-4;
 
     &.s-sitesearch--phase-one {
       border-color: @white;

@@ -145,6 +145,7 @@ export default defineComponent({
       imageMedia.value = '';
     }
 
+<<<<<<< HEAD
     function removeAudioMedia() {
       audioMedia.value = '';
     }
@@ -166,4 +167,11 @@ export default defineComponent({
     };
   },
 });
+=======
+  previewImageMedia() {
+    console.log("Previewing Media");
+    window.open(this.imageMedia);
+  }
+}
+>>>>>>> a7a6790c6cbb7e7e472be867d8f90c9d015435ba
 </script>

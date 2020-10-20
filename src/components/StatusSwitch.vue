@@ -106,6 +106,10 @@ export default defineComponent({
 
     .s-status-switch__paddle {
       background: @night-switch-bg;
+
+      &::before {
+        background: @dark-2;
+      }
     }
 
     &.enabled {

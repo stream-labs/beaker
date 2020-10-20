@@ -108,5 +108,11 @@ export default defineComponent({
       }
     }
   }
+
+  .s-radio.s-checkbox {
+    input:checked ~ label:after {
+      background: @dark-2;
+    }
+  }
 }
 </style>
