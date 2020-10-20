@@ -4,9 +4,9 @@
       opened-title="Hide Code"
       closed-title="Show Code"
     >
-      <slot name="content">
-        <pre><code v-html="escapedHtml" /></pre>
-      </slot>
+      <template #content>
+        <pre><code v-text="escapedHtml" /></pre>
+      </template>
     </Accordion>
 
     <div class="s-demo-section__content">
@@ -16,8 +16,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { escape } from 'lodash-es';
+import { computed, defineComponent } from 'vue';
+// import { escape } from 'lodash-es';
 
 import Accordion from './Accordion.vue';
 
@@ -27,31 +27,39 @@ export default defineComponent({
   },
 
   props: {
-    title: { type: String },
+    title: { type: String, required: true },
     code: { type: String, required: true },
   },
 
-  computed: {
-    escapedHtml() {
+  setup(props) {
+    const escapedHtml = computed(() => {
       const codeRegEx = new RegExp(
         `title="${
-          this.title
-        }" :code="demoCode">\\s*<template #components>([\\S\\s]*?)<\\/template>`,
+          props.title
+        }"\\s*:code="demoCode"\\s*>\\s*<template #components>([\\S\\s]*?)<\\/template>\\s*<\\/DemoSection>`,
         'gm',
       );
 
-      const codeMatch = codeRegEx.exec(this.code) as string[];
-      const lines = codeMatch[1].split('\n');
-      const matches = /^\s+/.exec(lines[1]);
-      const indentation = matches != null ? matches[0] : null;
-      let indentedLines: string[] = [];
+      const codeMatch = codeRegEx.exec(props.code);
+      if (codeMatch) {
+        const lines = codeMatch[1].split('\n');
+        const matches = /^\s+/.exec(lines[1]);
+        const indentation = matches != null ? matches[0] : null;
+        let indentedLines: string[] = [];
 
-      if (indentation) {
-        indentedLines = lines.map((line) => line.replace(indentation, ''));
+        if (indentation) {
+          indentedLines = lines.map((line) => line.replace(indentation, ''));
+        }
+
+        return indentedLines.join('\n').trim();
       }
 
-      return escape(indentedLines.join('\n').trim());
-    },
+      return '';
+    });
+
+    return {
+      escapedHtml,
+    };
   },
 });
 </script>

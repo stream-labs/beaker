@@ -7,7 +7,8 @@ declare module "what-input";
 declare module "vue-mq";
 declare module "vue-click-outside";
 declare module "!!raw-loader!*";
-declare module "lodash-es"
+declare module "lodash-es";
+declare module "vue-mq";
 // declare module "vue-js-modal" {
 //   import { PluginFunction } from "vue";
 //   export const install: PluginFunction<{}>;

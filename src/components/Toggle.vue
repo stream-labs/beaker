@@ -2,41 +2,50 @@
   <div :class="['s-toggle', toggleClass]">
     <button
       v-for="(val, key) in values"
-      :key="val.id"
+      :key="key"
       type="button"
       :title="capitalize(key)"
       :class="[
         's-toggle__option',
-        { 's-toggle__option--active': value === key }
+        { 's-toggle__option--active': localValue === val }
       ]"
-      @click="$emit('input', key)"
-      v-html="val"
+      @click="setValue(val)"
     >
-      {{ val }}
+      {{ key }}
     </button>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
+import { computed, defineComponent, ref } from 'vue';
 import filters from '../utilities/filters';
 
 export default defineComponent({
   props: {
     values: {
       type: Object,
-    },
-
-    value: {
-      type: String,
+      required: true,
     },
 
     variation: {
       type: String,
+      default: '',
     },
   },
 
-  setup(props) {
+  emits: ['input'],
+
+  setup(props, { emit }) {
+    const localValue = ref<string | number | boolean>('');
+
+    const [initValue] = Object.values(props.values);
+    localValue.value = initValue;
+
+    function setValue(val: string | number | boolean) {
+      localValue.value = val;
+      emit('input', val);
+    }
+
     function capitalize(val: string) {
       return filters.capitalize(val);
     }
@@ -44,6 +53,8 @@ export default defineComponent({
     const toggleClass = computed(() => (props.variation ? `s-toggle--${props.variation}` : ''));
 
     return {
+      localValue,
+      setValue,
       capitalize,
       toggleClass,
     };

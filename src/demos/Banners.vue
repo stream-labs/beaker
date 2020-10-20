@@ -51,7 +51,8 @@
           label="New Streamlabs OBS App"
           title="Introducing Pretzel Rocks Music Player"
           desc="
-            Stream-safe music for broadcasters with an ever-growing catalog of music. Currently 5k+ tracks.
+            Stream-safe music for broadcasters with an
+            ever-growing catalog of music. Currently 5k+ tracks.
           "
           link-desc="$4.99/mo"
           :banner-closed="bannerClosed"
@@ -268,7 +269,8 @@
                 Join affiliates and earn $1 for each Streamlabs OBS referral
               "
               desc="
-                Share your unique referral link with friends and get paid directly into your PayPal each month.
+                Share your unique referral link with friends
+                and get paid directly into your PayPal each month.
               "
               icon="information"
             >

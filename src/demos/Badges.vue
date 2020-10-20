@@ -81,30 +81,35 @@ components: {
             >
               New Alt
             </Badge>
+
             <Badge
               variant="tag-alt"
               :align-left="true"
             >
               Tag Alt
             </Badge>
+
             <Badge
               variant="beta-alt"
               :align-left="true"
             >
               Beta Alt
             </Badge>
+
             <Badge
               variant="warning-alt"
               :align-left="true"
             >
               Warning Alt
             </Badge>
+
             <Badge
               variant="pro-alt"
               :align-left="true"
             >
               Pro Alt
             </Badge>
+
             <Badge
               variant="prime-alt"
               :align-left="true"

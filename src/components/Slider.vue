@@ -94,18 +94,22 @@ export default defineComponent({
     },
   },
 
+  emits: ['input'],
+
   setup(props, { emit }) {
     const emitter = mitt();
     const slider = ref<any>(null);
     const displayValue = ref(props.value);
     let debounced = false;
 
-    function emitInput(val) {
+    function emitInput(val: number | []) {
       emit('input', val);
     }
 
-    function setValue(val) {
-      displayValue.value = val;
+    function setValue(val: number | undefined) {
+      if (val) {
+        displayValue.value = val;
+      }
     }
 
     function debounce() {

@@ -11,10 +11,10 @@ import App from './App.vue';
 
 const app = createApp(App);
 
-app.use(VTooltip);
-app.use(VModal);
-app.use(VueClipboard);
-app.use(VeeValidate);
+// app.use(VTooltip);
+// app.use(VModal);
+// app.use(VueClipboard);
+// app.use(VeeValidate);
 
 const router = createRouter({
   history: createWebHistory(),

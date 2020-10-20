@@ -9,9 +9,20 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   props: {
-    helpText: String,
-    tooltip: String,
-    title: String,
+    helpText: {
+      type: String,
+      default: '',
+    },
+
+    title: {
+      type: String,
+      default: '',
+    },
+
+    tooltip: {
+      type: String,
+      default: '',
+    },
   },
 });
 </script>

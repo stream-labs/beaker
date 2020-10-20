@@ -1,13 +1,13 @@
 <template>
   <component
     :is="tag"
+    ref="button"
     :icon="icon"
     :icon-img="iconImg"
     :title="title"
     :price="price"
     :description="description"
     :to="to"
-    ref="button"
     :href="href"
     :type="type"
     class="s-button ripple"

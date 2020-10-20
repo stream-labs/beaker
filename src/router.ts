@@ -6,8 +6,8 @@ export default [
     name,
     component,
   })),
-  {
-    path: '*',
-    redirect: '/installation',
-  },
+  // {
+  //   path: '/:pathMatch(.*)*',
+  //   redirect: '/installation',
+  // },
 ];

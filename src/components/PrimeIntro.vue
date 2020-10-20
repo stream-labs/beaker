@@ -73,7 +73,7 @@ export default defineComponent({
     },
   },
 
-  emits: ['onClickPrime'],
+  emits: ['on-click-prime'],
 
   setup(props, { emit, slots }) {
     function onPrimeButtonHandler() {

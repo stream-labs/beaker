@@ -170,7 +170,7 @@ export default defineComponent({
 
   setup(props) {
     const isImage = ref(true);
-    const $mq: string | string[];
+    const $mq = ref<string | string[]>('');
 
     function opened() {
       if (typeof props.onOpen === 'function') props.onOpen();
@@ -187,8 +187,8 @@ export default defineComponent({
     }
 
     const overlayImage = computed(() => props.media);
-    const containerMq = computed(() => ($mq === 'sm' ? 's-overlay__container--mq' : ''));
-    const overlayImageBlockMq = computed(() => ($mq === 'sm' ? 's-overlay__image-block--mq' : ''));
+    const containerMq = computed(() => ($mq.value === 'sm' ? 's-overlay__container--mq' : ''));
+    const overlayImageBlockMq = computed(() => ($mq.value === 'sm' ? 's-overlay__image-block--mq' : ''));
 
     onMounted(() => {
       if (props.media.includes('mp4') || props.media.includes('webm')) {

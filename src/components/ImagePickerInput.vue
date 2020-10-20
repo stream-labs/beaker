@@ -203,7 +203,7 @@ export default defineComponent({
       );
 
       if (posIndex > -1 && imagePickerItem.length && imagePickerItem[posIndex].value) {
-        imagePickerItem[posIndex].value.focus();
+        imagePickerItem[posIndex]?.value?.focus();
       }
       emitInput(props.options[posIndex].value);
     }

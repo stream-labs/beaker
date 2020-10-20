@@ -99,14 +99,17 @@ export default defineComponent({
 
     size: {
       type: String,
+      default: '',
     },
 
     selected: {
       type: String,
+      default: '',
     },
 
     className: {
       type: String,
+      default: '',
     },
 
     hideContent: {
@@ -118,6 +121,8 @@ export default defineComponent({
       default: true,
     },
   },
+
+  emits: ['tab-selected'],
 
   setup(props, { emit }) {
     let isMounted = false;
@@ -160,7 +165,7 @@ export default defineComponent({
       emit('tab-selected', tab);
     }
 
-    watch(props.tabs, () => {
+    watch(() => props.tabs, () => {
       nextTick(() => calculateScrolls());
     }, { deep: true });
 

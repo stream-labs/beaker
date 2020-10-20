@@ -5,16 +5,16 @@
       v-html="title"
     />
     <Button
-      v-bing="$attrs"
+      v-bind="$attrs"
       title="Open Discord"
       icon="discord"
-      :icon-position="'right'"
-      :variation="'custom'"
-      :bg-color="'#FFFFFF'"
-      :text-color="'#7289DA'"
-      :tag="'a'"
-      :href="'https://discord.gg/stream'"
-      :target="'_blank'"
+      icon-position="right"
+      variation="custom"
+      bg-color="#FFFFFF"
+      text-color="#7289DA"
+      tag="a"
+      href="https://discord.gg/stream"
+      target="_blank"
     />
   </div>
 </template>

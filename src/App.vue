@@ -1,6 +1,5 @@
 <template>
   <div
-    id="app"
     :class="[isNightTheme ? nightClasses : '', appClass]"
   >
     <div id="nav">
@@ -8,15 +7,17 @@
         <img
           v-if="isNightTheme"
           src="./assets/imgs/beaker-full-night.svg"
+          height="31"
         >
         <img
           v-else
           src="./assets/imgs/beaker-full.svg"
+          height="31"
         >
       </div>
       <toggle
-        v-model="theme"
         :values="themes"
+        @input="(val) => theme = val"
       />
     </div>
 
@@ -42,7 +43,6 @@
 </template>
 
 <script lang="ts">
-// import { Component, Vue } from "vue-property-decorator";
 import { defineComponent, ref, computed } from 'vue';
 import whatInput from 'what-input';
 import { provideWhatInput } from './plugins/WhatInput';
@@ -62,8 +62,8 @@ export default defineComponent({
     const nightClasses = ref(['night', 'night-theme']);
     const theme = ref('night');
     const themes = ref({
-      day: 'Day',
-      night: 'Night',
+      Day: 'day',
+      Night: 'night',
     });
 
     const isNightTheme = computed(() => theme.value === 'night');

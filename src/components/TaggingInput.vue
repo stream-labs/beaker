@@ -107,12 +107,13 @@ export default defineComponent({
     const textInputValue = ref('');
 
     function onAdd() {
-      if (
-        this.$validator.errors.items.length !== 0
-        || props.value.length >= props.maxItems
-      ) {
-        return;
-      }
+      // NEEDS VUE 3 VEE-VALIDATOR
+      // if (
+      //   this.$validator.errors.items.length !== 0
+      //   || props.value.length >= props.maxItems
+      // ) {
+      //   return;
+      // }
 
       textInputValue.value = textInputValue.value.trim();
 

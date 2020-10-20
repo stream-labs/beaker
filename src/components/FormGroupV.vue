@@ -36,10 +36,12 @@ export default defineComponent({
   props: {
     helpText: {
       type: String,
+      default: '',
     },
 
     title: {
       type: String,
+      default: '',
     },
 
     tooltip: {

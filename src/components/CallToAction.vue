@@ -76,7 +76,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue';
-import VueMq from 'vue-mq';
+// import VueMq from 'vue-mq';
 import Button from './Button.vue';
 
 // Vue.use(VueMq, {

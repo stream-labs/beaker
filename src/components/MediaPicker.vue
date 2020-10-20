@@ -5,7 +5,7 @@
   >
     <div class="s-media-picker__input-wrapper">
       <div class="s-media-picker__thumb">
-        <transition
+        <transition-group
           name="fade"
           mode="out-in"
         >
@@ -32,7 +32,7 @@
             :src="media.url"
             @error="setBrokenMedia"
           >
-        </transition>
+        </transition-group>
         <transition
           name="custom-classes-transition"
           leave-active-class="fade-slow-leave-active"
@@ -46,7 +46,7 @@
       </div>
 
       <div class="s-media-picker__filename">
-        <transition
+        <transition-group
           mode="out-in"
           name="fade"
         >
@@ -64,7 +64,7 @@
           >
             {{ mediaInputPlaceholder }}
           </div>
-        </transition>
+        </transition-group>
 
         <div
           class="s-media-picker__controls s-media-picker__controls--small"
@@ -73,7 +73,6 @@
         >
           <i
             v-if="mediaPickerSmall && !mediaControlsVisible"
-            v-focus="focused === -1"
             class="icon-add"
             :tabindex="mediaPickerSmall && !mediaControlsVisible ? 0 : -1"
             @focus="focused = -1"
@@ -91,7 +90,6 @@
             <a
               v-for="(control, index) in mediaControls"
               :key="control.key"
-              v-focus="focused === index"
               :class="control.class"
               :title="control.title"
               :tabindex="focused === index ? 0 : -1"
@@ -115,11 +113,11 @@
 import {
   defineComponent, ref, computed, watch, onMounted,
 } from 'vue';
-import { mixin as vFocus } from 'vue-focus';
+// import { mixin as vFocus } from 'vue-focus';
 import ResizeObserver from 'resize-observer-polyfill';
 
 export default defineComponent({
-  mixins: [vFocus],
+  // mixins: [vFocus],
 
   props: {
     variation: {

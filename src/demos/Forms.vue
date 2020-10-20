@@ -89,16 +89,6 @@ components: {
         </template>
       </DemoSection>
     </div>
-
-    <!-- <div class="section">
-      <h2>Payment Form</h2>
-
-      <DemoSection title="Payment Form" :code="demoCode">
-        <template #components>
-          <PaymentForm />
-        </template>
-      </DemoSection>
-    </div>-->
   </div>
 </template>
 
@@ -110,7 +100,6 @@ import FormsCode from '!!raw-loader!./Forms.vue';
 import FormGroup from '../components/FormGroup.vue';
 import FormGroupH from '../components/FormGroupH.vue';
 import FormGroupV from '../components/FormGroupV.vue';
-import PaymentForm from '../components/PaymentForm.vue';
 import TextInput from '../components/TextInput.vue';
 
 export default defineComponent({
@@ -119,7 +108,6 @@ export default defineComponent({
     FormGroup,
     FormGroupH,
     FormGroupV,
-    // PaymentForm,
     TextInput,
   },
 

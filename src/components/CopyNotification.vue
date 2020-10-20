@@ -21,6 +21,7 @@
 import {
   defineComponent, computed, onUnmounted,
 } from 'vue';
+import { ICopyEvent } from '../utilities/types';
 import { eventBus } from '../plugins/event-bus';
 
 interface INotificationMsg {
@@ -62,13 +63,15 @@ export default defineComponent({
       messages.push(message);
     }
 
-    function onCopySuccess(e) {
-      setCopyMsg({
-        id: setCopyMsgId(),
-        msg: `Copied "${e.text}" to clipboard`,
-        status: 'success',
-        timerStarted: false,
-      });
+    function onCopySuccess(e: ICopyEvent | undefined) {
+      if (e?.text) {
+        setCopyMsg({
+          id: setCopyMsgId(),
+          msg: `Copied "${e.text}" to clipboard`,
+          status: 'success',
+          timerStarted: false,
+        });
+      }
     }
 
     function onCopyError() {
