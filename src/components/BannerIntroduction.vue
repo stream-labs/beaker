@@ -28,8 +28,16 @@ export default class BannerIntroduction extends Vue {
 <style lang="less">
 @import (reference) "./../styles/Imports";
 
+.night {
+  .s-banner-introduction {
+    &__description {
+      color: @white;
+    }
+  }
+}
+
 .s-banner-introduction {
-  box-shadow: 0px 2px 8px rgba(9, 22, 29, 0.16);
+  box-shadow: 0px 2px 8px fade(@dark-2, 16%);
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
@@ -44,7 +52,7 @@ export default class BannerIntroduction extends Vue {
     font-style: normal;
     font-weight: normal;
     line-height: 130%;
-    color: @white !important;
+    color: @white;
   }
 
   &__title {
