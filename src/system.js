@@ -8,6 +8,7 @@
 import Accordion from "./components/Accordion.vue";
 import Badge from "./components/Badge.vue";
 import BannerDiscord from "./components/BannerDiscord.vue";
+import BannerIntroduction from "./components/BannerIntroduction.vue";
 import BannerMarketing from "./components/BannerMarketing.vue";
 import Button from "./components/Button.vue";
 import CallToAction from "./components/CallToAction.vue";
@@ -69,6 +70,7 @@ export {
   Accordion,
   Badge,
   BannerDiscord,
+  BannerIntroduction,
   BannerMarketing,
   Button,
   CallToAction,
