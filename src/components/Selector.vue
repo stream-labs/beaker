@@ -13,6 +13,9 @@
       <template #option="{ option }">
         <slot name="option" :option="option"></slot>
       </template>
+      <template #afterList>
+        <slot name="afterList" />
+      </template>
     </multiselect>
   </div>
 </template>
