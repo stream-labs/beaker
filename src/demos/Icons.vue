@@ -259,7 +259,16 @@ export default class Icons extends Vue {
     "icon-smart-record": "e9ca",
     "icon-broadcast": "e9d1",
     "icon-replay-buffer": "e9d3",
-    "icon-disconnected": "e9d2"
+    "icon-disconnected": "e9d2",
+    "icon-diamond": "e9ec",
+    "icon-text-transform-lowercase": "e9e8",
+    "icon-text-transform-none": "e9e9",
+    "icon-text-transform-title-case": "e9ea",
+    "icon-text-transform-uppercase": "e9eb",
+    "icon-text-transform": "e9e7",
+    "icon-text-align-center": "e9e4",
+    "icon-text-align-left": "e9e5",
+    "icon-text-align-right": "e9e6"
   };
 
   selectIconData(icon) {
