@@ -16,6 +16,9 @@
       <template #afterList>
         <slot name="afterList" />
       </template>
+      <template #noResult>
+        <slot name="noResult" />
+      </template>
     </multiselect>
   </div>
 </template>
