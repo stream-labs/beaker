@@ -167,7 +167,6 @@ export default class SiteSearch extends Vue {
   }
 
   get limitedResult() {
-    console.log(this.result);
     return this.resultLimit
       ? this.result.slice(0, this.resultLimit)
       : this.result;
