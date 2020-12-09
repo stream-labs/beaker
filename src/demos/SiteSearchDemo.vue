@@ -33,14 +33,7 @@ components: {
         "social",
         "media"
       ],
-      "description": "Need to get a hold of Streamlabs?",
-      "keymatches": [
-        "howto",
-        "faq"
-      ],
-      "image": "icon-phone-case",
-      "howto": "null",
-      "weight": 4
+      "image": "icon-phone-case"
     },
   ]
 }</code></pre>
@@ -71,7 +64,7 @@ export default {
               { item: { name: 'd-alertbox' } },
               { item: { name: 'creatorsites' } },
               { item: { name: 'merchsetup' } },
-              { item: { name: 'd-facemasks' } },
+              { item: { name: 'd-chatbox' } },
               { item: { name: 'streamlabs-obs' } }
             ]"
           />
