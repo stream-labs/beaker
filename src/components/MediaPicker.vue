@@ -49,7 +49,7 @@
             key="media-not-selected"
             class="s-media-picker__text-placeholder"
           >
-            {{ mediaInputPlaceholder }}
+            {{ title || mediaInputPlaceholder }}
           </div>
         </transition>
 
@@ -124,6 +124,9 @@ export default class MediaPicker extends Vue {
 
   @Prop({ default: true })
   mediaPreview!: boolean;
+
+  @Prop()
+  title!: string;
 
   @Prop()
   value!: string;
