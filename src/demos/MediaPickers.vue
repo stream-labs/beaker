@@ -33,6 +33,16 @@ components: {
               @remove-media="removeAudioMedia"
               v-model="audioMedia"
             />
+
+            <media-picker
+              slot="input"
+              variation="audio"
+              title="My Sample Title"
+              :media-link="true"
+              @select-media="selectAudioMedia"
+              @remove-media="removeAudioMedia"
+              v-model="audioMedia"
+            />
           </FormGroup>
         </template>
       </DemoSection>
@@ -58,6 +68,15 @@ components: {
               the `image` variation.
             </td>
           </tr>
+          <tr>
+            <td>title</td>
+            <td>string</td>
+            <td>null</td>
+            <td>
+              Customizable button text
+            </td>
+          </tr>
+          <tr>
           <tr>
             <td>mediaLink</td>
             <td>boolean</td>
