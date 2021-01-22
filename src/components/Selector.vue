@@ -16,6 +16,9 @@
       <template #option="{ option }">
         <slot name="option" :option="option"></slot>
       </template>
+      <template #beforeList>
+        <slot name="beforeList" />
+      </template>
       <template #afterList>
         <slot name="afterList" />
       </template>
