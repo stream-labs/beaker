@@ -7,6 +7,9 @@
       :max-height="200"
       v-on="$listeners"
     >
+      <template #selection>
+        <slot name="selection" />
+      </template>
       <template #singleLabel="{ option }">
         <slot name="singleLabel" :option="option"></slot>
       </template>
