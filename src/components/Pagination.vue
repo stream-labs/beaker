@@ -2,23 +2,25 @@
   <div ref="pagination" class="pagination__container">
     <vue-paginate-component
       :class="{ 'pagination--bg': nightBg }"
+      v-bind="$attrs"
+      v-on="$listeners"
       :page-count="pageCount"
       :page-range="pageRange"
       :click-handler="selectPage"
-      :prev-text="'Prev'"
-      :next-text="'Next'"
-      :container-class="'s-pagination'"
-      :page-class="'s-pagination__page'"
-      :page-link-class="'s-pagination__page-link'"
-      :prev-class="'s-pagination__prev'"
-      :prev-link-class="'s-pagination__prev-link'"
-      :next-class="'s-pagination__next'"
-      :next-link-class="'s-pagination__next-link'"
-      :break-view-class="'s-pagination__break'"
-      :break-view-link-class="'s-pagination__break-link'"
-      :active-class="'s-pagination__active'"
-      :disabled-class="'s-pagination__disabled'"
-    ></vue-paginate-component>
+      prev-text="Prev"
+      next-text="Next"
+      container-class="s-pagination"
+      page-class="s-pagination__page"
+      page-link-class="s-pagination__page-link"
+      prev-class="s-pagination__prev"
+      prev-link-class="s-pagination__prev-link"
+      next-class="s-pagination__next"
+      next-link-class="s-pagination__next-link"
+      break-view-class="s-pagination__break"
+      break-view-link-class="s-pagination__break-link"
+      active-class="s-pagination__active"
+      disabled-class="s-pagination__disabled"
+    />
   </div>
 </template>
 

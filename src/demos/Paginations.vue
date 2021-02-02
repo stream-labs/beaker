@@ -40,6 +40,12 @@
       </thead>
       <tbody>
         <tr>
+          <td>value | v-model</td>
+          <td>Number</td>
+          <td>undefined</td>
+          <td>Use to change page programmatically.</td>
+        </tr>
+        <tr>
           <td>nightBg</td>
           <td>Boolean</td>
           <td>false</td>
