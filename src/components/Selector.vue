@@ -25,6 +25,9 @@
       <template #noResult>
         <slot name="noResult" />
       </template>
+      <template #placeholder>
+        <slot name="placeholder" />
+      </template>
     </multiselect>
   </div>
 </template>
