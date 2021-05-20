@@ -77,7 +77,6 @@ components: {
               Customizable button text
             </td>
           </tr>
-          <tr></tr>
           <tr>
             <td>mediaLink</td>
             <td>boolean</td>
