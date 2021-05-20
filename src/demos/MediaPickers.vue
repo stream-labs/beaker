@@ -39,6 +39,7 @@ components: {
               variation="audio"
               title="My Sample Title"
               :media-link="true"
+              :controls-always-visible="true"
               @select-media="selectAudioMedia"
               @remove-media="removeAudioMedia"
               v-model="audioMedia"
@@ -76,7 +77,7 @@ components: {
               Customizable button text
             </td>
           </tr>
-          <tr>
+          <tr></tr>
           <tr>
             <td>mediaLink</td>
             <td>boolean</td>
@@ -91,6 +92,12 @@ components: {
             <td>string</td>
             <td>null</td>
             <td>A URL string to the selected media.</td>
+          </tr>
+          <tr>
+            <td>controlsAlwaysVisible</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>Use if controls always need to be shown.</td>
           </tr>
           <tr>
             <td>link-media</td>
