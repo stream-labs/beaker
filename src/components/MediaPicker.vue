@@ -54,12 +54,16 @@
         </transition>
 
         <div
-          @mouseenter="mediaControlsVisible = true"
-          @mouseleave="mediaControlsVisible = false"
+          @mouseenter="handleControlVisibility(true)"
+          @mouseleave="handleControlVisibility(false)"
           class="s-media-picker__controls s-media-picker__controls--small"
         >
           <i
-            v-if="mediaPickerSmall && !mediaControlsVisible"
+            v-if="
+              mediaPickerSmall &&
+                !mediaControlsVisible &&
+                !controlsAlwaysVisible
+            "
             class="icon-add"
             :tabindex="mediaPickerSmall && !mediaControlsVisible ? 0 : -1"
             v-focus="focused === -1"
@@ -130,6 +134,9 @@ export default class MediaPicker extends Vue {
 
   @Prop()
   value!: string;
+
+  @Prop({ default: false })
+  controlsAlwaysVisible!: boolean;
 
   mediaPickerSmall = false;
   mediaBroken = false;
@@ -264,6 +271,11 @@ export default class MediaPicker extends Vue {
   showMediaControls() {
     this.mediaControlsVisible = true;
     this.focused = this.mediaControls.length - 1;
+  }
+
+  handleControlVisibility(showControls) {
+    if (this.controlsAlwaysVisible) return;
+    this.mediaControlsVisible = showControls;
   }
 }
 </script>
