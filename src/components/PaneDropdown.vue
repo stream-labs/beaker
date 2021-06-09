@@ -243,7 +243,7 @@ export default class PaneDropdown extends Vue {
   }
 
   &__menu--top {
-    bottom: 24px;
+    bottom: calc(100% + 8px);
     top: unset;
   }
 
