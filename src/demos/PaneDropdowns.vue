@@ -38,7 +38,7 @@ components: {
       <DemoSection title="Menu Align" :code="demoCode">
         <template #components>
           <div class="row">
-            <PaneDropdown :menuAlign="'right'" :hoverOption="true">
+            <PaneDropdown menu-align="right" :hover-option="true">
               <span slot="title">Right Dropdown Menu</span>
               <a href="#">Hey I'm a longer link here</a>
               <a href="#">Let's see how this looks</a>
@@ -47,8 +47,17 @@ components: {
           </div>
 
           <div class="row">
-            <PaneDropdown :menuAlign="'center'">
+            <PaneDropdown menu-align="center">
               <span slot="title">Center Dropdown Menu</span>
+              <a href="#">Hey I'm a longer link here</a>
+              <a href="#">Let's see how this looks</a>
+              <a href="#">I'm in a pane dropdown aligned to the right</a>
+            </PaneDropdown>
+          </div>
+
+          <div class="row">
+            <PaneDropdown open-above="top">
+              <span slot="title">Top Dropdown Menu</span>
               <a href="#">Hey I'm a longer link here</a>
               <a href="#">Let's see how this looks</a>
               <a href="#">I'm in a pane dropdown aligned to the right</a>
@@ -133,6 +142,16 @@ components: {
               Default will align the menu to the left side of the toggle. Use
               <code>right</code> or <code>center</code> to align the dropdown
               menu to the right or center of its toggle.
+            </td>
+          </tr>
+          <tr>
+            <td>openAbove</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>false</td>
+            <td>
+              Set to true if you want menu to open above. Default is to open
+              below title.
             </td>
           </tr>
           <tr>
