@@ -70,6 +70,9 @@ export default class PaneDropdown extends Vue {
   menuAlign!: string;
 
   @Prop({ default: false })
+  openAbove!: boolean;
+
+  @Prop({ default: false })
   autoHeight!: boolean;
 
   @Prop({ default: true })
@@ -105,6 +108,10 @@ export default class PaneDropdown extends Vue {
 
     if (this.menuAlign) {
       classes.push(`s-pane-dropdown__menu--${this.menuAlign}`);
+    }
+
+    if (this.openAbove) {
+      classes.push("s-pane-dropdown__menu--top");
     }
 
     if (this.autoHeight) {
@@ -233,6 +240,11 @@ export default class PaneDropdown extends Vue {
   &__menu--center {
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  &__menu--top {
+    bottom: 24px;
+    top: unset;
   }
 
   &__menu--relative {
