@@ -19,9 +19,22 @@ components: {
               variation="image"
               :media-link="true"
               :media-preview="false"
+              @select-media="selectVideoMedia"
+              @preview-media="previewVideoMedia"
+              @remove-media="removeVideoMedia"
+              title="Select Video Media"
+              v-model="videoMedia"
+            />
+
+            <media-picker
+              slot="input"
+              variation="image"
+              :media-link="true"
+              :media-preview="false"
               @select-media="selectImageMedia"
               @preview-media="previewImageMedia"
               @remove-media="removeImageMedia"
+              title="Select Image Media"
               v-model="imageMedia"
             />
 
@@ -73,9 +86,7 @@ components: {
             <td>title</td>
             <td>string</td>
             <td>null</td>
-            <td>
-              Customizable button text
-            </td>
+            <td>Customizable button text</td>
           </tr>
           <tr>
             <td>mediaLink</td>
@@ -147,15 +158,20 @@ import DemoSection from "./../components/DemoSection.vue";
   components: {
     DemoSection,
     FormGroup,
-    MediaPicker
-  }
+    MediaPicker,
+  },
 })
 export default class ImagePickers extends Vue {
   demoCode = MediaPickersCode;
   msg = "Hi!";
   audioMedia = "";
   imageMedia = "";
+  videoMedia = "";
 
+  selectVideoMedia() {
+    this.videoMedia =
+      "https://cdn.streamlabs.com/static/imgs/intro-maker/highlight-key-info-before-your-stream.jpg.mp4";
+  }
   selectImageMedia() {
     this.imageMedia =
       "https://uploads.twitchalerts.com/000/045/005/127/foolofsoul-design-1521842129-0.png";
@@ -169,11 +185,18 @@ export default class ImagePickers extends Vue {
   removeImageMedia() {
     this.imageMedia = "";
   }
+  removeVideoMedia() {
+    this.videoMedia = "";
+  }
 
   removeAudioMedia() {
     this.audioMedia = "";
   }
 
+  previewVideoMedia() {
+    console.log("Previewing Video");
+    window.open(this.videoMedia);
+  }
   previewImageMedia() {
     console.log("Previewing Media");
     window.open(this.imageMedia);
