@@ -144,7 +144,7 @@ export default class MediaPicker extends Vue {
   controlsAlwaysVisible!: boolean;
 
   @Prop({ default: true })
-  canDelete!: false;
+  canDelete!: boolean;
 
   mediaPickerSmall = false;
   mediaBroken = false;
