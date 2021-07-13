@@ -143,6 +143,9 @@ export default class MediaPicker extends Vue {
   @Prop({ default: false })
   controlsAlwaysVisible!: boolean;
 
+  @Prop({ default: true })
+  canDelete!: false;
+
   mediaPickerSmall = false;
   mediaBroken = false;
   mediaControlsVisible = false;
@@ -199,7 +202,17 @@ export default class MediaPicker extends Vue {
         icon: "icon-upload-image",
       },
     ];
-    return controlData.filter((control) => control.available);
+    return controlData.filter((control) => {
+      if (!control.available) {
+        return false;
+      }
+
+      if (!this.canDelete && control.key === "media-remove") {
+        return false;
+      }
+
+      return true;
+    });
   }
 
   get mediaInputPlaceholder() {
