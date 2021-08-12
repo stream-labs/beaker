@@ -11,32 +11,34 @@
       @click="openContent"
     >
       <div class="s-accordion__button">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px">
-          <path
-            class="s-accordion__svg--back"
-            d="M13 14H1a1 1 0 0 1-1-1V1c0-.6.5-1 1-1h12c.6 0 1 .5 1 1v12c0 .6-.4 1-1 1z"
-            fill="#e3e8eb"
-          />
-          <transition name="twist-h">
-            <g v-if="!isOpen">
+        <slot name="open-close-icon" :is-open="isOpen">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px">
+            <path
+              class="s-accordion__svg--back"
+              d="M13 14H1a1 1 0 0 1-1-1V1c0-.6.5-1 1-1h12c.6 0 1 .5 1 1v12c0 .6-.4 1-1 1z"
+              fill="#e3e8eb"
+            />
+            <transition name="twist-h">
+              <g v-if="!isOpen">
+                <path
+                  class="s-accordion__svg--line"
+                  d="M10 8H4a1 1 0 0 1-1-1c0-.6.5-1 1-1h6c.6 0 1 .5 1 1s-.4 1-1 1z"
+                />
+                <path
+                  class="s-accordion__svg--line"
+                  d="M8 4v6c0 .6-.5 1-1 1a1 1 0 0 1-1-1V4c0-.6.5-1 1-1s1 .5 1 1z"
+                />
+              </g>
+            </transition>
+            <transition name="twist-v">
               <path
                 class="s-accordion__svg--line"
                 d="M10 8H4a1 1 0 0 1-1-1c0-.6.5-1 1-1h6c.6 0 1 .5 1 1s-.4 1-1 1z"
+                v-if="isOpen"
               />
-              <path
-                class="s-accordion__svg--line"
-                d="M8 4v6c0 .6-.5 1-1 1a1 1 0 0 1-1-1V4c0-.6.5-1 1-1s1 .5 1 1z"
-              />
-            </g>
-          </transition>
-          <transition name="twist-v">
-            <path
-              class="s-accordion__svg--line"
-              d="M10 8H4a1 1 0 0 1-1-1c0-.6.5-1 1-1h6c.6 0 1 .5 1 1s-.4 1-1 1z"
-              v-if="isOpen"
-            />
-          </transition>
-        </svg>
+            </transition>
+          </svg>
+        </slot>
       </div>
       <div class="s-accordion--title" v-if="hasTitleSlot">
         <slot name="title" />
