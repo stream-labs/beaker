@@ -158,8 +158,8 @@ import DemoSection from "./../components/DemoSection.vue";
   components: {
     DemoSection,
     FormGroup,
-    MediaPicker,
-  },
+    MediaPicker
+  }
 })
 export default class ImagePickers extends Vue {
   demoCode = MediaPickersCode;

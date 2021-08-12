@@ -8,7 +8,12 @@
       v-on="$listeners"
     >
       <template #selection="{ option, values, isOpen }">
-        <slot name="selection" :option="option" :values="values" :isOpen="isOpen" />
+        <slot
+          name="selection"
+          :option="option"
+          :values="values"
+          :isOpen="isOpen"
+        />
       </template>
       <template #singleLabel="{ option }">
         <slot name="singleLabel" :option="option"></slot>
