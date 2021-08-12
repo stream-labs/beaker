@@ -66,8 +66,8 @@
           <i
             v-if="
               mediaPickerSmall &&
-              !mediaControlsVisible &&
-              !controlsAlwaysVisible
+                !mediaControlsVisible &&
+                !controlsAlwaysVisible
             "
             class="icon-add"
             :tabindex="mediaPickerSmall && !mediaControlsVisible ? 0 : -1"
@@ -115,10 +115,10 @@ import Button from "./../components/Button.vue";
 
 @Component({
   components: {
-    Button,
+    Button
   },
 
-  mixins: [vFocus],
+  mixins: [vFocus]
 })
 export default class MediaPicker extends Vue {
   $refs!: {
@@ -159,7 +159,7 @@ export default class MediaPicker extends Vue {
         class: "s-media-picker__link-icon",
         emit: "link-media",
         title: `Link ${this.variationTitle}`,
-        icon: "icon-link",
+        icon: "icon-link"
       },
       {
         key: "media-selected-zoom",
@@ -171,7 +171,7 @@ export default class MediaPicker extends Vue {
         class: "s-media-picker__zoom-icon",
         emit: "preview-media",
         title: `Preview ${this.variationTitle}`,
-        icon: "icon-zoom",
+        icon: "icon-zoom"
       },
       {
         key: "media-selected-play",
@@ -183,7 +183,7 @@ export default class MediaPicker extends Vue {
         class: "s-media-picker__play-icon",
         emit: "preview-media",
         title: `preview ${this.variationTitle}`,
-        icon: "icon-media-share-2",
+        icon: "icon-media-share-2"
       },
       {
         key: "media-remove",
@@ -191,7 +191,7 @@ export default class MediaPicker extends Vue {
         class: "s-media-picker__small-remove",
         emit: "remove-media",
         title: `Remove ${this.variationTitle}`,
-        icon: "icon-close",
+        icon: "icon-close"
       },
       {
         key: "media-select",
@@ -199,10 +199,10 @@ export default class MediaPicker extends Vue {
         class: "s-media-picker__small-remove",
         emit: "select-media",
         title: `Select ${this.variationTitle}`,
-        icon: "icon-upload-image",
-      },
+        icon: "icon-upload-image"
+      }
     ];
-    return controlData.filter((control) => {
+    return controlData.filter(control => {
       if (!control.available) {
         return false;
       }
@@ -233,7 +233,7 @@ export default class MediaPicker extends Vue {
     return {
       selected: this.value ? true : false,
       fileName: this.value ? this.value.split("/").pop() : "",
-      url: this.value,
+      url: this.value
     };
   }
 
@@ -254,11 +254,11 @@ export default class MediaPicker extends Vue {
       ".avi",
       ".webm",
       ".mkv",
-      ".mp4",
+      ".mp4"
     ];
     const urlStripped = src.split("?")[0];
 
-    return videoTypes.some((type) => urlStripped.endsWith(type));
+    return videoTypes.some(type => urlStripped.endsWith(type));
   }
 
   @Watch("value")
