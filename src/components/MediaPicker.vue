@@ -462,11 +462,6 @@ export default class MediaPicker extends Vue {
     transition: all 0.375s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
   }
-
-  .fade-fast-enter-active {
-    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 1;
-  }
 }
 
 .night,
