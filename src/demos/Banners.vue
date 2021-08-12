@@ -438,8 +438,8 @@ import Notice from "./../components/Notice.vue";
     BannerSale,
     Button,
     DemoSection,
-    Notice,
-  },
+    Notice
+  }
 })
 export default class Banners extends Vue {
   demoCode = BannersCode;
