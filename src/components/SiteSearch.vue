@@ -40,6 +40,7 @@
           class="s-sitesearch-results"
           :class="{ 's-active-result': currentResult === i }"
           @mouseover="currentResult = i"
+          @mousedown="trackEvent(searchData[quickLinkLoc[i]].route)"
           @mouseup="blurSearch"
         >
           <div class="s-sitesearch__result--image">
@@ -66,6 +67,7 @@
             class="s-sitesearch-results"
             :class="{ 's-active-result': currentResult === i }"
             @mouseover="currentResult = i"
+            @mousedown="trackEvent(searchData[quickLinkLoc[i]].route)"
             @mouseup="blurSearch"
           >
             <div class="s-sitesearch__result--image">
@@ -233,11 +235,13 @@ export default class SiteSearch extends Vue {
     // KEYPRESS ENTER
     if (event.keyCode === 13 && this.phaseOne) {
       if (this.result <= 0) {
+        this.trackEvent(this.currentResult);
         window.location.href = this.searchData[
           this.quickLinkLoc[this.currentResult]
         ].route;
         this.blurSearch();
       } else {
+        this.trackEvent(this.currentResult);
         window.location.href = this.limitedResult[
           this.currentResult
         ].item.route;
@@ -248,6 +252,10 @@ export default class SiteSearch extends Vue {
     if (event.keyCode === 27 && this.phaseOne) {
       this.blurSearch();
     }
+  }
+
+  trackEvent(result) {
+    this.$emit("trackSearchNav", result);
   }
 
   playClosingSequence() {
