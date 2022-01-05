@@ -51,7 +51,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-import { omit } from "lodash";
+import { omit } from "lodash-es";
 
 @Component({})
 export default class TextArea extends Vue {
