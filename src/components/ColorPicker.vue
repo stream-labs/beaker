@@ -6,7 +6,7 @@
       :placeholder="placeholder"
       @click="showPicker()"
       @input="updateFromInput"
-      @focus="$emit('focus')"
+      v-on="$listeners"
       :class="{ 's-colorpicker__input--error': error }"
     />
     <div v-if="error" class="s-colorpicker__input-error">
@@ -40,6 +40,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import { Chrome } from "vue-color";
 
 @Component({
+  inheritAttrs: false,
   components: {
     picker: Chrome
   }
