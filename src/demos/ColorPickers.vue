@@ -59,6 +59,15 @@ components: {
             <td>false</td>
             <td>Option to add alpha setting for the color picker</td>
           </tr>
+          <tr>
+            <td>input events</td>
+            <td>event</td>
+            <td>-</td>
+            <td>
+              Use any standard input field event and it will be tracked to the
+              input field
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
