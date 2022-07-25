@@ -6,6 +6,7 @@
       :placeholder="placeholder"
       @click="showPicker()"
       @input="updateFromInput"
+      @focus="$emit('focus')"
       :class="{ 's-colorpicker__input--error': error }"
     />
     <div v-if="error" class="s-colorpicker__input-error">
