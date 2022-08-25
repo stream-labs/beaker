@@ -17,7 +17,7 @@ components: {
       <div class="section">
         <DemoSection title="Default" :code="demoCode">
           <template #components>
-            <ColorPicker v-model="color" />
+            <ColorPicker v-model="color" @input="setColor" />
           </template>
         </DemoSection>
       </div>
@@ -26,7 +26,12 @@ components: {
         <h3>With Alpha</h3>
         <DemoSection title="Alpha" :code="demoCode">
           <template #components>
-            <ColorPicker v-model="alphaColor" :hasAlpha="true" />
+            <ColorPicker
+              :value="alphaColor"
+              :allColorTypes="true"
+              :hasAlpha="true"
+              @input="setAlphaColor"
+            />
           </template>
         </DemoSection>
       </div>
@@ -91,5 +96,9 @@ export default class ColorPickers extends Vue {
   demoCode = ColorPickersCode;
   color = "#5E3BEC";
   alphaColor = "#EB7777";
+
+  setAlphaColor(color) {
+    this.alphaColor = color.hex;
+  }
 }
 </script>
