@@ -17,7 +17,7 @@ components: {
       <div class="section">
         <DemoSection title="Default" :code="demoCode">
           <template #components>
-            <ColorPicker v-model="color" @input="setColor" />
+            <ColorPicker v-model="color" />
           </template>
         </DemoSection>
       </div>
