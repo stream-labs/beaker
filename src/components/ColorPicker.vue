@@ -39,6 +39,17 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { Chrome } from "vue-color";
 
+interface ColorOptions {
+  hex: string;
+  hex8: string;
+  hsl: { h: number; s: number; l: number; a: number };
+  hsv: { h: number; s: number; v: number; a: number };
+  oldHue: number;
+  rgba: { r: number; g: number; b: number; a: number };
+  a: number;
+  source: string;
+}
+
 @Component({
   inheritAttrs: false,
   components: {
@@ -62,6 +73,9 @@ export default class ColorPicker extends Vue {
   @Prop()
   error!: string;
 
+  @Prop({ default: false })
+  allColorTypes!: boolean;
+
   private displayPicker: Boolean = false;
   private backgroundColor: String = "";
 
@@ -76,15 +90,20 @@ export default class ColorPicker extends Vue {
   }
 
   created() {
-    this.colors = Object.assign({}, this.colors, { hex: this.value });
+    this.colors = Object.assign({}, this.colors, {
+      hex: this.value
+    });
   }
 
-  updateFromPicker(value: any) {
-    this.colors = value;
-    if (this.alphaClass === "alpha") {
-      this.$emit("input", value.hex8);
+  updateFromPicker(value: ColorOptions) {
+    if (!this.allColorTypes) {
+      if (this.alphaClass === "alpha") {
+        this.$emit("input", value.hex8);
+      } else {
+        this.$emit("input", value.hex);
+      }
     } else {
-      this.$emit("input", value.hex);
+      this.$emit("input", value);
     }
   }
 
@@ -106,7 +125,7 @@ export default class ColorPicker extends Vue {
   documentClick(e: any) {
     let el = this.$refs.colorpicker;
     let target = e.target;
-    if (el !== target && !el.contains(target)) {
+    if (el && el !== target && !el.contains(target)) {
       this.hidePicker();
     }
   }
