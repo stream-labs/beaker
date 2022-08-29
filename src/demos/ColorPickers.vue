@@ -36,6 +36,28 @@ components: {
         </DemoSection>
       </div>
 
+      <div class="section">
+        <h3>Mini, with hex code selector</h3>
+        <DemoSection title="Mini" :code="demoCode">
+          <template #components>
+            <ColorPicker :isMini="true" v-model="miniColor" />
+          </template>
+        </DemoSection>
+      </div>
+
+      <div class="section">
+        <h3>Mini, with icon (optional)</h3>
+        <DemoSection title="MiniIcon" :code="demoCode">
+          <template #components>
+            <ColorPicker
+              icon="icon-text"
+              :isMini="true"
+              v-model="miniIconColor"
+            />
+          </template>
+        </DemoSection>
+      </div>
+
       <table class="docs-table">
         <thead>
           <tr>
@@ -96,6 +118,8 @@ export default class ColorPickers extends Vue {
   demoCode = ColorPickersCode;
   color = "#5E3BEC";
   alphaColor = "#EB7777";
+  miniColor = "#5E3BEC";
+  miniIconColor = "#5E3BEC";
 
   setAlphaColor(color) {
     this.alphaColor = color.hex || color;
