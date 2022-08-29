@@ -6,7 +6,7 @@
       :placeholder="placeholder"
       @click="showPicker()"
       @input="updateFromInput"
-      v-on="$listeners"
+      v-on="listeners"
       :class="{ 's-colorpicker__input--error': error }"
     />
     <div v-if="error" class="s-colorpicker__input-error">
@@ -87,6 +87,11 @@ export default class ColorPicker extends Vue {
         ? "nonAlpha"
         : "alpha"
       : false;
+  }
+
+  get listeners() {
+    const { input, ...listeners } = this.$listeners;
+    return listeners;
   }
 
   created() {
