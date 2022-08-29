@@ -98,7 +98,7 @@ export default class ColorPickers extends Vue {
   alphaColor = "#EB7777";
 
   setAlphaColor(color) {
-    this.alphaColor = color.hex;
+    this.alphaColor = color.hex || color;
   }
 }
 </script>
