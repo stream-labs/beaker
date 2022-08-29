@@ -1,20 +1,20 @@
 trigger:
-- master
+  - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: "ubuntu-latest"
 
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "12.x"
+    displayName: "Install Node.js"
 
-- bash: yarn install --frozen-lockfile --check-files
-  displayName: 'Install Dependencies'
+  - bash: yarn install --frozen-lockfile --check-files
+    displayName: "Install Dependencies"
 
-- bash: 'yarn lint'
-  displayName: 'TSLint'
+  - bash: "yarn lint"
+    displayName: "TSLint"
 
-- bash: 'yarn build'
-  displayName: 'Compile Assets'
+  - bash: "yarn build"
+    displayName: "Compile Assets"
