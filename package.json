@@ -1,6 +1,6 @@
 {
   "name": "streamlabs-beaker",
-  "version": "0.10.84",
+  "version": "0.10.85",
   "main": "./dist/beaker.common.js",
   "module": "./dist/beaker.esm.js",
   "license": "MIT",
