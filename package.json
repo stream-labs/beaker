@@ -1,6 +1,6 @@
 {
   "name": "streamlabs-beaker",
-  "version": "0.10.54",
+  "version": "0.10.85",
   "main": "./dist/beaker.common.js",
   "module": "./dist/beaker.esm.js",
   "license": "MIT",
@@ -18,7 +18,7 @@
   "devDependencies": {
     "@types/node": "^10.17.9",
     "@types/vue-select": "^2.4.0",
-    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-plugin-babel": "^3.0.5",
     "@vue/cli-plugin-eslint": "^3.0.5",
     "@vue/cli-plugin-typescript": "^3.0.5",
     "@vue/cli-service": "^3.3.1",
