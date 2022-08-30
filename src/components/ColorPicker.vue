@@ -55,7 +55,7 @@
           :value="value"
           :placeholder="placeholder"
           @input="updateFromInput"
-          v-on="$listeners"
+          v-on="listeners"
           class="s-colorpicker__input--mini"
           :class="{ 's-colorpicker__input--error': error }"
         />
