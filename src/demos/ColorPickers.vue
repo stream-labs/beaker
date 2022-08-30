@@ -95,23 +95,6 @@ components: {
               input field
             </td>
           </tr>
-          <tr>
-            <td>isMini</td>
-            <td>Boolean</td>
-            <td>false</td>
-            <td>
-              Mini colorpicker, as just a square. Includes hex code in color
-              picker dropdown.
-            </td>
-          </tr>
-          <tr>
-            <td>icon</td>
-            <td>String</td>
-            <td>null</td>
-            <td>
-              Icon to use with mini colorpicker.
-            </td>
-          </tr>
         </tbody>
       </table>
     </div>

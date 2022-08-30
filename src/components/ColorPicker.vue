@@ -40,7 +40,7 @@
     <div class="s-colorpicker__preview--alpha"></div>
 
     <transition name="fade">
-      <div v-if="displayPicker" class="s-colorpicker__picker-wrapper">
+      <div v-if="displayPicker" style="display: block;">
         <picker
           class="s-colorpicker"
           :class="alphaClass"
@@ -55,7 +55,7 @@
           :value="value"
           :placeholder="placeholder"
           @input="updateFromInput"
-          v-on="$listeners"
+          v-on="listeners"
           class="s-colorpicker__input--mini"
           :class="{ 's-colorpicker__input--error': error }"
         />
@@ -186,10 +186,6 @@ export default class ColorPicker extends Vue {
     &__mini-icon {
       width: 70px;
     }
-  }
-
-  &__picker-wrapper {
-    display: block;
   }
 
   &__input {
