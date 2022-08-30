@@ -40,7 +40,7 @@
     <div class="s-colorpicker__preview--alpha"></div>
 
     <transition name="fade">
-      <div v-if="displayPicker" style="display: block;">
+      <div v-if="displayPicker" class="s-colorpicker__picker-wrapper">
         <picker
           class="s-colorpicker"
           :class="alphaClass"
@@ -186,6 +186,10 @@ export default class ColorPicker extends Vue {
     &__mini-icon {
       width: 70px;
     }
+  }
+
+  &__picker-wrapper {
+    display: block;
   }
 
   &__input {
