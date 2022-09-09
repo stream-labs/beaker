@@ -31,9 +31,7 @@
         <i v-if="iconImg" class="icon-img">
           <img :src="iconImg" :alt="`${title} Icon Image`" />
         </i>
-         <i v-if="variation === 'ultra'" class="icon-ultra">
-          <img :src="iconImg" :alt="`${title} Icon Image`" />
-        </i>
+         <i v-if="variation === 'ultra'" class="icon-ultra"></i>
         {{ title }}
       </span>
       <span v-if="description" class="s-button__description">
@@ -825,8 +823,13 @@ export default class Button extends Vue {
 }
 
 .s-button--ultra {
-  background-color: @ultra-gradient;
+  background: @ultra-gradient;
   color: @dark-1;
+
+  &.s-button--large {
+    border: 0;
+    padding: 0px 64px;
+  }
 }
 
 .s-button--prime-white {
@@ -865,21 +868,6 @@ export default class Button extends Vue {
     }
   }
 }
-
-.s-button--ultra,
-.s-button--ultra-white {
-  &.s-button--large {
-    padding: 0px 64px;
-
-    .icon-ultra{
-      font-size: 41px;
-      position: absolute;
-      left: -6px;
-      bottom: -9px;
-    }
-  }
-}
-
 
 .s-button--rewards-standard,
 .s-button--rewards-silver,
