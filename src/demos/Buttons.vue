@@ -299,6 +299,11 @@ components: {
               :title="'Join Prime'"
               :icon="'prime'"
             />
+            <Button
+              :size="'large'"
+              :variation="'ultra'"
+              :title="'Join Ultra'"
+            />
           </div>
         </template>
       </DemoSection>

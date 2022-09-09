@@ -19,15 +19,19 @@
   >
     <span v-if="!$slots.custom">
       <span>
-        <span v-if="variation === 'prime-simple' && this.primeTitle">
+
+        <span v-if="variation === 'ultra-simple' && this.primeTitle">
           {{ primeTitle }}
         </span>
-        <span v-else-if="variation === 'prime-simple'" class="prime-simple">
+        <span v-else-if="variation === 'ultra-simple'" class="ultra-simple">
           Free with
-          <span class="prime-simple__bold">Prime</span>
+          <span class="ultra-simple__bold">Ultra</span>
         </span>
         <i v-if="iconClass && iconPosition === 'left'" :class="iconClass"></i>
         <i v-if="iconImg" class="icon-img">
+          <img :src="iconImg" :alt="`${title} Icon Image`" />
+        </i>
+         <i v-if="variation === 'ultra'" class="icon-ultra">
           <img :src="iconImg" :alt="`${title} Icon Image`" />
         </i>
         {{ title }}
@@ -167,13 +171,13 @@ export default class Button extends Vue {
   };
 
   @Prop()
-  primeBgColor!: {
+  ultraBgColor!: {
     type: String;
     default: null;
   };
 
   @Prop()
-  primeTitle!: {
+  ultraTitle!: {
     type: String;
     default: null;
   };
@@ -820,6 +824,11 @@ export default class Button extends Vue {
   }
 }
 
+.s-button--ultra {
+  background-color: @ultra-gradient;
+  color: @dark-1;
+}
+
 .s-button--prime-white {
   .btn-variant(@white, @dark-2, @amount: 8%);
 
@@ -856,6 +865,21 @@ export default class Button extends Vue {
     }
   }
 }
+
+.s-button--ultra,
+.s-button--ultra-white {
+  &.s-button--large {
+    padding: 0px 64px;
+
+    .icon-ultra{
+      font-size: 41px;
+      position: absolute;
+      left: -6px;
+      bottom: -9px;
+    }
+  }
+}
+
 
 .s-button--rewards-standard,
 .s-button--rewards-silver,
