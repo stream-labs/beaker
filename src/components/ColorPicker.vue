@@ -42,6 +42,7 @@
     <transition name="fade">
       <div v-if="displayPicker" class="s-colorpicker__picker-wrapper">
         <picker
+          ref="chrome-color-picker"
           class="s-colorpicker"
           :class="alphaClass"
           :value="colors"
@@ -67,6 +68,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { Chrome } from "vue-color";
+import { cloneDeep } from "lodash-es";
 
 interface ColorOptions {
   hex: string;
@@ -149,7 +151,11 @@ export default class ColorPicker extends Vue {
 
   updateFromInput(event: any) {
     this.colors = event.target.value;
-    this.$emit("input", event.target.value);
+
+    this.$nextTick(() => {
+      const emitColor = cloneDeep(this.$refs["chrome-color-picker"].val);
+      this.$emit("input", { ...emitColor, hex: this.colors });
+    });
   }
 
   hidePicker() {
