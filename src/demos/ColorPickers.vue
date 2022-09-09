@@ -139,7 +139,7 @@ export default class ColorPickers extends Vue {
   miniIconColor = "#5E3BEC";
 
   setAlphaColor(color) {
-    this.alphaColor = color.hex || color;
+    this.alphaColor = color.hex;
   }
 }
 </script>
