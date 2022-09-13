@@ -22,9 +22,9 @@
         <span v-if="variation === 'prime-simple' && this.primeTitle">
           {{ primeTitle }}
         </span>
-        <span v-else-if="variation === 'prime-simple'" class="ultra-simple">
+        <span v-else-if="variation === 'prime-simple'" class="prime-simple">
           Free with
-          <span class="ultra-simple__bold"> Prime</span>
+          <span class="prime-simple__bold"> Prime</span>
         </span>
         <i v-if="iconClass && iconPosition === 'left'" :class="iconClass"></i>
         <i v-if="iconImg" class="icon-img">
@@ -166,7 +166,7 @@ export default class Button extends Vue {
     default: "default";
   };
 
-    @Prop()
+  @Prop()
   primeBgColor!: {
     type: String;
     default: null;
