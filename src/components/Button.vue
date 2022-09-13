@@ -823,6 +823,7 @@ export default class Button extends Vue {
 
 .s-button--ultra {
   .btn-variant(@white, @dark-1);
+
   //TODO: add border for regular buttons
 
   .icon-ultra {
@@ -840,12 +841,18 @@ export default class Button extends Vue {
   }
 
   &.s-button-square {
-    .icon-ultra{
+    .icon-ultra {
       .icon-ultra();
     }
   }
 }
 
+.s-button--ultra::before {
+    content: "";
+  position: absolute;
+  inset: 0;
+  .ultra-border();
+}
 .s-button--prime-white {
   .btn-variant(@white, @dark-2, @amount: 8%);
 
