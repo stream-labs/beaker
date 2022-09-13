@@ -19,13 +19,12 @@
   >
     <span v-if="!$slots.custom">
       <span>
-
         <span v-if="variation === 'prime-simple' && this.primeTitle">
           {{ primeTitle }}
         </span>
         <span v-else-if="variation === 'prime-simple'" class="ultra-simple">
           Free with
-          <span class="ultra-simple__bold"> Ultra</span>
+          <span class="ultra-simple__bold"> Prime</span>
         </span>
         <i v-if="iconClass && iconPosition === 'left'" :class="iconClass"></i>
         <i v-if="iconImg" class="icon-img">
@@ -167,8 +166,14 @@ export default class Button extends Vue {
     default: "default";
   };
 
+    @Prop()
+  primeBgColor!: {
+    type: String;
+    default: null;
+  };
+
   @Prop()
-  ultraBgColor!: {
+  primeTitle!: {
     type: String;
     default: null;
   };
@@ -848,11 +853,13 @@ export default class Button extends Vue {
 }
 
 .s-button--ultra::before {
-    content: "";
+  content: "";
   position: absolute;
   inset: 0;
   .ultra-border();
 }
+
+
 .s-button--prime-white {
   .btn-variant(@white, @dark-2, @amount: 8%);
 
