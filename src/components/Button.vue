@@ -20,18 +20,17 @@
     <span v-if="!$slots.custom">
       <span>
 
-        <span v-if="variation === 'ultra-simple' && this.primeTitle">
+        <span v-if="variation === 'prime-simple' && this.primeTitle">
           {{ primeTitle }}
         </span>
-        <span v-else-if="variation === 'ultra-simple'" class="ultra-simple">
+        <span v-else-if="variation === 'prime-simple'" class="ultra-simple">
           Free with
-          <span class="ultra-simple__bold">Ultra</span>
+          <span class="ultra-simple__bold"> Ultra</span>
         </span>
         <i v-if="iconClass && iconPosition === 'left'" :class="iconClass"></i>
         <i v-if="iconImg" class="icon-img">
           <img :src="iconImg" :alt="`${title} Icon Image`" />
         </i>
-         <i v-if="variation === 'ultra'" class="icon-ultra"></i>
         {{ title }}
       </span>
       <span v-if="description" class="s-button__description">
@@ -823,12 +822,27 @@ export default class Button extends Vue {
 }
 
 .s-button--ultra {
-  background: @ultra-gradient;
-  color: @dark-1;
+  .btn-variant(@white, @dark-1);
+  //TODO: add border for regular buttons
+
+  .icon-ultra {
+    .icon-ultra();
+  }
 
   &.s-button--large {
+    background: @ultra-gradient;
     border: 0;
     padding: 0px 64px;
+
+    .icon-ultra {
+      .icon-ultra-solid();
+    }
+  }
+
+  &.s-button-square {
+    .icon-ultra{
+      .icon-ultra();
+    }
   }
 }
 
@@ -1018,6 +1032,30 @@ export default class Button extends Vue {
 
   .s-button--slobs-download-landing {
     .night-btn-variant(@dark-5);
+  }
+
+  .s-button--ultra {
+    .night-btn-variant(@ultra-black, @light-1);
+    .icon-ultra {
+      .icon-ultra();
+    }
+
+    &.s-button--large {
+      color: @ultra-black;
+
+      .icon-ultra {
+        .icon-ultra-solid();
+      }
+    }
+
+    &.s-button--square {
+      color: @white;
+      .icon-ultra {
+        background: linear-gradient(123.53deg, #2DE8B0 25.56%, #CBE953 60.27%, #FFAB48 79.52%, #FF5151 96.69%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
   }
 }
 

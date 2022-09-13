@@ -73,6 +73,13 @@ components: {
                 @click="buttonActionClick"
               />
 
+               <Button
+                variation="ultra"
+                title="Join Ultra"
+                icon="ultra"
+                @click="buttonActionClick"
+              />
+
               <Button variation="action">
                 <div slot="custom" class="custom-html">
                   <i class="icon-add-circle"></i>
@@ -303,6 +310,7 @@ components: {
               :size="'large'"
               :variation="'ultra'"
               :title="'Join Ultra'"
+              :icon="'ultra'"
             />
           </div>
         </template>
@@ -455,6 +463,13 @@ components: {
               variation="picarto"
               size="square"
               icon="picarto"
+            />
+
+                <Button
+              type="button"
+              variation="ultra"
+              size="square"
+              icon="ultra"
             />
           </div>
         </template>
