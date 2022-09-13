@@ -26,7 +26,34 @@ components: {
         <h3>With Alpha</h3>
         <DemoSection title="Alpha" :code="demoCode">
           <template #components>
-            <ColorPicker v-model="alphaColor" :hasAlpha="true" />
+            <ColorPicker
+              :value="alphaColor"
+              :allColorTypes="true"
+              :hasAlpha="true"
+              @input="setAlphaColor"
+            />
+          </template>
+        </DemoSection>
+      </div>
+
+      <div class="section">
+        <h3>Mini, with hex code selector</h3>
+        <DemoSection title="Mini" :code="demoCode">
+          <template #components>
+            <ColorPicker :isMini="true" v-model="miniColor" />
+          </template>
+        </DemoSection>
+      </div>
+
+      <div class="section">
+        <h3>Mini, with icon (optional)</h3>
+        <DemoSection title="MiniIcon" :code="demoCode">
+          <template #components>
+            <ColorPicker
+              icon="icon-text"
+              :isMini="true"
+              v-model="miniIconColor"
+            />
           </template>
         </DemoSection>
       </div>
@@ -59,6 +86,32 @@ components: {
             <td>false</td>
             <td>Option to add alpha setting for the color picker</td>
           </tr>
+          <tr>
+            <td>input events</td>
+            <td>event</td>
+            <td>-</td>
+            <td>
+              Use any standard input field event and it will be tracked to the
+              input field
+            </td>
+          </tr>
+          <tr>
+            <td>isMini</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>
+              Mini colorpicker, as just a square. Includes hex code in color
+              picker dropdown.
+            </td>
+          </tr>
+          <tr>
+            <td>icon</td>
+            <td>String</td>
+            <td>null</td>
+            <td>
+              Icon to use with mini colorpicker.
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -82,5 +135,11 @@ export default class ColorPickers extends Vue {
   demoCode = ColorPickersCode;
   color = "#5E3BEC";
   alphaColor = "#EB7777";
+  miniColor = "#5E3BEC";
+  miniIconColor = "#5E3BEC";
+
+  setAlphaColor(color) {
+    this.alphaColor = color.hex;
+  }
 }
 </script>
