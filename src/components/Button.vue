@@ -24,7 +24,7 @@
         </span>
         <span v-else-if="variation === 'prime-simple'" class="prime-simple">
           Free with
-          <span class="prime-simple__bold">Prime</span>
+          <span class="prime-simple__bold"> Prime</span>
         </span>
         <i v-if="iconClass && iconPosition === 'left'" :class="iconClass"></i>
         <i v-if="iconImg" class="icon-img">
@@ -174,6 +174,12 @@ export default class Button extends Vue {
 
   @Prop()
   primeTitle!: {
+    type: String;
+    default: null;
+  };
+
+  @Prop()
+  ultraTitle!: {
     type: String;
     default: null;
   };
@@ -820,6 +826,40 @@ export default class Button extends Vue {
   }
 }
 
+.s-button--ultra {
+  .btn-variant(@white, @dark-1);
+
+  //TODO: add border for regular buttons
+
+  .icon-ultra {
+    .icon-ultra();
+  }
+
+  &.s-button--large {
+    background: @ultra-gradient;
+    border: 0;
+    padding: 0px 64px;
+
+    .icon-ultra {
+      .icon-ultra-solid();
+    }
+  }
+
+  &.s-button-square {
+    .icon-ultra {
+      .icon-ultra();
+    }
+  }
+}
+
+.s-button--ultra::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  .ultra-border();
+}
+
+
 .s-button--prime-white {
   .btn-variant(@white, @dark-2, @amount: 8%);
 
@@ -1006,6 +1046,30 @@ export default class Button extends Vue {
 
   .s-button--slobs-download-landing {
     .night-btn-variant(@dark-5);
+  }
+
+  .s-button--ultra {
+    .night-btn-variant(@ultra-black, @light-1);
+    .icon-ultra {
+      .icon-ultra();
+    }
+
+    &.s-button--large {
+      color: @ultra-black;
+
+      .icon-ultra {
+        .icon-ultra-solid();
+      }
+    }
+
+    &.s-button--square {
+      color: @white;
+      .icon-ultra {
+        background: linear-gradient(123.53deg, #2DE8B0 25.56%, #CBE953 60.27%, #FFAB48 79.52%, #FF5151 96.69%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
   }
 }
 

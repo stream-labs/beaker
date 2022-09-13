@@ -185,3 +185,26 @@
 .night-btn-variant(@bgc, @color: @dark-2, @mix: @white, @amount: 16%) {
   .btn-variant(@bgc, @color, @mix, @amount);
 }
+
+.icon-ultra() {
+  background: linear-gradient(123.53deg, #2DE8B0 25.56%, #CBE953 60.27%, #FFAB48 79.52%, #FF5151 96.69%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.icon-ultra-solid(@color: black){
+  background: @color;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ultra-border() {
+  border-radius: 4px;
+  border: 2px solid transparent; /*2*/
+  background: linear-gradient(123.53deg, #2DE8B0 25.56%, #CBE953 60.27%, #FFAB48 79.52%, #FF5151 96.69%) border-box; /*3*/
+  -webkit-mask: /*4*/
+     linear-gradient(#fff 0 0) padding-box,
+     linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; /*5'*/
+          mask-composite: exclude; /*5*/
+}
