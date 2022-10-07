@@ -26,12 +26,7 @@ components: {
         <h3>With Alpha</h3>
         <DemoSection title="Alpha" :code="demoCode">
           <template #components>
-            <ColorPicker
-              :value="alphaColor"
-              :allColorTypes="true"
-              :hasAlpha="true"
-              @input="setAlphaColor"
-            />
+            <ColorPicker v-model="alphaColor" :hasAlpha="true" />
           </template>
         </DemoSection>
       </div>
@@ -137,9 +132,5 @@ export default class ColorPickers extends Vue {
   alphaColor = "#EB7777";
   miniColor = "#5E3BEC";
   miniIconColor = "#5E3BEC";
-
-  setAlphaColor(color) {
-    this.alphaColor = color.hex;
-  }
 }
 </script>
