@@ -828,9 +828,12 @@ export default class Button extends Vue {
 
 .s-button--ultra {
   border: 0px solid transparent;
-  background: @ultra-gradient;
   color: @ultra-black;
   // .btn-variant(@white, @ultra-gradient);
+  &::before {
+    background: @ultra-gradient;
+  }
+  border-radius: 8px;
 
   //TODO: add border for regular buttons
 
@@ -860,6 +863,7 @@ export default class Button extends Vue {
   position: absolute;
   inset: 0;
   .ultra-border();
+  border-radius: 8px;
 }
 
 .s-button--prime-white {
@@ -1055,6 +1059,7 @@ export default class Button extends Vue {
       linear-gradient(123.53deg, #2DE8B0 25.56%, #CBE953 60.27%, #FFAB48 79.52%, #FF5151 96.69%);
     // .night-btn-variant(@ultra-gradient, @ultra-black);
     color: @ultra-black;
+    border-radius: 8px;
     .icon-ultra {
       color: @ultra-black;
     }
