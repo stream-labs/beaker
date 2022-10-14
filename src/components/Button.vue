@@ -1065,9 +1065,14 @@ export default class Button extends Vue {
     }
 
     &.s-button--large {
+      border-radius: 32px;
 
       .icon-ultra {
         .icon-ultra-solid();
+      }
+
+      &::before {
+        border-radius: 32px;
       }
     }
 
