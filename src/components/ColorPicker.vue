@@ -14,7 +14,6 @@
       :placeholder="placeholder"
       @click="showPicker()"
       @input="updateFromInput"
-      v-on="listeners"
       :class="{ 's-colorpicker__input--error': error }"
     />
 
@@ -68,18 +67,6 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { Chrome } from "vue-color";
-import { cloneDeep } from "lodash-es";
-
-interface ColorOptions {
-  hex: string;
-  hex8: string;
-  hsl: { h: number; s: number; l: number; a: number };
-  hsv: { h: number; s: number; v: number; a: number };
-  oldHue: number;
-  rgba: { r: number; g: number; b: number; a: number };
-  a: number;
-  source: string;
-}
 
 @Component({
   inheritAttrs: false,
@@ -110,9 +97,6 @@ export default class ColorPicker extends Vue {
   @Prop()
   error!: string;
 
-  @Prop({ default: false })
-  allColorTypes!: boolean;
-
   private displayPicker: Boolean = false;
   private backgroundColor: String = "";
 
@@ -126,36 +110,24 @@ export default class ColorPicker extends Vue {
       : false;
   }
 
-  get listeners() {
-    const { input, ...listeners } = this.$listeners;
-    return listeners;
-  }
-
   created() {
     this.colors = Object.assign({}, this.colors, {
       hex: this.value
     });
   }
 
-  updateFromPicker(value: ColorOptions) {
-    if (!this.allColorTypes) {
-      if (this.alphaClass === "alpha") {
-        this.$emit("input", value.hex8);
-      } else {
-        this.$emit("input", value.hex);
-      }
+  updateFromPicker(value: any) {
+    this.colors = value;
+    if (this.alphaClass === "alpha") {
+      this.$emit("input", value.hex8);
     } else {
-      this.$emit("input", value);
+      this.$emit("input", value.hex);
     }
   }
 
   updateFromInput(event: any) {
     this.colors = event.target.value;
-
-    this.$nextTick(() => {
-      const emitColor = cloneDeep(this.$refs["chrome-color-picker"].val);
-      this.$emit("input", { ...emitColor, hex: this.colors });
-    });
+    this.$emit("input", event.target.value);
   }
 
   hidePicker() {
