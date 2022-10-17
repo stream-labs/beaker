@@ -1066,6 +1066,7 @@ export default class Button extends Vue {
 
     &.s-button--large {
       border-radius: 32px;
+      border: none;
 
       .icon-ultra {
         .icon-ultra-solid();
@@ -1073,15 +1074,7 @@ export default class Button extends Vue {
 
       &::before {
         border-radius: 32px;
-      }
-    }
-
-    &.s-button--square {
-      color: @white;
-      .icon-ultra {
-        background: linear-gradient(123.53deg, #2DE8B0 25.56%, #CBE953 60.27%, #FFAB48 79.52%, #FF5151 96.69%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        border: none;
       }
     }
   }
