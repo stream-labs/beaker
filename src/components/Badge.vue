@@ -16,6 +16,9 @@
     <div v-if="variant === 'prime' || variant === 'prime-alt'">
       <i v-if="variant === 'prime'" class="icon-prime"></i>Prime
     </div>
+    <div v-else-if="variant === 'ultra' || variant === 'ultra-alt'">
+      <i v-if="variant === 'ultra'" class="icon-ultra"></i>
+    </div>
     <slot v-else />
   </div>
 </template>
@@ -65,7 +68,7 @@ export default class Badge extends Vue {
 
   badgeProRewrite: any = {
     background: this.backgroundColor,
-    color: this.textColor
+    color: this.textColor,
   };
 
   get badgeStyles() {
@@ -229,6 +232,23 @@ export default class Badge extends Vue {
 
     &::before {
       display: none;
+    }
+  }
+
+  &--ultra {
+    border-radius: 50%;
+    background: linear-gradient(123.53deg,
+          #2de8b0 25.56%,
+          #cbe953 60.27%,
+          #ffab48 79.52%,
+          #ff5151 96.69%);
+
+    div {
+      height: 14px;
+    }
+
+    .icon-ultra {
+      color: black;
     }
   }
 }

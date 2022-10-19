@@ -32,6 +32,7 @@ components: {
               >Custom</Badge
             >
             <Badge variant="prime" :align-left="true" />
+            <Badge variant="ultra" :align-left="true" />
           </template>
         </DemoSection>
       </div>
