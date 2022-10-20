@@ -829,26 +829,30 @@ export default class Button extends Vue {
 .s-button--ultra {
   border: 0px solid transparent;
   color: @ultra-black;
-  // .btn-variant(@white, @ultra-gradient);
+  background: @ultra-gradient;
+
   &::before {
     background: @ultra-gradient;
   }
   border-radius: 8px;
-
-  //TODO: add border for regular buttons
 
   .icon-ultra {
     .icon-ultra-solid(@ultra-black);
   }
 
   &.s-button--large {
+    border-radius: 32px;
     background: @ultra-gradient;
-    border: 0;
+    border: none;
     padding: 0px 64px;
 
     .icon-ultra {
       .icon-ultra-solid();
     }
+                    &::before {
+                      border-radius: 32px;
+                      border: none;
+                    }
   }
 
   &.s-button-square {
@@ -1056,8 +1060,7 @@ export default class Button extends Vue {
 
   .s-button--ultra {
     background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0.16) 100%),
-      linear-gradient(123.53deg, #2DE8B0 25.56%, #CBE953 60.27%, #FFAB48 79.52%, #FF5151 96.69%);
-    // .night-btn-variant(@ultra-gradient, @ultra-black);
+    linear-gradient(123.53deg, #2DE8B0 25.56%, #CBE953 60.27%, #FFAB48 79.52%, #FF5151 96.69%);
     color: @ultra-black;
     border-radius: 8px;
     .icon-ultra {
