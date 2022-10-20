@@ -1060,7 +1060,7 @@ export default class Button extends Vue {
 
   .s-button--ultra {
     background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0.16) 100%),
-      linear-gradient(123.53deg, #2DE8B0 25.56%, #CBE953 60.27%, #FFAB48 79.52%, #FF5151 96.69%);
+    linear-gradient(123.53deg, #2DE8B0 25.56%, #CBE953 60.27%, #FFAB48 79.52%, #FF5151 96.69%);
     color: @ultra-black;
     border-radius: 8px;
     .icon-ultra {
