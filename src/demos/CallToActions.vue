@@ -245,7 +245,7 @@ components: {
 import { Component, Vue } from "vue-property-decorator";
 import Button from "./../components/Button.vue";
 import CallToAction from "./../components/CallToAction.vue";
-import CallToActionCode from "!!raw-loader!./CallToActions.vue";
+import CallToActionCode from "./CallToActions.vue?raw";
 import DemoSection from "./../components/DemoSection.vue";
 
 @Component({

@@ -715,7 +715,7 @@ import { Component, Vue } from "vue-property-decorator";
 import Accordion from "./../components/Accordion.vue";
 import Button from "./../components/Button.vue";
 import DemoSection from "./../components/DemoSection.vue";
-import ButtonCode from "!!raw-loader!./Buttons.vue";
+import ButtonCode from "./Buttons.vue?raw";
 
 @Component({
   components: {

@@ -174,7 +174,7 @@ import { Component, Vue } from "vue-property-decorator";
 import DemoSection from "./../components/DemoSection.vue";
 import Onboarding from "./../components/Onboarding.vue";
 import OnboardingStep from "./../components/OnboardingStep.vue";
-import OnboardingsCode from "!!raw-loader!./Onboardings.vue";
+import OnboardingsCode from "./Onboardings.vue?raw";
 import SSProSimulator from "./../components/SSProSimulator.vue";
 
 @Component({

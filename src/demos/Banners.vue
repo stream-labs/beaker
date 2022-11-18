@@ -421,7 +421,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import BannersCode from "!!raw-loader!./Banners.vue";
+import BannersCode from "./Banners.vue?raw";
 import BannerDiscord from "./../components/BannerDiscord.vue";
 import BannerIntroduction from "./../components/BannerIntroduction.vue";
 import BannerMarketing from "./../components/BannerMarketing.vue";

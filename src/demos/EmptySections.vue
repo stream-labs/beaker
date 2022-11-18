@@ -87,7 +87,7 @@ components: {
 import { Component, Vue } from "vue-property-decorator";
 
 import EmptySection from "./../components/EmptySection.vue";
-import EmptySectionsCode from "!!raw-loader!./EmptySections.vue";
+import EmptySectionsCode from "./EmptySections.vue?raw";
 import DemoSection from "./../components/DemoSection.vue";
 
 @Component({

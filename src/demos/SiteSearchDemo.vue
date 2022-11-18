@@ -107,7 +107,7 @@ import { Component, Vue } from "vue-property-decorator";
 import Accordion from "./../components/Accordion.vue";
 import DemoSection from "./../components/DemoSection.vue";
 import SiteSearch from "./../components/SiteSearch.vue";
-import SiteSearchDemoCode from "!!raw-loader!./SiteSearchDemo.vue";
+import SiteSearchDemoCode from "./SiteSearchDemo.vue?raw";
 
 import * as searchData from "./../components/sitesearchdata.json";
 
