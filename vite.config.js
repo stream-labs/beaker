@@ -5,9 +5,9 @@ const path = require("path");
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/beaker/',
   plugins: [createVuePlugin()],
   build: {
-    minify: false,
     commonjsOptions: {
       requireReturnsDefault: true
     }

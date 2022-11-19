@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "deploy": "./build-deploy-gh-pages.sh"
+    "deploy": "./deploy.sh"
   },
   "files": [
     "dist/*"
