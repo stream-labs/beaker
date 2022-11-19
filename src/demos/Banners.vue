@@ -38,7 +38,7 @@
         bg-image="
             https://cdn.streamlabs.com/static/imgs/pretzel_dashboard_banner_bg.png
           "
-        icon-image="require(../assets/imgs/pretzel-icon.png)"
+        :icon-image="pretzelIcon"
         label="New Streamlabs OBS App"
         title="Introducing Pretzel Rocks Music Player"
         desc="
@@ -429,6 +429,7 @@ import BannerSale from "./../components/BannerSale.vue";
 import Button from "./../components/Button.vue";
 import DemoSection from "./../components/DemoSection.vue";
 import Notice from "./../components/Notice.vue";
+import pretzelIcon from '../assets/imgs/pretzel-icon.png';
 
 @Component({
   components: {
@@ -443,7 +444,7 @@ import Notice from "./../components/Notice.vue";
 })
 export default class Banners extends Vue {
   demoCode = BannersCode;
-
+  pretzelIcon = pretzelIcon;
   remainingSecs = 10;
 
   bannerClosed = false;

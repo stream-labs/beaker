@@ -28,7 +28,7 @@ components: {
               v-model="textInputValue"
               name="textExample"
               :placeholder="textInputPlaceholder"
-              autocomplete="on"
+              autoComplete="on"
             />
 
             <TextInput

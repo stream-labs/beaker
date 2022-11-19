@@ -109,7 +109,7 @@ import DemoSection from "./../components/DemoSection.vue";
 import SiteSearch from "./../components/SiteSearch.vue";
 import SiteSearchDemoCode from "./SiteSearchDemo.vue?raw";
 
-import * as searchData from "./../components/sitesearchdata.json";
+import searchData from "./../components/sitesearchdata.json";
 
 @Component({
   components: {

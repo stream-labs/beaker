@@ -16,7 +16,7 @@ components: {
         <template #components>
           <EmptySection
             variation="search"
-            title="No results found for ‘sadasdasd’"
+            title="No results found for 'sadasdasd'"
             subtitle="Try another search term."
           />
         </template>
@@ -29,7 +29,7 @@ components: {
       <DemoSection title="Text Variation" :code="demoCode">
         <template #components>
           <EmptySection
-            title="You don’t have any pending users yet"
+            title="You don't have any pending users yet"
             subtitle="Open a queue to get started."
           />
         </template>
