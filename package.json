@@ -6,6 +6,7 @@
   "license": "MIT",
   "exports": {
     ".": {
+      "/dist/style.css": "./dist/style.css",
       "import": "./dist/beaker.es.js",
       "require": "./dist/beaker.umd.js"
     }
