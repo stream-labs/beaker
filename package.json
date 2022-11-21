@@ -13,8 +13,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "serve": "vite preview",
     "build": "vite build",
+    "serve": "vite preview",
     "build:publish": "vite build -c vite-publish.config.js",
     "deploy": "./deploy.sh"
   },
@@ -28,7 +28,6 @@
     "@vue/eslint-config-prettier": "^3.0.5",
     "@vue/eslint-config-typescript": "^3.0.5",
     "autoprefixer": "^10.4.13",
-    "dotenv": "^16.0.3",
     "eslint": "^8.28.0",
     "fuse.js": "^6.4.3",
     "less": "4.1.3",
