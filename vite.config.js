@@ -5,6 +5,7 @@ export default defineConfig({
   base: '/beaker/',
   plugins: [createVuePlugin()],
   build: {
+    sourcemap: true,
     commonjsOptions: {
       requireReturnsDefault: true
     }
