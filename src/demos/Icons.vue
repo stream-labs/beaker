@@ -19,17 +19,17 @@
     </div>
 
     <div
-      v-if="Object.keys(iconList).length"
+      v-if="iconList.length"
       class="icon__grid"
       v-clipboard:copy="selectedIcon"
       v-clipboard:success="emitCopySuccess"
       v-clipboard:error="emitCopyError"
     >
       <div
-        v-for="icon in Object.keys(iconList).sort()"
+        v-for="icon in iconList"
         :key="icon"
         class="icon"
-        :title="`${icon} | ${iconList[icon]}`"
+        :title="icon"
         @click="selectIconData(`${icon}`)"
       >
         <i class="icon__glyph" :class="icon">
@@ -52,43 +52,17 @@ const ICON_STYLESHEET_URL = 'https://cdn.streamlabs.com/icons/style.css';
 
 @Component({})
 export default class Icons extends Vue {
-  iconStylesheet = '';
+  iconList:string[] = [];
   selectedIcon = '';
 
-  get iconList() {
-    if (this.iconStylesheet.length) {
-      /**
-       * Remove all access stylesheet code in order to extract icon name and entity code.
-       * Example of string in iconStrList: 'icon-information: e94d'
-       **/
-      let iconStrList = this.iconStylesheet
-        .replace(/@font-face\s\{\n([a-z0-9-\/?'.\s()#:;,]*\n)*}\n\n/g, '') // Remove @font-face rules
-        .replace(/(\[class.*)\n([a-zA-Z0-9-\/?'.\s()#:;,=*!]*\n)*}\n\n/g, '') // Remove class attr rules
-        .replace(/\./g, '')
-        .replace(/before {\n\s+content:/g, '')
-        .replace(/;\n}/g, '')
-        .replace(/[\"\\]/g, '')
-        .split('\n');
+  mounted() {
+    const styleSheetsList = Array.from(document.styleSheets);
+    const link = Array.from(styleSheetsList.find(ss => ss.href === ICON_STYLESHEET_URL)?.cssRules || []);
 
-      iconStrList = iconStrList.slice(0, iconStrList.length - 1);
-
-      if (iconStrList.length) {
-        return iconStrList.reduce((acc, icon) => {
-          const iconMatch = icon.match(/([a-z0-9-]*)/g);
-
-          if (iconMatch) acc[iconMatch[0]] = iconMatch[3];
-          return acc;
-        }, {});
-      }
-    }
-
-    return {};
-  }
-
-  async mounted() {
-    // Get icon stylesheet code from cdn
-    const cssResponse = await fetch(ICON_STYLESHEET_URL);
-    this.iconStylesheet = await cssResponse.text() || '';
+    this.iconList = link
+      ?.filter(rule => rule.cssText.startsWith('.icon'))
+      .map(rule => rule.cssText.match(/([a-zA-Z0-9-])*(?=::before)/)?.[0] || '')
+      .sort();
   }
 
   selectIconData(icon) {
