@@ -6,6 +6,8 @@ const rebaseAssets = require("rollup-plugin-rebase");
 const svg = require("rollup-plugin-svg");
 const minify = require("rollup-plugin-babel-minify");
 
+import { terser } from "rollup-plugin-terser";
+
 module.exports = {
   input: "src/system.js",
   output: [
@@ -31,6 +33,6 @@ module.exports = {
     vue({ defaultLang: { script: "ts", style: "less" } }),
     rebaseAssets(),
     svg(),
-    minify()
+    terser()
   ]
 };

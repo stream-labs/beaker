@@ -1,4 +1,5 @@
 <template>
+  <!-- TODO: Update to ultra naming -->
   <modal
     :name="name"
     classes="s-modal-wrapper"
@@ -38,7 +39,7 @@ export default class ModalPrimeIntro extends Vue {
   @Prop({ default: false })
   hasPrimeCloseButton!: boolean;
 
-  @Prop({ default: "Join Prime" })
+  @Prop({ default: "Join Ultra" })
   primeButtonText!: string;
 }
 </script>

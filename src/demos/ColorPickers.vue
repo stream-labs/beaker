@@ -31,6 +31,28 @@ components: {
         </DemoSection>
       </div>
 
+      <div class="section">
+        <h3>Mini, with hex code selector</h3>
+        <DemoSection title="Mini" :code="demoCode">
+          <template #components>
+            <ColorPicker :isMini="true" v-model="miniColor" />
+          </template>
+        </DemoSection>
+      </div>
+
+      <div class="section">
+        <h3>Mini, with icon (optional)</h3>
+        <DemoSection title="MiniIcon" :code="demoCode">
+          <template #components>
+            <ColorPicker
+              icon="icon-text"
+              :isMini="true"
+              v-model="miniIconColor"
+            />
+          </template>
+        </DemoSection>
+      </div>
+
       <table class="docs-table">
         <thead>
           <tr>
@@ -59,6 +81,32 @@ components: {
             <td>false</td>
             <td>Option to add alpha setting for the color picker</td>
           </tr>
+          <tr>
+            <td>input events</td>
+            <td>event</td>
+            <td>-</td>
+            <td>
+              Use any standard input field event and it will be tracked to the
+              input field
+            </td>
+          </tr>
+          <tr>
+            <td>isMini</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>
+              Mini colorpicker, as just a square. Includes hex code in color
+              picker dropdown.
+            </td>
+          </tr>
+          <tr>
+            <td>icon</td>
+            <td>String</td>
+            <td>null</td>
+            <td>
+              Icon to use with mini colorpicker.
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -69,7 +117,7 @@ components: {
 import { Component, Vue } from "vue-property-decorator";
 
 import ColorPicker from "./../components/ColorPicker.vue";
-import ColorPickersCode from "!!raw-loader!./ColorPickers.vue";
+import ColorPickersCode from "./ColorPickers.vue?raw";
 import DemoSection from "./../components/DemoSection.vue";
 
 @Component({
@@ -82,5 +130,7 @@ export default class ColorPickers extends Vue {
   demoCode = ColorPickersCode;
   color = "#5E3BEC";
   alphaColor = "#EB7777";
+  miniColor = "#5E3BEC";
+  miniIconColor = "#5E3BEC";
 }
 </script>

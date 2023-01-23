@@ -40,7 +40,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import TextInput from "./TextInput.vue";
 import TextArea from "./TextArea.vue";
 import Button from "./Button.vue";
-import { omit } from "lodash";
+import { omit } from "lodash-es";
 
 @Component({
   components: {

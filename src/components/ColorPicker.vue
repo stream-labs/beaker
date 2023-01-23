@@ -1,6 +1,14 @@
 <template>
-  <div class="s-colorpicker-container" ref="colorpicker">
+  <div
+    class="s-colorpicker-container"
+    ref="colorpicker"
+    :class="{
+      's-colorpicker-container__mini': isMini,
+      's-colorpicker-container__mini-icon': isMini && icon
+    }"
+  >
     <input
+      v-if="!isMini"
       type="text"
       :value="value"
       :placeholder="placeholder"
@@ -8,6 +16,16 @@
       @input="updateFromInput"
       :class="{ 's-colorpicker__input--error': error }"
     />
+
+    <div
+      class="s-colorpicker__mini-wrapper"
+      v-if="isMini"
+      @click="showPicker()"
+      :class="{ 's-colorpicker__input--error': error }"
+    >
+      <i :class="icon"></i>
+    </div>
+
     <div v-if="error" class="s-colorpicker__input-error">
       <i class="icon-error"></i>
       {{ error }}
@@ -21,15 +39,27 @@
     <div class="s-colorpicker__preview--alpha"></div>
 
     <transition name="fade">
-      <picker
-        class="s-colorpicker"
-        :class="alphaClass"
-        :value="colors"
-        v-if="displayPicker"
-        :disable-alpha="!hasAlpha"
-        :disable-fields="!hasAlpha"
-        @input="updateFromPicker"
-      />
+      <div v-if="displayPicker" class="s-colorpicker__picker-wrapper">
+        <picker
+          ref="chrome-color-picker"
+          class="s-colorpicker"
+          :class="alphaClass"
+          :value="colors"
+          :disable-alpha="!hasAlpha"
+          :disable-fields="!hasAlpha"
+          @input="updateFromPicker"
+        />
+        <input
+          v-if="isMini"
+          type="text"
+          :value="value"
+          :placeholder="placeholder"
+          @input="updateFromInput"
+          v-on="listeners"
+          class="s-colorpicker__input--mini"
+          :class="{ 's-colorpicker__input--error': error }"
+        />
+      </div>
     </transition>
   </div>
 </template>
@@ -39,6 +69,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import { Chrome } from "vue-color";
 
 @Component({
+  inheritAttrs: false,
   components: {
     picker: Chrome
   }
@@ -57,6 +88,12 @@ export default class ColorPicker extends Vue {
   @Prop({ default: false })
   hasAlpha!: boolean;
 
+  @Prop({ default: false })
+  isMini!: boolean;
+
+  @Prop()
+  icon!: string;
+
   @Prop()
   error!: string;
 
@@ -74,7 +111,9 @@ export default class ColorPicker extends Vue {
   }
 
   created() {
-    this.colors = Object.assign({}, this.colors, { hex: this.value });
+    this.colors = Object.assign({}, this.colors, {
+      hex: this.value
+    });
   }
 
   updateFromPicker(value: any) {
@@ -104,7 +143,7 @@ export default class ColorPicker extends Vue {
   documentClick(e: any) {
     let el = this.$refs.colorpicker;
     let target = e.target;
-    if (el !== target && !el.contains(target)) {
+    if (el && el !== target && !el.contains(target)) {
       this.hidePicker();
     }
   }
@@ -119,6 +158,39 @@ export default class ColorPicker extends Vue {
     position: relative;
     display: inline-block;
     width: 225px;
+    &__mini {
+      width: 38px;
+    }
+    &__mini-icon {
+      width: 70px;
+    }
+  }
+
+  &__picker-wrapper {
+    display: block;
+  }
+
+  &__input {
+    &--mini {
+      width: 225px !important;
+    }
+  }
+
+  &__mini-wrapper {
+    border: 1px solid black;
+    border-color: #4f5e65;
+    background: transparent;
+    color: #ffffff;
+    height: 40px;
+    border-radius: 4px;
+    font-family: "Roboto";
+    font-size: 14px;
+    i {
+      position: absolute;
+      top: 12px;
+      left: 10px;
+      z-index: 1;
+    }
   }
 
   &__preview {
