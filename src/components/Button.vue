@@ -57,11 +57,13 @@
       </div>
       <div class="slobs-download-landing__bottom">
         <p class="slobs-download-landing__subtitle">
-          <span
-            v-for="text in slobsDownloadText"
-            :key="text"
-            v-text="text"
-          ></span>
+          <slot name="subtitle">
+            <span
+              v-for="text in slobsDownloadText"
+              :key="text"
+              v-text="text"
+            ></span>
+          </slot>
         </p>
       </div>
     </div>
@@ -234,7 +236,7 @@ export default class Button extends Vue {
     const tests: any = [];
 
     tests.push("Free");
-    tests.push(this.osType === "windows" ? "Win" : "macOS 10.14+");
+    tests.push(this.osType === "windows" ? "Win" : "macOS 10.15+");
     tests.push(this.osType === "windows" ? "~240MB" : "309MB");
 
     return tests;
@@ -267,9 +269,9 @@ export default class Button extends Vue {
   // }
 
   rippleAnimation() {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       this.rippleAnimate = true;
-      let animationEnded = e => {
+      let animationEnded = (e) => {
         this.$el.removeEventListener("animationnend", animationEnded);
         resolve();
       };
