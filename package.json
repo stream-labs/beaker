@@ -12,7 +12,7 @@
 		"deploy": "./deploy.sh"
 	},
 	"files": [
-		"dist/*"
+		"dist"
 	],
 	"devDependencies": {
 		"@originjs/vite-plugin-require-context": "^1.0.9",
