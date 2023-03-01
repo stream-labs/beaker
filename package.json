@@ -1,16 +1,9 @@
 {
 	"name": "streamlabs-beaker",
-	"version": "0.11.7",
+	"version": "0.11.8",
 	"main": "./dist/beaker.umd.js",
 	"module": "./dist/beaker.es.js",
 	"license": "MIT",
-	"exports": {
-		".": {
-			"/dist/style.css": "./dist/style.css",
-			"import": "./dist/beaker.es.js",
-			"require": "./dist/beaker.umd.js"
-		}
-	},
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
