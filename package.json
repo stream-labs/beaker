@@ -4,6 +4,16 @@
 	"main": "./dist/beaker.umd.js",
 	"module": "./dist/beaker.es.js",
 	"license": "MIT",
+	"exports": {
+		".": {
+			"import": "./dist/beaker.es.js",
+			"require": "./dist/beaker.umd.js"
+		},
+		"./dist/style.css": {
+			"import": "./dist/style.css",
+			"require": "./dist/style.css"
+		}
+	},
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
