@@ -59,7 +59,7 @@ const badgeStyles = computed(() =>
 );
 
 const badgeClasses = computed(() => {
-	const classes = [];
+	const classes: string[] = [];
 
 	classes.push(`s-badge--${props.variant}`);
 
