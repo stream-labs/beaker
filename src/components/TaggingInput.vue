@@ -1,201 +1,233 @@
 <template>
-  <div class="s-tagging-input">
-    <div class="s-tagging-input__container">
-      <text-input
-        :label="label"
-        :placeholder="placeholder"
-        :name="name"
-        v-model="textInputValue"
-        v-validate="inputValidation"
-        type="text"
-        slot="input"
-        :error="errors.first(name)"
-        v-on="$listeners"
-        @keydown.enter.prevent="onAdd"
-      />
+	<div class="s-tagging-input">
+		<div class="s-tagging-input__container">
+			<text-input
+				v-model="input"
+				v-validate="inputValidation"
+				slot="input"
+				:name="name"
+				:label="label"
+				:placeholder="placeholder"
+				type="text"
+				:error="errors.first(name)"
+				@input="$emit('update:text', $event)"
+				@keydown.enter.prevent="onAdd"
+			/>
 
-      <Button
-        :variation="buttonVariation"
-        :title="buttonText"
-        @click="onAdd"
-        :disabled="value.length >= maxItems"
-        type="button"
-      ></Button>
-    </div>
+			<Button
+				:title="buttonText"
+				type="button"
+				:variation="buttonVariation"
+				:disabled="value.length >= maxItems"
+				@click="onAdd"
+			/>
+		</div>
 
-    <div class="s-tagging-input__tags">
-      <div v-for="(tag, index) in value" :key="index" :class="tagClasses">
-        <div class="s-tagging-input__tag-text">{{ tag }}</div>
-        <i
-          class="s-tagging-input__tag-icon icon-close"
-          @click="onRemove(index)"
-        ></i>
-      </div>
-    </div>
-  </div>
+		<div class="s-tagging-input__tags">
+			<div
+				v-for="(tag, index) in value"
+				:key="index"
+				class="s-tagging-input-tag"
+				:class="[`s-tagging-input-tag--${tagVariation}`]"
+			>
+				<div class="s-tagging-input-tag__text">{{ tag }}</div>
+				<i
+					class="s-tagging-input-tag__icon icon-close"
+					@click="onRemove(index)"
+				/>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from "vue";
-import { omit } from 'lodash-es';
+import { defineComponent, ref, toRefs, watch } from "vue";
 import TextInput from "./TextInput.vue";
 import TextArea from "./TextArea.vue";
 import Button from "./Button.vue";
 
 export default defineComponent({
-  components: {
-    TextInput,
-    TextArea,
-    Button
-  },
+	components: {
+		TextInput,
+		TextArea,
+		Button,
+	},
 
-  props: {
-    name: { type: String },
-    label: { type: String },
-    placeholder: { type: String },
-    buttonText: { type: String, default: "Add Tag" },
-    buttonVariation: { type: String, default: "default" },
-    value: { type: Array, default: () => [] },
-    inputValidation: { type: String },
-    prefix: { type: String },
-    tagVariation: { type: String, default: "default" },
-    maxItems: { type: Number, default: 25 }
-  },
+	emits: [
+		"input",
+		"change",
+		"add",
+		"remove",
+		"error",
+		"update:text",
+		"update:value",
+	] as const,
 
-  setup(props, {attrs}) {
-    const textInputValue = ref('');
-    const tagClasses = computed(() => `s-tagging-input__tag s-tagging-input__tag--${props.tagVariation}`);
-    const filteredListeners = computed(() => omit(attrs, ["input"]));
+	props: {
+		name: { type: String, default: "" },
+		label: { type: String, default: "" },
+		placeholder: { type: String, default: "" },
+		buttonText: { type: String, default: "Add Tag" },
+		buttonVariation: { type: String, default: "default" },
+		value: { type: Array, default: () => [] },
+		text: { type: String, default: "" },
+		inputValidation: { type: String, default: "" },
+		prefix: { type: String, default: "" },
+		tagVariation: { type: String, default: "default" },
+		maxItems: { type: Number, default: 25 },
+	},
 
-    const onRemove = (index: number) => {
-      props.value.splice(index, 1);
-    }
+	setup(props, { attrs }) {
+		const { text, value } = toRefs(props);
+		const input = ref(text.value);
+		const tags = ref(value.value);
 
-    return { textInputValue, tagClasses, filteredListeners, onRemove };
-  },
+		watch(value, (newValue) => {
+			tags.value = newValue;
+		});
 
-  methods: {
-    onAdd() {
-      if (
-        this.$validator.errors.items.length !== 0 ||
-        this.value.length >= this.maxItems
-      ) {
-        return;
-      }
+		watch(text, (newValue) => {
+			input.value = newValue;
+		});
 
-      this.textInputValue = this.textInputValue.trim();
+		return { input, tags };
+	},
 
-      const found = this.value.find((v) => {
-        if (this.prefix && !this.textInputValue.startsWith(this.prefix)) {
-          return (
-            v.toLowerCase() ===
-            this.prefix + this.textInputValue.trim().toLowerCase()
-          );
-        } else {
-          return v.toLowerCase() === this.textInputValue.trim().toLowerCase();
-        }
-      });
+	methods: {
+		onAdd() {
+			if (this.$validator.errors.items.length !== 0) {
+				this.$emit("error", this.$validator.errors.items, false);
+				return;
+			}
 
-      if (!found && this.textInputValue.length !== 0) {
-        if (this.prefix && !this.textInputValue.startsWith(this.prefix)) {
-          this.textInputValue = this.prefix + this.textInputValue;
-        }
+			if (this.tags.length >= this.maxItems) {
+				this.$emit("error", ["Max items reached"], true);
+				return;
+			}
 
-        this.value.push(this.textInputValue);
-      }
+			let inputValue = this.input.trim();
 
-      this.textInputValue = "";
-    }
+			const found = this.tags.find((v) => {
+				if (this.prefix && !inputValue.startsWith(this.prefix)) {
+					return (
+						v.toLowerCase() === this.prefix + inputValue.trim().toLowerCase()
+					);
+				} else {
+					return v.toLowerCase() === inputValue.trim().toLowerCase();
+				}
+			});
 
+			if (!found && inputValue.length !== 0) {
+				if (this.prefix && !inputValue.startsWith(this.prefix)) {
+					inputValue = this.prefix + inputValue;
+				}
 
-  }
+				this.tags.push(inputValue);
+				this.input = "";
+				this.emitTagEvents("add");
+			}
+		},
+
+		onRemove(index: number) {
+			this.tags.splice(index, 1);
+			this.emitTagEvents("remove");
+		},
+
+		emitTagEvents(...events) {
+			["input", "change", "update:value", ...events].forEach((event) =>
+				this.$emit(event, this.tags)
+			);
+		},
+	},
 });
 </script>
-
 <style lang="less">
 @import (reference) "./../styles/Imports";
+
 .s-tagging-input {
-  .s-tagging-input__container {
-    display: flex;
+	.s-tagging-input__container {
+		display: flex;
+		.s-form-field {
+			flex: 1;
+			.margin-right(2);
+		}
+	}
 
-    .s-form-field {
-      flex: 1;
-      .margin-right(2);
-    }
-  }
+	.s-tagging-input {
+		&__tags {
+			display: flex;
+			flex-wrap: wrap;
+			.margin-top();
+			max-height: 300px;
+			overflow-y: auto;
+		}
 
-  .s-tagging-input__tags {
-    display: flex;
-    flex-wrap: wrap;
-    .margin-top();
+		&-tag {
+			display: flex;
+			align-items: center;
+			height: 24px;
+			.margin-right();
+			.margin-top();
+			padding: 0 4px;
+			border-radius: 2px;
+			font-size: 14px;
+			line-height: 1.14;
+			color: white;
 
-    .s-tagging-input__tag {
-      display: flex;
-      align-items: center;
-      height: 24px;
-      .margin-right();
-      .margin-top();
-      padding: 0 4px;
-      border-radius: 2px;
-      font-size: 14px;
-      line-height: 1.14;
-      color: white;
+			&:last-of-type {
+				.margin-right(0);
+			}
 
-      &:last-of-type {
-        .margin-right(0);
-      }
-    }
+			&--default {
+				color: @day-title;
+				border-color: @day-button;
+				background: @day-button;
+			}
 
-    .s-tagging-input__tag-icon {
-      margin-left: 4px;
-      font-size: 10px;
-      color: @light-5;
-      cursor: pointer;
-    }
+			&--action {
+				background-color: @teal;
+			}
 
-    .s-tagging-input__tag-text {
-      font-weight: 500;
-      -webkit-user-select: none; /* Safari */
-      -moz-user-select: none; /* Firefox */
-      -ms-user-select: none; /* IE10+/Edge */
-      user-select: none; /* Standard */
-    }
+			&--warning {
+				background-color: @warning;
+			}
 
-    .s-tagging-input__tag--default {
-      color: @day-title;
-      border-color: @day-button;
-      background: @day-button;
-    }
+			&__icon {
+				margin-left: 4px;
+				font-size: 10px;
+				color: @light-5;
+				cursor: pointer;
+			}
 
-    .s-tagging-input__tag--action {
-      background-color: @teal;
-    }
-
-    .s-tagging-input__tag--warning {
-      background-color: @warning;
-    }
-
-    max-height: 300px;
-    overflow-y: auto;
-  }
+			&__text {
+				font-weight: 500;
+				-webkit-user-select: none; /* Safari */
+				-moz-user-select: none; /* Firefox */
+				-ms-user-select: none; /* IE10+/Edge */
+				user-select: none; /* Standard */
+			}
+		}
+	}
 }
 
 .night,
 .night-theme {
-  .s-tagging-input {
-    .s-tagging-input__tag--default {
-      color: @night-title;
-      border-color: @night-button;
-      background: @night-button;
-    }
+	.s-tagging-input {
+		&-tag {
+			&--default {
+				color: @night-title;
+				border-color: @night-button;
+				background: @night-button;
+			}
 
-    .s-tagging-input__tag--action {
-      background-color: @teal;
-    }
+			&--action {
+				background-color: @teal;
+			}
 
-    .s-tagging-input__tag--warning {
-      background-color: @warning;
-    }
-  }
+			&--warning {
+				background-color: @warning;
+			}
+		}
+	}
 }
 </style>
