@@ -1,4 +1,16 @@
-var h=Object.defineProperty;var f=(e,t,n)=>t in e?h(e,t,{enumerable:!0,configurable:!0,writable:!0,value:n}):e[t]=n;var o=(e,t,n)=>(f(e,typeof t!="symbol"?t+"":t,n),n);import{V as u,C as _,P as i,n as p}from"./index.4fb8a6cb.js";import{B as m}from"./Button.b26dacc2.js";import{D as y}from"./DemoSection.79ee11c0.js";import{i as g}from"./vue-mq.es.e994b893.js";import{V as b}from"./index.3042f557.js";import"./Accordion.09c82396.js";const w=`<template>
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { V as Vue, C as Component, P as Prop, n as normalizeComponent } from "./index.4fb8a6cb.js";
+import { B as Button } from "./Button.b26dacc2.js";
+import { D as DemoSection } from "./DemoSection.79ee11c0.js";
+import { i as index } from "./vue-mq.es.e994b893.js";
+import { V as VModal } from "./index.3042f557.js";
+import "./Accordion.09c82396.js";
+const AnnouncementsCode = `<template>
   <div>
     <div class="section">
       <h1>New Feature Overlay</h1>
@@ -192,13 +204,212 @@ export default class AnnoucementsDemo extends Vue {
   }
 }
 <\/script>
-`;var k=Object.defineProperty,C=Object.getOwnPropertyDescriptor,a=(e,t,n,d)=>{for(var s=d>1?void 0:d?C(t,n):t,l=e.length-1,c;l>=0;l--)(c=e[l])&&(s=(d?c(t,n,s):c(s))||s);return d&&s&&k(t,n,s),s};u.use(b);u.use(g,{breakpoints:{sm:900,md:1250,lg:1/0},defaultBreakpoint:"sm"});let r=class extends u{constructor(){super(...arguments);o(this,"width");o(this,"height");o(this,"label");o(this,"title");o(this,"media");o(this,"buttonTitle");o(this,"buttonRoute");o(this,"buttonTag");o(this,"buttonHref");o(this,"buttonTarget");o(this,"dismissRoute");o(this,"dismissText");o(this,"onOpen");o(this,"onAction");o(this,"videoControls");o(this,"isImage",!0);o(this,"$mq")}get overlayImage(){return this.media}get containerMq(){return this.$mq==="sm"?"s-overlay__container--mq":""}get overlay__imageBlockMq(){return this.$mq==="sm"?"s-overlay__image-block--mq":""}mounted(){this.media.includes("mp4")||this.media.includes("webm")?this.isImage=!1:this.isImage=!0}opened(t){typeof this.onOpen=="function"&&this.onOpen()}onPrimaryAction(){typeof this.onAction=="function"&&this.onAction(),this.onDismiss()}onDismiss(){this.$modal.hide("new-feature")}};a([i({default:"100%"})],r.prototype,"width",2);a([i({default:"auto"})],r.prototype,"height",2);a([i()],r.prototype,"label",2);a([i()],r.prototype,"title",2);a([i()],r.prototype,"media",2);a([i()],r.prototype,"buttonTitle",2);a([i({default:"/"})],r.prototype,"buttonRoute",2);a([i({default:"router-link"})],r.prototype,"buttonTag",2);a([i()],r.prototype,"buttonHref",2);a([i()],r.prototype,"buttonTarget",2);a([i({default:"/"})],r.prototype,"dismissRoute",2);a([i({default:"Go to Dashboard"})],r.prototype,"dismissText",2);a([i()],r.prototype,"onOpen",2);a([i()],r.prototype,"onAction",2);a([i({default:!1})],r.prototype,"videoControls",2);r=a([_({components:{Button:m}})],r);var O=function(){var t=this,n=t._self._c;return t._self._setupProxy,n("modal",{attrs:{name:"new-feature",adaptive:!0,width:t.width,height:t.height,classes:"s-overlay__wrapper",clickToClose:!0},on:{opened:t.opened}},[n("div",{staticClass:"s-overlay__icon",attrs:{slot:"top-right"},slot:"top-right"},[n("span",{staticClass:"s-icon icon-close",on:{click:t.onDismiss}})]),n("div",{staticClass:"s-overlay__container",class:t.containerMq},[n("div",{staticClass:"s-overlay__body"},[n("p",{staticClass:"s-overlay__label"},[t._v(t._s(t.label))]),n("h1",{staticClass:"s-overlay__title"},[t._v(t._s(t.title))]),n("p",{staticClass:"s-overlay__text"},[t._t("default")],2),n("div",{staticClass:"s-overlay-links"},[n("Button",{attrs:{size:"large",variation:"action",tag:t.buttonTag,to:t.buttonRoute,href:t.buttonHref,target:t.buttonTarget,title:t.buttonTitle},nativeOn:{click:function(d){return t.onPrimaryAction.apply(null,arguments)}}}),n("router-link",{staticClass:"s-overlay__link",attrs:{to:t.dismissRoute},nativeOn:{click:function(d){return t.onDismiss.apply(null,arguments)}}},[t._v(t._s(t.dismissText))])],1)]),n("div",{staticClass:"s-overlay__image-block",class:t.overlay__imageBlockMq},[t.isImage?n("img",{staticClass:"s-overlay__image",attrs:{src:t.overlayImage}}):t._e(),t.isImage?t._e():n("video",{staticClass:"s-overlay__image",attrs:{controls:t.videoControls,autoplay:"",loop:""}},[n("source",{attrs:{src:t.overlayImage}}),t._v(" Environment does not support video playback ")])])])])},T=[],x=p(r,O,T,!1,null,"f43a6969",null,null);const F=x.exports;var D=Object.defineProperty,N=Object.getOwnPropertyDescriptor,$=(e,t,n,d)=>{for(var s=d>1?void 0:d?N(t,n):t,l=e.length-1,c;l>=0;l--)(c=e[l])&&(s=(d?c(t,n,s):c(s))||s);return d&&s&&D(t,n,s),s};let v=class extends u{constructor(){super(...arguments);o(this,"demoCode",w)}trackingCodeComponent(){console.log("componentEventTracking")}trackingCodeButton(){console.log("buttonEventTracking")}};v=$([_({components:{Button:m,DemoSection:y,NewFeatureOverlay:F}})],v);var P=function(){var t=this,n=t._self._c;return t._self._setupProxy,n("div",[t._m(0),n("div",{staticClass:"section"},[n("h2",[t._v("New Feature Overlay")]),n("p",[t._v("Used for new feature overlay.")]),n("DemoSection",{attrs:{title:"New Feature Overlay",code:t.demoCode},scopedSlots:t._u([{key:"components",fn:function(){return[n("NewFeatureOverlay",{attrs:{label:"Introducing Merch Stores",title:"Increase Your Revenue",media:`
-              https://cdn.streamlabs.com/cloudbot/prototype_cloudbot_800x300.webm
-            `,buttonTitle:"Go To Store",onOpen:t.trackingCodeComponent,onAction:t.trackingCodeButton,buttonTag:"a",buttonHref:`
-              https://www.twitch.tv/ext/xab8h6nj36fc2wtn71yikw9hqjd6v4-0.0.1
-            `,buttonTarget:"_blank"}},[n("p",[t._v(" We\u2019ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level. ")]),n("p",[t._v(" We\u2019ve automatically credited $15.00 to your account so you can start trying them out today. ")])])]},proxy:!0}])})],1),n("div",{staticClass:"section"},[n("div",{staticClass:"s-button-container s-button-container--left"},[n("Button",{attrs:{variation:"default",title:"New Feature Overlay"},on:{click:function(d){return t.$modal.show("new-feature")}}})],1)]),t._m(1)])},R=[function(){var e=this,t=e._self._c;return e._self._setupProxy,t("div",{staticClass:"section"},[t("h1",[e._v("New Feature Overlay")]),t("p",[e._v(" You can trigger this with a button like "),t("code",[e._v(`@click="$modal.show('new-feature')"`)]),e._v(" or call "),t("code",[e._v(`this.$modal.show('new-feature')"`)]),e._v(" on mounted. You may need to set a few second delay on the trigger to prevent the modal closing when the page refreshes. ")]),t("pre",[t("code",[e._v(`import { NewFeatureOverlay } from 'streamlabs-beaker';
-
-components: {
-  NewFeatureOverlay
-}`)])])])},function(){var e=this,t=e._self._c;return e._self._setupProxy,t("table",{staticClass:"docs-table"},[t("thead",[t("tr",[t("th",[e._v("Props")]),t("th",[e._v("Type")]),t("th",[e._v("Default")]),t("th",[e._v("Description")])])]),t("tbody",[t("tr",[t("td",[e._v("label")]),t("td",[e._v("string")]),t("td",[e._v("null")]),t("td",[e._v("label to display")])]),t("tr",[t("td",[e._v("title")]),t("td",[e._v("string")]),t("td",[e._v("null")]),t("td",[e._v("title to display")])]),t("tr",[t("td",[e._v("media")]),t("td",[e._v("string")]),t("td",[e._v("null")]),t("td",[e._v("display image or video (you can select either of them)")])]),t("tr",[t("td",[e._v("buttonTitle")]),t("td",[e._v("string")]),t("td",[e._v("null")]),t("td",[e._v(" What type of element the button is, "),t("code",[e._v("button")]),e._v(", "),t("code",[e._v("a")]),e._v(", "),t("code",[e._v("router-link")])])]),t("tr",[t("td",[e._v("buttonTag")]),t("td",[e._v("string")]),t("td",[e._v("null")]),t("td",[e._v("Text displayed in the action button")])]),t("tr",[t("td",[e._v("buttonRoute")]),t("td",[e._v("string")]),t("td",[e._v("/")]),t("td",[e._v(" Router link path for the action button if tag is "),t("code",[e._v("router-link")])])]),t("tr",[t("td",[e._v("buttonHref")]),t("td",[e._v("string")]),t("td",[e._v("null")]),t("td",[e._v(" href for the action button if tag is set to "),t("code",[e._v("a")])])]),t("tr",[t("td",[e._v("buttonTarget")]),t("td",[e._v("string")]),t("td",[e._v("null")]),t("td",[e._v(" Use to set different targets for button if set to "),t("code",[e._v("a")]),e._v(" Options are: "),t("code",[e._v("_self")]),e._v(", "),t("code",[e._v("_blank")]),e._v(", "),t("code",[e._v("_parent")]),e._v(", "),t("code",[e._v("_top")])])]),t("tr",[t("td",[e._v("dismissTitle")]),t("td",[e._v("string")]),t("td",[e._v("Go to Dashboard")]),t("td",[e._v(" Text displayed in the link next to the action button to dismiss the announcement. ")])]),t("tr",[t("td",[e._v("dismissRoute")]),t("td",[e._v("string")]),t("td",[e._v("/")]),t("td",[e._v("Router link path to dismiss the annoucement.")])]),t("tr",[t("td",[e._v("onOpen")]),t("td",[e._v("function")]),t("td",[e._v("null")]),t("td",[e._v("Function to call out the tracking code of modal component.")])]),t("tr",[t("td",[e._v("onAction")]),t("td",[e._v("function")]),t("td",[e._v("null")]),t("td",[e._v("Function to call out the tracking code of modal button.")])])])])}],A=p(v,P,R,!1,null,null,null,null);const V=A.exports;export{V as default};
+`;
+var __defProp$1 = Object.defineProperty;
+var __getOwnPropDesc$1 = Object.getOwnPropertyDescriptor;
+var __decorateClass$1 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$1(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$1(target, key, result);
+  return result;
+};
+Vue.use(VModal);
+Vue.use(index, {
+  breakpoints: {
+    sm: 900,
+    md: 1250,
+    lg: Infinity
+  },
+  defaultBreakpoint: "sm"
+});
+let NewFeatureOverlay$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "width");
+    __publicField(this, "height");
+    __publicField(this, "label");
+    __publicField(this, "title");
+    __publicField(this, "media");
+    __publicField(this, "buttonTitle");
+    __publicField(this, "buttonRoute");
+    __publicField(this, "buttonTag");
+    __publicField(this, "buttonHref");
+    __publicField(this, "buttonTarget");
+    __publicField(this, "dismissRoute");
+    __publicField(this, "dismissText");
+    __publicField(this, "onOpen");
+    __publicField(this, "onAction");
+    __publicField(this, "videoControls");
+    __publicField(this, "isImage", true);
+    __publicField(this, "$mq");
+  }
+  get overlayImage() {
+    return this.media;
+  }
+  get containerMq() {
+    return this.$mq === "sm" ? "s-overlay__container--mq" : "";
+  }
+  get overlay__imageBlockMq() {
+    return this.$mq === "sm" ? "s-overlay__image-block--mq" : "";
+  }
+  mounted() {
+    if (this.media.includes("mp4") || this.media.includes("webm")) {
+      this.isImage = false;
+    } else {
+      this.isImage = true;
+    }
+  }
+  opened(event) {
+    typeof this.onOpen === "function" && this.onOpen();
+  }
+  onPrimaryAction() {
+    typeof this.onAction === "function" && this.onAction();
+    this.onDismiss();
+  }
+  onDismiss() {
+    this.$modal.hide("new-feature");
+  }
+};
+__decorateClass$1([
+  Prop({ default: "100%" })
+], NewFeatureOverlay$1.prototype, "width", 2);
+__decorateClass$1([
+  Prop({ default: "auto" })
+], NewFeatureOverlay$1.prototype, "height", 2);
+__decorateClass$1([
+  Prop()
+], NewFeatureOverlay$1.prototype, "label", 2);
+__decorateClass$1([
+  Prop()
+], NewFeatureOverlay$1.prototype, "title", 2);
+__decorateClass$1([
+  Prop()
+], NewFeatureOverlay$1.prototype, "media", 2);
+__decorateClass$1([
+  Prop()
+], NewFeatureOverlay$1.prototype, "buttonTitle", 2);
+__decorateClass$1([
+  Prop({ default: "/" })
+], NewFeatureOverlay$1.prototype, "buttonRoute", 2);
+__decorateClass$1([
+  Prop({ default: "router-link" })
+], NewFeatureOverlay$1.prototype, "buttonTag", 2);
+__decorateClass$1([
+  Prop()
+], NewFeatureOverlay$1.prototype, "buttonHref", 2);
+__decorateClass$1([
+  Prop()
+], NewFeatureOverlay$1.prototype, "buttonTarget", 2);
+__decorateClass$1([
+  Prop({ default: "/" })
+], NewFeatureOverlay$1.prototype, "dismissRoute", 2);
+__decorateClass$1([
+  Prop({ default: "Go to Dashboard" })
+], NewFeatureOverlay$1.prototype, "dismissText", 2);
+__decorateClass$1([
+  Prop()
+], NewFeatureOverlay$1.prototype, "onOpen", 2);
+__decorateClass$1([
+  Prop()
+], NewFeatureOverlay$1.prototype, "onAction", 2);
+__decorateClass$1([
+  Prop({ default: false })
+], NewFeatureOverlay$1.prototype, "videoControls", 2);
+NewFeatureOverlay$1 = __decorateClass$1([
+  Component({
+    components: {
+      Button
+    }
+  })
+], NewFeatureOverlay$1);
+const NewFeatureOverlay_vue_vue_type_style_index_0_scoped_f43a6969_lang = "";
+const NewFeatureOverlay_vue_vue_type_style_index_1_lang = "";
+var _sfc_render$1 = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("modal", { attrs: { "name": "new-feature", "adaptive": true, "width": _vm.width, "height": _vm.height, "classes": "s-overlay__wrapper", "clickToClose": true }, on: { "opened": _vm.opened } }, [_c("div", { staticClass: "s-overlay__icon", attrs: { "slot": "top-right" }, slot: "top-right" }, [_c("span", { staticClass: "s-icon icon-close", on: { "click": _vm.onDismiss } })]), _c("div", { staticClass: "s-overlay__container", class: _vm.containerMq }, [_c("div", { staticClass: "s-overlay__body" }, [_c("p", { staticClass: "s-overlay__label" }, [_vm._v(_vm._s(_vm.label))]), _c("h1", { staticClass: "s-overlay__title" }, [_vm._v(_vm._s(_vm.title))]), _c("p", { staticClass: "s-overlay__text" }, [_vm._t("default")], 2), _c("div", { staticClass: "s-overlay-links" }, [_c("Button", { attrs: { "size": "large", "variation": "action", "tag": _vm.buttonTag, "to": _vm.buttonRoute, "href": _vm.buttonHref, "target": _vm.buttonTarget, "title": _vm.buttonTitle }, nativeOn: { "click": function($event) {
+    return _vm.onPrimaryAction.apply(null, arguments);
+  } } }), _c("router-link", { staticClass: "s-overlay__link", attrs: { "to": _vm.dismissRoute }, nativeOn: { "click": function($event) {
+    return _vm.onDismiss.apply(null, arguments);
+  } } }, [_vm._v(_vm._s(_vm.dismissText))])], 1)]), _c("div", { staticClass: "s-overlay__image-block", class: _vm.overlay__imageBlockMq }, [_vm.isImage ? _c("img", { staticClass: "s-overlay__image", attrs: { "src": _vm.overlayImage } }) : _vm._e(), !_vm.isImage ? _c("video", { staticClass: "s-overlay__image", attrs: { "controls": _vm.videoControls, "autoplay": "", "loop": "" } }, [_c("source", { attrs: { "src": _vm.overlayImage } }), _vm._v(" Environment does not support video playback ")]) : _vm._e()])])]);
+};
+var _sfc_staticRenderFns$1 = [];
+var __component__$1 = /* @__PURE__ */ normalizeComponent(
+  NewFeatureOverlay$1,
+  _sfc_render$1,
+  _sfc_staticRenderFns$1,
+  false,
+  null,
+  "f43a6969",
+  null,
+  null
+);
+const NewFeatureOverlay = __component__$1.exports;
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let AnnoucementsDemo = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "demoCode", AnnouncementsCode);
+  }
+  trackingCodeComponent() {
+    console.log("componentEventTracking");
+  }
+  trackingCodeButton() {
+    console.log("buttonEventTracking");
+  }
+};
+AnnoucementsDemo = __decorateClass([
+  Component({
+    components: {
+      Button,
+      DemoSection,
+      NewFeatureOverlay
+    }
+  })
+], AnnoucementsDemo);
+var _sfc_render = function render2() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", [_vm._m(0), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("New Feature Overlay")]), _c("p", [_vm._v("Used for new feature overlay.")]), _c("DemoSection", { attrs: { "title": "New Feature Overlay", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("NewFeatureOverlay", { attrs: { "label": "Introducing Merch Stores", "title": "Increase Your Revenue", "media": "\n              https://cdn.streamlabs.com/cloudbot/prototype_cloudbot_800x300.webm\n            ", "buttonTitle": "Go To Store", "onOpen": _vm.trackingCodeComponent, "onAction": _vm.trackingCodeButton, "buttonTag": "a", "buttonHref": "\n              https://www.twitch.tv/ext/xab8h6nj36fc2wtn71yikw9hqjd6v4-0.0.1\n            ", "buttonTarget": "_blank" } }, [_c("p", [_vm._v(" We\u2019ve worked with some of the best developers in the industry to bring you the tools to take your stream to the next level. ")]), _c("p", [_vm._v(" We\u2019ve automatically credited $15.00 to your account so you can start trying them out today. ")])])];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("div", { staticClass: "s-button-container s-button-container--left" }, [_c("Button", { attrs: { "variation": "default", "title": "New Feature Overlay" }, on: { "click": function($event) {
+    return _vm.$modal.show("new-feature");
+  } } })], 1)]), _vm._m(1)]);
+};
+var _sfc_staticRenderFns = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("h1", [_vm._v("New Feature Overlay")]), _c("p", [_vm._v(" You can trigger this with a button like "), _c("code", [_vm._v(`@click="$modal.show('new-feature')"`)]), _vm._v(" or call "), _c("code", [_vm._v(`this.$modal.show('new-feature')"`)]), _vm._v(" on mounted. You may need to set a few second delay on the trigger to prevent the modal closing when the page refreshes. ")]), _c("pre", [_c("code", [_vm._v("import { NewFeatureOverlay } from 'streamlabs-beaker';\n\ncomponents: {\n  NewFeatureOverlay\n}")])])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("table", { staticClass: "docs-table" }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Props")]), _c("th", [_vm._v("Type")]), _c("th", [_vm._v("Default")]), _c("th", [_vm._v("Description")])])]), _c("tbody", [_c("tr", [_c("td", [_vm._v("label")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("label to display")])]), _c("tr", [_c("td", [_vm._v("title")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("title to display")])]), _c("tr", [_c("td", [_vm._v("media")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("display image or video (you can select either of them)")])]), _c("tr", [_c("td", [_vm._v("buttonTitle")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v(" What type of element the button is, "), _c("code", [_vm._v("button")]), _vm._v(", "), _c("code", [_vm._v("a")]), _vm._v(", "), _c("code", [_vm._v("router-link")])])]), _c("tr", [_c("td", [_vm._v("buttonTag")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("Text displayed in the action button")])]), _c("tr", [_c("td", [_vm._v("buttonRoute")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("/")]), _c("td", [_vm._v(" Router link path for the action button if tag is "), _c("code", [_vm._v("router-link")])])]), _c("tr", [_c("td", [_vm._v("buttonHref")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v(" href for the action button if tag is set to "), _c("code", [_vm._v("a")])])]), _c("tr", [_c("td", [_vm._v("buttonTarget")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v(" Use to set different targets for button if set to "), _c("code", [_vm._v("a")]), _vm._v(" Options are: "), _c("code", [_vm._v("_self")]), _vm._v(", "), _c("code", [_vm._v("_blank")]), _vm._v(", "), _c("code", [_vm._v("_parent")]), _vm._v(", "), _c("code", [_vm._v("_top")])])]), _c("tr", [_c("td", [_vm._v("dismissTitle")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("Go to Dashboard")]), _c("td", [_vm._v(" Text displayed in the link next to the action button to dismiss the announcement. ")])]), _c("tr", [_c("td", [_vm._v("dismissRoute")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("/")]), _c("td", [_vm._v("Router link path to dismiss the annoucement.")])]), _c("tr", [_c("td", [_vm._v("onOpen")]), _c("td", [_vm._v("function")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("Function to call out the tracking code of modal component.")])]), _c("tr", [_c("td", [_vm._v("onAction")]), _c("td", [_vm._v("function")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("Function to call out the tracking code of modal button.")])])])]);
+}];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  AnnoucementsDemo,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const Announcements = __component__.exports;
+export {
+  Announcements as default
+};
 //# sourceMappingURL=Announcements.c2e61709.js.map

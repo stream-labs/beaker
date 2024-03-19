@@ -1,0 +1,296 @@
+.s-badge {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 24px;
+  margin: 0 0 0 8px;
+  padding: 0 5px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.s-badge--left {
+  margin: 0 8px 0 0;
+}
+.s-badge--no-margin {
+  margin: 0;
+}
+.s-badge--small {
+  height: 16px;
+  font-size: 12px;
+}
+.s-badge--teal,
+.s-badge--success {
+  background-color: rgba(18, 128, 121, 0.08);
+  color: #128079;
+}
+.s-badge--teal-alt,
+.s-badge--success-alt {
+  height: 14px;
+  padding-right: 0px;
+  padding-left: 0px;
+  background-color: transparent;
+  color: #128079;
+}
+.s-badge--tag {
+  background-color: rgba(43, 56, 63, 0.08);
+  color: #2b383f;
+}
+.s-badge--tag-alt {
+  height: 14px;
+  padding-right: 0px;
+  padding-left: 0px;
+  background-color: transparent;
+  color: #2b383f;
+}
+.s-badge--pro {
+  background-color: #91979a;
+  color: #ffffff;
+}
+.s-badge--pro-alt {
+  height: 14px;
+  padding-right: 0px;
+  padding-left: 0px;
+  background-color: transparent;
+  color: #91979a;
+}
+.s-badge--beta {
+  background-color: rgba(43, 91, 215, 0.08);
+  color: #2b5bd7;
+}
+.s-badge--beta-alt {
+  height: 14px;
+  padding-right: 0px;
+  padding-left: 0px;
+  background-color: transparent;
+  color: #2b5bd7;
+}
+.s-badge--warning {
+  background-color: rgba(177, 67, 52, 0.08);
+  color: #b14334;
+}
+.s-badge--warning-alt {
+  height: 14px;
+  padding-right: 0px;
+  padding-left: 0px;
+  background-color: transparent;
+  color: #b14334;
+}
+.s-badge--new {
+  background-color: rgba(94, 59, 236, 0.08);
+  color: #5e3bec;
+}
+.s-badge--new-alt {
+  height: 14px;
+  padding-right: 0px;
+  padding-left: 0px;
+  background-color: transparent;
+  color: #5e3bec;
+}
+.s-badge--count {
+  height: 13px;
+  margin: 0px;
+  padding: 0 3.66px;
+  border-radius: 7px;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 13px;
+  background-color: #b14334;
+}
+.s-badge--mod {
+  color: #a96311;
+  background-color: #ffffff;
+  margin-right: 8px;
+  margin-left: 8px;
+}
+.s-badge--progress {
+  height: 18px;
+  padding: 0px;
+  line-height: 18px;
+  background-color: #bdc2c4;
+}
+.s-badge--progress > div {
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 4px;
+  line-height: 18px;
+}
+.s-badge--prime {
+  background-color: #8f6f3f;
+  color: #ffffff;
+  padding: 0 7px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 900;
+}
+.s-badge--prime-alt {
+  height: 14px;
+  padding-right: 0px;
+  padding-left: 0px;
+  background-color: transparent;
+  color: #8f6f3f;
+}
+.s-badge--prime .icon-prime {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  margin-right: 4px;
+  font-size: 12px;
+  line-height: 0.9;
+}
+.s-badge--prime .icon-prime::before {
+  color: #ffffff;
+}
+.s-badge--prime-alt {
+  font-weight: 900;
+  font-size: inherit;
+}
+.s-badge--prime-alt::before {
+  display: none;
+}
+.s-badge--ultra {
+  border-radius: 50%;
+  background: linear-gradient(123.53deg, #2de8b0 25.56%, #cbe953 60.27%, #ffab48 79.52%, #ff5151 96.69%);
+}
+.s-badge--ultra div {
+  height: 14px;
+}
+.s-badge--ultra .icon-ultra {
+  color: black;
+}
+.night .s-badge--teal,
+.night-theme .s-badge--teal,
+.night .s-badge--success,
+.night-theme .s-badge--success {
+  background-color: #80f5d2;
+  color: #17242d;
+}
+.night .s-badge--teal-alt,
+.night-theme .s-badge--teal-alt,
+.night .s-badge--success-alt,
+.night-theme .s-badge--success-alt {
+  height: 14px;
+  padding-right: 0px;
+  padding-left: 0px;
+  background-color: transparent;
+  color: #80f5d2;
+}
+.night .s-badge--beta,
+.night-theme .s-badge--beta {
+  background-color: #72d5ff;
+  color: #17242d;
+}
+.night .s-badge--beta-alt,
+.night-theme .s-badge--beta-alt {
+  height: 14px;
+  padding-right: 0px;
+  padding-left: 0px;
+  background-color: transparent;
+  color: #72d5ff;
+}
+.night .s-badge--warning,
+.night-theme .s-badge--warning {
+  background-color: #ff6f5b;
+  color: #17242d;
+}
+.night .s-badge--warning-alt,
+.night-theme .s-badge--warning-alt {
+  height: 14px;
+  padding-right: 0px;
+  padding-left: 0px;
+  background-color: transparent;
+  color: #ff6f5b;
+}
+.night .s-badge--tag,
+.night-theme .s-badge--tag {
+  background-color: #4f5e65;
+  color: #ffffff;
+}
+.night .s-badge--tag-alt,
+.night-theme .s-badge--tag-alt {
+  height: 14px;
+  padding-right: 0px;
+  padding-left: 0px;
+  background-color: transparent;
+  color: #91979a;
+}
+.night .s-badge--new,
+.night-theme .s-badge--new {
+  background-color: #c57bff;
+  color: #17242d;
+}
+.night .s-badge--new-alt,
+.night-theme .s-badge--new-alt {
+  height: 14px;
+  padding-right: 0px;
+  padding-left: 0px;
+  background-color: transparent;
+  color: #C57BFF;
+}
+.night .s-badge--pro,
+.night-theme .s-badge--pro {
+  background-color: #e3e8eb;
+  color: #17242d;
+}
+.night .s-badge--pro-alt,
+.night-theme .s-badge--pro-alt {
+  height: 14px;
+  padding-right: 0px;
+  padding-left: 0px;
+  background-color: transparent;
+  color: #e3e8eb;
+}
+.night .s-badge--count,
+.night-theme .s-badge--count {
+  background-color: #ff6f5b;
+  color: #17242d;
+}
+.night .s-badge--count-alt,
+.night-theme .s-badge--count-alt {
+  height: 14px;
+  padding-right: 0px;
+  padding-left: 0px;
+  background-color: transparent;
+  color: #ff6f5b;
+}
+.night .s-badge--mod,
+.night-theme .s-badge--mod {
+  background-color: #17242d;
+  color: #ffbe72;
+}
+.night .s-badge--mod-alt,
+.night-theme .s-badge--mod-alt {
+  height: 14px;
+  padding-right: 0px;
+  padding-left: 0px;
+  background-color: transparent;
+  color: #17242d;
+}
+.night .s-badge--progress,
+.night-theme .s-badge--progress {
+  background-color: #4f5e65;
+}
+.night .s-badge--prime,
+.night-theme .s-badge--prime {
+  background-color: #ffd79c;
+  color: #17242d;
+}
+.night .s-badge--prime-alt,
+.night-theme .s-badge--prime-alt {
+  height: 14px;
+  padding-right: 0px;
+  padding-left: 0px;
+  background-color: transparent;
+  color: #ffd79c;
+}
+.night .s-badge--prime .icon-prime::before,
+.night-theme .s-badge--prime .icon-prime::before {
+  color: #17242d;
+}

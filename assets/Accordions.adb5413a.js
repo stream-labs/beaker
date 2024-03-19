@@ -1,4 +1,13 @@
-var l=Object.defineProperty;var r=(e,n,t)=>n in e?l(e,n,{enumerable:!0,configurable:!0,writable:!0,value:t}):e[n]=t;var c=(e,n,t)=>(r(e,typeof n!="symbol"?n+"":n,t),t);import{C as v,V as p,n as m}from"./index.4fb8a6cb.js";import{A as u}from"./Accordion.09c82396.js";import{D as f}from"./DemoSection.79ee11c0.js";const _=`<template>
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { C as Component, V as Vue, n as normalizeComponent } from "./index.4fb8a6cb.js";
+import { A as Accordion } from "./Accordion.09c82396.js";
+import { D as DemoSection } from "./DemoSection.79ee11c0.js";
+const AccordionCode = `<template>
   <div>
     <div class="section">
       <h1>Accordions</h1>
@@ -273,9 +282,85 @@ export default class Accordions extends Vue {
   }
 }
 </style>
-`;var h=Object.defineProperty,C=Object.getOwnPropertyDescriptor,A=(e,n,t,o)=>{for(var i=o>1?void 0:o?C(n,t):n,d=e.length-1,s;d>=0;d--)(s=e[d])&&(i=(o?s(n,t,i):s(i))||i);return o&&i&&h(n,t,i),i};let a=class extends p{constructor(){super(...arguments);c(this,"demoCode",_);c(this,"isOpened",!0)}openAccordion(n){this.isOpened=n}};a=A([v({components:{Accordion:u,DemoSection:f}})],a);var S=function(){var n=this,t=n._self._c;return n._self._setupProxy,t("div",[n._m(0),t("div",{staticClass:"section"},[t("h3",[n._v("Default Settings")]),t("DemoSection",{attrs:{title:"Default Settings",code:n.demoCode},scopedSlots:n._u([{key:"components",fn:function(){return[t("div",{on:{click:function(o){return n.openAccordion(!0)}}},[n._v("Open Accordion")]),t("div",{on:{click:function(o){return n.openAccordion(!1)}}},[n._v("Close Accordion")]),t("Accordion",{attrs:{"opened-title":"Hide Content","closed-title":"Show Content"},model:{value:n.isOpened,callback:function(o){n.isOpened=o},expression:"isOpened"}},[t("div",{attrs:{slot:"content"},slot:"content"},[n._v(" Lorem ipsum dolor sit amet, consectetur adipisicing elit. ")])])]},proxy:!0}])})],1),t("div",{staticClass:"section"},[t("h3",[n._v("Set to be open")]),t("DemoSection",{attrs:{title:"Set to be open",code:n.demoCode},scopedSlots:n._u([{key:"components",fn:function(){return[t("Accordion",{attrs:{"opened-title":"Hide Content","closed-title":"Show Content",isOpened:!0}},[t("div",{attrs:{slot:"content"},slot:"content"},[n._v(" Lorem ipsum dolor sit amet, consectetur adipisicing elit. ")])])]},proxy:!0}])})],1),t("div",{staticClass:"section"},[t("h3",[n._v("Alternative - No Border")]),t("DemoSection",{attrs:{title:"Alternative - No Border",code:n.demoCode},scopedSlots:n._u([{key:"components",fn:function(){return[t("Accordion",{attrs:{"opened-title":"Hide Content","closed-title":"Show Content",noBorder:!0}},[t("div",{attrs:{slot:"content"},slot:"content"},[n._v(" Lorem ipsum dolor sit amet, consectetur adipisicing elit. ")])])]},proxy:!0}])})],1),t("div",{staticClass:"section"},[t("h3",[n._v("Accordion within an Accordion")]),t("DemoSection",{attrs:{title:"Accordion within an Accordion",code:n.demoCode},scopedSlots:n._u([{key:"components",fn:function(){return[t("Accordion",{attrs:{"opened-title":"Hide Inner Accordion","closed-title":"Show Inner Accordion"}},[t("div",{attrs:{slot:"content"},slot:"content"},[t("div",{staticClass:"section"},[n._v(" Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ")]),t("Accordion",{attrs:{"opened-title":"Hide Content","closed-title":"Show Content"},model:{value:n.isOpened,callback:function(o){n.isOpened=o},expression:"isOpened"}},[t("div",{attrs:{slot:"content"},slot:"content"},[n._v(" Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ")])])],1)])]},proxy:!0}])})],1),t("div",{staticClass:"section"},[t("h3",[n._v("Variant - Left Navigation")]),t("DemoSection",{attrs:{title:"Left Navigation",code:n.demoCode},scopedSlots:n._u([{key:"components",fn:function(){return[t("Accordion",{attrs:{leftNav:!0}},[t("div",{attrs:{slot:"title"},slot:"title"},[n._v("Left Navigation")]),t("div",{attrs:{slot:"content"},slot:"content"},[t("div",{staticClass:"fake-nav"},[t("a",{staticClass:"fake-nav-item",attrs:{href:"#"}},[t("div",{staticClass:"fake-nav-icon"},[t("i",{staticClass:"icon-community"})]),t("div",{staticClass:"fake-nav-title"},[n._v("Nav Item")])]),t("a",{staticClass:"fake-nav-item",attrs:{href:"#"}},[t("div",{staticClass:"fake-nav-icon"},[t("i",{staticClass:"icon-dashboard"})]),t("div",{staticClass:"fake-nav-title"},[n._v("Styling Handled By")])]),t("a",{staticClass:"fake-nav-item",attrs:{href:"#"}},[t("div",{staticClass:"fake-nav-icon"},[t("i",{staticClass:"icon-earnings"})]),t("div",{staticClass:"fake-nav-title"},[n._v("Slot and navigation.less")])])])])])]},proxy:!0}])})],1),t("div",{staticClass:"section"},[t("h3",[n._v("Open/Close Icon")]),t("DemoSection",{attrs:{title:"Open/Close Settings",code:n.demoCode},scopedSlots:n._u([{key:"components",fn:function(){return[t("Accordion",{attrs:{"opened-title":"Hide Content","closed-title":"Show Content"},scopedSlots:n._u([{key:"open-close-icon",fn:function({isOpen:o}){return[t("transition",{attrs:{name:"fadeFast",mode:"out-in"}},[o?t("i",{key:"close",staticClass:"icon-back"}):t("i",{key:"open",staticClass:"icon-down"})])]}}])},[t("div",{attrs:{slot:"content"},slot:"content"},[n._v(" Lorem ipsum dolor sit amet, consectetur adipisicing elit. ")])])]},proxy:!0}])})],1),n._m(1)])},g=[function(){var e=this,n=e._self._c;return e._self._setupProxy,n("div",{staticClass:"section"},[n("h1",[e._v("Accordions")]),n("pre",[n("code",[e._v(`Import { Accordion } from 'streamlabs-beaker';
-
-components: {
-  Accordion
-}`)])])])},function(){var e=this,n=e._self._c;return e._self._setupProxy,n("div",{staticClass:"section"},[n("table",{staticClass:"docs-table"},[n("thead",[n("tr",[n("th",[e._v("Prop")]),n("th",[e._v("Type")]),n("th",[e._v("Default")]),n("th",[e._v("Description")])])]),n("tbody",[n("tr",[n("td",[e._v("v-model")]),n("td",[e._v("boolean")]),n("td",[e._v("null")]),n("td",[e._v("Use to sync accordion being open/closed")])]),n("tr",[n("td",[e._v("openedTitle")]),n("td",[e._v("string")]),n("td",[e._v("null")]),n("td",[e._v("Title to display when accordion is open")])]),n("tr",[n("td",[e._v("closedTitle")]),n("td",[e._v("string")]),n("td",[e._v("null")]),n("td",[e._v("Title to display when accordion is closed")])]),n("tr",[n("td",[e._v("title")]),n("td",[e._v("string")]),n("td",[e._v("null")]),n("td",[e._v("(Optional) Overrides both open and closed titles")])]),n("tr",[n("td",[e._v("isOpened")]),n("td",[e._v("boolean")]),n("td",[e._v("false")]),n("td",[e._v("Have the accordion open by default")])]),n("tr",[n("td",[e._v("noBorder")]),n("td",[e._v("boolean")]),n("td",[e._v("false")]),n("td",[e._v("Alternative style with no border or padding")])]),n("tr",[n("td",[e._v("leftNav")]),n("td",[e._v("boolean")]),n("td",[e._v("false")]),n("td",[e._v("Alternative style for use in Left Navigation")])])])])])}],y=m(a,S,g,!1,null,null,null,null);const O=y.exports;export{O as default};
+`;
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let Accordions$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "demoCode", AccordionCode);
+    __publicField(this, "isOpened", true);
+  }
+  openAccordion(bool) {
+    this.isOpened = bool;
+  }
+};
+Accordions$1 = __decorateClass([
+  Component({
+    components: {
+      Accordion,
+      DemoSection
+    }
+  })
+], Accordions$1);
+const Accordions_vue_vue_type_style_index_0_lang = "";
+var _sfc_render = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", [_vm._m(0), _c("div", { staticClass: "section" }, [_c("h3", [_vm._v("Default Settings")]), _c("DemoSection", { attrs: { "title": "Default Settings", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("div", { on: { "click": function($event) {
+      return _vm.openAccordion(true);
+    } } }, [_vm._v("Open Accordion")]), _c("div", { on: { "click": function($event) {
+      return _vm.openAccordion(false);
+    } } }, [_vm._v("Close Accordion")]), _c("Accordion", { attrs: { "opened-title": "Hide Content", "closed-title": "Show Content" }, model: { value: _vm.isOpened, callback: function($$v) {
+      _vm.isOpened = $$v;
+    }, expression: "isOpened" } }, [_c("div", { attrs: { "slot": "content" }, slot: "content" }, [_vm._v(" Lorem ipsum dolor sit amet, consectetur adipisicing elit. ")])])];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h3", [_vm._v("Set to be open")]), _c("DemoSection", { attrs: { "title": "Set to be open", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Accordion", { attrs: { "opened-title": "Hide Content", "closed-title": "Show Content", "isOpened": true } }, [_c("div", { attrs: { "slot": "content" }, slot: "content" }, [_vm._v(" Lorem ipsum dolor sit amet, consectetur adipisicing elit. ")])])];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h3", [_vm._v("Alternative - No Border")]), _c("DemoSection", { attrs: { "title": "Alternative - No Border", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Accordion", { attrs: { "opened-title": "Hide Content", "closed-title": "Show Content", "noBorder": true } }, [_c("div", { attrs: { "slot": "content" }, slot: "content" }, [_vm._v(" Lorem ipsum dolor sit amet, consectetur adipisicing elit. ")])])];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h3", [_vm._v("Accordion within an Accordion")]), _c("DemoSection", { attrs: { "title": "Accordion within an Accordion", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Accordion", { attrs: { "opened-title": "Hide Inner Accordion", "closed-title": "Show Inner Accordion" } }, [_c("div", { attrs: { "slot": "content" }, slot: "content" }, [_c("div", { staticClass: "section" }, [_vm._v(" Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ")]), _c("Accordion", { attrs: { "opened-title": "Hide Content", "closed-title": "Show Content" }, model: { value: _vm.isOpened, callback: function($$v) {
+      _vm.isOpened = $$v;
+    }, expression: "isOpened" } }, [_c("div", { attrs: { "slot": "content" }, slot: "content" }, [_vm._v(" Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ")])])], 1)])];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h3", [_vm._v("Variant - Left Navigation")]), _c("DemoSection", { attrs: { "title": "Left Navigation", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Accordion", { attrs: { "leftNav": true } }, [_c("div", { attrs: { "slot": "title" }, slot: "title" }, [_vm._v("Left Navigation")]), _c("div", { attrs: { "slot": "content" }, slot: "content" }, [_c("div", { staticClass: "fake-nav" }, [_c("a", { staticClass: "fake-nav-item", attrs: { "href": "#" } }, [_c("div", { staticClass: "fake-nav-icon" }, [_c("i", { staticClass: "icon-community" })]), _c("div", { staticClass: "fake-nav-title" }, [_vm._v("Nav Item")])]), _c("a", { staticClass: "fake-nav-item", attrs: { "href": "#" } }, [_c("div", { staticClass: "fake-nav-icon" }, [_c("i", { staticClass: "icon-dashboard" })]), _c("div", { staticClass: "fake-nav-title" }, [_vm._v("Styling Handled By")])]), _c("a", { staticClass: "fake-nav-item", attrs: { "href": "#" } }, [_c("div", { staticClass: "fake-nav-icon" }, [_c("i", { staticClass: "icon-earnings" })]), _c("div", { staticClass: "fake-nav-title" }, [_vm._v("Slot and navigation.less")])])])])])];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h3", [_vm._v("Open/Close Icon")]), _c("DemoSection", { attrs: { "title": "Open/Close Settings", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Accordion", { attrs: { "opened-title": "Hide Content", "closed-title": "Show Content" }, scopedSlots: _vm._u([{ key: "open-close-icon", fn: function({ isOpen }) {
+      return [_c("transition", { attrs: { "name": "fadeFast", "mode": "out-in" } }, [!isOpen ? _c("i", { key: "open", staticClass: "icon-down" }) : _c("i", { key: "close", staticClass: "icon-back" })])];
+    } }]) }, [_c("div", { attrs: { "slot": "content" }, slot: "content" }, [_vm._v(" Lorem ipsum dolor sit amet, consectetur adipisicing elit. ")])])];
+  }, proxy: true }]) })], 1), _vm._m(1)]);
+};
+var _sfc_staticRenderFns = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("h1", [_vm._v("Accordions")]), _c("pre", [_c("code", [_vm._v("Import { Accordion } from 'streamlabs-beaker';\n\ncomponents: {\n  Accordion\n}")])])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("table", { staticClass: "docs-table" }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Prop")]), _c("th", [_vm._v("Type")]), _c("th", [_vm._v("Default")]), _c("th", [_vm._v("Description")])])]), _c("tbody", [_c("tr", [_c("td", [_vm._v("v-model")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("Use to sync accordion being open/closed")])]), _c("tr", [_c("td", [_vm._v("openedTitle")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("Title to display when accordion is open")])]), _c("tr", [_c("td", [_vm._v("closedTitle")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("Title to display when accordion is closed")])]), _c("tr", [_c("td", [_vm._v("title")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("(Optional) Overrides both open and closed titles")])]), _c("tr", [_c("td", [_vm._v("isOpened")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v("Have the accordion open by default")])]), _c("tr", [_c("td", [_vm._v("noBorder")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v("Alternative style with no border or padding")])]), _c("tr", [_c("td", [_vm._v("leftNav")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v("Alternative style for use in Left Navigation")])])])])]);
+}];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  Accordions$1,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const Accordions = __component__.exports;
+export {
+  Accordions as default
+};
 //# sourceMappingURL=Accordions.adb5413a.js.map

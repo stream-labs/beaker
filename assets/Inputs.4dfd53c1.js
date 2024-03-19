@@ -1,4 +1,220 @@
-var V=Object.defineProperty;var T=(t,e,a)=>e in t?V(t,e,{enumerable:!0,configurable:!0,writable:!0,value:a}):t[e]=a;var o=(t,e,a)=>(T(t,typeof e!="symbol"?e+"":e,a),a);import{C as v,P as i,V as b,n as g,d as P,r as R,c as y,W as w}from"./index.4fb8a6cb.js";import{C as D,R as O,S as A}from"./Selector.7d087e2e.js";import{D as j}from"./DemoSection.79ee11c0.js";import{F as G}from"./FormGroup.79b6121d.js";import{i as B}from"./ResizeObserver.es.bd9ff68d.js";import{o as C,T as k}from"./TextInput.6d9c9908.js";import{B as F}from"./Button.b26dacc2.js";import{F as M}from"./fuse.esm.249bd5bb.js";import"./Accordion.09c82396.js";import"./_baseClone.a549c660.js";var q=Object.defineProperty,L=Object.getOwnPropertyDescriptor,f=(t,e,a,n)=>{for(var s=n>1?void 0:n?L(e,a):e,l=t.length-1,r;l>=0;l--)(r=t[l])&&(s=(n?r(e,a,s):r(s))||s);return n&&s&&q(e,a,s),s};let m=class extends b{constructor(){super(...arguments);o(this,"$refs");o(this,"value");o(this,"width");o(this,"height");o(this,"options");o(this,"containerWidth",0)}get selectedItemIndex(){return this.options.findIndex(e=>e.value===this.value)}get totalRows(){const e=this.options.length,a=(parseInt(this.width,10)||64)+8,n=e*a;return Math.ceil(n/this.containerWidth)}get itemsPerRow(){const e=(parseInt(this.width,10)||64)+8;return Math.floor(this.containerWidth/e)}get itemsInFinalRow(){return this.options.length%this.itemsPerRow}get itemPosMatrix(){let e=[],a=1,n=1,s=this.options.length,l=0;for(;l<s;)e.push([a,n]),n++,n>this.itemsPerRow&&(n=1,a++),l++;return e}mounted(){this.$nextTick(()=>{const e=document.querySelector(".s-image-picker-input");new B((n,s)=>{for(const l of n){const{left:r,top:ye,width:S,height:we}=l.contentRect;this.containerWidth=S}}).observe(e),this.containerWidth=e.clientWidth})}emitInput(e){this.$emit("input",e)}setValueByKeyPress(e){let a=[...this.itemPosMatrix[this.selectedItemIndex]],n=this.selectedItemIndex;e==="UP"&&(a[0]<=1?a[0]=1:a[0]--),e==="DOWN"&&(a[0]>=this.totalRows?a[0]=this.totalRows:(a[0]++,a[1]>this.itemsInFinalRow&&(a[1]=this.itemsInFinalRow))),e==="LEFT"&&(a[0]<=1&&a[1]<=1?a[1]=1:a[0]>1&&a[1]===1?(a[0]--,a[1]=this.itemsPerRow):a[1]--),e==="RIGHT"&&(this.options.length<this.itemsPerRow&&a[1]>=this.options.length?a[1]=this.options.length:a[1]>=this.itemsInFinalRow&&a[0]===this.totalRows?a[1]=this.itemsInFinalRow:a[1]===this.itemsPerRow&&a[0]<this.totalRows?(a[0]++,a[1]=1):a[1]++),n=this.itemPosMatrix.findIndex(s=>s[0]===a[0]&&s[1]===a[1]),this.$refs.imagePickerItem[n].focus(),this.emitInput(this.options[n].value)}};f([i({default:"above"})],m.prototype,"value",2);f([i(String)],m.prototype,"width",2);f([i(String)],m.prototype,"height",2);f([i({default:()=>[{value:"above",title:"Above",image:"https://cdn.streamlabs.com/layouts/img/above.png"},{value:"banner",title:"Banner",image:"https://cdn.streamlabs.com/layouts/img/banner.png"},{value:"side",title:"Side",image:"https://cdn.streamlabs.com/layouts/img/side.png"}]})],m.prototype,"options",2);m=f([v({})],m);var $=function(){var e=this,a=e._self._c;return e._self._setupProxy,a("div",{staticClass:"s-image-picker-input"},e._l(e.options,function(n){return a("div",{key:n.value,ref:"imagePickerItem",refInFor:!0,staticClass:"s-image-picker-input__option",class:[e.value===n.value?"active":""],style:{width:e.width,height:e.height},attrs:{value:n.value,title:n.title,image:n.image,tabindex:e.value===n.value?"0":"-1"},on:{click:function(s){return e.emitInput(n.value)},keydown:[function(s){return!s.type.indexOf("key")&&e._k(s.keyCode,"up",38,s.key,["Up","ArrowUp"])?null:(s.preventDefault(),e.setValueByKeyPress("UP"))},function(s){return!s.type.indexOf("key")&&e._k(s.keyCode,"down",40,s.key,["Down","ArrowDown"])?null:(s.preventDefault(),e.setValueByKeyPress("DOWN"))},function(s){return!s.type.indexOf("key")&&e._k(s.keyCode,"left",37,s.key,["Left","ArrowLeft"])||"button"in s&&s.button!==0?null:(s.preventDefault(),e.setValueByKeyPress("LEFT"))},function(s){return!s.type.indexOf("key")&&e._k(s.keyCode,"right",39,s.key,["Right","ArrowRight"])||"button"in s&&s.button!==2?null:(s.preventDefault(),e.setValueByKeyPress("RIGHT"))}]}},[a("img",{attrs:{src:n.image}})])}),0)},E=[],H=g(m,$,E,!1,null,null,null,null);const z=H.exports,W=`<template>
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { C as Component, P as Prop, V as Vue, n as normalizeComponent, d as defineComponent, r as ref$1, c as computed, W as Watch } from "./index.4fb8a6cb.js";
+import { C as Checkbox, R as Radio, S as Selector } from "./Selector.7d087e2e.js";
+import { D as DemoSection } from "./DemoSection.79ee11c0.js";
+import { F as FormGroup } from "./FormGroup.79b6121d.js";
+import { i as index } from "./ResizeObserver.es.bd9ff68d.js";
+import { o as omit, T as TextInput } from "./TextInput.6d9c9908.js";
+import { B as Button } from "./Button.b26dacc2.js";
+import { F as Fuse } from "./fuse.esm.249bd5bb.js";
+import "./Accordion.09c82396.js";
+import "./_baseClone.a549c660.js";
+var __defProp$4 = Object.defineProperty;
+var __getOwnPropDesc$4 = Object.getOwnPropertyDescriptor;
+var __decorateClass$4 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$4(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$4(target, key, result);
+  return result;
+};
+let ImagePickerInput$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "$refs");
+    __publicField(this, "value");
+    __publicField(this, "width");
+    __publicField(this, "height");
+    __publicField(this, "options");
+    __publicField(this, "containerWidth", 0);
+  }
+  get selectedItemIndex() {
+    return this.options.findIndex((option) => option.value === this.value);
+  }
+  get totalRows() {
+    const items = this.options.length;
+    const itemsWidth = (parseInt(this.width, 10) || 64) + 8;
+    const total = items * itemsWidth;
+    return Math.ceil(total / this.containerWidth);
+  }
+  get itemsPerRow() {
+    const itemsWidth = (parseInt(this.width, 10) || 64) + 8;
+    return Math.floor(this.containerWidth / itemsWidth);
+  }
+  get itemsInFinalRow() {
+    return this.options.length % this.itemsPerRow;
+  }
+  get itemPosMatrix() {
+    let itemMap = [];
+    let currentRow = 1;
+    let currentColumn = 1;
+    let totalItems = this.options.length;
+    let count = 0;
+    while (count < totalItems) {
+      itemMap.push([currentRow, currentColumn]);
+      currentColumn++;
+      if (currentColumn > this.itemsPerRow) {
+        currentColumn = 1;
+        currentRow++;
+      }
+      count++;
+    }
+    return itemMap;
+  }
+  mounted() {
+    this.$nextTick(() => {
+      const imagePickerInput = document.querySelector(
+        ".s-image-picker-input"
+      );
+      const ro = new index((entries, observer) => {
+        for (const entry of entries) {
+          const { left, top, width, height } = entry.contentRect;
+          this.containerWidth = width;
+        }
+      });
+      ro.observe(imagePickerInput);
+      this.containerWidth = imagePickerInput.clientWidth;
+    });
+  }
+  emitInput(val) {
+    this.$emit("input", val);
+  }
+  setValueByKeyPress(direction) {
+    let currentPosition = [...this.itemPosMatrix[this.selectedItemIndex]];
+    let posIndex = this.selectedItemIndex;
+    if (direction === "UP") {
+      if (currentPosition[0] <= 1) {
+        currentPosition[0] = 1;
+      } else {
+        currentPosition[0]--;
+      }
+    }
+    if (direction === "DOWN") {
+      if (currentPosition[0] >= this.totalRows) {
+        currentPosition[0] = this.totalRows;
+      } else {
+        currentPosition[0]++;
+        if (currentPosition[1] > this.itemsInFinalRow) {
+          currentPosition[1] = this.itemsInFinalRow;
+        }
+      }
+    }
+    if (direction === "LEFT") {
+      if (currentPosition[0] <= 1 && currentPosition[1] <= 1) {
+        currentPosition[1] = 1;
+      } else if (currentPosition[0] > 1 && currentPosition[1] === 1) {
+        currentPosition[0]--;
+        currentPosition[1] = this.itemsPerRow;
+      } else {
+        currentPosition[1]--;
+      }
+    }
+    if (direction === "RIGHT") {
+      if (this.options.length < this.itemsPerRow && currentPosition[1] >= this.options.length) {
+        currentPosition[1] = this.options.length;
+      } else if (currentPosition[1] >= this.itemsInFinalRow && currentPosition[0] === this.totalRows) {
+        currentPosition[1] = this.itemsInFinalRow;
+      } else if (currentPosition[1] === this.itemsPerRow && currentPosition[0] < this.totalRows) {
+        currentPosition[0]++;
+        currentPosition[1] = 1;
+      } else {
+        currentPosition[1]++;
+      }
+    }
+    posIndex = this.itemPosMatrix.findIndex(
+      (pos) => pos[0] === currentPosition[0] && pos[1] === currentPosition[1]
+    );
+    this.$refs.imagePickerItem[posIndex].focus();
+    this.emitInput(this.options[posIndex].value);
+  }
+};
+__decorateClass$4([
+  Prop({ default: "above" })
+], ImagePickerInput$1.prototype, "value", 2);
+__decorateClass$4([
+  Prop(String)
+], ImagePickerInput$1.prototype, "width", 2);
+__decorateClass$4([
+  Prop(String)
+], ImagePickerInput$1.prototype, "height", 2);
+__decorateClass$4([
+  Prop({
+    default: () => [
+      {
+        value: "above",
+        title: "Above",
+        image: "https://cdn.streamlabs.com/layouts/img/above.png"
+      },
+      {
+        value: "banner",
+        title: "Banner",
+        image: "https://cdn.streamlabs.com/layouts/img/banner.png"
+      },
+      {
+        value: "side",
+        title: "Side",
+        image: "https://cdn.streamlabs.com/layouts/img/side.png"
+      }
+    ]
+  })
+], ImagePickerInput$1.prototype, "options", 2);
+ImagePickerInput$1 = __decorateClass$4([
+  Component({})
+], ImagePickerInput$1);
+const ImagePickerInput_vue_vue_type_style_index_0_lang = "";
+var _sfc_render$5 = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-image-picker-input" }, _vm._l(_vm.options, function(option) {
+    return _c("div", { key: option.value, ref: "imagePickerItem", refInFor: true, staticClass: "s-image-picker-input__option", class: [_vm.value === option.value ? "active" : ""], style: { width: _vm.width, height: _vm.height }, attrs: { "value": option.value, "title": option.title, "image": option.image, "tabindex": _vm.value === option.value ? "0" : "-1" }, on: { "click": function($event) {
+      return _vm.emitInput(option.value);
+    }, "keydown": [function($event) {
+      if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "up", 38, $event.key, ["Up", "ArrowUp"]))
+        return null;
+      $event.preventDefault();
+      return _vm.setValueByKeyPress("UP");
+    }, function($event) {
+      if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "down", 40, $event.key, ["Down", "ArrowDown"]))
+        return null;
+      $event.preventDefault();
+      return _vm.setValueByKeyPress("DOWN");
+    }, function($event) {
+      if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "left", 37, $event.key, ["Left", "ArrowLeft"]))
+        return null;
+      if ("button" in $event && $event.button !== 0)
+        return null;
+      $event.preventDefault();
+      return _vm.setValueByKeyPress("LEFT");
+    }, function($event) {
+      if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "right", 39, $event.key, ["Right", "ArrowRight"]))
+        return null;
+      if ("button" in $event && $event.button !== 2)
+        return null;
+      $event.preventDefault();
+      return _vm.setValueByKeyPress("RIGHT");
+    }] } }, [_c("img", { attrs: { "src": option.image } })]);
+  }), 0);
+};
+var _sfc_staticRenderFns$5 = [];
+var __component__$5 = /* @__PURE__ */ normalizeComponent(
+  ImagePickerInput$1,
+  _sfc_render$5,
+  _sfc_staticRenderFns$5,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const ImagePickerInput = __component__$5.exports;
+const InputsCode = `<template>
   <div>
     <h1>Inputs</h1>
 
@@ -728,32 +944,1488 @@ export default class Inputs extends Vue {
   ];
 }
 <\/script>
-`;var N=Object.defineProperty,U=Object.getOwnPropertyDescriptor,x=(t,e,a,n)=>{for(var s=n>1?void 0:n?U(e,a):e,l=t.length-1,r;l>=0;l--)(r=t[l])&&(s=(n?r(e,a,s):r(s))||s);return n&&s&&N(e,a,s),s};let h=class extends b{constructor(){super(...arguments);o(this,"label");o(this,"size");o(this,"value")}};x([i()],h.prototype,"label",2);x([i()],h.prototype,"size",2);x([i({default:!1})],h.prototype,"value",2);h=x([v({})],h);var Q=function(){var e=this,a=e._self._c;return e._self._setupProxy,a("div",{staticClass:"s-status-switch",class:{enabled:!!e.value},attrs:{tabindex:"0"},on:{click:function(n){return e.$emit("input",!e.value)},keydown:[function(n){return!n.type.indexOf("key")&&e._k(n.keyCode,"space",32,n.key,[" ","Spacebar"])?null:(n.preventDefault(),e.$emit("input",!e.value))},function(n){return!n.type.indexOf("key")&&e._k(n.keyCode,"enter",13,n.key,"Enter")?null:(n.preventDefault(),e.$emit("input",!e.value))}]}},[a("div",{staticClass:"s-status-switch__paddle",class:{"s-status-switch__paddle--small":e.size==="small"}}),e.label?a("label",[e._v(e._s(e.label))]):e._e(),e._t("default")],2)},Y=[],K=g(h,Q,Y,!1,null,null,null,null);const X=K.exports;var J=Object.defineProperty,Z=Object.getOwnPropertyDescriptor,p=(t,e,a,n)=>{for(var s=n>1?void 0:n?Z(e,a):e,l=t.length-1,r;l>=0;l--)(r=t[l])&&(s=(n?r(e,a,s):r(s))||s);return n&&s&&J(e,a,s),s};let u=class extends b{constructor(){super(...arguments);o(this,"$refs");o(this,"name");o(this,"label");o(this,"placeholder");o(this,"value");o(this,"error");o(this,"helpText");o(this,"cols");o(this,"rows");o(this,"maxLength");o(this,"autoResize");o(this,"maxHeight");o(this,"localValue","");o(this,"hasScroll",!1)}created(){this.$parent.$on("update",this.updateValue)}mounted(){this.updateSize(),this.updateCountPos()}focus(){this.$refs.textArea.focus()}get filteredListeners(){return C(this.$listeners,["input"])}get currentLength(){return this.value.length}updated(){this.updateCountPos()}onValueChange(e){this.$emit("input",e.target.value),this.updateSize()}onKeyUp(e){this.$emit("keyup",e.target.selectionStart)}onFocus(e){this.$emit("focus",e.target.selectionStart)}onClick(e){this.$emit("click",e.target.selectionStart)}updateValue(e){this.$refs.textArea.value=e,this.$emit("input",e)}updateSize(){if(this.autoResize){this.$refs.textArea.style.cssText="height:auto;";const e=this.$refs.textArea.scrollHeight>this.maxHeight&&this.maxHeight?this.maxHeight+2:this.$refs.textArea.scrollHeight+2;this.$refs.textArea.style.cssText="height:"+e+"px"}}updateCountPos(){this.$nextTick(()=>{const e=this.$refs.textArea;this.hasScroll=e.scrollHeight>e.clientHeight})}};p([i()],u.prototype,"name",2);p([i()],u.prototype,"label",2);p([i()],u.prototype,"placeholder",2);p([i()],u.prototype,"value",2);p([i()],u.prototype,"error",2);p([i()],u.prototype,"helpText",2);p([i({default:100})],u.prototype,"cols",2);p([i({default:3})],u.prototype,"rows",2);p([i()],u.prototype,"maxLength",2);p([i()],u.prototype,"autoResize",2);p([i()],u.prototype,"maxHeight",2);u=p([v({})],u);var ee=function(){var e=this,a=e._self._c;return e._self._setupProxy,a("div",{staticClass:"s-form-area",class:{"s-form-area--with-label":e.label}},[a("div",{staticClass:"s-form-area__container"},[a("textarea",e._g({ref:"textArea",class:{"s-form-area__input":!0,"s-form-area__input--error":!!e.error,"s-form-area__input--count":!!e.maxLength},attrs:{name:e.name,cols:e.cols,rows:e.rows,placeholder:e.placeholder,maxlength:e.maxLength},domProps:{value:e.value},on:{input:e.onValueChange,focus:e.onFocus,click:e.onClick,keyup:e.onKeyUp}},e.filteredListeners)),e.label?a("label",{staticClass:"s-form-area__label",class:{"s-form-area__label--top":e.value!==""}},[e._v(e._s(e.label))]):e._e(),e.error?a("div",{staticClass:"s-form-area__input-error"},[a("i",{staticClass:"icon-error"}),e._v(" "+e._s(e.error)+" ")]):e._e(),a("div",{staticClass:"s-form-area__characters",class:{"s-form-area__characters--scrollbar":e.hasScroll}},[e.maxLength?a("span",{staticClass:"s-form-area__char-count"},[e._v(e._s(e.currentLength)+"/"+e._s(e.maxLength))]):e._e()])]),a("p",{directives:[{name:"show",rawName:"v-show",value:e.helpText,expression:"helpText"}],staticClass:"s-form-area__help-text"},[e._v(e._s(e.helpText))])])},te=[],ae=g(u,ee,te,!1,null,null,null,null);const I=ae.exports,ne=P({components:{TextInput:k,TextArea:I,Button:F},props:{name:{type:String},label:{type:String},placeholder:{type:String},buttonText:{type:String,default:"Add Tag"},buttonVariation:{type:String,default:"default"},value:{type:Array,default:()=>[]},inputValidation:{type:String},prefix:{type:String},tagVariation:{type:String,default:"default"},maxItems:{type:Number,default:25}},setup(t,{attrs:e}){const a=R(""),n=y(()=>`s-tagging-input__tag s-tagging-input__tag--${t.tagVariation}`),s=y(()=>C(e,["input"]));return{textInputValue:a,tagClasses:n,filteredListeners:s,onRemove:r=>{t.value.splice(r,1)}}},methods:{onAdd(){if(this.$validator.errors.items.length!==0||this.value.length>=this.maxItems)return;this.textInputValue=this.textInputValue.trim(),!this.value.find(e=>this.prefix&&!this.textInputValue.startsWith(this.prefix)?e.toLowerCase()===this.prefix+this.textInputValue.trim().toLowerCase():e.toLowerCase()===this.textInputValue.trim().toLowerCase())&&this.textInputValue.length!==0&&(this.prefix&&!this.textInputValue.startsWith(this.prefix)&&(this.textInputValue=this.prefix+this.textInputValue),this.value.push(this.textInputValue)),this.textInputValue=""}}});var se=function(){var e=this,a=e._self._c;return e._self._setupProxy,a("div",{staticClass:"s-tagging-input"},[a("div",{staticClass:"s-tagging-input__container"},[a("text-input",e._g({directives:[{name:"validate",rawName:"v-validate",value:e.inputValidation,expression:"inputValidation"}],attrs:{slot:"input",label:e.label,placeholder:e.placeholder,name:e.name,type:"text",error:e.errors.first(e.name)},on:{keydown:function(n){return!n.type.indexOf("key")&&e._k(n.keyCode,"enter",13,n.key,"Enter")?null:(n.preventDefault(),e.onAdd.apply(null,arguments))}},slot:"input",model:{value:e.textInputValue,callback:function(n){e.textInputValue=n},expression:"textInputValue"}},e.$listeners)),a("Button",{attrs:{variation:e.buttonVariation,title:e.buttonText,disabled:e.value.length>=e.maxItems,type:"button"},on:{click:e.onAdd}})],1),a("div",{staticClass:"s-tagging-input__tags"},e._l(e.value,function(n,s){return a("div",{key:s,class:e.tagClasses},[a("div",{staticClass:"s-tagging-input__tag-text"},[e._v(e._s(n))]),a("i",{staticClass:"s-tagging-input__tag-icon icon-close",on:{click:function(l){return e.onRemove(s)}}})])}),0)])},oe=[],le=g(ne,se,oe,!1,null,null,null,null);const ie=le.exports,re=[{variable:"{min}",description:"Replaces {min} with the minimum amount of loyalty that has to be bet.",example:'Betting is open for "{title}" use {command} <{options}> <{min}-{max}> to register your bet. ',result:'Betting is open for "How many tries will this boss take me?" use !bet <1 | 2 | 3 | 4 | 5+> <10-1000> to register your bet',tags:["Betting"]},{variable:"{max}",description:"Replaces {max} with the maximum amount of loyalty that can be bet.",example:'Betting is open for "{title}" use {command} <{options}> <{min}-{max}> to register your bet. ',result:'Betting is open for "How many tries will this boss take me?" use !bet <1 | 2 | 3 | 4 | 5+> <10-1000> to register your bet',tags:["Betting"]},{variable:"{option}",description:"Replaces {option} the winning option of a poll or betting.",example:"{option} was the most voted option of the poll with {amount}% of the votes.",result:"Legend of Zelda was the most voted option of the poll with 56% of the votes.",tags:["Betting","Poll"]},{variable:"{options}",description:"Replaces {options} with all the available options for a poll or betting.",example:'A poll has opened for "Which started should I pick?" use !vote <{options}> to vote.',result:'A poll has opened for "Which started should I pick?" use !vote <Pikachu | Squirtle | Charmander> to vote.',tags:["Betting","Poll"]},{variable:"{cooldown}",description:"Replaces {cooldown} variable with command's remaining cooldown.",example:"{user.name} -> {command} is on cooldown for {cooldown} seconds.",result:"Streamlabs -> !test is on cooldown for 20 seconds.",tags:["Command Settings"]},{variable:"{command}",description:"Replaces {command} with current command that's being used.",example:"This command is called {command}",result:"This command is called !test",tags:["Custom Commands"]},{variable:"{user.id}",description:"Replaces {user.id} variable with the id of the current user.",example:"My Youtube Channel Id is https://youtube.com/channel/{user.id}",result:"My Youtube Channel Id is https://youtube.com/channel/UCNL8jaJ9hId96P13QmQXNtA",tags:["Custom Commands"]},{variable:"{user.name}",description:"Replaces {user.name} variable with the viewers name.",example:"My name is {user.name}",result:"My name is Streamlabs",tags:["Custom Commands"]},{variable:"{randnum.<min>-<max>}",description:"Replaces {randnum.<min>-<max>} variable the random number between min & max.",example:"{user.name}, you have rolled {randnum.1-100}.",result:"Streamlabs, you have rolled 100.",tags:["Custom Commands"]},{variable:"{target.name}",description:"Replaces {target.name} variable with the target's name.",example:"{user.name} gives {target.name} a hug!",result:"Streamlabs gives RedUnicornCat38745 a hug!",tags:["Custom Commands"]},{variable:"{arg}",description:"Replaced by a word in a specific position, arg is denoted by a number.",example:"Your first three words: {1} {2} {3}",result:"Your first three words: I am going",tags:["Custom Commands"]},{variable:"{start:end}",description:"Replaced with all the words between the start and end.",example:"The colors you picked are: {1:3}",result:"he colors you picked are: Red Green Blue",tags:["Custom Commands"]},{variable:"{uptime}",description:"Replaces {uptime} with how long the stream has been live for. (Twitch/Mixer only)",example:"The stream has been live for {uptime}",result:"The stream has been live for 10 minutes 50 seconds",tags:["Custom Commands"]},{variable:"{time.<continent>/<city>}",description:"Replaces {time.<continent>/<city>} variable with the current time for that specific continent/city.",example:"Right now it is {time.Australia/Sydney} in Sydney.",result:"Right now it is 12:00 in Sydney.",tags:["Custom Commands"]},{variable:"{readapi.<url_here>}",description:"Replaces {readapi.<url_here>} variable with the data from the API endpoint.",example:"The stream has been live for {readapi.https://decapi.me/twitch/uptime?channel=streamlabs}",result:"The stream has been live for 17 hours, 50 minutes, 55 seconds",tags:["Custom Commands"]},{variable:"{merch.link}",description:"Replaces {merch.link} with your Streamlabs Merch link.",example:"You can checkout my merch store over at {merch.link}",result:"You can checkout my merch store over at https://streamlabs.com/streamlabs#/merch",tags:["Custom Commands"]},{variable:"{donation.link}",description:"Replaces {donation.link} with your Streamlabs donation link.",example:"Do you want to support the stream? You can do so by going to {donation.link}",result:"Do you want to support the stream? You can do so by going to https://streamlabs.com/streamlabs",tags:["Custom Commands"]},{variable:"{facemask.link}",description:"Replaces {facemask.link} with your Streamlabs Facemask Donation link.",example:"Do you want to put awesome masks on my face? Go to {facemask.link}",result:"Do you want to put awesome masks on my face? Go to https://streamlabs.com/streamlabs/masks",tags:["Custom Commands"]},{variable:"{channel.name}",description:"Replaces {channel.name} with your Channel name.",example:"Our channel is {channel.name}",result:"Our channel is Streamlabs",tags:["Custom Commands"]},{variable:"{streamlabels.<filename>}",description:"Replaces {streamlabels.<filename>} with the data from the streamlabels file.",example:"Session Top Donator: {streamlabels.session_top_donator}",result:"Session Top Donator: AnkhHeart",tags:["Custom Commands"]},{variable:"{count <name>}",description:"Increments the counter by one and displays it.",example:"Deaths: {count deaths}",result:"Deaths: 2",tags:["Custom Commands"]},{variable:"{count <name> +<value>}",description:"Increments the counter by your value and displays it.",example:"Deaths: {count deaths +5}",result:"Deaths: 7",tags:["Custom Commands"]},{variable:"{count <name> -<value>}",description:"Decrements the counter by your value and displays it.",example:"Deaths: {count deaths -5}",result:"Deaths: 2",tags:["Custom Commands"]},{variable:"{count <name> <value>}",description:"Sets the counter to your value and displays it.",example:"Deaths: {count deaths 100}",result:"Deaths: 100",tags:["Custom Commands"]},{variable:"{getcount <name>}",description:"Displays the specified counter.",example:"Deaths: {count deaths}",result:"Deaths: 100",tags:["Custom Commands"]},{variable:"{channel.subpoints}",description:"Replaces {channel.subpoints} with channel's sub points.",example:"Sub Count: {channel.subpoints}",result:"Sub Count: 100",tags:["Custom Commands","Twitch"]},{variable:"{user.followage}",description:"Replaces {user.followage} with the amount of time the user has been following the channel.",example:"{user.name} has been following the channel for {user.followage}",result:"AnkhHeart has been following the channel for 2 days 3 weeks",tags:["Custom Commands","Twitch","Mixer"]},{variable:"{target.followage}",description:"Replaces {target.followage} with the amount of time the target has been following the channel.",example:"{target.name} has been following the channel for {target.followage}",result:"AnkhHeart has been following the channel for 2 days 3 weeks",tags:["Custom Commands","Twitch","Mixer"]},{variable:"{channel.title}",description:"Replaces {channel.title} with the title of the stream.",example:"The title is {channel.title}",result:"The title is Playing Apex Legends o.o",tags:["Custom Commands","Twitch","Mixer"]},{variable:"{user.title}",description:"Replaces {user.title} with the user's stream title.",example:"The title is {user.title}",result:"The title is Playing Apex Legends o.o",tags:["Custom Commands","Twitch","Mixer"]},{variable:"{target.title}",description:"Replaces {target.title} with the target's stream title.",example:"The title is {target.title}",result:"The title is Playing Apex Legends o.o",tags:["Custom Commands","Twitch","Mixer"]},{variable:"{touser.title}",description:"Replaces {touser.title} with the target's or user's stream title.",example:"The title is {touser.title}",result:"The title is Playing Apex Legends o.o",tags:["Custom Commands","Twitch","Mixer"]},{variable:"{channel.game}",description:"Replaces {channel.game} with the currently played game.",example:"The game is {channel.game}",result:"The game is Apex Legends",tags:["Custom Commands","Twitch","Mixer"]},{variable:"{user.game}",description:"Replaces {user.game} with user's last played game.",example:"The game is {user.game}",result:"The game is Apex Legends",tags:["Custom Commands","Twitch","Mixer"]},{variable:"{target.game}",description:"Replaces {target.game} with target's last played game.",example:"The game is {target.game}",result:"The game is Apex Legends",tags:["Custom Commands","Twitch","Mixer"]},{variable:"{touser.game}",description:"Replaces {touser.game} with target's or user's last played game.",example:"The game is {touser.game}",result:"The game is Apex Legends",tags:["Custom Commands","Twitch","Mixer"]},{variable:"{channel.followers}",description:"Replaces {channel.followers} with channel's follower count.",example:"Follower Count: {channel.followers}",result:"Follower Count: 123",tags:["Custom Commands","Twitch","Mixer"]},{variable:"{user.followers}",description:"Replaces {user.followers} with user's follower count.",example:"Follower Count: {user.followers}",result:"Follower Count: 123",tags:["Custom Commands","Twitch","Mixer"]},{variable:"{target.followers}",description:"Replaces {target.followers} with target's follower count.",example:"Follower Count: {target.followers}",result:"Follower Count: 123",tags:["Custom Commands","Twitch","Mixer"]},{variable:"{touser.followers}",description:"Replaces {touser.followers} with target's or user's follower count.",example:"Follower Count: {touser.followers}",result:"Follower Count: 123",tags:["Custom Commands","Twitch","Mixer"]},{variable:"{channel.subs}",description:"Replaces {channel.subs} with channel's sub count.",example:"Sub Count: {channel.subs}",result:"Sub Count: 100",tags:["Custom Commands","Twitch","Mixer"]},{variable:"{reward}",description:"Replaces {reward} with the amount of currency you have earned through gamble.",example:"Rolled {amount}, @{user.name} won {reward} {loyalty.name} and now has {user.points} {loyalty.name}",result:"Rolled 100, @Streamlabs won 200 points and now has 500 points.",tags:["Gamble"]},{variable:"{prize}",description:"Replaces {prize} with the giveaway prize. Only works with giveaways.",example:"A {prize} raffle has started for {permission}. Use {command} to enter the raffle.",result:"A t-shirt raffle has started for everyone. Use !raffle to enter the raffle.",tags:["Giveaways"]},{variable:"{permission}",description:"Replaces {permission} with the permission required to join a Giveaway.",example:"A {prize} raffle has started for {permission}. Use {command} to enter the raffle.",result:"A t-shirt raffle has started for everyone. Use !raffle to enter the raffle.",tags:["Giveaways"]},{variable:"{amount}",description:"Replaces {amount} variable with donation amount, tickets, months, etc..",example:"@{user.name}, you received {amount} ticket(s)!",result:"@Streamlabs, you received 10 ticket(s)!",tags:["Giveaways"]},{variable:"{link}",description:"Replaces {link} with your Merch giveaway redemption link.",example:"You can redeem your giveaway prize over at {link}",result:"You can redeem your giveaway prize over at https://streamlabs.com/streamlabs?redemption=true#/merch",tags:["Giveaways"]},{variable:"{timer}",description:"Replaces {timer} with the remaining time of a giveaway/poll/betting countdown timer. Only available in the repeat message.",example:'A Poll is going on for "{title}" use {command} <{options}> to vote. You have {timer} seconds left to join.',result:'A Poll is going on for "What starter should I pick?" use !vote <Squirtle | Charmander | Bulbasaur> to vote. You have 600 seconds left to join.',tags:["Giveaways","Betting","Poll"]},{variable:"{results}",description:"Replaces {results} with the names of the survivors or a heist or poll results.",example:"A few managed to survive: {results}",result:"A few managed to survive: SOWHOYOUdotCOM (200), AnkhHeart (200)",tags:["Heist","Poll"]},{variable:"{duration}",description:"Replaces {duration} with the duration of the permit.",example:"@{target.name}, You have been given {duration} seconds to post a link!",result:"@AnkhHeart, You have 60 seconds to post a link!",tags:["Link Protection"]},{variable:"{loyalty.toppoints}",description:"Replaces {loyalty.toppoints} with a list of the top 10 users by points.",example:"Top {amount} Points: {loyalty.toppoints}.",result:"Top 10 Points: 1. AnkhHeart (1000), 2. H4rsh4 (999), 3. MissBlackBear (990), 4. Raichu (989), ... ",tags:["Loyalty"]},{variable:"{loyalty.tophours}",description:"Replaces {loyalty.tophours} with a list of the top 10 users by hours.",example:"Top {amount} Points: {loyalty.tophours}.",result:"Top 10 Points: 1. AnkhHeart (5.8), 2. H4rsh4 (4.2), 3. MissBlackBear (3.5), 4. Raichu (3.4), ... ",tags:["Loyalty"]},{variable:"{user.points}",description:"Replaces {user.points} with the user's loyalty.",example:"@{user.name}, you have {user.points} {loyalty.name}.",result:"@Streamlabs, you have 1000 points.",tags:["Loyalty","Custom Commands"]},{variable:"{user.time}",description:"Replaces {user.time} with the user's time watched.",example:"@{user.name} has watched the stream for {user.time} minutes.",result:"@Streamlabs has watched the stream for 2 hours.",tags:["Loyalty","Custom Commands"]},{variable:"{loyalty.name}",description:"Replaces {loyalty.name} with the loyalty name.",example:"My loyalty is called {loyalty.name}.",result:"My loyalty is called points.",tags:["Loyalty","Custom Commands"]},{variable:"{media.name}",description:"Replaces {media.name} with the media requests title.",example:'@{user.name}, "{media.name}" has been added to the queue.',result:'@Streamlabs, "Electric Swing Circus - Golden Hour" has been added to the queue.',tags:["Media Share"]},{variable:"{media.requestedby}",description:"Replaces {media.requestedby} with the name of who requested the media.",example:'@{user.name}, currently "{media.name}" is playing which was requested by {media.requestedby}.',result:'@Streamlabs, currently "Electric Swing Circus - Golden Hour" is playing which was requested by AnkhHeart.',tags:["Media Share"]},{variable:"{currency}",description:"Replaces {currency} with current selected currency.",example:"@{user.name} just tipped {amount} {currency}!",result:"@Streamlabs just tipped 20 USD!",tags:["Notifications"]},{variable:"{position}",description:"Replaces {position} with the queue position of the user.",example:"@{user.name}, you have joined the queue at position #{position}.",result:"@Streamlabs, you have joined the queue at position #1.",tags:["Queue"]},{variable:"{users}",description:"Replaces {users} with all the users that are up next in the queue.",example:"Next up: {users}",result:"Next up: sowhoyoudotcom, ankhheart",tags:["Queue"]},{variable:"{title}",description:"Replaces {title} with the title of the Poll, Bet or Queue.",example:"A queue has opened for {title}. Type {command} <note> to join!",result:"A queue has opened for Warframe. Type !join <note> to join!",tags:["Queue","Poll","Betting"]},{variable:"{quote.id}",description:"Replaces {quote.id} with the id of the quote.",example:"Quote #{quote.id} {quote.msg} [{quote.game}] [{quote.date}]",result:'Quote #1 "I am a cat! Meow!" [Final Fantasy XIV] [01/04/2019]',tags:["Quotes"]},{variable:"{quote.game}",description:"Replaces {quote.game} with the game of the quote.",example:"Quote #{quote.id} {quote.msg} [{quote.game}] [{quote.date}]",result:'Quote #1 "I am a cat! Meow!" [Final Fantasy XIV] [01/04/2019]',tags:["Quotes"]},{variable:"{quote.msg}",description:"Replaces {quote.msg} with quote itself.",example:"Quote #{quote.id} {quote.msg} [{quote.game}] [{quote.date}]",result:'Quote #1 "I am a cat! Meow!" [Final Fantasy XIV] [01/04/2019]',tags:["Quotes"]},{variable:"{quote.date}",description:"Replaces {quote.date} with quote's  date.",example:"Quote #{quote.id} {quote.msg} [{quote.game}] [{quote.date}]",result:'Quote #1 "I am a cat! Meow!" [Final Fantasy XIV] [01/04/2019]',tags:["Quotes"]}];var ue=Object.defineProperty,pe=Object.getOwnPropertyDescriptor,d=(t,e,a,n)=>{for(var s=n>1?void 0:n?pe(e,a):e,l=t.length-1,r;l>=0;l--)(r=t[l])&&(s=(n?r(e,a,s):r(s))||s);return n&&s&&ue(e,a,s),s};let c=class extends b{constructor(){super(...arguments);o(this,"$refs");o(this,"result",[]);o(this,"queryLength",0);o(this,"phaseOne",!1);o(this,"phaseTwo",!1);o(this,"searchFromClick",!1);o(this,"fuse",null);o(this,"value","");o(this,"currentResult",0);o(this,"cursorPos",0);o(this,"input_cursor");o(this,"jsonSearch");o(this,"searchData",this.jsonSearch);o(this,"search");o(this,"eventName");o(this,"inputChangeEventName")}get options(){return{caseSensitive:!1,includeScore:!0,includeMatches:!1,tokenize:!1,matchAllTokens:!1,findAllMatches:!0,shouldSort:!0,threshold:.2,location:1,distance:10,maxPatternLength:12,minMatchCharLength:0,keys:["variable"]}}get noResults(){return this.result.length===0&&this.value!=""}get limitedResult(){return this.result.reverse()}get selectedResult(){return this.limitedResult[this.currentResult].item.variable}get currentLength(){return this.value.length}get calcTransform(){return"transform: translateY(-"+this.$refs.variableMenu.offsetHeight+"px);"}afterOpen(e){e.style.height="auto"}open(e){let a=getComputedStyle(e).width;e.style.width=a,e.style.position="absolute",e.style.visibility="hidden",e.style.height="auto";let n=getComputedStyle(e).height;e.style.width=null,e.style.position=null,e.style.visibility=null,e.style.height=0,getComputedStyle(e).height,setTimeout(()=>{e.style.height=n})}close(e){let a=getComputedStyle(e).height;e.style.height=a,getComputedStyle(e).height,setTimeout(()=>{e.style.height=0})}watchCursor(e){this.cursorPos=e.target.selectionStart,this.getSearchString(),this.noResults&&this.playClosingSequence(),this.value.length<=0&&this.playClosingSequence()}watchInput(e){this.value=e.target.value}watchValue(){this.$parent.$emit(this.inputChangeEventName,this.value),this.$emit(this.inputChangeEventName,this.value),this.value.includes("{")&&(this.getSearchString(),this.noResults&&this.playClosingSequence(),this.value.length<=0&&this.playClosingSequence()),this.value===""&&(this.result=[])}watchResult(e,a){(this.noResults||this.value==""||e.length!=a.length)&&(this.currentResult=this.limitedResult.length-1),this.$emit(this.eventName,this.result),this.$parent.$emit(this.eventName,this.result),this.noResults?this.playClosingSequence():this.playOpeningSequence()}getSearchString(){if(this.value.trim()==="")this.result=[];else{const e=this.cursorPos,a=this.value.lastIndexOf("{",e-1),n=this.value.substring(a,e),s=n.lastIndexOf("}");e>a&&s===-1&&a!==-1?(this.result=this.fuse.search(n),this.queryLength=n.length):this.playClosingSequence()}}keyEvent(e){e.keyCode===38&&this.currentResult>0&&(this.currentResult<=this.limitedResult.length-7&&this.$refs.resultArea.scrollBy(0,-32),e.preventDefault(),e.stopPropagation(),this.currentResult--),e.keyCode===40&&this.currentResult<this.limitedResult.length-1&&(this.currentResult>=6&&this.$refs.resultArea.scrollBy(0,32),e.stopPropagation(),this.currentResult++),e.keyCode===13&&this.phaseOne&&this.result!=[]&&(e.preventDefault(),e.stopPropagation(),this.mergeValues()),e.keyCode===27&&this.phaseOne&&this.blurSearch(),e.keyCode===9&&this.phaseOne&&this.result!=[]&&(e.preventDefault(),e.stopPropagation(),this.mergeValues())}mergeValues(){const e=this.cursorPos;this.value=this.value.substring(0,e)+this.selectedResult.substring(this.queryLength)+this.value.substring(e),setTimeout(()=>{this.result=[]}),this.$emit("update",this.value),this.searchFromClick&&this.searchFromClick}playClosingSequence(){this.phaseTwo&&(setTimeout(()=>{this.phaseTwo=!this.phaseTwo},100),setTimeout(()=>{this.phaseOne=!this.phaseOne},200))}playOpeningSequence(){this.phaseOne||(this.phaseOne=!this.phaseOne,setTimeout(()=>{this.phaseTwo=!this.phaseTwo},100))}initFuse(){this.fuse=new M(this.searchData,this.options),this.search&&(this.value=this.search)}blurSearch(){this.currentResult=0}mounted(){this.initFuse()}};d([i()],c.prototype,"input_cursor",2);d([i()],c.prototype,"jsonSearch",2);d([i({default:""})],c.prototype,"search",2);d([i({default:"fuseResultsUpdated"})],c.prototype,"eventName",2);d([i({default:"fuseInputChanged"})],c.prototype,"inputChangeEventName",2);d([w("value",{immediate:!0})],c.prototype,"watchValue",1);d([w("result")],c.prototype,"watchResult",1);c=d([v({})],c);var ce=function(){var e=this,a=e._self._c;return e._self._setupProxy,a("div",{ref:"variableMenu",staticClass:"s-variablemenu",on:{input:function(n){return e.watchInput(n)},focus:function(n){return e.watchCursor(n)},click:function(n){return e.watchCursor(n)},keyup:function(n){return e.watchCursor(n)},keydown:e.keyEvent}},[a("transition",{attrs:{name:"expand",tag:"div"},on:{enter:e.open,"after-enter":e.afterOpen,leave:e.close}},[e.phaseTwo&&e.limitedResult.length>=1?a("div",{ref:"resultArea",staticClass:"s-variablemenu-results__cont",style:e.calcTransform},[a("transition-group",{attrs:{name:"s-variablemenu--fadeX"}},e._l(e.limitedResult,function(n,s){return a("div",{key:n.item.variable,staticClass:"s-variablemenu-results",class:{"s-active-result":e.currentResult===s},on:{mouseover:function(l){e.currentResult=s},mousedown:e.mergeValues,mouseup:e.blurSearch}},[a("div",{staticClass:"s-variablemenu__result--title"},[e._v(" "+e._s(n.item.variable)+" ")]),a("div",{staticClass:"s-variablemenu__result--desc"},[e._v(" "+e._s(n.item.description)+" ")])])}),0)],1):e._e()]),a("div",{ref:"inputCont",staticClass:"s-variablemenu--searchbar__cont"},[e._t("input")],2)],1)},de=[],me=g(c,ce,de,!1,null,null,null,null);const he=me.exports;var ge=Object.defineProperty,ve=Object.getOwnPropertyDescriptor,be=(t,e,a,n)=>{for(var s=n>1?void 0:n?ve(e,a):e,l=t.length-1,r;l>=0;l--)(r=t[l])&&(s=(n?r(e,a,s):r(s))||s);return n&&s&&ge(e,a,s),s};let _=class extends b{constructor(){super(...arguments);o(this,"demoCode",W);o(this,"data","");o(this,"radioValue",!0);o(this,"checkboxValue1",!0);o(this,"checkboxValue2",!1);o(this,"checkboxValue3",!0);o(this,"checkboxValue4",!1);o(this,"selected","Option A");o(this,"selectedGroup","Option A");o(this,"multipleSelected",["Option B","Option C"]);o(this,"optionGroups",[{group:"Group A",items:["Option A","Option B","Option C"]},{group:"Group B",items:["Option A","Option B","Option C"]},{group:"Group C",items:["Option A","Option B","Option C"]}]);o(this,"optionSelected",["Glass Pint","Glass Beer"]);o(this,"objectSelected",{value:"glass-pint",title:"Glass Pint",image:"https://cdn.streamlabs.com/static/tip-jar/jars/glass-pint.png"});o(this,"statusValue",!0);o(this,"testingInput",null);o(this,"layoutValue","above");o(this,"jarValue","glass-pint");o(this,"varData",re);o(this,"variAreaValue","");o(this,"variTextValue","");o(this,"textInputValue","test");o(this,"numberInputValue",0);o(this,"emailInputValue","");o(this,"passwordInputValue","");o(this,"errorTextInputValue","");o(this,"textAreaInputValue","");o(this,"textInputPlaceholder","Placeholder");o(this,"emailInputPlaceholder","Placeholder");o(this,"passwordInputPlaceholder","Placeholder");o(this,"options",[{value:"glass-pint",title:"Glass Pint",image:"https://cdn.streamlabs.com/static/tip-jar/jars/glass-pint.png"},{value:"glass-beer",title:"Glass Beer",image:"https://cdn.streamlabs.com/static/tip-jar/jars/glass-beer.png"},{value:"glass-beer-2",title:"Glass Beer 2",image:"https://cdn.streamlabs.com/static/tip-jar/jars/glass-beer2.png"},{value:"glass-coffee",title:"Glass Coffee",image:"https://cdn.streamlabs.com/static/tip-jar/jars/glass-coffee.png"},{value:"glass-fancy",title:"Glass Fancy",image:"https://cdn.streamlabs.com/static/tip-jar/jars/glass-fancy.png"},{value:"glass-whiskey",title:"Glass Whiskey",image:"https://cdn.streamlabs.com/static/tip-jar/jars/glass-whiskey.png"},{value:"glass-burbon",title:"Glass Burbon",image:"https://cdn.streamlabs.com/static/tip-jar/jars/glass-burbon.png"},{value:"glass-martini",title:"Glass Martini",image:"https://cdn.streamlabs.com/static/tip-jar/jars/glass-martini.png"},{value:"glass-beer-3",title:"Glass Beer 3",image:"https://cdn.streamlabs.com/static/tip-jar/jars/glass-beer3.png"},{value:"glass-wine",title:"Glass Wine",image:"https://cdn.streamlabs.com/static/tip-jar/jars/glass-wine.png"},{value:"glass-baileys",title:"Glass Baileys",image:"https://cdn.streamlabs.com/static/tip-jar/jars/glass-baileys.png"},{value:"glass-champagne",title:"Glass Champagne",image:"https://cdn.streamlabs.com/static/tip-jar/jars/glass-champagne.png"},{value:"glass-coffee-no-handle",title:"Glass Coffee No Handle",image:"https://cdn.streamlabs.com/static/tip-jar/jars/glass-coffee-no-handle.png"},{value:"glass-plinko",title:"Glass Plinko",image:"https://cdn.streamlabs.com/static/tip-jar/jars/glass-plinko.png"},{value:"glass-stocking",title:"Glass Stocking",image:"https://cdn.streamlabs.com/static/tip-jar/jars/glass-stocking.png"},{value:"glass-snowman",title:"Glass Snowman",image:"https://cdn.streamlabs.com/static/tip-jar/jars/glass-snowman.png"}]);o(this,"show",["Bounce","Bounce In","Bounce In Down","Bounce In Left","Bounce In Right","Bounce In Up","Fade In","Fade In Down","Fade In Down Big","Fade In Left","Fade In Left Big","Fade In Right","Fade In","Fade In Up","Fade In Up Big"])}};_=be([v({components:{Checkbox:D,DemoSection:j,FormGroup:G,ImagePickerInput:z,Radio:O,Selector:A,StatusSwitch:X,TaggingInput:ie,TextArea:I,TextInput:k,VariableMenu:he}})],_);var fe=function(){var e=this,a=e._self._c;return e._self._setupProxy,a("div",[a("h1",[e._v("Inputs")]),a("div",{staticClass:"section"},[a("h2",[e._v("Text Inputs")]),e._m(0),e._m(1),a("DemoSection",{attrs:{title:"Text Inputs",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[a("FormGroup",[a("TextInput",{attrs:{slot:"input",type:"text",label:"Text Input",name:"textExample",placeholder:e.textInputPlaceholder,autoComplete:"on"},slot:"input",model:{value:e.textInputValue,callback:function(n){e.textInputValue=n},expression:"textInputValue"}}),a("TextInput",{directives:[{name:"validate",rawName:"v-validate",value:"required|between:0,100",expression:"'required|between:0,100'"}],attrs:{slot:"input",type:"number",label:"Number Input",name:"numberinputExample",placeholder:e.textInputPlaceholder,min:0,max:100,error:e.errors.first("numberinputExample")},slot:"input",model:{value:e.numberInputValue,callback:function(n){e.numberInputValue=n},expression:"numberInputValue"}}),a("TextInput",{attrs:{slot:"input",type:"email",label:"Email Input",name:"emailExample",placeholder:e.emailInputPlaceholder},slot:"input",model:{value:e.emailInputValue,callback:function(n){e.emailInputValue=n},expression:"emailInputValue"}}),a("TextInput",{attrs:{slot:"input",type:"password",label:"Password Input",name:"passwordExample",placeholder:e.passwordInputPlaceholder,disabled:""},slot:"input",model:{value:e.passwordInputValue,callback:function(n){e.passwordInputValue=n},expression:"passwordInputValue"}}),a("TextInput",{attrs:{slot:"input",type:"text",label:"Input With Error",name:"textExample",placeholder:e.textInputPlaceholder,error:"Enter a number"},slot:"input",model:{value:e.errorTextInputValue,callback:function(n){e.errorTextInputValue=n},expression:"errorTextInputValue"}}),a("TextArea",{attrs:{slot:"input",label:"Text Area",name:"myarea",placeholder:"This is where you put some cool stuff",autoResize:"true",maxLength:1e3,maxHeight:100},slot:"input",model:{value:e.textAreaInputValue,callback:function(n){e.textAreaInputValue=n},expression:"textAreaInputValue"}})],1)]},proxy:!0}])})],1),a("div",{staticClass:"section"},[a("h2",[e._v("Text Inputs with Variable Menu Wrapper")]),a("p",[e._v(" A new way to navigate variables, just wrap your input with the Variable Menu. This is not work with FormGroup preformatting. ")]),a("DemoSection",{attrs:{title:"Variable Menu",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[a("VariableMenu",{attrs:{jsonSearch:e.varData}},[a("text-input",{attrs:{slot:"input",type:"text",name:"textExample",placeholder:"w/ Variable Menu"},slot:"input",model:{value:e.variTextValue,callback:function(n){e.variTextValue=n},expression:"variTextValue"}})],1),a("VariableMenu",{attrs:{jsonSearch:e.varData}},[a("TextArea",{ref:"textArea",attrs:{slot:"input",name:"myarea",placeholder:"w/ Variable Menu",rows:"3",maxLength:1e3,maxHeight:100},slot:"input",model:{value:e.variAreaValue,callback:function(n){e.variAreaValue=n},expression:"variAreaValue"}})],1)]},proxy:!0}])}),e._m(2)],1),a("div",{staticClass:"section"},[a("h2",[e._v("Tagging Input")]),e._m(3),a("DemoSection",{attrs:{title:"Tagging Input",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[a("TaggingInput",{attrs:{name:"aliases",placeholder:"!hello",maxItems:"10",inputValidation:"required"},on:{keydown:function(n){if(!n.type.indexOf("key")&&e._k(n.keyCode,"space",32,n.key,[" ","Spacebar"]))return null;n.preventDefault()}}})]},proxy:!0}])})],1),a("div",{staticClass:"section"},[a("h2",[e._v("Selector")]),e._m(4),a("DemoSection",{attrs:{title:"Selector",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[a("FormGroup",[a("Selector",{attrs:{slot:"input",options:["Option A","Option B","Option C"]},slot:"input",model:{value:e.selected,callback:function(n){e.selected=n},expression:"selected"}}),a("Selector",{attrs:{slot:"input",options:e.optionGroups,"group-values":"items","group-label":"group",searchable:!1},slot:"input",model:{value:e.selectedGroup,callback:function(n){e.selectedGroup=n},expression:"selectedGroup"}}),a("Selector",{attrs:{slot:"input",options:["Option A","Option B","Option C"],disabled:""},slot:"input",model:{value:e.selected,callback:function(n){e.selected=n},expression:"selected"}}),a("Selector",{attrs:{slot:"input",multiple:"",options:["Option A","Option B","Option C"],searchable:!1},slot:"input",model:{value:e.multipleSelected,callback:function(n){e.multipleSelected=n},expression:"multipleSelected"}}),a("Selector",{attrs:{slot:"input",multiple:"",options:["Option A","Option B","Option C"],disabled:""},slot:"input",model:{value:e.multipleSelected,callback:function(n){e.multipleSelected=n},expression:"multipleSelected"}})],1)]},proxy:!0}])}),e._m(5)],1),a("div",{staticClass:"section"},[a("h2",[e._v("Checkboxes and Radios")]),e._m(6),a("div",{staticClass:"section"},[a("h2",[e._v("Single Checkbox")]),a("DemoSection",{attrs:{title:"Checkbox",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[a("Checkbox",{attrs:{id:"checkbox",name:"checkbox",label:"Checkbox Label"},model:{value:e.checkboxValue1,callback:function(n){e.checkboxValue1=n},expression:"checkboxValue1"}})]},proxy:!0}])})],1),a("div",{staticClass:"section"},[a("h2",[e._v("Checkbox Group")]),a("DemoSection",{attrs:{title:"Checkbox Group",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[a("div",{staticClass:"s-checkbox-group"},[a("Checkbox",{attrs:{id:"checkbox1",name:"checkbox1",label:"Checkbox Label 1"},model:{value:e.checkboxValue2,callback:function(n){e.checkboxValue2=n},expression:"checkboxValue2"}}),a("Checkbox",{attrs:{id:"checkbox2",name:"checkbox2",label:"Checkbox Label 2"},model:{value:e.checkboxValue3,callback:function(n){e.checkboxValue3=n},expression:"checkboxValue3"}}),a("Checkbox",{attrs:{id:"checkbox3",name:"checkbox3",label:"Checkbox Label 3"},model:{value:e.checkboxValue4,callback:function(n){e.checkboxValue4=n},expression:"checkboxValue4"}})],1)]},proxy:!0}])})],1)]),a("div",{staticClass:"section"},[a("h2",[e._v("Radios")]),a("DemoSection",{attrs:{title:"Radios",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[a("div",{staticClass:"s-checkbox-group"},[a("Radio",{attrs:{id:"radio1",name:"radioGroup",label:"Enabled",val:!0},model:{value:e.radioValue,callback:function(n){e.radioValue=n},expression:"radioValue"}}),a("Radio",{attrs:{id:"radio2",name:"radioGroup",label:"Disabled",val:!1},model:{value:e.radioValue,callback:function(n){e.radioValue=n},expression:"radioValue"}})],1)]},proxy:!0}])}),e._m(7)],1),a("div",{staticClass:"section"},[a("h2",[e._v("Status Switch")]),e._m(8),a("div",{staticClass:"section"},[a("DemoSection",{attrs:{title:"Status Switch",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[a("FormGroup",[a("StatusSwitch",{attrs:{slot:"input",label:"Switch Label"},slot:"input",model:{value:e.statusValue,callback:function(n){e.statusValue=n},expression:"statusValue"}}),a("StatusSwitch",{attrs:{slot:"input",size:"small",label:"Small Switch Label"},slot:"input",model:{value:e.statusValue,callback:function(n){e.statusValue=n},expression:"statusValue"}})],1)]},proxy:!0}])})],1),e._m(9)]),a("div",{staticClass:"section"},[a("h2",[e._v("Image Input Picker")]),e._m(10),a("div",{staticClass:"section"},[a("h3",[e._v("Default")]),a("p",[e._v(" By default, the image input picker is setup to have our Alert Box layout styles as the options. ")]),a("DemoSection",{attrs:{title:"Default Image Input Picker",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[a("ImagePickerInput",{model:{value:e.layoutValue,callback:function(n){e.layoutValue=n},expression:"layoutValue"}})]},proxy:!0}])})],1),a("div",{staticClass:"section"},[a("h3",[e._v("Custom")]),a("p",[e._v(" You can pass in any options you'd like with the options prop. This is an example using our Jar options. ")]),a("DemoSection",{attrs:{title:"Custom Image Input Picker",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[a("ImagePickerInput",{attrs:{options:e.options},model:{value:e.jarValue,callback:function(n){e.jarValue=n},expression:"jarValue"}})]},proxy:!0}])})],1)])])},xe=[function(){var t=this,e=t._self._c;return t._self._setupProxy,e("p",[t._v(" These 6 fields below are wrapped in a "),e("code",[t._v("FormGroup")]),t._v(" component. This will put 16px of margin between form fields and 24px margin between form groups. ")])},function(){var t=this,e=t._self._c;return t._self._setupProxy,e("pre",[e("code",[t._v(`import { TextInput, TextArea, VariableMenu } from 'streamlabs-beaker';
-
-components: {
-  TextInput,
-  TextArea,
-  VariableMenu
-}`)])])},function(){var t=this,e=t._self._c;return t._self._setupProxy,e("table",{staticClass:"docs-table"},[e("thead",[e("tr",[e("th",[t._v("Prop")]),e("th",[t._v("Type")]),e("th",[t._v("Default")]),e("th",[t._v("Description")])])]),e("tbody",[e("tr",[e("td",[t._v("disabled")]),e("td",[t._v("boolean")]),e("td",[t._v("null")]),e("td",[t._v(" Puts a disabled class on the form field and disables the input. ")])]),e("tr",[e("td",[t._v("error")]),e("td",[t._v("string")]),e("td",[t._v("null")]),e("td",[t._v(" If there is error text, error classes will go on the input - we plan to add better validation handling. ")])]),e("tr",[e("td",[t._v("label")]),e("td",[t._v("string")]),e("td",[t._v("null")]),e("td",[t._v("Optional label for the input.")])]),e("tr",[e("td",[t._v("name")]),e("td",[t._v("string")]),e("td",[t._v("null")]),e("td",[t._v("Input name attribute.")])]),e("tr",[e("td",[t._v("placeholder")]),e("td",[t._v("string")]),e("td",[t._v("null")]),e("td",[t._v("Input placeholder text.")])]),e("tr",[e("td",[t._v("type")]),e("td",[t._v("string")]),e("td",[t._v("text")]),e("td",[t._v(" Input type: "),e("code",[t._v("text")]),t._v(", "),e("code",[t._v("email")]),t._v(", "),e("code",[t._v("password")]),t._v(". ")])]),e("tr",[e("td",[t._v("value")]),e("td",[t._v("string")]),e("td",[t._v("null")]),e("td",[t._v("Input value using v-model.")])]),e("tr",[e("td",[t._v("readonly")]),e("td",[t._v("boolean")]),e("td",[t._v("null")]),e("td",[t._v("Specifies that an input field is read-only.")])])])])},function(){var t=this,e=t._self._c;return t._self._setupProxy,e("pre",[e("code",[t._v(`import { TaggingInput } from 'streamlabs-beaker';
-
-components: {
-  TaggingInput
-}`)])])},function(){var t=this,e=t._self._c;return t._self._setupProxy,e("pre",[e("code",[t._v(`import { Selector } from 'streamlabs-beaker';
-
-components: {
-  Selector
-}`)])])},function(){var t=this,e=t._self._c;return t._self._setupProxy,e("table",{staticClass:"docs-table"},[e("thead",[e("tr",[e("th",[t._v("Prop")]),e("th",[t._v("Type")]),e("th",[t._v("Default")]),e("th",[t._v("Description")])])]),e("tbody",[e("tr",[e("td",[t._v("value")]),e("td",[t._v("string")]),e("td",[t._v("null")]),e("td",[t._v("Current selected value.")])]),e("tr",[e("td",[t._v("options")]),e("td",[t._v("[''] or {}")]),e("td",[t._v("null")]),e("td",[t._v("Array of strings or objects to use as the options.")])]),e("tr",[e("td",[t._v("multiple")]),e("td",[t._v("Boolean")]),e("td",[t._v("false")]),e("td",[t._v("Optional label for the input.")])]),e("tr",[e("td",[t._v("placeholder")]),e("td",[t._v("String")]),e("td",[t._v("''")]),e("td",[t._v("Equivalent to the `placeholder` attribute on an input.")])]),e("tr",[e("td",[t._v("searchable")]),e("td",[t._v("Boolean")]),e("td",[t._v("true")]),e("td",[t._v("Optional label for the input.")])]),e("tr",[e("td",[t._v("disabled")]),e("td",[t._v("Boolean")]),e("td",[t._v("false")]),e("td",[t._v(" Puts a disabled class on the form field and disables the input. ")])])])])},function(){var t=this,e=t._self._c;return t._self._setupProxy,e("pre",[e("code",[t._v(`import { Checkbox, Radio } from 'streamlabs-beaker';
-
-components: {
-  Checkbox,
-  Radio
-}`)])])},function(){var t=this,e=t._self._c;return t._self._setupProxy,e("table",{staticClass:"docs-table"},[e("thead",[e("tr",[e("th",[t._v("Prop")]),e("th",[t._v("Type")]),e("th",[t._v("Default")]),e("th",[t._v("Description")])])]),e("tbody",[e("tr",[e("td",[t._v("id")]),e("td",[t._v("string")]),e("td",[t._v('""')]),e("td",[t._v("Indentifier for associated label.")])]),e("tr",[e("td",[t._v("name")]),e("td",[t._v("string")]),e("td",[t._v('""')]),e("td",[t._v("Name for radio group.")])]),e("tr",[e("td",[t._v("label")]),e("td",[t._v("string")]),e("td",[t._v("null")]),e("td",[t._v("Optional label for the radio input.")])]),e("tr",[e("td",[t._v("val")]),e("td",[t._v("string, boolean")]),e("td",[t._v('""')]),e("td",[t._v("Radio input value when selected")])])])])},function(){var t=this,e=t._self._c;return t._self._setupProxy,e("pre",[e("code",[t._v(`import { StatusSwitch } from 'streamlabs-beaker';
-
-components: {
-  StatusSwitch
-}`)])])},function(){var t=this,e=t._self._c;return t._self._setupProxy,e("table",{staticClass:"docs-table"},[e("thead",[e("tr",[e("th",[t._v("Prop")]),e("th",[t._v("Type")]),e("th",[t._v("Default")]),e("th",[t._v("Description")])])]),e("tbody",[e("tr",[e("td",[t._v("value")]),e("td",[t._v("boolean")]),e("td",[t._v("false")]),e("td",[t._v("Available for v-model 2-way data binding.")])]),e("tr",[e("td",[t._v("label")]),e("td",[t._v("string")]),e("td",[t._v("null")]),e("td",[t._v("Optional label for the input.")])]),e("tr",[e("td",[t._v("size")]),e("td",[t._v("boolean")]),e("td",[t._v("false")]),e("td",[t._v(" Other available sizes. Current alternate size option: "),e("code",[t._v("small")]),t._v(". ")])])])])},function(){var t=this,e=t._self._c;return t._self._setupProxy,e("pre",[e("code",[t._v(`import { ImagePickerInput } from 'streamlabs-beaker';
-
-components: {
-  ImagePickerInput
-}`)])])}],_e=g(_,fe,xe,!1,null,null,null,null);const je=_e.exports;export{je as default};
+`;
+var __defProp$3 = Object.defineProperty;
+var __getOwnPropDesc$3 = Object.getOwnPropertyDescriptor;
+var __decorateClass$3 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$3(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$3(target, key, result);
+  return result;
+};
+let StatusSwitch$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "label");
+    __publicField(this, "size");
+    __publicField(this, "value");
+  }
+};
+__decorateClass$3([
+  Prop()
+], StatusSwitch$1.prototype, "label", 2);
+__decorateClass$3([
+  Prop()
+], StatusSwitch$1.prototype, "size", 2);
+__decorateClass$3([
+  Prop({ default: false })
+], StatusSwitch$1.prototype, "value", 2);
+StatusSwitch$1 = __decorateClass$3([
+  Component({})
+], StatusSwitch$1);
+const StatusSwitch_vue_vue_type_style_index_0_lang = "";
+var _sfc_render$4 = function render2() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-status-switch", class: { enabled: !!_vm.value }, attrs: { "tabindex": "0" }, on: { "click": function($event) {
+    return _vm.$emit("input", !_vm.value);
+  }, "keydown": [function($event) {
+    if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "space", 32, $event.key, [" ", "Spacebar"]))
+      return null;
+    $event.preventDefault();
+    return _vm.$emit("input", !_vm.value);
+  }, function($event) {
+    if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter"))
+      return null;
+    $event.preventDefault();
+    return _vm.$emit("input", !_vm.value);
+  }] } }, [_c("div", { staticClass: "s-status-switch__paddle", class: { "s-status-switch__paddle--small": _vm.size === "small" } }), _vm.label ? _c("label", [_vm._v(_vm._s(_vm.label))]) : _vm._e(), _vm._t("default")], 2);
+};
+var _sfc_staticRenderFns$4 = [];
+var __component__$4 = /* @__PURE__ */ normalizeComponent(
+  StatusSwitch$1,
+  _sfc_render$4,
+  _sfc_staticRenderFns$4,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const StatusSwitch = __component__$4.exports;
+var __defProp$2 = Object.defineProperty;
+var __getOwnPropDesc$2 = Object.getOwnPropertyDescriptor;
+var __decorateClass$2 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$2(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$2(target, key, result);
+  return result;
+};
+let TextArea$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "$refs");
+    __publicField(this, "name");
+    __publicField(this, "label");
+    __publicField(this, "placeholder");
+    __publicField(this, "value");
+    __publicField(this, "error");
+    __publicField(this, "helpText");
+    __publicField(this, "cols");
+    __publicField(this, "rows");
+    __publicField(this, "maxLength");
+    __publicField(this, "autoResize");
+    __publicField(this, "maxHeight");
+    __publicField(this, "localValue", "");
+    __publicField(this, "hasScroll", false);
+  }
+  created() {
+    this.$parent.$on("update", this.updateValue);
+  }
+  mounted() {
+    this.updateSize();
+    this.updateCountPos();
+  }
+  focus() {
+    this.$refs.textArea.focus();
+  }
+  get filteredListeners() {
+    return omit(this.$listeners, ["input"]);
+  }
+  get currentLength() {
+    return this.value.length;
+  }
+  updated() {
+    this.updateCountPos();
+  }
+  onValueChange(event) {
+    this.$emit("input", event.target.value);
+    this.updateSize();
+  }
+  onKeyUp(event) {
+    this.$emit("keyup", event.target.selectionStart);
+  }
+  onFocus(event) {
+    this.$emit("focus", event.target.selectionStart);
+  }
+  onClick(event) {
+    this.$emit("click", event.target.selectionStart);
+  }
+  updateValue(val) {
+    this.$refs.textArea.value = val;
+    this.$emit("input", val);
+  }
+  updateSize() {
+    if (this.autoResize) {
+      this.$refs.textArea.style.cssText = "height:auto;";
+      const newHeight = this.$refs.textArea.scrollHeight > this.maxHeight && this.maxHeight ? this.maxHeight + 2 : this.$refs.textArea.scrollHeight + 2;
+      this.$refs.textArea.style.cssText = "height:" + newHeight + "px";
+    }
+  }
+  updateCountPos() {
+    this.$nextTick(() => {
+      const textArea = this.$refs.textArea;
+      this.hasScroll = textArea.scrollHeight > textArea.clientHeight;
+    });
+  }
+};
+__decorateClass$2([
+  Prop()
+], TextArea$1.prototype, "name", 2);
+__decorateClass$2([
+  Prop()
+], TextArea$1.prototype, "label", 2);
+__decorateClass$2([
+  Prop()
+], TextArea$1.prototype, "placeholder", 2);
+__decorateClass$2([
+  Prop()
+], TextArea$1.prototype, "value", 2);
+__decorateClass$2([
+  Prop()
+], TextArea$1.prototype, "error", 2);
+__decorateClass$2([
+  Prop()
+], TextArea$1.prototype, "helpText", 2);
+__decorateClass$2([
+  Prop({ default: 100 })
+], TextArea$1.prototype, "cols", 2);
+__decorateClass$2([
+  Prop({ default: 3 })
+], TextArea$1.prototype, "rows", 2);
+__decorateClass$2([
+  Prop()
+], TextArea$1.prototype, "maxLength", 2);
+__decorateClass$2([
+  Prop()
+], TextArea$1.prototype, "autoResize", 2);
+__decorateClass$2([
+  Prop()
+], TextArea$1.prototype, "maxHeight", 2);
+TextArea$1 = __decorateClass$2([
+  Component({})
+], TextArea$1);
+const TextArea_vue_vue_type_style_index_0_lang = "";
+var _sfc_render$3 = function render3() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-form-area", class: { "s-form-area--with-label": _vm.label } }, [_c("div", { staticClass: "s-form-area__container" }, [_c("textarea", _vm._g({ ref: "textArea", class: {
+    "s-form-area__input": true,
+    "s-form-area__input--error": !!_vm.error,
+    "s-form-area__input--count": !!_vm.maxLength
+  }, attrs: { "name": _vm.name, "cols": _vm.cols, "rows": _vm.rows, "placeholder": _vm.placeholder, "maxlength": _vm.maxLength }, domProps: { "value": _vm.value }, on: { "input": _vm.onValueChange, "focus": _vm.onFocus, "click": _vm.onClick, "keyup": _vm.onKeyUp } }, _vm.filteredListeners)), _vm.label ? _c("label", { staticClass: "s-form-area__label", class: {
+    "s-form-area__label--top": _vm.value !== ""
+  } }, [_vm._v(_vm._s(_vm.label))]) : _vm._e(), _vm.error ? _c("div", { staticClass: "s-form-area__input-error" }, [_c("i", { staticClass: "icon-error" }), _vm._v(" " + _vm._s(_vm.error) + " ")]) : _vm._e(), _c("div", { staticClass: "s-form-area__characters", class: { "s-form-area__characters--scrollbar": _vm.hasScroll } }, [_vm.maxLength ? _c("span", { staticClass: "s-form-area__char-count" }, [_vm._v(_vm._s(_vm.currentLength) + "/" + _vm._s(_vm.maxLength))]) : _vm._e()])]), _c("p", { directives: [{ name: "show", rawName: "v-show", value: _vm.helpText, expression: "helpText" }], staticClass: "s-form-area__help-text" }, [_vm._v(_vm._s(_vm.helpText))])]);
+};
+var _sfc_staticRenderFns$3 = [];
+var __component__$3 = /* @__PURE__ */ normalizeComponent(
+  TextArea$1,
+  _sfc_render$3,
+  _sfc_staticRenderFns$3,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const TextArea = __component__$3.exports;
+const _sfc_main = defineComponent({
+  components: {
+    TextInput,
+    TextArea,
+    Button
+  },
+  props: {
+    name: { type: String },
+    label: { type: String },
+    placeholder: { type: String },
+    buttonText: { type: String, default: "Add Tag" },
+    buttonVariation: { type: String, default: "default" },
+    value: { type: Array, default: () => [] },
+    inputValidation: { type: String },
+    prefix: { type: String },
+    tagVariation: { type: String, default: "default" },
+    maxItems: { type: Number, default: 25 }
+  },
+  setup(props, { attrs }) {
+    const textInputValue = ref$1("");
+    const tagClasses = computed(() => `s-tagging-input__tag s-tagging-input__tag--${props.tagVariation}`);
+    const filteredListeners = computed(() => omit(attrs, ["input"]));
+    const onRemove = (index2) => {
+      props.value.splice(index2, 1);
+    };
+    return { textInputValue, tagClasses, filteredListeners, onRemove };
+  },
+  methods: {
+    onAdd() {
+      if (this.$validator.errors.items.length !== 0 || this.value.length >= this.maxItems) {
+        return;
+      }
+      this.textInputValue = this.textInputValue.trim();
+      const found = this.value.find((v) => {
+        if (this.prefix && !this.textInputValue.startsWith(this.prefix)) {
+          return v.toLowerCase() === this.prefix + this.textInputValue.trim().toLowerCase();
+        } else {
+          return v.toLowerCase() === this.textInputValue.trim().toLowerCase();
+        }
+      });
+      if (!found && this.textInputValue.length !== 0) {
+        if (this.prefix && !this.textInputValue.startsWith(this.prefix)) {
+          this.textInputValue = this.prefix + this.textInputValue;
+        }
+        this.value.push(this.textInputValue);
+      }
+      this.textInputValue = "";
+    }
+  }
+});
+const TaggingInput_vue_vue_type_style_index_0_lang = "";
+var _sfc_render$2 = function render4() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-tagging-input" }, [_c("div", { staticClass: "s-tagging-input__container" }, [_c("text-input", _vm._g({ directives: [{ name: "validate", rawName: "v-validate", value: _vm.inputValidation, expression: "inputValidation" }], attrs: { "slot": "input", "label": _vm.label, "placeholder": _vm.placeholder, "name": _vm.name, "type": "text", "error": _vm.errors.first(_vm.name) }, on: { "keydown": function($event) {
+    if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter"))
+      return null;
+    $event.preventDefault();
+    return _vm.onAdd.apply(null, arguments);
+  } }, slot: "input", model: { value: _vm.textInputValue, callback: function($$v) {
+    _vm.textInputValue = $$v;
+  }, expression: "textInputValue" } }, _vm.$listeners)), _c("Button", { attrs: { "variation": _vm.buttonVariation, "title": _vm.buttonText, "disabled": _vm.value.length >= _vm.maxItems, "type": "button" }, on: { "click": _vm.onAdd } })], 1), _c("div", { staticClass: "s-tagging-input__tags" }, _vm._l(_vm.value, function(tag, index2) {
+    return _c("div", { key: index2, class: _vm.tagClasses }, [_c("div", { staticClass: "s-tagging-input__tag-text" }, [_vm._v(_vm._s(tag))]), _c("i", { staticClass: "s-tagging-input__tag-icon icon-close", on: { "click": function($event) {
+      return _vm.onRemove(index2);
+    } } })]);
+  }), 0)]);
+};
+var _sfc_staticRenderFns$2 = [];
+var __component__$2 = /* @__PURE__ */ normalizeComponent(
+  _sfc_main,
+  _sfc_render$2,
+  _sfc_staticRenderFns$2,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const TaggingInput = __component__$2.exports;
+const varSearch = [
+  {
+    variable: "{min}",
+    description: "Replaces {min} with the minimum amount of loyalty that has to be bet.",
+    example: 'Betting is open for "{title}" use {command} <{options}> <{min}-{max}> to register your bet. ',
+    result: 'Betting is open for "How many tries will this boss take me?" use !bet <1 | 2 | 3 | 4 | 5+> <10-1000> to register your bet',
+    tags: [
+      "Betting"
+    ]
+  },
+  {
+    variable: "{max}",
+    description: "Replaces {max} with the maximum amount of loyalty that can be bet.",
+    example: 'Betting is open for "{title}" use {command} <{options}> <{min}-{max}> to register your bet. ',
+    result: 'Betting is open for "How many tries will this boss take me?" use !bet <1 | 2 | 3 | 4 | 5+> <10-1000> to register your bet',
+    tags: [
+      "Betting"
+    ]
+  },
+  {
+    variable: "{option}",
+    description: "Replaces {option} the winning option of a poll or betting.",
+    example: "{option} was the most voted option of the poll with {amount}% of the votes.",
+    result: "Legend of Zelda was the most voted option of the poll with 56% of the votes.",
+    tags: [
+      "Betting",
+      "Poll"
+    ]
+  },
+  {
+    variable: "{options}",
+    description: "Replaces {options} with all the available options for a poll or betting.",
+    example: 'A poll has opened for "Which started should I pick?" use !vote <{options}> to vote.',
+    result: 'A poll has opened for "Which started should I pick?" use !vote <Pikachu | Squirtle | Charmander> to vote.',
+    tags: [
+      "Betting",
+      "Poll"
+    ]
+  },
+  {
+    variable: "{cooldown}",
+    description: "Replaces {cooldown} variable with command's remaining cooldown.",
+    example: "{user.name} -> {command} is on cooldown for {cooldown} seconds.",
+    result: "Streamlabs -> !test is on cooldown for 20 seconds.",
+    tags: [
+      "Command Settings"
+    ]
+  },
+  {
+    variable: "{command}",
+    description: "Replaces {command} with current command that's being used.",
+    example: "This command is called {command}",
+    result: "This command is called !test",
+    tags: [
+      "Custom Commands"
+    ]
+  },
+  {
+    variable: "{user.id}",
+    description: "Replaces {user.id} variable with the id of the current user.",
+    example: "My Youtube Channel Id is https://youtube.com/channel/{user.id}",
+    result: "My Youtube Channel Id is https://youtube.com/channel/UCNL8jaJ9hId96P13QmQXNtA",
+    tags: [
+      "Custom Commands"
+    ]
+  },
+  {
+    variable: "{user.name}",
+    description: "Replaces {user.name} variable with the viewers name.",
+    example: "My name is {user.name}",
+    result: "My name is Streamlabs",
+    tags: [
+      "Custom Commands"
+    ]
+  },
+  {
+    variable: "{randnum.<min>-<max>}",
+    description: "Replaces {randnum.<min>-<max>} variable the random number between min & max.",
+    example: "{user.name}, you have rolled {randnum.1-100}.",
+    result: "Streamlabs, you have rolled 100.",
+    tags: [
+      "Custom Commands"
+    ]
+  },
+  {
+    variable: "{target.name}",
+    description: "Replaces {target.name} variable with the target's name.",
+    example: "{user.name} gives {target.name} a hug!",
+    result: "Streamlabs gives RedUnicornCat38745 a hug!",
+    tags: [
+      "Custom Commands"
+    ]
+  },
+  {
+    variable: "{arg}",
+    description: "Replaced by a word in a specific position, arg is denoted by a number.",
+    example: "Your first three words: {1} {2} {3}",
+    result: "Your first three words: I am going",
+    tags: [
+      "Custom Commands"
+    ]
+  },
+  {
+    variable: "{start:end}",
+    description: "Replaced with all the words between the start and end.",
+    example: "The colors you picked are: {1:3}",
+    result: "he colors you picked are: Red Green Blue",
+    tags: [
+      "Custom Commands"
+    ]
+  },
+  {
+    variable: "{uptime}",
+    description: "Replaces {uptime} with how long the stream has been live for. (Twitch/Mixer only)",
+    example: "The stream has been live for {uptime}",
+    result: "The stream has been live for 10 minutes 50 seconds",
+    tags: [
+      "Custom Commands"
+    ]
+  },
+  {
+    variable: "{time.<continent>/<city>}",
+    description: "Replaces {time.<continent>/<city>} variable with the current time for that specific continent/city.",
+    example: "Right now it is {time.Australia/Sydney} in Sydney.",
+    result: "Right now it is 12:00 in Sydney.",
+    tags: [
+      "Custom Commands"
+    ]
+  },
+  {
+    variable: "{readapi.<url_here>}",
+    description: "Replaces {readapi.<url_here>} variable with the data from the API endpoint.",
+    example: "The stream has been live for {readapi.https://decapi.me/twitch/uptime?channel=streamlabs}",
+    result: "The stream has been live for 17 hours, 50 minutes, 55 seconds",
+    tags: [
+      "Custom Commands"
+    ]
+  },
+  {
+    variable: "{merch.link}",
+    description: "Replaces {merch.link} with your Streamlabs Merch link.",
+    example: "You can checkout my merch store over at {merch.link}",
+    result: "You can checkout my merch store over at https://streamlabs.com/streamlabs#/merch",
+    tags: [
+      "Custom Commands"
+    ]
+  },
+  {
+    variable: "{donation.link}",
+    description: "Replaces {donation.link} with your Streamlabs donation link.",
+    example: "Do you want to support the stream? You can do so by going to {donation.link}",
+    result: "Do you want to support the stream? You can do so by going to https://streamlabs.com/streamlabs",
+    tags: [
+      "Custom Commands"
+    ]
+  },
+  {
+    variable: "{facemask.link}",
+    description: "Replaces {facemask.link} with your Streamlabs Facemask Donation link.",
+    example: "Do you want to put awesome masks on my face? Go to {facemask.link}",
+    result: "Do you want to put awesome masks on my face? Go to https://streamlabs.com/streamlabs/masks",
+    tags: [
+      "Custom Commands"
+    ]
+  },
+  {
+    variable: "{channel.name}",
+    description: "Replaces {channel.name} with your Channel name.",
+    example: "Our channel is {channel.name}",
+    result: "Our channel is Streamlabs",
+    tags: [
+      "Custom Commands"
+    ]
+  },
+  {
+    variable: "{streamlabels.<filename>}",
+    description: "Replaces {streamlabels.<filename>} with the data from the streamlabels file.",
+    example: "Session Top Donator: {streamlabels.session_top_donator}",
+    result: "Session Top Donator: AnkhHeart",
+    tags: [
+      "Custom Commands"
+    ]
+  },
+  {
+    variable: "{count <name>}",
+    description: "Increments the counter by one and displays it.",
+    example: "Deaths: {count deaths}",
+    result: "Deaths: 2",
+    tags: [
+      "Custom Commands"
+    ]
+  },
+  {
+    variable: "{count <name> +<value>}",
+    description: "Increments the counter by your value and displays it.",
+    example: "Deaths: {count deaths +5}",
+    result: "Deaths: 7",
+    tags: [
+      "Custom Commands"
+    ]
+  },
+  {
+    variable: "{count <name> -<value>}",
+    description: "Decrements the counter by your value and displays it.",
+    example: "Deaths: {count deaths -5}",
+    result: "Deaths: 2",
+    tags: [
+      "Custom Commands"
+    ]
+  },
+  {
+    variable: "{count <name> <value>}",
+    description: "Sets the counter to your value and displays it.",
+    example: "Deaths: {count deaths 100}",
+    result: "Deaths: 100",
+    tags: [
+      "Custom Commands"
+    ]
+  },
+  {
+    variable: "{getcount <name>}",
+    description: "Displays the specified counter.",
+    example: "Deaths: {count deaths}",
+    result: "Deaths: 100",
+    tags: [
+      "Custom Commands"
+    ]
+  },
+  {
+    variable: "{channel.subpoints}",
+    description: "Replaces {channel.subpoints} with channel's sub points.",
+    example: "Sub Count: {channel.subpoints}",
+    result: "Sub Count: 100",
+    tags: [
+      "Custom Commands",
+      "Twitch"
+    ]
+  },
+  {
+    variable: "{user.followage}",
+    description: "Replaces {user.followage} with the amount of time the user has been following the channel.",
+    example: "{user.name} has been following the channel for {user.followage}",
+    result: "AnkhHeart has been following the channel for 2 days 3 weeks",
+    tags: [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    variable: "{target.followage}",
+    description: "Replaces {target.followage} with the amount of time the target has been following the channel.",
+    example: "{target.name} has been following the channel for {target.followage}",
+    result: "AnkhHeart has been following the channel for 2 days 3 weeks",
+    tags: [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    variable: "{channel.title}",
+    description: "Replaces {channel.title} with the title of the stream.",
+    example: "The title is {channel.title}",
+    result: "The title is Playing Apex Legends o.o",
+    tags: [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    variable: "{user.title}",
+    description: "Replaces {user.title} with the user's stream title.",
+    example: "The title is {user.title}",
+    result: "The title is Playing Apex Legends o.o",
+    tags: [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    variable: "{target.title}",
+    description: "Replaces {target.title} with the target's stream title.",
+    example: "The title is {target.title}",
+    result: "The title is Playing Apex Legends o.o",
+    tags: [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    variable: "{touser.title}",
+    description: "Replaces {touser.title} with the target's or user's stream title.",
+    example: "The title is {touser.title}",
+    result: "The title is Playing Apex Legends o.o",
+    tags: [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    variable: "{channel.game}",
+    description: "Replaces {channel.game} with the currently played game.",
+    example: "The game is {channel.game}",
+    result: "The game is Apex Legends",
+    tags: [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    variable: "{user.game}",
+    description: "Replaces {user.game} with user's last played game.",
+    example: "The game is {user.game}",
+    result: "The game is Apex Legends",
+    tags: [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    variable: "{target.game}",
+    description: "Replaces {target.game} with target's last played game.",
+    example: "The game is {target.game}",
+    result: "The game is Apex Legends",
+    tags: [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    variable: "{touser.game}",
+    description: "Replaces {touser.game} with target's or user's last played game.",
+    example: "The game is {touser.game}",
+    result: "The game is Apex Legends",
+    tags: [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    variable: "{channel.followers}",
+    description: "Replaces {channel.followers} with channel's follower count.",
+    example: "Follower Count: {channel.followers}",
+    result: "Follower Count: 123",
+    tags: [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    variable: "{user.followers}",
+    description: "Replaces {user.followers} with user's follower count.",
+    example: "Follower Count: {user.followers}",
+    result: "Follower Count: 123",
+    tags: [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    variable: "{target.followers}",
+    description: "Replaces {target.followers} with target's follower count.",
+    example: "Follower Count: {target.followers}",
+    result: "Follower Count: 123",
+    tags: [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    variable: "{touser.followers}",
+    description: "Replaces {touser.followers} with target's or user's follower count.",
+    example: "Follower Count: {touser.followers}",
+    result: "Follower Count: 123",
+    tags: [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    variable: "{channel.subs}",
+    description: "Replaces {channel.subs} with channel's sub count.",
+    example: "Sub Count: {channel.subs}",
+    result: "Sub Count: 100",
+    tags: [
+      "Custom Commands",
+      "Twitch",
+      "Mixer"
+    ]
+  },
+  {
+    variable: "{reward}",
+    description: "Replaces {reward} with the amount of currency you have earned through gamble.",
+    example: "Rolled {amount}, @{user.name} won {reward} {loyalty.name} and now has {user.points} {loyalty.name}",
+    result: "Rolled 100, @Streamlabs won 200 points and now has 500 points.",
+    tags: [
+      "Gamble"
+    ]
+  },
+  {
+    variable: "{prize}",
+    description: "Replaces {prize} with the giveaway prize. Only works with giveaways.",
+    example: "A {prize} raffle has started for {permission}. Use {command} to enter the raffle.",
+    result: "A t-shirt raffle has started for everyone. Use !raffle to enter the raffle.",
+    tags: [
+      "Giveaways"
+    ]
+  },
+  {
+    variable: "{permission}",
+    description: "Replaces {permission} with the permission required to join a Giveaway.",
+    example: "A {prize} raffle has started for {permission}. Use {command} to enter the raffle.",
+    result: "A t-shirt raffle has started for everyone. Use !raffle to enter the raffle.",
+    tags: [
+      "Giveaways"
+    ]
+  },
+  {
+    variable: "{amount}",
+    description: "Replaces {amount} variable with donation amount, tickets, months, etc..",
+    example: "@{user.name}, you received {amount} ticket(s)!",
+    result: "@Streamlabs, you received 10 ticket(s)!",
+    tags: [
+      "Giveaways"
+    ]
+  },
+  {
+    variable: "{link}",
+    description: "Replaces {link} with your Merch giveaway redemption link.",
+    example: "You can redeem your giveaway prize over at {link}",
+    result: "You can redeem your giveaway prize over at https://streamlabs.com/streamlabs?redemption=true#/merch",
+    tags: [
+      "Giveaways"
+    ]
+  },
+  {
+    variable: "{timer}",
+    description: "Replaces {timer} with the remaining time of a giveaway/poll/betting countdown timer. Only available in the repeat message.",
+    example: 'A Poll is going on for "{title}" use {command} <{options}> to vote. You have {timer} seconds left to join.',
+    result: 'A Poll is going on for "What starter should I pick?" use !vote <Squirtle | Charmander | Bulbasaur> to vote. You have 600 seconds left to join.',
+    tags: [
+      "Giveaways",
+      "Betting",
+      "Poll"
+    ]
+  },
+  {
+    variable: "{results}",
+    description: "Replaces {results} with the names of the survivors or a heist or poll results.",
+    example: "A few managed to survive: {results}",
+    result: "A few managed to survive: SOWHOYOUdotCOM (200), AnkhHeart (200)",
+    tags: [
+      "Heist",
+      "Poll"
+    ]
+  },
+  {
+    variable: "{duration}",
+    description: "Replaces {duration} with the duration of the permit.",
+    example: "@{target.name}, You have been given {duration} seconds to post a link!",
+    result: "@AnkhHeart, You have 60 seconds to post a link!",
+    tags: [
+      "Link Protection"
+    ]
+  },
+  {
+    variable: "{loyalty.toppoints}",
+    description: "Replaces {loyalty.toppoints} with a list of the top 10 users by points.",
+    example: "Top {amount} Points: {loyalty.toppoints}.",
+    result: "Top 10 Points: 1. AnkhHeart (1000), 2. H4rsh4 (999), 3. MissBlackBear (990), 4. Raichu (989), ... ",
+    tags: [
+      "Loyalty"
+    ]
+  },
+  {
+    variable: "{loyalty.tophours}",
+    description: "Replaces {loyalty.tophours} with a list of the top 10 users by hours.",
+    example: "Top {amount} Points: {loyalty.tophours}.",
+    result: "Top 10 Points: 1. AnkhHeart (5.8), 2. H4rsh4 (4.2), 3. MissBlackBear (3.5), 4. Raichu (3.4), ... ",
+    tags: [
+      "Loyalty"
+    ]
+  },
+  {
+    variable: "{user.points}",
+    description: "Replaces {user.points} with the user's loyalty.",
+    example: "@{user.name}, you have {user.points} {loyalty.name}.",
+    result: "@Streamlabs, you have 1000 points.",
+    tags: [
+      "Loyalty",
+      "Custom Commands"
+    ]
+  },
+  {
+    variable: "{user.time}",
+    description: "Replaces {user.time} with the user's time watched.",
+    example: "@{user.name} has watched the stream for {user.time} minutes.",
+    result: "@Streamlabs has watched the stream for 2 hours.",
+    tags: [
+      "Loyalty",
+      "Custom Commands"
+    ]
+  },
+  {
+    variable: "{loyalty.name}",
+    description: "Replaces {loyalty.name} with the loyalty name.",
+    example: "My loyalty is called {loyalty.name}.",
+    result: "My loyalty is called points.",
+    tags: [
+      "Loyalty",
+      "Custom Commands"
+    ]
+  },
+  {
+    variable: "{media.name}",
+    description: "Replaces {media.name} with the media requests title.",
+    example: '@{user.name}, "{media.name}" has been added to the queue.',
+    result: '@Streamlabs, "Electric Swing Circus - Golden Hour" has been added to the queue.',
+    tags: [
+      "Media Share"
+    ]
+  },
+  {
+    variable: "{media.requestedby}",
+    description: "Replaces {media.requestedby} with the name of who requested the media.",
+    example: '@{user.name}, currently "{media.name}" is playing which was requested by {media.requestedby}.',
+    result: '@Streamlabs, currently "Electric Swing Circus - Golden Hour" is playing which was requested by AnkhHeart.',
+    tags: [
+      "Media Share"
+    ]
+  },
+  {
+    variable: "{currency}",
+    description: "Replaces {currency} with current selected currency.",
+    example: "@{user.name} just tipped {amount} {currency}!",
+    result: "@Streamlabs just tipped 20 USD!",
+    tags: [
+      "Notifications"
+    ]
+  },
+  {
+    variable: "{position}",
+    description: "Replaces {position} with the queue position of the user.",
+    example: "@{user.name}, you have joined the queue at position #{position}.",
+    result: "@Streamlabs, you have joined the queue at position #1.",
+    tags: [
+      "Queue"
+    ]
+  },
+  {
+    variable: "{users}",
+    description: "Replaces {users} with all the users that are up next in the queue.",
+    example: "Next up: {users}",
+    result: "Next up: sowhoyoudotcom, ankhheart",
+    tags: [
+      "Queue"
+    ]
+  },
+  {
+    variable: "{title}",
+    description: "Replaces {title} with the title of the Poll, Bet or Queue.",
+    example: "A queue has opened for {title}. Type {command} <note> to join!",
+    result: "A queue has opened for Warframe. Type !join <note> to join!",
+    tags: [
+      "Queue",
+      "Poll",
+      "Betting"
+    ]
+  },
+  {
+    variable: "{quote.id}",
+    description: "Replaces {quote.id} with the id of the quote.",
+    example: "Quote #{quote.id} {quote.msg} [{quote.game}] [{quote.date}]",
+    result: 'Quote #1 "I am a cat! Meow!" [Final Fantasy XIV] [01/04/2019]',
+    tags: [
+      "Quotes"
+    ]
+  },
+  {
+    variable: "{quote.game}",
+    description: "Replaces {quote.game} with the game of the quote.",
+    example: "Quote #{quote.id} {quote.msg} [{quote.game}] [{quote.date}]",
+    result: 'Quote #1 "I am a cat! Meow!" [Final Fantasy XIV] [01/04/2019]',
+    tags: [
+      "Quotes"
+    ]
+  },
+  {
+    variable: "{quote.msg}",
+    description: "Replaces {quote.msg} with quote itself.",
+    example: "Quote #{quote.id} {quote.msg} [{quote.game}] [{quote.date}]",
+    result: 'Quote #1 "I am a cat! Meow!" [Final Fantasy XIV] [01/04/2019]',
+    tags: [
+      "Quotes"
+    ]
+  },
+  {
+    variable: "{quote.date}",
+    description: "Replaces {quote.date} with quote's  date.",
+    example: "Quote #{quote.id} {quote.msg} [{quote.game}] [{quote.date}]",
+    result: 'Quote #1 "I am a cat! Meow!" [Final Fantasy XIV] [01/04/2019]',
+    tags: [
+      "Quotes"
+    ]
+  }
+];
+var __defProp$1 = Object.defineProperty;
+var __getOwnPropDesc$1 = Object.getOwnPropertyDescriptor;
+var __decorateClass$1 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$1(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$1(target, key, result);
+  return result;
+};
+let VariableMenu$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "$refs");
+    __publicField(this, "result", []);
+    __publicField(this, "queryLength", 0);
+    __publicField(this, "phaseOne", false);
+    __publicField(this, "phaseTwo", false);
+    __publicField(this, "searchFromClick", false);
+    __publicField(this, "fuse", null);
+    __publicField(this, "value", "");
+    __publicField(this, "currentResult", 0);
+    __publicField(this, "cursorPos", 0);
+    __publicField(this, "input_cursor");
+    __publicField(this, "jsonSearch");
+    __publicField(this, "searchData", this.jsonSearch);
+    __publicField(this, "search");
+    __publicField(this, "eventName");
+    __publicField(this, "inputChangeEventName");
+  }
+  get options() {
+    let options = {
+      caseSensitive: false,
+      includeScore: true,
+      includeMatches: false,
+      tokenize: false,
+      matchAllTokens: false,
+      findAllMatches: true,
+      shouldSort: true,
+      threshold: 0.2,
+      location: 1,
+      distance: 10,
+      maxPatternLength: 12,
+      minMatchCharLength: 0,
+      keys: ["variable"]
+    };
+    return options;
+  }
+  get noResults() {
+    if (this.result.length === 0 && this.value != "") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  get limitedResult() {
+    return this.result.reverse();
+  }
+  get selectedResult() {
+    return this.limitedResult[this.currentResult].item.variable;
+  }
+  get currentLength() {
+    return this.value.length;
+  }
+  get calcTransform() {
+    let nudge = this.$refs.variableMenu.offsetHeight;
+    return "transform: translateY(-" + nudge + "px);";
+  }
+  afterOpen(element) {
+    element.style.height = "auto";
+  }
+  open(element) {
+    let width = getComputedStyle(element).width;
+    element.style.width = width;
+    element.style.position = `absolute`;
+    element.style.visibility = `hidden`;
+    element.style.height = `auto`;
+    let height = getComputedStyle(element).height;
+    element.style.width = null;
+    element.style.position = null;
+    element.style.visibility = null;
+    element.style.height = 0;
+    getComputedStyle(element).height;
+    setTimeout(() => {
+      element.style.height = height;
+    });
+  }
+  close(element) {
+    let height = getComputedStyle(element).height;
+    element.style.height = height;
+    getComputedStyle(element).height;
+    setTimeout(() => {
+      element.style.height = 0;
+    });
+  }
+  watchCursor(val) {
+    this.cursorPos = val.target.selectionStart;
+    this.getSearchString();
+    if (this.noResults)
+      this.playClosingSequence();
+    if (this.value.length <= 0)
+      this.playClosingSequence();
+  }
+  watchInput(val) {
+    this.value = val.target.value;
+  }
+  watchValue() {
+    this.$parent.$emit(this.inputChangeEventName, this.value);
+    this.$emit(this.inputChangeEventName, this.value);
+    if (this.value.includes("{")) {
+      this.getSearchString();
+      if (this.noResults)
+        this.playClosingSequence();
+      if (this.value.length <= 0)
+        this.playClosingSequence();
+    }
+    if (this.value === "")
+      this.result = [];
+  }
+  watchResult(val, oldVal) {
+    if (this.noResults || this.value == "" || val.length != oldVal.length) {
+      this.currentResult = this.limitedResult.length - 1;
+    }
+    this.$emit(this.eventName, this.result);
+    this.$parent.$emit(this.eventName, this.result);
+    this.noResults ? this.playClosingSequence() : this.playOpeningSequence();
+  }
+  getSearchString() {
+    if (this.value.trim() === "") {
+      this.result = [];
+    } else {
+      const cursorPos = this.cursorPos;
+      const bracketOpen = this.value.lastIndexOf("{", cursorPos - 1);
+      const searchValue = this.value.substring(bracketOpen, cursorPos);
+      const bracketClose = searchValue.lastIndexOf("}");
+      if (cursorPos > bracketOpen && bracketClose === -1 && bracketOpen !== -1) {
+        this.result = this.fuse.search(searchValue);
+        this.queryLength = searchValue.length;
+      } else {
+        this.playClosingSequence();
+      }
+    }
+  }
+  keyEvent(event) {
+    if (event.keyCode === 38 && this.currentResult > 0) {
+      if (this.currentResult <= this.limitedResult.length - 7) {
+        this.$refs.resultArea.scrollBy(0, -32);
+      }
+      event.preventDefault();
+      event.stopPropagation();
+      this.currentResult--;
+    }
+    if (event.keyCode === 40 && this.currentResult < this.limitedResult.length - 1) {
+      if (this.currentResult >= 6) {
+        this.$refs.resultArea.scrollBy(0, 32);
+      }
+      event.stopPropagation();
+      this.currentResult++;
+    }
+    if (event.keyCode === 13 && this.phaseOne) {
+      if (this.result != []) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.mergeValues();
+      }
+    }
+    if (event.keyCode === 27 && this.phaseOne) {
+      this.blurSearch();
+    }
+    if (event.keyCode === 9 && this.phaseOne) {
+      if (this.result != []) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.mergeValues();
+      }
+    }
+  }
+  mergeValues() {
+    const cursor = this.cursorPos;
+    this.value = this.value.substring(0, cursor) + this.selectedResult.substring(this.queryLength) + this.value.substring(cursor);
+    setTimeout(() => {
+      this.result = [];
+    });
+    this.$emit("update", this.value);
+    if (this.searchFromClick)
+      !this.searchFromClick;
+  }
+  playClosingSequence() {
+    if (this.phaseTwo) {
+      setTimeout(() => {
+        this.phaseTwo = !this.phaseTwo;
+      }, 100);
+      setTimeout(() => {
+        this.phaseOne = !this.phaseOne;
+      }, 200);
+    }
+  }
+  playOpeningSequence() {
+    if (!this.phaseOne) {
+      this.phaseOne = !this.phaseOne;
+      setTimeout(() => {
+        this.phaseTwo = !this.phaseTwo;
+      }, 100);
+    }
+  }
+  initFuse() {
+    this.fuse = new Fuse(this.searchData, this.options);
+    if (this.search) {
+      this.value = this.search;
+    }
+  }
+  blurSearch() {
+    this.currentResult = 0;
+  }
+  mounted() {
+    this.initFuse();
+  }
+};
+__decorateClass$1([
+  Prop()
+], VariableMenu$1.prototype, "input_cursor", 2);
+__decorateClass$1([
+  Prop()
+], VariableMenu$1.prototype, "jsonSearch", 2);
+__decorateClass$1([
+  Prop({ default: "" })
+], VariableMenu$1.prototype, "search", 2);
+__decorateClass$1([
+  Prop({ default: "fuseResultsUpdated" })
+], VariableMenu$1.prototype, "eventName", 2);
+__decorateClass$1([
+  Prop({ default: "fuseInputChanged" })
+], VariableMenu$1.prototype, "inputChangeEventName", 2);
+__decorateClass$1([
+  Watch("value", { immediate: true })
+], VariableMenu$1.prototype, "watchValue", 1);
+__decorateClass$1([
+  Watch("result")
+], VariableMenu$1.prototype, "watchResult", 1);
+VariableMenu$1 = __decorateClass$1([
+  Component({})
+], VariableMenu$1);
+const VariableMenu_vue_vue_type_style_index_0_lang = "";
+var _sfc_render$1 = function render5() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { ref: "variableMenu", staticClass: "s-variablemenu", on: { "input": function($event) {
+    return _vm.watchInput($event);
+  }, "focus": function($event) {
+    return _vm.watchCursor($event);
+  }, "click": function($event) {
+    return _vm.watchCursor($event);
+  }, "keyup": function($event) {
+    return _vm.watchCursor($event);
+  }, "keydown": _vm.keyEvent } }, [_c("transition", { attrs: { "name": "expand", "tag": "div" }, on: { "enter": _vm.open, "after-enter": _vm.afterOpen, "leave": _vm.close } }, [_vm.phaseTwo && _vm.limitedResult.length >= 1 ? _c("div", { ref: "resultArea", staticClass: "s-variablemenu-results__cont", style: _vm.calcTransform }, [_c("transition-group", { attrs: { "name": "s-variablemenu--fadeX" } }, _vm._l(_vm.limitedResult, function(searchResult, i) {
+    return _c("div", { key: searchResult.item.variable, staticClass: "s-variablemenu-results", class: { "s-active-result": _vm.currentResult === i }, on: { "mouseover": function($event) {
+      _vm.currentResult = i;
+    }, "mousedown": _vm.mergeValues, "mouseup": _vm.blurSearch } }, [_c("div", { staticClass: "s-variablemenu__result--title" }, [_vm._v(" " + _vm._s(searchResult.item.variable) + " ")]), _c("div", { staticClass: "s-variablemenu__result--desc" }, [_vm._v(" " + _vm._s(searchResult.item.description) + " ")])]);
+  }), 0)], 1) : _vm._e()]), _c("div", { ref: "inputCont", staticClass: "s-variablemenu--searchbar__cont" }, [_vm._t("input")], 2)], 1);
+};
+var _sfc_staticRenderFns$1 = [];
+var __component__$1 = /* @__PURE__ */ normalizeComponent(
+  VariableMenu$1,
+  _sfc_render$1,
+  _sfc_staticRenderFns$1,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const VariableMenu = __component__$1.exports;
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let Inputs$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "demoCode", InputsCode);
+    __publicField(this, "data", "");
+    __publicField(this, "radioValue", true);
+    __publicField(this, "checkboxValue1", true);
+    __publicField(this, "checkboxValue2", false);
+    __publicField(this, "checkboxValue3", true);
+    __publicField(this, "checkboxValue4", false);
+    __publicField(this, "selected", "Option A");
+    __publicField(this, "selectedGroup", "Option A");
+    __publicField(this, "multipleSelected", ["Option B", "Option C"]);
+    __publicField(this, "optionGroups", [
+      {
+        group: "Group A",
+        items: ["Option A", "Option B", "Option C"]
+      },
+      {
+        group: "Group B",
+        items: ["Option A", "Option B", "Option C"]
+      },
+      {
+        group: "Group C",
+        items: ["Option A", "Option B", "Option C"]
+      }
+    ]);
+    __publicField(this, "optionSelected", ["Glass Pint", "Glass Beer"]);
+    __publicField(this, "objectSelected", {
+      value: "glass-pint",
+      title: "Glass Pint",
+      image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-pint.png"
+    });
+    __publicField(this, "statusValue", true);
+    __publicField(this, "testingInput", null);
+    __publicField(this, "layoutValue", "above");
+    __publicField(this, "jarValue", "glass-pint");
+    __publicField(this, "varData", varSearch);
+    __publicField(this, "variAreaValue", "");
+    __publicField(this, "variTextValue", "");
+    __publicField(this, "textInputValue", "test");
+    __publicField(this, "numberInputValue", 0);
+    __publicField(this, "emailInputValue", "");
+    __publicField(this, "passwordInputValue", "");
+    __publicField(this, "errorTextInputValue", "");
+    __publicField(this, "textAreaInputValue", "");
+    __publicField(this, "textInputPlaceholder", "Placeholder");
+    __publicField(this, "emailInputPlaceholder", "Placeholder");
+    __publicField(this, "passwordInputPlaceholder", "Placeholder");
+    __publicField(this, "options", [
+      {
+        value: "glass-pint",
+        title: "Glass Pint",
+        image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-pint.png"
+      },
+      {
+        value: "glass-beer",
+        title: "Glass Beer",
+        image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-beer.png"
+      },
+      {
+        value: "glass-beer-2",
+        title: "Glass Beer 2",
+        image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-beer2.png"
+      },
+      {
+        value: "glass-coffee",
+        title: "Glass Coffee",
+        image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-coffee.png"
+      },
+      {
+        value: "glass-fancy",
+        title: "Glass Fancy",
+        image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-fancy.png"
+      },
+      {
+        value: "glass-whiskey",
+        title: "Glass Whiskey",
+        image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-whiskey.png"
+      },
+      {
+        value: "glass-burbon",
+        title: "Glass Burbon",
+        image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-burbon.png"
+      },
+      {
+        value: "glass-martini",
+        title: "Glass Martini",
+        image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-martini.png"
+      },
+      {
+        value: "glass-beer-3",
+        title: "Glass Beer 3",
+        image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-beer3.png"
+      },
+      {
+        value: "glass-wine",
+        title: "Glass Wine",
+        image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-wine.png"
+      },
+      {
+        value: "glass-baileys",
+        title: "Glass Baileys",
+        image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-baileys.png"
+      },
+      {
+        value: "glass-champagne",
+        title: "Glass Champagne",
+        image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-champagne.png"
+      },
+      {
+        value: "glass-coffee-no-handle",
+        title: "Glass Coffee No Handle",
+        image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-coffee-no-handle.png"
+      },
+      {
+        value: "glass-plinko",
+        title: "Glass Plinko",
+        image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-plinko.png"
+      },
+      {
+        value: "glass-stocking",
+        title: "Glass Stocking",
+        image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-stocking.png"
+      },
+      {
+        value: "glass-snowman",
+        title: "Glass Snowman",
+        image: "https://cdn.streamlabs.com/static/tip-jar/jars/glass-snowman.png"
+      }
+    ]);
+    __publicField(this, "show", [
+      "Bounce",
+      "Bounce In",
+      "Bounce In Down",
+      "Bounce In Left",
+      "Bounce In Right",
+      "Bounce In Up",
+      "Fade In",
+      "Fade In Down",
+      "Fade In Down Big",
+      "Fade In Left",
+      "Fade In Left Big",
+      "Fade In Right",
+      "Fade In",
+      "Fade In Up",
+      "Fade In Up Big"
+    ]);
+  }
+};
+Inputs$1 = __decorateClass([
+  Component({
+    components: {
+      Checkbox,
+      DemoSection,
+      FormGroup,
+      ImagePickerInput,
+      Radio,
+      Selector,
+      StatusSwitch,
+      TaggingInput,
+      TextArea,
+      TextInput,
+      VariableMenu
+    }
+  })
+], Inputs$1);
+var _sfc_render = function render6() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", [_c("h1", [_vm._v("Inputs")]), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Text Inputs")]), _vm._m(0), _vm._m(1), _c("DemoSection", { attrs: { "title": "Text Inputs", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("FormGroup", [_c("TextInput", { attrs: { "slot": "input", "type": "text", "label": "Text Input", "name": "textExample", "placeholder": _vm.textInputPlaceholder, "autoComplete": "on" }, slot: "input", model: { value: _vm.textInputValue, callback: function($$v) {
+      _vm.textInputValue = $$v;
+    }, expression: "textInputValue" } }), _c("TextInput", { directives: [{ name: "validate", rawName: "v-validate", value: "required|between:0,100", expression: "'required|between:0,100'" }], attrs: { "slot": "input", "type": "number", "label": "Number Input", "name": "numberinputExample", "placeholder": _vm.textInputPlaceholder, "min": 0, "max": 100, "error": _vm.errors.first("numberinputExample") }, slot: "input", model: { value: _vm.numberInputValue, callback: function($$v) {
+      _vm.numberInputValue = $$v;
+    }, expression: "numberInputValue" } }), _c("TextInput", { attrs: { "slot": "input", "type": "email", "label": "Email Input", "name": "emailExample", "placeholder": _vm.emailInputPlaceholder }, slot: "input", model: { value: _vm.emailInputValue, callback: function($$v) {
+      _vm.emailInputValue = $$v;
+    }, expression: "emailInputValue" } }), _c("TextInput", { attrs: { "slot": "input", "type": "password", "label": "Password Input", "name": "passwordExample", "placeholder": _vm.passwordInputPlaceholder, "disabled": "" }, slot: "input", model: { value: _vm.passwordInputValue, callback: function($$v) {
+      _vm.passwordInputValue = $$v;
+    }, expression: "passwordInputValue" } }), _c("TextInput", { attrs: { "slot": "input", "type": "text", "label": "Input With Error", "name": "textExample", "placeholder": _vm.textInputPlaceholder, "error": "Enter a number" }, slot: "input", model: { value: _vm.errorTextInputValue, callback: function($$v) {
+      _vm.errorTextInputValue = $$v;
+    }, expression: "errorTextInputValue" } }), _c("TextArea", { attrs: { "slot": "input", "label": "Text Area", "name": "myarea", "placeholder": "This is where you put some cool stuff", "autoResize": "true", "maxLength": 1e3, "maxHeight": 100 }, slot: "input", model: { value: _vm.textAreaInputValue, callback: function($$v) {
+      _vm.textAreaInputValue = $$v;
+    }, expression: "textAreaInputValue" } })], 1)];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Text Inputs with Variable Menu Wrapper")]), _c("p", [_vm._v(" A new way to navigate variables, just wrap your input with the Variable Menu. This is not work with FormGroup preformatting. ")]), _c("DemoSection", { attrs: { "title": "Variable Menu", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("VariableMenu", { attrs: { "jsonSearch": _vm.varData } }, [_c("text-input", { attrs: { "slot": "input", "type": "text", "name": "textExample", "placeholder": "w/ Variable Menu" }, slot: "input", model: { value: _vm.variTextValue, callback: function($$v) {
+      _vm.variTextValue = $$v;
+    }, expression: "variTextValue" } })], 1), _c("VariableMenu", { attrs: { "jsonSearch": _vm.varData } }, [_c("TextArea", { ref: "textArea", attrs: { "slot": "input", "name": "myarea", "placeholder": "w/ Variable Menu", "rows": "3", "maxLength": 1e3, "maxHeight": 100 }, slot: "input", model: { value: _vm.variAreaValue, callback: function($$v) {
+      _vm.variAreaValue = $$v;
+    }, expression: "variAreaValue" } })], 1)];
+  }, proxy: true }]) }), _vm._m(2)], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Tagging Input")]), _vm._m(3), _c("DemoSection", { attrs: { "title": "Tagging Input", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("TaggingInput", { attrs: { "name": "aliases", "placeholder": "!hello", "maxItems": "10", "inputValidation": "required" }, on: { "keydown": function($event) {
+      if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "space", 32, $event.key, [" ", "Spacebar"]))
+        return null;
+      $event.preventDefault();
+    } } })];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Selector")]), _vm._m(4), _c("DemoSection", { attrs: { "title": "Selector", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("FormGroup", [_c("Selector", { attrs: { "slot": "input", "options": ["Option A", "Option B", "Option C"] }, slot: "input", model: { value: _vm.selected, callback: function($$v) {
+      _vm.selected = $$v;
+    }, expression: "selected" } }), _c("Selector", { attrs: { "slot": "input", "options": _vm.optionGroups, "group-values": "items", "group-label": "group", "searchable": false }, slot: "input", model: { value: _vm.selectedGroup, callback: function($$v) {
+      _vm.selectedGroup = $$v;
+    }, expression: "selectedGroup" } }), _c("Selector", { attrs: { "slot": "input", "options": ["Option A", "Option B", "Option C"], "disabled": "" }, slot: "input", model: { value: _vm.selected, callback: function($$v) {
+      _vm.selected = $$v;
+    }, expression: "selected" } }), _c("Selector", { attrs: { "slot": "input", "multiple": "", "options": ["Option A", "Option B", "Option C"], "searchable": false }, slot: "input", model: { value: _vm.multipleSelected, callback: function($$v) {
+      _vm.multipleSelected = $$v;
+    }, expression: "multipleSelected" } }), _c("Selector", { attrs: { "slot": "input", "multiple": "", "options": ["Option A", "Option B", "Option C"], "disabled": "" }, slot: "input", model: { value: _vm.multipleSelected, callback: function($$v) {
+      _vm.multipleSelected = $$v;
+    }, expression: "multipleSelected" } })], 1)];
+  }, proxy: true }]) }), _vm._m(5)], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Checkboxes and Radios")]), _vm._m(6), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Single Checkbox")]), _c("DemoSection", { attrs: { "title": "Checkbox", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Checkbox", { attrs: { "id": "checkbox", "name": "checkbox", "label": "Checkbox Label" }, model: { value: _vm.checkboxValue1, callback: function($$v) {
+      _vm.checkboxValue1 = $$v;
+    }, expression: "checkboxValue1" } })];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Checkbox Group")]), _c("DemoSection", { attrs: { "title": "Checkbox Group", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("div", { staticClass: "s-checkbox-group" }, [_c("Checkbox", { attrs: { "id": "checkbox1", "name": "checkbox1", "label": "Checkbox Label 1" }, model: { value: _vm.checkboxValue2, callback: function($$v) {
+      _vm.checkboxValue2 = $$v;
+    }, expression: "checkboxValue2" } }), _c("Checkbox", { attrs: { "id": "checkbox2", "name": "checkbox2", "label": "Checkbox Label 2" }, model: { value: _vm.checkboxValue3, callback: function($$v) {
+      _vm.checkboxValue3 = $$v;
+    }, expression: "checkboxValue3" } }), _c("Checkbox", { attrs: { "id": "checkbox3", "name": "checkbox3", "label": "Checkbox Label 3" }, model: { value: _vm.checkboxValue4, callback: function($$v) {
+      _vm.checkboxValue4 = $$v;
+    }, expression: "checkboxValue4" } })], 1)];
+  }, proxy: true }]) })], 1)]), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Radios")]), _c("DemoSection", { attrs: { "title": "Radios", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("div", { staticClass: "s-checkbox-group" }, [_c("Radio", { attrs: { "id": "radio1", "name": "radioGroup", "label": "Enabled", "val": true }, model: { value: _vm.radioValue, callback: function($$v) {
+      _vm.radioValue = $$v;
+    }, expression: "radioValue" } }), _c("Radio", { attrs: { "id": "radio2", "name": "radioGroup", "label": "Disabled", "val": false }, model: { value: _vm.radioValue, callback: function($$v) {
+      _vm.radioValue = $$v;
+    }, expression: "radioValue" } })], 1)];
+  }, proxy: true }]) }), _vm._m(7)], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Status Switch")]), _vm._m(8), _c("div", { staticClass: "section" }, [_c("DemoSection", { attrs: { "title": "Status Switch", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("FormGroup", [_c("StatusSwitch", { attrs: { "slot": "input", "label": "Switch Label" }, slot: "input", model: { value: _vm.statusValue, callback: function($$v) {
+      _vm.statusValue = $$v;
+    }, expression: "statusValue" } }), _c("StatusSwitch", { attrs: { "slot": "input", "size": "small", "label": "Small Switch Label" }, slot: "input", model: { value: _vm.statusValue, callback: function($$v) {
+      _vm.statusValue = $$v;
+    }, expression: "statusValue" } })], 1)];
+  }, proxy: true }]) })], 1), _vm._m(9)]), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Image Input Picker")]), _vm._m(10), _c("div", { staticClass: "section" }, [_c("h3", [_vm._v("Default")]), _c("p", [_vm._v(" By default, the image input picker is setup to have our Alert Box layout styles as the options. ")]), _c("DemoSection", { attrs: { "title": "Default Image Input Picker", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("ImagePickerInput", { model: { value: _vm.layoutValue, callback: function($$v) {
+      _vm.layoutValue = $$v;
+    }, expression: "layoutValue" } })];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h3", [_vm._v("Custom")]), _c("p", [_vm._v(" You can pass in any options you'd like with the options prop. This is an example using our Jar options. ")]), _c("DemoSection", { attrs: { "title": "Custom Image Input Picker", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("ImagePickerInput", { attrs: { "options": _vm.options }, model: { value: _vm.jarValue, callback: function($$v) {
+      _vm.jarValue = $$v;
+    }, expression: "jarValue" } })];
+  }, proxy: true }]) })], 1)])]);
+};
+var _sfc_staticRenderFns = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("p", [_vm._v(" These 6 fields below are wrapped in a "), _c("code", [_vm._v("FormGroup")]), _vm._v(" component. This will put 16px of margin between form fields and 24px margin between form groups. ")]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("pre", [_c("code", [_vm._v("import { TextInput, TextArea, VariableMenu } from 'streamlabs-beaker';\n\ncomponents: {\n  TextInput,\n  TextArea,\n  VariableMenu\n}")])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("table", { staticClass: "docs-table" }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Prop")]), _c("th", [_vm._v("Type")]), _c("th", [_vm._v("Default")]), _c("th", [_vm._v("Description")])])]), _c("tbody", [_c("tr", [_c("td", [_vm._v("disabled")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v(" Puts a disabled class on the form field and disables the input. ")])]), _c("tr", [_c("td", [_vm._v("error")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v(" If there is error text, error classes will go on the input - we plan to add better validation handling. ")])]), _c("tr", [_c("td", [_vm._v("label")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("Optional label for the input.")])]), _c("tr", [_c("td", [_vm._v("name")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("Input name attribute.")])]), _c("tr", [_c("td", [_vm._v("placeholder")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("Input placeholder text.")])]), _c("tr", [_c("td", [_vm._v("type")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("text")]), _c("td", [_vm._v(" Input type: "), _c("code", [_vm._v("text")]), _vm._v(", "), _c("code", [_vm._v("email")]), _vm._v(", "), _c("code", [_vm._v("password")]), _vm._v(". ")])]), _c("tr", [_c("td", [_vm._v("value")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("Input value using v-model.")])]), _c("tr", [_c("td", [_vm._v("readonly")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("Specifies that an input field is read-only.")])])])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("pre", [_c("code", [_vm._v("import { TaggingInput } from 'streamlabs-beaker';\n\ncomponents: {\n  TaggingInput\n}")])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("pre", [_c("code", [_vm._v("import { Selector } from 'streamlabs-beaker';\n\ncomponents: {\n  Selector\n}")])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("table", { staticClass: "docs-table" }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Prop")]), _c("th", [_vm._v("Type")]), _c("th", [_vm._v("Default")]), _c("th", [_vm._v("Description")])])]), _c("tbody", [_c("tr", [_c("td", [_vm._v("value")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("Current selected value.")])]), _c("tr", [_c("td", [_vm._v("options")]), _c("td", [_vm._v("[''] or {}")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("Array of strings or objects to use as the options.")])]), _c("tr", [_c("td", [_vm._v("multiple")]), _c("td", [_vm._v("Boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v("Optional label for the input.")])]), _c("tr", [_c("td", [_vm._v("placeholder")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v("''")]), _c("td", [_vm._v("Equivalent to the `placeholder` attribute on an input.")])]), _c("tr", [_c("td", [_vm._v("searchable")]), _c("td", [_vm._v("Boolean")]), _c("td", [_vm._v("true")]), _c("td", [_vm._v("Optional label for the input.")])]), _c("tr", [_c("td", [_vm._v("disabled")]), _c("td", [_vm._v("Boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v(" Puts a disabled class on the form field and disables the input. ")])])])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("pre", [_c("code", [_vm._v("import { Checkbox, Radio } from 'streamlabs-beaker';\n\ncomponents: {\n  Checkbox,\n  Radio\n}")])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("table", { staticClass: "docs-table" }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Prop")]), _c("th", [_vm._v("Type")]), _c("th", [_vm._v("Default")]), _c("th", [_vm._v("Description")])])]), _c("tbody", [_c("tr", [_c("td", [_vm._v("id")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v('""')]), _c("td", [_vm._v("Indentifier for associated label.")])]), _c("tr", [_c("td", [_vm._v("name")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v('""')]), _c("td", [_vm._v("Name for radio group.")])]), _c("tr", [_c("td", [_vm._v("label")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("Optional label for the radio input.")])]), _c("tr", [_c("td", [_vm._v("val")]), _c("td", [_vm._v("string, boolean")]), _c("td", [_vm._v('""')]), _c("td", [_vm._v("Radio input value when selected")])])])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("pre", [_c("code", [_vm._v("import { StatusSwitch } from 'streamlabs-beaker';\n\ncomponents: {\n  StatusSwitch\n}")])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("table", { staticClass: "docs-table" }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Prop")]), _c("th", [_vm._v("Type")]), _c("th", [_vm._v("Default")]), _c("th", [_vm._v("Description")])])]), _c("tbody", [_c("tr", [_c("td", [_vm._v("value")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v("Available for v-model 2-way data binding.")])]), _c("tr", [_c("td", [_vm._v("label")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("Optional label for the input.")])]), _c("tr", [_c("td", [_vm._v("size")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v(" Other available sizes. Current alternate size option: "), _c("code", [_vm._v("small")]), _vm._v(". ")])])])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("pre", [_c("code", [_vm._v("import { ImagePickerInput } from 'streamlabs-beaker';\n\ncomponents: {\n  ImagePickerInput\n}")])]);
+}];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  Inputs$1,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const Inputs = __component__.exports;
+export {
+  Inputs as default
+};
 //# sourceMappingURL=Inputs.4dfd53c1.js.map

@@ -1,4 +1,99 @@
-var b=Object.defineProperty;var g=(n,e,t)=>e in n?b(n,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):n[e]=t;var s=(n,e,t)=>(g(n,typeof e!="symbol"?e+"":e,t),t);import{C as v,P as a,V as _,n as f}from"./index.4fb8a6cb.js";import{B as P}from"./Badge.2c39dd0d.js";import{B as C}from"./Button.b26dacc2.js";import{D as y}from"./DemoSection.79ee11c0.js";import{M as h,W as S}from"./ModalComp.12fcb69e.js";import{E as k}from"./EmptySection.71dd93db.js";import"./Accordion.09c82396.js";import"./Spinner.2fef2c20.js";import"./index.3042f557.js";var B=Object.defineProperty,x=Object.getOwnPropertyDescriptor,c=(n,e,t,i)=>{for(var o=i>1?void 0:i?x(e,t):e,r=n.length-1,l;r>=0;r--)(l=n[r])&&(o=(i?l(e,t,o):l(o))||o);return i&&o&&B(e,t,o),o};let m=class extends _{constructor(){super(...arguments);s(this,"bgColor");s(this,"description");s(this,"buttonVariation");s(this,"buttonTitle");s(this,"buttonHref");s(this,"buttonTo");s(this,"buttonTag");s(this,"onClick");s(this,"callToActionBg",{backgroundColor:this.bgColor})}};c([a()],m.prototype,"bgColor",2);c([a({default:"Over 800k creators use Streamlabs OBS daily, delivering entertainment."})],m.prototype,"description",2);c([a({default:"slobs-download"})],m.prototype,"buttonVariation",2);c([a({default:"Download Streamlabs OBS"})],m.prototype,"buttonTitle",2);c([a()],m.prototype,"buttonHref",2);c([a()],m.prototype,"buttonTo",2);c([a()],m.prototype,"buttonTag",2);c([a()],m.prototype,"onClick",2);m=c([v({components:{Button:C}})],m);var w=function(){var e=this,t=e._self._c;return e._self._setupProxy,t("div",{staticClass:"s-call-to-action s-call-to-action--nav",style:e.callToActionBg},[t("div",{staticClass:"s-title"},[e._t("title")],2),t("div",[e._v(e._s(e.description))]),t("div",{staticClass:"s-call-to-action__extras"},[e._t("extras")],2),t("Button",{attrs:{variation:e.buttonVariation,size:"small",title:e.buttonTitle,href:e.buttonHref,to:e.buttonTo,tag:e.buttonTag},on:{click:function(i){return e.$emit("click")}}})],1)},D=[],T=f(m,w,D,!1,null,null,null,null);const M=T.exports,A=`<template>
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { C as Component, P as Prop, V as Vue, n as normalizeComponent } from "./index.4fb8a6cb.js";
+import { B as Badge } from "./Badge.2c39dd0d.js";
+import { B as Button } from "./Button.b26dacc2.js";
+import { D as DemoSection } from "./DemoSection.79ee11c0.js";
+import { M as ModalComp, W as WelcomePrime } from "./ModalComp.12fcb69e.js";
+import { E as EmptySection } from "./EmptySection.71dd93db.js";
+import "./Accordion.09c82396.js";
+import "./Spinner.2fef2c20.js";
+import "./index.3042f557.js";
+var __defProp$2 = Object.defineProperty;
+var __getOwnPropDesc$2 = Object.getOwnPropertyDescriptor;
+var __decorateClass$2 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$2(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$2(target, key, result);
+  return result;
+};
+let NavCallToAction$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "bgColor");
+    __publicField(this, "description");
+    __publicField(this, "buttonVariation");
+    __publicField(this, "buttonTitle");
+    __publicField(this, "buttonHref");
+    __publicField(this, "buttonTo");
+    __publicField(this, "buttonTag");
+    __publicField(this, "onClick");
+    __publicField(this, "callToActionBg", {
+      backgroundColor: this.bgColor
+    });
+  }
+};
+__decorateClass$2([
+  Prop()
+], NavCallToAction$1.prototype, "bgColor", 2);
+__decorateClass$2([
+  Prop({
+    default: "Over 800k creators use Streamlabs OBS daily, delivering entertainment."
+  })
+], NavCallToAction$1.prototype, "description", 2);
+__decorateClass$2([
+  Prop({ default: "slobs-download" })
+], NavCallToAction$1.prototype, "buttonVariation", 2);
+__decorateClass$2([
+  Prop({ default: "Download Streamlabs OBS" })
+], NavCallToAction$1.prototype, "buttonTitle", 2);
+__decorateClass$2([
+  Prop()
+], NavCallToAction$1.prototype, "buttonHref", 2);
+__decorateClass$2([
+  Prop()
+], NavCallToAction$1.prototype, "buttonTo", 2);
+__decorateClass$2([
+  Prop()
+], NavCallToAction$1.prototype, "buttonTag", 2);
+__decorateClass$2([
+  Prop()
+], NavCallToAction$1.prototype, "onClick", 2);
+NavCallToAction$1 = __decorateClass$2([
+  Component({
+    components: {
+      Button
+    }
+  })
+], NavCallToAction$1);
+const NavCallToAction_vue_vue_type_style_index_0_lang = "";
+var _sfc_render$2 = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-call-to-action s-call-to-action--nav", style: _vm.callToActionBg }, [_c("div", { staticClass: "s-title" }, [_vm._t("title")], 2), _c("div", [_vm._v(_vm._s(_vm.description))]), _c("div", { staticClass: "s-call-to-action__extras" }, [_vm._t("extras")], 2), _c("Button", { attrs: { "variation": _vm.buttonVariation, "size": "small", "title": _vm.buttonTitle, "href": _vm.buttonHref, "to": _vm.buttonTo, "tag": _vm.buttonTag }, on: { "click": function($event) {
+    return _vm.$emit("click");
+  } } })], 1);
+};
+var _sfc_staticRenderFns$2 = [];
+var __component__$2 = /* @__PURE__ */ normalizeComponent(
+  NavCallToAction$1,
+  _sfc_render$2,
+  _sfc_staticRenderFns$2,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const NavCallToAction = __component__$2.exports;
+const PrimeCode = `<template>
   <div>
     <div class="section">
       <h1>Prime Components</h1>
@@ -223,42 +318,169 @@ export default class PrimeComponents extends Vue {
   width: 600px;
 }
 </style>
-`;var N=Object.defineProperty,$=Object.getOwnPropertyDescriptor,d=(n,e,t,i)=>{for(var o=i>1?void 0:i?$(e,t):e,r=n.length-1,l;r>=0;r--)(l=n[r])&&(o=(i?l(e,t,o):l(o))||o);return i&&o&&N(e,t,o),o};let p=class extends _{constructor(){super(...arguments);s(this,"subtitle");s(this,"href");s(this,"onClick")}};d([a({})],p.prototype,"subtitle",2);d([a({})],p.prototype,"href",2);d([a()],p.prototype,"onClick",2);p=d([v({components:{Badge:P,Button:C,EmptySection:k}})],p);var W=function(){var e=this,t=e._self._c;return e._self._setupProxy,t("div",{staticClass:"prime-section"},[t("empty-section",{attrs:{variation:"prime",titleSlot:!0,subtitle:e.subtitle,hasLink:!0}},[t("div",{attrs:{slot:"title"},slot:"title"},[t("Badge",{attrs:{"align-left":!0,variant:"prime-alt"}}),e._v("Feature ")],1),t("div",{attrs:{slot:"link"},slot:"link"},[t("Button",{attrs:{tag:"a",variation:"link",href:e.href,title:"Try Prime Now"},on:{click:function(i){return e.$emit("click")}}})],1)])],1)},O=[],q=f(p,W,O,!1,null,null,null,null);const V=q.exports;var F=Object.defineProperty,I=Object.getOwnPropertyDescriptor,L=(n,e,t,i)=>{for(var o=i>1?void 0:i?I(e,t):e,r=n.length-1,l;r>=0;r--)(l=n[r])&&(o=(i?l(e,t,o):l(o))||o);return i&&o&&F(e,t,o),o};let u=class extends _{constructor(){super(...arguments);s(this,"demoCode",A)}testClick(){console.log("test prime section click")}testNavClick(){console.log("test prime nav click")}testWelcomePrime(){console.log("test welcome prime click")}testPrimeIntro(){console.log("test prime info click")}};u=L([v({components:{Badge:P,Button:C,DemoSection:y,ModalComp:h,NavCallToAction:M,PrimeSection:V,WelcomePrime:S}})],u);var j=function(){var e=this,t=e._self._c;return e._self._setupProxy,t("div",[e._m(0),t("div",{staticClass:"section"},[t("h2",[e._v("Standard Badges & Alt Badges")]),e._m(1),t("DemoSection",{attrs:{title:"Badges",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[t("Badge",{attrs:{variant:"prime"}}),t("Badge",{attrs:{variant:"prime-alt"}})]},proxy:!0}])})],1),t("div",{staticClass:"section"},[t("h2",[e._v("Prime Feature Overlay")]),e._m(2),t("DemoSection",{attrs:{title:"Prime Lock Overlay",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[t("div",{staticClass:"cs-section"},[e._v(" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nisi magna, venenatis quis lobortis vel, mollis eu diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquet egestas tellus quis pretium. Fusce sit amet sem sapien. Vestibulum congue euismod enim non venenatis. Sed sed varius neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nisi magna, venenatis quis lobortis vel, mollis eu diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquet egestas tellus quis pretium. Fusce sit amet sem sapien. Vestibulum congue euismod enim non venenatis. Sed sed varius neque. "),t("PrimeSection",{attrs:{subtitle:"77% trust custom email addresses over regular."},on:{click:e.testClick}})],1)]},proxy:!0}])})],1),t("div",{staticClass:"section"},[t("h2",[e._v("Prime Call to Action")]),e._m(3),t("DemoSection",{attrs:{title:"Prime Call to Action",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[t("NavCallToAction",{attrs:{description:`Forward email from your custom domain name to your current mailbox.
-            `,buttonTitle:"Join Prime",buttonVariation:"prime"},on:{click:e.testNavClick}},[t("div",{attrs:{slot:"title"},slot:"title"},[e._v(" Unlock unlimited themes with "),t("Badge",{attrs:{variant:"prime-alt"}})],1),t("div",{attrs:{slot:"extras"},slot:"extras"},[t("div",[e._v("Prime also includes:")]),t("div",[e._v("Custom Domain Name")]),t("div",[e._v("30+ Professional Themes")]),t("div",[e._v("Advanced SEO & Analytics")])])])]},proxy:!0}])})],1),t("div",{staticClass:"section"},[t("h2",[e._v("Modal Welcome Prime")]),e._m(4),t("DemoSection",{attrs:{title:"Welcome Prime Modal",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[t("ModalComp",{attrs:{type:"welcome-prime",width:600,hasPrimeCloseButton:!0},on:{onClickPrime:e.testWelcomePrime}}),t("div",{staticClass:"button-container button-container--left"},[t("Button",{attrs:{variation:"default",title:"modal welcome prime"},on:{click:function(i){return e.$modal.show("modal-welcome-prime")}}})],1)]},proxy:!0}])})],1),t("div",{staticClass:"section"},[t("h2",[e._v("Welcome Prime")]),e._m(5),t("DemoSection",{attrs:{title:"Welcome Prime",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[t("WelcomePrime",{staticClass:"welcome-prime",on:{onClickPrime:e.testClick}})]},proxy:!0}])})],1),t("div",{staticClass:"section"},[t("h2",[e._v("Modal Prime Intro")]),e._m(6),t("DemoSection",{attrs:{title:"Prime Intro Modal",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[t("ModalComp",{attrs:{type:"prime-intro",width:680,hasPrimeCloseButton:!0},on:{onClickPrime:e.testPrimeIntro}}),t("div",{staticClass:"button-container button-container--left"},[t("Button",{attrs:{variation:"default",title:"Modal Prime Intro"},on:{click:function(i){return e.$modal.show("modal-prime-intro")}}})],1)]},proxy:!0}])})],1)])},E=[function(){var n=this,e=n._self._c;return n._self._setupProxy,e("div",{staticClass:"section"},[e("h1",[n._v("Prime Components")])])},function(){var n=this,e=n._self._c;return n._self._setupProxy,e("pre",[e("code",[n._v(`import { Badge } from "streamlabs-beaker"
-
-@Component({
-  components: {
-    Badge
+`;
+var __defProp$1 = Object.defineProperty;
+var __getOwnPropDesc$1 = Object.getOwnPropertyDescriptor;
+var __decorateClass$1 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$1(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$1(target, key, result);
+  return result;
+};
+let PrimeSection$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "subtitle");
+    __publicField(this, "href");
+    __publicField(this, "onClick");
   }
-})`)])])},function(){var n=this,e=n._self._c;return n._self._setupProxy,e("pre",[e("code",[n._v(`import { PrimeSection } from "streamlabs-beaker"
-
-@Component({
-  components: {
-    PrimeSection
+};
+__decorateClass$1([
+  Prop({})
+], PrimeSection$1.prototype, "subtitle", 2);
+__decorateClass$1([
+  Prop({})
+], PrimeSection$1.prototype, "href", 2);
+__decorateClass$1([
+  Prop()
+], PrimeSection$1.prototype, "onClick", 2);
+PrimeSection$1 = __decorateClass$1([
+  Component({
+    components: {
+      Badge,
+      Button,
+      EmptySection
+    }
+  })
+], PrimeSection$1);
+const PrimeSection_vue_vue_type_style_index_0_lang = "";
+var _sfc_render$1 = function render2() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "prime-section" }, [_c("empty-section", { attrs: { "variation": "prime", "titleSlot": true, "subtitle": _vm.subtitle, "hasLink": true } }, [_c("div", { attrs: { "slot": "title" }, slot: "title" }, [_c("Badge", { attrs: { "align-left": true, "variant": "prime-alt" } }), _vm._v("Feature ")], 1), _c("div", { attrs: { "slot": "link" }, slot: "link" }, [_c("Button", { attrs: { "tag": "a", "variation": "link", "href": _vm.href, "title": "Try Prime Now" }, on: { "click": function($event) {
+    return _vm.$emit("click");
+  } } })], 1)])], 1);
+};
+var _sfc_staticRenderFns$1 = [];
+var __component__$1 = /* @__PURE__ */ normalizeComponent(
+  PrimeSection$1,
+  _sfc_render$1,
+  _sfc_staticRenderFns$1,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const PrimeSection = __component__$1.exports;
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let PrimeComponents = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "demoCode", PrimeCode);
   }
-})`)])])},function(){var n=this,e=n._self._c;return n._self._setupProxy,e("pre",[e("code",[n._v(`import { NavCallToAction } from "streamlabs-beaker"
-
-@Component({
-  components: {
-    NavCallToAction
+  testClick() {
+    console.log("test prime section click");
   }
-})`)])])},function(){var n=this,e=n._self._c;return n._self._setupProxy,e("pre",[e("code",[n._v(`import { ModalComp } from "streamlabs-beaker"
-
-@Component({
-  components: {
-    ModalComp
+  testNavClick() {
+    console.log("test prime nav click");
   }
-})`)])])},function(){var n=this,e=n._self._c;return n._self._setupProxy,e("pre",[e("code",[n._v(`import { WelcomePrime } from "streamlabs-beaker"
-
-@Component({
-  components: {
-    WelcomePrime
+  testWelcomePrime() {
+    console.log("test welcome prime click");
   }
-})`)])])},function(){var n=this,e=n._self._c;return n._self._setupProxy,e("pre",[e("code",[n._v(`import { ModalComp } from "streamlabs-beaker"
-
-@Component({
-  components: {
-    ModalComp
+  testPrimeIntro() {
+    console.log("test prime info click");
   }
-})`)])])}],H=f(u,j,E,!1,null,"f6af387c",null,null);const ee=H.exports;export{ee as default};
+};
+PrimeComponents = __decorateClass([
+  Component({
+    components: {
+      Badge,
+      Button,
+      DemoSection,
+      ModalComp,
+      NavCallToAction,
+      PrimeSection,
+      WelcomePrime
+    }
+  })
+], PrimeComponents);
+const Prime_vue_vue_type_style_index_0_scoped_f6af387c_lang = "";
+var _sfc_render = function render3() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", [_vm._m(0), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Standard Badges & Alt Badges")]), _vm._m(1), _c("DemoSection", { attrs: { "title": "Badges", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Badge", { attrs: { "variant": "prime" } }), _c("Badge", { attrs: { "variant": "prime-alt" } })];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Prime Feature Overlay")]), _vm._m(2), _c("DemoSection", { attrs: { "title": "Prime Lock Overlay", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("div", { staticClass: "cs-section" }, [_vm._v(" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nisi magna, venenatis quis lobortis vel, mollis eu diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquet egestas tellus quis pretium. Fusce sit amet sem sapien. Vestibulum congue euismod enim non venenatis. Sed sed varius neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nisi magna, venenatis quis lobortis vel, mollis eu diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquet egestas tellus quis pretium. Fusce sit amet sem sapien. Vestibulum congue euismod enim non venenatis. Sed sed varius neque. "), _c("PrimeSection", { attrs: { "subtitle": "77% trust custom email addresses over regular." }, on: { "click": _vm.testClick } })], 1)];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Prime Call to Action")]), _vm._m(3), _c("DemoSection", { attrs: { "title": "Prime Call to Action", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("NavCallToAction", { attrs: { "description": "Forward email from your custom domain name to your current mailbox.\n            ", "buttonTitle": "Join Prime", "buttonVariation": "prime" }, on: { "click": _vm.testNavClick } }, [_c("div", { attrs: { "slot": "title" }, slot: "title" }, [_vm._v(" Unlock unlimited themes with "), _c("Badge", { attrs: { "variant": "prime-alt" } })], 1), _c("div", { attrs: { "slot": "extras" }, slot: "extras" }, [_c("div", [_vm._v("Prime also includes:")]), _c("div", [_vm._v("Custom Domain Name")]), _c("div", [_vm._v("30+ Professional Themes")]), _c("div", [_vm._v("Advanced SEO & Analytics")])])])];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Modal Welcome Prime")]), _vm._m(4), _c("DemoSection", { attrs: { "title": "Welcome Prime Modal", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("ModalComp", { attrs: { "type": "welcome-prime", "width": 600, "hasPrimeCloseButton": true }, on: { "onClickPrime": _vm.testWelcomePrime } }), _c("div", { staticClass: "button-container button-container--left" }, [_c("Button", { attrs: { "variation": "default", "title": "modal welcome prime" }, on: { "click": function($event) {
+      return _vm.$modal.show("modal-welcome-prime");
+    } } })], 1)];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Welcome Prime")]), _vm._m(5), _c("DemoSection", { attrs: { "title": "Welcome Prime", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("WelcomePrime", { staticClass: "welcome-prime", on: { "onClickPrime": _vm.testClick } })];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Modal Prime Intro")]), _vm._m(6), _c("DemoSection", { attrs: { "title": "Prime Intro Modal", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("ModalComp", { attrs: { "type": "prime-intro", "width": 680, "hasPrimeCloseButton": true }, on: { "onClickPrime": _vm.testPrimeIntro } }), _c("div", { staticClass: "button-container button-container--left" }, [_c("Button", { attrs: { "variation": "default", "title": "Modal Prime Intro" }, on: { "click": function($event) {
+      return _vm.$modal.show("modal-prime-intro");
+    } } })], 1)];
+  }, proxy: true }]) })], 1)]);
+};
+var _sfc_staticRenderFns = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("h1", [_vm._v("Prime Components")])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("pre", [_c("code", [_vm._v('import { Badge } from "streamlabs-beaker"\n\n@Component({\n  components: {\n    Badge\n  }\n})')])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("pre", [_c("code", [_vm._v('import { PrimeSection } from "streamlabs-beaker"\n\n@Component({\n  components: {\n    PrimeSection\n  }\n})')])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("pre", [_c("code", [_vm._v('import { NavCallToAction } from "streamlabs-beaker"\n\n@Component({\n  components: {\n    NavCallToAction\n  }\n})')])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("pre", [_c("code", [_vm._v('import { ModalComp } from "streamlabs-beaker"\n\n@Component({\n  components: {\n    ModalComp\n  }\n})')])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("pre", [_c("code", [_vm._v('import { WelcomePrime } from "streamlabs-beaker"\n\n@Component({\n  components: {\n    WelcomePrime\n  }\n})')])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("pre", [_c("code", [_vm._v('import { ModalComp } from "streamlabs-beaker"\n\n@Component({\n  components: {\n    ModalComp\n  }\n})')])]);
+}];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  PrimeComponents,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  "f6af387c",
+  null,
+  null
+);
+const Prime = __component__.exports;
+export {
+  Prime as default
+};
 //# sourceMappingURL=Prime.876f9922.js.map

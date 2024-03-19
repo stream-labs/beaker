@@ -1,0 +1,251 @@
+.s-onboarding-step {
+  margin-top: 32px;
+}
+.s-onboarding {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  z-index: 10;
+  width: 800px;
+}
+.s-onboarding .s-onboarding-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.s-onboarding .s-onboarding-main.s-onboarding__top {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.s-onboarding .s-onboarding-main.s-onboarding__left {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+.s-onboarding .s-onboarding-progress {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  overflow: hidden;
+}
+.s-onboarding .s-onboarding-progress.s-onboarding__left {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-width: 24px;
+  margin-right: 48px;
+  padding-top: 56px;
+  height: 400px;
+}
+.s-onboarding .s-onboarding-progress.s-onboarding__top {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 60%;
+  min-height: 24px;
+}
+.s-onboarding .s-onboarding-skip__warning {
+  margin-right: 8px;
+}
+.s-onboarding .s-onboarding-progress__line {
+  background: #e3e8eb;
+  z-index: 1;
+  position: absolute;
+}
+.s-onboarding .s-onboarding-progress__line.s-onboarding__left {
+  width: 4px;
+  height: 100%;
+  left: 10px;
+}
+.s-onboarding .s-onboarding-progress__line.s-onboarding__top {
+  width: 100%;
+  height: 4px;
+  top: 10px;
+}
+.s-onboarding .s-step__cont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.s-onboarding .s-step__cont .s-step-name__cont:first-child {
+  width: auto;
+}
+.s-onboarding .s-step-name__cont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+.s-onboarding .s-name-caret {
+  color: #4f5e65;
+  font-size: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.s-onboarding .s-name-caret > i {
+  display: block;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.s-onboarding .s-name-step {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  word-wrap: none;
+  white-space: nowrap;
+  color: #4f5e65;
+}
+.s-onboarding .s-name-step.current-step {
+  color: #09161d;
+  font-weight: 500;
+}
+.s-onboarding .s-bullet {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 24px;
+  height: 24px;
+  background-color: #e3e8eb;
+  border-radius: 50%;
+  z-index: 10;
+  -webkit-transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.s-onboarding .s-bullet > i {
+  font-size: 12px;
+  color: #ffffff;
+}
+.s-onboarding .s-bullet.s-onboarding__top {
+  margin-bottom: 40px;
+}
+.s-onboarding .s-bullet.current-step {
+  background-color: #80f5d2;
+}
+.s-onboarding .s-onboarding-body {
+  -webkit-transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.s-onboarding .s-onboarding-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-top: 1px solid #e3e8eb;
+  padding-top: 24px;
+  margin-top: 40px;
+}
+.s-onboarding .s-onboarding-footer p {
+  text-decoration: underline;
+  margin: 0px;
+  cursor: pointer;
+}
+.s-onboarding .s-onboarding-footer button {
+  cursor: pointer;
+}
+.s-onboarding .s-nextStep {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.s-onboarding .s-nextStep p {
+  margin-right: 16px;
+}
+.night .s-onboarding,
+.night-theme .s-onboarding {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  z-index: 10;
+  width: 800px;
+}
+.night .s-onboarding .s-onboarding-progress__line,
+.night-theme .s-onboarding .s-onboarding-progress__line {
+  background: #09161d;
+}
+.night .s-onboarding .s-name-caret,
+.night-theme .s-onboarding .s-name-caret {
+  color: #4f5e65;
+}
+.night .s-onboarding .s-name-step,
+.night-theme .s-onboarding .s-name-step {
+  color: #bdc2c4;
+}
+.night .s-onboarding .s-name-step.current-step,
+.night-theme .s-onboarding .s-name-step.current-step {
+  color: #ffffff;
+}
+.night .s-onboarding .s-bullet,
+.night-theme .s-onboarding .s-bullet {
+  background-color: #09161d;
+}
+.night .s-onboarding .s-bullet > i,
+.night-theme .s-onboarding .s-bullet > i {
+  color: #91979a;
+}
+.night .s-onboarding .s-bullet.current-step,
+.night-theme .s-onboarding .s-bullet.current-step {
+  background-color: #f5f8fa;
+}
+.night .s-onboarding .s-onboarding-footer,
+.night-theme .s-onboarding .s-onboarding-footer {
+  border-top: 1px solid #2b383f;
+}

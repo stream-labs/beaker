@@ -1,2 +1,77 @@
-var _=Object.defineProperty;var p=(t,e,s)=>e in t?_(t,e,{enumerable:!0,configurable:!0,writable:!0,value:s}):t[e]=s;var a=(t,e,s)=>(p(t,typeof e!="symbol"?e+"":e,s),s);import{C as d,V as m,E as l,n as v}from"./index.4fb8a6cb.js";var u=Object.defineProperty,f=Object.getOwnPropertyDescriptor,y=(t,e,s,o)=>{for(var c=o>1?void 0:o?f(e,s):e,r=t.length-1,n;r>=0;r--)(n=t[r])&&(c=(o?n(e,s,c):n(c))||c);return o&&c&&u(e,s,c),c};const h="https://cdn.streamlabs.com/icons/style.css";let i=class extends m{constructor(){super(...arguments);a(this,"iconList",[]);a(this,"selectedIcon","")}mounted(){var o;const e=Array.from(document.styleSheets),s=Array.from(((o=e.find(c=>c.href===h))==null?void 0:o.cssRules)||[]);this.iconList=s==null?void 0:s.filter(c=>c.cssText.startsWith(".icon")).map(c=>{var r;return((r=c.cssText.match(/([a-zA-Z0-9-])*(?=::before)/))==null?void 0:r[0])||""}).sort()}selectIconData(e){this.selectedIcon=e}emitCopySuccess(e){l.$emit("copy-success",`Copied "${e.text}" to clipboard`)}emitCopyError(e){l.$emit("copy-copy",e)}};i=y([d({})],i);var C=function(){var e=this,s=e._self._c;return e._self._setupProxy,s("div",{staticClass:"icons"},[e._m(0),e.iconList.length?s("div",{directives:[{name:"clipboard",rawName:"v-clipboard:copy",value:e.selectedIcon,expression:"selectedIcon",arg:"copy"},{name:"clipboard",rawName:"v-clipboard:success",value:e.emitCopySuccess,expression:"emitCopySuccess",arg:"success"},{name:"clipboard",rawName:"v-clipboard:error",value:e.emitCopyError,expression:"emitCopyError",arg:"error"}],staticClass:"icon__grid"},e._l(e.iconList,function(o){return s("div",{key:o,staticClass:"icon",attrs:{title:o},on:{click:function(c){return e.selectIconData(`${o}`)}}},[s("i",{staticClass:"icon__glyph",class:o},[s("i",{staticClass:"icon-copy"})]),s("span",{staticClass:"icon__label"},[e._v(e._s(o))])])}),0):s("h1",{staticClass:"icon__error"},[s("i",{staticClass:"icon-error"}),e._v(" There was an error loading the icons")])])},b=[function(){var t=this,e=t._self._c;return t._self._setupProxy,e("div",{staticClass:"section"},[e("h1",[t._v("Icons")]),e("p",[t._v(" In order to gain access to the icons add the following link tag to your main HTML file: "),e("code",[t._v(' <link href="https://cdn.streamlabs.com/icons/style.css" rel="stylesheet" /> ')])]),e("p",[t._v(" Click on an icon to copy the icon class name to the clipboard. Hover over an icon to display the full icon name and icon code. ")])])}],x=v(i,C,b,!1,null,"c47690bb",null,null);const E=x.exports;export{E as default};
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { C as Component, V as Vue, E as EventBus, n as normalizeComponent } from "./index.4fb8a6cb.js";
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+const ICON_STYLESHEET_URL = "https://cdn.streamlabs.com/icons/style.css";
+let Icons$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "iconList", []);
+    __publicField(this, "selectedIcon", "");
+  }
+  mounted() {
+    var _a;
+    const styleSheetsList = Array.from(document.styleSheets);
+    const link = Array.from(((_a = styleSheetsList.find((ss) => ss.href === ICON_STYLESHEET_URL)) == null ? void 0 : _a.cssRules) || []);
+    this.iconList = link == null ? void 0 : link.filter((rule) => rule.cssText.startsWith(".icon")).map((rule) => {
+      var _a2;
+      return ((_a2 = rule.cssText.match(/([a-zA-Z0-9-])*(?=::before)/)) == null ? void 0 : _a2[0]) || "";
+    }).sort();
+  }
+  selectIconData(icon) {
+    this.selectedIcon = icon;
+  }
+  emitCopySuccess(e) {
+    EventBus.$emit("copy-success", `Copied "${e.text}" to clipboard`);
+  }
+  emitCopyError(e) {
+    EventBus.$emit("copy-copy", e);
+  }
+};
+Icons$1 = __decorateClass([
+  Component({})
+], Icons$1);
+const Icons_vue_vue_type_style_index_0_scoped_c47690bb_lang = "";
+var _sfc_render = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "icons" }, [_vm._m(0), _vm.iconList.length ? _c("div", { directives: [{ name: "clipboard", rawName: "v-clipboard:copy", value: _vm.selectedIcon, expression: "selectedIcon", arg: "copy" }, { name: "clipboard", rawName: "v-clipboard:success", value: _vm.emitCopySuccess, expression: "emitCopySuccess", arg: "success" }, { name: "clipboard", rawName: "v-clipboard:error", value: _vm.emitCopyError, expression: "emitCopyError", arg: "error" }], staticClass: "icon__grid" }, _vm._l(_vm.iconList, function(icon) {
+    return _c("div", { key: icon, staticClass: "icon", attrs: { "title": icon }, on: { "click": function($event) {
+      return _vm.selectIconData(`${icon}`);
+    } } }, [_c("i", { staticClass: "icon__glyph", class: icon }, [_c("i", { staticClass: "icon-copy" })]), _c("span", { staticClass: "icon__label" }, [_vm._v(_vm._s(icon))])]);
+  }), 0) : _c("h1", { staticClass: "icon__error" }, [_c("i", { staticClass: "icon-error" }), _vm._v(" There was an error loading the icons")])]);
+};
+var _sfc_staticRenderFns = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("h1", [_vm._v("Icons")]), _c("p", [_vm._v(" In order to gain access to the icons add the following link tag to your main HTML file: "), _c("code", [_vm._v(' <link href="https://cdn.streamlabs.com/icons/style.css" rel="stylesheet" /> ')])]), _c("p", [_vm._v(" Click on an icon to copy the icon class name to the clipboard. Hover over an icon to display the full icon name and icon code. ")])]);
+}];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  Icons$1,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  "c47690bb",
+  null,
+  null
+);
+const Icons = __component__.exports;
+export {
+  Icons as default
+};
 //# sourceMappingURL=Icons.4f343030.js.map

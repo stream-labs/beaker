@@ -1,4 +1,14 @@
-var v=Object.defineProperty;var w=(o,t,e)=>t in o?v(o,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):o[t]=e;var i=(o,t,e)=>(w(o,typeof t!="symbol"?t+"":t,e),e);import{C as _,P as a,V as h,n as u}from"./index.4fb8a6cb.js";import{D as f}from"./DemoSection.79ee11c0.js";import{B as T}from"./Button.b26dacc2.js";import"./Accordion.09c82396.js";const m=`<template>
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { C as Component, P as Prop, V as Vue, n as normalizeComponent } from "./index.4fb8a6cb.js";
+import { D as DemoSection } from "./DemoSection.79ee11c0.js";
+import { B as Button } from "./Button.b26dacc2.js";
+import "./Accordion.09c82396.js";
+const NoticesCode = `<template>
   <div>
     <div class="section">
       <h1>Notices</h1>
@@ -173,5 +183,154 @@ export default class Notices extends Vue {
   }
 }
 </style>
-`;var y=Object.defineProperty,N=Object.getOwnPropertyDescriptor,r=(o,t,e,l)=>{for(var n=l>1?void 0:l?N(t,e):t,d=o.length-1,c;d>=0;d--)(c=o[d])&&(n=(l?c(t,e,n):c(n))||n);return l&&n&&y(t,e,n),n};let s=class extends h{constructor(){super(...arguments);i(this,"title");i(this,"buttonTitle");i(this,"secondaryActionTitle");i(this,"desc");i(this,"arrowPosition");i(this,"hasButton");i(this,"hasSecondaryAction");i(this,"width")}clickHandler(){this.$emit("handle-tooltip")}secondaryClickHandler(){this.$emit("handle-tooltip-secondary")}get arrowClasses(){let t=[];return this.arrowPosition&&t.push(`s-tooltip-notice__arrow--${this.arrowPosition}`),t}};r([a({required:!0})],s.prototype,"title",2);r([a({default:"Got it"})],s.prototype,"buttonTitle",2);r([a({default:"Learn More"})],s.prototype,"secondaryActionTitle",2);r([a({required:!0})],s.prototype,"desc",2);r([a({default:"left"})],s.prototype,"arrowPosition",2);r([a({default:!0})],s.prototype,"hasButton",2);r([a({default:!1})],s.prototype,"hasSecondaryAction",2);r([a({default:200})],s.prototype,"width",2);s=r([_({components:{Button:T}})],s);var C=function(){var t=this,e=t._self._c;return t._self._setupProxy,e("div",{staticClass:"s-tooltip-notice",style:{width:t.width+"px"}},[e("div",{staticClass:"s-tooltip-notice-content"},[e("i",{staticClass:"icon-dropdown s-tooltip-notice__arrow",class:t.arrowClasses}),e("h3",[t._v(t._s(t.title))]),e("p",[t._v(t._s(t.desc))]),t.hasButton?e("Button",{attrs:{title:t.buttonTitle,variation:"action",size:"small"},on:{click:t.clickHandler}}):t._e(),t.hasSecondaryAction?e("Button",{staticClass:"s-tooltip-notice__secondary-action",attrs:{title:t.secondaryActionTitle,variation:"link",size:"small"},on:{click:t.secondaryClickHandler}}):t._e()],1)])},b=[],g=u(s,C,b,!1,null,null,null,null);const A=g.exports;var x=Object.defineProperty,P=Object.getOwnPropertyDescriptor,D=(o,t,e,l)=>{for(var n=l>1?void 0:l?P(t,e):t,d=o.length-1,c;d>=0;d--)(c=o[d])&&(n=(l?c(t,e,n):c(n))||n);return l&&n&&x(t,e,n),n};let p=class extends h{constructor(){super(...arguments);i(this,"demoCode",m);i(this,"showTooltipNotice",!0)}alertTooltip(){window.alert("tooltip clicked")}closeTooltip(){this.showTooltipNotice=!1}};p=D([_({components:{DemoSection:f,TooltipNotice:A}})],p);var S=function(){var t=this,e=t._self._c;return t._self._setupProxy,e("div",[t._m(0),e("div",{staticClass:"section"},[e("h2",[t._v("Tooltip Notice")]),e("DemoSection",{attrs:{title:"Default",code:t.demoCode},scopedSlots:t._u([{key:"components",fn:function(){return[t.showTooltipNotice?e("TooltipNotice",{attrs:{title:"Defaults",desc:"All your favorite widgets, just with a new view."},on:{"handle-tooltip":t.closeTooltip}}):t._e(),t.showTooltipNotice?e("TooltipNotice",{attrs:{title:"Top arrow",desc:"All your favorite widgets, just with a new view.",arrowPosition:"top",hasButton:!1},on:{"handle-tooltip":t.closeTooltip}}):t._e(),t.showTooltipNotice?e("TooltipNotice",{attrs:{title:"Custom button title",desc:"All your favorite widgets, just with a new view.",buttonTitle:"Get started"},on:{"handle-tooltip":t.closeTooltip}}):t._e(),t.showTooltipNotice?e("TooltipNotice",{attrs:{title:"Custom width",desc:"All your favorite widgets, just with a new view.",width:300},on:{"handle-tooltip":t.closeTooltip}}):t._e(),t.showTooltipNotice?e("TooltipNotice",{attrs:{title:"Secondary Action",desc:"All your favorite widgets, just with a new view.",hasSecondaryAction:!0,secondaryActionTitle:"No thanks"},on:{"handle-tooltip":t.alertTooltip,"handle-tooltip-secondary":t.closeTooltip}}):t._e()]},proxy:!0}])}),t._m(1)],1)])},j=[function(){var o=this,t=o._self._c;return o._self._setupProxy,t("div",{staticClass:"section"},[t("h1",[o._v("Notices")]),t("p",[o._v("This is used to point out new locations or features")])])},function(){var o=this,t=o._self._c;return o._self._setupProxy,t("table",{staticClass:"docs-table"},[t("thead",[t("tr",[t("th",[o._v("Props")]),t("th",[o._v("Type")]),t("th",[o._v("Default")]),t("th",[o._v("Description")])])]),t("tbody",[t("tr",[t("td",[o._v("arrowPosition")]),t("td",[o._v("string")]),t("td",[o._v("'left'")]),t("td",[o._v(" Side to put the arrow on. Options are "),t("code",[o._v("left")]),o._v(" and "),t("code",[o._v("top")])])]),t("tr",[t("td",[o._v("buttonTitle")]),t("td",[o._v("string")]),t("td",[o._v("'Got It'")]),t("td",[o._v("Button text")])]),t("tr",[t("td",[o._v("hasButton")]),t("td",[o._v("boolean")]),t("td",[o._v("true")]),t("td",[o._v("Having a button is optional")])]),t("tr",[t("td",[o._v("hasSecondaryAction")]),t("td",[o._v("boolean")]),t("td",[o._v("false")]),t("td",[o._v("Have a second action option")])]),t("tr",[t("td",[o._v("secondaryActionTitle")]),t("td",[o._v("string")]),t("td",[o._v("'Learn more'")]),t("td",[o._v("Title for secondary action")])]),t("tr",[t("td",[o._v("width")]),t("td",[o._v("number")]),t("td",[o._v("200")]),t("td",[o._v("Change the width of the tooltip")])])])])}],B=u(p,S,j,!1,null,"7a16a24d",null,null);const z=B.exports;export{z as default};
+`;
+var __defProp$1 = Object.defineProperty;
+var __getOwnPropDesc$1 = Object.getOwnPropertyDescriptor;
+var __decorateClass$1 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$1(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$1(target, key, result);
+  return result;
+};
+let TooltipNotice$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "title");
+    __publicField(this, "buttonTitle");
+    __publicField(this, "secondaryActionTitle");
+    __publicField(this, "desc");
+    __publicField(this, "arrowPosition");
+    __publicField(this, "hasButton");
+    __publicField(this, "hasSecondaryAction");
+    __publicField(this, "width");
+  }
+  clickHandler() {
+    this.$emit("handle-tooltip");
+  }
+  secondaryClickHandler() {
+    this.$emit("handle-tooltip-secondary");
+  }
+  get arrowClasses() {
+    let classes = [];
+    if (this.arrowPosition) {
+      classes.push(`s-tooltip-notice__arrow--${this.arrowPosition}`);
+    }
+    return classes;
+  }
+};
+__decorateClass$1([
+  Prop({ required: true })
+], TooltipNotice$1.prototype, "title", 2);
+__decorateClass$1([
+  Prop({ default: "Got it" })
+], TooltipNotice$1.prototype, "buttonTitle", 2);
+__decorateClass$1([
+  Prop({ default: "Learn More" })
+], TooltipNotice$1.prototype, "secondaryActionTitle", 2);
+__decorateClass$1([
+  Prop({ required: true })
+], TooltipNotice$1.prototype, "desc", 2);
+__decorateClass$1([
+  Prop({ default: "left" })
+], TooltipNotice$1.prototype, "arrowPosition", 2);
+__decorateClass$1([
+  Prop({ default: true })
+], TooltipNotice$1.prototype, "hasButton", 2);
+__decorateClass$1([
+  Prop({ default: false })
+], TooltipNotice$1.prototype, "hasSecondaryAction", 2);
+__decorateClass$1([
+  Prop({ default: 200 })
+], TooltipNotice$1.prototype, "width", 2);
+TooltipNotice$1 = __decorateClass$1([
+  Component({
+    components: {
+      Button
+    }
+  })
+], TooltipNotice$1);
+const TooltipNotice_vue_vue_type_style_index_0_lang = "";
+var _sfc_render$1 = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-tooltip-notice", style: { width: _vm.width + "px" } }, [_c("div", { staticClass: "s-tooltip-notice-content" }, [_c("i", { staticClass: "icon-dropdown s-tooltip-notice__arrow", class: _vm.arrowClasses }), _c("h3", [_vm._v(_vm._s(_vm.title))]), _c("p", [_vm._v(_vm._s(_vm.desc))]), _vm.hasButton ? _c("Button", { attrs: { "title": _vm.buttonTitle, "variation": "action", "size": "small" }, on: { "click": _vm.clickHandler } }) : _vm._e(), _vm.hasSecondaryAction ? _c("Button", { staticClass: "s-tooltip-notice__secondary-action", attrs: { "title": _vm.secondaryActionTitle, "variation": "link", "size": "small" }, on: { "click": _vm.secondaryClickHandler } }) : _vm._e()], 1)]);
+};
+var _sfc_staticRenderFns$1 = [];
+var __component__$1 = /* @__PURE__ */ normalizeComponent(
+  TooltipNotice$1,
+  _sfc_render$1,
+  _sfc_staticRenderFns$1,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const TooltipNotice = __component__$1.exports;
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let Notices$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "demoCode", NoticesCode);
+    __publicField(this, "showTooltipNotice", true);
+  }
+  alertTooltip() {
+    window.alert("tooltip clicked");
+  }
+  closeTooltip() {
+    this.showTooltipNotice = false;
+  }
+};
+Notices$1 = __decorateClass([
+  Component({
+    components: {
+      DemoSection,
+      TooltipNotice
+    }
+  })
+], Notices$1);
+const Notices_vue_vue_type_style_index_0_scoped_7a16a24d_lang = "";
+var _sfc_render = function render2() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", [_vm._m(0), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Tooltip Notice")]), _c("DemoSection", { attrs: { "title": "Default", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_vm.showTooltipNotice ? _c("TooltipNotice", { attrs: { "title": "Defaults", "desc": "All your favorite widgets, just with a new view." }, on: { "handle-tooltip": _vm.closeTooltip } }) : _vm._e(), _vm.showTooltipNotice ? _c("TooltipNotice", { attrs: { "title": "Top arrow", "desc": "All your favorite widgets, just with a new view.", "arrowPosition": "top", "hasButton": false }, on: { "handle-tooltip": _vm.closeTooltip } }) : _vm._e(), _vm.showTooltipNotice ? _c("TooltipNotice", { attrs: { "title": "Custom button title", "desc": "All your favorite widgets, just with a new view.", "buttonTitle": "Get started" }, on: { "handle-tooltip": _vm.closeTooltip } }) : _vm._e(), _vm.showTooltipNotice ? _c("TooltipNotice", { attrs: { "title": "Custom width", "desc": "All your favorite widgets, just with a new view.", "width": 300 }, on: { "handle-tooltip": _vm.closeTooltip } }) : _vm._e(), _vm.showTooltipNotice ? _c("TooltipNotice", { attrs: { "title": "Secondary Action", "desc": "All your favorite widgets, just with a new view.", "hasSecondaryAction": true, "secondaryActionTitle": "No thanks" }, on: { "handle-tooltip": _vm.alertTooltip, "handle-tooltip-secondary": _vm.closeTooltip } }) : _vm._e()];
+  }, proxy: true }]) }), _vm._m(1)], 1)]);
+};
+var _sfc_staticRenderFns = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("h1", [_vm._v("Notices")]), _c("p", [_vm._v("This is used to point out new locations or features")])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("table", { staticClass: "docs-table" }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Props")]), _c("th", [_vm._v("Type")]), _c("th", [_vm._v("Default")]), _c("th", [_vm._v("Description")])])]), _c("tbody", [_c("tr", [_c("td", [_vm._v("arrowPosition")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("'left'")]), _c("td", [_vm._v(" Side to put the arrow on. Options are "), _c("code", [_vm._v("left")]), _vm._v(" and "), _c("code", [_vm._v("top")])])]), _c("tr", [_c("td", [_vm._v("buttonTitle")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("'Got It'")]), _c("td", [_vm._v("Button text")])]), _c("tr", [_c("td", [_vm._v("hasButton")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("true")]), _c("td", [_vm._v("Having a button is optional")])]), _c("tr", [_c("td", [_vm._v("hasSecondaryAction")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v("Have a second action option")])]), _c("tr", [_c("td", [_vm._v("secondaryActionTitle")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("'Learn more'")]), _c("td", [_vm._v("Title for secondary action")])]), _c("tr", [_c("td", [_vm._v("width")]), _c("td", [_vm._v("number")]), _c("td", [_vm._v("200")]), _c("td", [_vm._v("Change the width of the tooltip")])])])]);
+}];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  Notices$1,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  "7a16a24d",
+  null,
+  null
+);
+const Notices = __component__.exports;
+export {
+  Notices as default
+};
 //# sourceMappingURL=Notices.c45258d4.js.map

@@ -1,4 +1,168 @@
-var x=Object.defineProperty;var y=(n,e,t)=>e in n?x(n,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):n[e]=t;var o=(n,e,t)=>(y(n,typeof e!="symbol"?e+"":e,t),t);import{C as _,P as u,V as v,n as m}from"./index.4fb8a6cb.js";import{D as G}from"./DemoSection.79ee11c0.js";import{T as h}from"./TextInput.6d9c9908.js";import"./Accordion.09c82396.js";import"./_baseClone.a549c660.js";var b=Object.defineProperty,C=Object.getOwnPropertyDescriptor,p=(n,e,t,s)=>{for(var r=s>1?void 0:s?C(e,t):e,a=n.length-1,l;a>=0;a--)(l=n[a])&&(r=(s?l(e,t,r):l(r))||r);return s&&r&&b(e,t,r),r};let i=class extends v{constructor(){super(...arguments);o(this,"value");o(this,"placeholder");o(this,"showOnClick");o(this,"variation");o(this,"type");o(this,"visible",!0)}get prefix(){return this.type==="input"?"s-input-guard":"s-text-guard"}showText(){this.showOnClick?this.visible=!1:this.$emit("click")}get guardClasses(){const e=[];return this.visible?e.push(this.prefix):e.push(`${this.prefix}--readable`),this.variation==="alt"&&e.push(`${this.prefix}--alt`),e}};p([u()],i.prototype,"value",2);p([u({default:"Click to show"})],i.prototype,"placeholder",2);p([u({default:!0})],i.prototype,"showOnClick",2);p([u({default:"normal"})],i.prototype,"variation",2);p([u({default:"text"})],i.prototype,"type",2);i=p([_({})],i);var T=function(){var e=this,t=e._self._c;return e._self._setupProxy,t("div",{class:e.guardClasses,on:{click:e.showText}},[e.visible?t("div",{class:`${e.prefix}__text`},[t("i",{staticClass:"fas fa-lock"}),e._v(" "+e._s(e.placeholder)+" ")]):e._e(),t("div",{class:e.visible?`${e.prefix}-wrapper`:`${e.prefix}-wrapper ${e.prefix}-wrapper--readable`},[e.$slots.content?e._t("content"):t("div",[e._v(e._s(e.value))])],2)])},g=[],w=m(i,T,g,!1,null,null,null,null);const P=w.exports;var D=Object.defineProperty,I=Object.getOwnPropertyDescriptor,f=(n,e,t,s)=>{for(var r=s>1?void 0:s?I(e,t):e,a=n.length-1,l;a>=0;a--)(l=n[a])&&(r=(s?l(e,t,r):l(r))||r);return s&&r&&D(e,t,r),r};let c=class extends v{constructor(){super(...arguments);o(this,"value");o(this,"placeholder");o(this,"visible",!1)}showText(e){this.visible?this.$emit("click"):this.visible=!0,e.type==="keydown"&&setTimeout(()=>e.target.select(),200)}checkSelectedText(e){const t=e.target;this.visible||t.setSelectionRange(0,0),t.focus()}};f([u()],c.prototype,"value",2);f([u({default:"Click to show"})],c.prototype,"placeholder",2);c=f([_({components:{TextInput:h}})],c);var $=function(){var e=this,t=e._self._c;return e._self._setupProxy,t("div",{staticClass:"s-guard",class:{"s-guard--hidden":!e.visible},on:{click:e.showText}},[t("div",{staticClass:"s-guard__placeholder"},[t("i",{staticClass:"icon-lock"}),e._v(" "+e._s(e.placeholder)+" ")]),t("div",{staticClass:"s-guard__text"},[t("TextInput",{attrs:{readonly:"",type:"text"},on:{focus:e.checkSelectedText,keydown:function(s){return!s.type.indexOf("key")&&e._k(s.keyCode,"space",32,s.key,[" ","Spacebar"])?null:(s.preventDefault(),e.showText.apply(null,arguments))}},model:{value:e.value,callback:function(s){e.value=s},expression:"value"}})],1)])},S=[],O=m(c,$,S,!1,null,null,null,null);const V=O.exports,k=`<template>
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { C as Component, P as Prop, V as Vue, n as normalizeComponent } from "./index.4fb8a6cb.js";
+import { D as DemoSection } from "./DemoSection.79ee11c0.js";
+import { T as TextInput } from "./TextInput.6d9c9908.js";
+import "./Accordion.09c82396.js";
+import "./_baseClone.a549c660.js";
+var __defProp$2 = Object.defineProperty;
+var __getOwnPropDesc$2 = Object.getOwnPropertyDescriptor;
+var __decorateClass$2 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$2(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$2(target, key, result);
+  return result;
+};
+let Guard$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "value");
+    __publicField(this, "placeholder");
+    __publicField(this, "showOnClick");
+    __publicField(this, "variation");
+    __publicField(this, "type");
+    __publicField(this, "visible", true);
+  }
+  get prefix() {
+    return this.type === "input" ? "s-input-guard" : "s-text-guard";
+  }
+  showText() {
+    if (this.showOnClick) {
+      this.visible = false;
+    } else {
+      this.$emit("click");
+    }
+  }
+  get guardClasses() {
+    const classes = [];
+    if (this.visible) {
+      classes.push(this.prefix);
+    } else {
+      classes.push(`${this.prefix}--readable`);
+    }
+    if (this.variation === "alt") {
+      classes.push(`${this.prefix}--alt`);
+    }
+    return classes;
+  }
+};
+__decorateClass$2([
+  Prop()
+], Guard$1.prototype, "value", 2);
+__decorateClass$2([
+  Prop({ default: "Click to show" })
+], Guard$1.prototype, "placeholder", 2);
+__decorateClass$2([
+  Prop({ default: true })
+], Guard$1.prototype, "showOnClick", 2);
+__decorateClass$2([
+  Prop({ default: "normal" })
+], Guard$1.prototype, "variation", 2);
+__decorateClass$2([
+  Prop({ default: "text" })
+], Guard$1.prototype, "type", 2);
+Guard$1 = __decorateClass$2([
+  Component({})
+], Guard$1);
+const Guard_vue_vue_type_style_index_0_lang = "";
+var _sfc_render$2 = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { class: _vm.guardClasses, on: { "click": _vm.showText } }, [_vm.visible ? _c("div", { class: `${_vm.prefix}__text` }, [_c("i", { staticClass: "fas fa-lock" }), _vm._v(" " + _vm._s(_vm.placeholder) + " ")]) : _vm._e(), _c("div", { class: _vm.visible ? `${_vm.prefix}-wrapper` : `${_vm.prefix}-wrapper ${_vm.prefix}-wrapper--readable` }, [_vm.$slots.content ? _vm._t("content") : _c("div", [_vm._v(_vm._s(_vm.value))])], 2)]);
+};
+var _sfc_staticRenderFns$2 = [];
+var __component__$2 = /* @__PURE__ */ normalizeComponent(
+  Guard$1,
+  _sfc_render$2,
+  _sfc_staticRenderFns$2,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const Guard = __component__$2.exports;
+var __defProp$1 = Object.defineProperty;
+var __getOwnPropDesc$1 = Object.getOwnPropertyDescriptor;
+var __decorateClass$1 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$1(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$1(target, key, result);
+  return result;
+};
+let GuardNew$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "value");
+    __publicField(this, "placeholder");
+    __publicField(this, "visible", false);
+  }
+  showText(e) {
+    if (!this.visible) {
+      this.visible = true;
+    } else {
+      this.$emit("click");
+    }
+    if (e.type === "keydown") {
+      setTimeout(() => e.target.select(), 200);
+    }
+  }
+  checkSelectedText(e) {
+    const target = e.target;
+    if (!this.visible)
+      target.setSelectionRange(0, 0);
+    target.focus();
+  }
+};
+__decorateClass$1([
+  Prop()
+], GuardNew$1.prototype, "value", 2);
+__decorateClass$1([
+  Prop({ default: "Click to show" })
+], GuardNew$1.prototype, "placeholder", 2);
+GuardNew$1 = __decorateClass$1([
+  Component({
+    components: {
+      TextInput
+    }
+  })
+], GuardNew$1);
+const GuardNew_vue_vue_type_style_index_0_lang = "";
+var _sfc_render$1 = function render2() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-guard", class: { "s-guard--hidden": !_vm.visible }, on: { "click": _vm.showText } }, [_c("div", { staticClass: "s-guard__placeholder" }, [_c("i", { staticClass: "icon-lock" }), _vm._v(" " + _vm._s(_vm.placeholder) + " ")]), _c("div", { staticClass: "s-guard__text" }, [_c("TextInput", { attrs: { "readonly": "", "type": "text" }, on: { "focus": _vm.checkSelectedText, "keydown": function($event) {
+    if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "space", 32, $event.key, [" ", "Spacebar"]))
+      return null;
+    $event.preventDefault();
+    return _vm.showText.apply(null, arguments);
+  } }, model: { value: _vm.value, callback: function($$v) {
+    _vm.value = $$v;
+  }, expression: "value" } })], 1)]);
+};
+var _sfc_staticRenderFns$1 = [];
+var __component__$1 = /* @__PURE__ */ normalizeComponent(
+  GuardNew$1,
+  _sfc_render$1,
+  _sfc_staticRenderFns$1,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const GuardNew = __component__$1.exports;
+const GuardsCode = `<template>
   <div>
     <div class="section">
       <h1>Guards</h1>
@@ -111,9 +275,69 @@ export default class Accordions extends Vue {
   margin-bottom: 10px;
 }
 </style>
-`;var N=Object.defineProperty,j=Object.getOwnPropertyDescriptor,R=(n,e,t,s)=>{for(var r=s>1?void 0:s?j(e,t):e,a=n.length-1,l;a>=0;a--)(l=n[a])&&(r=(s?l(e,t,r):l(r))||r);return s&&r&&N(e,t,r),r};let d=class extends v{constructor(){super(...arguments);o(this,"demoCode",k);o(this,"textInputPlaceholder","placeholder");o(this,"textInputValue","This is something super secret...")}};d=R([_({components:{DemoSection:G,Guard:P,GuardNew:V,TextInput:h}})],d);var F=function(){var e=this,t=e._self._c;return e._self._setupProxy,t("div",[e._m(0),t("div",{staticClass:"section"},[t("h2",[e._v("Text Guard")]),t("DemoSection",{attrs:{title:"Text Guard",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[t("Guard",{staticClass:"guard-margin",attrs:{type:"alt",value:"Text"}})]},proxy:!0}])})],1),t("div",{staticClass:"section"},[t("h2",[e._v("Input Guard")]),t("DemoSection",{attrs:{title:"Input Guard",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[t("Guard",{attrs:{type:"input"}},[t("div",{attrs:{slot:"content"},slot:"content"},[t("TextInput",{attrs:{slot:"input",label:"Text input",type:"text",placeholder:e.textInputPlaceholder,name:"textExample"},slot:"input",model:{value:e.textInputValue,callback:function(s){e.textInputValue=s},expression:"textInputValue"}})],1)])]},proxy:!0}])})],1),e._m(1)])},A=[function(){var n=this,e=n._self._c;return n._self._setupProxy,e("div",{staticClass:"section"},[e("h1",[n._v("Guards")]),e("pre",[e("code",[n._v(`import { Guard } from 'streamlabs-beaker';
-
-components: {
-  Guard
-}`)])])])},function(){var n=this,e=n._self._c;return n._self._setupProxy,e("table",{staticClass:"docs-table"},[e("thead",[e("tr",[e("th",[n._v("Prop")]),e("th",[n._v("Type")]),e("th",[n._v("Default")]),e("th",[n._v("Description")])])]),e("tbody",[e("tr",[e("td",[n._v("value")]),e("td",[n._v("string")]),e("td",[n._v("null")]),e("td",[n._v("Text Value")])]),e("tr",[e("td",[n._v("type")]),e("td",[n._v("string")]),e("td",[n._v("text")]),e("td",[n._v(" This can be either text or input (supply content slot for input) ")])])])])}],E=m(d,F,A,!1,null,null,null,null);const L=E.exports;export{L as default};
+`;
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let Accordions = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "demoCode", GuardsCode);
+    __publicField(this, "textInputPlaceholder", "placeholder");
+    __publicField(this, "textInputValue", "This is something super secret...");
+  }
+};
+Accordions = __decorateClass([
+  Component({
+    components: {
+      DemoSection,
+      Guard,
+      GuardNew,
+      TextInput
+    }
+  })
+], Accordions);
+const Guards_vue_vue_type_style_index_0_lang = "";
+var _sfc_render = function render3() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", [_vm._m(0), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Text Guard")]), _c("DemoSection", { attrs: { "title": "Text Guard", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Guard", { staticClass: "guard-margin", attrs: { "type": "alt", "value": "Text" } })];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Input Guard")]), _c("DemoSection", { attrs: { "title": "Input Guard", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Guard", { attrs: { "type": "input" } }, [_c("div", { attrs: { "slot": "content" }, slot: "content" }, [_c("TextInput", { attrs: { "slot": "input", "label": "Text input", "type": "text", "placeholder": _vm.textInputPlaceholder, "name": "textExample" }, slot: "input", model: { value: _vm.textInputValue, callback: function($$v) {
+      _vm.textInputValue = $$v;
+    }, expression: "textInputValue" } })], 1)])];
+  }, proxy: true }]) })], 1), _vm._m(1)]);
+};
+var _sfc_staticRenderFns = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("h1", [_vm._v("Guards")]), _c("pre", [_c("code", [_vm._v("import { Guard } from 'streamlabs-beaker';\n\ncomponents: {\n  Guard\n}")])])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("table", { staticClass: "docs-table" }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Prop")]), _c("th", [_vm._v("Type")]), _c("th", [_vm._v("Default")]), _c("th", [_vm._v("Description")])])]), _c("tbody", [_c("tr", [_c("td", [_vm._v("value")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("Text Value")])]), _c("tr", [_c("td", [_vm._v("type")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("text")]), _c("td", [_vm._v(" This can be either text or input (supply content slot for input) ")])])])]);
+}];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  Accordions,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const Guards = __component__.exports;
+export {
+  Guards as default
+};
 //# sourceMappingURL=Guards.6bd8d70b.js.map

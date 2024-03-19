@@ -1,4 +1,15 @@
-var l=Object.defineProperty;var p=(n,e,t)=>e in n?l(n,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):n[e]=t;var i=(n,e,t)=>(p(n,typeof e!="symbol"?e+"":e,t),t);import{C as h,V as c,n as m}from"./index.4fb8a6cb.js";import{D as v}from"./DemoSection.79ee11c0.js";import{P as u}from"./PaneDropdown.6fe5e7fe.js";import"./Accordion.09c82396.js";import"./vue-focus.common.2dfcc992.js";const _=`<template>
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { C as Component, V as Vue, n as normalizeComponent } from "./index.4fb8a6cb.js";
+import { D as DemoSection } from "./DemoSection.79ee11c0.js";
+import { P as PaneDropdown } from "./PaneDropdown.6fe5e7fe.js";
+import "./Accordion.09c82396.js";
+import "./vue-focus.common.2dfcc992.js";
+const PaneDropdownsCode = `<template>
   <div>
     <div class="section">
       <h1>Pane Dropdowns</h1>
@@ -207,9 +218,68 @@ export default class Dropdowns extends Vue {
   demoCode = PaneDropdownsCode;
 }
 <\/script>
-`;var f=Object.defineProperty,w=Object.getOwnPropertyDescriptor,D=(n,e,t,a)=>{for(var o=a>1?void 0:a?w(e,t):e,r=n.length-1,s;r>=0;r--)(s=n[r])&&(o=(a?s(e,t,o):s(o))||o);return a&&o&&f(e,t,o),o};let d=class extends c{constructor(){super(...arguments);i(this,"demoCode",_)}};d=D([h({components:{DemoSection:v,PaneDropdown:u}})],d);var g=function(){var e=this,t=e._self._c;return e._self._setupProxy,t("div",[e._m(0),t("div",{staticClass:"section"},[t("h2",[e._v("Using Slots")]),t("DemoSection",{attrs:{title:"With Dropdown Icon",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[t("PaneDropdown",{attrs:{"close-on-select":!1}},[t("span",{attrs:{slot:"title"},slot:"title"},[e._v("Trending")]),t("PaneDropdown",{attrs:{menuAlign:"center"}},[t("span",{attrs:{slot:"title"},slot:"title"},[e._v("Inner Dropdown")]),t("a",{attrs:{href:"#"}},[e._v("Item 1")]),t("a",{attrs:{href:"#"}},[e._v("Item 2")]),t("a",{attrs:{href:"#"}},[e._v("Item 3")])]),t("hr"),t("a",{attrs:{href:"#"}},[t("i",{staticClass:"icon-leaderboard-4"}),e._v("Most Installed ")]),t("a",{attrs:{href:"#"}},[t("i",{staticClass:"icon-loyalty"}),e._v("Newly Added ")]),t("a",{attrs:{href:"#"}},[t("i",{staticClass:"icon-graph"}),e._v("Trending ")])],1)]},proxy:!0}])})],1),t("div",{staticClass:"section"},[t("h2",[e._v("Menu Align")]),t("DemoSection",{attrs:{title:"Menu Align",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[t("div",{staticClass:"row"},[t("PaneDropdown",{attrs:{"menu-align":"right","hover-option":!0}},[t("span",{attrs:{slot:"title"},slot:"title"},[e._v("Right Dropdown Menu")]),t("a",{attrs:{href:"#"}},[e._v("Hey I'm a longer link here")]),t("a",{attrs:{href:"#"}},[e._v("Let's see how this looks")]),t("a",{attrs:{href:"#"}},[e._v("I'm in a pane dropdown aligned to the right")])])],1),t("div",{staticClass:"row"},[t("PaneDropdown",{attrs:{"menu-align":"center"}},[t("span",{attrs:{slot:"title"},slot:"title"},[e._v("Center Dropdown Menu")]),t("a",{attrs:{href:"#"}},[e._v("Hey I'm a longer link here")]),t("a",{attrs:{href:"#"}},[e._v("Let's see how this looks")]),t("a",{attrs:{href:"#"}},[e._v("I'm in a pane dropdown aligned to the right")])])],1),t("div",{staticClass:"row"},[t("PaneDropdown",{attrs:{"open-above":"top"}},[t("span",{attrs:{slot:"title"},slot:"title"},[e._v("Top Dropdown Menu")]),t("a",{attrs:{href:"#"}},[e._v("Hey I'm a longer link here")]),t("a",{attrs:{href:"#"}},[e._v("Let's see how this looks")]),t("a",{attrs:{href:"#"}},[e._v("I'm in a pane dropdown aligned to the right")])])],1)]},proxy:!0}])})],1),t("div",{staticClass:"section"},[t("h2",[e._v("Custom Dropdown")]),t("DemoSection",{attrs:{title:"Custom Dropdown",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[t("PaneDropdown",{attrs:{custom:!0}},[t("span",{attrs:{slot:"title"},slot:"title"},[e._v("Custom Dropdown Menu")]),t("div",[e._v(" hey watsup "),t("br"),t("strong",[e._v("put whatever you want in here")])])])]},proxy:!0}])})],1),t("div",{staticClass:"section"},[t("h2",[e._v("Relative Menu")]),t("DemoSection",{attrs:{title:"Relative Menu",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[t("PaneDropdown",{attrs:{relativeMenu:!0}},[t("span",{attrs:{slot:"title"},slot:"title"},[e._v("Relative Menu")]),t("a",{attrs:{href:"#"}},[e._v("Hey I'm a longer link here")]),t("a",{attrs:{href:"#"}},[e._v("Let's see how this looks")]),t("a",{attrs:{href:"#"}},[e._v("I'm in a pane dropdown aligned to the right")])])]},proxy:!0}])})],1),t("div",{staticClass:"section"},[t("h2",[e._v("Simple Menu")]),t("DemoSection",{attrs:{title:"Simple Menu",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[t("PaneDropdown",{attrs:{relativeMenu:!0,simpleMenu:!0}},[t("span",{attrs:{slot:"title"},slot:"title"},[e._v("Simple Menu")]),t("a",{attrs:{href:"#"}},[e._v("Hey I'm a longer link here")]),t("a",{attrs:{href:"#"}},[e._v("Let's see how this looks")]),t("a",{attrs:{href:"#"}},[e._v("I'm in a pane dropdown aligned to the right")])])]},proxy:!0}])})],1),e._m(1)])},P=[function(){var n=this,e=n._self._c;return n._self._setupProxy,e("div",{staticClass:"section"},[e("h1",[n._v("Pane Dropdowns")]),e("p",[n._v("Dropdown menu used on Streamlabs.com")]),e("pre",[e("code",[n._v(`import { PaneDropdown } from 'streamlabs-beaker';
-
-components: {
-  PaneDropdown
-}`)])])])},function(){var n=this,e=n._self._c;return n._self._setupProxy,e("div",{staticClass:"section"},[e("table",{staticClass:"docs-table"},[e("thead",[e("tr",[e("th",[n._v("Prop")]),e("th",[n._v("Type")]),e("th",[n._v("Required")]),e("th",[n._v("Default")]),e("th",[n._v("Description")])])]),e("tbody",[e("tr",[e("td",[n._v("dropdownIcon")]),e("td",[n._v("boolean")]),e("td",[n._v("false")]),e("td",[n._v("true")]),e("td",[n._v("Show or hide dropdown icon.")])]),e("tr",[e("td",[n._v("menuAlign")]),e("td",[n._v("string")]),e("td",[n._v("false")]),e("td",[n._v("null")]),e("td",[n._v(" Default will align the menu to the left side of the toggle. Use "),e("code",[n._v("right")]),n._v(" or "),e("code",[n._v("center")]),n._v(" to align the dropdown menu to the right or center of its toggle. ")])]),e("tr",[e("td",[n._v("openAbove")]),e("td",[n._v("boolean")]),e("td",[n._v("false")]),e("td",[n._v("false")]),e("td",[n._v(" Set to true if you want menu to open above. Default is to open below title. ")])]),e("tr",[e("td",[n._v("closeOnSelect")]),e("td",[n._v("boolean")]),e("td",[n._v("false")]),e("td",[n._v("true")]),e("td",[n._v("Close the dropdown when a link is clicked.")])]),e("tr",[e("td",[n._v("autoHeight")]),e("td",[n._v("boolean")]),e("td",[n._v("false")]),e("td",[n._v("false")]),e("td",[n._v("No max height")])]),e("tr",[e("td",[n._v("relativeMenu")]),e("td",[n._v("boolean")]),e("td",[n._v("false")]),e("td",[n._v("false")]),e("td",[n._v(" Change the menu from position absolute to relative so it pushes the content below it down. ")])]),e("tr",[e("td",[n._v("simpleMenu")]),e("td",[n._v("boolean")]),e("td",[n._v("false")]),e("td",[n._v("false")]),e("td",[n._v("Removes menues bg colors, box shadow and paddinga.")])])])])])}],b=m(d,g,P,!1,null,null,null,null);const x=b.exports;export{x as default};
+`;
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let Dropdowns = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "demoCode", PaneDropdownsCode);
+  }
+};
+Dropdowns = __decorateClass([
+  Component({
+    components: {
+      DemoSection,
+      PaneDropdown
+    }
+  })
+], Dropdowns);
+var _sfc_render = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", [_vm._m(0), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Using Slots")]), _c("DemoSection", { attrs: { "title": "With Dropdown Icon", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("PaneDropdown", { attrs: { "close-on-select": false } }, [_c("span", { attrs: { "slot": "title" }, slot: "title" }, [_vm._v("Trending")]), _c("PaneDropdown", { attrs: { "menuAlign": "center" } }, [_c("span", { attrs: { "slot": "title" }, slot: "title" }, [_vm._v("Inner Dropdown")]), _c("a", { attrs: { "href": "#" } }, [_vm._v("Item 1")]), _c("a", { attrs: { "href": "#" } }, [_vm._v("Item 2")]), _c("a", { attrs: { "href": "#" } }, [_vm._v("Item 3")])]), _c("hr"), _c("a", { attrs: { "href": "#" } }, [_c("i", { staticClass: "icon-leaderboard-4" }), _vm._v("Most Installed ")]), _c("a", { attrs: { "href": "#" } }, [_c("i", { staticClass: "icon-loyalty" }), _vm._v("Newly Added ")]), _c("a", { attrs: { "href": "#" } }, [_c("i", { staticClass: "icon-graph" }), _vm._v("Trending ")])], 1)];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Menu Align")]), _c("DemoSection", { attrs: { "title": "Menu Align", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("div", { staticClass: "row" }, [_c("PaneDropdown", { attrs: { "menu-align": "right", "hover-option": true } }, [_c("span", { attrs: { "slot": "title" }, slot: "title" }, [_vm._v("Right Dropdown Menu")]), _c("a", { attrs: { "href": "#" } }, [_vm._v("Hey I'm a longer link here")]), _c("a", { attrs: { "href": "#" } }, [_vm._v("Let's see how this looks")]), _c("a", { attrs: { "href": "#" } }, [_vm._v("I'm in a pane dropdown aligned to the right")])])], 1), _c("div", { staticClass: "row" }, [_c("PaneDropdown", { attrs: { "menu-align": "center" } }, [_c("span", { attrs: { "slot": "title" }, slot: "title" }, [_vm._v("Center Dropdown Menu")]), _c("a", { attrs: { "href": "#" } }, [_vm._v("Hey I'm a longer link here")]), _c("a", { attrs: { "href": "#" } }, [_vm._v("Let's see how this looks")]), _c("a", { attrs: { "href": "#" } }, [_vm._v("I'm in a pane dropdown aligned to the right")])])], 1), _c("div", { staticClass: "row" }, [_c("PaneDropdown", { attrs: { "open-above": "top" } }, [_c("span", { attrs: { "slot": "title" }, slot: "title" }, [_vm._v("Top Dropdown Menu")]), _c("a", { attrs: { "href": "#" } }, [_vm._v("Hey I'm a longer link here")]), _c("a", { attrs: { "href": "#" } }, [_vm._v("Let's see how this looks")]), _c("a", { attrs: { "href": "#" } }, [_vm._v("I'm in a pane dropdown aligned to the right")])])], 1)];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Custom Dropdown")]), _c("DemoSection", { attrs: { "title": "Custom Dropdown", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("PaneDropdown", { attrs: { "custom": true } }, [_c("span", { attrs: { "slot": "title" }, slot: "title" }, [_vm._v("Custom Dropdown Menu")]), _c("div", [_vm._v(" hey watsup "), _c("br"), _c("strong", [_vm._v("put whatever you want in here")])])])];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Relative Menu")]), _c("DemoSection", { attrs: { "title": "Relative Menu", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("PaneDropdown", { attrs: { "relativeMenu": true } }, [_c("span", { attrs: { "slot": "title" }, slot: "title" }, [_vm._v("Relative Menu")]), _c("a", { attrs: { "href": "#" } }, [_vm._v("Hey I'm a longer link here")]), _c("a", { attrs: { "href": "#" } }, [_vm._v("Let's see how this looks")]), _c("a", { attrs: { "href": "#" } }, [_vm._v("I'm in a pane dropdown aligned to the right")])])];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Simple Menu")]), _c("DemoSection", { attrs: { "title": "Simple Menu", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("PaneDropdown", { attrs: { "relativeMenu": true, "simpleMenu": true } }, [_c("span", { attrs: { "slot": "title" }, slot: "title" }, [_vm._v("Simple Menu")]), _c("a", { attrs: { "href": "#" } }, [_vm._v("Hey I'm a longer link here")]), _c("a", { attrs: { "href": "#" } }, [_vm._v("Let's see how this looks")]), _c("a", { attrs: { "href": "#" } }, [_vm._v("I'm in a pane dropdown aligned to the right")])])];
+  }, proxy: true }]) })], 1), _vm._m(1)]);
+};
+var _sfc_staticRenderFns = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("h1", [_vm._v("Pane Dropdowns")]), _c("p", [_vm._v("Dropdown menu used on Streamlabs.com")]), _c("pre", [_c("code", [_vm._v("import { PaneDropdown } from 'streamlabs-beaker';\n\ncomponents: {\n  PaneDropdown\n}")])])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("table", { staticClass: "docs-table" }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Prop")]), _c("th", [_vm._v("Type")]), _c("th", [_vm._v("Required")]), _c("th", [_vm._v("Default")]), _c("th", [_vm._v("Description")])])]), _c("tbody", [_c("tr", [_c("td", [_vm._v("dropdownIcon")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v("true")]), _c("td", [_vm._v("Show or hide dropdown icon.")])]), _c("tr", [_c("td", [_vm._v("menuAlign")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v(" Default will align the menu to the left side of the toggle. Use "), _c("code", [_vm._v("right")]), _vm._v(" or "), _c("code", [_vm._v("center")]), _vm._v(" to align the dropdown menu to the right or center of its toggle. ")])]), _c("tr", [_c("td", [_vm._v("openAbove")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v(" Set to true if you want menu to open above. Default is to open below title. ")])]), _c("tr", [_c("td", [_vm._v("closeOnSelect")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v("true")]), _c("td", [_vm._v("Close the dropdown when a link is clicked.")])]), _c("tr", [_c("td", [_vm._v("autoHeight")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v("No max height")])]), _c("tr", [_c("td", [_vm._v("relativeMenu")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v(" Change the menu from position absolute to relative so it pushes the content below it down. ")])]), _c("tr", [_c("td", [_vm._v("simpleMenu")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v("Removes menues bg colors, box shadow and paddinga.")])])])])]);
+}];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  Dropdowns,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const PaneDropdowns = __component__.exports;
+export {
+  PaneDropdowns as default
+};
 //# sourceMappingURL=PaneDropdowns.407b9496.js.map

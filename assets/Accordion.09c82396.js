@@ -1,2 +1,167 @@
-var h=Object.defineProperty;var u=(n,t,e)=>t in n?h(n,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):n[t]=e;var o=(n,t,e)=>(u(n,typeof t!="symbol"?t+"":t,e),e);import{W as d,C as _,P as r,V as f,n as v}from"./index.4fb8a6cb.js";var y=Object.defineProperty,g=Object.getOwnPropertyDescriptor,a=(n,t,e,s)=>{for(var l=s>1?void 0:s?g(t,e):t,p=n.length-1,c;p>=0;p--)(c=n[p])&&(l=(s?c(t,e,l):c(l))||l);return s&&l&&y(t,e,l),l};let i=class extends f{constructor(){super(...arguments);o(this,"openedTitle");o(this,"closedTitle");o(this,"title");o(this,"isOpened");o(this,"noBorder");o(this,"leftNav");o(this,"value");o(this,"isOpen",!1);o(this,"focused",!1);o(this,"defaultBorder",!1)}handleIsOpened(t){this.isOpen=t}handleIsOpen(t){this.$emit("input",t)}get accordionTitle(){return this.title!==void 0?this.title:this.isOpen?this.openedTitle:this.closedTitle}get hasTitleSlot(){return!!this.$slots.title}get accordionClasses(){let t=[];return this.noBorder&&t.push("no-border"),this.leftNav&&t.push("left-nav"),t.join(" ")}isKeyFocused(t){console.log("TCL: Accordian -> isKeyFocused -> event",t)}openContent(t){let e=["INPUT","BUTTON","LABEL"];e.indexOf(t.target.nodeName)!==-1||e.indexOf(t.target.parentNode.parentNode.nodeName)!==-1||(this.isOpen=!this.isOpen,this.$emit("content-opened",{isOpen:this.isOpen,event:t}))}afterOpen(t){t.style.height="auto"}open(t){let e=getComputedStyle(t).width;t.style.width=e,t.style.position="absolute",t.style.visibility="hidden",t.style.height="auto";let s=getComputedStyle(t).height;t.style.width=null,t.style.position=null,t.style.visibility=null,t.style.height=0,getComputedStyle(t).height,setTimeout(()=>{t.style.height=s})}close(t){let e=getComputedStyle(t).height;t.style.height=e,getComputedStyle(t).height,setTimeout(()=>{t.style.height=0})}mounted(){this.value&&(this.isOpen=this.value)}};a([r()],i.prototype,"openedTitle",2);a([r()],i.prototype,"closedTitle",2);a([r()],i.prototype,"title",2);a([r()],i.prototype,"isOpened",2);a([r()],i.prototype,"noBorder",2);a([r()],i.prototype,"leftNav",2);a([r()],i.prototype,"value",2);a([d("value")],i.prototype,"handleIsOpened",1);a([d("isOpen")],i.prototype,"handleIsOpen",1);i=a([_({})],i);var O=function(){var t=this,e=t._self._c;return t._self._setupProxy,e("div",{staticClass:"s-accordion",class:[t.accordionClasses],attrs:{tabindex:"0"},on:{keydown:function(s){return!s.type.indexOf("key")&&t._k(s.keyCode,"space",32,s.key,[" ","Spacebar"])||s.target!==s.currentTarget?null:(s.preventDefault(),t.openContent.apply(null,arguments))}}},[e("div",{staticClass:"s-accordion__head",class:{"is-open":t.isOpen},on:{click:t.openContent}},[e("div",{staticClass:"s-accordion__button"},[t._t("open-close-icon",function(){return[e("svg",{attrs:{xmlns:"http://www.w3.org/2000/svg",width:"14px",height:"14px"}},[e("path",{staticClass:"s-accordion__svg--back",attrs:{d:"M13 14H1a1 1 0 0 1-1-1V1c0-.6.5-1 1-1h12c.6 0 1 .5 1 1v12c0 .6-.4 1-1 1z",fill:"#e3e8eb"}}),e("transition",{attrs:{name:"twist-h"}},[t.isOpen?t._e():e("g",[e("path",{staticClass:"s-accordion__svg--line",attrs:{d:"M10 8H4a1 1 0 0 1-1-1c0-.6.5-1 1-1h6c.6 0 1 .5 1 1s-.4 1-1 1z"}}),e("path",{staticClass:"s-accordion__svg--line",attrs:{d:"M8 4v6c0 .6-.5 1-1 1a1 1 0 0 1-1-1V4c0-.6.5-1 1-1s1 .5 1 1z"}})])]),e("transition",{attrs:{name:"twist-v"}},[t.isOpen?e("path",{staticClass:"s-accordion__svg--line",attrs:{d:"M10 8H4a1 1 0 0 1-1-1c0-.6.5-1 1-1h6c.6 0 1 .5 1 1s-.4 1-1 1z"}}):t._e()])],1)]},{isOpen:t.isOpen})],2),t.hasTitleSlot?e("div",{staticClass:"s-accordion--title"},[t._t("title")],2):e("div",{staticClass:"s-accordion--title"},[t._v(t._s(t.accordionTitle))])]),e("transition",{attrs:{name:"expand"},on:{enter:t.open,"after-enter":t.afterOpen,leave:t.close}},[t.isOpen?e("div",{staticClass:"s-accordion__content",class:[{"is-open":t.isOpen},{"left-nav":t.leftNav}]},[t._t("content",null,{isOpen:t.isOpen})],2):t._e()])],1)},C=[],T=v(i,O,C,!1,null,null,null,null);const b=T.exports;export{b as A};
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { W as Watch, C as Component, P as Prop, V as Vue, n as normalizeComponent } from "./index.4fb8a6cb.js";
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let Accordian = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "openedTitle");
+    __publicField(this, "closedTitle");
+    __publicField(this, "title");
+    __publicField(this, "isOpened");
+    __publicField(this, "noBorder");
+    __publicField(this, "leftNav");
+    __publicField(this, "value");
+    __publicField(this, "isOpen", false);
+    __publicField(this, "focused", false);
+    __publicField(this, "defaultBorder", false);
+  }
+  handleIsOpened(val) {
+    this.isOpen = val;
+  }
+  handleIsOpen(val) {
+    this.$emit("input", val);
+  }
+  get accordionTitle() {
+    if (this.title !== void 0) {
+      return this.title;
+    } else {
+      if (this.isOpen) {
+        return this.openedTitle;
+      } else {
+        return this.closedTitle;
+      }
+    }
+  }
+  get hasTitleSlot() {
+    return !!this.$slots.title;
+  }
+  get accordionClasses() {
+    let classes = [];
+    if (this.noBorder) {
+      classes.push("no-border");
+    }
+    if (this.leftNav) {
+      classes.push("left-nav");
+    }
+    return classes.join(" ");
+  }
+  isKeyFocused(event) {
+    console.log("TCL: Accordian -> isKeyFocused -> event", event);
+  }
+  openContent(event) {
+    let blockedNodes = ["INPUT", "BUTTON", "LABEL"];
+    if (blockedNodes.indexOf(event.target.nodeName) !== -1 || blockedNodes.indexOf(event.target.parentNode.parentNode.nodeName) !== -1) {
+      return;
+    }
+    this.isOpen = !this.isOpen;
+    this.$emit("content-opened", { isOpen: this.isOpen, event });
+  }
+  afterOpen(element) {
+    element.style.height = "auto";
+  }
+  open(element) {
+    let width = getComputedStyle(element).width;
+    element.style.width = width;
+    element.style.position = `absolute`;
+    element.style.visibility = `hidden`;
+    element.style.height = `auto`;
+    let height = getComputedStyle(element).height;
+    element.style.width = null;
+    element.style.position = null;
+    element.style.visibility = null;
+    element.style.height = 0;
+    getComputedStyle(element).height;
+    setTimeout(() => {
+      element.style.height = height;
+    });
+  }
+  close(element) {
+    let height = getComputedStyle(element).height;
+    element.style.height = height;
+    getComputedStyle(element).height;
+    setTimeout(() => {
+      element.style.height = 0;
+    });
+  }
+  mounted() {
+    if (this.value) {
+      this.isOpen = this.value;
+    }
+  }
+};
+__decorateClass([
+  Prop()
+], Accordian.prototype, "openedTitle", 2);
+__decorateClass([
+  Prop()
+], Accordian.prototype, "closedTitle", 2);
+__decorateClass([
+  Prop()
+], Accordian.prototype, "title", 2);
+__decorateClass([
+  Prop()
+], Accordian.prototype, "isOpened", 2);
+__decorateClass([
+  Prop()
+], Accordian.prototype, "noBorder", 2);
+__decorateClass([
+  Prop()
+], Accordian.prototype, "leftNav", 2);
+__decorateClass([
+  Prop()
+], Accordian.prototype, "value", 2);
+__decorateClass([
+  Watch("value")
+], Accordian.prototype, "handleIsOpened", 1);
+__decorateClass([
+  Watch("isOpen")
+], Accordian.prototype, "handleIsOpen", 1);
+Accordian = __decorateClass([
+  Component({})
+], Accordian);
+const Accordion_vue_vue_type_style_index_0_lang = "";
+var _sfc_render = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-accordion", class: [_vm.accordionClasses], attrs: { "tabindex": "0" }, on: { "keydown": function($event) {
+    if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "space", 32, $event.key, [" ", "Spacebar"]))
+      return null;
+    if ($event.target !== $event.currentTarget)
+      return null;
+    $event.preventDefault();
+    return _vm.openContent.apply(null, arguments);
+  } } }, [_c("div", { staticClass: "s-accordion__head", class: { "is-open": _vm.isOpen }, on: { "click": _vm.openContent } }, [_c("div", { staticClass: "s-accordion__button" }, [_vm._t("open-close-icon", function() {
+    return [_c("svg", { attrs: { "xmlns": "http://www.w3.org/2000/svg", "width": "14px", "height": "14px" } }, [_c("path", { staticClass: "s-accordion__svg--back", attrs: { "d": "M13 14H1a1 1 0 0 1-1-1V1c0-.6.5-1 1-1h12c.6 0 1 .5 1 1v12c0 .6-.4 1-1 1z", "fill": "#e3e8eb" } }), _c("transition", { attrs: { "name": "twist-h" } }, [!_vm.isOpen ? _c("g", [_c("path", { staticClass: "s-accordion__svg--line", attrs: { "d": "M10 8H4a1 1 0 0 1-1-1c0-.6.5-1 1-1h6c.6 0 1 .5 1 1s-.4 1-1 1z" } }), _c("path", { staticClass: "s-accordion__svg--line", attrs: { "d": "M8 4v6c0 .6-.5 1-1 1a1 1 0 0 1-1-1V4c0-.6.5-1 1-1s1 .5 1 1z" } })]) : _vm._e()]), _c("transition", { attrs: { "name": "twist-v" } }, [_vm.isOpen ? _c("path", { staticClass: "s-accordion__svg--line", attrs: { "d": "M10 8H4a1 1 0 0 1-1-1c0-.6.5-1 1-1h6c.6 0 1 .5 1 1s-.4 1-1 1z" } }) : _vm._e()])], 1)];
+  }, { "isOpen": _vm.isOpen })], 2), _vm.hasTitleSlot ? _c("div", { staticClass: "s-accordion--title" }, [_vm._t("title")], 2) : _c("div", { staticClass: "s-accordion--title" }, [_vm._v(_vm._s(_vm.accordionTitle))])]), _c("transition", { attrs: { "name": "expand" }, on: { "enter": _vm.open, "after-enter": _vm.afterOpen, "leave": _vm.close } }, [_vm.isOpen ? _c("div", { staticClass: "s-accordion__content", class: [{ "is-open": _vm.isOpen }, { "left-nav": _vm.leftNav }] }, [_vm._t("content", null, { "isOpen": _vm.isOpen })], 2) : _vm._e()])], 1);
+};
+var _sfc_staticRenderFns = [];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  Accordian,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const Accordion = __component__.exports;
+export {
+  Accordion as A
+};
 //# sourceMappingURL=Accordion.09c82396.js.map

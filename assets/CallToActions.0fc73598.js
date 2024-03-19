@@ -1,4 +1,186 @@
-var v=Object.defineProperty;var h=(n,t,o)=>t in n?v(n,t,{enumerable:!0,configurable:!0,writable:!0,value:o}):n[t]=o;var e=(n,t,o)=>(h(n,typeof t!="symbol"?t+"":t,o),o);import{V as b,C as m,P as r,n as f}from"./index.4fb8a6cb.js";import{B as p}from"./Button.b26dacc2.js";import{i as _}from"./vue-mq.es.e994b893.js";import{D as g}from"./DemoSection.79ee11c0.js";import{l as C}from"./logo.64bf4e20.js";import"./Accordion.09c82396.js";var T=Object.defineProperty,A=Object.getOwnPropertyDescriptor,l=(n,t,o,d)=>{for(var a=d>1?void 0:d?A(t,o):t,s=n.length-1,c;s>=0;s--)(c=n[s])&&(a=(d?c(t,o,a):c(a))||a);return d&&a&&T(t,o,a),a};b.use(_,{breakpoints:{sm:900,md:1250,lg:1/0},defaultBreakpoint:"sm"});let i=class extends b{constructor(){super(...arguments);e(this,"bgColor");e(this,"titleColor");e(this,"subTitleColor");e(this,"thumbnail");e(this,"hasThumbnail");e(this,"thumbnailWidth");e(this,"thumbnailHeight");e(this,"thumbnailBg");e(this,"thumbnailAlt");e(this,"title");e(this,"description");e(this,"buttonVariation");e(this,"buttonTitle");e(this,"buttonDescription");e(this,"buttonHref");e(this,"buttonTo");e(this,"buttonTag");e(this,"buttonClick");e(this,"buttonBg");e(this,"buttonTextColor");e(this,"customButtonSlot");e(this,"bgPrime");e(this,"buttonIcon");e(this,"$mq");e(this,"callToActiontitleColor",{color:this.titleColor});e(this,"callToActionSubTitleColor",{color:this.subTitleColor});e(this,"callToActionBg",{backgroundColor:this.bgColor});e(this,"callToActionThumb",{width:`${this.thumbnailWidth}px`,height:`${this.thumbnailHeight}px`,backgroundColor:this.thumbnailBg})}get callToActionMq(){return this.$mq==="sm"?"s-call-to-action-mq":""}get callToActionThumbMq(){return this.$mq==="sm"?"s-call-to-action__thumb-mq":""}get callToActionDescMq(){return this.$mq==="sm"?"s-call-to-action__description-mq":""}get titleMq(){return this.$mq==="sm"?"s-title-mq":""}};l([r()],i.prototype,"bgColor",2);l([r()],i.prototype,"titleColor",2);l([r()],i.prototype,"subTitleColor",2);l([r({default:"https://cdn.streamlabs.com/static/kevin-standard.svg"})],i.prototype,"thumbnail",2);l([r({default:!0})],i.prototype,"hasThumbnail",2);l([r({default:80})],i.prototype,"thumbnailWidth",2);l([r({default:80})],i.prototype,"thumbnailHeight",2);l([r()],i.prototype,"thumbnailBg",2);l([r({default:"Get started by downloading Streamlabs OBS"})],i.prototype,"thumbnailAlt",2);l([r({default:"Get started by downloading Streamlabs OBS"})],i.prototype,"title",2);l([r({default:"Over 800k creators use Streamlabs OBS daily, delivering entertainment."})],i.prototype,"description",2);l([r({default:"slobs-download"})],i.prototype,"buttonVariation",2);l([r({default:"Download Streamlabs OBS"})],i.prototype,"buttonTitle",2);l([r()],i.prototype,"buttonDescription",2);l([r()],i.prototype,"buttonHref",2);l([r()],i.prototype,"buttonTo",2);l([r()],i.prototype,"buttonTag",2);l([r()],i.prototype,"buttonClick",2);l([r()],i.prototype,"buttonBg",2);l([r()],i.prototype,"buttonTextColor",2);l([r({default:!1})],i.prototype,"customButtonSlot",2);l([r({default:!1})],i.prototype,"bgPrime",2);l([r()],i.prototype,"buttonIcon",2);i=l([m({components:{Button:p}})],i);var S=function(){var t=this,o=t._self._c;return t._self._setupProxy,o("div",{staticClass:"s-call-to-action",class:t.callToActionMq,style:t.callToActionBg},[t.buttonVariation==="prime"|t.buttonVariation==="prime-white"?o("i",{staticClass:"icon-prime prime-bg"}):t._e(),t.hasThumbnail?o("div",{staticClass:"s-call-to-action__thumb",class:t.callToActionThumbMq,style:t.callToActionThumb},[o("img",{attrs:{src:t.thumbnail,alt:t.thumbnailAlt}})]):t._e(),o("div",{staticClass:"s-call-to-action__description",class:t.callToActionDescMq},[o("div",{staticClass:"s-title",class:t.titleMq,style:t.callToActiontitleColor},[t._v(" "+t._s(t.title)+" ")]),o("div",{staticClass:"s-subtitle",style:t.callToActionSubTitleColor},[t._v(" "+t._s(t.description)+" ")])]),t.customButtonSlot?t._t("default"):o("div",{staticClass:"s-button-container s-button-container--right"},[t.buttonClick?o("Button",{attrs:{variation:t.buttonVariation,size:"large",title:t.buttonTitle,description:t.buttonDescription,href:t.buttonHref,to:t.buttonTo,tag:t.buttonTag,bgColor:t.buttonBg,icon:t.buttonIcon,textColor:t.buttonTextColor},on:{click:t.buttonClick}}):o("Button",{attrs:{variation:t.buttonVariation,size:"large",title:t.buttonTitle,description:t.buttonDescription,href:t.buttonHref,to:t.buttonTo,tag:t.buttonTag,icon:t.buttonIcon,bgColor:t.buttonBg,textColor:t.buttonTextColor}})],1)],2)},y=[],B=f(i,S,y,!1,null,null,null,null);const D=B.exports,k=`<template>
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { V as Vue, C as Component, P as Prop, n as normalizeComponent } from "./index.4fb8a6cb.js";
+import { B as Button } from "./Button.b26dacc2.js";
+import { i as index } from "./vue-mq.es.e994b893.js";
+import { D as DemoSection } from "./DemoSection.79ee11c0.js";
+import { l as logo } from "./logo.64bf4e20.js";
+import "./Accordion.09c82396.js";
+var __defProp$1 = Object.defineProperty;
+var __getOwnPropDesc$1 = Object.getOwnPropertyDescriptor;
+var __decorateClass$1 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$1(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$1(target, key, result);
+  return result;
+};
+Vue.use(index, {
+  breakpoints: {
+    sm: 900,
+    md: 1250,
+    lg: Infinity
+  },
+  defaultBreakpoint: "sm"
+});
+let CallToAction$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "bgColor");
+    __publicField(this, "titleColor");
+    __publicField(this, "subTitleColor");
+    __publicField(this, "thumbnail");
+    __publicField(this, "hasThumbnail");
+    __publicField(this, "thumbnailWidth");
+    __publicField(this, "thumbnailHeight");
+    __publicField(this, "thumbnailBg");
+    __publicField(this, "thumbnailAlt");
+    __publicField(this, "title");
+    __publicField(this, "description");
+    __publicField(this, "buttonVariation");
+    __publicField(this, "buttonTitle");
+    __publicField(this, "buttonDescription");
+    __publicField(this, "buttonHref");
+    __publicField(this, "buttonTo");
+    __publicField(this, "buttonTag");
+    __publicField(this, "buttonClick");
+    __publicField(this, "buttonBg");
+    __publicField(this, "buttonTextColor");
+    __publicField(this, "customButtonSlot");
+    __publicField(this, "bgPrime");
+    __publicField(this, "buttonIcon");
+    __publicField(this, "$mq");
+    __publicField(this, "callToActiontitleColor", {
+      color: this.titleColor
+    });
+    __publicField(this, "callToActionSubTitleColor", {
+      color: this.subTitleColor
+    });
+    __publicField(this, "callToActionBg", {
+      backgroundColor: this.bgColor
+    });
+    __publicField(this, "callToActionThumb", {
+      width: `${this.thumbnailWidth}px`,
+      height: `${this.thumbnailHeight}px`,
+      backgroundColor: this.thumbnailBg
+    });
+  }
+  get callToActionMq() {
+    return this.$mq === "sm" ? "s-call-to-action-mq" : "";
+  }
+  get callToActionThumbMq() {
+    return this.$mq === "sm" ? "s-call-to-action__thumb-mq" : "";
+  }
+  get callToActionDescMq() {
+    return this.$mq === "sm" ? "s-call-to-action__description-mq" : "";
+  }
+  get titleMq() {
+    return this.$mq === "sm" ? "s-title-mq" : "";
+  }
+};
+__decorateClass$1([
+  Prop()
+], CallToAction$1.prototype, "bgColor", 2);
+__decorateClass$1([
+  Prop()
+], CallToAction$1.prototype, "titleColor", 2);
+__decorateClass$1([
+  Prop()
+], CallToAction$1.prototype, "subTitleColor", 2);
+__decorateClass$1([
+  Prop({ default: "https://cdn.streamlabs.com/static/kevin-standard.svg" })
+], CallToAction$1.prototype, "thumbnail", 2);
+__decorateClass$1([
+  Prop({ default: true })
+], CallToAction$1.prototype, "hasThumbnail", 2);
+__decorateClass$1([
+  Prop({ default: 80 })
+], CallToAction$1.prototype, "thumbnailWidth", 2);
+__decorateClass$1([
+  Prop({ default: 80 })
+], CallToAction$1.prototype, "thumbnailHeight", 2);
+__decorateClass$1([
+  Prop()
+], CallToAction$1.prototype, "thumbnailBg", 2);
+__decorateClass$1([
+  Prop({ default: "Get started by downloading Streamlabs OBS" })
+], CallToAction$1.prototype, "thumbnailAlt", 2);
+__decorateClass$1([
+  Prop({ default: "Get started by downloading Streamlabs OBS" })
+], CallToAction$1.prototype, "title", 2);
+__decorateClass$1([
+  Prop({
+    default: "Over 800k creators use Streamlabs OBS daily, delivering entertainment."
+  })
+], CallToAction$1.prototype, "description", 2);
+__decorateClass$1([
+  Prop({ default: "slobs-download" })
+], CallToAction$1.prototype, "buttonVariation", 2);
+__decorateClass$1([
+  Prop({ default: "Download Streamlabs OBS" })
+], CallToAction$1.prototype, "buttonTitle", 2);
+__decorateClass$1([
+  Prop()
+], CallToAction$1.prototype, "buttonDescription", 2);
+__decorateClass$1([
+  Prop()
+], CallToAction$1.prototype, "buttonHref", 2);
+__decorateClass$1([
+  Prop()
+], CallToAction$1.prototype, "buttonTo", 2);
+__decorateClass$1([
+  Prop()
+], CallToAction$1.prototype, "buttonTag", 2);
+__decorateClass$1([
+  Prop()
+], CallToAction$1.prototype, "buttonClick", 2);
+__decorateClass$1([
+  Prop()
+], CallToAction$1.prototype, "buttonBg", 2);
+__decorateClass$1([
+  Prop()
+], CallToAction$1.prototype, "buttonTextColor", 2);
+__decorateClass$1([
+  Prop({ default: false })
+], CallToAction$1.prototype, "customButtonSlot", 2);
+__decorateClass$1([
+  Prop({ default: false })
+], CallToAction$1.prototype, "bgPrime", 2);
+__decorateClass$1([
+  Prop()
+], CallToAction$1.prototype, "buttonIcon", 2);
+CallToAction$1 = __decorateClass$1([
+  Component({
+    components: {
+      Button
+    }
+  })
+], CallToAction$1);
+const CallToAction_vue_vue_type_style_index_0_lang = "";
+var _sfc_render$1 = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-call-to-action", class: _vm.callToActionMq, style: _vm.callToActionBg }, [_vm.buttonVariation === "prime" | _vm.buttonVariation === "prime-white" ? _c("i", { staticClass: "icon-prime prime-bg" }) : _vm._e(), _vm.hasThumbnail ? _c("div", { staticClass: "s-call-to-action__thumb", class: _vm.callToActionThumbMq, style: _vm.callToActionThumb }, [_c("img", { attrs: { "src": _vm.thumbnail, "alt": _vm.thumbnailAlt } })]) : _vm._e(), _c("div", { staticClass: "s-call-to-action__description", class: _vm.callToActionDescMq }, [_c("div", { staticClass: "s-title", class: _vm.titleMq, style: _vm.callToActiontitleColor }, [_vm._v(" " + _vm._s(_vm.title) + " ")]), _c("div", { staticClass: "s-subtitle", style: _vm.callToActionSubTitleColor }, [_vm._v(" " + _vm._s(_vm.description) + " ")])]), _vm.customButtonSlot ? _vm._t("default") : _c("div", { staticClass: "s-button-container s-button-container--right" }, [_vm.buttonClick ? _c("Button", { attrs: { "variation": _vm.buttonVariation, "size": "large", "title": _vm.buttonTitle, "description": _vm.buttonDescription, "href": _vm.buttonHref, "to": _vm.buttonTo, "tag": _vm.buttonTag, "bgColor": _vm.buttonBg, "icon": _vm.buttonIcon, "textColor": _vm.buttonTextColor }, on: { "click": _vm.buttonClick } }) : _c("Button", { attrs: { "variation": _vm.buttonVariation, "size": "large", "title": _vm.buttonTitle, "description": _vm.buttonDescription, "href": _vm.buttonHref, "to": _vm.buttonTo, "tag": _vm.buttonTag, "icon": _vm.buttonIcon, "bgColor": _vm.buttonBg, "textColor": _vm.buttonTextColor } })], 1)], 2);
+};
+var _sfc_staticRenderFns$1 = [];
+var __component__$1 = /* @__PURE__ */ normalizeComponent(
+  CallToAction$1,
+  _sfc_render$1,
+  _sfc_staticRenderFns$1,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const CallToAction = __component__$1.exports;
+const CallToActionCode = `<template>
   <div>
     <div class="section">
       <h1>Call To Action</h1>
@@ -266,9 +448,67 @@ export default class CallToActions extends Vue {
   }
 }
 <\/script>
-`;var w=Object.defineProperty,x=Object.getOwnPropertyDescriptor,O=(n,t,o,d)=>{for(var a=d>1?void 0:d?x(t,o):t,s=n.length-1,c;s>=0;s--)(c=n[s])&&(a=(d?c(t,o,a):c(a))||a);return d&&a&&w(t,o,a),a};let u=class extends b{constructor(){super(...arguments);e(this,"demoCode",k);e(this,"logo",C)}test(){alert("test")}};u=O([m({components:{Button:p,CallToAction:D,DemoSection:g}})],u);var P=function(){var t=this,o=t._self._c;return t._self._setupProxy,o("div",[t._m(0),o("div",{staticClass:"section"},[o("h2",[t._v("Default Call to Action")]),o("DemoSection",{attrs:{title:"Default",code:t.demoCode},scopedSlots:t._u([{key:"components",fn:function(){return[o("CallToAction",{attrs:{buttonClick:t.test}})]},proxy:!0}])})],1),o("div",{staticClass:"section"},[o("h2",[t._v("Custom Call to Action")]),o("div",{staticClass:"section"},[o("DemoSection",{attrs:{title:"Custom",code:t.demoCode},scopedSlots:t._u([{key:"components",fn:function(){return[o("CallToAction",{attrs:{bgColor:"#31c3a2",titleColor:"#ffffff",subTitleColor:"#ffffff",thumbnail:t.logo,thumbnailWidth:120,thumbnailHeight:80,thumbnailBg:"#ffffff",title:"This is a Custom Call To Action",description:"A Custom Description",buttonVariation:"default",buttonTitle:"Click Me",buttonDescription:"",buttonTag:"a",buttonHref:"https://google.com",buttonBg:"#ffffff",buttonTextColor:"#000000"}})]},proxy:!0}])})],1),o("div",{staticClass:"section"},[o("CallToAction",{attrs:{bgColor:"#31c3a2",titleColor:"#fff",subTitleColor:"#fff",title:"This is a Custom Call To Action",description:"A Custom Description",hasThumbnail:!1,customButtonSlot:!0}},[o("div",{staticClass:"s-button-container"},[o("Button",{attrs:{title:"Using slot"}}),o("Button",{attrs:{title:"Using slot"}})],1)])],1),o("div",{staticClass:"section"},[o("CallToAction",{attrs:{bgColor:"#CAA368",titleColor:"#fff",subTitleColor:"#fff",hasThumbnail:!1,title:"Join Prime today!",description:"Our premium tool-set for professional content creators.",buttonVariation:"prime-white",buttonTitle:"Sign Up",buttonDescription:"",buttonIcon:"prime",bgPrime:!0}})],1),t._m(1)])])},q=[function(){var n=this,t=n._self._c;return n._self._setupProxy,t("div",{staticClass:"section"},[t("h1",[n._v("Call To Action")]),t("p",[n._v(" You can use our callout component if you need to display an important message. ")]),t("pre",[t("code",[n._v(`import { CallToAction } from 'streamlabs-beaker';
-
-components: {
-  CallToAction
-}`)])])])},function(){var n=this,t=n._self._c;return n._self._setupProxy,t("table",{staticClass:"docs-table"},[t("thead",[t("tr",[t("th",[n._v("Props")]),t("th",[n._v("Type")]),t("th",[n._v("Default")]),t("th",[n._v("Description")])])]),t("tbody",[t("tr",[t("td",[n._v("bgColor")]),t("td",[n._v("String")]),t("td",[n._v("#f5f8fa")]),t("td",[n._v("Background color, default color is @day-section (#f5f8fa)")])]),t("tr",[t("td",[n._v("titleColor")]),t("td",[n._v("String")]),t("td",[n._v("#09161d")]),t("td",[n._v("Title color, default color is @day-title (#09161d)")])]),t("tr",[t("td",[n._v("subTitleColor")]),t("td",[n._v("String")]),t("td",[n._v("#4f5e65")]),t("td",[n._v("Sub title color, default color is @day-paragraph (#4f5e65)")])]),t("tr",[t("td",[n._v("thumbnail")]),t("td",[n._v("String")]),t("td",[n._v("'https://cdn.streamlabs.com/static/kevin-standard.svg'")]),t("td",[n._v("A Thumbnail image")])]),t("tr",[t("td",[n._v("thumbnailBg")]),t("td",[n._v("String")]),t("td",[n._v("#31C3A2")]),t("td",[n._v(" A Thumbnail background color, default color is @teal (#31C3A2) ")])]),t("tr",[t("td",[n._v("thumbnailWidth")]),t("td",[n._v("Number")]),t("td",[n._v("80")]),t("td",[n._v("A Thumbnail width")])]),t("tr",[t("td",[n._v("thumbnailHeight")]),t("td",[n._v("Number")]),t("td",[n._v("80")]),t("td",[n._v("A Thumbnail height")])]),t("tr",[t("td",[n._v("thumbnailAlt")]),t("td",[n._v("String")]),t("td",[n._v("Get started by downloading Streamlabs OBS")]),t("td",[n._v("A Thumbnail alt")])]),t("tr",[t("td",[n._v("title")]),t("td",[n._v("String")]),t("td",[n._v("Get started by downloading Streamlabs OBS")]),t("td",[n._v("Title for the call to action component")])]),t("tr",[t("td",[n._v("description")]),t("td",[n._v("String")]),t("td",[n._v(" Over 800k creators use Streamlabs OBS daily, delivering entertainment. ")]),t("td",[n._v("A short description for the call the action component")])]),t("tr",[t("td",[n._v("buttonVariation")]),t("td",[n._v("String")]),t("td",[n._v("slobs-download")]),t("td",[n._v("Takes any button variation, but 'action' is recomended")])]),t("tr",[t("td",[n._v("buttonTitle")]),t("td",[n._v("String")]),t("td",[n._v("Download Streamlabs OBS")]),t("td",[n._v("The title for the button")])]),t("tr",[t("td",[n._v("buttonDescription")]),t("td",[n._v("String")]),t("td",[n._v("Windows 7+ 245.8MB")]),t("td",[n._v(` Description for 'slobs-download' button variation only, recomended left blank otherwise ( :buttonDescription="'" ) `)])]),t("tr",[t("td",[n._v("buttonBg")]),t("td",[n._v("String")]),t("td",[n._v("null")]),t("td",[n._v("Button background is forced to be changed")])]),t("tr",[t("td",[n._v("buttonTextColor")]),t("td",[n._v("String")]),t("td",[n._v("null")]),t("td",[n._v("Button text color is forced to be changed")])]),t("tr",[t("td",[n._v("buttonHref")]),t("td",[n._v("String")]),t("td",[n._v("null")]),t("td",[n._v(" Used if the the "),t("code",[n._v("type")]),n._v(" is an "),t("code",[n._v("a")]),n._v(" element (links). ")])]),t("tr",[t("td",[n._v("buttonTo")]),t("td",[n._v("String")]),t("td",[n._v("null")]),t("td",[n._v(" Used if the the "),t("code",[n._v("type")]),n._v(" is a "),t("code",[n._v("router-link")]),n._v(". Define the path. ")])]),t("tr",[t("td",[n._v("buttonTag")]),t("td",[n._v("String")]),t("td",[n._v("null")]),t("td",[n._v(" What type of element the component is. Options are "),t("code",[n._v("button")]),n._v(", "),t("code",[n._v("a")]),n._v(", "),t("code",[n._v("router-link")])])]),t("tr",[t("td",[n._v("buttonClick")]),t("td",[n._v("Function")]),t("td",[n._v("null")]),t("td",[n._v("Emits a click function.")])])])])}],V=f(u,P,q,!1,null,null,null,null);const j=V.exports;export{j as default};
+`;
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let CallToActions$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "demoCode", CallToActionCode);
+    __publicField(this, "logo", logo);
+  }
+  test() {
+    alert("test");
+  }
+};
+CallToActions$1 = __decorateClass([
+  Component({
+    components: {
+      Button,
+      CallToAction,
+      DemoSection
+    }
+  })
+], CallToActions$1);
+var _sfc_render = function render2() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", [_vm._m(0), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Default Call to Action")]), _c("DemoSection", { attrs: { "title": "Default", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("CallToAction", { attrs: { "buttonClick": _vm.test } })];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Custom Call to Action")]), _c("div", { staticClass: "section" }, [_c("DemoSection", { attrs: { "title": "Custom", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("CallToAction", { attrs: { "bgColor": "#31c3a2", "titleColor": "#ffffff", "subTitleColor": "#ffffff", "thumbnail": _vm.logo, "thumbnailWidth": 120, "thumbnailHeight": 80, "thumbnailBg": "#ffffff", "title": "This is a Custom Call To Action", "description": "A Custom Description", "buttonVariation": "default", "buttonTitle": "Click Me", "buttonDescription": "", "buttonTag": "a", "buttonHref": "https://google.com", "buttonBg": "#ffffff", "buttonTextColor": "#000000" } })];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("CallToAction", { attrs: { "bgColor": "#31c3a2", "titleColor": "#fff", "subTitleColor": "#fff", "title": "This is a Custom Call To Action", "description": "A Custom Description", "hasThumbnail": false, "customButtonSlot": true } }, [_c("div", { staticClass: "s-button-container" }, [_c("Button", { attrs: { "title": "Using slot" } }), _c("Button", { attrs: { "title": "Using slot" } })], 1)])], 1), _c("div", { staticClass: "section" }, [_c("CallToAction", { attrs: { "bgColor": "#CAA368", "titleColor": "#fff", "subTitleColor": "#fff", "hasThumbnail": false, "title": "Join Prime today!", "description": "Our premium tool-set for professional content creators.", "buttonVariation": "prime-white", "buttonTitle": "Sign Up", "buttonDescription": "", "buttonIcon": "prime", "bgPrime": true } })], 1), _vm._m(1)])]);
+};
+var _sfc_staticRenderFns = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("h1", [_vm._v("Call To Action")]), _c("p", [_vm._v(" You can use our callout component if you need to display an important message. ")]), _c("pre", [_c("code", [_vm._v("import { CallToAction } from 'streamlabs-beaker';\n\ncomponents: {\n  CallToAction\n}")])])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("table", { staticClass: "docs-table" }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Props")]), _c("th", [_vm._v("Type")]), _c("th", [_vm._v("Default")]), _c("th", [_vm._v("Description")])])]), _c("tbody", [_c("tr", [_c("td", [_vm._v("bgColor")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v("#f5f8fa")]), _c("td", [_vm._v("Background color, default color is @day-section (#f5f8fa)")])]), _c("tr", [_c("td", [_vm._v("titleColor")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v("#09161d")]), _c("td", [_vm._v("Title color, default color is @day-title (#09161d)")])]), _c("tr", [_c("td", [_vm._v("subTitleColor")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v("#4f5e65")]), _c("td", [_vm._v("Sub title color, default color is @day-paragraph (#4f5e65)")])]), _c("tr", [_c("td", [_vm._v("thumbnail")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v("'https://cdn.streamlabs.com/static/kevin-standard.svg'")]), _c("td", [_vm._v("A Thumbnail image")])]), _c("tr", [_c("td", [_vm._v("thumbnailBg")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v("#31C3A2")]), _c("td", [_vm._v(" A Thumbnail background color, default color is @teal (#31C3A2) ")])]), _c("tr", [_c("td", [_vm._v("thumbnailWidth")]), _c("td", [_vm._v("Number")]), _c("td", [_vm._v("80")]), _c("td", [_vm._v("A Thumbnail width")])]), _c("tr", [_c("td", [_vm._v("thumbnailHeight")]), _c("td", [_vm._v("Number")]), _c("td", [_vm._v("80")]), _c("td", [_vm._v("A Thumbnail height")])]), _c("tr", [_c("td", [_vm._v("thumbnailAlt")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v("Get started by downloading Streamlabs OBS")]), _c("td", [_vm._v("A Thumbnail alt")])]), _c("tr", [_c("td", [_vm._v("title")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v("Get started by downloading Streamlabs OBS")]), _c("td", [_vm._v("Title for the call to action component")])]), _c("tr", [_c("td", [_vm._v("description")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v(" Over 800k creators use Streamlabs OBS daily, delivering entertainment. ")]), _c("td", [_vm._v("A short description for the call the action component")])]), _c("tr", [_c("td", [_vm._v("buttonVariation")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v("slobs-download")]), _c("td", [_vm._v("Takes any button variation, but 'action' is recomended")])]), _c("tr", [_c("td", [_vm._v("buttonTitle")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v("Download Streamlabs OBS")]), _c("td", [_vm._v("The title for the button")])]), _c("tr", [_c("td", [_vm._v("buttonDescription")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v("Windows 7+ 245.8MB")]), _c("td", [_vm._v(` Description for 'slobs-download' button variation only, recomended left blank otherwise ( :buttonDescription="'" ) `)])]), _c("tr", [_c("td", [_vm._v("buttonBg")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("Button background is forced to be changed")])]), _c("tr", [_c("td", [_vm._v("buttonTextColor")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("Button text color is forced to be changed")])]), _c("tr", [_c("td", [_vm._v("buttonHref")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v(" Used if the the "), _c("code", [_vm._v("type")]), _vm._v(" is an "), _c("code", [_vm._v("a")]), _vm._v(" element (links). ")])]), _c("tr", [_c("td", [_vm._v("buttonTo")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v(" Used if the the "), _c("code", [_vm._v("type")]), _vm._v(" is a "), _c("code", [_vm._v("router-link")]), _vm._v(". Define the path. ")])]), _c("tr", [_c("td", [_vm._v("buttonTag")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v(" What type of element the component is. Options are "), _c("code", [_vm._v("button")]), _vm._v(", "), _c("code", [_vm._v("a")]), _vm._v(", "), _c("code", [_vm._v("router-link")])])]), _c("tr", [_c("td", [_vm._v("buttonClick")]), _c("td", [_vm._v("Function")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("Emits a click function.")])])])]);
+}];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  CallToActions$1,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const CallToActions = __component__.exports;
+export {
+  CallToActions as default
+};
 //# sourceMappingURL=CallToActions.0fc73598.js.map

@@ -1,4 +1,80 @@
-var v=Object.defineProperty;var f=(e,t,n)=>t in e?v(e,t,{enumerable:!0,configurable:!0,writable:!0,value:n}):e[t]=n;var r=(e,t,n)=>(f(e,typeof t!="symbol"?t+"":t,n),n);import{C as _,P as a,V as m,n as u}from"./index.4fb8a6cb.js";import{D as h}from"./DemoSection.79ee11c0.js";import{F as C}from"./FormGroup.79b6121d.js";import{B as S}from"./Badge.2c39dd0d.js";import"./Accordion.09c82396.js";var g=Object.defineProperty,b=Object.getOwnPropertyDescriptor,p=(e,t,n,s)=>{for(var o=s>1?void 0:s?b(t,n):t,d=e.length-1,l;d>=0;d--)(l=e[d])&&(o=(s?l(t,n,o):l(o))||o);return s&&o&&g(t,n,o),o};let i=class extends m{constructor(){super(...arguments);r(this,"title");r(this,"icon");r(this,"isCompleted");r(this,"completedText");r(this,"hasCheckmark");r(this,"hasPrime")}};p([a(String)],i.prototype,"title",2);p([a(String)],i.prototype,"icon",2);p([a({default:!1})],i.prototype,"isCompleted",2);p([a(String)],i.prototype,"completedText",2);p([a({default:!1})],i.prototype,"hasCheckmark",2);p([a({default:!1})],i.prototype,"hasPrime",2);i=p([_({components:{Badge:S}})],i);var y=function(){var t=this,n=t._self._c;return t._self._setupProxy,n("div",{staticClass:"s-step",class:{"s-step--completed":t.isCompleted,checked:t.hasCheckmark}},[n("div",{staticClass:"s-step__title"},[t.icon?n("span",{staticClass:"s-step__icon",class:t.icon}):t._e(),t.hasCheckmark?n("span",{staticClass:"s-step__icon icon-check-mark"}):t._e(),n("p",{staticClass:"s-step__title-text"},[t._v(t._s(t.title))]),t.hasPrime?n("Badge",{staticClass:"s-step__badge",attrs:{variant:"prime-alt","align-left":!0}}):t._e()],1),t.isCompleted?t._e():t._t("default"),t.isCompleted?n("div",[t._v(t._s(t.completedText))]):t._e()],2)},P=[],x=u(i,y,P,!1,null,"c0d0cd2a",null,null);const w=x.exports,k=`<template>
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { C as Component, P as Prop, V as Vue, n as normalizeComponent } from "./index.4fb8a6cb.js";
+import { D as DemoSection } from "./DemoSection.79ee11c0.js";
+import { F as FormGroup } from "./FormGroup.79b6121d.js";
+import { B as Badge } from "./Badge.2c39dd0d.js";
+import "./Accordion.09c82396.js";
+var __defProp$1 = Object.defineProperty;
+var __getOwnPropDesc$1 = Object.getOwnPropertyDescriptor;
+var __decorateClass$1 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$1(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$1(target, key, result);
+  return result;
+};
+let Step$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "title");
+    __publicField(this, "icon");
+    __publicField(this, "isCompleted");
+    __publicField(this, "completedText");
+    __publicField(this, "hasCheckmark");
+    __publicField(this, "hasPrime");
+  }
+};
+__decorateClass$1([
+  Prop(String)
+], Step$1.prototype, "title", 2);
+__decorateClass$1([
+  Prop(String)
+], Step$1.prototype, "icon", 2);
+__decorateClass$1([
+  Prop({ default: false })
+], Step$1.prototype, "isCompleted", 2);
+__decorateClass$1([
+  Prop(String)
+], Step$1.prototype, "completedText", 2);
+__decorateClass$1([
+  Prop({ default: false })
+], Step$1.prototype, "hasCheckmark", 2);
+__decorateClass$1([
+  Prop({ default: false })
+], Step$1.prototype, "hasPrime", 2);
+Step$1 = __decorateClass$1([
+  Component({
+    components: {
+      Badge
+    }
+  })
+], Step$1);
+const Step_vue_vue_type_style_index_0_scoped_c0d0cd2a_lang = "";
+var _sfc_render$1 = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-step", class: { "s-step--completed": _vm.isCompleted, checked: _vm.hasCheckmark } }, [_c("div", { staticClass: "s-step__title" }, [_vm.icon ? _c("span", { staticClass: "s-step__icon", class: _vm.icon }) : _vm._e(), _vm.hasCheckmark ? _c("span", { staticClass: "s-step__icon icon-check-mark" }) : _vm._e(), _c("p", { staticClass: "s-step__title-text" }, [_vm._v(_vm._s(_vm.title))]), _vm.hasPrime ? _c("Badge", { staticClass: "s-step__badge", attrs: { "variant": "prime-alt", "align-left": true } }) : _vm._e()], 1), !_vm.isCompleted ? _vm._t("default") : _vm._e(), _vm.isCompleted ? _c("div", [_vm._v(_vm._s(_vm.completedText))]) : _vm._e()], 2);
+};
+var _sfc_staticRenderFns$1 = [];
+var __component__$1 = /* @__PURE__ */ normalizeComponent(
+  Step$1,
+  _sfc_render$1,
+  _sfc_staticRenderFns$1,
+  false,
+  null,
+  "c0d0cd2a",
+  null,
+  null
+);
+const Step = __component__$1.exports;
+const StepsCode = `<template>
   <div>
     <div class="section">
       <h1>Step</h1>
@@ -155,9 +231,62 @@ export default class Steps extends Vue {
   }
 }
 </style>
-`;var D=Object.defineProperty,T=Object.getOwnPropertyDescriptor,F=(e,t,n,s)=>{for(var o=s>1?void 0:s?T(t,n):t,d=e.length-1,l;d>=0;d--)(l=e[d])&&(o=(s?l(t,n,o):l(o))||o);return s&&o&&D(t,n,o),o};let c=class extends m{constructor(){super(...arguments);r(this,"demoCode",k)}};c=F([_({components:{DemoSection:h,FormGroup:C,Step:w}})],c);var B=function(){var t=this,n=t._self._c;return t._self._setupProxy,n("div",[t._m(0),n("div",{staticClass:"section"},[n("div",{staticClass:"row"},[n("DemoSection",{attrs:{title:"Default",code:t.demoCode},scopedSlots:t._u([{key:"components",fn:function(){return[n("FormGroup",[n("Step",{attrs:{slot:"input",title:"Enable Pro"},slot:"input"},[n("div",{staticClass:"info"},[n("p",[t._v("+20 CCV")]),n("i",{staticClass:"icon-information"})])]),n("Step",{attrs:{slot:"input",title:"Enable Pro",isCompleted:!0,hasCheckmark:!0,completedText:"Complete"},slot:"input"},[n("div",{staticClass:"info"},[n("p",[t._v("+20 CCV")]),n("i",{staticClass:"icon-information"})])]),n("Step",{attrs:{slot:"input",icon:"icon-donation-settings",title:"Tip",hasPrime:!0},slot:"input"},[t._v("0/1")]),n("Step",{attrs:{slot:"input",icon:"icon-donation-settings",title:"Tip",isCompleted:!0,completedText:"1/1"},slot:"input"},[t._v("0/1")])],1)]},proxy:!0}])})],1),t._m(1)])])},O=[function(){var e=this,t=e._self._c;return e._self._setupProxy,t("div",{staticClass:"section"},[t("h1",[e._v("Step")]),t("p",[e._v("step component")]),t("pre",[t("code",[e._v(`import { Step } from 'streamlabs-beaker';
-
-components: {
-  Step
-}`)])])])},function(){var e=this,t=e._self._c;return e._self._setupProxy,t("table",{staticClass:"docs-table"},[t("thead",[t("tr",[t("th",[e._v("Props")]),t("th",[e._v("Type")]),t("th",[e._v("Default")]),t("th",[e._v("Description")])])]),t("tbody",[t("tr",[t("td",[e._v("title")]),t("td",[e._v("String")]),t("td",[e._v("null")]),t("td",[e._v("title to display")])]),t("tr",[t("td",[e._v("icon")]),t("td",[e._v("String")]),t("td",[e._v("null")]),t("td",[e._v("icon to display")])]),t("tr",[t("td",[e._v("isCompleted")]),t("td",[e._v("Boolean")]),t("td",[e._v("false")]),t("td",[e._v(" background would be @dark-4, color would be @dark-5 when it is true ")])]),t("tr",[t("td",[e._v("completedText")]),t("td",[e._v("String")]),t("td",[e._v("null")]),t("td",[e._v(" It shows instead of slot when isCompleted is true ")])]),t("tr",[t("td",[e._v("isChecked")]),t("td",[e._v("Boolean")]),t("td",[e._v("false")]),t("td",[e._v(" add check mark icon and line through for title when it is true ")])]),t("tr",[t("td",[e._v("hasPrime")]),t("td",[e._v("Boolean")]),t("td",[e._v("false")]),t("td",[e._v("It shows prime alt badge when it is true")])])])])}],V=u(c,B,O,!1,null,"6a93d89c",null,null);const z=V.exports;export{z as default};
+`;
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let Steps$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "demoCode", StepsCode);
+  }
+};
+Steps$1 = __decorateClass([
+  Component({
+    components: {
+      DemoSection,
+      FormGroup,
+      Step
+    }
+  })
+], Steps$1);
+const Steps_vue_vue_type_style_index_0_scoped_6a93d89c_lang = "";
+var _sfc_render = function render2() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", [_vm._m(0), _c("div", { staticClass: "section" }, [_c("div", { staticClass: "row" }, [_c("DemoSection", { attrs: { "title": "Default", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("FormGroup", [_c("Step", { attrs: { "slot": "input", "title": "Enable Pro" }, slot: "input" }, [_c("div", { staticClass: "info" }, [_c("p", [_vm._v("+20 CCV")]), _c("i", { staticClass: "icon-information" })])]), _c("Step", { attrs: { "slot": "input", "title": "Enable Pro", "isCompleted": true, "hasCheckmark": true, "completedText": "Complete" }, slot: "input" }, [_c("div", { staticClass: "info" }, [_c("p", [_vm._v("+20 CCV")]), _c("i", { staticClass: "icon-information" })])]), _c("Step", { attrs: { "slot": "input", "icon": "icon-donation-settings", "title": "Tip", "hasPrime": true }, slot: "input" }, [_vm._v("0/1")]), _c("Step", { attrs: { "slot": "input", "icon": "icon-donation-settings", "title": "Tip", "isCompleted": true, "completedText": "1/1" }, slot: "input" }, [_vm._v("0/1")])], 1)];
+  }, proxy: true }]) })], 1), _vm._m(1)])]);
+};
+var _sfc_staticRenderFns = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("h1", [_vm._v("Step")]), _c("p", [_vm._v("step component")]), _c("pre", [_c("code", [_vm._v("import { Step } from 'streamlabs-beaker';\n\ncomponents: {\n  Step\n}")])])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("table", { staticClass: "docs-table" }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Props")]), _c("th", [_vm._v("Type")]), _c("th", [_vm._v("Default")]), _c("th", [_vm._v("Description")])])]), _c("tbody", [_c("tr", [_c("td", [_vm._v("title")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("title to display")])]), _c("tr", [_c("td", [_vm._v("icon")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("icon to display")])]), _c("tr", [_c("td", [_vm._v("isCompleted")]), _c("td", [_vm._v("Boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v(" background would be @dark-4, color would be @dark-5 when it is true ")])]), _c("tr", [_c("td", [_vm._v("completedText")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v(" It shows instead of slot when isCompleted is true ")])]), _c("tr", [_c("td", [_vm._v("isChecked")]), _c("td", [_vm._v("Boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v(" add check mark icon and line through for title when it is true ")])]), _c("tr", [_c("td", [_vm._v("hasPrime")]), _c("td", [_vm._v("Boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v("It shows prime alt badge when it is true")])])])]);
+}];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  Steps$1,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  "6a93d89c",
+  null,
+  null
+);
+const Steps = __component__.exports;
+export {
+  Steps as default
+};
 //# sourceMappingURL=Steps.00432710.js.map

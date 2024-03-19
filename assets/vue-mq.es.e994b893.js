@@ -1,2 +1,199 @@
-var b=function(n){return n.replace(/[A-Z]/g,function(e){return"-"+e.toLowerCase()}).toLowerCase()},g=b,k=g,q=function(n){var e=/[height|width]$/;return e.test(n)},d=function(n){var e="",r=Object.keys(n);return r.forEach(function(t,s){var i=n[t];t=k(t),q(t)&&typeof i=="number"&&(i=i+"px"),i===!0?e+=t:i===!1?e+="not "+t:e+="("+t+": "+i+")",s<r.length-1&&(e+=" and ")}),e},B=function(n){var e="";return typeof n=="string"?n:n instanceof Array?(n.forEach(function(r,t){e+=d(r),t<n.length-1&&(e+=", ")}),e):d(n)},A=B;function $(n,e,r){return e in n?Object.defineProperty(n,e,{value:r,enumerable:!0,configurable:!0,writable:!0}):n[e]=r,n}function w(n){if(Array.isArray(n)){for(var e=0,r=new Array(n.length);e<n.length;e++)r[e]=n[e];return r}else return Array.from(n)}function O(n){var e=Object.keys(n),r=e.map(function(i){return n[i]}),t=[0].concat(w(r.slice(0,-1))),s=t.reduce(function(i,a,o){var u=Object.assign({minWidth:a},o<e.length-1?{maxWidth:t[o+1]-1}:{}),c=A(u);return Object.assign(i,$({},e[o],c))},{});return s}function _(n,e,r){var t=function s(i){if(e[i]!==void 0)return e[i];var a=n.findIndex(function(u){return u===i}),o=a!==-1||a!==0?n[a-1]:null;return o?e[o]!==void 0?e[o]:s(o):e[a]};return t(r)}function j(n,e){var r=n.findIndex(function(t){return t===e});return n.slice(r)}function M(n,e){var r=window.matchMedia(n),t=function(i){var a=i.matches;a&&e()};r.addListener(t),t(r)}function m(n){return Object.prototype.toString.call(n)==="[object Array]"}var x={props:{mq:{required:!0,type:[String,Array]}},computed:{plusModifier:function(){return!m(this.mq)&&this.mq.slice(-1)==="+"},activeBreakpoints:function(){var e=Object.keys(this.$mqAvailableBreakpoints),r=this.plusModifier?this.mq.slice(0,-1):m(this.mq)?this.mq:[this.mq];return this.plusModifier?j(e,r):r}},render:function(e,r){var t=this.activeBreakpoints.includes(this.$mq);return t?e("div",this.$slots.default):e()}},C={sm:450,md:1250,lg:1/0},L=function(e){var r=arguments.length>1&&arguments[1]!==void 0?arguments[1]:{},t=r.breakpoints,s=t===void 0?C:t,i=r.defaultBreakpoint,a=i===void 0?"sm":i,o=!1,u=new e({data:function(){return{currentBreakpoint:a}}});e.filter("mq",function(c,f){return _(Object.keys(s),f,c)}),e.mixin({computed:{$mq:function(){return u.currentBreakpoint}},created:function(){this.$isServer&&(u.currentBreakpoint=a)},mounted:function(){if(!o){var f=O(s),v=function(l){var h=f[l],y=function(){u.currentBreakpoint=l};M(h,y)};for(var p in f)v(p);o=!0}}}),e.prototype.$mqAvailableBreakpoints=s,e.component("MqLayout",x)},Q={install:L};export{Q as i};
+var camel2hyphen$1 = function(str) {
+  return str.replace(/[A-Z]/g, function(match) {
+    return "-" + match.toLowerCase();
+  }).toLowerCase();
+};
+var camel2hyphen_1 = camel2hyphen$1;
+var camel2hyphen = camel2hyphen_1;
+var isDimension = function(feature) {
+  var re = /[height|width]$/;
+  return re.test(feature);
+};
+var obj2mq = function(obj) {
+  var mq = "";
+  var features = Object.keys(obj);
+  features.forEach(function(feature, index2) {
+    var value = obj[feature];
+    feature = camel2hyphen(feature);
+    if (isDimension(feature) && typeof value === "number") {
+      value = value + "px";
+    }
+    if (value === true) {
+      mq += feature;
+    } else if (value === false) {
+      mq += "not " + feature;
+    } else {
+      mq += "(" + feature + ": " + value + ")";
+    }
+    if (index2 < features.length - 1) {
+      mq += " and ";
+    }
+  });
+  return mq;
+};
+var json2mq = function(query) {
+  var mq = "";
+  if (typeof query === "string") {
+    return query;
+  }
+  if (query instanceof Array) {
+    query.forEach(function(q, index2) {
+      mq += obj2mq(q);
+      if (index2 < query.length - 1) {
+        mq += ", ";
+      }
+    });
+    return mq;
+  }
+  return obj2mq(query);
+};
+var json2mq_1 = json2mq;
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+function _toConsumableArray(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++)
+      arr2[i] = arr[i];
+    return arr2;
+  } else {
+    return Array.from(arr);
+  }
+}
+function convertBreakpointsToMediaQueries(breakpoints) {
+  var keys = Object.keys(breakpoints);
+  var values = keys.map(function(key) {
+    return breakpoints[key];
+  });
+  var breakpointValues = [0].concat(_toConsumableArray(values.slice(0, -1)));
+  var mediaQueries = breakpointValues.reduce(function(sum, value, index2) {
+    var options = Object.assign({
+      minWidth: value
+    }, index2 < keys.length - 1 ? {
+      maxWidth: breakpointValues[index2 + 1] - 1
+    } : {});
+    var mediaQuery = json2mq_1(options);
+    return Object.assign(sum, _defineProperty({}, keys[index2], mediaQuery));
+  }, {});
+  return mediaQueries;
+}
+function transformValuesFromBreakpoints(breakpoints, values, currentBreakpoint) {
+  var findClosestValue = function findClosestValue2(currentBreakpoint2) {
+    if (values[currentBreakpoint2] !== void 0)
+      return values[currentBreakpoint2];
+    var index2 = breakpoints.findIndex(function(b) {
+      return b === currentBreakpoint2;
+    });
+    var newBreakpoint = index2 !== -1 || index2 !== 0 ? breakpoints[index2 - 1] : null;
+    if (!newBreakpoint)
+      return values[index2];
+    return values[newBreakpoint] !== void 0 ? values[newBreakpoint] : findClosestValue2(newBreakpoint);
+  };
+  return findClosestValue(currentBreakpoint);
+}
+function selectBreakpoints(breakpoints, currentBreakpoint) {
+  var index2 = breakpoints.findIndex(function(b) {
+    return b === currentBreakpoint;
+  });
+  return breakpoints.slice(index2);
+}
+function subscribeToMediaQuery(mediaQuery, enter) {
+  var mql = window.matchMedia(mediaQuery);
+  var cb = function cb2(_ref) {
+    var matches = _ref.matches;
+    if (matches)
+      enter();
+  };
+  mql.addListener(cb);
+  cb(mql);
+}
+function isArray(arg) {
+  return Object.prototype.toString.call(arg) === "[object Array]";
+}
+var component = {
+  props: {
+    mq: {
+      required: true,
+      type: [String, Array]
+    }
+  },
+  computed: {
+    plusModifier: function plusModifier() {
+      return !isArray(this.mq) && this.mq.slice(-1) === "+";
+    },
+    activeBreakpoints: function activeBreakpoints() {
+      var breakpoints = Object.keys(this.$mqAvailableBreakpoints);
+      var mq = this.plusModifier ? this.mq.slice(0, -1) : isArray(this.mq) ? this.mq : [this.mq];
+      return this.plusModifier ? selectBreakpoints(breakpoints, mq) : mq;
+    }
+  },
+  render: function render(h, props) {
+    var shouldRenderChildren = this.activeBreakpoints.includes(this.$mq);
+    return shouldRenderChildren ? h("div", this.$slots.default) : h();
+  }
+};
+var DEFAULT_BREAKPOINT = {
+  sm: 450,
+  md: 1250,
+  lg: Infinity
+};
+var install = function install2(Vue) {
+  var _ref = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {}, _ref$breakpoints = _ref.breakpoints, breakpoints = _ref$breakpoints === void 0 ? DEFAULT_BREAKPOINT : _ref$breakpoints, _ref$defaultBreakpoin = _ref.defaultBreakpoint, defaultBreakpoint = _ref$defaultBreakpoin === void 0 ? "sm" : _ref$defaultBreakpoin;
+  var hasSetupListeners = false;
+  var reactorComponent = new Vue({
+    data: function data() {
+      return {
+        currentBreakpoint: defaultBreakpoint
+      };
+    }
+  });
+  Vue.filter("mq", function(currentBreakpoint, values) {
+    return transformValuesFromBreakpoints(Object.keys(breakpoints), values, currentBreakpoint);
+  });
+  Vue.mixin({
+    computed: {
+      $mq: function $mq() {
+        return reactorComponent.currentBreakpoint;
+      }
+    },
+    created: function created() {
+      if (this.$isServer)
+        reactorComponent.currentBreakpoint = defaultBreakpoint;
+    },
+    mounted: function mounted() {
+      if (!hasSetupListeners) {
+        var mediaQueries = convertBreakpointsToMediaQueries(breakpoints);
+        var _loop = function _loop2(key2) {
+          var mediaQuery = mediaQueries[key2];
+          var enter = function enter2() {
+            reactorComponent.currentBreakpoint = key2;
+          };
+          subscribeToMediaQuery(mediaQuery, enter);
+        };
+        for (var key in mediaQueries) {
+          _loop(key);
+        }
+        hasSetupListeners = true;
+      }
+    }
+  });
+  Vue.prototype.$mqAvailableBreakpoints = breakpoints;
+  Vue.component("MqLayout", component);
+};
+var index = {
+  install
+};
+export {
+  index as i
+};
 //# sourceMappingURL=vue-mq.es.e994b893.js.map

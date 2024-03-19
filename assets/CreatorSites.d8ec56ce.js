@@ -1,4 +1,14 @@
-var x=Object.defineProperty;var k=(e,t,o)=>t in e?x(e,t,{enumerable:!0,configurable:!0,writable:!0,value:o}):e[t]=o;var c=(e,t,o)=>(k(e,typeof t!="symbol"?t+"":t,o),o);import{C as f,V as _,n as h}from"./index.4fb8a6cb.js";import{A as y}from"./Accordion.09c82396.js";import{D as S}from"./DemoSection.79ee11c0.js";import{U as w,S as C}from"./SSProSimulator.bb0379a3.js";const b=`<template>
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { C as Component, V as Vue, n as normalizeComponent } from "./index.4fb8a6cb.js";
+import { A as Accordion } from "./Accordion.09c82396.js";
+import { D as DemoSection } from "./DemoSection.79ee11c0.js";
+import { U as UrlBar, S as SSProSimulator } from "./SSProSimulator.bb0379a3.js";
+const CreatorSitesCode = `<template>
   <div>
     <div class="section">
       <h1>Creator Sites Components</h1>
@@ -223,10 +233,231 @@ export default class CreatorSitesDemo extends Vue {
   align-items: center;
 }
 </style>
-`;var g={exports:{}};(function(e,t){function o(n){return typeof n.value!="function"?(console.warn("[Vue-click-outside:] provided expression",n.expression,"is not a function."),!1):!0}function r(n,s){if(!n||!s)return!1;for(var a=0,p=s.length;a<p;a++)try{if(n.contains(s[a]))return!0;if(s[a].contains(n))return!1}catch{return!1}return!1}function i(n){return typeof n.componentInstance<"u"&&n.componentInstance.$isServer}e.exports={bind:function(n,s,a){if(!o(s))return;function p(d){if(!!a.context){var m=d.path||d.composedPath&&d.composedPath();m&&m.length>0&&m.unshift(d.target),!(n.contains(d.target)||r(a.context.popupItem,m))&&n.__vueClickOutside__.callback(d)}}n.__vueClickOutside__={handler:p,callback:s.value};const v="ontouchstart"in document.documentElement?"touchstart":"click";!i(a)&&document.addEventListener(v,p)},update:function(n,s){o(s)&&(n.__vueClickOutside__.callback=s.value)},unbind:function(n,s,a){const p="ontouchstart"in document.documentElement?"touchstart":"click";!i(a)&&n.__vueClickOutside__&&document.removeEventListener(p,n.__vueClickOutside__.handler),delete n.__vueClickOutside__}}})(g);const A=g.exports;var P=Object.defineProperty,L=Object.getOwnPropertyDescriptor,D=(e,t,o,r)=>{for(var i=r>1?void 0:r?L(t,o):t,n=e.length-1,s;n>=0;n--)(s=e[n])&&(i=(r?s(t,o,i):s(i))||i);return r&&i&&P(t,o,i),i};let u=class extends _{constructor(){super(...arguments);c(this,"addLayout",!0);c(this,"chooseLayout",!1)}showChooseLayout(){this.chooseLayout=!0,this.addLayout=!1}showAddLayout(){this.chooseLayout=!1,this.addLayout=!0}closeChooseLayout(){this.chooseLayout=!1,this.addLayout=!0}};u=D([f({directives:{ClickOutside:A}})],u);var U=function(){var t=this,o=t._self._c;return t._self._setupProxy,o("div",{staticClass:"s-cs-layout-picker"},[t.addLayout?o("div",{staticClass:"s-cs-layout-picker__add-bar",on:{click:t.showChooseLayout}},[o("i",{staticClass:"icon-add"})]):t._e(),t.chooseLayout?o("div",{directives:[{name:"click-outside",rawName:"v-click-outside",value:t.showAddLayout,expression:"showAddLayout"}],staticClass:"s-cs-layout-picker__layouts-bar"},[t._t("layouts")],2):t._e()])},B=[],O=h(u,U,B,!1,null,null,null,null);const j=O.exports;var R=Object.defineProperty,$=Object.getOwnPropertyDescriptor,V=(e,t,o,r)=>{for(var i=r>1?void 0:r?$(t,o):t,n=e.length-1,s;n>=0;n--)(s=e[n])&&(i=(r?s(t,o,i):s(i))||i);return r&&i&&R(t,o,i),i};let l=class extends _{constructor(){super(...arguments);c(this,"demoCode",b);c(this,"username","morganleee");c(this,"icon","https://static-cdn.jtvnw.net/jtv_user_pictures/9dfce03d-25cc-4737-96d2-2ecf6924bebe-profile_image-70x70.jpg");c(this,"domain","morganleeeeeeeeeee.com");c(this,"webLayouts",[{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"},{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"},{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"},{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"},{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"},{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"},{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"},{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"},{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"},{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"},{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"},{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"}])}};l=V([f({components:{Accordion:y,CSLayoutPicker:j,DemoSection:S,UrlBar:w,SSProSimulator:C}})],l);var E=function(){var t=this,o=t._self._c;return t._self._setupProxy,o("div",[t._m(0),o("div",{staticClass:"section"},[o("h2",[t._v("Creator Sites Simulator")]),o("DemoSection",{attrs:{title:"Creator Sites Simulator",code:t.demoCode},scopedSlots:t._u([{key:"components",fn:function(){return[o("SSProSimulator",{attrs:{username:t.username,domain:t.domain}})]},proxy:!0}])})],1),t._m(1),o("div",{staticClass:"section"},[o("h2",[t._v("URL Bar")]),o("DemoSection",{attrs:{title:"URL Bar",code:t.demoCode},scopedSlots:t._u([{key:"components",fn:function(){return[o("UrlBar",{attrs:{domain:t.domain}})]},proxy:!0}])})],1),t._m(2),o("div",{staticClass:"section"},[o("h2",[t._v("Creator Sites Layout Picker")]),o("DemoSection",{attrs:{title:"Layout Picker",code:t.demoCode},scopedSlots:t._u([{key:"components",fn:function(){return[o("CSLayoutPicker",t._l(t.webLayouts,function(r){return o("div",{key:r.id,staticClass:"s-cs-layout-picker__layout",attrs:{slot:"layouts"},slot:"layouts"},[o("div",[o("img",{attrs:{src:r.src}})])])}),0)]},proxy:!0}])})],1)])},T=[function(){var e=this,t=e._self._c;return e._self._setupProxy,t("div",{staticClass:"section"},[t("h1",[e._v("Creator Sites Components")]),t("pre",[t("code",[e._v(`import { SSProSimulator, UrlBar } from 'streamlabs-beaker';
-
-components: {
-  SSProSimulator,
-  UrlBar
-}`)])])])},function(){var e=this,t=e._self._c;return e._self._setupProxy,t("div",{staticClass:"section"},[t("table",{staticClass:"docs-table"},[t("thead",[t("tr",[t("th",[e._v("Prop")]),t("th",[e._v("Type")]),t("th",[e._v("Default")]),t("th",[e._v("Description")])])]),t("tbody",[t("tr",[t("td",[e._v("domain")]),t("td",[e._v("string")]),t("td",[e._v("-")]),t("td",[e._v("Domain name for the Url Bar.")])]),t("tr",[t("td",[e._v("icon")]),t("td",[e._v("string")]),t("td",[e._v(' "https://live.kickstarter.com/images/avatar/medium/avatars4.png" ')]),t("td",[e._v("Set this to users platform icon.")])]),t("tr",[t("td",[e._v("username")]),t("td",[e._v("string")]),t("td",[e._v('"Awkward_Raccoon"')]),t("td",[e._v("Set this to users platform username.")])])])])])},function(){var e=this,t=e._self._c;return e._self._setupProxy,t("div",{staticClass:"section"},[t("table",{staticClass:"docs-table"},[t("thead",[t("tr",[t("th",[e._v("Prop")]),t("th",[e._v("Type")]),t("th",[e._v("Default")]),t("th",[e._v("Description")])])]),t("tbody",[t("tr",[t("td",[e._v("domain")]),t("td",[e._v("string")]),t("td",[e._v("-")]),t("td",[e._v("Domain name for the Url Bar.")])])])])])}],F=h(l,E,T,!1,null,"0a925046",null,null);const J=F.exports;export{J as default};
+`;
+var vueClickOutside = { exports: {} };
+(function(module, exports) {
+  function validate(binding) {
+    if (typeof binding.value !== "function") {
+      console.warn("[Vue-click-outside:] provided expression", binding.expression, "is not a function.");
+      return false;
+    }
+    return true;
+  }
+  function isPopup(popupItem, elements) {
+    if (!popupItem || !elements)
+      return false;
+    for (var i = 0, len = elements.length; i < len; i++) {
+      try {
+        if (popupItem.contains(elements[i])) {
+          return true;
+        }
+        if (elements[i].contains(popupItem)) {
+          return false;
+        }
+      } catch (e) {
+        return false;
+      }
+    }
+    return false;
+  }
+  function isServer(vNode) {
+    return typeof vNode.componentInstance !== "undefined" && vNode.componentInstance.$isServer;
+  }
+  module.exports = {
+    bind: function(el, binding, vNode) {
+      if (!validate(binding))
+        return;
+      function handler(e) {
+        if (!vNode.context)
+          return;
+        var elements = e.path || e.composedPath && e.composedPath();
+        elements && elements.length > 0 && elements.unshift(e.target);
+        if (el.contains(e.target) || isPopup(vNode.context.popupItem, elements))
+          return;
+        el.__vueClickOutside__.callback(e);
+      }
+      el.__vueClickOutside__ = {
+        handler,
+        callback: binding.value
+      };
+      const clickHandler = "ontouchstart" in document.documentElement ? "touchstart" : "click";
+      !isServer(vNode) && document.addEventListener(clickHandler, handler);
+    },
+    update: function(el, binding) {
+      if (validate(binding))
+        el.__vueClickOutside__.callback = binding.value;
+    },
+    unbind: function(el, binding, vNode) {
+      const clickHandler = "ontouchstart" in document.documentElement ? "touchstart" : "click";
+      !isServer(vNode) && el.__vueClickOutside__ && document.removeEventListener(clickHandler, el.__vueClickOutside__.handler);
+      delete el.__vueClickOutside__;
+    }
+  };
+})(vueClickOutside);
+const ClickOutside = vueClickOutside.exports;
+var __defProp$1 = Object.defineProperty;
+var __getOwnPropDesc$1 = Object.getOwnPropertyDescriptor;
+var __decorateClass$1 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$1(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$1(target, key, result);
+  return result;
+};
+let CSLayoutPicker$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "addLayout", true);
+    __publicField(this, "chooseLayout", false);
+  }
+  showChooseLayout() {
+    this.chooseLayout = true;
+    this.addLayout = false;
+  }
+  showAddLayout() {
+    this.chooseLayout = false;
+    this.addLayout = true;
+  }
+  closeChooseLayout() {
+    this.chooseLayout = false;
+    this.addLayout = true;
+  }
+};
+CSLayoutPicker$1 = __decorateClass$1([
+  Component({
+    directives: {
+      ClickOutside
+    }
+  })
+], CSLayoutPicker$1);
+const CSLayoutPicker_vue_vue_type_style_index_0_lang = "";
+var _sfc_render$1 = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-cs-layout-picker" }, [_vm.addLayout ? _c("div", { staticClass: "s-cs-layout-picker__add-bar", on: { "click": _vm.showChooseLayout } }, [_c("i", { staticClass: "icon-add" })]) : _vm._e(), _vm.chooseLayout ? _c("div", { directives: [{ name: "click-outside", rawName: "v-click-outside", value: _vm.showAddLayout, expression: "showAddLayout" }], staticClass: "s-cs-layout-picker__layouts-bar" }, [_vm._t("layouts")], 2) : _vm._e()]);
+};
+var _sfc_staticRenderFns$1 = [];
+var __component__$1 = /* @__PURE__ */ normalizeComponent(
+  CSLayoutPicker$1,
+  _sfc_render$1,
+  _sfc_staticRenderFns$1,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const CSLayoutPicker = __component__$1.exports;
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let CreatorSitesDemo = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "demoCode", CreatorSitesCode);
+    __publicField(this, "username", "morganleee");
+    __publicField(this, "icon", "https://static-cdn.jtvnw.net/jtv_user_pictures/9dfce03d-25cc-4737-96d2-2ecf6924bebe-profile_image-70x70.jpg");
+    __publicField(this, "domain", "morganleeeeeeeeeee.com");
+    __publicField(this, "webLayouts", [
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"
+      },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"
+      },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"
+      },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"
+      },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"
+      },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"
+      },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"
+      },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"
+      },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"
+      },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"
+      },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"
+      },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1280px-Aspect-ratio-16x9.svg.png"
+      }
+    ]);
+  }
+};
+CreatorSitesDemo = __decorateClass([
+  Component({
+    components: {
+      Accordion,
+      CSLayoutPicker,
+      DemoSection,
+      UrlBar,
+      SSProSimulator
+    }
+  })
+], CreatorSitesDemo);
+const CreatorSites_vue_vue_type_style_index_0_scoped_0a925046_lang = "";
+var _sfc_render = function render2() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", [_vm._m(0), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Creator Sites Simulator")]), _c("DemoSection", { attrs: { "title": "Creator Sites Simulator", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("SSProSimulator", { attrs: { "username": _vm.username, "domain": _vm.domain } })];
+  }, proxy: true }]) })], 1), _vm._m(1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("URL Bar")]), _c("DemoSection", { attrs: { "title": "URL Bar", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("UrlBar", { attrs: { "domain": _vm.domain } })];
+  }, proxy: true }]) })], 1), _vm._m(2), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Creator Sites Layout Picker")]), _c("DemoSection", { attrs: { "title": "Layout Picker", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("CSLayoutPicker", _vm._l(_vm.webLayouts, function(layout) {
+      return _c("div", { key: layout.id, staticClass: "s-cs-layout-picker__layout", attrs: { "slot": "layouts" }, slot: "layouts" }, [_c("div", [_c("img", { attrs: { "src": layout.src } })])]);
+    }), 0)];
+  }, proxy: true }]) })], 1)]);
+};
+var _sfc_staticRenderFns = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("h1", [_vm._v("Creator Sites Components")]), _c("pre", [_c("code", [_vm._v("import { SSProSimulator, UrlBar } from 'streamlabs-beaker';\n\ncomponents: {\n  SSProSimulator,\n  UrlBar\n}")])])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("table", { staticClass: "docs-table" }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Prop")]), _c("th", [_vm._v("Type")]), _c("th", [_vm._v("Default")]), _c("th", [_vm._v("Description")])])]), _c("tbody", [_c("tr", [_c("td", [_vm._v("domain")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("-")]), _c("td", [_vm._v("Domain name for the Url Bar.")])]), _c("tr", [_c("td", [_vm._v("icon")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v(' "https://live.kickstarter.com/images/avatar/medium/avatars4.png" ')]), _c("td", [_vm._v("Set this to users platform icon.")])]), _c("tr", [_c("td", [_vm._v("username")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v('"Awkward_Raccoon"')]), _c("td", [_vm._v("Set this to users platform username.")])])])])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("table", { staticClass: "docs-table" }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Prop")]), _c("th", [_vm._v("Type")]), _c("th", [_vm._v("Default")]), _c("th", [_vm._v("Description")])])]), _c("tbody", [_c("tr", [_c("td", [_vm._v("domain")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("-")]), _c("td", [_vm._v("Domain name for the Url Bar.")])])])])]);
+}];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  CreatorSitesDemo,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  "0a925046",
+  null,
+  null
+);
+const CreatorSites = __component__.exports;
+export {
+  CreatorSites as default
+};
 //# sourceMappingURL=CreatorSites.d8ec56ce.js.map

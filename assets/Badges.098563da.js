@@ -1,4 +1,15 @@
-var l=Object.defineProperty;var g=(e,t,n)=>t in e?l(e,t,{enumerable:!0,configurable:!0,writable:!0,value:n}):e[t]=n;var i=(e,t,n)=>(g(e,typeof t!="symbol"?t+"":t,n),n);import{C as c,V as v,n as u}from"./index.4fb8a6cb.js";import{A as m}from"./Accordion.09c82396.js";import{B as p}from"./Badge.2c39dd0d.js";import{C as f}from"./Callout.ac9d99a3.js";import{D as _}from"./DemoSection.79ee11c0.js";const B=`<template>
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { C as Component, V as Vue, n as normalizeComponent } from "./index.4fb8a6cb.js";
+import { A as Accordion } from "./Accordion.09c82396.js";
+import { B as Badge } from "./Badge.2c39dd0d.js";
+import { C as Callout } from "./Callout.ac9d99a3.js";
+import { D as DemoSection } from "./DemoSection.79ee11c0.js";
+const BadgesCode = `<template>
   <div>
     <div class="section">
       <h1>Badges</h1>
@@ -233,9 +244,77 @@ export default class Badges extends Vue {
   align-items: center;
 }
 </style>
-`;var h=Object.defineProperty,b=Object.getOwnPropertyDescriptor,C=(e,t,n,a)=>{for(var o=a>1?void 0:a?b(t,n):t,r=e.length-1,d;r>=0;r--)(d=e[r])&&(o=(a?d(t,n,o):d(o))||o);return a&&o&&h(t,n,o),o};let s=class extends v{constructor(){super(...arguments);i(this,"demoCode",B)}};s=C([c({components:{Accordion:m,Badge:p,Callout:f,DemoSection:_}})],s);var y=function(){var t=this,n=t._self._c;return t._self._setupProxy,n("div",[n("div",{staticClass:"section"},[n("h1",[t._v("Badges")]),t._m(0),t._m(1),n("div",{staticClass:"section"},[n("h2",[t._v("Standard Badges")]),n("DemoSection",{attrs:{title:"Standard Badges",code:t.demoCode},scopedSlots:t._u([{key:"components",fn:function(){return[n("Badge",{attrs:{variant:"beta","align-left":!0}},[t._v("Beta")]),n("Badge",{attrs:{variant:"new","align-left":!0}},[t._v("New")]),n("Badge",{attrs:{variant:"warning","align-left":!0}},[t._v("Error")]),n("Badge",{attrs:{variant:"tag","align-left":!0}},[t._v("Tag")]),n("Badge",{attrs:{variant:"pro","align-left":!0}},[t._v("Pro")]),n("Badge",{attrs:{"align-left":!0,"background-color":"pink","text-color":"#ffffff"}},[t._v("Custom")]),n("Badge",{attrs:{variant:"prime","align-left":!0}}),n("Badge",{attrs:{variant:"ultra","align-left":!0}})]},proxy:!0}])})],1),n("div",{staticClass:"section"},[n("h2",[t._v("Alt Badges")]),n("DemoSection",{attrs:{title:"Alt Badges",code:t.demoCode},scopedSlots:t._u([{key:"components",fn:function(){return[n("Badge",{attrs:{variant:"beta-alt","align-left":!0}},[t._v("Beta")]),n("Badge",{attrs:{variant:"new-alt","align-left":!0}},[t._v("New")]),n("Badge",{attrs:{variant:"warning-alt","align-left":!0}},[t._v("Error")]),n("Badge",{attrs:{variant:"tag-alt","align-left":!0}},[t._v("Tag")]),n("Badge",{attrs:{variant:"pro-alt","align-left":!0}},[t._v("Pro")]),n("Badge",{attrs:{variant:"prime-alt","align-left":!0}})]},proxy:!0}])})],1),n("div",{staticClass:"section"},[n("h2",[t._v("Small Badges")]),n("DemoSection",{attrs:{title:"Small Badges",code:t.demoCode},scopedSlots:t._u([{key:"components",fn:function(){return[n("Badge",{attrs:{small:!0,variant:"beta","align-left":!0}},[t._v("Beta")]),n("Badge",{attrs:{small:!0,variant:"new","align-left":!0}},[t._v("New")]),n("Badge",{attrs:{small:!0,variant:"warning","align-left":!0}},[t._v(" Error ")]),n("Badge",{attrs:{small:!0,variant:"tag","align-left":!0}},[t._v("Tag")]),n("Badge",{attrs:{small:!0,variant:"pro","align-left":!0}},[t._v("Pro")])]},proxy:!0}])})],1),n("div",{staticClass:"section"},[n("h2",[t._v("Progress Badge")]),n("p",[t._v("Used to show amount of items sold in merch.")]),n("DemoSection",{attrs:{title:"Progress Badge",code:t.demoCode},scopedSlots:t._u([{key:"components",fn:function(){return[n("Badge",{attrs:{"align-left":!0,variant:"progress",backgroundColor:"#8736e0",current:17,total:25,suffix:"Sold"}})]},proxy:!0}])})],1),n("div",{staticClass:"section"},[n("h2",[t._v("Count Badge")]),n("p",[t._v("Used to show amount of items sold in merch.")]),n("DemoSection",{attrs:{title:"Count Badge",code:t.demoCode},scopedSlots:t._u([{key:"components",fn:function(){return[n("Badge",{attrs:{variant:"count"}},[t._v("3")])]},proxy:!0}])})],1),n("div",{staticClass:"section"},[n("h2",[t._v("Mod Badge")]),n("p",[t._v("Used in an info callout.")]),n("DemoSection",{attrs:{title:"Mod Badge",code:t.demoCode},scopedSlots:t._u([{key:"components",fn:function(){return[n("Callout",{attrs:{variation:"info"}},[t._v(" Remember to "),n("Badge",{attrs:{variant:"mod"}},[t._v("/mod Streamlabs")]),t._v(" to initiate Cloudbot. ")],1)]},proxy:!0}])})],1)]),t._m(2)])},S=[function(){var e=this,t=e._self._c;return e._self._setupProxy,t("p",[e._v(" By default, our Badges are designed to be on the right side of elements with 8px of margin on the left. If you would like to use a Badge on the left side of an element, set prop "),t("code",[e._v('align-left="true"')]),e._v(" and it will switch the margin to be on the right side. ")])},function(){var e=this,t=e._self._c;return e._self._setupProxy,t("pre",[t("code",[e._v(`import { Badge } from 'streamlabs-beaker';
-
-components: {
-  Badge
-}`)])])},function(){var e=this,t=e._self._c;return e._self._setupProxy,t("table",{staticClass:"docs-table"},[t("thead",[t("tr",[t("th",[e._v("Prop")]),t("th",[e._v("Type")]),t("th",[e._v("Default")]),t("th",[e._v("Description")])])]),t("tbody",[t("tr",[t("td",[e._v("variant")]),t("td",[e._v("string")]),t("td",[e._v('"success"')]),t("td",[e._v(" How the Badge will look or funciton. Variants: "),t("code",[e._v("success")]),e._v(", "),t("code",[e._v("tag")]),e._v("*, "),t("code",[e._v("new")]),e._v("*, "),t("code",[e._v("beta")]),e._v("*, "),t("code",[e._v("warning")]),e._v("*, "),t("code",[e._v("pro")]),e._v("*, "),t("code",[e._v("progress")]),e._v(", "),t("code",[e._v("mod")]),e._v(", and "),t("code",[e._v("count")]),e._v(". "),t("br"),t("small",[e._v(" *Alternate style available by adding "),t("code",[e._v("-alt")]),e._v(" to variant string. ")])])]),t("tr",[t("td",[e._v("alignLeft")]),t("td",[e._v("boolean")]),t("td",[e._v("false")]),t("td",[e._v("Moves 8px of margin from the left to the right.")])]),t("tr",[t("td",[e._v("noMargin")]),t("td",[e._v("boolean")]),t("td",[e._v("false")]),t("td",[e._v("Removes margin from left and right.")])]),t("tr",[t("td",[e._v("backgroundColor")]),t("td",[e._v("string")]),t("td",[e._v('"#31c3a2"')]),t("td",[e._v(" Use this prop to change the background color only if you need an option that's not one of the provided variants. ")])]),t("tr",[t("td",[e._v("textColor")]),t("td",[e._v("string")]),t("td",[e._v('"#ffffff"')]),t("td",[e._v(" Use this prop to change the text color only if you need an option that's not one of the provided variants. ")])]),t("tr",[t("td",[e._v("current")]),t("td",[e._v("number")]),t("td",[e._v("null")]),t("td",[e._v(" Current progress amount. "),t("code",[e._v("variant")]),e._v(" prop must be set to "),t("code",[e._v("progress")]),e._v(". ")])]),t("tr",[t("td",[e._v("total")]),t("td",[e._v("number")]),t("td",[e._v("null")]),t("td",[e._v(" Total progross amount. "),t("code",[e._v("variant")]),e._v(" prop must be set to "),t("code",[e._v("progress")]),e._v(". ")])]),t("tr",[t("td",[e._v("separator")]),t("td",[e._v("string")]),t("td",[e._v('"/"')]),t("td",[e._v(" Separator between current and total amounts is displayed. "),t("code",[e._v("variant")]),e._v(" prop must be set to "),t("code",[e._v("progress")]),e._v(". ")])]),t("tr",[t("td",[e._v("suffix")]),t("td",[e._v("string")]),t("td",[e._v("null")]),t("td",[e._v(" String to the right of the total amount. "),t("code",[e._v("variant")]),e._v(" prop must be set to "),t("code",[e._v("progress")]),e._v(". ")])])])])}],w=u(s,y,S,!1,null,"585d259f",null,null);const U=w.exports;export{U as default};
+`;
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let Badges$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "demoCode", BadgesCode);
+  }
+};
+Badges$1 = __decorateClass([
+  Component({
+    components: {
+      Accordion,
+      Badge,
+      Callout,
+      DemoSection
+    }
+  })
+], Badges$1);
+const Badges_vue_vue_type_style_index_0_scoped_585d259f_lang = "";
+var _sfc_render = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", [_c("div", { staticClass: "section" }, [_c("h1", [_vm._v("Badges")]), _vm._m(0), _vm._m(1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Standard Badges")]), _c("DemoSection", { attrs: { "title": "Standard Badges", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Badge", { attrs: { "variant": "beta", "align-left": true } }, [_vm._v("Beta")]), _c("Badge", { attrs: { "variant": "new", "align-left": true } }, [_vm._v("New")]), _c("Badge", { attrs: { "variant": "warning", "align-left": true } }, [_vm._v("Error")]), _c("Badge", { attrs: { "variant": "tag", "align-left": true } }, [_vm._v("Tag")]), _c("Badge", { attrs: { "variant": "pro", "align-left": true } }, [_vm._v("Pro")]), _c("Badge", { attrs: { "align-left": true, "background-color": "pink", "text-color": "#ffffff" } }, [_vm._v("Custom")]), _c("Badge", { attrs: { "variant": "prime", "align-left": true } }), _c("Badge", { attrs: { "variant": "ultra", "align-left": true } })];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Alt Badges")]), _c("DemoSection", { attrs: { "title": "Alt Badges", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Badge", { attrs: { "variant": "beta-alt", "align-left": true } }, [_vm._v("Beta")]), _c("Badge", { attrs: { "variant": "new-alt", "align-left": true } }, [_vm._v("New")]), _c("Badge", { attrs: { "variant": "warning-alt", "align-left": true } }, [_vm._v("Error")]), _c("Badge", { attrs: { "variant": "tag-alt", "align-left": true } }, [_vm._v("Tag")]), _c("Badge", { attrs: { "variant": "pro-alt", "align-left": true } }, [_vm._v("Pro")]), _c("Badge", { attrs: { "variant": "prime-alt", "align-left": true } })];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Small Badges")]), _c("DemoSection", { attrs: { "title": "Small Badges", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Badge", { attrs: { "small": true, "variant": "beta", "align-left": true } }, [_vm._v("Beta")]), _c("Badge", { attrs: { "small": true, "variant": "new", "align-left": true } }, [_vm._v("New")]), _c("Badge", { attrs: { "small": true, "variant": "warning", "align-left": true } }, [_vm._v(" Error ")]), _c("Badge", { attrs: { "small": true, "variant": "tag", "align-left": true } }, [_vm._v("Tag")]), _c("Badge", { attrs: { "small": true, "variant": "pro", "align-left": true } }, [_vm._v("Pro")])];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Progress Badge")]), _c("p", [_vm._v("Used to show amount of items sold in merch.")]), _c("DemoSection", { attrs: { "title": "Progress Badge", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Badge", { attrs: { "align-left": true, "variant": "progress", "backgroundColor": "#8736e0", "current": 17, "total": 25, "suffix": "Sold" } })];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Count Badge")]), _c("p", [_vm._v("Used to show amount of items sold in merch.")]), _c("DemoSection", { attrs: { "title": "Count Badge", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Badge", { attrs: { "variant": "count" } }, [_vm._v("3")])];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Mod Badge")]), _c("p", [_vm._v("Used in an info callout.")]), _c("DemoSection", { attrs: { "title": "Mod Badge", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Callout", { attrs: { "variation": "info" } }, [_vm._v(" Remember to "), _c("Badge", { attrs: { "variant": "mod" } }, [_vm._v("/mod Streamlabs")]), _vm._v(" to initiate Cloudbot. ")], 1)];
+  }, proxy: true }]) })], 1)]), _vm._m(2)]);
+};
+var _sfc_staticRenderFns = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("p", [_vm._v(" By default, our Badges are designed to be on the right side of elements with 8px of margin on the left. If you would like to use a Badge on the left side of an element, set prop "), _c("code", [_vm._v('align-left="true"')]), _vm._v(" and it will switch the margin to be on the right side. ")]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("pre", [_c("code", [_vm._v("import { Badge } from 'streamlabs-beaker';\n\ncomponents: {\n  Badge\n}")])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("table", { staticClass: "docs-table" }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Prop")]), _c("th", [_vm._v("Type")]), _c("th", [_vm._v("Default")]), _c("th", [_vm._v("Description")])])]), _c("tbody", [_c("tr", [_c("td", [_vm._v("variant")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v('"success"')]), _c("td", [_vm._v(" How the Badge will look or funciton. Variants: "), _c("code", [_vm._v("success")]), _vm._v(", "), _c("code", [_vm._v("tag")]), _vm._v("*, "), _c("code", [_vm._v("new")]), _vm._v("*, "), _c("code", [_vm._v("beta")]), _vm._v("*, "), _c("code", [_vm._v("warning")]), _vm._v("*, "), _c("code", [_vm._v("pro")]), _vm._v("*, "), _c("code", [_vm._v("progress")]), _vm._v(", "), _c("code", [_vm._v("mod")]), _vm._v(", and "), _c("code", [_vm._v("count")]), _vm._v(". "), _c("br"), _c("small", [_vm._v(" *Alternate style available by adding "), _c("code", [_vm._v("-alt")]), _vm._v(" to variant string. ")])])]), _c("tr", [_c("td", [_vm._v("alignLeft")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v("Moves 8px of margin from the left to the right.")])]), _c("tr", [_c("td", [_vm._v("noMargin")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v("Removes margin from left and right.")])]), _c("tr", [_c("td", [_vm._v("backgroundColor")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v('"#31c3a2"')]), _c("td", [_vm._v(" Use this prop to change the background color only if you need an option that's not one of the provided variants. ")])]), _c("tr", [_c("td", [_vm._v("textColor")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v('"#ffffff"')]), _c("td", [_vm._v(" Use this prop to change the text color only if you need an option that's not one of the provided variants. ")])]), _c("tr", [_c("td", [_vm._v("current")]), _c("td", [_vm._v("number")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v(" Current progress amount. "), _c("code", [_vm._v("variant")]), _vm._v(" prop must be set to "), _c("code", [_vm._v("progress")]), _vm._v(". ")])]), _c("tr", [_c("td", [_vm._v("total")]), _c("td", [_vm._v("number")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v(" Total progross amount. "), _c("code", [_vm._v("variant")]), _vm._v(" prop must be set to "), _c("code", [_vm._v("progress")]), _vm._v(". ")])]), _c("tr", [_c("td", [_vm._v("separator")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v('"/"')]), _c("td", [_vm._v(" Separator between current and total amounts is displayed. "), _c("code", [_vm._v("variant")]), _vm._v(" prop must be set to "), _c("code", [_vm._v("progress")]), _vm._v(". ")])]), _c("tr", [_c("td", [_vm._v("suffix")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v(" String to the right of the total amount. "), _c("code", [_vm._v("variant")]), _vm._v(" prop must be set to "), _c("code", [_vm._v("progress")]), _vm._v(". ")])])])]);
+}];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  Badges$1,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  "585d259f",
+  null,
+  null
+);
+const Badges = __component__.exports;
+export {
+  Badges as default
+};
 //# sourceMappingURL=Badges.098563da.js.map

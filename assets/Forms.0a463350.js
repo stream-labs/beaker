@@ -1,4 +1,17 @@
-var y=Object.defineProperty;var F=(o,t,e)=>t in o?y(o,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):o[t]=e;var p=(o,t,e)=>(F(o,typeof t!="symbol"?t+"":t,e),e);import{C as c,P as a,V as _,n as d}from"./index.4fb8a6cb.js";import{D as C}from"./DemoSection.79ee11c0.js";import{F as G}from"./FormGroup.79b6121d.js";import{C as P,R as T,S as V}from"./Selector.7d087e2e.js";import{T as h}from"./TextInput.6d9c9908.js";import"./Accordion.09c82396.js";import"./_baseClone.a549c660.js";const I=`<template>
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { C as Component, P as Prop, V as Vue, n as normalizeComponent } from "./index.4fb8a6cb.js";
+import { D as DemoSection } from "./DemoSection.79ee11c0.js";
+import { F as FormGroup } from "./FormGroup.79b6121d.js";
+import { C as Checkbox, R as Radio, S as Selector } from "./Selector.7d087e2e.js";
+import { T as TextInput } from "./TextInput.6d9c9908.js";
+import "./Accordion.09c82396.js";
+import "./_baseClone.a549c660.js";
+const FormsCode = `<template>
   <div>
     <div class="section">
       <h1>Forms</h1>
@@ -117,11 +130,234 @@ export default class Forms extends Vue {
   inputValue = "";
 }
 <\/script>
-`;var b=Object.defineProperty,D=Object.getOwnPropertyDescriptor,v=(o,t,e,n)=>{for(var r=n>1?void 0:n?D(t,e):t,l=o.length-1,s;l>=0;l--)(s=o[l])&&(r=(n?s(t,e,r):s(r))||r);return n&&r&&b(t,e,r),r};let u=class extends _{constructor(){super(...arguments);p(this,"helpText");p(this,"tooltip");p(this,"title")}};v([a()],u.prototype,"helpText",2);v([a()],u.prototype,"tooltip",2);v([a()],u.prototype,"title",2);u=v([c({})],u);var S=function(){var t=this,e=t._self._c;return t._self._setupProxy,e("div",{staticClass:"s-form-group-h"},[e("div",{staticClass:"s-form-group-h__title"},[e("label",[t._v(t._s(t.title))]),t.tooltip?e("i",{directives:[{name:"tooltip",rawName:"v-tooltip.auto",value:t.tooltip,expression:"tooltip",modifiers:{auto:!0}}],staticClass:"s-tooltip icon-question"}):t._e()]),e("div",{staticClass:"s-form-group-h__input-wrapper"},[t._t("input"),t.helpText?e("div",{staticClass:"s-form-group-h__help-text"},[t._v(" "+t._s(t.helpText)+" ")]):t._e()],2)])},$=[],g=d(u,S,$,!1,null,null,null,null);const H=g.exports;var O=Object.defineProperty,w=Object.getOwnPropertyDescriptor,m=(o,t,e,n)=>{for(var r=n>1?void 0:n?w(t,e):t,l=o.length-1,s;l>=0;l--)(s=o[l])&&(r=(n?s(t,e,r):s(r))||r);return n&&r&&O(t,e,r),r};let i=class extends _{constructor(){super(...arguments);p(this,"helpText");p(this,"title");p(this,"tooltip");p(this,"titleLayout")}get titleLayoutStyle(){return{"justify-content":this.titleLayout}}};m([a()],i.prototype,"helpText",2);m([a()],i.prototype,"title",2);m([a({default:""})],i.prototype,"tooltip",2);m([a({default:"space-between"})],i.prototype,"titleLayout",2);i=m([c({})],i);var j=function(){var t=this,e=t._self._c;return t._self._setupProxy,e("div",{staticClass:"s-form-group-v"},[e("div",{staticClass:"s-form-group-v__title",style:t.titleLayoutStyle},[this.$slots.header?t._e():[t.title?e("label",[t._v(t._s(t.title))]):t._e(),t.tooltip?e("i",{directives:[{name:"tooltip",rawName:"v-tooltip.auto",value:t.tooltip,expression:"tooltip",modifiers:{auto:!0}}],staticClass:"tooltip icon-question"}):t._e()],t._t("header")],2),e("div",{staticClass:"s-form-group-v__input-wrapper"},[t._t("input"),t.helpText?e("div",{staticClass:"s-form-group-v__help-text"},[t._v(" "+t._s(t.helpText)+" ")]):t._e()],2)])},L=[],z=d(i,j,L,!1,null,null,null,null);const M=z.exports;var R=Object.defineProperty,Y=Object.getOwnPropertyDescriptor,N=(o,t,e,n)=>{for(var r=n>1?void 0:n?Y(t,e):t,l=o.length-1,s;l>=0;l--)(s=o[l])&&(r=(n?s(t,e,r):s(r))||r);return n&&r&&R(t,e,r),r};let f=class extends _{constructor(){super(...arguments);p(this,"savePaymentMethod",!0)}};f=N([c({components:{Checkbox:P,Radio:T,Selector:V,TextInput:h}})],f);var q=function(){var t=this,e=t._self._c;return t._self._setupProxy,e("div",{staticClass:"s-payment-form"},[t._m(0),e("div",{staticClass:"s-payment-form__option"},[e("form",{staticClass:"s-credit-card-form s-form"},[e("div",{staticClass:"s-form-group"},[e("selector",{attrs:{placeholder:"Add new credit card"}})],1),e("div",{staticClass:"s-form-group s-credit-card-form__inputs"},[e("text-input",{staticClass:"s-credit-card-form__cc-number",attrs:{type:"text",placeholder:"Name on card"}}),e("text-input",{staticClass:"s-credit-card-form__cc-exp",attrs:{type:"text",placeholder:"Expiry MM/YYYY"}}),e("text-input",{staticClass:"s-credit-card-form__cc-cvc",attrs:{type:"text",placeholder:"CVC"}}),e("text-input",{staticClass:"s-credit-card-form__cc-zip",attrs:{type:"text",placeholder:"Zip/Postal"}}),e("selector",{staticClass:"s-credit-card-form__cc-country",attrs:{placeholder:"Country"}})],1),e("div",{staticClass:"s-form-group"},[e("checkbox",{attrs:{label:"Save this payment method for next time"},model:{value:t.savePaymentMethod,callback:function(n){t.savePaymentMethod=n},expression:"savePaymentMethod"}})],1)])])])},W=[function(){var o=this,t=o._self._c;return o._self._setupProxy,t("div",{staticClass:"s-payment-form__option"},[t("form")])}],A=d(f,q,W,!1,null,null,null,null);const E=A.exports;var Z=Object.defineProperty,B=Object.getOwnPropertyDescriptor,J=(o,t,e,n)=>{for(var r=n>1?void 0:n?B(t,e):t,l=o.length-1,s;l>=0;l--)(s=o[l])&&(r=(n?s(t,e,r):s(r))||r);return n&&r&&Z(t,e,r),r};let x=class extends _{constructor(){super(...arguments);p(this,"demoCode",I);p(this,"title","Text Input");p(this,"tooltip","Input tooltip message.");p(this,"helpText","This is help text");p(this,"textInputPlaceholder","Text input placeholder");p(this,"textInputType","text");p(this,"inputValue","")}};x=J([c({components:{DemoSection:C,FormGroup:G,FormGroupH:H,FormGroupV:M,PaymentForm:E,TextInput:h}})],x);var K=function(){var t=this,e=t._self._c;return t._self._setupProxy,e("div",[t._m(0),e("div",{staticClass:"section"},[e("h2",[t._v("Form Group")]),e("DemoSection",{attrs:{title:"Form Group",code:t.demoCode},scopedSlots:t._u([{key:"components",fn:function(){return[e("FormGroup",[e("TextInput",{attrs:{slot:"input",type:t.textInputType,placeholder:t.textInputPlaceholder,label:t.title},slot:"input",model:{value:t.inputValue,callback:function(n){t.inputValue=n},expression:"inputValue"}})],1)]},proxy:!0}])})],1),e("div",{staticClass:"section"},[e("h2",[t._v("Horizontal Form Group")]),e("DemoSection",{attrs:{title:"Horizontal Form Group",code:t.demoCode},scopedSlots:t._u([{key:"components",fn:function(){return[e("FormGroupH",{attrs:{title:t.title,helpText:t.helpText,tooltip:t.tooltip}},[e("TextInput",{attrs:{slot:"input",type:t.textInputType,placeholder:t.textInputPlaceholder},slot:"input",model:{value:t.inputValue,callback:function(n){t.inputValue=n},expression:"inputValue"}})],1)]},proxy:!0}])})],1),e("div",{staticClass:"section"},[e("h2",[t._v("Vertical Form Group")]),e("DemoSection",{attrs:{title:"Vertical Form Group",code:t.demoCode},scopedSlots:t._u([{key:"components",fn:function(){return[e("FormGroupV",{attrs:{title:t.title,label:"Vertical Form Group Input",titleLayout:"flex-start",tooltip:t.tooltip,helpText:t.helpText}},[e("TextInput",{attrs:{slot:"input",type:t.textInputType,placeholder:t.textInputPlaceholder},slot:"input",model:{value:t.inputValue,callback:function(n){t.inputValue=n},expression:"inputValue"}})],1)]},proxy:!0}])})],1)])},Q=[function(){var o=this,t=o._self._c;return o._self._setupProxy,t("div",{staticClass:"section"},[t("h1",[o._v("Forms")]),t("p",[o._v(" Wrap input components in form groups for different input and label layouts. ")]),t("pre",[t("code",[o._v(`import { FormGroup, FormGroupH, FormGroupV } from 'streamlabs-beaker';
-
-components: {
-  FormGroup,
-  FormGroupH,
-  FormGroupV
-}`)])])])}],U=d(x,K,Q,!1,null,null,null,null);const lt=U.exports;export{lt as default};
+`;
+var __defProp$3 = Object.defineProperty;
+var __getOwnPropDesc$3 = Object.getOwnPropertyDescriptor;
+var __decorateClass$3 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$3(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$3(target, key, result);
+  return result;
+};
+let FormGroupH$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "helpText");
+    __publicField(this, "tooltip");
+    __publicField(this, "title");
+  }
+};
+__decorateClass$3([
+  Prop()
+], FormGroupH$1.prototype, "helpText", 2);
+__decorateClass$3([
+  Prop()
+], FormGroupH$1.prototype, "tooltip", 2);
+__decorateClass$3([
+  Prop()
+], FormGroupH$1.prototype, "title", 2);
+FormGroupH$1 = __decorateClass$3([
+  Component({})
+], FormGroupH$1);
+const FormGroupH_vue_vue_type_style_index_0_lang = "";
+var _sfc_render$3 = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-form-group-h" }, [_c("div", { staticClass: "s-form-group-h__title" }, [_c("label", [_vm._v(_vm._s(_vm.title))]), _vm.tooltip ? _c("i", { directives: [{ name: "tooltip", rawName: "v-tooltip.auto", value: _vm.tooltip, expression: "tooltip", modifiers: { "auto": true } }], staticClass: "s-tooltip icon-question" }) : _vm._e()]), _c("div", { staticClass: "s-form-group-h__input-wrapper" }, [_vm._t("input"), _vm.helpText ? _c("div", { staticClass: "s-form-group-h__help-text" }, [_vm._v(" " + _vm._s(_vm.helpText) + " ")]) : _vm._e()], 2)]);
+};
+var _sfc_staticRenderFns$3 = [];
+var __component__$3 = /* @__PURE__ */ normalizeComponent(
+  FormGroupH$1,
+  _sfc_render$3,
+  _sfc_staticRenderFns$3,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const FormGroupH = __component__$3.exports;
+var __defProp$2 = Object.defineProperty;
+var __getOwnPropDesc$2 = Object.getOwnPropertyDescriptor;
+var __decorateClass$2 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$2(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$2(target, key, result);
+  return result;
+};
+let FormGroupV$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "helpText");
+    __publicField(this, "title");
+    __publicField(this, "tooltip");
+    __publicField(this, "titleLayout");
+  }
+  get titleLayoutStyle() {
+    return {
+      "justify-content": this.titleLayout
+    };
+  }
+};
+__decorateClass$2([
+  Prop()
+], FormGroupV$1.prototype, "helpText", 2);
+__decorateClass$2([
+  Prop()
+], FormGroupV$1.prototype, "title", 2);
+__decorateClass$2([
+  Prop({ default: "" })
+], FormGroupV$1.prototype, "tooltip", 2);
+__decorateClass$2([
+  Prop({ default: "space-between" })
+], FormGroupV$1.prototype, "titleLayout", 2);
+FormGroupV$1 = __decorateClass$2([
+  Component({})
+], FormGroupV$1);
+const FormGroupV_vue_vue_type_style_index_0_lang = "";
+var _sfc_render$2 = function render2() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-form-group-v" }, [_c("div", { staticClass: "s-form-group-v__title", style: _vm.titleLayoutStyle }, [!this.$slots.header ? [_vm.title ? _c("label", [_vm._v(_vm._s(_vm.title))]) : _vm._e(), _vm.tooltip ? _c("i", { directives: [{ name: "tooltip", rawName: "v-tooltip.auto", value: _vm.tooltip, expression: "tooltip", modifiers: { "auto": true } }], staticClass: "tooltip icon-question" }) : _vm._e()] : _vm._e(), _vm._t("header")], 2), _c("div", { staticClass: "s-form-group-v__input-wrapper" }, [_vm._t("input"), _vm.helpText ? _c("div", { staticClass: "s-form-group-v__help-text" }, [_vm._v(" " + _vm._s(_vm.helpText) + " ")]) : _vm._e()], 2)]);
+};
+var _sfc_staticRenderFns$2 = [];
+var __component__$2 = /* @__PURE__ */ normalizeComponent(
+  FormGroupV$1,
+  _sfc_render$2,
+  _sfc_staticRenderFns$2,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const FormGroupV = __component__$2.exports;
+var __defProp$1 = Object.defineProperty;
+var __getOwnPropDesc$1 = Object.getOwnPropertyDescriptor;
+var __decorateClass$1 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$1(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$1(target, key, result);
+  return result;
+};
+let PaymentForm$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "savePaymentMethod", true);
+  }
+};
+PaymentForm$1 = __decorateClass$1([
+  Component({
+    components: {
+      Checkbox,
+      Radio,
+      Selector,
+      TextInput
+    }
+  })
+], PaymentForm$1);
+const PaymentForm_vue_vue_type_style_index_0_lang = "";
+var _sfc_render$1 = function render3() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-payment-form" }, [_vm._m(0), _c("div", { staticClass: "s-payment-form__option" }, [_c("form", { staticClass: "s-credit-card-form s-form" }, [_c("div", { staticClass: "s-form-group" }, [_c("selector", { attrs: { "placeholder": "Add new credit card" } })], 1), _c("div", { staticClass: "s-form-group s-credit-card-form__inputs" }, [_c("text-input", { staticClass: "s-credit-card-form__cc-number", attrs: { "type": "text", "placeholder": "Name on card" } }), _c("text-input", { staticClass: "s-credit-card-form__cc-exp", attrs: { "type": "text", "placeholder": "Expiry MM/YYYY" } }), _c("text-input", { staticClass: "s-credit-card-form__cc-cvc", attrs: { "type": "text", "placeholder": "CVC" } }), _c("text-input", { staticClass: "s-credit-card-form__cc-zip", attrs: { "type": "text", "placeholder": "Zip/Postal" } }), _c("selector", { staticClass: "s-credit-card-form__cc-country", attrs: { "placeholder": "Country" } })], 1), _c("div", { staticClass: "s-form-group" }, [_c("checkbox", { attrs: { "label": "Save this payment method for next time" }, model: { value: _vm.savePaymentMethod, callback: function($$v) {
+    _vm.savePaymentMethod = $$v;
+  }, expression: "savePaymentMethod" } })], 1)])])]);
+};
+var _sfc_staticRenderFns$1 = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-payment-form__option" }, [_c("form")]);
+}];
+var __component__$1 = /* @__PURE__ */ normalizeComponent(
+  PaymentForm$1,
+  _sfc_render$1,
+  _sfc_staticRenderFns$1,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const PaymentForm = __component__$1.exports;
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let Forms$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "demoCode", FormsCode);
+    __publicField(this, "title", "Text Input");
+    __publicField(this, "tooltip", "Input tooltip message.");
+    __publicField(this, "helpText", "This is help text");
+    __publicField(this, "textInputPlaceholder", "Text input placeholder");
+    __publicField(this, "textInputType", "text");
+    __publicField(this, "inputValue", "");
+  }
+};
+Forms$1 = __decorateClass([
+  Component({
+    components: {
+      DemoSection,
+      FormGroup,
+      FormGroupH,
+      FormGroupV,
+      PaymentForm,
+      TextInput
+    }
+  })
+], Forms$1);
+var _sfc_render = function render4() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", [_vm._m(0), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Form Group")]), _c("DemoSection", { attrs: { "title": "Form Group", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("FormGroup", [_c("TextInput", { attrs: { "slot": "input", "type": _vm.textInputType, "placeholder": _vm.textInputPlaceholder, "label": _vm.title }, slot: "input", model: { value: _vm.inputValue, callback: function($$v) {
+      _vm.inputValue = $$v;
+    }, expression: "inputValue" } })], 1)];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Horizontal Form Group")]), _c("DemoSection", { attrs: { "title": "Horizontal Form Group", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("FormGroupH", { attrs: { "title": _vm.title, "helpText": _vm.helpText, "tooltip": _vm.tooltip } }, [_c("TextInput", { attrs: { "slot": "input", "type": _vm.textInputType, "placeholder": _vm.textInputPlaceholder }, slot: "input", model: { value: _vm.inputValue, callback: function($$v) {
+      _vm.inputValue = $$v;
+    }, expression: "inputValue" } })], 1)];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Vertical Form Group")]), _c("DemoSection", { attrs: { "title": "Vertical Form Group", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("FormGroupV", { attrs: { "title": _vm.title, "label": "Vertical Form Group Input", "titleLayout": "flex-start", "tooltip": _vm.tooltip, "helpText": _vm.helpText } }, [_c("TextInput", { attrs: { "slot": "input", "type": _vm.textInputType, "placeholder": _vm.textInputPlaceholder }, slot: "input", model: { value: _vm.inputValue, callback: function($$v) {
+      _vm.inputValue = $$v;
+    }, expression: "inputValue" } })], 1)];
+  }, proxy: true }]) })], 1)]);
+};
+var _sfc_staticRenderFns = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("h1", [_vm._v("Forms")]), _c("p", [_vm._v(" Wrap input components in form groups for different input and label layouts. ")]), _c("pre", [_c("code", [_vm._v("import { FormGroup, FormGroupH, FormGroupV } from 'streamlabs-beaker';\n\ncomponents: {\n  FormGroup,\n  FormGroupH,\n  FormGroupV\n}")])])]);
+}];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  Forms$1,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const Forms = __component__.exports;
+export {
+  Forms as default
+};
 //# sourceMappingURL=Forms.0a463350.js.map

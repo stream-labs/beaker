@@ -1,2 +1,52 @@
-import{C as p,V as n,n as v}from"./index.4fb8a6cb.js";import{F as _}from"./FormGroup.79b6121d.js";var u=Object.defineProperty,d=Object.getOwnPropertyDescriptor,c=(a,t,s,e)=>{for(var i=e>1?void 0:e?d(t,s):t,l=a.length-1,o;l>=0;l--)(o=a[l])&&(i=(e?o(t,s,i):o(i))||i);return e&&i&&u(t,s,i),i};let r=class extends n{};r=c([p({components:{FormGroup:_}})],r);var y=function(){var t=this,s=t._self._c;return t._self._setupProxy,s("div",{staticClass:"s-typography"},[s("h1",[t._v("Typography")]),t._m(0),t._m(1),s("h4",{staticClass:"s-typography__header"},[t._v("TYPE SCALE")]),s("span",{staticClass:"subtitle"},[t._v("Marketing")]),s("FormGroup",[s("div",{staticClass:"section",attrs:{slot:"input"},slot:"input"},[s("div",{staticClass:"type-scale barlow extrabold s48"},[t._v(" H1: Barlow ExtraBold 48px ")]),s("div",{staticClass:"type-scale barlow bold s32"},[t._v(" H2: Barlow Bold 32px ")])]),s("span",{staticClass:"subtitle",attrs:{slot:"input"},slot:"input"},[t._v("Dashboard and Marketing")]),s("div",{staticClass:"type-scale bold s22",attrs:{slot:"input"},slot:"input"},[t._v(" Marketing Title: Roboto Bold 22px ")]),s("div",{staticClass:"type-scale bold s20",attrs:{slot:"input"},slot:"input"},[t._v(" Title: Roboto Bold 20px ")]),s("div",{staticClass:"type-scale medium s18",attrs:{slot:"input"},slot:"input"},[t._v(" Marketing Subtitle: Roboto Medium 18px ")]),s("div",{staticClass:"type-scale medium s16",attrs:{slot:"input"},slot:"input"},[t._v(" Subtitle: Roboto Medium 16px ")]),s("div",{staticClass:"type-scale gray s16",attrs:{slot:"input"},slot:"input"},[t._v(" Marketing Paragraph: Roboto Regular 16px ")]),s("div",{staticClass:"type-scale gray s14",attrs:{slot:"input"},slot:"input"},[t._v(" Subtitle: Roboto Regular 14px ")]),s("div",{staticClass:"type-scale gray medium underline s16",attrs:{slot:"input"},slot:"input"},[t._v(" Marketing Link: Roboto Medium 16px ")]),s("div",{staticClass:"type-scale gray medium underline s14",attrs:{slot:"input"},slot:"input"},[t._v(" Link: Roboto Medium 14px ")]),s("div",{staticClass:"type-scale teal medium s16",attrs:{slot:"input"},slot:"input"},[t._v(" Marketing Label: Roboto Medium 16px ")]),s("div",{staticClass:"type-scale teal medium s14",attrs:{slot:"input"},slot:"input"},[t._v(" Label: Roboto Medium 14px ")]),s("div",{staticClass:"type-scale gray s14",attrs:{slot:"input"},slot:"input"},[t._v(" Marketing Caption: Roboto Regular 14px ")]),s("div",{staticClass:"type-scale gray s12",attrs:{slot:"input"},slot:"input"},[t._v(" Caption: Roboto Regular 12px ")])])],1)},C=[function(){var a=this,t=a._self._c;return a._self._setupProxy,t("div",{staticClass:"row section"},[t("h4",{staticClass:"s-typography__header"},[a._v("FONTS")]),t("h1",[a._v("Barlow")]),t("div",{staticClass:"font-style barlow"},[a._v("Barlow")]),t("div",{staticClass:"side-by-side"},[t("div",{staticClass:"subtitle"},[a._v("Marketing Headings")]),t("p",[a._v("Bold, ExtraBold")])]),t("div",{staticClass:"font-style roboto"},[a._v("Roboto")]),t("div",{staticClass:"side-by-side"},[t("div",{staticClass:"subtitle"},[a._v("UI & Content")]),t("p",[a._v("Regular, Medium, Bold")])])])},function(){var a=this,t=a._self._c;return a._self._setupProxy,t("div",{staticClass:"row section"},[t("h4",{staticClass:"s-typography__header"},[a._v("TYPOGRAPHY")]),t("div",{staticClass:"side-by-side"},[t("div",{staticClass:"subtitle"},[a._v("Letter Spacing")]),t("p",[a._v("0%")])]),t("div",{staticClass:"side-by-side"},[t("div",{staticClass:"subtitle"},[a._v("Line Height")]),t("p",[a._v("110% (H1, H2), 150% (Everything Else)")])]),t("div",{staticClass:"side-by-side"},[t("div",{staticClass:"subtitle"},[a._v("Paragraph Spacing")]),t("p",[a._v("8px")])])])}],b=v(r,y,C,!1,null,null,null,null);const h=b.exports;export{h as default};
+import { C as Component, V as Vue, n as normalizeComponent } from "./index.4fb8a6cb.js";
+import { F as FormGroup } from "./FormGroup.79b6121d.js";
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp(target, key, result);
+  return result;
+};
+let Typography$1 = class extends Vue {
+};
+Typography$1 = __decorateClass([
+  Component({
+    components: {
+      FormGroup
+    }
+  })
+], Typography$1);
+const Typography_vue_vue_type_style_index_0_lang = "";
+var _sfc_render = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-typography" }, [_c("h1", [_vm._v("Typography")]), _vm._m(0), _vm._m(1), _c("h4", { staticClass: "s-typography__header" }, [_vm._v("TYPE SCALE")]), _c("span", { staticClass: "subtitle" }, [_vm._v("Marketing")]), _c("FormGroup", [_c("div", { staticClass: "section", attrs: { "slot": "input" }, slot: "input" }, [_c("div", { staticClass: "type-scale barlow extrabold s48" }, [_vm._v(" H1: Barlow ExtraBold 48px ")]), _c("div", { staticClass: "type-scale barlow bold s32" }, [_vm._v(" H2: Barlow Bold 32px ")])]), _c("span", { staticClass: "subtitle", attrs: { "slot": "input" }, slot: "input" }, [_vm._v("Dashboard and Marketing")]), _c("div", { staticClass: "type-scale bold s22", attrs: { "slot": "input" }, slot: "input" }, [_vm._v(" Marketing Title: Roboto Bold 22px ")]), _c("div", { staticClass: "type-scale bold s20", attrs: { "slot": "input" }, slot: "input" }, [_vm._v(" Title: Roboto Bold 20px ")]), _c("div", { staticClass: "type-scale medium s18", attrs: { "slot": "input" }, slot: "input" }, [_vm._v(" Marketing Subtitle: Roboto Medium 18px ")]), _c("div", { staticClass: "type-scale medium s16", attrs: { "slot": "input" }, slot: "input" }, [_vm._v(" Subtitle: Roboto Medium 16px ")]), _c("div", { staticClass: "type-scale gray s16", attrs: { "slot": "input" }, slot: "input" }, [_vm._v(" Marketing Paragraph: Roboto Regular 16px ")]), _c("div", { staticClass: "type-scale gray s14", attrs: { "slot": "input" }, slot: "input" }, [_vm._v(" Subtitle: Roboto Regular 14px ")]), _c("div", { staticClass: "type-scale gray medium underline s16", attrs: { "slot": "input" }, slot: "input" }, [_vm._v(" Marketing Link: Roboto Medium 16px ")]), _c("div", { staticClass: "type-scale gray medium underline s14", attrs: { "slot": "input" }, slot: "input" }, [_vm._v(" Link: Roboto Medium 14px ")]), _c("div", { staticClass: "type-scale teal medium s16", attrs: { "slot": "input" }, slot: "input" }, [_vm._v(" Marketing Label: Roboto Medium 16px ")]), _c("div", { staticClass: "type-scale teal medium s14", attrs: { "slot": "input" }, slot: "input" }, [_vm._v(" Label: Roboto Medium 14px ")]), _c("div", { staticClass: "type-scale gray s14", attrs: { "slot": "input" }, slot: "input" }, [_vm._v(" Marketing Caption: Roboto Regular 14px ")]), _c("div", { staticClass: "type-scale gray s12", attrs: { "slot": "input" }, slot: "input" }, [_vm._v(" Caption: Roboto Regular 12px ")])])], 1);
+};
+var _sfc_staticRenderFns = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "row section" }, [_c("h4", { staticClass: "s-typography__header" }, [_vm._v("FONTS")]), _c("h1", [_vm._v("Barlow")]), _c("div", { staticClass: "font-style barlow" }, [_vm._v("Barlow")]), _c("div", { staticClass: "side-by-side" }, [_c("div", { staticClass: "subtitle" }, [_vm._v("Marketing Headings")]), _c("p", [_vm._v("Bold, ExtraBold")])]), _c("div", { staticClass: "font-style roboto" }, [_vm._v("Roboto")]), _c("div", { staticClass: "side-by-side" }, [_c("div", { staticClass: "subtitle" }, [_vm._v("UI & Content")]), _c("p", [_vm._v("Regular, Medium, Bold")])])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "row section" }, [_c("h4", { staticClass: "s-typography__header" }, [_vm._v("TYPOGRAPHY")]), _c("div", { staticClass: "side-by-side" }, [_c("div", { staticClass: "subtitle" }, [_vm._v("Letter Spacing")]), _c("p", [_vm._v("0%")])]), _c("div", { staticClass: "side-by-side" }, [_c("div", { staticClass: "subtitle" }, [_vm._v("Line Height")]), _c("p", [_vm._v("110% (H1, H2), 150% (Everything Else)")])]), _c("div", { staticClass: "side-by-side" }, [_c("div", { staticClass: "subtitle" }, [_vm._v("Paragraph Spacing")]), _c("p", [_vm._v("8px")])])]);
+}];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  Typography$1,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const Typography = __component__.exports;
+export {
+  Typography as default
+};
 //# sourceMappingURL=Typography.a02628af.js.map

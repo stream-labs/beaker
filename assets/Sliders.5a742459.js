@@ -1,17 +1,2114 @@
-var Ce=Object.defineProperty;var Ae=(d,n,h)=>n in d?Ce(d,n,{enumerable:!0,configurable:!0,writable:!0,value:h}):d[n]=h;var _=(d,n,h)=>(Ae(d,typeof n!="symbol"?n+"":n,h),h);import{V as vt,a as Te,g as $e,W as Nt,C as Dt,P as A,n as Pt}from"./index.4fb8a6cb.js";import{i as Le}from"./ResizeObserver.es.bd9ff68d.js";import{A as Me}from"./Accordion.09c82396.js";import{D as Ie}from"./DemoSection.79ee11c0.js";var Bt={exports:{}};(function(d,n){(function(h,u){d.exports=u(vt)})(typeof self<"u"?self:Te,function(h){return function(u){var c={};function p(l){if(c[l])return c[l].exports;var P=c[l]={i:l,l:!1,exports:{}};return u[l].call(P.exports,P,P.exports,p),P.l=!0,P.exports}return p.m=u,p.c=c,p.d=function(l,P,C){p.o(l,P)||Object.defineProperty(l,P,{enumerable:!0,get:C})},p.r=function(l){typeof Symbol<"u"&&Symbol.toStringTag&&Object.defineProperty(l,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(l,"__esModule",{value:!0})},p.t=function(l,P){if(1&P&&(l=p(l)),8&P||4&P&&typeof l=="object"&&l&&l.__esModule)return l;var C=Object.create(null);if(p.r(C),Object.defineProperty(C,"default",{enumerable:!0,value:l}),2&P&&typeof l!="string")for(var L in l)p.d(C,L,function(j){return l[j]}.bind(null,L));return C},p.n=function(l){var P=l&&l.__esModule?function(){return l.default}:function(){return l};return p.d(P,"a",P),P},p.o=function(l,P){return Object.prototype.hasOwnProperty.call(l,P)},p.p="",p(p.s="fb15")}({"091b":function(u,c,p){var l=p("24fb");c=l(!1),c.push([u.i,".vue-slider-dot{position:absolute;-webkit-transition:all 0s;transition:all 0s;z-index:5}.vue-slider-dot:focus{outline:none}.vue-slider-dot-tooltip{position:absolute;visibility:hidden}.vue-slider-dot-hover:hover .vue-slider-dot-tooltip,.vue-slider-dot-tooltip-show{visibility:visible}.vue-slider-dot-tooltip-top{top:-10px;left:50%;-webkit-transform:translate(-50%,-100%);transform:translate(-50%,-100%)}.vue-slider-dot-tooltip-bottom{bottom:-10px;left:50%;-webkit-transform:translate(-50%,100%);transform:translate(-50%,100%)}.vue-slider-dot-tooltip-left{left:-10px;top:50%;-webkit-transform:translate(-100%,-50%);transform:translate(-100%,-50%)}.vue-slider-dot-tooltip-right{right:-10px;top:50%;-webkit-transform:translate(100%,-50%);transform:translate(100%,-50%)}",""]),u.exports=c},"24fb":function(u,c,p){function l(C,L){var j=C[1]||"",f=C[3];if(!f)return j;if(L&&typeof btoa=="function"){var M=P(f),D=f.sources.map(function(E){return"/*# sourceURL=".concat(f.sourceRoot||"").concat(E," */")});return[j].concat(D).concat([M]).join(`
-`)}return[j].join(`
-`)}function P(C){var L=btoa(unescape(encodeURIComponent(JSON.stringify(C)))),j="sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(L);return"/*# ".concat(j," */")}u.exports=function(C){var L=[];return L.toString=function(){return this.map(function(j){var f=l(j,C);return j[2]?"@media ".concat(j[2]," {").concat(f,"}"):f}).join("")},L.i=function(j,f,M){typeof j=="string"&&(j=[[null,j,""]]);var D={};if(M)for(var E=0;E<this.length;E++){var x=this[E][0];x!=null&&(D[x]=!0)}for(var F=0;F<j.length;F++){var v=[].concat(j[F]);M&&D[v[0]]||(f&&(v[2]?v[2]="".concat(f," and ").concat(v[2]):v[2]=f),L.push(v))}},L}},2638:function(u,c,p){function l(){return l=Object.assign||function(M){for(var D,E=1;E<arguments.length;E++)for(var x in D=arguments[E],D)Object.prototype.hasOwnProperty.call(D,x)&&(M[x]=D[x]);return M},l.apply(this,arguments)}var P=["attrs","props","domProps"],C=["class","style","directives"],L=["on","nativeOn"],j=function(M){return M.reduce(function(D,E){for(var x in E)if(D[x])if(P.indexOf(x)!==-1)D[x]=l({},D[x],E[x]);else if(C.indexOf(x)!==-1){var F=D[x]instanceof Array?D[x]:[D[x]],v=E[x]instanceof Array?E[x]:[E[x]];D[x]=F.concat(v)}else if(L.indexOf(x)!==-1)for(var N in E[x])if(D[x][N]){var G=D[x][N]instanceof Array?D[x][N]:[D[x][N]],z=E[x][N]instanceof Array?E[x][N]:[E[x][N]];D[x][N]=G.concat(z)}else D[x][N]=E[x][N];else if(x=="hook")for(var m in E[x])D[x][m]=D[x][m]?f(D[x][m],E[x][m]):E[x][m];else D[x]=E[x];else D[x]=E[x];return D},{})},f=function(M,D){return function(){M&&M.apply(this,arguments),D&&D.apply(this,arguments)}};u.exports=j},"499e":function(u,c,p){function l(g,O){for(var S=[],V={},w=0;w<O.length;w++){var R=O[w],I=R[0],X=R[1],nt=R[2],Q=R[3],tt={id:g+":"+w,css:X,media:nt,sourceMap:Q};V[I]?V[I].parts.push(tt):S.push(V[I]={id:I,parts:[tt]})}return S}p.r(c),p.d(c,"default",function(){return v});var P=typeof document<"u";if(typeof DEBUG<"u"&&DEBUG&&!P)throw new Error("vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.");var C={},L=P&&(document.head||document.getElementsByTagName("head")[0]),j=null,f=0,M=!1,D=function(){},E=null,x="data-vue-ssr-id",F=typeof navigator<"u"&&/msie [6-9]\b/.test(navigator.userAgent.toLowerCase());function v(g,O,S,V){M=S,E=V||{};var w=l(g,O);return N(w),function(R){for(var I=[],X=0;X<w.length;X++){var nt=w[X],Q=C[nt.id];Q.refs--,I.push(Q)}for(R?(w=l(g,R),N(w)):w=[],X=0;X<I.length;X++)if(Q=I[X],Q.refs===0){for(var tt=0;tt<Q.parts.length;tt++)Q.parts[tt]();delete C[Q.id]}}}function N(g){for(var O=0;O<g.length;O++){var S=g[O],V=C[S.id];if(V){V.refs++;for(var w=0;w<V.parts.length;w++)V.parts[w](S.parts[w]);for(;w<S.parts.length;w++)V.parts.push(z(S.parts[w]));V.parts.length>S.parts.length&&(V.parts.length=S.parts.length)}else{var R=[];for(w=0;w<S.parts.length;w++)R.push(z(S.parts[w]));C[S.id]={id:S.id,refs:1,parts:R}}}}function G(){var g=document.createElement("style");return g.type="text/css",L.appendChild(g),g}function z(g){var O,S,V=document.querySelector("style["+x+'~="'+g.id+'"]');if(V){if(M)return D;V.parentNode.removeChild(V)}if(F){var w=f++;V=j||(j=G()),O=b.bind(null,V,w,!1),S=b.bind(null,V,w,!0)}else V=G(),O=$.bind(null,V),S=function(){V.parentNode.removeChild(V)};return O(g),function(R){if(R){if(R.css===g.css&&R.media===g.media&&R.sourceMap===g.sourceMap)return;O(g=R)}else S()}}var m=function(){var g=[];return function(O,S){return g[O]=S,g.filter(Boolean).join(`
-`)}}();function b(g,O,S,V){var w=S?"":V.css;if(g.styleSheet)g.styleSheet.cssText=m(O,w);else{var R=document.createTextNode(w),I=g.childNodes;I[O]&&g.removeChild(I[O]),I.length?g.insertBefore(R,I[O]):g.appendChild(R)}}function $(g,O){var S=O.css,V=O.media,w=O.sourceMap;if(V&&g.setAttribute("media",V),E.ssrId&&g.setAttribute(x,O.id),w&&(S+=`
-/*# sourceURL=`+w.sources[0]+" */",S+=`
-/*# sourceMappingURL=data:application/json;base64,`+btoa(unescape(encodeURIComponent(JSON.stringify(w))))+" */"),g.styleSheet)g.styleSheet.cssText=S;else{for(;g.firstChild;)g.removeChild(g.firstChild);g.appendChild(document.createTextNode(S))}}},"4abb":function(u,c,p){var l=p("7a57");typeof l=="string"&&(l=[[u.i,l,""]]),l.locals&&(u.exports=l.locals);var P=p("499e").default;P("b2af7572",l,!0,{sourceMap:!1,shadowMode:!1})},"4ed8":function(u,c,p){var l=p("091b");typeof l=="string"&&(l=[[u.i,l,""]]),l.locals&&(u.exports=l.locals);var P=p("499e").default;P("2f6bee1a",l,!0,{sourceMap:!1,shadowMode:!1})},"556c":function(u,c,p){var l=p("eef2");typeof l=="string"&&(l=[[u.i,l,""]]),l.locals&&(u.exports=l.locals);var P=p("499e").default;P("1209fd47",l,!0,{sourceMap:!1,shadowMode:!1})},"65d9":function(u,c,p){/**
-* vue-class-component v7.0.1
-* (c) 2015-present Evan You
-* @license MIT
-*/function l(m){return m&&typeof m=="object"&&"default"in m?m.default:m}Object.defineProperty(c,"__esModule",{value:!0});var P=l(p("8bbf")),C=typeof Reflect<"u"&&Reflect.defineMetadata&&Reflect.getOwnMetadataKeys;function L(m,b){j(m,b),Object.getOwnPropertyNames(b.prototype).forEach(function($){j(m.prototype,b.prototype,$)}),Object.getOwnPropertyNames(b).forEach(function($){j(m,b,$)})}function j(m,b,$){var g=$?Reflect.getOwnMetadataKeys(b,$):Reflect.getOwnMetadataKeys(b);g.forEach(function(O){var S=$?Reflect.getOwnMetadata(O,b,$):Reflect.getOwnMetadata(O,b);$?Reflect.defineMetadata(O,S,m,$):Reflect.defineMetadata(O,S,m)})}var f={__proto__:[]},M=f instanceof Array;function D(m){return function(b,$,g){var O=typeof b=="function"?b:b.constructor;O.__decorators__||(O.__decorators__=[]),typeof g!="number"&&(g=void 0),O.__decorators__.push(function(S){return m(S,$,g)})}}function E(){for(var m=[],b=0;b<arguments.length;b++)m[b]=arguments[b];return P.extend({mixins:m})}function x(m){var b=typeof m;return m==null||b!=="object"&&b!=="function"}function F(m,b){var $=b.prototype._init;b.prototype._init=function(){var S=this,V=Object.getOwnPropertyNames(m);if(m.$options.props)for(var w in m.$options.props)m.hasOwnProperty(w)||V.push(w);V.forEach(function(R){R.charAt(0)!=="_"&&Object.defineProperty(S,R,{get:function(){return m[R]},set:function(I){m[R]=I},configurable:!0})})};var g=new b;b.prototype._init=$;var O={};return Object.keys(g).forEach(function(S){g[S]!==void 0&&(O[S]=g[S])}),O}var v=["data","beforeCreate","created","beforeMount","mounted","beforeDestroy","destroyed","beforeUpdate","updated","activated","deactivated","render","errorCaptured","serverPrefetch"];function N(m,b){b===void 0&&(b={}),b.name=b.name||m._componentTag||m.name;var $=m.prototype;Object.getOwnPropertyNames($).forEach(function(w){if(w!=="constructor")if(v.indexOf(w)>-1)b[w]=$[w];else{var R=Object.getOwnPropertyDescriptor($,w);R.value!==void 0?typeof R.value=="function"?(b.methods||(b.methods={}))[w]=R.value:(b.mixins||(b.mixins=[])).push({data:function(){var I;return I={},I[w]=R.value,I}}):(R.get||R.set)&&((b.computed||(b.computed={}))[w]={get:R.get,set:R.set})}}),(b.mixins||(b.mixins=[])).push({data:function(){return F(this,m)}});var g=m.__decorators__;g&&(g.forEach(function(w){return w(b)}),delete m.__decorators__);var O=Object.getPrototypeOf(m.prototype),S=O instanceof P?O.constructor:P,V=S.extend(b);return G(V,m,S),C&&L(V,m),V}function G(m,b,$){Object.getOwnPropertyNames(b).forEach(function(g){if(g!=="prototype"){var O=Object.getOwnPropertyDescriptor(m,g);if(!O||O.configurable){var S=Object.getOwnPropertyDescriptor(b,g);if(!M){if(g==="cid")return;var V=Object.getOwnPropertyDescriptor($,g);if(!x(S.value)&&V&&V.value===S.value)return}Object.defineProperty(m,g,S)}}})}function z(m){return typeof m=="function"?N(m):function(b){return N(b,m)}}z.registerHooks=function(m){v.push.apply(v,m)},c.default=z,c.createDecorator=D,c.mixins=E},"7a57":function(u,c,p){var l=p("24fb");c=l(!1),c.push([u.i,".vue-slider{position:relative;-webkit-box-sizing:content-box;box-sizing:content-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;display:block;-webkit-tap-highlight-color:rgba(0,0,0,0)}.vue-slider-rail{position:relative;width:100%;height:100%;-webkit-transition-property:width,height,left,right,top,bottom;transition-property:width,height,left,right,top,bottom}.vue-slider-process{position:absolute;z-index:1}",""]),u.exports=c},8875:function(u,c,p){var l,P,C;(function(L,j){P=[],l=j,C=typeof l=="function"?l.apply(c,P):l,C===void 0||(u.exports=C)})(typeof self<"u"&&self,function(){function L(){var j=Object.getOwnPropertyDescriptor(document,"currentScript");if(!j&&"currentScript"in document&&document.currentScript||j&&j.get!==L&&document.currentScript)return document.currentScript;try{throw new Error}catch(b){var f,M,D,E=/.*at [^(]*\((.*):(.+):(.+)\)$/gi,x=/@([^@]*):(\d+):(\d+)\s*$/gi,F=E.exec(b.stack)||x.exec(b.stack),v=F&&F[1]||!1,N=F&&F[2]||!1,G=document.location.href.replace(document.location.hash,""),z=document.getElementsByTagName("script");v===G&&(f=document.documentElement.outerHTML,M=new RegExp("(?:[^\\n]+?\\n){0,"+(N-2)+"}[^<]*<script>([\\d\\D]*?)<\\/script>[\\d\\D]*","i"),D=f.replace(M,"$1").trim());for(var m=0;m<z.length;m++)if(z[m].readyState==="interactive"||z[m].src===v||v===G&&z[m].innerHTML&&z[m].innerHTML.trim()===D)return z[m];return null}}return L})},"8bbf":function(u,c){u.exports=h},eef2:function(u,c,p){var l=p("24fb");c=l(!1),c.push([u.i,".vue-slider-marks{position:relative;width:100%;height:100%}.vue-slider-mark{position:absolute;z-index:1}.vue-slider-ltr .vue-slider-mark,.vue-slider-rtl .vue-slider-mark{width:0;height:100%;top:50%}.vue-slider-ltr .vue-slider-mark-step,.vue-slider-rtl .vue-slider-mark-step{top:0}.vue-slider-ltr .vue-slider-mark-label,.vue-slider-rtl .vue-slider-mark-label{top:100%;margin-top:10px}.vue-slider-ltr .vue-slider-mark{-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}.vue-slider-ltr .vue-slider-mark-step{left:0}.vue-slider-ltr .vue-slider-mark-label{left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}.vue-slider-rtl .vue-slider-mark{-webkit-transform:translate(50%,-50%);transform:translate(50%,-50%)}.vue-slider-rtl .vue-slider-mark-step{right:0}.vue-slider-rtl .vue-slider-mark-label{right:50%;-webkit-transform:translateX(50%);transform:translateX(50%)}.vue-slider-btt .vue-slider-mark,.vue-slider-ttb .vue-slider-mark{width:100%;height:0;left:50%}.vue-slider-btt .vue-slider-mark-step,.vue-slider-ttb .vue-slider-mark-step{left:0}.vue-slider-btt .vue-slider-mark-label,.vue-slider-ttb .vue-slider-mark-label{left:100%;margin-left:10px}.vue-slider-btt .vue-slider-mark{-webkit-transform:translate(-50%,50%);transform:translate(-50%,50%)}.vue-slider-btt .vue-slider-mark-step{top:0}.vue-slider-btt .vue-slider-mark-label{top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.vue-slider-ttb .vue-slider-mark{-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}.vue-slider-ttb .vue-slider-mark-step{bottom:0}.vue-slider-ttb .vue-slider-mark-label{bottom:50%;-webkit-transform:translateY(50%);transform:translateY(50%)}.vue-slider-mark-label,.vue-slider-mark-step{position:absolute}",""]),u.exports=c},fb15:function(u,c,p){if(p.r(c),p.d(c,"ERROR_TYPE",function(){return K}),p.d(c,"VueSliderMark",function(){return yt}),p.d(c,"VueSliderDot",function(){return X}),typeof window<"u"){var l=window.document.currentScript,P=p("8875");l=P(),"currentScript"in document||Object.defineProperty(document,"currentScript",{get:P});var C=l&&l.src.match(/(.+\/)[^/]+\.js(\?.*)?$/);C&&(p.p=C[1])}var L=p("2638"),j=p.n(L);function f(e,t,i,o){var r,s=arguments.length,a=s<3?t:o===null?o=Object.getOwnPropertyDescriptor(t,i):o;if(typeof Reflect=="object"&&typeof Reflect.decorate=="function")a=Reflect.decorate(e,t,i,o);else for(var y=e.length-1;y>=0;y--)(r=e[y])&&(a=(s<3?r(a):s>3?r(t,i,a):r(t,i))||a);return s>3&&a&&Object.defineProperty(t,i,a),a}var M=p("8bbf"),D=p.n(M),E=p("65d9"),x=p.n(E);function F(e,t){return t===void 0&&(t={}),Object(E.createDecorator)(function(i,o){(i.props||(i.props={}))[o]=t,i.model={prop:o,event:e||o}})}function v(e){return e===void 0&&(e={}),Object(E.createDecorator)(function(t,i){(t.props||(t.props={}))[i]=e})}function N(e,t){t===void 0&&(t={});var i=t.deep,o=i!==void 0&&i,r=t.immediate,s=r!==void 0&&r;return Object(E.createDecorator)(function(a,y){typeof a.watch!="object"&&(a.watch=Object.create(null));var k=a.watch;typeof k[e]!="object"||Array.isArray(k[e])?typeof k[e]>"u"&&(k[e]=[]):k[e]=[k[e]],k[e].push({handler:y,deep:o,immediate:s})})}p("4ed8");function G(e){return G=typeof Symbol=="function"&&typeof Symbol.iterator=="symbol"?function(t){return typeof t}:function(t){return t&&typeof Symbol=="function"&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},G(e)}function z(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function m(e,t){for(var i=0;i<t.length;i++){var o=t[i];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}function b(e,t,i){return t&&m(e.prototype,t),i&&m(e,i),e}function $(e,t){if(typeof t!="function"&&t!==null)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&g(e,t)}function g(e,t){return g=Object.setPrototypeOf||function(i,o){return i.__proto__=o,i},g(e,t)}function O(e){var t=w();return function(){var i,o=R(e);if(t){var r=R(this).constructor;i=Reflect.construct(o,arguments,r)}else i=o.apply(this,arguments);return S(this,i)}}function S(e,t){return!t||G(t)!=="object"&&typeof t!="function"?V(e):t}function V(e){if(e===void 0)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function w(){if(typeof Reflect>"u"||!Reflect.construct||Reflect.construct.sham)return!1;if(typeof Proxy=="function")return!0;try{return Date.prototype.toString.call(Reflect.construct(Date,[],function(){})),!0}catch{return!1}}function R(e){return R=Object.setPrototypeOf?Object.getPrototypeOf:function(t){return t.__proto__||Object.getPrototypeOf(t)},R(e)}var I=function(){var e=function(t){$(o,t);var i=O(o);function o(){return z(this,o),i.apply(this,arguments)}return b(o,[{key:"dragStart",value:function(r){if(this.disabled)return!1;this.$emit("drag-start")}},{key:"render",value:function(){var r=arguments[0];return r("div",{ref:"dot",class:this.dotClasses,attrs:{"aria-valuetext":this.tooltipValue?this.tooltipValue.toString():""},on:{mousedown:this.dragStart,touchstart:this.dragStart}},[this.$slots.dot||r("div",{class:this.handleClasses,style:this.dotStyle}),this.tooltip!=="none"?r("div",{class:this.tooltipClasses},[this.$slots.tooltip||r("div",{class:this.tooltipInnerClasses,style:this.tooltipStyle},[r("span",{class:"vue-slider-dot-tooltip-text"},[this.tooltipValue])])]):null])}},{key:"dotClasses",get:function(){return["vue-slider-dot",{"vue-slider-dot-hover":this.tooltip==="hover"||this.tooltip==="active","vue-slider-dot-disabled":this.disabled,"vue-slider-dot-focus":this.focus}]}},{key:"handleClasses",get:function(){return["vue-slider-dot-handle",{"vue-slider-dot-handle-disabled":this.disabled,"vue-slider-dot-handle-focus":this.focus}]}},{key:"tooltipClasses",get:function(){return["vue-slider-dot-tooltip",["vue-slider-dot-tooltip-".concat(this.tooltipPlacement)],{"vue-slider-dot-tooltip-show":this.showTooltip}]}},{key:"tooltipInnerClasses",get:function(){return["vue-slider-dot-tooltip-inner",["vue-slider-dot-tooltip-inner-".concat(this.tooltipPlacement)],{"vue-slider-dot-tooltip-inner-disabled":this.disabled,"vue-slider-dot-tooltip-inner-focus":this.focus}]}},{key:"showTooltip",get:function(){switch(this.tooltip){case"always":return!0;case"none":return!1;case"focus":case"active":return!!this.focus;default:return!1}}},{key:"tooltipValue",get:function(){return this.tooltipFormatter?typeof this.tooltipFormatter=="string"?this.tooltipFormatter.replace(/\{value\}/,String(this.value)):this.tooltipFormatter(this.value):this.value}}]),o}(D.a);return f([v({default:0})],e.prototype,"value",void 0),f([v()],e.prototype,"tooltip",void 0),f([v()],e.prototype,"dotStyle",void 0),f([v()],e.prototype,"tooltipStyle",void 0),f([v({type:String,validator:function(t){return["top","right","bottom","left"].indexOf(t)>-1},required:!0})],e.prototype,"tooltipPlacement",void 0),f([v({type:[String,Function]})],e.prototype,"tooltipFormatter",void 0),f([v({type:Boolean,default:!1})],e.prototype,"focus",void 0),f([v({default:!1})],e.prototype,"disabled",void 0),e=f([x()({name:"VueSliderDot"})],e),e}(),X=I;p("556c");function nt(e){return nt=typeof Symbol=="function"&&typeof Symbol.iterator=="symbol"?function(t){return typeof t}:function(t){return t&&typeof Symbol=="function"&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},nt(e)}function Q(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function tt(e,t){for(var i=0;i<t.length;i++){var o=t[i];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}function zt(e,t,i){return t&&tt(e.prototype,t),i&&tt(e,i),e}function Ht(e,t){if(typeof t!="function"&&t!==null)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&mt(e,t)}function mt(e,t){return mt=Object.setPrototypeOf||function(i,o){return i.__proto__=o,i},mt(e,t)}function Ut(e){var t=qt();return function(){var i,o=dt(e);if(t){var r=dt(this).constructor;i=Reflect.construct(o,arguments,r)}else i=o.apply(this,arguments);return Ft(this,i)}}function Ft(e,t){return!t||nt(t)!=="object"&&typeof t!="function"?Wt(e):t}function Wt(e){if(e===void 0)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function qt(){if(typeof Reflect>"u"||!Reflect.construct||Reflect.construct.sham)return!1;if(typeof Proxy=="function")return!0;try{return Date.prototype.toString.call(Reflect.construct(Date,[],function(){})),!0}catch{return!1}}function dt(e){return dt=Object.setPrototypeOf?Object.getPrototypeOf:function(t){return t.__proto__||Object.getPrototypeOf(t)},dt(e)}var Z,Gt=function(){var e=function(t){Ht(o,t);var i=Ut(o);function o(){return Q(this,o),i.apply(this,arguments)}return zt(o,[{key:"labelClickHandle",value:function(r){r.stopPropagation(),this.$emit("pressLabel",this.mark.pos)}},{key:"render",value:function(){var r=arguments[0],s=this.mark;return r("div",{class:this.marksClasses},[this.$slots.step||r("div",{class:this.stepClasses,style:[this.stepStyle||{},s.style||{},s.active&&this.stepActiveStyle||{},s.active&&s.activeStyle||{}]}),this.hideLabel?null:this.$slots.label||r("div",{class:this.labelClasses,style:[this.labelStyle||{},s.labelStyle||{},s.active&&this.labelActiveStyle||{},s.active&&s.labelActiveStyle||{}],on:{click:this.labelClickHandle}},[s.label])])}},{key:"marksClasses",get:function(){return["vue-slider-mark",{"vue-slider-mark-active":this.mark.active}]}},{key:"stepClasses",get:function(){return["vue-slider-mark-step",{"vue-slider-mark-step-active":this.mark.active}]}},{key:"labelClasses",get:function(){return["vue-slider-mark-label",{"vue-slider-mark-label-active":this.mark.active}]}}]),o}(D.a);return f([v({required:!0})],e.prototype,"mark",void 0),f([v(Boolean)],e.prototype,"hideLabel",void 0),f([v()],e.prototype,"stepStyle",void 0),f([v()],e.prototype,"stepActiveStyle",void 0),f([v()],e.prototype,"labelStyle",void 0),f([v()],e.prototype,"labelActiveStyle",void 0),e=f([x()({name:"VueSlideMark"})],e),e}(),yt=Gt,lt=function(e){return typeof e=="number"?"".concat(e,"px"):e},Xt=function(e){var t=document.documentElement,i=document.body,o=e.getBoundingClientRect(),r={y:o.top+(window.pageYOffset||t.scrollTop)-(t.clientTop||i.clientTop||0),x:o.left+(window.pageXOffset||t.scrollLeft)-(t.clientLeft||i.clientLeft||0)};return r},Kt=function(e,t,i){var o=arguments.length>3&&arguments[3]!==void 0?arguments[3]:1,r="targetTouches"in e?e.targetTouches[0]:e,s=Xt(t),a={x:r.pageX-s.x,y:r.pageY-s.y};return{x:i?t.offsetWidth*o-a.x:a.x,y:i?t.offsetHeight*o-a.y:a.y}};(function(e){e[e.PAGE_UP=33]="PAGE_UP",e[e.PAGE_DOWN=34]="PAGE_DOWN",e[e.END=35]="END",e[e.HOME=36]="HOME",e[e.LEFT=37]="LEFT",e[e.UP=38]="UP",e[e.RIGHT=39]="RIGHT",e[e.DOWN=40]="DOWN"})(Z||(Z={}));var Yt=function(e,t){if(t.hook){var i=t.hook(e);if(typeof i=="function")return i;if(!i)return null}switch(e.keyCode){case Z.UP:return function(o){return t.direction==="ttb"?o-1:o+1};case Z.RIGHT:return function(o){return t.direction==="rtl"?o-1:o+1};case Z.DOWN:return function(o){return t.direction==="ttb"?o+1:o-1};case Z.LEFT:return function(o){return t.direction==="rtl"?o+1:o-1};case Z.END:return function(){return t.max};case Z.HOME:return function(){return t.min};case Z.PAGE_UP:return function(o){return o+10};case Z.PAGE_DOWN:return function(o){return o-10};default:return null}};function Jt(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function Vt(e,t){for(var i=0;i<t.length;i++){var o=t[i];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}function Qt(e,t,i){return t&&Vt(e.prototype,t),i&&Vt(e,i),e}var it,K,et=function(){function e(t){Jt(this,e),this.num=t}return Qt(e,[{key:"decimal",value:function(t,i){var o=this.num,r=this.getDecimalLen(o),s=this.getDecimalLen(t),a=0;switch(i){case"+":a=this.getExponent(r,s),this.num=(this.safeRoundUp(o,a)+this.safeRoundUp(t,a))/a;break;case"-":a=this.getExponent(r,s),this.num=(this.safeRoundUp(o,a)-this.safeRoundUp(t,a))/a;break;case"*":this.num=this.safeRoundUp(this.safeRoundUp(o,this.getExponent(r)),this.safeRoundUp(t,this.getExponent(s)))/this.getExponent(r+s);break;case"/":a=this.getExponent(r,s),this.num=this.safeRoundUp(o,a)/this.safeRoundUp(t,a);break;case"%":a=this.getExponent(r,s),this.num=this.safeRoundUp(o,a)%this.safeRoundUp(t,a)/a;break}return this}},{key:"plus",value:function(t){return this.decimal(t,"+")}},{key:"minus",value:function(t){return this.decimal(t,"-")}},{key:"multiply",value:function(t){return this.decimal(t,"*")}},{key:"divide",value:function(t){return this.decimal(t,"/")}},{key:"remainder",value:function(t){return this.decimal(t,"%")}},{key:"toNumber",value:function(){return this.num}},{key:"getDecimalLen",value:function(t){var i="".concat(t).split("e");return("".concat(i[0]).split(".")[1]||"").length-(i[1]?+i[1]:0)}},{key:"getExponent",value:function(t,i){return Math.pow(10,i!==void 0?Math.max(t,i):t)}},{key:"safeRoundUp",value:function(t,i){return Math.round(t*i)}}]),e}();function Rt(e,t){var i=Object.keys(e);if(Object.getOwnPropertySymbols){var o=Object.getOwnPropertySymbols(e);t&&(o=o.filter(function(r){return Object.getOwnPropertyDescriptor(e,r).enumerable})),i.push.apply(i,o)}return i}function Zt(e){for(var t=1;t<arguments.length;t++){var i=arguments[t]!=null?arguments[t]:{};t%2?Rt(Object(i),!0).forEach(function(o){at(e,o,i[o])}):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(i)):Rt(Object(i)).forEach(function(o){Object.defineProperty(e,o,Object.getOwnPropertyDescriptor(i,o))})}return e}function te(e,t){return ne(e)||re(e,t)||Et(e,t)||ee()}function ee(){throw new TypeError(`Invalid attempt to destructure non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)}function re(e,t){if(typeof Symbol<"u"&&Symbol.iterator in Object(e)){var i=[],o=!0,r=!1,s=void 0;try{for(var a,y=e[Symbol.iterator]();!(o=(a=y.next()).done)&&(i.push(a.value),!(t&&i.length===t));o=!0);}catch(k){r=!0,s=k}finally{try{o||y.return==null||y.return()}finally{if(r)throw s}}return i}}function ne(e){if(Array.isArray(e))return e}function st(e){return se(e)||oe(e)||Et(e)||ie()}function ie(){throw new TypeError(`Invalid attempt to spread non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)}function Et(e,t){if(e){if(typeof e=="string")return gt(e,t);var i=Object.prototype.toString.call(e).slice(8,-1);return i==="Object"&&e.constructor&&(i=e.constructor.name),i==="Map"||i==="Set"?Array.from(e):i==="Arguments"||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(i)?gt(e,t):void 0}}function oe(e){if(typeof Symbol<"u"&&Symbol.iterator in Object(e))return Array.from(e)}function se(e){if(Array.isArray(e))return gt(e)}function gt(e,t){(t==null||t>e.length)&&(t=e.length);for(var i=0,o=new Array(t);i<t;i++)o[i]=e[i];return o}function ae(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function jt(e,t){for(var i=0;i<t.length;i++){var o=t[i];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}function le(e,t,i){return t&&jt(e.prototype,t),i&&jt(e,i),e}function at(e,t,i){return t in e?Object.defineProperty(e,t,{value:i,enumerable:!0,configurable:!0,writable:!0}):e[t]=i,e}(function(e){e[e.VALUE=1]="VALUE",e[e.INTERVAL=2]="INTERVAL",e[e.MIN=3]="MIN",e[e.MAX=4]="MAX",e[e.ORDER=5]="ORDER"})(K||(K={}));var ue=(it={},at(it,K.VALUE,'The type of the "value" is illegal'),at(it,K.INTERVAL,'The prop "interval" is invalid, "(max - min)" must be divisible by "interval"'),at(it,K.MIN,'The "value" must be greater than or equal to the "min".'),at(it,K.MAX,'The "value" must be less than or equal to the "max".'),at(it,K.ORDER,'When "order" is false, the parameters "minRange", "maxRange", "fixed", "enabled" are invalid.'),it),ce=function(){function e(t){ae(this,e),this.dotsPos=[],this.dotsValue=[],this.cacheRangeDir={},this.data=t.data,this.max=t.max,this.min=t.min,this.interval=t.interval,this.order=t.order,this.marks=t.marks,this.included=t.included,this.process=t.process,this.adsorb=t.adsorb,this.dotOptions=t.dotOptions,this.onError=t.onError,this.order?(this.minRange=t.minRange||0,this.maxRange=t.maxRange||0,this.enableCross=t.enableCross,this.fixed=t.fixed):((t.minRange||t.maxRange||!t.enableCross||t.fixed)&&this.emitError(K.ORDER),this.minRange=0,this.maxRange=0,this.enableCross=!0,this.fixed=!1),this.setValue(t.value)}return le(e,[{key:"setValue",value:function(t){var i=this;this.setDotsValue(Array.isArray(t)?this.order?st(t).sort(function(o,r){return i.getIndexByValue(o)-i.getIndexByValue(r)}):st(t):[t],!0)}},{key:"setDotsValue",value:function(t,i){this.dotsValue=t,i&&this.syncDotsPos()}},{key:"setDotsPos",value:function(t){var i=this,o=this.order?st(t).sort(function(r,s){return r-s}):t;this.dotsPos=o,this.setDotsValue(o.map(function(r){return i.getValueByPos(r)}),this.adsorb)}},{key:"getValueByPos",value:function(t){var i=this.parsePos(t);if(this.included){var o=100;this.markList.forEach(function(r){var s=Math.abs(r.pos-t);s<o&&(o=s,i=r.value)})}return i}},{key:"syncDotsPos",value:function(){var t=this;this.dotsPos=this.dotsValue.map(function(i){return t.parseValue(i)})}},{key:"getRecentDot",value:function(t){var i=this,o=this.dotsPos.filter(function(r,s){return!(i.getDotOption(s)&&i.getDotOption(s).disabled)}).map(function(r){return Math.abs(r-t)});return o.indexOf(Math.min.apply(Math,st(o)))}},{key:"getIndexByValue",value:function(t){return this.data?this.data.indexOf(t):new et(+t).minus(this.min).divide(this.interval).toNumber()}},{key:"getValueByIndex",value:function(t){return t<0?t=0:t>this.total&&(t=this.total),this.data?this.data[t]:new et(t).multiply(this.interval).plus(this.min).toNumber()}},{key:"setDotPos",value:function(t,i){t=this.getValidPos(t,i).pos;var o=t-this.dotsPos[i];if(o){var r=new Array(this.dotsPos.length);this.fixed?r=this.getFixedChangePosArr(o,i):this.minRange||this.maxRange?r=this.getLimitRangeChangePosArr(t,o,i):r[i]=o,this.setDotsPos(this.dotsPos.map(function(s,a){return s+(r[a]||0)}))}}},{key:"getFixedChangePosArr",value:function(t,i){var o=this;return this.dotsPos.forEach(function(r,s){if(s!==i){var a=o.getValidPos(r+t,s),y=a.pos,k=a.inRange;k||(t=Math.min(Math.abs(y-r),Math.abs(t))*(t<0?-1:1))}}),this.dotsPos.map(function(r){return t})}},{key:"getLimitRangeChangePosArr",value:function(t,i,o){var r=this,s=[{index:o,changePos:i}],a=i;return[this.minRange,this.maxRange].forEach(function(y,k){if(!y)return!1;var T=k===0,J=i>0,ot=0;ot=T?J?1:-1:J?-1:1;for(var pt=function(Ee,je){var It=Math.abs(Ee-je);return T?It<r.minRangeDir:It>r.maxRangeDir},rt=o+ot,ct=r.dotsPos[rt],Lt=t;r.isPos(ct)&&pt(ct,Lt);){var Re=r.getValidPos(ct+a,rt),Mt=Re.pos;s.push({index:rt,changePos:Mt-ct}),rt+=ot,Lt=Mt,ct=r.dotsPos[rt]}}),this.dotsPos.map(function(y,k){var T=s.filter(function(J){return J.index===k});return T.length?T[0].changePos:0})}},{key:"isPos",value:function(t){return typeof t=="number"}},{key:"getValidPos",value:function(t,i){var o=this.valuePosRange[i],r=!0;return t<o[0]?(t=o[0],r=!1):t>o[1]&&(t=o[1],r=!1),{pos:t,inRange:r}}},{key:"parseValue",value:function(t){if(this.data)t=this.data.indexOf(t);else if(typeof t=="number"||typeof t=="string"){if(t=+t,t<this.min)return this.emitError(K.MIN),0;if(t>this.max)return this.emitError(K.MAX),0;if(typeof t!="number"||t!==t)return this.emitError(K.VALUE),0;t=new et(t).minus(this.min).divide(this.interval).toNumber()}var i=new et(t).multiply(this.gap).toNumber();return i<0?0:i>100?100:i}},{key:"parsePos",value:function(t){var i=Math.round(t/this.gap);return this.getValueByIndex(i)}},{key:"isActiveByPos",value:function(t){return this.processArray.some(function(i){var o=te(i,2),r=o[0],s=o[1];return t>=r&&t<=s})}},{key:"getValues",value:function(){if(this.data)return this.data;for(var t=[],i=0;i<=this.total;i++)t.push(new et(i).multiply(this.interval).plus(this.min).toNumber());return t}},{key:"getRangeDir",value:function(t){return t?new et(t).divide(new et(this.data?this.data.length-1:this.max).minus(this.data?0:this.min).toNumber()).multiply(100).toNumber():100}},{key:"emitError",value:function(t){this.onError&&this.onError(t,ue[t])}},{key:"getDotOption",value:function(t){return Array.isArray(this.dotOptions)?this.dotOptions[t]:this.dotOptions}},{key:"getDotRange",value:function(t,i,o){if(!this.dotOptions)return o;var r=this.getDotOption(t);return r&&r[i]!==void 0?this.parseValue(r[i]):o}},{key:"markList",get:function(){var t=this;if(!this.marks)return[];var i=function(o,r){var s=t.parseValue(o);return Zt({pos:s,value:o,label:o,active:t.isActiveByPos(s)},r)};return this.marks===!0?this.getValues().map(function(o){return i(o)}):Object.prototype.toString.call(this.marks)==="[object Object]"?Object.keys(this.marks).sort(function(o,r){return+o-+r}).map(function(o){var r=t.marks[o];return i(o,typeof r!="string"?r:{label:r})}):Array.isArray(this.marks)?this.marks.map(function(o){return i(o)}):typeof this.marks=="function"?this.getValues().map(function(o){return{value:o,result:t.marks(o)}}).filter(function(o){var r=o.result;return!!r}).map(function(o){var r=o.value,s=o.result;return i(r,s)}):[]}},{key:"processArray",get:function(){if(this.process){if(typeof this.process=="function")return this.process(this.dotsPos);if(this.dotsPos.length===1)return[[0,this.dotsPos[0]]];if(this.dotsPos.length>1)return[[Math.min.apply(Math,st(this.dotsPos)),Math.max.apply(Math,st(this.dotsPos))]]}return[]}},{key:"total",get:function(){var t=0;return t=this.data?this.data.length-1:new et(this.max).minus(this.min).divide(this.interval).toNumber(),t-Math.floor(t)!==0?(this.emitError(K.INTERVAL),0):t}},{key:"gap",get:function(){return 100/this.total}},{key:"minRangeDir",get:function(){return this.cacheRangeDir[this.minRange]?this.cacheRangeDir[this.minRange]:this.cacheRangeDir[this.minRange]=this.getRangeDir(this.minRange)}},{key:"maxRangeDir",get:function(){return this.cacheRangeDir[this.maxRange]?this.cacheRangeDir[this.maxRange]:this.cacheRangeDir[this.maxRange]=this.getRangeDir(this.maxRange)}},{key:"valuePosRange",get:function(){var t=this,i=this.dotsPos,o=[];return i.forEach(function(r,s){o.push([Math.max(t.minRange?t.minRangeDir*s:0,t.enableCross?0:i[s-1]||0,t.getDotRange(s,"min",0)),Math.min(t.minRange?100-t.minRangeDir*(i.length-1-s):100,t.enableCross?100:i[s+1]||100,t.getDotRange(s,"max",100))])}),o}},{key:"dotsIndex",get:function(){var t=this;return this.dotsValue.map(function(i){return t.getIndexByValue(i)})}}]),e}();function de(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function Ct(e,t){for(var i=0;i<t.length;i++){var o=t[i];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}function he(e,t,i){return t&&Ct(e.prototype,t),i&&Ct(e,i),e}var fe=function(){function e(t){de(this,e),this.states=0,this.map=t}return he(e,[{key:"add",value:function(t){this.states|=t}},{key:"delete",value:function(t){this.states&=~t}},{key:"toggle",value:function(t){this.has(t)?this.delete(t):this.add(t)}},{key:"has",value:function(t){return!!(this.states&t)}}]),e}();p("4abb");function bt(e,t){return me(e)||ve(e,t)||Tt(e,t)||pe()}function pe(){throw new TypeError(`Invalid attempt to destructure non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)}function ve(e,t){if(typeof Symbol<"u"&&Symbol.iterator in Object(e)){var i=[],o=!0,r=!1,s=void 0;try{for(var a,y=e[Symbol.iterator]();!(o=(a=y.next()).done)&&(i.push(a.value),!(t&&i.length===t));o=!0);}catch(k){r=!0,s=k}finally{try{o||y.return==null||y.return()}finally{if(r)throw s}}return i}}function me(e){if(Array.isArray(e))return e}function At(e,t){var i=Object.keys(e);if(Object.getOwnPropertySymbols){var o=Object.getOwnPropertySymbols(e);t&&(o=o.filter(function(r){return Object.getOwnPropertyDescriptor(e,r).enumerable})),i.push.apply(i,o)}return i}function ut(e){for(var t=1;t<arguments.length;t++){var i=arguments[t]!=null?arguments[t]:{};t%2?At(Object(i),!0).forEach(function(o){q(e,o,i[o])}):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(i)):At(Object(i)).forEach(function(o){Object.defineProperty(e,o,Object.getOwnPropertyDescriptor(i,o))})}return e}function q(e,t,i){return t in e?Object.defineProperty(e,t,{value:i,enumerable:!0,configurable:!0,writable:!0}):e[t]=i,e}function xt(e){return be(e)||ge(e)||Tt(e)||ye()}function ye(){throw new TypeError(`Invalid attempt to spread non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)}function Tt(e,t){if(e){if(typeof e=="string")return kt(e,t);var i=Object.prototype.toString.call(e).slice(8,-1);return i==="Object"&&e.constructor&&(i=e.constructor.name),i==="Map"||i==="Set"?Array.from(e):i==="Arguments"||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(i)?kt(e,t):void 0}}function ge(e){if(typeof Symbol<"u"&&Symbol.iterator in Object(e))return Array.from(e)}function be(e){if(Array.isArray(e))return kt(e)}function kt(e,t){(t==null||t>e.length)&&(t=e.length);for(var i=0,o=new Array(t);i<t;i++)o[i]=e[i];return o}function ht(e){return ht=typeof Symbol=="function"&&typeof Symbol.iterator=="symbol"?function(t){return typeof t}:function(t){return t&&typeof Symbol=="function"&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},ht(e)}function xe(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function $t(e,t){for(var i=0;i<t.length;i++){var o=t[i];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}function ke(e,t,i){return t&&$t(e.prototype,t),i&&$t(e,i),e}function we(e,t){if(typeof t!="function"&&t!==null)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&wt(e,t)}function wt(e,t){return wt=Object.setPrototypeOf||function(i,o){return i.__proto__=o,i},wt(e,t)}function Se(e){var t=De();return function(){var i,o=ft(e);if(t){var r=ft(this).constructor;i=Reflect.construct(o,arguments,r)}else i=o.apply(this,arguments);return _e(this,i)}}function _e(e,t){return!t||ht(t)!=="object"&&typeof t!="function"?Oe(e):t}function Oe(e){if(e===void 0)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function De(){if(typeof Reflect>"u"||!Reflect.construct||Reflect.construct.sham)return!1;if(typeof Proxy=="function")return!0;try{return Date.prototype.toString.call(Reflect.construct(Date,[],function(){})),!0}catch{return!1}}function ft(e){return ft=Object.setPrototypeOf?Object.getPrototypeOf:function(t){return t.__proto__||Object.getPrototypeOf(t)},ft(e)}var H={None:0,Drag:2,Focus:4},St=4,Pe=function(){var e=function(t){we(o,t);var i=Se(o);function o(){var r;return xe(this,o),r=i.apply(this,arguments),r.states=new fe(H),r.scale=1,r.focusDotIndex=0,r}return ke(o,[{key:"isObjectData",value:function(r){return!!r&&Object.prototype.toString.call(r)==="[object Object]"}},{key:"isObjectArrayData",value:function(r){return!!r&&Array.isArray(r)&&r.length>0&&ht(r[0])==="object"}},{key:"onValueChanged",value:function(){this.control&&!this.states.has(H.Drag)&&this.isNotSync&&(this.control.setValue(this.value),this.syncValueByPos())}},{key:"created",value:function(){this.initControl()}},{key:"mounted",value:function(){this.bindEvent()}},{key:"beforeDestroy",value:function(){this.unbindEvent()}},{key:"bindEvent",value:function(){document.addEventListener("touchmove",this.dragMove,{passive:!1}),document.addEventListener("touchend",this.dragEnd,{passive:!1}),document.addEventListener("mousedown",this.blurHandle),document.addEventListener("mousemove",this.dragMove,{passive:!1}),document.addEventListener("mouseup",this.dragEnd),document.addEventListener("mouseleave",this.dragEnd),document.addEventListener("keydown",this.keydownHandle)}},{key:"unbindEvent",value:function(){document.removeEventListener("touchmove",this.dragMove),document.removeEventListener("touchend",this.dragEnd),document.removeEventListener("mousedown",this.blurHandle),document.removeEventListener("mousemove",this.dragMove),document.removeEventListener("mouseup",this.dragEnd),document.removeEventListener("mouseleave",this.dragEnd),document.removeEventListener("keydown",this.keydownHandle)}},{key:"setScale",value:function(){var r=new et(Math.floor(this.isHorizontal?this.$refs.rail.offsetWidth:this.$refs.rail.offsetHeight));this.zoom!==void 0&&r.multiply(this.zoom),r.divide(100),this.scale=r.toNumber()}},{key:"initControl",value:function(){var r=this;this.control=new ce({value:this.value,data:this.sliderData,enableCross:this.enableCross,fixed:this.fixed,max:this.max,min:this.min,interval:this.interval,minRange:this.minRange,maxRange:this.maxRange,order:this.order,marks:this.sliderMarks,included:this.included,process:this.process,adsorb:this.adsorb,dotOptions:this.dotOptions,onError:this.emitError}),this.syncValueByPos(),["data","enableCross","fixed","max","min","interval","minRange","maxRange","order","marks","process","adsorb","included","dotOptions"].forEach(function(s){r.$watch(s,function(a){if(s==="data"&&Array.isArray(r.control.data)&&Array.isArray(a)&&r.control.data.length===a.length&&a.every(function(y,k){return y===r.control.data[k]}))return!1;switch(s){case"data":case"dataLabel":case"dataValue":r.control.data=r.sliderData;break;case"mark":r.control.marks=r.sliderMarks;break;default:r.control[s]=a}["data","max","min","interval"].indexOf(s)>-1&&r.control.syncDotsPos()})})}},{key:"syncValueByPos",value:function(){var r=this.control.dotsValue;this.isDiff(r,Array.isArray(this.value)?this.value:[this.value])&&this.$emit("change",r.length===1?r[0]:xt(r),this.focusDotIndex)}},{key:"isDiff",value:function(r,s){return r.length!==s.length||r.some(function(a,y){return a!==s[y]})}},{key:"emitError",value:function(r,s){this.silent||console.error("[VueSlider error]: ".concat(s)),this.$emit("error",r,s)}},{key:"dragStartOnProcess",value:function(r){if(this.dragOnClick){this.setScale();var s=this.getPosByEvent(r),a=this.control.getRecentDot(s);if(this.dots[a].disabled)return;this.dragStart(a),this.control.setDotPos(s,this.focusDotIndex),this.lazy||this.syncValueByPos()}}},{key:"dragStart",value:function(r){this.focusDotIndex=r,this.setScale(),this.states.add(H.Drag),this.states.add(H.Focus),this.$emit("drag-start",this.focusDotIndex)}},{key:"dragMove",value:function(r){if(!this.states.has(H.Drag))return!1;r.preventDefault();var s=this.getPosByEvent(r);this.isCrossDot(s),this.control.setDotPos(s,this.focusDotIndex),this.lazy||this.syncValueByPos();var a=this.control.dotsValue;this.$emit("dragging",a.length===1?a[0]:xt(a),this.focusDotIndex)}},{key:"isCrossDot",value:function(r){if(this.canSort){var s=this.focusDotIndex,a=r;if(a>this.dragRange[1]?(a=this.dragRange[1],this.focusDotIndex++):a<this.dragRange[0]&&(a=this.dragRange[0],this.focusDotIndex--),s!==this.focusDotIndex){var y=this.$refs["dot-".concat(this.focusDotIndex)];y&&y.$el&&y.$el.focus(),this.control.setDotPos(a,s)}}}},{key:"dragEnd",value:function(r){var s=this;if(!this.states.has(H.Drag))return!1;setTimeout(function(){s.lazy&&s.syncValueByPos(),s.included&&s.isNotSync?s.control.setValue(s.value):s.control.syncDotsPos(),s.states.delete(H.Drag),s.useKeyboard&&!("targetTouches"in r)||s.states.delete(H.Focus),s.$emit("drag-end",s.focusDotIndex)})}},{key:"blurHandle",value:function(r){if(!this.states.has(H.Focus)||!this.$refs.container||this.$refs.container.contains(r.target))return!1;this.states.delete(H.Focus)}},{key:"clickHandle",value:function(r){if(!this.clickable||this.disabled)return!1;if(!this.states.has(H.Drag)){this.setScale();var s=this.getPosByEvent(r);this.setValueByPos(s)}}},{key:"focus",value:function(){var r=arguments.length>0&&arguments[0]!==void 0?arguments[0]:0;this.states.add(H.Focus),this.focusDotIndex=r}},{key:"blur",value:function(){this.states.delete(H.Focus)}},{key:"getValue",value:function(){var r=this.control.dotsValue;return r.length===1?r[0]:r}},{key:"getIndex",value:function(){var r=this.control.dotsIndex;return r.length===1?r[0]:r}},{key:"setValue",value:function(r){this.control.setValue(Array.isArray(r)?xt(r):[r]),this.syncValueByPos()}},{key:"setIndex",value:function(r){var s=this,a=Array.isArray(r)?r.map(function(y){return s.control.getValueByIndex(y)}):this.control.getValueByIndex(r);this.setValue(a)}},{key:"setValueByPos",value:function(r){var s=this,a=this.control.getRecentDot(r);if(this.disabled||this.dots[a].disabled)return!1;this.focusDotIndex=a,this.control.setDotPos(r,a),this.syncValueByPos(),this.useKeyboard&&this.states.add(H.Focus),setTimeout(function(){s.included&&s.isNotSync?s.control.setValue(s.value):s.control.syncDotsPos()})}},{key:"keydownHandle",value:function(r){var s=this;if(!this.useKeyboard||!this.states.has(H.Focus))return!1;var a=this.included&&this.marks,y=Yt(r,{direction:this.direction,max:a?this.control.markList.length-1:this.control.total,min:0,hook:this.keydownHook});if(y){r.preventDefault();var k=-1,T=0;a?(this.control.markList.some(function(J,ot){return J.value===s.control.dotsValue[s.focusDotIndex]&&(k=y(ot),!0)}),k<0?k=0:k>this.control.markList.length-1&&(k=this.control.markList.length-1),T=this.control.markList[k].pos):(k=y(this.control.getIndexByValue(this.control.dotsValue[this.focusDotIndex])),T=this.control.parseValue(this.control.getValueByIndex(k))),this.isCrossDot(T),this.control.setDotPos(T,this.focusDotIndex),this.syncValueByPos()}}},{key:"getPosByEvent",value:function(r){return Kt(r,this.$refs.rail,this.isReverse,this.zoom)[this.isHorizontal?"x":"y"]/this.scale}},{key:"renderSlot",value:function(r,s,a,y){var k=this.$createElement,T=this.$scopedSlots[r];return T?y?T(s):k("template",{slot:r},[T(s)]):a}},{key:"render",value:function(){var r=this,s=arguments[0];return s("div",j()([{ref:"container",class:this.containerClasses,style:this.containerStyles,on:{click:this.clickHandle,touchstart:this.dragStartOnProcess,mousedown:this.dragStartOnProcess}},this.$attrs]),[s("div",{ref:"rail",class:"vue-slider-rail",style:this.railStyle},[this.processArray.map(function(a,y){return r.renderSlot("process",a,s("div",{class:"vue-slider-process",key:"process-".concat(y),style:a.style}),!0)}),this.sliderMarks?s("div",{class:"vue-slider-marks"},[this.control.markList.map(function(a,y){var k;return r.renderSlot("mark",a,s("vue-slider-mark",{key:"mark-".concat(y),attrs:{mark:a,hideLabel:r.hideLabel,stepStyle:r.stepStyle,stepActiveStyle:r.stepActiveStyle,labelStyle:r.labelStyle,labelActiveStyle:r.labelActiveStyle},style:(k={},q(k,r.isHorizontal?"height":"width","100%"),q(k,r.isHorizontal?"width":"height",r.tailSize),q(k,r.mainDirection,"".concat(a.pos,"%")),k),on:{pressLabel:function(T){return r.clickable&&r.setValueByPos(T)}}},[r.renderSlot("step",a,null),r.renderSlot("label",a,null)]),!0)})]):null,this.dots.map(function(a,y){var k;return s("vue-slider-dot",{ref:"dot-".concat(y),key:"dot-".concat(y),attrs:ut({value:a.value,disabled:a.disabled,focus:a.focus,"dot-style":[a.style,a.disabled?a.disabledStyle:null,a.focus?a.focusStyle:null],tooltip:a.tooltip||r.tooltip,"tooltip-style":[r.tooltipStyle,a.tooltipStyle,a.disabled?a.tooltipDisabledStyle:null,a.focus?a.tooltipFocusStyle:null],"tooltip-formatter":Array.isArray(r.sliderTooltipFormatter)?r.sliderTooltipFormatter[y]:r.sliderTooltipFormatter,"tooltip-placement":r.tooltipDirections[y],role:"slider","aria-valuenow":a.value,"aria-valuemin":r.min,"aria-valuemax":r.max,"aria-orientation":r.isHorizontal?"horizontal":"vertical",tabindex:"0"},r.dotAttrs),style:[r.dotBaseStyle,(k={},q(k,r.mainDirection,"".concat(a.pos,"%")),q(k,"transition","".concat(r.mainDirection," ").concat(r.animateTime,"s")),k)],on:{"drag-start":function(){return r.dragStart(y)}},nativeOn:{focus:function(){return!a.disabled&&r.focus(y)},blur:function(){return r.blur()}}},[r.renderSlot("dot",a,null),r.renderSlot("tooltip",a,null)])}),this.renderSlot("default",{value:this.getValue()},null,!0)])])}},{key:"tailSize",get:function(){return lt((this.isHorizontal?this.height:this.width)||St)}},{key:"containerClasses",get:function(){return["vue-slider",["vue-slider-".concat(this.direction)],{"vue-slider-disabled":this.disabled}]}},{key:"containerStyles",get:function(){var r=Array.isArray(this.dotSize)?this.dotSize:[this.dotSize,this.dotSize],s=bt(r,2),a=s[0],y=s[1],k=this.width?lt(this.width):this.isHorizontal?"auto":lt(St),T=this.height?lt(this.height):this.isHorizontal?lt(St):"auto";return{padding:this.contained?"".concat(y/2,"px ").concat(a/2,"px"):this.isHorizontal?"".concat(y/2,"px 0"):"0 ".concat(a/2,"px"),width:k,height:T}}},{key:"processArray",get:function(){var r=this;return this.control.processArray.map(function(s,a){var y,k=bt(s,3),T=k[0],J=k[1],ot=k[2];if(T>J){var pt=[J,T];T=pt[0],J=pt[1]}var rt=r.isHorizontal?"width":"height";return{start:T,end:J,index:a,style:ut(ut((y={},q(y,r.isHorizontal?"height":"width","100%"),q(y,r.isHorizontal?"top":"left",0),q(y,r.mainDirection,"".concat(T,"%")),q(y,rt,"".concat(J-T,"%")),q(y,"transitionProperty","".concat(rt,",").concat(r.mainDirection)),q(y,"transitionDuration","".concat(r.animateTime,"s")),y),r.processStyle),ot)}})}},{key:"dotBaseStyle",get:function(){var r,s=Array.isArray(this.dotSize)?this.dotSize:[this.dotSize,this.dotSize],a=bt(s,2),y=a[0],k=a[1];return r=this.isHorizontal?q({transform:"translate(".concat(this.isReverse?"50%":"-50%",", -50%)"),"-WebkitTransform":"translate(".concat(this.isReverse?"50%":"-50%",", -50%)"),top:"50%"},this.direction==="ltr"?"left":"right","0"):q({transform:"translate(-50%, ".concat(this.isReverse?"50%":"-50%",")"),"-WebkitTransform":"translate(-50%, ".concat(this.isReverse?"50%":"-50%",")"),left:"50%"},this.direction==="btt"?"bottom":"top","0"),ut({width:"".concat(y,"px"),height:"".concat(k,"px")},r)}},{key:"mainDirection",get:function(){switch(this.direction){case"ltr":return"left";case"rtl":return"right";case"btt":return"bottom";case"ttb":return"top"}}},{key:"isHorizontal",get:function(){return this.direction==="ltr"||this.direction==="rtl"}},{key:"isReverse",get:function(){return this.direction==="rtl"||this.direction==="btt"}},{key:"tooltipDirections",get:function(){var r=this.tooltipPlacement||(this.isHorizontal?"top":"left");return Array.isArray(r)?r:this.dots.map(function(){return r})}},{key:"dots",get:function(){var r=this;return this.control.dotsPos.map(function(s,a){return ut({pos:s,index:a,value:r.control.dotsValue[a],focus:r.states.has(H.Focus)&&r.focusDotIndex===a,disabled:r.disabled,style:r.dotStyle},(Array.isArray(r.dotOptions)?r.dotOptions[a]:r.dotOptions)||{})})}},{key:"animateTime",get:function(){return this.states.has(H.Drag)?0:this.duration}},{key:"canSort",get:function(){return this.order&&!this.minRange&&!this.maxRange&&!this.fixed&&this.enableCross}},{key:"sliderData",get:function(){var r=this;return this.isObjectArrayData(this.data)?this.data.map(function(s){return s[r.dataValue]}):this.isObjectData(this.data)?Object.keys(this.data):this.data}},{key:"sliderMarks",get:function(){var r=this;return this.marks?this.marks:this.isObjectArrayData(this.data)?function(s){var a={label:s};return r.data.some(function(y){return y[r.dataValue]===s&&(a.label=y[r.dataLabel],!0)}),a}:this.isObjectData(this.data)?this.data:void 0}},{key:"sliderTooltipFormatter",get:function(){var r=this;if(this.tooltipFormatter)return this.tooltipFormatter;if(this.isObjectArrayData(this.data))return function(a){var y=""+a;return r.data.some(function(k){return k[r.dataValue]===a&&(y=k[r.dataLabel],!0)}),y};if(this.isObjectData(this.data)){var s=this.data;return function(a){return s[a]}}}},{key:"isNotSync",get:function(){var r=this.control.dotsValue;return Array.isArray(this.value)?this.value.length!==r.length||this.value.some(function(s,a){return s!==r[a]}):this.value!==r[0]}},{key:"dragRange",get:function(){var r=this.dots[this.focusDotIndex-1],s=this.dots[this.focusDotIndex+1];return[r?r.pos:-1/0,s?s.pos:1/0]}}]),o}(D.a);return f([F("change",{default:0})],e.prototype,"value",void 0),f([v({type:Boolean,default:!1})],e.prototype,"silent",void 0),f([v({default:"ltr",validator:function(t){return["ltr","rtl","ttb","btt"].indexOf(t)>-1}})],e.prototype,"direction",void 0),f([v({type:[Number,String]})],e.prototype,"width",void 0),f([v({type:[Number,String]})],e.prototype,"height",void 0),f([v({default:14})],e.prototype,"dotSize",void 0),f([v({default:!1})],e.prototype,"contained",void 0),f([v({type:Number,default:0})],e.prototype,"min",void 0),f([v({type:Number,default:100})],e.prototype,"max",void 0),f([v({type:Number,default:1})],e.prototype,"interval",void 0),f([v({type:Boolean,default:!1})],e.prototype,"disabled",void 0),f([v({type:Boolean,default:!0})],e.prototype,"clickable",void 0),f([v({type:Boolean,default:!1})],e.prototype,"dragOnClick",void 0),f([v({type:Number,default:.5})],e.prototype,"duration",void 0),f([v({type:[Object,Array]})],e.prototype,"data",void 0),f([v({type:String,default:"value"})],e.prototype,"dataValue",void 0),f([v({type:String,default:"label"})],e.prototype,"dataLabel",void 0),f([v({type:Boolean,default:!1})],e.prototype,"lazy",void 0),f([v({type:String,validator:function(t){return["none","always","focus","hover","active"].indexOf(t)>-1},default:"active"})],e.prototype,"tooltip",void 0),f([v({type:[String,Array],validator:function(t){return(Array.isArray(t)?t:[t]).every(function(i){return["top","right","bottom","left"].indexOf(i)>-1})}})],e.prototype,"tooltipPlacement",void 0),f([v({type:[String,Array,Function]})],e.prototype,"tooltipFormatter",void 0),f([v({type:Boolean,default:!0})],e.prototype,"useKeyboard",void 0),f([v(Function)],e.prototype,"keydownHook",void 0),f([v({type:Boolean,default:!0})],e.prototype,"enableCross",void 0),f([v({type:Boolean,default:!1})],e.prototype,"fixed",void 0),f([v({type:Boolean,default:!0})],e.prototype,"order",void 0),f([v(Number)],e.prototype,"minRange",void 0),f([v(Number)],e.prototype,"maxRange",void 0),f([v({type:[Boolean,Object,Array,Function],default:!1})],e.prototype,"marks",void 0),f([v({type:[Boolean,Function],default:!0})],e.prototype,"process",void 0),f([v({type:[Number]})],e.prototype,"zoom",void 0),f([v(Boolean)],e.prototype,"included",void 0),f([v(Boolean)],e.prototype,"adsorb",void 0),f([v(Boolean)],e.prototype,"hideLabel",void 0),f([v()],e.prototype,"dotOptions",void 0),f([v()],e.prototype,"dotAttrs",void 0),f([v()],e.prototype,"railStyle",void 0),f([v()],e.prototype,"processStyle",void 0),f([v()],e.prototype,"dotStyle",void 0),f([v()],e.prototype,"tooltipStyle",void 0),f([v()],e.prototype,"stepStyle",void 0),f([v()],e.prototype,"stepActiveStyle",void 0),f([v()],e.prototype,"labelStyle",void 0),f([v()],e.prototype,"labelActiveStyle",void 0),f([N("value")],e.prototype,"onValueChanged",null),e=f([x()({name:"VueSlider",data:function(){return{control:null}},components:{VueSliderDot:X,VueSliderMark:yt}})],e),e}(),_t=Pe;_t.VueSliderMark=yt,_t.VueSliderDot=X;var Ve=_t;c.default=Ve}}).default})})(Bt);const Ne=$e(Bt.exports);var Be=Object.defineProperty,ze=Object.getOwnPropertyDescriptor,Y=(d,n,h,u)=>{for(var c=u>1?void 0:u?ze(n,h):n,p=d.length-1,l;p>=0;p--)(l=d[p])&&(c=(u?l(n,h,c):l(c))||c);return u&&c&&Be(n,h,c),c};let W=class extends vt{constructor(){super(...arguments);_(this,"$refs");_(this,"width");_(this,"value");_(this,"min");_(this,"max");_(this,"interval");_(this,"tooltip");_(this,"prefix");_(this,"suffix");_(this,"disabled");_(this,"data");_(this,"simpleTheme");_(this,"displayValue",1);_(this,"debounced",!1);_(this,"ro")}updateLocalValue(){this.displayValue=this.value}created(){this.$on("input",this.setValue)}mounted(){this.ro=new Le((n,h)=>{for(let u of n)u.contentRect,this.debounced||this.debounce().then(()=>{var c;(c=this.$refs)!=null&&c.slider})}),this.ro.observe(this.$refs.slider.$el),this.displayValue=this.value}beforeDestroy(){this.ro.unobserve(this.$refs.slider.$el)}destroyed(){this.$off("input",this.setValue)}emitInput(n){this.$emit("input",n)}setValue(n){this.displayValue=n}debounce(){return new Promise(n=>{this.debounced||(this.debounced=!0,setTimeout(()=>{this.debounced=!1,n()},500))})}};Y([Nt("value")],W.prototype,"updateLocalValue",1);Y([A()],W.prototype,"width",2);Y([A({default:1})],W.prototype,"value",2);Y([A({default:0})],W.prototype,"min",2);Y([A({default:100})],W.prototype,"max",2);Y([A({default:1})],W.prototype,"interval",2);Y([A({default:"always"})],W.prototype,"tooltip",2);Y([A({default:""})],W.prototype,"prefix",2);Y([A({default:""})],W.prototype,"suffix",2);Y([A({default:!1})],W.prototype,"disabled",2);Y([A()],W.prototype,"data",2);Y([A({default:!1})],W.prototype,"simpleTheme",2);W=Y([Dt({components:{VueSliderComponent:Ne}})],W);var He=function(){var n=this,h=n._self._c;return n._self._setupProxy,h("vue-slider-component",{ref:"slider",staticClass:"s-slider",class:{"s-slider--simple":n.simpleTheme,"s-slider--has-tooltip":n.tooltip==="always"},attrs:{width:n.width,height:8,"dot-size":[24,16],tooltip:n.tooltip,"tooltip-placement":"bottom",min:n.min,max:n.max,interval:n.interval,value:n.displayValue,"tooltip-formatter":n.prefix+"{value}"+n.suffix,data:n.data,disabled:n.disabled},on:{change:u=>n.emitInput(u)}})},Ue=[],Fe=Pt(W,He,Ue,!1,null,null,null,null);const We=Fe.exports;var qe=Object.defineProperty,Ge=Object.getOwnPropertyDescriptor,U=(d,n,h,u)=>{for(var c=u>1?void 0:u?Ge(n,h):n,p=d.length-1,l;p>=0;p--)(l=d[p])&&(c=(u?l(n,h,c):l(c))||c);return u&&c&&qe(n,h,c),c};let B=class extends vt{constructor(){super(...arguments);_(this,"$refs");_(this,"isDragging",!1);_(this,"size",0);_(this,"currentValue",0);_(this,"lazy",!1);_(this,"offset",null);_(this,"range",[]);_(this,"currentWidth",0);_(this,"currentHeight",0);_(this,"bounced",!1);_(this,"halt",!1);_(this,"interval");_(this,"steps");_(this,"data");_(this,"dataIndexing");_(this,"value");_(this,"min");_(this,"max");_(this,"tooltip");_(this,"suffix");_(this,"prefix");_(this,"simpleTheme");_(this,"marks");_(this,"labels");_(this,"isDisabled");_(this,"draggable")}get val(){return this.dataIndexing?this.data?this.data.indexOf(this.data[this.currentValue]):this.currentValue:this.data?this.data[this.currentValue]:this.currentValue}set val(n){if(this.data){let h=this.data.indexOf(n);h>-1&&(this.currentValue=h)}else this.currentValue=n}get displayValue(){return this.data?this.dataIndexing?this.data[this.currentIndex]:this.currentValue:this.currentValue}get currentIndex(){return(this.currentValue-this.minimum)/this.spacing}get indexRange(){return[0,this.currentIndex]}get minimum(){return this.data?0:this.min}get maximum(){return this.data?this.data.length-1:this.max}get spacing(){return this.data?1:this.interval}get multiple(){let n=`${this.interval}`.split(".")[1];return n?Math.pow(10,n.length):1}get total(){return this.data?this.data.length-1:(Math.floor((this.maximum-this.minimum)*this.multiple)%(this.interval*this.multiple)!==0&&console.error("[ERROR]: Prop[interval] must be a divisor of [max] - [min]"),(this.maximum-this.minimum)/this.interval)}get gap(){return this.size/this.total}get position(){return(this.currentValue-this.minimum)/this.spacing*this.gap}get limit(){return[0,this.size]}get valueLimit(){return[this.minimum,this.maximum]}watchValue(n){this.setValue(n)}debounce(){return new Promise(n=>{this.bounced||(this.bounced=!0,setTimeout(()=>{this.bounced=!1,n()},100))})}dnr(){this.debounce().then(()=>{let n=this.$refs.elem.getBoundingClientRect(),h=n.width,u=n.height;(h!=this.currentWidth||u!=this.currentHeight)&&(this.currentWidth=h,this.currentHeight=u,this.refresh(this.$refs.elem))})}resizeSensor(n){let h=document.createElement("div");h.classList.add("s-slider-expand-watch"),h.style.position="absolute",h.style.left="0px",h.style.top="0px",h.style.right="0px",h.style.bottom="0px",h.style.overflow="hidden",h.style.visibility="hidden";let u=document.createElement("div");u.style.position="absolute",u.style.left="0px",u.style.top="0px",u.style.width="10000000px",u.style.height="10000000px",h.appendChild(u);let c=document.createElement("div");c.classList.add("s-slider-shrink-watch"),c.style.position="absolute",c.style.left="0px",c.style.top="0px",c.style.right="0px",c.style.bottom="0px",c.style.overflow="hidden",c.style.visibility="hidden";let p=document.createElement("div");p.style.position="absolute",p.style.left="0px",p.style.top="0px",p.style.width="200%",p.style.height="200%",c.appendChild(p),n.appendChild(h),n.appendChild(c),this.setSensorScroll(this.$refs.elem);let l=n.getBoundingClientRect();this.currentWidth=l.width,this.currentHeight=l.height}setSensorScroll(n){n.querySelector(".s-slider-expand-watch").scrollLeft=1e7,n.querySelector(".s-slider-expand-watch").scrollTop=1e7,n.querySelector(".s-slider-shrink-watch").scrollLeft=1e7,n.querySelector(".s-slider-shrink-watch").scrollTop=1e7}bindEvents(n){document.addEventListener("mousemove",this.moving),document.addEventListener("mouseup",this.moveEnd),document.addEventListener("mouseleave",this.moveEnd),n.querySelector(".s-slider-shrink-watch").addEventListener("scroll",this.dnr),n.querySelector(".s-slider-expand-watch").addEventListener("scroll",this.dnr)}unbindEvents(n){document.removeEventListener("mousemove",this.moving),document.removeEventListener("mouseup",this.moveEnd),document.removeEventListener("mouseleave",this.moveEnd),n.querySelector(".s-slider-shrink-watch").removeEventListener("scroll",this.dnr),n.querySelector(".s-slider-expand-watch").removeEventListener("scroll",this.dnr)}getPos(n){return n.clientX-this.offset}wrapClick(n){if(this.isDisabled)return!1;let h=this.getPos(n);this.setValueOnPos(h,!1),this.isDragging||this.setTransform(this.position)}moveStart(){if(!this.draggable)return!1;this.isDragging=!0,this.$emit("dragStart",this)}moving(n){if(!this.isDragging||!this.draggable)return!1;n.preventDefault(),this.setValueOnPos(this.getPos(n),!0),this.halt||this.setTransform(this.getPos(n))}moveEnd(n){if(this.isDragging&&this.draggable)this.$emit("dragEnd",this),this.setValue(this.limitValue(this.value)),this.setTransitionTime(.125),this.setTransform(this.position),this.isDragging=!1,this.lazy&&this.isDiff(this.val,this.value)&&this.syncValue();else return!1}setValueOnPos(n,h){let u=this.limit,c=this.valueLimit;if(n>=u[0]&&n<=u[1]){this.halt=!1;let p=(Math.round(n/this.gap)*(this.spacing*this.multiple)+this.minimum*this.multiple)/this.multiple;this.setCurrentValue(p,h)}else n<u[0]?(this.halt=!0,console.log("overshoot1"),this.setTransform(u[0]),this.setCurrentValue(c[0],!0)):(this.halt=!0,console.log("overshoot2"),this.setTransform(u[1]),this.setCurrentValue(c[1],!0))}createMarks(){if(Array.isArray(this.data)){let n=this.data.length;for(let h=0;h<n;h++)this.range.push(this.data[h])}else if(Math.floor((this.maximum-this.minimum)*this.multiple)%(this.interval*this.multiple)!==0)console.error("[ERROR]: Prop[interval] must be a divisor of [max] - [min]");else{let n=(this.max-this.min)/this.interval,h=0-this.interval;for(let u=-1;u<n;u++)h=h+this.interval,this.range.push(h)}}isDiff(n,h){return Object.prototype.toString.call(n)!==Object.prototype.toString.call(h)?!0:Array.isArray(n)&&n.length===h.length?n.some((u,c)=>u!==h[c]):n!==h}setCurrentValue(n,h){if(n<this.minimum||n>this.maximum)return!1;this.isDiff(this.currentValue,n)&&(this.currentValue=n,(!this.lazy||!this.isDragging)&&this.syncValue())}setIndex(n){n=this.spacing*n+this.minimum,this.setCurrentValue(n,!0)}setValue(n){if(this.isDiff(this.val,n)){let h=this.limitValue(n);this.val=h,this.syncValue()}}setTransform(n){let u=`translateX(${n-(this.$refs.handle.scrollWidth-2)/2}px)`;this.$refs.handle.style.transform=u,this.$refs.handle.style.webkitTransform=u,this.$refs.handle.style.transform=u,this.$refs.process.style.width=`${n}px`}setTransitionTime(n){this.$refs.handle.style.transitionDuration=`${n}s`,this.$refs.handle.style.webkitTransitionDuration=`${n}s`,this.$refs.process.style.transitionDuration=`${n}s`,this.$refs.process.style.webkitTransitionDuration=`${n}s`}limitValue(n){return this.data?n:(u=>u<this.min?this.min:u>this.max?this.max:u)(n)}syncValue(){let n=this.val;this.range&&this.$emit("callbackRange",this.range[this.currentIndex]),this.$emit("input",n)}getValue(){return this.val}getIndex(){return this.currentIndex}getStaticData(){this.$refs.elem&&(this.size=this.$refs.elem.offsetWidth,this.offset=this.$refs.elem.getBoundingClientRect().left)}refresh(n){n&&(this.getStaticData(),this.setTransform(this.position),this.setSensorScroll(n))}mounted(){this.steps!==0&&console.error("[ERROR]: Prop[steps] has been replaced with Prop[interval]"),this.getStaticData(),this.setValue(this.limitValue(this.value)),this.setTransform(this.position),this.marks&&this.createMarks(),this.$refs.elem&&(this.resizeSensor(this.$refs.elem),this.bindEvents(this.$refs.elem))}updated(){this.isDragging?this.setTransitionTime(0):this.setTransitionTime(.25)}beforeDestroy(){this.$refs.elem&&this.unbindEvents(this.$refs.elem)}};U([A({default:1})],B.prototype,"interval",2);U([A({default:0})],B.prototype,"steps",2);U([A({default:null})],B.prototype,"data",2);U([A({default:!0})],B.prototype,"dataIndexing",2);U([A({default:0})],B.prototype,"value",2);U([A({default:0})],B.prototype,"min",2);U([A({default:100})],B.prototype,"max",2);U([A({default:"always"})],B.prototype,"tooltip",2);U([A({default:null})],B.prototype,"suffix",2);U([A({default:null})],B.prototype,"prefix",2);U([A({default:!1})],B.prototype,"simpleTheme",2);U([A({default:!1})],B.prototype,"marks",2);U([A({default:!1})],B.prototype,"labels",2);U([A({default:!1})],B.prototype,"isDisabled",2);U([A({default:!0})],B.prototype,"draggable",2);U([Nt("value")],B.prototype,"watchValue",1);B=U([Dt({})],B);var Xe=function(){var n=this,h=n._self._c;return n._self._setupProxy,h("div",{ref:"wrap",staticClass:"s-slider",on:{click:n.wrapClick}},[h("div",{ref:"elem",staticClass:"s-slider-bar"},[[h("div",{ref:"handle",staticClass:"s-slider-dot-cont",on:{mousedown:n.moveStart}},[n._m(0),h("div",{staticClass:"s-slider-dot-tooltip"},[n._v(" "+n._s(n.prefix)+n._s(n.displayValue)+n._s(n.suffix)+" ")])])],h("div",{ref:"process",staticClass:"s-slider-process",class:{"s-slider-simple":n.simpleTheme}})],2),n.marks?h("div",{staticClass:"s-slider-mark-cont"},n._l(n.range,function(u,c){return h("transition-group",{key:c,staticClass:"s-slider-marks",attrs:{name:"s-slider--ani__ticks",tag:"div"}},[n.marks&&n.value!=n.range[c]?h("div",{key:"tick_lines",staticClass:"s-slider-tick"}):n._e(),n.labels&&n.value!=n.range[c]?h("div",{key:"tick_values",staticClass:"s-slider-label"},[n._v(" "+n._s(n.prefix)+n._s(n.range[c])+n._s(n.suffix)+" ")]):n._e()])}),1):n._e()])},Ke=[function(){var d=this,n=d._self._c;return d._self._setupProxy,n("div",{staticClass:"s-slider-dot"},[n("div",{staticClass:"s-slider-dot-handle"})])}],Ye=Pt(B,Xe,Ke,!1,null,"0a2252c9",null,null);const Je=Ye.exports,Qe=`<template>
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { V as Vue, a as commonjsGlobal, g as getDefaultExportFromCjs, W as Watch, C as Component, P as Prop, n as normalizeComponent } from "./index.4fb8a6cb.js";
+import { i as index } from "./ResizeObserver.es.bd9ff68d.js";
+import { A as Accordion } from "./Accordion.09c82396.js";
+import { D as DemoSection } from "./DemoSection.79ee11c0.js";
+var vueSliderComponent_umd_min = { exports: {} };
+(function(module, exports) {
+  (function(t, e) {
+    module.exports = e(Vue);
+  })("undefined" !== typeof self ? self : commonjsGlobal, function(t) {
+    return function(t2) {
+      var e = {};
+      function r(n) {
+        if (e[n])
+          return e[n].exports;
+        var o = e[n] = { i: n, l: false, exports: {} };
+        return t2[n].call(o.exports, o, o.exports, r), o.l = true, o.exports;
+      }
+      return r.m = t2, r.c = e, r.d = function(t3, e2, n) {
+        r.o(t3, e2) || Object.defineProperty(t3, e2, { enumerable: true, get: n });
+      }, r.r = function(t3) {
+        "undefined" !== typeof Symbol && Symbol.toStringTag && Object.defineProperty(t3, Symbol.toStringTag, { value: "Module" }), Object.defineProperty(t3, "__esModule", { value: true });
+      }, r.t = function(t3, e2) {
+        if (1 & e2 && (t3 = r(t3)), 8 & e2)
+          return t3;
+        if (4 & e2 && "object" === typeof t3 && t3 && t3.__esModule)
+          return t3;
+        var n = /* @__PURE__ */ Object.create(null);
+        if (r.r(n), Object.defineProperty(n, "default", { enumerable: true, value: t3 }), 2 & e2 && "string" != typeof t3)
+          for (var o in t3)
+            r.d(n, o, function(e3) {
+              return t3[e3];
+            }.bind(null, o));
+        return n;
+      }, r.n = function(t3) {
+        var e2 = t3 && t3.__esModule ? function() {
+          return t3["default"];
+        } : function() {
+          return t3;
+        };
+        return r.d(e2, "a", e2), e2;
+      }, r.o = function(t3, e2) {
+        return Object.prototype.hasOwnProperty.call(t3, e2);
+      }, r.p = "", r(r.s = "fb15");
+    }({ "091b": function(t2, e, r) {
+      var n = r("24fb");
+      e = n(false), e.push([t2.i, ".vue-slider-dot{position:absolute;-webkit-transition:all 0s;transition:all 0s;z-index:5}.vue-slider-dot:focus{outline:none}.vue-slider-dot-tooltip{position:absolute;visibility:hidden}.vue-slider-dot-hover:hover .vue-slider-dot-tooltip,.vue-slider-dot-tooltip-show{visibility:visible}.vue-slider-dot-tooltip-top{top:-10px;left:50%;-webkit-transform:translate(-50%,-100%);transform:translate(-50%,-100%)}.vue-slider-dot-tooltip-bottom{bottom:-10px;left:50%;-webkit-transform:translate(-50%,100%);transform:translate(-50%,100%)}.vue-slider-dot-tooltip-left{left:-10px;top:50%;-webkit-transform:translate(-100%,-50%);transform:translate(-100%,-50%)}.vue-slider-dot-tooltip-right{right:-10px;top:50%;-webkit-transform:translate(100%,-50%);transform:translate(100%,-50%)}", ""]), t2.exports = e;
+    }, "24fb": function(t2, e, r) {
+      function n(t3, e2) {
+        var r2 = t3[1] || "", n2 = t3[3];
+        if (!n2)
+          return r2;
+        if (e2 && "function" === typeof btoa) {
+          var i = o(n2), a = n2.sources.map(function(t4) {
+            return "/*# sourceURL=".concat(n2.sourceRoot || "").concat(t4, " */");
+          });
+          return [r2].concat(a).concat([i]).join("\n");
+        }
+        return [r2].join("\n");
+      }
+      function o(t3) {
+        var e2 = btoa(unescape(encodeURIComponent(JSON.stringify(t3)))), r2 = "sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(e2);
+        return "/*# ".concat(r2, " */");
+      }
+      t2.exports = function(t3) {
+        var e2 = [];
+        return e2.toString = function() {
+          return this.map(function(e3) {
+            var r2 = n(e3, t3);
+            return e3[2] ? "@media ".concat(e3[2], " {").concat(r2, "}") : r2;
+          }).join("");
+        }, e2.i = function(t4, r2, n2) {
+          "string" === typeof t4 && (t4 = [[null, t4, ""]]);
+          var o2 = {};
+          if (n2)
+            for (var i = 0; i < this.length; i++) {
+              var a = this[i][0];
+              null != a && (o2[a] = true);
+            }
+          for (var s = 0; s < t4.length; s++) {
+            var u = [].concat(t4[s]);
+            n2 && o2[u[0]] || (r2 && (u[2] ? u[2] = "".concat(r2, " and ").concat(u[2]) : u[2] = r2), e2.push(u));
+          }
+        }, e2;
+      };
+    }, 2638: function(t2, e, r) {
+      function n() {
+        return n = Object.assign || function(t3) {
+          for (var e2, r2 = 1; r2 < arguments.length; r2++)
+            for (var n2 in e2 = arguments[r2], e2)
+              Object.prototype.hasOwnProperty.call(e2, n2) && (t3[n2] = e2[n2]);
+          return t3;
+        }, n.apply(this, arguments);
+      }
+      var o = ["attrs", "props", "domProps"], i = ["class", "style", "directives"], a = ["on", "nativeOn"], s = function(t3) {
+        return t3.reduce(function(t4, e2) {
+          for (var r2 in e2)
+            if (t4[r2])
+              if (-1 !== o.indexOf(r2))
+                t4[r2] = n({}, t4[r2], e2[r2]);
+              else if (-1 !== i.indexOf(r2)) {
+                var s2 = t4[r2] instanceof Array ? t4[r2] : [t4[r2]], l = e2[r2] instanceof Array ? e2[r2] : [e2[r2]];
+                t4[r2] = s2.concat(l);
+              } else if (-1 !== a.indexOf(r2))
+                for (var c in e2[r2])
+                  if (t4[r2][c]) {
+                    var d = t4[r2][c] instanceof Array ? t4[r2][c] : [t4[r2][c]], f = e2[r2][c] instanceof Array ? e2[r2][c] : [e2[r2][c]];
+                    t4[r2][c] = d.concat(f);
+                  } else
+                    t4[r2][c] = e2[r2][c];
+              else if ("hook" == r2)
+                for (var h in e2[r2])
+                  t4[r2][h] = t4[r2][h] ? u(t4[r2][h], e2[r2][h]) : e2[r2][h];
+              else
+                t4[r2] = e2[r2];
+            else
+              t4[r2] = e2[r2];
+          return t4;
+        }, {});
+      }, u = function(t3, e2) {
+        return function() {
+          t3 && t3.apply(this, arguments), e2 && e2.apply(this, arguments);
+        };
+      };
+      t2.exports = s;
+    }, "499e": function(t2, e, r) {
+      function n(t3, e2) {
+        for (var r2 = [], n2 = {}, o2 = 0; o2 < e2.length; o2++) {
+          var i2 = e2[o2], a2 = i2[0], s2 = i2[1], u2 = i2[2], l2 = i2[3], c2 = { id: t3 + ":" + o2, css: s2, media: u2, sourceMap: l2 };
+          n2[a2] ? n2[a2].parts.push(c2) : r2.push(n2[a2] = { id: a2, parts: [c2] });
+        }
+        return r2;
+      }
+      r.r(e), r.d(e, "default", function() {
+        return p;
+      });
+      var o = "undefined" !== typeof document;
+      if ("undefined" !== typeof DEBUG && DEBUG && !o)
+        throw new Error("vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.");
+      var i = {}, a = o && (document.head || document.getElementsByTagName("head")[0]), s = null, u = 0, l = false, c = function() {
+      }, d = null, f = "data-vue-ssr-id", h = "undefined" !== typeof navigator && /msie [6-9]\b/.test(navigator.userAgent.toLowerCase());
+      function p(t3, e2, r2, o2) {
+        l = r2, d = o2 || {};
+        var a2 = n(t3, e2);
+        return y(a2), function(e3) {
+          for (var r3 = [], o3 = 0; o3 < a2.length; o3++) {
+            var s2 = a2[o3], u2 = i[s2.id];
+            u2.refs--, r3.push(u2);
+          }
+          e3 ? (a2 = n(t3, e3), y(a2)) : a2 = [];
+          for (o3 = 0; o3 < r3.length; o3++) {
+            u2 = r3[o3];
+            if (0 === u2.refs) {
+              for (var l2 = 0; l2 < u2.parts.length; l2++)
+                u2.parts[l2]();
+              delete i[u2.id];
+            }
+          }
+        };
+      }
+      function y(t3) {
+        for (var e2 = 0; e2 < t3.length; e2++) {
+          var r2 = t3[e2], n2 = i[r2.id];
+          if (n2) {
+            n2.refs++;
+            for (var o2 = 0; o2 < n2.parts.length; o2++)
+              n2.parts[o2](r2.parts[o2]);
+            for (; o2 < r2.parts.length; o2++)
+              n2.parts.push(m(r2.parts[o2]));
+            n2.parts.length > r2.parts.length && (n2.parts.length = r2.parts.length);
+          } else {
+            var a2 = [];
+            for (o2 = 0; o2 < r2.parts.length; o2++)
+              a2.push(m(r2.parts[o2]));
+            i[r2.id] = { id: r2.id, refs: 1, parts: a2 };
+          }
+        }
+      }
+      function v() {
+        var t3 = document.createElement("style");
+        return t3.type = "text/css", a.appendChild(t3), t3;
+      }
+      function m(t3) {
+        var e2, r2, n2 = document.querySelector("style[" + f + '~="' + t3.id + '"]');
+        if (n2) {
+          if (l)
+            return c;
+          n2.parentNode.removeChild(n2);
+        }
+        if (h) {
+          var o2 = u++;
+          n2 = s || (s = v()), e2 = g.bind(null, n2, o2, false), r2 = g.bind(null, n2, o2, true);
+        } else
+          n2 = v(), e2 = k.bind(null, n2), r2 = function() {
+            n2.parentNode.removeChild(n2);
+          };
+        return e2(t3), function(n3) {
+          if (n3) {
+            if (n3.css === t3.css && n3.media === t3.media && n3.sourceMap === t3.sourceMap)
+              return;
+            e2(t3 = n3);
+          } else
+            r2();
+        };
+      }
+      var b = function() {
+        var t3 = [];
+        return function(e2, r2) {
+          return t3[e2] = r2, t3.filter(Boolean).join("\n");
+        };
+      }();
+      function g(t3, e2, r2, n2) {
+        var o2 = r2 ? "" : n2.css;
+        if (t3.styleSheet)
+          t3.styleSheet.cssText = b(e2, o2);
+        else {
+          var i2 = document.createTextNode(o2), a2 = t3.childNodes;
+          a2[e2] && t3.removeChild(a2[e2]), a2.length ? t3.insertBefore(i2, a2[e2]) : t3.appendChild(i2);
+        }
+      }
+      function k(t3, e2) {
+        var r2 = e2.css, n2 = e2.media, o2 = e2.sourceMap;
+        if (n2 && t3.setAttribute("media", n2), d.ssrId && t3.setAttribute(f, e2.id), o2 && (r2 += "\n/*# sourceURL=" + o2.sources[0] + " */", r2 += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(o2)))) + " */"), t3.styleSheet)
+          t3.styleSheet.cssText = r2;
+        else {
+          while (t3.firstChild)
+            t3.removeChild(t3.firstChild);
+          t3.appendChild(document.createTextNode(r2));
+        }
+      }
+    }, "4abb": function(t2, e, r) {
+      var n = r("7a57");
+      "string" === typeof n && (n = [[t2.i, n, ""]]), n.locals && (t2.exports = n.locals);
+      var o = r("499e").default;
+      o("b2af7572", n, true, { sourceMap: false, shadowMode: false });
+    }, "4ed8": function(t2, e, r) {
+      var n = r("091b");
+      "string" === typeof n && (n = [[t2.i, n, ""]]), n.locals && (t2.exports = n.locals);
+      var o = r("499e").default;
+      o("2f6bee1a", n, true, { sourceMap: false, shadowMode: false });
+    }, "556c": function(t2, e, r) {
+      var n = r("eef2");
+      "string" === typeof n && (n = [[t2.i, n, ""]]), n.locals && (t2.exports = n.locals);
+      var o = r("499e").default;
+      o("1209fd47", n, true, { sourceMap: false, shadowMode: false });
+    }, "65d9": function(t2, e, r) {
+      /**
+      * vue-class-component v7.0.1
+      * (c) 2015-present Evan You
+      * @license MIT
+      */
+      function n(t3) {
+        return t3 && "object" === typeof t3 && "default" in t3 ? t3["default"] : t3;
+      }
+      Object.defineProperty(e, "__esModule", { value: true });
+      var o = n(r("8bbf")), i = "undefined" !== typeof Reflect && Reflect.defineMetadata && Reflect.getOwnMetadataKeys;
+      function a(t3, e2) {
+        s(t3, e2), Object.getOwnPropertyNames(e2.prototype).forEach(function(r2) {
+          s(t3.prototype, e2.prototype, r2);
+        }), Object.getOwnPropertyNames(e2).forEach(function(r2) {
+          s(t3, e2, r2);
+        });
+      }
+      function s(t3, e2, r2) {
+        var n2 = r2 ? Reflect.getOwnMetadataKeys(e2, r2) : Reflect.getOwnMetadataKeys(e2);
+        n2.forEach(function(n3) {
+          var o2 = r2 ? Reflect.getOwnMetadata(n3, e2, r2) : Reflect.getOwnMetadata(n3, e2);
+          r2 ? Reflect.defineMetadata(n3, o2, t3, r2) : Reflect.defineMetadata(n3, o2, t3);
+        });
+      }
+      var u = { __proto__: [] }, l = u instanceof Array;
+      function c(t3) {
+        return function(e2, r2, n2) {
+          var o2 = "function" === typeof e2 ? e2 : e2.constructor;
+          o2.__decorators__ || (o2.__decorators__ = []), "number" !== typeof n2 && (n2 = void 0), o2.__decorators__.push(function(e3) {
+            return t3(e3, r2, n2);
+          });
+        };
+      }
+      function d() {
+        for (var t3 = [], e2 = 0; e2 < arguments.length; e2++)
+          t3[e2] = arguments[e2];
+        return o.extend({ mixins: t3 });
+      }
+      function f(t3) {
+        var e2 = typeof t3;
+        return null == t3 || "object" !== e2 && "function" !== e2;
+      }
+      function h(t3, e2) {
+        var r2 = e2.prototype._init;
+        e2.prototype._init = function() {
+          var e3 = this, r3 = Object.getOwnPropertyNames(t3);
+          if (t3.$options.props)
+            for (var n3 in t3.$options.props)
+              t3.hasOwnProperty(n3) || r3.push(n3);
+          r3.forEach(function(r4) {
+            "_" !== r4.charAt(0) && Object.defineProperty(e3, r4, { get: function() {
+              return t3[r4];
+            }, set: function(e4) {
+              t3[r4] = e4;
+            }, configurable: true });
+          });
+        };
+        var n2 = new e2();
+        e2.prototype._init = r2;
+        var o2 = {};
+        return Object.keys(n2).forEach(function(t4) {
+          void 0 !== n2[t4] && (o2[t4] = n2[t4]);
+        }), o2;
+      }
+      var p = ["data", "beforeCreate", "created", "beforeMount", "mounted", "beforeDestroy", "destroyed", "beforeUpdate", "updated", "activated", "deactivated", "render", "errorCaptured", "serverPrefetch"];
+      function y(t3, e2) {
+        void 0 === e2 && (e2 = {}), e2.name = e2.name || t3._componentTag || t3.name;
+        var r2 = t3.prototype;
+        Object.getOwnPropertyNames(r2).forEach(function(t4) {
+          if ("constructor" !== t4)
+            if (p.indexOf(t4) > -1)
+              e2[t4] = r2[t4];
+            else {
+              var n3 = Object.getOwnPropertyDescriptor(r2, t4);
+              void 0 !== n3.value ? "function" === typeof n3.value ? (e2.methods || (e2.methods = {}))[t4] = n3.value : (e2.mixins || (e2.mixins = [])).push({ data: function() {
+                var e3;
+                return e3 = {}, e3[t4] = n3.value, e3;
+              } }) : (n3.get || n3.set) && ((e2.computed || (e2.computed = {}))[t4] = { get: n3.get, set: n3.set });
+            }
+        }), (e2.mixins || (e2.mixins = [])).push({ data: function() {
+          return h(this, t3);
+        } });
+        var n2 = t3.__decorators__;
+        n2 && (n2.forEach(function(t4) {
+          return t4(e2);
+        }), delete t3.__decorators__);
+        var s2 = Object.getPrototypeOf(t3.prototype), u2 = s2 instanceof o ? s2.constructor : o, l2 = u2.extend(e2);
+        return v(l2, t3, u2), i && a(l2, t3), l2;
+      }
+      function v(t3, e2, r2) {
+        Object.getOwnPropertyNames(e2).forEach(function(n2) {
+          if ("prototype" !== n2) {
+            var o2 = Object.getOwnPropertyDescriptor(t3, n2);
+            if (!o2 || o2.configurable) {
+              var i2 = Object.getOwnPropertyDescriptor(e2, n2);
+              if (!l) {
+                if ("cid" === n2)
+                  return;
+                var a2 = Object.getOwnPropertyDescriptor(r2, n2);
+                if (!f(i2.value) && a2 && a2.value === i2.value)
+                  return;
+              }
+              Object.defineProperty(t3, n2, i2);
+            }
+          }
+        });
+      }
+      function m(t3) {
+        return "function" === typeof t3 ? y(t3) : function(e2) {
+          return y(e2, t3);
+        };
+      }
+      m.registerHooks = function(t3) {
+        p.push.apply(p, t3);
+      }, e.default = m, e.createDecorator = c, e.mixins = d;
+    }, "7a57": function(t2, e, r) {
+      var n = r("24fb");
+      e = n(false), e.push([t2.i, ".vue-slider{position:relative;-webkit-box-sizing:content-box;box-sizing:content-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;display:block;-webkit-tap-highlight-color:rgba(0,0,0,0)}.vue-slider-rail{position:relative;width:100%;height:100%;-webkit-transition-property:width,height,left,right,top,bottom;transition-property:width,height,left,right,top,bottom}.vue-slider-process{position:absolute;z-index:1}", ""]), t2.exports = e;
+    }, 8875: function(t2, e, r) {
+      var n, o, i;
+      (function(r2, a) {
+        o = [], n = a, i = "function" === typeof n ? n.apply(e, o) : n, void 0 === i || (t2.exports = i);
+      })("undefined" !== typeof self && self, function() {
+        function t3() {
+          var e2 = Object.getOwnPropertyDescriptor(document, "currentScript");
+          if (!e2 && "currentScript" in document && document.currentScript)
+            return document.currentScript;
+          if (e2 && e2.get !== t3 && document.currentScript)
+            return document.currentScript;
+          try {
+            throw new Error();
+          } catch (h) {
+            var r2, n2, o2, i2 = /.*at [^(]*\((.*):(.+):(.+)\)$/gi, a = /@([^@]*):(\d+):(\d+)\s*$/gi, s = i2.exec(h.stack) || a.exec(h.stack), u = s && s[1] || false, l = s && s[2] || false, c = document.location.href.replace(document.location.hash, ""), d = document.getElementsByTagName("script");
+            u === c && (r2 = document.documentElement.outerHTML, n2 = new RegExp("(?:[^\\n]+?\\n){0," + (l - 2) + "}[^<]*<script>([\\d\\D]*?)<\\/script>[\\d\\D]*", "i"), o2 = r2.replace(n2, "$1").trim());
+            for (var f = 0; f < d.length; f++) {
+              if ("interactive" === d[f].readyState)
+                return d[f];
+              if (d[f].src === u)
+                return d[f];
+              if (u === c && d[f].innerHTML && d[f].innerHTML.trim() === o2)
+                return d[f];
+            }
+            return null;
+          }
+        }
+        return t3;
+      });
+    }, "8bbf": function(e, r) {
+      e.exports = t;
+    }, eef2: function(t2, e, r) {
+      var n = r("24fb");
+      e = n(false), e.push([t2.i, ".vue-slider-marks{position:relative;width:100%;height:100%}.vue-slider-mark{position:absolute;z-index:1}.vue-slider-ltr .vue-slider-mark,.vue-slider-rtl .vue-slider-mark{width:0;height:100%;top:50%}.vue-slider-ltr .vue-slider-mark-step,.vue-slider-rtl .vue-slider-mark-step{top:0}.vue-slider-ltr .vue-slider-mark-label,.vue-slider-rtl .vue-slider-mark-label{top:100%;margin-top:10px}.vue-slider-ltr .vue-slider-mark{-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}.vue-slider-ltr .vue-slider-mark-step{left:0}.vue-slider-ltr .vue-slider-mark-label{left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}.vue-slider-rtl .vue-slider-mark{-webkit-transform:translate(50%,-50%);transform:translate(50%,-50%)}.vue-slider-rtl .vue-slider-mark-step{right:0}.vue-slider-rtl .vue-slider-mark-label{right:50%;-webkit-transform:translateX(50%);transform:translateX(50%)}.vue-slider-btt .vue-slider-mark,.vue-slider-ttb .vue-slider-mark{width:100%;height:0;left:50%}.vue-slider-btt .vue-slider-mark-step,.vue-slider-ttb .vue-slider-mark-step{left:0}.vue-slider-btt .vue-slider-mark-label,.vue-slider-ttb .vue-slider-mark-label{left:100%;margin-left:10px}.vue-slider-btt .vue-slider-mark{-webkit-transform:translate(-50%,50%);transform:translate(-50%,50%)}.vue-slider-btt .vue-slider-mark-step{top:0}.vue-slider-btt .vue-slider-mark-label{top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.vue-slider-ttb .vue-slider-mark{-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}.vue-slider-ttb .vue-slider-mark-step{bottom:0}.vue-slider-ttb .vue-slider-mark-label{bottom:50%;-webkit-transform:translateY(50%);transform:translateY(50%)}.vue-slider-mark-label,.vue-slider-mark-step{position:absolute}", ""]), t2.exports = e;
+    }, fb15: function(t2, e, r) {
+      if (r.r(e), r.d(e, "ERROR_TYPE", function() {
+        return J;
+      }), r.d(e, "VueSliderMark", function() {
+        return U;
+      }), r.d(e, "VueSliderDot", function() {
+        return j;
+      }), "undefined" !== typeof window) {
+        var n = window.document.currentScript, o = r("8875");
+        n = o(), "currentScript" in document || Object.defineProperty(document, "currentScript", { get: o });
+        var i = n && n.src.match(/(.+\/)[^/]+\.js(\?.*)?$/);
+        i && (r.p = i[1]);
+      }
+      var a = r("2638"), s = r.n(a);
+      function u(t3, e2, r2, n2) {
+        var o2, i2 = arguments.length, a2 = i2 < 3 ? e2 : null === n2 ? n2 = Object.getOwnPropertyDescriptor(e2, r2) : n2;
+        if ("object" === typeof Reflect && "function" === typeof Reflect.decorate)
+          a2 = Reflect.decorate(t3, e2, r2, n2);
+        else
+          for (var s2 = t3.length - 1; s2 >= 0; s2--)
+            (o2 = t3[s2]) && (a2 = (i2 < 3 ? o2(a2) : i2 > 3 ? o2(e2, r2, a2) : o2(e2, r2)) || a2);
+        return i2 > 3 && a2 && Object.defineProperty(e2, r2, a2), a2;
+      }
+      var l = r("8bbf"), c = r.n(l), d = r("65d9"), f = r.n(d);
+      function h(t3, e2) {
+        return void 0 === e2 && (e2 = {}), Object(d["createDecorator"])(function(r2, n2) {
+          (r2.props || (r2.props = {}))[n2] = e2, r2.model = { prop: n2, event: t3 || n2 };
+        });
+      }
+      function p(t3) {
+        return void 0 === t3 && (t3 = {}), Object(d["createDecorator"])(function(e2, r2) {
+          (e2.props || (e2.props = {}))[r2] = t3;
+        });
+      }
+      function y(t3, e2) {
+        void 0 === e2 && (e2 = {});
+        var r2 = e2.deep, n2 = void 0 !== r2 && r2, o2 = e2.immediate, i2 = void 0 !== o2 && o2;
+        return Object(d["createDecorator"])(function(e3, r3) {
+          "object" !== typeof e3.watch && (e3.watch = /* @__PURE__ */ Object.create(null));
+          var o3 = e3.watch;
+          "object" !== typeof o3[t3] || Array.isArray(o3[t3]) ? "undefined" === typeof o3[t3] && (o3[t3] = []) : o3[t3] = [o3[t3]], o3[t3].push({ handler: r3, deep: n2, immediate: i2 });
+        });
+      }
+      r("4ed8");
+      function v(t3) {
+        return v = "function" === typeof Symbol && "symbol" === typeof Symbol.iterator ? function(t4) {
+          return typeof t4;
+        } : function(t4) {
+          return t4 && "function" === typeof Symbol && t4.constructor === Symbol && t4 !== Symbol.prototype ? "symbol" : typeof t4;
+        }, v(t3);
+      }
+      function m(t3, e2) {
+        if (!(t3 instanceof e2))
+          throw new TypeError("Cannot call a class as a function");
+      }
+      function b(t3, e2) {
+        for (var r2 = 0; r2 < e2.length; r2++) {
+          var n2 = e2[r2];
+          n2.enumerable = n2.enumerable || false, n2.configurable = true, "value" in n2 && (n2.writable = true), Object.defineProperty(t3, n2.key, n2);
+        }
+      }
+      function g(t3, e2, r2) {
+        return e2 && b(t3.prototype, e2), r2 && b(t3, r2), t3;
+      }
+      function k(t3, e2) {
+        if ("function" !== typeof e2 && null !== e2)
+          throw new TypeError("Super expression must either be null or a function");
+        t3.prototype = Object.create(e2 && e2.prototype, { constructor: { value: t3, writable: true, configurable: true } }), e2 && O(t3, e2);
+      }
+      function O(t3, e2) {
+        return O = Object.setPrototypeOf || function(t4, e3) {
+          return t4.__proto__ = e3, t4;
+        }, O(t3, e2);
+      }
+      function x(t3) {
+        var e2 = P();
+        return function() {
+          var r2, n2 = D(t3);
+          if (e2) {
+            var o2 = D(this).constructor;
+            r2 = Reflect.construct(n2, arguments, o2);
+          } else
+            r2 = n2.apply(this, arguments);
+          return w(this, r2);
+        };
+      }
+      function w(t3, e2) {
+        return !e2 || "object" !== v(e2) && "function" !== typeof e2 ? S(t3) : e2;
+      }
+      function S(t3) {
+        if (void 0 === t3)
+          throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return t3;
+      }
+      function P() {
+        if ("undefined" === typeof Reflect || !Reflect.construct)
+          return false;
+        if (Reflect.construct.sham)
+          return false;
+        if ("function" === typeof Proxy)
+          return true;
+        try {
+          return Date.prototype.toString.call(Reflect.construct(Date, [], function() {
+          })), true;
+        } catch (t3) {
+          return false;
+        }
+      }
+      function D(t3) {
+        return D = Object.setPrototypeOf ? Object.getPrototypeOf : function(t4) {
+          return t4.__proto__ || Object.getPrototypeOf(t4);
+        }, D(t3);
+      }
+      var R = function() {
+        var t3 = function(t4) {
+          k(r2, t4);
+          var e2 = x(r2);
+          function r2() {
+            return m(this, r2), e2.apply(this, arguments);
+          }
+          return g(r2, [{ key: "dragStart", value: function(t5) {
+            if (this.disabled)
+              return false;
+            this.$emit("drag-start");
+          } }, { key: "render", value: function() {
+            var t5 = arguments[0];
+            return t5("div", { ref: "dot", class: this.dotClasses, attrs: { "aria-valuetext": this.tooltipValue ? this.tooltipValue.toString() : "" }, on: { mousedown: this.dragStart, touchstart: this.dragStart } }, [this.$slots.dot || t5("div", { class: this.handleClasses, style: this.dotStyle }), "none" !== this.tooltip ? t5("div", { class: this.tooltipClasses }, [this.$slots.tooltip || t5("div", { class: this.tooltipInnerClasses, style: this.tooltipStyle }, [t5("span", { class: "vue-slider-dot-tooltip-text" }, [this.tooltipValue])])]) : null]);
+          } }, { key: "dotClasses", get: function() {
+            return ["vue-slider-dot", { "vue-slider-dot-hover": "hover" === this.tooltip || "active" === this.tooltip, "vue-slider-dot-disabled": this.disabled, "vue-slider-dot-focus": this.focus }];
+          } }, { key: "handleClasses", get: function() {
+            return ["vue-slider-dot-handle", { "vue-slider-dot-handle-disabled": this.disabled, "vue-slider-dot-handle-focus": this.focus }];
+          } }, { key: "tooltipClasses", get: function() {
+            return ["vue-slider-dot-tooltip", ["vue-slider-dot-tooltip-".concat(this.tooltipPlacement)], { "vue-slider-dot-tooltip-show": this.showTooltip }];
+          } }, { key: "tooltipInnerClasses", get: function() {
+            return ["vue-slider-dot-tooltip-inner", ["vue-slider-dot-tooltip-inner-".concat(this.tooltipPlacement)], { "vue-slider-dot-tooltip-inner-disabled": this.disabled, "vue-slider-dot-tooltip-inner-focus": this.focus }];
+          } }, { key: "showTooltip", get: function() {
+            switch (this.tooltip) {
+              case "always":
+                return true;
+              case "none":
+                return false;
+              case "focus":
+              case "active":
+                return !!this.focus;
+              default:
+                return false;
+            }
+          } }, { key: "tooltipValue", get: function() {
+            return this.tooltipFormatter ? "string" === typeof this.tooltipFormatter ? this.tooltipFormatter.replace(/\{value\}/, String(this.value)) : this.tooltipFormatter(this.value) : this.value;
+          } }]), r2;
+        }(c.a);
+        return u([p({ default: 0 })], t3.prototype, "value", void 0), u([p()], t3.prototype, "tooltip", void 0), u([p()], t3.prototype, "dotStyle", void 0), u([p()], t3.prototype, "tooltipStyle", void 0), u([p({ type: String, validator: function(t4) {
+          return ["top", "right", "bottom", "left"].indexOf(t4) > -1;
+        }, required: true })], t3.prototype, "tooltipPlacement", void 0), u([p({ type: [String, Function] })], t3.prototype, "tooltipFormatter", void 0), u([p({ type: Boolean, default: false })], t3.prototype, "focus", void 0), u([p({ default: false })], t3.prototype, "disabled", void 0), t3 = u([f()({ name: "VueSliderDot" })], t3), t3;
+      }(), j = R;
+      r("556c");
+      function E(t3) {
+        return E = "function" === typeof Symbol && "symbol" === typeof Symbol.iterator ? function(t4) {
+          return typeof t4;
+        } : function(t4) {
+          return t4 && "function" === typeof Symbol && t4.constructor === Symbol && t4 !== Symbol.prototype ? "symbol" : typeof t4;
+        }, E(t3);
+      }
+      function A(t3, e2) {
+        if (!(t3 instanceof e2))
+          throw new TypeError("Cannot call a class as a function");
+      }
+      function V(t3, e2) {
+        for (var r2 = 0; r2 < e2.length; r2++) {
+          var n2 = e2[r2];
+          n2.enumerable = n2.enumerable || false, n2.configurable = true, "value" in n2 && (n2.writable = true), Object.defineProperty(t3, n2.key, n2);
+        }
+      }
+      function M(t3, e2, r2) {
+        return e2 && V(t3.prototype, e2), r2 && V(t3, r2), t3;
+      }
+      function _(t3, e2) {
+        if ("function" !== typeof e2 && null !== e2)
+          throw new TypeError("Super expression must either be null or a function");
+        t3.prototype = Object.create(e2 && e2.prototype, { constructor: { value: t3, writable: true, configurable: true } }), e2 && C(t3, e2);
+      }
+      function C(t3, e2) {
+        return C = Object.setPrototypeOf || function(t4, e3) {
+          return t4.__proto__ = e3, t4;
+        }, C(t3, e2);
+      }
+      function I(t3) {
+        var e2 = B();
+        return function() {
+          var r2, n2 = N(t3);
+          if (e2) {
+            var o2 = N(this).constructor;
+            r2 = Reflect.construct(n2, arguments, o2);
+          } else
+            r2 = n2.apply(this, arguments);
+          return L(this, r2);
+        };
+      }
+      function L(t3, e2) {
+        return !e2 || "object" !== E(e2) && "function" !== typeof e2 ? T(t3) : e2;
+      }
+      function T(t3) {
+        if (void 0 === t3)
+          throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return t3;
+      }
+      function B() {
+        if ("undefined" === typeof Reflect || !Reflect.construct)
+          return false;
+        if (Reflect.construct.sham)
+          return false;
+        if ("function" === typeof Proxy)
+          return true;
+        try {
+          return Date.prototype.toString.call(Reflect.construct(Date, [], function() {
+          })), true;
+        } catch (t3) {
+          return false;
+        }
+      }
+      function N(t3) {
+        return N = Object.setPrototypeOf ? Object.getPrototypeOf : function(t4) {
+          return t4.__proto__ || Object.getPrototypeOf(t4);
+        }, N(t3);
+      }
+      var z, H = function() {
+        var t3 = function(t4) {
+          _(r2, t4);
+          var e2 = I(r2);
+          function r2() {
+            return A(this, r2), e2.apply(this, arguments);
+          }
+          return M(r2, [{ key: "labelClickHandle", value: function(t5) {
+            t5.stopPropagation(), this.$emit("pressLabel", this.mark.pos);
+          } }, { key: "render", value: function() {
+            var t5 = arguments[0], e3 = this.mark;
+            return t5("div", { class: this.marksClasses }, [this.$slots.step || t5("div", { class: this.stepClasses, style: [this.stepStyle || {}, e3.style || {}, e3.active && this.stepActiveStyle || {}, e3.active && e3.activeStyle || {}] }), this.hideLabel ? null : this.$slots.label || t5("div", { class: this.labelClasses, style: [this.labelStyle || {}, e3.labelStyle || {}, e3.active && this.labelActiveStyle || {}, e3.active && e3.labelActiveStyle || {}], on: { click: this.labelClickHandle } }, [e3.label])]);
+          } }, { key: "marksClasses", get: function() {
+            return ["vue-slider-mark", { "vue-slider-mark-active": this.mark.active }];
+          } }, { key: "stepClasses", get: function() {
+            return ["vue-slider-mark-step", { "vue-slider-mark-step-active": this.mark.active }];
+          } }, { key: "labelClasses", get: function() {
+            return ["vue-slider-mark-label", { "vue-slider-mark-label-active": this.mark.active }];
+          } }]), r2;
+        }(c.a);
+        return u([p({ required: true })], t3.prototype, "mark", void 0), u([p(Boolean)], t3.prototype, "hideLabel", void 0), u([p()], t3.prototype, "stepStyle", void 0), u([p()], t3.prototype, "stepActiveStyle", void 0), u([p()], t3.prototype, "labelStyle", void 0), u([p()], t3.prototype, "labelActiveStyle", void 0), t3 = u([f()({ name: "VueSlideMark" })], t3), t3;
+      }(), U = H, F = function(t3) {
+        return "number" === typeof t3 ? "".concat(t3, "px") : t3;
+      }, $ = function(t3) {
+        var e2 = document.documentElement, r2 = document.body, n2 = t3.getBoundingClientRect(), o2 = { y: n2.top + (window.pageYOffset || e2.scrollTop) - (e2.clientTop || r2.clientTop || 0), x: n2.left + (window.pageXOffset || e2.scrollLeft) - (e2.clientLeft || r2.clientLeft || 0) };
+        return o2;
+      }, W = function(t3, e2, r2) {
+        var n2 = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : 1, o2 = "targetTouches" in t3 ? t3.targetTouches[0] : t3, i2 = $(e2), a2 = { x: o2.pageX - i2.x, y: o2.pageY - i2.y };
+        return { x: r2 ? e2.offsetWidth * n2 - a2.x : a2.x, y: r2 ? e2.offsetHeight * n2 - a2.y : a2.y };
+      };
+      (function(t3) {
+        t3[t3["PAGE_UP"] = 33] = "PAGE_UP", t3[t3["PAGE_DOWN"] = 34] = "PAGE_DOWN", t3[t3["END"] = 35] = "END", t3[t3["HOME"] = 36] = "HOME", t3[t3["LEFT"] = 37] = "LEFT", t3[t3["UP"] = 38] = "UP", t3[t3["RIGHT"] = 39] = "RIGHT", t3[t3["DOWN"] = 40] = "DOWN";
+      })(z || (z = {}));
+      var G = function(t3, e2) {
+        if (e2.hook) {
+          var r2 = e2.hook(t3);
+          if ("function" === typeof r2)
+            return r2;
+          if (!r2)
+            return null;
+        }
+        switch (t3.keyCode) {
+          case z.UP:
+            return function(t4) {
+              return "ttb" === e2.direction ? t4 - 1 : t4 + 1;
+            };
+          case z.RIGHT:
+            return function(t4) {
+              return "rtl" === e2.direction ? t4 - 1 : t4 + 1;
+            };
+          case z.DOWN:
+            return function(t4) {
+              return "ttb" === e2.direction ? t4 + 1 : t4 - 1;
+            };
+          case z.LEFT:
+            return function(t4) {
+              return "rtl" === e2.direction ? t4 + 1 : t4 - 1;
+            };
+          case z.END:
+            return function() {
+              return e2.max;
+            };
+          case z.HOME:
+            return function() {
+              return e2.min;
+            };
+          case z.PAGE_UP:
+            return function(t4) {
+              return t4 + 10;
+            };
+          case z.PAGE_DOWN:
+            return function(t4) {
+              return t4 - 10;
+            };
+          default:
+            return null;
+        }
+      };
+      function X(t3, e2) {
+        if (!(t3 instanceof e2))
+          throw new TypeError("Cannot call a class as a function");
+      }
+      function q(t3, e2) {
+        for (var r2 = 0; r2 < e2.length; r2++) {
+          var n2 = e2[r2];
+          n2.enumerable = n2.enumerable || false, n2.configurable = true, "value" in n2 && (n2.writable = true), Object.defineProperty(t3, n2.key, n2);
+        }
+      }
+      function K(t3, e2, r2) {
+        return e2 && q(t3.prototype, e2), r2 && q(t3, r2), t3;
+      }
+      var Y, J, Q = function() {
+        function t3(e2) {
+          X(this, t3), this.num = e2;
+        }
+        return K(t3, [{ key: "decimal", value: function(t4, e2) {
+          var r2 = this.num, n2 = this.getDecimalLen(r2), o2 = this.getDecimalLen(t4), i2 = 0;
+          switch (e2) {
+            case "+":
+              i2 = this.getExponent(n2, o2), this.num = (this.safeRoundUp(r2, i2) + this.safeRoundUp(t4, i2)) / i2;
+              break;
+            case "-":
+              i2 = this.getExponent(n2, o2), this.num = (this.safeRoundUp(r2, i2) - this.safeRoundUp(t4, i2)) / i2;
+              break;
+            case "*":
+              this.num = this.safeRoundUp(this.safeRoundUp(r2, this.getExponent(n2)), this.safeRoundUp(t4, this.getExponent(o2))) / this.getExponent(n2 + o2);
+              break;
+            case "/":
+              i2 = this.getExponent(n2, o2), this.num = this.safeRoundUp(r2, i2) / this.safeRoundUp(t4, i2);
+              break;
+            case "%":
+              i2 = this.getExponent(n2, o2), this.num = this.safeRoundUp(r2, i2) % this.safeRoundUp(t4, i2) / i2;
+              break;
+          }
+          return this;
+        } }, { key: "plus", value: function(t4) {
+          return this.decimal(t4, "+");
+        } }, { key: "minus", value: function(t4) {
+          return this.decimal(t4, "-");
+        } }, { key: "multiply", value: function(t4) {
+          return this.decimal(t4, "*");
+        } }, { key: "divide", value: function(t4) {
+          return this.decimal(t4, "/");
+        } }, { key: "remainder", value: function(t4) {
+          return this.decimal(t4, "%");
+        } }, { key: "toNumber", value: function() {
+          return this.num;
+        } }, { key: "getDecimalLen", value: function(t4) {
+          var e2 = "".concat(t4).split("e");
+          return ("".concat(e2[0]).split(".")[1] || "").length - (e2[1] ? +e2[1] : 0);
+        } }, { key: "getExponent", value: function(t4, e2) {
+          return Math.pow(10, void 0 !== e2 ? Math.max(t4, e2) : t4);
+        } }, { key: "safeRoundUp", value: function(t4, e2) {
+          return Math.round(t4 * e2);
+        } }]), t3;
+      }();
+      function Z(t3, e2) {
+        var r2 = Object.keys(t3);
+        if (Object.getOwnPropertySymbols) {
+          var n2 = Object.getOwnPropertySymbols(t3);
+          e2 && (n2 = n2.filter(function(e3) {
+            return Object.getOwnPropertyDescriptor(t3, e3).enumerable;
+          })), r2.push.apply(r2, n2);
+        }
+        return r2;
+      }
+      function tt(t3) {
+        for (var e2 = 1; e2 < arguments.length; e2++) {
+          var r2 = null != arguments[e2] ? arguments[e2] : {};
+          e2 % 2 ? Z(Object(r2), true).forEach(function(e3) {
+            pt(t3, e3, r2[e3]);
+          }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t3, Object.getOwnPropertyDescriptors(r2)) : Z(Object(r2)).forEach(function(e3) {
+            Object.defineProperty(t3, e3, Object.getOwnPropertyDescriptor(r2, e3));
+          });
+        }
+        return t3;
+      }
+      function et(t3, e2) {
+        return ot(t3) || nt(t3, e2) || st(t3, e2) || rt();
+      }
+      function rt() {
+        throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+      }
+      function nt(t3, e2) {
+        if ("undefined" !== typeof Symbol && Symbol.iterator in Object(t3)) {
+          var r2 = [], n2 = true, o2 = false, i2 = void 0;
+          try {
+            for (var a2, s2 = t3[Symbol.iterator](); !(n2 = (a2 = s2.next()).done); n2 = true)
+              if (r2.push(a2.value), e2 && r2.length === e2)
+                break;
+          } catch (u2) {
+            o2 = true, i2 = u2;
+          } finally {
+            try {
+              n2 || null == s2["return"] || s2["return"]();
+            } finally {
+              if (o2)
+                throw i2;
+            }
+          }
+          return r2;
+        }
+      }
+      function ot(t3) {
+        if (Array.isArray(t3))
+          return t3;
+      }
+      function it(t3) {
+        return lt(t3) || ut(t3) || st(t3) || at();
+      }
+      function at() {
+        throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+      }
+      function st(t3, e2) {
+        if (t3) {
+          if ("string" === typeof t3)
+            return ct(t3, e2);
+          var r2 = Object.prototype.toString.call(t3).slice(8, -1);
+          return "Object" === r2 && t3.constructor && (r2 = t3.constructor.name), "Map" === r2 || "Set" === r2 ? Array.from(t3) : "Arguments" === r2 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r2) ? ct(t3, e2) : void 0;
+        }
+      }
+      function ut(t3) {
+        if ("undefined" !== typeof Symbol && Symbol.iterator in Object(t3))
+          return Array.from(t3);
+      }
+      function lt(t3) {
+        if (Array.isArray(t3))
+          return ct(t3);
+      }
+      function ct(t3, e2) {
+        (null == e2 || e2 > t3.length) && (e2 = t3.length);
+        for (var r2 = 0, n2 = new Array(e2); r2 < e2; r2++)
+          n2[r2] = t3[r2];
+        return n2;
+      }
+      function dt(t3, e2) {
+        if (!(t3 instanceof e2))
+          throw new TypeError("Cannot call a class as a function");
+      }
+      function ft(t3, e2) {
+        for (var r2 = 0; r2 < e2.length; r2++) {
+          var n2 = e2[r2];
+          n2.enumerable = n2.enumerable || false, n2.configurable = true, "value" in n2 && (n2.writable = true), Object.defineProperty(t3, n2.key, n2);
+        }
+      }
+      function ht(t3, e2, r2) {
+        return e2 && ft(t3.prototype, e2), r2 && ft(t3, r2), t3;
+      }
+      function pt(t3, e2, r2) {
+        return e2 in t3 ? Object.defineProperty(t3, e2, { value: r2, enumerable: true, configurable: true, writable: true }) : t3[e2] = r2, t3;
+      }
+      (function(t3) {
+        t3[t3["VALUE"] = 1] = "VALUE", t3[t3["INTERVAL"] = 2] = "INTERVAL", t3[t3["MIN"] = 3] = "MIN", t3[t3["MAX"] = 4] = "MAX", t3[t3["ORDER"] = 5] = "ORDER";
+      })(J || (J = {}));
+      var yt = (Y = {}, pt(Y, J.VALUE, 'The type of the "value" is illegal'), pt(Y, J.INTERVAL, 'The prop "interval" is invalid, "(max - min)" must be divisible by "interval"'), pt(Y, J.MIN, 'The "value" must be greater than or equal to the "min".'), pt(Y, J.MAX, 'The "value" must be less than or equal to the "max".'), pt(Y, J.ORDER, 'When "order" is false, the parameters "minRange", "maxRange", "fixed", "enabled" are invalid.'), Y), vt = function() {
+        function t3(e2) {
+          dt(this, t3), this.dotsPos = [], this.dotsValue = [], this.cacheRangeDir = {}, this.data = e2.data, this.max = e2.max, this.min = e2.min, this.interval = e2.interval, this.order = e2.order, this.marks = e2.marks, this.included = e2.included, this.process = e2.process, this.adsorb = e2.adsorb, this.dotOptions = e2.dotOptions, this.onError = e2.onError, this.order ? (this.minRange = e2.minRange || 0, this.maxRange = e2.maxRange || 0, this.enableCross = e2.enableCross, this.fixed = e2.fixed) : ((e2.minRange || e2.maxRange || !e2.enableCross || e2.fixed) && this.emitError(J.ORDER), this.minRange = 0, this.maxRange = 0, this.enableCross = true, this.fixed = false), this.setValue(e2.value);
+        }
+        return ht(t3, [{ key: "setValue", value: function(t4) {
+          var e2 = this;
+          this.setDotsValue(Array.isArray(t4) ? this.order ? it(t4).sort(function(t5, r2) {
+            return e2.getIndexByValue(t5) - e2.getIndexByValue(r2);
+          }) : it(t4) : [t4], true);
+        } }, { key: "setDotsValue", value: function(t4, e2) {
+          this.dotsValue = t4, e2 && this.syncDotsPos();
+        } }, { key: "setDotsPos", value: function(t4) {
+          var e2 = this, r2 = this.order ? it(t4).sort(function(t5, e3) {
+            return t5 - e3;
+          }) : t4;
+          this.dotsPos = r2, this.setDotsValue(r2.map(function(t5) {
+            return e2.getValueByPos(t5);
+          }), this.adsorb);
+        } }, { key: "getValueByPos", value: function(t4) {
+          var e2 = this.parsePos(t4);
+          if (this.included) {
+            var r2 = 100;
+            this.markList.forEach(function(n2) {
+              var o2 = Math.abs(n2.pos - t4);
+              o2 < r2 && (r2 = o2, e2 = n2.value);
+            });
+          }
+          return e2;
+        } }, { key: "syncDotsPos", value: function() {
+          var t4 = this;
+          this.dotsPos = this.dotsValue.map(function(e2) {
+            return t4.parseValue(e2);
+          });
+        } }, { key: "getRecentDot", value: function(t4) {
+          var e2 = this, r2 = this.dotsPos.filter(function(t5, r3) {
+            return !(e2.getDotOption(r3) && e2.getDotOption(r3).disabled);
+          }).map(function(e3) {
+            return Math.abs(e3 - t4);
+          });
+          return r2.indexOf(Math.min.apply(Math, it(r2)));
+        } }, { key: "getIndexByValue", value: function(t4) {
+          return this.data ? this.data.indexOf(t4) : new Q(+t4).minus(this.min).divide(this.interval).toNumber();
+        } }, { key: "getValueByIndex", value: function(t4) {
+          return t4 < 0 ? t4 = 0 : t4 > this.total && (t4 = this.total), this.data ? this.data[t4] : new Q(t4).multiply(this.interval).plus(this.min).toNumber();
+        } }, { key: "setDotPos", value: function(t4, e2) {
+          t4 = this.getValidPos(t4, e2).pos;
+          var r2 = t4 - this.dotsPos[e2];
+          if (r2) {
+            var n2 = new Array(this.dotsPos.length);
+            this.fixed ? n2 = this.getFixedChangePosArr(r2, e2) : this.minRange || this.maxRange ? n2 = this.getLimitRangeChangePosArr(t4, r2, e2) : n2[e2] = r2, this.setDotsPos(this.dotsPos.map(function(t5, e3) {
+              return t5 + (n2[e3] || 0);
+            }));
+          }
+        } }, { key: "getFixedChangePosArr", value: function(t4, e2) {
+          var r2 = this;
+          return this.dotsPos.forEach(function(n2, o2) {
+            if (o2 !== e2) {
+              var i2 = r2.getValidPos(n2 + t4, o2), a2 = i2.pos, s2 = i2.inRange;
+              s2 || (t4 = Math.min(Math.abs(a2 - n2), Math.abs(t4)) * (t4 < 0 ? -1 : 1));
+            }
+          }), this.dotsPos.map(function(e3) {
+            return t4;
+          });
+        } }, { key: "getLimitRangeChangePosArr", value: function(t4, e2, r2) {
+          var n2 = this, o2 = [{ index: r2, changePos: e2 }], i2 = e2;
+          return [this.minRange, this.maxRange].forEach(function(a2, s2) {
+            if (!a2)
+              return false;
+            var u2 = 0 === s2, l2 = e2 > 0, c2 = 0;
+            c2 = u2 ? l2 ? 1 : -1 : l2 ? -1 : 1;
+            var d2 = function(t5, e3) {
+              var r3 = Math.abs(t5 - e3);
+              return u2 ? r3 < n2.minRangeDir : r3 > n2.maxRangeDir;
+            }, f2 = r2 + c2, h2 = n2.dotsPos[f2], p2 = t4;
+            while (n2.isPos(h2) && d2(h2, p2)) {
+              var y2 = n2.getValidPos(h2 + i2, f2), v2 = y2.pos;
+              o2.push({ index: f2, changePos: v2 - h2 }), f2 += c2, p2 = v2, h2 = n2.dotsPos[f2];
+            }
+          }), this.dotsPos.map(function(t5, e3) {
+            var r3 = o2.filter(function(t6) {
+              return t6.index === e3;
+            });
+            return r3.length ? r3[0].changePos : 0;
+          });
+        } }, { key: "isPos", value: function(t4) {
+          return "number" === typeof t4;
+        } }, { key: "getValidPos", value: function(t4, e2) {
+          var r2 = this.valuePosRange[e2], n2 = true;
+          return t4 < r2[0] ? (t4 = r2[0], n2 = false) : t4 > r2[1] && (t4 = r2[1], n2 = false), { pos: t4, inRange: n2 };
+        } }, { key: "parseValue", value: function(t4) {
+          if (this.data)
+            t4 = this.data.indexOf(t4);
+          else if ("number" === typeof t4 || "string" === typeof t4) {
+            if (t4 = +t4, t4 < this.min)
+              return this.emitError(J.MIN), 0;
+            if (t4 > this.max)
+              return this.emitError(J.MAX), 0;
+            if ("number" !== typeof t4 || t4 !== t4)
+              return this.emitError(J.VALUE), 0;
+            t4 = new Q(t4).minus(this.min).divide(this.interval).toNumber();
+          }
+          var e2 = new Q(t4).multiply(this.gap).toNumber();
+          return e2 < 0 ? 0 : e2 > 100 ? 100 : e2;
+        } }, { key: "parsePos", value: function(t4) {
+          var e2 = Math.round(t4 / this.gap);
+          return this.getValueByIndex(e2);
+        } }, { key: "isActiveByPos", value: function(t4) {
+          return this.processArray.some(function(e2) {
+            var r2 = et(e2, 2), n2 = r2[0], o2 = r2[1];
+            return t4 >= n2 && t4 <= o2;
+          });
+        } }, { key: "getValues", value: function() {
+          if (this.data)
+            return this.data;
+          for (var t4 = [], e2 = 0; e2 <= this.total; e2++)
+            t4.push(new Q(e2).multiply(this.interval).plus(this.min).toNumber());
+          return t4;
+        } }, { key: "getRangeDir", value: function(t4) {
+          return t4 ? new Q(t4).divide(new Q(this.data ? this.data.length - 1 : this.max).minus(this.data ? 0 : this.min).toNumber()).multiply(100).toNumber() : 100;
+        } }, { key: "emitError", value: function(t4) {
+          this.onError && this.onError(t4, yt[t4]);
+        } }, { key: "getDotOption", value: function(t4) {
+          return Array.isArray(this.dotOptions) ? this.dotOptions[t4] : this.dotOptions;
+        } }, { key: "getDotRange", value: function(t4, e2, r2) {
+          if (!this.dotOptions)
+            return r2;
+          var n2 = this.getDotOption(t4);
+          return n2 && void 0 !== n2[e2] ? this.parseValue(n2[e2]) : r2;
+        } }, { key: "markList", get: function() {
+          var t4 = this;
+          if (!this.marks)
+            return [];
+          var e2 = function(e3, r2) {
+            var n2 = t4.parseValue(e3);
+            return tt({ pos: n2, value: e3, label: e3, active: t4.isActiveByPos(n2) }, r2);
+          };
+          return true === this.marks ? this.getValues().map(function(t5) {
+            return e2(t5);
+          }) : "[object Object]" === Object.prototype.toString.call(this.marks) ? Object.keys(this.marks).sort(function(t5, e3) {
+            return +t5 - +e3;
+          }).map(function(r2) {
+            var n2 = t4.marks[r2];
+            return e2(r2, "string" !== typeof n2 ? n2 : { label: n2 });
+          }) : Array.isArray(this.marks) ? this.marks.map(function(t5) {
+            return e2(t5);
+          }) : "function" === typeof this.marks ? this.getValues().map(function(e3) {
+            return { value: e3, result: t4.marks(e3) };
+          }).filter(function(t5) {
+            var e3 = t5.result;
+            return !!e3;
+          }).map(function(t5) {
+            var r2 = t5.value, n2 = t5.result;
+            return e2(r2, n2);
+          }) : [];
+        } }, { key: "processArray", get: function() {
+          if (this.process) {
+            if ("function" === typeof this.process)
+              return this.process(this.dotsPos);
+            if (1 === this.dotsPos.length)
+              return [[0, this.dotsPos[0]]];
+            if (this.dotsPos.length > 1)
+              return [[Math.min.apply(Math, it(this.dotsPos)), Math.max.apply(Math, it(this.dotsPos))]];
+          }
+          return [];
+        } }, { key: "total", get: function() {
+          var t4 = 0;
+          return t4 = this.data ? this.data.length - 1 : new Q(this.max).minus(this.min).divide(this.interval).toNumber(), t4 - Math.floor(t4) !== 0 ? (this.emitError(J.INTERVAL), 0) : t4;
+        } }, { key: "gap", get: function() {
+          return 100 / this.total;
+        } }, { key: "minRangeDir", get: function() {
+          return this.cacheRangeDir[this.minRange] ? this.cacheRangeDir[this.minRange] : this.cacheRangeDir[this.minRange] = this.getRangeDir(this.minRange);
+        } }, { key: "maxRangeDir", get: function() {
+          return this.cacheRangeDir[this.maxRange] ? this.cacheRangeDir[this.maxRange] : this.cacheRangeDir[this.maxRange] = this.getRangeDir(this.maxRange);
+        } }, { key: "valuePosRange", get: function() {
+          var t4 = this, e2 = this.dotsPos, r2 = [];
+          return e2.forEach(function(n2, o2) {
+            r2.push([Math.max(t4.minRange ? t4.minRangeDir * o2 : 0, t4.enableCross ? 0 : e2[o2 - 1] || 0, t4.getDotRange(o2, "min", 0)), Math.min(t4.minRange ? 100 - t4.minRangeDir * (e2.length - 1 - o2) : 100, t4.enableCross ? 100 : e2[o2 + 1] || 100, t4.getDotRange(o2, "max", 100))]);
+          }), r2;
+        } }, { key: "dotsIndex", get: function() {
+          var t4 = this;
+          return this.dotsValue.map(function(e2) {
+            return t4.getIndexByValue(e2);
+          });
+        } }]), t3;
+      }();
+      function mt(t3, e2) {
+        if (!(t3 instanceof e2))
+          throw new TypeError("Cannot call a class as a function");
+      }
+      function bt(t3, e2) {
+        for (var r2 = 0; r2 < e2.length; r2++) {
+          var n2 = e2[r2];
+          n2.enumerable = n2.enumerable || false, n2.configurable = true, "value" in n2 && (n2.writable = true), Object.defineProperty(t3, n2.key, n2);
+        }
+      }
+      function gt(t3, e2, r2) {
+        return e2 && bt(t3.prototype, e2), r2 && bt(t3, r2), t3;
+      }
+      var kt = function() {
+        function t3(e2) {
+          mt(this, t3), this.states = 0, this.map = e2;
+        }
+        return gt(t3, [{ key: "add", value: function(t4) {
+          this.states |= t4;
+        } }, { key: "delete", value: function(t4) {
+          this.states &= ~t4;
+        } }, { key: "toggle", value: function(t4) {
+          this.has(t4) ? this.delete(t4) : this.add(t4);
+        } }, { key: "has", value: function(t4) {
+          return !!(this.states & t4);
+        } }]), t3;
+      }();
+      r("4abb");
+      function Ot(t3, e2) {
+        return St(t3) || wt(t3, e2) || At(t3, e2) || xt();
+      }
+      function xt() {
+        throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+      }
+      function wt(t3, e2) {
+        if ("undefined" !== typeof Symbol && Symbol.iterator in Object(t3)) {
+          var r2 = [], n2 = true, o2 = false, i2 = void 0;
+          try {
+            for (var a2, s2 = t3[Symbol.iterator](); !(n2 = (a2 = s2.next()).done); n2 = true)
+              if (r2.push(a2.value), e2 && r2.length === e2)
+                break;
+          } catch (u2) {
+            o2 = true, i2 = u2;
+          } finally {
+            try {
+              n2 || null == s2["return"] || s2["return"]();
+            } finally {
+              if (o2)
+                throw i2;
+            }
+          }
+          return r2;
+        }
+      }
+      function St(t3) {
+        if (Array.isArray(t3))
+          return t3;
+      }
+      function Pt(t3, e2) {
+        var r2 = Object.keys(t3);
+        if (Object.getOwnPropertySymbols) {
+          var n2 = Object.getOwnPropertySymbols(t3);
+          e2 && (n2 = n2.filter(function(e3) {
+            return Object.getOwnPropertyDescriptor(t3, e3).enumerable;
+          })), r2.push.apply(r2, n2);
+        }
+        return r2;
+      }
+      function Dt(t3) {
+        for (var e2 = 1; e2 < arguments.length; e2++) {
+          var r2 = null != arguments[e2] ? arguments[e2] : {};
+          e2 % 2 ? Pt(Object(r2), true).forEach(function(e3) {
+            Rt(t3, e3, r2[e3]);
+          }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t3, Object.getOwnPropertyDescriptors(r2)) : Pt(Object(r2)).forEach(function(e3) {
+            Object.defineProperty(t3, e3, Object.getOwnPropertyDescriptor(r2, e3));
+          });
+        }
+        return t3;
+      }
+      function Rt(t3, e2, r2) {
+        return e2 in t3 ? Object.defineProperty(t3, e2, { value: r2, enumerable: true, configurable: true, writable: true }) : t3[e2] = r2, t3;
+      }
+      function jt(t3) {
+        return Mt(t3) || Vt(t3) || At(t3) || Et();
+      }
+      function Et() {
+        throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+      }
+      function At(t3, e2) {
+        if (t3) {
+          if ("string" === typeof t3)
+            return _t(t3, e2);
+          var r2 = Object.prototype.toString.call(t3).slice(8, -1);
+          return "Object" === r2 && t3.constructor && (r2 = t3.constructor.name), "Map" === r2 || "Set" === r2 ? Array.from(t3) : "Arguments" === r2 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r2) ? _t(t3, e2) : void 0;
+        }
+      }
+      function Vt(t3) {
+        if ("undefined" !== typeof Symbol && Symbol.iterator in Object(t3))
+          return Array.from(t3);
+      }
+      function Mt(t3) {
+        if (Array.isArray(t3))
+          return _t(t3);
+      }
+      function _t(t3, e2) {
+        (null == e2 || e2 > t3.length) && (e2 = t3.length);
+        for (var r2 = 0, n2 = new Array(e2); r2 < e2; r2++)
+          n2[r2] = t3[r2];
+        return n2;
+      }
+      function Ct(t3) {
+        return Ct = "function" === typeof Symbol && "symbol" === typeof Symbol.iterator ? function(t4) {
+          return typeof t4;
+        } : function(t4) {
+          return t4 && "function" === typeof Symbol && t4.constructor === Symbol && t4 !== Symbol.prototype ? "symbol" : typeof t4;
+        }, Ct(t3);
+      }
+      function It(t3, e2) {
+        if (!(t3 instanceof e2))
+          throw new TypeError("Cannot call a class as a function");
+      }
+      function Lt(t3, e2) {
+        for (var r2 = 0; r2 < e2.length; r2++) {
+          var n2 = e2[r2];
+          n2.enumerable = n2.enumerable || false, n2.configurable = true, "value" in n2 && (n2.writable = true), Object.defineProperty(t3, n2.key, n2);
+        }
+      }
+      function Tt(t3, e2, r2) {
+        return e2 && Lt(t3.prototype, e2), r2 && Lt(t3, r2), t3;
+      }
+      function Bt(t3, e2) {
+        if ("function" !== typeof e2 && null !== e2)
+          throw new TypeError("Super expression must either be null or a function");
+        t3.prototype = Object.create(e2 && e2.prototype, { constructor: { value: t3, writable: true, configurable: true } }), e2 && Nt(t3, e2);
+      }
+      function Nt(t3, e2) {
+        return Nt = Object.setPrototypeOf || function(t4, e3) {
+          return t4.__proto__ = e3, t4;
+        }, Nt(t3, e2);
+      }
+      function zt(t3) {
+        var e2 = Ft();
+        return function() {
+          var r2, n2 = $t(t3);
+          if (e2) {
+            var o2 = $t(this).constructor;
+            r2 = Reflect.construct(n2, arguments, o2);
+          } else
+            r2 = n2.apply(this, arguments);
+          return Ht(this, r2);
+        };
+      }
+      function Ht(t3, e2) {
+        return !e2 || "object" !== Ct(e2) && "function" !== typeof e2 ? Ut(t3) : e2;
+      }
+      function Ut(t3) {
+        if (void 0 === t3)
+          throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return t3;
+      }
+      function Ft() {
+        if ("undefined" === typeof Reflect || !Reflect.construct)
+          return false;
+        if (Reflect.construct.sham)
+          return false;
+        if ("function" === typeof Proxy)
+          return true;
+        try {
+          return Date.prototype.toString.call(Reflect.construct(Date, [], function() {
+          })), true;
+        } catch (t3) {
+          return false;
+        }
+      }
+      function $t(t3) {
+        return $t = Object.setPrototypeOf ? Object.getPrototypeOf : function(t4) {
+          return t4.__proto__ || Object.getPrototypeOf(t4);
+        }, $t(t3);
+      }
+      var Wt = { None: 0, Drag: 2, Focus: 4 }, Gt = 4, Xt = function() {
+        var t3 = function(t4) {
+          Bt(r2, t4);
+          var e2 = zt(r2);
+          function r2() {
+            var t5;
+            return It(this, r2), t5 = e2.apply(this, arguments), t5.states = new kt(Wt), t5.scale = 1, t5.focusDotIndex = 0, t5;
+          }
+          return Tt(r2, [{ key: "isObjectData", value: function(t5) {
+            return !!t5 && "[object Object]" === Object.prototype.toString.call(t5);
+          } }, { key: "isObjectArrayData", value: function(t5) {
+            return !!t5 && Array.isArray(t5) && t5.length > 0 && "object" === Ct(t5[0]);
+          } }, { key: "onValueChanged", value: function() {
+            this.control && !this.states.has(Wt.Drag) && this.isNotSync && (this.control.setValue(this.value), this.syncValueByPos());
+          } }, { key: "created", value: function() {
+            this.initControl();
+          } }, { key: "mounted", value: function() {
+            this.bindEvent();
+          } }, { key: "beforeDestroy", value: function() {
+            this.unbindEvent();
+          } }, { key: "bindEvent", value: function() {
+            document.addEventListener("touchmove", this.dragMove, { passive: false }), document.addEventListener("touchend", this.dragEnd, { passive: false }), document.addEventListener("mousedown", this.blurHandle), document.addEventListener("mousemove", this.dragMove, { passive: false }), document.addEventListener("mouseup", this.dragEnd), document.addEventListener("mouseleave", this.dragEnd), document.addEventListener("keydown", this.keydownHandle);
+          } }, { key: "unbindEvent", value: function() {
+            document.removeEventListener("touchmove", this.dragMove), document.removeEventListener("touchend", this.dragEnd), document.removeEventListener("mousedown", this.blurHandle), document.removeEventListener("mousemove", this.dragMove), document.removeEventListener("mouseup", this.dragEnd), document.removeEventListener("mouseleave", this.dragEnd), document.removeEventListener("keydown", this.keydownHandle);
+          } }, { key: "setScale", value: function() {
+            var t5 = new Q(Math.floor(this.isHorizontal ? this.$refs.rail.offsetWidth : this.$refs.rail.offsetHeight));
+            void 0 !== this.zoom && t5.multiply(this.zoom), t5.divide(100), this.scale = t5.toNumber();
+          } }, { key: "initControl", value: function() {
+            var t5 = this;
+            this.control = new vt({ value: this.value, data: this.sliderData, enableCross: this.enableCross, fixed: this.fixed, max: this.max, min: this.min, interval: this.interval, minRange: this.minRange, maxRange: this.maxRange, order: this.order, marks: this.sliderMarks, included: this.included, process: this.process, adsorb: this.adsorb, dotOptions: this.dotOptions, onError: this.emitError }), this.syncValueByPos(), ["data", "enableCross", "fixed", "max", "min", "interval", "minRange", "maxRange", "order", "marks", "process", "adsorb", "included", "dotOptions"].forEach(function(e3) {
+              t5.$watch(e3, function(r3) {
+                if ("data" === e3 && Array.isArray(t5.control.data) && Array.isArray(r3) && t5.control.data.length === r3.length && r3.every(function(e4, r4) {
+                  return e4 === t5.control.data[r4];
+                }))
+                  return false;
+                switch (e3) {
+                  case "data":
+                  case "dataLabel":
+                  case "dataValue":
+                    t5.control.data = t5.sliderData;
+                    break;
+                  case "mark":
+                    t5.control.marks = t5.sliderMarks;
+                    break;
+                  default:
+                    t5.control[e3] = r3;
+                }
+                ["data", "max", "min", "interval"].indexOf(e3) > -1 && t5.control.syncDotsPos();
+              });
+            });
+          } }, { key: "syncValueByPos", value: function() {
+            var t5 = this.control.dotsValue;
+            this.isDiff(t5, Array.isArray(this.value) ? this.value : [this.value]) && this.$emit("change", 1 === t5.length ? t5[0] : jt(t5), this.focusDotIndex);
+          } }, { key: "isDiff", value: function(t5, e3) {
+            return t5.length !== e3.length || t5.some(function(t6, r3) {
+              return t6 !== e3[r3];
+            });
+          } }, { key: "emitError", value: function(t5, e3) {
+            this.silent || console.error("[VueSlider error]: ".concat(e3)), this.$emit("error", t5, e3);
+          } }, { key: "dragStartOnProcess", value: function(t5) {
+            if (this.dragOnClick) {
+              this.setScale();
+              var e3 = this.getPosByEvent(t5), r3 = this.control.getRecentDot(e3);
+              if (this.dots[r3].disabled)
+                return;
+              this.dragStart(r3), this.control.setDotPos(e3, this.focusDotIndex), this.lazy || this.syncValueByPos();
+            }
+          } }, { key: "dragStart", value: function(t5) {
+            this.focusDotIndex = t5, this.setScale(), this.states.add(Wt.Drag), this.states.add(Wt.Focus), this.$emit("drag-start", this.focusDotIndex);
+          } }, { key: "dragMove", value: function(t5) {
+            if (!this.states.has(Wt.Drag))
+              return false;
+            t5.preventDefault();
+            var e3 = this.getPosByEvent(t5);
+            this.isCrossDot(e3), this.control.setDotPos(e3, this.focusDotIndex), this.lazy || this.syncValueByPos();
+            var r3 = this.control.dotsValue;
+            this.$emit("dragging", 1 === r3.length ? r3[0] : jt(r3), this.focusDotIndex);
+          } }, { key: "isCrossDot", value: function(t5) {
+            if (this.canSort) {
+              var e3 = this.focusDotIndex, r3 = t5;
+              if (r3 > this.dragRange[1] ? (r3 = this.dragRange[1], this.focusDotIndex++) : r3 < this.dragRange[0] && (r3 = this.dragRange[0], this.focusDotIndex--), e3 !== this.focusDotIndex) {
+                var n2 = this.$refs["dot-".concat(this.focusDotIndex)];
+                n2 && n2.$el && n2.$el.focus(), this.control.setDotPos(r3, e3);
+              }
+            }
+          } }, { key: "dragEnd", value: function(t5) {
+            var e3 = this;
+            if (!this.states.has(Wt.Drag))
+              return false;
+            setTimeout(function() {
+              e3.lazy && e3.syncValueByPos(), e3.included && e3.isNotSync ? e3.control.setValue(e3.value) : e3.control.syncDotsPos(), e3.states.delete(Wt.Drag), e3.useKeyboard && !("targetTouches" in t5) || e3.states.delete(Wt.Focus), e3.$emit("drag-end", e3.focusDotIndex);
+            });
+          } }, { key: "blurHandle", value: function(t5) {
+            if (!this.states.has(Wt.Focus) || !this.$refs.container || this.$refs.container.contains(t5.target))
+              return false;
+            this.states.delete(Wt.Focus);
+          } }, { key: "clickHandle", value: function(t5) {
+            if (!this.clickable || this.disabled)
+              return false;
+            if (!this.states.has(Wt.Drag)) {
+              this.setScale();
+              var e3 = this.getPosByEvent(t5);
+              this.setValueByPos(e3);
+            }
+          } }, { key: "focus", value: function() {
+            var t5 = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 0;
+            this.states.add(Wt.Focus), this.focusDotIndex = t5;
+          } }, { key: "blur", value: function() {
+            this.states.delete(Wt.Focus);
+          } }, { key: "getValue", value: function() {
+            var t5 = this.control.dotsValue;
+            return 1 === t5.length ? t5[0] : t5;
+          } }, { key: "getIndex", value: function() {
+            var t5 = this.control.dotsIndex;
+            return 1 === t5.length ? t5[0] : t5;
+          } }, { key: "setValue", value: function(t5) {
+            this.control.setValue(Array.isArray(t5) ? jt(t5) : [t5]), this.syncValueByPos();
+          } }, { key: "setIndex", value: function(t5) {
+            var e3 = this, r3 = Array.isArray(t5) ? t5.map(function(t6) {
+              return e3.control.getValueByIndex(t6);
+            }) : this.control.getValueByIndex(t5);
+            this.setValue(r3);
+          } }, { key: "setValueByPos", value: function(t5) {
+            var e3 = this, r3 = this.control.getRecentDot(t5);
+            if (this.disabled || this.dots[r3].disabled)
+              return false;
+            this.focusDotIndex = r3, this.control.setDotPos(t5, r3), this.syncValueByPos(), this.useKeyboard && this.states.add(Wt.Focus), setTimeout(function() {
+              e3.included && e3.isNotSync ? e3.control.setValue(e3.value) : e3.control.syncDotsPos();
+            });
+          } }, { key: "keydownHandle", value: function(t5) {
+            var e3 = this;
+            if (!this.useKeyboard || !this.states.has(Wt.Focus))
+              return false;
+            var r3 = this.included && this.marks, n2 = G(t5, { direction: this.direction, max: r3 ? this.control.markList.length - 1 : this.control.total, min: 0, hook: this.keydownHook });
+            if (n2) {
+              t5.preventDefault();
+              var o2 = -1, i2 = 0;
+              r3 ? (this.control.markList.some(function(t6, r4) {
+                return t6.value === e3.control.dotsValue[e3.focusDotIndex] && (o2 = n2(r4), true);
+              }), o2 < 0 ? o2 = 0 : o2 > this.control.markList.length - 1 && (o2 = this.control.markList.length - 1), i2 = this.control.markList[o2].pos) : (o2 = n2(this.control.getIndexByValue(this.control.dotsValue[this.focusDotIndex])), i2 = this.control.parseValue(this.control.getValueByIndex(o2))), this.isCrossDot(i2), this.control.setDotPos(i2, this.focusDotIndex), this.syncValueByPos();
+            }
+          } }, { key: "getPosByEvent", value: function(t5) {
+            return W(t5, this.$refs.rail, this.isReverse, this.zoom)[this.isHorizontal ? "x" : "y"] / this.scale;
+          } }, { key: "renderSlot", value: function(t5, e3, r3, n2) {
+            var o2 = this.$createElement, i2 = this.$scopedSlots[t5];
+            return i2 ? n2 ? i2(e3) : o2("template", { slot: t5 }, [i2(e3)]) : r3;
+          } }, { key: "render", value: function() {
+            var t5 = this, e3 = arguments[0];
+            return e3("div", s()([{ ref: "container", class: this.containerClasses, style: this.containerStyles, on: { click: this.clickHandle, touchstart: this.dragStartOnProcess, mousedown: this.dragStartOnProcess } }, this.$attrs]), [e3("div", { ref: "rail", class: "vue-slider-rail", style: this.railStyle }, [this.processArray.map(function(r3, n2) {
+              return t5.renderSlot("process", r3, e3("div", { class: "vue-slider-process", key: "process-".concat(n2), style: r3.style }), true);
+            }), this.sliderMarks ? e3("div", { class: "vue-slider-marks" }, [this.control.markList.map(function(r3, n2) {
+              var o2;
+              return t5.renderSlot("mark", r3, e3("vue-slider-mark", { key: "mark-".concat(n2), attrs: { mark: r3, hideLabel: t5.hideLabel, stepStyle: t5.stepStyle, stepActiveStyle: t5.stepActiveStyle, labelStyle: t5.labelStyle, labelActiveStyle: t5.labelActiveStyle }, style: (o2 = {}, Rt(o2, t5.isHorizontal ? "height" : "width", "100%"), Rt(o2, t5.isHorizontal ? "width" : "height", t5.tailSize), Rt(o2, t5.mainDirection, "".concat(r3.pos, "%")), o2), on: { pressLabel: function(e4) {
+                return t5.clickable && t5.setValueByPos(e4);
+              } } }, [t5.renderSlot("step", r3, null), t5.renderSlot("label", r3, null)]), true);
+            })]) : null, this.dots.map(function(r3, n2) {
+              var o2;
+              return e3("vue-slider-dot", { ref: "dot-".concat(n2), key: "dot-".concat(n2), attrs: Dt({ value: r3.value, disabled: r3.disabled, focus: r3.focus, "dot-style": [r3.style, r3.disabled ? r3.disabledStyle : null, r3.focus ? r3.focusStyle : null], tooltip: r3.tooltip || t5.tooltip, "tooltip-style": [t5.tooltipStyle, r3.tooltipStyle, r3.disabled ? r3.tooltipDisabledStyle : null, r3.focus ? r3.tooltipFocusStyle : null], "tooltip-formatter": Array.isArray(t5.sliderTooltipFormatter) ? t5.sliderTooltipFormatter[n2] : t5.sliderTooltipFormatter, "tooltip-placement": t5.tooltipDirections[n2], role: "slider", "aria-valuenow": r3.value, "aria-valuemin": t5.min, "aria-valuemax": t5.max, "aria-orientation": t5.isHorizontal ? "horizontal" : "vertical", tabindex: "0" }, t5.dotAttrs), style: [t5.dotBaseStyle, (o2 = {}, Rt(o2, t5.mainDirection, "".concat(r3.pos, "%")), Rt(o2, "transition", "".concat(t5.mainDirection, " ").concat(t5.animateTime, "s")), o2)], on: { "drag-start": function() {
+                return t5.dragStart(n2);
+              } }, nativeOn: { focus: function() {
+                return !r3.disabled && t5.focus(n2);
+              }, blur: function() {
+                return t5.blur();
+              } } }, [t5.renderSlot("dot", r3, null), t5.renderSlot("tooltip", r3, null)]);
+            }), this.renderSlot("default", { value: this.getValue() }, null, true)])]);
+          } }, { key: "tailSize", get: function() {
+            return F((this.isHorizontal ? this.height : this.width) || Gt);
+          } }, { key: "containerClasses", get: function() {
+            return ["vue-slider", ["vue-slider-".concat(this.direction)], { "vue-slider-disabled": this.disabled }];
+          } }, { key: "containerStyles", get: function() {
+            var t5 = Array.isArray(this.dotSize) ? this.dotSize : [this.dotSize, this.dotSize], e3 = Ot(t5, 2), r3 = e3[0], n2 = e3[1], o2 = this.width ? F(this.width) : this.isHorizontal ? "auto" : F(Gt), i2 = this.height ? F(this.height) : this.isHorizontal ? F(Gt) : "auto";
+            return { padding: this.contained ? "".concat(n2 / 2, "px ").concat(r3 / 2, "px") : this.isHorizontal ? "".concat(n2 / 2, "px 0") : "0 ".concat(r3 / 2, "px"), width: o2, height: i2 };
+          } }, { key: "processArray", get: function() {
+            var t5 = this;
+            return this.control.processArray.map(function(e3, r3) {
+              var n2, o2 = Ot(e3, 3), i2 = o2[0], a2 = o2[1], s2 = o2[2];
+              if (i2 > a2) {
+                var u2 = [a2, i2];
+                i2 = u2[0], a2 = u2[1];
+              }
+              var l2 = t5.isHorizontal ? "width" : "height";
+              return { start: i2, end: a2, index: r3, style: Dt(Dt((n2 = {}, Rt(n2, t5.isHorizontal ? "height" : "width", "100%"), Rt(n2, t5.isHorizontal ? "top" : "left", 0), Rt(n2, t5.mainDirection, "".concat(i2, "%")), Rt(n2, l2, "".concat(a2 - i2, "%")), Rt(n2, "transitionProperty", "".concat(l2, ",").concat(t5.mainDirection)), Rt(n2, "transitionDuration", "".concat(t5.animateTime, "s")), n2), t5.processStyle), s2) };
+            });
+          } }, { key: "dotBaseStyle", get: function() {
+            var t5, e3 = Array.isArray(this.dotSize) ? this.dotSize : [this.dotSize, this.dotSize], r3 = Ot(e3, 2), n2 = r3[0], o2 = r3[1];
+            return t5 = this.isHorizontal ? Rt({ transform: "translate(".concat(this.isReverse ? "50%" : "-50%", ", -50%)"), "-WebkitTransform": "translate(".concat(this.isReverse ? "50%" : "-50%", ", -50%)"), top: "50%" }, "ltr" === this.direction ? "left" : "right", "0") : Rt({ transform: "translate(-50%, ".concat(this.isReverse ? "50%" : "-50%", ")"), "-WebkitTransform": "translate(-50%, ".concat(this.isReverse ? "50%" : "-50%", ")"), left: "50%" }, "btt" === this.direction ? "bottom" : "top", "0"), Dt({ width: "".concat(n2, "px"), height: "".concat(o2, "px") }, t5);
+          } }, { key: "mainDirection", get: function() {
+            switch (this.direction) {
+              case "ltr":
+                return "left";
+              case "rtl":
+                return "right";
+              case "btt":
+                return "bottom";
+              case "ttb":
+                return "top";
+            }
+          } }, { key: "isHorizontal", get: function() {
+            return "ltr" === this.direction || "rtl" === this.direction;
+          } }, { key: "isReverse", get: function() {
+            return "rtl" === this.direction || "btt" === this.direction;
+          } }, { key: "tooltipDirections", get: function() {
+            var t5 = this.tooltipPlacement || (this.isHorizontal ? "top" : "left");
+            return Array.isArray(t5) ? t5 : this.dots.map(function() {
+              return t5;
+            });
+          } }, { key: "dots", get: function() {
+            var t5 = this;
+            return this.control.dotsPos.map(function(e3, r3) {
+              return Dt({ pos: e3, index: r3, value: t5.control.dotsValue[r3], focus: t5.states.has(Wt.Focus) && t5.focusDotIndex === r3, disabled: t5.disabled, style: t5.dotStyle }, (Array.isArray(t5.dotOptions) ? t5.dotOptions[r3] : t5.dotOptions) || {});
+            });
+          } }, { key: "animateTime", get: function() {
+            return this.states.has(Wt.Drag) ? 0 : this.duration;
+          } }, { key: "canSort", get: function() {
+            return this.order && !this.minRange && !this.maxRange && !this.fixed && this.enableCross;
+          } }, { key: "sliderData", get: function() {
+            var t5 = this;
+            return this.isObjectArrayData(this.data) ? this.data.map(function(e3) {
+              return e3[t5.dataValue];
+            }) : this.isObjectData(this.data) ? Object.keys(this.data) : this.data;
+          } }, { key: "sliderMarks", get: function() {
+            var t5 = this;
+            return this.marks ? this.marks : this.isObjectArrayData(this.data) ? function(e3) {
+              var r3 = { label: e3 };
+              return t5.data.some(function(n2) {
+                return n2[t5.dataValue] === e3 && (r3.label = n2[t5.dataLabel], true);
+              }), r3;
+            } : this.isObjectData(this.data) ? this.data : void 0;
+          } }, { key: "sliderTooltipFormatter", get: function() {
+            var t5 = this;
+            if (this.tooltipFormatter)
+              return this.tooltipFormatter;
+            if (this.isObjectArrayData(this.data))
+              return function(e4) {
+                var r3 = "" + e4;
+                return t5.data.some(function(n2) {
+                  return n2[t5.dataValue] === e4 && (r3 = n2[t5.dataLabel], true);
+                }), r3;
+              };
+            if (this.isObjectData(this.data)) {
+              var e3 = this.data;
+              return function(t6) {
+                return e3[t6];
+              };
+            }
+          } }, { key: "isNotSync", get: function() {
+            var t5 = this.control.dotsValue;
+            return Array.isArray(this.value) ? this.value.length !== t5.length || this.value.some(function(e3, r3) {
+              return e3 !== t5[r3];
+            }) : this.value !== t5[0];
+          } }, { key: "dragRange", get: function() {
+            var t5 = this.dots[this.focusDotIndex - 1], e3 = this.dots[this.focusDotIndex + 1];
+            return [t5 ? t5.pos : -1 / 0, e3 ? e3.pos : 1 / 0];
+          } }]), r2;
+        }(c.a);
+        return u([h("change", { default: 0 })], t3.prototype, "value", void 0), u([p({ type: Boolean, default: false })], t3.prototype, "silent", void 0), u([p({ default: "ltr", validator: function(t4) {
+          return ["ltr", "rtl", "ttb", "btt"].indexOf(t4) > -1;
+        } })], t3.prototype, "direction", void 0), u([p({ type: [Number, String] })], t3.prototype, "width", void 0), u([p({ type: [Number, String] })], t3.prototype, "height", void 0), u([p({ default: 14 })], t3.prototype, "dotSize", void 0), u([p({ default: false })], t3.prototype, "contained", void 0), u([p({ type: Number, default: 0 })], t3.prototype, "min", void 0), u([p({ type: Number, default: 100 })], t3.prototype, "max", void 0), u([p({ type: Number, default: 1 })], t3.prototype, "interval", void 0), u([p({ type: Boolean, default: false })], t3.prototype, "disabled", void 0), u([p({ type: Boolean, default: true })], t3.prototype, "clickable", void 0), u([p({ type: Boolean, default: false })], t3.prototype, "dragOnClick", void 0), u([p({ type: Number, default: 0.5 })], t3.prototype, "duration", void 0), u([p({ type: [Object, Array] })], t3.prototype, "data", void 0), u([p({ type: String, default: "value" })], t3.prototype, "dataValue", void 0), u([p({ type: String, default: "label" })], t3.prototype, "dataLabel", void 0), u([p({ type: Boolean, default: false })], t3.prototype, "lazy", void 0), u([p({ type: String, validator: function(t4) {
+          return ["none", "always", "focus", "hover", "active"].indexOf(t4) > -1;
+        }, default: "active" })], t3.prototype, "tooltip", void 0), u([p({ type: [String, Array], validator: function(t4) {
+          return (Array.isArray(t4) ? t4 : [t4]).every(function(t5) {
+            return ["top", "right", "bottom", "left"].indexOf(t5) > -1;
+          });
+        } })], t3.prototype, "tooltipPlacement", void 0), u([p({ type: [String, Array, Function] })], t3.prototype, "tooltipFormatter", void 0), u([p({ type: Boolean, default: true })], t3.prototype, "useKeyboard", void 0), u([p(Function)], t3.prototype, "keydownHook", void 0), u([p({ type: Boolean, default: true })], t3.prototype, "enableCross", void 0), u([p({ type: Boolean, default: false })], t3.prototype, "fixed", void 0), u([p({ type: Boolean, default: true })], t3.prototype, "order", void 0), u([p(Number)], t3.prototype, "minRange", void 0), u([p(Number)], t3.prototype, "maxRange", void 0), u([p({ type: [Boolean, Object, Array, Function], default: false })], t3.prototype, "marks", void 0), u([p({ type: [Boolean, Function], default: true })], t3.prototype, "process", void 0), u([p({ type: [Number] })], t3.prototype, "zoom", void 0), u([p(Boolean)], t3.prototype, "included", void 0), u([p(Boolean)], t3.prototype, "adsorb", void 0), u([p(Boolean)], t3.prototype, "hideLabel", void 0), u([p()], t3.prototype, "dotOptions", void 0), u([p()], t3.prototype, "dotAttrs", void 0), u([p()], t3.prototype, "railStyle", void 0), u([p()], t3.prototype, "processStyle", void 0), u([p()], t3.prototype, "dotStyle", void 0), u([p()], t3.prototype, "tooltipStyle", void 0), u([p()], t3.prototype, "stepStyle", void 0), u([p()], t3.prototype, "stepActiveStyle", void 0), u([p()], t3.prototype, "labelStyle", void 0), u([p()], t3.prototype, "labelActiveStyle", void 0), u([y("value")], t3.prototype, "onValueChanged", null), t3 = u([f()({ name: "VueSlider", data: function() {
+          return { control: null };
+        }, components: { VueSliderDot: j, VueSliderMark: U } })], t3), t3;
+      }(), qt = Xt;
+      qt.VueSliderMark = U, qt.VueSliderDot = j;
+      var Kt = qt;
+      e["default"] = Kt;
+    } })["default"];
+  });
+})(vueSliderComponent_umd_min);
+const VueSliderComponent = /* @__PURE__ */ getDefaultExportFromCjs(vueSliderComponent_umd_min.exports);
+const _default = "";
+var __defProp$2 = Object.defineProperty;
+var __getOwnPropDesc$2 = Object.getOwnPropertyDescriptor;
+var __decorateClass$2 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$2(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$2(target, key, result);
+  return result;
+};
+let Slider$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "$refs");
+    __publicField(this, "width");
+    __publicField(this, "value");
+    __publicField(this, "min");
+    __publicField(this, "max");
+    __publicField(this, "interval");
+    __publicField(this, "tooltip");
+    __publicField(this, "prefix");
+    __publicField(this, "suffix");
+    __publicField(this, "disabled");
+    __publicField(this, "data");
+    __publicField(this, "simpleTheme");
+    __publicField(this, "displayValue", 1);
+    __publicField(this, "debounced", false);
+    __publicField(this, "ro");
+  }
+  updateLocalValue() {
+    this.displayValue = this.value;
+  }
+  created() {
+    this.$on("input", this.setValue);
+  }
+  mounted() {
+    this.ro = new index((entries, observer) => {
+      for (let entry of entries) {
+        entry.contentRect;
+        if (!this.debounced) {
+          this.debounce().then(() => {
+            var _a;
+            if ((_a = this.$refs) == null ? void 0 : _a.slider)
+              ;
+          });
+        }
+      }
+    });
+    this.ro.observe(this.$refs.slider.$el);
+    this.displayValue = this.value;
+  }
+  beforeDestroy() {
+    this.ro.unobserve(this.$refs.slider.$el);
+  }
+  destroyed() {
+    this.$off("input", this.setValue);
+  }
+  emitInput(val) {
+    this.$emit("input", val);
+  }
+  setValue(val) {
+    this.displayValue = val;
+  }
+  debounce() {
+    return new Promise((resolve) => {
+      if (!this.debounced) {
+        this.debounced = true;
+        setTimeout(() => {
+          this.debounced = false;
+          resolve();
+        }, 500);
+      }
+    });
+  }
+};
+__decorateClass$2([
+  Watch("value")
+], Slider$1.prototype, "updateLocalValue", 1);
+__decorateClass$2([
+  Prop()
+], Slider$1.prototype, "width", 2);
+__decorateClass$2([
+  Prop({ default: 1 })
+], Slider$1.prototype, "value", 2);
+__decorateClass$2([
+  Prop({ default: 0 })
+], Slider$1.prototype, "min", 2);
+__decorateClass$2([
+  Prop({ default: 100 })
+], Slider$1.prototype, "max", 2);
+__decorateClass$2([
+  Prop({ default: 1 })
+], Slider$1.prototype, "interval", 2);
+__decorateClass$2([
+  Prop({ default: "always" })
+], Slider$1.prototype, "tooltip", 2);
+__decorateClass$2([
+  Prop({ default: "" })
+], Slider$1.prototype, "prefix", 2);
+__decorateClass$2([
+  Prop({ default: "" })
+], Slider$1.prototype, "suffix", 2);
+__decorateClass$2([
+  Prop({ default: false })
+], Slider$1.prototype, "disabled", 2);
+__decorateClass$2([
+  Prop()
+], Slider$1.prototype, "data", 2);
+__decorateClass$2([
+  Prop({ default: false })
+], Slider$1.prototype, "simpleTheme", 2);
+Slider$1 = __decorateClass$2([
+  Component({
+    components: {
+      VueSliderComponent
+    }
+  })
+], Slider$1);
+const Slider_vue_vue_type_style_index_0_lang = "";
+var _sfc_render$2 = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("vue-slider-component", { ref: "slider", staticClass: "s-slider", class: {
+    "s-slider--simple": _vm.simpleTheme,
+    "s-slider--has-tooltip": _vm.tooltip === "always"
+  }, attrs: { "width": _vm.width, "height": 8, "dot-size": [24, 16], "tooltip": _vm.tooltip, "tooltip-placement": "bottom", "min": _vm.min, "max": _vm.max, "interval": _vm.interval, "value": _vm.displayValue, "tooltip-formatter": _vm.prefix + "{value}" + _vm.suffix, "data": _vm.data, "disabled": _vm.disabled }, on: { "change": (value) => _vm.emitInput(value) } });
+};
+var _sfc_staticRenderFns$2 = [];
+var __component__$2 = /* @__PURE__ */ normalizeComponent(
+  Slider$1,
+  _sfc_render$2,
+  _sfc_staticRenderFns$2,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const Slider = __component__$2.exports;
+var __defProp$1 = Object.defineProperty;
+var __getOwnPropDesc$1 = Object.getOwnPropertyDescriptor;
+var __decorateClass$1 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$1(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$1(target, key, result);
+  return result;
+};
+let SliderTwo$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "$refs");
+    __publicField(this, "isDragging", false);
+    __publicField(this, "size", 0);
+    __publicField(this, "currentValue", 0);
+    __publicField(this, "lazy", false);
+    __publicField(this, "offset", null);
+    __publicField(this, "range", []);
+    __publicField(this, "currentWidth", 0);
+    __publicField(this, "currentHeight", 0);
+    __publicField(this, "bounced", false);
+    __publicField(this, "halt", false);
+    __publicField(this, "interval");
+    __publicField(this, "steps");
+    __publicField(this, "data");
+    __publicField(this, "dataIndexing");
+    __publicField(this, "value");
+    __publicField(this, "min");
+    __publicField(this, "max");
+    __publicField(this, "tooltip");
+    __publicField(this, "suffix");
+    __publicField(this, "prefix");
+    __publicField(this, "simpleTheme");
+    __publicField(this, "marks");
+    __publicField(this, "labels");
+    __publicField(this, "isDisabled");
+    __publicField(this, "draggable");
+  }
+  get val() {
+    if (this.dataIndexing) {
+      return this.data ? this.data.indexOf(this.data[this.currentValue]) : this.currentValue;
+    } else {
+      return this.data ? this.data[this.currentValue] : this.currentValue;
+    }
+  }
+  set val(newVal) {
+    if (this.data) {
+      let index2 = this.data.indexOf(newVal);
+      if (index2 > -1) {
+        this.currentValue = index2;
+      }
+    } else {
+      this.currentValue = newVal;
+    }
+  }
+  get displayValue() {
+    if (this.data) {
+      return this.dataIndexing ? this.data[this.currentIndex] : this.currentValue;
+    } else {
+      return this.currentValue;
+    }
+  }
+  get currentIndex() {
+    return (this.currentValue - this.minimum) / this.spacing;
+  }
+  get indexRange() {
+    return [0, this.currentIndex];
+  }
+  get minimum() {
+    return this.data ? 0 : this.min;
+  }
+  get maximum() {
+    return this.data ? this.data.length - 1 : this.max;
+  }
+  get spacing() {
+    return this.data ? 1 : this.interval;
+  }
+  get multiple() {
+    let decimals = `${this.interval}`.split(".")[1];
+    return decimals ? Math.pow(10, decimals.length) : 1;
+  }
+  get total() {
+    if (this.data) {
+      return this.data.length - 1;
+    } else if (Math.floor((this.maximum - this.minimum) * this.multiple) % (this.interval * this.multiple) !== 0) {
+      console.error(
+        "[ERROR]: Prop[interval] must be a divisor of [max] - [min]"
+      );
+    }
+    return (this.maximum - this.minimum) / this.interval;
+  }
+  get gap() {
+    return this.size / this.total;
+  }
+  get position() {
+    return (this.currentValue - this.minimum) / this.spacing * this.gap;
+  }
+  get limit() {
+    return [0, this.size];
+  }
+  get valueLimit() {
+    return [this.minimum, this.maximum];
+  }
+  watchValue(newVal) {
+    this.setValue(newVal);
+  }
+  debounce() {
+    return new Promise((resolve) => {
+      if (!this.bounced) {
+        this.bounced = true;
+        setTimeout(() => {
+          this.bounced = false;
+          resolve();
+        }, 100);
+      }
+    });
+  }
+  dnr() {
+    this.debounce().then(() => {
+      let size = this.$refs.elem.getBoundingClientRect();
+      let newWidth = size.width;
+      let newHeight = size.height;
+      if (newWidth != this.currentWidth || newHeight != this.currentHeight) {
+        this.currentWidth = newWidth;
+        this.currentHeight = newHeight;
+        this.refresh(this.$refs.elem);
+      }
+    });
+  }
+  resizeSensor(el) {
+    let expand = document.createElement("div");
+    expand.classList.add("s-slider-expand-watch");
+    expand.style.position = "absolute";
+    expand.style.left = "0px";
+    expand.style.top = "0px";
+    expand.style.right = "0px";
+    expand.style.bottom = "0px";
+    expand.style.overflow = "hidden";
+    expand.style.visibility = "hidden";
+    let expandChild = document.createElement("div");
+    expandChild.style.position = "absolute";
+    expandChild.style.left = "0px";
+    expandChild.style.top = "0px";
+    expandChild.style.width = "10000000px";
+    expandChild.style.height = "10000000px";
+    expand.appendChild(expandChild);
+    let shrink = document.createElement("div");
+    shrink.classList.add("s-slider-shrink-watch");
+    shrink.style.position = "absolute";
+    shrink.style.left = "0px";
+    shrink.style.top = "0px";
+    shrink.style.right = "0px";
+    shrink.style.bottom = "0px";
+    shrink.style.overflow = "hidden";
+    shrink.style.visibility = "hidden";
+    let shrinkChild = document.createElement("div");
+    shrinkChild.style.position = "absolute";
+    shrinkChild.style.left = "0px";
+    shrinkChild.style.top = "0px";
+    shrinkChild.style.width = "200%";
+    shrinkChild.style.height = "200%";
+    shrink.appendChild(shrinkChild);
+    el.appendChild(expand);
+    el.appendChild(shrink);
+    this.setSensorScroll(this.$refs.elem);
+    let size = el.getBoundingClientRect();
+    this.currentWidth = size.width;
+    this.currentHeight = size.height;
+  }
+  setSensorScroll(el) {
+    el.querySelector(".s-slider-expand-watch").scrollLeft = 1e7;
+    el.querySelector(".s-slider-expand-watch").scrollTop = 1e7;
+    el.querySelector(".s-slider-shrink-watch").scrollLeft = 1e7;
+    el.querySelector(".s-slider-shrink-watch").scrollTop = 1e7;
+  }
+  bindEvents(el) {
+    document.addEventListener("mousemove", this.moving);
+    document.addEventListener("mouseup", this.moveEnd);
+    document.addEventListener("mouseleave", this.moveEnd);
+    el.querySelector(".s-slider-shrink-watch").addEventListener(
+      "scroll",
+      this.dnr
+    );
+    el.querySelector(".s-slider-expand-watch").addEventListener(
+      "scroll",
+      this.dnr
+    );
+  }
+  unbindEvents(el) {
+    document.removeEventListener("mousemove", this.moving);
+    document.removeEventListener("mouseup", this.moveEnd);
+    document.removeEventListener("mouseleave", this.moveEnd);
+    el.querySelector(".s-slider-shrink-watch").removeEventListener(
+      "scroll",
+      this.dnr
+    );
+    el.querySelector(".s-slider-expand-watch").removeEventListener(
+      "scroll",
+      this.dnr
+    );
+  }
+  getPos(e) {
+    return e.clientX - this.offset;
+  }
+  wrapClick(e) {
+    if (this.isDisabled)
+      return false;
+    let pos = this.getPos(e);
+    this.setValueOnPos(pos, false);
+    if (!this.isDragging)
+      this.setTransform(this.position);
+  }
+  moveStart() {
+    if (!this.draggable)
+      return false;
+    this.isDragging = true;
+    this.$emit("dragStart", this);
+  }
+  moving(e) {
+    if (!this.isDragging || !this.draggable)
+      return false;
+    e.preventDefault();
+    this.setValueOnPos(this.getPos(e), true);
+    if (!this.halt)
+      this.setTransform(this.getPos(e));
+  }
+  moveEnd(e) {
+    if (this.isDragging && this.draggable) {
+      this.$emit("dragEnd", this);
+      this.setValue(this.limitValue(this.value));
+      this.setTransitionTime(0.125);
+      this.setTransform(this.position);
+      this.isDragging = false;
+      if (this.lazy && this.isDiff(this.val, this.value)) {
+        this.syncValue();
+      }
+    } else {
+      return false;
+    }
+  }
+  setValueOnPos(pos, isDrag) {
+    let range = this.limit;
+    let valueRange = this.valueLimit;
+    if (pos >= range[0] && pos <= range[1]) {
+      this.halt = false;
+      let v = (Math.round(pos / this.gap) * (this.spacing * this.multiple) + this.minimum * this.multiple) / this.multiple;
+      this.setCurrentValue(v, isDrag);
+    } else if (pos < range[0]) {
+      this.halt = true;
+      console.log("overshoot1");
+      this.setTransform(range[0]);
+      this.setCurrentValue(valueRange[0], true);
+    } else {
+      this.halt = true;
+      console.log("overshoot2");
+      this.setTransform(range[1]);
+      this.setCurrentValue(valueRange[1], true);
+    }
+  }
+  createMarks() {
+    if (Array.isArray(this.data)) {
+      let ticks = this.data.length;
+      for (let i = 0; i < ticks; i++) {
+        this.range.push(this.data[i]);
+      }
+    } else if (Math.floor((this.maximum - this.minimum) * this.multiple) % (this.interval * this.multiple) !== 0) {
+      console.error(
+        "[ERROR]: Prop[interval] must be a divisor of [max] - [min]"
+      );
+    } else {
+      let ticks = (this.max - this.min) / this.interval;
+      let t = 0 - this.interval;
+      for (let i = -1; i < ticks; i++) {
+        t = t + this.interval;
+        this.range.push(t);
+      }
+    }
+  }
+  isDiff(a, b) {
+    if (Object.prototype.toString.call(a) !== Object.prototype.toString.call(b)) {
+      return true;
+    } else if (Array.isArray(a) && a.length === b.length) {
+      return a.some((v, i) => v !== b[i]);
+    }
+    return a !== b;
+  }
+  setCurrentValue(val, bool) {
+    if (val < this.minimum || val > this.maximum)
+      return false;
+    if (this.isDiff(this.currentValue, val)) {
+      this.currentValue = val;
+      if (!this.lazy || !this.isDragging) {
+        this.syncValue();
+      }
+    }
+  }
+  setIndex(val) {
+    val = this.spacing * val + this.minimum;
+    this.setCurrentValue(val, true);
+  }
+  setValue(val) {
+    if (this.isDiff(this.val, val)) {
+      let resetVal = this.limitValue(val);
+      this.val = resetVal;
+      this.syncValue();
+    }
+  }
+  setTransform(val) {
+    let value = val - (this.$refs.handle.scrollWidth - 2) / 2;
+    let translateValue = `translateX(${value}px)`;
+    this.$refs.handle.style.transform = translateValue;
+    this.$refs.handle.style.webkitTransform = translateValue;
+    this.$refs.handle.style.transform = translateValue;
+    this.$refs.process.style.width = `${val}px`;
+  }
+  setTransitionTime(t) {
+    this.$refs.handle.style.transitionDuration = `${t}s`;
+    this.$refs.handle.style.webkitTransitionDuration = `${t}s`;
+    this.$refs.process.style.transitionDuration = `${t}s`;
+    this.$refs.process.style.webkitTransitionDuration = `${t}s`;
+  }
+  limitValue(val) {
+    if (this.data) {
+      return val;
+    }
+    const inRange = (v) => {
+      if (v < this.min) {
+        return this.min;
+      } else if (v > this.max) {
+        return this.max;
+      }
+      return v;
+    };
+    return inRange(val);
+  }
+  syncValue() {
+    let val = this.val;
+    if (this.range) {
+      this.$emit("callbackRange", this.range[this.currentIndex]);
+    }
+    this.$emit("input", val);
+  }
+  getValue() {
+    return this.val;
+  }
+  getIndex() {
+    return this.currentIndex;
+  }
+  getStaticData() {
+    if (this.$refs.elem) {
+      this.size = this.$refs.elem.offsetWidth;
+      this.offset = this.$refs.elem.getBoundingClientRect().left;
+    }
+  }
+  refresh(el) {
+    if (el) {
+      this.getStaticData();
+      this.setTransform(this.position);
+      this.setSensorScroll(el);
+    }
+  }
+  mounted() {
+    if (this.steps !== 0) {
+      console.error(
+        "[ERROR]: Prop[steps] has been replaced with Prop[interval]"
+      );
+    }
+    this.getStaticData();
+    this.setValue(this.limitValue(this.value));
+    this.setTransform(this.position);
+    if (this.marks) {
+      this.createMarks();
+    }
+    if (this.$refs.elem) {
+      this.resizeSensor(this.$refs.elem);
+      this.bindEvents(this.$refs.elem);
+    }
+  }
+  updated() {
+    if (!this.isDragging) {
+      this.setTransitionTime(0.25);
+    } else {
+      this.setTransitionTime(0);
+    }
+  }
+  beforeDestroy() {
+    if (this.$refs.elem) {
+      this.unbindEvents(this.$refs.elem);
+    }
+  }
+};
+__decorateClass$1([
+  Prop({ default: 1 })
+], SliderTwo$1.prototype, "interval", 2);
+__decorateClass$1([
+  Prop({ default: 0 })
+], SliderTwo$1.prototype, "steps", 2);
+__decorateClass$1([
+  Prop({ default: null })
+], SliderTwo$1.prototype, "data", 2);
+__decorateClass$1([
+  Prop({ default: true })
+], SliderTwo$1.prototype, "dataIndexing", 2);
+__decorateClass$1([
+  Prop({ default: 0 })
+], SliderTwo$1.prototype, "value", 2);
+__decorateClass$1([
+  Prop({ default: 0 })
+], SliderTwo$1.prototype, "min", 2);
+__decorateClass$1([
+  Prop({ default: 100 })
+], SliderTwo$1.prototype, "max", 2);
+__decorateClass$1([
+  Prop({ default: "always" })
+], SliderTwo$1.prototype, "tooltip", 2);
+__decorateClass$1([
+  Prop({ default: null })
+], SliderTwo$1.prototype, "suffix", 2);
+__decorateClass$1([
+  Prop({ default: null })
+], SliderTwo$1.prototype, "prefix", 2);
+__decorateClass$1([
+  Prop({ default: false })
+], SliderTwo$1.prototype, "simpleTheme", 2);
+__decorateClass$1([
+  Prop({ default: false })
+], SliderTwo$1.prototype, "marks", 2);
+__decorateClass$1([
+  Prop({ default: false })
+], SliderTwo$1.prototype, "labels", 2);
+__decorateClass$1([
+  Prop({ default: false })
+], SliderTwo$1.prototype, "isDisabled", 2);
+__decorateClass$1([
+  Prop({ default: true })
+], SliderTwo$1.prototype, "draggable", 2);
+__decorateClass$1([
+  Watch("value")
+], SliderTwo$1.prototype, "watchValue", 1);
+SliderTwo$1 = __decorateClass$1([
+  Component({})
+], SliderTwo$1);
+const SliderTwo_vue_vue_type_style_index_0_scoped_0a2252c9_lang = "";
+var _sfc_render$1 = function render2() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { ref: "wrap", staticClass: "s-slider", on: { "click": _vm.wrapClick } }, [_c("div", { ref: "elem", staticClass: "s-slider-bar" }, [[_c("div", { ref: "handle", staticClass: "s-slider-dot-cont", on: { "mousedown": _vm.moveStart } }, [_vm._m(0), _c("div", { staticClass: "s-slider-dot-tooltip" }, [_vm._v(" " + _vm._s(_vm.prefix) + _vm._s(_vm.displayValue) + _vm._s(_vm.suffix) + " ")])])], _c("div", { ref: "process", staticClass: "s-slider-process", class: { "s-slider-simple": _vm.simpleTheme } })], 2), _vm.marks ? _c("div", { staticClass: "s-slider-mark-cont" }, _vm._l(_vm.range, function(tick, index2) {
+    return _c("transition-group", { key: index2, staticClass: "s-slider-marks", attrs: { "name": "s-slider--ani__ticks", "tag": "div" } }, [_vm.marks && _vm.value != _vm.range[index2] ? _c("div", { key: "tick_lines", staticClass: "s-slider-tick" }) : _vm._e(), _vm.labels && _vm.value != _vm.range[index2] ? _c("div", { key: "tick_values", staticClass: "s-slider-label" }, [_vm._v(" " + _vm._s(_vm.prefix) + _vm._s(_vm.range[index2]) + _vm._s(_vm.suffix) + " ")]) : _vm._e()]);
+  }), 1) : _vm._e()]);
+};
+var _sfc_staticRenderFns$1 = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-slider-dot" }, [_c("div", { staticClass: "s-slider-dot-handle" })]);
+}];
+var __component__$1 = /* @__PURE__ */ normalizeComponent(
+  SliderTwo$1,
+  _sfc_render$1,
+  _sfc_staticRenderFns$1,
+  false,
+  null,
+  "0a2252c9",
+  null,
+  null
+);
+const SliderTwo = __component__$1.exports;
+const SlidersCode = `<template>
   <div>
     <h1>Sliders</h1>
     <!-- General / Intro -->
@@ -244,9 +2341,78 @@ export default class Sliders extends Vue {
   .margin-left(2);
 }
 </style>
-`;var Ze=Object.defineProperty,tr=Object.getOwnPropertyDescriptor,er=(d,n,h,u)=>{for(var c=u>1?void 0:u?tr(n,h):n,p=d.length-1,l;p>=0;p--)(l=d[p])&&(c=(u?l(n,h,c):l(c))||c);return u&&c&&Ze(n,h,c),c};let Ot=class extends vt{constructor(){super(...arguments);_(this,"demoCode",Qe);_(this,"localValue",15);_(this,"localValueTwo",15);_(this,"value",50);_(this,"data",["one","two","three","four","five","six"])}updateLocalValue(n){this.localValue=n}updateLocalValueTwo(n){this.localValueTwo=n}updateValue(n){console.log(n)}};Ot=er([Dt({components:{Accordion:Me,DemoSection:Ie,Slider:We,SliderTwo:Je}})],Ot);var rr=function(){var n=this,h=n._self._c;return n._self._setupProxy,h("div",[h("h1",[n._v("Sliders")]),n._m(0),h("div",{staticClass:"section"},[h("h2",[n._v("Default Slider")]),h("DemoSection",{attrs:{title:"Default Slider",code:n.demoCode},scopedSlots:n._u([{key:"components",fn:function(){return[h("slider",{attrs:{value:n.value,max:100,min:1,interval:1,tooltip:"always",suffix:"%"},on:{input:u=>n.updateValue(u)}})]},proxy:!0}])})],1),h("div",{staticClass:"section"},[h("h2",[n._v("Simple Theme")]),h("p",[n._v(" Use in more compact places when you don't want the bright teal present. ")]),h("DemoSection",{attrs:{title:"Simple Theme",code:n.demoCode},scopedSlots:n._u([{key:"components",fn:function(){return[h("slider",{attrs:{value:n.value,max:100,min:1,interval:1,tooltip:"always",suffix:"%",simpleTheme:!0},on:{input:u=>n.updateValue(u)}})]},proxy:!0}])})],1),n._m(1)])},nr=[function(){var d=this,n=d._self._c;return d._self._setupProxy,n("div",{staticClass:"section"},[n("div",{staticClass:"row"},[n("p",[d._v(" Our slider component is extended from "),n("a",{attrs:{target:"_blank",href:"https://github.com/NightCatSama/vue-slider-component"}},[d._v("Vue Slider Component")]),d._v(" and makes use of "),n("a",{attrs:{target:"_blank",href:"https://github.com/que-etc/resize-observer-polyfill"}},[d._v("Resize Observer Polyfill")]),d._v(". ")])]),n("pre",[n("code",[d._v(`import { Slider } from 'streamlabs-beaker';
-
-components: {
-  Slider
-}`)])])])},function(){var d=this,n=d._self._c;return d._self._setupProxy,n("div",{staticClass:"section"},[n("table",{staticClass:"docs-table"},[n("thead",[n("tr",[n("th",[d._v("Props")]),n("th",[d._v("Type")]),n("th",[d._v("Default")]),n("th",[d._v("Description")])])]),n("tbody",[n("tr",[n("td",[d._v("width")]),n("td",[d._v("Number, String")]),n("td",[d._v("auto")]),n("td",[d._v("The width of the component.")])]),n("tr",[n("td",[d._v("value")]),n("td",[d._v("Number, String, Array")]),n("td",[d._v("1")]),n("td",[d._v("Initial value of the slider.")])]),n("tr",[n("td",[d._v("min")]),n("td",[d._v("Number")]),n("td",[d._v("0")]),n("td",[d._v("The minimum numerical value that can be selected")])]),n("tr",[n("td",[d._v("max")]),n("td",[d._v("Number")]),n("td",[d._v("100")]),n("td",[d._v("The maximum numerical value that can be selected")])]),n("tr",[n("td",[d._v("interval")]),n("td",[d._v("Number")]),n("td",[d._v("1")]),n("td",[d._v("The steps between the values")])]),n("tr",[n("td",[d._v("tooltip")]),n("td",[d._v("String")]),n("td",[d._v("always")]),n("td",[d._v("Show the tooltip or not. Options are 'always' or 'false'")])]),n("tr",[n("td",[d._v("prefix")]),n("td",[d._v("String")]),n("td",[d._v('""')]),n("td",[d._v(" Prefix label that will be displayed next to the value in the tooltip ")])]),n("tr",[n("td",[d._v("suffix")]),n("td",[d._v("String")]),n("td",[d._v('""')]),n("td",[d._v(" Suffix label that will be displayed next to the value in the tooltip ")])]),n("tr",[n("td",[d._v("data")]),n("td",[d._v("Array")]),n("td",[d._v("null")]),n("td",[d._v("Custom data.")])]),n("tr",[n("td",[d._v("disabled")]),n("td",[d._v("Boolean")]),n("td",[d._v("false")]),n("td",[d._v("Whether to disable the component.")])]),n("tr",[n("td",[d._v("simpleTheme")]),n("td",[d._v("Boolean")]),n("td",[d._v("false")]),n("td",[d._v(" Use for toned down colors to avoid bright teal in small areas. ")])])])])])}],ir=Pt(Ot,rr,nr,!1,null,null,null,null);const cr=ir.exports;export{cr as default};
+`;
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let Sliders$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "demoCode", SlidersCode);
+    __publicField(this, "localValue", 15);
+    __publicField(this, "localValueTwo", 15);
+    __publicField(this, "value", 50);
+    __publicField(this, "data", ["one", "two", "three", "four", "five", "six"]);
+  }
+  updateLocalValue(value) {
+    this.localValue = value;
+  }
+  updateLocalValueTwo(value) {
+    this.localValueTwo = value;
+  }
+  updateValue(value) {
+    console.log(value);
+  }
+};
+Sliders$1 = __decorateClass([
+  Component({
+    components: {
+      Accordion,
+      DemoSection,
+      Slider,
+      SliderTwo
+    }
+  })
+], Sliders$1);
+const Sliders_vue_vue_type_style_index_0_lang = "";
+var _sfc_render = function render3() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", [_c("h1", [_vm._v("Sliders")]), _vm._m(0), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Default Slider")]), _c("DemoSection", { attrs: { "title": "Default Slider", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("slider", { attrs: { "value": _vm.value, "max": 100, "min": 1, "interval": 1, "tooltip": "always", "suffix": "%" }, on: { "input": (value) => _vm.updateValue(value) } })];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Simple Theme")]), _c("p", [_vm._v(" Use in more compact places when you don't want the bright teal present. ")]), _c("DemoSection", { attrs: { "title": "Simple Theme", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("slider", { attrs: { "value": _vm.value, "max": 100, "min": 1, "interval": 1, "tooltip": "always", "suffix": "%", "simpleTheme": true }, on: { "input": (value) => _vm.updateValue(value) } })];
+  }, proxy: true }]) })], 1), _vm._m(1)]);
+};
+var _sfc_staticRenderFns = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("div", { staticClass: "row" }, [_c("p", [_vm._v(" Our slider component is extended from "), _c("a", { attrs: { "target": "_blank", "href": "https://github.com/NightCatSama/vue-slider-component" } }, [_vm._v("Vue Slider Component")]), _vm._v(" and makes use of "), _c("a", { attrs: { "target": "_blank", "href": "https://github.com/que-etc/resize-observer-polyfill" } }, [_vm._v("Resize Observer Polyfill")]), _vm._v(". ")])]), _c("pre", [_c("code", [_vm._v("import { Slider } from 'streamlabs-beaker';\n\ncomponents: {\n  Slider\n}")])])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("table", { staticClass: "docs-table" }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Props")]), _c("th", [_vm._v("Type")]), _c("th", [_vm._v("Default")]), _c("th", [_vm._v("Description")])])]), _c("tbody", [_c("tr", [_c("td", [_vm._v("width")]), _c("td", [_vm._v("Number, String")]), _c("td", [_vm._v("auto")]), _c("td", [_vm._v("The width of the component.")])]), _c("tr", [_c("td", [_vm._v("value")]), _c("td", [_vm._v("Number, String, Array")]), _c("td", [_vm._v("1")]), _c("td", [_vm._v("Initial value of the slider.")])]), _c("tr", [_c("td", [_vm._v("min")]), _c("td", [_vm._v("Number")]), _c("td", [_vm._v("0")]), _c("td", [_vm._v("The minimum numerical value that can be selected")])]), _c("tr", [_c("td", [_vm._v("max")]), _c("td", [_vm._v("Number")]), _c("td", [_vm._v("100")]), _c("td", [_vm._v("The maximum numerical value that can be selected")])]), _c("tr", [_c("td", [_vm._v("interval")]), _c("td", [_vm._v("Number")]), _c("td", [_vm._v("1")]), _c("td", [_vm._v("The steps between the values")])]), _c("tr", [_c("td", [_vm._v("tooltip")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v("always")]), _c("td", [_vm._v("Show the tooltip or not. Options are 'always' or 'false'")])]), _c("tr", [_c("td", [_vm._v("prefix")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v('""')]), _c("td", [_vm._v(" Prefix label that will be displayed next to the value in the tooltip ")])]), _c("tr", [_c("td", [_vm._v("suffix")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v('""')]), _c("td", [_vm._v(" Suffix label that will be displayed next to the value in the tooltip ")])]), _c("tr", [_c("td", [_vm._v("data")]), _c("td", [_vm._v("Array")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("Custom data.")])]), _c("tr", [_c("td", [_vm._v("disabled")]), _c("td", [_vm._v("Boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v("Whether to disable the component.")])]), _c("tr", [_c("td", [_vm._v("simpleTheme")]), _c("td", [_vm._v("Boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v(" Use for toned down colors to avoid bright teal in small areas. ")])])])])]);
+}];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  Sliders$1,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const Sliders = __component__.exports;
+export {
+  Sliders as default
+};
 //# sourceMappingURL=Sliders.5a742459.js.map

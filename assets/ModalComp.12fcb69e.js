@@ -1,2 +1,787 @@
-var S=Object.defineProperty;var N=(a,t,e)=>t in a?S(a,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):a[t]=e;var s=(a,t,e)=>(N(a,typeof t!="symbol"?t+"":t,e),e);import{C as h,P as o,V as f,n as b}from"./index.4fb8a6cb.js";import{B as $}from"./Button.b26dacc2.js";import{B as D}from"./Badge.2c39dd0d.js";import{S as j}from"./Spinner.2fef2c20.js";import{V as A}from"./index.3042f557.js";var R=Object.defineProperty,V=Object.getOwnPropertyDescriptor,v=(a,t,e,r)=>{for(var i=r>1?void 0:r?V(t,e):t,n=a.length-1,l;n>=0;n--)(l=a[n])&&(i=(r?l(t,e,i):l(i))||i);return r&&i&&R(t,e,i),i};let p=class extends f{constructor(){super(...arguments);s(this,"name");s(this,"width");s(this,"minWidth");s(this,"title");s(this,"subTitle");s(this,"text");s(this,"hideActionButtons");s(this,"confirmButtonText");s(this,"clickToClose")}};v([o()],p.prototype,"name",2);v([o({default:600})],p.prototype,"width",2);v([o({default:600})],p.prototype,"minWidth",2);v([o()],p.prototype,"title",2);v([o()],p.prototype,"subTitle",2);v([o()],p.prototype,"text",2);v([o()],p.prototype,"hideActionButtons",2);v([o({default:"Confirm"})],p.prototype,"confirmButtonText",2);v([o({default:!0})],p.prototype,"clickToClose",2);p=v([h({components:{Button:$}})],p);var F=function(){var t=this,e=t._self._c;return t._self._setupProxy,e("modal",t._g({attrs:{name:t.name,classes:"s-modal-wrapper",maxWidth:t.width,minWidth:t.minWidth,height:"auto",adaptive:!0,clickToClose:t.clickToClose}},t.$listeners),[e("div",{staticClass:"s-modal-container"},[e("div",{staticClass:"s-modal-body"},[e("div",{staticClass:"s-normal-upper"},[t.title?e("h1",{staticClass:"s-modal-title"},[t._v(t._s(t.title))]):t._e(),t.subTitle?e("h2",{staticClass:"s-modal-sub-title"},[t._v(t._s(t.subTitle))]):t._e(),t.text?e("p",{staticClass:"s-modal-text"},[t._v(t._s(t.text))]):t._e(),t._t("default")],2)]),!t.hideActionButtons&&t.hideActionButtons!==""?e("div",{staticClass:"s-modal-footer"},[e("div",{staticClass:"s-modal-footer-inner s-button-container"},[e("Button",{attrs:{variation:"default",title:"Close",size:"fixed-width"},on:{click:function(r){return t.$modal.hide(t.name)}}}),e("Button",{attrs:{variation:"action",title:t.confirmButtonText,size:"fixed-width"},on:{click:function(r){return t.$emit("confirm")}}})],1)]):t._e()])])},E=[],z=b(p,F,E,!1,null,"afd2da20",null,null);const I=z.exports;var H=Object.defineProperty,U=Object.getOwnPropertyDescriptor,_=(a,t,e,r)=>{for(var i=r>1?void 0:r?U(t,e):t,n=a.length-1,l;n>=0;n--)(l=a[n])&&(i=(r?l(t,e,i):l(i))||i);return r&&i&&H(t,e,i),i};let d=class extends f{constructor(){super(...arguments);s(this,"name");s(this,"width");s(this,"minWidth");s(this,"scrollable");s(this,"title");s(this,"subTitle");s(this,"text");s(this,"notes");s(this,"subscribeText");s(this,"subscribeMessage");s(this,"proBadge");s(this,"customPreview");s(this,"buttonTitle");s(this,"buttonPrice");s(this,"buttonVariation");s(this,"cancelTitle")}};_([o()],d.prototype,"name",2);_([o({default:600})],d.prototype,"width",2);_([o({default:600})],d.prototype,"minWidth",2);_([o({default:!1})],d.prototype,"scrollable",2);_([o()],d.prototype,"title",2);_([o()],d.prototype,"subTitle",2);_([o()],d.prototype,"text",2);_([o()],d.prototype,"notes",2);_([o()],d.prototype,"subscribeText",2);_([o()],d.prototype,"subscribeMessage",2);_([o({default:!0})],d.prototype,"proBadge",2);_([o({default:!1})],d.prototype,"customPreview",2);_([o({default:"Subscribe with PayPal"})],d.prototype,"buttonTitle",2);_([o({default:"$5.99/mo"})],d.prototype,"buttonPrice",2);_([o({default:"subscribe"})],d.prototype,"buttonVariation",2);_([o({default:"Cancel"})],d.prototype,"cancelTitle",2);d=_([h({components:{Button:$,Badge:D}})],d);const J="/beaker/assets/girl.35b949c7.svg";var G=function(){var t=this,e=t._self._c;return t._self._setupProxy,e("modal",t._g({attrs:{name:t.name,classes:"s-modal-wrapper",maxWidth:t.width,minWidth:t.minWidth,height:"auto",adaptive:!0,scrollable:t.scrollable}},t.$listeners),[e("div",{staticClass:"s-modal-container"},[e("div",{staticClass:"s-subscribe-icon-box"},[e("i",{staticClass:"icon-close",on:{click:function(r){return t.$modal.hide(t.name)}}})]),e("div",{staticClass:"s-subscribe-upper"},[e("div",{staticClass:"s-subscribe-title-box"},[e("h1",{staticClass:"s-modal-title"},[t._v(t._s(t.title))]),t.proBadge?e("badge",{attrs:{"align-left":!0}},[t._v("Pro")]):t._e()],1),e("h2",{staticClass:"s-modal-sub-title"},[t._v(t._s(t.subTitle))])]),e("div",{staticClass:"s-subscribe-body"},[t.customPreview?e("div",{staticClass:"s-subscribe-box"},[t._t("preview")],2):e("div",{staticClass:"s-subscribe-box"},[e("p",{staticClass:"s-subscribe-text"},[t._v(t._s(t.subscribeText))]),e("p",{staticClass:"s-subscribe-message"},[t._v(" "+t._s(t.subscribeMessage)+" "),e("span",{staticClass:"s-subscribe-icon"},[e("img",{attrs:{src:J}})])])])]),e("div",{staticClass:"s-subscribe-bottom"},[t.text?e("p",{staticClass:"s-modal-text s-modal-text-subscribe"},[t._v(" "+t._s(t.text)+" ")]):t._t("default"),e("div",{staticClass:"s-button-subscribe"},[e("Button",{attrs:{variation:t.buttonVariation,title:t.buttonTitle,price:t.buttonPrice},on:{click:function(r){return t.$emit("subscribe-click")}}}),e("span",{staticClass:"s-button-cancel",on:{click:function(r){return t.$emit("cancel-click")}}},[t._v(t._s(t.cancelTitle))])],1),e("p",{staticClass:"s-modal-notes"},[t._v(t._s(t.notes))])],2)])])},L=[],q=b(d,G,L,!1,null,"a4f72685",null,null);const Y=q.exports;var K=Object.defineProperty,Q=Object.getOwnPropertyDescriptor,g=(a,t,e,r)=>{for(var i=r>1?void 0:r?Q(t,e):t,n=a.length-1,l;n>=0;n--)(l=a[n])&&(i=(r?l(t,e,i):l(i))||i);return r&&i&&K(t,e,i),i};let y=class extends f{constructor(){super(...arguments);s(this,"name");s(this,"width");s(this,"minWidth");s(this,"title");s(this,"text")}};g([o()],y.prototype,"name",2);g([o({default:600})],y.prototype,"width",2);g([o({default:600})],y.prototype,"minWidth",2);g([o()],y.prototype,"title",2);g([o()],y.prototype,"text",2);y=g([h({components:{Button:$,Spinner:j}})],y);var X=function(){var t=this,e=t._self._c;return t._self._setupProxy,e("modal",t._g({attrs:{name:t.name,classes:"s-modal-wrapper",maxWidth:t.width,minWidth:t.minWidth,height:"auto",adaptive:!0}},t.$listeners),[e("div",{staticClass:"s-modal-container"},[e("div",{staticClass:"s-redirect"},[e("div",{staticClass:"s-spinner"},[e("Spinner",{attrs:{variation:"bars"}})],1),e("h1",{staticClass:"s-modal-title"},[t._v(t._s(t.title))]),e("p",{staticClass:"s-modal-text"},[t._v(t._s(t.text))])])])])},Z=[],k=b(y,X,Z,!1,null,"394d1a8e",null,null);const tt=k.exports;var et=Object.defineProperty,st=Object.getOwnPropertyDescriptor,P=(a,t,e,r)=>{for(var i=r>1?void 0:r?st(t,e):t,n=a.length-1,l;n>=0;n--)(l=a[n])&&(i=(r?l(t,e,i):l(i))||i);return r&&i&&et(t,e,i),i};let u=class extends f{constructor(){super(...arguments);s(this,"name");s(this,"width");s(this,"minWidth");s(this,"subTitle");s(this,"text");s(this,"confirmButtonText");s(this,"buttonVariation")}onConfirmHandler(){this.$emit("confirm"),this.$modal.hide(this.name)}};P([o({default:"modal-confirmation"})],u.prototype,"name",2);P([o({default:600})],u.prototype,"width",2);P([o({default:600})],u.prototype,"minWidth",2);P([o()],u.prototype,"subTitle",2);P([o()],u.prototype,"text",2);P([o({default:"Confirm"})],u.prototype,"confirmButtonText",2);P([o({default:"warning"})],u.prototype,"buttonVariation",2);u=P([h({components:{Button:$}})],u);var it=function(){var t=this,e=t._self._c;return t._self._setupProxy,e("modal",t._g({attrs:{name:t.name,classes:"s-modal-wrapper",maxWidth:t.width,minWidth:t.minWidth,height:"auto",adaptive:!0}},t.$listeners),[e("div",{staticClass:"s-modal-container"},[e("div",{staticClass:"s-confirmation"},[e("h2",{staticClass:"s-modal-sub-title"},[t._v(t._s(t.subTitle))]),e("p",{staticClass:"s-modal-text"},[t._v(t._s(t.text))]),e("div",{staticClass:"s-button-container"},[e("Button",{attrs:{variation:"default",title:"Cancel",size:"fixed-width"},on:{click:function(r){return t.$modal.hide(t.name)}}}),e("Button",{attrs:{variation:t.buttonVariation,title:t.confirmButtonText,size:"fixed-width"},on:{click:t.onConfirmHandler}})],1)])])])},ot=[],at=b(u,it,ot,!1,null,"02dc9da2",null,null);const rt=at.exports;var nt=Object.defineProperty,lt=Object.getOwnPropertyDescriptor,O=(a,t,e,r)=>{for(var i=r>1?void 0:r?lt(t,e):t,n=a.length-1,l;n>=0;n--)(l=a[n])&&(i=(r?l(t,e,i):l(i))||i);return r&&i&&nt(t,e,i),i};let B=class extends f{constructor(){super(...arguments);s(this,"primeButtonText");s(this,"primeFeatureListDefault",["100s of Stunning Themes","Every App is FREE","Merch Store with Wholesale Pricing","Custom Web Domain and Email Address","Automatic Gold All-Star Status"]);s(this,"isUserAgentEdge",!1)}onPrimeButtonHandler(){this.$emit("onClickPrime")}mounted(){navigator.userAgent.indexOf("Edge")!==-1?this.isUserAgentEdge=!0:this.isUserAgentEdge=!1}get hasSlot(){return!(typeof this.$slots.default>"u")}};O([o({default:"Continue"})],B.prototype,"primeButtonText",2);B=O([h({components:{"s-button":$}})],B);var ct=function(){var t=this,e=t._self._c;return t._self._setupProxy,e("div",{staticClass:"s-modal-welcome-prime"},[e("div",{staticClass:"modal-prime"},[t.isUserAgentEdge?t._e():e("div",[e("video",{staticClass:"modal-prime__video",attrs:{loop:"",muted:"",autoplay:""},domProps:{muted:!0}},[e("source",{attrs:{src:"https://cdn.streamlabs.com/videos/Welcome_Confetti_Gold_1.webm",type:"video/webm"}})])]),t._m(0),e("p",{staticClass:"modal-prime__desc"},[t._v("You just unlocked a TON of benefits")]),e("div",{staticClass:"modal-prime__images"}),e("div",{staticClass:"modal-prime__features"},[e("p",[t._v("Just a few of your exclusive features and services:")]),e("ul",t._l(t.primeFeatureListDefault,function(r,i){return e("li",{key:i},[t._v(" "+t._s(r)+" ")])}),0)]),e("div",{staticClass:"modal-prime__button"},[t.hasSlot?t._t("default"):e("s-button",{attrs:{size:"large",variation:"prime",icon:"prime",title:t.primeButtonText},on:{click:t.onPrimeButtonHandler}})],2)])])},mt=[function(){var a=this,t=a._self._c;return a._self._setupProxy,t("div",{staticClass:"modal-prime__heading"},[a._v(" Welcome to "),t("span",[a._v("Prime")]),a._v(" ! ")])}],dt=b(B,ct,mt,!1,null,"bebc36e1",null,null);const _t=dt.exports;var pt=Object.defineProperty,ut=Object.getOwnPropertyDescriptor,w=(a,t,e,r)=>{for(var i=r>1?void 0:r?ut(t,e):t,n=a.length-1,l;n>=0;n--)(l=a[n])&&(i=(r?l(t,e,i):l(i))||i);return r&&i&&pt(t,e,i),i};let x=class extends f{constructor(){super(...arguments);s(this,"name");s(this,"width");s(this,"minWidth");s(this,"hasPrimeCloseButton");s(this,"primeButtonText")}};w([o({default:"modal-welcome-prime"})],x.prototype,"name",2);w([o()],x.prototype,"width",2);w([o()],x.prototype,"minWidth",2);w([o({default:!1})],x.prototype,"hasPrimeCloseButton",2);w([o({default:"Continue"})],x.prototype,"primeButtonText",2);x=w([h({components:{WelcomePrime:_t}})],x);var ft=function(){var t=this,e=t._self._c;return t._self._setupProxy,e("modal",t._g({attrs:{name:t.name,classes:"s-modal-wrapper",width:t.width,minWidth:t.minWidth,height:"auto",adaptive:!0}},t.$listeners),[t.hasPrimeCloseButton?e("div",{staticClass:"modal-prime__close"},[e("i",{staticClass:"icon-close",on:{click:function(r){return t.$modal.hide(t.name)}}})]):t._e(),e("welcome-prime",t._g({attrs:{primeButtonText:t.primeButtonText}},t.$listeners),[t._t("default")],2)],1)},vt=[],ht=b(x,ft,vt,!1,null,"77ae9e88",null,null);const bt=ht.exports;var yt=Object.defineProperty,xt=Object.getOwnPropertyDescriptor,M=(a,t,e,r)=>{for(var i=r>1?void 0:r?xt(t,e):t,n=a.length-1,l;n>=0;n--)(l=a[n])&&(i=(r?l(t,e,i):l(i))||i);return r&&i&&yt(t,e,i),i};let W=class extends f{constructor(){super(...arguments);s(this,"primeButtonText")}onPrimeButtonHandler(){this.$emit("onClickPrime")}get hasTitleSlot(){return!(typeof this.$slots.title>"u")}get hasSubtitleSlot(){return!(typeof this.$slots.subtitle>"u")}get hasSlot(){return!(typeof this.$slots.default>"u")}};M([o({default:"Join Prime"})],W.prototype,"primeButtonText",2);W=M([h({components:{"s-button":$}})],W);var Ct=function(){var t=this,e=t._self._c;return t._self._setupProxy,e("div",{staticClass:"s-modal-prime-intro"},[e("img",{staticClass:"modal-prime-intro__bg modal-prime-intro__bg--components",attrs:{src:"https://cdn.streamlabs.com/static/imgs/prime/prime-intro-modal-bg-components.png"}}),e("img",{staticClass:"modal-prime-intro__bg modal-prime-intro__bg--star",attrs:{src:"https://cdn.streamlabs.com/static/imgs/prime/prime-intro-modal-bg-star.png"}}),e("div",{staticClass:"modal-prime-intro"},[e("div",{staticClass:"modal-prime-intro__heading"},[t._v(" Join "),e("span",{staticClass:"modal-prime-intro__heading--bold"},[t._v("Prime")]),e("br"),t.hasSlot?t._t("default"):e("div",[e("span",[t._v("to customize your tip page!")]),e("div",{staticClass:"modal-prime-intro__heading--subtitle"},[t.hasSubtitleSlot?t._t("subtitle"):t._e()],2)])],2),t._m(0),e("span",{staticClass:"modal-prime-intro__price"},[t._v("...only from $12/month")]),e("div",{staticClass:"modal-prime-intro__button"},[e("s-button",{attrs:{size:"large",variation:"prime-white",title:t.primeButtonText},on:{click:t.onPrimeButtonHandler}})],1)])])},Pt=[function(){var a=this,t=a._self._c;return a._self._setupProxy,t("ul",{staticClass:"modal-prime-intro__list"},[t("li",{staticClass:"modal-prime-intro__list__item"},[t("i",{staticClass:"icon-themes"}),a._v(" Overlay, widget & tip page themes ")]),t("li",{staticClass:"modal-prime-intro__list__item"},[t("i",{staticClass:"icon-store"}),a._v(" FREE apps ")]),t("li",{staticClass:"modal-prime-intro__list__item"},[t("i",{staticClass:"icon-upperwear"}),a._v(" Custom merch store ")]),t("li",{staticClass:"modal-prime-intro__list__item"},[t("i",{staticClass:"icon-loyalty"}),a._v(" Gold status + FREE t-shirt ")]),t("li",{staticClass:"modal-prime-intro__list__item"},[t("i",{staticClass:"icon-phone-case"}),a._v(" Stream on mobile ")])])}],$t=b(W,Ct,Pt,!1,null,"a352e48b",null,null);const gt=$t.exports;var wt=Object.defineProperty,Tt=Object.getOwnPropertyDescriptor,T=(a,t,e,r)=>{for(var i=r>1?void 0:r?Tt(t,e):t,n=a.length-1,l;n>=0;n--)(l=a[n])&&(i=(r?l(t,e,i):l(i))||i);return r&&i&&wt(t,e,i),i};let C=class extends f{constructor(){super(...arguments);s(this,"name");s(this,"width");s(this,"minWidth");s(this,"hasPrimeCloseButton");s(this,"primeButtonText")}};T([o({default:"modal-prime-intro"})],C.prototype,"name",2);T([o()],C.prototype,"width",2);T([o()],C.prototype,"minWidth",2);T([o({default:!1})],C.prototype,"hasPrimeCloseButton",2);T([o({default:"Join Ultra"})],C.prototype,"primeButtonText",2);C=T([h({components:{PrimeIntro:gt}})],C);var Bt=function(){var t=this,e=t._self._c;return t._self._setupProxy,e("modal",t._g({attrs:{name:t.name,classes:"s-modal-wrapper",width:t.width,minWidth:t.minWidth,height:"auto",adaptive:!0,scrollable:!0}},t.$listeners),[t.hasPrimeCloseButton?e("div",{staticClass:"modal-prime__close"},[e("i",{staticClass:"icon-close",on:{click:function(r){return t.$modal.hide(t.name)}}})]):t._e(),e("PrimeIntro",t._g({attrs:{primeButtonText:t.primeButtonText}},t.$listeners),[t._t("default")],2)],1)},Wt=[],Ot=b(C,Bt,Wt,!1,null,"9f9cfbae",null,null);const Mt=Ot.exports;var St=Object.defineProperty,Nt=Object.getOwnPropertyDescriptor,m=(a,t,e,r)=>{for(var i=r>1?void 0:r?Nt(t,e):t,n=a.length-1,l;n>=0;n--)(l=a[n])&&(i=(r?l(t,e,i):l(i))||i);return r&&i&&St(t,e,i),i};f.use(A);let c=class extends f{constructor(){super(...arguments);s(this,"name");s(this,"width");s(this,"minWidth");s(this,"scrollable");s(this,"type");s(this,"title");s(this,"subTitle");s(this,"text");s(this,"subscribeText");s(this,"subscribeMessage");s(this,"notes");s(this,"proBadge");s(this,"customPreview");s(this,"confirmButtonText");s(this,"buttonVariation");s(this,"buttonTitle");s(this,"buttonPrice");s(this,"cancelTitle");s(this,"primeButtonText");s(this,"hasPrimeCloseButton");s(this,"hideActionButtons");s(this,"clickToClose");s(this,"modalName","")}mounted(){this.selectName()}selectName(){switch(this.type){case"basic":this.name?this.modalName=this.name:this.modalName="modal-basic";break;case"subscribe":this.name?this.modalName=this.name:this.modalName="modal-subscribe";break;case"redirect":this.name?this.modalName=this.name:this.modalName="modal-redirect";break;case"confirmation":this.name?this.modalName=this.name:this.modalName="modal-confirmation";break;case"welcome-prime":this.name?this.modalName=this.name:this.modalName="modal-welcome-prime";break;case"prime-intro":this.name?this.modalName=this.name:this.modalName="modal-prime-intro";break}}};m([o()],c.prototype,"name",2);m([o({default:600})],c.prototype,"width",2);m([o({default:600})],c.prototype,"minWidth",2);m([o()],c.prototype,"scrollable",2);m([o()],c.prototype,"type",2);m([o()],c.prototype,"title",2);m([o()],c.prototype,"subTitle",2);m([o()],c.prototype,"text",2);m([o()],c.prototype,"subscribeText",2);m([o()],c.prototype,"subscribeMessage",2);m([o()],c.prototype,"notes",2);m([o()],c.prototype,"proBadge",2);m([o()],c.prototype,"customPreview",2);m([o()],c.prototype,"confirmButtonText",2);m([o()],c.prototype,"buttonVariation",2);m([o()],c.prototype,"buttonTitle",2);m([o()],c.prototype,"buttonPrice",2);m([o()],c.prototype,"cancelTitle",2);m([o()],c.prototype,"primeButtonText",2);m([o()],c.prototype,"hasPrimeCloseButton",2);m([o()],c.prototype,"hideActionButtons",2);m([o()],c.prototype,"clickToClose",2);c=m([h({components:{Button:$,ModalBasic:I,ModalSubscribe:Y,ModalRedirect:tt,ModalConfirmation:rt,ModalPrime:bt,ModalPrimeIntro:Mt}})],c);var Dt=function(){var t=this,e=t._self._c;return t._self._setupProxy,e("div",[t.type==="basic"?e("div",[e("ModalBasic",t._g({attrs:{name:t.modalName,title:t.title,subTitle:t.subTitle,text:t.text,width:t.width,minWidth:t.minWidth,hideActionButtons:t.hideActionButtons,confirmButtonText:t.confirmButtonText,clickToClose:t.clickToClose}},t.$listeners),[t._t("default")],2)],1):t._e(),t.type==="subscribe"?e("div",[e("ModalSubscribe",t._g({attrs:{name:t.modalName,title:t.title,subTitle:t.subTitle,text:t.text,subscribeText:t.subscribeText,subscribeMessage:t.subscribeMessage,notes:t.notes,width:t.width,minWidth:t.minWidth,scrollable:t.scrollable,proBadge:t.proBadge,customPreview:t.customPreview,buttonTitle:t.buttonTitle,buttonPrice:t.buttonPrice,buttonVariation:t.buttonVariation,cancelTitle:t.cancelTitle},scopedSlots:t._u([{key:"preview",fn:function(){return[t._t("preview")]},proxy:!0}],null,!0)},t.$listeners),[t._t("default")],2)],1):t._e(),t.type==="redirect"?e("div",[e("ModalRedirect",t._g({attrs:{name:t.modalName,title:t.title,text:t.text,width:t.width,minWidth:t.minWidth}},t.$listeners))],1):t._e(),t.type==="confirmation"?e("div",[e("ModalConfirmation",t._g({attrs:{name:t.modalName,subTitle:t.subTitle,text:t.text,width:t.width,minWidth:t.minWidth,confirmButtonText:t.confirmButtonText,buttonVariation:t.buttonVariation}},t.$listeners))],1):t._e(),t.type==="welcome-prime"?e("div",[e("ModalPrime",t._g({attrs:{name:t.modalName,width:t.width,minWidth:t.minWidth,primeButtonText:t.primeButtonText,hasPrimeCloseButton:t.hasPrimeCloseButton}},t.$listeners),[t._t("default")],2)],1):t._e(),t.type==="prime-intro"?e("div",[e("ModalPrimeIntro",t._g({attrs:{name:t.modalName,width:680,minWidth:t.minWidth,primeButtonText:t.primeButtonText,hasPrimeCloseButton:t.hasPrimeCloseButton}},t.$listeners),[t._t("default")],2)],1):t._e()])},jt=[],At=b(c,Dt,jt,!1,null,null,null,null);const Ht=At.exports;export{Ht as M,_t as W};
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { C as Component, P as Prop, V as Vue, n as normalizeComponent } from "./index.4fb8a6cb.js";
+import { B as Button } from "./Button.b26dacc2.js";
+import { B as Badge } from "./Badge.2c39dd0d.js";
+import { S as Spinner } from "./Spinner.2fef2c20.js";
+import { V as VModal } from "./index.3042f557.js";
+var __defProp$8 = Object.defineProperty;
+var __getOwnPropDesc$8 = Object.getOwnPropertyDescriptor;
+var __decorateClass$8 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$8(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$8(target, key, result);
+  return result;
+};
+let ModalBasic$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "name");
+    __publicField(this, "width");
+    __publicField(this, "minWidth");
+    __publicField(this, "title");
+    __publicField(this, "subTitle");
+    __publicField(this, "text");
+    __publicField(this, "hideActionButtons");
+    __publicField(this, "confirmButtonText");
+    __publicField(this, "clickToClose");
+  }
+};
+__decorateClass$8([
+  Prop()
+], ModalBasic$1.prototype, "name", 2);
+__decorateClass$8([
+  Prop({ default: 600 })
+], ModalBasic$1.prototype, "width", 2);
+__decorateClass$8([
+  Prop({ default: 600 })
+], ModalBasic$1.prototype, "minWidth", 2);
+__decorateClass$8([
+  Prop()
+], ModalBasic$1.prototype, "title", 2);
+__decorateClass$8([
+  Prop()
+], ModalBasic$1.prototype, "subTitle", 2);
+__decorateClass$8([
+  Prop()
+], ModalBasic$1.prototype, "text", 2);
+__decorateClass$8([
+  Prop()
+], ModalBasic$1.prototype, "hideActionButtons", 2);
+__decorateClass$8([
+  Prop({ default: "Confirm" })
+], ModalBasic$1.prototype, "confirmButtonText", 2);
+__decorateClass$8([
+  Prop({ default: true })
+], ModalBasic$1.prototype, "clickToClose", 2);
+ModalBasic$1 = __decorateClass$8([
+  Component({
+    components: {
+      Button
+    }
+  })
+], ModalBasic$1);
+const ModalBasic_vue_vue_type_style_index_0_scoped_afd2da20_lang = "";
+var _sfc_render$8 = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("modal", _vm._g({ attrs: { "name": _vm.name, "classes": "s-modal-wrapper", "maxWidth": _vm.width, "minWidth": _vm.minWidth, "height": "auto", "adaptive": true, "clickToClose": _vm.clickToClose } }, _vm.$listeners), [_c("div", { staticClass: "s-modal-container" }, [_c("div", { staticClass: "s-modal-body" }, [_c("div", { staticClass: "s-normal-upper" }, [!!_vm.title ? _c("h1", { staticClass: "s-modal-title" }, [_vm._v(_vm._s(_vm.title))]) : _vm._e(), !!_vm.subTitle ? _c("h2", { staticClass: "s-modal-sub-title" }, [_vm._v(_vm._s(_vm.subTitle))]) : _vm._e(), !!_vm.text ? _c("p", { staticClass: "s-modal-text" }, [_vm._v(_vm._s(_vm.text))]) : _vm._e(), _vm._t("default")], 2)]), !_vm.hideActionButtons && _vm.hideActionButtons !== "" ? _c("div", { staticClass: "s-modal-footer" }, [_c("div", { staticClass: "s-modal-footer-inner s-button-container" }, [_c("Button", { attrs: { "variation": "default", "title": "Close", "size": "fixed-width" }, on: { "click": function($event) {
+    return _vm.$modal.hide(_vm.name);
+  } } }), _c("Button", { attrs: { "variation": "action", "title": _vm.confirmButtonText, "size": "fixed-width" }, on: { "click": function($event) {
+    return _vm.$emit("confirm");
+  } } })], 1)]) : _vm._e()])]);
+};
+var _sfc_staticRenderFns$8 = [];
+var __component__$8 = /* @__PURE__ */ normalizeComponent(
+  ModalBasic$1,
+  _sfc_render$8,
+  _sfc_staticRenderFns$8,
+  false,
+  null,
+  "afd2da20",
+  null,
+  null
+);
+const ModalBasic = __component__$8.exports;
+var __defProp$7 = Object.defineProperty;
+var __getOwnPropDesc$7 = Object.getOwnPropertyDescriptor;
+var __decorateClass$7 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$7(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$7(target, key, result);
+  return result;
+};
+let ModalSubscribe$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "name");
+    __publicField(this, "width");
+    __publicField(this, "minWidth");
+    __publicField(this, "scrollable");
+    __publicField(this, "title");
+    __publicField(this, "subTitle");
+    __publicField(this, "text");
+    __publicField(this, "notes");
+    __publicField(this, "subscribeText");
+    __publicField(this, "subscribeMessage");
+    __publicField(this, "proBadge");
+    __publicField(this, "customPreview");
+    __publicField(this, "buttonTitle");
+    __publicField(this, "buttonPrice");
+    __publicField(this, "buttonVariation");
+    __publicField(this, "cancelTitle");
+  }
+};
+__decorateClass$7([
+  Prop()
+], ModalSubscribe$1.prototype, "name", 2);
+__decorateClass$7([
+  Prop({ default: 600 })
+], ModalSubscribe$1.prototype, "width", 2);
+__decorateClass$7([
+  Prop({ default: 600 })
+], ModalSubscribe$1.prototype, "minWidth", 2);
+__decorateClass$7([
+  Prop({ default: false })
+], ModalSubscribe$1.prototype, "scrollable", 2);
+__decorateClass$7([
+  Prop()
+], ModalSubscribe$1.prototype, "title", 2);
+__decorateClass$7([
+  Prop()
+], ModalSubscribe$1.prototype, "subTitle", 2);
+__decorateClass$7([
+  Prop()
+], ModalSubscribe$1.prototype, "text", 2);
+__decorateClass$7([
+  Prop()
+], ModalSubscribe$1.prototype, "notes", 2);
+__decorateClass$7([
+  Prop()
+], ModalSubscribe$1.prototype, "subscribeText", 2);
+__decorateClass$7([
+  Prop()
+], ModalSubscribe$1.prototype, "subscribeMessage", 2);
+__decorateClass$7([
+  Prop({ default: true })
+], ModalSubscribe$1.prototype, "proBadge", 2);
+__decorateClass$7([
+  Prop({ default: false })
+], ModalSubscribe$1.prototype, "customPreview", 2);
+__decorateClass$7([
+  Prop({ default: "Subscribe with PayPal" })
+], ModalSubscribe$1.prototype, "buttonTitle", 2);
+__decorateClass$7([
+  Prop({ default: "$5.99/mo" })
+], ModalSubscribe$1.prototype, "buttonPrice", 2);
+__decorateClass$7([
+  Prop({ default: "subscribe" })
+], ModalSubscribe$1.prototype, "buttonVariation", 2);
+__decorateClass$7([
+  Prop({ default: "Cancel" })
+], ModalSubscribe$1.prototype, "cancelTitle", 2);
+ModalSubscribe$1 = __decorateClass$7([
+  Component({
+    components: {
+      Button,
+      Badge
+    }
+  })
+], ModalSubscribe$1);
+const __$_require_2eac600c__ = "/beaker/assets/girl.35b949c7.svg";
+const ModalSubscribe_vue_vue_type_style_index_0_scoped_a4f72685_lang = "";
+var _sfc_render$7 = function render2() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("modal", _vm._g({ attrs: { "name": _vm.name, "classes": "s-modal-wrapper", "maxWidth": _vm.width, "minWidth": _vm.minWidth, "height": "auto", "adaptive": true, "scrollable": _vm.scrollable } }, _vm.$listeners), [_c("div", { staticClass: "s-modal-container" }, [_c("div", { staticClass: "s-subscribe-icon-box" }, [_c("i", { staticClass: "icon-close", on: { "click": function($event) {
+    return _vm.$modal.hide(_vm.name);
+  } } })]), _c("div", { staticClass: "s-subscribe-upper" }, [_c("div", { staticClass: "s-subscribe-title-box" }, [_c("h1", { staticClass: "s-modal-title" }, [_vm._v(_vm._s(_vm.title))]), _vm.proBadge ? _c("badge", { attrs: { "align-left": true } }, [_vm._v("Pro")]) : _vm._e()], 1), _c("h2", { staticClass: "s-modal-sub-title" }, [_vm._v(_vm._s(_vm.subTitle))])]), _c("div", { staticClass: "s-subscribe-body" }, [_vm.customPreview ? _c("div", { staticClass: "s-subscribe-box" }, [_vm._t("preview")], 2) : _c("div", { staticClass: "s-subscribe-box" }, [_c("p", { staticClass: "s-subscribe-text" }, [_vm._v(_vm._s(_vm.subscribeText))]), _c("p", { staticClass: "s-subscribe-message" }, [_vm._v(" " + _vm._s(_vm.subscribeMessage) + " "), _c("span", { staticClass: "s-subscribe-icon" }, [_c("img", { attrs: { "src": __$_require_2eac600c__ } })])])])]), _c("div", { staticClass: "s-subscribe-bottom" }, [_vm.text ? _c("p", { staticClass: "s-modal-text s-modal-text-subscribe" }, [_vm._v(" " + _vm._s(_vm.text) + " ")]) : _vm._t("default"), _c("div", { staticClass: "s-button-subscribe" }, [_c("Button", { attrs: { "variation": _vm.buttonVariation, "title": _vm.buttonTitle, "price": _vm.buttonPrice }, on: { "click": function($event) {
+    return _vm.$emit("subscribe-click");
+  } } }), _c("span", { staticClass: "s-button-cancel", on: { "click": function($event) {
+    return _vm.$emit("cancel-click");
+  } } }, [_vm._v(_vm._s(_vm.cancelTitle))])], 1), _c("p", { staticClass: "s-modal-notes" }, [_vm._v(_vm._s(_vm.notes))])], 2)])]);
+};
+var _sfc_staticRenderFns$7 = [];
+var __component__$7 = /* @__PURE__ */ normalizeComponent(
+  ModalSubscribe$1,
+  _sfc_render$7,
+  _sfc_staticRenderFns$7,
+  false,
+  null,
+  "a4f72685",
+  null,
+  null
+);
+const ModalSubscribe = __component__$7.exports;
+var __defProp$6 = Object.defineProperty;
+var __getOwnPropDesc$6 = Object.getOwnPropertyDescriptor;
+var __decorateClass$6 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$6(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$6(target, key, result);
+  return result;
+};
+let ModalRedirect$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "name");
+    __publicField(this, "width");
+    __publicField(this, "minWidth");
+    __publicField(this, "title");
+    __publicField(this, "text");
+  }
+};
+__decorateClass$6([
+  Prop()
+], ModalRedirect$1.prototype, "name", 2);
+__decorateClass$6([
+  Prop({ default: 600 })
+], ModalRedirect$1.prototype, "width", 2);
+__decorateClass$6([
+  Prop({ default: 600 })
+], ModalRedirect$1.prototype, "minWidth", 2);
+__decorateClass$6([
+  Prop()
+], ModalRedirect$1.prototype, "title", 2);
+__decorateClass$6([
+  Prop()
+], ModalRedirect$1.prototype, "text", 2);
+ModalRedirect$1 = __decorateClass$6([
+  Component({
+    components: {
+      Button,
+      Spinner
+    }
+  })
+], ModalRedirect$1);
+const ModalRedirect_vue_vue_type_style_index_0_scoped_394d1a8e_lang = "";
+var _sfc_render$6 = function render3() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("modal", _vm._g({ attrs: { "name": _vm.name, "classes": "s-modal-wrapper", "maxWidth": _vm.width, "minWidth": _vm.minWidth, "height": "auto", "adaptive": true } }, _vm.$listeners), [_c("div", { staticClass: "s-modal-container" }, [_c("div", { staticClass: "s-redirect" }, [_c("div", { staticClass: "s-spinner" }, [_c("Spinner", { attrs: { "variation": "bars" } })], 1), _c("h1", { staticClass: "s-modal-title" }, [_vm._v(_vm._s(_vm.title))]), _c("p", { staticClass: "s-modal-text" }, [_vm._v(_vm._s(_vm.text))])])])]);
+};
+var _sfc_staticRenderFns$6 = [];
+var __component__$6 = /* @__PURE__ */ normalizeComponent(
+  ModalRedirect$1,
+  _sfc_render$6,
+  _sfc_staticRenderFns$6,
+  false,
+  null,
+  "394d1a8e",
+  null,
+  null
+);
+const ModalRedirect = __component__$6.exports;
+var __defProp$5 = Object.defineProperty;
+var __getOwnPropDesc$5 = Object.getOwnPropertyDescriptor;
+var __decorateClass$5 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$5(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$5(target, key, result);
+  return result;
+};
+let ModalConfirmation$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "name");
+    __publicField(this, "width");
+    __publicField(this, "minWidth");
+    __publicField(this, "subTitle");
+    __publicField(this, "text");
+    __publicField(this, "confirmButtonText");
+    __publicField(this, "buttonVariation");
+  }
+  onConfirmHandler() {
+    this.$emit("confirm");
+    this.$modal.hide(this.name);
+  }
+};
+__decorateClass$5([
+  Prop({ default: "modal-confirmation" })
+], ModalConfirmation$1.prototype, "name", 2);
+__decorateClass$5([
+  Prop({ default: 600 })
+], ModalConfirmation$1.prototype, "width", 2);
+__decorateClass$5([
+  Prop({ default: 600 })
+], ModalConfirmation$1.prototype, "minWidth", 2);
+__decorateClass$5([
+  Prop()
+], ModalConfirmation$1.prototype, "subTitle", 2);
+__decorateClass$5([
+  Prop()
+], ModalConfirmation$1.prototype, "text", 2);
+__decorateClass$5([
+  Prop({ default: "Confirm" })
+], ModalConfirmation$1.prototype, "confirmButtonText", 2);
+__decorateClass$5([
+  Prop({ default: "warning" })
+], ModalConfirmation$1.prototype, "buttonVariation", 2);
+ModalConfirmation$1 = __decorateClass$5([
+  Component({
+    components: {
+      Button
+    }
+  })
+], ModalConfirmation$1);
+const ModalConfirmation_vue_vue_type_style_index_0_scoped_02dc9da2_lang = "";
+var _sfc_render$5 = function render4() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("modal", _vm._g({ attrs: { "name": _vm.name, "classes": "s-modal-wrapper", "maxWidth": _vm.width, "minWidth": _vm.minWidth, "height": "auto", "adaptive": true } }, _vm.$listeners), [_c("div", { staticClass: "s-modal-container" }, [_c("div", { staticClass: "s-confirmation" }, [_c("h2", { staticClass: "s-modal-sub-title" }, [_vm._v(_vm._s(_vm.subTitle))]), _c("p", { staticClass: "s-modal-text" }, [_vm._v(_vm._s(_vm.text))]), _c("div", { staticClass: "s-button-container" }, [_c("Button", { attrs: { "variation": "default", "title": "Cancel", "size": "fixed-width" }, on: { "click": function($event) {
+    return _vm.$modal.hide(_vm.name);
+  } } }), _c("Button", { attrs: { "variation": _vm.buttonVariation, "title": _vm.confirmButtonText, "size": "fixed-width" }, on: { "click": _vm.onConfirmHandler } })], 1)])])]);
+};
+var _sfc_staticRenderFns$5 = [];
+var __component__$5 = /* @__PURE__ */ normalizeComponent(
+  ModalConfirmation$1,
+  _sfc_render$5,
+  _sfc_staticRenderFns$5,
+  false,
+  null,
+  "02dc9da2",
+  null,
+  null
+);
+const ModalConfirmation = __component__$5.exports;
+var __defProp$4 = Object.defineProperty;
+var __getOwnPropDesc$4 = Object.getOwnPropertyDescriptor;
+var __decorateClass$4 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$4(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$4(target, key, result);
+  return result;
+};
+let WelcomePrime$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "primeButtonText");
+    __publicField(this, "primeFeatureListDefault", [
+      "100s of Stunning Themes",
+      "Every App is FREE",
+      "Merch Store with Wholesale Pricing",
+      "Custom Web Domain and Email Address",
+      "Automatic Gold All-Star Status"
+    ]);
+    __publicField(this, "isUserAgentEdge", false);
+  }
+  onPrimeButtonHandler() {
+    this.$emit("onClickPrime");
+  }
+  mounted() {
+    navigator.userAgent.indexOf("Edge") !== -1 ? this.isUserAgentEdge = true : this.isUserAgentEdge = false;
+  }
+  get hasSlot() {
+    return !(typeof this.$slots.default === "undefined");
+  }
+};
+__decorateClass$4([
+  Prop({ default: "Continue" })
+], WelcomePrime$1.prototype, "primeButtonText", 2);
+WelcomePrime$1 = __decorateClass$4([
+  Component({
+    components: {
+      "s-button": Button
+    }
+  })
+], WelcomePrime$1);
+const WelcomePrime_vue_vue_type_style_index_0_scoped_bebc36e1_lang = "";
+var _sfc_render$4 = function render5() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-modal-welcome-prime" }, [_c("div", { staticClass: "modal-prime" }, [!_vm.isUserAgentEdge ? _c("div", [_c("video", { staticClass: "modal-prime__video", attrs: { "loop": "", "muted": "", "autoplay": "" }, domProps: { "muted": true } }, [_c("source", { attrs: { "src": "https://cdn.streamlabs.com/videos/Welcome_Confetti_Gold_1.webm", "type": "video/webm" } })])]) : _vm._e(), _vm._m(0), _c("p", { staticClass: "modal-prime__desc" }, [_vm._v("You just unlocked a TON of benefits")]), _c("div", { staticClass: "modal-prime__images" }), _c("div", { staticClass: "modal-prime__features" }, [_c("p", [_vm._v("Just a few of your exclusive features and services:")]), _c("ul", _vm._l(_vm.primeFeatureListDefault, function(feature, index) {
+    return _c("li", { key: index }, [_vm._v(" " + _vm._s(feature) + " ")]);
+  }), 0)]), _c("div", { staticClass: "modal-prime__button" }, [_vm.hasSlot ? _vm._t("default") : _c("s-button", { attrs: { "size": "large", "variation": "prime", "icon": "prime", "title": _vm.primeButtonText }, on: { "click": _vm.onPrimeButtonHandler } })], 2)])]);
+};
+var _sfc_staticRenderFns$4 = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "modal-prime__heading" }, [_vm._v(" Welcome to "), _c("span", [_vm._v("Prime")]), _vm._v(" ! ")]);
+}];
+var __component__$4 = /* @__PURE__ */ normalizeComponent(
+  WelcomePrime$1,
+  _sfc_render$4,
+  _sfc_staticRenderFns$4,
+  false,
+  null,
+  "bebc36e1",
+  null,
+  null
+);
+const WelcomePrime = __component__$4.exports;
+var __defProp$3 = Object.defineProperty;
+var __getOwnPropDesc$3 = Object.getOwnPropertyDescriptor;
+var __decorateClass$3 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$3(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$3(target, key, result);
+  return result;
+};
+let ModalPrime$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "name");
+    __publicField(this, "width");
+    __publicField(this, "minWidth");
+    __publicField(this, "hasPrimeCloseButton");
+    __publicField(this, "primeButtonText");
+  }
+};
+__decorateClass$3([
+  Prop({ default: "modal-welcome-prime" })
+], ModalPrime$1.prototype, "name", 2);
+__decorateClass$3([
+  Prop()
+], ModalPrime$1.prototype, "width", 2);
+__decorateClass$3([
+  Prop()
+], ModalPrime$1.prototype, "minWidth", 2);
+__decorateClass$3([
+  Prop({ default: false })
+], ModalPrime$1.prototype, "hasPrimeCloseButton", 2);
+__decorateClass$3([
+  Prop({ default: "Continue" })
+], ModalPrime$1.prototype, "primeButtonText", 2);
+ModalPrime$1 = __decorateClass$3([
+  Component({
+    components: {
+      WelcomePrime
+    }
+  })
+], ModalPrime$1);
+const ModalPrime_vue_vue_type_style_index_0_scoped_77ae9e88_lang = "";
+var _sfc_render$3 = function render6() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("modal", _vm._g({ attrs: { "name": _vm.name, "classes": "s-modal-wrapper", "width": _vm.width, "minWidth": _vm.minWidth, "height": "auto", "adaptive": true } }, _vm.$listeners), [_vm.hasPrimeCloseButton ? _c("div", { staticClass: "modal-prime__close" }, [_c("i", { staticClass: "icon-close", on: { "click": function($event) {
+    return _vm.$modal.hide(_vm.name);
+  } } })]) : _vm._e(), _c("welcome-prime", _vm._g({ attrs: { "primeButtonText": _vm.primeButtonText } }, _vm.$listeners), [_vm._t("default")], 2)], 1);
+};
+var _sfc_staticRenderFns$3 = [];
+var __component__$3 = /* @__PURE__ */ normalizeComponent(
+  ModalPrime$1,
+  _sfc_render$3,
+  _sfc_staticRenderFns$3,
+  false,
+  null,
+  "77ae9e88",
+  null,
+  null
+);
+const ModalPrime = __component__$3.exports;
+var __defProp$2 = Object.defineProperty;
+var __getOwnPropDesc$2 = Object.getOwnPropertyDescriptor;
+var __decorateClass$2 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$2(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$2(target, key, result);
+  return result;
+};
+let PrimeIntro$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "primeButtonText");
+  }
+  onPrimeButtonHandler() {
+    this.$emit("onClickPrime");
+  }
+  get hasTitleSlot() {
+    return !(typeof this.$slots.title === "undefined");
+  }
+  get hasSubtitleSlot() {
+    return !(typeof this.$slots.subtitle === "undefined");
+  }
+  get hasSlot() {
+    return !(typeof this.$slots.default === "undefined");
+  }
+};
+__decorateClass$2([
+  Prop({ default: "Join Prime" })
+], PrimeIntro$1.prototype, "primeButtonText", 2);
+PrimeIntro$1 = __decorateClass$2([
+  Component({
+    components: {
+      "s-button": Button
+    }
+  })
+], PrimeIntro$1);
+const PrimeIntro_vue_vue_type_style_index_0_scoped_a352e48b_lang = "";
+var _sfc_render$2 = function render7() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-modal-prime-intro" }, [_c("img", { staticClass: "modal-prime-intro__bg modal-prime-intro__bg--components", attrs: { "src": "https://cdn.streamlabs.com/static/imgs/prime/prime-intro-modal-bg-components.png" } }), _c("img", { staticClass: "modal-prime-intro__bg modal-prime-intro__bg--star", attrs: { "src": "https://cdn.streamlabs.com/static/imgs/prime/prime-intro-modal-bg-star.png" } }), _c("div", { staticClass: "modal-prime-intro" }, [_c("div", { staticClass: "modal-prime-intro__heading" }, [_vm._v(" Join "), _c("span", { staticClass: "modal-prime-intro__heading--bold" }, [_vm._v("Prime")]), _c("br"), _vm.hasSlot ? _vm._t("default") : _c("div", [_c("span", [_vm._v("to customize your tip page!")]), _c("div", { staticClass: "modal-prime-intro__heading--subtitle" }, [_vm.hasSubtitleSlot ? _vm._t("subtitle") : _vm._e()], 2)])], 2), _vm._m(0), _c("span", { staticClass: "modal-prime-intro__price" }, [_vm._v("...only from $12/month")]), _c("div", { staticClass: "modal-prime-intro__button" }, [_c("s-button", { attrs: { "size": "large", "variation": "prime-white", "title": _vm.primeButtonText }, on: { "click": _vm.onPrimeButtonHandler } })], 1)])]);
+};
+var _sfc_staticRenderFns$2 = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("ul", { staticClass: "modal-prime-intro__list" }, [_c("li", { staticClass: "modal-prime-intro__list__item" }, [_c("i", { staticClass: "icon-themes" }), _vm._v(" Overlay, widget & tip page themes ")]), _c("li", { staticClass: "modal-prime-intro__list__item" }, [_c("i", { staticClass: "icon-store" }), _vm._v(" FREE apps ")]), _c("li", { staticClass: "modal-prime-intro__list__item" }, [_c("i", { staticClass: "icon-upperwear" }), _vm._v(" Custom merch store ")]), _c("li", { staticClass: "modal-prime-intro__list__item" }, [_c("i", { staticClass: "icon-loyalty" }), _vm._v(" Gold status + FREE t-shirt ")]), _c("li", { staticClass: "modal-prime-intro__list__item" }, [_c("i", { staticClass: "icon-phone-case" }), _vm._v(" Stream on mobile ")])]);
+}];
+var __component__$2 = /* @__PURE__ */ normalizeComponent(
+  PrimeIntro$1,
+  _sfc_render$2,
+  _sfc_staticRenderFns$2,
+  false,
+  null,
+  "a352e48b",
+  null,
+  null
+);
+const PrimeIntro = __component__$2.exports;
+var __defProp$1 = Object.defineProperty;
+var __getOwnPropDesc$1 = Object.getOwnPropertyDescriptor;
+var __decorateClass$1 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$1(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$1(target, key, result);
+  return result;
+};
+let ModalPrimeIntro$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "name");
+    __publicField(this, "width");
+    __publicField(this, "minWidth");
+    __publicField(this, "hasPrimeCloseButton");
+    __publicField(this, "primeButtonText");
+  }
+};
+__decorateClass$1([
+  Prop({ default: "modal-prime-intro" })
+], ModalPrimeIntro$1.prototype, "name", 2);
+__decorateClass$1([
+  Prop()
+], ModalPrimeIntro$1.prototype, "width", 2);
+__decorateClass$1([
+  Prop()
+], ModalPrimeIntro$1.prototype, "minWidth", 2);
+__decorateClass$1([
+  Prop({ default: false })
+], ModalPrimeIntro$1.prototype, "hasPrimeCloseButton", 2);
+__decorateClass$1([
+  Prop({ default: "Join Ultra" })
+], ModalPrimeIntro$1.prototype, "primeButtonText", 2);
+ModalPrimeIntro$1 = __decorateClass$1([
+  Component({
+    components: { PrimeIntro }
+  })
+], ModalPrimeIntro$1);
+const ModalPrimeIntro_vue_vue_type_style_index_0_scoped_9f9cfbae_lang = "";
+var _sfc_render$1 = function render8() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("modal", _vm._g({ attrs: { "name": _vm.name, "classes": "s-modal-wrapper", "width": _vm.width, "minWidth": _vm.minWidth, "height": "auto", "adaptive": true, "scrollable": true } }, _vm.$listeners), [_vm.hasPrimeCloseButton ? _c("div", { staticClass: "modal-prime__close" }, [_c("i", { staticClass: "icon-close", on: { "click": function($event) {
+    return _vm.$modal.hide(_vm.name);
+  } } })]) : _vm._e(), _c("PrimeIntro", _vm._g({ attrs: { "primeButtonText": _vm.primeButtonText } }, _vm.$listeners), [_vm._t("default")], 2)], 1);
+};
+var _sfc_staticRenderFns$1 = [];
+var __component__$1 = /* @__PURE__ */ normalizeComponent(
+  ModalPrimeIntro$1,
+  _sfc_render$1,
+  _sfc_staticRenderFns$1,
+  false,
+  null,
+  "9f9cfbae",
+  null,
+  null
+);
+const ModalPrimeIntro = __component__$1.exports;
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+Vue.use(VModal);
+let ModalComp$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "name");
+    __publicField(this, "width");
+    __publicField(this, "minWidth");
+    __publicField(this, "scrollable");
+    __publicField(this, "type");
+    __publicField(this, "title");
+    __publicField(this, "subTitle");
+    __publicField(this, "text");
+    __publicField(this, "subscribeText");
+    __publicField(this, "subscribeMessage");
+    __publicField(this, "notes");
+    __publicField(this, "proBadge");
+    __publicField(this, "customPreview");
+    __publicField(this, "confirmButtonText");
+    __publicField(this, "buttonVariation");
+    __publicField(this, "buttonTitle");
+    __publicField(this, "buttonPrice");
+    __publicField(this, "cancelTitle");
+    __publicField(this, "primeButtonText");
+    __publicField(this, "hasPrimeCloseButton");
+    __publicField(this, "hideActionButtons");
+    __publicField(this, "clickToClose");
+    __publicField(this, "modalName", "");
+  }
+  mounted() {
+    this.selectName();
+  }
+  selectName() {
+    switch (this.type) {
+      case "basic":
+        if (this.name) {
+          this.modalName = this.name;
+        } else {
+          this.modalName = "modal-basic";
+        }
+        break;
+      case "subscribe":
+        if (this.name) {
+          this.modalName = this.name;
+        } else {
+          this.modalName = "modal-subscribe";
+        }
+        break;
+      case "redirect":
+        if (this.name) {
+          this.modalName = this.name;
+        } else {
+          this.modalName = "modal-redirect";
+        }
+        break;
+      case "confirmation":
+        if (this.name) {
+          this.modalName = this.name;
+        } else {
+          this.modalName = "modal-confirmation";
+        }
+        break;
+      case "welcome-prime":
+        if (this.name) {
+          this.modalName = this.name;
+        } else {
+          this.modalName = "modal-welcome-prime";
+        }
+        break;
+      case "prime-intro":
+        if (this.name) {
+          this.modalName = this.name;
+        } else {
+          this.modalName = "modal-prime-intro";
+        }
+        break;
+    }
+  }
+};
+__decorateClass([
+  Prop()
+], ModalComp$1.prototype, "name", 2);
+__decorateClass([
+  Prop({ default: 600 })
+], ModalComp$1.prototype, "width", 2);
+__decorateClass([
+  Prop({ default: 600 })
+], ModalComp$1.prototype, "minWidth", 2);
+__decorateClass([
+  Prop()
+], ModalComp$1.prototype, "scrollable", 2);
+__decorateClass([
+  Prop()
+], ModalComp$1.prototype, "type", 2);
+__decorateClass([
+  Prop()
+], ModalComp$1.prototype, "title", 2);
+__decorateClass([
+  Prop()
+], ModalComp$1.prototype, "subTitle", 2);
+__decorateClass([
+  Prop()
+], ModalComp$1.prototype, "text", 2);
+__decorateClass([
+  Prop()
+], ModalComp$1.prototype, "subscribeText", 2);
+__decorateClass([
+  Prop()
+], ModalComp$1.prototype, "subscribeMessage", 2);
+__decorateClass([
+  Prop()
+], ModalComp$1.prototype, "notes", 2);
+__decorateClass([
+  Prop()
+], ModalComp$1.prototype, "proBadge", 2);
+__decorateClass([
+  Prop()
+], ModalComp$1.prototype, "customPreview", 2);
+__decorateClass([
+  Prop()
+], ModalComp$1.prototype, "confirmButtonText", 2);
+__decorateClass([
+  Prop()
+], ModalComp$1.prototype, "buttonVariation", 2);
+__decorateClass([
+  Prop()
+], ModalComp$1.prototype, "buttonTitle", 2);
+__decorateClass([
+  Prop()
+], ModalComp$1.prototype, "buttonPrice", 2);
+__decorateClass([
+  Prop()
+], ModalComp$1.prototype, "cancelTitle", 2);
+__decorateClass([
+  Prop()
+], ModalComp$1.prototype, "primeButtonText", 2);
+__decorateClass([
+  Prop()
+], ModalComp$1.prototype, "hasPrimeCloseButton", 2);
+__decorateClass([
+  Prop()
+], ModalComp$1.prototype, "hideActionButtons", 2);
+__decorateClass([
+  Prop()
+], ModalComp$1.prototype, "clickToClose", 2);
+ModalComp$1 = __decorateClass([
+  Component({
+    components: {
+      Button,
+      ModalBasic,
+      ModalSubscribe,
+      ModalRedirect,
+      ModalConfirmation,
+      ModalPrime,
+      ModalPrimeIntro
+    }
+  })
+], ModalComp$1);
+var _sfc_render = function render9() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", [_vm.type === "basic" ? _c("div", [_c("ModalBasic", _vm._g({ attrs: { "name": _vm.modalName, "title": _vm.title, "subTitle": _vm.subTitle, "text": _vm.text, "width": _vm.width, "minWidth": _vm.minWidth, "hideActionButtons": _vm.hideActionButtons, "confirmButtonText": _vm.confirmButtonText, "clickToClose": _vm.clickToClose } }, _vm.$listeners), [_vm._t("default")], 2)], 1) : _vm._e(), _vm.type === "subscribe" ? _c("div", [_c("ModalSubscribe", _vm._g({ attrs: { "name": _vm.modalName, "title": _vm.title, "subTitle": _vm.subTitle, "text": _vm.text, "subscribeText": _vm.subscribeText, "subscribeMessage": _vm.subscribeMessage, "notes": _vm.notes, "width": _vm.width, "minWidth": _vm.minWidth, "scrollable": _vm.scrollable, "proBadge": _vm.proBadge, "customPreview": _vm.customPreview, "buttonTitle": _vm.buttonTitle, "buttonPrice": _vm.buttonPrice, "buttonVariation": _vm.buttonVariation, "cancelTitle": _vm.cancelTitle }, scopedSlots: _vm._u([{ key: "preview", fn: function() {
+    return [_vm._t("preview")];
+  }, proxy: true }], null, true) }, _vm.$listeners), [_vm._t("default")], 2)], 1) : _vm._e(), _vm.type === "redirect" ? _c("div", [_c("ModalRedirect", _vm._g({ attrs: { "name": _vm.modalName, "title": _vm.title, "text": _vm.text, "width": _vm.width, "minWidth": _vm.minWidth } }, _vm.$listeners))], 1) : _vm._e(), _vm.type === "confirmation" ? _c("div", [_c("ModalConfirmation", _vm._g({ attrs: { "name": _vm.modalName, "subTitle": _vm.subTitle, "text": _vm.text, "width": _vm.width, "minWidth": _vm.minWidth, "confirmButtonText": _vm.confirmButtonText, "buttonVariation": _vm.buttonVariation } }, _vm.$listeners))], 1) : _vm._e(), _vm.type === "welcome-prime" ? _c("div", [_c("ModalPrime", _vm._g({ attrs: { "name": _vm.modalName, "width": _vm.width, "minWidth": _vm.minWidth, "primeButtonText": _vm.primeButtonText, "hasPrimeCloseButton": _vm.hasPrimeCloseButton } }, _vm.$listeners), [_vm._t("default")], 2)], 1) : _vm._e(), _vm.type === "prime-intro" ? _c("div", [_c("ModalPrimeIntro", _vm._g({ attrs: { "name": _vm.modalName, "width": 680, "minWidth": _vm.minWidth, "primeButtonText": _vm.primeButtonText, "hasPrimeCloseButton": _vm.hasPrimeCloseButton } }, _vm.$listeners), [_vm._t("default")], 2)], 1) : _vm._e()]);
+};
+var _sfc_staticRenderFns = [];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  ModalComp$1,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const ModalComp = __component__.exports;
+export {
+  ModalComp as M,
+  WelcomePrime as W
+};
 //# sourceMappingURL=ModalComp.12fcb69e.js.map

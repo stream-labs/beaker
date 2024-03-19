@@ -1,4 +1,487 @@
-var y=Object.defineProperty;var D=(a,e,s)=>e in a?y(a,e,{enumerable:!0,configurable:!0,writable:!0,value:s}):a[e]=s;var i=(a,e,s)=>(D(a,typeof e!="symbol"?e+"":e,s),s);import{W as k,C as v,P as l,V as m,n as _}from"./index.4fb8a6cb.js";import{D as C}from"./DemoSection.79ee11c0.js";import{S as x}from"./ScrollNav.943a041d.js";import{i as g}from"./ResizeObserver.es.bd9ff68d.js";import{P as S}from"./PaneDropdown.6fe5e7fe.js";import{e as P}from"./_baseClone.a549c660.js";import"./Accordion.09c82396.js";import"./vue-focus.common.2dfcc992.js";var L=1,N=4;function O(a){return P(a,L|N)}var A=Object.defineProperty,z=Object.getOwnPropertyDescriptor,u=(a,e,s,n)=>{for(var t=n>1?void 0:n?z(e,s):e,o=a.length-1,r;o>=0;o--)(r=a[o])&&(t=(n?r(e,s,t):r(t))||t);return n&&t&&A(e,s,t),t};let d=class extends m{constructor(){super(...arguments);i(this,"tabs");i(this,"size");i(this,"selected");i(this,"className");i(this,"hideContent");i(this,"updateRoute");i(this,"$refs");i(this,"isMounted",!1);i(this,"tabsContainer",null);i(this,"canScroll",!1);i(this,"hasNext",!1);i(this,"hasPrev",!1);i(this,"scrollIncrement",100);i(this,"selectedTab","");i(this,"selectTabSize",{fontSize:this.tabSize})}onTabsChange(){this.$nextTick(()=>this.calculateScrolls())}get tabSize(){return this.size==="small"?"14px":this.size==="large"?"16px":"14px"}created(){window.addEventListener("resize",this.calculateScrolls)}destroyed(){window.removeEventListener("resize",this.calculateScrolls)}mounted(){this.isMounted=!0,this.tabsContainer=this.$refs.scrollable_tabs,this.calculateScrolls(),this.selected?this.selectedTab=this.selected:this.selectedTab=this.tabs[0].value}scrollLeft(){this.tabsContainer.scrollLeft=this.tabsContainer.scrollLeft-this.scrollIncrement}scrollRight(){this.tabsContainer.scrollLeft=this.tabsContainer.scrollLeft+this.scrollIncrement}calculateScrolls(){if(!this.isMounted)return!1;this.canScroll=this.tabsContainer.scrollWidth>this.tabsContainer.clientWidth,this.hasPrev=this.tabsContainer.scrollLeft>0;const e=this.tabsContainer.scrollWidth-(this.tabsContainer.scrollLeft+this.tabsContainer.clientWidth);this.hasNext=e>0}showTab(e){this.selectedTab=e,this.$emit("tab-selected",e)}};u([l()],d.prototype,"tabs",2);u([k("tabs",{deep:!0})],d.prototype,"onTabsChange",1);u([l()],d.prototype,"size",2);u([l()],d.prototype,"selected",2);u([l()],d.prototype,"className",2);u([l()],d.prototype,"hideContent",2);u([l({default:!0})],d.prototype,"updateRoute",2);d=u([v({})],d);var R=function(){var e=this,s=e._self._c;return e._self._setupProxy,s("div",{staticClass:"s-tabs-wrapper"},[s("div",{staticClass:"s-tabs-nav-wrapper"},[s("div",{staticClass:"s-tabs-nav",class:e.className},[e.hasPrev?s("div",{staticClass:"s-tabs-nav__control s-has-prev",on:{click:e.scrollLeft}},[s("i",{staticClass:"icon-back"})]):e._e(),s("div",{ref:"scrollable_tabs",staticClass:"s-tabs",class:{"s-has-next":e.hasNext,"s-has-prev":e.hasPrev},on:{scroll:e.calculateScrolls}},e._l(e.tabs,function(n){return s("div",{key:n.value,staticClass:"s-tab",class:{"is-active":n.value===e.selectedTab},style:e.selectTabSize,on:{click:function(t){return e.showTab(n.value)}}},[e.updateRoute?s("router-link",{staticClass:"s-tab-link",attrs:{to:`#/${n.value}`}},[n.icon?s("i",{class:`icon-${n.icon}`}):e._e(),e._v(" "+e._s(n.name)+" ")]):s("div",{staticClass:"s-tab-link"},[n.icon?s("i",{class:`icon-${n.icon}`}):e._e(),e._v(" "+e._s(n.name)+" ")])],1)}),0),e.hasNext?s("div",{staticClass:"s-tabs-nav__control s-has-next",on:{click:e.scrollRight}},[s("i",{staticClass:"icon-back"})]):e._e()])]),e.hideContent?e._e():s("div",{staticClass:"s-tab-content"},e._l(e.tabs,function(n,t){return s("div",{directives:[{name:"show",rawName:"v-show",value:n.value===e.selectedTab,expression:"tab.value === selectedTab"}],key:t},[e._t(n.value)],2)}),0)])},E=[],I=_(d,R,E,!1,null,"ef8c54fb",null,null);const W=I.exports;var H=Object.defineProperty,$=Object.getOwnPropertyDescriptor,h=(a,e,s,n)=>{for(var t=n>1?void 0:n?$(e,s):e,o=a.length-1,r;o>=0;o--)(r=a[o])&&(t=(n?r(e,s,t):r(t))||t);return n&&t&&H(e,s,t),t};let c=class extends m{constructor(){super(...arguments);i(this,"tabs");i(this,"size");i(this,"selected");i(this,"className");i(this,"hideContent");i(this,"updateRoute");i(this,"$refs");i(this,"isMounted",!1);i(this,"hasHiddenTabs",!0);i(this,"hiddenTabFocused",!1);i(this,"modifiedTabs",[]);i(this,"dropdownIsActive",!1);i(this,"selectTabSize",{fontSize:this.tabSize});i(this,"prevWidth",0);i(this,"tabWidthsSet",!1);i(this,"tabsNav",null);i(this,"allTabElements",null)}get tabLinkTag(){return this.updateRoute?"router-link":"button"}get tabSize(){return this.size==="large"?"16px":"14px"}get hiddenTabs(){return this.modifiedTabs.filter(e=>e.hidden)}get activeTab(){return this.modifiedTabs.every(e=>!e.active)?this.selected||this.modifiedTabs[0].value:this.modifiedTabs.find(e=>e.active)}get hiddenActiveTab(){return this.hiddenTabs.find(e=>e.active)}mounted(){this.$refs.hiddenTabsDropdown.$el.addEventListener("focus",this.focusActiveTab),this.loadTabProperties(),this.isMounted=!0,this.tabsNav=this.$refs.tabsNav,this.$nextTick(()=>{if(this.selected){const e=this.modifiedTabs.find(s=>this.selected===s.value)||this.modifiedTabs[0];e.active=!0}this.allTabElements=this.tabsNav.querySelectorAll(".s-tabs__tab"),this.setTabWidths()}),this.$nextTick(()=>{this.setTabWidths(),this.loadResizeObserver()})}destroyed(){this.$refs.hiddenTabsDropdown.$el.removeEventListener("focus",this.focusActiveTab)}loadTabProperties(){this.modifiedTabs=O(this.tabs).map(e=>({...e,active:!1,hidden:!1,width:0}))}setTabWidths(){Array.from(this.tabsNav.querySelectorAll(".s-tabs__tab")).forEach((e,s)=>{this.$nextTick(()=>{let n=e.querySelector(".s-tabs__link");this.modifiedTabs[s].width=s!==this.modifiedTabs.length-1?n.offsetWidth+16:n.offsetWidth})})}loadResizeObserver(){new g(s=>{s.forEach(n=>{const{width:t,height:o}=n.contentRect;this.prevWidth!==t&&(this.$nextTick(()=>this.setHiddenTabs()),this.prevWidth=t)})}).observe(this.tabsNav)}setHiddenTabs(){if(!this.isMounted)return!1;this.hasHiddenTabs=!0,this.$nextTick(()=>{let s=Array.from(this.tabsNav.children).pop().offsetWidth;const n=this.tabsNav.offsetWidth;this.hasHiddenTabs=!1,this.modifiedTabs.forEach((t,o)=>{t.hidden=!1,n>=s+t.width&&!this.hasHiddenTabs?s+=t.width:(this.modifiedTabs[o].hidden=!0,this.hasHiddenTabs||(this.hasHiddenTabs=!0))}),this.modifiedTabs.some(t=>t.hidden)&&(this.hasHiddenTabs=!0)})}setTabOnKeyDown(e,s,n="RIGHT"){const t=this.$refs.hiddenTabsDropdown,o=this.modifiedTabs.findIndex(b=>s===b.value);let r=0;n==="LEFT"?r=o===0?this.modifiedTabs.length-1:o-1:r=o===this.modifiedTabs.length-1?0:o+1,this.togglePaneDropdown(this.modifiedTabs[o].hidden,this.modifiedTabs[r].hidden);let f=null;if(this.modifiedTabs[r].hidden){const b=this.hiddenTabs.findIndex(w=>this.modifiedTabs[r].value===w.value);let T=null;this.$nextTick(()=>{T=t.$el.querySelectorAll(".s-pane-dropdown__list .s-tabs__link"),f=T[b]}),this.hiddenTabs[b]}else f=this.allTabElements[r].querySelector(".s-tabs__link");this.$nextTick(()=>{f.focus(),this.showTab(this.modifiedTabs[r])})}togglePaneDropdown(e,s){this.$refs.hiddenTabsDropdown,!(s&&this.dropdownIsActive)&&(s?(this.$refs.hiddenTabsDropdown.show(),this.openPaneDropdown()):this.closePaneDropdown())}openPaneDropdown(){this.dropdownIsActive=!0}closePaneDropdown(){this.$refs.hiddenTabsDropdown.hide(),this.dropdownIsActive=!1}showHiddenTabs(e){this.dropdownIsActive=e}tabLinkOptions(e){return{to:this.updateRoute?`#/${e}`:void 0}}blurPaneDropDown(){this.$nextTick(()=>{[...this.$refs.hiddenTabsDropdown.$el.querySelectorAll(".s-pane-dropdown__list .s-tabs__link")].some(n=>document.activeElement===n)||(this.hiddenTabFocused=!1,this.closePaneDropdown())})}focusActiveTab(){if(this.openPaneDropdown(),this.$whatInput.ask("intent")==="keyboard"){const e=this.hiddenTabs.findIndex(n=>n.active),s=this.$refs.hiddenTabsDropdown;this.$nextTick(()=>{s.$el.querySelectorAll(".s-pane-dropdown__list .s-tabs__link")[e].focus()})}}showTab(e){this.modifiedTabs.forEach(s=>s.active=!1),e.active=!0,this.$emit("tab-selected",e.value)}};h([l()],c.prototype,"tabs",2);h([l()],c.prototype,"size",2);h([l()],c.prototype,"selected",2);h([l()],c.prototype,"className",2);h([l()],c.prototype,"hideContent",2);h([l({default:!0})],c.prototype,"updateRoute",2);c=h([v({components:{PaneDropdown:S}})],c);var F=function(){var e=this,s=e._self._c;return e._self._setupProxy,s("div",{ref:"tabsWrapper",staticClass:"s-tabs"},[s("div",{ref:"tabsNav",staticClass:"s-tabs__nav",class:e.className},[e._l(e.modifiedTabs,function(n){return s("div",{key:n.value,staticClass:"s-tabs__tab",class:{"is-active":n.active,"is-hidden":n.hidden},style:e.selectTabSize,attrs:{"aria-controls":`${n.value}-tab`},on:{click:function(t){return e.showTab(n)},keydown:[function(t){return!t.type.indexOf("key")&&e._k(t.keyCode,"left",37,t.key,["Left","ArrowLeft"])||"button"in t&&t.button!==0?null:(t.preventDefault(),e.setTabOnKeyDown(t,n.value,"LEFT"))},function(t){return!t.type.indexOf("key")&&e._k(t.keyCode,"up",38,t.key,["Up","ArrowUp"])?null:(t.preventDefault(),e.setTabOnKeyDown(t,n.value,"LEFT"))},function(t){return!t.type.indexOf("key")&&e._k(t.keyCode,"right",39,t.key,["Right","ArrowRight"])||"button"in t&&t.button!==2?null:(t.preventDefault(),e.setTabOnKeyDown(t,n.value))},function(t){return!t.type.indexOf("key")&&e._k(t.keyCode,"down",40,t.key,["Down","ArrowDown"])?null:(t.preventDefault(),e.setTabOnKeyDown(t,n.value))}]}},[s(e.tabLinkTag,e._b({tag:"component",staticClass:"s-tabs__link",attrs:{to:`#/${n.value}`,tag:"button",tabindex:n.active?void 0:"-1"}},"component",e.tabLinkOptions(n.value),!1),[n.icon?s("i",{class:`icon-${n.icon}`}):e._e(),s("span",{staticClass:"s-tabs__title"},[e._v(e._s(n.name))])])],1)}),s("PaneDropdown",{directives:[{name:"show",rawName:"v-show",value:e.hasHiddenTabs,expression:"hasHiddenTabs"}],ref:"hiddenTabsDropdown",attrs:{menuAlign:"right",tabindex:e.hiddenActiveTab&&!e.hiddenTabFocused?0:-1}},[s("template",{slot:"title"},[e._v("More")]),e._l(e.hiddenTabs,function(n){return s("div",{key:`hidden-${n.value}`,class:{"is-active":n.active},on:{click:function(t){return e.showTab(n)},blur:e.blurPaneDropDown,focus:function(t){e.hiddenTabFocused=!0},keydown:[function(t){return!t.type.indexOf("key")&&e._k(t.keyCode,"left",37,t.key,["Left","ArrowLeft"])||"button"in t&&t.button!==0?null:(t.preventDefault(),e.setTabOnKeyDown(t,n.value,"LEFT"))},function(t){return!t.type.indexOf("key")&&e._k(t.keyCode,"up",38,t.key,["Up","ArrowUp"])?null:(t.preventDefault(),e.setTabOnKeyDown(t,n.value,"LEFT"))},function(t){return!t.type.indexOf("key")&&e._k(t.keyCode,"right",39,t.key,["Right","ArrowRight"])||"button"in t&&t.button!==2?null:(t.preventDefault(),e.setTabOnKeyDown(t,n.value))},function(t){return!t.type.indexOf("key")&&e._k(t.keyCode,"down",40,t.key,["Down","ArrowDown"])?null:(t.preventDefault(),e.setTabOnKeyDown(t,n.value))}]}},[s(e.tabLinkTag,{tag:"component",staticClass:"s-tabs__link",attrs:{to:`#/${n.value}`,tag:"button",tabindex:n.active?void 0:"-1"}},[e._v(e._s(n.name))])],1)})],2)],2),e.hideContent?e._e():s("div",{staticClass:"s-tab-content"},e._l(e.modifiedTabs,function(n,t){return s("div",{directives:[{name:"show",rawName:"v-show",value:n.active,expression:"tab.active"}],key:t},[e._t(n.value)],2)}),0)])},M=[],U=_(c,F,M,!1,null,"2f0ad77f",null,null);const K=U.exports,q=`<template>
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { W as Watch, C as Component, P as Prop, V as Vue, n as normalizeComponent } from "./index.4fb8a6cb.js";
+import { D as DemoSection } from "./DemoSection.79ee11c0.js";
+import { S as ScrollNav } from "./ScrollNav.943a041d.js";
+import { i as index } from "./ResizeObserver.es.bd9ff68d.js";
+import { P as PaneDropdown } from "./PaneDropdown.6fe5e7fe.js";
+import { e as baseClone } from "./_baseClone.a549c660.js";
+import "./Accordion.09c82396.js";
+import "./vue-focus.common.2dfcc992.js";
+var CLONE_DEEP_FLAG = 1, CLONE_SYMBOLS_FLAG = 4;
+function cloneDeep(value) {
+  return baseClone(value, CLONE_DEEP_FLAG | CLONE_SYMBOLS_FLAG);
+}
+var __defProp$2 = Object.defineProperty;
+var __getOwnPropDesc$2 = Object.getOwnPropertyDescriptor;
+var __decorateClass$2 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$2(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$2(target, key, result);
+  return result;
+};
+let Tabs$2 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "tabs");
+    __publicField(this, "size");
+    __publicField(this, "selected");
+    __publicField(this, "className");
+    __publicField(this, "hideContent");
+    __publicField(this, "updateRoute");
+    __publicField(this, "$refs");
+    __publicField(this, "isMounted", false);
+    __publicField(this, "tabsContainer", null);
+    __publicField(this, "canScroll", false);
+    __publicField(this, "hasNext", false);
+    __publicField(this, "hasPrev", false);
+    __publicField(this, "scrollIncrement", 100);
+    __publicField(this, "selectedTab", "");
+    __publicField(this, "selectTabSize", {
+      fontSize: this.tabSize
+    });
+  }
+  onTabsChange() {
+    this.$nextTick(() => this.calculateScrolls());
+  }
+  get tabSize() {
+    if (this.size === "small") {
+      return "14px";
+    } else if (this.size === "large") {
+      return "16px";
+    } else {
+      return "14px";
+    }
+  }
+  created() {
+    window.addEventListener("resize", this.calculateScrolls);
+  }
+  destroyed() {
+    window.removeEventListener("resize", this.calculateScrolls);
+  }
+  mounted() {
+    this.isMounted = true;
+    this.tabsContainer = this.$refs.scrollable_tabs;
+    this.calculateScrolls();
+    if (this.selected) {
+      this.selectedTab = this.selected;
+    } else {
+      this.selectedTab = this.tabs[0].value;
+    }
+  }
+  scrollLeft() {
+    this.tabsContainer.scrollLeft = this.tabsContainer.scrollLeft - this.scrollIncrement;
+  }
+  scrollRight() {
+    this.tabsContainer.scrollLeft = this.tabsContainer.scrollLeft + this.scrollIncrement;
+  }
+  calculateScrolls() {
+    if (!this.isMounted)
+      return false;
+    this.canScroll = this.tabsContainer.scrollWidth > this.tabsContainer.clientWidth;
+    this.hasPrev = this.tabsContainer.scrollLeft > 0;
+    const scrollRight = this.tabsContainer.scrollWidth - (this.tabsContainer.scrollLeft + this.tabsContainer.clientWidth);
+    this.hasNext = scrollRight > 0;
+  }
+  showTab(tab) {
+    this.selectedTab = tab;
+    this.$emit("tab-selected", tab);
+  }
+};
+__decorateClass$2([
+  Prop()
+], Tabs$2.prototype, "tabs", 2);
+__decorateClass$2([
+  Watch("tabs", { deep: true })
+], Tabs$2.prototype, "onTabsChange", 1);
+__decorateClass$2([
+  Prop()
+], Tabs$2.prototype, "size", 2);
+__decorateClass$2([
+  Prop()
+], Tabs$2.prototype, "selected", 2);
+__decorateClass$2([
+  Prop()
+], Tabs$2.prototype, "className", 2);
+__decorateClass$2([
+  Prop()
+], Tabs$2.prototype, "hideContent", 2);
+__decorateClass$2([
+  Prop({ default: true })
+], Tabs$2.prototype, "updateRoute", 2);
+Tabs$2 = __decorateClass$2([
+  Component({})
+], Tabs$2);
+const Tabs_vue_vue_type_style_index_0_scoped_ef8c54fb_lang = "";
+var _sfc_render$2 = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-tabs-wrapper" }, [_c("div", { staticClass: "s-tabs-nav-wrapper" }, [_c("div", { staticClass: "s-tabs-nav", class: _vm.className }, [_vm.hasPrev ? _c("div", { staticClass: "s-tabs-nav__control s-has-prev", on: { "click": _vm.scrollLeft } }, [_c("i", { staticClass: "icon-back" })]) : _vm._e(), _c("div", { ref: "scrollable_tabs", staticClass: "s-tabs", class: {
+    "s-has-next": _vm.hasNext,
+    "s-has-prev": _vm.hasPrev
+  }, on: { "scroll": _vm.calculateScrolls } }, _vm._l(_vm.tabs, function(tab) {
+    return _c("div", { key: tab.value, staticClass: "s-tab", class: { "is-active": tab.value === _vm.selectedTab }, style: _vm.selectTabSize, on: { "click": function($event) {
+      return _vm.showTab(tab.value);
+    } } }, [_vm.updateRoute ? _c("router-link", { staticClass: "s-tab-link", attrs: { "to": `#/${tab.value}` } }, [tab.icon ? _c("i", { class: `icon-${tab.icon}` }) : _vm._e(), _vm._v(" " + _vm._s(tab.name) + " ")]) : _c("div", { staticClass: "s-tab-link" }, [tab.icon ? _c("i", { class: `icon-${tab.icon}` }) : _vm._e(), _vm._v(" " + _vm._s(tab.name) + " ")])], 1);
+  }), 0), _vm.hasNext ? _c("div", { staticClass: "s-tabs-nav__control s-has-next", on: { "click": _vm.scrollRight } }, [_c("i", { staticClass: "icon-back" })]) : _vm._e()])]), !_vm.hideContent ? _c("div", { staticClass: "s-tab-content" }, _vm._l(_vm.tabs, function(tab, index2) {
+    return _c("div", { directives: [{ name: "show", rawName: "v-show", value: tab.value === _vm.selectedTab, expression: "tab.value === selectedTab" }], key: index2 }, [_vm._t(tab.value)], 2);
+  }), 0) : _vm._e()]);
+};
+var _sfc_staticRenderFns$2 = [];
+var __component__$2 = /* @__PURE__ */ normalizeComponent(
+  Tabs$2,
+  _sfc_render$2,
+  _sfc_staticRenderFns$2,
+  false,
+  null,
+  "ef8c54fb",
+  null,
+  null
+);
+const Tabs$1 = __component__$2.exports;
+var __defProp$1 = Object.defineProperty;
+var __getOwnPropDesc$1 = Object.getOwnPropertyDescriptor;
+var __decorateClass$1 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$1(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$1(target, key, result);
+  return result;
+};
+let TabsNew$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "tabs");
+    __publicField(this, "size");
+    __publicField(this, "selected");
+    __publicField(this, "className");
+    __publicField(this, "hideContent");
+    __publicField(this, "updateRoute");
+    __publicField(this, "$refs");
+    __publicField(this, "isMounted", false);
+    __publicField(this, "hasHiddenTabs", true);
+    __publicField(this, "hiddenTabFocused", false);
+    __publicField(this, "modifiedTabs", []);
+    __publicField(this, "dropdownIsActive", false);
+    __publicField(this, "selectTabSize", { fontSize: this.tabSize });
+    __publicField(this, "prevWidth", 0);
+    __publicField(this, "tabWidthsSet", false);
+    __publicField(this, "tabsNav", null);
+    __publicField(this, "allTabElements", null);
+  }
+  get tabLinkTag() {
+    return this.updateRoute ? "router-link" : "button";
+  }
+  get tabSize() {
+    return this.size === "large" ? "16px" : "14px";
+  }
+  get hiddenTabs() {
+    return this.modifiedTabs.filter((tab) => tab.hidden);
+  }
+  get activeTab() {
+    if (this.modifiedTabs.every((tab) => !tab.active)) {
+      return this.selected || this.modifiedTabs[0].value;
+    }
+    return this.modifiedTabs.find((tab) => tab.active);
+  }
+  get hiddenActiveTab() {
+    return this.hiddenTabs.find((tab) => tab.active);
+  }
+  mounted() {
+    this.$refs.hiddenTabsDropdown.$el.addEventListener(
+      "focus",
+      this.focusActiveTab
+    );
+    this.loadTabProperties();
+    this.isMounted = true;
+    this.tabsNav = this.$refs.tabsNav;
+    this.$nextTick(() => {
+      if (this.selected) {
+        const activeTab = this.modifiedTabs.find((tab) => this.selected === tab.value) || this.modifiedTabs[0];
+        activeTab.active = true;
+      }
+      this.allTabElements = this.tabsNav.querySelectorAll(".s-tabs__tab");
+      this.setTabWidths();
+    });
+    this.$nextTick(() => {
+      this.setTabWidths();
+      this.loadResizeObserver();
+    });
+  }
+  destroyed() {
+    this.$refs.hiddenTabsDropdown.$el.removeEventListener(
+      "focus",
+      this.focusActiveTab
+    );
+  }
+  loadTabProperties() {
+    this.modifiedTabs = cloneDeep(this.tabs).map((tab) => {
+      return {
+        ...tab,
+        active: false,
+        hidden: false,
+        width: 0
+      };
+    });
+  }
+  setTabWidths() {
+    Array.from(this.tabsNav.querySelectorAll(".s-tabs__tab")).forEach(
+      (tab, idx) => {
+        this.$nextTick(() => {
+          let tabLink = tab.querySelector(".s-tabs__link");
+          this.modifiedTabs[idx].width = idx !== this.modifiedTabs.length - 1 ? tabLink.offsetWidth + 16 : tabLink.offsetWidth;
+        });
+      }
+    );
+  }
+  loadResizeObserver() {
+    const ro = new index((entries) => {
+      entries.forEach((entry) => {
+        const { width, height } = entry.contentRect;
+        if (this.prevWidth !== width) {
+          this.$nextTick(() => this.setHiddenTabs());
+          this.prevWidth = width;
+        }
+      });
+    });
+    ro.observe(this.tabsNav);
+  }
+  setHiddenTabs() {
+    if (!this.isMounted)
+      return false;
+    this.hasHiddenTabs = true;
+    this.$nextTick(() => {
+      const moreTab = Array.from(this.tabsNav.children).pop();
+      let totalTabsWidth = moreTab.offsetWidth;
+      const tabsNavWidth = this.tabsNav.offsetWidth;
+      this.hasHiddenTabs = false;
+      this.modifiedTabs.forEach((tab, index2) => {
+        tab.hidden = false;
+        if (tabsNavWidth >= totalTabsWidth + tab.width && !this.hasHiddenTabs) {
+          totalTabsWidth += tab.width;
+        } else {
+          this.modifiedTabs[index2].hidden = true;
+          if (!this.hasHiddenTabs)
+            this.hasHiddenTabs = true;
+        }
+      });
+      if (this.modifiedTabs.some((tab) => tab.hidden))
+        this.hasHiddenTabs = true;
+    });
+  }
+  setTabOnKeyDown(event, current, direction = "RIGHT") {
+    const paneDropdown = this.$refs.hiddenTabsDropdown;
+    const currentIndex = this.modifiedTabs.findIndex(
+      (tab) => current === tab.value
+    );
+    let newIndex = 0;
+    if (direction === "LEFT") {
+      newIndex = currentIndex === 0 ? this.modifiedTabs.length - 1 : currentIndex - 1;
+    } else {
+      newIndex = currentIndex === this.modifiedTabs.length - 1 ? 0 : currentIndex + 1;
+    }
+    this.togglePaneDropdown(
+      this.modifiedTabs[currentIndex].hidden,
+      this.modifiedTabs[newIndex].hidden
+    );
+    let newTab = null;
+    if (this.modifiedTabs[newIndex].hidden) {
+      const newHiddenIndex = this.hiddenTabs.findIndex(
+        (tab) => this.modifiedTabs[newIndex].value === tab.value
+      );
+      let newHiddenList = null;
+      this.$nextTick(() => {
+        newHiddenList = paneDropdown.$el.querySelectorAll(
+          ".s-pane-dropdown__list .s-tabs__link"
+        );
+        newTab = newHiddenList[newHiddenIndex];
+      });
+      this.hiddenTabs[newHiddenIndex];
+    } else {
+      newTab = this.allTabElements[newIndex].querySelector(".s-tabs__link");
+    }
+    this.$nextTick(() => {
+      newTab.focus();
+      this.showTab(this.modifiedTabs[newIndex]);
+    });
+  }
+  togglePaneDropdown(currentHidden, newHidden) {
+    this.$refs.hiddenTabsDropdown;
+    if (newHidden && this.dropdownIsActive)
+      return;
+    if (newHidden) {
+      this.$refs.hiddenTabsDropdown.show();
+      this.openPaneDropdown();
+    } else {
+      this.closePaneDropdown();
+    }
+  }
+  openPaneDropdown() {
+    this.dropdownIsActive = true;
+  }
+  closePaneDropdown() {
+    this.$refs.hiddenTabsDropdown.hide();
+    this.dropdownIsActive = false;
+  }
+  showHiddenTabs(val) {
+    this.dropdownIsActive = val;
+  }
+  tabLinkOptions(tabValue) {
+    return {
+      to: this.updateRoute ? `#/${tabValue}` : void 0
+    };
+  }
+  blurPaneDropDown() {
+    this.$nextTick(() => {
+      const paneDropdown = this.$refs.hiddenTabsDropdown;
+      const currnetHiddenList = paneDropdown.$el.querySelectorAll(
+        ".s-pane-dropdown__list .s-tabs__link"
+      );
+      if ([...currnetHiddenList].some(
+        (tabElement) => document.activeElement === tabElement
+      )) {
+        return;
+      }
+      this.hiddenTabFocused = false;
+      this.closePaneDropdown();
+    });
+  }
+  focusActiveTab() {
+    this.openPaneDropdown();
+    if (this.$whatInput.ask("intent") === "keyboard") {
+      const activeTabIndex = this.hiddenTabs.findIndex((tab) => tab.active);
+      const paneDropdown = this.$refs.hiddenTabsDropdown;
+      this.$nextTick(() => {
+        const currnetHiddenList = paneDropdown.$el.querySelectorAll(
+          ".s-pane-dropdown__list .s-tabs__link"
+        );
+        const activeTab = currnetHiddenList[activeTabIndex];
+        activeTab.focus();
+      });
+    }
+  }
+  showTab(tab) {
+    this.modifiedTabs.forEach((tab2) => tab2.active = false);
+    tab.active = true;
+    this.$emit("tab-selected", tab.value);
+  }
+};
+__decorateClass$1([
+  Prop()
+], TabsNew$1.prototype, "tabs", 2);
+__decorateClass$1([
+  Prop()
+], TabsNew$1.prototype, "size", 2);
+__decorateClass$1([
+  Prop()
+], TabsNew$1.prototype, "selected", 2);
+__decorateClass$1([
+  Prop()
+], TabsNew$1.prototype, "className", 2);
+__decorateClass$1([
+  Prop()
+], TabsNew$1.prototype, "hideContent", 2);
+__decorateClass$1([
+  Prop({ default: true })
+], TabsNew$1.prototype, "updateRoute", 2);
+TabsNew$1 = __decorateClass$1([
+  Component({
+    components: {
+      PaneDropdown
+    }
+  })
+], TabsNew$1);
+const TabsNew_vue_vue_type_style_index_0_scoped_2f0ad77f_lang = "";
+var _sfc_render$1 = function render2() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { ref: "tabsWrapper", staticClass: "s-tabs" }, [_c("div", { ref: "tabsNav", staticClass: "s-tabs__nav", class: _vm.className }, [_vm._l(_vm.modifiedTabs, function(tab) {
+    return _c("div", { key: tab.value, staticClass: "s-tabs__tab", class: {
+      "is-active": tab.active,
+      "is-hidden": tab.hidden
+    }, style: _vm.selectTabSize, attrs: { "aria-controls": `${tab.value}-tab` }, on: { "click": function($event) {
+      return _vm.showTab(tab);
+    }, "keydown": [function($event) {
+      if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "left", 37, $event.key, ["Left", "ArrowLeft"]))
+        return null;
+      if ("button" in $event && $event.button !== 0)
+        return null;
+      $event.preventDefault();
+      return _vm.setTabOnKeyDown($event, tab.value, "LEFT");
+    }, function($event) {
+      if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "up", 38, $event.key, ["Up", "ArrowUp"]))
+        return null;
+      $event.preventDefault();
+      return _vm.setTabOnKeyDown($event, tab.value, "LEFT");
+    }, function($event) {
+      if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "right", 39, $event.key, ["Right", "ArrowRight"]))
+        return null;
+      if ("button" in $event && $event.button !== 2)
+        return null;
+      $event.preventDefault();
+      return _vm.setTabOnKeyDown($event, tab.value);
+    }, function($event) {
+      if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "down", 40, $event.key, ["Down", "ArrowDown"]))
+        return null;
+      $event.preventDefault();
+      return _vm.setTabOnKeyDown($event, tab.value);
+    }] } }, [_c(_vm.tabLinkTag, _vm._b({ tag: "component", staticClass: "s-tabs__link", attrs: { "to": `#/${tab.value}`, "tag": "button", "tabindex": !tab.active ? "-1" : void 0 } }, "component", _vm.tabLinkOptions(tab.value), false), [tab.icon ? _c("i", { class: `icon-${tab.icon}` }) : _vm._e(), _c("span", { staticClass: "s-tabs__title" }, [_vm._v(_vm._s(tab.name))])])], 1);
+  }), _c("PaneDropdown", { directives: [{ name: "show", rawName: "v-show", value: _vm.hasHiddenTabs, expression: "hasHiddenTabs" }], ref: "hiddenTabsDropdown", attrs: { "menuAlign": "right", "tabindex": _vm.hiddenActiveTab && !_vm.hiddenTabFocused ? 0 : -1 } }, [_c("template", { slot: "title" }, [_vm._v("More")]), _vm._l(_vm.hiddenTabs, function(tab) {
+    return _c("div", { key: `hidden-${tab.value}`, class: { "is-active": tab.active }, on: { "click": function($event) {
+      return _vm.showTab(tab);
+    }, "blur": _vm.blurPaneDropDown, "focus": function($event) {
+      _vm.hiddenTabFocused = true;
+    }, "keydown": [function($event) {
+      if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "left", 37, $event.key, ["Left", "ArrowLeft"]))
+        return null;
+      if ("button" in $event && $event.button !== 0)
+        return null;
+      $event.preventDefault();
+      return _vm.setTabOnKeyDown($event, tab.value, "LEFT");
+    }, function($event) {
+      if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "up", 38, $event.key, ["Up", "ArrowUp"]))
+        return null;
+      $event.preventDefault();
+      return _vm.setTabOnKeyDown($event, tab.value, "LEFT");
+    }, function($event) {
+      if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "right", 39, $event.key, ["Right", "ArrowRight"]))
+        return null;
+      if ("button" in $event && $event.button !== 2)
+        return null;
+      $event.preventDefault();
+      return _vm.setTabOnKeyDown($event, tab.value);
+    }, function($event) {
+      if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "down", 40, $event.key, ["Down", "ArrowDown"]))
+        return null;
+      $event.preventDefault();
+      return _vm.setTabOnKeyDown($event, tab.value);
+    }] } }, [_c(_vm.tabLinkTag, { tag: "component", staticClass: "s-tabs__link", attrs: { "to": `#/${tab.value}`, "tag": "button", "tabindex": !tab.active ? "-1" : void 0 } }, [_vm._v(_vm._s(tab.name))])], 1);
+  })], 2)], 2), !_vm.hideContent ? _c("div", { staticClass: "s-tab-content" }, _vm._l(_vm.modifiedTabs, function(tab, index2) {
+    return _c("div", { directives: [{ name: "show", rawName: "v-show", value: tab.active, expression: "tab.active" }], key: index2 }, [_vm._t(tab.value)], 2);
+  }), 0) : _vm._e()]);
+};
+var _sfc_staticRenderFns$1 = [];
+var __component__$1 = /* @__PURE__ */ normalizeComponent(
+  TabsNew$1,
+  _sfc_render$1,
+  _sfc_staticRenderFns$1,
+  false,
+  null,
+  "2f0ad77f",
+  null,
+  null
+);
+const TabsNew = __component__$1.exports;
+const TabsCode = `<template>
   <div>
     <h1>Tabs</h1>
     <p>Used for Tabs.</p>
@@ -175,9 +658,135 @@ export default class TabsDemo extends Vue {
   ];
 }
 <\/script>
-`;var G=Object.defineProperty,j=Object.getOwnPropertyDescriptor,V=(a,e,s,n)=>{for(var t=n>1?void 0:n?j(e,s):e,o=a.length-1,r;o>=0;o--)(r=a[o])&&(t=(n?r(e,s,t):r(t))||t);return n&&t&&G(e,s,t),t};let p=class extends m{constructor(){super(...arguments);i(this,"demoCode",q);i(this,"tabs",[{name:"General",value:"general",icon:"information"},{name:"Advanced",value:"advanced",icon:""},{name:"Account",value:"account",icon:""},{name:"Integrations",value:"integrations",icon:""},{name:"Payments",value:"payments",icon:""},{name:"Donations",value:"donations",icon:""},{name:"Subscriptions",value:"subscriptions",icon:""},{name:"Preferences",value:"preferences",icon:""},{name:"Apps",value:"apps",icon:""},{name:"Merch",value:"merch",icon:""},{name:"API",value:"api",icon:""},{name:"Moderators",value:"moderators",icon:""},{name:"Themes",value:"themes",icon:""}])}};p=V([v({components:{DemoSection:C,ScrollNav:x,Tabs:W,TabsNew:K}})],p);var B=function(){var e=this,s=e._self._c;return e._self._setupProxy,s("div",[s("h1",[e._v("Tabs")]),s("p",[e._v("Used for Tabs.")]),e._m(0),s("div",{staticClass:"section"},[s("DemoSection",{attrs:{title:"Default",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[s("Tabs",{attrs:{tabs:e.tabs,size:"small","update-route":!1,selected:"advanced"}},e._l(e.tabs,function(n){return s("div",{key:n.value,attrs:{slot:n.value},slot:n.value},[e._v(" "+e._s(n.name)+" ")])}),0)]},proxy:!0}])})],1),s("div",{staticClass:"section"},[s("DemoSection",{attrs:{title:"New Tabs",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[s("TabsNew",{attrs:{tabs:e.tabs,size:"small",selected:"advanced"}},e._l(e.tabs,function(n){return s("div",{key:n.value,attrs:{slot:n.value},slot:n.value},[e._v(" "+e._s(n.name)+" ")])}),0)]},proxy:!0}])})],1),e._m(1)])},Y=[function(){var a=this,e=a._self._c;return a._self._setupProxy,e("pre",[e("code",[a._v(`import { Tabs } from 'streamlabs-beaker';
-
-components: {
-  Tabs
-}`)])])},function(){var a=this,e=a._self._c;return a._self._setupProxy,e("table",{staticClass:"docs-table"},[e("thead",[e("tr",[e("th",[a._v("Prop")]),e("th",[a._v("Type")]),e("th",[a._v("Default")]),e("th",[a._v("Description")])])]),e("tbody",[e("tr",[e("td",[a._v("tabs")]),e("td",[a._v("array")]),e("td",[a._v("null")]),e("td",[a._v(" tabs information to display. you can make array like below "),e("br"),e("code",[a._v('tabs = [ { name: "General", value: "general", icon: "information" }, ... ];')])])]),e("tr",[e("td",[a._v("size")]),e("td",[a._v("string")]),e("td",[a._v("small")]),e("td",[a._v('text size of tabs. Options are "small" and "large"')])]),e("tr",[e("td",[a._v("selected")]),e("td",[a._v("string")]),e("td",[a._v("null")]),e("td",[a._v("default selected tab")])]),e("tr",[e("td",[a._v("updateRoute")]),e("td",[a._v("boolean")]),e("td",[a._v("true")]),e("td",[a._v(` Updates current URL with "#/{selected Tab}". Set to false if you don't want to update the URL. `)])])])])}],J=_(p,B,Y,!1,null,null,null,null);const oe=J.exports;export{oe as default};
+`;
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let TabsDemo = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "demoCode", TabsCode);
+    __publicField(this, "tabs", [
+      {
+        name: "General",
+        value: "general",
+        icon: "information"
+      },
+      {
+        name: "Advanced",
+        value: "advanced",
+        icon: ""
+      },
+      {
+        name: "Account",
+        value: "account",
+        icon: ""
+      },
+      {
+        name: "Integrations",
+        value: "integrations",
+        icon: ""
+      },
+      {
+        name: "Payments",
+        value: "payments",
+        icon: ""
+      },
+      {
+        name: "Donations",
+        value: "donations",
+        icon: ""
+      },
+      {
+        name: "Subscriptions",
+        value: "subscriptions",
+        icon: ""
+      },
+      {
+        name: "Preferences",
+        value: "preferences",
+        icon: ""
+      },
+      {
+        name: "Apps",
+        value: "apps",
+        icon: ""
+      },
+      {
+        name: "Merch",
+        value: "merch",
+        icon: ""
+      },
+      {
+        name: "API",
+        value: "api",
+        icon: ""
+      },
+      {
+        name: "Moderators",
+        value: "moderators",
+        icon: ""
+      },
+      {
+        name: "Themes",
+        value: "themes",
+        icon: ""
+      }
+    ]);
+  }
+};
+TabsDemo = __decorateClass([
+  Component({
+    components: {
+      DemoSection,
+      ScrollNav,
+      Tabs: Tabs$1,
+      TabsNew
+    }
+  })
+], TabsDemo);
+var _sfc_render = function render3() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", [_c("h1", [_vm._v("Tabs")]), _c("p", [_vm._v("Used for Tabs.")]), _vm._m(0), _c("div", { staticClass: "section" }, [_c("DemoSection", { attrs: { "title": "Default", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Tabs", { attrs: { "tabs": _vm.tabs, "size": "small", "update-route": false, "selected": "advanced" } }, _vm._l(_vm.tabs, function(tab) {
+      return _c("div", { key: tab.value, attrs: { "slot": tab.value }, slot: tab.value }, [_vm._v(" " + _vm._s(tab.name) + " ")]);
+    }), 0)];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("DemoSection", { attrs: { "title": "New Tabs", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("TabsNew", { attrs: { "tabs": _vm.tabs, "size": "small", "selected": "advanced" } }, _vm._l(_vm.tabs, function(tab) {
+      return _c("div", { key: tab.value, attrs: { "slot": tab.value }, slot: tab.value }, [_vm._v(" " + _vm._s(tab.name) + " ")]);
+    }), 0)];
+  }, proxy: true }]) })], 1), _vm._m(1)]);
+};
+var _sfc_staticRenderFns = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("pre", [_c("code", [_vm._v("import { Tabs } from 'streamlabs-beaker';\n\ncomponents: {\n  Tabs\n}")])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("table", { staticClass: "docs-table" }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Prop")]), _c("th", [_vm._v("Type")]), _c("th", [_vm._v("Default")]), _c("th", [_vm._v("Description")])])]), _c("tbody", [_c("tr", [_c("td", [_vm._v("tabs")]), _c("td", [_vm._v("array")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v(" tabs information to display. you can make array like below "), _c("br"), _c("code", [_vm._v('tabs = [ { name: "General", value: "general", icon: "information" }, ... ];')])])]), _c("tr", [_c("td", [_vm._v("size")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("small")]), _c("td", [_vm._v('text size of tabs. Options are "small" and "large"')])]), _c("tr", [_c("td", [_vm._v("selected")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("default selected tab")])]), _c("tr", [_c("td", [_vm._v("updateRoute")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("true")]), _c("td", [_vm._v(` Updates current URL with "#/{selected Tab}". Set to false if you don't want to update the URL. `)])])])]);
+}];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  TabsDemo,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const Tabs = __component__.exports;
+export {
+  Tabs as default
+};
 //# sourceMappingURL=Tabs.33e0d1a9.js.map

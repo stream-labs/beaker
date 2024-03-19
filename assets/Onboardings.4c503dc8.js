@@ -1,4 +1,178 @@
-var h=Object.defineProperty;var O=(n,t,e)=>t in n?h(n,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):n[t]=e;var s=(n,t,e)=>(O(n,typeof t!="symbol"?t+"":t,e),e);import{C as m,P as i,V as _,n as S}from"./index.4fb8a6cb.js";import{D as k}from"./DemoSection.79ee11c0.js";import{B as b}from"./Button.b26dacc2.js";import{S as C}from"./SSProSimulator.bb0379a3.js";import"./Accordion.09c82396.js";var F=Object.defineProperty,y=Object.getOwnPropertyDescriptor,v=(n,t,e,r)=>{for(var o=r>1?void 0:r?y(t,e):t,d=n.length-1,p;d>=0;d--)(p=n[d])&&(o=(r?p(t,e,o):p(o))||o);return r&&o&&F(t,e,o),o};let c=class extends _{constructor(){super(...arguments);s(this,"title");s(this,"desc")}};v([i()],c.prototype,"title",2);v([i()],c.prototype,"desc",2);c=v([m({components:{Button:b}})],c);var P=function(){var t=this,e=t._self._c;return t._self._setupProxy,e("div",{staticClass:"s-onboarding-step"},[e("h1",[t._t("title")],2),e("p",[t._t("desc")],2),e("div",[t._t("default")],2)])},H=[],w=S(c,P,H,!1,null,null,null,null);const f=w.exports;var D=Object.defineProperty,B=Object.getOwnPropertyDescriptor,l=(n,t,e,r)=>{for(var o=r>1?void 0:r?B(t,e):t,d=n.length-1,p;d>=0;d--)(p=n[d])&&(o=(r?p(t,e,o):p(o))||o);return r&&o&&D(t,e,o),o};let a=class extends _{constructor(){super(...arguments);s(this,"steps");s(this,"stepLocation");s(this,"currentStep");s(this,"completeHandler");s(this,"continueHandler");s(this,"skipHandler");s(this,"prevHandler");s(this,"skippable");s(this,"disableControls");s(this,"hideSkip");s(this,"hideBack");s(this,"hideButton")}get location(){if(this.stepLocation==="left")return"s-onboarding__left";if(this.stepLocation==="top")return"s-onboarding__top"}get namedSteps(){return this.steps.every(t=>!!t.name)}get isCompleted(){return this.steps.every(t=>t.complete)}currentStepStyle(t){return t+1===this.currentStep}checkmarkStyle(t){return this.steps[t].complete}};l([i()],a.prototype,"steps",2);l([i({default:"left"})],a.prototype,"stepLocation",2);l([i()],a.prototype,"currentStep",2);l([i()],a.prototype,"completeHandler",2);l([i()],a.prototype,"continueHandler",2);l([i()],a.prototype,"skipHandler",2);l([i()],a.prototype,"prevHandler",2);l([i()],a.prototype,"skippable",2);l([i({default:!1})],a.prototype,"disableControls",2);l([i({default:!1})],a.prototype,"hideSkip",2);l([i({default:!1})],a.prototype,"hideBack",2);l([i({default:!1})],a.prototype,"hideButton",2);a=l([m({components:{OnboardingStep:f,Button:b}})],a);var x=function(){var t=this,e=t._self._c;return t._self._setupProxy,e("div",{staticClass:"s-onboarding"},[e("div",{staticClass:"s-onboarding-main",class:t.location},[t.namedSteps?e("div",{staticClass:"s-onboarding-progress s-onboarding__top s-step__cont"},t._l(t.steps,function(r,o){return e("div",{key:o,staticClass:"s-step-name__cont"},[o>0?e("div",{staticClass:"s-name-caret"},[e("i",{staticClass:"icon-back"})]):t._e(),e("div",{staticClass:"s-name-step",class:{"current-step":t.currentStepStyle(o)}},[t._v(" "+t._s(r.name)+" ")])])}),0):e("div",{staticClass:"s-onboarding-progress",class:t.location},[e("div",{staticClass:"s-onboarding-progress__line",class:t.location}),t._l(t.steps,function(r,o){return e("div",{key:o,staticClass:"s-bullet",class:{"current-step":t.currentStepStyle(o)}},[e("i",{class:{"icon-check-mark":t.checkmarkStyle(o)}})])})],2),e("div",{staticClass:"s-onboarding-body"},[t._t(t.currentStep)],2)]),!t.hideButton||!t.hideSkip||!t.hideBack?e("div",{staticClass:"s-onboarding-footer"},[e("div",{staticClass:"s-previousStep"},[e("p",{directives:[{name:"show",rawName:"v-show",value:t.currentStep!==1&&!t.hideBack,expression:"currentStep !== 1 && !hideBack"}],on:{click:t.prevHandler}},[t._v("Back")])]),e("div",{staticClass:"s-nextStep"},[t.skippable&&!t.hideSkip?e("p",{on:{click:t.skipHandler}},[t._v(" Skip ")]):t._e(),t.skippable&&t.currentStep===t.steps&&!t.isCompleted?e("div",{staticClass:"s-onboarding-skip__warning"},[t._v(" You skipped a step ")]):t._e(),t.hideButton?t._e():e("Button",{attrs:{variation:"action",title:t.currentStep===t.steps.length?"Complete":"Continue",state:t.disableControls||t.currentStep===t.steps.length&&!t.isCompleted?"disabled":null},on:{click:function(r){t.currentStep===t.steps.length?t.completeHandler():t.continueHandler()}}})],1)]):t._e()])},T=[],j=S(a,x,T,!1,null,null,null,null);const $=j.exports,g=`<template>
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { C as Component, P as Prop, V as Vue, n as normalizeComponent } from "./index.4fb8a6cb.js";
+import { D as DemoSection } from "./DemoSection.79ee11c0.js";
+import { B as Button } from "./Button.b26dacc2.js";
+import { S as SSProSimulator } from "./SSProSimulator.bb0379a3.js";
+import "./Accordion.09c82396.js";
+var __defProp$2 = Object.defineProperty;
+var __getOwnPropDesc$2 = Object.getOwnPropertyDescriptor;
+var __decorateClass$2 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$2(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$2(target, key, result);
+  return result;
+};
+let OnboardingStep$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "title");
+    __publicField(this, "desc");
+  }
+};
+__decorateClass$2([
+  Prop()
+], OnboardingStep$1.prototype, "title", 2);
+__decorateClass$2([
+  Prop()
+], OnboardingStep$1.prototype, "desc", 2);
+OnboardingStep$1 = __decorateClass$2([
+  Component({
+    components: {
+      Button
+    }
+  })
+], OnboardingStep$1);
+const OnboardingStep_vue_vue_type_style_index_0_lang = "";
+var _sfc_render$2 = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-onboarding-step" }, [_c("h1", [_vm._t("title")], 2), _c("p", [_vm._t("desc")], 2), _c("div", [_vm._t("default")], 2)]);
+};
+var _sfc_staticRenderFns$2 = [];
+var __component__$2 = /* @__PURE__ */ normalizeComponent(
+  OnboardingStep$1,
+  _sfc_render$2,
+  _sfc_staticRenderFns$2,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const OnboardingStep = __component__$2.exports;
+var __defProp$1 = Object.defineProperty;
+var __getOwnPropDesc$1 = Object.getOwnPropertyDescriptor;
+var __decorateClass$1 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$1(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$1(target, key, result);
+  return result;
+};
+let Onboarding$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "steps");
+    __publicField(this, "stepLocation");
+    __publicField(this, "currentStep");
+    __publicField(this, "completeHandler");
+    __publicField(this, "continueHandler");
+    __publicField(this, "skipHandler");
+    __publicField(this, "prevHandler");
+    __publicField(this, "skippable");
+    __publicField(this, "disableControls");
+    __publicField(this, "hideSkip");
+    __publicField(this, "hideBack");
+    __publicField(this, "hideButton");
+  }
+  get location() {
+    if (this.stepLocation === "left")
+      return "s-onboarding__left";
+    if (this.stepLocation === "top")
+      return "s-onboarding__top";
+  }
+  get namedSteps() {
+    return this.steps.every((step) => !!step.name);
+  }
+  get isCompleted() {
+    return this.steps.every((step) => step.complete);
+  }
+  currentStepStyle(index) {
+    return index + 1 === this.currentStep;
+  }
+  checkmarkStyle(index) {
+    return this.steps[index].complete;
+  }
+};
+__decorateClass$1([
+  Prop()
+], Onboarding$1.prototype, "steps", 2);
+__decorateClass$1([
+  Prop({ default: "left" })
+], Onboarding$1.prototype, "stepLocation", 2);
+__decorateClass$1([
+  Prop()
+], Onboarding$1.prototype, "currentStep", 2);
+__decorateClass$1([
+  Prop()
+], Onboarding$1.prototype, "completeHandler", 2);
+__decorateClass$1([
+  Prop()
+], Onboarding$1.prototype, "continueHandler", 2);
+__decorateClass$1([
+  Prop()
+], Onboarding$1.prototype, "skipHandler", 2);
+__decorateClass$1([
+  Prop()
+], Onboarding$1.prototype, "prevHandler", 2);
+__decorateClass$1([
+  Prop()
+], Onboarding$1.prototype, "skippable", 2);
+__decorateClass$1([
+  Prop({ default: false })
+], Onboarding$1.prototype, "disableControls", 2);
+__decorateClass$1([
+  Prop({ default: false })
+], Onboarding$1.prototype, "hideSkip", 2);
+__decorateClass$1([
+  Prop({ default: false })
+], Onboarding$1.prototype, "hideBack", 2);
+__decorateClass$1([
+  Prop({ default: false })
+], Onboarding$1.prototype, "hideButton", 2);
+Onboarding$1 = __decorateClass$1([
+  Component({
+    components: {
+      OnboardingStep,
+      Button
+    }
+  })
+], Onboarding$1);
+const Onboarding_vue_vue_type_style_index_0_lang = "";
+var _sfc_render$1 = function render2() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-onboarding" }, [_c("div", { staticClass: "s-onboarding-main", class: _vm.location }, [_vm.namedSteps ? _c("div", { staticClass: "s-onboarding-progress s-onboarding__top s-step__cont" }, _vm._l(_vm.steps, function(step, idx) {
+    return _c("div", { key: idx, staticClass: "s-step-name__cont" }, [idx > 0 ? _c("div", { staticClass: "s-name-caret" }, [_c("i", { staticClass: "icon-back" })]) : _vm._e(), _c("div", { staticClass: "s-name-step", class: { "current-step": _vm.currentStepStyle(idx) } }, [_vm._v(" " + _vm._s(step.name) + " ")])]);
+  }), 0) : _c("div", { staticClass: "s-onboarding-progress", class: _vm.location }, [_c("div", { staticClass: "s-onboarding-progress__line", class: _vm.location }), _vm._l(_vm.steps, function(key, index) {
+    return _c("div", { key: index, staticClass: "s-bullet", class: { "current-step": _vm.currentStepStyle(index) } }, [_c("i", { class: { "icon-check-mark": _vm.checkmarkStyle(index) } })]);
+  })], 2), _c("div", { staticClass: "s-onboarding-body" }, [_vm._t(_vm.currentStep)], 2)]), !_vm.hideButton || !_vm.hideSkip || !_vm.hideBack ? _c("div", { staticClass: "s-onboarding-footer" }, [_c("div", { staticClass: "s-previousStep" }, [_c("p", { directives: [{ name: "show", rawName: "v-show", value: _vm.currentStep !== 1 && !_vm.hideBack, expression: "currentStep !== 1 && !hideBack" }], on: { "click": _vm.prevHandler } }, [_vm._v("Back")])]), _c("div", { staticClass: "s-nextStep" }, [_vm.skippable && !_vm.hideSkip ? _c("p", { on: { "click": _vm.skipHandler } }, [_vm._v(" Skip ")]) : _vm._e(), _vm.skippable && _vm.currentStep === _vm.steps && !_vm.isCompleted ? _c("div", { staticClass: "s-onboarding-skip__warning" }, [_vm._v(" You skipped a step ")]) : _vm._e(), !_vm.hideButton ? _c("Button", { attrs: { "variation": "action", "title": _vm.currentStep === _vm.steps.length ? "Complete" : "Continue", "state": _vm.disableControls || _vm.currentStep === _vm.steps.length && !_vm.isCompleted ? "disabled" : null }, on: { "click": function($event) {
+    _vm.currentStep === _vm.steps.length ? _vm.completeHandler() : _vm.continueHandler();
+  } } }) : _vm._e()], 1)]) : _vm._e()]);
+};
+var _sfc_staticRenderFns$1 = [];
+var __component__$1 = /* @__PURE__ */ normalizeComponent(
+  Onboarding$1,
+  _sfc_render$1,
+  _sfc_staticRenderFns$1,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const Onboarding = __component__$1.exports;
+const OnboardingsCode = `<template>
   <div>
     <div class="section">
       <h1>Onboarding</h1>
@@ -228,12 +402,94 @@ export default class Onboardings extends Vue {
   domain = "morganleeeeeeeeeee.com";
 }
 <\/script>
-`;var L=Object.defineProperty,A=Object.getOwnPropertyDescriptor,G=(n,t,e,r)=>{for(var o=r>1?void 0:r?A(t,e):t,d=n.length-1,p;d>=0;d--)(p=n[d])&&(o=(r?p(t,e,o):p(o))||o);return r&&o&&L(t,e,o),o};let u=class extends _{constructor(){super(...arguments);s(this,"demoCode",g);s(this,"currentStep",1);s(this,"steps",[{name:"Donations",complete:!1},{name:"Cloudbot",complete:!1},{name:"Streamlabs OBS",complete:!1},{name:"Alert Box",complete:!1}]);s(this,"stepsTest",[{complete:!1},{complete:!1},{complete:!1},{complete:!1}]);s(this,"username","morganleee");s(this,"icon","https://static-cdn.jtvnw.net/jtv_user_pictures/9dfce03d-25cc-4737-96d2-2ecf6924bebe-profile_image-70x70.jpg");s(this,"domain","morganleeeeeeeeeee.com")}continueFunc(){this.stepsTest[this.currentStep-1].complete=!0,this.currentStep++}skipFunc(){this.currentStep++}previousFunc(){this.currentStep--}completeFunc(){console.log("complete clicked")}};u=G([m({components:{DemoSection:k,Onboarding:$,OnboardingStep:f,OnboardingsCode:g,SSProSimulator:C}})],u);var N=function(){var t=this,e=t._self._c;return t._self._setupProxy,e("div",[t._m(0),e("div",{staticClass:"section"},[e("h2",[t._v("Onboarding - Named Steps")]),e("DemoSection",{attrs:{title:"Onboarding - Named Steps",code:t.demoCode},scopedSlots:t._u([{key:"components",fn:function(){return[e("Onboarding",{attrs:{steps:t.steps,skippable:!0,currentStep:t.currentStep,stepLocation:"top",skipHandler:t.skipFunc,prevHandler:t.previousFunc,continueHandler:t.continueFunc,completeHandler:t.completeFunc}},[e("OnboardingStep",{attrs:{slot:"1"},slot:"1"},[e("span",{attrs:{slot:"title"},slot:"title"},[t._v("Getting Started")]),e("span",{attrs:{slot:"desc"},slot:"desc"},[t._v("Slot 1")]),e("SSProSimulator",{attrs:{username:t.username,domain:t.domain,icon:t.icon}})],1),e("OnboardingStep",{attrs:{slot:"2"},slot:"2"},[e("span",{attrs:{slot:"title"},slot:"title"},[t._v("A Few More Things")]),e("span",{attrs:{slot:"desc"},slot:"desc"},[t._v("Slot 2")]),e("SSProSimulator",{attrs:{username:t.username,domain:t.domain,icon:t.icon}})],1),e("OnboardingStep",{attrs:{slot:"3"},slot:"3"},[e("span",{attrs:{slot:"title"},slot:"title"},[t._v("Almost There")]),e("span",{attrs:{slot:"desc"},slot:"desc"},[t._v("Slot 3")]),e("SSProSimulator",{attrs:{username:t.username,domain:t.domain,icon:t.icon}})],1),e("OnboardingStep",{attrs:{slot:"4"},slot:"4"},[e("span",{attrs:{slot:"title"},slot:"title"},[t._v("Getting Started")]),e("span",{attrs:{slot:"desc"},slot:"desc"},[t._v("Slot 4")]),e("SSProSimulator",{attrs:{username:t.username,domain:t.domain,icon:t.icon}})],1)],1)]},proxy:!0}])})],1),e("div",{staticClass:"section"},[e("DemoSection",{attrs:{title:"Default",code:t.demoCode},scopedSlots:t._u([{key:"components",fn:function(){return[e("Onboarding",{attrs:{steps:t.stepsTest,skippable:!0,currentStep:t.currentStep,stepLocation:"top",skipHandler:t.skipFunc,prevHandler:t.previousFunc,continueHandler:t.continueFunc,completeHandler:t.completeFunc}},[e("OnboardingStep",{attrs:{slot:"1"},slot:"1"},[e("span",{attrs:{slot:"title"},slot:"title"},[t._v("Getting Started")]),e("span",{attrs:{slot:"desc"},slot:"desc"},[t._v("Slot 1")]),e("SSProSimulator",{attrs:{username:t.username,domain:t.domain,icon:t.icon}})],1),e("OnboardingStep",{attrs:{slot:"2"},slot:"2"},[e("span",{attrs:{slot:"title"},slot:"title"},[t._v("A Few More Things")]),e("span",{attrs:{slot:"desc"},slot:"desc"},[t._v("Slot 2")]),e("SSProSimulator",{attrs:{username:t.username,domain:t.domain,icon:t.icon}})],1),e("OnboardingStep",{attrs:{slot:"3"},slot:"3"},[e("span",{attrs:{slot:"title"},slot:"title"},[t._v("Almost There")]),e("span",{attrs:{slot:"desc"},slot:"desc"},[t._v("Slot 3")]),e("SSProSimulator",{attrs:{username:t.username,domain:t.domain,icon:t.icon}})],1),e("OnboardingStep",{attrs:{slot:"4"},slot:"4"},[e("span",{attrs:{slot:"title"},slot:"title"},[t._v("Getting Started")]),e("span",{attrs:{slot:"desc"},slot:"desc"},[t._v("Slot 4")]),e("SSProSimulator",{attrs:{username:t.username,domain:t.domain,icon:t.icon}})],1)],1)]},proxy:!0}])})],1),t._m(1)])},M=[function(){var n=this,t=n._self._c;return n._self._setupProxy,t("div",{staticClass:"section"},[t("h1",[n._v("Onboarding")]),t("p",[n._v("Onboarding component - now with all logic outside of component!")]),t("pre",[t("code",[n._v(`import { Onboarding, OnboardingStep } from "streamlabs-beaker"
-
-@Component({
-  components: {
-    Onboarding,
-    OnboardingStep,
+`;
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let Onboardings$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "demoCode", OnboardingsCode);
+    __publicField(this, "currentStep", 1);
+    __publicField(this, "steps", [
+      { name: "Donations", complete: false },
+      { name: "Cloudbot", complete: false },
+      { name: "Streamlabs OBS", complete: false },
+      { name: "Alert Box", complete: false }
+    ]);
+    __publicField(this, "stepsTest", [
+      { complete: false },
+      { complete: false },
+      { complete: false },
+      { complete: false }
+    ]);
+    __publicField(this, "username", "morganleee");
+    __publicField(this, "icon", "https://static-cdn.jtvnw.net/jtv_user_pictures/9dfce03d-25cc-4737-96d2-2ecf6924bebe-profile_image-70x70.jpg");
+    __publicField(this, "domain", "morganleeeeeeeeeee.com");
   }
-})`)])])])},function(){var n=this,t=n._self._c;return n._self._setupProxy,t("table",{staticClass:"docs-table"},[t("thead",[t("tr",[t("th",[n._v("Prop")]),t("th",[n._v("Type")]),t("th",[n._v("Default")]),t("th",[n._v("Description")])])]),t("tbody",[t("tr",[t("td",[n._v("steps")]),t("td",[n._v("Object")]),t("td",[n._v("null")]),t("td",[t("code",[n._v('[{name: "Step Name", complete: Boolean}]')])])]),t("tr",[t("td",[n._v("stepLocation")]),t("td",[n._v("string")]),t("td",[n._v("'left'")]),t("td",[n._v(" Location of Progress Bar: "),t("code",[n._v("left")]),n._v(" or "),t("code",[n._v("top")])])]),t("tr",[t("td",[n._v("currentStep")]),t("td",[n._v("number")]),t("td",[n._v("null")]),t("td",[n._v("The number of the step you are on")])]),t("tr",[t("td",[n._v("completeHandler")]),t("td",[n._v("Function")]),t("td",[n._v("null")]),t("td",[n._v(" Function to perform when "),t("code",[n._v("complete")]),n._v(" button is clicked ")])]),t("tr",[t("td",[n._v("continueHandler")]),t("td",[n._v("Function")]),t("td",[n._v("null")]),t("td",[n._v(" Function to perform when "),t("code",[n._v("continue")]),n._v(" button is clicked ")])]),t("tr",[t("td",[n._v("skipHandler")]),t("td",[n._v("Function")]),t("td",[n._v("null")]),t("td",[n._v("Function to perform when "),t("code",[n._v("skip")]),n._v(" is clicked")])]),t("tr",[t("td",[n._v("previousHandler")]),t("td",[n._v("Function")]),t("td",[n._v("null")]),t("td",[n._v(" Function to perform when "),t("code",[n._v("previous")]),n._v(" button is clicked ")])]),t("tr",[t("td",[n._v("skippable")]),t("td",[n._v("boolean")]),t("td",[n._v("null")]),t("td",[n._v("make steps skippable")])]),t("tr",[t("td",[n._v("disableControls")]),t("td",[n._v("boolean")]),t("td",[n._v("false")]),t("td",[n._v("to disable controls")])])])])}],V=S(u,N,M,!1,null,null,null,null);const J=V.exports;export{J as default};
+  continueFunc() {
+    this.stepsTest[this.currentStep - 1].complete = true;
+    this.currentStep++;
+  }
+  skipFunc() {
+    this.currentStep++;
+  }
+  previousFunc() {
+    this.currentStep--;
+  }
+  completeFunc() {
+    console.log("complete clicked");
+  }
+};
+Onboardings$1 = __decorateClass([
+  Component({
+    components: {
+      DemoSection,
+      Onboarding,
+      OnboardingStep,
+      OnboardingsCode,
+      SSProSimulator
+    }
+  })
+], Onboardings$1);
+var _sfc_render = function render3() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", [_vm._m(0), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Onboarding - Named Steps")]), _c("DemoSection", { attrs: { "title": "Onboarding - Named Steps", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Onboarding", { attrs: { "steps": _vm.steps, "skippable": true, "currentStep": _vm.currentStep, "stepLocation": "top", "skipHandler": _vm.skipFunc, "prevHandler": _vm.previousFunc, "continueHandler": _vm.continueFunc, "completeHandler": _vm.completeFunc } }, [_c("OnboardingStep", { attrs: { "slot": "1" }, slot: "1" }, [_c("span", { attrs: { "slot": "title" }, slot: "title" }, [_vm._v("Getting Started")]), _c("span", { attrs: { "slot": "desc" }, slot: "desc" }, [_vm._v("Slot 1")]), _c("SSProSimulator", { attrs: { "username": _vm.username, "domain": _vm.domain, "icon": _vm.icon } })], 1), _c("OnboardingStep", { attrs: { "slot": "2" }, slot: "2" }, [_c("span", { attrs: { "slot": "title" }, slot: "title" }, [_vm._v("A Few More Things")]), _c("span", { attrs: { "slot": "desc" }, slot: "desc" }, [_vm._v("Slot 2")]), _c("SSProSimulator", { attrs: { "username": _vm.username, "domain": _vm.domain, "icon": _vm.icon } })], 1), _c("OnboardingStep", { attrs: { "slot": "3" }, slot: "3" }, [_c("span", { attrs: { "slot": "title" }, slot: "title" }, [_vm._v("Almost There")]), _c("span", { attrs: { "slot": "desc" }, slot: "desc" }, [_vm._v("Slot 3")]), _c("SSProSimulator", { attrs: { "username": _vm.username, "domain": _vm.domain, "icon": _vm.icon } })], 1), _c("OnboardingStep", { attrs: { "slot": "4" }, slot: "4" }, [_c("span", { attrs: { "slot": "title" }, slot: "title" }, [_vm._v("Getting Started")]), _c("span", { attrs: { "slot": "desc" }, slot: "desc" }, [_vm._v("Slot 4")]), _c("SSProSimulator", { attrs: { "username": _vm.username, "domain": _vm.domain, "icon": _vm.icon } })], 1)], 1)];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("DemoSection", { attrs: { "title": "Default", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Onboarding", { attrs: { "steps": _vm.stepsTest, "skippable": true, "currentStep": _vm.currentStep, "stepLocation": "top", "skipHandler": _vm.skipFunc, "prevHandler": _vm.previousFunc, "continueHandler": _vm.continueFunc, "completeHandler": _vm.completeFunc } }, [_c("OnboardingStep", { attrs: { "slot": "1" }, slot: "1" }, [_c("span", { attrs: { "slot": "title" }, slot: "title" }, [_vm._v("Getting Started")]), _c("span", { attrs: { "slot": "desc" }, slot: "desc" }, [_vm._v("Slot 1")]), _c("SSProSimulator", { attrs: { "username": _vm.username, "domain": _vm.domain, "icon": _vm.icon } })], 1), _c("OnboardingStep", { attrs: { "slot": "2" }, slot: "2" }, [_c("span", { attrs: { "slot": "title" }, slot: "title" }, [_vm._v("A Few More Things")]), _c("span", { attrs: { "slot": "desc" }, slot: "desc" }, [_vm._v("Slot 2")]), _c("SSProSimulator", { attrs: { "username": _vm.username, "domain": _vm.domain, "icon": _vm.icon } })], 1), _c("OnboardingStep", { attrs: { "slot": "3" }, slot: "3" }, [_c("span", { attrs: { "slot": "title" }, slot: "title" }, [_vm._v("Almost There")]), _c("span", { attrs: { "slot": "desc" }, slot: "desc" }, [_vm._v("Slot 3")]), _c("SSProSimulator", { attrs: { "username": _vm.username, "domain": _vm.domain, "icon": _vm.icon } })], 1), _c("OnboardingStep", { attrs: { "slot": "4" }, slot: "4" }, [_c("span", { attrs: { "slot": "title" }, slot: "title" }, [_vm._v("Getting Started")]), _c("span", { attrs: { "slot": "desc" }, slot: "desc" }, [_vm._v("Slot 4")]), _c("SSProSimulator", { attrs: { "username": _vm.username, "domain": _vm.domain, "icon": _vm.icon } })], 1)], 1)];
+  }, proxy: true }]) })], 1), _vm._m(1)]);
+};
+var _sfc_staticRenderFns = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("h1", [_vm._v("Onboarding")]), _c("p", [_vm._v("Onboarding component - now with all logic outside of component!")]), _c("pre", [_c("code", [_vm._v('import { Onboarding, OnboardingStep } from "streamlabs-beaker"\n\n@Component({\n  components: {\n    Onboarding,\n    OnboardingStep,\n  }\n})')])])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("table", { staticClass: "docs-table" }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Prop")]), _c("th", [_vm._v("Type")]), _c("th", [_vm._v("Default")]), _c("th", [_vm._v("Description")])])]), _c("tbody", [_c("tr", [_c("td", [_vm._v("steps")]), _c("td", [_vm._v("Object")]), _c("td", [_vm._v("null")]), _c("td", [_c("code", [_vm._v('[{name: "Step Name", complete: Boolean}]')])])]), _c("tr", [_c("td", [_vm._v("stepLocation")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("'left'")]), _c("td", [_vm._v(" Location of Progress Bar: "), _c("code", [_vm._v("left")]), _vm._v(" or "), _c("code", [_vm._v("top")])])]), _c("tr", [_c("td", [_vm._v("currentStep")]), _c("td", [_vm._v("number")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("The number of the step you are on")])]), _c("tr", [_c("td", [_vm._v("completeHandler")]), _c("td", [_vm._v("Function")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v(" Function to perform when "), _c("code", [_vm._v("complete")]), _vm._v(" button is clicked ")])]), _c("tr", [_c("td", [_vm._v("continueHandler")]), _c("td", [_vm._v("Function")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v(" Function to perform when "), _c("code", [_vm._v("continue")]), _vm._v(" button is clicked ")])]), _c("tr", [_c("td", [_vm._v("skipHandler")]), _c("td", [_vm._v("Function")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("Function to perform when "), _c("code", [_vm._v("skip")]), _vm._v(" is clicked")])]), _c("tr", [_c("td", [_vm._v("previousHandler")]), _c("td", [_vm._v("Function")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v(" Function to perform when "), _c("code", [_vm._v("previous")]), _vm._v(" button is clicked ")])]), _c("tr", [_c("td", [_vm._v("skippable")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("make steps skippable")])]), _c("tr", [_c("td", [_vm._v("disableControls")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v("to disable controls")])])])]);
+}];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  Onboardings$1,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const Onboardings = __component__.exports;
+export {
+  Onboardings as default
+};
 //# sourceMappingURL=Onboardings.4c503dc8.js.map

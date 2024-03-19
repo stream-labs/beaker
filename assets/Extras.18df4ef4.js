@@ -1,4 +1,13 @@
-var f=Object.defineProperty;var u=(e,t,n)=>t in e?f(e,t,{enumerable:!0,configurable:!0,writable:!0,value:n}):e[t]=n;var i=(e,t,n)=>(u(e,typeof t!="symbol"?t+"":t,n),n);import{C as m,P as _,V as p,n as v}from"./index.4fb8a6cb.js";import{D as h}from"./DemoSection.79ee11c0.js";import"./Accordion.09c82396.js";const g=`<template>
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { C as Component, P as Prop, V as Vue, n as normalizeComponent } from "./index.4fb8a6cb.js";
+import { D as DemoSection } from "./DemoSection.79ee11c0.js";
+import "./Accordion.09c82396.js";
+const ExtrasCode = `<template>
   <div>
     <div class="section">
       <h1>Extras</h1>
@@ -75,9 +84,115 @@ export default class Extras extends Vue {
   demoCode = ExtrasCode;
 }
 <\/script>
-`;var x=Object.defineProperty,y=Object.getOwnPropertyDescriptor,d=(e,t,n,s)=>{for(var r=s>1?void 0:s?y(t,n):t,a=e.length-1,o;a>=0;a--)(o=e[a])&&(r=(s?o(t,n,r):o(r))||r);return s&&r&&x(t,n,r),r};let l=class extends p{constructor(){super(...arguments);i(this,"alertText");i(this,"alertMessage");i(this,"alertImage")}};d([_({default:"galazy83 donated $50.00"})],l.prototype,"alertText",2);d([_({default:"Thanks for the stream. Go CivRyan!"})],l.prototype,"alertMessage",2);d([_({default:"https://thumbs.gfycat.com/PleasedIcyCod-size_restricted.gif"})],l.prototype,"alertImage",2);l=d([m({})],l);var C=function(){var t=this,n=t._self._c;return t._self._setupProxy,n("div",{staticClass:"s-fake-alert"},[n("p",{staticClass:"s-fake-alert__text"},[t._v(t._s(t.alertText))]),n("div",{staticClass:"s-fake-alert__message"},[t._v(" "+t._s(t.alertMessage)+" "),n("span",{staticClass:"s-fake-alert__icon"},[n("img",{attrs:{src:t.alertImage}})])])])},P=[],k=v(l,C,P,!1,null,null,null,null);const F=k.exports;var b=Object.defineProperty,A=Object.getOwnPropertyDescriptor,D=(e,t,n,s)=>{for(var r=s>1?void 0:s?A(t,n):t,a=e.length-1,o;a>=0;a--)(o=e[a])&&(r=(s?o(t,n,r):o(r))||r);return s&&r&&b(t,n,r),r};let c=class extends p{constructor(){super(...arguments);i(this,"demoCode",g)}};c=D([m({components:{DemoSection:h,FakeAlert:F}})],c);var S=function(){var t=this,n=t._self._c;return t._self._setupProxy,n("div",[t._m(0),n("div",{staticClass:"section"},[t._m(1),n("DemoSection",{attrs:{title:"Fake Alert",code:t.demoCode},scopedSlots:t._u([{key:"components",fn:function(){return[n("FakeAlert",{attrs:{username:"SalmanSux19"}})]},proxy:!0}])})],1),t._m(2)])},$=[function(){var e=this,t=e._self._c;return e._self._setupProxy,t("div",{staticClass:"section"},[t("h1",[e._v("Extras")]),t("p",[e._v(" Premade designs you can slot into modals, marketing sections, etc to make your lives easier. ")])])},function(){var e=this,t=e._self._c;return e._self._setupProxy,t("div",{staticClass:"section"},[t("h2",[e._v("Fake Alert")]),t("pre",[t("code",[e._v(`import { FakeAlert } from 'streamlabs-beaker';
-
-components: {
-  FakeAlert
-}`)])])])},function(){var e=this,t=e._self._c;return e._self._setupProxy,t("table",{staticClass:"docs-table"},[t("thead",[t("tr",[t("th",[e._v("Prop")]),t("th",[e._v("Type")]),t("th",[e._v("Default")]),t("th",[e._v("Description")])])]),t("tbody",[t("tr",[t("td",[e._v("alertText")]),t("td",[e._v("string")]),t("td",[e._v("'galazy83 donated $50.00'")]),t("td",[e._v("First line of text in the alert.")])]),t("tr",[t("td",[e._v("alertMessage")]),t("td",[e._v("string")]),t("td",[e._v("'Thanks for the stream. Go CivRyan!'")]),t("td",[e._v("Second line of text in the alert.")])]),t("tr",[t("td",[e._v("alertImage")]),t("td",[e._v("string")]),t("td",[e._v("'https://thumbs.gfycat.com/PleasedIcyCod-size_restricted.gif'")]),t("td",[e._v("Alert graphic.")])])])])}],T=v(c,S,$,!1,null,null,null,null);const w=T.exports;export{w as default};
+`;
+var __defProp$1 = Object.defineProperty;
+var __getOwnPropDesc$1 = Object.getOwnPropertyDescriptor;
+var __decorateClass$1 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$1(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$1(target, key, result);
+  return result;
+};
+let FakeAlert$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "alertText");
+    __publicField(this, "alertMessage");
+    __publicField(this, "alertImage");
+  }
+};
+__decorateClass$1([
+  Prop({ default: "galazy83 donated $50.00" })
+], FakeAlert$1.prototype, "alertText", 2);
+__decorateClass$1([
+  Prop({ default: "Thanks for the stream. Go CivRyan!" })
+], FakeAlert$1.prototype, "alertMessage", 2);
+__decorateClass$1([
+  Prop({
+    default: "https://thumbs.gfycat.com/PleasedIcyCod-size_restricted.gif"
+  })
+], FakeAlert$1.prototype, "alertImage", 2);
+FakeAlert$1 = __decorateClass$1([
+  Component({})
+], FakeAlert$1);
+const FakeAlert_vue_vue_type_style_index_0_lang = "";
+var _sfc_render$1 = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-fake-alert" }, [_c("p", { staticClass: "s-fake-alert__text" }, [_vm._v(_vm._s(_vm.alertText))]), _c("div", { staticClass: "s-fake-alert__message" }, [_vm._v(" " + _vm._s(_vm.alertMessage) + " "), _c("span", { staticClass: "s-fake-alert__icon" }, [_c("img", { attrs: { "src": _vm.alertImage } })])])]);
+};
+var _sfc_staticRenderFns$1 = [];
+var __component__$1 = /* @__PURE__ */ normalizeComponent(
+  FakeAlert$1,
+  _sfc_render$1,
+  _sfc_staticRenderFns$1,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const FakeAlert = __component__$1.exports;
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let Extras$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "demoCode", ExtrasCode);
+  }
+};
+Extras$1 = __decorateClass([
+  Component({
+    components: {
+      DemoSection,
+      FakeAlert
+    }
+  })
+], Extras$1);
+var _sfc_render = function render2() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", [_vm._m(0), _c("div", { staticClass: "section" }, [_vm._m(1), _c("DemoSection", { attrs: { "title": "Fake Alert", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("FakeAlert", { attrs: { "username": "SalmanSux19" } })];
+  }, proxy: true }]) })], 1), _vm._m(2)]);
+};
+var _sfc_staticRenderFns = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("h1", [_vm._v("Extras")]), _c("p", [_vm._v(" Premade designs you can slot into modals, marketing sections, etc to make your lives easier. ")])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Fake Alert")]), _c("pre", [_c("code", [_vm._v("import { FakeAlert } from 'streamlabs-beaker';\n\ncomponents: {\n  FakeAlert\n}")])])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("table", { staticClass: "docs-table" }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Prop")]), _c("th", [_vm._v("Type")]), _c("th", [_vm._v("Default")]), _c("th", [_vm._v("Description")])])]), _c("tbody", [_c("tr", [_c("td", [_vm._v("alertText")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("'galazy83 donated $50.00'")]), _c("td", [_vm._v("First line of text in the alert.")])]), _c("tr", [_c("td", [_vm._v("alertMessage")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("'Thanks for the stream. Go CivRyan!'")]), _c("td", [_vm._v("Second line of text in the alert.")])]), _c("tr", [_c("td", [_vm._v("alertImage")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("'https://thumbs.gfycat.com/PleasedIcyCod-size_restricted.gif'")]), _c("td", [_vm._v("Alert graphic.")])])])]);
+}];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  Extras$1,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const Extras = __component__.exports;
+export {
+  Extras as default
+};
 //# sourceMappingURL=Extras.18df4ef4.js.map

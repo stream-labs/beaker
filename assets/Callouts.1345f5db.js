@@ -1,4 +1,15 @@
-var r=Object.defineProperty;var u=(t,o,e)=>o in t?r(t,o,{enumerable:!0,configurable:!0,writable:!0,value:e}):t[o]=e;var c=(t,o,e)=>(u(t,typeof o!="symbol"?o+"":o,e),e);import{C as d,V as v,n as m}from"./index.4fb8a6cb.js";import{C as p}from"./Callout.ac9d99a3.js";import{D as _}from"./DemoSection.79ee11c0.js";import"./Badge.2c39dd0d.js";import"./Accordion.09c82396.js";const C=`<template>
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { C as Component, V as Vue, n as normalizeComponent } from "./index.4fb8a6cb.js";
+import { C as Callout } from "./Callout.ac9d99a3.js";
+import { D as DemoSection } from "./DemoSection.79ee11c0.js";
+import "./Badge.2c39dd0d.js";
+import "./Accordion.09c82396.js";
+const CalloutsCode = `<template>
   <div>
     <div class="section">
       <h1>Callouts</h1>
@@ -230,9 +241,86 @@ export default class Callouts extends Vue {
 <\/script>
 
 <style lang="less" scoped></style>
-`;var f=Object.defineProperty,h=Object.getOwnPropertyDescriptor,g=(t,o,e,a)=>{for(var n=a>1?void 0:a?h(o,e):o,s=t.length-1,l;s>=0;s--)(l=t[s])&&(n=(a?l(o,e,n):l(n))||n);return a&&n&&f(o,e,n),n};let i=class extends v{constructor(){super(...arguments);c(this,"demoCode",C)}cookieCalloutClosed(){console.log("cookie callout closed")}};i=g([d({components:{Callout:p,DemoSection:_}})],i);var b=function(){var o=this,e=o._self._c;return o._self._setupProxy,e("div",[o._m(0),e("div",{staticClass:"section"},[e("h2",[o._v("Default Callouts")]),e("p",[o._v(" There are 3 basic callout variations: success, warning, and info. These can be used whenever necessary but please limit to 1 callout per page and limit the text to 1 line. You can link to more info in a modal or another page if needed. ")]),e("DemoSection",{attrs:{title:"Default Callouts",code:o.demoCode},scopedSlots:o._u([{key:"components",fn:function(){return[e("Callout",{attrs:{variation:"success"}},[o._v(" Success callout. "),e("a",{attrs:{href:"#0"}},[o._v("Link")])]),e("Callout",{attrs:{variation:"warning"}},[o._v(" Warning callout. "),e("a",{attrs:{href:"#0"}},[o._v("Link")])]),e("Callout",{attrs:{variation:"info"}},[o._v(" Info callout. "),e("a",{attrs:{href:"#0"}},[o._v("Link")])])]},proxy:!0}])})],1),e("div",{staticClass:"section"},[e("h2",[o._v("Strong Callouts")]),o._m(1),e("p",[o._v("There are 3 strong callout variations: success, warning, and info.")]),e("DemoSection",{attrs:{title:"Strong Callouts",code:o.demoCode},scopedSlots:o._u([{key:"components",fn:function(){return[e("Callout",{attrs:{variation:"success strong"}},[o._v(" Success callout. "),e("a",{attrs:{href:"#0"}},[o._v("Link")])]),e("Callout",{attrs:{variation:"warning strong",icon:"warning"}},[o._v(" Warning callout. "),e("a",{attrs:{href:"#0"}},[o._v("Link")])]),e("Callout",{attrs:{variation:"info strong"}},[o._v(" Info callout. "),e("a",{attrs:{href:"#0"}},[o._v("Link")])])]},proxy:!0}])})],1),e("div",{staticClass:"section"},[e("h2",[o._v("Cookies Callout")]),e("p",[o._v(" Used on landing page to warn users about use of cookies on our site. ")]),e("DemoSection",{attrs:{title:"Cookies Callouts",code:o.demoCode},scopedSlots:o._u([{key:"components",fn:function(){return[e("Callout",{attrs:{variation:"cookies",icon:"info",closeable:!0,onClose:o.cookieCalloutClosed}},[o._v(" Cookies callout. "),e("a",{attrs:{href:"#0"}},[o._v("Link")])])]},proxy:!0}])})],1),e("div",{staticClass:"section"},[e("h2",[o._v("Prime Callout")]),e("p",[o._v(" Prime Callout. ")]),e("DemoSection",{attrs:{title:"Prime Callouts",code:o.demoCode},scopedSlots:o._u([{key:"components",fn:function(){return[e("Callout",{attrs:{variation:"prime",closeable:!0,onClose:o.cookieCalloutClosed},on:{onClick:o.cookieCalloutClosed}},[o._v(" Themes, apps, website, merch and more. All included with Prime. ")])]},proxy:!0}])})],1),e("div",{staticClass:"section"},[e("h2",[o._v("Callout Options")]),e("div",{staticClass:"section"},[e("h3",[o._v("Closable")]),o._m(2),e("DemoSection",{attrs:{title:"Closable Callouts",code:o.demoCode},scopedSlots:o._u([{key:"components",fn:function(){return[e("Callout",{attrs:{variation:"success",closeable:!0}},[o._v(" Success callout. "),e("a",{attrs:{href:"#0"}},[o._v("Link")])])]},proxy:!0}])})],1),e("div",{staticClass:"section"},[e("h3",[o._v("With Icon")]),o._m(3),e("DemoSection",{attrs:{title:"Icon Callouts",code:o.demoCode},scopedSlots:o._u([{key:"components",fn:function(){return[e("Callout",{attrs:{icon:"success",variation:"success",closeable:!0}},[o._v(" Success callout. "),e("a",{attrs:{href:"#0"}},[o._v("Link")])]),e("Callout",{attrs:{icon:"warning",variation:"warning",closeable:!0}},[o._v(" Warning callout. "),e("a",{attrs:{href:"#0"}},[o._v("Link")])]),e("Callout",{attrs:{icon:"info",variation:"info",closeable:!0}},[o._v(" Info callout. "),e("a",{attrs:{href:"#0"}},[o._v("Link")])]),e("Callout",{attrs:{variation:"info",closeable:!0}},[e("i",{staticClass:"icon-settings"}),o._v(" Settings have moved. Visit them "),e("a",{attrs:{href:"#0"}},[o._v("here")]),o._v(". ")])]},proxy:!0}])})],1)]),o._m(4)])},k=[function(){var t=this,o=t._self._c;return t._self._setupProxy,o("div",{staticClass:"section"},[o("h1",[t._v("Callouts")]),o("p",[t._v(" You can use our callout component if you need to display a message to users. ")]),o("h4",[t._v("Rules")]),o("ul"),o("pre",[o("code",[t._v(`import { Callout } from 'streamlabs-beaker';
-
-components: {
-  Callout
-}`)])])])},function(){var t=this,o=t._self._c;return t._self._setupProxy,o("p",[t._v(" These should be used "),o("strong",[t._v("very sparingly")]),t._v(". These should be used in cases when something is going to be completed removed or something could become broken/lost if action is not taken. ")])},function(){var t=this,o=t._self._c;return t._self._setupProxy,o("p",[t._v(" Use the "),o("strong",[t._v("closeable")]),t._v(" prop to give the callout the ability to close. ")])},function(){var t=this,o=t._self._c;return t._self._setupProxy,o("p",[t._v(" You can use the "),o("code",[t._v("icon")]),t._v(" prop to set it to 'success', 'warning', or 'info' for most common cases. If you need a different icon you can simply use it inline. ")])},function(){var t=this,o=t._self._c;return t._self._setupProxy,o("div",{staticClass:"section"},[o("table",{staticClass:"docs-table"},[o("thead",[o("tr",[o("th",[t._v("Prop")]),o("th",[t._v("Type")]),o("th",[t._v("Default")]),o("th",[t._v("Description")])])]),o("tbody",[o("tr",[o("td",[t._v("variation")]),o("td",[t._v("string")]),o("td",[t._v("'success'")]),o("td",[t._v(" Use "),o("code",[t._v("'success'")]),t._v(", "),o("code",[t._v("'warning'")]),t._v(", "),o("code",[t._v("'info'")]),t._v(", "),o("code",[t._v("'cookies'")]),t._v(" or "),o("code",[t._v("'prime'")]),t._v(". Add "),o("code",[t._v("'strong'")]),t._v(" when necessary. ")])]),o("tr",[o("td",[t._v("closeable")]),o("td",[t._v("boolean")]),o("td",[t._v("false")]),o("td",[t._v("Added an icon with a function that closes the callout.")])]),o("tr",[o("td",[t._v("icon")]),o("td",[t._v("boolean")]),o("td",[t._v("true")]),o("td",[t._v(" Set to false if you don't want an icon before the callout content. ")])]),o("tr",[o("td",[t._v("onClose")]),o("td",[t._v("Function")]),o("td",[t._v("-")]),o("td",[t._v("on close callback")])])])])])}],y=m(i,b,k,!1,null,"e9af6ae8",null,null);const T=y.exports;export{T as default};
+`;
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let Callouts$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "demoCode", CalloutsCode);
+  }
+  cookieCalloutClosed() {
+    console.log("cookie callout closed");
+  }
+};
+Callouts$1 = __decorateClass([
+  Component({
+    components: {
+      Callout,
+      DemoSection
+    }
+  })
+], Callouts$1);
+const Callouts_vue_vue_type_style_index_0_scoped_e9af6ae8_lang = "";
+var _sfc_render = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", [_vm._m(0), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Default Callouts")]), _c("p", [_vm._v(" There are 3 basic callout variations: success, warning, and info. These can be used whenever necessary but please limit to 1 callout per page and limit the text to 1 line. You can link to more info in a modal or another page if needed. ")]), _c("DemoSection", { attrs: { "title": "Default Callouts", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Callout", { attrs: { "variation": "success" } }, [_vm._v(" Success callout. "), _c("a", { attrs: { "href": "#0" } }, [_vm._v("Link")])]), _c("Callout", { attrs: { "variation": "warning" } }, [_vm._v(" Warning callout. "), _c("a", { attrs: { "href": "#0" } }, [_vm._v("Link")])]), _c("Callout", { attrs: { "variation": "info" } }, [_vm._v(" Info callout. "), _c("a", { attrs: { "href": "#0" } }, [_vm._v("Link")])])];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Strong Callouts")]), _vm._m(1), _c("p", [_vm._v("There are 3 strong callout variations: success, warning, and info.")]), _c("DemoSection", { attrs: { "title": "Strong Callouts", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Callout", { attrs: { "variation": "success strong" } }, [_vm._v(" Success callout. "), _c("a", { attrs: { "href": "#0" } }, [_vm._v("Link")])]), _c("Callout", { attrs: { "variation": "warning strong", "icon": "warning" } }, [_vm._v(" Warning callout. "), _c("a", { attrs: { "href": "#0" } }, [_vm._v("Link")])]), _c("Callout", { attrs: { "variation": "info strong" } }, [_vm._v(" Info callout. "), _c("a", { attrs: { "href": "#0" } }, [_vm._v("Link")])])];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Cookies Callout")]), _c("p", [_vm._v(" Used on landing page to warn users about use of cookies on our site. ")]), _c("DemoSection", { attrs: { "title": "Cookies Callouts", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Callout", { attrs: { "variation": "cookies", "icon": "info", "closeable": true, "onClose": _vm.cookieCalloutClosed } }, [_vm._v(" Cookies callout. "), _c("a", { attrs: { "href": "#0" } }, [_vm._v("Link")])])];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Prime Callout")]), _c("p", [_vm._v(" Prime Callout. ")]), _c("DemoSection", { attrs: { "title": "Prime Callouts", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Callout", { attrs: { "variation": "prime", "closeable": true, "onClose": _vm.cookieCalloutClosed }, on: { "onClick": _vm.cookieCalloutClosed } }, [_vm._v(" Themes, apps, website, merch and more. All included with Prime. ")])];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Callout Options")]), _c("div", { staticClass: "section" }, [_c("h3", [_vm._v("Closable")]), _vm._m(2), _c("DemoSection", { attrs: { "title": "Closable Callouts", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Callout", { attrs: { "variation": "success", "closeable": true } }, [_vm._v(" Success callout. "), _c("a", { attrs: { "href": "#0" } }, [_vm._v("Link")])])];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h3", [_vm._v("With Icon")]), _vm._m(3), _c("DemoSection", { attrs: { "title": "Icon Callouts", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Callout", { attrs: { "icon": "success", "variation": "success", "closeable": true } }, [_vm._v(" Success callout. "), _c("a", { attrs: { "href": "#0" } }, [_vm._v("Link")])]), _c("Callout", { attrs: { "icon": "warning", "variation": "warning", "closeable": true } }, [_vm._v(" Warning callout. "), _c("a", { attrs: { "href": "#0" } }, [_vm._v("Link")])]), _c("Callout", { attrs: { "icon": "info", "variation": "info", "closeable": true } }, [_vm._v(" Info callout. "), _c("a", { attrs: { "href": "#0" } }, [_vm._v("Link")])]), _c("Callout", { attrs: { "variation": "info", "closeable": true } }, [_c("i", { staticClass: "icon-settings" }), _vm._v(" Settings have moved. Visit them "), _c("a", { attrs: { "href": "#0" } }, [_vm._v("here")]), _vm._v(". ")])];
+  }, proxy: true }]) })], 1)]), _vm._m(4)]);
+};
+var _sfc_staticRenderFns = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("h1", [_vm._v("Callouts")]), _c("p", [_vm._v(" You can use our callout component if you need to display a message to users. ")]), _c("h4", [_vm._v("Rules")]), _c("ul"), _c("pre", [_c("code", [_vm._v("import { Callout } from 'streamlabs-beaker';\n\ncomponents: {\n  Callout\n}")])])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("p", [_vm._v(" These should be used "), _c("strong", [_vm._v("very sparingly")]), _vm._v(". These should be used in cases when something is going to be completed removed or something could become broken/lost if action is not taken. ")]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("p", [_vm._v(" Use the "), _c("strong", [_vm._v("closeable")]), _vm._v(" prop to give the callout the ability to close. ")]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("p", [_vm._v(" You can use the "), _c("code", [_vm._v("icon")]), _vm._v(" prop to set it to 'success', 'warning', or 'info' for most common cases. If you need a different icon you can simply use it inline. ")]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("table", { staticClass: "docs-table" }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Prop")]), _c("th", [_vm._v("Type")]), _c("th", [_vm._v("Default")]), _c("th", [_vm._v("Description")])])]), _c("tbody", [_c("tr", [_c("td", [_vm._v("variation")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("'success'")]), _c("td", [_vm._v(" Use "), _c("code", [_vm._v("'success'")]), _vm._v(", "), _c("code", [_vm._v("'warning'")]), _vm._v(", "), _c("code", [_vm._v("'info'")]), _vm._v(", "), _c("code", [_vm._v("'cookies'")]), _vm._v(" or "), _c("code", [_vm._v("'prime'")]), _vm._v(". Add "), _c("code", [_vm._v("'strong'")]), _vm._v(" when necessary. ")])]), _c("tr", [_c("td", [_vm._v("closeable")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v("Added an icon with a function that closes the callout.")])]), _c("tr", [_c("td", [_vm._v("icon")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("true")]), _c("td", [_vm._v(" Set to false if you don't want an icon before the callout content. ")])]), _c("tr", [_c("td", [_vm._v("onClose")]), _c("td", [_vm._v("Function")]), _c("td", [_vm._v("-")]), _c("td", [_vm._v("on close callback")])])])])]);
+}];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  Callouts$1,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  "e9af6ae8",
+  null,
+  null
+);
+const Callouts = __component__.exports;
+export {
+  Callouts as default
+};
 //# sourceMappingURL=Callouts.1345f5db.js.map

@@ -1,4 +1,179 @@
-var v=Object.defineProperty;var j=(e,t,n)=>t in e?v(e,t,{enumerable:!0,configurable:!0,writable:!0,value:n}):e[t]=n;var p=(e,t,n)=>(j(e,typeof t!="symbol"?t+"":t,n),n);import{C as T,P as b,V as h,n as O}from"./index.4fb8a6cb.js";import{A as P}from"./Accordion.09c82396.js";var x=typeof global=="object"&&global&&global.Object===Object&&global;const C=x;var $=typeof self=="object"&&self&&self.Object===Object&&self,w=C||$||Function("return this")();const H=w;var A=H.Symbol;const i=A;var g=Object.prototype,D=g.hasOwnProperty,R=g.toString,a=i?i.toStringTag:void 0;function E(e){var t=D.call(e,a),n=e[a];try{e[a]=void 0;var r=!0}catch{}var o=R.call(e);return r&&(t?e[a]=n:delete e[a]),o}var M=Object.prototype,F=M.toString;function G(e){return F.call(e)}var I="[object Null]",L="[object Undefined]",f=i?i.toStringTag:void 0;function N(e){return e==null?e===void 0?L:I:f&&f in Object(e)?E(e):G(e)}function U(e){return e!=null&&typeof e=="object"}var q="[object Symbol]";function V(e){return typeof e=="symbol"||U(e)&&N(e)==q}function z(e,t){for(var n=-1,r=e==null?0:e.length,o=Array(r);++n<r;)o[n]=t(e[n],n,e);return o}var Y=Array.isArray;const B=Y;var J=1/0,m=i?i.prototype:void 0,u=m?m.toString:void 0;function _(e){if(typeof e=="string")return e;if(B(e))return z(e,_)+"";if(V(e))return u?u.call(e):"";var t=e+"";return t=="0"&&1/e==-J?"-0":t}function K(e){return e==null?"":_(e)}function Q(e){return function(t){return e==null?void 0:e[t]}}var W={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"},X=Q(W);const Z=X;var y=/[&<>"']/g,k=RegExp(y.source);function ee(e){return e=K(e),e&&k.test(e)?e.replace(y,Z):e}var te=Object.defineProperty,ne=Object.getOwnPropertyDescriptor,d=(e,t,n,r)=>{for(var o=r>1?void 0:r?ne(t,n):t,s=e.length-1,c;s>=0;s--)(c=e[s])&&(o=(r?c(t,n,o):c(o))||o);return r&&o&&te(t,n,o),o};let l=class extends h{constructor(){super(...arguments);p(this,"title");p(this,"code")}get escapedHtml(){const r=new RegExp(`title="${this.title}" :code="demoCode">\\s*<template #components>([\\S\\s]*?)<\\/template>\\s*</DemoSection>`,"gm").exec(this.code)[1].split(`
-`),o=/^\s+/.exec(r[1]),s=o!=null?o[0]:null;let c=[];return s&&(c=r.map(S=>S.replace(s,""))),ee(c.join(`
-`).trim())}};d([b()],l.prototype,"title",2);d([b({required:!0})],l.prototype,"code",2);l=d([T({components:{Accordion:P}})],l);var oe=function(){var t=this,n=t._self._c;return t._self._setupProxy,n("div",{staticClass:"s-demo-section"},[n("Accordion",{attrs:{openedTitle:"Hide Code",closedTitle:"Show Code"}},[n("div",{attrs:{slot:"content"},slot:"content"},[n("pre",[n("code",{domProps:{innerHTML:t._s(t.escapedHtml)}})])])]),n("div",{staticClass:"s-demo-section__content"},[t._t("components")],2)],1)},re=[],se=O(l,oe,re,!1,null,"f745c913",null,null);const le=se.exports;export{le as D,i as S,V as a,U as b,N as c,z as d,C as f,B as i,H as r,K as t};
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { C as Component, P as Prop, V as Vue, n as normalizeComponent } from "./index.4fb8a6cb.js";
+import { A as Accordion } from "./Accordion.09c82396.js";
+var freeGlobal = typeof global == "object" && global && global.Object === Object && global;
+const freeGlobal$1 = freeGlobal;
+var freeSelf = typeof self == "object" && self && self.Object === Object && self;
+var root = freeGlobal$1 || freeSelf || Function("return this")();
+const root$1 = root;
+var Symbol$1 = root$1.Symbol;
+const Symbol$2 = Symbol$1;
+var objectProto$1 = Object.prototype;
+var hasOwnProperty = objectProto$1.hasOwnProperty;
+var nativeObjectToString$1 = objectProto$1.toString;
+var symToStringTag$1 = Symbol$2 ? Symbol$2.toStringTag : void 0;
+function getRawTag(value) {
+  var isOwn = hasOwnProperty.call(value, symToStringTag$1), tag = value[symToStringTag$1];
+  try {
+    value[symToStringTag$1] = void 0;
+    var unmasked = true;
+  } catch (e) {
+  }
+  var result = nativeObjectToString$1.call(value);
+  if (unmasked) {
+    if (isOwn) {
+      value[symToStringTag$1] = tag;
+    } else {
+      delete value[symToStringTag$1];
+    }
+  }
+  return result;
+}
+var objectProto = Object.prototype;
+var nativeObjectToString = objectProto.toString;
+function objectToString(value) {
+  return nativeObjectToString.call(value);
+}
+var nullTag = "[object Null]", undefinedTag = "[object Undefined]";
+var symToStringTag = Symbol$2 ? Symbol$2.toStringTag : void 0;
+function baseGetTag(value) {
+  if (value == null) {
+    return value === void 0 ? undefinedTag : nullTag;
+  }
+  return symToStringTag && symToStringTag in Object(value) ? getRawTag(value) : objectToString(value);
+}
+function isObjectLike(value) {
+  return value != null && typeof value == "object";
+}
+var symbolTag = "[object Symbol]";
+function isSymbol(value) {
+  return typeof value == "symbol" || isObjectLike(value) && baseGetTag(value) == symbolTag;
+}
+function arrayMap(array, iteratee) {
+  var index = -1, length = array == null ? 0 : array.length, result = Array(length);
+  while (++index < length) {
+    result[index] = iteratee(array[index], index, array);
+  }
+  return result;
+}
+var isArray = Array.isArray;
+const isArray$1 = isArray;
+var INFINITY = 1 / 0;
+var symbolProto = Symbol$2 ? Symbol$2.prototype : void 0, symbolToString = symbolProto ? symbolProto.toString : void 0;
+function baseToString(value) {
+  if (typeof value == "string") {
+    return value;
+  }
+  if (isArray$1(value)) {
+    return arrayMap(value, baseToString) + "";
+  }
+  if (isSymbol(value)) {
+    return symbolToString ? symbolToString.call(value) : "";
+  }
+  var result = value + "";
+  return result == "0" && 1 / value == -INFINITY ? "-0" : result;
+}
+function toString(value) {
+  return value == null ? "" : baseToString(value);
+}
+function basePropertyOf(object) {
+  return function(key) {
+    return object == null ? void 0 : object[key];
+  };
+}
+var htmlEscapes = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;",
+  "'": "&#39;"
+};
+var escapeHtmlChar = basePropertyOf(htmlEscapes);
+const escapeHtmlChar$1 = escapeHtmlChar;
+var reUnescapedHtml = /[&<>"']/g, reHasUnescapedHtml = RegExp(reUnescapedHtml.source);
+function escape(string) {
+  string = toString(string);
+  return string && reHasUnescapedHtml.test(string) ? string.replace(reUnescapedHtml, escapeHtmlChar$1) : string;
+}
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let DemoSection$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "title");
+    __publicField(this, "code");
+  }
+  get escapedHtml() {
+    const codeRegEx = new RegExp(
+      `title="${this.title}" :code="demoCode">\\s*<template #components>([\\S\\s]*?)<\\/template>\\s*</DemoSection>`,
+      "gm"
+    );
+    const codeMatch = codeRegEx.exec(this.code);
+    const lines = codeMatch[1].split("\n");
+    const matches = /^\s+/.exec(lines[1]);
+    const indentation = matches != null ? matches[0] : null;
+    let indentedLines = [];
+    if (indentation) {
+      indentedLines = lines.map((line) => line.replace(indentation, ""));
+    }
+    return escape(indentedLines.join("\n").trim());
+  }
+};
+__decorateClass([
+  Prop()
+], DemoSection$1.prototype, "title", 2);
+__decorateClass([
+  Prop({ required: true })
+], DemoSection$1.prototype, "code", 2);
+DemoSection$1 = __decorateClass([
+  Component({
+    components: {
+      Accordion
+    }
+  })
+], DemoSection$1);
+const DemoSection_vue_vue_type_style_index_0_scoped_f745c913_lang = "";
+var _sfc_render = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-demo-section" }, [_c("Accordion", { attrs: { "openedTitle": "Hide Code", "closedTitle": "Show Code" } }, [_c("div", { attrs: { "slot": "content" }, slot: "content" }, [_c("pre", [_c("code", { domProps: { "innerHTML": _vm._s(_vm.escapedHtml) } })])])]), _c("div", { staticClass: "s-demo-section__content" }, [_vm._t("components")], 2)], 1);
+};
+var _sfc_staticRenderFns = [];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  DemoSection$1,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  "f745c913",
+  null,
+  null
+);
+const DemoSection = __component__.exports;
+export {
+  DemoSection as D,
+  Symbol$2 as S,
+  isSymbol as a,
+  isObjectLike as b,
+  baseGetTag as c,
+  arrayMap as d,
+  freeGlobal$1 as f,
+  isArray$1 as i,
+  root$1 as r,
+  toString as t
+};
 //# sourceMappingURL=DemoSection.79ee11c0.js.map

@@ -1,4 +1,59 @@
-var c=Object.defineProperty;var u=(t,e,i)=>e in t?c(t,e,{enumerable:!0,configurable:!0,writable:!0,value:i}):t[e]=i;var d=(t,e,i)=>(u(t,typeof e!="symbol"?e+"":e,i),i);import{C as l,V as m,n as p}from"./index.4fb8a6cb.js";var v=Object.defineProperty,f=Object.getOwnPropertyDescriptor,_=(t,e,i,a)=>{for(var s=a>1?void 0:a?f(e,i):e,o=t.length-1,r;o>=0;o--)(r=t[o])&&(s=(a?r(e,i,s):r(s))||s);return a&&s&&v(e,i,s),s};let n=class extends m{constructor(){super(...arguments);d(this,"flip",!0)}flipProc(){this.flip=!this.flip}mounted(){setInterval(this.flipProc,2500)}};n=_([l({})],n);var h=function(){var e=this,i=e._self._c;return e._self._setupProxy,i("div",[e._m(0),i("div",{staticClass:"section"},[i("div",{staticClass:"flip-cont"},[i("transition-group",{attrs:{name:"fadeX-from-left",tag:"div"}},[e.flip?i("div",{key:"fadeXFirstLeft",staticClass:"first"},[i("h2",[e._v("fadeX-from-left")]),i("p",[e._v(" Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat, dolores suscipit ut consequuntur necessitatibus reprehenderit placeat repellendus. Doloremque amet ducimus magni nam reprehenderit, suscipit vero! Unde rem expedita exercitationem recusandae? ")])]):i("div",{key:"fadeXSecondLeft",staticClass:"second"},[i("h2",[e._v("fadeX-from-left")]),i("p",[e._v(" Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores rerum ex minima, consequatur error laboriosam iusto voluptates quisquam cumque placeat porro nulla? Sequi ex reiciendis illo quia nesciunt odio id? ")])])])],1),i("div",{staticClass:"flip-cont"},[i("transition-group",{attrs:{name:"fadeX-from-right",tag:"div"}},[e.flip?i("div",{key:"fadeXFirstRight",staticClass:"first"},[i("h2",[e._v("fadeX-from-right")]),i("p",[e._v(" Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero architecto nobis recusandae porro necessitatibus tempore commodi distinctio rem deleniti veritatis veniam ab deserunt quidem neque asperiores eos, esse repellendus nemo? ")])]):i("div",{key:"fadeXSecondRight",staticClass:"second"},[i("h2",[e._v("fadeX-from-right")]),i("p",[e._v(" Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores accusamus voluptate tempora inventore dolor magnam assumenda reiciendis eum officia est impedit omnis aut, id vel dignissimos veritatis rerum vitae voluptas. ")])])])],1),i("div",{staticClass:"flip-cont"},[i("transition-group",{attrs:{name:"fadeY-from-top",tag:"div"}},[e.flip?i("div",{key:"fadeYFirstTop",staticClass:"first"},[i("h2",[e._v("fadeY-from-top")]),i("p",[e._v(" Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero architecto nobis recusandae porro necessitatibus tempore commodi distinctio rem deleniti veritatis veniam ab deserunt quidem neque asperiores eos, esse repellendus nemo? ")])]):i("div",{key:"fadeYSecondTop",staticClass:"second"},[i("h2",[e._v("fadeY-from-top")]),i("p",[e._v(" Lorem ipsum, dolor sit amet consectetur adipisicing elit. At maiores accusantium consequatur praesentium voluptas facere tempora facilis quod sint a id saepe nulla voluptate eaque voluptatibus deserunt, fuga aliquid eveniet? ")])])])],1),i("div",{staticClass:"flip-cont"},[i("transition-group",{attrs:{name:"fadeY-from-bottom",tag:"div"}},[e.flip?i("div",{key:"fadeYFirstBottom",staticClass:"first"},[i("h2",[e._v("fadeY-from-bottom")]),i("p",[e._v(" Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero architecto nobis recusandae porro necessitatibus tempore commodi distinctio rem deleniti veritatis veniam ab deserunt quidem neque asperiores eos, esse repellendus nemo? ")])]):i("div",{key:"fadeYSecondBottom",staticClass:"second"},[i("h2",[e._v("fadeY-from-bottom")]),i("p",[e._v(" Lorem ipsum, dolor sit amet consectetur adipisicing elit. At maiores accusantium consequatur praesentium voluptas facere tempora facilis quod sint a id saepe nulla voluptate eaque voluptatibus deserunt, fuga aliquid eveniet? ")])])])],1)])])},g=[function(){var t=this,e=t._self._c;return t._self._setupProxy,e("div",{staticClass:"section"},[e("h1",[t._v("Global Transitions")]),e("p",[t._v(" This is the start of a collection of pre-made transitions to use in Beaker components. The CSS for these is automatically imported with a standard beaker CSS Import. They are used by wrapping an element which is dynamically shown with "),e("code",[t._v("v-if")]),t._v(", "),e("code",[t._v("v-else")]),t._v(", or "),e("code",[t._v("v-show")]),t._v(" by wrapping it with "),e("code",[t._v("<transition>")]),t._v(" or "),e("code",[t._v("<transition-group>")]),t._v(". ")]),e("pre",[e("code",[t._v(`<transition name="fadeY-from-left">
-  <div v-if="boolean"></div>
-</transition>`)])])])}],b=p(n,h,g,!1,null,null,null,null);const y=b.exports;export{y as default};
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { C as Component, V as Vue, n as normalizeComponent } from "./index.4fb8a6cb.js";
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let TransitionsDemo$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "flip", true);
+  }
+  flipProc() {
+    this.flip = !this.flip;
+  }
+  mounted() {
+    setInterval(this.flipProc, 2500);
+  }
+};
+TransitionsDemo$1 = __decorateClass([
+  Component({})
+], TransitionsDemo$1);
+const TransitionsDemo_vue_vue_type_style_index_0_lang = "";
+var _sfc_render = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", [_vm._m(0), _c("div", { staticClass: "section" }, [_c("div", { staticClass: "flip-cont" }, [_c("transition-group", { attrs: { "name": "fadeX-from-left", "tag": "div" } }, [_vm.flip ? _c("div", { key: "fadeXFirstLeft", staticClass: "first" }, [_c("h2", [_vm._v("fadeX-from-left")]), _c("p", [_vm._v(" Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat, dolores suscipit ut consequuntur necessitatibus reprehenderit placeat repellendus. Doloremque amet ducimus magni nam reprehenderit, suscipit vero! Unde rem expedita exercitationem recusandae? ")])]) : _c("div", { key: "fadeXSecondLeft", staticClass: "second" }, [_c("h2", [_vm._v("fadeX-from-left")]), _c("p", [_vm._v(" Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores rerum ex minima, consequatur error laboriosam iusto voluptates quisquam cumque placeat porro nulla? Sequi ex reiciendis illo quia nesciunt odio id? ")])])])], 1), _c("div", { staticClass: "flip-cont" }, [_c("transition-group", { attrs: { "name": "fadeX-from-right", "tag": "div" } }, [_vm.flip ? _c("div", { key: "fadeXFirstRight", staticClass: "first" }, [_c("h2", [_vm._v("fadeX-from-right")]), _c("p", [_vm._v(" Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero architecto nobis recusandae porro necessitatibus tempore commodi distinctio rem deleniti veritatis veniam ab deserunt quidem neque asperiores eos, esse repellendus nemo? ")])]) : _c("div", { key: "fadeXSecondRight", staticClass: "second" }, [_c("h2", [_vm._v("fadeX-from-right")]), _c("p", [_vm._v(" Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores accusamus voluptate tempora inventore dolor magnam assumenda reiciendis eum officia est impedit omnis aut, id vel dignissimos veritatis rerum vitae voluptas. ")])])])], 1), _c("div", { staticClass: "flip-cont" }, [_c("transition-group", { attrs: { "name": "fadeY-from-top", "tag": "div" } }, [_vm.flip ? _c("div", { key: "fadeYFirstTop", staticClass: "first" }, [_c("h2", [_vm._v("fadeY-from-top")]), _c("p", [_vm._v(" Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero architecto nobis recusandae porro necessitatibus tempore commodi distinctio rem deleniti veritatis veniam ab deserunt quidem neque asperiores eos, esse repellendus nemo? ")])]) : _c("div", { key: "fadeYSecondTop", staticClass: "second" }, [_c("h2", [_vm._v("fadeY-from-top")]), _c("p", [_vm._v(" Lorem ipsum, dolor sit amet consectetur adipisicing elit. At maiores accusantium consequatur praesentium voluptas facere tempora facilis quod sint a id saepe nulla voluptate eaque voluptatibus deserunt, fuga aliquid eveniet? ")])])])], 1), _c("div", { staticClass: "flip-cont" }, [_c("transition-group", { attrs: { "name": "fadeY-from-bottom", "tag": "div" } }, [_vm.flip ? _c("div", { key: "fadeYFirstBottom", staticClass: "first" }, [_c("h2", [_vm._v("fadeY-from-bottom")]), _c("p", [_vm._v(" Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero architecto nobis recusandae porro necessitatibus tempore commodi distinctio rem deleniti veritatis veniam ab deserunt quidem neque asperiores eos, esse repellendus nemo? ")])]) : _c("div", { key: "fadeYSecondBottom", staticClass: "second" }, [_c("h2", [_vm._v("fadeY-from-bottom")]), _c("p", [_vm._v(" Lorem ipsum, dolor sit amet consectetur adipisicing elit. At maiores accusantium consequatur praesentium voluptas facere tempora facilis quod sint a id saepe nulla voluptate eaque voluptatibus deserunt, fuga aliquid eveniet? ")])])])], 1)])]);
+};
+var _sfc_staticRenderFns = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("h1", [_vm._v("Global Transitions")]), _c("p", [_vm._v(" This is the start of a collection of pre-made transitions to use in Beaker components. The CSS for these is automatically imported with a standard beaker CSS Import. They are used by wrapping an element which is dynamically shown with "), _c("code", [_vm._v("v-if")]), _vm._v(", "), _c("code", [_vm._v("v-else")]), _vm._v(", or "), _c("code", [_vm._v("v-show")]), _vm._v(" by wrapping it with "), _c("code", [_vm._v("<transition>")]), _vm._v(" or "), _c("code", [_vm._v("<transition-group>")]), _vm._v(". ")]), _c("pre", [_c("code", [_vm._v('<transition name="fadeY-from-left">\n  <div v-if="boolean"></div>\n</transition>')])])]);
+}];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  TransitionsDemo$1,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const TransitionsDemo = __component__.exports;
+export {
+  TransitionsDemo as default
+};
 //# sourceMappingURL=TransitionsDemo.d41f4ad8.js.map

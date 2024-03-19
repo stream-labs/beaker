@@ -1,2 +1,214 @@
-var d=Object.defineProperty;var h=(a,e,n)=>e in a?d(a,e,{enumerable:!0,configurable:!0,writable:!0,value:n}):a[e]=n;var o=(a,e,n)=>(h(a,typeof e!="symbol"?e+"":e,n),n);import{W as c,C as f,P as l,V as y,n as _}from"./index.4fb8a6cb.js";import{m as g}from"./vue-focus.common.2dfcc992.js";var m=Object.defineProperty,w=Object.getOwnPropertyDescriptor,p=(a,e,n,t)=>{for(var i=t>1?void 0:t?w(e,n):e,u=a.length-1,r;u>=0;u--)(r=a[u])&&(i=(t?r(e,n,i):r(i))||i);return t&&i&&m(e,n,i),i};let s=class extends y{constructor(){super(...arguments);o(this,"$refs");o(this,"dropdownIcon");o(this,"menuAlign");o(this,"openAbove");o(this,"autoHeight");o(this,"closeOnSelect");o(this,"custom");o(this,"relativeMenu");o(this,"simpleMenu");o(this,"hoverOption");o(this,"nested");o(this,"paneMenuOpen",!1)}created(){document.addEventListener("click",this.documentClick)}destroyed(){document.removeEventListener("click",this.documentClick)}get menuClasses(){let e=[];return this.menuAlign&&e.push(`s-pane-dropdown__menu--${this.menuAlign}`),this.openAbove&&e.push("s-pane-dropdown__menu--top"),this.autoHeight&&e.push("s-pane-dropdown__menu--auto-height"),this.relativeMenu&&e.push("s-pane-dropdown__menu--relative"),this.simpleMenu&&e.push("s-pane-dropdown__menu--simple"),e}watchPaneMenuOpen(e){e&&!this.custom&&this.$nextTick(()=>{const t=this.$refs.paneList.lastElementChild,i=u=>{u.keyCode===9&&!u.shiftKey&&this.hide()};t.addEventListener("keydown",i)})}afterOpen(e){e.style.height="auto"}open(e){let n=getComputedStyle(e).width;e.style.width=n;let t=getComputedStyle(e).width;e.style.maxWidth=t,e.style.position="absolute",e.style.visibility="hidden",e.style.height="auto";let i=getComputedStyle(e).height;e.style.width=null,e.style.position=null,e.style.visibility=null,e.style.height=0,getComputedStyle(e).height,setTimeout(()=>{e.style.height=i})}close(e){if("target"in e)return;let n=getComputedStyle(e).height;e.style.height=n,getComputedStyle(e).height,setTimeout(()=>{e.style.height=0})}documentClick(e){let n=this.$refs.paneMenu,t=e.target;n!==t&&!n.contains(t)&&(this.paneMenuOpen=!1)}onMenuClick(){this.closeOnSelect&&(this.paneMenuOpen=!this.paneMenuOpen)}hide(){this.paneMenuOpen=!1}show(){this.paneMenuOpen=!0}};p([l({default:!0})],s.prototype,"dropdownIcon",2);p([l({default:null})],s.prototype,"menuAlign",2);p([l({default:!1})],s.prototype,"openAbove",2);p([l({default:!1})],s.prototype,"autoHeight",2);p([l({default:!0})],s.prototype,"closeOnSelect",2);p([l({default:!1})],s.prototype,"custom",2);p([l({default:!1})],s.prototype,"relativeMenu",2);p([l({default:!1})],s.prototype,"simpleMenu",2);p([l({default:!1})],s.prototype,"hoverOption",2);p([l({default:!1})],s.prototype,"nested",2);p([c("paneMenuOpen")],s.prototype,"watchPaneMenuOpen",1);s=p([f({name:"PaneDropdown",mixins:[g]})],s);var O=function(){var e=this,n=e._self._c;return e._self._setupProxy,n("div",e._g({ref:"paneMenu",staticClass:"s-pane-dropdown",on:{blur:function(t){return t.stopPropagation(),t.preventDefault(),e.close.apply(null,arguments)}}},e.hoverOption?{mouseleave:e.hide}:{}),[n("div",e._g({ref:"paneToggle",staticClass:"s-pane-dropdown__toggle",class:{"s-pane-dropdown__toggle--active":e.paneMenuOpen},attrs:{tabindex:0},on:{click:function(t){e.paneMenuOpen=!e.paneMenuOpen},keydown:[function(t){if(!t.type.indexOf("key")&&e._k(t.keyCode,"space",32,t.key,[" ","Spacebar"]))return null;t.preventDefault(),e.paneMenuOpen=!e.paneMenuOpen},function(t){if(!t.type.indexOf("key")&&e._k(t.keyCode,"enter",13,t.key,"Enter"))return null;t.preventDefault(),e.paneMenuOpen=!e.paneMenuOpen},function(t){return!t.type.indexOf("key")&&e._k(t.keyCode,"esc",27,t.key,["Esc","Escape"])?null:(t.preventDefault(),e.hide.apply(null,arguments))},function(t){return!t.type.indexOf("key")&&e._k(t.keyCode,"tab",9,t.key,"Tab")||!t.shiftKey?null:e.hide.apply(null,arguments)}]}},e.hoverOption?{mouseover:e.show}:{}),[n("span",[e._t("title"),e.dropdownIcon?n("i",{staticClass:"icon-dropdown"}):e._e()],2)]),n("transition",{attrs:{name:"expand-dropdown"},on:{enter:e.open,"after-enter":e.afterOpen,leave:e.close}},[n("div",{directives:[{name:"show",rawName:"v-show",value:e.paneMenuOpen,expression:"paneMenuOpen"}],staticClass:"s-pane-dropdown__menu",class:e.menuClasses},[e.custom?e._t("default"):n("div",{ref:"paneList",staticClass:"s-pane-dropdown__list",on:{mouseup:e.onMenuClick,keydown:function(t){return!t.type.indexOf("key")&&e._k(t.keyCode,"esc",27,t.key,["Esc","Escape"])?null:(t.preventDefault(),e.hide.apply(null,arguments))}}},[e._t("default")],2)],2)])],1)},v=[],C=_(s,O,v,!1,null,null,null,null);const P=C.exports;export{P};
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { W as Watch, C as Component, P as Prop, V as Vue, n as normalizeComponent } from "./index.4fb8a6cb.js";
+import { m as mixin_1 } from "./vue-focus.common.2dfcc992.js";
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let PaneDropdown$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "$refs");
+    __publicField(this, "dropdownIcon");
+    __publicField(this, "menuAlign");
+    __publicField(this, "openAbove");
+    __publicField(this, "autoHeight");
+    __publicField(this, "closeOnSelect");
+    __publicField(this, "custom");
+    __publicField(this, "relativeMenu");
+    __publicField(this, "simpleMenu");
+    __publicField(this, "hoverOption");
+    __publicField(this, "nested");
+    __publicField(this, "paneMenuOpen", false);
+  }
+  created() {
+    document.addEventListener("click", this.documentClick);
+  }
+  destroyed() {
+    document.removeEventListener("click", this.documentClick);
+  }
+  get menuClasses() {
+    let classes = [];
+    if (this.menuAlign) {
+      classes.push(`s-pane-dropdown__menu--${this.menuAlign}`);
+    }
+    if (this.openAbove) {
+      classes.push("s-pane-dropdown__menu--top");
+    }
+    if (this.autoHeight) {
+      classes.push("s-pane-dropdown__menu--auto-height");
+    }
+    if (this.relativeMenu) {
+      classes.push("s-pane-dropdown__menu--relative");
+    }
+    if (this.simpleMenu) {
+      classes.push("s-pane-dropdown__menu--simple");
+    }
+    return classes;
+  }
+  watchPaneMenuOpen(newVal) {
+    if (newVal && !this.custom) {
+      this.$nextTick(() => {
+        const list = this.$refs.paneList;
+        const lastSlotItem = list.lastElementChild;
+        const onTab = (e) => {
+          if (e.keyCode === 9 && !e.shiftKey)
+            this.hide();
+        };
+        lastSlotItem.addEventListener("keydown", onTab);
+      });
+    }
+  }
+  afterOpen(element) {
+    element.style.height = "auto";
+  }
+  open(element) {
+    let width = getComputedStyle(element).width;
+    element.style.width = width;
+    let maxWidth = getComputedStyle(element).width;
+    element.style.maxWidth = maxWidth;
+    element.style.position = `absolute`;
+    element.style.visibility = `hidden`;
+    element.style.height = `auto`;
+    let height = getComputedStyle(element).height;
+    element.style.width = null;
+    element.style.position = null;
+    element.style.visibility = null;
+    element.style.height = 0;
+    getComputedStyle(element).height;
+    setTimeout(() => {
+      element.style.height = height;
+    });
+  }
+  close(element) {
+    if ("target" in element)
+      return;
+    let height = getComputedStyle(element).height;
+    element.style.height = height;
+    getComputedStyle(element).height;
+    setTimeout(() => {
+      element.style.height = 0;
+    });
+  }
+  documentClick(e) {
+    let el = this.$refs.paneMenu;
+    let target = e.target;
+    if (el !== target && !el.contains(target)) {
+      this.paneMenuOpen = false;
+    }
+  }
+  onMenuClick() {
+    this.closeOnSelect ? this.paneMenuOpen = !this.paneMenuOpen : null;
+  }
+  hide() {
+    this.paneMenuOpen = false;
+  }
+  show() {
+    this.paneMenuOpen = true;
+  }
+};
+__decorateClass([
+  Prop({ default: true })
+], PaneDropdown$1.prototype, "dropdownIcon", 2);
+__decorateClass([
+  Prop({ default: null })
+], PaneDropdown$1.prototype, "menuAlign", 2);
+__decorateClass([
+  Prop({ default: false })
+], PaneDropdown$1.prototype, "openAbove", 2);
+__decorateClass([
+  Prop({ default: false })
+], PaneDropdown$1.prototype, "autoHeight", 2);
+__decorateClass([
+  Prop({ default: true })
+], PaneDropdown$1.prototype, "closeOnSelect", 2);
+__decorateClass([
+  Prop({ default: false })
+], PaneDropdown$1.prototype, "custom", 2);
+__decorateClass([
+  Prop({ default: false })
+], PaneDropdown$1.prototype, "relativeMenu", 2);
+__decorateClass([
+  Prop({ default: false })
+], PaneDropdown$1.prototype, "simpleMenu", 2);
+__decorateClass([
+  Prop({ default: false })
+], PaneDropdown$1.prototype, "hoverOption", 2);
+__decorateClass([
+  Prop({ default: false })
+], PaneDropdown$1.prototype, "nested", 2);
+__decorateClass([
+  Watch("paneMenuOpen")
+], PaneDropdown$1.prototype, "watchPaneMenuOpen", 1);
+PaneDropdown$1 = __decorateClass([
+  Component({
+    name: "PaneDropdown",
+    mixins: [mixin_1]
+  })
+], PaneDropdown$1);
+const PaneDropdown_vue_vue_type_style_index_0_lang = "";
+var _sfc_render = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", _vm._g({ ref: "paneMenu", staticClass: "s-pane-dropdown", on: { "blur": function($event) {
+    $event.stopPropagation();
+    $event.preventDefault();
+    return _vm.close.apply(null, arguments);
+  } } }, _vm.hoverOption ? { mouseleave: _vm.hide } : {}), [_c("div", _vm._g({ ref: "paneToggle", staticClass: "s-pane-dropdown__toggle", class: { "s-pane-dropdown__toggle--active": _vm.paneMenuOpen }, attrs: { "tabindex": 0 }, on: { "click": function($event) {
+    _vm.paneMenuOpen = !_vm.paneMenuOpen;
+  }, "keydown": [function($event) {
+    if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "space", 32, $event.key, [" ", "Spacebar"]))
+      return null;
+    $event.preventDefault();
+    _vm.paneMenuOpen = !_vm.paneMenuOpen;
+  }, function($event) {
+    if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter"))
+      return null;
+    $event.preventDefault();
+    _vm.paneMenuOpen = !_vm.paneMenuOpen;
+  }, function($event) {
+    if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "esc", 27, $event.key, ["Esc", "Escape"]))
+      return null;
+    $event.preventDefault();
+    return _vm.hide.apply(null, arguments);
+  }, function($event) {
+    if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "tab", 9, $event.key, "Tab"))
+      return null;
+    if (!$event.shiftKey)
+      return null;
+    return _vm.hide.apply(null, arguments);
+  }] } }, _vm.hoverOption ? { mouseover: _vm.show } : {}), [_c("span", [_vm._t("title"), _vm.dropdownIcon ? _c("i", { staticClass: "icon-dropdown" }) : _vm._e()], 2)]), _c("transition", { attrs: { "name": "expand-dropdown" }, on: { "enter": _vm.open, "after-enter": _vm.afterOpen, "leave": _vm.close } }, [_c("div", { directives: [{ name: "show", rawName: "v-show", value: _vm.paneMenuOpen, expression: "paneMenuOpen" }], staticClass: "s-pane-dropdown__menu", class: _vm.menuClasses }, [_vm.custom ? _vm._t("default") : _c("div", { ref: "paneList", staticClass: "s-pane-dropdown__list", on: { "mouseup": _vm.onMenuClick, "keydown": function($event) {
+    if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "esc", 27, $event.key, ["Esc", "Escape"]))
+      return null;
+    $event.preventDefault();
+    return _vm.hide.apply(null, arguments);
+  } } }, [_vm._t("default")], 2)], 2)])], 1);
+};
+var _sfc_staticRenderFns = [];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  PaneDropdown$1,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const PaneDropdown = __component__.exports;
+export {
+  PaneDropdown as P
+};
 //# sourceMappingURL=PaneDropdown.6fe5e7fe.js.map

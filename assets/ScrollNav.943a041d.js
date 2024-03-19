@@ -1,2 +1,98 @@
-var v=Object.defineProperty;var h=(t,s,e)=>s in t?v(t,s,{enumerable:!0,configurable:!0,writable:!0,value:e}):t[s]=e;var a=(t,s,e)=>(h(t,typeof s!="symbol"?s+"":s,e),e);import{C as _,P as p,V as f,n as u}from"./index.4fb8a6cb.js";var d=Object.defineProperty,C=Object.getOwnPropertyDescriptor,c=(t,s,e,l)=>{for(var n=l>1?void 0:l?C(s,e):s,i=t.length-1,o;i>=0;i--)(o=t[i])&&(n=(l?o(s,e,n):o(n))||n);return l&&n&&d(s,e,n),n};let r=class extends f{constructor(){super(...arguments);a(this,"$refs");a(this,"items");a(this,"value");a(this,"isMounted",!1);a(this,"appTabsContainer");a(this,"canScroll",!1);a(this,"hasNext",!1);a(this,"hasPrev",!1);a(this,"scrollIncrement",100)}created(){window.addEventListener("resize",this.calculateScrolls)}destroyed(){window.removeEventListener("resize",this.calculateScrolls)}mounted(){this.isMounted=!0,this.appTabsContainer=this.$refs.scrollable_nav,this.calculateScrolls()}scrollLeft(){this.appTabsContainer.scrollLeft=this.appTabsContainer.scrollLeft-this.scrollIncrement}scrollRight(){this.appTabsContainer.scrollLeft=this.appTabsContainer.scrollLeft+this.scrollIncrement}calculateScrolls(){if(!this.isMounted)return!1;this.canScroll=this.appTabsContainer.scrollWidth>this.appTabsContainer.clientWidth,this.hasPrev=this.appTabsContainer.scrollLeft>0;let s=this.appTabsContainer.scrollWidth-(this.appTabsContainer.scrollLeft+this.appTabsContainer.clientWidth);this.hasNext=s>0}navigateItem(s){this.$emit("input",s)}};c([p()],r.prototype,"items",2);c([p()],r.prototype,"value",2);r=c([_({})],r);var b=function(){var s=this,e=s._self._c;return s._self._setupProxy,e("div",[e("div",{staticClass:"s-apps-nav"},[s.hasPrev?e("div",{staticClass:"s-apps-nav-control flex s-has-prev",on:{click:s.scrollLeft}},[e("i",{staticClass:"icon-down icon-left"}),e("span",[s._v("...")])]):s._e(),e("div",{ref:"scrollable_nav",staticClass:"s-apps-tab__container",class:{"s-has-next":s.hasNext,"s-has-prev":s.hasPrev},on:{scroll:s.calculateScrolls}},s._l(s.items,function(l){return e("span",{key:l.value,staticClass:"s-app-tab",class:{"s-is-active":l.value===s.value},on:{click:function(n){return s.navigateItem(l.value)}}},[e("span",[s._v(s._s(l.name))])])}),0),s.hasNext?e("div",{staticClass:"s-apps-nav-control flex s-has-next",on:{click:s.scrollRight}},[e("span",[s._v("...")]),e("i",{staticClass:"icon-down icon-right"})]):s._e()])])},m=[],x=u(r,b,m,!1,null,null,null,null);const L=x.exports;export{L as S};
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { C as Component, P as Prop, V as Vue, n as normalizeComponent } from "./index.4fb8a6cb.js";
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let AppsNav = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "$refs");
+    __publicField(this, "items");
+    __publicField(this, "value");
+    __publicField(this, "isMounted", false);
+    __publicField(this, "appTabsContainer");
+    __publicField(this, "canScroll", false);
+    __publicField(this, "hasNext", false);
+    __publicField(this, "hasPrev", false);
+    __publicField(this, "scrollIncrement", 100);
+  }
+  created() {
+    window.addEventListener("resize", this.calculateScrolls);
+  }
+  destroyed() {
+    window.removeEventListener("resize", this.calculateScrolls);
+  }
+  mounted() {
+    this.isMounted = true;
+    this.appTabsContainer = this.$refs.scrollable_nav;
+    this.calculateScrolls();
+  }
+  scrollLeft() {
+    this.appTabsContainer.scrollLeft = this.appTabsContainer.scrollLeft - this.scrollIncrement;
+  }
+  scrollRight() {
+    this.appTabsContainer.scrollLeft = this.appTabsContainer.scrollLeft + this.scrollIncrement;
+  }
+  calculateScrolls() {
+    if (!this.isMounted)
+      return false;
+    this.canScroll = this.appTabsContainer.scrollWidth > this.appTabsContainer.clientWidth;
+    this.hasPrev = this.appTabsContainer.scrollLeft > 0;
+    let scrollRight = this.appTabsContainer.scrollWidth - (this.appTabsContainer.scrollLeft + this.appTabsContainer.clientWidth);
+    this.hasNext = scrollRight > 0;
+  }
+  navigateItem(item) {
+    this.$emit("input", item);
+  }
+};
+__decorateClass([
+  Prop()
+], AppsNav.prototype, "items", 2);
+__decorateClass([
+  Prop()
+], AppsNav.prototype, "value", 2);
+AppsNav = __decorateClass([
+  Component({})
+], AppsNav);
+const ScrollNav_vue_vue_type_style_index_0_lang = "";
+var _sfc_render = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", [_c("div", { staticClass: "s-apps-nav" }, [_vm.hasPrev ? _c("div", { staticClass: "s-apps-nav-control flex s-has-prev", on: { "click": _vm.scrollLeft } }, [_c("i", { staticClass: "icon-down icon-left" }), _c("span", [_vm._v("...")])]) : _vm._e(), _c("div", { ref: "scrollable_nav", staticClass: "s-apps-tab__container", class: {
+    "s-has-next": _vm.hasNext,
+    "s-has-prev": _vm.hasPrev
+  }, on: { "scroll": _vm.calculateScrolls } }, _vm._l(_vm.items, function(item) {
+    return _c("span", { key: item.value, staticClass: "s-app-tab", class: { "s-is-active": item.value === _vm.value }, on: { "click": function($event) {
+      return _vm.navigateItem(item.value);
+    } } }, [_c("span", [_vm._v(_vm._s(item.name))])]);
+  }), 0), _vm.hasNext ? _c("div", { staticClass: "s-apps-nav-control flex s-has-next", on: { "click": _vm.scrollRight } }, [_c("span", [_vm._v("...")]), _c("i", { staticClass: "icon-down icon-right" })]) : _vm._e()])]);
+};
+var _sfc_staticRenderFns = [];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  AppsNav,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const ScrollNav = __component__.exports;
+export {
+  ScrollNav as S
+};
 //# sourceMappingURL=ScrollNav.943a041d.js.map

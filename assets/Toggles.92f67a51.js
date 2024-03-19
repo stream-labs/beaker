@@ -1,4 +1,13 @@
-var a=Object.defineProperty;var c=(t,e,n)=>e in t?a(t,e,{enumerable:!0,configurable:!0,writable:!0,value:n}):t[e]=n;var l=(t,e,n)=>(c(t,typeof e!="symbol"?e+"":e,n),n);import{C as g,T as p,V as v,n as m}from"./index.4fb8a6cb.js";import{D as u}from"./DemoSection.79ee11c0.js";import"./Accordion.09c82396.js";const _=`<template>
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { C as Component, T as Toggle, V as Vue, n as normalizeComponent } from "./index.4fb8a6cb.js";
+import { D as DemoSection } from "./DemoSection.79ee11c0.js";
+import "./Accordion.09c82396.js";
+const TogglesCode = `<template>
   <div>
     <div class="section">
       <h1>Toggles</h1>
@@ -100,9 +109,74 @@ export default class Toggles extends Vue {
   selectedTextOption = "revenue";
 }
 <\/script>
-`;var h=Object.defineProperty,T=Object.getOwnPropertyDescriptor,f=(t,e,n,o)=>{for(var s=o>1?void 0:o?T(e,n):e,i=t.length-1,d;i>=0;i--)(d=t[i])&&(s=(o?d(e,n,s):d(s))||s);return o&&s&&h(e,n,s),s};let r=class extends v{constructor(){super(...arguments);l(this,"demoCode",_);l(this,"selectedOption","show");l(this,"selectedTextOption","revenue")}};r=f([g({components:{DemoSection:u,Toggle:p}})],r);var b=function(){var e=this,n=e._self._c;return e._self._setupProxy,n("div",[e._m(0),n("div",{staticClass:"section"},[n("h2",[e._v("Icon Toggles")]),n("DemoSection",{attrs:{title:"Icon Toggles",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[n("Toggle",{attrs:{values:{show:"<i class='icon-view'></i>",hide:"<i class='icon-hide'></i>"}},model:{value:e.selectedOption,callback:function(o){e.selectedOption=o},expression:"selectedOption"}})]},proxy:!0}])})],1),n("div",{staticClass:"section"},[n("h2",[e._v("Text Toggles")]),n("DemoSection",{attrs:{title:"Text Toggles",code:e.demoCode},scopedSlots:e._u([{key:"components",fn:function(){return[n("Toggle",{attrs:{values:{revenue:"Revenue",growth:"Growth"},variation:"text"},model:{value:e.selectedTextOption,callback:function(o){e.selectedTextOption=o},expression:"selectedTextOption"}})]},proxy:!0}])})],1),e._m(1)])},x=[function(){var t=this,e=t._self._c;return t._self._setupProxy,e("div",{staticClass:"section"},[e("h1",[t._v("Toggles")]),e("p",[t._v("Toggle between multiple custom options such as show and hide.")]),e("pre",[e("code",[t._v(`import { Toggle } from 'streamlabs-beaker';
-
-components: {
-  Toggle
-}`)])])])},function(){var t=this,e=t._self._c;return t._self._setupProxy,e("table",{staticClass:"docs-table"},[e("thead",[e("tr",[e("th",[t._v("Prop")]),e("th",[t._v("Type")]),e("th",[t._v("Default")]),e("th",[t._v("Description")])])]),e("tbody",[e("tr",[e("td",[t._v("values")]),e("td",[t._v("object")]),e("td",[t._v("null")]),e("td",[t._v(" Set toggle options with strings for the keys and HTML for the values. Keys will also be displayed as toggle title attributes. ")])]),e("tr",[e("td",[t._v("v-model")]),e("td",[t._v("string")]),e("td",[t._v("null")]),e("td",[t._v("Use as a bind to the currently selected toggle option.")])]),e("tr",[e("td",[t._v("variation")]),e("td",[t._v("string")]),e("td",[t._v("null")]),e("td",[t._v(" Add a toggle variation for a subtle style change. Options are "),e("code",[t._v("text")]),t._v(". ")])])])])}],y=m(r,b,x,!1,null,null,null,null);const S=y.exports;export{S as default};
+`;
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let Toggles$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "demoCode", TogglesCode);
+    __publicField(this, "selectedOption", "show");
+    __publicField(this, "selectedTextOption", "revenue");
+  }
+};
+Toggles$1 = __decorateClass([
+  Component({
+    components: {
+      DemoSection,
+      Toggle
+    }
+  })
+], Toggles$1);
+var _sfc_render = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", [_vm._m(0), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Icon Toggles")]), _c("DemoSection", { attrs: { "title": "Icon Toggles", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Toggle", { attrs: { "values": {
+      show: `<i class='icon-view'></i>`,
+      hide: `<i class='icon-hide'></i>`
+    } }, model: { value: _vm.selectedOption, callback: function($$v) {
+      _vm.selectedOption = $$v;
+    }, expression: "selectedOption" } })];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Text Toggles")]), _c("DemoSection", { attrs: { "title": "Text Toggles", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Toggle", { attrs: { "values": {
+      revenue: "Revenue",
+      growth: "Growth"
+    }, "variation": "text" }, model: { value: _vm.selectedTextOption, callback: function($$v) {
+      _vm.selectedTextOption = $$v;
+    }, expression: "selectedTextOption" } })];
+  }, proxy: true }]) })], 1), _vm._m(1)]);
+};
+var _sfc_staticRenderFns = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "section" }, [_c("h1", [_vm._v("Toggles")]), _c("p", [_vm._v("Toggle between multiple custom options such as show and hide.")]), _c("pre", [_c("code", [_vm._v("import { Toggle } from 'streamlabs-beaker';\n\ncomponents: {\n  Toggle\n}")])])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("table", { staticClass: "docs-table" }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Prop")]), _c("th", [_vm._v("Type")]), _c("th", [_vm._v("Default")]), _c("th", [_vm._v("Description")])])]), _c("tbody", [_c("tr", [_c("td", [_vm._v("values")]), _c("td", [_vm._v("object")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v(" Set toggle options with strings for the keys and HTML for the values. Keys will also be displayed as toggle title attributes. ")])]), _c("tr", [_c("td", [_vm._v("v-model")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v("Use as a bind to the currently selected toggle option.")])]), _c("tr", [_c("td", [_vm._v("variation")]), _c("td", [_vm._v("string")]), _c("td", [_vm._v("null")]), _c("td", [_vm._v(" Add a toggle variation for a subtle style change. Options are "), _c("code", [_vm._v("text")]), _vm._v(". ")])])])]);
+}];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  Toggles$1,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const Toggles = __component__.exports;
+export {
+  Toggles as default
+};
 //# sourceMappingURL=Toggles.92f67a51.js.map

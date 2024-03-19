@@ -1,4 +1,15 @@
-var _=Object.defineProperty;var h=(t,n,e)=>n in t?_(t,n,{enumerable:!0,configurable:!0,writable:!0,value:e}):t[n]=e;var i=(t,n,e)=>(h(t,typeof n!="symbol"?n+"":n,e),e);import{C as u,P as c,V as m,n as f}from"./index.4fb8a6cb.js";import{A as S}from"./Accordion.09c82396.js";import{B as g}from"./Button.b26dacc2.js";import{D as L}from"./DemoSection.79ee11c0.js";import{S as v}from"./Spinner.2fef2c20.js";const y=`<template>
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+import { C as Component, P as Prop, V as Vue, n as normalizeComponent } from "./index.4fb8a6cb.js";
+import { A as Accordion } from "./Accordion.09c82396.js";
+import { B as Button } from "./Button.b26dacc2.js";
+import { D as DemoSection } from "./DemoSection.79ee11c0.js";
+import { S as Spinner } from "./Spinner.2fef2c20.js";
+const LoadersCode = `<template>
   <div>
     <div class="section">
       <h1>Loaders</h1>
@@ -250,13 +261,201 @@ export default class Loaders extends Vue {
   string = "This loader is using a single string...";
 }
 <\/script>
-`;var b=Object.defineProperty,w=Object.getOwnPropertyDescriptor,l=(t,n,e,o)=>{for(var s=o>1?void 0:o?w(n,e):n,d=t.length-1,r;d>=0;d--)(r=t[d])&&(s=(o?r(n,e,s):r(s))||s);return o&&s&&b(n,e,s),s};let a=class extends m{constructor(){super(...arguments);i(this,"loadingStrs");i(this,"semiOpaque");i(this,"isRandom");i(this,"swapMode");i(this,"fixedBackground");i(this,"loaderText","");i(this,"index",0)}mounted(){typeof this.loadingStrs=="string"?this.loaderText=this.loadingStrs:this.distinguishNumberOfArrays()}distinguishNumberOfArrays(){this.loadingStrs.length>1?this.isRandom?this.loopRandomText():this.loopText():this.loaderText=this.loadingStrs[0]}loopText(){this.loaderText=this.loadingStrs[this.index],this.index++,this.index===this.loadingStrs.length&&(this.index=0),setTimeout(this.loopText,4e3)}loopRandomText(){const n=Math.floor(Math.random()*this.loadingStrs.length);this.loaderText===this.loadingStrs[n]?this.loopRandomText():(this.loaderText=this.loadingStrs[n],setTimeout(this.loopRandomText,4e3))}};l([c({default:[]})],a.prototype,"loadingStrs",2);l([c({default:!1})],a.prototype,"semiOpaque",2);l([c({default:!1})],a.prototype,"isRandom",2);l([c({default:!1})],a.prototype,"swapMode",2);l([c({default:!0})],a.prototype,"fixedBackground",2);a=l([u({components:{Spinner:v,Button:g}})],a);var x=function(){var n=this,e=n._self._c;return n._self._setupProxy,e("div",{staticClass:"s-loader",attrs:{swapMode:n.swapMode}},[e("div",{staticClass:"s-loader__bg",class:{"s-loader__bg--semi":n.semiOpaque,"s-loader--modeswap":n.swapMode,"s-loader--fixed":n.fixedBackground}},[e("div",{staticClass:"s-loader__inner"},[e("Spinner",{staticClass:"s-spinner__overlay",attrs:{swap:n.swapMode,size:"large"}}),e("div",{staticClass:"s-loader__text"},[n._v(n._s(n.loaderText))])],1)])])},C=[],D=f(a,x,C,!1,null,null,null,null);const T=D.exports;var P=Object.defineProperty,O=Object.getOwnPropertyDescriptor,B=(t,n,e,o)=>{for(var s=o>1?void 0:o?O(n,e):n,d=t.length-1,r;d>=0;d--)(r=t[d])&&(s=(o?r(n,e,s):r(s))||s);return o&&s&&P(n,e,s),s};let p=class extends m{constructor(){super(...arguments);i(this,"demoCode",y);i(this,"isLoading",!1);i(this,"isLoadingSemi",!1);i(this,"isLoadingSwapped",!1);i(this,"array",["This loader is using an array of strings...","Syncing all files to our cloud...","Lorem ipsum dolor sit amet, consectetur...","Sed do eiusmod tempor incididunt ut labore..."]);i(this,"string","This loader is using a single string...")}};p=B([u({components:{Accordion:S,Button:g,DemoSection:L,Loading:T,Spinner:v}})],p);var k=function(){var n=this,e=n._self._c;return n._self._setupProxy,e("div",[e("div",{staticClass:"section"},[e("h1",[n._v("Loaders")]),e("p",[n._v(" These are animated with pure SVG, they will not be animated in Microsoft Edge, or Opera, and will look different in firefox. ")]),e("div",{staticClass:"section"},[e("h2",[n._v("Full Page Loading")]),n._m(0),e("div",{staticClass:"section"},[e("h2",[n._v("Standard")]),e("div",{staticClass:"section"},[e("DemoSection",{attrs:{title:"Standard",code:n.demoCode},scopedSlots:n._u([{key:"components",fn:function(){return[n.isLoading?e("Loading",{attrs:{loadingStrs:n.string},on:{closeLoading:function(o){n.isLoading=!1}}}):n._e()]},proxy:!0}])})],1),e("div",{staticClass:"s-button-container s-button-container--left"},[e("Button",{attrs:{variation:"default",title:"loading default"},on:{click:function(o){n.isLoading=!0}}})],1)]),e("div",{staticClass:"section"},[e("h2",[n._v("Semi-Opaque Background")]),e("div",{staticClass:"section"},[e("DemoSection",{attrs:{title:"Semi-Opaque Background",code:n.demoCode},scopedSlots:n._u([{key:"components",fn:function(){return[n.isLoadingSemi?e("Loading",{attrs:{semiOpaque:!0,loadingStrs:n.array,isRandom:!0},on:{closeLoading:function(o){n.isLoadingSemi=!1}}}):n._e()]},proxy:!0}])})],1),e("div",{staticClass:"s-button-container s-button-container--left"},[e("Button",{attrs:{variation:"default",title:"loading semi opaque"},on:{click:function(o){n.isLoadingSemi=!0}}})],1)]),e("div",{staticClass:"section"},[e("h2",[n._v("Full Page Loading - Swapped")]),e("div",{staticClass:"section"},[e("DemoSection",{attrs:{title:"Full Page Loading - Swapped",code:n.demoCode},scopedSlots:n._u([{key:"components",fn:function(){return[n.isLoadingSwapped?e("Loading",{attrs:{loadingStrs:n.array,isRandom:!0,swapMode:!0},on:{closeLoading:function(o){n.isLoadingSwapped=!1}}}):n._e()]},proxy:!0}])})],1),e("div",{staticClass:"s-button-container s-button-container--left"},[e("Button",{attrs:{variation:"default",title:"loading swapped option"},on:{click:function(o){n.isLoadingSwapped=!0}}})],1)]),n._m(1)])]),e("div",{staticClass:"section"},[e("h2",[n._v("Section Loading Spinners")]),n._m(2),e("h3",[n._v("Loading Spinner")]),e("p",[n._v("This is the standard size for sections within a page layout.")]),e("div",{staticClass:"section"},[e("DemoSection",{attrs:{title:"Loading Spinner",code:n.demoCode},scopedSlots:n._u([{key:"components",fn:function(){return[e("Spinner",{attrs:{size:"small"}})]},proxy:!0}])})],1),e("h3",[n._v("Loading Spinner Large")]),e("p",[n._v(" This is the large size spinner. It should only be used in large sections or full page transitions. ")]),e("div",{staticClass:"section"},[e("DemoSection",{attrs:{title:"Loading Spinner Large",code:n.demoCode},scopedSlots:n._u([{key:"components",fn:function(){return[e("Spinner",{attrs:{size:"large"}})]},proxy:!0}])})],1),n._m(3)])])},R=[function(){var t=this,n=t._self._c;return t._self._setupProxy,n("pre",[n("code",[t._v(`import { Loading } from 'streamlabs-beaker';
-
-components: {
-  Loading
-}`)])])},function(){var t=this,n=t._self._c;return t._self._setupProxy,n("table",{staticClass:"docs-table"},[n("thead",[n("tr",[n("th",[t._v("Props")]),n("th",[t._v("Type")]),n("th",[t._v("Default")]),n("th",[t._v("Description")])])]),n("tbody",[n("tr",[n("td",[t._v("loadingStrs")]),n("td",[t._v("any[] | string")]),n("td",[t._v("-")]),n("td",[t._v(" Pass an array of stings into the loader. We recommend 3-4. Each shows for 4 seconds before it rotates. ")])]),n("tr",[n("td",[t._v("isRandom")]),n("td",[t._v("boolean")]),n("td",[t._v("false")]),n("td",[t._v(" Randomize the strings if you set "),n("code",[t._v("loadingStrs")]),t._v("as an array ")])]),n("tr",[n("td",[t._v("semiOpaque")]),n("td",[t._v("boolean")]),n("td",[t._v("false")]),n("td",[t._v(" Sets the background overlay to semi-opacity rather than full opacity. ")])]),n("tr",[n("td",[t._v("swapMode")]),n("td",[t._v("boolean")]),n("td",[t._v("false")]),n("td",[t._v(" In case you need to swap day/night mode - used for Creator Sites. ")])]),n("tr",[n("td",[t._v("fixedBackground")]),n("td",[t._v("boolean")]),n("td",[t._v("true")]),n("td",[t._v(" Allows loader to take dimensions of parent if set to "),n("code",[t._v("false")])])])])])},function(){var t=this,n=t._self._c;return t._self._setupProxy,n("pre",[n("code",[t._v(`import { Spinner } from 'streamlabs-beaker';
-
-components: {
-  Spinner
-}`)])])},function(){var t=this,n=t._self._c;return t._self._setupProxy,n("table",{staticClass:"docs-table"},[n("thead",[n("tr",[n("th",[t._v("Props")]),n("th",[t._v("Type")]),n("th",[t._v("Default")]),n("th",[t._v("Description")])])]),n("tbody",[n("tr",[n("td",[t._v("size")]),n("td",[t._v("String")]),n("td",[t._v("'small'")]),n("td",[t._v("'small', 'large'")])]),n("tr",[n("td",[t._v("swap")]),n("td",[t._v("Boolean")]),n("td",[t._v("false")]),n("td",[t._v(" If you need to swap day/night mode [ true ], default: [ false ] ")])])])])}],z=f(p,k,R,!1,null,null,null,null);const V=z.exports;export{V as default};
+`;
+var __defProp$1 = Object.defineProperty;
+var __getOwnPropDesc$1 = Object.getOwnPropertyDescriptor;
+var __decorateClass$1 = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$1(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp$1(target, key, result);
+  return result;
+};
+let Loading$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "loadingStrs");
+    __publicField(this, "semiOpaque");
+    __publicField(this, "isRandom");
+    __publicField(this, "swapMode");
+    __publicField(this, "fixedBackground");
+    __publicField(this, "loaderText", "");
+    __publicField(this, "index", 0);
+  }
+  mounted() {
+    if (typeof this.loadingStrs === "string") {
+      this.loaderText = this.loadingStrs;
+    } else {
+      this.distinguishNumberOfArrays();
+    }
+  }
+  distinguishNumberOfArrays() {
+    if (this.loadingStrs.length > 1) {
+      if (this.isRandom) {
+        this.loopRandomText();
+      } else {
+        this.loopText();
+      }
+    } else {
+      this.loaderText = this.loadingStrs[0];
+    }
+  }
+  loopText() {
+    this.loaderText = this.loadingStrs[this.index];
+    this.index++;
+    if (this.index === this.loadingStrs.length) {
+      this.index = 0;
+    }
+    setTimeout(this.loopText, 4e3);
+  }
+  loopRandomText() {
+    const randomIndex = Math.floor(Math.random() * this.loadingStrs.length);
+    if (this.loaderText === this.loadingStrs[randomIndex]) {
+      this.loopRandomText();
+    } else {
+      this.loaderText = this.loadingStrs[randomIndex];
+      setTimeout(this.loopRandomText, 4e3);
+    }
+  }
+};
+__decorateClass$1([
+  Prop({ default: [] })
+], Loading$1.prototype, "loadingStrs", 2);
+__decorateClass$1([
+  Prop({ default: false })
+], Loading$1.prototype, "semiOpaque", 2);
+__decorateClass$1([
+  Prop({ default: false })
+], Loading$1.prototype, "isRandom", 2);
+__decorateClass$1([
+  Prop({ default: false })
+], Loading$1.prototype, "swapMode", 2);
+__decorateClass$1([
+  Prop({ default: true })
+], Loading$1.prototype, "fixedBackground", 2);
+Loading$1 = __decorateClass$1([
+  Component({
+    components: { Spinner, Button }
+  })
+], Loading$1);
+const Loading_vue_vue_type_style_index_0_lang = "";
+var _sfc_render$1 = function render() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", { staticClass: "s-loader", attrs: { "swapMode": _vm.swapMode } }, [_c("div", { staticClass: "s-loader__bg", class: {
+    "s-loader__bg--semi": _vm.semiOpaque,
+    "s-loader--modeswap": _vm.swapMode,
+    "s-loader--fixed": _vm.fixedBackground
+  } }, [_c("div", { staticClass: "s-loader__inner" }, [_c("Spinner", { staticClass: "s-spinner__overlay", attrs: { "swap": _vm.swapMode, "size": "large" } }), _c("div", { staticClass: "s-loader__text" }, [_vm._v(_vm._s(_vm.loaderText))])], 1)])]);
+};
+var _sfc_staticRenderFns$1 = [];
+var __component__$1 = /* @__PURE__ */ normalizeComponent(
+  Loading$1,
+  _sfc_render$1,
+  _sfc_staticRenderFns$1,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const Loading = __component__$1.exports;
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp2(target, key, result);
+  return result;
+};
+let Loaders$1 = class extends Vue {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "demoCode", LoadersCode);
+    __publicField(this, "isLoading", false);
+    __publicField(this, "isLoadingSemi", false);
+    __publicField(this, "isLoadingSwapped", false);
+    __publicField(this, "array", [
+      "This loader is using an array of strings...",
+      "Syncing all files to our cloud...",
+      "Lorem ipsum dolor sit amet, consectetur...",
+      "Sed do eiusmod tempor incididunt ut labore..."
+    ]);
+    __publicField(this, "string", "This loader is using a single string...");
+  }
+};
+Loaders$1 = __decorateClass([
+  Component({
+    components: {
+      Accordion,
+      Button,
+      DemoSection,
+      Loading,
+      Spinner
+    }
+  })
+], Loaders$1);
+var _sfc_render = function render2() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("div", [_c("div", { staticClass: "section" }, [_c("h1", [_vm._v("Loaders")]), _c("p", [_vm._v(" These are animated with pure SVG, they will not be animated in Microsoft Edge, or Opera, and will look different in firefox. ")]), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Full Page Loading")]), _vm._m(0), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Standard")]), _c("div", { staticClass: "section" }, [_c("DemoSection", { attrs: { "title": "Standard", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_vm.isLoading ? _c("Loading", { attrs: { "loadingStrs": _vm.string }, on: { "closeLoading": function($event) {
+      _vm.isLoading = false;
+    } } }) : _vm._e()];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "s-button-container s-button-container--left" }, [_c("Button", { attrs: { "variation": "default", "title": "loading default" }, on: { "click": function($event) {
+    _vm.isLoading = true;
+  } } })], 1)]), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Semi-Opaque Background")]), _c("div", { staticClass: "section" }, [_c("DemoSection", { attrs: { "title": "Semi-Opaque Background", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_vm.isLoadingSemi ? _c("Loading", { attrs: { "semiOpaque": true, "loadingStrs": _vm.array, "isRandom": true }, on: { "closeLoading": function($event) {
+      _vm.isLoadingSemi = false;
+    } } }) : _vm._e()];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "s-button-container s-button-container--left" }, [_c("Button", { attrs: { "variation": "default", "title": "loading semi opaque" }, on: { "click": function($event) {
+    _vm.isLoadingSemi = true;
+  } } })], 1)]), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Full Page Loading - Swapped")]), _c("div", { staticClass: "section" }, [_c("DemoSection", { attrs: { "title": "Full Page Loading - Swapped", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_vm.isLoadingSwapped ? _c("Loading", { attrs: { "loadingStrs": _vm.array, "isRandom": true, "swapMode": true }, on: { "closeLoading": function($event) {
+      _vm.isLoadingSwapped = false;
+    } } }) : _vm._e()];
+  }, proxy: true }]) })], 1), _c("div", { staticClass: "s-button-container s-button-container--left" }, [_c("Button", { attrs: { "variation": "default", "title": "loading swapped option" }, on: { "click": function($event) {
+    _vm.isLoadingSwapped = true;
+  } } })], 1)]), _vm._m(1)])]), _c("div", { staticClass: "section" }, [_c("h2", [_vm._v("Section Loading Spinners")]), _vm._m(2), _c("h3", [_vm._v("Loading Spinner")]), _c("p", [_vm._v("This is the standard size for sections within a page layout.")]), _c("div", { staticClass: "section" }, [_c("DemoSection", { attrs: { "title": "Loading Spinner", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Spinner", { attrs: { "size": "small" } })];
+  }, proxy: true }]) })], 1), _c("h3", [_vm._v("Loading Spinner Large")]), _c("p", [_vm._v(" This is the large size spinner. It should only be used in large sections or full page transitions. ")]), _c("div", { staticClass: "section" }, [_c("DemoSection", { attrs: { "title": "Loading Spinner Large", "code": _vm.demoCode }, scopedSlots: _vm._u([{ key: "components", fn: function() {
+    return [_c("Spinner", { attrs: { "size": "large" } })];
+  }, proxy: true }]) })], 1), _vm._m(3)])]);
+};
+var _sfc_staticRenderFns = [function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("pre", [_c("code", [_vm._v("import { Loading } from 'streamlabs-beaker';\n\ncomponents: {\n  Loading\n}")])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("table", { staticClass: "docs-table" }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Props")]), _c("th", [_vm._v("Type")]), _c("th", [_vm._v("Default")]), _c("th", [_vm._v("Description")])])]), _c("tbody", [_c("tr", [_c("td", [_vm._v("loadingStrs")]), _c("td", [_vm._v("any[] | string")]), _c("td", [_vm._v("-")]), _c("td", [_vm._v(" Pass an array of stings into the loader. We recommend 3-4. Each shows for 4 seconds before it rotates. ")])]), _c("tr", [_c("td", [_vm._v("isRandom")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v(" Randomize the strings if you set "), _c("code", [_vm._v("loadingStrs")]), _vm._v("as an array ")])]), _c("tr", [_c("td", [_vm._v("semiOpaque")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v(" Sets the background overlay to semi-opacity rather than full opacity. ")])]), _c("tr", [_c("td", [_vm._v("swapMode")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v(" In case you need to swap day/night mode - used for Creator Sites. ")])]), _c("tr", [_c("td", [_vm._v("fixedBackground")]), _c("td", [_vm._v("boolean")]), _c("td", [_vm._v("true")]), _c("td", [_vm._v(" Allows loader to take dimensions of parent if set to "), _c("code", [_vm._v("false")])])])])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("pre", [_c("code", [_vm._v("import { Spinner } from 'streamlabs-beaker';\n\ncomponents: {\n  Spinner\n}")])]);
+}, function() {
+  var _vm = this, _c = _vm._self._c;
+  _vm._self._setupProxy;
+  return _c("table", { staticClass: "docs-table" }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Props")]), _c("th", [_vm._v("Type")]), _c("th", [_vm._v("Default")]), _c("th", [_vm._v("Description")])])]), _c("tbody", [_c("tr", [_c("td", [_vm._v("size")]), _c("td", [_vm._v("String")]), _c("td", [_vm._v("'small'")]), _c("td", [_vm._v("'small', 'large'")])]), _c("tr", [_c("td", [_vm._v("swap")]), _c("td", [_vm._v("Boolean")]), _c("td", [_vm._v("false")]), _c("td", [_vm._v(" If you need to swap day/night mode [ true ], default: [ false ] ")])])])]);
+}];
+var __component__ = /* @__PURE__ */ normalizeComponent(
+  Loaders$1,
+  _sfc_render,
+  _sfc_staticRenderFns,
+  false,
+  null,
+  null,
+  null,
+  null
+);
+const Loaders = __component__.exports;
+export {
+  Loaders as default
+};
 //# sourceMappingURL=Loaders.fb179e93.js.map
