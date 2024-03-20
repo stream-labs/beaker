@@ -1,0 +1,97 @@
+.s-item-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-gap: 16px;
+}
+.s-virtual-item {
+  background-color: #f5f8fa;
+  position: relative;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  padding: 16px;
+  border-radius: 8px;
+  -webkit-transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 160px;
+  max-width: 220px;
+}
+.s-virtual-item.is-selected {
+  background-color: #09161d;
+}
+.s-virtual-item.is-selected .s-virtual-item__name {
+  color: #ffffff;
+}
+.s-virtual-item.is-selected .s-virtual-item__rarity {
+  color: #bdc2c4;
+}
+.clickable.s-virtual-item:hover {
+  cursor: pointer;
+}
+.s-virtual-item__name {
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 0px;
+}
+.s-virtual-item__rarity {
+  margin-top: 8px;
+}
+.s-virtual-item__rarity .icon-check-mark {
+  margin-right: 8px;
+}
+.s-virtual-item__rarity.entered {
+  color: #80f5d2;
+}
+.s-virtual-item__selection-count {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #09161d;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 16px;
+  width: 16px;
+  height: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.s-virtual-item__selection-remaining {
+  position: absolute;
+  top: 16px;
+  right: 12px;
+  background: #4f5e65;
+  color: #ffffff;
+  border-radius: 4px;
+  padding: 4px;
+}
+.s-virtual-item__selection-remaining.warning {
+  background: #ff6f5b;
+}
+.s-virtual-item__img {
+  margin: 0 auto;
+  margin-bottom: 16px;
+  width: 96px;
+}
+.night .s-virtual-item,
+.night-theme .s-virtual-item {
+  background-color: #2b383f;
+}
+.night .s-virtual-item.is-selected,
+.night-theme .s-virtual-item.is-selected {
+  background-color: #09161d;
+}
+.container[data-v-628da7f4] {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+}

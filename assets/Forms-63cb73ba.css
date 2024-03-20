@@ -1,0 +1,101 @@
+.s-form-group-h {
+  margin-bottom: 16px;
+  display: grid;
+  grid-template-columns: repeat(12, [col-start] 1fr);
+  grid-column-gap: 16px;
+  grid-row-gap: 8px;
+}
+.s-form-group-h .s-tooltip {
+  margin-left: 8px;
+}
+.s-form-group-h__title {
+  grid-column: col-start / span 12;
+}
+.s-form-group-h__input-wrapper {
+  grid-column: col-start / span 12;
+}
+@media (min-width: 980px) {
+.s-form-group-h__title {
+    grid-column: col-start / span 3;
+}
+.s-form-group-h__input-wrapper {
+    grid-column: col-start 4 / span 9;
+}
+}
+.s-form-group-h__help-text {
+  color: #91979a;
+  font-size: 13px;
+  margin-top: 8px;
+}
+.s-form-group-v {
+  margin-bottom: 16px;
+}
+.s-form-group-v .s-tooltip {
+  margin-left: 8px;
+}
+.s-form-group-v__title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+.s-form-group-v__title--hidden {
+  margin-bottom: 0;
+}
+.s-form-group-v__title label {
+  margin-right: 8px;
+}
+.s-form-group-v__input-wrapper {
+  grid-column: col-start / span 12;
+}
+.s-form-group-v__help-text {
+  color: #91979a;
+  font-size: 13px;
+  margin-top: 8px;
+}
+.s-credit-card-form {
+  background-color: #f5f8fa;
+  border-radius: 4px;
+  padding: 24px;
+}
+.s-credit-card-form .v-select {
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+.s-credit-card-form__inputs {
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas: "cc-name cc-name cc-name cc-name" "cc-number cc-number cc-exp cc-cvc" "cc-zip cc-zip cc-country cc-country";
+}
+.s-credit-card-form__cc-number {
+  grid-area: cc-number;
+}
+.s-credit-card-form__cc-exp {
+  grid-area: cc-exp;
+}
+.s-credit-card-form__cc-zip {
+  grid-area: cc-zip;
+}
+.s-credit-card-form__cc-cvc {
+  grid-area: cc-cvc;
+}
+.s-credit-card-form__cc-country {
+  grid-area: cc-country;
+}
+.s-form {
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  grid-gap: 24px;
+}
+.s-form-group {
+  display: grid;
+  grid-gap: 16px;
+}

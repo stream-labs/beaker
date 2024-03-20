@@ -1,0 +1,102 @@
+.s-call-to-action-mq {
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-direction: column !important;
+          flex-direction: column !important;
+}
+.s-call-to-action-mq .s-button {
+  margin-left: 0px;
+}
+.s-call-to-action__thumb-mq {
+  margin-right: 0px !important;
+  margin-bottom: 30px;
+}
+.s-call-to-action__description-mq {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.s-title-mq {
+  margin-bottom: 5px !important;
+}
+.s-call-to-action {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  background-color: #f5f8fa;
+  padding: 24px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+.s-call-to-action .prime-bg {
+  position: absolute;
+  font-size: 144px;
+  color: #ffffff;
+  left: -51px;
+  bottom: -69px;
+  opacity: 0.16;
+}
+.s-call-to-action__thumb {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  background-color: #80f5d2;
+  border-radius: 4px;
+  margin-right: 24px;
+  padding: 16px;
+}
+.s-call-to-action__thumb img {
+  width: 100%;
+  height: 100%;
+}
+.s-call-to-action__description {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 3;
+      -ms-flex-positive: 3;
+          flex-grow: 3;
+}
+.s-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #09161d;
+  line-height: 130%;
+}
+.s-subtitle {
+  font-size: 14px;
+  color: #4f5e65;
+}
+.night .s-call-to-action,
+.night-theme .s-call-to-action {
+  background-color: #2b383f;
+}
+.night .s-title,
+.night-theme .s-title {
+  color: #ffffff;
+}
+.night .s-subtitle,
+.night-theme .s-subtitle {
+  color: #bdc2c4;
+}

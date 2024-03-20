@@ -1,0 +1,6 @@
+.s-form-group {
+  margin-bottom: 24px;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-gap: 16px;
+}

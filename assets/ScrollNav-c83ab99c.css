@@ -1,0 +1,77 @@
+.s-apps-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 8px;
+  padding-left: 8px;
+  position: relative;
+  max-width: none;
+  background-color: #f5f8fa;
+  border-bottom: 1px solid #e3e8eb;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 35px;
+          flex: 0 0 35px;
+  height: 35px;
+  z-index: 1;
+}
+.s-apps-tab__container {
+  display: inline-block;
+  overflow-x: auto;
+  white-space: nowrap;
+  overflow-y: hidden;
+}
+.s-apps-tab__container.s-has-prev {
+  margin-left: 16px;
+}
+.s-apps-tab__container.s-has-next {
+  margin-right: 16px;
+}
+.s-apps-nav-control {
+  cursor: pointer;
+}
+.s-apps-nav-control.s-has-prev {
+  margin-left: 8px;
+}
+.s-apps-nav-control.s-has-prev i {
+  margin-right: 5px;
+}
+.s-apps-nav-control.s-has-next {
+  margin-right: 8px;
+}
+.s-apps-nav-control.s-has-next i {
+  margin-left: 5px;
+}
+.s-apps-tab__container::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+.s-app-tab {
+  padding: 8px;
+  color: #4f5e65;
+  font-weight: 500;
+  cursor: pointer;
+}
+.s-app-tab.s-is-active {
+  color: #09161d;
+}
+.s-app-tab-icon {
+  margin-left: 4px;
+}
+.night-theme .s-apps-nav {
+  background-color: #17242d;
+  border-color: #2b383f;
+}
+.night-theme .s-app-tab {
+  color: #bdc2c4;
+}
+.night-theme .s-app-tab.s-is-active {
+  color: #ffffff;
+}

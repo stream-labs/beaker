@@ -1,0 +1,90 @@
+.s-tooltip-notice {
+  -webkit-box-shadow: 0 8px 16px rgba(9, 22, 29, 0.08);
+          box-shadow: 0 8px 16px rgba(9, 22, 29, 0.08);
+  background-color: #ffffff;
+  padding: 16px;
+  width: 200px;
+  border-radius: 4px;
+  z-index: 100;
+  position: absolute;
+}
+.s-tooltip-notice .s-button {
+  margin-top: 16px;
+}
+.s-tooltip-notice p {
+  margin-bottom: 0px;
+}
+.s-tooltip-notice h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #09161d;
+}
+.s-tooltip-notice-content {
+  position: relative;
+}
+.s-tooltip-notice__arrow {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  font-size: 40px;
+  position: absolute;
+  top: 8px;
+  left: -36px;
+  color: #ffffff;
+}
+.s-tooltip-notice__arrow--top {
+  top: -38px;
+  left: 126px;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.s-tooltip-notice__arrow--bottom {
+  top: 8px;
+  left: -36px;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+.s-tooltip-notice__arrow--right {
+  top: 8px;
+  left: -36px;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+.s-tooltip-notice__secondary-action {
+  margin-left: 16px;
+}
+.night .s-tooltip-notice,
+.night-theme .s-tooltip-notice {
+  background-color: #2b383f;
+}
+.night .s-tooltip-notice h3,
+.night-theme .s-tooltip-notice h3 {
+  color: #ffffff;
+}
+.night .s-tooltip-notice__arrow,
+.night-theme .s-tooltip-notice__arrow {
+  color: #2b383f;
+}
+[data-v-1e8a3ca9] .s-demo-section__content {
+  height: 330px;
+}
+[data-v-1e8a3ca9] .s-demo-section__content .s-tooltip-notice:nth-child(1) {
+  top: 0px;
+  left: 0px;
+}
+[data-v-1e8a3ca9] .s-demo-section__content .s-tooltip-notice:nth-child(2) {
+  top: 0;
+  left: 250px;
+}
+[data-v-1e8a3ca9] .s-demo-section__content .s-tooltip-notice:nth-child(3) {
+  top: 0;
+  left: 500px;
+}
+[data-v-1e8a3ca9] .s-demo-section__content .s-tooltip-notice:nth-child(4) {
+  top: 169px;
+  left: 0;
+}
+[data-v-1e8a3ca9] .s-demo-section__content .s-tooltip-notice:nth-child(5) {
+  top: 169px;
+  left: 350px;
+}

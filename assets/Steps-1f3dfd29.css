@@ -1,0 +1,88 @@
+.s-step[data-v-ae29c310] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #4f5e65;
+  border-radius: 4px;
+  padding: 12px;
+  padding-right: 12px;
+  padding-left: 12px;
+}
+.s-step__title[data-v-ae29c310] {
+  color: #ffffff;
+  line-height: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.s-step__title-text[data-v-ae29c310] {
+  margin: 0px;
+  color: #ffffff;
+  font-weight: 500;
+}
+.s-step__icon[data-v-ae29c310] {
+  margin-right: 8px;
+}
+.s-step__badge[data-v-ae29c310] {
+  margin-left: 8px;
+}
+.s-step--completed[data-v-ae29c310] {
+  color: #4f5e65;
+  background: #2b383f;
+}
+.s-step--completed .s-step__icon[data-v-ae29c310],
+.s-step--completed .s-step__title-text[data-v-ae29c310],
+.s-step--completed .s-step__badge[data-v-ae29c310] {
+  color: #4f5e65;
+}
+.checked .s-step__title-text[data-v-ae29c310] {
+  text-decoration: line-through;
+}
+.night .s-step__title-text[data-v-ae29c310],
+.night-theme .s-step__title-text[data-v-ae29c310] {
+  color: #ffffff;
+}
+.night .s-step--completed[data-v-ae29c310],
+.night-theme .s-step--completed[data-v-ae29c310] {
+  color: #4f5e65;
+}
+.night .s-step--completed .s-step__icon[data-v-ae29c310],
+.night-theme .s-step--completed .s-step__icon[data-v-ae29c310],
+.night .s-step--completed .s-step__title-text[data-v-ae29c310],
+.night-theme .s-step--completed .s-step__title-text[data-v-ae29c310],
+.night .s-step--completed .s-step__badge[data-v-ae29c310],
+.night-theme .s-step--completed .s-step__badge[data-v-ae29c310] {
+  color: #4f5e65;
+}
+.info[data-v-2ab8e317] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.info p[data-v-2ab8e317] {
+  margin: 0px;
+  margin-right: 15px;
+  color: #4f5e65;
+  background: #ceffed;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 8px;
+}

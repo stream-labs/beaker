@@ -1,0 +1,195 @@
+.s-form-field {
+  position: relative;
+}
+.s-form-field--disabled {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: not-allowed;
+}
+.s-form-field--disabled + label {
+  border-color: #e3e8eb;
+  background-color: #e3e8eb;
+}
+.s-form-field .s-form-field__input--disabled + label {
+  background-color: #e3e8eb;
+  color: #91979a;
+}
+.s-form-field .s-form-field__input::-webkit-outer-spin-button,
+.s-form-field .s-form-field__input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0;
+  /* <-- Apparently some margin are still there even though it's hidden */
+}
+.s-form-field input[type="number"] {
+  -moz-appearance: textfield;
+  /* Firefox */
+  padding-right: 30px;
+}
+.s-form-field .s-arrows {
+  height: 40px;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 8px;
+  bottom: 0;
+  left: auto;
+  -webkit-transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+  width: 30px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+.s-form-field .s-arrows:hover {
+  opacity: 1;
+}
+.s-form-field .s-arrows .s-arrow {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+.s-form-field .s-arrows .s-arrow .fas {
+  position: relative;
+  font-size: 12px;
+}
+.s-form-field .s-arrows .s-arrow:active {
+  color: black;
+}
+.s-form-field .s-arrows .s-arrow.arrow-up {
+  display: block;
+  position: absolute;
+  top: 6px;
+  right: 3px;
+  bottom: auto;
+  left: auto;
+}
+.s-form-field .s-arrows .s-arrow.arrow-down {
+  display: block;
+  position: absolute;
+  top: auto;
+  right: 3px;
+  bottom: 6px;
+  left: auto;
+}
+.s-form-field .s-arrow--disabled {
+  color: #e3e8eb;
+  cursor: default;
+}
+.s-form-field__label {
+  position: absolute;
+  color: #4f5e65;
+  left: 8px;
+  top: 12px;
+  border-radius: 4px;
+}
+.s-form-field__error-text,
+.s-form-field__help-text {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+.s-form-field__error-text .icon-error,
+.s-form-field__help-text .icon-error {
+  margin-left: 8px;
+}
+.s-form-field--with-label {
+  position: relative;
+}
+.s-form-field--with-label label {
+  -webkit-box-ordinal-group: 0;
+      -ms-flex-order: -1;
+          order: -1;
+  -webkit-transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+  pointer-events: none;
+  background-color: #ffffff;
+  padding: 0 4px;
+  line-height: 130%;
+}
+.s-form-field--with-label .s-form-field__input:focus + label,
+.s-form-field--with-label .s-form-field__label--top {
+  -webkit-transform: translateY(-20px);
+          transform: translateY(-20px);
+  font-size: 12px;
+  font-weight: 500;
+}
+.s-form-field--with-label .s-form-field__input:not(".s-form-field__input--error"):focus + label {
+  color: #09161d;
+}
+.s-form-field--with-label .s-form-field--top {
+  color: #4f5e65;
+}
+.s-form-field--with-label ::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: transparent;
+}
+.s-form-field--with-label ::-moz-placeholder {
+  /* Firefox 19+ */
+  color: transparent;
+}
+.s-form-field--with-label :-ms-input-placeholder {
+  /* IE 10+ */
+  color: transparent;
+}
+.s-form-field--with-label :-moz-placeholder {
+  /* Firefox 18- */
+  color: transparent;
+}
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #4f5e65;
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #4f5e65;
+}
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #4f5e65;
+}
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #4f5e65;
+}
+.night .s-form-field .s-form-field__input--disabled + label,
+.night-theme .s-form-field .s-form-field__input--disabled + label {
+  background-color: #2b383f;
+}
+.night .s-form-field--with-label,
+.night-theme .s-form-field--with-label {
+  position: relative;
+}
+.night .s-form-field--with-label .s-form-field__input:not("[class*=__input--error]"):focus + label,
+.night-theme .s-form-field--with-label .s-form-field__input:not("[class*=__input--error]"):focus + label {
+  color: #ffffff;
+}
+.night .s-form-field__label,
+.night-theme .s-form-field__label {
+  background-color: #17242d;
+  color: #bdc2c4;
+}
+.night .s-form-field__label--error,
+.night-theme .s-form-field__label--error,
+.night .s-form-field__error-text,
+.night-theme .s-form-field__error-text {
+  color: #ff6f5b;
+}
+.night .s-arrow--disabled,
+.night-theme .s-arrow--disabled {
+  color: #2b383f;
+}
