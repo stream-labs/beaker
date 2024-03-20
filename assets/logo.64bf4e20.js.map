@@ -1,1 +1,1 @@
-{"version":3,"file":"logo.64bf4e20.js","sources":["../../src/assets/imgs/logo.svg"],"sourcesContent":["export default \"__VITE_ASSET__a9e10a54__\""],"names":[],"mappings":"AAAA,MAAe,OAAA;"}
+{"version":3,"file":"logo.64bf4e20.js","sources":["../../src/assets/imgs/logo.svg"],"sourcesContent":["export default \"__VITE_ASSET__a9e10a54__\""],"names":["logo"],"mappings":"AAAA,MAAeA,EAAA"}

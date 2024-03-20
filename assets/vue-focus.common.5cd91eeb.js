@@ -1,0 +1,2 @@
+import{V as r}from"./index.17a864f5.js";var e=r;e="default"in e?e.default:e;var a="2.1.0",s=/^2\./.test(e.version);s||e.util.warn("VueFocus "+a+" only supports Vue 2.x, and does not support Vue "+e.version);var t={inserted:function(u,o){o.value?u.focus():u.blur()},componentUpdated:function(u,o){o.modifiers.lazy&&Boolean(o.value)===Boolean(o.oldValue)||(o.value?u.focus():u.blur())}},i={directives:{focus:t}},l=i;export{l as m};
+//# sourceMappingURL=vue-focus.common.5cd91eeb.js.map
