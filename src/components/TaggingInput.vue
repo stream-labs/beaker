@@ -1,217 +1,235 @@
 <template>
-  <div class="s-tagging-input">
-    <div class="s-tagging-input__container">
-      <text-input
-        :label="label"
-        :placeholder="placeholder"
-        :name="name"
-        v-model="textInputValue"
-        v-validate="inputValidation"
-        type="text"
-        slot="input"
-        :error="errors.first(name)"
-        v-on="filteredListeners"
-        @keydown.enter.prevent="onAdd"
-      />
-
-      <Button
-        :variation="buttonVariation"
-        :title="buttonText"
-        @click="onAdd"
-        :disabled="value.length >= maxItems"
-        type="button"
-      ></Button>
-    </div>
-
-    <div class="s-tagging-input__tags">
-      <div v-for="(tag, index) in value" :key="index" :class="tagClasses">
-        <div class="s-tagging-input__tag-text">{{ tag }}</div>
-        <i
-          class="s-tagging-input__tag-icon icon-close"
-          @click="onRemove(index)"
-        ></i>
-      </div>
-    </div>
-  </div>
+	<div class="s-tagging-input">
+		<div class="s-tagging-input__container">
+			<text-input
+				v-model="input"
+				v-validate="inputValidation"
+				slot="input"
+				:name="name"
+				:label="label"
+				:placeholder="placeholder"
+				type="text"
+				:error="errors.first(name)"
+				@input="$emit('update:text', $event)"
+				@keydown.enter.prevent="onAdd"
+			/>
+			<Button
+				:title="buttonText"
+				type="button"
+				:variation="buttonVariation"
+				:disabled="value.length >= maxItems"
+				@click="onAdd"
+			></Button>
+		</div>
+		<div class="s-tagging-input__tags">
+			<div
+				v-for="(tag, index) in value"
+				:key="index"
+				class="s-tagging-input-tag"
+				:class="[`s-tagging-input-tag--${tagVariation}`]"
+			>
+				<div class="s-tagging-input-tag__text">{{ tag }}</div>
+				<i
+					class="s-tagging-input-tag__icon icon-close"
+					@click="onRemove(index)"
+				></i>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import TextInput from "./TextInput.vue";
 import TextArea from "./TextArea.vue";
 import Button from "./Button.vue";
-import { omit } from "lodash-es";
 
 @Component({
-  components: {
-    TextInput,
-    TextArea,
-    Button
-  }
+	components: {
+		TextInput,
+		TextArea,
+		Button,
+	},
 })
 export default class TaggingInput extends Vue {
-  @Prop()
-  name!: string;
+	@Prop()
+	name!: string;
 
-  @Prop()
-  label!: string;
+	@Prop()
+	label!: string;
 
-  @Prop()
-  placeholder!: string;
+	@Prop()
+	placeholder!: string;
 
-  @Prop({ default: "Add Tag" })
-  buttonText!: string;
+	@Prop({ default: "Add Tag" })
+	buttonText!: string;
 
-  @Prop({ default: "default" })
-  buttonVariation!: string;
+	@Prop({ default: "default" })
+	buttonVariation!: string;
 
-  @Prop({ default: () => [] })
-  value!: string[];
+	@Prop({ default: () => [] })
+	value!: string[];
 
-  @Prop()
-  inputValidation!: string;
+	@Prop({ default: "" })
+	text!: string;
 
-  @Prop()
-  prefix!: string;
+	@Prop()
+	inputValidation!: string;
 
-  @Prop({ default: "default" })
-  tagVariation!: string;
+	@Prop()
+	prefix!: string;
 
-  @Prop({ default: 25 })
-  maxItems!: number;
+	@Prop({ default: "default" })
+	tagVariation!: string;
 
-  textInputValue: string = "";
+	@Prop({ default: 25 })
+	maxItems!: number;
 
-  get tagClasses() {
-    return `s-tagging-input__tag s-tagging-input__tag--${this.tagVariation}`;
-  }
+	input: string = "";
+	tags = [];
 
-  get filteredListeners() {
-    return omit(this.$listeners, ["input"]);
-  }
+	@Watch("value", { immediate: true })
+	watchValue(newValue) {
+		this.tags = newValue;
+	}
 
-  onAdd() {
-    if (
-      this.$validator.errors.items.length !== 0 ||
-      this.value.length >= this.maxItems
-    ) {
-      return;
-    }
+	@Watch("text", { immediate: true })
+	watchText(newValue) {
+		this.input = newValue;
+	}
 
-    this.textInputValue = this.textInputValue.trim();
+	onAdd() {
+		if (this.$validator.errors.items.length !== 0) {
+			this.$emit("error", this.$validator.errors.items, false);
+			return;
+		}
 
-    const found = this.value.find(v => {
-      if (this.prefix && !this.textInputValue.startsWith(this.prefix)) {
-        return (
-          v.toLowerCase() ===
-          this.prefix + this.textInputValue.trim().toLowerCase()
-        );
-      } else {
-        return v.toLowerCase() === this.textInputValue.trim().toLowerCase();
-      }
-    });
+		if (this.tags.length >= this.maxItems) {
+			this.$emit("error", ["Max items reached"], true);
+			return;
+		}
 
-    if (!found && this.textInputValue.length !== 0) {
-      if (this.prefix && !this.textInputValue.startsWith(this.prefix)) {
-        this.textInputValue = this.prefix + this.textInputValue;
-      }
+		let inputValue = this.input.trim();
 
-      this.value.push(this.textInputValue);
-    }
+		const found = this.tags.find((v) => {
+			if (this.prefix && !inputValue.startsWith(this.prefix)) {
+				return (
+					v.toLowerCase() === this.prefix + inputValue.trim().toLowerCase()
+				);
+			} else {
+				return v.toLowerCase() === inputValue.trim().toLowerCase();
+			}
+		});
 
-    this.textInputValue = "";
-  }
+		if (!found && inputValue.length !== 0) {
+			if (this.prefix && !inputValue.startsWith(this.prefix)) {
+				inputValue = this.prefix + inputValue;
+			}
+			this.tags.push(inputValue);
+			this.input = "";
+			this.emitTagEvents("add");
+		}
+	}
 
-  onRemove(index) {
-    this.value.splice(index, 1);
-  }
+	onRemove(index: number) {
+		this.tags.splice(index, 1);
+		this.emitTagEvents("remove");
+	}
+
+	emitTagEvents(...events) {
+		["input", "change", "update:value", ...events].forEach((event) =>
+			this.$emit(event, this.tags)
+		);
+	}
 }
 </script>
 
 <style lang="less">
 @import (reference) "./../styles/Imports";
+
 .s-tagging-input {
-  .s-tagging-input__container {
-    display: flex;
+	.s-tagging-input__container {
+		display: flex;
+		.s-form-field {
+			flex: 1;
+			.margin-right(2);
+		}
+	}
 
-    .s-form-field {
-      flex: 1;
-      .margin-right(2);
-    }
-  }
+	.s-tagging-input {
+		&__tags {
+			display: flex;
+			flex-wrap: wrap;
+			.margin-top();
+			max-height: 300px;
+			overflow-y: auto;
+		}
 
-  .s-tagging-input__tags {
-    display: flex;
-    flex-wrap: wrap;
-    .margin-top();
+		&-tag {
+			display: flex;
+			align-items: center;
+			height: 24px;
+			.margin-right();
+			.margin-top();
+			padding: 0 4px;
+			border-radius: 2px;
+			font-size: 14px;
+			line-height: 1.14;
+			color: white;
 
-    .s-tagging-input__tag {
-      display: flex;
-      align-items: center;
-      height: 24px;
-      .margin-right();
-      .margin-top();
-      padding: 0 4px;
-      border-radius: 2px;
-      font-size: 14px;
-      line-height: 1.14;
-      color: white;
+			&:last-of-type {
+				.margin-right(0);
+			}
 
-      &:last-of-type {
-        .margin-right(0);
-      }
-    }
+			&--default {
+				color: @day-title;
+				border-color: @day-button;
+				background: @day-button;
+			}
 
-    .s-tagging-input__tag-icon {
-      margin-left: 4px;
-      font-size: 10px;
-      color: @light-5;
-      cursor: pointer;
-    }
+			&--action {
+				background-color: @teal;
+			}
 
-    .s-tagging-input__tag-text {
-      font-weight: 500;
-      -webkit-user-select: none; /* Safari */
-      -moz-user-select: none; /* Firefox */
-      -ms-user-select: none; /* IE10+/Edge */
-      user-select: none; /* Standard */
-    }
+			&--warning {
+				background-color: @warning;
+			}
 
-    .s-tagging-input__tag--default {
-      color: @day-title;
-      border-color: @day-button;
-      background: @day-button;
-    }
+			&__icon {
+				margin-left: 4px;
+				font-size: 10px;
+				color: @light-5;
+				cursor: pointer;
+			}
 
-    .s-tagging-input__tag--action {
-      background-color: @teal;
-    }
-
-    .s-tagging-input__tag--warning {
-      background-color: @warning;
-    }
-
-    max-height: 300px;
-    overflow-y: auto;
-  }
+			&__text {
+				font-weight: 500;
+				-webkit-user-select: none; /* Safari */
+				-moz-user-select: none; /* Firefox */
+				-ms-user-select: none; /* IE10+/Edge */
+				user-select: none; /* Standard */
+			}
+		}
+	}
 }
-
 .night,
 .night-theme {
-  .s-tagging-input {
-    .s-tagging-input__tag--default {
-      color: @night-title;
-      border-color: @night-button;
-      background: @night-button;
-    }
+	.s-tagging-input {
+		&-tag {
+			&--default {
+				color: @night-title;
+				border-color: @night-button;
+				background: @night-button;
+			}
 
-    .s-tagging-input__tag--action {
-      background-color: @teal;
-    }
+			&--action {
+				background-color: @teal;
+			}
 
-    .s-tagging-input__tag--warning {
-      background-color: @warning;
-    }
-  }
+			&--warning {
+				background-color: @warning;
+			}
+		}
+	}
 }
 </style>
