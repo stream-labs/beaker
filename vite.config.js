@@ -1,13 +1,14 @@
-import { defineConfig } from 'vite'
-import { createVuePlugin } from 'vite-plugin-vue2'
+import { defineConfig } from "vite";
+import { createVuePlugin } from "vite-plugin-vue2";
 
 export default defineConfig({
-  base: '/beaker/',
+  base: "/beaker/",
   plugins: [createVuePlugin()],
   build: {
+    minify: false,
     sourcemap: true,
     commonjsOptions: {
-      requireReturnsDefault: true
-    }
-  }
-})
+      requireReturnsDefault: true,
+    },
+  },
+});
