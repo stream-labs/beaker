@@ -19,8 +19,9 @@
 				:variation="buttonVariation"
 				:disabled="value.length >= maxItems"
 				@click="onAdd"
-			></Button>
+			/>
 		</div>
+
 		<div class="s-tagging-input__tags">
 			<div
 				v-for="(tag, index) in value"
@@ -32,7 +33,7 @@
 				<i
 					class="s-tagging-input-tag__icon icon-close"
 					@click="onRemove(index)"
-				></i>
+				/>
 			</div>
 		</div>
 	</div>
@@ -86,7 +87,7 @@ export default class TaggingInput extends Vue {
 	maxItems!: number;
 
 	input: string = "";
-	tags = [];
+	tags: string[] = [];
 
 	@Watch("value", { immediate: true })
 	watchValue(newValue) {
@@ -143,7 +144,6 @@ export default class TaggingInput extends Vue {
 	}
 }
 </script>
-
 <style lang="less">
 @import (reference) "./../styles/Imports";
 
