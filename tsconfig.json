@@ -17,13 +17,12 @@
 		"isolatedModules": true,
 		"sourceMap": true,
 		"noEmit": true,
-		"jsx": "preserve",
+		"jsx": "react-jsx",
 		"baseUrl": ".",
 		"paths": {
 			"@/*": ["src/*"]
 		},
-		"lib": ["esnext", "dom", "dom.iterable", "scripthost"],
-		"types": ["webpack-env"]
+		"lib": ["DOM", "DOM.Iterable", "ESNext"]
 	},
 	"references": [{ "path": "./tsconfig.vite.json" }],
 	"vueCompilerOptions": {
