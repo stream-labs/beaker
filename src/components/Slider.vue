@@ -3,7 +3,7 @@
     class="s-slider"
     :class="{
       's-slider--simple': simpleTheme,
-      's-slider--has-tooltip': tooltip === 'always'
+      's-slider--has-tooltip': tooltip === 'always',
     }"
     :width="width"
     :height="8"
@@ -17,7 +17,9 @@
     :tooltip-formatter="prefix + '{value}' + suffix"
     :data="data"
     :disabled="disabled"
-    @change="value => emitInput(value)"
+    v-bind="$attrs"
+    v-on="$listeners"
+    @change="(value) => emitInput(value)"
     ref="slider"
   />
 </template>
@@ -26,12 +28,12 @@
 import { Component, Prop, Watch, Vue } from "vue-property-decorator";
 import VueSliderComponent from "vue-slider-component";
 import ResizeObserver from "resize-observer-polyfill";
-import 'vue-slider-component/theme/default.css'
+import "vue-slider-component/theme/default.css";
 
 @Component({
   components: {
-    VueSliderComponent
-  }
+    VueSliderComponent,
+  },
 })
 export default class Slider extends Vue {
   $refs!: {
@@ -119,7 +121,7 @@ export default class Slider extends Vue {
   }
 
   debounce() {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       if (!this.debounced) {
         this.debounced = true;
         setTimeout(() => {
