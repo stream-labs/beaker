@@ -357,8 +357,8 @@ import ModalsCode from "./Modals.vue?raw";
   components: {
     Button,
     DemoSection,
-    ModalComp
-  }
+    ModalComp,
+  },
 })
 export default class Modals extends Vue {
   demoCode = ModalsCode;
