@@ -59,8 +59,8 @@ import Button from "./../components/Button.vue";
 
 @Component({
   components: {
-    "s-button": Button,
-  },
+    "s-button": Button
+  }
 })
 export default class PrimeIntro extends Vue {
   @Prop({ default: "Join Prime" })

@@ -135,6 +135,25 @@ components: {
     </div>
 
     <div class="section">
+      <h3>Open/Close Icon</h3>
+      <DemoSection title="Open/Close Settings" :code="demoCode">
+        <template #components>
+          <Accordion opened-title="Hide Content" closed-title="Show Content">
+            <template #open-close-icon="{isOpen}">
+              <transition name="fadeFast" mode="out-in">
+                <i v-if="!isOpen" key="open" class="icon-down" />
+                <i v-else key="close" class="icon-back" />
+              </transition>
+            </template>
+            <div slot="content">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            </div>
+          </Accordion>
+        </template>
+      </DemoSection>
+    </div>
+
+    <div class="section">
       <table class="docs-table">
         <thead>
           <tr>
@@ -197,7 +216,7 @@ components: {
 import { Component, Vue } from "vue-property-decorator";
 
 import Accordion from "./../components/Accordion.vue";
-import AccordionCode from "!!raw-loader!./Accordions.vue";
+import AccordionCode from "./Accordions.vue?raw";
 import DemoSection from "./../components/DemoSection.vue";
 
 @Component({

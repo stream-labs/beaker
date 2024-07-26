@@ -2,52 +2,55 @@
   <div class="s-tagging-input">
     <div class="s-tagging-input__container">
       <text-input
+        v-model="input"
+        v-validate="inputValidation"
+        slot="input"
+        :name="name"
         :label="label"
         :placeholder="placeholder"
-        :name="name"
-        v-model="textInputValue"
-        v-validate="inputValidation"
         type="text"
-        slot="input"
         :error="errors.first(name)"
-        v-on="filteredListeners"
+        @input="$emit('update:text', $event)"
         @keydown.enter.prevent="onAdd"
       />
-
       <Button
-        :variation="buttonVariation"
         :title="buttonText"
-        @click="onAdd"
-        :disabled="value.length >= maxItems"
         type="button"
-      ></Button>
+        :variation="buttonVariation"
+        :disabled="value.length >= maxItems"
+        @click="onAdd"
+      />
     </div>
 
     <div class="s-tagging-input__tags">
-      <div v-for="(tag, index) in value" :key="index" :class="tagClasses">
-        <div class="s-tagging-input__tag-text">{{ tag }}</div>
+      <div
+        v-for="(tag, index) in value"
+        :key="index"
+        class="s-tagging-input-tag"
+        :class="[`s-tagging-input-tag--${tagVariation}`]"
+      >
+        <div class="s-tagging-input-tag__text">{{ tag }}</div>
         <i
-          class="s-tagging-input__tag-icon icon-close"
+          class="s-tagging-input-tag__icon icon-close"
           @click="onRemove(index)"
-        ></i>
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import TextInput from "./TextInput.vue";
 import TextArea from "./TextArea.vue";
 import Button from "./Button.vue";
-import { omit } from "lodash";
 
 @Component({
   components: {
     TextInput,
     TextArea,
-    Button
-  }
+    Button,
+  },
 })
 export default class TaggingInput extends Vue {
   @Prop()
@@ -68,6 +71,9 @@ export default class TaggingInput extends Vue {
   @Prop({ default: () => [] })
   value!: string[];
 
+  @Prop({ default: "" })
+  text!: string;
+
   @Prop()
   inputValidation!: string;
 
@@ -80,72 +86,86 @@ export default class TaggingInput extends Vue {
   @Prop({ default: 25 })
   maxItems!: number;
 
-  textInputValue: string = "";
+  input: string = "";
+  tags: string[] = [];
 
-  get tagClasses() {
-    return `s-tagging-input__tag s-tagging-input__tag--${this.tagVariation}`;
+  @Watch("value", { immediate: true })
+  watchValue(newValue) {
+    this.tags = newValue;
   }
 
-  get filteredListeners() {
-    return omit(this.$listeners, ["input"]);
+  @Watch("text", { immediate: true })
+  watchText(newValue) {
+    this.input = newValue;
   }
 
   onAdd() {
-    if (
-      this.$validator.errors.items.length !== 0 ||
-      this.value.length >= this.maxItems
-    ) {
+    if (this.$validator.errors.items.length !== 0) {
+      this.$emit("error", this.$validator.errors.items, false);
       return;
     }
 
-    this.textInputValue = this.textInputValue.trim();
+    if (this.tags.length >= this.maxItems) {
+      this.$emit("error", ["Max items reached"], true);
+      return;
+    }
 
-    const found = this.value.find(v => {
-      if (this.prefix && !this.textInputValue.startsWith(this.prefix)) {
+    let inputValue = this.input.trim();
+
+    const found = this.tags.find((v) => {
+      if (this.prefix && !inputValue.startsWith(this.prefix)) {
         return (
-          v.toLowerCase() ===
-          this.prefix + this.textInputValue.trim().toLowerCase()
+          v.toLowerCase() === this.prefix + inputValue.trim().toLowerCase()
         );
       } else {
-        return v.toLowerCase() === this.textInputValue.trim().toLowerCase();
+        return v.toLowerCase() === inputValue.trim().toLowerCase();
       }
     });
 
-    if (!found && this.textInputValue.length !== 0) {
-      if (this.prefix && !this.textInputValue.startsWith(this.prefix)) {
-        this.textInputValue = this.prefix + this.textInputValue;
+    if (!found && inputValue.length !== 0) {
+      if (this.prefix && !inputValue.startsWith(this.prefix)) {
+        inputValue = this.prefix + inputValue;
       }
-
-      this.value.push(this.textInputValue);
+      this.tags.push(inputValue);
+      this.input = "";
+      this.emitTagEvents("add");
     }
-
-    this.textInputValue = "";
   }
 
-  onRemove(index) {
-    this.value.splice(index, 1);
+  onRemove(index: number) {
+    this.tags.splice(index, 1);
+    this.emitTagEvents("remove");
+  }
+
+  emitTagEvents(...events) {
+    ["input", "change", "update:value", ...events].forEach((event) =>
+      this.$emit(event, this.tags)
+    );
   }
 }
 </script>
-
 <style lang="less">
 @import (reference) "./../styles/Imports";
+
 .s-tagging-input {
   .s-tagging-input__container {
     display: flex;
-
     .s-form-field {
       flex: 1;
       .margin-right(2);
     }
   }
 
-  .s-tagging-input__tags {
-    display: flex;
-    flex-wrap: wrap;
-    .margin-top();
+  .s-tagging-input {
+    &__tags {
+      display: flex;
+      flex-wrap: wrap;
+      .margin-top();
+      max-height: 300px;
+      overflow-y: auto;
+    }
 
-    .s-tagging-input__tag {
+    &-tag {
       display: flex;
       align-items: center;
       height: 24px;
@@ -160,57 +180,55 @@ export default class TaggingInput extends Vue {
       &:last-of-type {
         .margin-right(0);
       }
-    }
 
-    .s-tagging-input__tag-icon {
-      margin-left: 4px;
-      font-size: 10px;
-      color: @light-5;
-      cursor: pointer;
-    }
+      &--default {
+        color: @day-title;
+        border-color: @day-button;
+        background: @day-button;
+      }
 
-    .s-tagging-input__tag-text {
-      font-weight: 500;
-      -webkit-user-select: none; /* Safari */
-      -moz-user-select: none; /* Firefox */
-      -ms-user-select: none; /* IE10+/Edge */
-      user-select: none; /* Standard */
-    }
+      &--action {
+        background-color: @teal;
+      }
 
-    .s-tagging-input__tag--default {
-      color: @day-title;
-      border-color: @day-button;
-      background: @day-button;
-    }
+      &--warning {
+        background-color: @warning;
+      }
 
-    .s-tagging-input__tag--action {
-      background-color: @teal;
-    }
+      &__icon {
+        margin-left: 4px;
+        font-size: 10px;
+        color: @light-5;
+        cursor: pointer;
+      }
 
-    .s-tagging-input__tag--warning {
-      background-color: @warning;
+      &__text {
+        font-weight: 500;
+        -webkit-user-select: none; /* Safari */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* IE10+/Edge */
+        user-select: none; /* Standard */
+      }
     }
-
-    max-height: 300px;
-    overflow-y: auto;
   }
 }
-
 .night,
 .night-theme {
   .s-tagging-input {
-    .s-tagging-input__tag--default {
-      color: @night-title;
-      border-color: @night-button;
-      background: @night-button;
-    }
+    &-tag {
+      &--default {
+        color: @night-title;
+        border-color: @night-button;
+        background: @night-button;
+      }
 
-    .s-tagging-input__tag--action {
-      background-color: @teal;
-    }
+      &--action {
+        background-color: @teal;
+      }
 
-    .s-tagging-input__tag--warning {
-      background-color: @warning;
+      &--warning {
+        background-color: @warning;
+      }
     }
   }
 }

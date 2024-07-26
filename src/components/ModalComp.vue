@@ -117,8 +117,8 @@ Vue.use(VModal);
     ModalRedirect,
     ModalConfirmation,
     ModalPrime,
-    ModalPrimeIntro
-  }
+    ModalPrimeIntro,
+  },
 })
 export default class ModalComp extends Vue {
   @Prop()
@@ -133,7 +133,18 @@ export default class ModalComp extends Vue {
   @Prop()
   scrollable!: boolean;
 
-  @Prop()
+  @Prop({
+    required: true,
+    validator: (v: string) =>
+      [
+        "basic",
+        "subscribe",
+        "redirect",
+        "confirmation",
+        "welcome-prime",
+        "prime-intro",
+      ].includes(v),
+  })
   type!: string;
 
   @Prop()
@@ -187,62 +198,8 @@ export default class ModalComp extends Vue {
   @Prop()
   clickToClose!: boolean;
 
-  modalName: string = "";
-
-  mounted() {
-    this.selectName();
-  }
-
-  selectName() {
-    switch (this.type) {
-      case "basic":
-        if (this.name) {
-          this.modalName = this.name;
-        } else {
-          this.modalName = "modal-basic";
-        }
-        break;
-
-      case "subscribe":
-        if (this.name) {
-          this.modalName = this.name;
-        } else {
-          this.modalName = "modal-subscribe";
-        }
-        break;
-
-      case "redirect":
-        if (this.name) {
-          this.modalName = this.name;
-        } else {
-          this.modalName = "modal-redirect";
-        }
-        break;
-
-      case "confirmation":
-        if (this.name) {
-          this.modalName = this.name;
-        } else {
-          this.modalName = "modal-confirmation";
-        }
-        break;
-
-      case "welcome-prime":
-        if (this.name) {
-          this.modalName = this.name;
-        } else {
-          this.modalName = "modal-welcome-prime";
-        }
-        break;
-
-      case "prime-intro":
-        if (this.name) {
-          this.modalName = this.name;
-        } else {
-          this.modalName = "modal-prime-intro";
-        }
-        break;
-    }
+  get modalName() {
+    return this.name || `modal-${this.type}`;
   }
 }
 </script>

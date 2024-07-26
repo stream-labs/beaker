@@ -32,6 +32,7 @@ components: {
               >Custom</Badge
             >
             <Badge variant="prime" :align-left="true" />
+            <Badge variant="ultra" :align-left="true" />
           </template>
         </DemoSection>
       </div>
@@ -209,7 +210,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 import Accordion from "./../components/Accordion.vue";
 import Badge from "./../components/Badge.vue";
-import BadgesCode from "!!raw-loader!./Badges.vue";
+import BadgesCode from "./Badges.vue?raw";
 import Callout from "./../components/Callout.vue";
 import DemoSection from "./../components/DemoSection.vue";
 

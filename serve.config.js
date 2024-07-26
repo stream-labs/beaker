@@ -12,6 +12,8 @@ const json = require("rollup-plugin-json");
 const minify = require("rollup-plugin-babel-minify");
 const serve = require("rollup-plugin-serve");
 
+import { terser } from "rollup-plugin-terser";
+
 module.exports = {
   input: "src/main.js",
   output: {
@@ -32,7 +34,8 @@ module.exports = {
     svg(),
     image(),
     json(),
-    // minify(),
+    // minify({ mangle: false }),
+    terser(),
     replace({ "process.env.NODE_ENV": JSON.stringify("production") }),
     serve({ contentBase: "public", open: true })
   ]

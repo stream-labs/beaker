@@ -69,7 +69,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-import { omit, isNil } from "lodash";
+import { omit, isNil } from "lodash-es";
 
 @Component({})
 export default class TextInput extends Vue {

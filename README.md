@@ -7,12 +7,17 @@ yarn install
 
 ### Compiles and hot-reloads for development
 ```
-yarn run serve
+yarn run dev
 ```
 
-### Compiles and minifies for production
+### Compiles for production on GitHub
 ```
 yarn run build
+```
+
+### Compiles for production
+```
+yarn run build:publish
 ```
 
 ### Run your tests
@@ -27,7 +32,7 @@ yarn run lint
 
 ### Publish docs to GitHub Pages
 ```
-yarn build-deploy-gh-pages
+yarn deploy
 ```
 
 - Base folder should be included first in every project.

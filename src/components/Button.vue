@@ -24,7 +24,7 @@
         </span>
         <span v-else-if="variation === 'prime-simple'" class="prime-simple">
           Free with
-          <span class="prime-simple__bold">Prime</span>
+          <span class="prime-simple__bold"> Prime</span>
         </span>
         <i v-if="iconClass && iconPosition === 'left'" :class="iconClass"></i>
         <i v-if="iconImg" class="icon-img">
@@ -57,11 +57,13 @@
       </div>
       <div class="slobs-download-landing__bottom">
         <p class="slobs-download-landing__subtitle">
-          <span
-            v-for="text in slobsDownloadText"
-            :key="text"
-            v-text="text"
-          ></span>
+          <slot name="subtitle">
+            <span
+              v-for="text in slobsDownloadText"
+              :key="text"
+              v-text="text"
+            ></span>
+          </slot>
         </p>
       </div>
     </div>
@@ -178,6 +180,12 @@ export default class Button extends Vue {
     default: null;
   };
 
+  @Prop()
+  ultraTitle!: {
+    type: String;
+    default: null;
+  };
+
   @Prop({ default: "Download Streamlabs" })
   slobsDownloadTitle!: {
     type: String;
@@ -234,7 +242,7 @@ export default class Button extends Vue {
     const tests: any = [];
 
     tests.push("Free");
-    tests.push(this.osType === "windows" ? "Win" : "macOS 10.14+");
+    tests.push(this.osType === "windows" ? "Win" : "macOS 10.15+");
     tests.push(this.osType === "windows" ? "~240MB" : "309MB");
 
     return tests;
@@ -267,9 +275,9 @@ export default class Button extends Vue {
   // }
 
   rippleAnimation() {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       this.rippleAnimate = true;
-      let animationEnded = e => {
+      let animationEnded = (e) => {
         this.$el.removeEventListener("animationnend", animationEnded);
         resolve();
       };
@@ -820,6 +828,51 @@ export default class Button extends Vue {
   }
 }
 
+.s-button--ultra {
+  border: 0px solid transparent;
+  color: @ultra-black;
+  background: @ultra-gradient;
+
+  &::before {
+    background: @ultra-gradient;
+  }
+  border-radius: 8px;
+
+  .icon-ultra {
+    .icon-ultra-solid(@ultra-black);
+  }
+
+  &.s-button--large {
+    border-radius: 32px;
+    background: @ultra-gradient-dark;
+    border: none;
+    padding: 0px 64px;
+
+    .icon-ultra {
+      .icon-ultra-solid();
+    }
+
+    &::before {
+      border-radius: 32px;
+      border: none;
+    }
+  }
+
+  &.s-button-square {
+    .icon-ultra {
+      .icon-ultra();
+    }
+  }
+}
+
+.s-button--ultra::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  .ultra-border();
+  border-radius: 8px;
+}
+
 .s-button--prime-white {
   .btn-variant(@white, @dark-2, @amount: 8%);
 
@@ -1006,6 +1059,31 @@ export default class Button extends Vue {
 
   .s-button--slobs-download-landing {
     .night-btn-variant(@dark-5);
+  }
+
+  .s-button--ultra {
+    background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0.16) 100%),
+    linear-gradient(123.53deg, #2DE8B0 25.56%, #CBE953 60.27%, #FFAB48 79.52%, #FF5151 96.69%);
+    color: @ultra-black;
+    border-radius: 8px;
+    .icon-ultra {
+      color: @ultra-black;
+    }
+
+    &.s-button--large {
+      background: @ultra-gradient-dark;
+      border-radius: 32px;
+      border: none;
+
+      .icon-ultra {
+        .icon-ultra-solid();
+      }
+
+      &::before {
+        border-radius: 32px;
+        border: none;
+      }
+    }
   }
 }
 

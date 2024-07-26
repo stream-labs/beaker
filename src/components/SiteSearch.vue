@@ -40,6 +40,7 @@
           class="s-sitesearch-results"
           :class="{ 's-active-result': currentResult === i }"
           @mouseover="currentResult = i"
+          @mousedown="trackEvent(searchData[quickLinkLoc[i]].route)"
           @mouseup="blurSearch"
         >
           <div class="s-sitesearch__result--image">
@@ -66,6 +67,7 @@
             class="s-sitesearch-results"
             :class="{ 's-active-result': currentResult === i }"
             @mouseover="currentResult = i"
+            @mousedown="trackEvent(searchData[quickLinkLoc[i]].route)"
             @mouseup="blurSearch"
           >
             <div class="s-sitesearch__result--image">
@@ -233,11 +235,13 @@ export default class SiteSearch extends Vue {
     // KEYPRESS ENTER
     if (event.keyCode === 13 && this.phaseOne) {
       if (this.result <= 0) {
+        this.trackEvent(this.currentResult);
         window.location.href = this.searchData[
           this.quickLinkLoc[this.currentResult]
         ].route;
         this.blurSearch();
       } else {
+        this.trackEvent(this.currentResult);
         window.location.href = this.limitedResult[
           this.currentResult
         ].item.route;
@@ -248,6 +252,10 @@ export default class SiteSearch extends Vue {
     if (event.keyCode === 27 && this.phaseOne) {
       this.blurSearch();
     }
+  }
+
+  trackEvent(result) {
+    this.$emit("trackSearchNav", result);
   }
 
   playClosingSequence() {
@@ -292,6 +300,7 @@ export default class SiteSearch extends Vue {
   }
 
   mounted() {
+    this.searchData = this.jsonSearch;
     this.initFuse();
   }
 }
@@ -309,7 +318,7 @@ export default class SiteSearch extends Vue {
   border-radius: @radius;
   background-color: @light-2;
   transform-origin: top;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 
   &.s-sitesearch--is-open {
     min-width: 300px;
@@ -385,7 +394,7 @@ export default class SiteSearch extends Vue {
     width: 100%;
     flex-direction: column;
     overflow: hidden;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 
     .s-sitesearch-quicklinks {
       display: flex;
@@ -408,7 +417,7 @@ export default class SiteSearch extends Vue {
 
   .s-sitesearch-results {
     display: flex;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     height: 32px;
     flex-direction: row;
     align-items: center;
@@ -431,30 +440,30 @@ export default class SiteSearch extends Vue {
   }
 
   .s-sitesearch--fadeX-enter-active {
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 1;
   }
 
   .s-sitesearch--fadeX-leave-active {
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     position: absolute;
     opacity: 0;
   }
 
   .s-sitesearch--fadeX-enter {
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateX(10px);
     opacity: 0;
   }
 
   .s-sitesearch--fadeX-leave-to {
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
     transform: translateX(10px);
   }
 
   .s-sitesearch--fadeX-move {
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .s-sitesearch--fadeY-enter-active {
@@ -463,25 +472,25 @@ export default class SiteSearch extends Vue {
   }
 
   .s-sitesearch--fadeY-leave-active {
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     position: absolute;
     opacity: 0;
   }
 
   .s-sitesearch--fadeY-enter {
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateY(-10px);
     opacity: 0;
   }
 
   .s-sitesearch--fadeY-leave-to {
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
     transform: translateY(-10px);
   }
 
   .s-sitesearch--fadeY-move {
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 

@@ -151,15 +151,15 @@ import { Component, Vue } from "vue-property-decorator";
 
 import FormGroup from "./../components/FormGroup.vue";
 import MediaPicker from "./../components/MediaPicker.vue";
-import MediaPickersCode from "!!raw-loader!./MediaPickers";
+import MediaPickersCode from "./MediaPickers.vue?raw";
 import DemoSection from "./../components/DemoSection.vue";
 
 @Component({
   components: {
     DemoSection,
     FormGroup,
-    MediaPicker,
-  },
+    MediaPicker
+  }
 })
 export default class ImagePickers extends Vue {
   demoCode = MediaPickersCode;
