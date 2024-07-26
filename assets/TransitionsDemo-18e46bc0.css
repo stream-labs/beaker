@@ -1,0 +1,9 @@
+.flip-cont {
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+.flip-cont div {
+  width: 500px;
+  height: 125px;
+}

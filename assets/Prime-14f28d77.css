@@ -1,0 +1,101 @@
+.s-call-to-action--nav {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  max-width: 300px;
+  position: relative;
+  overflow: hidden;
+}
+.s-call-to-action--nav:before {
+  content: "\e9bb";
+  font-family: "icomoon";
+  position: absolute;
+  left: -80px;
+  bottom: 8px;
+  font-size: 156px;
+  -webkit-transform: rotate(20deg);
+  transform: rotate(20deg);
+  font-style: normal;
+  display: inline-block;
+  font-weight: 400;
+  opacity: 0.08;
+}
+.s-call-to-action--nav .s-call-to-action__description {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 3;
+      -ms-flex-positive: 3;
+          flex-grow: 3;
+}
+.s-call-to-action--nav .s-call-to-action__extras {
+  margin-top: 16px;
+  font-size: 12px;
+  color: #91979a;
+}
+.s-call-to-action--nav .s-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #09161d;
+  line-height: 130%;
+}
+.s-call-to-action--nav .s-title .s-badge {
+  margin-left: 0px;
+  display: inline-block;
+}
+.s-call-to-action--nav .s-subtitle {
+  font-size: 14px;
+  color: #4f5e65;
+}
+.s-call-to-action--nav .s-button {
+  margin-top: 24px;
+}
+.night .s-call-to-action,
+.night-theme .s-call-to-action {
+  background-color: #2b383f;
+}
+.night .s-title,
+.night-theme .s-title {
+  color: #ffffff;
+}
+.night .s-subtitle,
+.night-theme .s-subtitle {
+  color: #bdc2c4;
+}
+.prime-section {
+  background: rgba(255, 255, 255, 0.88);
+  padding: 24px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  text-align: center;
+}
+.prime-section .s-empty-section {
+  padding: 0px;
+}
+.prime-section .s-badge--prime-alt {
+  margin-right: 5px;
+  vertical-align: baseline;
+}
+.night .prime-section,
+.night-theme .prime-section {
+  background: rgba(23, 36, 45, 0.88);
+}
+.cs-section[data-v-68a5afb8] {
+  position: relative;
+  width: 260px;
+}
+.welcome-prime[data-v-68a5afb8] {
+  width: 600px;
+}

@@ -1,0 +1,498 @@
+@import url(https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Arvo:700|Asap+Condensed:600|Averia+Sans+Libre|Averia+Serif+Libre:700|Fredoka+One|Germania+One|Hind|IBM+Plex+Sans+Condensed:300i,600i|IM+Fell+Double+Pica:400,400i|Julius+Sans+One|Karla|Lora|Luckiest+Guy|Oleo+Script:700|Oswald:600|Playfair+Display:700|Quicksand|Rambla|Roboto+Mono:400,700|Roboto:400,700,800,900|Barlow:700,800,900|Staatliches|Thasadith:700|Vollkorn|Work+Sans);.s-cs-simulator__web-bar {
+  height: 40px;
+  display: grid;
+  background-color: #f5f8fa;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  padding-right: 8px;
+  padding-left: 8px;
+  border-radius: 8px 8px 0 0;
+}
+.s-cs-simulator__web-bar-dots {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.s-cs-simulator__web-bar-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 40px;
+  margin-right: 8px;
+  background-color: #e3e8eb;
+}
+.s-cs-simulator__url-container {
+  height: 24px;
+  max-width: 400px;
+  padding-right: 8px;
+  padding-left: 8px;
+  background-color: #ffffff;
+  color: #4f5e65;
+  text-align: center;
+  border-radius: 4px;
+  position: absolute;
+  right: 16%;
+  left: 16%;
+  margin: 0 auto;
+  top: 8px;
+  line-height: 24px;
+  text-transform: lowercase;
+  font-weight: 500;
+}
+.night .s-cs-simulator__web-bar,
+.night-theme .s-cs-simulator__web-bar {
+  background-color: #09161d;
+}
+.night .s-cs-simulator__web-bar-dots,
+.night-theme .s-cs-simulator__web-bar-dots {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.night .s-cs-simulator__web-bar-dot,
+.night-theme .s-cs-simulator__web-bar-dot {
+  background-color: #2b383f;
+}
+.night .s-cs-simulator__url-container,
+.night-theme .s-cs-simulator__url-container {
+  background-color: #17242d;
+  color: #bdc2c4;
+}
+
+.custom-font--standard *:not([class*="icon-"]):not([class*="fa-"]) {
+  font-family: 'Roboto';
+}
+.custom-font--standard h1:not(.custom-font-style--body),
+.custom-font--standard h2:not(.custom-font-style--body),
+.custom-font--standard h3:not(.custom-font-style--body),
+.custom-font--standard .custom-font-style--header {
+  font-family: 'Roboto' !important;
+  font-weight: 700;
+}
+.custom-font--bubble *:not([class*="icon-"]):not([class*="fa-"]) {
+  font-family: 'Quicksand';
+}
+.custom-font--bubble h1:not(.custom-font-style--body),
+.custom-font--bubble h2:not(.custom-font-style--body),
+.custom-font--bubble h3:not(.custom-font-style--body),
+.custom-font--bubble .custom-font-style--header {
+  font-family: 'Fredoka One' !important;
+}
+.custom-font--knock *:not([class*="icon-"]):not([class*="fa-"]) {
+  font-family: 'Karla';
+}
+.custom-font--knock h1:not(.custom-font-style--body),
+.custom-font--knock h2:not(.custom-font-style--body),
+.custom-font--knock h3:not(.custom-font-style--body),
+.custom-font--knock .custom-font-style--header {
+  font-family: 'Luckiest Guy' !important;
+}
+.custom-font--headlines *:not([class*="icon-"]):not([class*="fa-"]) {
+  font-family: 'Thasadith';
+}
+.custom-font--headlines h1:not(.custom-font-style--body),
+.custom-font--headlines h2:not(.custom-font-style--body),
+.custom-font--headlines h3:not(.custom-font-style--body),
+.custom-font--headlines .custom-font-style--header {
+  font-family: 'Abril Fatface' !important;
+}
+.custom-font--straight-facts *:not([class*="icon-"]):not([class*="fa-"]) {
+  font-family: 'Abel';
+}
+.custom-font--straight-facts h1:not(.custom-font-style--body),
+.custom-font--straight-facts h2:not(.custom-font-style--body),
+.custom-font--straight-facts h3:not(.custom-font-style--body),
+.custom-font--straight-facts .custom-font-style--header {
+  font-family: 'Oswald' !important;
+  font-weight: 600;
+}
+.custom-font--vintage *:not([class*="icon-"]):not([class*="fa-"]) {
+  font-family: 'IM FELL Double Pica';
+  font-style: italic !important;
+}
+.custom-font--vintage h1:not(.custom-font-style--body),
+.custom-font--vintage h2:not(.custom-font-style--body),
+.custom-font--vintage h3:not(.custom-font-style--body),
+.custom-font--vintage .custom-font-style--header {
+  font-family: 'IM FELL Double Pica' !important;
+}
+.custom-font--posh *:not([class*="icon-"]):not([class*="fa-"]) {
+  font-family: 'Lora';
+}
+.custom-font--posh h1:not(.custom-font-style--body),
+.custom-font--posh h2:not(.custom-font-style--body),
+.custom-font--posh h3:not(.custom-font-style--body),
+.custom-font--posh .custom-font-style--header {
+  font-family: 'Playfair Display' !important;
+  font-weight: 700;
+}
+.custom-font--smooth-talker *:not([class*="icon-"]):not([class*="fa-"]) {
+  font-family: 'Work Sans';
+}
+.custom-font--smooth-talker h1:not(.custom-font-style--body),
+.custom-font--smooth-talker h2:not(.custom-font-style--body),
+.custom-font--smooth-talker h3:not(.custom-font-style--body),
+.custom-font--smooth-talker .custom-font-style--header {
+  font-family: 'Oleo Script' !important;
+  font-weight: 700;
+}
+.custom-font--western *:not([class*="icon-"]):not([class*="fa-"]) {
+  font-family: 'Vollkorn';
+}
+.custom-font--western h1:not(.custom-font-style--body),
+.custom-font--western h2:not(.custom-font-style--body),
+.custom-font--western h3:not(.custom-font-style--body),
+.custom-font--western .custom-font-style--header {
+  font-family: 'Arvo' !important;
+  font-weight: 700;
+}
+.custom-font--moonlight *:not([class*="icon-"]):not([class*="fa-"]) {
+  font-family: 'Averia Sans Libre';
+}
+.custom-font--moonlight h1:not(.custom-font-style--body),
+.custom-font--moonlight h2:not(.custom-font-style--body),
+.custom-font--moonlight h3:not(.custom-font-style--body),
+.custom-font--moonlight .custom-font-style--header {
+  font-family: 'Averia Serif Libre' !important;
+  font-weight: 700;
+}
+.custom-font--compact *:not([class*="icon-"]):not([class*="fa-"]) {
+  font-family: 'Rambla';
+}
+.custom-font--compact h1:not(.custom-font-style--body),
+.custom-font--compact h2:not(.custom-font-style--body),
+.custom-font--compact h3:not(.custom-font-style--body),
+.custom-font--compact .custom-font-style--header {
+  font-family: 'Asap Condensed' !important;
+  font-weight: 600;
+}
+.custom-font--killshot *:not([class*="icon-"]):not([class*="fa-"]) {
+  font-family: 'IBM Plex Sans Condensed';
+  font-weight: 300;
+  font-style: italic !important;
+}
+.custom-font--killshot h1:not(.custom-font-style--body),
+.custom-font--killshot h2:not(.custom-font-style--body),
+.custom-font--killshot h3:not(.custom-font-style--body),
+.custom-font--killshot .custom-font-style--header {
+  font-family: 'IBM Plex Sans Condensed' !important;
+  font-weight: 600;
+  font-style: italic !important;
+}
+.custom-font--code-ya-so *:not([class*="icon-"]):not([class*="fa-"]) {
+  font-family: 'Roboto Mono';
+}
+.custom-font--code-ya-so h1:not(.custom-font-style--body),
+.custom-font--code-ya-so h2:not(.custom-font-style--body),
+.custom-font--code-ya-so h3:not(.custom-font-style--body),
+.custom-font--code-ya-so .custom-font-style--header {
+  font-family: 'Roboto Mono' !important;
+  font-weight: 700;
+}
+.custom-font--in-the-wind *:not([class*="icon-"]):not([class*="fa-"]) {
+  font-family: 'Hind';
+}
+.custom-font--in-the-wind h1:not(.custom-font-style--body),
+.custom-font--in-the-wind h2:not(.custom-font-style--body),
+.custom-font--in-the-wind h3:not(.custom-font-style--body),
+.custom-font--in-the-wind .custom-font-style--header {
+  font-family: 'Julius Sans One' !important;
+}
+.custom-font--listen-up *:not([class*="icon-"]):not([class*="fa-"]) {
+  font-family: 'Hind';
+}
+.custom-font--listen-up h1:not(.custom-font-style--body),
+.custom-font--listen-up h2:not(.custom-font-style--body),
+.custom-font--listen-up h3:not(.custom-font-style--body),
+.custom-font--listen-up .custom-font-style--header {
+  font-family: 'Staatliches' !important;
+}
+.custom-font--forever-goth *:not([class*="icon-"]):not([class*="fa-"]) {
+  font-family: 'Germania One';
+}
+.custom-font--forever-goth h1:not(.custom-font-style--body),
+.custom-font--forever-goth h2:not(.custom-font-style--body),
+.custom-font--forever-goth h3:not(.custom-font-style--body),
+.custom-font--forever-goth .custom-font-style--header {
+  font-family: 'Germania One' !important;
+}
+.s-cs-simulator {
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  overflow: hidden;
+  color: #bdc2c4;
+}
+.s-cs-simulator p {
+  color: inherit;
+}
+.s-cs-simulator__web-page {
+  background-color: #17242d;
+  padding: 16px;
+  display: grid;
+  grid-template-areas: "header header header header" "video video video tip" "merch social countdown lb";
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+.s-cs-simulator__web-page .s-cs-simulator__section:nth-child(2) {
+  grid-area: video;
+}
+.s-cs-simulator__web-page .s-cs-simulator__section:nth-child(3) {
+  grid-area: tip;
+}
+.s-cs-simulator__web-page .s-cs-simulator__section:nth-child(4) {
+  grid-area: merch;
+}
+.s-cs-simulator__web-page .s-cs-simulator__section:nth-child(5) {
+  grid-area: social;
+}
+.s-cs-simulator__web-page .s-cs-simulator__section:nth-child(6) {
+  grid-area: lb;
+}
+.s-cs-simulator__web-page .s-cs-simulator__section:nth-child(7) {
+  grid-area: countdown;
+}
+.s-cs-simulator__heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: header;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.s-cs-simulator__heading h1 {
+  color: #ffffff;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: inherit;
+}
+.s-cs-simulator__header-text {
+  width: 72%;
+}
+.s-cs-simulator__desc {
+  margin: 0px;
+  width: 100%;
+  height: 8px;
+  border-radius: 8px;
+  background-color: #1e2f3b;
+}
+.s-cs-simulator__video {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
+}
+.s-cs-simulator__video i {
+  color: #1e2f3b;
+  font-size: 48px;
+}
+.s-cs-simulator__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  margin-right: 16px;
+}
+.s-cs-simulator__section {
+  padding: 16px;
+  border-radius: 8px;
+  min-height: 160px;
+  background-color: #090e12;
+}
+.s-cs-simulator__fake-input {
+  height: 24px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  margin-bottom: 8px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+.s-cs-simulator__fake-button {
+  height: 40px;
+  border-radius: 4px;
+  background-color: #334f63;
+  color: #ffffff;
+  border-radius: 100px;
+  text-align: center;
+  font-weight: 500;
+  line-height: 40px;
+}
+.s-cs-simulator__web-page--teal {
+  background-color: #80f5d2;
+  color: #303030;
+  grid-template-areas: "header header header header" "tip video video video" "merch merch social social";
+}
+.s-cs-simulator__web-page--teal *:not([class*="icon-"]):not([class*="fa-"]) {
+  font-family: 'Quicksand';
+}
+.s-cs-simulator__web-page--teal h1:not(.custom-font-style--body),
+.s-cs-simulator__web-page--teal h2:not(.custom-font-style--body),
+.s-cs-simulator__web-page--teal h3:not(.custom-font-style--body),
+.s-cs-simulator__web-page--teal .custom-font-style--header {
+  font-family: 'Fredoka One' !important;
+}
+.s-cs-simulator__web-page--teal .s-cs-simulator__section:nth-child(6),
+.s-cs-simulator__web-page--teal .s-cs-simulator__section:nth-child(7) {
+  display: none;
+}
+.s-cs-simulator__web-page--teal .s-cs-simulator__desc,
+.s-cs-simulator__web-page--teal .s-cs-simulator__fake-button {
+  background-color: #a6f8df;
+}
+.s-cs-simulator__web-page--teal .s-cs-simulator__video i {
+  color: #34efb7;
+}
+.s-cs-simulator__web-page--teal .s-cs-simulator__section {
+  background-color: #5af2c5;
+}
+.s-cs-simulator__web-page--orange {
+  background-color: #d84e24;
+  grid-template-areas: "header header header header" "tip video video video" "merch social lb countdown";
+}
+.s-cs-simulator__web-page--orange *:not([class*="icon-"]):not([class*="fa-"]) {
+  font-family: 'Karla';
+}
+.s-cs-simulator__web-page--orange h1:not(.custom-font-style--body),
+.s-cs-simulator__web-page--orange h2:not(.custom-font-style--body),
+.s-cs-simulator__web-page--orange h3:not(.custom-font-style--body),
+.s-cs-simulator__web-page--orange .custom-font-style--header {
+  font-family: 'Luckiest Guy' !important;
+}
+.s-cs-simulator__web-page--orange .s-cs-simulator__desc,
+.s-cs-simulator__web-page--orange .s-cs-simulator__fake-button {
+  background-color: #dd5b33;
+}
+.s-cs-simulator__web-page--orange .s-cs-simulator__video i {
+  color: #dd5b33;
+}
+.s-cs-simulator__web-page--orange .s-cs-simulator__section {
+  background-color: #b5411e;
+}
+.s-cs-simulator__web-page--electric-blue {
+  background-color: #0f83c6;
+  color: #202020;
+  grid-template-areas: "header header header header" "tip video video video" "merch merch social lb";
+}
+.s-cs-simulator__web-page--electric-blue *:not([class*="icon-"]):not([class*="fa-"]) {
+  font-family: 'Work Sans';
+}
+.s-cs-simulator__web-page--electric-blue h1:not(.custom-font-style--body),
+.s-cs-simulator__web-page--electric-blue h2:not(.custom-font-style--body),
+.s-cs-simulator__web-page--electric-blue h3:not(.custom-font-style--body),
+.s-cs-simulator__web-page--electric-blue .custom-font-style--header {
+  font-family: 'Oleo Script' !important;
+  font-weight: 700;
+}
+.s-cs-simulator__web-page--electric-blue .s-cs-simulator__section:nth-child(7) {
+  display: none;
+}
+.s-cs-simulator__web-page--electric-blue h1 {
+  color: #19202b;
+}
+.s-cs-simulator__web-page--electric-blue .s-cs-simulator__video i {
+  color: #1090d9;
+}
+.s-cs-simulator__web-page--electric-blue .s-cs-simulator__desc,
+.s-cs-simulator__web-page--electric-blue .s-cs-simulator__fake-button {
+  background-color: #1090d9;
+}
+.s-cs-simulator__web-page--electric-blue .s-cs-simulator__fake-input {
+  border-color: rgba(0, 0, 0, 0.24);
+}
+.s-cs-simulator__web-page--electric-blue .s-cs-simulator__section {
+  background-color: #0c6aa0;
+}
+.s-cs-simulator__web-page--purple {
+  background-color: #C57BFF;
+  color: #303030;
+}
+.s-cs-simulator__web-page--purple *:not([class*="icon-"]):not([class*="fa-"]) {
+  font-family: 'Quicksand';
+}
+.s-cs-simulator__web-page--purple h1:not(.custom-font-style--body),
+.s-cs-simulator__web-page--purple h2:not(.custom-font-style--body),
+.s-cs-simulator__web-page--purple h3:not(.custom-font-style--body),
+.s-cs-simulator__web-page--purple .custom-font-style--header {
+  font-family: 'Fredoka One' !important;
+}
+.s-cs-simulator__web-page--purple .s-cs-simulator__desc,
+.s-cs-simulator__web-page--purple .s-cs-simulator__fake-button {
+  background-color: #d7a4ff;
+}
+.s-cs-simulator__web-page--purple .s-cs-simulator__video i {
+  color: #a129ff;
+}
+.s-cs-simulator__web-page--purple .s-cs-simulator__section {
+  background-color: #b352ff;
+}
+.s-cs-simulator__web-page--red {
+  background-color: #af1108;
+  color: #808080;
+  grid-template-areas: "header header header header" "video video video tip" "merch merch merch social";
+}
+.s-cs-simulator__web-page--red *:not([class*="icon-"]):not([class*="fa-"]) {
+  font-family: 'Abel';
+}
+.s-cs-simulator__web-page--red h1:not(.custom-font-style--body),
+.s-cs-simulator__web-page--red h2:not(.custom-font-style--body),
+.s-cs-simulator__web-page--red h3:not(.custom-font-style--body),
+.s-cs-simulator__web-page--red .custom-font-style--header {
+  font-family: 'Oswald' !important;
+  font-weight: 600;
+}
+.s-cs-simulator__web-page--red .s-cs-simulator__section:nth-child(6),
+.s-cs-simulator__web-page--red .s-cs-simulator__section:nth-child(7) {
+  display: none;
+}
+.s-cs-simulator__web-page--red h1 {
+  color: #ffffff;
+}
+.s-cs-simulator__web-page--red .s-cs-simulator__video i {
+  color: #c31309;
+}
+.s-cs-simulator__web-page--red .s-cs-simulator__desc,
+.s-cs-simulator__web-page--red .s-cs-simulator__fake-button {
+  background-color: #c31309;
+}
+.s-cs-simulator__web-page--red .s-cs-simulator__section {
+  background-color: #880d06;
+}
+.s-cs-simulator__web-page--lime {
+  background-color: #78e236;
+  color: #63695d;
+  grid-template-areas: "header header header header" "video video video tip" "merch merch merch merch";
+}
+.s-cs-simulator__web-page--lime *:not([class*="icon-"]):not([class*="fa-"]) {
+  font-family: 'Hind';
+}
+.s-cs-simulator__web-page--lime h1:not(.custom-font-style--body),
+.s-cs-simulator__web-page--lime h2:not(.custom-font-style--body),
+.s-cs-simulator__web-page--lime h3:not(.custom-font-style--body),
+.s-cs-simulator__web-page--lime .custom-font-style--header {
+  font-family: 'Staatliches' !important;
+}
+.s-cs-simulator__web-page--lime .s-cs-simulator__section:nth-child(5),
+.s-cs-simulator__web-page--lime .s-cs-simulator__section:nth-child(6),
+.s-cs-simulator__web-page--lime .s-cs-simulator__section:nth-child(7) {
+  display: none;
+}
+.s-cs-simulator__web-page--lime .s-cs-simulator__desc,
+.s-cs-simulator__web-page--lime .s-cs-simulator__fake-button {
+  background-color: #90e75a;
+}
+.s-cs-simulator__web-page--lime .s-cs-simulator__video i {
+  color: #52ad19;
+}
+.s-cs-simulator__web-page--lime h1 {
+  color: #1e4804;
+}
+.s-cs-simulator__web-page--lime .s-cs-simulator__section {
+  background-color: #63d11e;
+}

@@ -1,0 +1,86 @@
+.icons[data-v-4f69e2d0] {
+  position: relative;
+  max-width: 1200px;
+}
+.icon[data-v-4f69e2d0] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+.icon__grid[data-v-4f69e2d0] {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  grid-column-gap: 24px;
+  grid-row-gap: 48px;
+  color: #91979a;
+}
+.icon__glyph[data-v-4f69e2d0] {
+  position: relative;
+  margin-bottom: 8px;
+  font-size: 32px;
+  color: #09161d;
+}
+.icon__glyph .icon-copy[data-v-4f69e2d0] {
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  font-size: 14px;
+  opacity: 0;
+  -webkit-transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.icon__label[data-v-4f69e2d0] {
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #91979a;
+  overflow: hidden;
+}
+.icon:hover .icon__glyph .icon-copy[data-v-4f69e2d0] {
+  opacity: 1;
+}
+.icon__liga[data-v-4f69e2d0] {
+  font-size: 10px;
+}
+.icon__error[data-v-4f69e2d0] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 30vh;
+}
+.icon__error > i[data-v-4f69e2d0] {
+  font-size: 80px;
+  margin-bottom: 24px;
+}
+.night .icon__glyph[data-v-4f69e2d0],
+.night-theme .icon__glyph[data-v-4f69e2d0] {
+  color: #ffffff;
+}
+.night .icon__label[data-v-4f69e2d0],
+.night-theme .icon__label[data-v-4f69e2d0] {
+  color: #bdc2c4;
+}
+.night .icon__liga[data-v-4f69e2d0],
+.night-theme .icon__liga[data-v-4f69e2d0] {
+  color: #4f5e65;
+}

@@ -1,0 +1,103 @@
+.s-colorpicker-container {
+  position: relative;
+  display: inline-block;
+  width: 225px;
+}
+.s-colorpicker-container__mini {
+  width: 38px;
+}
+.s-colorpicker-container__mini-icon {
+  width: 70px;
+}
+.s-colorpicker__picker-wrapper {
+  display: block;
+}
+.s-colorpicker__input--mini {
+  width: 225px !important;
+}
+.s-colorpicker__mini-wrapper {
+  border: 1px solid black;
+  border-color: #4f5e65;
+  background: transparent;
+  color: #ffffff;
+  height: 40px;
+  border-radius: 4px;
+  font-family: "Roboto";
+  font-size: 14px;
+}
+.s-colorpicker__mini-wrapper i {
+  position: absolute;
+  top: 12px;
+  left: 10px;
+  z-index: 1;
+}
+.s-colorpicker__preview {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: absolute;
+  top: 10px;
+  right: 8px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(9, 22, 29, 0.12);
+  border-radius: 2px;
+  z-index: 1;
+}
+.s-colorpicker__preview--alpha {
+  position: absolute;
+  top: 11px;
+  right: 9px;
+  z-index: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 2px;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMElEQVQ4T2N89uzZfwY8QFJSEp80A+OoAcMiDP7//483HTx//hx/Ohg1gIFx6IcBALl+VXknOCvFAAAAAElFTkSuQmCC");
+}
+.s-colorpicker.vc-chrome {
+  position: relative;
+  left: 0;
+  top: 0;
+  border-radius: 4px 4px 5px 5px;
+  -webkit-box-shadow: 0 8px 16px rgba(9, 22, 29, 0.08);
+          box-shadow: 0 8px 16px rgba(9, 22, 29, 0.08);
+}
+.s-colorpicker .vc-chrome-active-color {
+  border: 1px solid rgba(9, 22, 29, 0.12);
+  border-radius: 4px;
+}
+.s-colorpicker .vc-chrome-body {
+  padding: 12px;
+  border-radius: 0 0 4px 4px;
+}
+.s-colorpicker .vc-chrome-toggle-btn,
+.s-colorpicker .vc-chrome-fields-wrap {
+  display: none;
+}
+.s-colorpicker.alpha .vc-chrome-fields:not(:nth-child(2)) {
+  display: none;
+}
+.s-colorpicker.alpha .vc-chrome-fields:nth-child(2) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.s-colorpicker.alpha .vc-alpha-checkboard-wrap {
+  border-radius: 2px 4px 4px 2px;
+}
+.s-colorpicker.alpha .vc-chrome-color-wrap,
+.s-colorpicker.nonAlpha .vc-chrome-color-wrap {
+  width: 42px;
+}
+.s-colorpicker.alpha .vc-chrome-color-wrap .vc-checkerboard,
+.s-colorpicker.nonAlpha .vc-chrome-color-wrap .vc-checkerboard {
+  border-radius: 4px;
+}
+.night .s-colorpicker__preview {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+.night .s-colorpicker .vc-chrome-body {
+  background-color: #2b383f;
+}
+.night .s-colorpicker .vc-chrome-active-color {
+  border-color: rgba(255, 255, 255, 0.16);
+}

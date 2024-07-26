@@ -1,0 +1,45 @@
+.s-fake-alert {
+  height: 146px;
+  background-color: #e3e8eb;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.s-fake-alert__text {
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  color: #09161d;
+}
+.s-fake-alert__message {
+  font-size: 16px;
+  display: inline-block;
+  margin-top: 8px;
+}
+.s-fake-alert__icon {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 8px;
+  width: 40px;
+  margin-top: -20px;
+}
+.night .s-fake-alert,
+.night-theme .s-fake-alert {
+  background-color: #2b383f;
+}
+.night .s-fake-alert__text,
+.night-theme .s-fake-alert__text {
+  color: #ffffff;
+}

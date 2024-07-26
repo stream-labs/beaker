@@ -1,0 +1,98 @@
+.row {
+  width: 700px;
+}
+.row.bottom-space {
+  margin-bottom: 64px;
+}
+.side-by-side {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.type-scale {
+  color: #050d12;
+  line-height: 150%;
+}
+.gray {
+  color: #2b383f;
+}
+.teal {
+  color: #80f5d2;
+}
+.underline {
+  text-decoration: underline;
+}
+.font-style {
+  color: #050d12;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 150%;
+}
+.subtitle {
+  color: #050d12;
+}
+.s48 {
+  font-size: 48px;
+}
+.s32 {
+  font-size: 32px;
+}
+.s22 {
+  font-size: 22px;
+}
+.s20 {
+  font-size: 20px;
+}
+.s18 {
+  font-size: 18px;
+}
+.s16 {
+  font-size: 16px;
+}
+.s14 {
+  font-size: 14px;
+}
+.s12 {
+  font-size: 12px;
+}
+.extra-bold {
+  font-weight: 800;
+}
+.bold {
+  font-weight: 700;
+}
+.medium {
+  font-weight: 500;
+}
+.barlow {
+  font-family: "Barlow";
+}
+.roboto {
+  font-family: "Roboto";
+}
+.night .type-scale,
+.night-theme .type-scale {
+  color: #ffffff;
+}
+.night .gray,
+.night-theme .gray {
+  color: #bdc2c4;
+}
+.night .font-style,
+.night-theme .font-style {
+  color: #ffffff;
+}
+.night .subtitle,
+.night-theme .subtitle {
+  color: #ffffff;
+}
